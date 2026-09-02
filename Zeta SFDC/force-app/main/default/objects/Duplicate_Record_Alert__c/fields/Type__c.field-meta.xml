@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Type__c</fullName>
+    <description>The type of duplicate detected.</description>
+    <label>Type</label>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Individual Application</fullName>
+                <default>false</default>
+                <label>Individual Application</label>
+            </value>
+            <value>
+                <fullName>School Application</fullName>
+                <default>false</default>
+                <label>School Application</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

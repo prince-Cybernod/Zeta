@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <help><!-- SESIS (Special Education Student Information System): Indicates whether the student’s IEP exists in the NYC DOE SESIS system. --></help>
+    <label><!-- Is there an IEP on SESIS? --></label>
+    <name>Is_there_an_IEP_on_SESIS__c</name>
+    <picklistValues>
+        <masterLabel>Flag: Misaligned OSIS</masterLabel>
+        <translation><!-- Flag: Misaligned OSIS --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>No</masterLabel>
+        <translation><!-- No --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Unknown</masterLabel>
+        <translation><!-- Unknown --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Yes</masterLabel>
+        <translation><!-- Yes --></translation>
+    </picklistValues>
+</CustomFieldTranslation>

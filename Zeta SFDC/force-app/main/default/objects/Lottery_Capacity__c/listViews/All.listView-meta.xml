@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>All</fullName>
+    <columns>NAME</columns>
+    <columns>Program_Term_Application_Timeline__c</columns>
+    <columns>Grade__c</columns>
+    <columns>Total_Available_Seats__c</columns>
+    <columns>SchoolMint_Lottery_Capacity_Id__c</columns>
+    <filterScope>Everything</filterScope>
+    <label>All</label>
+</ListView>

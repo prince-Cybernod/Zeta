@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomMetadata xmlns="http://soap.sforce.com/2006/04/metadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <label>Additional Information</label>
+    <protected>false</protected>
+    <values>
+        <field>Auto_Collapse_When_Complete__c</field>
+        <value xsi:type="xsd:boolean">false</value>
+    </values>
+    <values>
+        <field>Collapsible__c</field>
+        <value xsi:type="xsd:boolean">true</value>
+    </values>
+    <values>
+        <field>Columns__c</field>
+        <value xsi:type="xsd:double">1.0</value>
+    </values>
+    <values>
+        <field>Complete_Criteria__c</field>
+        <value xsi:nil="true"/>
+    </values>
+    <values>
+        <field>Description__c</field>
+        <value xsi:nil="true"/>
+    </values>
+    <values>
+        <field>Display_Label__c</field>
+        <value xsi:type="xsd:string">AppS_AdditionalInfo_Label</value>
+    </values>
+    <values>
+        <field>Is_Active__c</field>
+        <value xsi:type="xsd:boolean">true</value>
+    </values>
+    <values>
+        <field>Page__c</field>
+        <value xsi:type="xsd:string">Application_Details</value>
+    </values>
+    <values>
+        <field>Sort_Order__c</field>
+        <value xsi:type="xsd:double">6.0</value>
+    </values>
+    <values>
+        <field>Summary_Template__c</field>
+        <value xsi:type="xsd:string">{How_Did_You_Hear}{Referral_Name ? &quot; · Referred by &quot; : &quot;&quot;}{Referral_Name}{App_Description ? &quot; · &quot; : &quot;&quot;}{App_Description}</value>
+    </values>
+    <values>
+        <field>Variant__c</field>
+        <value xsi:nil="true"/>
+    </values>
+    <values>
+        <field>Visibility_Criteria__c</field>
+        <value xsi:nil="true"/>
+    </values>
+</CustomMetadata>

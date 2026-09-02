@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Workplace__c</fullName>
+    <description>Used only for Zeta employee priority items. Stores the employee’s workplace to help verify employment-based priority eligibility.</description>
+    <externalId>false</externalId>
+    <label>Workplace</label>
+    <length>255</length>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Target_Field__c</fullName>
+    <fieldManageability>DeveloperControlled</fieldManageability>
+    <inlineHelpText>Required for single-field input types (Text, Email, Phone, Number, Date, Dropdown, Checkbox, MultiCheckbox, TextArea). Optional for Address-type questions, which use `Field_Bindings__c` to map multiple slots.</inlineHelpText>
+    <label>Target Field</label>
+    <referenceTo>SObject_Field__mdt</referenceTo>
+    <relationshipLabel>Application Questions</relationshipLabel>
+    <relationshipName>Application_Questions</relationshipName>
+    <required>false</required>
+    <type>MetadataRelationship</type>
+    <unique>false</unique>
+</CustomField>

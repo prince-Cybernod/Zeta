@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>School_Application__c</fullName>
+    <description>Required to the applicant’s School Application (Academic Interest) this waitlist change belongs to.</description>
+    <label>School Application</label>
+    <referenceTo>AcademicInterest</referenceTo>
+    <relationshipLabel>Waitlist Movement Histories</relationshipLabel>
+    <relationshipName>Waitlist_Movement_Histories</relationshipName>
+    <relationshipOrder>0</relationshipOrder>
+    <reparentableMasterDetail>false</reparentableMasterDetail>
+    <trackTrending>false</trackTrending>
+    <type>MasterDetail</type>
+    <writeRequiresMasterRead>false</writeRequiresMasterRead>
+</CustomField>

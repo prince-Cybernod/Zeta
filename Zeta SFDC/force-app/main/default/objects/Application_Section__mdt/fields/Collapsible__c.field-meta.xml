@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Collapsible__c</fullName>
+    <defaultValue>false</defaultValue>
+    <description>Opts a section into the review-mode state machine. When true, the section computes an `untouched` / `incomplete` / `complete` state and renders accordingly (expanded with badges in the first two states; collapsed with summary in the third when Auto_Collapse_When_Complete__c is also true).</description>
+    <fieldManageability>DeveloperControlled</fieldManageability>
+    <inlineHelpText>Enables review-mode collapse for this section. Pair with Auto_Collapse_When_Complete__c and Summary_Template__c to control behaviour.</inlineHelpText>
+    <label>Collapsible</label>
+    <type>Checkbox</type>
+</CustomField>

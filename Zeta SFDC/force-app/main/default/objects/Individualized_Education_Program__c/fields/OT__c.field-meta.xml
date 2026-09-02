@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>OT__c</fullName>
+    <defaultValue>false</defaultValue>
+    <description>Indicates whether the student’s IEP includes occupational therapy (OT) services. Checked if OT is part of the student’s current IEP plan.</description>
+    <inlineHelpText>Indicates whether the student’s IEP includes occupational therapy (OT) services. Checked if OT is part of the student’s current IEP plan.</inlineHelpText>
+    <label>OT</label>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Checkbox</type>
+</CustomField>

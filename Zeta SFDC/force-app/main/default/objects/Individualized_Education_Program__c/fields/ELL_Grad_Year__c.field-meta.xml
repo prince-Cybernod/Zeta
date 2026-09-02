@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>ELL_Grad_Year__c</fullName>
+    <description>Indicates the projected or actual year in which the student is expected to exit English Language Learner (ELL) status based on state guidelines. Used for tracking reclassification timelines and long-term monitoring of ELL progress.</description>
+    <externalId>false</externalId>
+    <inlineHelpText>English Language Learner</inlineHelpText>
+    <label>ELL Grad Year</label>
+    <precision>4</precision>
+    <required>false</required>
+    <scale>0</scale>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Number</type>
+    <unique>false</unique>
+</CustomField>

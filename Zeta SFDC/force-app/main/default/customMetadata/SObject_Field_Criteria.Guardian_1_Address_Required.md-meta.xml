@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomMetadata xmlns="http://soap.sforce.com/2006/04/metadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <label>Guardian 1 Address Required</label>
+    <protected>false</protected>
+    <values>
+        <field>Description__c</field>
+        <value xsi:type="xsd:string">Show the Student Address section whenever the student does not live with Guardian 1 (i.e. Lives_With_Guardian_1__c = false). References the field directly so the section flips reactively when the checkbox toggles on the client.</value>
+    </values>
+    <values>
+        <field>Entity_Definition__c</field>
+        <value xsi:type="xsd:string">IndividualApplication</value>
+    </values>
+    <values>
+        <field>Formula_Expression__c</field>
+        <value xsi:type="xsd:string">Lives_With_Guardian_1__c = false</value>
+    </values>
+</CustomMetadata>

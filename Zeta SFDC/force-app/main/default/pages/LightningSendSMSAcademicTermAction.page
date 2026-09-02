@@ -1,0 +1,37 @@
+<apex:page standardController="AcademicTermEnrollment" recordSetVar="AcademicTermEnrollment">
+    <div id="msg">
+        Redirecting...
+    </div>
+    <div id="url" style="opacity:0;">{!selected}</div>
+
+    <script>
+        let selected = document.getElementById('url').innerHTML; //gets the selected IDs
+        if(selected !== '') {
+            selected = selected.slice(1, selected.length - 1).replace(/\s/g, ''); //removes spaces and brackets
+            //console.log(selected);
+            //console.log('/apex/SendSMS?ids=' + selected);
+            //redirects to SendSMS page with selected IDs in the URL
+            let url = "";
+            let isLightning = "{!JSENCODE($User.UIThemeDisplayed) == 'Theme4d' || JSENCODE($User.UIThemeDisplayed) == 'Theme4t' || JSENCODE($User.UIThemeDisplayed) == 'Theme4u'}" === "true";
+            if(isLightning) {
+                url = window.location.protocol + '//' + window.location.host + '/lightning/n/Mogli_SMS__Bulk_SMS_Lightning?c__objectIdsFromListView=' + selected;
+            } else {
+                url = window.location.protocol + '//' + window.location.host + '/apex/Mogli_SMS__SendSMS?ids=' + selected;
+            }
+            navigateToUrl(url);
+        } else {
+            document.getElementById('msg').innerHTML = 'No Academic Term Enrollments were selected!';
+        }
+
+        function navigateToUrl(url) {
+
+            if ((typeof sforce != 'undefined') && sforce && (!!sforce.one)){
+                // Salesforce1 navigation                
+                sforce.one.navigateToURL(url); //+'#1234'
+            } else {
+                // Set the window's URL using a Visualforce expression
+                window.location.href = url
+            }
+        }
+    </script>
+</apex:page>

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Sibling_Account__c</fullName>
+    <deleteConstraint>SetNull</deleteConstraint>
+    <inlineHelpText>The Person Account for the sibling that qualifies the sibling attending priority. Used as the dedup key for attending-sibling priority items.</inlineHelpText>
+    <label>Sibling Account</label>
+    <referenceTo>Account</referenceTo>
+    <relationshipLabel>Priority Items (Sibling Account)</relationshipLabel>
+    <relationshipName>Sibling_Account_Priority_Items</relationshipName>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Lookup</type>
+</CustomField>

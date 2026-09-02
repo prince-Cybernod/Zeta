@@ -1,0 +1,400 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<AssignmentRules xmlns="http://soap.sforce.com/2006/04/metadata">
+    <assignmentRule>
+        <fullName>Parent Inquiries</fullName>
+        <active>true</active>
+        <ruleEntry>
+            <assignedTo>Zeta_Bronx_Middle_School</assignedTo>
+            <assignedToType>Queue</assignedToType>
+            <booleanFilter>1 AND (2 OR 3)</booleanFilter>
+            <criteriaItems>
+                <field>Case.School_Inquiry__c</field>
+                <operation>equals</operation>
+                <value>Zeta Bronx Middle School</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Case.Enrollment_Status__c</field>
+                <operation>contains</operation>
+                <value>4</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Case.Enrollment_Status__c</field>
+                <operation>contains</operation>
+                <value>5</value>
+            </criteriaItems>
+        </ruleEntry>
+        <ruleEntry>
+            <assignedTo>Zeta_Bronx_Mount_Eden_Middle_School</assignedTo>
+            <assignedToType>Queue</assignedToType>
+            <booleanFilter>1 AND (2 OR 3)</booleanFilter>
+            <criteriaItems>
+                <field>Case.School_Inquiry__c</field>
+                <operation>equals</operation>
+                <value>Zeta Bronx Mount Eden Middle School</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Case.Enrollment_Status__c</field>
+                <operation>contains</operation>
+                <value>4</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Case.Enrollment_Status__c</field>
+                <operation>contains</operation>
+                <value>5</value>
+            </criteriaItems>
+        </ruleEntry>
+        <ruleEntry>
+            <assignedTo>Zeta_Bronx_Tremont_Park_Lower_Queue</assignedTo>
+            <assignedToType>Queue</assignedToType>
+            <booleanFilter>1 AND (2 OR 3)</booleanFilter>
+            <criteriaItems>
+                <field>Case.School_Inquiry__c</field>
+                <operation>equals</operation>
+                <value>Zeta Bronx Tremont Park Lower Elementary School</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Case.Enrollment_Status__c</field>
+                <operation>contains</operation>
+                <value>4</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Case.Enrollment_Status__c</field>
+                <operation>contains</operation>
+                <value>5</value>
+            </criteriaItems>
+        </ruleEntry>
+        <ruleEntry>
+            <assignedTo>Zeta_Bronx_Tremont_Park_Middle_School</assignedTo>
+            <assignedToType>Queue</assignedToType>
+            <booleanFilter>1 AND (2 OR 3)</booleanFilter>
+            <criteriaItems>
+                <field>Case.School_Inquiry__c</field>
+                <operation>equals</operation>
+                <value>Zeta Bronx Tremont Park Middle School</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Case.Enrollment_Status__c</field>
+                <operation>contains</operation>
+                <value>4</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Case.Enrollment_Status__c</field>
+                <operation>contains</operation>
+                <value>5</value>
+            </criteriaItems>
+        </ruleEntry>
+        <ruleEntry>
+            <assignedTo>Zeta_Bronx_Tremont_Park_Upper_Queue</assignedTo>
+            <assignedToType>Queue</assignedToType>
+            <booleanFilter>1 AND (2 OR 3)</booleanFilter>
+            <criteriaItems>
+                <field>Case.School_Inquiry__c</field>
+                <operation>equals</operation>
+                <value>Zeta Bronx Tremont Park Upper Elementary School</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Case.Enrollment_Status__c</field>
+                <operation>contains</operation>
+                <value>4</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Case.Enrollment_Status__c</field>
+                <operation>contains</operation>
+                <value>5</value>
+            </criteriaItems>
+        </ruleEntry>
+        <ruleEntry>
+            <assignedTo>Zeta_High_School_serving_Zeta_Manhattan</assignedTo>
+            <assignedToType>Queue</assignedToType>
+            <booleanFilter>1 AND (2 OR 3)</booleanFilter>
+            <criteriaItems>
+                <field>Case.School_Inquiry__c</field>
+                <operation>equals</operation>
+                <value>Zeta High School serving Zeta Manhattan High</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Case.Enrollment_Status__c</field>
+                <operation>contains</operation>
+                <value>4</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Case.Enrollment_Status__c</field>
+                <operation>contains</operation>
+                <value>5</value>
+            </criteriaItems>
+        </ruleEntry>
+        <ruleEntry>
+            <assignedTo>Zeta_High_School_serv_Zeta_S_Bronx_High</assignedTo>
+            <assignedToType>Queue</assignedToType>
+            <booleanFilter>1 AND (2 OR 3)</booleanFilter>
+            <criteriaItems>
+                <field>Case.School_Inquiry__c</field>
+                <operation>equals</operation>
+                <value>Zeta High School serving Zeta South Bronx High</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Case.Enrollment_Status__c</field>
+                <operation>contains</operation>
+                <value>4</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Case.Enrollment_Status__c</field>
+                <operation>contains</operation>
+                <value>5</value>
+            </criteriaItems>
+        </ruleEntry>
+        <ruleEntry>
+            <assignedTo>Zeta_Inwood_Elementary_School</assignedTo>
+            <assignedToType>Queue</assignedToType>
+            <booleanFilter>1 AND (2 OR 3)</booleanFilter>
+            <criteriaItems>
+                <field>Case.School_Inquiry__c</field>
+                <operation>equals</operation>
+                <value>Zeta Inwood Elementary School</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Case.Enrollment_Status__c</field>
+                <operation>contains</operation>
+                <value>4</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Case.Enrollment_Status__c</field>
+                <operation>contains</operation>
+                <value>5</value>
+            </criteriaItems>
+        </ruleEntry>
+        <ruleEntry>
+            <assignedTo>Zeta_Manhattan_Middle_School</assignedTo>
+            <assignedToType>Queue</assignedToType>
+            <booleanFilter>1 AND (2 OR 3)</booleanFilter>
+            <criteriaItems>
+                <field>Case.School_Inquiry__c</field>
+                <operation>equals</operation>
+                <value>Zeta Manhattan Middle School</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Case.Enrollment_Status__c</field>
+                <operation>contains</operation>
+                <value>4</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Case.Enrollment_Status__c</field>
+                <operation>contains</operation>
+                <value>5</value>
+            </criteriaItems>
+        </ruleEntry>
+        <ruleEntry>
+            <assignedTo>Zeta_Queens_Elmhurst_Queue</assignedTo>
+            <assignedToType>Queue</assignedToType>
+            <booleanFilter>1 AND (2 OR 3)</booleanFilter>
+            <criteriaItems>
+                <field>Case.School_Inquiry__c</field>
+                <operation>equals</operation>
+                <value>Zeta Queens Elmhurst Elementary School</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Case.Enrollment_Status__c</field>
+                <operation>contains</operation>
+                <value>4</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Case.Enrollment_Status__c</field>
+                <operation>contains</operation>
+                <value>5</value>
+            </criteriaItems>
+        </ruleEntry>
+        <ruleEntry>
+            <assignedTo>Zeta_Queens_Flushing_Elementary_School</assignedTo>
+            <assignedToType>Queue</assignedToType>
+            <booleanFilter>1 AND (2 OR 3)</booleanFilter>
+            <criteriaItems>
+                <field>Case.School_Inquiry__c</field>
+                <operation>equals</operation>
+                <value>Zeta Queens Flushing Elementary School</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Case.Enrollment_Status__c</field>
+                <operation>contains</operation>
+                <value>4</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Case.Enrollment_Status__c</field>
+                <operation>contains</operation>
+                <value>5</value>
+            </criteriaItems>
+        </ruleEntry>
+        <ruleEntry>
+            <assignedTo>Zeta_Queens_Jamaica_Queue</assignedTo>
+            <assignedToType>Queue</assignedToType>
+            <booleanFilter>1 AND (2 OR 3)</booleanFilter>
+            <criteriaItems>
+                <field>Case.School_Inquiry__c</field>
+                <operation>equals</operation>
+                <value>Zeta Queens Jamaica Elementary School</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Case.Enrollment_Status__c</field>
+                <operation>contains</operation>
+                <value>4</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Case.Enrollment_Status__c</field>
+                <operation>contains</operation>
+                <value>5</value>
+            </criteriaItems>
+        </ruleEntry>
+        <ruleEntry>
+            <assignedTo>Zeta_South_Bronx_Elementary_School</assignedTo>
+            <assignedToType>Queue</assignedToType>
+            <booleanFilter>1 AND (2 OR 3)</booleanFilter>
+            <criteriaItems>
+                <field>Case.School_Inquiry__c</field>
+                <operation>equals</operation>
+                <value>Zeta South Bronx Elementary School</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Case.Enrollment_Status__c</field>
+                <operation>contains</operation>
+                <value>4</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Case.Enrollment_Status__c</field>
+                <operation>contains</operation>
+                <value>5</value>
+            </criteriaItems>
+        </ruleEntry>
+        <ruleEntry>
+            <assignedTo>Zeta_Bronx_Mount_Eden_EC_Queue</assignedTo>
+            <assignedToType>Queue</assignedToType>
+            <booleanFilter>1 AND (2 OR 3)</booleanFilter>
+            <criteriaItems>
+                <field>Case.School_Inquiry__c</field>
+                <operation>equals</operation>
+                <value>Zeta Bronx Mount Eden Early Childhood Center</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Case.Enrollment_Status__c</field>
+                <operation>contains</operation>
+                <value>4</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Case.Enrollment_Status__c</field>
+                <operation>contains</operation>
+                <value>5</value>
+            </criteriaItems>
+        </ruleEntry>
+        <ruleEntry>
+            <assignedTo>Zeta_Bronx_Mount_Eden_ES_Queue</assignedTo>
+            <assignedToType>Queue</assignedToType>
+            <booleanFilter>1 AND (2 OR 3)</booleanFilter>
+            <criteriaItems>
+                <field>Case.School_Inquiry__c</field>
+                <operation>equals</operation>
+                <value>Zeta Bronx Mount Eden Elementary School</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Case.Enrollment_Status__c</field>
+                <operation>contains</operation>
+                <value>4</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Case.Enrollment_Status__c</field>
+                <operation>contains</operation>
+                <value>5</value>
+            </criteriaItems>
+        </ruleEntry>
+        <ruleEntry>
+            <assignedTo>Zeta_Inwood_Upper_Queue</assignedTo>
+            <assignedToType>Queue</assignedToType>
+            <criteriaItems>
+                <field>Case.School_Inquiry__c</field>
+                <operation>equals</operation>
+                <value>Zeta Inwood Upper</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Case.Enrollment_Status__c</field>
+                <operation>equals</operation>
+                <value>School Preparation Phase,Finished and on SchoolRunner</value>
+            </criteriaItems>
+        </ruleEntry>
+        <ruleEntry>
+            <assignedTo>Zeta_South_Bronx_Lower_Queue</assignedTo>
+            <assignedToType>Queue</assignedToType>
+            <criteriaItems>
+                <field>Case.School_Inquiry__c</field>
+                <operation>equals</operation>
+                <value>Zeta South Bronx Lower</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Case.Enrollment_Status__c</field>
+                <operation>equals</operation>
+                <value>School Preparation Phase,Finished and on SchoolRunner</value>
+            </criteriaItems>
+        </ruleEntry>
+        <ruleEntry>
+            <assignedTo>Zeta_South_Bronx_Upper_Queue</assignedTo>
+            <assignedToType>Queue</assignedToType>
+            <criteriaItems>
+                <field>Case.School_Inquiry__c</field>
+                <operation>equals</operation>
+                <value>Zeta South Bronx Upper</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Case.Enrollment_Status__c</field>
+                <operation>equals</operation>
+                <value>School Preparation Phase,Finished and on SchoolRunner</value>
+            </criteriaItems>
+        </ruleEntry>
+        <ruleEntry>
+            <assignedTo>Zeta_Queens_2</assignedTo>
+            <assignedToType>Queue</assignedToType>
+            <criteriaItems>
+                <field>Case.School_Inquiry__c</field>
+                <operation>equals</operation>
+                <value>Zeta Queens 2</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Case.Enrollment_Status__c</field>
+                <operation>equals</operation>
+                <value>School Preparation Phase,Finished and on SchoolRunner</value>
+            </criteriaItems>
+        </ruleEntry>
+        <ruleEntry>
+            <assignedTo>Zeta_Manhattan_MS_Queue</assignedTo>
+            <assignedToType>Queue</assignedToType>
+            <criteriaItems>
+                <field>Case.School_Inquiry__c</field>
+                <operation>equals</operation>
+                <value>Zeta Manhattan MS</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Case.Enrollment_Status__c</field>
+                <operation>equals</operation>
+                <value>School Preparation Phase,Finished and on SchoolRunner</value>
+            </criteriaItems>
+        </ruleEntry>
+        <ruleEntry>
+            <assignedTo>Zeta_Bronx_MS_Queue</assignedTo>
+            <assignedToType>Queue</assignedToType>
+            <criteriaItems>
+                <field>Case.School_Inquiry__c</field>
+                <operation>equals</operation>
+                <value>Zeta Bronx MS</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Case.Enrollment_Status__c</field>
+                <operation>equals</operation>
+                <value>School Preparation Phase,Finished and on SchoolRunner</value>
+            </criteriaItems>
+        </ruleEntry>
+        <ruleEntry>
+            <assignedTo>Outreach_and_Enrollment_Queue</assignedTo>
+            <assignedToType>Queue</assignedToType>
+            <criteriaItems>
+                <field>Case.Enrollment_Status__c</field>
+                <operation>notEqual</operation>
+                <value>School Preparation Phase,Finished and on SchoolRunner</value>
+            </criteriaItems>
+        </ruleEntry>
+    </assignmentRule>
+</AssignmentRules>

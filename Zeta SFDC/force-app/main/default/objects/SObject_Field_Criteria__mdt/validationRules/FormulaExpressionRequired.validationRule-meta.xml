@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>FormulaExpressionRequired</fullName>
+    <active>true</active>
+    <description>Ensures Formula Expression is populated.</description>
+    <errorConditionFormula>ISBLANK(Formula_Expression__c)</errorConditionFormula>
+    <errorMessage>Formula Expression is required.</errorMessage>
+</ValidationRule>

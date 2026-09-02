@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<AnalyticsVisualization xmlns="http://soap.sforce.com/2006/04/metadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <analyticsWorkspace>Marketing_Performance</analyticsWorkspace>
+    <dataSource>Marketing_Performance_Semantic_Mod_945</dataSource>
+    <description>Marketing Performance - Dynamic Content Performance</description>
+    <fields>
+        <displayCategory>Discrete</displayCategory>
+        <fieldKey>F1</fieldKey>
+        <fieldName>Personalization_Point_Name</fieldName>
+        <objectName>Personalization_Point</objectName>
+        <role>Dimension</role>
+        <type>Field</type>
+    </fields>
+    <fields>
+        <displayCategory>Discrete</displayCategory>
+        <fieldKey>F2</fieldKey>
+        <fieldName>Personalization_Decision_Name</fieldName>
+        <objectName>Personalization_Decision</objectName>
+        <role>Dimension</role>
+        <type>Field</type>
+    </fields>
+    <fields>
+        <displayCategory>Discrete</displayCategory>
+        <fieldKey>F3</fieldKey>
+        <fieldName>Email_Unique_Variation_Clicks</fieldName>
+        <function>CountD</function>
+        <role>Measure</role>
+        <type>Field</type>
+    </fields>
+    <masterLabel>Dynamic Content Performance</masterLabel>
+    <templateAssetSourceName>Viz_DCP</templateAssetSourceName>
+    <templateSource>sfdc_internal__uma</templateSource>
+    <version>66.0</version>
+    <views>
+        <fullName>Viz_DCP_default</fullName>
+        <isOriginal>true</isOriginal>
+        <masterLabel>default</masterLabel>
+        <version>66.0</version>
+        <viewSpecification>{&quot;filters&quot;:[],&quot;sortOrders&quot;:{&quot;fields&quot;:{},&quot;rows&quot;:[],&quot;columns&quot;:[]}}</viewSpecification>
+    </views>
+    <visualSpecification>eyJtb2RlIjoiVmlzdWFsaXphdGlvbiIsInJvd3MiOlsiRjEiLCJGMiIsIkYzIl0sImNvbHVtbnMiOltdLCJtYXJrcyI6eyJBTEwiOnsidHlwZSI6IlRleHQiLCJpc0F1dG9tYXRpYyI6dHJ1ZSwic3RhY2siOnsiaXNBdXRvbWF0aWMiOnRydWUsImlzU3RhY2tlZCI6ZmFsc2V9LCJlbmNvZGluZ3MiOltdfX0sInN0eWxlIjp7ImZpdCI6IlN0YW5kYXJkIiwidGl0bGUiOnsiaXNWaXNpYmxlIjp0cnVlfSwic2hvd0RhdGFQbGFjZWhvbGRlciI6ZmFsc2UsImF4aXMiOnt9LCJwYW5lcyI6eyJGMyI6eyJkZWZhdWx0cyI6eyJmb3JtYXQiOnsibnVtYmVyRm9ybWF0SW5mbyI6eyJ0eXBlIjoiTnVtYmVyIiwiZGVjaW1hbFBsYWNlcyI6MiwibmVnYXRpdmVWYWx1ZXNGb3JtYXQiOiJBdXRvIiwiZGlzcGxheVVuaXRzIjoiQXV0byIsInByZWZpeCI6IiIsInN1ZmZpeCI6IiIsImluY2x1ZGVUaG91c2FuZFNlcGFyYXRvciI6dHJ1ZX19fX19LCJtYXJrcyI6eyJBTEwiOnsibGFiZWwiOnsiY2FuT3ZlcmxhcExhYmVscyI6ZmFsc2UsInNob3dNYXJrTGFiZWxzIjp0cnVlLCJtYXJrc1RvTGFiZWwiOnsidHlwZSI6IkFsbCJ9fSwiY29sb3IiOnsiY29sb3IiOiIifSwicmFuZ2UiOnsicmV2ZXJzZSI6dHJ1ZX0sInNpemUiOnsidHlwZSI6IlBpeGVsIiwiaXNBdXRvbWF0aWMiOnRydWUsInZhbHVlIjoxMn0sImlzQXV0b21hdGljU2l6ZSI6dHJ1ZX19LCJmaWVsZExhYmVscyI6eyJyb3dzIjp7InNob3dMYWJlbHMiOnRydWUsInNob3dEaXZpZGVyTGluZSI6ZmFsc2V9LCJjb2x1bW5zIjp7InNob3dMYWJlbHMiOnRydWUsInNob3dEaXZpZGVyTGluZSI6ZmFsc2V9fSwicmVmZXJlbmNlTGluZXMiOnt9LCJmb250cyI6eyJhY3Rpb25hYmxlSGVhZGVycyI6eyJzaXplIjoxMiwiY29sb3IiOiIjMDI1MEQ5In0sImhlYWRlcnMiOnsic2l6ZSI6MTIsImNvbG9yIjoiIzVDNUM1QyJ9LCJmaWVsZExhYmVscyI6eyJzaXplIjoxMiwiY29sb3IiOiIjMkUyRTJFIn0sIm1hcmtzIjp7InNpemUiOjEyLCJjb2xvciI6IiM1QzVDNUMifSwibWFya0xhYmVscyI6eyJzaXplIjoxMiwiY29sb3IiOiIjMDAwMDAwIn0sImxlZ2VuZExhYmVscyI6eyJzaXplIjoxMiwiY29sb3IiOiIjMkUyRTJFIn0sImF4aXNUaWNrTGFiZWxzIjp7InNpemUiOjEyLCJjb2xvciI6IiM1QzVDNUMifX0sInNoYWRpbmciOnsiYmFja2dyb3VuZENvbG9yIjoiI0ZGRkZGRiIsImJhbmRpbmciOnsicm93cyI6eyJjb2xvciI6IiNFNUU1RTUiLCJhcHBsaWNhdGlvbiI6eyJsZXZlbCI6MSwic2l6ZSI6MX19fX0sImxpbmVzIjp7ImZpZWxkTGFiZWxEaXZpZGVyTGluZSI6eyJjb2xvciI6IiNDOUM5QzkifSwic2VwYXJhdG9yTGluZSI6eyJjb2xvciI6IiNDOUM5QzkifSwiYXhpc0xpbmUiOnsiY29sb3IiOiIjQzlDOUM5In0sInplcm9MaW5lIjp7ImNvbG9yIjoiI0U1RTVFNSJ9fSwiYWxsSGVhZGVycyI6eyJmaWVsZHMiOnsiRjEiOnsiaXNWaXNpYmxlIjp0cnVlLCJoaWRkZW5WYWx1ZXMiOltdLCJzaG93TWlzc2luZ1ZhbHVlcyI6ZmFsc2V9LCJGMiI6eyJpc1Zpc2libGUiOnRydWUsImhpZGRlblZhbHVlcyI6W10sInNob3dNaXNzaW5nVmFsdWVzIjpmYWxzZX0sIkYzIjp7ImlzVmlzaWJsZSI6dHJ1ZSwiZGVmYXVsdHMiOnsiZm9ybWF0Ijp7Im51bWJlckZvcm1hdEluZm8iOnsidHlwZSI6Ik51bWJlciIsImRlY2ltYWxQbGFjZXMiOjIsIm5lZ2F0aXZlVmFsdWVzRm9ybWF0IjoiQXV0byIsImRpc3BsYXlVbml0cyI6IkF1dG8iLCJwcmVmaXgiOiIiLCJzdWZmaXgiOiIiLCJpbmNsdWRlVGhvdXNhbmRTZXBhcmF0b3IiOnRydWV9fX0sImhpZGRlblZhbHVlcyI6W10sInNob3dNaXNzaW5nVmFsdWVzIjpmYWxzZX19LCJyb3dzIjp7Im1lcmdlUmVwZWF0ZWRDZWxscyI6dHJ1ZSwic2hvd0luZGV4IjpmYWxzZX0sImNvbHVtbnMiOnsibWVyZ2VSZXBlYXRlZENlbGxzIjp0cnVlLCJzaG93SW5kZXgiOmZhbHNlfX19LCJsZWdlbmRzIjp7fSwibWVhc3VyZVZhbHVlcyI6W10sInJlZmVyZW5jZUxpbmVzIjp7fSwiZm9yZWNhc3RzIjp7fX0=</visualSpecification>
+    <workspaceAssetRelationships>
+        <asset xsi:nil="true"/>
+        <assetType>AnalyticsVisualization</assetType>
+        <assetUsageType>Created</assetUsageType>
+        <workspace>Marketing_Performance</workspace>
+    </workspaceAssetRelationships>
+</AnalyticsVisualization>

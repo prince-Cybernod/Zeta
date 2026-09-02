@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <label><!-- IEP Verification Status --></label>
+    <name>IEP_Verification_Status__c</name>
+    <picklistValues>
+        <masterLabel>(Incomplete/incorrect upload)</masterLabel>
+        <translation><!-- (Incomplete/incorrect upload) --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>N/A child does not have IEP</masterLabel>
+        <translation><!-- N/A child does not have IEP --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Not yet reviewed</masterLabel>
+        <translation><!-- Not yet reviewed --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Verified and uploaded (all pages included)</masterLabel>
+        <translation><!-- Verified and uploaded (all pages included) --></translation>
+    </picklistValues>
+</CustomFieldTranslation>

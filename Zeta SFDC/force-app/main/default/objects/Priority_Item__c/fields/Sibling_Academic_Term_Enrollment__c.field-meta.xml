@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Sibling_Academic_Term_Enrollment__c</fullName>
+    <deleteConstraint>SetNull</deleteConstraint>
+    <description>For Sibling Attending priorities only: stores the sibling student’s Academic Term Enrollment record that supports the priority validation and downstream reporting.</description>
+    <inlineHelpText>Identifies the sibling’s Academic Term Enrollment record used to verify active attendance for the applicable school year.</inlineHelpText>
+    <label>Sibling Academic Term Enrollment</label>
+    <referenceTo>AcademicTermEnrollment</referenceTo>
+    <relationshipLabel>Priority Items</relationshipLabel>
+    <relationshipName>Priority_Items</relationshipName>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Lookup</type>
+</CustomField>

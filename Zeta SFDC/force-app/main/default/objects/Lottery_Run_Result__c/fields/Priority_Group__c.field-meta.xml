@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Priority_Group__c</fullName>
+    <description>Stamped with the priority group value from the School Application at the time the Lottery Run Log is executed. Used to determine applicant ordering and priority during the lottery process.</description>
+    <externalId>false</externalId>
+    <label>Priority Group</label>
+    <length>3</length>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Date_of_IEP_Process_Deadline__c</fullName>
+    <description>The deadline by which the IEP verification and approval process must be completed. Used to track compliance timelines and ensure timely follow-up by enrollment and special services staff.</description>
+    <label>Date of IEP Process Deadline</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Date</type>
+</CustomField>

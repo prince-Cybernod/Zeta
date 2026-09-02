@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Columns__c</fullName>
+    <defaultValue>1</defaultValue>
+    <description>Supported values: 1 (single column), 2 (two columns), 3 (three columns). Responsive — 3-col collapses to 2 at 768px, all collapse to 1 at 480px.</description>
+    <externalId>false</externalId>
+    <fieldManageability>DeveloperControlled</fieldManageability>
+    <inlineHelpText>Number of columns for the section grid layout. Supported: 1, 2, or 3.</inlineHelpText>
+    <label>Columns</label>
+    <precision>1</precision>
+    <required>false</required>
+    <scale>0</scale>
+    <type>Number</type>
+    <unique>false</unique>
+</CustomField>

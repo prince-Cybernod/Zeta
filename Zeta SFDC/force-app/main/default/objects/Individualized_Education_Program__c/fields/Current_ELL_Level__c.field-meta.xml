@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Current_ELL_Level__c</fullName>
+    <description>Indicates the student’s current English Language Learner (ELL) proficiency level. Used to monitor progress and determine ongoing language support services.</description>
+    <inlineHelpText>Indicates the student’s current English Language Learner (ELL) proficiency level. Used to monitor progress and determine ongoing language support services.</inlineHelpText>
+    <label>Current ELL Level</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Entering – 1</fullName>
+                <default>false</default>
+                <label>Entering – 1</label>
+            </value>
+            <value>
+                <fullName>Emerging – 2</fullName>
+                <default>false</default>
+                <label>Emerging – 2</label>
+            </value>
+            <value>
+                <fullName>Transitioning – 3</fullName>
+                <default>false</default>
+                <label>Transitioning – 3</label>
+            </value>
+            <value>
+                <fullName>Expanding – 4</fullName>
+                <default>false</default>
+                <label>Expanding – 4</label>
+            </value>
+            <value>
+                <fullName>Commanding – 5</fullName>
+                <default>false</default>
+                <label>Commanding – 5</label>
+            </value>
+            <value>
+                <fullName>N/A</fullName>
+                <default>false</default>
+                <label>N/A</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

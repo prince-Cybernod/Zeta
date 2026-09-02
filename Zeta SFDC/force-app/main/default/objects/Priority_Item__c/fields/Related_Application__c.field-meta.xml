@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Related_Application__c</fullName>
+    <description>Required link to the applicant’s Individual Application record. Used to group all Priority Items under a single application.</description>
+    <label>Related Application</label>
+    <referenceTo>IndividualApplication</referenceTo>
+    <relationshipLabel>Priority Items</relationshipLabel>
+    <relationshipName>Priority_Items</relationshipName>
+    <relationshipOrder>0</relationshipOrder>
+    <reparentableMasterDetail>false</reparentableMasterDetail>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>MasterDetail</type>
+    <writeRequiresMasterRead>false</writeRequiresMasterRead>
+</CustomField>

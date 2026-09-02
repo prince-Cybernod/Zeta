@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Classification__c</fullName>
+    <description>Indicates the student’s primary special education classification as documented on their IEP or 504 Plan. Used to categorize the type of disability or support need for compliance reporting, service planning, and placement review.</description>
+    <label>Classification</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>N/A</fullName>
+                <default>false</default>
+                <label>N/A</label>
+            </value>
+            <value>
+                <fullName>Only Has 504 Plan</fullName>
+                <default>false</default>
+                <label>Only Has 504 Plan</label>
+            </value>
+            <value>
+                <fullName>AUT (Autism)</fullName>
+                <default>false</default>
+                <label>AUT (Autism)</label>
+            </value>
+            <value>
+                <fullName>ED (Emotional Disturbance)</fullName>
+                <default>false</default>
+                <label>ED (Emotional Disturbance)</label>
+            </value>
+            <value>
+                <fullName>HI (Hearing Impairment)</fullName>
+                <default>false</default>
+                <label>HI (Hearing Impairment)</label>
+            </value>
+            <value>
+                <fullName>LD (Learning Disability)</fullName>
+                <default>false</default>
+                <label>LD (Learning Disability)</label>
+            </value>
+            <value>
+                <fullName>OHI (Other Health Impairment)</fullName>
+                <default>false</default>
+                <label>OHI (Other Health Impairment)</label>
+            </value>
+            <value>
+                <fullName>Pre-K IEP</fullName>
+                <default>false</default>
+                <label>Pre-K IEP</label>
+            </value>
+            <value>
+                <fullName>SLI (Speech or Language Impairment)</fullName>
+                <default>false</default>
+                <label>SLI (Speech or Language Impairment)</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

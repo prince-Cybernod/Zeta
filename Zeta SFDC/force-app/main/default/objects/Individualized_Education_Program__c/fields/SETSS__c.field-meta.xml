@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>SETSS__c</fullName>
+    <defaultValue>false</defaultValue>
+    <description>Checked if the student’s IEP includes Special Education Teacher Support Services (SETSS). Used to quickly identify students receiving SETSS support as part of their IEP.</description>
+    <inlineHelpText>Special Education Teacher Support Services</inlineHelpText>
+    <label>SETSS</label>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Checkbox</type>
+</CustomField>

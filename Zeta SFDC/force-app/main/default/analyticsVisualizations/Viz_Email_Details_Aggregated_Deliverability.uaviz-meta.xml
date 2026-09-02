@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<AnalyticsVisualization xmlns="http://soap.sforce.com/2006/04/metadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <actions>
+        <actionType>recordaction</actionType>
+        <eventType>click</eventType>
+        <parameters>{&quot;field&quot;:{&quot;fieldKey&quot;:&quot;{\&quot;displayCategory\&quot;:\&quot;Discrete\&quot;,\&quot;fieldName\&quot;:\&quot;Name\&quot;,\&quot;objectName\&quot;:\&quot;Campaign\&quot;,\&quot;role\&quot;:\&quot;Dimension\&quot;,\&quot;type\&quot;:\&quot;Field\&quot;,\&quot;disambiguationIndex\&quot;:0}&quot;},&quot;recordId&quot;:{&quot;fieldKey&quot;:&quot;{\&quot;type\&quot;:\&quot;Field\&quot;,\&quot;displayCategory\&quot;:\&quot;Discrete\&quot;,\&quot;role\&quot;:\&quot;Dimension\&quot;,\&quot;objectName\&quot;:\&quot;Logical_View_Bulk_Message_Union\&quot;,\&quot;fieldName\&quot;:\&quot;Campaign_Id\&quot;,\&quot;disambiguationIndex\&quot;:0}&quot;},&quot;actions&quot;:[{&quot;apiName&quot;:&quot;openRecord&quot;}]}</parameters>
+        <version>66.0</version>
+    </actions>
+    <analyticsWorkspace>Marketing_Performance</analyticsWorkspace>
+    <dataSource>Marketing_Performance_Semantic_Mod_945</dataSource>
+    <description>Marketing Performance - Email Details visualization</description>
+    <fields>
+        <displayCategory>Discrete</displayCategory>
+        <fieldKey>field_Campaign_Name</fieldKey>
+        <fieldName>Name</fieldName>
+        <objectName>Campaign</objectName>
+        <role>Dimension</role>
+        <type>Field</type>
+    </fields>
+    <fields>
+        <displayCategory>Discrete</displayCategory>
+        <fieldKey>field_Logical_View_Bulk_Message_Union_Campaign_Id</fieldKey>
+        <fieldName>Campaign_Id</fieldName>
+        <objectName>Logical_View_Bulk_Message_Union</objectName>
+        <role>Dimension</role>
+        <type>Field</type>
+    </fields>
+    <fields>
+        <displayCategory>Discrete</displayCategory>
+        <fieldKey>field_semantic_calc_measurement_Email_Sends</fieldKey>
+        <fieldName>Email_Sends</fieldName>
+        <function>Sum</function>
+        <label>Email Sent</label>
+        <role>Measure</role>
+        <type>Field</type>
+    </fields>
+    <fields>
+        <displayCategory>Discrete</displayCategory>
+        <fieldKey>F1</fieldKey>
+        <fieldName>Email_Delivery_Rate</fieldName>
+        <function>UserAgg</function>
+        <label>Delivered %</label>
+        <role>Measure</role>
+        <type>Field</type>
+    </fields>
+    <fields>
+        <displayCategory>Discrete</displayCategory>
+        <fieldKey>F2</fieldKey>
+        <fieldName>Email_Failed_To_Send</fieldName>
+        <function>Sum</function>
+        <label>Email Not Sent</label>
+        <role>Measure</role>
+        <type>Field</type>
+    </fields>
+    <fields>
+        <displayCategory>Discrete</displayCategory>
+        <fieldKey>F3</fieldKey>
+        <fieldName>Email_Bounces</fieldName>
+        <function>Sum</function>
+        <label>Email Bounced</label>
+        <role>Measure</role>
+        <type>Field</type>
+    </fields>
+    <fields>
+        <displayCategory>Discrete</displayCategory>
+        <fieldKey>F4</fieldKey>
+        <fieldName>Email_Bounce_Rate</fieldName>
+        <function>UserAgg</function>
+        <role>Measure</role>
+        <type>Field</type>
+    </fields>
+    <fields>
+        <displayCategory>Discrete</displayCategory>
+        <fieldKey>F5</fieldKey>
+        <fieldName>Engagement_Channel_Type</fieldName>
+        <objectName>Logical_View_Engagement_Union</objectName>
+        <role>Dimension</role>
+        <type>Field</type>
+    </fields>
+    <masterLabel>Email Details Aggregated Deliverability</masterLabel>
+    <templateAssetSourceName>Viz_Email_Details_Aggregated_Deliverability</templateAssetSourceName>
+    <templateSource>sfdc_internal__uma</templateSource>
+    <version>66.0</version>
+    <views>
+        <fullName>Viz_Email_Details_Aggregated_Deliverability_default</fullName>
+        <isOriginal>true</isOriginal>
+        <masterLabel>default</masterLabel>
+        <version>66.0</version>
+        <viewSpecification>{&quot;filters&quot;:[{&quot;fieldKey&quot;:&quot;field_Logical_View_Bulk_Message_Union_Campaign_Id&quot;,&quot;isContext&quot;:false,&quot;filterInfos&quot;:[{&quot;type&quot;:&quot;In&quot;,&quot;useAll&quot;:false,&quot;isCustom&quot;:false,&quot;values&quot;:[null,&quot;&quot;],&quot;isExcludes&quot;:true}]},{&quot;fieldKey&quot;:&quot;field_Campaign_Name&quot;,&quot;isContext&quot;:false,&quot;filterInfos&quot;:[{&quot;type&quot;:&quot;In&quot;,&quot;useAll&quot;:false,&quot;isCustom&quot;:false,&quot;values&quot;:[null,&quot;&quot;],&quot;isExcludes&quot;:true}]},{&quot;fieldKey&quot;:&quot;F5&quot;,&quot;isContext&quot;:false,&quot;filterInfos&quot;:[{&quot;type&quot;:&quot;In&quot;,&quot;useAll&quot;:false,&quot;isCustom&quot;:false,&quot;values&quot;:[&quot;EMAIL&quot;],&quot;isExcludes&quot;:false},{&quot;type&quot;:&quot;WildCard&quot;,&quot;value&quot;:&quot;&quot;,&quot;operator&quot;:&quot;Contains&quot;,&quot;isExcludes&quot;:false,&quot;includeAllValuesWhenEmpty&quot;:true}]}],&quot;sortOrders&quot;:{&quot;fields&quot;:{},&quot;rows&quot;:[],&quot;columns&quot;:[]}}</viewSpecification>
+    </views>
+    <visualSpecification>eyJtb2RlIjoiVGFibGUiLCJyb3dzIjpbImZpZWxkX0xvZ2ljYWxfVmlld19CdWxrX01lc3NhZ2VfVW5pb25fQ2FtcGFpZ25fSWQiLCJmaWVsZF9DYW1wYWlnbl9OYW1lIiwiZmllbGRfc2VtYW50aWNfY2FsY19tZWFzdXJlbWVudF9FbWFpbF9TZW5kcyIsIkYxIiwiRjIiLCJGMyIsIkY0Il0sImNvbHVtbnMiOltdLCJtYXJrcyI6eyJBTEwiOnsidHlwZSI6IlRleHQiLCJpc0F1dG9tYXRpYyI6ZmFsc2UsInN0YWNrIjp7ImlzQXV0b21hdGljIjp0cnVlLCJpc1N0YWNrZWQiOmZhbHNlfSwiZW5jb2RpbmdzIjpbXX19LCJzdHlsZSI6eyJmaXQiOiJSb3dIZWFkZXJzV2lkdGgiLCJ0aXRsZSI6eyJpc1Zpc2libGUiOnRydWV9LCJzaG93RGF0YVBsYWNlaG9sZGVyIjpmYWxzZSwiYXhpcyI6e30sInBhbmVzIjp7ImZpZWxkX3NlbWFudGljX2NhbGNfbWVhc3VyZW1lbnRfRW1haWxfU2VuZHMiOnsiZGVmYXVsdHMiOnsiZm9ybWF0Ijp7Im51bWJlckZvcm1hdEluZm8iOnsidHlwZSI6Ik51bWJlciIsImRlY2ltYWxQbGFjZXMiOjIsIm5lZ2F0aXZlVmFsdWVzRm9ybWF0IjoiQXV0byIsImRpc3BsYXlVbml0cyI6IkF1dG8iLCJwcmVmaXgiOiIiLCJzdWZmaXgiOiIiLCJpbmNsdWRlVGhvdXNhbmRTZXBhcmF0b3IiOnRydWV9fX19LCJGMSI6eyJkZWZhdWx0cyI6eyJmb3JtYXQiOnsibnVtYmVyRm9ybWF0SW5mbyI6eyJ0eXBlIjoiUGVyY2VudGFnZSIsImRlY2ltYWxQbGFjZXMiOjIsIm5lZ2F0aXZlVmFsdWVzRm9ybWF0IjoiQXV0byIsImRpc3BsYXlVbml0cyI6IkF1dG8iLCJwcmVmaXgiOiIiLCJzdWZmaXgiOiIiLCJpbmNsdWRlVGhvdXNhbmRTZXBhcmF0b3IiOnRydWV9fX19LCJGMiI6eyJkZWZhdWx0cyI6eyJmb3JtYXQiOnsibnVtYmVyRm9ybWF0SW5mbyI6eyJ0eXBlIjoiTnVtYmVyIiwiZGVjaW1hbFBsYWNlcyI6MiwibmVnYXRpdmVWYWx1ZXNGb3JtYXQiOiJBdXRvIiwiZGlzcGxheVVuaXRzIjoiQXV0byIsInByZWZpeCI6IiIsInN1ZmZpeCI6IiIsImluY2x1ZGVUaG91c2FuZFNlcGFyYXRvciI6dHJ1ZX19fX0sIkYzIjp7ImRlZmF1bHRzIjp7ImZvcm1hdCI6eyJudW1iZXJGb3JtYXRJbmZvIjp7InR5cGUiOiJOdW1iZXIiLCJkZWNpbWFsUGxhY2VzIjoyLCJuZWdhdGl2ZVZhbHVlc0Zvcm1hdCI6IkF1dG8iLCJkaXNwbGF5VW5pdHMiOiJBdXRvIiwicHJlZml4IjoiIiwic3VmZml4IjoiIiwiaW5jbHVkZVRob3VzYW5kU2VwYXJhdG9yIjp0cnVlfX19fSwiRjQiOnsiZGVmYXVsdHMiOnsiZm9ybWF0Ijp7Im51bWJlckZvcm1hdEluZm8iOnsidHlwZSI6IlBlcmNlbnRhZ2UiLCJkZWNpbWFsUGxhY2VzIjoyLCJuZWdhdGl2ZVZhbHVlc0Zvcm1hdCI6IkF1dG8iLCJkaXNwbGF5VW5pdHMiOiJBdXRvIiwicHJlZml4IjoiIiwic3VmZml4IjoiIiwiaW5jbHVkZVRob3VzYW5kU2VwYXJhdG9yIjp0cnVlfX19fX0sIm1hcmtzIjp7IkFMTCI6eyJsYWJlbCI6eyJjYW5PdmVybGFwTGFiZWxzIjpmYWxzZSwic2hvd01hcmtMYWJlbHMiOmZhbHNlLCJtYXJrc1RvTGFiZWwiOnsidHlwZSI6IkFsbCJ9fSwiY29sb3IiOnsiY29sb3IiOiIifSwicmFuZ2UiOnsicmV2ZXJzZSI6dHJ1ZX0sInNpemUiOnsidHlwZSI6IlBpeGVsIiwiaXNBdXRvbWF0aWMiOnRydWUsInZhbHVlIjoxNH0sImlzQXV0b21hdGljU2l6ZSI6dHJ1ZX19LCJmaWVsZExhYmVscyI6eyJyb3dzIjp7InNob3dMYWJlbHMiOnRydWUsImJhY2tncm91bmRDb2xvciI6IiNDOUM5QzkiLCJzaG93RGl2aWRlckxpbmUiOmZhbHNlfSwiY29sdW1ucyI6eyJzaG93TGFiZWxzIjp0cnVlLCJiYWNrZ3JvdW5kQ29sb3IiOiIjQzlDOUM5Iiwic2hvd0RpdmlkZXJMaW5lIjpmYWxzZX19LCJyZWZlcmVuY2VMaW5lcyI6e30sImZvbnRzIjp7ImFjdGlvbmFibGVIZWFkZXJzIjp7InNpemUiOjE0LCJjb2xvciI6IiMwMjUwRDkifSwiaGVhZGVycyI6eyJzaXplIjoxNCwiY29sb3IiOiIjNUM1QzVDIn0sImZpZWxkTGFiZWxzIjp7InNpemUiOjE0LCJjb2xvciI6IiM1QzVDNUMifSwibWFya3MiOnsic2l6ZSI6MTQsImNvbG9yIjoiIzVDNUM1QyJ9LCJtYXJrTGFiZWxzIjp7InNpemUiOjE0LCJjb2xvciI6IiM1QzVDNUMifSwibGVnZW5kTGFiZWxzIjp7InNpemUiOjE0LCJjb2xvciI6IiM1QzVDNUMifSwiYXhpc1RpY2tMYWJlbHMiOnsic2l6ZSI6MTQsImNvbG9yIjoiIzVDNUM1QyJ9fSwic2hhZGluZyI6eyJiYWNrZ3JvdW5kQ29sb3IiOiIjRkZGRkZGIiwiYmFuZGluZyI6eyJyb3dzIjp7ImNvbG9yIjoiI0U1RTVFNSJ9fX0sImxpbmVzIjp7ImZpZWxkTGFiZWxEaXZpZGVyTGluZSI6eyJjb2xvciI6IiM1QzVDNUMifSwic2VwYXJhdG9yTGluZSI6eyJjb2xvciI6IiM1QzVDNUMifSwiYXhpc0xpbmUiOnsiY29sb3IiOiIjNUM1QzVDIn0sInplcm9MaW5lIjp7ImNvbG9yIjoiIzVDNUM1QyJ9fSwiYWxsSGVhZGVycyI6eyJmaWVsZHMiOnsiZmllbGRfTG9naWNhbF9WaWV3X0J1bGtfTWVzc2FnZV9Vbmlvbl9DYW1wYWlnbl9JZCI6eyJpc1Zpc2libGUiOmZhbHNlLCJoaWRkZW5WYWx1ZXMiOltdLCJzaG93TWlzc2luZ1ZhbHVlcyI6ZmFsc2V9LCJmaWVsZF9DYW1wYWlnbl9OYW1lIjp7ImlzVmlzaWJsZSI6dHJ1ZSwiaGlkZGVuVmFsdWVzIjpbXSwic2hvd01pc3NpbmdWYWx1ZXMiOmZhbHNlfSwiZmllbGRfc2VtYW50aWNfY2FsY19tZWFzdXJlbWVudF9FbWFpbF9TZW5kcyI6eyJpc1Zpc2libGUiOnRydWUsImRlZmF1bHRzIjp7ImZvcm1hdCI6eyJudW1iZXJGb3JtYXRJbmZvIjp7InR5cGUiOiJOdW1iZXIiLCJkZWNpbWFsUGxhY2VzIjoyLCJuZWdhdGl2ZVZhbHVlc0Zvcm1hdCI6IkF1dG8iLCJkaXNwbGF5VW5pdHMiOiJBdXRvIiwicHJlZml4IjoiIiwic3VmZml4IjoiIiwiaW5jbHVkZVRob3VzYW5kU2VwYXJhdG9yIjp0cnVlfX19LCJoaWRkZW5WYWx1ZXMiOltdLCJzaG93TWlzc2luZ1ZhbHVlcyI6ZmFsc2V9LCJGMSI6eyJpc1Zpc2libGUiOnRydWUsImRlZmF1bHRzIjp7ImZvcm1hdCI6eyJudW1iZXJGb3JtYXRJbmZvIjp7InR5cGUiOiJQZXJjZW50YWdlIiwiZGVjaW1hbFBsYWNlcyI6MiwibmVnYXRpdmVWYWx1ZXNGb3JtYXQiOiJBdXRvIiwiZGlzcGxheVVuaXRzIjoiQXV0byIsInByZWZpeCI6IiIsInN1ZmZpeCI6IiIsImluY2x1ZGVUaG91c2FuZFNlcGFyYXRvciI6dHJ1ZX19fSwiaGlkZGVuVmFsdWVzIjpbXSwic2hvd01pc3NpbmdWYWx1ZXMiOmZhbHNlfSwiRjIiOnsiaXNWaXNpYmxlIjp0cnVlLCJkZWZhdWx0cyI6eyJmb3JtYXQiOnsibnVtYmVyRm9ybWF0SW5mbyI6eyJ0eXBlIjoiTnVtYmVyIiwiZGVjaW1hbFBsYWNlcyI6MiwibmVnYXRpdmVWYWx1ZXNGb3JtYXQiOiJBdXRvIiwiZGlzcGxheVVuaXRzIjoiQXV0byIsInByZWZpeCI6IiIsInN1ZmZpeCI6IiIsImluY2x1ZGVUaG91c2FuZFNlcGFyYXRvciI6dHJ1ZX19fSwiaGlkZGVuVmFsdWVzIjpbXSwic2hvd01pc3NpbmdWYWx1ZXMiOmZhbHNlfSwiRjMiOnsiaXNWaXNpYmxlIjp0cnVlLCJkZWZhdWx0cyI6eyJmb3JtYXQiOnsibnVtYmVyRm9ybWF0SW5mbyI6eyJ0eXBlIjoiTnVtYmVyIiwiZGVjaW1hbFBsYWNlcyI6MiwibmVnYXRpdmVWYWx1ZXNGb3JtYXQiOiJBdXRvIiwiZGlzcGxheVVuaXRzIjoiQXV0byIsInByZWZpeCI6IiIsInN1ZmZpeCI6IiIsImluY2x1ZGVUaG91c2FuZFNlcGFyYXRvciI6dHJ1ZX19fSwiaGlkZGVuVmFsdWVzIjpbXSwic2hvd01pc3NpbmdWYWx1ZXMiOmZhbHNlfSwiRjQiOnsiaXNWaXNpYmxlIjp0cnVlLCJkZWZhdWx0cyI6eyJmb3JtYXQiOnsibnVtYmVyRm9ybWF0SW5mbyI6eyJ0eXBlIjoiUGVyY2VudGFnZSIsImRlY2ltYWxQbGFjZXMiOjIsIm5lZ2F0aXZlVmFsdWVzRm9ybWF0IjoiQXV0byIsImRpc3BsYXlVbml0cyI6IkF1dG8iLCJwcmVmaXgiOiIiLCJzdWZmaXgiOiIiLCJpbmNsdWRlVGhvdXNhbmRTZXBhcmF0b3IiOnRydWV9fX0sImhpZGRlblZhbHVlcyI6W10sInNob3dNaXNzaW5nVmFsdWVzIjpmYWxzZX19LCJyb3dzIjp7Im1lcmdlUmVwZWF0ZWRDZWxscyI6ZmFsc2UsInNob3dJbmRleCI6ZmFsc2V9LCJjb2x1bW5zIjp7Im1lcmdlUmVwZWF0ZWRDZWxscyI6ZmFsc2UsInNob3dJbmRleCI6ZmFsc2V9fX0sImxlZ2VuZHMiOnt9LCJtZWFzdXJlVmFsdWVzIjpbXSwicmVmZXJlbmNlTGluZXMiOnt9LCJmb3JlY2FzdHMiOnt9fQ==</visualSpecification>
+    <workspaceAssetRelationships>
+        <asset xsi:nil="true"/>
+        <assetType>AnalyticsVisualization</assetType>
+        <assetUsageType>Created</assetUsageType>
+        <workspace>Marketing_Performance</workspace>
+    </workspaceAssetRelationships>
+</AnalyticsVisualization>

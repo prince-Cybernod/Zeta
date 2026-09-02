@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Has_504_Plan__c</fullName>
+    <defaultValue>false</defaultValue>
+    <description>Indicates whether the student has a Section 504 Plan in place rather than (or in addition to) an IEP. Checked if a 504 Plan exists, documenting accommodations for the student under Section 504 of the Rehabilitation Act.</description>
+    <label>Has 504 Plan</label>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Checkbox</type>
+</CustomField>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Lottery_Run_Log__c</fullName>
+    <deleteConstraint>SetNull</deleteConstraint>
+    <description>Links this waitlist movement to the lottery run that caused the change.</description>
+    <label>Lottery Run Log</label>
+    <referenceTo>Lottery_Run_Log__c</referenceTo>
+    <relationshipLabel>Waitlist Movement Histories</relationshipLabel>
+    <relationshipName>Waitlist_Movement_Histories</relationshipName>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Lookup</type>
+</CustomField>

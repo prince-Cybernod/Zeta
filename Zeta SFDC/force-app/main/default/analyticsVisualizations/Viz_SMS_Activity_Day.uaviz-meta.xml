@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<AnalyticsVisualization xmlns="http://soap.sforce.com/2006/04/metadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <analyticsWorkspace>Marketing_Performance</analyticsWorkspace>
+    <dataSource>Marketing_Performance_Semantic_Mod_945</dataSource>
+    <description>Marketing Performance - Activity Day</description>
+    <fields>
+        <displayCategory>Continuous</displayCategory>
+        <fieldKey>F1</fieldKey>
+        <fieldName>Activity_Date</fieldName>
+        <function>DatePartWeekDay</function>
+        <objectName>Logical_View_Engagement_Union</objectName>
+        <role>Dimension</role>
+        <type>Field</type>
+    </fields>
+    <fields>
+        <displayCategory>Continuous</displayCategory>
+        <fieldKey>F2</fieldKey>
+        <role>Measure</role>
+        <type>MeasureValues</type>
+    </fields>
+    <fields>
+        <displayCategory>Discrete</displayCategory>
+        <fieldKey>F3</fieldKey>
+        <role>Dimension</role>
+        <type>MeasureNames</type>
+    </fields>
+    <fields>
+        <displayCategory>Continuous</displayCategory>
+        <fieldKey>F4</fieldKey>
+        <fieldName>SMS_Failed_Deliveries</fieldName>
+        <function>Sum</function>
+        <label>Undelivered</label>
+        <role>Measure</role>
+        <type>Field</type>
+    </fields>
+    <fields>
+        <displayCategory>Continuous</displayCategory>
+        <fieldKey>F5</fieldKey>
+        <fieldName>SMS_Unknown</fieldName>
+        <function>Sum</function>
+        <label>Unknown</label>
+        <role>Measure</role>
+        <type>Field</type>
+    </fields>
+    <fields>
+        <displayCategory>Continuous</displayCategory>
+        <fieldKey>F7</fieldKey>
+        <fieldName>SMS_Failed_To_Sent</fieldName>
+        <function>Sum</function>
+        <label>Not Sent</label>
+        <role>Measure</role>
+        <type>Field</type>
+    </fields>
+    <masterLabel>SMS Activity Day</masterLabel>
+    <templateAssetSourceName>Viz_SMS_Activity_Day</templateAssetSourceName>
+    <templateSource>sfdc_internal__uma</templateSource>
+    <version>66.0</version>
+    <views>
+        <fullName>Viz_SMS_Activity_Day_default</fullName>
+        <isOriginal>true</isOriginal>
+        <masterLabel>default</masterLabel>
+        <version>66.0</version>
+        <viewSpecification>{&quot;filters&quot;:[],&quot;sortOrders&quot;:{&quot;fields&quot;:{},&quot;rows&quot;:[],&quot;columns&quot;:[]}}</viewSpecification>
+    </views>
+    <visualSpecification>eyJtb2RlIjoiVmlzdWFsaXphdGlvbiIsInJvd3MiOlsiRjIiXSwiY29sdW1ucyI6WyJGMSJdLCJtYXJrcyI6eyJBTEwiOnsidHlwZSI6IkxpbmUiLCJpc0F1dG9tYXRpYyI6dHJ1ZSwic3RhY2siOnsiaXNBdXRvbWF0aWMiOnRydWUsImlzU3RhY2tlZCI6ZmFsc2V9LCJlbmNvZGluZ3MiOlt7ImZpZWxkS2V5IjoiRjMiLCJ0eXBlIjoiQ29sb3IifV19fSwic3R5bGUiOnsiZml0IjoiU3RhbmRhcmQiLCJ0aXRsZSI6eyJpc1Zpc2libGUiOnRydWV9LCJzaG93RGF0YVBsYWNlaG9sZGVyIjpmYWxzZSwiYXhpcyI6eyJGMSI6eyJpc1Zpc2libGUiOnRydWUsInJhbmdlIjp7InR5cGUiOiJBdXRvIiwiaW5jbHVkZVplcm8iOmZhbHNlfSwidGl0bGVUZXh0IjoiRGF5IE9mIFdlZWsiLCJzY2FsZSI6eyJmb3JtYXQiOnsiZGF0ZVRlbXBsYXRlIjoiIn19LCJ0aWNrcyI6eyJtYWpvclRpY2tzIjp7InR5cGUiOiJBdXRvIn0sIm1pbm9yVGlja3MiOnsidHlwZSI6IkF1dG8ifX0sImlzWmVyb0xpbmVWaXNpYmxlIjp0cnVlfSwiRjIiOnsiaXNWaXNpYmxlIjp0cnVlLCJyYW5nZSI6eyJ0eXBlIjoiQXV0byIsImluY2x1ZGVaZXJvIjp0cnVlfSwidGl0bGVUZXh0IjoiVG90YWwgQWN0aXZpdGllcyIsInNjYWxlIjp7ImZvcm1hdCI6eyJudW1iZXJGb3JtYXRJbmZvIjp7InR5cGUiOiJOdW1iZXJTaG9ydCIsImRlY2ltYWxQbGFjZXMiOjIsIm5lZ2F0aXZlVmFsdWVzRm9ybWF0IjoiQXV0byIsImRpc3BsYXlVbml0cyI6IkF1dG8iLCJwcmVmaXgiOiIiLCJzdWZmaXgiOiIiLCJpbmNsdWRlVGhvdXNhbmRTZXBhcmF0b3IiOnRydWV9fX0sInRpY2tzIjp7Im1ham9yVGlja3MiOnsidHlwZSI6IkF1dG8ifSwibWlub3JUaWNrcyI6eyJ0eXBlIjoiQXV0byJ9fSwiaXNaZXJvTGluZVZpc2libGUiOnRydWV9fSwicGFuZXMiOnsiRjciOnsiZGVmYXVsdHMiOnsiZm9ybWF0Ijp7Im51bWJlckZvcm1hdEluZm8iOnsidHlwZSI6Ik51bWJlciIsImRlY2ltYWxQbGFjZXMiOjIsIm5lZ2F0aXZlVmFsdWVzRm9ybWF0IjoiQXV0byIsImRpc3BsYXlVbml0cyI6IkF1dG8iLCJwcmVmaXgiOiIiLCJzdWZmaXgiOiIiLCJpbmNsdWRlVGhvdXNhbmRTZXBhcmF0b3IiOnRydWV9fX19LCJGMiI6eyJkZWZhdWx0cyI6eyJmb3JtYXQiOnsibnVtYmVyRm9ybWF0SW5mbyI6eyJ0eXBlIjoiTnVtYmVyIiwiZGVjaW1hbFBsYWNlcyI6MiwibmVnYXRpdmVWYWx1ZXNGb3JtYXQiOiJBdXRvIiwiZGlzcGxheVVuaXRzIjoiQXV0byIsInByZWZpeCI6IiIsInN1ZmZpeCI6IiIsImluY2x1ZGVUaG91c2FuZFNlcGFyYXRvciI6dHJ1ZX19fX0sIkY0Ijp7ImRlZmF1bHRzIjp7ImZvcm1hdCI6eyJudW1iZXJGb3JtYXRJbmZvIjp7InR5cGUiOiJOdW1iZXIiLCJkZWNpbWFsUGxhY2VzIjoyLCJuZWdhdGl2ZVZhbHVlc0Zvcm1hdCI6IkF1dG8iLCJkaXNwbGF5VW5pdHMiOiJBdXRvIiwicHJlZml4IjoiIiwic3VmZml4IjoiIiwiaW5jbHVkZVRob3VzYW5kU2VwYXJhdG9yIjp0cnVlfX19fSwiRjUiOnsiZGVmYXVsdHMiOnsiZm9ybWF0Ijp7Im51bWJlckZvcm1hdEluZm8iOnsidHlwZSI6Ik51bWJlciIsImRlY2ltYWxQbGFjZXMiOjIsIm5lZ2F0aXZlVmFsdWVzRm9ybWF0IjoiQXV0byIsImRpc3BsYXlVbml0cyI6IkF1dG8iLCJwcmVmaXgiOiIiLCJzdWZmaXgiOiIiLCJpbmNsdWRlVGhvdXNhbmRTZXBhcmF0b3IiOnRydWV9fX19fSwibWFya3MiOnsiQUxMIjp7ImxhYmVsIjp7ImNhbk92ZXJsYXBMYWJlbHMiOmZhbHNlLCJzaG93TWFya0xhYmVscyI6ZmFsc2UsIm1hcmtzVG9MYWJlbCI6eyJ0eXBlIjoiQWxsIn19LCJjb2xvciI6eyJjb2xvciI6IiJ9LCJyYW5nZSI6eyJyZXZlcnNlIjp0cnVlfSwic2l6ZSI6eyJ0eXBlIjoiUGl4ZWwiLCJpc0F1dG9tYXRpYyI6dHJ1ZSwidmFsdWUiOjN9LCJpc0F1dG9tYXRpY1NpemUiOnRydWV9fSwiZmllbGRMYWJlbHMiOnsicm93cyI6eyJzaG93TGFiZWxzIjp0cnVlLCJzaG93RGl2aWRlckxpbmUiOmZhbHNlfSwiY29sdW1ucyI6eyJzaG93TGFiZWxzIjp0cnVlLCJzaG93RGl2aWRlckxpbmUiOmZhbHNlfX0sInJlZmVyZW5jZUxpbmVzIjp7fSwiZm9udHMiOnsiYWN0aW9uYWJsZUhlYWRlcnMiOnsic2l6ZSI6MTMsImNvbG9yIjoiIzAyNTBEOSJ9LCJoZWFkZXJzIjp7InNpemUiOjEzLCJjb2xvciI6IiMyRTJFMkUifSwiZmllbGRMYWJlbHMiOnsic2l6ZSI6MTMsImNvbG9yIjoiIzJFMkUyRSJ9LCJtYXJrcyI6eyJzaXplIjoxMywiY29sb3IiOiIjMkUyRTJFIn0sIm1hcmtMYWJlbHMiOnsic2l6ZSI6MTMsImNvbG9yIjoiIzJFMkUyRSJ9LCJsZWdlbmRMYWJlbHMiOnsic2l6ZSI6MTMsImNvbG9yIjoiIzJFMkUyRSJ9LCJheGlzVGlja0xhYmVscyI6eyJzaXplIjoxMywiY29sb3IiOiIjMkUyRTJFIn19LCJzaGFkaW5nIjp7ImJhY2tncm91bmRDb2xvciI6IiNGRkZGRkYiLCJiYW5kaW5nIjp7InJvd3MiOnsiY29sb3IiOiIjRTVFNUU1In19fSwibGluZXMiOnsiZmllbGRMYWJlbERpdmlkZXJMaW5lIjp7ImNvbG9yIjoiI0M5QzlDOSJ9LCJzZXBhcmF0b3JMaW5lIjp7ImNvbG9yIjoiI0M5QzlDOSJ9LCJheGlzTGluZSI6eyJjb2xvciI6IiNDOUM5QzkifSwiemVyb0xpbmUiOnsiY29sb3IiOiIjQzlDOUM5In19LCJhbGxIZWFkZXJzIjp7ImZpZWxkcyI6e30sInJvd3MiOnsibWVyZ2VSZXBlYXRlZENlbGxzIjp0cnVlLCJzaG93SW5kZXgiOmZhbHNlfSwiY29sdW1ucyI6eyJtZXJnZVJlcGVhdGVkQ2VsbHMiOnRydWUsInNob3dJbmRleCI6ZmFsc2V9fX0sImxlZ2VuZHMiOnsiRjMiOnsiaXNWaXNpYmxlIjp0cnVlLCJ0aXRsZSI6eyJpc1Zpc2libGUiOmZhbHNlLCJ0aXRsZVRleHQiOiJNZWFzdXJlIE5hbWVzIn0sInBvc2l0aW9uIjoiUmlnaHQifX0sIm1lYXN1cmVWYWx1ZXMiOlsiRjQiLCJGNSIsIkY3Il0sInJlZmVyZW5jZUxpbmVzIjp7fSwiZm9yZWNhc3RzIjp7fX0=</visualSpecification>
+    <workspaceAssetRelationships>
+        <asset xsi:nil="true"/>
+        <assetType>AnalyticsVisualization</assetType>
+        <assetUsageType>Created</assetUsageType>
+        <workspace>Marketing_Performance</workspace>
+    </workspaceAssetRelationships>
+</AnalyticsVisualization>

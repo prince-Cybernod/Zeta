@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <help><!-- Aggregated minimum longitude across all this district&apos;s rings. Used by the WS5 SOQL bbox pre-filter to short-circuit point-in-polygon for districts whose bounding box excludes the query point. --></help>
+    <label><!-- Min Lng --></label>
+    <name>Min_Lng__c</name>
+</CustomFieldTranslation>

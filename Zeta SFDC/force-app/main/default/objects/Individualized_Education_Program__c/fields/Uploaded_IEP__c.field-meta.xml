@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Uploaded_IEP__c</fullName>
+    <description>Indicates the current status of the student’s IEP document upload. Used to track whether the IEP has been received, verified, or marked as not applicable.</description>
+    <label>Uploaded IEP</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Verified and uploaded all pages included</fullName>
+                <default>false</default>
+                <label>Verified and uploaded all pages included</label>
+            </value>
+            <value>
+                <fullName>Incorrect/incomplete upload</fullName>
+                <default>false</default>
+                <label>Incorrect/incomplete upload</label>
+            </value>
+            <value>
+                <fullName>Not yet uploaded/unknown if applicable</fullName>
+                <default>false</default>
+                <label>Not yet uploaded/unknown if applicable</label>
+            </value>
+            <value>
+                <fullName>N/A, family states their child does not have an IEP</fullName>
+                <default>false</default>
+                <label>N/A, family states their child does not have an IEP</label>
+            </value>
+            <value>
+                <fullName>Uploaded but not yet verified</fullName>
+                <default>false</default>
+                <label>Uploaded but not yet verified</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <label><!-- Status --></label>
+    <name>Review_Status__c</name>
+    <picklistValues>
+        <masterLabel>Confirmed Duplicate</masterLabel>
+        <translation><!-- Confirmed Duplicate --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>New</masterLabel>
+        <translation><!-- New --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Not a Duplicate</masterLabel>
+        <translation><!-- Not a Duplicate --></translation>
+    </picklistValues>
+</CustomFieldTranslation>

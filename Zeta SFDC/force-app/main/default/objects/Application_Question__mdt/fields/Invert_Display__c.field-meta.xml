@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Invert_Display__c</fullName>
+    <defaultValue>false</defaultValue>
+    <description>When true, a Checkbox question renders the logical inverse of its backing boolean field: the box shows checked when the stored value is false (and vice versa), and toggling stores the de-inverted value. Lets a checkbox read in the opposite polarity of its field (e.g. &quot;Student lives at a different address&quot; over Lives_With_Guardian_1__c) without changing the stored semantics, visibility rules, or companion writeback.</description>
+    <fieldManageability>DeveloperControlled</fieldManageability>
+    <label>Invert Display</label>
+    <type>Checkbox</type>
+</CustomField>

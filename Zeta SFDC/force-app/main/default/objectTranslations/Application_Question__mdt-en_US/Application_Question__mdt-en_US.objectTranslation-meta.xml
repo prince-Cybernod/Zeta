@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Application Question</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Application Questions</value>
+    </caseValues>
+    <startsWith>Consonant</startsWith>
+    <validationRules>
+        <errorMessage><!-- Target Field is required for single-field input types (Text, Email, Phone, Number, Date, Dropdown, Checkbox, MultiCheckbox, TextArea). --></errorMessage>
+        <name>Target_Field_Required_If_Single_Type</name>
+    </validationRules>
+</CustomObjectTranslation>

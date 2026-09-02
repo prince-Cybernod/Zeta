@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Field_Definition__c</fullName>
+    <fieldManageability>DeveloperControlled</fieldManageability>
+    <inlineHelpText>The specific field to reference (e.g., Opportunity.Amount). Use either Field Definition or Entity Particle, not both.</inlineHelpText>
+    <label>Field Definition</label>
+    <metadataRelationshipControllingField>SObject_Field__mdt.Entity_Definition__c</metadataRelationshipControllingField>
+    <referenceTo>FieldDefinition</referenceTo>
+    <relationshipLabel>SObject Fields</relationshipLabel>
+    <relationshipName>SObject_Fields</relationshipName>
+    <required>false</required>
+    <type>MetadataRelationship</type>
+    <unique>false</unique>
+</CustomField>

@@ -1,0 +1,239 @@
+<apex:page controller="SchoolMapPageController"
+  showHeader="false"
+  sidebar="false"
+  standardStylesheets="false"
+  applyBodyTag="false"
+  docType="html-5.0"
+>
+  <html>
+    <head>
+      <meta charset="utf-8" />
+      <meta name="viewport" content="width=device-width, initial-scale=1" />
+      <style>
+        * {
+          margin: 0;
+          padding: 0;
+          box-sizing: border-box;
+        }
+        html,
+        body,
+        #map {
+          width: 100%;
+          height: 100%;
+        }
+        body {
+          font-family:
+            -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+        }
+        #loading {
+          position: absolute;
+          top: 0;
+          left: 0;
+          right: 0;
+          bottom: 0;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          background: #f9fafb;
+          color: #6b7280;
+          font-size: 14px;
+        }
+      </style>
+    </head>
+    <body>
+      <div id="loading">Loading map...</div>
+      <div id="map"></div>
+
+      <script>
+        var map,
+          markers = {},
+          homeMarker,
+          geocoder,
+          pendingGeocode = 0;
+        var selectedColor = '#4AB5E3';
+        var defaultColor = '#31356E';
+        var homeColor = '#EF4444';
+        var parentOrigin = null;
+
+        function initMap() {
+          map = new google.maps.Map(document.getElementById('map'), {
+            center: { lat: 40.8, lng: -73.92 },
+            zoom: 11,
+            mapTypeControl: true,
+            streetViewControl: false,
+            fullscreenControl: false,
+            styles: [{ featureType: 'poi', stylers: [{ visibility: 'off' }] }]
+          });
+          geocoder = new google.maps.Geocoder();
+          document.getElementById('loading').style.display = 'none';
+        }
+
+        function createSchoolMarker(school, position) {
+          var isSelected = school.selected || false;
+          var marker = new google.maps.Marker({
+            position: position,
+            map: map,
+            title: school.name,
+            icon: {
+              path: google.maps.SymbolPath.CIRCLE,
+              scale: 10,
+              fillColor: isSelected ? selectedColor : defaultColor,
+              fillOpacity: 1,
+              strokeColor: '#FFFFFF',
+              strokeWeight: 2
+            }
+          });
+
+          var infoWindow = new google.maps.InfoWindow({
+            content:
+              '<div style="padding:4px;font-family:sans-serif;">' +
+              '<strong style="color:' +
+              defaultColor +
+              '">' +
+              school.name +
+              '</strong>' +
+              '<br/><span style="font-size:12px;color:#6B7280">' +
+              (school.address || '') +
+              '</span>' +
+              '</div>'
+          });
+
+          marker.addListener('click', function () {
+            infoWindow.open(map, marker);
+            if (parentOrigin) {
+              parent.postMessage(
+                {
+                  type: 'schoolClicked',
+                  schoolId: school.schoolAccountId
+                },
+                parentOrigin
+              );
+            }
+          });
+
+          markers[school.schoolAccountId] = {
+            marker: marker,
+            infoWindow: infoWindow
+          };
+        }
+
+        function geocodeAndPlace(school) {
+          var address = school.address;
+          if (!address) return;
+
+          pendingGeocode++;
+          geocoder.geocode({ address: address }, function (results, status) {
+            pendingGeocode--;
+            if (status === 'OK' && results[0]) {
+              createSchoolMarker(school, results[0].geometry.location);
+            }
+            if (pendingGeocode === 0) {
+              fitBounds();
+            }
+          });
+        }
+
+        function fitBounds() {
+          var bounds = new google.maps.LatLngBounds();
+          var hasPoints = false;
+
+          if (homeMarker) {
+            bounds.extend(homeMarker.getPosition());
+            hasPoints = true;
+          }
+          for (var id in markers) {
+            if (markers.hasOwnProperty(id)) {
+              bounds.extend(markers[id].marker.getPosition());
+              hasPoints = true;
+            }
+          }
+          if (hasPoints) {
+            map.fitBounds(bounds, 50);
+            if (map.getZoom() > 14) {
+              map.setZoom(14);
+            }
+          }
+        }
+
+        function setHomeAddress(address) {
+          if (!address || !geocoder) return;
+          geocoder.geocode({ address: address }, function (results, status) {
+            if (status === 'OK' && results[0]) {
+              if (homeMarker) homeMarker.setMap(null);
+              homeMarker = new google.maps.Marker({
+                position: results[0].geometry.location,
+                map: map,
+                title: 'Home',
+                icon: {
+                  path: 'M12 2L2 12h3v8h6v-6h2v6h6v-8h3L12 2z',
+                  fillColor: homeColor,
+                  fillOpacity: 1,
+                  strokeColor: '#FFFFFF',
+                  strokeWeight: 1,
+                  scale: 1.5,
+                  anchor: new google.maps.Point(12, 22)
+                }
+              });
+            }
+          });
+        }
+
+        function updateMarkerColor(schoolId, selected) {
+          var entry = markers[schoolId];
+          if (!entry) return;
+          entry.marker.setIcon({
+            path: google.maps.SymbolPath.CIRCLE,
+            scale: 10,
+            fillColor: selected ? selectedColor : defaultColor,
+            fillOpacity: 1,
+            strokeColor: '#FFFFFF',
+            strokeWeight: 2
+          });
+        }
+
+        window.addEventListener('message', function (event) {
+          if (!event.data || !event.data.type) return;
+          if (!parentOrigin) parentOrigin = event.origin;
+
+          var data = event.data;
+
+          if (data.type === 'init') {
+            for (var id in markers) {
+              if (markers.hasOwnProperty(id)) {
+                markers[id].marker.setMap(null);
+              }
+            }
+            markers = {};
+
+            if (data.homeAddress) {
+              setHomeAddress(data.homeAddress);
+            }
+
+            var schools = data.schools || [];
+            for (var i = 0; i < schools.length; i++) {
+              geocodeAndPlace(schools[i]);
+            }
+          }
+
+          if (data.type === 'toggleSchool') {
+            updateMarkerColor(data.schoolId, data.selected);
+          }
+
+          if (data.type === 'highlightSchool') {
+            var entry = markers[data.schoolId];
+            if (entry) {
+              map.panTo(entry.marker.getPosition());
+              map.setZoom(14);
+              entry.infoWindow.open(map, entry.marker);
+            }
+          }
+        });
+      </script>
+      <script
+        src="https://maps.googleapis.com/maps/api/js?key={!apiKey}&amp;callback=initMap"
+        async="true"
+        defer="true"
+      ></script>
+    </body>
+  </html>
+</apex:page>

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<AnalyticsVisualization xmlns="http://soap.sforce.com/2006/04/metadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <analyticsWorkspace>Flow_Performance</analyticsWorkspace>
+    <dataSource>Flow_Performance_Semantic_Model</dataSource>
+    <description>Flow Element Run Status Chart visualization</description>
+    <fields>
+        <displayCategory>Discrete</displayCategory>
+        <fieldKey>F6</fieldKey>
+        <fieldName>Flow_Element_Run_Status</fieldName>
+        <objectName>Flow_Element_Run</objectName>
+        <role>Dimension</role>
+        <type>Field</type>
+    </fields>
+    <fields>
+        <displayCategory>Continuous</displayCategory>
+        <fieldKey>F7</fieldKey>
+        <fieldName>Total_Flow_Element_Runs</fieldName>
+        <function>Sum</function>
+        <role>Measure</role>
+        <type>Field</type>
+    </fields>
+    <masterLabel>Flow Element Run Status Chart</masterLabel>
+    <templateAssetSourceName>Viz_FERC</templateAssetSourceName>
+    <templateSource>sfdc_internal__flow_performance</templateSource>
+    <version>66.0</version>
+    <views>
+        <fullName>Viz_FERC_default</fullName>
+        <isOriginal>true</isOriginal>
+        <masterLabel>default</masterLabel>
+        <version>66.0</version>
+        <viewSpecification>{&quot;filters&quot;:[],&quot;sortOrders&quot;:{&quot;fields&quot;:{},&quot;rows&quot;:[],&quot;columns&quot;:[]}}</viewSpecification>
+    </views>
+    <visualSpecification>eyJtb2RlIjoiVmlzdWFsaXphdGlvbiIsInJvd3MiOltdLCJjb2x1bW5zIjpbXSwibWFya3MiOnsiQUxMIjp7InR5cGUiOiJEb251dCIsImlzQXV0b21hdGljIjpmYWxzZSwic3RhY2siOnsiaXNBdXRvbWF0aWMiOnRydWUsImlzU3RhY2tlZCI6ZmFsc2V9LCJlbmNvZGluZ3MiOlt7ImZpZWxkS2V5IjoiRjYiLCJ0eXBlIjoiQ29sb3IifSx7ImZpZWxkS2V5IjoiRjciLCJ0eXBlIjoiQW5nbGUifV19fSwic3R5bGUiOnsiZml0IjoiRW50aXJlIiwidGl0bGUiOnsiaXNWaXNpYmxlIjp0cnVlfSwic2hvd0RhdGFQbGFjZWhvbGRlciI6ZmFsc2UsImF4aXMiOnt9LCJwYW5lcyI6eyJGNiI6eyJkZWZhdWx0cyI6eyJmb3JtYXQiOnt9fSwiY29sb3JzIjp7InR5cGUiOiJEaXNjcmV0ZSIsInBhbGV0dGUiOnsidHlwZSI6IkN1c3RvbSIsImNvbG9ycyI6W119LCJjdXN0b21Db2xvcnMiOlt7InZhbHVlIjoiQ29tcGxldGVkIiwiY29sb3IiOiIjMDg5MTZEIn0seyJ2YWx1ZSI6IkVycm9yIiwiY29sb3IiOiIjREI1RjAwIn0seyJ2YWx1ZSI6IldhaXRpbmciLCJjb2xvciI6IiNGMEU0NDIifSx7InZhbHVlIjoiUmV0cnlpbmciLCJjb2xvciI6IiNGNTlCMDAifSx7InZhbHVlIjoiUGF1c2VkIiwiY29sb3IiOiIjRDlBNkMyIn0seyJ2YWx1ZSI6IlN0b3BwZWQiLCJjb2xvciI6IiM0MDQwNDAifV19fSwiRjciOnsiZGVmYXVsdHMiOnsiZm9ybWF0Ijp7Im51bWJlckZvcm1hdEluZm8iOnsidHlwZSI6Ik51bWJlciIsImRlY2ltYWxQbGFjZXMiOjIsIm5lZ2F0aXZlVmFsdWVzRm9ybWF0IjoiQXV0byIsImRpc3BsYXlVbml0cyI6IkF1dG8iLCJwcmVmaXgiOiIiLCJzdWZmaXgiOiIiLCJpbmNsdWRlVGhvdXNhbmRTZXBhcmF0b3IiOnRydWV9fX19fSwibWFya3MiOnsiQUxMIjp7ImxhYmVsIjp7ImNhbk92ZXJsYXBMYWJlbHMiOmZhbHNlLCJzaG93TWFya0xhYmVscyI6ZmFsc2UsIm1hcmtzVG9MYWJlbCI6eyJ0eXBlIjoiQWxsIn19LCJjb2xvciI6eyJjb2xvciI6IiJ9LCJyYW5nZSI6eyJyZXZlcnNlIjp0cnVlfSwic2l6ZSI6eyJ0eXBlIjoiUGVyY2VudGFnZSIsImlzQXV0b21hdGljIjp0cnVlLCJ2YWx1ZSI6ODB9LCJpc0F1dG9tYXRpY1NpemUiOnRydWV9fSwiZmllbGRMYWJlbHMiOnsicm93cyI6eyJzaG93TGFiZWxzIjp0cnVlLCJzaG93RGl2aWRlckxpbmUiOmZhbHNlfSwiY29sdW1ucyI6eyJzaG93TGFiZWxzIjp0cnVlLCJzaG93RGl2aWRlckxpbmUiOmZhbHNlfX0sInJlZmVyZW5jZUxpbmVzIjp7fSwiZm9udHMiOnsiYWN0aW9uYWJsZUhlYWRlcnMiOnsic2l6ZSI6MTMsImNvbG9yIjoiIzAyNTBEOSJ9LCJoZWFkZXJzIjp7InNpemUiOjEzLCJjb2xvciI6IiMyRTJFMkUifSwiZmllbGRMYWJlbHMiOnsic2l6ZSI6MTMsImNvbG9yIjoiIzJFMkUyRSJ9LCJtYXJrcyI6eyJzaXplIjoxMywiY29sb3IiOiIjMkUyRTJFIn0sIm1hcmtMYWJlbHMiOnsic2l6ZSI6MTMsImNvbG9yIjoiIzJFMkUyRSJ9LCJsZWdlbmRMYWJlbHMiOnsic2l6ZSI6MTMsImNvbG9yIjoiIzJFMkUyRSJ9LCJheGlzVGlja0xhYmVscyI6eyJzaXplIjoxMywiY29sb3IiOiIjMkUyRTJFIn19LCJzaGFkaW5nIjp7ImJhY2tncm91bmRDb2xvciI6IiNGRkZGRkYiLCJiYW5kaW5nIjp7InJvd3MiOnsiY29sb3IiOiIjRTVFNUU1In19fSwibGluZXMiOnsiZmllbGRMYWJlbERpdmlkZXJMaW5lIjp7ImNvbG9yIjoiI0M5QzlDOSJ9LCJzZXBhcmF0b3JMaW5lIjp7ImNvbG9yIjoiI0M5QzlDOSJ9LCJheGlzTGluZSI6eyJjb2xvciI6IiNDOUM5QzkifSwiemVyb0xpbmUiOnsiY29sb3IiOiIjQzlDOUM5In19LCJhbGxIZWFkZXJzIjp7ImZpZWxkcyI6e30sInJvd3MiOnsibWVyZ2VSZXBlYXRlZENlbGxzIjp0cnVlLCJzaG93SW5kZXgiOmZhbHNlfSwiY29sdW1ucyI6eyJtZXJnZVJlcGVhdGVkQ2VsbHMiOnRydWUsInNob3dJbmRleCI6ZmFsc2V9fX0sImxlZ2VuZHMiOnsiRjYiOnsiaXNWaXNpYmxlIjp0cnVlLCJ0aXRsZSI6eyJpc1Zpc2libGUiOmZhbHNlfSwicG9zaXRpb24iOiJSaWdodCJ9fSwibWVhc3VyZVZhbHVlcyI6W10sInJlZmVyZW5jZUxpbmVzIjp7fSwiZm9yZWNhc3RzIjp7fX0=</visualSpecification>
+    <workspaceAssetRelationships>
+        <asset xsi:nil="true"/>
+        <assetType>AnalyticsVisualization</assetType>
+        <assetUsageType>Created</assetUsageType>
+        <workspace>Flow_Performance</workspace>
+    </workspaceAssetRelationships>
+</AnalyticsVisualization>

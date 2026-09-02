@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Entity_Definition__c</fullName>
+    <fieldManageability>DeveloperControlled</fieldManageability>
+    <inlineHelpText>The SObject type this criteria evaluates against (e.g., Opportunity, Account).</inlineHelpText>
+    <label>Entity Definition</label>
+    <referenceTo>EntityDefinition</referenceTo>
+    <relationshipLabel>SObject Field Criteria</relationshipLabel>
+    <relationshipName>SObject_Field_Criteria</relationshipName>
+    <required>false</required>
+    <type>MetadataRelationship</type>
+    <unique>false</unique>
+</CustomField>

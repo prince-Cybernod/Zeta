@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<DataStreamDefinition xmlns="http://soap.sforce.com/2006/04/metadata">
+    <areHeadersIncludedInFile>false</areHeadersIncludedInFile>
+    <bulkIngest>false</bulkIngest>
+    <creationType>Custom</creationType>
+    <dataConnector>ExperimentationLog_02bd72f3_bacc_4a49_8313_bbdc09e19662</dataConnector>
+    <dataConnectorType>IngestApi</dataConnectorType>
+    <dataExtractMethods>FULL_REFRESH</dataExtractMethods>
+    <dataPlatformDataSetItemName>INGESTAPI</dataPlatformDataSetItemName>
+    <dataSource>ExperimentationLog_02bd72f3_bacc_4a49_8313_bbdc09e19662</dataSource>
+    <isLimitedToNewFiles>false</isLimitedToNewFiles>
+    <isMissingFileFailure>false</isMissingFileFailure>
+    <masterLabel>ExperimentationLog-experimentation</masterLabel>
+    <mktDataLakeObject>ExperimentationLog_experimentat_4ABC2FDB__dll</mktDataLakeObject>
+    <mktDataTranObject>ExperimentationLog_experimentat_4ABC2FDB</mktDataTranObject>
+</DataStreamDefinition>

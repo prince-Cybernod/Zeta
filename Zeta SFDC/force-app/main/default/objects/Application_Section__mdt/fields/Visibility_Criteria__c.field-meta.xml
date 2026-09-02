@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Visibility_Criteria__c</fullName>
+    <fieldManageability>DeveloperControlled</fieldManageability>
+    <inlineHelpText>Optional visibility criteria. When set, this section is only shown if the criteria evaluates to true against the record.</inlineHelpText>
+    <label>Visibility Criteria</label>
+    <referenceTo>SObject_Field_Criteria__mdt</referenceTo>
+    <relationshipLabel>Application Sections</relationshipLabel>
+    <relationshipName>Application_Sections</relationshipName>
+    <required>false</required>
+    <type>MetadataRelationship</type>
+    <unique>false</unique>
+</CustomField>

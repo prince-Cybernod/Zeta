@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<AnalyticsVisualization xmlns="http://soap.sforce.com/2006/04/metadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <analyticsWorkspace>Marketing_Performance</analyticsWorkspace>
+    <dataSource>Marketing_Performance_Semantic_Mod_945</dataSource>
+    <description>Marketing Performance - Campaign Engagement visualization</description>
+    <fields>
+        <displayCategory>Discrete</displayCategory>
+        <fieldKey>F3</fieldKey>
+        <fieldName>Name</fieldName>
+        <objectName>Campaign</objectName>
+        <role>Dimension</role>
+        <type>Field</type>
+    </fields>
+    <fields>
+        <displayCategory>Discrete</displayCategory>
+        <fieldKey>F9</fieldKey>
+        <fieldName>Name</fieldName>
+        <function>CountD</function>
+        <objectName>Campaign</objectName>
+        <role>Dimension</role>
+        <type>Field</type>
+    </fields>
+    <fields>
+        <displayCategory>Discrete</displayCategory>
+        <fieldKey>F15</fieldKey>
+        <fieldName>Name</fieldName>
+        <function>Count</function>
+        <objectName>Campaign</objectName>
+        <role>Dimension</role>
+        <type>Field</type>
+    </fields>
+    <fields>
+        <displayCategory>Continuous</displayCategory>
+        <fieldKey>F24</fieldKey>
+        <fieldName>Total_Number_of_Activities</fieldName>
+        <function>UserAgg</function>
+        <role>Measure</role>
+        <type>Field</type>
+    </fields>
+    <fields>
+        <displayCategory>Continuous</displayCategory>
+        <fieldKey>F25</fieldKey>
+        <fieldName>Total_Number_of_Activities</fieldName>
+        <function>UserAgg</function>
+        <role>Measure</role>
+        <type>Field</type>
+    </fields>
+    <masterLabel>Campaign Activities</masterLabel>
+    <templateAssetSourceName>Viz_UEHD_Account_CampaignActivities</templateAssetSourceName>
+    <templateSource>sfdc_internal__uma</templateSource>
+    <version>66.0</version>
+    <views>
+        <fullName>Viz_UEHD_Account_CampaignActivities_default</fullName>
+        <isOriginal>true</isOriginal>
+        <masterLabel>default</masterLabel>
+        <version>66.0</version>
+        <viewSpecification>{&quot;filters&quot;:[{&quot;fieldKey&quot;:&quot;F24&quot;,&quot;isContext&quot;:false,&quot;filterInfos&quot;:[{&quot;type&quot;:&quot;GreaterThan&quot;,&quot;includeNulls&quot;:false,&quot;showOnlyRelevantValues&quot;:false,&quot;beginValue&quot;:1.0}]}],&quot;sortOrders&quot;:{&quot;fields&quot;:{},&quot;rows&quot;:[],&quot;columns&quot;:[]}}</viewSpecification>
+    </views>
+    <visualSpecification>eyJtb2RlIjoiVmlzdWFsaXphdGlvbiIsInJvd3MiOltdLCJjb2x1bW5zIjpbXSwibWFya3MiOnsiQUxMIjp7InR5cGUiOiJEb251dCIsImlzQXV0b21hdGljIjpmYWxzZSwic3RhY2siOnsiaXNBdXRvbWF0aWMiOnRydWUsImlzU3RhY2tlZCI6ZmFsc2V9LCJlbmNvZGluZ3MiOlt7ImZpZWxkS2V5IjoiRjMiLCJ0eXBlIjoiQ29sb3IifSx7ImZpZWxkS2V5IjoiRjI1IiwidHlwZSI6IkFuZ2xlIn1dfX0sInN0eWxlIjp7ImZpdCI6IkVudGlyZSIsInRpdGxlIjp7ImlzVmlzaWJsZSI6dHJ1ZX0sInNob3dEYXRhUGxhY2Vob2xkZXIiOmZhbHNlLCJheGlzIjp7fSwicGFuZXMiOnsiRjI1Ijp7ImRlZmF1bHRzIjp7ImZvcm1hdCI6eyJudW1iZXJGb3JtYXRJbmZvIjp7InR5cGUiOiJOdW1iZXIiLCJkZWNpbWFsUGxhY2VzIjoyLCJuZWdhdGl2ZVZhbHVlc0Zvcm1hdCI6IkF1dG8iLCJkaXNwbGF5VW5pdHMiOiJBdXRvIiwicHJlZml4IjoiIiwic3VmZml4IjoiIiwiaW5jbHVkZVRob3VzYW5kU2VwYXJhdG9yIjp0cnVlfX19fSwiRjI0Ijp7ImRlZmF1bHRzIjp7ImZvcm1hdCI6eyJudW1iZXJGb3JtYXRJbmZvIjp7InR5cGUiOiJOdW1iZXIiLCJkZWNpbWFsUGxhY2VzIjoyLCJuZWdhdGl2ZVZhbHVlc0Zvcm1hdCI6IkF1dG8iLCJkaXNwbGF5VW5pdHMiOiJBdXRvIiwicHJlZml4IjoiIiwic3VmZml4IjoiIiwiaW5jbHVkZVRob3VzYW5kU2VwYXJhdG9yIjp0cnVlfX19fX0sIm1hcmtzIjp7IkFMTCI6eyJsYWJlbCI6eyJjYW5PdmVybGFwTGFiZWxzIjpmYWxzZSwic2hvd01hcmtMYWJlbHMiOmZhbHNlLCJtYXJrc1RvTGFiZWwiOnsidHlwZSI6IkFsbCJ9fSwiY29sb3IiOnsiY29sb3IiOiIifSwicmFuZ2UiOnsicmV2ZXJzZSI6ZmFsc2V9LCJzaXplIjp7InR5cGUiOiJQZXJjZW50YWdlIiwiaXNBdXRvbWF0aWMiOnRydWUsInZhbHVlIjo4MH0sImlzQXV0b21hdGljU2l6ZSI6dHJ1ZX19LCJmaWVsZExhYmVscyI6eyJyb3dzIjp7InNob3dMYWJlbHMiOnRydWUsInNob3dEaXZpZGVyTGluZSI6ZmFsc2V9LCJjb2x1bW5zIjp7InNob3dMYWJlbHMiOnRydWUsInNob3dEaXZpZGVyTGluZSI6ZmFsc2V9fSwicmVmZXJlbmNlTGluZXMiOnt9LCJmb250cyI6eyJhY3Rpb25hYmxlSGVhZGVycyI6eyJzaXplIjoxMiwiY29sb3IiOiIjMDI1MEQ5In0sImhlYWRlcnMiOnsic2l6ZSI6MTIsImNvbG9yIjoiIzVDNUM1QyJ9LCJmaWVsZExhYmVscyI6eyJzaXplIjoxMiwiY29sb3IiOiIjMkUyRTJFIn0sIm1hcmtzIjp7InNpemUiOjEyLCJjb2xvciI6IiM1QzVDNUMifSwibWFya0xhYmVscyI6eyJzaXplIjoxMiwiY29sb3IiOiIjMDAwMDAwIn0sImxlZ2VuZExhYmVscyI6eyJzaXplIjoxMiwiY29sb3IiOiIjMkUyRTJFIn0sImF4aXNUaWNrTGFiZWxzIjp7InNpemUiOjEyLCJjb2xvciI6IiM1QzVDNUMifX0sInNoYWRpbmciOnsiYmFja2dyb3VuZENvbG9yIjoiI0ZGRkZGRiIsImJhbmRpbmciOnsicm93cyI6eyJjb2xvciI6IiNFNUU1RTUifX19LCJsaW5lcyI6eyJmaWVsZExhYmVsRGl2aWRlckxpbmUiOnsiY29sb3IiOiIjQzlDOUM5In0sInNlcGFyYXRvckxpbmUiOnsiY29sb3IiOiIjQzlDOUM5In0sImF4aXNMaW5lIjp7ImNvbG9yIjoiI0M5QzlDOSJ9LCJ6ZXJvTGluZSI6eyJjb2xvciI6IiNFNUU1RTUifX0sImFsbEhlYWRlcnMiOnsiZmllbGRzIjp7fSwicm93cyI6eyJtZXJnZVJlcGVhdGVkQ2VsbHMiOnRydWUsInNob3dJbmRleCI6ZmFsc2V9LCJjb2x1bW5zIjp7Im1lcmdlUmVwZWF0ZWRDZWxscyI6dHJ1ZSwic2hvd0luZGV4IjpmYWxzZX19fSwibGVnZW5kcyI6eyJGMyI6eyJpc1Zpc2libGUiOnRydWUsInRpdGxlIjp7ImlzVmlzaWJsZSI6dHJ1ZSwidGl0bGVUZXh0IjoiQ2FtcGFpZ24gTmFtZSJ9LCJwb3NpdGlvbiI6IlJpZ2h0In19LCJtZWFzdXJlVmFsdWVzIjpbXSwicmVmZXJlbmNlTGluZXMiOnt9LCJmb3JlY2FzdHMiOnt9fQ==</visualSpecification>
+    <workspaceAssetRelationships>
+        <asset xsi:nil="true"/>
+        <assetType>AnalyticsVisualization</assetType>
+        <assetUsageType>Created</assetUsageType>
+        <workspace>Marketing_Performance</workspace>
+    </workspaceAssetRelationships>
+</AnalyticsVisualization>

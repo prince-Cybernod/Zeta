@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <help><!-- Minimum longitude of this ring&apos;s vertices. Used by the WS5 inner loop to short-circuit JSON deserialization for rings whose bounding box excludes the query point. --></help>
+    <label><!-- Min Lng --></label>
+    <name>Min_Lng__c</name>
+</CustomFieldTranslation>

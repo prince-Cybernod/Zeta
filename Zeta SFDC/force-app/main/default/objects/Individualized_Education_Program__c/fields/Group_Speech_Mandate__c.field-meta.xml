@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Group_Speech_Mandate__c</fullName>
+    <description>Specifies the group speech or language therapy mandate defined in the student’s IEP.</description>
+    <externalId>false</externalId>
+    <label>Group Speech Mandate</label>
+    <length>255</length>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <help><!-- JSON array of [lng, lat] pairs forming one closed ring (last vertex equals first vertex). Coordinates are rounded to 5 decimals (~1m precision) by the KML loader. --></help>
+    <label><!-- Polygon Coordinates --></label>
+    <name>Polygon_Coordinates__c</name>
+</CustomFieldTranslation>

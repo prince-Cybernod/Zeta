@@ -1,0 +1,12 @@
+{
+  "type" : "sfdc_cms__appPage",
+  "title" : "main",
+  "contentBody" : {
+    "currentThemeId" : "Marketing_Landing_Page_LWR",
+    "headMarkup" : "<link rel=\"stylesheet\" href=\"{ styles/styles.css }\" />\n\r\n<link rel=\"stylesheet\" href=\"{ basePath }/assets/styles/salesforce-lightning-design-system.min.css?{ versionKey }\"/>\r\n",
+    "isLockerServiceEnabled" : true,
+    "isRelaxedCSPLevel" : false,
+    "templateName" : "marketing-landing-template"
+  },
+  "urlName" : "main"
+}

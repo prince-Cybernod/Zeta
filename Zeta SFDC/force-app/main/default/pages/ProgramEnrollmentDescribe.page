@@ -1,0 +1,46 @@
+<apex:page standardController="User" lightningStylesheets="true">
+  <!-- Include the same jQuery resource used by ActionPlanTemplateCreation -->
+  <apex:includeScript value="{!URLFOR($Resource.ActionPlan_Resources, 'js/jquery.min.js')}"
+  />
+
+  <!-- Form is required because the component renders an apex:inputHidden internally -->
+  <!-- onsubmit=false prevents page reload if Enter is pressed in the input -->
+  <apex:form onsubmit="return false;">
+    <!-- Embed APObjectLookup. Using User.Alias only as a harmless text field binding -->
+    <c:APObjectLookup sObj="{!User}"
+      field="Alias"
+      for="demo"
+      required="false"
+      placeholder="Search for an object"
+    />
+
+    <!-- Mirror of ActionPlanTemplateCreation: hidden field updated on selection -->
+    <apex:inputHidden id="targetObject" />
+  </apex:form>
+
+  <script>
+    // Define j$ exactly like ActionPlanTemplateCreation does
+
+    window.j$ = jQuery.noConflict();
+    j$(function () {
+      // Component-scoped input lives inside #demosldsscopediv and ends with searchInput
+      var $input = j$('#demosldsscopediv [id$=searchInput]');
+
+      // Prevent Enter from attempting to submit the form
+      $input.on('keydown', function (e) {
+        if (e.key === 'Enter') {
+          e.preventDefault();
+        }
+      });
+
+      // Replicate ActionPlanTemplateCreation behavior: copy API name into hidden #targetObject
+      // The component triggers `parentchange` with (label, apiName)
+      $input.on('parentchange', function (event, label, apiName) {
+        var chosen = apiName || j$(this).data('api-name') || '';
+        j$('[id$=targetObject]').val(chosen);
+        // Optional: log for quick verification
+        console.log('Selected object:', label, '(' + chosen + ')');
+      });
+    });
+  </script>
+</apex:page>

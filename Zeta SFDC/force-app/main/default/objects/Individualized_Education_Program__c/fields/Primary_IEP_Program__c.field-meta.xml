@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Primary_IEP_Program__c</fullName>
+    <description>Identifies the student’s primary IEP instructional program or service model. Used to categorize placement type and service intensity, as defined by the student’s IEP. Values align with common New York City Department of Education (DOE) program classifications.</description>
+    <label>Primary IEP Program</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>ICT</fullName>
+                <default>false</default>
+                <label>ICT</label>
+            </value>
+            <value>
+                <fullName>SETSS</fullName>
+                <default>false</default>
+                <label>SETSS</label>
+            </value>
+            <value>
+                <fullName>12:1</fullName>
+                <default>false</default>
+                <label>12:1</label>
+            </value>
+            <value>
+                <fullName>12:1:1</fullName>
+                <default>false</default>
+                <label>12:1:1</label>
+            </value>
+            <value>
+                <fullName>12:2</fullName>
+                <default>false</default>
+                <label>12:2</label>
+            </value>
+            <value>
+                <fullName>6:1</fullName>
+                <default>false</default>
+                <label>6:1</label>
+            </value>
+            <value>
+                <fullName>8:1</fullName>
+                <default>false</default>
+                <label>8:1</label>
+            </value>
+            <value>
+                <fullName>SEIT</fullName>
+                <default>false</default>
+                <label>SEIT</label>
+            </value>
+            <value>
+                <fullName>12:1:2</fullName>
+                <default>false</default>
+                <label>12:1:2</label>
+            </value>
+            <value>
+                <fullName>RS Only</fullName>
+                <default>false</default>
+                <label>RS Only</label>
+            </value>
+            <value>
+                <fullName>Autism/ASD</fullName>
+                <default>false</default>
+                <label>Autism/ASD</label>
+            </value>
+            <value>
+                <fullName>Deaf-Blindness</fullName>
+                <default>false</default>
+                <label>Deaf-Blindness</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

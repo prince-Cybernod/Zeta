@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomMetadata xmlns="http://soap.sforce.com/2006/04/metadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <label>How Did You Hear Word Of Mouth</label>
+    <protected>false</protected>
+    <values>
+        <field>Description__c</field>
+        <value xsi:type="xsd:string">Show referral name field when a Word of Mouth or current-school referral source is selected</value>
+    </values>
+    <values>
+        <field>Entity_Definition__c</field>
+        <value xsi:type="xsd:string">IndividualApplication</value>
+    </values>
+    <values>
+        <field>Formula_Expression__c</field>
+        <value xsi:type="xsd:string">OR(INCLUDES(How_Did_You_Hear_About_Us__c, &apos;Word of mouth by friends, family, colleagues who are affiliated with Zeta&apos;), INCLUDES(How_Did_You_Hear_About_Us__c, &apos;Word of mouth by friends, family, colleagues who are NOT affiliated with Zeta&apos;), INCLUDES(How_Did_You_Hear_About_Us__c, &apos;Someone from my child\&apos;s current school&apos;))</value>
+    </values>
+</CustomMetadata>

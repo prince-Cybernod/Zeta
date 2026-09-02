@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomMetadata xmlns="http://soap.sforce.com/2006/04/metadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <label>Address</label>
+    <protected>false</protected>
+    <values>
+        <field>Auto_Collapse_When_Complete__c</field>
+        <value xsi:type="xsd:boolean">true</value>
+    </values>
+    <values>
+        <field>Collapsible__c</field>
+        <value xsi:type="xsd:boolean">true</value>
+    </values>
+    <values>
+        <field>Columns__c</field>
+        <value xsi:type="xsd:double">2.0</value>
+    </values>
+    <values>
+        <field>Complete_Criteria__c</field>
+        <value xsi:nil="true"/>
+    </values>
+    <values>
+        <field>Description__c</field>
+        <value xsi:type="xsd:string">Where does the student live? Captured only when the student does not live with Guardian 1.</value>
+    </values>
+    <values>
+        <field>Display_Label__c</field>
+        <value xsi:type="xsd:string">Student Address</value>
+    </values>
+    <values>
+        <field>Is_Active__c</field>
+        <value xsi:type="xsd:boolean">true</value>
+    </values>
+    <values>
+        <field>Page__c</field>
+        <value xsi:type="xsd:string">Application_Details</value>
+    </values>
+    <values>
+        <field>Sort_Order__c</field>
+        <value xsi:type="xsd:double">1.55</value>
+    </values>
+    <values>
+        <field>Summary_Template__c</field>
+        <value xsi:type="xsd:string">{address:Address_Compound}</value>
+    </values>
+    <values>
+        <field>Variant__c</field>
+        <value xsi:nil="true"/>
+    </values>
+    <values>
+        <field>Visibility_Criteria__c</field>
+        <value xsi:type="xsd:string">Guardian_1_Address_Required</value>
+    </values>
+</CustomMetadata>

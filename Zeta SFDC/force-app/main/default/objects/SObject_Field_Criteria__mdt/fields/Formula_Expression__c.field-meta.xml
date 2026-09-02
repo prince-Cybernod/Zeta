@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Formula_Expression__c</fullName>
+    <fieldManageability>DeveloperControlled</fieldManageability>
+    <inlineHelpText>Boolean formula expression to evaluate (e.g., &quot;StageName = &apos;Closed Won&apos; AND Amount &gt; 100000&quot;). Supports relationship fields up to 5 levels.</inlineHelpText>
+    <label>Formula Expression</label>
+    <length>3000</length>
+    <type>LongTextArea</type>
+    <visibleLines>5</visibleLines>
+</CustomField>

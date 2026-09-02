@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Target_Field_Required_If_Single_Type</fullName>
+    <active>true</active>
+    <description>Target_Field__c must be populated for single-field input types (Text, Email, Phone, Number, Date, Dropdown, Checkbox, MultiCheckbox, TextArea). Address-type questions use Field_Bindings__c instead and may leave Target_Field__c blank.</description>
+    <errorConditionFormula>AND(
+  ISBLANK(Target_Field__c),
+  OR(
+    Input_Type__c = &apos;Text&apos;,
+    Input_Type__c = &apos;Email&apos;,
+    Input_Type__c = &apos;Phone&apos;,
+    Input_Type__c = &apos;Number&apos;,
+    Input_Type__c = &apos;Date&apos;,
+    Input_Type__c = &apos;Dropdown&apos;,
+    Input_Type__c = &apos;Checkbox&apos;,
+    Input_Type__c = &apos;MultiCheckbox&apos;,
+    Input_Type__c = &apos;TextArea&apos;
+  )
+)</errorConditionFormula>
+    <errorMessage>Target Field is required for single-field input types (Text, Email, Phone, Number, Date, Dropdown, Checkbox, MultiCheckbox, TextArea).</errorMessage>
+</ValidationRule>

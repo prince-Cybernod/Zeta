@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Priority Item</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Priority Items</value>
+    </caseValues>
+    <startsWith>Consonant</startsWith>
+    <validationRules>
+        <errorMessage><!-- Validated By and Validated On must be completed when Review Status is not Pending --></errorMessage>
+        <name>Require_Reviewer_for_Validation</name>
+    </validationRules>
+</CustomObjectTranslation>

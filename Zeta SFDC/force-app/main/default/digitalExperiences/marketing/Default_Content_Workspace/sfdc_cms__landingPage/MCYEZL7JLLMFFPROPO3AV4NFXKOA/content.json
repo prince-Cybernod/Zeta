@@ -1,0 +1,577 @@
+{
+  "type" : "sfdc_cms__landingPage",
+  "title" : "SAMPLE MC Form Landing Page",
+  "contentBody" : {
+    "lightning:brandSource" : {
+      "defaultBrandOption" : "sfdcBrand"
+    },
+    "sfdc_cms:block" : {
+      "type" : "block",
+      "definition" : "sfdc_cms/rootContentBlock",
+      "id" : "f958ff00-deaf-4d65-bdf4-3054e3001db1",
+      "children" : [ {
+        "id" : "83831872-57ae-464a-907e-92c689c397c9",
+        "type" : "block",
+        "definition" : "lightning/section",
+        "attributes" : {
+          "stackOnMobile" : true,
+          "lightning:colorScheme" : "{!$brand.colorScheme}",
+          "lightning:margin" : "{!$brand.spacing.none}",
+          "lightning:padding" : "{!$brand.spacing.none}",
+          "lightning:borderRadius" : "{!$brand.borderRadius.square}",
+          "lightning:borderWidth" : "{!$brand.borderWeight.none}",
+          "lightning:backgroundImage" : {
+            "repeat" : "no-repeat",
+            "position" : "center center",
+            "size" : "cover"
+          },
+          "reverseOrderOnMobile" : false
+        },
+        "children" : [ {
+          "id" : "268660ef-efe6-417d-8e45-0f6c72438838",
+          "type" : "block",
+          "definition" : "lightning/column",
+          "attributes" : {
+            "columnWidth" : 12,
+            "lightning:colorScheme" : "{!$brand.colorScheme}",
+            "lightning:margin" : "{!$brand.spacing.none}",
+            "lightning:padding" : "{!$brand.spacing.none}",
+            "lightning:borderRadius" : "{!$brand.borderRadius.square}",
+            "lightning:borderWidth" : "{!$brand.borderWeight.none}",
+            "lightning:verticalAlignment" : "top",
+            "lightning:backgroundImage" : {
+              "repeat" : "no-repeat",
+              "position" : "center center",
+              "size" : "cover"
+            }
+          },
+          "children" : [ {
+            "id" : "b5fc31a8-5dca-41cc-925f-74cccf800e9e",
+            "type" : "block",
+            "definition" : "lightning/image",
+            "attributes" : {
+              "imageFitConfig" : {
+                "width" : {
+                  "value" : 100,
+                  "unit" : "%"
+                }
+              },
+              "lightning:padding" : "{!$brand.spacing.none}",
+              "lightning:margin" : {
+                "top" : {
+                  "value" : 0,
+                  "unit" : "px"
+                },
+                "right" : {
+                  "value" : 0,
+                  "unit" : "px"
+                },
+                "bottom" : {
+                  "value" : 0,
+                  "unit" : "px"
+                },
+                "left" : {
+                  "value" : 0,
+                  "unit" : "px"
+                }
+              },
+              "lightning:horizontalAlignment" : "center",
+              "lightning:typography" : "{!$brand.typography.paragraph.paragraph1}",
+              "lightning:colorGroup" : {
+                "backgroundColor" : "{!$brand.colorScheme.root}",
+                "textColor" : "{!$brand.colorScheme.contrast}",
+                "linkColor" : "{!$brand.colorScheme.primaryAccent}",
+                "borderColor" : "{!$brand.colorScheme.neutral}"
+              },
+              "lightning:borderRadius" : "{!$brand.borderRadius.square}",
+              "lightning:borderWidth" : "{!$brand.borderWeight.none}",
+              "imageInfo" : {
+                "source" : {
+                  "type" : "imageReference",
+                  "ref" : "DEFAULT_LANDING_PAGE_BANNER018e5a81ce9d4ef892c7f45e27d7df3a"
+                },
+                "url" : "/cms/media/MCUYNLRVKHSNHO3NW3HJQG7O3SY4?fileName=DEFAULT_LANDING_PAGE_BANNER018e5a81ce9d4ef892c7f45e27d7df3a&fileHash=eb991cf772cd51b88abb294919f15897"
+              }
+            }
+          } ]
+        } ]
+      }, {
+        "id" : "64cc182e-ff94-4c00-90a6-bef484c4628f",
+        "type" : "block",
+        "definition" : "lightning/section",
+        "attributes" : {
+          "stackOnMobile" : true,
+          "lightning:colorScheme" : "{!$brand.colorScheme}",
+          "lightning:margin" : "{!$brand.spacing.none}",
+          "lightning:padding" : "{!$brand.spacing.medium}",
+          "lightning:borderRadius" : "{!$brand.borderRadius.square}",
+          "lightning:borderWidth" : "{!$brand.borderWeight.none}",
+          "lightning:backgroundImage" : {
+            "repeat" : "no-repeat",
+            "position" : "center center",
+            "size" : "cover"
+          },
+          "reverseOrderOnMobile" : false
+        },
+        "children" : [ {
+          "id" : "22cb50bd-77d4-4b32-8382-d0751b1784cd",
+          "type" : "block",
+          "definition" : "lightning/column",
+          "attributes" : {
+            "columnWidth" : 6,
+            "lightning:colorScheme" : "{!$brand.colorScheme}",
+            "lightning:margin" : "{!$brand.spacing.none}",
+            "lightning:padding" : "{!$brand.spacing.xSmall}",
+            "lightning:borderRadius" : "{!$brand.borderRadius.square}",
+            "lightning:borderWidth" : "{!$brand.borderWeight.none}",
+            "lightning:verticalAlignment" : "top",
+            "lightning:backgroundImage" : {
+              "repeat" : "no-repeat",
+              "position" : "center center",
+              "size" : "cover"
+            }
+          },
+          "children" : [ {
+            "id" : "466e5bf0-b557-4524-8721-63f00a7a2bc7",
+            "type" : "block",
+            "definition" : "lightning/heading",
+            "attributes" : {
+              "level" : 2.0,
+              "align" : "left",
+              "lightning:typography" : "{!$brand.typography.heading.heading2}",
+              "lightning:colorGroup" : {
+                "backgroundColor" : "{!$brand.colorScheme.root}",
+                "textColor" : "{!$brand.colorScheme.contrast}",
+                "linkColor" : "{!$brand.colorScheme.primaryAccent}",
+                "borderColor" : "{!$brand.colorScheme.neutral}"
+              },
+              "lightning:padding" : "{!$brand.spacing.none}",
+              "lightning:margin" : "{!$brand.spacing.none}",
+              "lightning:borderRadius" : "{!$brand.borderRadius.square}",
+              "lightning:borderWidth" : "{!$brand.borderWeight.none}",
+              "text" : "<strong>Let’s design a signup page.</strong>"
+            }
+          }, {
+            "id" : "8e5ac235-e9f8-4d21-94a1-2e510ff05ed5",
+            "type" : "block",
+            "definition" : "lightning/paragraph",
+            "attributes" : {
+              "align" : "left",
+              "lightning:typography" : "{!$brand.typography.paragraph.paragraph1}",
+              "lightning:colorGroup" : {
+                "backgroundColor" : "{!$brand.colorScheme.root}",
+                "textColor" : "{!$brand.colorScheme.contrast}",
+                "linkColor" : "{!$brand.colorScheme.primaryAccent}",
+                "borderColor" : "{!$brand.colorScheme.neutral}"
+              },
+              "lightning:padding" : "{!$brand.spacing.none}",
+              "lightning:margin" : "{!$brand.spacing.none}",
+              "lightning:borderRadius" : "{!$brand.borderRadius.square}",
+              "lightning:borderWidth" : "{!$brand.borderWeight.none}",
+              "text" : "You can customize the design and layout of this template according to your brand&#39;s style guide. To get started, replace the banner image with a product image or your company logo. Next, click each component to edit and style the content."
+            }
+          }, {
+            "id" : "f3dc96e0-0117-4af4-a827-600d67db6d24",
+            "type" : "block",
+            "definition" : "lightning/paragraph",
+            "attributes" : {
+              "align" : "left",
+              "lightning:typography" : "{!$brand.typography.paragraph.paragraph1}",
+              "lightning:colorGroup" : {
+                "backgroundColor" : "{!$brand.colorScheme.root}",
+                "textColor" : "{!$brand.colorScheme.contrast}",
+                "linkColor" : "{!$brand.colorScheme.primaryAccent}",
+                "borderColor" : "{!$brand.colorScheme.neutral}"
+              },
+              "lightning:padding" : "{!$brand.spacing.none}",
+              "lightning:margin" : "{!$brand.spacing.none}",
+              "lightning:borderRadius" : "{!$brand.borderRadius.square}",
+              "lightning:borderWidth" : "{!$brand.borderWeight.none}",
+              "text" : "<br /><strong>Important: </strong>To record consent from form submissions, edit the campaign flow and configure the Create Consent Record action."
+            }
+          } ]
+        }, {
+          "id" : "84a62c3d-66e9-4ee6-9ecd-1b2d9bb34db4",
+          "type" : "block",
+          "definition" : "lightning/column",
+          "attributes" : {
+            "columnWidth" : 6,
+            "lightning:colorScheme" : "{!$brand.colorScheme}",
+            "lightning:margin" : "{!$brand.spacing.none}",
+            "lightning:padding" : "{!$brand.spacing.xSmall}",
+            "lightning:borderRadius" : "{!$brand.borderRadius.square}",
+            "lightning:borderWidth" : "{!$brand.borderWeight.thin}",
+            "lightning:verticalAlignment" : "top",
+            "lightning:backgroundImage" : {
+              "repeat" : "no-repeat",
+              "position" : "center center",
+              "size" : "cover"
+            }
+          },
+          "children" : [ {
+            "id" : "f74e576f-96bf-47a9-a5fc-c91e694d604d",
+            "type" : "block",
+            "definition" : "lightning/form",
+            "attributes" : {
+              "formInfo" : "MCL7OOBQSP4REGNABENPDQSID2OA"
+            }
+          } ]
+        } ]
+      }, {
+        "id" : "bd04d791-4ad5-4c2a-ace4-5871b0ac4f61",
+        "type" : "block",
+        "definition" : "lightning/section",
+        "attributes" : {
+          "stackOnMobile" : true,
+          "lightning:colorScheme" : "{!$brand.colorScheme}",
+          "lightning:margin" : "{!$brand.spacing.none}",
+          "lightning:padding" : "{!$brand.spacing.xSmall}",
+          "lightning:borderRadius" : "{!$brand.borderRadius.square}",
+          "lightning:borderWidth" : "{!$brand.borderWeight.none}",
+          "lightning:backgroundImage" : {
+            "repeat" : "no-repeat",
+            "position" : "center center",
+            "size" : "cover"
+          },
+          "reverseOrderOnMobile" : false
+        },
+        "children" : [ {
+          "id" : "2277313c-5b7a-4f76-8375-01ff79c12b8d",
+          "type" : "block",
+          "definition" : "lightning/column",
+          "attributes" : {
+            "columnWidth" : 2,
+            "lightning:colorScheme" : "{!$brand.colorScheme}",
+            "lightning:margin" : "{!$brand.spacing.none}",
+            "lightning:padding" : "{!$brand.spacing.xSmall}",
+            "lightning:borderRadius" : "{!$brand.borderRadius.square}",
+            "lightning:borderWidth" : "{!$brand.borderWeight.none}",
+            "lightning:verticalAlignment" : "top",
+            "lightning:backgroundImage" : {
+              "repeat" : "no-repeat",
+              "position" : "center center",
+              "size" : "cover"
+            }
+          },
+          "children" : [ ]
+        }, {
+          "id" : "c2f628c0-94cc-41d3-a700-3e8bd76354f3",
+          "type" : "block",
+          "definition" : "lightning/column",
+          "attributes" : {
+            "columnWidth" : 3,
+            "lightning:colorScheme" : "{!$brand.colorScheme}",
+            "lightning:margin" : "{!$brand.spacing.none}",
+            "lightning:padding" : "{!$brand.spacing.xSmall}",
+            "lightning:borderRadius" : "{!$brand.borderRadius.square}",
+            "lightning:borderWidth" : "{!$brand.borderWeight.none}",
+            "lightning:verticalAlignment" : "top",
+            "lightning:backgroundImage" : {
+              "repeat" : "no-repeat",
+              "position" : "center center",
+              "size" : "cover"
+            }
+          },
+          "children" : [ {
+            "id" : "43fcdeb4-c603-4d21-af30-d0e371bdfd96",
+            "type" : "block",
+            "definition" : "lightning/image",
+            "attributes" : {
+              "imageFitConfig" : {
+                "width" : {
+                  "value" : 100,
+                  "unit" : "%"
+                }
+              },
+              "lightning:padding" : "{!$brand.spacing.none}",
+              "lightning:margin" : {
+                "top" : {
+                  "value" : 0,
+                  "unit" : "px"
+                },
+                "right" : {
+                  "value" : 0,
+                  "unit" : "px"
+                },
+                "bottom" : {
+                  "value" : 0,
+                  "unit" : "px"
+                },
+                "left" : {
+                  "value" : 0,
+                  "unit" : "px"
+                }
+              },
+              "lightning:horizontalAlignment" : "center",
+              "lightning:typography" : "{!$brand.typography.paragraph.paragraph1}",
+              "lightning:colorGroup" : {
+                "backgroundColor" : "{!$brand.colorScheme.root}",
+                "textColor" : "{!$brand.colorScheme.contrast}",
+                "linkColor" : "{!$brand.colorScheme.primaryAccent}",
+                "borderColor" : "{!$brand.colorScheme.neutral}"
+              },
+              "lightning:borderRadius" : "{!$brand.borderRadius.square}",
+              "lightning:borderWidth" : "{!$brand.borderWeight.none}",
+              "imageInfo" : {
+                "source" : {
+                  "type" : "imageReference",
+                  "ref" : "DEFAULT_LANDING_PAGE_ASTRO686ad2238f644f27aeed6f23fe8ba853"
+                },
+                "url" : "/cms/media/MCDNX34QDDRVB57KJP42HP2QBXJ4?fileName=DEFAULT_LANDING_PAGE_ASTRO686ad2238f644f27aeed6f23fe8ba853&fileHash=9b24b1a2b05beaa07b371d32d2d99a53"
+              }
+            }
+          } ]
+        }, {
+          "id" : "71adfa3d-5a19-49cd-8995-ce3c2dba145c",
+          "type" : "block",
+          "definition" : "lightning/column",
+          "attributes" : {
+            "columnWidth" : 5,
+            "lightning:colorScheme" : "{!$brand.colorScheme}",
+            "lightning:margin" : "{!$brand.spacing.none}",
+            "lightning:padding" : "{!$brand.spacing.xSmall}",
+            "lightning:borderRadius" : "{!$brand.borderRadius.square}",
+            "lightning:borderWidth" : "{!$brand.borderWeight.none}",
+            "lightning:verticalAlignment" : "top",
+            "lightning:backgroundImage" : {
+              "repeat" : "no-repeat",
+              "position" : "center center",
+              "size" : "cover"
+            }
+          },
+          "children" : [ {
+            "id" : "bc227e5f-57bf-456c-94ea-be0f217962c7",
+            "type" : "block",
+            "definition" : "lightning/heading",
+            "attributes" : {
+              "level" : 3.0,
+              "align" : "left",
+              "lightning:typography" : "{!$brand.typography.heading.heading2}",
+              "lightning:colorGroup" : {
+                "backgroundColor" : "{!$brand.colorScheme.root}",
+                "textColor" : "{!$brand.colorScheme.contrast}",
+                "linkColor" : "{!$brand.colorScheme.primaryAccent}",
+                "borderColor" : "{!$brand.colorScheme.neutral}"
+              },
+              "lightning:padding" : "{!$brand.spacing.none}",
+              "lightning:margin" : "{!$brand.spacing.none}",
+              "lightning:borderRadius" : "{!$brand.borderRadius.square}",
+              "lightning:borderWidth" : "{!$brand.borderWeight.none}",
+              "text" : "<em>&#34;Display a testimonial from a customer here. Or, use this space for a motto or a catchphrase about your business.&#34;</em>"
+            }
+          } ]
+        }, {
+          "id" : "378b1d87-e401-453b-bb0e-8c0084a109f4",
+          "type" : "block",
+          "definition" : "lightning/column",
+          "attributes" : {
+            "columnWidth" : 2,
+            "lightning:colorScheme" : "{!$brand.colorScheme}",
+            "lightning:margin" : "{!$brand.spacing.none}",
+            "lightning:padding" : "{!$brand.spacing.xSmall}",
+            "lightning:borderRadius" : "{!$brand.borderRadius.square}",
+            "lightning:borderWidth" : "{!$brand.borderWeight.none}",
+            "lightning:verticalAlignment" : "top",
+            "lightning:backgroundImage" : {
+              "repeat" : "no-repeat",
+              "position" : "center center",
+              "size" : "cover"
+            }
+          },
+          "children" : [ ]
+        } ]
+      }, {
+        "id" : "2eac7b9b-4065-4e7f-ad0a-c8d9eb02ba21",
+        "type" : "block",
+        "definition" : "lightning/section",
+        "attributes" : {
+          "stackOnMobile" : true,
+          "lightning:colorScheme" : "{!$brand.colorScheme}",
+          "lightning:margin" : "{!$brand.spacing.none}",
+          "lightning:padding" : "{!$brand.spacing.xSmall}",
+          "lightning:borderRadius" : "{!$brand.borderRadius.square}",
+          "lightning:borderWidth" : "{!$brand.borderWeight.none}",
+          "lightning:backgroundImage" : {
+            "repeat" : "no-repeat",
+            "position" : "center center",
+            "size" : "cover"
+          },
+          "reverseOrderOnMobile" : false
+        },
+        "children" : [ {
+          "id" : "004e2b75-df1d-4799-823f-5f09533fac6e",
+          "type" : "block",
+          "definition" : "lightning/column",
+          "attributes" : {
+            "columnWidth" : 12,
+            "lightning:colorScheme" : {
+              "root" : "#f3f3f3",
+              "contrast" : "#000000",
+              "primaryAccent" : "#0176d3",
+              "primaryAccentDerived" : "#004ba1",
+              "primaryAccentContrast" : "#ffffff",
+              "primaryAccentContrastDerived" : "#ffffff",
+              "neutral" : "#747474"
+            },
+            "lightning:margin" : "{!$brand.spacing.medium}",
+            "lightning:padding" : "{!$brand.spacing.large}",
+            "lightning:borderRadius" : "{!$brand.borderRadius.square}",
+            "lightning:borderWidth" : "{!$brand.borderWeight.none}",
+            "lightning:verticalAlignment" : "top",
+            "lightning:backgroundImage" : {
+              "repeat" : "no-repeat",
+              "position" : "center center",
+              "size" : "cover"
+            }
+          },
+          "children" : [ {
+            "id" : "f110b02a-0188-4ad9-a1a7-2ace7b71f5bf",
+            "type" : "block",
+            "definition" : "lightning/heading",
+            "attributes" : {
+              "level" : 3.0,
+              "align" : "center",
+              "lightning:typography" : "{!$brand.typography.heading.heading3}",
+              "lightning:colorGroup" : {
+                "backgroundColor" : "{!$brand.colorScheme.root}",
+                "textColor" : "{!$brand.colorScheme.contrast}",
+                "linkColor" : "{!$brand.colorScheme.primaryAccent}",
+                "borderColor" : "{!$brand.colorScheme.neutral}"
+              },
+              "lightning:padding" : "{!$brand.spacing.none}",
+              "lightning:margin" : "{!$brand.spacing.none}",
+              "lightning:borderRadius" : "{!$brand.borderRadius.square}",
+              "lightning:borderWidth" : "{!$brand.borderWeight.none}",
+              "text" : "Tips for designing your page"
+            }
+          }, {
+            "id" : "e84a7d75-976e-4563-92ee-989c39cb9f96",
+            "type" : "block",
+            "definition" : "lightning/html",
+            "attributes" : {
+              "lightning:colorGroup" : {
+                "backgroundColor" : "{!$brand.colorScheme.root}",
+                "textColor" : "{!$brand.colorScheme.contrast}",
+                "linkColor" : "{!$brand.colorScheme.primaryAccent}",
+                "borderColor" : "{!$brand.colorScheme.neutral}"
+              },
+              "lightning:padding" : "{!$brand.spacing.none}",
+              "lightning:margin" : "{!$brand.spacing.none}",
+              "lightning:borderRadius" : "{!$brand.borderRadius.square}",
+              "lightning:borderWidth" : "{!$brand.borderWeight.none}",
+              "rawHtml" : "<hr style=\"border-width: 2px; margin: 0 20%; color: #c9c9c9\" />"
+            }
+          }, {
+            "id" : "e1990a01-699a-4de4-927e-199a7f8e51b9",
+            "type" : "block",
+            "definition" : "lightning/paragraph",
+            "attributes" : {
+              "align" : "left",
+              "lightning:typography" : "{!$brand.typography.paragraph.paragraph1}",
+              "lightning:colorGroup" : {
+                "backgroundColor" : "{!$brand.colorScheme.root}",
+                "textColor" : "{!$brand.colorScheme.contrast}",
+                "linkColor" : "{!$brand.colorScheme.primaryAccent}",
+                "borderColor" : "{!$brand.colorScheme.neutral}"
+              },
+              "lightning:padding" : "{!$brand.spacing.none}",
+              "lightning:margin" : "{!$brand.spacing.none}",
+              "lightning:borderRadius" : "{!$brand.borderRadius.square}",
+              "lightning:borderWidth" : "{!$brand.borderWeight.none}",
+              "text" : "For each component, you can change the color, border, layout, and other properties in the Style panel. In text components like Paragraph and Heading, you can customize the font, alignment, and other formatting. You can also include text variables with merge fields. \n\nDon’t forget to replace the links in the footer with links to your company’s social media pages! As for this component, you can make it your own or remove it from your landing page. No hard feelings either way.\n        "
+            }
+          } ]
+        } ]
+      }, {
+        "id" : "57b66b0f-6796-45ef-912b-4c0d1d2e0827",
+        "type" : "block",
+        "definition" : "lightning/section",
+        "attributes" : {
+          "stackOnMobile" : true,
+          "lightning:colorScheme" : "{!$brand.colorScheme}",
+          "lightning:margin" : "{!$brand.spacing.none}",
+          "lightning:padding" : "{!$brand.spacing.xSmall}",
+          "lightning:borderRadius" : "{!$brand.borderRadius.square}",
+          "lightning:borderWidth" : "{!$brand.borderWeight.none}",
+          "lightning:backgroundImage" : {
+            "repeat" : "no-repeat",
+            "position" : "center center",
+            "size" : "cover"
+          },
+          "reverseOrderOnMobile" : false
+        },
+        "children" : [ {
+          "id" : "150da6db-f79a-4f15-8755-dcfc82789b09",
+          "type" : "block",
+          "definition" : "lightning/column",
+          "attributes" : {
+            "columnWidth" : 12,
+            "lightning:colorScheme" : "{!$brand.colorScheme}",
+            "lightning:margin" : "{!$brand.spacing.medium}",
+            "lightning:padding" : "{!$brand.spacing.none}",
+            "lightning:borderRadius" : {
+              "value" : 0,
+              "unit" : "px"
+            },
+            "lightning:borderWidth" : "{!$brand.borderWeight.none}",
+            "lightning:verticalAlignment" : "top",
+            "lightning:backgroundImage" : {
+              "repeat" : "no-repeat",
+              "position" : "center center",
+              "size" : "cover"
+            }
+          },
+          "children" : [ {
+            "id" : "cf77a9e4-57f9-4cf4-8558-7f40ced5bd4c",
+            "type" : "block",
+            "definition" : "lightning/html",
+            "attributes" : {
+              "lightning:colorGroup" : {
+                "backgroundColor" : "{!$brand.colorScheme.root}",
+                "textColor" : "{!$brand.colorScheme.contrast}",
+                "linkColor" : "{!$brand.colorScheme.primaryAccent}",
+                "borderColor" : "{!$brand.colorScheme.neutral}"
+              },
+              "lightning:padding" : "{!$brand.spacing.none}",
+              "lightning:margin" : {
+                "top" : {
+                  "value" : 10,
+                  "unit" : "px"
+                },
+                "right" : {
+                  "value" : 20,
+                  "unit" : "px"
+                },
+                "bottom" : {
+                  "value" : 20,
+                  "unit" : "px"
+                },
+                "left" : {
+                  "value" : 20,
+                  "unit" : "px"
+                }
+              },
+              "lightning:borderRadius" : "{!$brand.borderRadius.square}",
+              "lightning:borderWidth" : "{!$brand.borderWeight.none}",
+              "rawHtml" : "<center><a href=\"https://www.facebook.com\">Facebook</a> | <a href=\"https://www.instagram.com\">Instagram</a></center>"
+            }
+          } ]
+        } ]
+      } ]
+    },
+    "sfdc_cms:title" : "SAMPLE MC Form Landing Page",
+    "lightning:backgroundImage" : {
+      "repeat" : "no-repeat",
+      "position" : "center center",
+      "size" : "cover"
+    },
+    "sfdc_cms:seoProperties" : {
+      "title" : "SAMPLE MC Form Landing Page",
+      "isIndexed" : false
+    },
+    "lightning:dataProviders" : [ ],
+    "sfdc_cms:variants" : [ ],
+    "lightning:expressions" : [ ]
+  },
+  "urlName" : "sample-mc-form-landing-page"
+}

@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <help><!-- Stable district key (e.g. NYC CSD number). Used as External Id so data-loader resolves District_Ring__c parents by this value. Written to IndividualApplication.Student_District_Id__c on point-in-polygon match. --></help>
+    <label><!-- District Id --></label>
+    <name>District_Id__c</name>
+</CustomFieldTranslation>

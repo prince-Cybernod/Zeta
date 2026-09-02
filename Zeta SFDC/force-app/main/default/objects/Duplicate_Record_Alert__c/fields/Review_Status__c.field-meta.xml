@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Review_Status__c</fullName>
+    <description>Tracks where the duplicate review is at so staff can filter duplicates out of reports and manage cleanup.</description>
+    <label>Status</label>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>New</fullName>
+                <default>false</default>
+                <label>New</label>
+            </value>
+            <value>
+                <fullName>Confirmed Duplicate</fullName>
+                <default>false</default>
+                <label>Confirmed Duplicate</label>
+            </value>
+            <value>
+                <fullName>Not a Duplicate</fullName>
+                <default>false</default>
+                <label>Not a Duplicate</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

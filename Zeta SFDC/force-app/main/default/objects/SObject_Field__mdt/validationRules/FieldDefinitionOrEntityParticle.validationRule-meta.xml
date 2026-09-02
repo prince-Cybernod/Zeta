@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>FieldDefinitionOrEntityParticle</fullName>
+    <active>true</active>
+    <description>Ensures exactly one of Field Definition or Entity Particle is populated, not both or neither.</description>
+    <errorConditionFormula>OR(
+  /* Preventing both from being populated */
+  AND(
+    NOT(ISBLANK(Field_Definition__c)),
+    NOT(ISBLANK(Entity_Particle__c))
+  ),
+  /* Preventing both from being blank */
+  AND(
+    ISBLANK(Field_Definition__c),
+    ISBLANK(Entity_Particle__c)
+  )
+)</errorConditionFormula>
+    <errorMessage>Populate either Field Definition or Entity Particle, not both.</errorMessage>
+</ValidationRule>

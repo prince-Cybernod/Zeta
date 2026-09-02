@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomMetadata xmlns="http://soap.sforce.com/2006/04/metadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <label>Add Second Guardian?</label>
+    <protected>false</protected>
+    <values>
+        <field>Column_Span__c</field>
+        <value xsi:type="xsd:double">1.0</value>
+    </values>
+    <values>
+        <field>Companion_Question__c</field>
+        <value xsi:nil="true"/>
+    </values>
+    <values>
+        <field>Default_Value__c</field>
+        <value xsi:nil="true"/>
+    </values>
+    <values>
+        <field>Display_Label__c</field>
+        <value xsi:type="xsd:string">AppQ_HasSecondGuardian_Label</value>
+    </values>
+    <values>
+        <field>Field_Bindings__c</field>
+        <value xsi:nil="true"/>
+    </values>
+    <values>
+        <field>Help_Text__c</field>
+        <value xsi:nil="true"/>
+    </values>
+    <values>
+        <field>Input_Type__c</field>
+        <value xsi:type="xsd:string">Checkbox</value>
+    </values>
+    <values>
+        <field>Invert_Display__c</field>
+        <value xsi:type="xsd:boolean">false</value>
+    </values>
+    <values>
+        <field>Is_Active__c</field>
+        <value xsi:type="xsd:boolean">true</value>
+    </values>
+    <values>
+        <field>Is_Required__c</field>
+        <value xsi:type="xsd:boolean">false</value>
+    </values>
+    <values>
+        <field>Max_Length__c</field>
+        <value xsi:nil="true"/>
+    </values>
+    <values>
+        <field>Placeholder__c</field>
+        <value xsi:nil="true"/>
+    </values>
+    <values>
+        <field>Section__c</field>
+        <value xsi:type="xsd:string">Second_Guardian_Toggle</value>
+    </values>
+    <values>
+        <field>Sort_Order__c</field>
+        <value xsi:type="xsd:double">1.0</value>
+    </values>
+    <values>
+        <field>Target_Field__c</field>
+        <value xsi:type="xsd:string">IndApp_Has_Second_Guardian</value>
+    </values>
+    <values>
+        <field>Validation_Message__c</field>
+        <value xsi:nil="true"/>
+    </values>
+    <values>
+        <field>Validation_Pattern__c</field>
+        <value xsi:nil="true"/>
+    </values>
+    <values>
+        <field>Variant__c</field>
+        <value xsi:nil="true"/>
+    </values>
+    <values>
+        <field>Visibility_Criteria__c</field>
+        <value xsi:nil="true"/>
+    </values>
+</CustomMetadata>

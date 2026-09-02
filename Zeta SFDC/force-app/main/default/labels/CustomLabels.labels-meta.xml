@@ -1,0 +1,2911 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomLabels xmlns="http://soap.sforce.com/2006/04/metadata">
+    <labels>
+        <fullName>Action_Plan_Button_Complete_Form</fullName>
+        <categories>Action Plans UI</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Button Complete Form</shortDescription>
+        <value>Complete Form</value>
+    </labels>
+    <labels>
+        <fullName>Action_Plan_Completed</fullName>
+        <categories>Action Plans UI</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Completed</shortDescription>
+        <value>Completed</value>
+    </labels>
+    <labels>
+        <fullName>Action_Plan_Due_By</fullName>
+        <categories>Action Plans UI</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Due By</shortDescription>
+        <value>Due By</value>
+    </labels>
+    <labels>
+        <fullName>Action_Plan_Guardian_Tasks_Subtitle</fullName>
+        <categories>Action Plans UI</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Guardian Tasks Subtitle</shortDescription>
+        <value>Please complete below</value>
+    </labels>
+    <labels>
+        <fullName>Action_Plan_No_Tasks</fullName>
+        <categories>Action Plans UI</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>No Tasks Message</shortDescription>
+        <value>You have no tasks to complete at this time</value>
+    </labels>
+    <labels>
+        <fullName>Action_Plan_View_All_Tasks</fullName>
+        <categories>Action Plans UI</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>View All Tasks</shortDescription>
+        <value>View All Tasks</value>
+    </labels>
+    <labels>
+        <fullName>AppP_ApplicationDetails_Description</fullName>
+        <categories>Application</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Application details page description</shortDescription>
+        <value>Please fill out the following information.</value>
+    </labels>
+    <labels>
+        <fullName>AppPdf_Email</fullName>
+        <categories>Application</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Email field label</shortDescription>
+        <value>Email</value>
+    </labels>
+    <labels>
+        <fullName>AppPdf_FirstName</fullName>
+        <categories>Application</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>PDF student first name label</shortDescription>
+        <value>First Name</value>
+    </labels>
+    <labels>
+        <fullName>AppPdf_Footer</fullName>
+        <categories>Application</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>PDF footer text</shortDescription>
+        <value>Zeta Charter Schools — This document was auto-generated at the time of application submission.</value>
+    </labels>
+    <labels>
+        <fullName>AppPdf_GradeApplyingTo</fullName>
+        <categories>Application</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Grade applying to label</shortDescription>
+        <value>Grade Applying To</value>
+    </labels>
+    <labels>
+        <fullName>AppPdf_Guardian1Name</fullName>
+        <categories>Application</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Guardian 1 name label</shortDescription>
+        <value>Guardian 1 Name</value>
+    </labels>
+    <labels>
+        <fullName>AppPdf_Guardian2</fullName>
+        <categories>Application</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Guardian 2 section title</shortDescription>
+        <value>Guardian 2</value>
+    </labels>
+    <labels>
+        <fullName>AppPdf_GuardianInformation</fullName>
+        <categories>Application</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Guardian information section title</shortDescription>
+        <value>Guardian Information</value>
+    </labels>
+    <labels>
+        <fullName>AppPdf_LastName</fullName>
+        <categories>Application</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>PDF student last name label</shortDescription>
+        <value>Last Name</value>
+    </labels>
+    <labels>
+        <fullName>AppPdf_Phone</fullName>
+        <categories>Application</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Phone field label</shortDescription>
+        <value>Phone</value>
+    </labels>
+    <labels>
+        <fullName>AppPdf_Rank</fullName>
+        <categories>Application</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Rank column header</shortDescription>
+        <value>Rank</value>
+    </labels>
+    <labels>
+        <fullName>AppPdf_ReferenceNumber</fullName>
+        <categories>Application</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>PDF reference number label</shortDescription>
+        <value>Reference Number</value>
+    </labels>
+    <labels>
+        <fullName>AppPdf_Relationship</fullName>
+        <categories>Application</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Relationship field label</shortDescription>
+        <value>Relationship</value>
+    </labels>
+    <labels>
+        <fullName>AppPdf_SchoolName</fullName>
+        <categories>Application</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>School name column header</shortDescription>
+        <value>School Name</value>
+    </labels>
+    <labels>
+        <fullName>AppPdf_SubmittedOn</fullName>
+        <categories>Application</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>PDF submitted on label</shortDescription>
+        <value>Submitted on</value>
+    </labels>
+    <labels>
+        <fullName>AppQ_AppDescription_Label</fullName>
+        <categories>Application</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>App description question label</shortDescription>
+        <value>Anything else you&apos;d like us to know?</value>
+    </labels>
+    <labels>
+        <fullName>AppQ_EmailConsent_Label</fullName>
+        <categories>Application</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Email consent question label</shortDescription>
+        <value>Yes, I want to receive emails with more information about Zeta (recommended)</value>
+    </labels>
+    <labels>
+        <fullName>AppQ_EmailOptOut_Label</fullName>
+        <categories>Application</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Email opt-out question label</shortDescription>
+        <value>No, I don&apos;t want to receive emails with more information about Zeta</value>
+    </labels>
+    <labels>
+        <fullName>AppQ_EmployeeFirstName_Label</fullName>
+        <categories>Application</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Employee first name question label</shortDescription>
+        <value>Employee First Name</value>
+    </labels>
+    <labels>
+        <fullName>AppQ_EmployeeLastName_Label</fullName>
+        <categories>Application</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Employee last name question label</shortDescription>
+        <value>Employee Last Name</value>
+    </labels>
+    <labels>
+        <fullName>AppQ_EmployeePriorityGuardian_Label</fullName>
+        <categories>Application</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Employee priority guardian picker label</shortDescription>
+        <value>Which guardian is the Zeta employee?</value>
+    </labels>
+    <labels>
+        <fullName>AppQ_EmployeePriority_Label</fullName>
+        <categories>Application</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Employee priority question label</shortDescription>
+        <value>Is a guardian a Zeta employee?</value>
+    </labels>
+    <labels>
+        <fullName>AppQ_EmployeeWorkplace_Label</fullName>
+        <categories>Application</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Employee workplace question label</shortDescription>
+        <value>Workplace</value>
+    </labels>
+    <labels>
+        <fullName>AppQ_Guardian1Email_Label</fullName>
+        <categories>Application</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Guardian 1 email question label</shortDescription>
+        <value>Email Address</value>
+    </labels>
+    <labels>
+        <fullName>AppQ_Guardian1Email_Placeholder</fullName>
+        <categories>Application</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Guardian email placeholder</shortDescription>
+        <value>Enter email address</value>
+    </labels>
+    <labels>
+        <fullName>AppQ_Guardian1FirstName_Placeholder</fullName>
+        <categories>Application</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Guardian first name placeholder</shortDescription>
+        <value>Enter first name</value>
+    </labels>
+    <labels>
+        <fullName>AppQ_Guardian1LastName_Placeholder</fullName>
+        <categories>Application</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Guardian last name placeholder</shortDescription>
+        <value>Enter last name</value>
+    </labels>
+    <labels>
+        <fullName>AppQ_Guardian1Phone_Label</fullName>
+        <categories>Application</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Guardian 1 phone question label</shortDescription>
+        <value>Phone Number</value>
+    </labels>
+    <labels>
+        <fullName>AppQ_Guardian1Phone_Placeholder</fullName>
+        <categories>Application</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Guardian phone placeholder</shortDescription>
+        <value>Enter phone number</value>
+    </labels>
+    <labels>
+        <fullName>AppQ_Guardian1Relationship_HelpText</fullName>
+        <categories>Application</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Guardian relationship help text</shortDescription>
+        <value>Select your relationship to the student</value>
+    </labels>
+    <labels>
+        <fullName>AppQ_Guardian2AddressSame_Label</fullName>
+        <categories>Application</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Guardian 2 same address checkbox label</shortDescription>
+        <value>Same address as primary guardian?</value>
+    </labels>
+    <labels>
+        <fullName>AppQ_Guardian2City_Label</fullName>
+        <categories>Application</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Guardian 2 city question label</shortDescription>
+        <value>City</value>
+    </labels>
+    <labels>
+        <fullName>AppQ_Guardian2Email_Label</fullName>
+        <categories>Application</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Guardian 2 email question label</shortDescription>
+        <value>Email</value>
+    </labels>
+    <labels>
+        <fullName>AppQ_Guardian2Email_Placeholder</fullName>
+        <categories>Application</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Guardian 2 email placeholder</shortDescription>
+        <value>Enter email address</value>
+    </labels>
+    <labels>
+        <fullName>AppQ_Guardian2Phone_Label</fullName>
+        <categories>Application</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Guardian 2 phone question label</shortDescription>
+        <value>Phone</value>
+    </labels>
+    <labels>
+        <fullName>AppQ_Guardian2Phone_Placeholder</fullName>
+        <categories>Application</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Guardian 2 phone placeholder</shortDescription>
+        <value>Enter phone number</value>
+    </labels>
+    <labels>
+        <fullName>AppQ_Guardian2State_Label</fullName>
+        <categories>Application</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Guardian 2 state question label</shortDescription>
+        <value>State</value>
+    </labels>
+    <labels>
+        <fullName>AppQ_Guardian2Street_Label</fullName>
+        <categories>Application</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Guardian 2 street question label</shortDescription>
+        <value>Street Address</value>
+    </labels>
+    <labels>
+        <fullName>AppQ_Guardian2Zip_Label</fullName>
+        <categories>Application</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Guardian 2 zip question label</shortDescription>
+        <value>Zip Code</value>
+    </labels>
+    <labels>
+        <fullName>AppQ_HasSecondGuardian_Label</fullName>
+        <categories>Application</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Has second guardian question label</shortDescription>
+        <value>Add Second Guardian?</value>
+    </labels>
+    <labels>
+        <fullName>AppQ_HowDidYouHear_Label</fullName>
+        <categories>Application</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>How did you hear question label</shortDescription>
+        <value>How did you hear about us?</value>
+    </labels>
+    <labels>
+        <fullName>AppQ_Phone_ValidationMessage</fullName>
+        <categories>Application</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Phone field validation message</shortDescription>
+        <value>Enter a valid 10-digit phone number, for example 123-456-7890.</value>
+    </labels>
+    <labels>
+        <fullName>AppQ_ReferralName_Label</fullName>
+        <categories>Application</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Referral name question label</shortDescription>
+        <value>Who referred you to Zeta?</value>
+    </labels>
+    <labels>
+        <fullName>AppQ_RelationshipToStudent_Label</fullName>
+        <categories>Application</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Relationship to student question label</shortDescription>
+        <value>Relationship to Student</value>
+    </labels>
+    <labels>
+        <fullName>AppQ_SiblingApplying_Label</fullName>
+        <categories>Application</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Sibling also applying question label</shortDescription>
+        <value>Sibling Also Applying?</value>
+    </labels>
+    <labels>
+        <fullName>AppQ_SiblingAttending_Label</fullName>
+        <categories>Application</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Sibling attending question label</shortDescription>
+        <value>Sibling Attending Zeta School?</value>
+    </labels>
+    <labels>
+        <fullName>AppQ_TextMessageOptIn_Label</fullName>
+        <categories>Application</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Text message opt-in question label</shortDescription>
+        <value>Yes, I want to receive texts about my application (recommended)</value>
+    </labels>
+    <labels>
+        <fullName>AppQ_TextMessageOptOut_Label</fullName>
+        <categories>Application</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Text message opt-out question label</shortDescription>
+        <value>No, I don&apos;t want to receive texts about my application</value>
+    </labels>
+    <labels>
+        <fullName>AppQ_VerifyDropdown_Help</fullName>
+        <categories>Application</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Verify dropdown help text</shortDescription>
+        <value>Select how you found us</value>
+    </labels>
+    <labels>
+        <fullName>AppQ_VerifyTextArea_Placeholder</fullName>
+        <categories>Application</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Verify textarea placeholder</shortDescription>
+        <value>Describe your situation</value>
+    </labels>
+    <labels>
+        <fullName>AppQ_VerifyText_Placeholder</fullName>
+        <categories>Application</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Verify text placeholder</shortDescription>
+        <value>Enter employee first name</value>
+    </labels>
+    <labels>
+        <fullName>AppS_AdditionalInfo_Label</fullName>
+        <categories>Application</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Additional information section label</shortDescription>
+        <value>Additional Information</value>
+    </labels>
+    <labels>
+        <fullName>AppS_ApplicationInfo_Label</fullName>
+        <categories>Application</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Application info section label</shortDescription>
+        <value>Application Info</value>
+    </labels>
+    <labels>
+        <fullName>AppS_CommPrefs_Desc</fullName>
+        <categories>Application</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Communication preferences section description</shortDescription>
+        <value>We&apos;d like to keep you informed about your child&apos;s application. Please indicate your communication preferences below.</value>
+    </labels>
+    <labels>
+        <fullName>AppS_CommPrefs_Label</fullName>
+        <categories>Application</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Communication preferences section label</shortDescription>
+        <value>Communication Preferences</value>
+    </labels>
+    <labels>
+        <fullName>AppS_EmployeeDetails_Desc</fullName>
+        <categories>Application</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Employee details section description</shortDescription>
+        <value>This section appears when Employee Priority is checked</value>
+    </labels>
+    <labels>
+        <fullName>AppS_EmployeeInfo_Label</fullName>
+        <categories>Application</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Employee information section label</shortDescription>
+        <value>Employee Information</value>
+    </labels>
+    <labels>
+        <fullName>AppS_Guardian2Address_Label</fullName>
+        <categories>Application</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Guardian 2 address section label</shortDescription>
+        <value>Secondary Guardian Address</value>
+    </labels>
+    <labels>
+        <fullName>AppS_Guardian2Info_Label</fullName>
+        <categories>Application</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Guardian 2 information section label</shortDescription>
+        <value>Guardian 2 Information</value>
+    </labels>
+    <labels>
+        <fullName>AppS_GuardianInfo_Label</fullName>
+        <categories>Application</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Guardian information section label</shortDescription>
+        <value>Guardian Information</value>
+    </labels>
+    <labels>
+        <fullName>AppS_PriorityToggles_Label</fullName>
+        <categories>Application</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Priority toggles section label</shortDescription>
+        <value>Priorities</value>
+    </labels>
+    <labels>
+        <fullName>AppUI_AddAStudent</fullName>
+        <categories>Application</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Add a student tile label (first student)</shortDescription>
+        <value>Add a Student</value>
+    </labels>
+    <labels>
+        <fullName>AppUI_AddAnotherStudent</fullName>
+        <categories>Application</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Add another student tile label</shortDescription>
+        <value>Add Another Student</value>
+    </labels>
+    <labels>
+        <fullName>AppUI_AddAttendingSiblingNotListed</fullName>
+        <categories>Application</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Button label to add an attending sibling not in the detected list</shortDescription>
+        <value>Add a sibling attending a Zeta school not listed</value>
+    </labels>
+    <labels>
+        <fullName>AppUI_AddSibling</fullName>
+        <categories>Application</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Add a sibling button (shared, simplified label)</shortDescription>
+        <value>Add a sibling</value>
+    </labels>
+    <labels>
+        <fullName>AppUI_AddSiblingApplying</fullName>
+        <categories>Application</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Add sibling applying button</shortDescription>
+        <value>Add Sibling Applying</value>
+    </labels>
+    <labels>
+        <fullName>AppUI_AddSiblingAttending</fullName>
+        <categories>Application</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Add sibling attending button</shortDescription>
+        <value>Add Sibling Attending</value>
+    </labels>
+    <labels>
+        <fullName>AppUI_AddStudent</fullName>
+        <categories>Application</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Add student button label</shortDescription>
+        <value>Add Student</value>
+    </labels>
+    <labels>
+        <fullName>AppUI_AgeWarning</fullName>
+        <categories>Application</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Age restriction warning</shortDescription>
+        <value>Based on the date of birth provided, this student may not meet the age requirements for the selected grade. You may still submit.</value>
+    </labels>
+    <labels>
+        <fullName>AppUI_AllChangesSaved</fullName>
+        <categories>Application</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>All changes saved status</shortDescription>
+        <value>All changes saved</value>
+    </labels>
+    <labels>
+        <fullName>AppUI_AlreadyEnrolled</fullName>
+        <categories>Application</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Already enrolled error message</shortDescription>
+        <value>This student is already enrolled at a Zeta school. To request a transfer, please contact us.</value>
+    </labels>
+    <labels>
+        <fullName>AppUI_AppSubmittedFor</fullName>
+        <categories>Application</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Application submitted for student</shortDescription>
+        <value>Application submitted for {0}.</value>
+    </labels>
+    <labels>
+        <fullName>AppUI_ApplicationTitle</fullName>
+        <categories>Application</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Application title in header</shortDescription>
+        <value>Application 2026-2027</value>
+    </labels>
+    <labels>
+        <fullName>AppUI_ApplicationsClosed</fullName>
+        <categories>Application</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Applications closed message</shortDescription>
+        <value>The enrollment period has closed. Applications are no longer being accepted at this time. If you believe this is an error, please contact the school office.</value>
+    </labels>
+    <labels>
+        <fullName>AppUI_ApplyingFor</fullName>
+        <categories>Application</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Applying for student header</shortDescription>
+        <value>Applying for: {0}</value>
+    </labels>
+    <labels>
+        <fullName>AppUI_AriaAppProgress</fullName>
+        <categories>Application</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Aria: application progress nav</shortDescription>
+        <value>Application progress</value>
+    </labels>
+    <labels>
+        <fullName>AppUI_AriaLoadingApp</fullName>
+        <categories>Application</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Aria: loading application</shortDescription>
+        <value>Loading application</value>
+    </labels>
+    <labels>
+        <fullName>AppUI_AriaLoadingForm</fullName>
+        <categories>Application</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Aria: loading form</shortDescription>
+        <value>Loading form</value>
+    </labels>
+    <labels>
+        <fullName>AppUI_AriaLoadingNextStep</fullName>
+        <categories>Application</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Aria: loading next step</shortDescription>
+        <value>Loading next step</value>
+    </labels>
+    <labels>
+        <fullName>AppUI_AriaLoadingRankings</fullName>
+        <categories>Application</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Aria: loading school rankings</shortDescription>
+        <value>Loading school rankings</value>
+    </labels>
+    <labels>
+        <fullName>AppUI_AriaLoadingReview</fullName>
+        <categories>Application</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Aria: loading review</shortDescription>
+        <value>Loading review</value>
+    </labels>
+    <labels>
+        <fullName>AppUI_AriaLoadingSchools</fullName>
+        <categories>Application</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Aria: loading schools</shortDescription>
+        <value>Loading schools</value>
+    </labels>
+    <labels>
+        <fullName>AppUI_AriaLoadingSiblings</fullName>
+        <categories>Application</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Aria: loading siblings</shortDescription>
+        <value>Loading siblings</value>
+    </labels>
+    <labels>
+        <fullName>AppUI_AriaLoadingStudents</fullName>
+        <categories>Application</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Aria: loading students</shortDescription>
+        <value>Loading students</value>
+    </labels>
+    <labels>
+        <fullName>AppUI_AriaSchoolRankings</fullName>
+        <categories>Application</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Aria: school rankings list</shortDescription>
+        <value>School rankings</value>
+    </labels>
+    <labels>
+        <fullName>AppUI_AriaSchoolSelections</fullName>
+        <categories>Application</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Aria: school selections group</shortDescription>
+        <value>School selections</value>
+    </labels>
+    <labels>
+        <fullName>AppUI_AriaSelectStudent</fullName>
+        <categories>Application</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Aria: select a student radiogroup</shortDescription>
+        <value>Select a student</value>
+    </labels>
+    <labels>
+        <fullName>AppUI_AriaSubmittingApp</fullName>
+        <categories>Application</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Aria: submitting application spinner</shortDescription>
+        <value>Submitting application</value>
+    </labels>
+    <labels>
+        <fullName>AppUI_AriaUpdatingForm</fullName>
+        <categories>Application</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Aria: updating form spinner</shortDescription>
+        <value>Updating form</value>
+    </labels>
+    <labels>
+        <fullName>AppUI_Back</fullName>
+        <categories>Application</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Back button label</shortDescription>
+        <value>Back</value>
+    </labels>
+    <labels>
+        <fullName>AppUI_Cancel</fullName>
+        <categories>Application</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Cancel button label</shortDescription>
+        <value>Cancel</value>
+    </labels>
+    <labels>
+        <fullName>AppUI_CancelReturnToReview</fullName>
+        <categories>Application</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Cancel button label (post-submit ranking edit)</shortDescription>
+        <value>Cancel</value>
+    </labels>
+    <labels>
+        <fullName>AppUI_ChooseSchools</fullName>
+        <categories>Application</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Choose schools heading</shortDescription>
+        <value>Choose Your Schools</value>
+    </labels>
+    <labels>
+        <fullName>AppUI_ChooseSchoolsDesc</fullName>
+        <categories>Application</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Choose schools description</shortDescription>
+        <value>Select the Zeta schools you would like to apply to. You may choose as many as you like.</value>
+    </labels>
+    <labels>
+        <fullName>AppUI_Clear</fullName>
+        <categories>Application</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Clear button label</shortDescription>
+        <value>Clear</value>
+    </labels>
+    <labels>
+        <fullName>AppUI_ComingSoon</fullName>
+        <categories>Application</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Coming soon placeholder</shortDescription>
+        <value>Coming Soon</value>
+    </labels>
+    <labels>
+        <fullName>AppUI_CommPrefsOptOutWarning</fullName>
+        <categories>Application</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Opt-out warning modal body</shortDescription>
+        <value>You are choosing not to receive {0} from Zeta Charter Schools. You may miss important updates about your student&apos;s application and enrollment.</value>
+    </labels>
+    <labels>
+        <fullName>AppUI_CommPrefsValidationError</fullName>
+        <categories>Application</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Comm prefs cross-field validation error</shortDescription>
+        <value>Please choose either opt in or opt out for each communication type.</value>
+    </labels>
+    <labels>
+        <fullName>AppUI_ContactUsLinkText</fullName>
+        <categories>Application</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Contact-us hyperlink text in the already-enrolled message</shortDescription>
+        <value>contact us</value>
+    </labels>
+    <labels>
+        <fullName>AppUI_Continue</fullName>
+        <categories>Application</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Continue button label</shortDescription>
+        <value>Continue</value>
+    </labels>
+    <labels>
+        <fullName>AppUI_CreateStudentFailed</fullName>
+        <categories>Application</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Create student fallback error</shortDescription>
+        <value>Failed to add student. Please try again.</value>
+    </labels>
+    <labels>
+        <fullName>AppUI_Day</fullName>
+        <categories>Application</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Day label</shortDescription>
+        <value>Day</value>
+    </labels>
+    <labels>
+        <fullName>AppUI_DistanceLessThanPoint1</fullName>
+        <categories>Application</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Distance less than 0.1 miles</shortDescription>
+        <value>&lt; 0.1 mi</value>
+    </labels>
+    <labels>
+        <fullName>AppUI_DistanceMiles</fullName>
+        <categories>Application</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Distance in miles</shortDescription>
+        <value>{0} mi</value>
+    </labels>
+    <labels>
+        <fullName>AppUI_DuplicateApplication</fullName>
+        <categories>Application</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Duplicate application error message</shortDescription>
+        <value>An application has already been submitted for this student. Only one application per student per year is allowed.</value>
+    </labels>
+    <labels>
+        <fullName>AppUI_ESignatureDateLabel</fullName>
+        <categories>Application</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>E-signature date label</shortDescription>
+        <value>Signature Date</value>
+    </labels>
+    <labels>
+        <fullName>AppUI_ESignatureDateRequired</fullName>
+        <categories>Application</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>E-signature date required error</shortDescription>
+        <value>Please select a complete date (month, day, and year).</value>
+    </labels>
+    <labels>
+        <fullName>AppUI_ESignatureDisclaimer</fullName>
+        <categories>Application</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>E-signature legal disclaimer</shortDescription>
+        <value>By typing my name below, I certify that the information provided in this application is true and complete to the best of my knowledge. I understand that providing false or misleading information may result in the revocation of any offer of enrollment. I authorize Zeta Charter Schools to verify the information provided in this application.</value>
+    </labels>
+    <labels>
+        <fullName>AppUI_ESignatureNameLabel</fullName>
+        <categories>Application</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>E-signature name input label</shortDescription>
+        <value>Full Legal Name</value>
+    </labels>
+    <labels>
+        <fullName>AppUI_ESignatureNamePlaceholder</fullName>
+        <categories>Application</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>E-signature name input placeholder</shortDescription>
+        <value>Type your full legal name</value>
+    </labels>
+    <labels>
+        <fullName>AppUI_ESignatureNameRequired</fullName>
+        <categories>Application</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>E-signature name required error</shortDescription>
+        <value>Please type your full legal name.</value>
+    </labels>
+    <labels>
+        <fullName>AppUI_ESignatureTitle</fullName>
+        <categories>Application</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>E-signature section title</shortDescription>
+        <value>E-Signature</value>
+    </labels>
+    <labels>
+        <fullName>AppUI_Edit</fullName>
+        <categories>Application</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Edit button label</shortDescription>
+        <value>Edit</value>
+    </labels>
+    <labels>
+        <fullName>AppUI_EditBirthday</fullName>
+        <categories>Application</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Edit birthday button aria-label and tooltip</shortDescription>
+        <value>Edit birthday</value>
+    </labels>
+    <labels>
+        <fullName>AppUI_ExistingAppDesc</fullName>
+        <categories>Application</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Existing application modal description</shortDescription>
+        <value>You have an in-progress application. Would you like to resume where you left off or start a new one?</value>
+    </labels>
+    <labels>
+        <fullName>AppUI_ExistingAppFound</fullName>
+        <categories>Application</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Existing application found modal title</shortDescription>
+        <value>Existing Application Found</value>
+    </labels>
+    <labels>
+        <fullName>AppUI_FieldAddress</fullName>
+        <categories>Application</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Address field label</shortDescription>
+        <value>Address</value>
+    </labels>
+    <labels>
+        <fullName>AppUI_FieldApartment</fullName>
+        <categories>Application</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Label for the apartment / unit input</shortDescription>
+        <value>Apartment / Unit (optional)</value>
+    </labels>
+    <labels>
+        <fullName>AppUI_FieldCity</fullName>
+        <categories>Application</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>City field label</shortDescription>
+        <value>City</value>
+    </labels>
+    <labels>
+        <fullName>AppUI_FieldCurrentGrade</fullName>
+        <categories>Application</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Current grade field label</shortDescription>
+        <value>Current Grade</value>
+    </labels>
+    <labels>
+        <fullName>AppUI_FieldDateOfBirth</fullName>
+        <categories>Application</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Date of birth field label</shortDescription>
+        <value>Date of Birth</value>
+    </labels>
+    <labels>
+        <fullName>AppUI_FieldFirstName</fullName>
+        <categories>Application</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>First name field label</shortDescription>
+        <value>First Name</value>
+    </labels>
+    <labels>
+        <fullName>AppUI_FieldGender</fullName>
+        <categories>Application</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Gender field label</shortDescription>
+        <value>Gender</value>
+    </labels>
+    <labels>
+        <fullName>AppUI_FieldGrade</fullName>
+        <categories>Application</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Grade field label</shortDescription>
+        <value>Grade</value>
+    </labels>
+    <labels>
+        <fullName>AppUI_FieldGradeApplyingTo</fullName>
+        <categories>Application</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Grade applying to field label</shortDescription>
+        <value>Grade Applying To</value>
+    </labels>
+    <labels>
+        <fullName>AppUI_FieldLastName</fullName>
+        <categories>Application</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Last name field label</shortDescription>
+        <value>Last Name</value>
+    </labels>
+    <labels>
+        <fullName>AppUI_FieldName</fullName>
+        <categories>Application</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Name field label</shortDescription>
+        <value>Name</value>
+    </labels>
+    <labels>
+        <fullName>AppUI_FieldRank</fullName>
+        <categories>Application</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Rank field label</shortDescription>
+        <value>Rank</value>
+    </labels>
+    <labels>
+        <fullName>AppUI_FieldState</fullName>
+        <categories>Application</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>State field label</shortDescription>
+        <value>State</value>
+    </labels>
+    <labels>
+        <fullName>AppUI_FieldStreet</fullName>
+        <categories>Application</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Street field label</shortDescription>
+        <value>Street</value>
+    </labels>
+    <labels>
+        <fullName>AppUI_FieldZetaSchool</fullName>
+        <categories>Application</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Zeta school field label</shortDescription>
+        <value>Zeta School</value>
+    </labels>
+    <labels>
+        <fullName>AppUI_FieldZipCode</fullName>
+        <categories>Application</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Zip code field label</shortDescription>
+        <value>Zip Code</value>
+    </labels>
+    <labels>
+        <fullName>AppUI_FilterBySchool</fullName>
+        <categories>Application</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Filter by school name placeholder</shortDescription>
+        <value>Filter by school name...</value>
+    </labels>
+    <labels>
+        <fullName>AppUI_FormSavedSuccess</fullName>
+        <categories>Application</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Form saved success toast</shortDescription>
+        <value>Form saved successfully.</value>
+    </labels>
+    <labels>
+        <fullName>AppUI_GoBack</fullName>
+        <categories>Application</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Go back button label</shortDescription>
+        <value>Go Back</value>
+    </labels>
+    <labels>
+        <fullName>AppUI_GradeInfo</fullName>
+        <categories>Application</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Grade information heading</shortDescription>
+        <value>Grade Information</value>
+    </labels>
+    <labels>
+        <fullName>AppUI_GradeProgressionWarning</fullName>
+        <categories>Application</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Grade progression warning message</shortDescription>
+        <value>The selected current grade and grade applying to are not a typical consecutive grade progression. You may still proceed.</value>
+    </labels>
+    <labels>
+        <fullName>AppUI_Home</fullName>
+        <categories>Application</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Home map marker title</shortDescription>
+        <value>Home</value>
+    </labels>
+    <labels>
+        <fullName>AppUI_HouseholdSiblings</fullName>
+        <categories>Application</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Siblings in your household roster heading</shortDescription>
+        <value>Siblings in Your Household</value>
+    </labels>
+    <labels>
+        <fullName>AppUI_HouseholdSiblingsCreateButton</fullName>
+        <categories>Application</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Household siblings roster create button (count appended at runtime)</shortDescription>
+        <value>Create applications for selected</value>
+    </labels>
+    <labels>
+        <fullName>AppUI_HouseholdSiblingsGradeColumn</fullName>
+        <categories>Application</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Household siblings roster grade column header</shortDescription>
+        <value>Grade Applying To</value>
+    </labels>
+    <labels>
+        <fullName>AppUI_HouseholdSiblingsHelp</fullName>
+        <categories>Application</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Household siblings roster helper text</shortDescription>
+        <value>Select students to add a placeholder application for each.</value>
+    </labels>
+    <labels>
+        <fullName>AppUI_HouseholdSiblingsNameColumn</fullName>
+        <categories>Application</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Household siblings roster name column header</shortDescription>
+        <value>Name</value>
+    </labels>
+    <labels>
+        <fullName>AppUI_HouseholdSiblingsSelectColumn</fullName>
+        <categories>Application</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Household siblings roster select column header (assistive)</shortDescription>
+        <value>Select</value>
+    </labels>
+    <labels>
+        <fullName>AppUI_HouseholdSiblingsSelectGrade</fullName>
+        <categories>Application</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Household siblings roster per-row grade-required validation message</shortDescription>
+        <value>Select a grade</value>
+    </labels>
+    <labels>
+        <fullName>AppUI_HouseholdSiblingsSkipped</fullName>
+        <categories>Application</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Household roster skipped already-applying notice prefix</shortDescription>
+        <value>Already applying, so we skipped:</value>
+    </labels>
+    <labels>
+        <fullName>AppUI_KindergartenBirthYearNote</fullName>
+        <categories>Application</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Kindergarten birth year guidance note ({0} = required birth year)</shortDescription>
+        <value>Students applying to Kindergarten must be born in {0}</value>
+    </labels>
+    <labels>
+        <fullName>AppUI_LotteryMessage</fullName>
+        <categories>Application</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Post-lottery informational message</shortDescription>
+        <value>The lottery is scheduled to take place in April 2026. Results will be communicated via email to the address provided on your application.</value>
+    </labels>
+    <labels>
+        <fullName>AppUI_MailingAddress</fullName>
+        <categories>Application</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Mailing address heading</shortDescription>
+        <value>Mailing Address</value>
+    </labels>
+    <labels>
+        <fullName>AppUI_Month</fullName>
+        <categories>Application</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Month label</shortDescription>
+        <value>Month</value>
+    </labels>
+    <labels>
+        <fullName>AppUI_MonthApril</fullName>
+        <categories>Application</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>April</shortDescription>
+        <value>April</value>
+    </labels>
+    <labels>
+        <fullName>AppUI_MonthAugust</fullName>
+        <categories>Application</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>August</shortDescription>
+        <value>August</value>
+    </labels>
+    <labels>
+        <fullName>AppUI_MonthDecember</fullName>
+        <categories>Application</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>December</shortDescription>
+        <value>December</value>
+    </labels>
+    <labels>
+        <fullName>AppUI_MonthFebruary</fullName>
+        <categories>Application</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>February</shortDescription>
+        <value>February</value>
+    </labels>
+    <labels>
+        <fullName>AppUI_MonthJanuary</fullName>
+        <categories>Application</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>January</shortDescription>
+        <value>January</value>
+    </labels>
+    <labels>
+        <fullName>AppUI_MonthJuly</fullName>
+        <categories>Application</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>July</shortDescription>
+        <value>July</value>
+    </labels>
+    <labels>
+        <fullName>AppUI_MonthJune</fullName>
+        <categories>Application</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>June</shortDescription>
+        <value>June</value>
+    </labels>
+    <labels>
+        <fullName>AppUI_MonthMarch</fullName>
+        <categories>Application</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>March</shortDescription>
+        <value>March</value>
+    </labels>
+    <labels>
+        <fullName>AppUI_MonthMay</fullName>
+        <categories>Application</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>May</shortDescription>
+        <value>May</value>
+    </labels>
+    <labels>
+        <fullName>AppUI_MonthNovember</fullName>
+        <categories>Application</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>November</shortDescription>
+        <value>November</value>
+    </labels>
+    <labels>
+        <fullName>AppUI_MonthOctober</fullName>
+        <categories>Application</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>October</shortDescription>
+        <value>October</value>
+    </labels>
+    <labels>
+        <fullName>AppUI_MonthSeptember</fullName>
+        <categories>Application</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>September</shortDescription>
+        <value>September</value>
+    </labels>
+    <labels>
+        <fullName>AppUI_NewStudent</fullName>
+        <categories>Application</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>New student form heading</shortDescription>
+        <value>New Student</value>
+    </labels>
+    <labels>
+        <fullName>AppUI_NoRecordId</fullName>
+        <categories>Application</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>No record ID error</shortDescription>
+        <value>No record ID provided.</value>
+    </labels>
+    <labels>
+        <fullName>AppUI_NoSchoolsSelected</fullName>
+        <categories>Application</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>No schools selected summary</shortDescription>
+        <value>No schools selected</value>
+    </labels>
+    <labels>
+        <fullName>AppUI_OneSchoolSelected</fullName>
+        <categories>Application</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>One school selected summary</shortDescription>
+        <value>1 school selected</value>
+    </labels>
+    <labels>
+        <fullName>AppUI_OptOutWarningTitle</fullName>
+        <categories>Application</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Opt-out warning modal title</shortDescription>
+        <value>Communication Opt-Out</value>
+    </labels>
+    <labels>
+        <fullName>AppUI_PreKBirthYearNote</fullName>
+        <categories>Application</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Pre-K birth year guidance note ({0} = required birth year)</shortDescription>
+        <value>Students applying to Pre-K must be born in {0}</value>
+    </labels>
+    <labels>
+        <fullName>AppUI_PrivacyPolicyText</fullName>
+        <categories>Application</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Privacy policy link text</shortDescription>
+        <value>View our Privacy Policy</value>
+    </labels>
+    <labels>
+        <fullName>AppUI_PrivacyPolicyUrl</fullName>
+        <categories>Application</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Privacy policy URL</shortDescription>
+        <value>https://www.zetaschools.org/privacy-policy</value>
+    </labels>
+    <labels>
+        <fullName>AppUI_RankInfoBanner</fullName>
+        <categories>Application</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Ranking info banner text</shortDescription>
+        <value>Rankings do not affect your lottery chances. They help us place your child at their preferred school if accepted to more than one.</value>
+    </labels>
+    <labels>
+        <fullName>AppUI_RankSchools</fullName>
+        <categories>Application</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Rank schools heading</shortDescription>
+        <value>Rank Your Schools</value>
+    </labels>
+    <labels>
+        <fullName>AppUI_RankSchoolsDesc</fullName>
+        <categories>Application</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Rank schools description</shortDescription>
+        <value>Order your selected schools by preference. Place your first choice as rank 1.</value>
+    </labels>
+    <labels>
+        <fullName>AppUI_RankSchoolsDrag</fullName>
+        <categories>Application</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Drag to reorder hint</shortDescription>
+        <value>Drag to reorder or use the dropdowns.</value>
+    </labels>
+    <labels>
+        <fullName>AppUI_Remove</fullName>
+        <categories>Application</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Remove button label</shortDescription>
+        <value>Remove</value>
+    </labels>
+    <labels>
+        <fullName>AppUI_ResidencyWarning</fullName>
+        <categories>Application</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Residency restriction warning (Pre-K, NYC)</shortDescription>
+        <value>The address provided is outside of New York. Residency within NYC is required for enrollment. You may still submit, but eligibility will be reviewed.</value>
+    </labels>
+    <labels>
+        <fullName>AppUI_ResidencyWarning_State</fullName>
+        <categories>Application</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Residency restriction warning (K-9, NY State)</shortDescription>
+        <value>The address provided is outside of New York. Residency within New York State is required for enrollment. You may still submit, but eligibility will be reviewed.</value>
+    </labels>
+    <labels>
+        <fullName>AppUI_Resume</fullName>
+        <categories>Application</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Resume button label</shortDescription>
+        <value>Resume</value>
+    </labels>
+    <labels>
+        <fullName>AppUI_ReturnHome</fullName>
+        <categories>Application</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Return home button label</shortDescription>
+        <value>Return Home</value>
+    </labels>
+    <labels>
+        <fullName>AppUI_Save</fullName>
+        <categories>Application</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Save button label</shortDescription>
+        <value>Save</value>
+    </labels>
+    <labels>
+        <fullName>AppUI_SaveAndExit</fullName>
+        <categories>Application</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Save and exit button label</shortDescription>
+        <value>Save &amp; Exit</value>
+    </labels>
+    <labels>
+        <fullName>AppUI_SaveAndReturnToReview</fullName>
+        <categories>Application</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Save and return to review button label (post-submit ranking edit)</shortDescription>
+        <value>Save &amp; Return to Review</value>
+    </labels>
+    <labels>
+        <fullName>AppUI_SaveFailed</fullName>
+        <categories>Application</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Save failed status</shortDescription>
+        <value>Save failed</value>
+    </labels>
+    <labels>
+        <fullName>AppUI_SaveFailedRetry</fullName>
+        <categories>Application</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Save failed retry message</shortDescription>
+        <value>Failed to save. Please try again.</value>
+    </labels>
+    <labels>
+        <fullName>AppUI_SaveRankingsFailed</fullName>
+        <categories>Application</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Save rankings fallback error</shortDescription>
+        <value>Failed to save school rankings.</value>
+    </labels>
+    <labels>
+        <fullName>AppUI_SaveSchoolsFailed</fullName>
+        <categories>Application</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Save school selections fallback error</shortDescription>
+        <value>Failed to save school selections.</value>
+    </labels>
+    <labels>
+        <fullName>AppUI_SaveSignatureFailed</fullName>
+        <categories>Application</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Save signature fallback error</shortDescription>
+        <value>Failed to save signature. Please try again.</value>
+    </labels>
+    <labels>
+        <fullName>AppUI_Saving</fullName>
+        <categories>Application</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Saving status</shortDescription>
+        <value>Saving...</value>
+    </labels>
+    <labels>
+        <fullName>AppUI_SchoolRankingsSaved</fullName>
+        <categories>Application</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>School rankings save success toast</shortDescription>
+        <value>School rankings saved.</value>
+    </labels>
+    <labels>
+        <fullName>AppUI_SchoolSelectionsSaved</fullName>
+        <categories>Application</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>School selections save success toast</shortDescription>
+        <value>School selections saved.</value>
+    </labels>
+    <labels>
+        <fullName>AppUI_SchoolsRankingEmptyState</fullName>
+        <categories>Application</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Empty state on the internal Schools &amp; Ranking tab before grade/timeline are set</shortDescription>
+        <value>Set Grade Applying To and Application Timeline first to see eligible schools.</value>
+    </labels>
+    <labels>
+        <fullName>AppUI_SchoolsSelectedPlural</fullName>
+        <categories>Application</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Multiple schools selected summary</shortDescription>
+        <value>{0} schools selected</value>
+    </labels>
+    <labels>
+        <fullName>AppUI_SearchSchools</fullName>
+        <categories>Application</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Search schools input label</shortDescription>
+        <value>Search schools</value>
+    </labels>
+    <labels>
+        <fullName>AppUI_SectionApplicationDetails</fullName>
+        <categories>Application</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Application details section title</shortDescription>
+        <value>Application Details</value>
+    </labels>
+    <labels>
+        <fullName>AppUI_SectionSchoolRankings</fullName>
+        <categories>Application</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>School rankings section title</shortDescription>
+        <value>School Rankings</value>
+    </labels>
+    <labels>
+        <fullName>AppUI_SectionSiblings</fullName>
+        <categories>Application</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Siblings section title</shortDescription>
+        <value>Siblings</value>
+    </labels>
+    <labels>
+        <fullName>AppUI_SelectStudent</fullName>
+        <categories>Application</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Select a student heading</shortDescription>
+        <value>Select a Student</value>
+    </labels>
+    <labels>
+        <fullName>AppUI_SelectStudentDesc</fullName>
+        <categories>Application</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Select student description</shortDescription>
+        <value>Choose the student you are applying for, or add a new student.</value>
+    </labels>
+    <labels>
+        <fullName>AppUI_SelectionsLockedAfterSubmission</fullName>
+        <categories>Application</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Note replacing the selection card once an application has been submitted</shortDescription>
+        <value>School selections are locked after submission.</value>
+    </labels>
+    <labels>
+        <fullName>AppUI_ShowingSchoolsForGrade</fullName>
+        <categories>Application</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Showing schools for grade</shortDescription>
+        <value>Showing schools accepting applications for {0}</value>
+    </labels>
+    <labels>
+        <fullName>AppUI_SiblingsApplying</fullName>
+        <categories>Application</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Siblings applying subsection title</shortDescription>
+        <value>Siblings Also Applying</value>
+    </labels>
+    <labels>
+        <fullName>AppUI_SiblingsApplyingSubtitle</fullName>
+        <categories>Application</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Siblings applying section subtitle/instruction</shortDescription>
+        <value>Select the children below who are your student&apos;s siblings also applying this cycle. Households may include children from multiple families — only select actual siblings.</value>
+    </labels>
+    <labels>
+        <fullName>AppUI_SiblingsAttending</fullName>
+        <categories>Application</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Siblings attending subsection title</shortDescription>
+        <value>Siblings Attending a Zeta School</value>
+    </labels>
+    <labels>
+        <fullName>AppUI_SiblingsAttendingSubtitle</fullName>
+        <categories>Application</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Siblings attending section subtitle/instruction</shortDescription>
+        <value>Select the children below who are your student&apos;s siblings attending a Zeta school. Households may include children from multiple families — only select actual siblings.</value>
+    </labels>
+    <labels>
+        <fullName>AppUI_StartNew</fullName>
+        <categories>Application</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Start new button label</shortDescription>
+        <value>Start New</value>
+    </labels>
+    <labels>
+        <fullName>AppUI_StepChooseSchools</fullName>
+        <categories>Application</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Step 2 label</shortDescription>
+        <value>Choose Schools</value>
+    </labels>
+    <labels>
+        <fullName>AppUI_StepConfirmSubmit</fullName>
+        <categories>Application</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Step 5 label</shortDescription>
+        <value>Confirm &amp; Submit</value>
+    </labels>
+    <labels>
+        <fullName>AppUI_StepFillApplication</fullName>
+        <categories>Application</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Step 4 label</shortDescription>
+        <value>Application Details</value>
+    </labels>
+    <labels>
+        <fullName>AppUI_StepOf</fullName>
+        <categories>Application</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Step X of Y counter</shortDescription>
+        <value>Step {0} of {1}</value>
+    </labels>
+    <labels>
+        <fullName>AppUI_StepRankSchools</fullName>
+        <categories>Application</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Step 3 label</shortDescription>
+        <value>Rank Schools</value>
+    </labels>
+    <labels>
+        <fullName>AppUI_StepStudentInfo</fullName>
+        <categories>Application</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Step 1 label</shortDescription>
+        <value>Student Information</value>
+    </labels>
+    <labels>
+        <fullName>AppUI_StudentInfo</fullName>
+        <categories>Application</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Student information section title</shortDescription>
+        <value>Student Information</value>
+    </labels>
+    <labels>
+        <fullName>AppUI_Submit</fullName>
+        <categories>Application</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Submit button label</shortDescription>
+        <value>Submit</value>
+    </labels>
+    <labels>
+        <fullName>AppUI_SubmitAppDesc</fullName>
+        <categories>Application</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Submit application modal description</shortDescription>
+        <value>Once submitted, your application cannot be edited. Please make sure all information is correct before proceeding.</value>
+    </labels>
+    <labels>
+        <fullName>AppUI_SubmitAppQuestion</fullName>
+        <categories>Application</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Submit application modal title</shortDescription>
+        <value>Submit Application?</value>
+    </labels>
+    <labels>
+        <fullName>AppUI_SubmitFailed</fullName>
+        <categories>Application</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Submit application fallback error</shortDescription>
+        <value>Failed to submit application.</value>
+    </labels>
+    <labels>
+        <fullName>AppUI_SubmittedMessage</fullName>
+        <categories>Application</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Application submitted message</shortDescription>
+        <value>Your application has been successfully submitted. You will receive a confirmation email shortly.</value>
+    </labels>
+    <labels>
+        <fullName>AppUI_SubmittedTitle</fullName>
+        <categories>Application</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Application submitted title</shortDescription>
+        <value>Application Submitted!</value>
+    </labels>
+    <labels>
+        <fullName>AppUI_Submitting</fullName>
+        <categories>Application</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Submitting status label</shortDescription>
+        <value>Submitting...</value>
+    </labels>
+    <labels>
+        <fullName>AppUI_TextMessageConsentBody</fullName>
+        <categories>Application</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Text message consent modal body</shortDescription>
+        <value>By checking this checkbox you agree to receive text messages from Zeta Charter Schools related to your student&apos;s application and potential enrollment. Message &amp; data rates may apply. Message frequency varies. Carriers are not liable for delayed or undelivered messages. Reply HELP for help or reach out to us via the Contact Us tab and STOP to cancel. &lt;a href=&quot;https://www.zetaschools.org/privacy-policy&quot; target=&quot;_blank&quot; rel=&quot;noopener noreferrer&quot;&gt;View Terms of Service and Privacy Policy&lt;/a&gt;.</value>
+    </labels>
+    <labels>
+        <fullName>AppUI_TextMessageConsentTitle</fullName>
+        <categories>Application</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Text message consent modal title</shortDescription>
+        <value>Text Message Consent</value>
+    </labels>
+    <labels>
+        <fullName>AppUI_UnsavedChanges</fullName>
+        <categories>Application</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Unsaved changes status</shortDescription>
+        <value>Unsaved changes</value>
+    </labels>
+    <labels>
+        <fullName>AppUI_UpdateBirthdayFailed</fullName>
+        <categories>Application</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Generic fallback when updating a birthday fails</shortDescription>
+        <value>Couldn&apos;t update birthday. Please try again.</value>
+    </labels>
+    <labels>
+        <fullName>AppUI_UpdateRankings</fullName>
+        <categories>Application</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Update rankings button label (post-submit)</shortDescription>
+        <value>Update Rankings</value>
+    </labels>
+    <labels>
+        <fullName>AppUI_ValidateAssignRanks</fullName>
+        <categories>Application</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Validation: assign rank to every school</shortDescription>
+        <value>Please assign a rank to every school.</value>
+    </labels>
+    <labels>
+        <fullName>AppUI_ValidateNoSchools</fullName>
+        <categories>Application</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Validation: no schools to rank</shortDescription>
+        <value>No schools to rank. Please go back and select schools.</value>
+    </labels>
+    <labels>
+        <fullName>AppUI_ValidateSelectCurrentGrade</fullName>
+        <categories>Application</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Validation: select current grade</shortDescription>
+        <value>Please select the current grade.</value>
+    </labels>
+    <labels>
+        <fullName>AppUI_ValidateSelectGrade</fullName>
+        <categories>Application</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Validation: select grade applying to</shortDescription>
+        <value>Please select the grade applying to.</value>
+    </labels>
+    <labels>
+        <fullName>AppUI_ValidateSelectSchool</fullName>
+        <categories>Application</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Validation: select at least one school</shortDescription>
+        <value>Please select at least one school.</value>
+    </labels>
+    <labels>
+        <fullName>AppUI_ValidateSelectStudent</fullName>
+        <categories>Application</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Validation: select a student</shortDescription>
+        <value>Please select a student to continue.</value>
+    </labels>
+    <labels>
+        <fullName>AppUI_ValidateUniqueRanks</fullName>
+        <categories>Application</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Validation: unique ranks required</shortDescription>
+        <value>Each school must have a unique rank.</value>
+    </labels>
+    <labels>
+        <fullName>AppUI_Year</fullName>
+        <categories>Application</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Year label</shortDescription>
+        <value>Year</value>
+    </labels>
+    <labels>
+        <fullName>AppUI_ZetaCharterSchools</fullName>
+        <categories>Application</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Zeta Charter Schools brand name</shortDescription>
+        <value>Zeta Charter Schools</value>
+    </labels>
+    <labels>
+        <fullName>AppUI_ZetaSchools</fullName>
+        <categories>Application</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Zeta Schools map markers title</shortDescription>
+        <value>Zeta Schools</value>
+    </labels>
+    <labels>
+        <fullName>AppUI_ZipCodeError</fullName>
+        <categories>Application</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Zip code validation error</shortDescription>
+        <value>Enter a 5-digit zip code</value>
+    </labels>
+    <labels>
+        <fullName>Lives_With_Guardian_1</fullName>
+        <categories>Application</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Checkbox label asking whether the student lives with Guardian 1</shortDescription>
+        <value>Lives with guardian 1</value>
+    </labels>
+    <labels>
+        <fullName>Parent_Portal_Base_URL</fullName>
+        <categories>Parent Portal</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Parent Portal Base URL</shortDescription>
+        <value>https://zetacharterschools--full.sandbox.my.site.com/parents/</value>
+    </labels>
+    <labels>
+        <fullName>Zeta_Sys_Admin</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Zeta Sys Admin</shortDescription>
+        <value>005cv000005B8fJAAS</value>
+    </labels>
+    <labels>
+        <fullName>ap_APModifyError</fullName>
+        <categories>Action Plans</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>APModifyError</shortDescription>
+        <value>Action Plan Template has been modified since this Action Plan creation.</value>
+    </labels>
+    <labels>
+        <fullName>ap_Add</fullName>
+        <categories>Action Plans</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Add</shortDescription>
+        <value>Add</value>
+    </labels>
+    <labels>
+        <fullName>ap_AddNewTask</fullName>
+        <categories>Action Plans</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>AddNewTask</shortDescription>
+        <value>Add New Task</value>
+    </labels>
+    <labels>
+        <fullName>ap_All</fullName>
+        <categories>Action Plans</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>All</shortDescription>
+        <value>All</value>
+    </labels>
+    <labels>
+        <fullName>ap_AreYouSureAsk</fullName>
+        <categories>Action Plans</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>AreYouSureAsk</shortDescription>
+        <value>Are you sure?</value>
+    </labels>
+    <labels>
+        <fullName>ap_Cancel</fullName>
+        <categories>Action Plans</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Cancel</shortDescription>
+        <value>Cancel</value>
+    </labels>
+    <labels>
+        <fullName>ap_Change</fullName>
+        <categories>Action Plans</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Change</shortDescription>
+        <value>Change</value>
+    </labels>
+    <labels>
+        <fullName>ap_Clone</fullName>
+        <categories>Action Plans</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Clone</shortDescription>
+        <value>Clone</value>
+    </labels>
+    <labels>
+        <fullName>ap_Close</fullName>
+        <categories>Action Plans</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Close</shortDescription>
+        <value>Close</value>
+    </labels>
+    <labels>
+        <fullName>ap_Confirm_Tasks_Deletion</fullName>
+        <categories>Action Plans</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Confirm Tasks Deletion</shortDescription>
+        <value>Tasks depending on the one you are about to delete will lose their dependency.\n\nAre you sure you want to delete this task?</value>
+    </labels>
+    <labels>
+        <fullName>ap_ConfirmationofCreation</fullName>
+        <categories>Action Plans</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>APCreationConfirmation</shortDescription>
+        <value>Action Plan creation is handled by a background process. It can take a couple of minutes to be able to view all created records.</value>
+    </labels>
+    <labels>
+        <fullName>ap_ConfirmationofDeletion</fullName>
+        <categories>Action Plans</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>APDeletionConfirmation</shortDescription>
+        <value>Action Plans successfully deleted.</value>
+    </labels>
+    <labels>
+        <fullName>ap_Created</fullName>
+        <categories>Action Plans</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Created</shortDescription>
+        <value>created.</value>
+    </labels>
+    <labels>
+        <fullName>ap_CreatedBy</fullName>
+        <categories>Action Plans</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>CreatedBy</shortDescription>
+        <value>Created By</value>
+    </labels>
+    <labels>
+        <fullName>ap_CustomMetadata</fullName>
+        <categories>Action Plans</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>CustomMetadata</shortDescription>
+        <value>Custom Metadata</value>
+    </labels>
+    <labels>
+        <fullName>ap_Delete</fullName>
+        <categories>Action Plans</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Delete</shortDescription>
+        <value>Delete</value>
+    </labels>
+    <labels>
+        <fullName>ap_Edit</fullName>
+        <categories>Action Plans</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Edit</shortDescription>
+        <value>Edit</value>
+    </labels>
+    <labels>
+        <fullName>ap_Error</fullName>
+        <categories>Action Plans</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Error</shortDescription>
+        <value>Error</value>
+    </labels>
+    <labels>
+        <fullName>ap_Errors_Cyclic_Dependency_Found</fullName>
+        <categories>Action Plans</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Error: Cyclic Dependency Found</shortDescription>
+        <value>A cyclic dependency on tasks has been found</value>
+    </labels>
+    <labels>
+        <fullName>ap_Errors_ImportingXMLTask</fullName>
+        <categories>Action Plans</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Error: ImportingXMLTask</shortDescription>
+        <value>There was a problem importing your Action Plan Template Tasks. Review your Template XML or try exporting it again.</value>
+    </labels>
+    <labels>
+        <fullName>ap_Errors_ImportingXMLTemplate</fullName>
+        <categories>Action Plans</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Error: ImportingXMLTemplate</shortDescription>
+        <value>There was a problem importing your Action Plan Template. Review your Template XML or try exporting it again.</value>
+    </labels>
+    <labels>
+        <fullName>ap_Errors_InsufficientPrivileges</fullName>
+        <categories>Action Plans</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Error: Insufficient Privileges</shortDescription>
+        <value>The current user does not have required permissions</value>
+    </labels>
+    <labels>
+        <fullName>ap_Errors_InvalidXMLTemplate</fullName>
+        <categories>Action Plans</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Error: InvalidXMLTemplate</shortDescription>
+        <value>This is an invalid XML template, please export a new Action Plan Template and try again.</value>
+    </labels>
+    <labels>
+        <fullName>ap_Errors_RemoveCyclicDependency</fullName>
+        <categories>Action Plans</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Error: RemoveCyclicDependency</shortDescription>
+        <value>Remove cyclic dependency on tasks and try again.</value>
+    </labels>
+    <labels>
+        <fullName>ap_Errors_Review_Errors</fullName>
+        <categories>Action Plans</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Error: Review Errors</shortDescription>
+        <value>Review all error messages above to correct your data.</value>
+    </labels>
+    <labels>
+        <fullName>ap_Errors_SelectCorrectXMLExtension</fullName>
+        <categories>Action Plans</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Error: SelectCorrectXMLExtension</shortDescription>
+        <value>Please select a file with the correct extension - xml</value>
+    </labels>
+    <labels>
+        <fullName>ap_Errors_SelectXML</fullName>
+        <categories>Action Plans</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Error: SelectXML</shortDescription>
+        <value>Please select a XML document to import.</value>
+    </labels>
+    <labels>
+        <fullName>ap_Errors_TaskLimitError</fullName>
+        <categories>Action Plans</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Error: TaskLimitError</shortDescription>
+        <value>Tasks per Action Plan limit reached ({0}).</value>
+    </labels>
+    <labels>
+        <fullName>ap_Errors_selectOneRecord</fullName>
+        <categories>Action Plans</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Error: selectOneRecord</shortDescription>
+        <value>You must select at least one record.</value>
+    </labels>
+    <labels>
+        <fullName>ap_Errors_xmlMetaData</fullName>
+        <categories>Action Plans</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Error: xmlMetaData</shortDescription>
+        <value>Metadata Information is incorrect!</value>
+    </labels>
+    <labels>
+        <fullName>ap_Errors_xmlRead</fullName>
+        <categories>Action Plans</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Error: xmlRead</shortDescription>
+        <value>An error has occurred while trying to read your XML document</value>
+    </labels>
+    <labels>
+        <fullName>ap_Export</fullName>
+        <categories>Action Plans</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Export</shortDescription>
+        <value>Export</value>
+    </labels>
+    <labels>
+        <fullName>ap_ExportTitle</fullName>
+        <categories>Action Plans</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>ExportTitle</shortDescription>
+        <value>Template XML Export</value>
+    </labels>
+    <labels>
+        <fullName>ap_Import</fullName>
+        <categories>Action Plans</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Import_Template</shortDescription>
+        <value>Import Template</value>
+    </labels>
+    <labels>
+        <fullName>ap_Import_File</fullName>
+        <categories>Action Plans</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Import File</shortDescription>
+        <value>Select the file you want to import:</value>
+    </labels>
+    <labels>
+        <fullName>ap_Information</fullName>
+        <categories>Action Plans</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Information</shortDescription>
+        <value>Information</value>
+    </labels>
+    <labels>
+        <fullName>ap_ItselfDependencyError</fullName>
+        <categories>Action Plans</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>ItselfDependencyError</shortDescription>
+        <value>A task cannot be dependent on itself.</value>
+    </labels>
+    <labels>
+        <fullName>ap_LastModifiedBy</fullName>
+        <categories>Action Plans</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>LastModifiedBy</shortDescription>
+        <value>Last Modified By</value>
+    </labels>
+    <labels>
+        <fullName>ap_New</fullName>
+        <categories>Action Plans</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>New</shortDescription>
+        <value>New</value>
+    </labels>
+    <labels>
+        <fullName>ap_NoRecords</fullName>
+        <categories>Action Plans</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>NoRecordsFound</shortDescription>
+        <value>No Records Found</value>
+    </labels>
+    <labels>
+        <fullName>ap_None</fullName>
+        <categories>Action Plans</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>None</shortDescription>
+        <value>None</value>
+    </labels>
+    <labels>
+        <fullName>ap_Note</fullName>
+        <categories>Action Plans</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Note</shortDescription>
+        <value>Note</value>
+    </labels>
+    <labels>
+        <fullName>ap_Owner</fullName>
+        <categories>Action Plans</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Owner</shortDescription>
+        <value>Owner</value>
+    </labels>
+    <labels>
+        <fullName>ap_PostMessage</fullName>
+        <categories>Action Plans</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>PostMessage</shortDescription>
+        <value>has created Action Plan {0} for this {1}.</value>
+    </labels>
+    <labels>
+        <fullName>ap_Print</fullName>
+        <categories>Action Plans</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Print</shortDescription>
+        <value>Print</value>
+    </labels>
+    <labels>
+        <fullName>ap_RecordOwner</fullName>
+        <categories>Action Plans</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>RecordOwner</shortDescription>
+        <value>Record Owner</value>
+    </labels>
+    <labels>
+        <fullName>ap_RelObjUndeleteError</fullName>
+        <categories>Action Plans</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>RelObjUndeleteError</shortDescription>
+        <value>You can not undelete an action plan whose related object is deleted.</value>
+    </labels>
+    <labels>
+        <fullName>ap_RelatedCount</fullName>
+        <categories>Action Plans</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>RelatedCount</shortDescription>
+        <value>You must relate an Action Plan to a single object</value>
+    </labels>
+    <labels>
+        <fullName>ap_RelatedObject</fullName>
+        <categories>Action Plans</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>RelatedObject</shortDescription>
+        <value>Related Object</value>
+    </labels>
+    <labels>
+        <fullName>ap_Remove</fullName>
+        <categories>Action Plans</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Remove</shortDescription>
+        <value>Remove</value>
+    </labels>
+    <labels>
+        <fullName>ap_Save</fullName>
+        <categories>Action Plans</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Save</shortDescription>
+        <value>Save</value>
+    </labels>
+    <labels>
+        <fullName>ap_SaveAndNew</fullName>
+        <categories>Action Plans</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>SaveAndNew</shortDescription>
+        <value>Save and New</value>
+    </labels>
+    <labels>
+        <fullName>ap_Search</fullName>
+        <categories>Action Plans</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Search</shortDescription>
+        <value>Search</value>
+    </labels>
+    <labels>
+        <fullName>ap_ShareEmail</fullName>
+        <categories>Action Plans</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>ShareEmail</shortDescription>
+        <value>Do you want to share this template with others on the Action Plans Template page? Email it to &lt;a href=&quot;mailto:labs@salesforce.com?subject=Action Plans Template for Community Sharing&quot;&gt;labs@salesforce.com&lt;/a&gt;.</value>
+    </labels>
+    <labels>
+        <fullName>ap_Sharing</fullName>
+        <categories>Action Plans</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Sharing</shortDescription>
+        <value>Sharing</value>
+    </labels>
+    <labels>
+        <fullName>ap_TaskHeaderSortable</fullName>
+        <categories>Action Plans</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>TaskHeaderSortable</shortDescription>
+        <value>(Task headers are sortable)</value>
+    </labels>
+    <labels>
+        <fullName>ap_TasksComplete</fullName>
+        <categories>Action Plans</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Tasks Complete</shortDescription>
+        <value>Tasks Complete</value>
+    </labels>
+    <labels>
+        <fullName>ap_UpdateStatusError</fullName>
+        <categories>Action Plans</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>UpdateStatusError</shortDescription>
+        <value>This task is part of an Action Plan and it depends on a task that is not completed yet.</value>
+    </labels>
+    <labels>
+        <fullName>ap_View</fullName>
+        <categories>Action Plans</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>View</shortDescription>
+        <value>View</value>
+    </labels>
+    <labels>
+        <fullName>ap_ViewFile</fullName>
+        <categories>Action Plans</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>ViewFile</shortDescription>
+        <value>View the XML file:</value>
+    </labels>
+    <labels>
+        <fullName>ap_XMLFailure</fullName>
+        <categories>Action Plans</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>XMLFailure</shortDescription>
+        <value>Your template could not successfully be exported to an XML document.</value>
+    </labels>
+    <labels>
+        <fullName>ap_XMLSuccess</fullName>
+        <categories>Action Plans</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>XMLSuccess</shortDescription>
+        <value>The XML file for your template has been successfully created, and can be found in your personal {0} folder.</value>
+    </labels>
+    <labels>
+        <fullName>ap_of</fullName>
+        <categories>Action Plans</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>of</shortDescription>
+        <value>of</value>
+    </labels>
+    <labels>
+        <fullName>ers_CancelButton</fullName>
+        <categories>buttons</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Cancel</shortDescription>
+        <value>Cancel</value>
+    </labels>
+    <labels>
+        <fullName>ers_ClearFilterAction</fullName>
+        <categories>actions</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Clear Filter</shortDescription>
+        <value>Clear Filter</value>
+    </labels>
+    <labels>
+        <fullName>ers_ClearFilterButton</fullName>
+        <categories>buttons</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Clear All Filters</shortDescription>
+        <value>Clear All Filters</value>
+    </labels>
+    <labels>
+        <fullName>ers_ClearSelectionButton</fullName>
+        <categories>buttons</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Clear Selection</shortDescription>
+        <value>Clear Selection</value>
+    </labels>
+    <labels>
+        <fullName>ers_ColumnHeader</fullName>
+        <categories>headers</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Column</shortDescription>
+        <value>Column</value>
+    </labels>
+    <labels>
+        <fullName>ers_EmptyTableMessage</fullName>
+        <categories>messages</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Empty</shortDescription>
+        <value>This table currently has no data to display</value>
+    </labels>
+    <labels>
+        <fullName>ers_ErrorRequiredEntry</fullName>
+        <categories>messages</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Required</shortDescription>
+        <value>This is a required entry.  At least 1 row must be selected.</value>
+    </labels>
+    <labels>
+        <fullName>ers_FilterHeader</fullName>
+        <categories>headers</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Filter</shortDescription>
+        <value>Filter</value>
+    </labels>
+    <labels>
+        <fullName>ers_FirstButton</fullName>
+        <categories>buttons</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>First Page</shortDescription>
+        <value>First</value>
+    </labels>
+    <labels>
+        <fullName>ers_LabelHeader</fullName>
+        <categories>headers</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Label</shortDescription>
+        <value>Label</value>
+    </labels>
+    <labels>
+        <fullName>ers_LastButton</fullName>
+        <categories>buttons</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Last Page</shortDescription>
+        <value>Last</value>
+    </labels>
+    <labels>
+        <fullName>ers_NextButton</fullName>
+        <categories>buttons</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Next Page</shortDescription>
+        <value>Next</value>
+    </labels>
+    <labels>
+        <fullName>ers_PreviousButton</fullName>
+        <categories>buttons</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Previous Page</shortDescription>
+        <value>Prev</value>
+    </labels>
+    <labels>
+        <fullName>ers_RecordsPerPage</fullName>
+        <categories>labels</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Records per Page input label</shortDescription>
+        <value>Records per Page</value>
+    </labels>
+    <labels>
+        <fullName>ers_SaveButton</fullName>
+        <categories>buttons</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Save</shortDescription>
+        <value>Save</value>
+    </labels>
+    <labels>
+        <fullName>ers_SearchPlaceholder</fullName>
+        <categories>messages</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Search Term</shortDescription>
+        <value>Enter search term ...</value>
+    </labels>
+    <labels>
+        <fullName>ers_SetFilterAction</fullName>
+        <categories>actions</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Set Filter</shortDescription>
+        <value>Set Filter</value>
+    </labels>
+    <labels>
+        <fullName>ers_ShowingPageMiddle</fullName>
+        <categories>labels</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Showing Page x of y Pages input label middle</shortDescription>
+        <value>of</value>
+    </labels>
+    <labels>
+        <fullName>ers_ShowingPagePrefix</fullName>
+        <categories>labels</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Showing Page x of y Pages input label prefix</shortDescription>
+        <value>Showing Page</value>
+    </labels>
+    <labels>
+        <fullName>ers_ShowingPageSuffix</fullName>
+        <categories>labels</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Showing Page x of y Pages input label suffix</shortDescription>
+        <value>Pages</value>
+    </labels>
+    <labels>
+        <fullName>ers_filterBlankHelpText</fullName>
+        <categories>messages</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Help Text for Filter Blank Checkbox</shortDescription>
+        <value>Check here if you want to filter rows where the value in this column is blank</value>
+    </labels>
+    <labels>
+        <fullName>ers_filterBlankLabel</fullName>
+        <categories>messages</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Label for Filter Blank Checkbox</shortDescription>
+        <value>Filter Blank Values?</value>
+    </labels>
+    <labels>
+        <fullName>fsc_AccessLevel</fullName>
+        <categories>labels</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>AccessLevel</shortDescription>
+        <value>Access Level</value>
+    </labels>
+    <labels>
+        <fullName>fsc_Back</fullName>
+        <categories>Buttons,Filters,Title</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Back</shortDescription>
+        <value>Back</value>
+    </labels>
+    <labels>
+        <fullName>fsc_ButtonIsNotSupportedMessage</fullName>
+        <categories>messages</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>ButtonIsNotSupportedMessage</shortDescription>
+        <value>Following buttons are note supported:</value>
+    </labels>
+    <labels>
+        <fullName>fsc_ConditionLogicHelpText</fullName>
+        <categories>labels</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>ConditionLogicHelpText</shortDescription>
+        <value>Use parentheses, AND, OR, and NOT to customize the logic. For example, if you enter “(1 AND 2 AND 3) OR 4”, the flow evaluates whether the first three conditions are true or only the fourth condition is true.</value>
+    </labels>
+    <labels>
+        <fullName>fsc_Delete</fullName>
+        <categories>labels, buttons</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Delete</shortDescription>
+        <value>Delete</value>
+    </labels>
+    <labels>
+        <fullName>fsc_FieldIsNotSupportedMessage</fullName>
+        <categories>messages</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>FieldIsNotSupportedMessage</shortDescription>
+        <value>Following fields are not supported:</value>
+    </labels>
+    <labels>
+        <fullName>fsc_FieldTypeNotSuportedMessage</fullName>
+        <categories>messages</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>fsc_FieldTypeNotSuportedMessage</shortDescription>
+        <value>You provided an unsupported value for the DataTypeFilter input on Object and Field Picker. Currently the only supported value is ’picklist’</value>
+    </labels>
+    <labels>
+        <fullName>fsc_For</fullName>
+        <categories>Buttons</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>For</shortDescription>
+        <value>For</value>
+    </labels>
+    <labels>
+        <fullName>fsc_Key_Label</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Key Label</shortDescription>
+        <value>Key</value>
+    </labels>
+    <labels>
+        <fullName>fsc_LackingPermissions</fullName>
+        <categories>messages</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>LackingPermissions</shortDescription>
+        <value>You don\&apos;t have the proper permissions for ths action</value>
+    </labels>
+    <labels>
+        <fullName>fsc_ManagerEmptyMessage</fullName>
+        <categories>messages</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>ManagerEmptyMessage</shortDescription>
+        <value>&quot;Manager APEX Class&quot; can not be empty</value>
+    </labels>
+    <labels>
+        <fullName>fsc_Manual_Reference_Allowed</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>ComboBox Placeholder Txxt</shortDescription>
+        <value>Manual reference allowed</value>
+    </labels>
+    <labels>
+        <fullName>fsc_MultipleGroupsForRole</fullName>
+        <categories>messages</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>MultipleGroupsForRole</shortDescription>
+        <value>There are multiple groups for that role</value>
+    </labels>
+    <labels>
+        <fullName>fsc_Name</fullName>
+        <categories>quicklinks, Labels</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Name</shortDescription>
+        <value>Name</value>
+    </labels>
+    <labels>
+        <fullName>fsc_NonePicklistValueLabel</fullName>
+        <categories>messages</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>NonePicklistValueLabel</shortDescription>
+        <value>-- None --</value>
+    </labels>
+    <labels>
+        <fullName>fsc_OWDReadWrite</fullName>
+        <categories>messages</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>OWDReadWrite</shortDescription>
+        <value>Sharing Settings must be private or public read/write to enable manual sharing</value>
+    </labels>
+    <labels>
+        <fullName>fsc_OwnerAdminModify</fullName>
+        <categories>messages</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>OwnerAdminModify</shortDescription>
+        <value>Only the record owner or administrators can modify permissions</value>
+    </labels>
+    <labels>
+        <fullName>fsc_PublicGroups</fullName>
+        <categories>labels</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>PublicGroups</shortDescription>
+        <value>Public Groups</value>
+    </labels>
+    <labels>
+        <fullName>fsc_Queues</fullName>
+        <categories>labels</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Queues</shortDescription>
+        <value>Queues</value>
+    </labels>
+    <labels>
+        <fullName>fsc_Read</fullName>
+        <categories>labels, buttons</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Read</shortDescription>
+        <value>Read</value>
+    </labels>
+    <labels>
+        <fullName>fsc_ReadWrite</fullName>
+        <categories>labels, buttons</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>ReadWrite</shortDescription>
+        <value>Read / Write</value>
+    </labels>
+    <labels>
+        <fullName>fsc_Reason</fullName>
+        <categories>labels</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Reason</shortDescription>
+        <value>Reason</value>
+    </labels>
+    <labels>
+        <fullName>fsc_RelatedUsers</fullName>
+        <categories>labels</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>RelatedUsers</shortDescription>
+        <value>Related Users</value>
+    </labels>
+    <labels>
+        <fullName>fsc_Roles</fullName>
+        <categories>labels</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Roles</shortDescription>
+        <value>Roles</value>
+    </labels>
+    <labels>
+        <fullName>fsc_Search</fullName>
+        <categories>Actions,Buttons,quicklinks</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Search in</shortDescription>
+        <value>Search in</value>
+    </labels>
+    <labels>
+        <fullName>fsc_SearchFor</fullName>
+        <categories>labels</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>SearchFor</shortDescription>
+        <value>For</value>
+    </labels>
+    <labels>
+        <fullName>fsc_SetAccessLevel</fullName>
+        <categories>labels</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>SetAccessLevel</shortDescription>
+        <value>Set Access Level</value>
+    </labels>
+    <labels>
+        <fullName>fsc_SupportedAddCapabilitiesEmptyMessage</fullName>
+        <categories>messages</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>SupportedAddCapabilitiesEmptyMessage</shortDescription>
+        <value>&quot;Add Capabilities&quot; can not be empty</value>
+    </labels>
+    <labels>
+        <fullName>fsc_SupportedButtonsEmptyMessage</fullName>
+        <categories>messages</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>SupportedButtonsEmptyMessage</shortDescription>
+        <value>&quot;Supported Buttons&quot; can not be empty</value>
+    </labels>
+    <labels>
+        <fullName>fsc_SupportedEditCapabilitiesEmptyMessage</fullName>
+        <categories>messages</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>SupportedEditCapabilitiesEmptyMessage</shortDescription>
+        <value>&quot;Edit Capabilities&quot; can not be empty</value>
+    </labels>
+    <labels>
+        <fullName>fsc_TooManyResultsMessage</fullName>
+        <categories>messages</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>TooManyResultsMessage</shortDescription>
+        <value>Your search found more than 200 results.  Keep typing to make it more specific</value>
+    </labels>
+    <labels>
+        <fullName>fsc_Type</fullName>
+        <categories>Buttons,Filters,Title</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Type</shortDescription>
+        <value>Type</value>
+    </labels>
+    <labels>
+        <fullName>fsc_UserOrGroup</fullName>
+        <categories>labels</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>UserOrGroup</shortDescription>
+        <value>User Or Group</value>
+    </labels>
+    <labels>
+        <fullName>fsc_Users</fullName>
+        <categories>labels</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Users</shortDescription>
+        <value>Users</value>
+    </labels>
+    <labels>
+        <fullName>fsc_Value_Label</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Value Label</shortDescription>
+        <value>Value</value>
+    </labels>
+</CustomLabels>

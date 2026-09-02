@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Complete_Criteria__c</fullName>
+    <description>Optional override for the section&apos;s completeness predicate. When unset, &quot;complete&quot; is derived from required questions: all required answers are non-blank. Set this when completeness is non-obvious from required-field presence alone (e.g. depends on a combination of values across questions).</description>
+    <fieldManageability>DeveloperControlled</fieldManageability>
+    <inlineHelpText>Optional completeness predicate. When set, this evaluates against the IndividualApplication record to determine the section&apos;s complete state, overriding the default required-questions-filled rule.</inlineHelpText>
+    <label>Complete Criteria</label>
+    <referenceTo>SObject_Field_Criteria__mdt</referenceTo>
+    <relationshipLabel>Application Sections (Complete Criteria)</relationshipLabel>
+    <relationshipName>Application_Sections_Complete</relationshipName>
+    <required>false</required>
+    <type>MetadataRelationship</type>
+    <unique>false</unique>
+</CustomField>

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Initial_IEP_Date__c</fullName>
+    <description>The date the student’s first Individualized Education Program (IEP) was established. Used to track the original initiation of special education services and to determine the student’s IEP history over time.</description>
+    <label>Initial IEP Date</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Date</type>
+</CustomField>

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <help><!-- Outer = ring contributes to the district. Hole = ring carves a region out of an outer ring (a point inside a Hole is NOT inside the district). --></help>
+    <label><!-- Ring Role --></label>
+    <name>Ring_Role__c</name>
+    <picklistValues>
+        <masterLabel>Hole</masterLabel>
+        <translation><!-- Hole --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Outer</masterLabel>
+        <translation><!-- Outer --></translation>
+    </picklistValues>
+</CustomFieldTranslation>

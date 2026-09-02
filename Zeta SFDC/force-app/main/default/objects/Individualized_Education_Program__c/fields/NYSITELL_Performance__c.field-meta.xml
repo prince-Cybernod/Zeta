@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>NYSITELL_Performance__c</fullName>
+    <description>Records the student’s performance level on the New York State Identification Test for English Language Learners (NYSITELL). Used to determine initial English language proficiency upon entering the school system and to inform program placement or support needs.</description>
+    <inlineHelpText>Student’s performance level on the New York State Identification Test for English Language Learners.</inlineHelpText>
+    <label>NYSITELL Performance</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Emerging – 2</fullName>
+                <default>false</default>
+                <label>Emerging – 2</label>
+            </value>
+            <value>
+                <fullName>Transitioning – 3</fullName>
+                <default>false</default>
+                <label>Transitioning – 3</label>
+            </value>
+            <value>
+                <fullName>Expanding – 4</fullName>
+                <default>false</default>
+                <label>Expanding – 4</label>
+            </value>
+            <value>
+                <fullName>Commanding – 5</fullName>
+                <default>false</default>
+                <label>Commanding – 5</label>
+            </value>
+            <value>
+                <fullName>N/A</fullName>
+                <default>false</default>
+                <label>N/A</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

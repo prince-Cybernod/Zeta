@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>NYSITELL_Year__c</fullName>
+    <description>The year in which the student most recently took the New York State Identification Test for English Language Learners (NYSITELL). Used to track the timing of initial English proficiency assessment for ELL reporting and compliance purposes.</description>
+    <externalId>false</externalId>
+    <inlineHelpText>The year in which the student most recently took the New York State Identification Test for English Language Learners.</inlineHelpText>
+    <label>NYSITELL Year</label>
+    <precision>4</precision>
+    <required>false</required>
+    <scale>0</scale>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Number</type>
+    <unique>false</unique>
+</CustomField>

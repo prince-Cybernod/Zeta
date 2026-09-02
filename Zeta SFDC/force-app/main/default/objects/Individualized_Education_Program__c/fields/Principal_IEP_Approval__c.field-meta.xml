@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Principal_IEP_Approval__c</fullName>
+    <description>Tracks the outcome of the school principal’s review of the student’s IEP during the enrollment process. Used to confirm whether the IEP has been approved for placement, declined by the family, or requires escalation to the School Excellence team for further evaluation.</description>
+    <label>Principal IEP Approval</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Not yet done</fullName>
+                <default>true</default>
+                <label>Not yet done</label>
+            </value>
+            <value>
+                <fullName>Approved</fullName>
+                <default>false</default>
+                <label>Approved</label>
+            </value>
+            <value>
+                <fullName>Family will decline seat</fullName>
+                <default>false</default>
+                <label>Family will decline seat</label>
+            </value>
+            <value>
+                <fullName>Escalate to School Excellence</fullName>
+                <default>false</default>
+                <label>Escalate to School Excellence</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

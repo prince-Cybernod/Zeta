@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Source_Field__c</fullName>
+    <description>Reference to the SObject Field that supplies the school start date. The configured field must be a Date or Date/Time on the SObject whose record Id the caller passes to SchoolStartDateProvider.get(Id).</description>
+    <fieldManageability>DeveloperControlled</fieldManageability>
+    <inlineHelpText>Which field supplies the school start date. Caller passes a record Id of the matching SObject and the provider returns that field&apos;s value.</inlineHelpText>
+    <label>Source Field</label>
+    <referenceTo>SObject_Field__mdt</referenceTo>
+    <relationshipLabel>School Start Date Settings</relationshipLabel>
+    <relationshipName>School_Start_Date_Settings</relationshipName>
+    <required>true</required>
+    <type>MetadataRelationship</type>
+    <unique>false</unique>
+</CustomField>

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Potential_Duplicate_Individual_App__c</fullName>
+    <deleteConstraint>SetNull</deleteConstraint>
+    <description>The other Individual Application that appears to match the primary record.</description>
+    <inlineHelpText>The potential duplicate Individual Application</inlineHelpText>
+    <label>Potential Duplicate (Individual App)</label>
+    <referenceTo>IndividualApplication</referenceTo>
+    <relationshipLabel>Potential Duplicate (Individual App)</relationshipLabel>
+    <relationshipName>Potential_Duplicate_Record_Alerts</relationshipName>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Lookup</type>
+</CustomField>

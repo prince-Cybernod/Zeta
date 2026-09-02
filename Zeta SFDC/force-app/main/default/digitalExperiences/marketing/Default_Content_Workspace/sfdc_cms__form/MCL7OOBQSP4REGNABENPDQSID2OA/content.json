@@ -1,0 +1,296 @@
+{
+  "type" : "sfdc_cms__form",
+  "title" : "SAMPLE MC Form Form",
+  "contentBody" : {
+    "lightning:brandSource" : {
+      "defaultBrandOption" : "sfdcBrand"
+    },
+    "sfdc_cms:block" : {
+      "type" : "block",
+      "definition" : "sfdc_cms/rootContentBlock",
+      "id" : "3ebc7e5b-1e82-45d1-bf99-7b2ada22ce67",
+      "children" : [ {
+        "id" : "25f85681-62d1-4a66-b3b3-a71ba18ff8c3",
+        "type" : "block",
+        "definition" : "lightning/section",
+        "attributes" : {
+          "stackOnMobile" : true,
+          "lightning:colorScheme" : "{!$brand.colorScheme}",
+          "lightning:margin" : "{!$brand.spacing.none}",
+          "lightning:padding" : "{!$brand.spacing.xSmall}",
+          "lightning:borderRadius" : "{!$brand.borderRadius.square}",
+          "lightning:borderWidth" : "{!$brand.borderWeight.none}",
+          "lightning:backgroundImage" : {
+            "repeat" : "no-repeat",
+            "position" : "center center",
+            "size" : "cover"
+          },
+          "reverseOrderOnMobile" : false
+        },
+        "children" : [ {
+          "id" : "eeaa32c6-f6b6-4fae-b4d8-2779ab32a5f0",
+          "type" : "block",
+          "definition" : "lightning/column",
+          "attributes" : {
+            "columnWidth" : 12,
+            "lightning:colorScheme" : "{!$brand.colorScheme}",
+            "lightning:margin" : "{!$brand.spacing.none}",
+            "lightning:padding" : "{!$brand.spacing.xSmall}",
+            "lightning:borderRadius" : "{!$brand.borderRadius.square}",
+            "lightning:borderWidth" : "{!$brand.borderWeight.none}",
+            "lightning:verticalAlignment" : "top",
+            "lightning:backgroundImage" : {
+              "repeat" : "no-repeat",
+              "position" : "center center",
+              "size" : "cover"
+            }
+          },
+          "children" : [ {
+            "id" : "b69ac134-04e5-49b3-bf0f-4b5b2e4636ea",
+            "type" : "block",
+            "definition" : "lightning/heading",
+            "attributes" : {
+              "level" : 3.0,
+              "align" : "center",
+              "lightning:typography" : "{!$brand.typography.heading.heading3}",
+              "lightning:colorGroup" : {
+                "backgroundColor" : "{!$brand.colorScheme.root}",
+                "textColor" : "{!$brand.colorScheme.contrast}",
+                "linkColor" : "{!$brand.colorScheme.primaryAccent}",
+                "borderColor" : "{!$brand.colorScheme.neutral}"
+              },
+              "lightning:padding" : "{!$brand.spacing.none}",
+              "lightning:margin" : "{!$brand.spacing.none}",
+              "lightning:borderRadius" : "{!$brand.borderRadius.square}",
+              "lightning:borderWidth" : "{!$brand.borderWeight.none}",
+              "text" : "<strong>Sign Up Here</strong>"
+            }
+          } ]
+        } ]
+      }, {
+        "id" : "2878faf2-60cf-4824-882e-cedfd1659e54",
+        "type" : "block",
+        "definition" : "lightning/section",
+        "attributes" : {
+          "stackOnMobile" : true,
+          "lightning:colorScheme" : "{!$brand.colorScheme}",
+          "lightning:margin" : "{!$brand.spacing.none}",
+          "lightning:padding" : "{!$brand.spacing.xSmall}",
+          "lightning:borderRadius" : "{!$brand.borderRadius.square}",
+          "lightning:borderWidth" : "{!$brand.borderWeight.none}",
+          "lightning:backgroundImage" : {
+            "repeat" : "no-repeat",
+            "position" : "center center",
+            "size" : "cover"
+          },
+          "reverseOrderOnMobile" : false
+        },
+        "children" : [ {
+          "id" : "949705af-822f-4f50-a9d0-26eeab749b44",
+          "type" : "block",
+          "definition" : "lightning/column",
+          "attributes" : {
+            "columnWidth" : 12,
+            "lightning:colorScheme" : "{!$brand.colorScheme}",
+            "lightning:margin" : "{!$brand.spacing.none}",
+            "lightning:padding" : "{!$brand.spacing.xSmall}",
+            "lightning:borderRadius" : "{!$brand.borderRadius.square}",
+            "lightning:borderWidth" : "{!$brand.borderWeight.none}",
+            "lightning:verticalAlignment" : "top",
+            "lightning:backgroundImage" : {
+              "repeat" : "no-repeat",
+              "position" : "center center",
+              "size" : "cover"
+            }
+          },
+          "children" : [ {
+            "id" : "3b8d80a2-0d14-427b-ab54-685ea2d06fcd",
+            "type" : "block",
+            "definition" : "lightning/inputText",
+            "attributes" : {
+              "maxLength" : 255,
+              "lightning:labelTypography" : "{!$brand.typography.label.label1}",
+              "lightning:formInputColorGroup" : {
+                "backgroundColor" : "{!$brand.colorScheme.root}",
+                "textColor" : "{!$brand.colorScheme.contrast}",
+                "borderColor" : "{!$brand.colorScheme.neutral}"
+              },
+              "lightning:padding" : "{!$brand.spacing.small}",
+              "lightning:margin" : "{!$brand.spacing.none}",
+              "lightning:borderRadius" : "{!$brand.borderRadius.square}",
+              "lightning:borderWidth" : "{!$brand.borderWeight.none}",
+              "lightning:horizontalAlignment" : "left",
+              "width" : "auto",
+              "sfdc_cms:formInputRequiredProperty" : true,
+              "sfdc_cms:formInputLabelProperty" : "First Name",
+              "sfdc_cms:formInputNameProperty" : "firstName",
+              "placeholder" : "Astro",
+              "sfdc_cms:formInputHiddenProperty" : false
+            }
+          }, {
+            "id" : "be317d6f-78c9-4b65-85f2-2ec44bc445b6",
+            "type" : "block",
+            "definition" : "lightning/inputText",
+            "attributes" : {
+              "maxLength" : 255,
+              "lightning:labelTypography" : "{!$brand.typography.label.label1}",
+              "lightning:formInputColorGroup" : {
+                "backgroundColor" : "{!$brand.colorScheme.root}",
+                "textColor" : "{!$brand.colorScheme.contrast}",
+                "borderColor" : "{!$brand.colorScheme.neutral}"
+              },
+              "lightning:padding" : "{!$brand.spacing.small}",
+              "lightning:margin" : "{!$brand.spacing.none}",
+              "lightning:borderRadius" : "{!$brand.borderRadius.square}",
+              "lightning:borderWidth" : "{!$brand.borderWeight.none}",
+              "lightning:horizontalAlignment" : "left",
+              "width" : "auto",
+              "sfdc_cms:formInputRequiredProperty" : true,
+              "sfdc_cms:formInputLabelProperty" : "Last Name",
+              "sfdc_cms:formInputNameProperty" : "lastName",
+              "placeholder" : "Smith",
+              "sfdc_cms:formInputHiddenProperty" : false
+            }
+          }, {
+            "id" : "a0b0968d-1d4c-4cd2-92f8-fd6195862e72",
+            "type" : "block",
+            "definition" : "lightning/inputText",
+            "attributes" : {
+              "maxLength" : 255,
+              "lightning:labelTypography" : "{!$brand.typography.label.label1}",
+              "lightning:formInputColorGroup" : {
+                "backgroundColor" : "{!$brand.colorScheme.root}",
+                "textColor" : "{!$brand.colorScheme.contrast}",
+                "borderColor" : "{!$brand.colorScheme.neutral}"
+              },
+              "lightning:padding" : "{!$brand.spacing.small}",
+              "lightning:margin" : "{!$brand.spacing.none}",
+              "lightning:borderRadius" : "{!$brand.borderRadius.square}",
+              "lightning:borderWidth" : "{!$brand.borderWeight.none}",
+              "lightning:horizontalAlignment" : "left",
+              "width" : "auto",
+              "sfdc_cms:formInputRequiredProperty" : true,
+              "sfdc_cms:formInputLabelProperty" : "Company",
+              "sfdc_cms:formInputNameProperty" : "company",
+              "placeholder" : "Salesforce",
+              "sfdc_cms:formInputHiddenProperty" : false
+            }
+          }, {
+            "id" : "a8ec58e9-b777-4c08-8358-9e6ff4aa2902",
+            "type" : "block",
+            "definition" : "lightning/inputEmail",
+            "attributes" : {
+              "maxLength" : 255,
+              "lightning:labelTypography" : "{!$brand.typography.label.label1}",
+              "lightning:formInputColorGroup" : {
+                "backgroundColor" : "{!$brand.colorScheme.root}",
+                "textColor" : "{!$brand.colorScheme.contrast}",
+                "borderColor" : "{!$brand.colorScheme.neutral}"
+              },
+              "lightning:padding" : "{!$brand.spacing.small}",
+              "lightning:margin" : "{!$brand.spacing.none}",
+              "lightning:borderRadius" : "{!$brand.borderRadius.square}",
+              "lightning:borderWidth" : "{!$brand.borderWeight.none}",
+              "lightning:horizontalAlignment" : "left",
+              "width" : "auto",
+              "sfdc_cms:formInputRequiredProperty" : true,
+              "sfdc_cms:formInputLabelProperty" : "Email Address",
+              "sfdc_cms:formInputNameProperty" : "email",
+              "placeholder" : "astro@salesforce.com"
+            }
+          }, {
+            "id" : "4df9f7fd-721b-409a-a270-c6e7957a0c51",
+            "type" : "block",
+            "definition" : "lightning/inputTelephone",
+            "attributes" : {
+              "maxLength" : 255,
+              "lightning:labelTypography" : "{!$brand.typography.label.label1}",
+              "lightning:formInputColorGroup" : {
+                "backgroundColor" : "{!$brand.colorScheme.root}",
+                "textColor" : "{!$brand.colorScheme.contrast}",
+                "borderColor" : "{!$brand.colorScheme.neutral}"
+              },
+              "lightning:padding" : "{!$brand.spacing.small}",
+              "lightning:margin" : "{!$brand.spacing.none}",
+              "lightning:borderRadius" : "{!$brand.borderRadius.square}",
+              "lightning:borderWidth" : "{!$brand.borderWeight.none}",
+              "lightning:horizontalAlignment" : "left",
+              "width" : "auto",
+              "sfdc_cms:formInputRequiredProperty" : false,
+              "sfdc_cms:formInputLabelProperty" : "Phone Number",
+              "sfdc_cms:formInputNameProperty" : "phoneNumber",
+              "placeholder" : "Example: 3175551212",
+              "includeCountryCode" : true
+            }
+          }, {
+            "id" : "33bc959f-1138-44a2-afde-0aabcb67ed84",
+            "type" : "block",
+            "definition" : "lightning/heading",
+            "attributes" : {
+              "level" : 3.0,
+              "align" : "left",
+              "lightning:typography" : "{!$brand.typography.heading.heading3}",
+              "lightning:colorGroup" : {
+                "backgroundColor" : "{!$brand.colorScheme.root}",
+                "textColor" : "{!$brand.colorScheme.contrast}",
+                "linkColor" : "{!$brand.colorScheme.primaryAccent}",
+                "borderColor" : "{!$brand.colorScheme.neutral}"
+              },
+              "lightning:padding" : "{!$brand.spacing.small}",
+              "lightning:margin" : "{!$brand.spacing.none}",
+              "lightning:borderRadius" : "{!$brand.borderRadius.square}",
+              "lightning:borderWidth" : "{!$brand.borderWeight.none}",
+              "text" : "<br />Use this space to tell people that by submitting your form, they consent to receive marketing messages from you.<br />"
+            }
+          }, {
+            "id" : "7c5632f6-14cd-4391-9622-6b57fb87a9a0",
+            "type" : "block",
+            "definition" : "lightning/actionButton",
+            "attributes" : {
+              "text" : "Submit",
+              "width" : "auto",
+              "sfdc_cms:styleGroup" : "{!$brand.buttonStyleGroup.primary}",
+              "lightning:buttonColorGroup" : "{!$brand.buttonStyleGroup.primary.lightning:buttonColorGroup}",
+              "lightning:typography" : "{!$brand.buttonStyleGroup.primary.lightning:typography}",
+              "lightning:margin" : "{!$brand.spacing.medium}",
+              "lightning:padding" : "{!$brand.spacing.medium}",
+              "lightning:horizontalAlignment" : "center",
+              "lightning:borderRadius" : "{!$brand.borderRadius.round}",
+              "lightning:borderWidth" : "{!$brand.borderWeight.none}",
+              "lightning:click" : {
+                "actions" : [ {
+                  "definition" : "sfdc_cms/customEventAction",
+                  "attributes" : {
+                    "type" : "formsubmit",
+                    "options" : {
+                      "bubbles" : true
+                    }
+                  }
+                } ]
+              }
+            }
+          } ]
+        } ]
+      } ]
+    },
+    "sfdc_cms:title" : "SAMPLE MC Form Form",
+    "formsubmission" : {
+      "actions" : [ {
+        "definition" : "sfdc_cms/umaFormSubmissionAction",
+        "attributes" : {
+          "formId" : "{!$form.id}",
+          "pageReferenceId" : "{!$page.id}",
+          "formData" : "{!$form.fields}",
+          "formVersion" : "{!$form.version}"
+        }
+      }, {
+        "definition" : "sfdc_cms/showThankYouAction",
+        "attributes" : {
+          "message" : "Thank you! Your response is on its way."
+        }
+      } ]
+    },
+    "lightning:dataProviders" : [ ]
+  },
+  "urlName" : "sample-mc-form-form"
+}

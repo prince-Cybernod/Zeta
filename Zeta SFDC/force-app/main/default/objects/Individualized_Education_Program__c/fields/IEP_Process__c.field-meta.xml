@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>IEP_Process__c</fullName>
+    <description>Automatically calculates the expected IEP process follow-up date, set to 7 days after the Date of IEP Indication. Used to track timelines for document collection and verification follow-up.</description>
+    <formula>Date_of_IEP_Indication__c + 7</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>IEP Process</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Date</type>
+</CustomField>

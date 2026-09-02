@@ -1,0 +1,22 @@
+{
+  "type" : "sfdc_cms__theme",
+  "title" : "Marketing Landing Page (LWR)",
+  "contentBody" : {
+    "activeBrandingSetId" : "Marketing_Landing_Page_LWR",
+    "definitionName" : "marketingLanding",
+    "layouts" : [ {
+      "layoutId" : "fullPage",
+      "layoutType" : "FullPage"
+    }, {
+      "layoutId" : "snaThemeLayout",
+      "layoutType" : "ServiceNotAvailable"
+    }, {
+      "layoutId" : "headerAndFooter",
+      "layoutType" : "Inner"
+    }, {
+      "layoutId" : "lightningOutFullPage",
+      "layoutType" : "LightningOutFullPage"
+    } ]
+  },
+  "urlName" : "marketing-landing-page-lwr"
+}

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Ring_Order__c</fullName>
+    <externalId>false</externalId>
+    <inlineHelpText>Sequence of this ring within the district, in KML document order. Stable across reloads so diffs are meaningful.</inlineHelpText>
+    <label>Ring Order</label>
+    <precision>4</precision>
+    <required>false</required>
+    <scale>0</scale>
+    <trackTrending>false</trackTrending>
+    <type>Number</type>
+    <unique>false</unique>
+</CustomField>

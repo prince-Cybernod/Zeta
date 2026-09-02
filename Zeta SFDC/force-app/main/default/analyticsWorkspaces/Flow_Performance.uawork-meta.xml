@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<AnalyticsWorkspace xmlns="http://soap.sforce.com/2006/04/metadata">
+    <description>This workspace consists of Flow Performance related Tableau assets, created via app install</description>
+    <masterLabel>Flow Performance</masterLabel>
+    <workspaceAssetRelationships>
+        <asset>Flow_Performance_Semantic_Model</asset>
+        <assetType>SemanticModel</assetType>
+        <assetUsageType>Referenced</assetUsageType>
+        <workspace>Flow_Performance</workspace>
+    </workspaceAssetRelationships>
+</AnalyticsWorkspace>

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <label><!-- IEP Status --></label>
+    <name>IEP_Status__c</name>
+    <picklistValues>
+        <masterLabel>IEP Process Complete</masterLabel>
+        <translation><!-- IEP Process Complete --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>N/A</masterLabel>
+        <translation><!-- N/A --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Principal Support Needed</masterLabel>
+        <translation><!-- Principal Support Needed --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>School Excellence Support Needed</masterLabel>
+        <translation><!-- School Excellence Support Needed --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>StAT needs to call family</masterLabel>
+        <translation><!-- StAT needs to call family --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>StAT needs to review IEP</masterLabel>
+        <translation><!-- StAT needs to review IEP --></translation>
+    </picklistValues>
+</CustomFieldTranslation>
