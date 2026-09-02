@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Require_Withdraw_Rescind_Reason</fullName>
+    <active>true</active>
+    <description>Enforces data integrity by requiring the Rescinded Reason field when the School Application Status is set to Withdrawn/Declined, Offer Rescinded due to Seat Optimization, or Rescinded. Prevents saving incomplete withdrawal records.</description>
+    <errorConditionFormula>AND(ISCHANGED( Status ) ,
+OR(
+        AND ( ISPICKVAL( Status , &quot;Withdrawn/Declined&quot;), ISPICKVAL(Withdrawn_Declined_Reason_Picklist__c, &quot;&quot; )), 
+       
+        AND(  ISPICKVAL(Status , &quot;Rescinded&quot;), ISBLANK( Rescinded_Reason__c))
+    ))</errorConditionFormula>
+    <errorDisplayField>Status</errorDisplayField>
+    <errorMessage>A Withdraw/Rescind Reason is required when the Status is set to a withdrawal status.</errorMessage>
+</ValidationRule>

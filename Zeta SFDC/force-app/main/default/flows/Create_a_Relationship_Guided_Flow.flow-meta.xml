@@ -1,0 +1,320 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>61.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <choices>
+        <name>Organization_to_Organization</name>
+        <choiceText>Organization to Organization</choiceText>
+        <dataType>String</dataType>
+        <value>
+            <stringValue>Organization to Organization</stringValue>
+        </value>
+    </choices>
+    <choices>
+        <name>Organization_to_Person</name>
+        <choiceText>Organization to Person</choiceText>
+        <dataType>String</dataType>
+        <value>
+            <stringValue>Organization to Person</stringValue>
+        </value>
+    </choices>
+    <choices>
+        <name>Person_to_Organization</name>
+        <choiceText>Person to Organization</choiceText>
+        <dataType>String</dataType>
+        <value>
+            <stringValue>Person to Organization</stringValue>
+        </value>
+    </choices>
+    <choices>
+        <name>Person_to_Person</name>
+        <choiceText>Person to Person</choiceText>
+        <dataType>String</dataType>
+        <value>
+            <stringValue>Person to Person</stringValue>
+        </value>
+    </choices>
+    <decisions>
+        <description>This decision element checks to see if the Account selected is a Person Account. If the record is a Person Account, the end-user should not be given the choice to create an AccountAccountRelation. Conversely, if the originating record is an Organization Account, the end-user should not be given the choice to create ContactContactRelations.</description>
+        <name>Was_a_Person_Account_Selected</name>
+        <label>Was a Person Account Selected?</label>
+        <locationX>446</locationX>
+        <locationY>242</locationY>
+        <defaultConnector>
+            <targetReference>Select_an_Organization_Relationship</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>No - Surface Organization Relationship Choices</defaultConnectorLabel>
+        <rules>
+            <name>Yes_Surface_Person_Relationship_Choices</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Get_Account_ID.IsPersonAccount</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Select_a_Person_Relationship</targetReference>
+            </connector>
+            <label>Yes - Surface Person Relationship Choices</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <description>This decision element looks at which type of relationship the end-user selected, and routes the action to create the appropriate relationship type.</description>
+        <name>Which_Organization_Relationship_Type_was_Selected</name>
+        <label>Which Organization Relationship Type was Selected?</label>
+        <locationX>710</locationX>
+        <locationY>458</locationY>
+        <defaultConnector>
+            <targetReference>Create_AAR</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Organization to Organization</defaultConnectorLabel>
+        <rules>
+            <name>dOrganization_to_Person</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Select_a_Relationship_Type</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Organization to Person</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Create_ACR2</targetReference>
+            </connector>
+            <label>Organization to Person</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <description>This decision element looks at which type of relationship the end-user selected, and routes the action to create the appropriate relationship type.</description>
+        <name>Which_Person_Relationship_Type_was_Selected</name>
+        <label>Which Person Relationship Type was Selected?</label>
+        <locationX>182</locationX>
+        <locationY>458</locationY>
+        <defaultConnector>
+            <targetReference>Create_ACR</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Person to Organization</defaultConnectorLabel>
+        <rules>
+            <name>dPerson_to_Person</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Select_a_Relationship_Type_Person</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Person to Person</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Create_CCR</targetReference>
+            </connector>
+            <label>Person to Person</label>
+        </rules>
+    </decisions>
+    <description>This is a modular screen flow to streamline the creation of relationship records from an Account</description>
+    <environments>Default</environments>
+    <interviewLabel>Create a Relationship Guided Flow {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Create a Relationship Guided Flow</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>Flow</processType>
+    <recordLookups>
+        <description>Gets the Account record that matches the recordId that&apos;s passed into flow from a Quick Action button on the Account record page. Please note you must use the variable &quot;recordId&quot; exactly in order for the query to work properly (e.g. not recordid, Recordid, or recordID).</description>
+        <name>Get_Account_ID</name>
+        <label>Get Account ID</label>
+        <locationX>446</locationX>
+        <locationY>134</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Was_a_Person_Account_Selected</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>recordId</elementReference>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>Account</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <runInMode>SystemModeWithoutSharing</runInMode>
+    <screens>
+        <description>The end user selects the type of relationship they would like to create, and their selection routes them to a subflow to create the selected relationship. This screen only offers the option to create Person to Person or Person to Organization relationships, since the originating Account record is a Person Account.</description>
+        <name>Select_a_Person_Relationship</name>
+        <label>Select a Person Relationship</label>
+        <locationX>182</locationX>
+        <locationY>350</locationY>
+        <allowBack>false</allowBack>
+        <allowFinish>true</allowFinish>
+        <allowPause>false</allowPause>
+        <connector>
+            <targetReference>Which_Person_Relationship_Type_was_Selected</targetReference>
+        </connector>
+        <fields>
+            <name>GuidancePerson</name>
+            <fieldText>&lt;p&gt;&lt;em&gt;Please ensure the related person/organization has been created prior to creating the relationship.&lt;/em&gt;&lt;/p&gt;</fieldText>
+            <fieldType>DisplayText</fieldType>
+            <styleProperties>
+                <verticalAlignment>
+                    <stringValue>top</stringValue>
+                </verticalAlignment>
+                <width>
+                    <stringValue>12</stringValue>
+                </width>
+            </styleProperties>
+        </fields>
+        <fields>
+            <name>Select_a_Relationship_Type_Person</name>
+            <choiceReferences>Person_to_Person</choiceReferences>
+            <choiceReferences>Person_to_Organization</choiceReferences>
+            <dataType>String</dataType>
+            <fieldText>Select a Relationship Type</fieldText>
+            <fieldType>RadioButtons</fieldType>
+            <inputsOnNextNavToAssocScrn>UseStoredValues</inputsOnNextNavToAssocScrn>
+            <isRequired>true</isRequired>
+            <styleProperties>
+                <verticalAlignment>
+                    <stringValue>top</stringValue>
+                </verticalAlignment>
+                <width>
+                    <stringValue>12</stringValue>
+                </width>
+            </styleProperties>
+        </fields>
+        <showFooter>true</showFooter>
+        <showHeader>true</showHeader>
+    </screens>
+    <screens>
+        <description>The end user selects the type of relationship they would like to create, and their selection routes them to a subflow to create the selected relationship. This screen only shows choices to create an Organization to Person Relationship, or an Organization to Organization relationship, since the originating record is an Organization Account</description>
+        <name>Select_an_Organization_Relationship</name>
+        <label>Select an Organization Relationship</label>
+        <locationX>710</locationX>
+        <locationY>350</locationY>
+        <allowBack>false</allowBack>
+        <allowFinish>true</allowFinish>
+        <allowPause>false</allowPause>
+        <connector>
+            <targetReference>Which_Organization_Relationship_Type_was_Selected</targetReference>
+        </connector>
+        <fields>
+            <name>Select_a_Relationship_Type</name>
+            <choiceReferences>Organization_to_Person</choiceReferences>
+            <choiceReferences>Organization_to_Organization</choiceReferences>
+            <dataType>String</dataType>
+            <fieldText>Select a Relationship Type</fieldText>
+            <fieldType>RadioButtons</fieldType>
+            <inputsOnNextNavToAssocScrn>UseStoredValues</inputsOnNextNavToAssocScrn>
+            <isRequired>true</isRequired>
+            <styleProperties>
+                <verticalAlignment>
+                    <stringValue>top</stringValue>
+                </verticalAlignment>
+                <width>
+                    <stringValue>12</stringValue>
+                </width>
+            </styleProperties>
+        </fields>
+        <showFooter>true</showFooter>
+        <showHeader>true</showHeader>
+    </screens>
+    <start>
+        <locationX>320</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>Get_Account_ID</targetReference>
+        </connector>
+    </start>
+    <status>Active</status>
+    <subflows>
+        <description>This action calls a subflow to create an AccountAccountRelation record. The AccountAccountRelation object requires the originating Person Account&apos;s recordId, so this variable is pushed through to the subflow using the variable recordId.</description>
+        <name>Create_AAR</name>
+        <label>Create AAR</label>
+        <locationX>842</locationX>
+        <locationY>566</locationY>
+        <flowName>Create_AccountAccountRelationship</flowName>
+        <inputAssignments>
+            <name>recordId</name>
+            <value>
+                <elementReference>Get_Account_ID.Id</elementReference>
+            </value>
+        </inputAssignments>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </subflows>
+    <subflows>
+        <description>This action calls a subflow that guides the user to create an AccountContactRelation. The AccountContactRelation object requires the originating Person Account&apos;s contactId, so this variable is pushed through to the subflow using the variable vPersonContactId.</description>
+        <name>Create_ACR</name>
+        <label>Create ACR</label>
+        <locationX>314</locationX>
+        <locationY>566</locationY>
+        <flowName>Create_AccountContactRelationship</flowName>
+        <inputAssignments>
+            <name>vPersonContactId</name>
+            <value>
+                <elementReference>Get_Account_ID.Id</elementReference>
+            </value>
+        </inputAssignments>
+    </subflows>
+    <subflows>
+        <description>This action calls a subflow that guides the user to create an AccountContactRelation. The AccountContactRelation object requires the originating Organization Account&apos;s recordId, so this variable is pushed through to the subflow using the variable recordId.</description>
+        <name>Create_ACR2</name>
+        <label>Create ACR</label>
+        <locationX>578</locationX>
+        <locationY>566</locationY>
+        <flowName>Create_AccountContactRelationship</flowName>
+        <inputAssignments>
+            <name>AccountId</name>
+            <value>
+                <elementReference>recordId</elementReference>
+            </value>
+        </inputAssignments>
+    </subflows>
+    <subflows>
+        <description>This action calls a subflow that guides the user to create a ContactContactRelation record. The ContactContactRelation object requires the originating Person Account&apos;s contactId, so that value is pushed to the subflow with the variable vCCR2.</description>
+        <name>Create_CCR</name>
+        <label>Create CCR</label>
+        <locationX>50</locationX>
+        <locationY>566</locationY>
+        <flowName>Create_ContactContactRelationship</flowName>
+        <inputAssignments>
+            <name>recordId</name>
+            <value>
+                <elementReference>Get_Account_ID.PersonContactId</elementReference>
+            </value>
+        </inputAssignments>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </subflows>
+    <variables>
+        <name>recordId</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>true</isInput>
+        <isOutput>true</isOutput>
+    </variables>
+    <variables>
+        <name>vPersonContactId</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>true</isInput>
+        <isOutput>true</isOutput>
+    </variables>
+</Flow>

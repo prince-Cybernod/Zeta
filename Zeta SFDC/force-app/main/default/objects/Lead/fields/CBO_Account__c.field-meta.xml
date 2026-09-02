@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>CBO_Account__c</fullName>
+    <deleteConstraint>SetNull</deleteConstraint>
+    <description>CBO that contributed to this Lead</description>
+    <inlineHelpText>CBO that contributed to this Lead</inlineHelpText>
+    <label>CBO Account</label>
+    <lookupFilter>
+        <active>true</active>
+        <errorMessage>The Account in this field must have Record Type CBO.</errorMessage>
+        <filterItems>
+            <field>Account.RecordType.Name</field>
+            <operation>equals</operation>
+            <value>CBO</value>
+        </filterItems>
+        <isOptional>false</isOptional>
+    </lookupFilter>
+    <referenceTo>Account</referenceTo>
+    <relationshipLabel>Leads</relationshipLabel>
+    <relationshipName>Leads</relationshipName>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <type>Lookup</type>
+</CustomField>

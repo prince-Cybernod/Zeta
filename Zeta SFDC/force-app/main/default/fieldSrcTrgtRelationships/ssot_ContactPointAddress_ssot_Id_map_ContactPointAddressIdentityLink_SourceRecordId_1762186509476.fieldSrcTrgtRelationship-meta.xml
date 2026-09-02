@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<FieldSrcTrgtRelationship xmlns="http://soap.sforce.com/2006/04/metadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <definitionCreationType>System</definitionCreationType>
+    <lookupFieldName>ssot__ContactPointAddress__dlm.rel_1762186509476_end__c</lookupFieldName>
+    <masterLabel>ssot_ContactPointAddress_ssot_Id_map_ContactPointAddressIdentityLink_SourceRecordId_1762186509476</masterLabel>
+    <owner>DataCloud</owner>
+    <relationshipCardinality>OneToOne</relationshipCardinality>
+    <sourceFieldName>ssot__ContactPointAddress__dlm.ssot__Id__c</sourceFieldName>
+    <targetEntity xsi:nil="true"/>
+    <targetFieldName>ContactPointAddressIdentityLink__dlm.SourceRecordId__c</targetFieldName>
+</FieldSrcTrgtRelationship>

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <label><!-- Async Context Type --></label>
+    <name>AsyncContextType__c</name>
+    <picklistValues>
+        <masterLabel>Database.BatchableContext</masterLabel>
+        <translation><!-- Database.BatchableContext --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>System.FinalizerContext</masterLabel>
+        <translation><!-- System.FinalizerContext --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>System.QueueableContext</masterLabel>
+        <translation><!-- System.QueueableContext --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>System.SchedulableContext</masterLabel>
+        <translation><!-- System.SchedulableContext --></translation>
+    </picklistValues>
+</CustomFieldTranslation>

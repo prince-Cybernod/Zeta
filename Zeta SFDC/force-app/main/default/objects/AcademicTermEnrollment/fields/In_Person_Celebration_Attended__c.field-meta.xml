@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>In_Person_Celebration_Attended__c</fullName>
+    <defaultValue>false</defaultValue>
+    <description>Indicates whether the student or family attended the in-person celebration event.</description>
+    <inlineHelpText>Indicates whether the student or family attended the in-person celebration event.</inlineHelpText>
+    <label>In-Person Celebration Attended</label>
+    <trackHistory>false</trackHistory>
+    <type>Checkbox</type>
+</CustomField>

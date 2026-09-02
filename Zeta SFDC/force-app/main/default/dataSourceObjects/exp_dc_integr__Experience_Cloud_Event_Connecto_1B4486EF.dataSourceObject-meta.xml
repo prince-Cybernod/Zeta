@@ -1,0 +1,4026 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<DataSourceObject xmlns="http://soap.sforce.com/2006/04/metadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <dataSource>exp_dc_integr__Experience_Cloud_Event_Connecto_1B4486EF</dataSource>
+    <dataSourceFields>
+        <fullName>exp_dc_integr__cart_browserName</fullName>
+        <datatype>S</datatype>
+        <definitionCreationType>Custom</definitionCreationType>
+        <externalName>cart.browserName</externalName>
+        <fieldFormula>sourceField[&apos;cart.browserName&apos;]</fieldFormula>
+        <isDataRequired>false</isDataRequired>
+        <isEventDate>false</isEventDate>
+        <isFormula>false</isFormula>
+        <isRecordModified>false</isRecordModified>
+        <keyQualifierName>KQ_cart_browserName</keyQualifierName>
+        <masterLabel>browserName</masterLabel>
+        <sequence xsi:nil="true"/>
+        <usageTag>NONE</usageTag>
+        <versionNumber xsi:nil="true"/>
+    </dataSourceFields>
+    <dataSourceFields>
+        <fullName>exp_dc_integr__cart_browserVersion</fullName>
+        <datatype>S</datatype>
+        <definitionCreationType>Custom</definitionCreationType>
+        <externalName>cart.browserVersion</externalName>
+        <fieldFormula>sourceField[&apos;cart.browserVersion&apos;]</fieldFormula>
+        <isDataRequired>false</isDataRequired>
+        <isEventDate>false</isEventDate>
+        <isFormula>false</isFormula>
+        <isRecordModified>false</isRecordModified>
+        <keyQualifierName>KQ_cart_browserVersion</keyQualifierName>
+        <masterLabel>browserVersion</masterLabel>
+        <sequence xsi:nil="true"/>
+        <usageTag>NONE</usageTag>
+        <versionNumber xsi:nil="true"/>
+    </dataSourceFields>
+    <dataSourceFields>
+        <fullName>exp_dc_integr__cart_businessUnitId</fullName>
+        <datatype>S</datatype>
+        <definitionCreationType>Custom</definitionCreationType>
+        <externalName>cart.businessUnitId</externalName>
+        <fieldFormula>sourceField[&apos;cart.businessUnitId&apos;]</fieldFormula>
+        <isDataRequired>false</isDataRequired>
+        <isEventDate>false</isEventDate>
+        <isFormula>false</isFormula>
+        <isRecordModified>false</isRecordModified>
+        <keyQualifierName>KQ_cart_businessUnitId</keyQualifierName>
+        <masterLabel>businessUnitId</masterLabel>
+        <sequence xsi:nil="true"/>
+        <usageTag>NONE</usageTag>
+        <versionNumber xsi:nil="true"/>
+    </dataSourceFields>
+    <dataSourceFields>
+        <fullName>exp_dc_integr__cart_categoryId</fullName>
+        <datatype>S</datatype>
+        <definitionCreationType>Custom</definitionCreationType>
+        <externalName>cart.categoryId</externalName>
+        <fieldFormula>sourceField[&apos;cart.categoryId&apos;]</fieldFormula>
+        <isDataRequired>false</isDataRequired>
+        <isEventDate>false</isEventDate>
+        <isFormula>false</isFormula>
+        <isRecordModified>false</isRecordModified>
+        <keyQualifierName>KQ_cart_categoryId</keyQualifierName>
+        <masterLabel>categoryId</masterLabel>
+        <sequence xsi:nil="true"/>
+        <usageTag>NONE</usageTag>
+        <versionNumber xsi:nil="true"/>
+    </dataSourceFields>
+    <dataSourceFields>
+        <fullName>exp_dc_integr__cart_checkoutId</fullName>
+        <datatype>S</datatype>
+        <definitionCreationType>Custom</definitionCreationType>
+        <externalName>cart.checkoutId</externalName>
+        <fieldFormula>sourceField[&apos;cart.checkoutId&apos;]</fieldFormula>
+        <isDataRequired>false</isDataRequired>
+        <isEventDate>false</isEventDate>
+        <isFormula>false</isFormula>
+        <isRecordModified>false</isRecordModified>
+        <keyQualifierName>KQ_cart_checkoutId</keyQualifierName>
+        <masterLabel>checkoutId</masterLabel>
+        <sequence xsi:nil="true"/>
+        <usageTag>NONE</usageTag>
+        <versionNumber xsi:nil="true"/>
+    </dataSourceFields>
+    <dataSourceFields>
+        <fullName>exp_dc_integr__cart_componentId</fullName>
+        <datatype>S</datatype>
+        <definitionCreationType>Custom</definitionCreationType>
+        <externalName>cart.componentId</externalName>
+        <fieldFormula>sourceField[&apos;cart.componentId&apos;]</fieldFormula>
+        <isDataRequired>false</isDataRequired>
+        <isEventDate>false</isEventDate>
+        <isFormula>false</isFormula>
+        <isRecordModified>false</isRecordModified>
+        <keyQualifierName>KQ_cart_componentId</keyQualifierName>
+        <masterLabel>componentId</masterLabel>
+        <sequence xsi:nil="true"/>
+        <usageTag>NONE</usageTag>
+        <versionNumber xsi:nil="true"/>
+    </dataSourceFields>
+    <dataSourceFields>
+        <fullName>exp_dc_integr__cart_correlationId</fullName>
+        <datatype>S</datatype>
+        <definitionCreationType>Custom</definitionCreationType>
+        <externalName>cart.correlationId</externalName>
+        <fieldFormula>sourceField[&apos;cart.correlationId&apos;]</fieldFormula>
+        <isDataRequired>false</isDataRequired>
+        <isEventDate>false</isEventDate>
+        <isFormula>false</isFormula>
+        <isRecordModified>false</isRecordModified>
+        <keyQualifierName>KQ_cart_correlationId</keyQualifierName>
+        <masterLabel>correlationId</masterLabel>
+        <sequence xsi:nil="true"/>
+        <usageTag>NONE</usageTag>
+        <versionNumber xsi:nil="true"/>
+    </dataSourceFields>
+    <dataSourceFields>
+        <fullName>exp_dc_integr__cart_coupon</fullName>
+        <datatype>S</datatype>
+        <definitionCreationType>Custom</definitionCreationType>
+        <externalName>cart.coupon</externalName>
+        <fieldFormula>sourceField[&apos;cart.coupon&apos;]</fieldFormula>
+        <isDataRequired>false</isDataRequired>
+        <isEventDate>false</isEventDate>
+        <isFormula>false</isFormula>
+        <isRecordModified>false</isRecordModified>
+        <keyQualifierName>KQ_cart_coupon</keyQualifierName>
+        <masterLabel>coupon</masterLabel>
+        <sequence xsi:nil="true"/>
+        <usageTag>NONE</usageTag>
+        <versionNumber xsi:nil="true"/>
+    </dataSourceFields>
+    <dataSourceFields>
+        <fullName>exp_dc_integr__cart_currency</fullName>
+        <datatype>S</datatype>
+        <definitionCreationType>Custom</definitionCreationType>
+        <externalName>cart.currency</externalName>
+        <fieldFormula>sourceField[&apos;cart.currency&apos;]</fieldFormula>
+        <isDataRequired>false</isDataRequired>
+        <isEventDate>false</isEventDate>
+        <isFormula>false</isFormula>
+        <isRecordModified>false</isRecordModified>
+        <keyQualifierName>KQ_cart_currency</keyQualifierName>
+        <masterLabel>currency</masterLabel>
+        <sequence xsi:nil="true"/>
+        <usageTag>NONE</usageTag>
+        <versionNumber xsi:nil="true"/>
+    </dataSourceFields>
+    <dataSourceFields>
+        <fullName>exp_dc_integr__cart_dataSpaceId</fullName>
+        <datatype>S</datatype>
+        <definitionCreationType>Custom</definitionCreationType>
+        <externalName>cart.dataSpaceId</externalName>
+        <fieldFormula>sourceField[&apos;cart.dataSpaceId&apos;]</fieldFormula>
+        <isDataRequired>false</isDataRequired>
+        <isEventDate>false</isEventDate>
+        <isFormula>false</isFormula>
+        <isRecordModified>false</isRecordModified>
+        <keyQualifierName>KQ_cart_dataSpaceId</keyQualifierName>
+        <masterLabel>dataSpaceId</masterLabel>
+        <sequence xsi:nil="true"/>
+        <usageTag>NONE</usageTag>
+        <versionNumber xsi:nil="true"/>
+    </dataSourceFields>
+    <dataSourceFields>
+        <fullName>exp_dc_integr__cart_deviceModel</fullName>
+        <datatype>S</datatype>
+        <definitionCreationType>Custom</definitionCreationType>
+        <externalName>cart.deviceModel</externalName>
+        <fieldFormula>sourceField[&apos;cart.deviceModel&apos;]</fieldFormula>
+        <isDataRequired>false</isDataRequired>
+        <isEventDate>false</isEventDate>
+        <isFormula>false</isFormula>
+        <isRecordModified>false</isRecordModified>
+        <keyQualifierName>KQ_cart_deviceModel</keyQualifierName>
+        <masterLabel>deviceModel</masterLabel>
+        <sequence xsi:nil="true"/>
+        <usageTag>NONE</usageTag>
+        <versionNumber xsi:nil="true"/>
+    </dataSourceFields>
+    <dataSourceFields>
+        <fullName>exp_dc_integr__cart_deviceVendor</fullName>
+        <datatype>S</datatype>
+        <definitionCreationType>Custom</definitionCreationType>
+        <externalName>cart.deviceVendor</externalName>
+        <fieldFormula>sourceField[&apos;cart.deviceVendor&apos;]</fieldFormula>
+        <isDataRequired>false</isDataRequired>
+        <isEventDate>false</isEventDate>
+        <isFormula>false</isFormula>
+        <isRecordModified>false</isRecordModified>
+        <keyQualifierName>KQ_cart_deviceVendor</keyQualifierName>
+        <masterLabel>deviceVendor</masterLabel>
+        <sequence xsi:nil="true"/>
+        <usageTag>NONE</usageTag>
+        <versionNumber xsi:nil="true"/>
+    </dataSourceFields>
+    <dataSourceFields>
+        <fullName>exp_dc_integr__cart_eventStatus</fullName>
+        <datatype>S</datatype>
+        <definitionCreationType>Custom</definitionCreationType>
+        <externalName>cart.eventStatus</externalName>
+        <fieldFormula>sourceField[&apos;cart.eventStatus&apos;]</fieldFormula>
+        <isDataRequired>false</isDataRequired>
+        <isEventDate>false</isEventDate>
+        <isFormula>false</isFormula>
+        <isRecordModified>false</isRecordModified>
+        <keyQualifierName>KQ_cart_eventStatus</keyQualifierName>
+        <masterLabel>eventStatus</masterLabel>
+        <sequence xsi:nil="true"/>
+        <usageTag>NONE</usageTag>
+        <versionNumber xsi:nil="true"/>
+    </dataSourceFields>
+    <dataSourceFields>
+        <fullName>exp_dc_integr__cart_id</fullName>
+        <datatype>S</datatype>
+        <definitionCreationType>Custom</definitionCreationType>
+        <externalName>cart.id</externalName>
+        <fieldFormula>sourceField[&apos;cart.id&apos;]</fieldFormula>
+        <isDataRequired>false</isDataRequired>
+        <isEventDate>false</isEventDate>
+        <isFormula>false</isFormula>
+        <isRecordModified>false</isRecordModified>
+        <keyQualifierName>KQ_cart_id</keyQualifierName>
+        <masterLabel>id</masterLabel>
+        <sequence xsi:nil="true"/>
+        <usageTag>NONE</usageTag>
+        <versionNumber xsi:nil="true"/>
+    </dataSourceFields>
+    <dataSourceFields>
+        <fullName>exp_dc_integr__cart_interactionName</fullName>
+        <datatype>S</datatype>
+        <definitionCreationType>Custom</definitionCreationType>
+        <externalName>cart.interactionName</externalName>
+        <fieldFormula>sourceField[&apos;cart.interactionName&apos;]</fieldFormula>
+        <isDataRequired>false</isDataRequired>
+        <isEventDate>false</isEventDate>
+        <isFormula>false</isFormula>
+        <isRecordModified>false</isRecordModified>
+        <keyQualifierName>KQ_cart_interactionName</keyQualifierName>
+        <masterLabel>interactionName</masterLabel>
+        <sequence xsi:nil="true"/>
+        <usageTag>NONE</usageTag>
+        <versionNumber xsi:nil="true"/>
+    </dataSourceFields>
+    <dataSourceFields>
+        <fullName>exp_dc_integr__cart_name</fullName>
+        <datatype>S</datatype>
+        <definitionCreationType>Custom</definitionCreationType>
+        <externalName>cart.name</externalName>
+        <fieldFormula>sourceField[&apos;cart.name&apos;]</fieldFormula>
+        <isDataRequired>false</isDataRequired>
+        <isEventDate>false</isEventDate>
+        <isFormula>false</isFormula>
+        <isRecordModified>false</isRecordModified>
+        <keyQualifierName>KQ_cart_name</keyQualifierName>
+        <masterLabel>name</masterLabel>
+        <sequence xsi:nil="true"/>
+        <usageTag>NONE</usageTag>
+        <versionNumber xsi:nil="true"/>
+    </dataSourceFields>
+    <dataSourceFields>
+        <fullName>exp_dc_integr__cart_orderId</fullName>
+        <datatype>S</datatype>
+        <definitionCreationType>Custom</definitionCreationType>
+        <externalName>cart.orderId</externalName>
+        <fieldFormula>sourceField[&apos;cart.orderId&apos;]</fieldFormula>
+        <isDataRequired>false</isDataRequired>
+        <isEventDate>false</isEventDate>
+        <isFormula>false</isFormula>
+        <isRecordModified>false</isRecordModified>
+        <keyQualifierName>KQ_cart_orderId</keyQualifierName>
+        <masterLabel>orderId</masterLabel>
+        <sequence xsi:nil="true"/>
+        <usageTag>NONE</usageTag>
+        <versionNumber xsi:nil="true"/>
+    </dataSourceFields>
+    <dataSourceFields>
+        <fullName>exp_dc_integr__cart_osName</fullName>
+        <datatype>S</datatype>
+        <definitionCreationType>Custom</definitionCreationType>
+        <externalName>cart.osName</externalName>
+        <fieldFormula>sourceField[&apos;cart.osName&apos;]</fieldFormula>
+        <isDataRequired>false</isDataRequired>
+        <isEventDate>false</isEventDate>
+        <isFormula>false</isFormula>
+        <isRecordModified>false</isRecordModified>
+        <keyQualifierName>KQ_cart_osName</keyQualifierName>
+        <masterLabel>osName</masterLabel>
+        <sequence xsi:nil="true"/>
+        <usageTag>NONE</usageTag>
+        <versionNumber xsi:nil="true"/>
+    </dataSourceFields>
+    <dataSourceFields>
+        <fullName>exp_dc_integr__cart_osVersion</fullName>
+        <datatype>S</datatype>
+        <definitionCreationType>Custom</definitionCreationType>
+        <externalName>cart.osVersion</externalName>
+        <fieldFormula>sourceField[&apos;cart.osVersion&apos;]</fieldFormula>
+        <isDataRequired>false</isDataRequired>
+        <isEventDate>false</isEventDate>
+        <isFormula>false</isFormula>
+        <isRecordModified>false</isRecordModified>
+        <keyQualifierName>KQ_cart_osVersion</keyQualifierName>
+        <masterLabel>osVersion</masterLabel>
+        <sequence xsi:nil="true"/>
+        <usageTag>NONE</usageTag>
+        <versionNumber xsi:nil="true"/>
+    </dataSourceFields>
+    <dataSourceFields>
+        <fullName>exp_dc_integr__cart_personalizationId</fullName>
+        <datatype>S</datatype>
+        <definitionCreationType>Custom</definitionCreationType>
+        <externalName>cart.personalizationId</externalName>
+        <fieldFormula>sourceField[&apos;cart.personalizationId&apos;]</fieldFormula>
+        <isDataRequired>false</isDataRequired>
+        <isEventDate>false</isEventDate>
+        <isFormula>false</isFormula>
+        <isRecordModified>false</isRecordModified>
+        <keyQualifierName>KQ_cart_personalizationId</keyQualifierName>
+        <masterLabel>personalizationId</masterLabel>
+        <sequence xsi:nil="true"/>
+        <usageTag>NONE</usageTag>
+        <versionNumber xsi:nil="true"/>
+    </dataSourceFields>
+    <dataSourceFields>
+        <fullName>exp_dc_integr__cart_personalizationServiceProvider</fullName>
+        <datatype>S</datatype>
+        <definitionCreationType>Custom</definitionCreationType>
+        <externalName>cart.personalizationServiceProvider</externalName>
+        <fieldFormula>sourceField[&apos;cart.personalizationServiceProvider&apos;]</fieldFormula>
+        <isDataRequired>false</isDataRequired>
+        <isEventDate>false</isEventDate>
+        <isFormula>false</isFormula>
+        <isRecordModified>false</isRecordModified>
+        <keyQualifierName>KQ_cart_personalizationServiceProvider</keyQualifierName>
+        <masterLabel>personalizationServiceProvider</masterLabel>
+        <sequence xsi:nil="true"/>
+        <usageTag>NONE</usageTag>
+        <versionNumber xsi:nil="true"/>
+    </dataSourceFields>
+    <dataSourceFields>
+        <fullName>exp_dc_integr__cart_salesChannel</fullName>
+        <datatype>S</datatype>
+        <definitionCreationType>Custom</definitionCreationType>
+        <externalName>cart.salesChannel</externalName>
+        <fieldFormula>sourceField[&apos;cart.salesChannel&apos;]</fieldFormula>
+        <isDataRequired>false</isDataRequired>
+        <isEventDate>false</isEventDate>
+        <isFormula>false</isFormula>
+        <isRecordModified>false</isRecordModified>
+        <keyQualifierName>KQ_cart_salesChannel</keyQualifierName>
+        <masterLabel>salesChannel</masterLabel>
+        <sequence xsi:nil="true"/>
+        <usageTag>NONE</usageTag>
+        <versionNumber xsi:nil="true"/>
+    </dataSourceFields>
+    <dataSourceFields>
+        <fullName>exp_dc_integr__cart_screenHeight</fullName>
+        <datatype>N</datatype>
+        <definitionCreationType>Custom</definitionCreationType>
+        <externalName>cart.screenHeight</externalName>
+        <fieldFormula>sourceField[&apos;cart.screenHeight&apos;]</fieldFormula>
+        <isDataRequired>false</isDataRequired>
+        <isEventDate>false</isEventDate>
+        <isFormula>false</isFormula>
+        <isRecordModified>false</isRecordModified>
+        <keyQualifierName>KQ_cart_screenHeight</keyQualifierName>
+        <masterLabel>screenHeight</masterLabel>
+        <sequence xsi:nil="true"/>
+        <usageTag>NONE</usageTag>
+        <versionNumber xsi:nil="true"/>
+    </dataSourceFields>
+    <dataSourceFields>
+        <fullName>exp_dc_integr__cart_screenWidth</fullName>
+        <datatype>N</datatype>
+        <definitionCreationType>Custom</definitionCreationType>
+        <externalName>cart.screenWidth</externalName>
+        <fieldFormula>sourceField[&apos;cart.screenWidth&apos;]</fieldFormula>
+        <isDataRequired>false</isDataRequired>
+        <isEventDate>false</isEventDate>
+        <isFormula>false</isFormula>
+        <isRecordModified>false</isRecordModified>
+        <keyQualifierName>KQ_cart_screenWidth</keyQualifierName>
+        <masterLabel>screenWidth</masterLabel>
+        <sequence xsi:nil="true"/>
+        <usageTag>NONE</usageTag>
+        <versionNumber xsi:nil="true"/>
+    </dataSourceFields>
+    <dataSourceFields>
+        <fullName>exp_dc_integr__cart_searchResultId</fullName>
+        <datatype>S</datatype>
+        <definitionCreationType>Custom</definitionCreationType>
+        <externalName>cart.searchResultId</externalName>
+        <fieldFormula>sourceField[&apos;cart.searchResultId&apos;]</fieldFormula>
+        <isDataRequired>false</isDataRequired>
+        <isEventDate>false</isEventDate>
+        <isFormula>false</isFormula>
+        <isRecordModified>false</isRecordModified>
+        <keyQualifierName>KQ_cart_searchResultId</keyQualifierName>
+        <masterLabel>searchResultId</masterLabel>
+        <sequence xsi:nil="true"/>
+        <usageTag>NONE</usageTag>
+        <versionNumber xsi:nil="true"/>
+    </dataSourceFields>
+    <dataSourceFields>
+        <fullName>exp_dc_integr__cart_searchResultPageNumber</fullName>
+        <datatype>N</datatype>
+        <definitionCreationType>Custom</definitionCreationType>
+        <externalName>cart.searchResultPageNumber</externalName>
+        <fieldFormula>sourceField[&apos;cart.searchResultPageNumber&apos;]</fieldFormula>
+        <isDataRequired>false</isDataRequired>
+        <isEventDate>false</isEventDate>
+        <isFormula>false</isFormula>
+        <isRecordModified>false</isRecordModified>
+        <keyQualifierName>KQ_cart_searchResultPageNumber</keyQualifierName>
+        <masterLabel>searchResultPageNumber</masterLabel>
+        <sequence xsi:nil="true"/>
+        <usageTag>NONE</usageTag>
+        <versionNumber xsi:nil="true"/>
+    </dataSourceFields>
+    <dataSourceFields>
+        <fullName>exp_dc_integr__cart_searchResultPosition</fullName>
+        <datatype>N</datatype>
+        <definitionCreationType>Custom</definitionCreationType>
+        <externalName>cart.searchResultPosition</externalName>
+        <fieldFormula>sourceField[&apos;cart.searchResultPosition&apos;]</fieldFormula>
+        <isDataRequired>false</isDataRequired>
+        <isEventDate>false</isEventDate>
+        <isFormula>false</isFormula>
+        <isRecordModified>false</isRecordModified>
+        <keyQualifierName>KQ_cart_searchResultPosition</keyQualifierName>
+        <masterLabel>searchResultPosition</masterLabel>
+        <sequence xsi:nil="true"/>
+        <usageTag>NONE</usageTag>
+        <versionNumber xsi:nil="true"/>
+    </dataSourceFields>
+    <dataSourceFields>
+        <fullName>exp_dc_integr__cart_searchResultPositionInPage</fullName>
+        <datatype>N</datatype>
+        <definitionCreationType>Custom</definitionCreationType>
+        <externalName>cart.searchResultPositionInPage</externalName>
+        <fieldFormula>sourceField[&apos;cart.searchResultPositionInPage&apos;]</fieldFormula>
+        <isDataRequired>false</isDataRequired>
+        <isEventDate>false</isEventDate>
+        <isFormula>false</isFormula>
+        <isRecordModified>false</isRecordModified>
+        <keyQualifierName>KQ_cart_searchResultPositionInPage</keyQualifierName>
+        <masterLabel>searchResultPositionInPage</masterLabel>
+        <sequence xsi:nil="true"/>
+        <usageTag>NONE</usageTag>
+        <versionNumber xsi:nil="true"/>
+    </dataSourceFields>
+    <dataSourceFields>
+        <fullName>exp_dc_integr__cart_searchResultTitle</fullName>
+        <datatype>S</datatype>
+        <definitionCreationType>Custom</definitionCreationType>
+        <externalName>cart.searchResultTitle</externalName>
+        <fieldFormula>sourceField[&apos;cart.searchResultTitle&apos;]</fieldFormula>
+        <isDataRequired>false</isDataRequired>
+        <isEventDate>false</isEventDate>
+        <isFormula>false</isFormula>
+        <isRecordModified>false</isRecordModified>
+        <keyQualifierName>KQ_cart_searchResultTitle</keyQualifierName>
+        <masterLabel>searchResultTitle</masterLabel>
+        <sequence xsi:nil="true"/>
+        <usageTag>NONE</usageTag>
+        <versionNumber xsi:nil="true"/>
+    </dataSourceFields>
+    <dataSourceFields>
+        <fullName>exp_dc_integr__cart_siteId</fullName>
+        <datatype>S</datatype>
+        <definitionCreationType>Custom</definitionCreationType>
+        <externalName>cart.siteId</externalName>
+        <fieldFormula>sourceField[&apos;cart.siteId&apos;]</fieldFormula>
+        <isDataRequired>false</isDataRequired>
+        <isEventDate>false</isEventDate>
+        <isFormula>false</isFormula>
+        <isRecordModified>false</isRecordModified>
+        <keyQualifierName>KQ_cart_siteId</keyQualifierName>
+        <masterLabel>siteId</masterLabel>
+        <sequence xsi:nil="true"/>
+        <usageTag>NONE</usageTag>
+        <versionNumber xsi:nil="true"/>
+    </dataSourceFields>
+    <dataSourceFields>
+        <fullName>exp_dc_integr__cart_sourceChannel</fullName>
+        <datatype>S</datatype>
+        <definitionCreationType>Custom</definitionCreationType>
+        <externalName>cart.sourceChannel</externalName>
+        <fieldFormula>sourceField[&apos;cart.sourceChannel&apos;]</fieldFormula>
+        <isDataRequired>false</isDataRequired>
+        <isEventDate>false</isEventDate>
+        <isFormula>false</isFormula>
+        <isRecordModified>false</isRecordModified>
+        <keyQualifierName>KQ_cart_sourceChannel</keyQualifierName>
+        <masterLabel>sourceChannel</masterLabel>
+        <sequence xsi:nil="true"/>
+        <usageTag>NONE</usageTag>
+        <versionNumber xsi:nil="true"/>
+    </dataSourceFields>
+    <dataSourceFields>
+        <fullName>exp_dc_integr__cart_sourceLocale</fullName>
+        <datatype>S</datatype>
+        <definitionCreationType>Custom</definitionCreationType>
+        <externalName>cart.sourceLocale</externalName>
+        <fieldFormula>sourceField[&apos;cart.sourceLocale&apos;]</fieldFormula>
+        <isDataRequired>false</isDataRequired>
+        <isEventDate>false</isEventDate>
+        <isFormula>false</isFormula>
+        <isRecordModified>false</isRecordModified>
+        <keyQualifierName>KQ_cart_sourceLocale</keyQualifierName>
+        <masterLabel>sourceLocale</masterLabel>
+        <sequence xsi:nil="true"/>
+        <usageTag>NONE</usageTag>
+        <versionNumber xsi:nil="true"/>
+    </dataSourceFields>
+    <dataSourceFields>
+        <fullName>exp_dc_integr__cart_sourcePageId</fullName>
+        <datatype>S</datatype>
+        <definitionCreationType>Custom</definitionCreationType>
+        <externalName>cart.sourcePageId</externalName>
+        <fieldFormula>sourceField[&apos;cart.sourcePageId&apos;]</fieldFormula>
+        <isDataRequired>false</isDataRequired>
+        <isEventDate>false</isEventDate>
+        <isFormula>false</isFormula>
+        <isRecordModified>false</isRecordModified>
+        <keyQualifierName>KQ_cart_sourcePageId</keyQualifierName>
+        <masterLabel>sourcePageId</masterLabel>
+        <sequence xsi:nil="true"/>
+        <usageTag>NONE</usageTag>
+        <versionNumber xsi:nil="true"/>
+    </dataSourceFields>
+    <dataSourceFields>
+        <fullName>exp_dc_integr__cart_sourcePageName</fullName>
+        <datatype>S</datatype>
+        <definitionCreationType>Custom</definitionCreationType>
+        <externalName>cart.sourcePageName</externalName>
+        <fieldFormula>sourceField[&apos;cart.sourcePageName&apos;]</fieldFormula>
+        <isDataRequired>false</isDataRequired>
+        <isEventDate>false</isEventDate>
+        <isFormula>false</isFormula>
+        <isRecordModified>false</isRecordModified>
+        <keyQualifierName>KQ_cart_sourcePageName</keyQualifierName>
+        <masterLabel>sourcePageName</masterLabel>
+        <sequence xsi:nil="true"/>
+        <usageTag>NONE</usageTag>
+        <versionNumber xsi:nil="true"/>
+    </dataSourceFields>
+    <dataSourceFields>
+        <fullName>exp_dc_integr__cart_sourcePageTitle</fullName>
+        <datatype>S</datatype>
+        <definitionCreationType>Custom</definitionCreationType>
+        <externalName>cart.sourcePageTitle</externalName>
+        <fieldFormula>sourceField[&apos;cart.sourcePageTitle&apos;]</fieldFormula>
+        <isDataRequired>false</isDataRequired>
+        <isEventDate>false</isEventDate>
+        <isFormula>false</isFormula>
+        <isRecordModified>false</isRecordModified>
+        <keyQualifierName>KQ_cart_sourcePageTitle</keyQualifierName>
+        <masterLabel>sourcePageTitle</masterLabel>
+        <sequence xsi:nil="true"/>
+        <usageTag>NONE</usageTag>
+        <versionNumber xsi:nil="true"/>
+    </dataSourceFields>
+    <dataSourceFields>
+        <fullName>exp_dc_integr__cart_sourcePageType</fullName>
+        <datatype>S</datatype>
+        <definitionCreationType>Custom</definitionCreationType>
+        <externalName>cart.sourcePageType</externalName>
+        <fieldFormula>sourceField[&apos;cart.sourcePageType&apos;]</fieldFormula>
+        <isDataRequired>false</isDataRequired>
+        <isEventDate>false</isEventDate>
+        <isFormula>false</isFormula>
+        <isRecordModified>false</isRecordModified>
+        <keyQualifierName>KQ_cart_sourcePageType</keyQualifierName>
+        <masterLabel>sourcePageType</masterLabel>
+        <sequence xsi:nil="true"/>
+        <usageTag>NONE</usageTag>
+        <versionNumber xsi:nil="true"/>
+    </dataSourceFields>
+    <dataSourceFields>
+        <fullName>exp_dc_integr__cart_sourceUrl</fullName>
+        <datatype>S</datatype>
+        <definitionCreationType>Custom</definitionCreationType>
+        <externalName>cart.sourceUrl</externalName>
+        <fieldFormula>sourceField[&apos;cart.sourceUrl&apos;]</fieldFormula>
+        <isDataRequired>false</isDataRequired>
+        <isEventDate>false</isEventDate>
+        <isFormula>false</isFormula>
+        <isRecordModified>false</isRecordModified>
+        <keyQualifierName>KQ_cart_sourceUrl</keyQualifierName>
+        <masterLabel>sourceUrl</masterLabel>
+        <sequence xsi:nil="true"/>
+        <usageTag>NONE</usageTag>
+        <versionNumber xsi:nil="true"/>
+    </dataSourceFields>
+    <dataSourceFields>
+        <fullName>exp_dc_integr__cart_sourceURLAlias</fullName>
+        <datatype>S</datatype>
+        <definitionCreationType>Custom</definitionCreationType>
+        <externalName>cart.sourceURLAlias</externalName>
+        <fieldFormula>sourceField[&apos;cart.sourceURLAlias&apos;]</fieldFormula>
+        <isDataRequired>false</isDataRequired>
+        <isEventDate>false</isEventDate>
+        <isFormula>false</isFormula>
+        <isRecordModified>false</isRecordModified>
+        <keyQualifierName>KQ_cart_sourceURLAlias</keyQualifierName>
+        <masterLabel>sourceURLAlias</masterLabel>
+        <sequence xsi:nil="true"/>
+        <usageTag>NONE</usageTag>
+        <versionNumber xsi:nil="true"/>
+    </dataSourceFields>
+    <dataSourceFields>
+        <fullName>exp_dc_integr__cart_sourceUrlReferrer</fullName>
+        <datatype>S</datatype>
+        <definitionCreationType>Custom</definitionCreationType>
+        <externalName>cart.sourceUrlReferrer</externalName>
+        <fieldFormula>sourceField[&apos;cart.sourceUrlReferrer&apos;]</fieldFormula>
+        <isDataRequired>false</isDataRequired>
+        <isEventDate>false</isEventDate>
+        <isFormula>false</isFormula>
+        <isRecordModified>false</isRecordModified>
+        <keyQualifierName>KQ_cart_sourceUrlReferrer</keyQualifierName>
+        <masterLabel>sourceUrlReferrer</masterLabel>
+        <sequence xsi:nil="true"/>
+        <usageTag>NONE</usageTag>
+        <versionNumber xsi:nil="true"/>
+    </dataSourceFields>
+    <dataSourceFields>
+        <fullName>exp_dc_integr__cart_webStoreId</fullName>
+        <datatype>S</datatype>
+        <definitionCreationType>Custom</definitionCreationType>
+        <externalName>cart.webStoreId</externalName>
+        <fieldFormula>sourceField[&apos;cart.webStoreId&apos;]</fieldFormula>
+        <isDataRequired>false</isDataRequired>
+        <isEventDate>false</isEventDate>
+        <isFormula>false</isFormula>
+        <isRecordModified>false</isRecordModified>
+        <keyQualifierName>KQ_cart_webStoreId</keyQualifierName>
+        <masterLabel>webStoreId</masterLabel>
+        <sequence xsi:nil="true"/>
+        <usageTag>NONE</usageTag>
+        <versionNumber xsi:nil="true"/>
+    </dataSourceFields>
+    <dataSourceFields>
+        <fullName>exp_dc_integr__cartItem_adjustedTotalProductAmount</fullName>
+        <datatype>N</datatype>
+        <definitionCreationType>Custom</definitionCreationType>
+        <externalName>cartItem.adjustedTotalProductAmount</externalName>
+        <fieldFormula>sourceField[&apos;cartItem.adjustedTotalProductAmount&apos;]</fieldFormula>
+        <isDataRequired>false</isDataRequired>
+        <isEventDate>false</isEventDate>
+        <isFormula>false</isFormula>
+        <isRecordModified>false</isRecordModified>
+        <keyQualifierName>KQ_cartItem_adjustedTotalProductAmount</keyQualifierName>
+        <masterLabel>adjustedTotalProductAmount</masterLabel>
+        <sequence xsi:nil="true"/>
+        <usageTag>NONE</usageTag>
+        <versionNumber xsi:nil="true"/>
+    </dataSourceFields>
+    <dataSourceFields>
+        <fullName>exp_dc_integr__cartItem_businessUnitId</fullName>
+        <datatype>S</datatype>
+        <definitionCreationType>Custom</definitionCreationType>
+        <externalName>cartItem.businessUnitId</externalName>
+        <fieldFormula>sourceField[&apos;cartItem.businessUnitId&apos;]</fieldFormula>
+        <isDataRequired>false</isDataRequired>
+        <isEventDate>false</isEventDate>
+        <isFormula>false</isFormula>
+        <isRecordModified>false</isRecordModified>
+        <keyQualifierName>KQ_cartItem_businessUnitId</keyQualifierName>
+        <masterLabel>businessUnitId</masterLabel>
+        <sequence xsi:nil="true"/>
+        <usageTag>NONE</usageTag>
+        <versionNumber xsi:nil="true"/>
+    </dataSourceFields>
+    <dataSourceFields>
+        <fullName>exp_dc_integr__cartItem_cartEventId</fullName>
+        <datatype>S</datatype>
+        <definitionCreationType>Custom</definitionCreationType>
+        <externalName>cartItem.cartEventId</externalName>
+        <fieldFormula>sourceField[&apos;cartItem.cartEventId&apos;]</fieldFormula>
+        <isDataRequired>false</isDataRequired>
+        <isEventDate>false</isEventDate>
+        <isFormula>false</isFormula>
+        <isRecordModified>false</isRecordModified>
+        <keyQualifierName>KQ_cartItem_cartEventId</keyQualifierName>
+        <masterLabel>cartEventId</masterLabel>
+        <sequence xsi:nil="true"/>
+        <usageTag>NONE</usageTag>
+        <versionNumber xsi:nil="true"/>
+    </dataSourceFields>
+    <dataSourceFields>
+        <fullName>exp_dc_integr__cartItem_catalogObjectId</fullName>
+        <datatype>S</datatype>
+        <definitionCreationType>Custom</definitionCreationType>
+        <externalName>cartItem.catalogObjectId</externalName>
+        <fieldFormula>sourceField[&apos;cartItem.catalogObjectId&apos;]</fieldFormula>
+        <isDataRequired>false</isDataRequired>
+        <isEventDate>false</isEventDate>
+        <isFormula>false</isFormula>
+        <isRecordModified>false</isRecordModified>
+        <keyQualifierName>KQ_cartItem_catalogObjectId</keyQualifierName>
+        <masterLabel>catalogObjectId</masterLabel>
+        <sequence xsi:nil="true"/>
+        <usageTag>NONE</usageTag>
+        <versionNumber xsi:nil="true"/>
+    </dataSourceFields>
+    <dataSourceFields>
+        <fullName>exp_dc_integr__cartItem_catalogObjectType</fullName>
+        <datatype>S</datatype>
+        <definitionCreationType>Custom</definitionCreationType>
+        <externalName>cartItem.catalogObjectType</externalName>
+        <fieldFormula>sourceField[&apos;cartItem.catalogObjectType&apos;]</fieldFormula>
+        <isDataRequired>false</isDataRequired>
+        <isEventDate>false</isEventDate>
+        <isFormula>false</isFormula>
+        <isRecordModified>false</isRecordModified>
+        <keyQualifierName>KQ_cartItem_catalogObjectType</keyQualifierName>
+        <masterLabel>catalogObjectType</masterLabel>
+        <sequence xsi:nil="true"/>
+        <usageTag>NONE</usageTag>
+        <versionNumber xsi:nil="true"/>
+    </dataSourceFields>
+    <dataSourceFields>
+        <fullName>exp_dc_integr__cartItem_dataSpaceId</fullName>
+        <datatype>S</datatype>
+        <definitionCreationType>Custom</definitionCreationType>
+        <externalName>cartItem.dataSpaceId</externalName>
+        <fieldFormula>sourceField[&apos;cartItem.dataSpaceId&apos;]</fieldFormula>
+        <isDataRequired>false</isDataRequired>
+        <isEventDate>false</isEventDate>
+        <isFormula>false</isFormula>
+        <isRecordModified>false</isRecordModified>
+        <keyQualifierName>KQ_cartItem_dataSpaceId</keyQualifierName>
+        <masterLabel>dataSpaceId</masterLabel>
+        <sequence xsi:nil="true"/>
+        <usageTag>NONE</usageTag>
+        <versionNumber xsi:nil="true"/>
+    </dataSourceFields>
+    <dataSourceFields>
+        <fullName>exp_dc_integr__cartItem_imageUrl</fullName>
+        <datatype>S</datatype>
+        <definitionCreationType>Custom</definitionCreationType>
+        <externalName>cartItem.imageUrl</externalName>
+        <fieldFormula>sourceField[&apos;cartItem.imageUrl&apos;]</fieldFormula>
+        <isDataRequired>false</isDataRequired>
+        <isEventDate>false</isEventDate>
+        <isFormula>false</isFormula>
+        <isRecordModified>false</isRecordModified>
+        <keyQualifierName>KQ_cartItem_imageUrl</keyQualifierName>
+        <masterLabel>imageUrl</masterLabel>
+        <sequence xsi:nil="true"/>
+        <usageTag>NONE</usageTag>
+        <versionNumber xsi:nil="true"/>
+    </dataSourceFields>
+    <dataSourceFields>
+        <fullName>exp_dc_integr__cartItem_lineItemId</fullName>
+        <datatype>S</datatype>
+        <definitionCreationType>Custom</definitionCreationType>
+        <externalName>cartItem.lineItemId</externalName>
+        <fieldFormula>sourceField[&apos;cartItem.lineItemId&apos;]</fieldFormula>
+        <isDataRequired>false</isDataRequired>
+        <isEventDate>false</isEventDate>
+        <isFormula>false</isFormula>
+        <isRecordModified>false</isRecordModified>
+        <keyQualifierName>KQ_cartItem_lineItemId</keyQualifierName>
+        <masterLabel>lineItemId</masterLabel>
+        <sequence xsi:nil="true"/>
+        <usageTag>NONE</usageTag>
+        <versionNumber xsi:nil="true"/>
+    </dataSourceFields>
+    <dataSourceFields>
+        <fullName>exp_dc_integr__cartItem_name</fullName>
+        <datatype>S</datatype>
+        <definitionCreationType>Custom</definitionCreationType>
+        <externalName>cartItem.name</externalName>
+        <fieldFormula>sourceField[&apos;cartItem.name&apos;]</fieldFormula>
+        <isDataRequired>false</isDataRequired>
+        <isEventDate>false</isEventDate>
+        <isFormula>false</isFormula>
+        <isRecordModified>false</isRecordModified>
+        <keyQualifierName>KQ_cartItem_name</keyQualifierName>
+        <masterLabel>name</masterLabel>
+        <sequence xsi:nil="true"/>
+        <usageTag>NONE</usageTag>
+        <versionNumber xsi:nil="true"/>
+    </dataSourceFields>
+    <dataSourceFields>
+        <fullName>exp_dc_integr__cartItem_personalizationContentId</fullName>
+        <datatype>S</datatype>
+        <definitionCreationType>Custom</definitionCreationType>
+        <externalName>cartItem.personalizationContentId</externalName>
+        <fieldFormula>sourceField[&apos;cartItem.personalizationContentId&apos;]</fieldFormula>
+        <isDataRequired>false</isDataRequired>
+        <isEventDate>false</isEventDate>
+        <isFormula>false</isFormula>
+        <isRecordModified>false</isRecordModified>
+        <keyQualifierName>KQ_cartItem_personalizationContentId</keyQualifierName>
+        <masterLabel>personalizationContentId</masterLabel>
+        <sequence xsi:nil="true"/>
+        <usageTag>NONE</usageTag>
+        <versionNumber xsi:nil="true"/>
+    </dataSourceFields>
+    <dataSourceFields>
+        <fullName>exp_dc_integr__cartItem_price</fullName>
+        <datatype>N</datatype>
+        <definitionCreationType>Custom</definitionCreationType>
+        <externalName>cartItem.price</externalName>
+        <fieldFormula>sourceField[&apos;cartItem.price&apos;]</fieldFormula>
+        <isDataRequired>false</isDataRequired>
+        <isEventDate>false</isEventDate>
+        <isFormula>false</isFormula>
+        <isRecordModified>false</isRecordModified>
+        <keyQualifierName>KQ_cartItem_price</keyQualifierName>
+        <masterLabel>price</masterLabel>
+        <sequence xsi:nil="true"/>
+        <usageTag>NONE</usageTag>
+        <versionNumber xsi:nil="true"/>
+    </dataSourceFields>
+    <dataSourceFields>
+        <fullName>exp_dc_integr__cartItem_quantity</fullName>
+        <datatype>N</datatype>
+        <definitionCreationType>Custom</definitionCreationType>
+        <externalName>cartItem.quantity</externalName>
+        <fieldFormula>sourceField[&apos;cartItem.quantity&apos;]</fieldFormula>
+        <isDataRequired>false</isDataRequired>
+        <isEventDate>false</isEventDate>
+        <isFormula>false</isFormula>
+        <isRecordModified>false</isRecordModified>
+        <keyQualifierName>KQ_cartItem_quantity</keyQualifierName>
+        <masterLabel>quantity</masterLabel>
+        <sequence xsi:nil="true"/>
+        <usageTag>NONE</usageTag>
+        <versionNumber xsi:nil="true"/>
+    </dataSourceFields>
+    <dataSourceFields>
+        <fullName>exp_dc_integr__cartItem_siteId</fullName>
+        <datatype>S</datatype>
+        <definitionCreationType>Custom</definitionCreationType>
+        <externalName>cartItem.siteId</externalName>
+        <fieldFormula>sourceField[&apos;cartItem.siteId&apos;]</fieldFormula>
+        <isDataRequired>false</isDataRequired>
+        <isEventDate>false</isEventDate>
+        <isFormula>false</isFormula>
+        <isRecordModified>false</isRecordModified>
+        <keyQualifierName>KQ_cartItem_siteId</keyQualifierName>
+        <masterLabel>siteId</masterLabel>
+        <sequence xsi:nil="true"/>
+        <usageTag>NONE</usageTag>
+        <versionNumber xsi:nil="true"/>
+    </dataSourceFields>
+    <dataSourceFields>
+        <fullName>exp_dc_integr__cartItem_totalProductAmount</fullName>
+        <datatype>N</datatype>
+        <definitionCreationType>Custom</definitionCreationType>
+        <externalName>cartItem.totalProductAmount</externalName>
+        <fieldFormula>sourceField[&apos;cartItem.totalProductAmount&apos;]</fieldFormula>
+        <isDataRequired>false</isDataRequired>
+        <isEventDate>false</isEventDate>
+        <isFormula>false</isFormula>
+        <isRecordModified>false</isRecordModified>
+        <keyQualifierName>KQ_cartItem_totalProductAmount</keyQualifierName>
+        <masterLabel>totalProductAmount</masterLabel>
+        <sequence xsi:nil="true"/>
+        <usageTag>NONE</usageTag>
+        <versionNumber xsi:nil="true"/>
+    </dataSourceFields>
+    <dataSourceFields>
+        <fullName>exp_dc_integr__catalog_browserName</fullName>
+        <datatype>S</datatype>
+        <definitionCreationType>Custom</definitionCreationType>
+        <externalName>catalog.browserName</externalName>
+        <fieldFormula>sourceField[&apos;catalog.browserName&apos;]</fieldFormula>
+        <isDataRequired>false</isDataRequired>
+        <isEventDate>false</isEventDate>
+        <isFormula>false</isFormula>
+        <isRecordModified>false</isRecordModified>
+        <keyQualifierName>KQ_catalog_browserName</keyQualifierName>
+        <masterLabel>browserName</masterLabel>
+        <sequence xsi:nil="true"/>
+        <usageTag>NONE</usageTag>
+        <versionNumber xsi:nil="true"/>
+    </dataSourceFields>
+    <dataSourceFields>
+        <fullName>exp_dc_integr__catalog_browserVersion</fullName>
+        <datatype>S</datatype>
+        <definitionCreationType>Custom</definitionCreationType>
+        <externalName>catalog.browserVersion</externalName>
+        <fieldFormula>sourceField[&apos;catalog.browserVersion&apos;]</fieldFormula>
+        <isDataRequired>false</isDataRequired>
+        <isEventDate>false</isEventDate>
+        <isFormula>false</isFormula>
+        <isRecordModified>false</isRecordModified>
+        <keyQualifierName>KQ_catalog_browserVersion</keyQualifierName>
+        <masterLabel>browserVersion</masterLabel>
+        <sequence xsi:nil="true"/>
+        <usageTag>NONE</usageTag>
+        <versionNumber xsi:nil="true"/>
+    </dataSourceFields>
+    <dataSourceFields>
+        <fullName>exp_dc_integr__catalog_businessUnitId</fullName>
+        <datatype>S</datatype>
+        <definitionCreationType>Custom</definitionCreationType>
+        <externalName>catalog.businessUnitId</externalName>
+        <fieldFormula>sourceField[&apos;catalog.businessUnitId&apos;]</fieldFormula>
+        <isDataRequired>false</isDataRequired>
+        <isEventDate>false</isEventDate>
+        <isFormula>false</isFormula>
+        <isRecordModified>false</isRecordModified>
+        <keyQualifierName>KQ_catalog_businessUnitId</keyQualifierName>
+        <masterLabel>businessUnitId</masterLabel>
+        <sequence xsi:nil="true"/>
+        <usageTag>NONE</usageTag>
+        <versionNumber xsi:nil="true"/>
+    </dataSourceFields>
+    <dataSourceFields>
+        <fullName>exp_dc_integr__catalog_categoryId</fullName>
+        <datatype>S</datatype>
+        <definitionCreationType>Custom</definitionCreationType>
+        <externalName>catalog.categoryId</externalName>
+        <fieldFormula>sourceField[&apos;catalog.categoryId&apos;]</fieldFormula>
+        <isDataRequired>false</isDataRequired>
+        <isEventDate>false</isEventDate>
+        <isFormula>false</isFormula>
+        <isRecordModified>false</isRecordModified>
+        <keyQualifierName>KQ_catalog_categoryId</keyQualifierName>
+        <masterLabel>categoryId</masterLabel>
+        <sequence xsi:nil="true"/>
+        <usageTag>NONE</usageTag>
+        <versionNumber xsi:nil="true"/>
+    </dataSourceFields>
+    <dataSourceFields>
+        <fullName>exp_dc_integr__catalog_componentId</fullName>
+        <datatype>S</datatype>
+        <definitionCreationType>Custom</definitionCreationType>
+        <externalName>catalog.componentId</externalName>
+        <fieldFormula>sourceField[&apos;catalog.componentId&apos;]</fieldFormula>
+        <isDataRequired>false</isDataRequired>
+        <isEventDate>false</isEventDate>
+        <isFormula>false</isFormula>
+        <isRecordModified>false</isRecordModified>
+        <keyQualifierName>KQ_catalog_componentId</keyQualifierName>
+        <masterLabel>componentId</masterLabel>
+        <sequence xsi:nil="true"/>
+        <usageTag>NONE</usageTag>
+        <versionNumber xsi:nil="true"/>
+    </dataSourceFields>
+    <dataSourceFields>
+        <fullName>exp_dc_integr__catalog_correlationId</fullName>
+        <datatype>S</datatype>
+        <definitionCreationType>Custom</definitionCreationType>
+        <externalName>catalog.correlationId</externalName>
+        <fieldFormula>sourceField[&apos;catalog.correlationId&apos;]</fieldFormula>
+        <isDataRequired>false</isDataRequired>
+        <isEventDate>false</isEventDate>
+        <isFormula>false</isFormula>
+        <isRecordModified>false</isRecordModified>
+        <keyQualifierName>KQ_catalog_correlationId</keyQualifierName>
+        <masterLabel>correlationId</masterLabel>
+        <sequence xsi:nil="true"/>
+        <usageTag>NONE</usageTag>
+        <versionNumber xsi:nil="true"/>
+    </dataSourceFields>
+    <dataSourceFields>
+        <fullName>exp_dc_integr__catalog_dataSpaceId</fullName>
+        <datatype>S</datatype>
+        <definitionCreationType>Custom</definitionCreationType>
+        <externalName>catalog.dataSpaceId</externalName>
+        <fieldFormula>sourceField[&apos;catalog.dataSpaceId&apos;]</fieldFormula>
+        <isDataRequired>false</isDataRequired>
+        <isEventDate>false</isEventDate>
+        <isFormula>false</isFormula>
+        <isRecordModified>false</isRecordModified>
+        <keyQualifierName>KQ_catalog_dataSpaceId</keyQualifierName>
+        <masterLabel>dataSpaceId</masterLabel>
+        <sequence xsi:nil="true"/>
+        <usageTag>NONE</usageTag>
+        <versionNumber xsi:nil="true"/>
+    </dataSourceFields>
+    <dataSourceFields>
+        <fullName>exp_dc_integr__catalog_deviceModel</fullName>
+        <datatype>S</datatype>
+        <definitionCreationType>Custom</definitionCreationType>
+        <externalName>catalog.deviceModel</externalName>
+        <fieldFormula>sourceField[&apos;catalog.deviceModel&apos;]</fieldFormula>
+        <isDataRequired>false</isDataRequired>
+        <isEventDate>false</isEventDate>
+        <isFormula>false</isFormula>
+        <isRecordModified>false</isRecordModified>
+        <keyQualifierName>KQ_catalog_deviceModel</keyQualifierName>
+        <masterLabel>deviceModel</masterLabel>
+        <sequence xsi:nil="true"/>
+        <usageTag>NONE</usageTag>
+        <versionNumber xsi:nil="true"/>
+    </dataSourceFields>
+    <dataSourceFields>
+        <fullName>exp_dc_integr__catalog_deviceVendor</fullName>
+        <datatype>S</datatype>
+        <definitionCreationType>Custom</definitionCreationType>
+        <externalName>catalog.deviceVendor</externalName>
+        <fieldFormula>sourceField[&apos;catalog.deviceVendor&apos;]</fieldFormula>
+        <isDataRequired>false</isDataRequired>
+        <isEventDate>false</isEventDate>
+        <isFormula>false</isFormula>
+        <isRecordModified>false</isRecordModified>
+        <keyQualifierName>KQ_catalog_deviceVendor</keyQualifierName>
+        <masterLabel>deviceVendor</masterLabel>
+        <sequence xsi:nil="true"/>
+        <usageTag>NONE</usageTag>
+        <versionNumber xsi:nil="true"/>
+    </dataSourceFields>
+    <dataSourceFields>
+        <fullName>exp_dc_integr__catalog_eventStatus</fullName>
+        <datatype>S</datatype>
+        <definitionCreationType>Custom</definitionCreationType>
+        <externalName>catalog.eventStatus</externalName>
+        <fieldFormula>sourceField[&apos;catalog.eventStatus&apos;]</fieldFormula>
+        <isDataRequired>false</isDataRequired>
+        <isEventDate>false</isEventDate>
+        <isFormula>false</isFormula>
+        <isRecordModified>false</isRecordModified>
+        <keyQualifierName>KQ_catalog_eventStatus</keyQualifierName>
+        <masterLabel>eventStatus</masterLabel>
+        <sequence xsi:nil="true"/>
+        <usageTag>NONE</usageTag>
+        <versionNumber xsi:nil="true"/>
+    </dataSourceFields>
+    <dataSourceFields>
+        <fullName>exp_dc_integr__catalog_id</fullName>
+        <datatype>S</datatype>
+        <definitionCreationType>Custom</definitionCreationType>
+        <externalName>catalog.id</externalName>
+        <fieldFormula>sourceField[&apos;catalog.id&apos;]</fieldFormula>
+        <isDataRequired>false</isDataRequired>
+        <isEventDate>false</isEventDate>
+        <isFormula>false</isFormula>
+        <isRecordModified>false</isRecordModified>
+        <keyQualifierName>KQ_catalog_id</keyQualifierName>
+        <masterLabel>id</masterLabel>
+        <sequence xsi:nil="true"/>
+        <usageTag>NONE</usageTag>
+        <versionNumber xsi:nil="true"/>
+    </dataSourceFields>
+    <dataSourceFields>
+        <fullName>exp_dc_integr__catalog_interactionName</fullName>
+        <datatype>S</datatype>
+        <definitionCreationType>Custom</definitionCreationType>
+        <externalName>catalog.interactionName</externalName>
+        <fieldFormula>sourceField[&apos;catalog.interactionName&apos;]</fieldFormula>
+        <isDataRequired>false</isDataRequired>
+        <isEventDate>false</isEventDate>
+        <isFormula>false</isFormula>
+        <isRecordModified>false</isRecordModified>
+        <keyQualifierName>KQ_catalog_interactionName</keyQualifierName>
+        <masterLabel>interactionName</masterLabel>
+        <sequence xsi:nil="true"/>
+        <usageTag>NONE</usageTag>
+        <versionNumber xsi:nil="true"/>
+    </dataSourceFields>
+    <dataSourceFields>
+        <fullName>exp_dc_integr__catalog_osName</fullName>
+        <datatype>S</datatype>
+        <definitionCreationType>Custom</definitionCreationType>
+        <externalName>catalog.osName</externalName>
+        <fieldFormula>sourceField[&apos;catalog.osName&apos;]</fieldFormula>
+        <isDataRequired>false</isDataRequired>
+        <isEventDate>false</isEventDate>
+        <isFormula>false</isFormula>
+        <isRecordModified>false</isRecordModified>
+        <keyQualifierName>KQ_catalog_osName</keyQualifierName>
+        <masterLabel>osName</masterLabel>
+        <sequence xsi:nil="true"/>
+        <usageTag>NONE</usageTag>
+        <versionNumber xsi:nil="true"/>
+    </dataSourceFields>
+    <dataSourceFields>
+        <fullName>exp_dc_integr__catalog_osVersion</fullName>
+        <datatype>S</datatype>
+        <definitionCreationType>Custom</definitionCreationType>
+        <externalName>catalog.osVersion</externalName>
+        <fieldFormula>sourceField[&apos;catalog.osVersion&apos;]</fieldFormula>
+        <isDataRequired>false</isDataRequired>
+        <isEventDate>false</isEventDate>
+        <isFormula>false</isFormula>
+        <isRecordModified>false</isRecordModified>
+        <keyQualifierName>KQ_catalog_osVersion</keyQualifierName>
+        <masterLabel>osVersion</masterLabel>
+        <sequence xsi:nil="true"/>
+        <usageTag>NONE</usageTag>
+        <versionNumber xsi:nil="true"/>
+    </dataSourceFields>
+    <dataSourceFields>
+        <fullName>exp_dc_integr__catalog_personalizationContentId</fullName>
+        <datatype>S</datatype>
+        <definitionCreationType>Custom</definitionCreationType>
+        <externalName>catalog.personalizationContentId</externalName>
+        <fieldFormula>sourceField[&apos;catalog.personalizationContentId&apos;]</fieldFormula>
+        <isDataRequired>false</isDataRequired>
+        <isEventDate>false</isEventDate>
+        <isFormula>false</isFormula>
+        <isRecordModified>false</isRecordModified>
+        <keyQualifierName>KQ_catalog_personalizationContentId</keyQualifierName>
+        <masterLabel>personalizationContentId</masterLabel>
+        <sequence xsi:nil="true"/>
+        <usageTag>NONE</usageTag>
+        <versionNumber xsi:nil="true"/>
+    </dataSourceFields>
+    <dataSourceFields>
+        <fullName>exp_dc_integr__catalog_personalizationId</fullName>
+        <datatype>S</datatype>
+        <definitionCreationType>Custom</definitionCreationType>
+        <externalName>catalog.personalizationId</externalName>
+        <fieldFormula>sourceField[&apos;catalog.personalizationId&apos;]</fieldFormula>
+        <isDataRequired>false</isDataRequired>
+        <isEventDate>false</isEventDate>
+        <isFormula>false</isFormula>
+        <isRecordModified>false</isRecordModified>
+        <keyQualifierName>KQ_catalog_personalizationId</keyQualifierName>
+        <masterLabel>personalizationId</masterLabel>
+        <sequence xsi:nil="true"/>
+        <usageTag>NONE</usageTag>
+        <versionNumber xsi:nil="true"/>
+    </dataSourceFields>
+    <dataSourceFields>
+        <fullName>exp_dc_integr__catalog_personalizationServiceProvider</fullName>
+        <datatype>S</datatype>
+        <definitionCreationType>Custom</definitionCreationType>
+        <externalName>catalog.personalizationServiceProvider</externalName>
+        <fieldFormula>sourceField[&apos;catalog.personalizationServiceProvider&apos;]</fieldFormula>
+        <isDataRequired>false</isDataRequired>
+        <isEventDate>false</isEventDate>
+        <isFormula>false</isFormula>
+        <isRecordModified>false</isRecordModified>
+        <keyQualifierName>KQ_catalog_personalizationServiceProvide</keyQualifierName>
+        <masterLabel>personalizationServiceProvider</masterLabel>
+        <sequence xsi:nil="true"/>
+        <usageTag>NONE</usageTag>
+        <versionNumber xsi:nil="true"/>
+    </dataSourceFields>
+    <dataSourceFields>
+        <fullName>exp_dc_integr__catalog_screenHeight</fullName>
+        <datatype>N</datatype>
+        <definitionCreationType>Custom</definitionCreationType>
+        <externalName>catalog.screenHeight</externalName>
+        <fieldFormula>sourceField[&apos;catalog.screenHeight&apos;]</fieldFormula>
+        <isDataRequired>false</isDataRequired>
+        <isEventDate>false</isEventDate>
+        <isFormula>false</isFormula>
+        <isRecordModified>false</isRecordModified>
+        <keyQualifierName>KQ_catalog_screenHeight</keyQualifierName>
+        <masterLabel>screenHeight</masterLabel>
+        <sequence xsi:nil="true"/>
+        <usageTag>NONE</usageTag>
+        <versionNumber xsi:nil="true"/>
+    </dataSourceFields>
+    <dataSourceFields>
+        <fullName>exp_dc_integr__catalog_screenWidth</fullName>
+        <datatype>N</datatype>
+        <definitionCreationType>Custom</definitionCreationType>
+        <externalName>catalog.screenWidth</externalName>
+        <fieldFormula>sourceField[&apos;catalog.screenWidth&apos;]</fieldFormula>
+        <isDataRequired>false</isDataRequired>
+        <isEventDate>false</isEventDate>
+        <isFormula>false</isFormula>
+        <isRecordModified>false</isRecordModified>
+        <keyQualifierName>KQ_catalog_screenWidth</keyQualifierName>
+        <masterLabel>screenWidth</masterLabel>
+        <sequence xsi:nil="true"/>
+        <usageTag>NONE</usageTag>
+        <versionNumber xsi:nil="true"/>
+    </dataSourceFields>
+    <dataSourceFields>
+        <fullName>exp_dc_integr__catalog_searchResultId</fullName>
+        <datatype>S</datatype>
+        <definitionCreationType>Custom</definitionCreationType>
+        <externalName>catalog.searchResultId</externalName>
+        <fieldFormula>sourceField[&apos;catalog.searchResultId&apos;]</fieldFormula>
+        <isDataRequired>false</isDataRequired>
+        <isEventDate>false</isEventDate>
+        <isFormula>false</isFormula>
+        <isRecordModified>false</isRecordModified>
+        <keyQualifierName>KQ_catalog_searchResultId</keyQualifierName>
+        <masterLabel>searchResultId</masterLabel>
+        <sequence xsi:nil="true"/>
+        <usageTag>NONE</usageTag>
+        <versionNumber xsi:nil="true"/>
+    </dataSourceFields>
+    <dataSourceFields>
+        <fullName>exp_dc_integr__catalog_searchResultPageNumber</fullName>
+        <datatype>N</datatype>
+        <definitionCreationType>Custom</definitionCreationType>
+        <externalName>catalog.searchResultPageNumber</externalName>
+        <fieldFormula>sourceField[&apos;catalog.searchResultPageNumber&apos;]</fieldFormula>
+        <isDataRequired>false</isDataRequired>
+        <isEventDate>false</isEventDate>
+        <isFormula>false</isFormula>
+        <isRecordModified>false</isRecordModified>
+        <keyQualifierName>KQ_catalog_searchResultPageNumber</keyQualifierName>
+        <masterLabel>searchResultPageNumber</masterLabel>
+        <sequence xsi:nil="true"/>
+        <usageTag>NONE</usageTag>
+        <versionNumber xsi:nil="true"/>
+    </dataSourceFields>
+    <dataSourceFields>
+        <fullName>exp_dc_integr__catalog_searchResultPosition</fullName>
+        <datatype>N</datatype>
+        <definitionCreationType>Custom</definitionCreationType>
+        <externalName>catalog.searchResultPosition</externalName>
+        <fieldFormula>sourceField[&apos;catalog.searchResultPosition&apos;]</fieldFormula>
+        <isDataRequired>false</isDataRequired>
+        <isEventDate>false</isEventDate>
+        <isFormula>false</isFormula>
+        <isRecordModified>false</isRecordModified>
+        <keyQualifierName>KQ_catalog_searchResultPosition</keyQualifierName>
+        <masterLabel>searchResultPosition</masterLabel>
+        <sequence xsi:nil="true"/>
+        <usageTag>NONE</usageTag>
+        <versionNumber xsi:nil="true"/>
+    </dataSourceFields>
+    <dataSourceFields>
+        <fullName>exp_dc_integr__catalog_searchResultPositionInPage</fullName>
+        <datatype>N</datatype>
+        <definitionCreationType>Custom</definitionCreationType>
+        <externalName>catalog.searchResultPositionInPage</externalName>
+        <fieldFormula>sourceField[&apos;catalog.searchResultPositionInPage&apos;]</fieldFormula>
+        <isDataRequired>false</isDataRequired>
+        <isEventDate>false</isEventDate>
+        <isFormula>false</isFormula>
+        <isRecordModified>false</isRecordModified>
+        <keyQualifierName>KQ_catalog_searchResultPositionInPage</keyQualifierName>
+        <masterLabel>searchResultPositionInPage</masterLabel>
+        <sequence xsi:nil="true"/>
+        <usageTag>NONE</usageTag>
+        <versionNumber xsi:nil="true"/>
+    </dataSourceFields>
+    <dataSourceFields>
+        <fullName>exp_dc_integr__catalog_searchResultTitle</fullName>
+        <datatype>S</datatype>
+        <definitionCreationType>Custom</definitionCreationType>
+        <externalName>catalog.searchResultTitle</externalName>
+        <fieldFormula>sourceField[&apos;catalog.searchResultTitle&apos;]</fieldFormula>
+        <isDataRequired>false</isDataRequired>
+        <isEventDate>false</isEventDate>
+        <isFormula>false</isFormula>
+        <isRecordModified>false</isRecordModified>
+        <keyQualifierName>KQ_catalog_searchResultTitle</keyQualifierName>
+        <masterLabel>searchResultTitle</masterLabel>
+        <sequence xsi:nil="true"/>
+        <usageTag>NONE</usageTag>
+        <versionNumber xsi:nil="true"/>
+    </dataSourceFields>
+    <dataSourceFields>
+        <fullName>exp_dc_integr__catalog_siteId</fullName>
+        <datatype>S</datatype>
+        <definitionCreationType>Custom</definitionCreationType>
+        <externalName>catalog.siteId</externalName>
+        <fieldFormula>sourceField[&apos;catalog.siteId&apos;]</fieldFormula>
+        <isDataRequired>false</isDataRequired>
+        <isEventDate>false</isEventDate>
+        <isFormula>false</isFormula>
+        <isRecordModified>false</isRecordModified>
+        <keyQualifierName>KQ_catalog_siteId</keyQualifierName>
+        <masterLabel>siteId</masterLabel>
+        <sequence xsi:nil="true"/>
+        <usageTag>NONE</usageTag>
+        <versionNumber xsi:nil="true"/>
+    </dataSourceFields>
+    <dataSourceFields>
+        <fullName>exp_dc_integr__catalog_sourceChannel</fullName>
+        <datatype>S</datatype>
+        <definitionCreationType>Custom</definitionCreationType>
+        <externalName>catalog.sourceChannel</externalName>
+        <fieldFormula>sourceField[&apos;catalog.sourceChannel&apos;]</fieldFormula>
+        <isDataRequired>false</isDataRequired>
+        <isEventDate>false</isEventDate>
+        <isFormula>false</isFormula>
+        <isRecordModified>false</isRecordModified>
+        <keyQualifierName>KQ_catalog_sourceChannel</keyQualifierName>
+        <masterLabel>sourceChannel</masterLabel>
+        <sequence xsi:nil="true"/>
+        <usageTag>NONE</usageTag>
+        <versionNumber xsi:nil="true"/>
+    </dataSourceFields>
+    <dataSourceFields>
+        <fullName>exp_dc_integr__catalog_sourceLocale</fullName>
+        <datatype>S</datatype>
+        <definitionCreationType>Custom</definitionCreationType>
+        <externalName>catalog.sourceLocale</externalName>
+        <fieldFormula>sourceField[&apos;catalog.sourceLocale&apos;]</fieldFormula>
+        <isDataRequired>false</isDataRequired>
+        <isEventDate>false</isEventDate>
+        <isFormula>false</isFormula>
+        <isRecordModified>false</isRecordModified>
+        <keyQualifierName>KQ_catalog_sourceLocale</keyQualifierName>
+        <masterLabel>sourceLocale</masterLabel>
+        <sequence xsi:nil="true"/>
+        <usageTag>NONE</usageTag>
+        <versionNumber xsi:nil="true"/>
+    </dataSourceFields>
+    <dataSourceFields>
+        <fullName>exp_dc_integr__catalog_sourcePageId</fullName>
+        <datatype>S</datatype>
+        <definitionCreationType>Custom</definitionCreationType>
+        <externalName>catalog.sourcePageId</externalName>
+        <fieldFormula>sourceField[&apos;catalog.sourcePageId&apos;]</fieldFormula>
+        <isDataRequired>false</isDataRequired>
+        <isEventDate>false</isEventDate>
+        <isFormula>false</isFormula>
+        <isRecordModified>false</isRecordModified>
+        <keyQualifierName>KQ_catalog_sourcePageId</keyQualifierName>
+        <masterLabel>sourcePageId</masterLabel>
+        <sequence xsi:nil="true"/>
+        <usageTag>NONE</usageTag>
+        <versionNumber xsi:nil="true"/>
+    </dataSourceFields>
+    <dataSourceFields>
+        <fullName>exp_dc_integr__catalog_sourcePageName</fullName>
+        <datatype>S</datatype>
+        <definitionCreationType>Custom</definitionCreationType>
+        <externalName>catalog.sourcePageName</externalName>
+        <fieldFormula>sourceField[&apos;catalog.sourcePageName&apos;]</fieldFormula>
+        <isDataRequired>false</isDataRequired>
+        <isEventDate>false</isEventDate>
+        <isFormula>false</isFormula>
+        <isRecordModified>false</isRecordModified>
+        <keyQualifierName>KQ_catalog_sourcePageName</keyQualifierName>
+        <masterLabel>sourcePageName</masterLabel>
+        <sequence xsi:nil="true"/>
+        <usageTag>NONE</usageTag>
+        <versionNumber xsi:nil="true"/>
+    </dataSourceFields>
+    <dataSourceFields>
+        <fullName>exp_dc_integr__catalog_sourcePageTitle</fullName>
+        <datatype>S</datatype>
+        <definitionCreationType>Custom</definitionCreationType>
+        <externalName>catalog.sourcePageTitle</externalName>
+        <fieldFormula>sourceField[&apos;catalog.sourcePageTitle&apos;]</fieldFormula>
+        <isDataRequired>false</isDataRequired>
+        <isEventDate>false</isEventDate>
+        <isFormula>false</isFormula>
+        <isRecordModified>false</isRecordModified>
+        <keyQualifierName>KQ_catalog_sourcePageTitle</keyQualifierName>
+        <masterLabel>sourcePageTitle</masterLabel>
+        <sequence xsi:nil="true"/>
+        <usageTag>NONE</usageTag>
+        <versionNumber xsi:nil="true"/>
+    </dataSourceFields>
+    <dataSourceFields>
+        <fullName>exp_dc_integr__catalog_sourcePageType</fullName>
+        <datatype>S</datatype>
+        <definitionCreationType>Custom</definitionCreationType>
+        <externalName>catalog.sourcePageType</externalName>
+        <fieldFormula>sourceField[&apos;catalog.sourcePageType&apos;]</fieldFormula>
+        <isDataRequired>false</isDataRequired>
+        <isEventDate>false</isEventDate>
+        <isFormula>false</isFormula>
+        <isRecordModified>false</isRecordModified>
+        <keyQualifierName>KQ_catalog_sourcePageType</keyQualifierName>
+        <masterLabel>sourcePageType</masterLabel>
+        <sequence xsi:nil="true"/>
+        <usageTag>NONE</usageTag>
+        <versionNumber xsi:nil="true"/>
+    </dataSourceFields>
+    <dataSourceFields>
+        <fullName>exp_dc_integr__catalog_sourceUrl</fullName>
+        <datatype>S</datatype>
+        <definitionCreationType>Custom</definitionCreationType>
+        <externalName>catalog.sourceUrl</externalName>
+        <fieldFormula>sourceField[&apos;catalog.sourceUrl&apos;]</fieldFormula>
+        <isDataRequired>false</isDataRequired>
+        <isEventDate>false</isEventDate>
+        <isFormula>false</isFormula>
+        <isRecordModified>false</isRecordModified>
+        <keyQualifierName>KQ_catalog_sourceUrl</keyQualifierName>
+        <masterLabel>sourceUrl</masterLabel>
+        <sequence xsi:nil="true"/>
+        <usageTag>NONE</usageTag>
+        <versionNumber xsi:nil="true"/>
+    </dataSourceFields>
+    <dataSourceFields>
+        <fullName>exp_dc_integr__catalog_sourceURLAlias</fullName>
+        <datatype>S</datatype>
+        <definitionCreationType>Custom</definitionCreationType>
+        <externalName>catalog.sourceURLAlias</externalName>
+        <fieldFormula>sourceField[&apos;catalog.sourceURLAlias&apos;]</fieldFormula>
+        <isDataRequired>false</isDataRequired>
+        <isEventDate>false</isEventDate>
+        <isFormula>false</isFormula>
+        <isRecordModified>false</isRecordModified>
+        <keyQualifierName>KQ_catalog_sourceURLAlias</keyQualifierName>
+        <masterLabel>sourceURLAlias</masterLabel>
+        <sequence xsi:nil="true"/>
+        <usageTag>NONE</usageTag>
+        <versionNumber xsi:nil="true"/>
+    </dataSourceFields>
+    <dataSourceFields>
+        <fullName>exp_dc_integr__catalog_sourceUrlReferrer</fullName>
+        <datatype>S</datatype>
+        <definitionCreationType>Custom</definitionCreationType>
+        <externalName>catalog.sourceUrlReferrer</externalName>
+        <fieldFormula>sourceField[&apos;catalog.sourceUrlReferrer&apos;]</fieldFormula>
+        <isDataRequired>false</isDataRequired>
+        <isEventDate>false</isEventDate>
+        <isFormula>false</isFormula>
+        <isRecordModified>false</isRecordModified>
+        <keyQualifierName>KQ_catalog_sourceUrlReferrer</keyQualifierName>
+        <masterLabel>sourceUrlReferrer</masterLabel>
+        <sequence xsi:nil="true"/>
+        <usageTag>NONE</usageTag>
+        <versionNumber xsi:nil="true"/>
+    </dataSourceFields>
+    <dataSourceFields>
+        <fullName>exp_dc_integr__catalog_type</fullName>
+        <datatype>S</datatype>
+        <definitionCreationType>Custom</definitionCreationType>
+        <externalName>catalog.type</externalName>
+        <fieldFormula>sourceField[&apos;catalog.type&apos;]</fieldFormula>
+        <isDataRequired>false</isDataRequired>
+        <isEventDate>false</isEventDate>
+        <isFormula>false</isFormula>
+        <isRecordModified>false</isRecordModified>
+        <keyQualifierName>KQ_catalog_type</keyQualifierName>
+        <masterLabel>type</masterLabel>
+        <sequence xsi:nil="true"/>
+        <usageTag>NONE</usageTag>
+        <versionNumber xsi:nil="true"/>
+    </dataSourceFields>
+    <dataSourceFields>
+        <fullName>exp_dc_integr__catalog_webStoreId</fullName>
+        <datatype>S</datatype>
+        <definitionCreationType>Custom</definitionCreationType>
+        <externalName>catalog.webStoreId</externalName>
+        <fieldFormula>sourceField[&apos;catalog.webStoreId&apos;]</fieldFormula>
+        <isDataRequired>false</isDataRequired>
+        <isEventDate>false</isEventDate>
+        <isFormula>false</isFormula>
+        <isRecordModified>false</isRecordModified>
+        <keyQualifierName>KQ_catalog_webStoreId</keyQualifierName>
+        <masterLabel>webStoreId</masterLabel>
+        <sequence xsi:nil="true"/>
+        <usageTag>NONE</usageTag>
+        <versionNumber xsi:nil="true"/>
+    </dataSourceFields>
+    <dataSourceFields>
+        <fullName>exp_dc_integr__category</fullName>
+        <datatype>S</datatype>
+        <definitionCreationType>Custom</definitionCreationType>
+        <externalName>category</externalName>
+        <fieldFormula>sourceField[&apos;category&apos;]</fieldFormula>
+        <isDataRequired>false</isDataRequired>
+        <isEventDate>false</isEventDate>
+        <isFormula>false</isFormula>
+        <isRecordModified>false</isRecordModified>
+        <keyQualifierName>KQ_category</keyQualifierName>
+        <masterLabel>category</masterLabel>
+        <sequence xsi:nil="true"/>
+        <usageTag>NONE</usageTag>
+        <versionNumber xsi:nil="true"/>
+    </dataSourceFields>
+    <dataSourceFields>
+        <fullName>exp_dc_integr__cdp_sys_BrowserName</fullName>
+        <datatype>S</datatype>
+        <definitionCreationType>Custom</definitionCreationType>
+        <externalName>cdp_sys_BrowserName</externalName>
+        <fieldFormula>sourceField[&apos;cdp_sys_BrowserName&apos;]</fieldFormula>
+        <isDataRequired>false</isDataRequired>
+        <isEventDate>false</isEventDate>
+        <isFormula>false</isFormula>
+        <isRecordModified>false</isRecordModified>
+        <keyQualifierName>KQ_cdp_sys_BrowserName</keyQualifierName>
+        <masterLabel>Browser Name</masterLabel>
+        <sequence xsi:nil="true"/>
+        <usageTag>NONE</usageTag>
+        <versionNumber xsi:nil="true"/>
+    </dataSourceFields>
+    <dataSourceFields>
+        <fullName>exp_dc_integr__cdp_sys_BrowserRenderEngine</fullName>
+        <datatype>S</datatype>
+        <definitionCreationType>Custom</definitionCreationType>
+        <externalName>cdp_sys_BrowserRenderEngine</externalName>
+        <fieldFormula>sourceField[&apos;cdp_sys_BrowserRenderEngine&apos;]</fieldFormula>
+        <isDataRequired>false</isDataRequired>
+        <isEventDate>false</isEventDate>
+        <isFormula>false</isFormula>
+        <isRecordModified>false</isRecordModified>
+        <keyQualifierName>KQ_cdp_sys_BrowserRenderEngine</keyQualifierName>
+        <masterLabel>Browser Render Engine</masterLabel>
+        <sequence xsi:nil="true"/>
+        <usageTag>NONE</usageTag>
+        <versionNumber xsi:nil="true"/>
+    </dataSourceFields>
+    <dataSourceFields>
+        <fullName>exp_dc_integr__cdp_sys_BrowserVendor</fullName>
+        <datatype>S</datatype>
+        <definitionCreationType>Custom</definitionCreationType>
+        <externalName>cdp_sys_BrowserVendor</externalName>
+        <fieldFormula>sourceField[&apos;cdp_sys_BrowserVendor&apos;]</fieldFormula>
+        <isDataRequired>false</isDataRequired>
+        <isEventDate>false</isEventDate>
+        <isFormula>false</isFormula>
+        <isRecordModified>false</isRecordModified>
+        <keyQualifierName>KQ_cdp_sys_BrowserVendor</keyQualifierName>
+        <masterLabel>Browser Vendor</masterLabel>
+        <sequence xsi:nil="true"/>
+        <usageTag>NONE</usageTag>
+        <versionNumber xsi:nil="true"/>
+    </dataSourceFields>
+    <dataSourceFields>
+        <fullName>exp_dc_integr__cdp_sys_BrowserVersion</fullName>
+        <datatype>S</datatype>
+        <definitionCreationType>Custom</definitionCreationType>
+        <externalName>cdp_sys_BrowserVersion</externalName>
+        <fieldFormula>sourceField[&apos;cdp_sys_BrowserVersion&apos;]</fieldFormula>
+        <isDataRequired>false</isDataRequired>
+        <isEventDate>false</isEventDate>
+        <isFormula>false</isFormula>
+        <isRecordModified>false</isRecordModified>
+        <keyQualifierName>KQ_cdp_sys_BrowserVersion</keyQualifierName>
+        <masterLabel>Browser Version</masterLabel>
+        <sequence xsi:nil="true"/>
+        <usageTag>NONE</usageTag>
+        <versionNumber xsi:nil="true"/>
+    </dataSourceFields>
+    <dataSourceFields>
+        <fullName>exp_dc_integr__cdp_sys_DeviceManufacturer</fullName>
+        <datatype>S</datatype>
+        <definitionCreationType>Custom</definitionCreationType>
+        <externalName>cdp_sys_DeviceManufacturer</externalName>
+        <fieldFormula>sourceField[&apos;cdp_sys_DeviceManufacturer&apos;]</fieldFormula>
+        <isDataRequired>false</isDataRequired>
+        <isEventDate>false</isEventDate>
+        <isFormula>false</isFormula>
+        <isRecordModified>false</isRecordModified>
+        <keyQualifierName>KQ_cdp_sys_DeviceManufacturer</keyQualifierName>
+        <masterLabel>Device Manufacturer</masterLabel>
+        <sequence xsi:nil="true"/>
+        <usageTag>NONE</usageTag>
+        <versionNumber xsi:nil="true"/>
+    </dataSourceFields>
+    <dataSourceFields>
+        <fullName>exp_dc_integr__cdp_sys_DeviceModel</fullName>
+        <datatype>S</datatype>
+        <definitionCreationType>Custom</definitionCreationType>
+        <externalName>cdp_sys_DeviceModel</externalName>
+        <fieldFormula>sourceField[&apos;cdp_sys_DeviceModel&apos;]</fieldFormula>
+        <isDataRequired>false</isDataRequired>
+        <isEventDate>false</isEventDate>
+        <isFormula>false</isFormula>
+        <isRecordModified>false</isRecordModified>
+        <keyQualifierName>KQ_cdp_sys_DeviceModel</keyQualifierName>
+        <masterLabel>Device Model</masterLabel>
+        <sequence xsi:nil="true"/>
+        <usageTag>NONE</usageTag>
+        <versionNumber xsi:nil="true"/>
+    </dataSourceFields>
+    <dataSourceFields>
+        <fullName>exp_dc_integr__cdp_sys_DeviceType</fullName>
+        <datatype>S</datatype>
+        <definitionCreationType>Custom</definitionCreationType>
+        <externalName>cdp_sys_DeviceType</externalName>
+        <fieldFormula>sourceField[&apos;cdp_sys_DeviceType&apos;]</fieldFormula>
+        <isDataRequired>false</isDataRequired>
+        <isEventDate>false</isEventDate>
+        <isFormula>false</isFormula>
+        <isRecordModified>false</isRecordModified>
+        <keyQualifierName>KQ_cdp_sys_DeviceType</keyQualifierName>
+        <masterLabel>Device Type</masterLabel>
+        <sequence xsi:nil="true"/>
+        <usageTag>NONE</usageTag>
+        <versionNumber xsi:nil="true"/>
+    </dataSourceFields>
+    <dataSourceFields>
+        <fullName>exp_dc_integr__cdp_sys_IsBrowser</fullName>
+        <datatype>B</datatype>
+        <definitionCreationType>Custom</definitionCreationType>
+        <externalName>cdp_sys_IsBrowser</externalName>
+        <fieldFormula>sourceField[&apos;cdp_sys_IsBrowser&apos;]</fieldFormula>
+        <isDataRequired>false</isDataRequired>
+        <isEventDate>false</isEventDate>
+        <isFormula>false</isFormula>
+        <isRecordModified>false</isRecordModified>
+        <keyQualifierName>KQ_cdp_sys_IsBrowser</keyQualifierName>
+        <masterLabel>Is Browser</masterLabel>
+        <sequence xsi:nil="true"/>
+        <usageTag>NONE</usageTag>
+        <versionNumber xsi:nil="true"/>
+    </dataSourceFields>
+    <dataSourceFields>
+        <fullName>exp_dc_integr__cdp_sys_OSFamily</fullName>
+        <datatype>S</datatype>
+        <definitionCreationType>Custom</definitionCreationType>
+        <externalName>cdp_sys_OSFamily</externalName>
+        <fieldFormula>sourceField[&apos;cdp_sys_OSFamily&apos;]</fieldFormula>
+        <isDataRequired>false</isDataRequired>
+        <isEventDate>false</isEventDate>
+        <isFormula>false</isFormula>
+        <isRecordModified>false</isRecordModified>
+        <keyQualifierName>KQ_cdp_sys_OSFamily</keyQualifierName>
+        <masterLabel>OS Family</masterLabel>
+        <sequence xsi:nil="true"/>
+        <usageTag>NONE</usageTag>
+        <versionNumber xsi:nil="true"/>
+    </dataSourceFields>
+    <dataSourceFields>
+        <fullName>exp_dc_integr__cdp_sys_OSVendor</fullName>
+        <datatype>S</datatype>
+        <definitionCreationType>Custom</definitionCreationType>
+        <externalName>cdp_sys_OSVendor</externalName>
+        <fieldFormula>sourceField[&apos;cdp_sys_OSVendor&apos;]</fieldFormula>
+        <isDataRequired>false</isDataRequired>
+        <isEventDate>false</isEventDate>
+        <isFormula>false</isFormula>
+        <isRecordModified>false</isRecordModified>
+        <keyQualifierName>KQ_cdp_sys_OSVendor</keyQualifierName>
+        <masterLabel>OS Vendor</masterLabel>
+        <sequence xsi:nil="true"/>
+        <usageTag>NONE</usageTag>
+        <versionNumber xsi:nil="true"/>
+    </dataSourceFields>
+    <dataSourceFields>
+        <fullName>exp_dc_integr__cdp_sys_OSVersion</fullName>
+        <datatype>S</datatype>
+        <definitionCreationType>Custom</definitionCreationType>
+        <externalName>cdp_sys_OSVersion</externalName>
+        <fieldFormula>sourceField[&apos;cdp_sys_OSVersion&apos;]</fieldFormula>
+        <isDataRequired>false</isDataRequired>
+        <isEventDate>false</isEventDate>
+        <isFormula>false</isFormula>
+        <isRecordModified>false</isRecordModified>
+        <keyQualifierName>KQ_cdp_sys_OSVersion</keyQualifierName>
+        <masterLabel>OS Version</masterLabel>
+        <sequence xsi:nil="true"/>
+        <usageTag>NONE</usageTag>
+        <versionNumber xsi:nil="true"/>
+    </dataSourceFields>
+    <dataSourceFields>
+        <fullName>exp_dc_integr__cdp_sys_PartitionDate</fullName>
+        <datatype>F</datatype>
+        <definitionCreationType>System</definitionCreationType>
+        <externalName>cdp_sys_PartitionDate</externalName>
+        <fieldFormula>if(ISEMPTY(formulaField[&apos;exp_dc_integr__dateTime__c&apos;])) { null; } else { DAYPRECISION(formulaField[&apos;exp_dc_integr__dateTime__c&apos;]); }</fieldFormula>
+        <isDataRequired>false</isDataRequired>
+        <isEventDate>false</isEventDate>
+        <isFormula>true</isFormula>
+        <isRecordModified>false</isRecordModified>
+        <keyQualifierName>KQ_cdp_sys_PartitionDate</keyQualifierName>
+        <masterLabel>cdp_sys_PartitionDate</masterLabel>
+        <sequence xsi:nil="true"/>
+        <usageTag>NONE</usageTag>
+        <versionNumber>1.0</versionNumber>
+    </dataSourceFields>
+    <dataSourceFields>
+        <fullName>exp_dc_integr__cdp_sys_UserAgent</fullName>
+        <datatype>S</datatype>
+        <definitionCreationType>Custom</definitionCreationType>
+        <externalName>cdp_sys_UserAgent</externalName>
+        <fieldFormula>sourceField[&apos;cdp_sys_UserAgent&apos;]</fieldFormula>
+        <isDataRequired>false</isDataRequired>
+        <isEventDate>false</isEventDate>
+        <isFormula>false</isFormula>
+        <isRecordModified>false</isRecordModified>
+        <keyQualifierName>KQ_cdp_sys_UserAgent</keyQualifierName>
+        <masterLabel>User Agent</masterLabel>
+        <sequence xsi:nil="true"/>
+        <usageTag>NONE</usageTag>
+        <versionNumber xsi:nil="true"/>
+    </dataSourceFields>
+    <dataSourceFields>
+        <fullName>exp_dc_integr__DataSource</fullName>
+        <datatype>S</datatype>
+        <definitionCreationType>System</definitionCreationType>
+        <externalName>DataSource</externalName>
+        <fieldFormula>&quot;Experience_Cloud_Event_Connector_Behavioral_Events_1B4486EF&quot;</fieldFormula>
+        <isDataRequired>false</isDataRequired>
+        <isEventDate>false</isEventDate>
+        <isFormula>true</isFormula>
+        <isRecordModified>false</isRecordModified>
+        <keyQualifierName>KQ_DataSource</keyQualifierName>
+        <masterLabel>Data Source</masterLabel>
+        <sequence xsi:nil="true"/>
+        <usageTag>NONE</usageTag>
+        <versionNumber xsi:nil="true"/>
+    </dataSourceFields>
+    <dataSourceFields>
+        <fullName>exp_dc_integr__DataSourceObject</fullName>
+        <datatype>S</datatype>
+        <definitionCreationType>System</definitionCreationType>
+        <externalName>DataSourceObject</externalName>
+        <fieldFormula>&quot;Experience_Cloud_Event_Connector_Behavioral_Events_1B4486EF&quot;</fieldFormula>
+        <isDataRequired>false</isDataRequired>
+        <isEventDate>false</isEventDate>
+        <isFormula>true</isFormula>
+        <isRecordModified>false</isRecordModified>
+        <keyQualifierName>KQ_DataSourceObject</keyQualifierName>
+        <masterLabel>Data Source Object</masterLabel>
+        <sequence xsi:nil="true"/>
+        <usageTag>NONE</usageTag>
+        <versionNumber xsi:nil="true"/>
+    </dataSourceFields>
+    <dataSourceFields>
+        <fullName>exp_dc_integr__dateTime</fullName>
+        <datatype>F</datatype>
+        <definitionCreationType>Custom</definitionCreationType>
+        <externalName>dateTime</externalName>
+        <fieldFormula>sourceField[&apos;dateTime&apos;]</fieldFormula>
+        <isDataRequired>false</isDataRequired>
+        <isEventDate>false</isEventDate>
+        <isFormula>false</isFormula>
+        <isRecordModified>false</isRecordModified>
+        <keyQualifierName>KQ_dateTime</keyQualifierName>
+        <masterLabel>dateTime</masterLabel>
+        <sequence xsi:nil="true"/>
+        <usageTag>NONE</usageTag>
+        <versionNumber>1.0</versionNumber>
+    </dataSourceFields>
+    <dataSourceFields>
+        <fullName>exp_dc_integr__deviceId</fullName>
+        <datatype>S</datatype>
+        <definitionCreationType>Custom</definitionCreationType>
+        <externalName>deviceId</externalName>
+        <fieldFormula>sourceField[&apos;deviceId&apos;]</fieldFormula>
+        <isDataRequired>false</isDataRequired>
+        <isEventDate>false</isEventDate>
+        <isFormula>false</isFormula>
+        <isRecordModified>false</isRecordModified>
+        <keyQualifierName>KQ_deviceId</keyQualifierName>
+        <masterLabel>deviceId</masterLabel>
+        <sequence xsi:nil="true"/>
+        <usageTag>NONE</usageTag>
+        <versionNumber xsi:nil="true"/>
+    </dataSourceFields>
+    <dataSourceFields>
+        <fullName>exp_dc_integr__error_browserName</fullName>
+        <datatype>S</datatype>
+        <definitionCreationType>Custom</definitionCreationType>
+        <externalName>error.browserName</externalName>
+        <fieldFormula>sourceField[&apos;error.browserName&apos;]</fieldFormula>
+        <isDataRequired>false</isDataRequired>
+        <isEventDate>false</isEventDate>
+        <isFormula>false</isFormula>
+        <isRecordModified>false</isRecordModified>
+        <keyQualifierName>KQ_error_browserName</keyQualifierName>
+        <masterLabel>browserName</masterLabel>
+        <sequence xsi:nil="true"/>
+        <usageTag>NONE</usageTag>
+        <versionNumber xsi:nil="true"/>
+    </dataSourceFields>
+    <dataSourceFields>
+        <fullName>exp_dc_integr__error_browserVersion</fullName>
+        <datatype>S</datatype>
+        <definitionCreationType>Custom</definitionCreationType>
+        <externalName>error.browserVersion</externalName>
+        <fieldFormula>sourceField[&apos;error.browserVersion&apos;]</fieldFormula>
+        <isDataRequired>false</isDataRequired>
+        <isEventDate>false</isEventDate>
+        <isFormula>false</isFormula>
+        <isRecordModified>false</isRecordModified>
+        <keyQualifierName>KQ_error_browserVersion</keyQualifierName>
+        <masterLabel>browserVersion</masterLabel>
+        <sequence xsi:nil="true"/>
+        <usageTag>NONE</usageTag>
+        <versionNumber xsi:nil="true"/>
+    </dataSourceFields>
+    <dataSourceFields>
+        <fullName>exp_dc_integr__error_businessUnitId</fullName>
+        <datatype>S</datatype>
+        <definitionCreationType>Custom</definitionCreationType>
+        <externalName>error.businessUnitId</externalName>
+        <fieldFormula>sourceField[&apos;error.businessUnitId&apos;]</fieldFormula>
+        <isDataRequired>false</isDataRequired>
+        <isEventDate>false</isEventDate>
+        <isFormula>false</isFormula>
+        <isRecordModified>false</isRecordModified>
+        <keyQualifierName>KQ_error_businessUnitId</keyQualifierName>
+        <masterLabel>businessUnitId</masterLabel>
+        <sequence xsi:nil="true"/>
+        <usageTag>NONE</usageTag>
+        <versionNumber xsi:nil="true"/>
+    </dataSourceFields>
+    <dataSourceFields>
+        <fullName>exp_dc_integr__error_componentId</fullName>
+        <datatype>S</datatype>
+        <definitionCreationType>Custom</definitionCreationType>
+        <externalName>error.componentId</externalName>
+        <fieldFormula>sourceField[&apos;error.componentId&apos;]</fieldFormula>
+        <isDataRequired>false</isDataRequired>
+        <isEventDate>false</isEventDate>
+        <isFormula>false</isFormula>
+        <isRecordModified>false</isRecordModified>
+        <keyQualifierName>KQ_error_componentId</keyQualifierName>
+        <masterLabel>componentId</masterLabel>
+        <sequence xsi:nil="true"/>
+        <usageTag>NONE</usageTag>
+        <versionNumber xsi:nil="true"/>
+    </dataSourceFields>
+    <dataSourceFields>
+        <fullName>exp_dc_integr__error_correlationId</fullName>
+        <datatype>S</datatype>
+        <definitionCreationType>Custom</definitionCreationType>
+        <externalName>error.correlationId</externalName>
+        <fieldFormula>sourceField[&apos;error.correlationId&apos;]</fieldFormula>
+        <isDataRequired>false</isDataRequired>
+        <isEventDate>false</isEventDate>
+        <isFormula>false</isFormula>
+        <isRecordModified>false</isRecordModified>
+        <keyQualifierName>KQ_error_correlationId</keyQualifierName>
+        <masterLabel>correlationId</masterLabel>
+        <sequence xsi:nil="true"/>
+        <usageTag>NONE</usageTag>
+        <versionNumber xsi:nil="true"/>
+    </dataSourceFields>
+    <dataSourceFields>
+        <fullName>exp_dc_integr__error_dataSpaceId</fullName>
+        <datatype>S</datatype>
+        <definitionCreationType>Custom</definitionCreationType>
+        <externalName>error.dataSpaceId</externalName>
+        <fieldFormula>sourceField[&apos;error.dataSpaceId&apos;]</fieldFormula>
+        <isDataRequired>false</isDataRequired>
+        <isEventDate>false</isEventDate>
+        <isFormula>false</isFormula>
+        <isRecordModified>false</isRecordModified>
+        <keyQualifierName>KQ_error_dataSpaceId</keyQualifierName>
+        <masterLabel>dataSpaceId</masterLabel>
+        <sequence xsi:nil="true"/>
+        <usageTag>NONE</usageTag>
+        <versionNumber xsi:nil="true"/>
+    </dataSourceFields>
+    <dataSourceFields>
+        <fullName>exp_dc_integr__error_deviceModel</fullName>
+        <datatype>S</datatype>
+        <definitionCreationType>Custom</definitionCreationType>
+        <externalName>error.deviceModel</externalName>
+        <fieldFormula>sourceField[&apos;error.deviceModel&apos;]</fieldFormula>
+        <isDataRequired>false</isDataRequired>
+        <isEventDate>false</isEventDate>
+        <isFormula>false</isFormula>
+        <isRecordModified>false</isRecordModified>
+        <keyQualifierName>KQ_error_deviceModel</keyQualifierName>
+        <masterLabel>deviceModel</masterLabel>
+        <sequence xsi:nil="true"/>
+        <usageTag>NONE</usageTag>
+        <versionNumber xsi:nil="true"/>
+    </dataSourceFields>
+    <dataSourceFields>
+        <fullName>exp_dc_integr__error_deviceVendor</fullName>
+        <datatype>S</datatype>
+        <definitionCreationType>Custom</definitionCreationType>
+        <externalName>error.deviceVendor</externalName>
+        <fieldFormula>sourceField[&apos;error.deviceVendor&apos;]</fieldFormula>
+        <isDataRequired>false</isDataRequired>
+        <isEventDate>false</isEventDate>
+        <isFormula>false</isFormula>
+        <isRecordModified>false</isRecordModified>
+        <keyQualifierName>KQ_error_deviceVendor</keyQualifierName>
+        <masterLabel>deviceVendor</masterLabel>
+        <sequence xsi:nil="true"/>
+        <usageTag>NONE</usageTag>
+        <versionNumber xsi:nil="true"/>
+    </dataSourceFields>
+    <dataSourceFields>
+        <fullName>exp_dc_integr__error_errorCode</fullName>
+        <datatype>S</datatype>
+        <definitionCreationType>Custom</definitionCreationType>
+        <externalName>error.errorCode</externalName>
+        <fieldFormula>sourceField[&apos;error.errorCode&apos;]</fieldFormula>
+        <isDataRequired>false</isDataRequired>
+        <isEventDate>false</isEventDate>
+        <isFormula>false</isFormula>
+        <isRecordModified>false</isRecordModified>
+        <keyQualifierName>KQ_error_errorCode</keyQualifierName>
+        <masterLabel>errorCode</masterLabel>
+        <sequence xsi:nil="true"/>
+        <usageTag>NONE</usageTag>
+        <versionNumber xsi:nil="true"/>
+    </dataSourceFields>
+    <dataSourceFields>
+        <fullName>exp_dc_integr__error_errorId</fullName>
+        <datatype>S</datatype>
+        <definitionCreationType>Custom</definitionCreationType>
+        <externalName>error.errorId</externalName>
+        <fieldFormula>sourceField[&apos;error.errorId&apos;]</fieldFormula>
+        <isDataRequired>false</isDataRequired>
+        <isEventDate>false</isEventDate>
+        <isFormula>false</isFormula>
+        <isRecordModified>false</isRecordModified>
+        <keyQualifierName>KQ_error_errorId</keyQualifierName>
+        <masterLabel>errorId</masterLabel>
+        <sequence xsi:nil="true"/>
+        <usageTag>NONE</usageTag>
+        <versionNumber xsi:nil="true"/>
+    </dataSourceFields>
+    <dataSourceFields>
+        <fullName>exp_dc_integr__error_errorMessage</fullName>
+        <datatype>S</datatype>
+        <definitionCreationType>Custom</definitionCreationType>
+        <externalName>error.errorMessage</externalName>
+        <fieldFormula>sourceField[&apos;error.errorMessage&apos;]</fieldFormula>
+        <isDataRequired>false</isDataRequired>
+        <isEventDate>false</isEventDate>
+        <isFormula>false</isFormula>
+        <isRecordModified>false</isRecordModified>
+        <keyQualifierName>KQ_error_errorMessage</keyQualifierName>
+        <masterLabel>errorMessage</masterLabel>
+        <sequence xsi:nil="true"/>
+        <usageTag>NONE</usageTag>
+        <versionNumber xsi:nil="true"/>
+    </dataSourceFields>
+    <dataSourceFields>
+        <fullName>exp_dc_integr__error_errorType</fullName>
+        <datatype>S</datatype>
+        <definitionCreationType>Custom</definitionCreationType>
+        <externalName>error.errorType</externalName>
+        <fieldFormula>sourceField[&apos;error.errorType&apos;]</fieldFormula>
+        <isDataRequired>false</isDataRequired>
+        <isEventDate>false</isEventDate>
+        <isFormula>false</isFormula>
+        <isRecordModified>false</isRecordModified>
+        <keyQualifierName>KQ_error_errorType</keyQualifierName>
+        <masterLabel>errorType</masterLabel>
+        <sequence xsi:nil="true"/>
+        <usageTag>NONE</usageTag>
+        <versionNumber xsi:nil="true"/>
+    </dataSourceFields>
+    <dataSourceFields>
+        <fullName>exp_dc_integr__error_interactionName</fullName>
+        <datatype>S</datatype>
+        <definitionCreationType>Custom</definitionCreationType>
+        <externalName>error.interactionName</externalName>
+        <fieldFormula>sourceField[&apos;error.interactionName&apos;]</fieldFormula>
+        <isDataRequired>false</isDataRequired>
+        <isEventDate>false</isEventDate>
+        <isFormula>false</isFormula>
+        <isRecordModified>false</isRecordModified>
+        <keyQualifierName>KQ_error_interactionName</keyQualifierName>
+        <masterLabel>interactionName</masterLabel>
+        <sequence xsi:nil="true"/>
+        <usageTag>NONE</usageTag>
+        <versionNumber xsi:nil="true"/>
+    </dataSourceFields>
+    <dataSourceFields>
+        <fullName>exp_dc_integr__error_osName</fullName>
+        <datatype>S</datatype>
+        <definitionCreationType>Custom</definitionCreationType>
+        <externalName>error.osName</externalName>
+        <fieldFormula>sourceField[&apos;error.osName&apos;]</fieldFormula>
+        <isDataRequired>false</isDataRequired>
+        <isEventDate>false</isEventDate>
+        <isFormula>false</isFormula>
+        <isRecordModified>false</isRecordModified>
+        <keyQualifierName>KQ_error_osName</keyQualifierName>
+        <masterLabel>osName</masterLabel>
+        <sequence xsi:nil="true"/>
+        <usageTag>NONE</usageTag>
+        <versionNumber xsi:nil="true"/>
+    </dataSourceFields>
+    <dataSourceFields>
+        <fullName>exp_dc_integr__error_osVersion</fullName>
+        <datatype>S</datatype>
+        <definitionCreationType>Custom</definitionCreationType>
+        <externalName>error.osVersion</externalName>
+        <fieldFormula>sourceField[&apos;error.osVersion&apos;]</fieldFormula>
+        <isDataRequired>false</isDataRequired>
+        <isEventDate>false</isEventDate>
+        <isFormula>false</isFormula>
+        <isRecordModified>false</isRecordModified>
+        <keyQualifierName>KQ_error_osVersion</keyQualifierName>
+        <masterLabel>osVersion</masterLabel>
+        <sequence xsi:nil="true"/>
+        <usageTag>NONE</usageTag>
+        <versionNumber xsi:nil="true"/>
+    </dataSourceFields>
+    <dataSourceFields>
+        <fullName>exp_dc_integr__error_screenHeight</fullName>
+        <datatype>N</datatype>
+        <definitionCreationType>Custom</definitionCreationType>
+        <externalName>error.screenHeight</externalName>
+        <fieldFormula>sourceField[&apos;error.screenHeight&apos;]</fieldFormula>
+        <isDataRequired>false</isDataRequired>
+        <isEventDate>false</isEventDate>
+        <isFormula>false</isFormula>
+        <isRecordModified>false</isRecordModified>
+        <keyQualifierName>KQ_error_screenHeight</keyQualifierName>
+        <masterLabel>screenHeight</masterLabel>
+        <sequence xsi:nil="true"/>
+        <usageTag>NONE</usageTag>
+        <versionNumber xsi:nil="true"/>
+    </dataSourceFields>
+    <dataSourceFields>
+        <fullName>exp_dc_integr__error_screenWidth</fullName>
+        <datatype>N</datatype>
+        <definitionCreationType>Custom</definitionCreationType>
+        <externalName>error.screenWidth</externalName>
+        <fieldFormula>sourceField[&apos;error.screenWidth&apos;]</fieldFormula>
+        <isDataRequired>false</isDataRequired>
+        <isEventDate>false</isEventDate>
+        <isFormula>false</isFormula>
+        <isRecordModified>false</isRecordModified>
+        <keyQualifierName>KQ_error_screenWidth</keyQualifierName>
+        <masterLabel>screenWidth</masterLabel>
+        <sequence xsi:nil="true"/>
+        <usageTag>NONE</usageTag>
+        <versionNumber xsi:nil="true"/>
+    </dataSourceFields>
+    <dataSourceFields>
+        <fullName>exp_dc_integr__error_siteId</fullName>
+        <datatype>S</datatype>
+        <definitionCreationType>Custom</definitionCreationType>
+        <externalName>error.siteId</externalName>
+        <fieldFormula>sourceField[&apos;error.siteId&apos;]</fieldFormula>
+        <isDataRequired>false</isDataRequired>
+        <isEventDate>false</isEventDate>
+        <isFormula>false</isFormula>
+        <isRecordModified>false</isRecordModified>
+        <keyQualifierName>KQ_error_siteId</keyQualifierName>
+        <masterLabel>siteId</masterLabel>
+        <sequence xsi:nil="true"/>
+        <usageTag>NONE</usageTag>
+        <versionNumber xsi:nil="true"/>
+    </dataSourceFields>
+    <dataSourceFields>
+        <fullName>exp_dc_integr__error_sourceChannel</fullName>
+        <datatype>S</datatype>
+        <definitionCreationType>Custom</definitionCreationType>
+        <externalName>error.sourceChannel</externalName>
+        <fieldFormula>sourceField[&apos;error.sourceChannel&apos;]</fieldFormula>
+        <isDataRequired>false</isDataRequired>
+        <isEventDate>false</isEventDate>
+        <isFormula>false</isFormula>
+        <isRecordModified>false</isRecordModified>
+        <keyQualifierName>KQ_error_sourceChannel</keyQualifierName>
+        <masterLabel>sourceChannel</masterLabel>
+        <sequence xsi:nil="true"/>
+        <usageTag>NONE</usageTag>
+        <versionNumber xsi:nil="true"/>
+    </dataSourceFields>
+    <dataSourceFields>
+        <fullName>exp_dc_integr__error_sourceLocale</fullName>
+        <datatype>S</datatype>
+        <definitionCreationType>Custom</definitionCreationType>
+        <externalName>error.sourceLocale</externalName>
+        <fieldFormula>sourceField[&apos;error.sourceLocale&apos;]</fieldFormula>
+        <isDataRequired>false</isDataRequired>
+        <isEventDate>false</isEventDate>
+        <isFormula>false</isFormula>
+        <isRecordModified>false</isRecordModified>
+        <keyQualifierName>KQ_error_sourceLocale</keyQualifierName>
+        <masterLabel>sourceLocale</masterLabel>
+        <sequence xsi:nil="true"/>
+        <usageTag>NONE</usageTag>
+        <versionNumber xsi:nil="true"/>
+    </dataSourceFields>
+    <dataSourceFields>
+        <fullName>exp_dc_integr__error_sourcePageId</fullName>
+        <datatype>S</datatype>
+        <definitionCreationType>Custom</definitionCreationType>
+        <externalName>error.sourcePageId</externalName>
+        <fieldFormula>sourceField[&apos;error.sourcePageId&apos;]</fieldFormula>
+        <isDataRequired>false</isDataRequired>
+        <isEventDate>false</isEventDate>
+        <isFormula>false</isFormula>
+        <isRecordModified>false</isRecordModified>
+        <keyQualifierName>KQ_error_sourcePageId</keyQualifierName>
+        <masterLabel>sourcePageId</masterLabel>
+        <sequence xsi:nil="true"/>
+        <usageTag>NONE</usageTag>
+        <versionNumber xsi:nil="true"/>
+    </dataSourceFields>
+    <dataSourceFields>
+        <fullName>exp_dc_integr__error_sourcePageName</fullName>
+        <datatype>S</datatype>
+        <definitionCreationType>Custom</definitionCreationType>
+        <externalName>error.sourcePageName</externalName>
+        <fieldFormula>sourceField[&apos;error.sourcePageName&apos;]</fieldFormula>
+        <isDataRequired>false</isDataRequired>
+        <isEventDate>false</isEventDate>
+        <isFormula>false</isFormula>
+        <isRecordModified>false</isRecordModified>
+        <keyQualifierName>KQ_error_sourcePageName</keyQualifierName>
+        <masterLabel>sourcePageName</masterLabel>
+        <sequence xsi:nil="true"/>
+        <usageTag>NONE</usageTag>
+        <versionNumber xsi:nil="true"/>
+    </dataSourceFields>
+    <dataSourceFields>
+        <fullName>exp_dc_integr__error_sourcePageTitle</fullName>
+        <datatype>S</datatype>
+        <definitionCreationType>Custom</definitionCreationType>
+        <externalName>error.sourcePageTitle</externalName>
+        <fieldFormula>sourceField[&apos;error.sourcePageTitle&apos;]</fieldFormula>
+        <isDataRequired>false</isDataRequired>
+        <isEventDate>false</isEventDate>
+        <isFormula>false</isFormula>
+        <isRecordModified>false</isRecordModified>
+        <keyQualifierName>KQ_error_sourcePageTitle</keyQualifierName>
+        <masterLabel>sourcePageTitle</masterLabel>
+        <sequence xsi:nil="true"/>
+        <usageTag>NONE</usageTag>
+        <versionNumber xsi:nil="true"/>
+    </dataSourceFields>
+    <dataSourceFields>
+        <fullName>exp_dc_integr__error_sourcePageType</fullName>
+        <datatype>S</datatype>
+        <definitionCreationType>Custom</definitionCreationType>
+        <externalName>error.sourcePageType</externalName>
+        <fieldFormula>sourceField[&apos;error.sourcePageType&apos;]</fieldFormula>
+        <isDataRequired>false</isDataRequired>
+        <isEventDate>false</isEventDate>
+        <isFormula>false</isFormula>
+        <isRecordModified>false</isRecordModified>
+        <keyQualifierName>KQ_error_sourcePageType</keyQualifierName>
+        <masterLabel>sourcePageType</masterLabel>
+        <sequence xsi:nil="true"/>
+        <usageTag>NONE</usageTag>
+        <versionNumber xsi:nil="true"/>
+    </dataSourceFields>
+    <dataSourceFields>
+        <fullName>exp_dc_integr__error_sourceUrl</fullName>
+        <datatype>S</datatype>
+        <definitionCreationType>Custom</definitionCreationType>
+        <externalName>error.sourceUrl</externalName>
+        <fieldFormula>sourceField[&apos;error.sourceUrl&apos;]</fieldFormula>
+        <isDataRequired>false</isDataRequired>
+        <isEventDate>false</isEventDate>
+        <isFormula>false</isFormula>
+        <isRecordModified>false</isRecordModified>
+        <keyQualifierName>KQ_error_sourceUrl</keyQualifierName>
+        <masterLabel>sourceUrl</masterLabel>
+        <sequence xsi:nil="true"/>
+        <usageTag>NONE</usageTag>
+        <versionNumber xsi:nil="true"/>
+    </dataSourceFields>
+    <dataSourceFields>
+        <fullName>exp_dc_integr__error_sourceURLAlias</fullName>
+        <datatype>S</datatype>
+        <definitionCreationType>Custom</definitionCreationType>
+        <externalName>error.sourceURLAlias</externalName>
+        <fieldFormula>sourceField[&apos;error.sourceURLAlias&apos;]</fieldFormula>
+        <isDataRequired>false</isDataRequired>
+        <isEventDate>false</isEventDate>
+        <isFormula>false</isFormula>
+        <isRecordModified>false</isRecordModified>
+        <keyQualifierName>KQ_error_sourceURLAlias</keyQualifierName>
+        <masterLabel>sourceURLAlias</masterLabel>
+        <sequence xsi:nil="true"/>
+        <usageTag>NONE</usageTag>
+        <versionNumber xsi:nil="true"/>
+    </dataSourceFields>
+    <dataSourceFields>
+        <fullName>exp_dc_integr__error_sourceUrlReferrer</fullName>
+        <datatype>S</datatype>
+        <definitionCreationType>Custom</definitionCreationType>
+        <externalName>error.sourceUrlReferrer</externalName>
+        <fieldFormula>sourceField[&apos;error.sourceUrlReferrer&apos;]</fieldFormula>
+        <isDataRequired>false</isDataRequired>
+        <isEventDate>false</isEventDate>
+        <isFormula>false</isFormula>
+        <isRecordModified>false</isRecordModified>
+        <keyQualifierName>KQ_error_sourceUrlReferrer</keyQualifierName>
+        <masterLabel>sourceUrlReferrer</masterLabel>
+        <sequence xsi:nil="true"/>
+        <usageTag>NONE</usageTag>
+        <versionNumber xsi:nil="true"/>
+    </dataSourceFields>
+    <dataSourceFields>
+        <fullName>exp_dc_integr__eventId</fullName>
+        <datatype>S</datatype>
+        <definitionCreationType>Custom</definitionCreationType>
+        <externalName>eventId</externalName>
+        <fieldFormula>sourceField[&apos;eventId&apos;]</fieldFormula>
+        <isDataRequired>false</isDataRequired>
+        <isEventDate>false</isEventDate>
+        <isFormula>false</isFormula>
+        <isRecordModified>false</isRecordModified>
+        <keyQualifierName>KQ_eventId</keyQualifierName>
+        <masterLabel>eventId</masterLabel>
+        <primaryIndexOrder>1</primaryIndexOrder>
+        <sequence xsi:nil="true"/>
+        <usageTag>NONE</usageTag>
+        <versionNumber xsi:nil="true"/>
+    </dataSourceFields>
+    <dataSourceFields>
+        <fullName>exp_dc_integr__eventType</fullName>
+        <datatype>S</datatype>
+        <definitionCreationType>Custom</definitionCreationType>
+        <externalName>eventType</externalName>
+        <fieldFormula>sourceField[&apos;eventType&apos;]</fieldFormula>
+        <isDataRequired>false</isDataRequired>
+        <isEventDate>false</isEventDate>
+        <isFormula>false</isFormula>
+        <isRecordModified>false</isRecordModified>
+        <keyQualifierName>KQ_eventType</keyQualifierName>
+        <masterLabel>eventType</masterLabel>
+        <sequence xsi:nil="true"/>
+        <usageTag>NONE</usageTag>
+        <versionNumber xsi:nil="true"/>
+    </dataSourceFields>
+    <dataSourceFields>
+        <fullName>exp_dc_integr__order_adjustedTotalProductAmount</fullName>
+        <datatype>N</datatype>
+        <definitionCreationType>Custom</definitionCreationType>
+        <externalName>order.adjustedTotalProductAmount</externalName>
+        <fieldFormula>sourceField[&apos;order.adjustedTotalProductAmount&apos;]</fieldFormula>
+        <isDataRequired>false</isDataRequired>
+        <isEventDate>false</isEventDate>
+        <isFormula>false</isFormula>
+        <isRecordModified>false</isRecordModified>
+        <keyQualifierName>KQ_order_adjustedTotalProductAmount</keyQualifierName>
+        <masterLabel>adjustedTotalProductAmount</masterLabel>
+        <sequence xsi:nil="true"/>
+        <usageTag>NONE</usageTag>
+        <versionNumber xsi:nil="true"/>
+    </dataSourceFields>
+    <dataSourceFields>
+        <fullName>exp_dc_integr__order_browserName</fullName>
+        <datatype>S</datatype>
+        <definitionCreationType>Custom</definitionCreationType>
+        <externalName>order.browserName</externalName>
+        <fieldFormula>sourceField[&apos;order.browserName&apos;]</fieldFormula>
+        <isDataRequired>false</isDataRequired>
+        <isEventDate>false</isEventDate>
+        <isFormula>false</isFormula>
+        <isRecordModified>false</isRecordModified>
+        <keyQualifierName>KQ_order_browserName</keyQualifierName>
+        <masterLabel>browserName</masterLabel>
+        <sequence xsi:nil="true"/>
+        <usageTag>NONE</usageTag>
+        <versionNumber xsi:nil="true"/>
+    </dataSourceFields>
+    <dataSourceFields>
+        <fullName>exp_dc_integr__order_browserVersion</fullName>
+        <datatype>S</datatype>
+        <definitionCreationType>Custom</definitionCreationType>
+        <externalName>order.browserVersion</externalName>
+        <fieldFormula>sourceField[&apos;order.browserVersion&apos;]</fieldFormula>
+        <isDataRequired>false</isDataRequired>
+        <isEventDate>false</isEventDate>
+        <isFormula>false</isFormula>
+        <isRecordModified>false</isRecordModified>
+        <keyQualifierName>KQ_order_browserVersion</keyQualifierName>
+        <masterLabel>browserVersion</masterLabel>
+        <sequence xsi:nil="true"/>
+        <usageTag>NONE</usageTag>
+        <versionNumber xsi:nil="true"/>
+    </dataSourceFields>
+    <dataSourceFields>
+        <fullName>exp_dc_integr__order_businessUnitId</fullName>
+        <datatype>S</datatype>
+        <definitionCreationType>Custom</definitionCreationType>
+        <externalName>order.businessUnitId</externalName>
+        <fieldFormula>sourceField[&apos;order.businessUnitId&apos;]</fieldFormula>
+        <isDataRequired>false</isDataRequired>
+        <isEventDate>false</isEventDate>
+        <isFormula>false</isFormula>
+        <isRecordModified>false</isRecordModified>
+        <keyQualifierName>KQ_order_businessUnitId</keyQualifierName>
+        <masterLabel>businessUnitId</masterLabel>
+        <sequence xsi:nil="true"/>
+        <usageTag>NONE</usageTag>
+        <versionNumber xsi:nil="true"/>
+    </dataSourceFields>
+    <dataSourceFields>
+        <fullName>exp_dc_integr__order_cartId</fullName>
+        <datatype>S</datatype>
+        <definitionCreationType>Custom</definitionCreationType>
+        <externalName>order.cartId</externalName>
+        <fieldFormula>sourceField[&apos;order.cartId&apos;]</fieldFormula>
+        <isDataRequired>false</isDataRequired>
+        <isEventDate>false</isEventDate>
+        <isFormula>false</isFormula>
+        <isRecordModified>false</isRecordModified>
+        <keyQualifierName>KQ_order_cartId</keyQualifierName>
+        <masterLabel>cartId</masterLabel>
+        <sequence xsi:nil="true"/>
+        <usageTag>NONE</usageTag>
+        <versionNumber xsi:nil="true"/>
+    </dataSourceFields>
+    <dataSourceFields>
+        <fullName>exp_dc_integr__order_componentId</fullName>
+        <datatype>S</datatype>
+        <definitionCreationType>Custom</definitionCreationType>
+        <externalName>order.componentId</externalName>
+        <fieldFormula>sourceField[&apos;order.componentId&apos;]</fieldFormula>
+        <isDataRequired>false</isDataRequired>
+        <isEventDate>false</isEventDate>
+        <isFormula>false</isFormula>
+        <isRecordModified>false</isRecordModified>
+        <keyQualifierName>KQ_order_componentId</keyQualifierName>
+        <masterLabel>componentId</masterLabel>
+        <sequence xsi:nil="true"/>
+        <usageTag>NONE</usageTag>
+        <versionNumber xsi:nil="true"/>
+    </dataSourceFields>
+    <dataSourceFields>
+        <fullName>exp_dc_integr__order_correlationId</fullName>
+        <datatype>S</datatype>
+        <definitionCreationType>Custom</definitionCreationType>
+        <externalName>order.correlationId</externalName>
+        <fieldFormula>sourceField[&apos;order.correlationId&apos;]</fieldFormula>
+        <isDataRequired>false</isDataRequired>
+        <isEventDate>false</isEventDate>
+        <isFormula>false</isFormula>
+        <isRecordModified>false</isRecordModified>
+        <keyQualifierName>KQ_order_correlationId</keyQualifierName>
+        <masterLabel>correlationId</masterLabel>
+        <sequence xsi:nil="true"/>
+        <usageTag>NONE</usageTag>
+        <versionNumber xsi:nil="true"/>
+    </dataSourceFields>
+    <dataSourceFields>
+        <fullName>exp_dc_integr__order_currency</fullName>
+        <datatype>S</datatype>
+        <definitionCreationType>Custom</definitionCreationType>
+        <externalName>order.currency</externalName>
+        <fieldFormula>sourceField[&apos;order.currency&apos;]</fieldFormula>
+        <isDataRequired>false</isDataRequired>
+        <isEventDate>false</isEventDate>
+        <isFormula>false</isFormula>
+        <isRecordModified>false</isRecordModified>
+        <keyQualifierName>KQ_order_currency</keyQualifierName>
+        <masterLabel>currency</masterLabel>
+        <sequence xsi:nil="true"/>
+        <usageTag>NONE</usageTag>
+        <versionNumber xsi:nil="true"/>
+    </dataSourceFields>
+    <dataSourceFields>
+        <fullName>exp_dc_integr__order_dataSpaceId</fullName>
+        <datatype>S</datatype>
+        <definitionCreationType>Custom</definitionCreationType>
+        <externalName>order.dataSpaceId</externalName>
+        <fieldFormula>sourceField[&apos;order.dataSpaceId&apos;]</fieldFormula>
+        <isDataRequired>false</isDataRequired>
+        <isEventDate>false</isEventDate>
+        <isFormula>false</isFormula>
+        <isRecordModified>false</isRecordModified>
+        <keyQualifierName>KQ_order_dataSpaceId</keyQualifierName>
+        <masterLabel>dataSpaceId</masterLabel>
+        <sequence xsi:nil="true"/>
+        <usageTag>NONE</usageTag>
+        <versionNumber xsi:nil="true"/>
+    </dataSourceFields>
+    <dataSourceFields>
+        <fullName>exp_dc_integr__order_deviceModel</fullName>
+        <datatype>S</datatype>
+        <definitionCreationType>Custom</definitionCreationType>
+        <externalName>order.deviceModel</externalName>
+        <fieldFormula>sourceField[&apos;order.deviceModel&apos;]</fieldFormula>
+        <isDataRequired>false</isDataRequired>
+        <isEventDate>false</isEventDate>
+        <isFormula>false</isFormula>
+        <isRecordModified>false</isRecordModified>
+        <keyQualifierName>KQ_order_deviceModel</keyQualifierName>
+        <masterLabel>deviceModel</masterLabel>
+        <sequence xsi:nil="true"/>
+        <usageTag>NONE</usageTag>
+        <versionNumber xsi:nil="true"/>
+    </dataSourceFields>
+    <dataSourceFields>
+        <fullName>exp_dc_integr__order_deviceVendor</fullName>
+        <datatype>S</datatype>
+        <definitionCreationType>Custom</definitionCreationType>
+        <externalName>order.deviceVendor</externalName>
+        <fieldFormula>sourceField[&apos;order.deviceVendor&apos;]</fieldFormula>
+        <isDataRequired>false</isDataRequired>
+        <isEventDate>false</isEventDate>
+        <isFormula>false</isFormula>
+        <isRecordModified>false</isRecordModified>
+        <keyQualifierName>KQ_order_deviceVendor</keyQualifierName>
+        <masterLabel>deviceVendor</masterLabel>
+        <sequence xsi:nil="true"/>
+        <usageTag>NONE</usageTag>
+        <versionNumber xsi:nil="true"/>
+    </dataSourceFields>
+    <dataSourceFields>
+        <fullName>exp_dc_integr__order_eventStatus</fullName>
+        <datatype>S</datatype>
+        <definitionCreationType>Custom</definitionCreationType>
+        <externalName>order.eventStatus</externalName>
+        <fieldFormula>sourceField[&apos;order.eventStatus&apos;]</fieldFormula>
+        <isDataRequired>false</isDataRequired>
+        <isEventDate>false</isEventDate>
+        <isFormula>false</isFormula>
+        <isRecordModified>false</isRecordModified>
+        <keyQualifierName>KQ_order_eventStatus</keyQualifierName>
+        <masterLabel>eventStatus</masterLabel>
+        <sequence xsi:nil="true"/>
+        <usageTag>NONE</usageTag>
+        <versionNumber xsi:nil="true"/>
+    </dataSourceFields>
+    <dataSourceFields>
+        <fullName>exp_dc_integr__order_id</fullName>
+        <datatype>S</datatype>
+        <definitionCreationType>Custom</definitionCreationType>
+        <externalName>order.id</externalName>
+        <fieldFormula>sourceField[&apos;order.id&apos;]</fieldFormula>
+        <isDataRequired>false</isDataRequired>
+        <isEventDate>false</isEventDate>
+        <isFormula>false</isFormula>
+        <isRecordModified>false</isRecordModified>
+        <keyQualifierName>KQ_order_id</keyQualifierName>
+        <masterLabel>id</masterLabel>
+        <sequence xsi:nil="true"/>
+        <usageTag>NONE</usageTag>
+        <versionNumber xsi:nil="true"/>
+    </dataSourceFields>
+    <dataSourceFields>
+        <fullName>exp_dc_integr__order_interactionName</fullName>
+        <datatype>S</datatype>
+        <definitionCreationType>Custom</definitionCreationType>
+        <externalName>order.interactionName</externalName>
+        <fieldFormula>sourceField[&apos;order.interactionName&apos;]</fieldFormula>
+        <isDataRequired>false</isDataRequired>
+        <isEventDate>false</isEventDate>
+        <isFormula>false</isFormula>
+        <isRecordModified>false</isRecordModified>
+        <keyQualifierName>KQ_order_interactionName</keyQualifierName>
+        <masterLabel>interactionName</masterLabel>
+        <sequence xsi:nil="true"/>
+        <usageTag>NONE</usageTag>
+        <versionNumber xsi:nil="true"/>
+    </dataSourceFields>
+    <dataSourceFields>
+        <fullName>exp_dc_integr__order_netOrderAmount</fullName>
+        <datatype>N</datatype>
+        <definitionCreationType>Custom</definitionCreationType>
+        <externalName>order.netOrderAmount</externalName>
+        <fieldFormula>sourceField[&apos;order.netOrderAmount&apos;]</fieldFormula>
+        <isDataRequired>false</isDataRequired>
+        <isEventDate>false</isEventDate>
+        <isFormula>false</isFormula>
+        <isRecordModified>false</isRecordModified>
+        <keyQualifierName>KQ_order_netOrderAmount</keyQualifierName>
+        <masterLabel>netOrderAmount</masterLabel>
+        <sequence xsi:nil="true"/>
+        <usageTag>NONE</usageTag>
+        <versionNumber xsi:nil="true"/>
+    </dataSourceFields>
+    <dataSourceFields>
+        <fullName>exp_dc_integr__order_osName</fullName>
+        <datatype>S</datatype>
+        <definitionCreationType>Custom</definitionCreationType>
+        <externalName>order.osName</externalName>
+        <fieldFormula>sourceField[&apos;order.osName&apos;]</fieldFormula>
+        <isDataRequired>false</isDataRequired>
+        <isEventDate>false</isEventDate>
+        <isFormula>false</isFormula>
+        <isRecordModified>false</isRecordModified>
+        <keyQualifierName>KQ_order_osName</keyQualifierName>
+        <masterLabel>osName</masterLabel>
+        <sequence xsi:nil="true"/>
+        <usageTag>NONE</usageTag>
+        <versionNumber xsi:nil="true"/>
+    </dataSourceFields>
+    <dataSourceFields>
+        <fullName>exp_dc_integr__order_osVersion</fullName>
+        <datatype>S</datatype>
+        <definitionCreationType>Custom</definitionCreationType>
+        <externalName>order.osVersion</externalName>
+        <fieldFormula>sourceField[&apos;order.osVersion&apos;]</fieldFormula>
+        <isDataRequired>false</isDataRequired>
+        <isEventDate>false</isEventDate>
+        <isFormula>false</isFormula>
+        <isRecordModified>false</isRecordModified>
+        <keyQualifierName>KQ_order_osVersion</keyQualifierName>
+        <masterLabel>osVersion</masterLabel>
+        <sequence xsi:nil="true"/>
+        <usageTag>NONE</usageTag>
+        <versionNumber xsi:nil="true"/>
+    </dataSourceFields>
+    <dataSourceFields>
+        <fullName>exp_dc_integr__order_screenHeight</fullName>
+        <datatype>N</datatype>
+        <definitionCreationType>Custom</definitionCreationType>
+        <externalName>order.screenHeight</externalName>
+        <fieldFormula>sourceField[&apos;order.screenHeight&apos;]</fieldFormula>
+        <isDataRequired>false</isDataRequired>
+        <isEventDate>false</isEventDate>
+        <isFormula>false</isFormula>
+        <isRecordModified>false</isRecordModified>
+        <keyQualifierName>KQ_order_screenHeight</keyQualifierName>
+        <masterLabel>screenHeight</masterLabel>
+        <sequence xsi:nil="true"/>
+        <usageTag>NONE</usageTag>
+        <versionNumber xsi:nil="true"/>
+    </dataSourceFields>
+    <dataSourceFields>
+        <fullName>exp_dc_integr__order_screenWidth</fullName>
+        <datatype>N</datatype>
+        <definitionCreationType>Custom</definitionCreationType>
+        <externalName>order.screenWidth</externalName>
+        <fieldFormula>sourceField[&apos;order.screenWidth&apos;]</fieldFormula>
+        <isDataRequired>false</isDataRequired>
+        <isEventDate>false</isEventDate>
+        <isFormula>false</isFormula>
+        <isRecordModified>false</isRecordModified>
+        <keyQualifierName>KQ_order_screenWidth</keyQualifierName>
+        <masterLabel>screenWidth</masterLabel>
+        <sequence xsi:nil="true"/>
+        <usageTag>NONE</usageTag>
+        <versionNumber xsi:nil="true"/>
+    </dataSourceFields>
+    <dataSourceFields>
+        <fullName>exp_dc_integr__order_siteId</fullName>
+        <datatype>S</datatype>
+        <definitionCreationType>Custom</definitionCreationType>
+        <externalName>order.siteId</externalName>
+        <fieldFormula>sourceField[&apos;order.siteId&apos;]</fieldFormula>
+        <isDataRequired>false</isDataRequired>
+        <isEventDate>false</isEventDate>
+        <isFormula>false</isFormula>
+        <isRecordModified>false</isRecordModified>
+        <keyQualifierName>KQ_order_siteId</keyQualifierName>
+        <masterLabel>siteId</masterLabel>
+        <sequence xsi:nil="true"/>
+        <usageTag>NONE</usageTag>
+        <versionNumber xsi:nil="true"/>
+    </dataSourceFields>
+    <dataSourceFields>
+        <fullName>exp_dc_integr__order_sourceChannel</fullName>
+        <datatype>S</datatype>
+        <definitionCreationType>Custom</definitionCreationType>
+        <externalName>order.sourceChannel</externalName>
+        <fieldFormula>sourceField[&apos;order.sourceChannel&apos;]</fieldFormula>
+        <isDataRequired>false</isDataRequired>
+        <isEventDate>false</isEventDate>
+        <isFormula>false</isFormula>
+        <isRecordModified>false</isRecordModified>
+        <keyQualifierName>KQ_order_sourceChannel</keyQualifierName>
+        <masterLabel>sourceChannel</masterLabel>
+        <sequence xsi:nil="true"/>
+        <usageTag>NONE</usageTag>
+        <versionNumber xsi:nil="true"/>
+    </dataSourceFields>
+    <dataSourceFields>
+        <fullName>exp_dc_integr__order_sourceLocale</fullName>
+        <datatype>S</datatype>
+        <definitionCreationType>Custom</definitionCreationType>
+        <externalName>order.sourceLocale</externalName>
+        <fieldFormula>sourceField[&apos;order.sourceLocale&apos;]</fieldFormula>
+        <isDataRequired>false</isDataRequired>
+        <isEventDate>false</isEventDate>
+        <isFormula>false</isFormula>
+        <isRecordModified>false</isRecordModified>
+        <keyQualifierName>KQ_order_sourceLocale</keyQualifierName>
+        <masterLabel>sourceLocale</masterLabel>
+        <sequence xsi:nil="true"/>
+        <usageTag>NONE</usageTag>
+        <versionNumber xsi:nil="true"/>
+    </dataSourceFields>
+    <dataSourceFields>
+        <fullName>exp_dc_integr__order_sourcePageId</fullName>
+        <datatype>S</datatype>
+        <definitionCreationType>Custom</definitionCreationType>
+        <externalName>order.sourcePageId</externalName>
+        <fieldFormula>sourceField[&apos;order.sourcePageId&apos;]</fieldFormula>
+        <isDataRequired>false</isDataRequired>
+        <isEventDate>false</isEventDate>
+        <isFormula>false</isFormula>
+        <isRecordModified>false</isRecordModified>
+        <keyQualifierName>KQ_order_sourcePageId</keyQualifierName>
+        <masterLabel>sourcePageId</masterLabel>
+        <sequence xsi:nil="true"/>
+        <usageTag>NONE</usageTag>
+        <versionNumber xsi:nil="true"/>
+    </dataSourceFields>
+    <dataSourceFields>
+        <fullName>exp_dc_integr__order_sourcePageName</fullName>
+        <datatype>S</datatype>
+        <definitionCreationType>Custom</definitionCreationType>
+        <externalName>order.sourcePageName</externalName>
+        <fieldFormula>sourceField[&apos;order.sourcePageName&apos;]</fieldFormula>
+        <isDataRequired>false</isDataRequired>
+        <isEventDate>false</isEventDate>
+        <isFormula>false</isFormula>
+        <isRecordModified>false</isRecordModified>
+        <keyQualifierName>KQ_order_sourcePageName</keyQualifierName>
+        <masterLabel>sourcePageName</masterLabel>
+        <sequence xsi:nil="true"/>
+        <usageTag>NONE</usageTag>
+        <versionNumber xsi:nil="true"/>
+    </dataSourceFields>
+    <dataSourceFields>
+        <fullName>exp_dc_integr__order_sourcePageTitle</fullName>
+        <datatype>S</datatype>
+        <definitionCreationType>Custom</definitionCreationType>
+        <externalName>order.sourcePageTitle</externalName>
+        <fieldFormula>sourceField[&apos;order.sourcePageTitle&apos;]</fieldFormula>
+        <isDataRequired>false</isDataRequired>
+        <isEventDate>false</isEventDate>
+        <isFormula>false</isFormula>
+        <isRecordModified>false</isRecordModified>
+        <keyQualifierName>KQ_order_sourcePageTitle</keyQualifierName>
+        <masterLabel>sourcePageTitle</masterLabel>
+        <sequence xsi:nil="true"/>
+        <usageTag>NONE</usageTag>
+        <versionNumber xsi:nil="true"/>
+    </dataSourceFields>
+    <dataSourceFields>
+        <fullName>exp_dc_integr__order_sourcePageType</fullName>
+        <datatype>S</datatype>
+        <definitionCreationType>Custom</definitionCreationType>
+        <externalName>order.sourcePageType</externalName>
+        <fieldFormula>sourceField[&apos;order.sourcePageType&apos;]</fieldFormula>
+        <isDataRequired>false</isDataRequired>
+        <isEventDate>false</isEventDate>
+        <isFormula>false</isFormula>
+        <isRecordModified>false</isRecordModified>
+        <keyQualifierName>KQ_order_sourcePageType</keyQualifierName>
+        <masterLabel>sourcePageType</masterLabel>
+        <sequence xsi:nil="true"/>
+        <usageTag>NONE</usageTag>
+        <versionNumber xsi:nil="true"/>
+    </dataSourceFields>
+    <dataSourceFields>
+        <fullName>exp_dc_integr__order_sourceUrl</fullName>
+        <datatype>S</datatype>
+        <definitionCreationType>Custom</definitionCreationType>
+        <externalName>order.sourceUrl</externalName>
+        <fieldFormula>sourceField[&apos;order.sourceUrl&apos;]</fieldFormula>
+        <isDataRequired>false</isDataRequired>
+        <isEventDate>false</isEventDate>
+        <isFormula>false</isFormula>
+        <isRecordModified>false</isRecordModified>
+        <keyQualifierName>KQ_order_sourceUrl</keyQualifierName>
+        <masterLabel>sourceUrl</masterLabel>
+        <sequence xsi:nil="true"/>
+        <usageTag>NONE</usageTag>
+        <versionNumber xsi:nil="true"/>
+    </dataSourceFields>
+    <dataSourceFields>
+        <fullName>exp_dc_integr__order_sourceURLAlias</fullName>
+        <datatype>S</datatype>
+        <definitionCreationType>Custom</definitionCreationType>
+        <externalName>order.sourceURLAlias</externalName>
+        <fieldFormula>sourceField[&apos;order.sourceURLAlias&apos;]</fieldFormula>
+        <isDataRequired>false</isDataRequired>
+        <isEventDate>false</isEventDate>
+        <isFormula>false</isFormula>
+        <isRecordModified>false</isRecordModified>
+        <keyQualifierName>KQ_order_sourceURLAlias</keyQualifierName>
+        <masterLabel>sourceURLAlias</masterLabel>
+        <sequence xsi:nil="true"/>
+        <usageTag>NONE</usageTag>
+        <versionNumber xsi:nil="true"/>
+    </dataSourceFields>
+    <dataSourceFields>
+        <fullName>exp_dc_integr__order_sourceUrlReferrer</fullName>
+        <datatype>S</datatype>
+        <definitionCreationType>Custom</definitionCreationType>
+        <externalName>order.sourceUrlReferrer</externalName>
+        <fieldFormula>sourceField[&apos;order.sourceUrlReferrer&apos;]</fieldFormula>
+        <isDataRequired>false</isDataRequired>
+        <isEventDate>false</isEventDate>
+        <isFormula>false</isFormula>
+        <isRecordModified>false</isRecordModified>
+        <keyQualifierName>KQ_order_sourceUrlReferrer</keyQualifierName>
+        <masterLabel>sourceUrlReferrer</masterLabel>
+        <sequence xsi:nil="true"/>
+        <usageTag>NONE</usageTag>
+        <versionNumber xsi:nil="true"/>
+    </dataSourceFields>
+    <dataSourceFields>
+        <fullName>exp_dc_integr__order_totalDeliveryAmount</fullName>
+        <datatype>N</datatype>
+        <definitionCreationType>Custom</definitionCreationType>
+        <externalName>order.totalDeliveryAmount</externalName>
+        <fieldFormula>sourceField[&apos;order.totalDeliveryAmount&apos;]</fieldFormula>
+        <isDataRequired>false</isDataRequired>
+        <isEventDate>false</isEventDate>
+        <isFormula>false</isFormula>
+        <isRecordModified>false</isRecordModified>
+        <keyQualifierName>KQ_order_totalDeliveryAmount</keyQualifierName>
+        <masterLabel>totalDeliveryAmount</masterLabel>
+        <sequence xsi:nil="true"/>
+        <usageTag>NONE</usageTag>
+        <versionNumber xsi:nil="true"/>
+    </dataSourceFields>
+    <dataSourceFields>
+        <fullName>exp_dc_integr__order_totalProductAmount</fullName>
+        <datatype>N</datatype>
+        <definitionCreationType>Custom</definitionCreationType>
+        <externalName>order.totalProductAmount</externalName>
+        <fieldFormula>sourceField[&apos;order.totalProductAmount&apos;]</fieldFormula>
+        <isDataRequired>false</isDataRequired>
+        <isEventDate>false</isEventDate>
+        <isFormula>false</isFormula>
+        <isRecordModified>false</isRecordModified>
+        <keyQualifierName>KQ_order_totalProductAmount</keyQualifierName>
+        <masterLabel>totalProductAmount</masterLabel>
+        <sequence xsi:nil="true"/>
+        <usageTag>NONE</usageTag>
+        <versionNumber xsi:nil="true"/>
+    </dataSourceFields>
+    <dataSourceFields>
+        <fullName>exp_dc_integr__order_totalTaxAmount</fullName>
+        <datatype>N</datatype>
+        <definitionCreationType>Custom</definitionCreationType>
+        <externalName>order.totalTaxAmount</externalName>
+        <fieldFormula>sourceField[&apos;order.totalTaxAmount&apos;]</fieldFormula>
+        <isDataRequired>false</isDataRequired>
+        <isEventDate>false</isEventDate>
+        <isFormula>false</isFormula>
+        <isRecordModified>false</isRecordModified>
+        <keyQualifierName>KQ_order_totalTaxAmount</keyQualifierName>
+        <masterLabel>totalTaxAmount</masterLabel>
+        <sequence xsi:nil="true"/>
+        <usageTag>NONE</usageTag>
+        <versionNumber xsi:nil="true"/>
+    </dataSourceFields>
+    <dataSourceFields>
+        <fullName>exp_dc_integr__order_webStoreId</fullName>
+        <datatype>S</datatype>
+        <definitionCreationType>Custom</definitionCreationType>
+        <externalName>order.webStoreId</externalName>
+        <fieldFormula>sourceField[&apos;order.webStoreId&apos;]</fieldFormula>
+        <isDataRequired>false</isDataRequired>
+        <isEventDate>false</isEventDate>
+        <isFormula>false</isFormula>
+        <isRecordModified>false</isRecordModified>
+        <keyQualifierName>KQ_order_webStoreId</keyQualifierName>
+        <masterLabel>webStoreId</masterLabel>
+        <sequence xsi:nil="true"/>
+        <usageTag>NONE</usageTag>
+        <versionNumber xsi:nil="true"/>
+    </dataSourceFields>
+    <dataSourceFields>
+        <fullName>exp_dc_integr__search_browserName</fullName>
+        <datatype>S</datatype>
+        <definitionCreationType>Custom</definitionCreationType>
+        <externalName>search.browserName</externalName>
+        <fieldFormula>sourceField[&apos;search.browserName&apos;]</fieldFormula>
+        <isDataRequired>false</isDataRequired>
+        <isEventDate>false</isEventDate>
+        <isFormula>false</isFormula>
+        <isRecordModified>false</isRecordModified>
+        <keyQualifierName>KQ_search_browserName</keyQualifierName>
+        <masterLabel>browserName</masterLabel>
+        <sequence xsi:nil="true"/>
+        <usageTag>NONE</usageTag>
+        <versionNumber xsi:nil="true"/>
+    </dataSourceFields>
+    <dataSourceFields>
+        <fullName>exp_dc_integr__search_browserVersion</fullName>
+        <datatype>S</datatype>
+        <definitionCreationType>Custom</definitionCreationType>
+        <externalName>search.browserVersion</externalName>
+        <fieldFormula>sourceField[&apos;search.browserVersion&apos;]</fieldFormula>
+        <isDataRequired>false</isDataRequired>
+        <isEventDate>false</isEventDate>
+        <isFormula>false</isFormula>
+        <isRecordModified>false</isRecordModified>
+        <keyQualifierName>KQ_search_browserVersion</keyQualifierName>
+        <masterLabel>browserVersion</masterLabel>
+        <sequence xsi:nil="true"/>
+        <usageTag>NONE</usageTag>
+        <versionNumber xsi:nil="true"/>
+    </dataSourceFields>
+    <dataSourceFields>
+        <fullName>exp_dc_integr__search_businessUnitId</fullName>
+        <datatype>S</datatype>
+        <definitionCreationType>Custom</definitionCreationType>
+        <externalName>search.businessUnitId</externalName>
+        <fieldFormula>sourceField[&apos;search.businessUnitId&apos;]</fieldFormula>
+        <isDataRequired>false</isDataRequired>
+        <isEventDate>false</isEventDate>
+        <isFormula>false</isFormula>
+        <isRecordModified>false</isRecordModified>
+        <keyQualifierName>KQ_search_businessUnitId</keyQualifierName>
+        <masterLabel>businessUnitId</masterLabel>
+        <sequence xsi:nil="true"/>
+        <usageTag>NONE</usageTag>
+        <versionNumber xsi:nil="true"/>
+    </dataSourceFields>
+    <dataSourceFields>
+        <fullName>exp_dc_integr__search_categoryId</fullName>
+        <datatype>S</datatype>
+        <definitionCreationType>Custom</definitionCreationType>
+        <externalName>search.categoryId</externalName>
+        <fieldFormula>sourceField[&apos;search.categoryId&apos;]</fieldFormula>
+        <isDataRequired>false</isDataRequired>
+        <isEventDate>false</isEventDate>
+        <isFormula>false</isFormula>
+        <isRecordModified>false</isRecordModified>
+        <keyQualifierName>KQ_search_categoryId</keyQualifierName>
+        <masterLabel>categoryId</masterLabel>
+        <sequence xsi:nil="true"/>
+        <usageTag>NONE</usageTag>
+        <versionNumber xsi:nil="true"/>
+    </dataSourceFields>
+    <dataSourceFields>
+        <fullName>exp_dc_integr__search_componentId</fullName>
+        <datatype>S</datatype>
+        <definitionCreationType>Custom</definitionCreationType>
+        <externalName>search.componentId</externalName>
+        <fieldFormula>sourceField[&apos;search.componentId&apos;]</fieldFormula>
+        <isDataRequired>false</isDataRequired>
+        <isEventDate>false</isEventDate>
+        <isFormula>false</isFormula>
+        <isRecordModified>false</isRecordModified>
+        <keyQualifierName>KQ_search_componentId</keyQualifierName>
+        <masterLabel>componentId</masterLabel>
+        <sequence xsi:nil="true"/>
+        <usageTag>NONE</usageTag>
+        <versionNumber xsi:nil="true"/>
+    </dataSourceFields>
+    <dataSourceFields>
+        <fullName>exp_dc_integr__search_correlationId</fullName>
+        <datatype>S</datatype>
+        <definitionCreationType>Custom</definitionCreationType>
+        <externalName>search.correlationId</externalName>
+        <fieldFormula>sourceField[&apos;search.correlationId&apos;]</fieldFormula>
+        <isDataRequired>false</isDataRequired>
+        <isEventDate>false</isEventDate>
+        <isFormula>false</isFormula>
+        <isRecordModified>false</isRecordModified>
+        <keyQualifierName>KQ_search_correlationId</keyQualifierName>
+        <masterLabel>correlationId</masterLabel>
+        <sequence xsi:nil="true"/>
+        <usageTag>NONE</usageTag>
+        <versionNumber xsi:nil="true"/>
+    </dataSourceFields>
+    <dataSourceFields>
+        <fullName>exp_dc_integr__search_dataSpaceId</fullName>
+        <datatype>S</datatype>
+        <definitionCreationType>Custom</definitionCreationType>
+        <externalName>search.dataSpaceId</externalName>
+        <fieldFormula>sourceField[&apos;search.dataSpaceId&apos;]</fieldFormula>
+        <isDataRequired>false</isDataRequired>
+        <isEventDate>false</isEventDate>
+        <isFormula>false</isFormula>
+        <isRecordModified>false</isRecordModified>
+        <keyQualifierName>KQ_search_dataSpaceId</keyQualifierName>
+        <masterLabel>dataSpaceId</masterLabel>
+        <sequence xsi:nil="true"/>
+        <usageTag>NONE</usageTag>
+        <versionNumber xsi:nil="true"/>
+    </dataSourceFields>
+    <dataSourceFields>
+        <fullName>exp_dc_integr__search_deviceModel</fullName>
+        <datatype>S</datatype>
+        <definitionCreationType>Custom</definitionCreationType>
+        <externalName>search.deviceModel</externalName>
+        <fieldFormula>sourceField[&apos;search.deviceModel&apos;]</fieldFormula>
+        <isDataRequired>false</isDataRequired>
+        <isEventDate>false</isEventDate>
+        <isFormula>false</isFormula>
+        <isRecordModified>false</isRecordModified>
+        <keyQualifierName>KQ_search_deviceModel</keyQualifierName>
+        <masterLabel>deviceModel</masterLabel>
+        <sequence xsi:nil="true"/>
+        <usageTag>NONE</usageTag>
+        <versionNumber xsi:nil="true"/>
+    </dataSourceFields>
+    <dataSourceFields>
+        <fullName>exp_dc_integr__search_deviceVendor</fullName>
+        <datatype>S</datatype>
+        <definitionCreationType>Custom</definitionCreationType>
+        <externalName>search.deviceVendor</externalName>
+        <fieldFormula>sourceField[&apos;search.deviceVendor&apos;]</fieldFormula>
+        <isDataRequired>false</isDataRequired>
+        <isEventDate>false</isEventDate>
+        <isFormula>false</isFormula>
+        <isRecordModified>false</isRecordModified>
+        <keyQualifierName>KQ_search_deviceVendor</keyQualifierName>
+        <masterLabel>deviceVendor</masterLabel>
+        <sequence xsi:nil="true"/>
+        <usageTag>NONE</usageTag>
+        <versionNumber xsi:nil="true"/>
+    </dataSourceFields>
+    <dataSourceFields>
+        <fullName>exp_dc_integr__search_eventStatus</fullName>
+        <datatype>S</datatype>
+        <definitionCreationType>Custom</definitionCreationType>
+        <externalName>search.eventStatus</externalName>
+        <fieldFormula>sourceField[&apos;search.eventStatus&apos;]</fieldFormula>
+        <isDataRequired>false</isDataRequired>
+        <isEventDate>false</isEventDate>
+        <isFormula>false</isFormula>
+        <isRecordModified>false</isRecordModified>
+        <keyQualifierName>KQ_search_eventStatus</keyQualifierName>
+        <masterLabel>eventStatus</masterLabel>
+        <sequence xsi:nil="true"/>
+        <usageTag>NONE</usageTag>
+        <versionNumber xsi:nil="true"/>
+    </dataSourceFields>
+    <dataSourceFields>
+        <fullName>exp_dc_integr__search_interactionName</fullName>
+        <datatype>S</datatype>
+        <definitionCreationType>Custom</definitionCreationType>
+        <externalName>search.interactionName</externalName>
+        <fieldFormula>sourceField[&apos;search.interactionName&apos;]</fieldFormula>
+        <isDataRequired>false</isDataRequired>
+        <isEventDate>false</isEventDate>
+        <isFormula>false</isFormula>
+        <isRecordModified>false</isRecordModified>
+        <keyQualifierName>KQ_search_interactionName</keyQualifierName>
+        <masterLabel>interactionName</masterLabel>
+        <sequence xsi:nil="true"/>
+        <usageTag>NONE</usageTag>
+        <versionNumber xsi:nil="true"/>
+    </dataSourceFields>
+    <dataSourceFields>
+        <fullName>exp_dc_integr__search_numberOfResultsRequested</fullName>
+        <datatype>N</datatype>
+        <definitionCreationType>Custom</definitionCreationType>
+        <externalName>search.numberOfResultsRequested</externalName>
+        <fieldFormula>sourceField[&apos;search.numberOfResultsRequested&apos;]</fieldFormula>
+        <isDataRequired>false</isDataRequired>
+        <isEventDate>false</isEventDate>
+        <isFormula>false</isFormula>
+        <isRecordModified>false</isRecordModified>
+        <keyQualifierName>KQ_search_numberOfResultsRequested</keyQualifierName>
+        <masterLabel>numberOfResultsRequested</masterLabel>
+        <sequence xsi:nil="true"/>
+        <usageTag>NONE</usageTag>
+        <versionNumber xsi:nil="true"/>
+    </dataSourceFields>
+    <dataSourceFields>
+        <fullName>exp_dc_integr__search_originalSearchQuery</fullName>
+        <datatype>S</datatype>
+        <definitionCreationType>Custom</definitionCreationType>
+        <externalName>search.originalSearchQuery</externalName>
+        <fieldFormula>sourceField[&apos;search.originalSearchQuery&apos;]</fieldFormula>
+        <isDataRequired>false</isDataRequired>
+        <isEventDate>false</isEventDate>
+        <isFormula>false</isFormula>
+        <isRecordModified>false</isRecordModified>
+        <keyQualifierName>KQ_search_originalSearchQuery</keyQualifierName>
+        <masterLabel>originalSearchQuery</masterLabel>
+        <sequence xsi:nil="true"/>
+        <usageTag>NONE</usageTag>
+        <versionNumber xsi:nil="true"/>
+    </dataSourceFields>
+    <dataSourceFields>
+        <fullName>exp_dc_integr__search_osName</fullName>
+        <datatype>S</datatype>
+        <definitionCreationType>Custom</definitionCreationType>
+        <externalName>search.osName</externalName>
+        <fieldFormula>sourceField[&apos;search.osName&apos;]</fieldFormula>
+        <isDataRequired>false</isDataRequired>
+        <isEventDate>false</isEventDate>
+        <isFormula>false</isFormula>
+        <isRecordModified>false</isRecordModified>
+        <keyQualifierName>KQ_search_osName</keyQualifierName>
+        <masterLabel>osName</masterLabel>
+        <sequence xsi:nil="true"/>
+        <usageTag>NONE</usageTag>
+        <versionNumber xsi:nil="true"/>
+    </dataSourceFields>
+    <dataSourceFields>
+        <fullName>exp_dc_integr__search_osVersion</fullName>
+        <datatype>S</datatype>
+        <definitionCreationType>Custom</definitionCreationType>
+        <externalName>search.osVersion</externalName>
+        <fieldFormula>sourceField[&apos;search.osVersion&apos;]</fieldFormula>
+        <isDataRequired>false</isDataRequired>
+        <isEventDate>false</isEventDate>
+        <isFormula>false</isFormula>
+        <isRecordModified>false</isRecordModified>
+        <keyQualifierName>KQ_search_osVersion</keyQualifierName>
+        <masterLabel>osVersion</masterLabel>
+        <sequence xsi:nil="true"/>
+        <usageTag>NONE</usageTag>
+        <versionNumber xsi:nil="true"/>
+    </dataSourceFields>
+    <dataSourceFields>
+        <fullName>exp_dc_integr__search_resultPageOffset</fullName>
+        <datatype>N</datatype>
+        <definitionCreationType>Custom</definitionCreationType>
+        <externalName>search.resultPageOffset</externalName>
+        <fieldFormula>sourceField[&apos;search.resultPageOffset&apos;]</fieldFormula>
+        <isDataRequired>false</isDataRequired>
+        <isEventDate>false</isEventDate>
+        <isFormula>false</isFormula>
+        <isRecordModified>false</isRecordModified>
+        <keyQualifierName>KQ_search_resultPageOffset</keyQualifierName>
+        <masterLabel>resultPageOffset</masterLabel>
+        <sequence xsi:nil="true"/>
+        <usageTag>NONE</usageTag>
+        <versionNumber xsi:nil="true"/>
+    </dataSourceFields>
+    <dataSourceFields>
+        <fullName>exp_dc_integr__search_resultsReturnedQuantity</fullName>
+        <datatype>N</datatype>
+        <definitionCreationType>Custom</definitionCreationType>
+        <externalName>search.resultsReturnedQuantity</externalName>
+        <fieldFormula>sourceField[&apos;search.resultsReturnedQuantity&apos;]</fieldFormula>
+        <isDataRequired>false</isDataRequired>
+        <isEventDate>false</isEventDate>
+        <isFormula>false</isFormula>
+        <isRecordModified>false</isRecordModified>
+        <keyQualifierName>KQ_search_resultsReturnedQuantity</keyQualifierName>
+        <masterLabel>resultsReturnedQuantity</masterLabel>
+        <sequence xsi:nil="true"/>
+        <usageTag>NONE</usageTag>
+        <versionNumber xsi:nil="true"/>
+    </dataSourceFields>
+    <dataSourceFields>
+        <fullName>exp_dc_integr__search_screenHeight</fullName>
+        <datatype>N</datatype>
+        <definitionCreationType>Custom</definitionCreationType>
+        <externalName>search.screenHeight</externalName>
+        <fieldFormula>sourceField[&apos;search.screenHeight&apos;]</fieldFormula>
+        <isDataRequired>false</isDataRequired>
+        <isEventDate>false</isEventDate>
+        <isFormula>false</isFormula>
+        <isRecordModified>false</isRecordModified>
+        <keyQualifierName>KQ_search_screenHeight</keyQualifierName>
+        <masterLabel>screenHeight</masterLabel>
+        <sequence xsi:nil="true"/>
+        <usageTag>NONE</usageTag>
+        <versionNumber xsi:nil="true"/>
+    </dataSourceFields>
+    <dataSourceFields>
+        <fullName>exp_dc_integr__search_screenWidth</fullName>
+        <datatype>N</datatype>
+        <definitionCreationType>Custom</definitionCreationType>
+        <externalName>search.screenWidth</externalName>
+        <fieldFormula>sourceField[&apos;search.screenWidth&apos;]</fieldFormula>
+        <isDataRequired>false</isDataRequired>
+        <isEventDate>false</isEventDate>
+        <isFormula>false</isFormula>
+        <isRecordModified>false</isRecordModified>
+        <keyQualifierName>KQ_search_screenWidth</keyQualifierName>
+        <masterLabel>screenWidth</masterLabel>
+        <sequence xsi:nil="true"/>
+        <usageTag>NONE</usageTag>
+        <versionNumber xsi:nil="true"/>
+    </dataSourceFields>
+    <dataSourceFields>
+        <fullName>exp_dc_integr__search_searchEngineName</fullName>
+        <datatype>S</datatype>
+        <definitionCreationType>Custom</definitionCreationType>
+        <externalName>search.searchEngineName</externalName>
+        <fieldFormula>sourceField[&apos;search.searchEngineName&apos;]</fieldFormula>
+        <isDataRequired>false</isDataRequired>
+        <isEventDate>false</isEventDate>
+        <isFormula>false</isFormula>
+        <isRecordModified>false</isRecordModified>
+        <keyQualifierName>KQ_search_searchEngineName</keyQualifierName>
+        <masterLabel>searchEngineName</masterLabel>
+        <sequence xsi:nil="true"/>
+        <usageTag>NONE</usageTag>
+        <versionNumber xsi:nil="true"/>
+    </dataSourceFields>
+    <dataSourceFields>
+        <fullName>exp_dc_integr__search_searchFacetList</fullName>
+        <datatype>S</datatype>
+        <definitionCreationType>Custom</definitionCreationType>
+        <externalName>search.searchFacetList</externalName>
+        <fieldFormula>sourceField[&apos;search.searchFacetList&apos;]</fieldFormula>
+        <isDataRequired>false</isDataRequired>
+        <isEventDate>false</isEventDate>
+        <isFormula>false</isFormula>
+        <isRecordModified>false</isRecordModified>
+        <keyQualifierName>KQ_search_searchFacetList</keyQualifierName>
+        <masterLabel>searchFacetList</masterLabel>
+        <sequence xsi:nil="true"/>
+        <usageTag>NONE</usageTag>
+        <versionNumber xsi:nil="true"/>
+    </dataSourceFields>
+    <dataSourceFields>
+        <fullName>exp_dc_integr__search_searchQuery</fullName>
+        <datatype>S</datatype>
+        <definitionCreationType>Custom</definitionCreationType>
+        <externalName>search.searchQuery</externalName>
+        <fieldFormula>sourceField[&apos;search.searchQuery&apos;]</fieldFormula>
+        <isDataRequired>false</isDataRequired>
+        <isEventDate>false</isEventDate>
+        <isFormula>false</isFormula>
+        <isRecordModified>false</isRecordModified>
+        <keyQualifierName>KQ_search_searchQuery</keyQualifierName>
+        <masterLabel>searchQuery</masterLabel>
+        <sequence xsi:nil="true"/>
+        <usageTag>NONE</usageTag>
+        <versionNumber xsi:nil="true"/>
+    </dataSourceFields>
+    <dataSourceFields>
+        <fullName>exp_dc_integr__search_searchType</fullName>
+        <datatype>S</datatype>
+        <definitionCreationType>Custom</definitionCreationType>
+        <externalName>search.searchType</externalName>
+        <fieldFormula>sourceField[&apos;search.searchType&apos;]</fieldFormula>
+        <isDataRequired>false</isDataRequired>
+        <isEventDate>false</isEventDate>
+        <isFormula>false</isFormula>
+        <isRecordModified>false</isRecordModified>
+        <keyQualifierName>KQ_search_searchType</keyQualifierName>
+        <masterLabel>searchType</masterLabel>
+        <sequence xsi:nil="true"/>
+        <usageTag>NONE</usageTag>
+        <versionNumber xsi:nil="true"/>
+    </dataSourceFields>
+    <dataSourceFields>
+        <fullName>exp_dc_integr__search_siteId</fullName>
+        <datatype>S</datatype>
+        <definitionCreationType>Custom</definitionCreationType>
+        <externalName>search.siteId</externalName>
+        <fieldFormula>sourceField[&apos;search.siteId&apos;]</fieldFormula>
+        <isDataRequired>false</isDataRequired>
+        <isEventDate>false</isEventDate>
+        <isFormula>false</isFormula>
+        <isRecordModified>false</isRecordModified>
+        <keyQualifierName>KQ_search_siteId</keyQualifierName>
+        <masterLabel>siteId</masterLabel>
+        <sequence xsi:nil="true"/>
+        <usageTag>NONE</usageTag>
+        <versionNumber xsi:nil="true"/>
+    </dataSourceFields>
+    <dataSourceFields>
+        <fullName>exp_dc_integr__search_sortType</fullName>
+        <datatype>S</datatype>
+        <definitionCreationType>Custom</definitionCreationType>
+        <externalName>search.sortType</externalName>
+        <fieldFormula>sourceField[&apos;search.sortType&apos;]</fieldFormula>
+        <isDataRequired>false</isDataRequired>
+        <isEventDate>false</isEventDate>
+        <isFormula>false</isFormula>
+        <isRecordModified>false</isRecordModified>
+        <keyQualifierName>KQ_search_sortType</keyQualifierName>
+        <masterLabel>sortType</masterLabel>
+        <sequence xsi:nil="true"/>
+        <usageTag>NONE</usageTag>
+        <versionNumber xsi:nil="true"/>
+    </dataSourceFields>
+    <dataSourceFields>
+        <fullName>exp_dc_integr__search_sourceChannel</fullName>
+        <datatype>S</datatype>
+        <definitionCreationType>Custom</definitionCreationType>
+        <externalName>search.sourceChannel</externalName>
+        <fieldFormula>sourceField[&apos;search.sourceChannel&apos;]</fieldFormula>
+        <isDataRequired>false</isDataRequired>
+        <isEventDate>false</isEventDate>
+        <isFormula>false</isFormula>
+        <isRecordModified>false</isRecordModified>
+        <keyQualifierName>KQ_search_sourceChannel</keyQualifierName>
+        <masterLabel>sourceChannel</masterLabel>
+        <sequence xsi:nil="true"/>
+        <usageTag>NONE</usageTag>
+        <versionNumber xsi:nil="true"/>
+    </dataSourceFields>
+    <dataSourceFields>
+        <fullName>exp_dc_integr__search_sourceLocale</fullName>
+        <datatype>S</datatype>
+        <definitionCreationType>Custom</definitionCreationType>
+        <externalName>search.sourceLocale</externalName>
+        <fieldFormula>sourceField[&apos;search.sourceLocale&apos;]</fieldFormula>
+        <isDataRequired>false</isDataRequired>
+        <isEventDate>false</isEventDate>
+        <isFormula>false</isFormula>
+        <isRecordModified>false</isRecordModified>
+        <keyQualifierName>KQ_search_sourceLocale</keyQualifierName>
+        <masterLabel>sourceLocale</masterLabel>
+        <sequence xsi:nil="true"/>
+        <usageTag>NONE</usageTag>
+        <versionNumber xsi:nil="true"/>
+    </dataSourceFields>
+    <dataSourceFields>
+        <fullName>exp_dc_integr__search_sourcePageId</fullName>
+        <datatype>S</datatype>
+        <definitionCreationType>Custom</definitionCreationType>
+        <externalName>search.sourcePageId</externalName>
+        <fieldFormula>sourceField[&apos;search.sourcePageId&apos;]</fieldFormula>
+        <isDataRequired>false</isDataRequired>
+        <isEventDate>false</isEventDate>
+        <isFormula>false</isFormula>
+        <isRecordModified>false</isRecordModified>
+        <keyQualifierName>KQ_search_sourcePageId</keyQualifierName>
+        <masterLabel>sourcePageId</masterLabel>
+        <sequence xsi:nil="true"/>
+        <usageTag>NONE</usageTag>
+        <versionNumber xsi:nil="true"/>
+    </dataSourceFields>
+    <dataSourceFields>
+        <fullName>exp_dc_integr__search_sourcePageName</fullName>
+        <datatype>S</datatype>
+        <definitionCreationType>Custom</definitionCreationType>
+        <externalName>search.sourcePageName</externalName>
+        <fieldFormula>sourceField[&apos;search.sourcePageName&apos;]</fieldFormula>
+        <isDataRequired>false</isDataRequired>
+        <isEventDate>false</isEventDate>
+        <isFormula>false</isFormula>
+        <isRecordModified>false</isRecordModified>
+        <keyQualifierName>KQ_search_sourcePageName</keyQualifierName>
+        <masterLabel>sourcePageName</masterLabel>
+        <sequence xsi:nil="true"/>
+        <usageTag>NONE</usageTag>
+        <versionNumber xsi:nil="true"/>
+    </dataSourceFields>
+    <dataSourceFields>
+        <fullName>exp_dc_integr__search_sourcePageTitle</fullName>
+        <datatype>S</datatype>
+        <definitionCreationType>Custom</definitionCreationType>
+        <externalName>search.sourcePageTitle</externalName>
+        <fieldFormula>sourceField[&apos;search.sourcePageTitle&apos;]</fieldFormula>
+        <isDataRequired>false</isDataRequired>
+        <isEventDate>false</isEventDate>
+        <isFormula>false</isFormula>
+        <isRecordModified>false</isRecordModified>
+        <keyQualifierName>KQ_search_sourcePageTitle</keyQualifierName>
+        <masterLabel>sourcePageTitle</masterLabel>
+        <sequence xsi:nil="true"/>
+        <usageTag>NONE</usageTag>
+        <versionNumber xsi:nil="true"/>
+    </dataSourceFields>
+    <dataSourceFields>
+        <fullName>exp_dc_integr__search_sourcePageType</fullName>
+        <datatype>S</datatype>
+        <definitionCreationType>Custom</definitionCreationType>
+        <externalName>search.sourcePageType</externalName>
+        <fieldFormula>sourceField[&apos;search.sourcePageType&apos;]</fieldFormula>
+        <isDataRequired>false</isDataRequired>
+        <isEventDate>false</isEventDate>
+        <isFormula>false</isFormula>
+        <isRecordModified>false</isRecordModified>
+        <keyQualifierName>KQ_search_sourcePageType</keyQualifierName>
+        <masterLabel>sourcePageType</masterLabel>
+        <sequence xsi:nil="true"/>
+        <usageTag>NONE</usageTag>
+        <versionNumber xsi:nil="true"/>
+    </dataSourceFields>
+    <dataSourceFields>
+        <fullName>exp_dc_integr__search_sourceUrl</fullName>
+        <datatype>S</datatype>
+        <definitionCreationType>Custom</definitionCreationType>
+        <externalName>search.sourceUrl</externalName>
+        <fieldFormula>sourceField[&apos;search.sourceUrl&apos;]</fieldFormula>
+        <isDataRequired>false</isDataRequired>
+        <isEventDate>false</isEventDate>
+        <isFormula>false</isFormula>
+        <isRecordModified>false</isRecordModified>
+        <keyQualifierName>KQ_search_sourceUrl</keyQualifierName>
+        <masterLabel>sourceUrl</masterLabel>
+        <sequence xsi:nil="true"/>
+        <usageTag>NONE</usageTag>
+        <versionNumber xsi:nil="true"/>
+    </dataSourceFields>
+    <dataSourceFields>
+        <fullName>exp_dc_integr__search_sourceURLAlias</fullName>
+        <datatype>S</datatype>
+        <definitionCreationType>Custom</definitionCreationType>
+        <externalName>search.sourceURLAlias</externalName>
+        <fieldFormula>sourceField[&apos;search.sourceURLAlias&apos;]</fieldFormula>
+        <isDataRequired>false</isDataRequired>
+        <isEventDate>false</isEventDate>
+        <isFormula>false</isFormula>
+        <isRecordModified>false</isRecordModified>
+        <keyQualifierName>KQ_search_sourceURLAlias</keyQualifierName>
+        <masterLabel>sourceURLAlias</masterLabel>
+        <sequence xsi:nil="true"/>
+        <usageTag>NONE</usageTag>
+        <versionNumber xsi:nil="true"/>
+    </dataSourceFields>
+    <dataSourceFields>
+        <fullName>exp_dc_integr__search_sourceUrlReferrer</fullName>
+        <datatype>S</datatype>
+        <definitionCreationType>Custom</definitionCreationType>
+        <externalName>search.sourceUrlReferrer</externalName>
+        <fieldFormula>sourceField[&apos;search.sourceUrlReferrer&apos;]</fieldFormula>
+        <isDataRequired>false</isDataRequired>
+        <isEventDate>false</isEventDate>
+        <isFormula>false</isFormula>
+        <isRecordModified>false</isRecordModified>
+        <keyQualifierName>KQ_search_sourceUrlReferrer</keyQualifierName>
+        <masterLabel>sourceUrlReferrer</masterLabel>
+        <sequence xsi:nil="true"/>
+        <usageTag>NONE</usageTag>
+        <versionNumber xsi:nil="true"/>
+    </dataSourceFields>
+    <dataSourceFields>
+        <fullName>exp_dc_integr__search_webStoreId</fullName>
+        <datatype>S</datatype>
+        <definitionCreationType>Custom</definitionCreationType>
+        <externalName>search.webStoreId</externalName>
+        <fieldFormula>sourceField[&apos;search.webStoreId&apos;]</fieldFormula>
+        <isDataRequired>false</isDataRequired>
+        <isEventDate>false</isEventDate>
+        <isFormula>false</isFormula>
+        <isRecordModified>false</isRecordModified>
+        <keyQualifierName>KQ_search_webStoreId</keyQualifierName>
+        <masterLabel>webStoreId</masterLabel>
+        <sequence xsi:nil="true"/>
+        <usageTag>NONE</usageTag>
+        <versionNumber xsi:nil="true"/>
+    </dataSourceFields>
+    <dataSourceFields>
+        <fullName>exp_dc_integr__sessionId</fullName>
+        <datatype>S</datatype>
+        <definitionCreationType>Custom</definitionCreationType>
+        <externalName>sessionId</externalName>
+        <fieldFormula>sourceField[&apos;sessionId&apos;]</fieldFormula>
+        <isDataRequired>false</isDataRequired>
+        <isEventDate>false</isEventDate>
+        <isFormula>false</isFormula>
+        <isRecordModified>false</isRecordModified>
+        <keyQualifierName>KQ_sessionId</keyQualifierName>
+        <masterLabel>sessionId</masterLabel>
+        <sequence xsi:nil="true"/>
+        <usageTag>NONE</usageTag>
+        <versionNumber xsi:nil="true"/>
+    </dataSourceFields>
+    <dataSourceFields>
+        <fullName>exp_dc_integr__userEngagement_browserName</fullName>
+        <datatype>S</datatype>
+        <definitionCreationType>Custom</definitionCreationType>
+        <externalName>userEngagement.browserName</externalName>
+        <fieldFormula>sourceField[&apos;userEngagement.browserName&apos;]</fieldFormula>
+        <isDataRequired>false</isDataRequired>
+        <isEventDate>false</isEventDate>
+        <isFormula>false</isFormula>
+        <isRecordModified>false</isRecordModified>
+        <keyQualifierName>KQ_userEngagement_browserName</keyQualifierName>
+        <masterLabel>browserName</masterLabel>
+        <sequence xsi:nil="true"/>
+        <usageTag>NONE</usageTag>
+        <versionNumber xsi:nil="true"/>
+    </dataSourceFields>
+    <dataSourceFields>
+        <fullName>exp_dc_integr__userEngagement_browserVersion</fullName>
+        <datatype>S</datatype>
+        <definitionCreationType>Custom</definitionCreationType>
+        <externalName>userEngagement.browserVersion</externalName>
+        <fieldFormula>sourceField[&apos;userEngagement.browserVersion&apos;]</fieldFormula>
+        <isDataRequired>false</isDataRequired>
+        <isEventDate>false</isEventDate>
+        <isFormula>false</isFormula>
+        <isRecordModified>false</isRecordModified>
+        <keyQualifierName>KQ_userEngagement_browserVersion</keyQualifierName>
+        <masterLabel>browserVersion</masterLabel>
+        <sequence xsi:nil="true"/>
+        <usageTag>NONE</usageTag>
+        <versionNumber xsi:nil="true"/>
+    </dataSourceFields>
+    <dataSourceFields>
+        <fullName>exp_dc_integr__userEngagement_businessUnitId</fullName>
+        <datatype>S</datatype>
+        <definitionCreationType>Custom</definitionCreationType>
+        <externalName>userEngagement.businessUnitId</externalName>
+        <fieldFormula>sourceField[&apos;userEngagement.businessUnitId&apos;]</fieldFormula>
+        <isDataRequired>false</isDataRequired>
+        <isEventDate>false</isEventDate>
+        <isFormula>false</isFormula>
+        <isRecordModified>false</isRecordModified>
+        <keyQualifierName>KQ_userEngagement_businessUnitId</keyQualifierName>
+        <masterLabel>businessUnitId</masterLabel>
+        <sequence xsi:nil="true"/>
+        <usageTag>NONE</usageTag>
+        <versionNumber xsi:nil="true"/>
+    </dataSourceFields>
+    <dataSourceFields>
+        <fullName>exp_dc_integr__userEngagement_buttonId</fullName>
+        <datatype>S</datatype>
+        <definitionCreationType>Custom</definitionCreationType>
+        <externalName>userEngagement.buttonId</externalName>
+        <fieldFormula>sourceField[&apos;userEngagement.buttonId&apos;]</fieldFormula>
+        <isDataRequired>false</isDataRequired>
+        <isEventDate>false</isEventDate>
+        <isFormula>false</isFormula>
+        <isRecordModified>false</isRecordModified>
+        <keyQualifierName>KQ_userEngagement_buttonId</keyQualifierName>
+        <masterLabel>buttonId</masterLabel>
+        <sequence xsi:nil="true"/>
+        <usageTag>NONE</usageTag>
+        <versionNumber xsi:nil="true"/>
+    </dataSourceFields>
+    <dataSourceFields>
+        <fullName>exp_dc_integr__userEngagement_buttonLabel</fullName>
+        <datatype>S</datatype>
+        <definitionCreationType>Custom</definitionCreationType>
+        <externalName>userEngagement.buttonLabel</externalName>
+        <fieldFormula>sourceField[&apos;userEngagement.buttonLabel&apos;]</fieldFormula>
+        <isDataRequired>false</isDataRequired>
+        <isEventDate>false</isEventDate>
+        <isFormula>false</isFormula>
+        <isRecordModified>false</isRecordModified>
+        <keyQualifierName>KQ_userEngagement_buttonLabel</keyQualifierName>
+        <masterLabel>buttonLabel</masterLabel>
+        <sequence xsi:nil="true"/>
+        <usageTag>NONE</usageTag>
+        <versionNumber xsi:nil="true"/>
+    </dataSourceFields>
+    <dataSourceFields>
+        <fullName>exp_dc_integr__userEngagement_buttonType</fullName>
+        <datatype>S</datatype>
+        <definitionCreationType>Custom</definitionCreationType>
+        <externalName>userEngagement.buttonType</externalName>
+        <fieldFormula>sourceField[&apos;userEngagement.buttonType&apos;]</fieldFormula>
+        <isDataRequired>false</isDataRequired>
+        <isEventDate>false</isEventDate>
+        <isFormula>false</isFormula>
+        <isRecordModified>false</isRecordModified>
+        <keyQualifierName>KQ_userEngagement_buttonType</keyQualifierName>
+        <masterLabel>buttonType</masterLabel>
+        <sequence xsi:nil="true"/>
+        <usageTag>NONE</usageTag>
+        <versionNumber xsi:nil="true"/>
+    </dataSourceFields>
+    <dataSourceFields>
+        <fullName>exp_dc_integr__userEngagement_catalogObjectId</fullName>
+        <datatype>S</datatype>
+        <definitionCreationType>Custom</definitionCreationType>
+        <externalName>userEngagement.catalogObjectId</externalName>
+        <fieldFormula>sourceField[&apos;userEngagement.catalogObjectId&apos;]</fieldFormula>
+        <isDataRequired>false</isDataRequired>
+        <isEventDate>false</isEventDate>
+        <isFormula>false</isFormula>
+        <isRecordModified>false</isRecordModified>
+        <keyQualifierName>KQ_userEngagement_catalogObjectId</keyQualifierName>
+        <masterLabel>catalogObjectId</masterLabel>
+        <sequence xsi:nil="true"/>
+        <usageTag>NONE</usageTag>
+        <versionNumber xsi:nil="true"/>
+    </dataSourceFields>
+    <dataSourceFields>
+        <fullName>exp_dc_integr__userEngagement_catalogObjectType</fullName>
+        <datatype>S</datatype>
+        <definitionCreationType>Custom</definitionCreationType>
+        <externalName>userEngagement.catalogObjectType</externalName>
+        <fieldFormula>sourceField[&apos;userEngagement.catalogObjectType&apos;]</fieldFormula>
+        <isDataRequired>false</isDataRequired>
+        <isEventDate>false</isEventDate>
+        <isFormula>false</isFormula>
+        <isRecordModified>false</isRecordModified>
+        <keyQualifierName>KQ_userEngagement_catalogObjectType</keyQualifierName>
+        <masterLabel>catalogObjectType</masterLabel>
+        <sequence xsi:nil="true"/>
+        <usageTag>NONE</usageTag>
+        <versionNumber xsi:nil="true"/>
+    </dataSourceFields>
+    <dataSourceFields>
+        <fullName>exp_dc_integr__userEngagement_categoryId</fullName>
+        <datatype>S</datatype>
+        <definitionCreationType>Custom</definitionCreationType>
+        <externalName>userEngagement.categoryId</externalName>
+        <fieldFormula>sourceField[&apos;userEngagement.categoryId&apos;]</fieldFormula>
+        <isDataRequired>false</isDataRequired>
+        <isEventDate>false</isEventDate>
+        <isFormula>false</isFormula>
+        <isRecordModified>false</isRecordModified>
+        <keyQualifierName>KQ_userEngagement_categoryId</keyQualifierName>
+        <masterLabel>categoryId</masterLabel>
+        <sequence xsi:nil="true"/>
+        <usageTag>NONE</usageTag>
+        <versionNumber xsi:nil="true"/>
+    </dataSourceFields>
+    <dataSourceFields>
+        <fullName>exp_dc_integr__userEngagement_componentId</fullName>
+        <datatype>S</datatype>
+        <definitionCreationType>Custom</definitionCreationType>
+        <externalName>userEngagement.componentId</externalName>
+        <fieldFormula>sourceField[&apos;userEngagement.componentId&apos;]</fieldFormula>
+        <isDataRequired>false</isDataRequired>
+        <isEventDate>false</isEventDate>
+        <isFormula>false</isFormula>
+        <isRecordModified>false</isRecordModified>
+        <keyQualifierName>KQ_userEngagement_componentId</keyQualifierName>
+        <masterLabel>componentId</masterLabel>
+        <sequence xsi:nil="true"/>
+        <usageTag>NONE</usageTag>
+        <versionNumber xsi:nil="true"/>
+    </dataSourceFields>
+    <dataSourceFields>
+        <fullName>exp_dc_integr__userEngagement_correlationId</fullName>
+        <datatype>S</datatype>
+        <definitionCreationType>Custom</definitionCreationType>
+        <externalName>userEngagement.correlationId</externalName>
+        <fieldFormula>sourceField[&apos;userEngagement.correlationId&apos;]</fieldFormula>
+        <isDataRequired>false</isDataRequired>
+        <isEventDate>false</isEventDate>
+        <isFormula>false</isFormula>
+        <isRecordModified>false</isRecordModified>
+        <keyQualifierName>KQ_userEngagement_correlationId</keyQualifierName>
+        <masterLabel>correlationId</masterLabel>
+        <sequence xsi:nil="true"/>
+        <usageTag>NONE</usageTag>
+        <versionNumber xsi:nil="true"/>
+    </dataSourceFields>
+    <dataSourceFields>
+        <fullName>exp_dc_integr__userEngagement_dataSpaceId</fullName>
+        <datatype>S</datatype>
+        <definitionCreationType>Custom</definitionCreationType>
+        <externalName>userEngagement.dataSpaceId</externalName>
+        <fieldFormula>sourceField[&apos;userEngagement.dataSpaceId&apos;]</fieldFormula>
+        <isDataRequired>false</isDataRequired>
+        <isEventDate>false</isEventDate>
+        <isFormula>false</isFormula>
+        <isRecordModified>false</isRecordModified>
+        <keyQualifierName>KQ_userEngagement_dataSpaceId</keyQualifierName>
+        <masterLabel>dataSpaceId</masterLabel>
+        <sequence xsi:nil="true"/>
+        <usageTag>NONE</usageTag>
+        <versionNumber xsi:nil="true"/>
+    </dataSourceFields>
+    <dataSourceFields>
+        <fullName>exp_dc_integr__userEngagement_deviceModel</fullName>
+        <datatype>S</datatype>
+        <definitionCreationType>Custom</definitionCreationType>
+        <externalName>userEngagement.deviceModel</externalName>
+        <fieldFormula>sourceField[&apos;userEngagement.deviceModel&apos;]</fieldFormula>
+        <isDataRequired>false</isDataRequired>
+        <isEventDate>false</isEventDate>
+        <isFormula>false</isFormula>
+        <isRecordModified>false</isRecordModified>
+        <keyQualifierName>KQ_userEngagement_deviceModel</keyQualifierName>
+        <masterLabel>deviceModel</masterLabel>
+        <sequence xsi:nil="true"/>
+        <usageTag>NONE</usageTag>
+        <versionNumber xsi:nil="true"/>
+    </dataSourceFields>
+    <dataSourceFields>
+        <fullName>exp_dc_integr__userEngagement_deviceVendor</fullName>
+        <datatype>S</datatype>
+        <definitionCreationType>Custom</definitionCreationType>
+        <externalName>userEngagement.deviceVendor</externalName>
+        <fieldFormula>sourceField[&apos;userEngagement.deviceVendor&apos;]</fieldFormula>
+        <isDataRequired>false</isDataRequired>
+        <isEventDate>false</isEventDate>
+        <isFormula>false</isFormula>
+        <isRecordModified>false</isRecordModified>
+        <keyQualifierName>KQ_userEngagement_deviceVendor</keyQualifierName>
+        <masterLabel>deviceVendor</masterLabel>
+        <sequence xsi:nil="true"/>
+        <usageTag>NONE</usageTag>
+        <versionNumber xsi:nil="true"/>
+    </dataSourceFields>
+    <dataSourceFields>
+        <fullName>exp_dc_integr__userEngagement_eventStatus</fullName>
+        <datatype>S</datatype>
+        <definitionCreationType>Custom</definitionCreationType>
+        <externalName>userEngagement.eventStatus</externalName>
+        <fieldFormula>sourceField[&apos;userEngagement.eventStatus&apos;]</fieldFormula>
+        <isDataRequired>false</isDataRequired>
+        <isEventDate>false</isEventDate>
+        <isFormula>false</isFormula>
+        <isRecordModified>false</isRecordModified>
+        <keyQualifierName>KQ_userEngagement_eventStatus</keyQualifierName>
+        <masterLabel>eventStatus</masterLabel>
+        <sequence xsi:nil="true"/>
+        <usageTag>NONE</usageTag>
+        <versionNumber xsi:nil="true"/>
+    </dataSourceFields>
+    <dataSourceFields>
+        <fullName>exp_dc_integr__userEngagement_interactionName</fullName>
+        <datatype>S</datatype>
+        <definitionCreationType>Custom</definitionCreationType>
+        <externalName>userEngagement.interactionName</externalName>
+        <fieldFormula>sourceField[&apos;userEngagement.interactionName&apos;]</fieldFormula>
+        <isDataRequired>false</isDataRequired>
+        <isEventDate>false</isEventDate>
+        <isFormula>false</isFormula>
+        <isRecordModified>false</isRecordModified>
+        <keyQualifierName>KQ_userEngagement_interactionName</keyQualifierName>
+        <masterLabel>interactionName</masterLabel>
+        <sequence xsi:nil="true"/>
+        <usageTag>NONE</usageTag>
+        <versionNumber xsi:nil="true"/>
+    </dataSourceFields>
+    <dataSourceFields>
+        <fullName>exp_dc_integr__userEngagement_linkHref</fullName>
+        <datatype>S</datatype>
+        <definitionCreationType>Custom</definitionCreationType>
+        <externalName>userEngagement.linkHref</externalName>
+        <fieldFormula>sourceField[&apos;userEngagement.linkHref&apos;]</fieldFormula>
+        <isDataRequired>false</isDataRequired>
+        <isEventDate>false</isEventDate>
+        <isFormula>false</isFormula>
+        <isRecordModified>false</isRecordModified>
+        <keyQualifierName>KQ_userEngagement_linkHref</keyQualifierName>
+        <masterLabel>linkHref</masterLabel>
+        <sequence xsi:nil="true"/>
+        <usageTag>NONE</usageTag>
+        <versionNumber xsi:nil="true"/>
+    </dataSourceFields>
+    <dataSourceFields>
+        <fullName>exp_dc_integr__userEngagement_linkId</fullName>
+        <datatype>S</datatype>
+        <definitionCreationType>Custom</definitionCreationType>
+        <externalName>userEngagement.linkId</externalName>
+        <fieldFormula>sourceField[&apos;userEngagement.linkId&apos;]</fieldFormula>
+        <isDataRequired>false</isDataRequired>
+        <isEventDate>false</isEventDate>
+        <isFormula>false</isFormula>
+        <isRecordModified>false</isRecordModified>
+        <keyQualifierName>KQ_userEngagement_linkId</keyQualifierName>
+        <masterLabel>linkId</masterLabel>
+        <sequence xsi:nil="true"/>
+        <usageTag>NONE</usageTag>
+        <versionNumber xsi:nil="true"/>
+    </dataSourceFields>
+    <dataSourceFields>
+        <fullName>exp_dc_integr__userEngagement_linkLabel</fullName>
+        <datatype>S</datatype>
+        <definitionCreationType>Custom</definitionCreationType>
+        <externalName>userEngagement.linkLabel</externalName>
+        <fieldFormula>sourceField[&apos;userEngagement.linkLabel&apos;]</fieldFormula>
+        <isDataRequired>false</isDataRequired>
+        <isEventDate>false</isEventDate>
+        <isFormula>false</isFormula>
+        <isRecordModified>false</isRecordModified>
+        <keyQualifierName>KQ_userEngagement_linkLabel</keyQualifierName>
+        <masterLabel>linkLabel</masterLabel>
+        <sequence xsi:nil="true"/>
+        <usageTag>NONE</usageTag>
+        <versionNumber xsi:nil="true"/>
+    </dataSourceFields>
+    <dataSourceFields>
+        <fullName>exp_dc_integr__userEngagement_linkReferrerPolicy</fullName>
+        <datatype>S</datatype>
+        <definitionCreationType>Custom</definitionCreationType>
+        <externalName>userEngagement.linkReferrerPolicy</externalName>
+        <fieldFormula>sourceField[&apos;userEngagement.linkReferrerPolicy&apos;]</fieldFormula>
+        <isDataRequired>false</isDataRequired>
+        <isEventDate>false</isEventDate>
+        <isFormula>false</isFormula>
+        <isRecordModified>false</isRecordModified>
+        <keyQualifierName>KQ_userEngagement_linkReferrerPolicy</keyQualifierName>
+        <masterLabel>linkReferrerPolicy</masterLabel>
+        <sequence xsi:nil="true"/>
+        <usageTag>NONE</usageTag>
+        <versionNumber xsi:nil="true"/>
+    </dataSourceFields>
+    <dataSourceFields>
+        <fullName>exp_dc_integr__userEngagement_linkRel</fullName>
+        <datatype>S</datatype>
+        <definitionCreationType>Custom</definitionCreationType>
+        <externalName>userEngagement.linkRel</externalName>
+        <fieldFormula>sourceField[&apos;userEngagement.linkRel&apos;]</fieldFormula>
+        <isDataRequired>false</isDataRequired>
+        <isEventDate>false</isEventDate>
+        <isFormula>false</isFormula>
+        <isRecordModified>false</isRecordModified>
+        <keyQualifierName>KQ_userEngagement_linkRel</keyQualifierName>
+        <masterLabel>linkRel</masterLabel>
+        <sequence xsi:nil="true"/>
+        <usageTag>NONE</usageTag>
+        <versionNumber xsi:nil="true"/>
+    </dataSourceFields>
+    <dataSourceFields>
+        <fullName>exp_dc_integr__userEngagement_linkTarget</fullName>
+        <datatype>S</datatype>
+        <definitionCreationType>Custom</definitionCreationType>
+        <externalName>userEngagement.linkTarget</externalName>
+        <fieldFormula>sourceField[&apos;userEngagement.linkTarget&apos;]</fieldFormula>
+        <isDataRequired>false</isDataRequired>
+        <isEventDate>false</isEventDate>
+        <isFormula>false</isFormula>
+        <isRecordModified>false</isRecordModified>
+        <keyQualifierName>KQ_userEngagement_linkTarget</keyQualifierName>
+        <masterLabel>linkTarget</masterLabel>
+        <sequence xsi:nil="true"/>
+        <usageTag>NONE</usageTag>
+        <versionNumber xsi:nil="true"/>
+    </dataSourceFields>
+    <dataSourceFields>
+        <fullName>exp_dc_integr__userEngagement_osName</fullName>
+        <datatype>S</datatype>
+        <definitionCreationType>Custom</definitionCreationType>
+        <externalName>userEngagement.osName</externalName>
+        <fieldFormula>sourceField[&apos;userEngagement.osName&apos;]</fieldFormula>
+        <isDataRequired>false</isDataRequired>
+        <isEventDate>false</isEventDate>
+        <isFormula>false</isFormula>
+        <isRecordModified>false</isRecordModified>
+        <keyQualifierName>KQ_userEngagement_osName</keyQualifierName>
+        <masterLabel>osName</masterLabel>
+        <sequence xsi:nil="true"/>
+        <usageTag>NONE</usageTag>
+        <versionNumber xsi:nil="true"/>
+    </dataSourceFields>
+    <dataSourceFields>
+        <fullName>exp_dc_integr__userEngagement_osVersion</fullName>
+        <datatype>S</datatype>
+        <definitionCreationType>Custom</definitionCreationType>
+        <externalName>userEngagement.osVersion</externalName>
+        <fieldFormula>sourceField[&apos;userEngagement.osVersion&apos;]</fieldFormula>
+        <isDataRequired>false</isDataRequired>
+        <isEventDate>false</isEventDate>
+        <isFormula>false</isFormula>
+        <isRecordModified>false</isRecordModified>
+        <keyQualifierName>KQ_userEngagement_osVersion</keyQualifierName>
+        <masterLabel>osVersion</masterLabel>
+        <sequence xsi:nil="true"/>
+        <usageTag>NONE</usageTag>
+        <versionNumber xsi:nil="true"/>
+    </dataSourceFields>
+    <dataSourceFields>
+        <fullName>exp_dc_integr__userEngagement_personalizationContentId</fullName>
+        <datatype>S</datatype>
+        <definitionCreationType>Custom</definitionCreationType>
+        <externalName>userEngagement.personalizationContentId</externalName>
+        <fieldFormula>sourceField[&apos;userEngagement.personalizationContentId&apos;]</fieldFormula>
+        <isDataRequired>false</isDataRequired>
+        <isEventDate>false</isEventDate>
+        <isFormula>false</isFormula>
+        <isRecordModified>false</isRecordModified>
+        <keyQualifierName>KQ_userEngagement_personalizationContent</keyQualifierName>
+        <masterLabel>personalizationContentId</masterLabel>
+        <sequence xsi:nil="true"/>
+        <usageTag>NONE</usageTag>
+        <versionNumber xsi:nil="true"/>
+    </dataSourceFields>
+    <dataSourceFields>
+        <fullName>exp_dc_integr__userEngagement_personalizationId</fullName>
+        <datatype>S</datatype>
+        <definitionCreationType>Custom</definitionCreationType>
+        <externalName>userEngagement.personalizationId</externalName>
+        <fieldFormula>sourceField[&apos;userEngagement.personalizationId&apos;]</fieldFormula>
+        <isDataRequired>false</isDataRequired>
+        <isEventDate>false</isEventDate>
+        <isFormula>false</isFormula>
+        <isRecordModified>false</isRecordModified>
+        <keyQualifierName>KQ_userEngagement_personalizationId</keyQualifierName>
+        <masterLabel>personalizationId</masterLabel>
+        <sequence xsi:nil="true"/>
+        <usageTag>NONE</usageTag>
+        <versionNumber xsi:nil="true"/>
+    </dataSourceFields>
+    <dataSourceFields>
+        <fullName>exp_dc_integr__userEngagement_personalizationSebc14a577</fullName>
+        <datatype>S</datatype>
+        <definitionCreationType>Custom</definitionCreationType>
+        <externalName>userEngagement.personalizationServiceProvider</externalName>
+        <fieldFormula>sourceField[&apos;userEngagement.personalizationServiceProvider&apos;]</fieldFormula>
+        <isDataRequired>false</isDataRequired>
+        <isEventDate>false</isEventDate>
+        <isFormula>false</isFormula>
+        <isRecordModified>false</isRecordModified>
+        <keyQualifierName>KQ_userEngagement_personalizationSebc14a</keyQualifierName>
+        <masterLabel>personalizationServiceProvider</masterLabel>
+        <sequence xsi:nil="true"/>
+        <usageTag>NONE</usageTag>
+        <versionNumber xsi:nil="true"/>
+    </dataSourceFields>
+    <dataSourceFields>
+        <fullName>exp_dc_integr__userEngagement_recordId</fullName>
+        <datatype>S</datatype>
+        <definitionCreationType>Custom</definitionCreationType>
+        <externalName>userEngagement.recordId</externalName>
+        <fieldFormula>sourceField[&apos;userEngagement.recordId&apos;]</fieldFormula>
+        <isDataRequired>false</isDataRequired>
+        <isEventDate>false</isEventDate>
+        <isFormula>false</isFormula>
+        <isRecordModified>false</isRecordModified>
+        <keyQualifierName>KQ_userEngagement_recordId</keyQualifierName>
+        <masterLabel>recordId</masterLabel>
+        <sequence xsi:nil="true"/>
+        <usageTag>NONE</usageTag>
+        <versionNumber xsi:nil="true"/>
+    </dataSourceFields>
+    <dataSourceFields>
+        <fullName>exp_dc_integr__userEngagement_screenHeight</fullName>
+        <datatype>N</datatype>
+        <definitionCreationType>Custom</definitionCreationType>
+        <externalName>userEngagement.screenHeight</externalName>
+        <fieldFormula>sourceField[&apos;userEngagement.screenHeight&apos;]</fieldFormula>
+        <isDataRequired>false</isDataRequired>
+        <isEventDate>false</isEventDate>
+        <isFormula>false</isFormula>
+        <isRecordModified>false</isRecordModified>
+        <keyQualifierName>KQ_userEngagement_screenHeight</keyQualifierName>
+        <masterLabel>screenHeight</masterLabel>
+        <sequence xsi:nil="true"/>
+        <usageTag>NONE</usageTag>
+        <versionNumber xsi:nil="true"/>
+    </dataSourceFields>
+    <dataSourceFields>
+        <fullName>exp_dc_integr__userEngagement_screenWidth</fullName>
+        <datatype>N</datatype>
+        <definitionCreationType>Custom</definitionCreationType>
+        <externalName>userEngagement.screenWidth</externalName>
+        <fieldFormula>sourceField[&apos;userEngagement.screenWidth&apos;]</fieldFormula>
+        <isDataRequired>false</isDataRequired>
+        <isEventDate>false</isEventDate>
+        <isFormula>false</isFormula>
+        <isRecordModified>false</isRecordModified>
+        <keyQualifierName>KQ_userEngagement_screenWidth</keyQualifierName>
+        <masterLabel>screenWidth</masterLabel>
+        <sequence xsi:nil="true"/>
+        <usageTag>NONE</usageTag>
+        <versionNumber xsi:nil="true"/>
+    </dataSourceFields>
+    <dataSourceFields>
+        <fullName>exp_dc_integr__userEngagement_searchResultId</fullName>
+        <datatype>S</datatype>
+        <definitionCreationType>Custom</definitionCreationType>
+        <externalName>userEngagement.searchResultId</externalName>
+        <fieldFormula>sourceField[&apos;userEngagement.searchResultId&apos;]</fieldFormula>
+        <isDataRequired>false</isDataRequired>
+        <isEventDate>false</isEventDate>
+        <isFormula>false</isFormula>
+        <isRecordModified>false</isRecordModified>
+        <keyQualifierName>KQ_userEngagement_searchResultId</keyQualifierName>
+        <masterLabel>searchResultId</masterLabel>
+        <sequence xsi:nil="true"/>
+        <usageTag>NONE</usageTag>
+        <versionNumber xsi:nil="true"/>
+    </dataSourceFields>
+    <dataSourceFields>
+        <fullName>exp_dc_integr__userEngagement_searchResultPageNumber</fullName>
+        <datatype>N</datatype>
+        <definitionCreationType>Custom</definitionCreationType>
+        <externalName>userEngagement.searchResultPageNumber</externalName>
+        <fieldFormula>sourceField[&apos;userEngagement.searchResultPageNumber&apos;]</fieldFormula>
+        <isDataRequired>false</isDataRequired>
+        <isEventDate>false</isEventDate>
+        <isFormula>false</isFormula>
+        <isRecordModified>false</isRecordModified>
+        <keyQualifierName>KQ_userEngagement_searchResultPageNumber</keyQualifierName>
+        <masterLabel>searchResultPageNumber</masterLabel>
+        <sequence xsi:nil="true"/>
+        <usageTag>NONE</usageTag>
+        <versionNumber xsi:nil="true"/>
+    </dataSourceFields>
+    <dataSourceFields>
+        <fullName>exp_dc_integr__userEngagement_searchResultPositda794617</fullName>
+        <datatype>N</datatype>
+        <definitionCreationType>Custom</definitionCreationType>
+        <externalName>userEngagement.searchResultPositionInPage</externalName>
+        <fieldFormula>sourceField[&apos;userEngagement.searchResultPositionInPage&apos;]</fieldFormula>
+        <isDataRequired>false</isDataRequired>
+        <isEventDate>false</isEventDate>
+        <isFormula>false</isFormula>
+        <isRecordModified>false</isRecordModified>
+        <keyQualifierName>KQ_userEngagement_searchResultPositda794</keyQualifierName>
+        <masterLabel>searchResultPositionInPage</masterLabel>
+        <sequence xsi:nil="true"/>
+        <usageTag>NONE</usageTag>
+        <versionNumber xsi:nil="true"/>
+    </dataSourceFields>
+    <dataSourceFields>
+        <fullName>exp_dc_integr__userEngagement_searchResultPosition</fullName>
+        <datatype>N</datatype>
+        <definitionCreationType>Custom</definitionCreationType>
+        <externalName>userEngagement.searchResultPosition</externalName>
+        <fieldFormula>sourceField[&apos;userEngagement.searchResultPosition&apos;]</fieldFormula>
+        <isDataRequired>false</isDataRequired>
+        <isEventDate>false</isEventDate>
+        <isFormula>false</isFormula>
+        <isRecordModified>false</isRecordModified>
+        <keyQualifierName>KQ_userEngagement_searchResultPosition</keyQualifierName>
+        <masterLabel>searchResultPosition</masterLabel>
+        <sequence xsi:nil="true"/>
+        <usageTag>NONE</usageTag>
+        <versionNumber xsi:nil="true"/>
+    </dataSourceFields>
+    <dataSourceFields>
+        <fullName>exp_dc_integr__userEngagement_searchResultTitle</fullName>
+        <datatype>S</datatype>
+        <definitionCreationType>Custom</definitionCreationType>
+        <externalName>userEngagement.searchResultTitle</externalName>
+        <fieldFormula>sourceField[&apos;userEngagement.searchResultTitle&apos;]</fieldFormula>
+        <isDataRequired>false</isDataRequired>
+        <isEventDate>false</isEventDate>
+        <isFormula>false</isFormula>
+        <isRecordModified>false</isRecordModified>
+        <keyQualifierName>KQ_userEngagement_searchResultTitle</keyQualifierName>
+        <masterLabel>searchResultTitle</masterLabel>
+        <sequence xsi:nil="true"/>
+        <usageTag>NONE</usageTag>
+        <versionNumber xsi:nil="true"/>
+    </dataSourceFields>
+    <dataSourceFields>
+        <fullName>exp_dc_integr__userEngagement_siteId</fullName>
+        <datatype>S</datatype>
+        <definitionCreationType>Custom</definitionCreationType>
+        <externalName>userEngagement.siteId</externalName>
+        <fieldFormula>sourceField[&apos;userEngagement.siteId&apos;]</fieldFormula>
+        <isDataRequired>false</isDataRequired>
+        <isEventDate>false</isEventDate>
+        <isFormula>false</isFormula>
+        <isRecordModified>false</isRecordModified>
+        <keyQualifierName>KQ_userEngagement_siteId</keyQualifierName>
+        <masterLabel>siteId</masterLabel>
+        <sequence xsi:nil="true"/>
+        <usageTag>NONE</usageTag>
+        <versionNumber xsi:nil="true"/>
+    </dataSourceFields>
+    <dataSourceFields>
+        <fullName>exp_dc_integr__userEngagement_sourceChannel</fullName>
+        <datatype>S</datatype>
+        <definitionCreationType>Custom</definitionCreationType>
+        <externalName>userEngagement.sourceChannel</externalName>
+        <fieldFormula>sourceField[&apos;userEngagement.sourceChannel&apos;]</fieldFormula>
+        <isDataRequired>false</isDataRequired>
+        <isEventDate>false</isEventDate>
+        <isFormula>false</isFormula>
+        <isRecordModified>false</isRecordModified>
+        <keyQualifierName>KQ_userEngagement_sourceChannel</keyQualifierName>
+        <masterLabel>sourceChannel</masterLabel>
+        <sequence xsi:nil="true"/>
+        <usageTag>NONE</usageTag>
+        <versionNumber xsi:nil="true"/>
+    </dataSourceFields>
+    <dataSourceFields>
+        <fullName>exp_dc_integr__userEngagement_sourceLocale</fullName>
+        <datatype>S</datatype>
+        <definitionCreationType>Custom</definitionCreationType>
+        <externalName>userEngagement.sourceLocale</externalName>
+        <fieldFormula>sourceField[&apos;userEngagement.sourceLocale&apos;]</fieldFormula>
+        <isDataRequired>false</isDataRequired>
+        <isEventDate>false</isEventDate>
+        <isFormula>false</isFormula>
+        <isRecordModified>false</isRecordModified>
+        <keyQualifierName>KQ_userEngagement_sourceLocale</keyQualifierName>
+        <masterLabel>sourceLocale</masterLabel>
+        <sequence xsi:nil="true"/>
+        <usageTag>NONE</usageTag>
+        <versionNumber xsi:nil="true"/>
+    </dataSourceFields>
+    <dataSourceFields>
+        <fullName>exp_dc_integr__userEngagement_sourcePageId</fullName>
+        <datatype>S</datatype>
+        <definitionCreationType>Custom</definitionCreationType>
+        <externalName>userEngagement.sourcePageId</externalName>
+        <fieldFormula>sourceField[&apos;userEngagement.sourcePageId&apos;]</fieldFormula>
+        <isDataRequired>false</isDataRequired>
+        <isEventDate>false</isEventDate>
+        <isFormula>false</isFormula>
+        <isRecordModified>false</isRecordModified>
+        <keyQualifierName>KQ_userEngagement_sourcePageId</keyQualifierName>
+        <masterLabel>sourcePageId</masterLabel>
+        <sequence xsi:nil="true"/>
+        <usageTag>NONE</usageTag>
+        <versionNumber xsi:nil="true"/>
+    </dataSourceFields>
+    <dataSourceFields>
+        <fullName>exp_dc_integr__userEngagement_sourcePageName</fullName>
+        <datatype>S</datatype>
+        <definitionCreationType>Custom</definitionCreationType>
+        <externalName>userEngagement.sourcePageName</externalName>
+        <fieldFormula>sourceField[&apos;userEngagement.sourcePageName&apos;]</fieldFormula>
+        <isDataRequired>false</isDataRequired>
+        <isEventDate>false</isEventDate>
+        <isFormula>false</isFormula>
+        <isRecordModified>false</isRecordModified>
+        <keyQualifierName>KQ_userEngagement_sourcePageName</keyQualifierName>
+        <masterLabel>sourcePageName</masterLabel>
+        <sequence xsi:nil="true"/>
+        <usageTag>NONE</usageTag>
+        <versionNumber xsi:nil="true"/>
+    </dataSourceFields>
+    <dataSourceFields>
+        <fullName>exp_dc_integr__userEngagement_sourcePageTitle</fullName>
+        <datatype>S</datatype>
+        <definitionCreationType>Custom</definitionCreationType>
+        <externalName>userEngagement.sourcePageTitle</externalName>
+        <fieldFormula>sourceField[&apos;userEngagement.sourcePageTitle&apos;]</fieldFormula>
+        <isDataRequired>false</isDataRequired>
+        <isEventDate>false</isEventDate>
+        <isFormula>false</isFormula>
+        <isRecordModified>false</isRecordModified>
+        <keyQualifierName>KQ_userEngagement_sourcePageTitle</keyQualifierName>
+        <masterLabel>sourcePageTitle</masterLabel>
+        <sequence xsi:nil="true"/>
+        <usageTag>NONE</usageTag>
+        <versionNumber xsi:nil="true"/>
+    </dataSourceFields>
+    <dataSourceFields>
+        <fullName>exp_dc_integr__userEngagement_sourcePageType</fullName>
+        <datatype>S</datatype>
+        <definitionCreationType>Custom</definitionCreationType>
+        <externalName>userEngagement.sourcePageType</externalName>
+        <fieldFormula>sourceField[&apos;userEngagement.sourcePageType&apos;]</fieldFormula>
+        <isDataRequired>false</isDataRequired>
+        <isEventDate>false</isEventDate>
+        <isFormula>false</isFormula>
+        <isRecordModified>false</isRecordModified>
+        <keyQualifierName>KQ_userEngagement_sourcePageType</keyQualifierName>
+        <masterLabel>sourcePageType</masterLabel>
+        <sequence xsi:nil="true"/>
+        <usageTag>NONE</usageTag>
+        <versionNumber xsi:nil="true"/>
+    </dataSourceFields>
+    <dataSourceFields>
+        <fullName>exp_dc_integr__userEngagement_sourceUrl</fullName>
+        <datatype>S</datatype>
+        <definitionCreationType>Custom</definitionCreationType>
+        <externalName>userEngagement.sourceUrl</externalName>
+        <fieldFormula>sourceField[&apos;userEngagement.sourceUrl&apos;]</fieldFormula>
+        <isDataRequired>false</isDataRequired>
+        <isEventDate>false</isEventDate>
+        <isFormula>false</isFormula>
+        <isRecordModified>false</isRecordModified>
+        <keyQualifierName>KQ_userEngagement_sourceUrl</keyQualifierName>
+        <masterLabel>sourceUrl</masterLabel>
+        <sequence xsi:nil="true"/>
+        <usageTag>NONE</usageTag>
+        <versionNumber xsi:nil="true"/>
+    </dataSourceFields>
+    <dataSourceFields>
+        <fullName>exp_dc_integr__userEngagement_sourceURLAlias</fullName>
+        <datatype>S</datatype>
+        <definitionCreationType>Custom</definitionCreationType>
+        <externalName>userEngagement.sourceURLAlias</externalName>
+        <fieldFormula>sourceField[&apos;userEngagement.sourceURLAlias&apos;]</fieldFormula>
+        <isDataRequired>false</isDataRequired>
+        <isEventDate>false</isEventDate>
+        <isFormula>false</isFormula>
+        <isRecordModified>false</isRecordModified>
+        <keyQualifierName>KQ_userEngagement_sourceURLAlias</keyQualifierName>
+        <masterLabel>sourceURLAlias</masterLabel>
+        <sequence xsi:nil="true"/>
+        <usageTag>NONE</usageTag>
+        <versionNumber xsi:nil="true"/>
+    </dataSourceFields>
+    <dataSourceFields>
+        <fullName>exp_dc_integr__userEngagement_sourceUrlReferrer</fullName>
+        <datatype>S</datatype>
+        <definitionCreationType>Custom</definitionCreationType>
+        <externalName>userEngagement.sourceUrlReferrer</externalName>
+        <fieldFormula>sourceField[&apos;userEngagement.sourceUrlReferrer&apos;]</fieldFormula>
+        <isDataRequired>false</isDataRequired>
+        <isEventDate>false</isEventDate>
+        <isFormula>false</isFormula>
+        <isRecordModified>false</isRecordModified>
+        <keyQualifierName>KQ_userEngagement_sourceUrlReferrer</keyQualifierName>
+        <masterLabel>sourceUrlReferrer</masterLabel>
+        <sequence xsi:nil="true"/>
+        <usageTag>NONE</usageTag>
+        <versionNumber xsi:nil="true"/>
+    </dataSourceFields>
+    <externalRecordIdentifier>Experience_Cloud_Event_Connector_Behavioral_Events_1B4486EF</externalRecordIdentifier>
+    <masterLabel>Experience_Cloud_Event_Connecto 1B4486EF</masterLabel>
+    <objectType>Object</objectType>
+    <storageType>LOCAL</storageType>
+    <templateVersion>3</templateVersion>
+</DataSourceObject>

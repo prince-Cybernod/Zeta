@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Homeroom__c</fullName>
+    <description>Homeroom assignment(s) for the student.</description>
+    <externalId>false</externalId>
+    <inlineHelpText>Homeroom assignment(s) for the student.</inlineHelpText>
+    <label>Homeroom</label>
+    <length>255</length>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

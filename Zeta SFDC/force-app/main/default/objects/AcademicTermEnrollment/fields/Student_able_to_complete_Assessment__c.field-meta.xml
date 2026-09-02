@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Student_able_to_complete_Assessment__c</fullName>
+    <label>Student able to complete Assessment?</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Yes, completed level indicated above</fullName>
+                <default>false</default>
+                <label>Yes, completed level indicated above</label>
+            </value>
+            <value>
+                <fullName>Yes, but completed level below initial level</fullName>
+                <default>false</default>
+                <label>Yes, but completed level below initial level</label>
+            </value>
+            <value>
+                <fullName>No, was unable to complete initial or secondary level</fullName>
+                <default>false</default>
+                <label>No, was unable to complete initial or secondary level</label>
+            </value>
+            <value>
+                <fullName>No, did not show up to the appointment</fullName>
+                <default>false</default>
+                <label>No, did not show up to the appointment</label>
+            </value>
+            <value>
+                <fullName>No, technical issues but will reschedule to new time block</fullName>
+                <default>false</default>
+                <label>No, technical issues but will reschedule to new time block</label>
+            </value>
+            <value>
+                <fullName>No, technical issues and additional support required</fullName>
+                <default>false</default>
+                <label>No, technical issues and additional support required</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>MAF_Upload__c</fullName>
+    <label>MAF Upload</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Not yet uploaded/unknown if applicable</fullName>
+                <default>true</default>
+                <label>Not yet uploaded/unknown if applicable</label>
+            </value>
+            <value>
+                <fullName>Uploaded but not yet verified</fullName>
+                <default>false</default>
+                <label>Uploaded but not yet verified</label>
+            </value>
+            <value>
+                <fullName>Incorrect/incomplete upload</fullName>
+                <default>false</default>
+                <label>Incorrect/incomplete upload</label>
+            </value>
+            <value>
+                <fullName>Verified tentatively with future doctor appointment date</fullName>
+                <default>false</default>
+                <label>Verified tentatively with future doctor appointment date</label>
+            </value>
+            <value>
+                <fullName>Verified tentatively - upcoming SY form not yet live</fullName>
+                <default>false</default>
+                <label>Verified tentatively - upcoming SY form not yet live</label>
+            </value>
+            <value>
+                <fullName>Verified and uploaded</fullName>
+                <default>false</default>
+                <label>Verified and uploaded</label>
+            </value>
+            <value>
+                <fullName>N/A, not returning</fullName>
+                <default>false</default>
+                <label>N/A, not returning</label>
+            </value>
+            <value>
+                <fullName>N/A to student</fullName>
+                <default>false</default>
+                <label>N/A to student</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<FieldSrcTrgtRelationship xmlns="http://soap.sforce.com/2006/04/metadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <definitionCreationType>Standard</definitionCreationType>
+    <lookupFieldName>PersnlRcmdLog_std__dlm.rel_1787212835858_end__c</lookupFieldName>
+    <masterLabel>PersnlRcmdLog_std_PersonalizerId_map_ssot_Personalizer_ssot_Id_1787212835858</masterLabel>
+    <owner>DataCloud</owner>
+    <relationshipCardinality>ManyToOne</relationshipCardinality>
+    <sourceFieldName>PersnlRcmdLog_std__dlm.PersonalizerId__c</sourceFieldName>
+    <targetEntity xsi:nil="true"/>
+    <targetFieldName>ssot__Personalizer__dlm.ssot__Id__c</targetFieldName>
+</FieldSrcTrgtRelationship>

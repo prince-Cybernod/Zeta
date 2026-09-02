@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Has_This_Student_Already_Been_Rescinded__c</fullName>
+    <defaultValue>false</defaultValue>
+    <description>Indicates whether the student&apos;s offered seat has already been rescinded.</description>
+    <inlineHelpText>Indicates whether the student&apos;s offered seat has already been rescinded.</inlineHelpText>
+    <label>Has this student already been rescinded?</label>
+    <trackHistory>false</trackHistory>
+    <type>Checkbox</type>
+</CustomField>

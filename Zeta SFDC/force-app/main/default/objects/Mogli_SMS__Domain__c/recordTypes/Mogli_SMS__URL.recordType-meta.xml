@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<RecordType xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Mogli_SMS__URL</fullName>
+    <active>true</active>
+    <label>URL</label>
+    <picklistValues>
+        <picklist>Mogli_SMS__Status__c</picklist>
+        <values>
+            <fullName>Active</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Certificate Issued</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Certificate Pending</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Domain Pending</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Inactive</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>New</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Register Domain</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+</RecordType>

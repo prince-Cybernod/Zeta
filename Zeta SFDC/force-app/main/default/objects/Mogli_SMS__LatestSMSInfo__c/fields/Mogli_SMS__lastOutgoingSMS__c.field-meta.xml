@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Mogli_SMS__lastOutgoingSMS__c</fullName>
+    <deleteConstraint>SetNull</deleteConstraint>
+    <deprecated>false</deprecated>
+    <description>This relationship stores the last message sent by the owner.</description>
+    <label>Last Outgoing SMS</label>
+    <referenceTo>Mogli_SMS__SMS__c</referenceTo>
+    <relationshipLabel>Latest SMS Info (Last SMS Sent)</relationshipLabel>
+    <relationshipName>Last_SMS_Sent</relationshipName>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Lookup</type>
+</CustomField>

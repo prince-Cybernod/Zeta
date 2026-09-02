@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Accuracy__c</fullName>
+    <description>Calculated accuracy score based on rubric rules or error count.</description>
+    <externalId>false</externalId>
+    <formula>IF(
+    NOT(ISBLANK(Number_of_Errors__c)),
+    TEXT(100 - Number_of_Errors__c) &amp; &quot;%&quot;,
+    &quot;&quot;
+)</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <inlineHelpText>Calculated accuracy score based on rubric rules or error count.</inlineHelpText>
+    <label>Accuracy</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

@@ -1,0 +1,402 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<DataSourceObject xmlns="http://soap.sforce.com/2006/04/metadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <creationType>Custom</creationType>
+    <dataSource>sf_persnl__AbnExperimentationSummary</dataSource>
+    <dataSourceFields>
+        <fullName>sf_persnl__AbnExperimentCohortId</fullName>
+        <datatype>S</datatype>
+        <definitionCreationType>Custom</definitionCreationType>
+        <externalName>AbnExperimentCohortId</externalName>
+        <isDataRequired>false</isDataRequired>
+        <isEventDate>false</isEventDate>
+        <isFormula>false</isFormula>
+        <isRecordModified>false</isRecordModified>
+        <keyQualifierName>KQ_AbnExperimentCohortId</keyQualifierName>
+        <masterLabel>Experiment Cohort</masterLabel>
+        <sequence xsi:nil="true"/>
+        <usageTag>NONE</usageTag>
+        <versionNumber xsi:nil="true"/>
+    </dataSourceFields>
+    <dataSourceFields>
+        <fullName>sf_persnl__AbnExperimentId</fullName>
+        <datatype>S</datatype>
+        <definitionCreationType>Custom</definitionCreationType>
+        <externalName>AbnExperimentId</externalName>
+        <isDataRequired>false</isDataRequired>
+        <isEventDate>false</isEventDate>
+        <isFormula>false</isFormula>
+        <isRecordModified>false</isRecordModified>
+        <keyQualifierName>KQ_AbnExperimentId</keyQualifierName>
+        <masterLabel>Experiment</masterLabel>
+        <sequence xsi:nil="true"/>
+        <usageTag>NONE</usageTag>
+        <versionNumber xsi:nil="true"/>
+    </dataSourceFields>
+    <dataSourceFields>
+        <fullName>sf_persnl__AssignedParticipantsCount</fullName>
+        <datatype>N</datatype>
+        <definitionCreationType>Custom</definitionCreationType>
+        <externalName>AssignedParticipantsCount</externalName>
+        <isDataRequired>false</isDataRequired>
+        <isEventDate>false</isEventDate>
+        <isFormula>false</isFormula>
+        <isRecordModified>false</isRecordModified>
+        <keyQualifierName>KQ_AssignedParticipantsCount</keyQualifierName>
+        <masterLabel>Assigned Participants Count</masterLabel>
+        <sequence xsi:nil="true"/>
+        <usageTag>NONE</usageTag>
+        <versionNumber xsi:nil="true"/>
+    </dataSourceFields>
+    <dataSourceFields>
+        <fullName>sf_persnl__cdp_sys_SourceVersion</fullName>
+        <datatype>S</datatype>
+        <definitionCreationType>System</definitionCreationType>
+        <externalName>cdp_sys_SourceVersion</externalName>
+        <isDataRequired>false</isDataRequired>
+        <isEventDate>false</isEventDate>
+        <isFormula>false</isFormula>
+        <isRecordModified>false</isRecordModified>
+        <keyQualifierName>KQ_cdp_sys_SourceVersion</keyQualifierName>
+        <masterLabel>cdp_sys_SourceVersion</masterLabel>
+        <sequence xsi:nil="true"/>
+        <usageTag>NONE</usageTag>
+        <versionNumber xsi:nil="true"/>
+    </dataSourceFields>
+    <dataSourceFields>
+        <fullName>sf_persnl__CredibleIntervalLowerNumber</fullName>
+        <datatype>N</datatype>
+        <definitionCreationType>Custom</definitionCreationType>
+        <externalName>CredibleIntervalLowerNumber</externalName>
+        <isDataRequired>false</isDataRequired>
+        <isEventDate>false</isEventDate>
+        <isFormula>false</isFormula>
+        <isRecordModified>false</isRecordModified>
+        <keyQualifierName>KQ_CredibleIntervalLowerNumber</keyQualifierName>
+        <masterLabel>Credible Interval Lower</masterLabel>
+        <sequence xsi:nil="true"/>
+        <usageTag>NONE</usageTag>
+        <versionNumber xsi:nil="true"/>
+    </dataSourceFields>
+    <dataSourceFields>
+        <fullName>sf_persnl__CredibleIntervalUpperNumber</fullName>
+        <datatype>N</datatype>
+        <definitionCreationType>Custom</definitionCreationType>
+        <externalName>CredibleIntervalUpperNumber</externalName>
+        <isDataRequired>false</isDataRequired>
+        <isEventDate>false</isEventDate>
+        <isFormula>false</isFormula>
+        <isRecordModified>false</isRecordModified>
+        <keyQualifierName>KQ_CredibleIntervalUpperNumber</keyQualifierName>
+        <masterLabel>Credible Interval Upper</masterLabel>
+        <sequence xsi:nil="true"/>
+        <usageTag>NONE</usageTag>
+        <versionNumber xsi:nil="true"/>
+    </dataSourceFields>
+    <dataSourceFields>
+        <fullName>sf_persnl__DataSource</fullName>
+        <datatype>S</datatype>
+        <definitionCreationType>System</definitionCreationType>
+        <externalName>DataSource</externalName>
+        <isDataRequired>false</isDataRequired>
+        <isEventDate>false</isEventDate>
+        <isFormula>false</isFormula>
+        <isRecordModified>false</isRecordModified>
+        <keyQualifierName>KQ_DataSource</keyQualifierName>
+        <masterLabel>Data Source</masterLabel>
+        <sequence xsi:nil="true"/>
+        <usageTag>NONE</usageTag>
+        <versionNumber xsi:nil="true"/>
+    </dataSourceFields>
+    <dataSourceFields>
+        <fullName>sf_persnl__DataSourceObject</fullName>
+        <datatype>S</datatype>
+        <definitionCreationType>System</definitionCreationType>
+        <externalName>DataSourceObject</externalName>
+        <isDataRequired>false</isDataRequired>
+        <isEventDate>false</isEventDate>
+        <isFormula>false</isFormula>
+        <isRecordModified>false</isRecordModified>
+        <keyQualifierName>KQ_DataSourceObject</keyQualifierName>
+        <masterLabel>Data Source Object</masterLabel>
+        <sequence xsi:nil="true"/>
+        <usageTag>NONE</usageTag>
+        <versionNumber xsi:nil="true"/>
+    </dataSourceFields>
+    <dataSourceFields>
+        <fullName>sf_persnl__DataSpaceId</fullName>
+        <datatype>S</datatype>
+        <definitionCreationType>Custom</definitionCreationType>
+        <externalName>DataSpaceId</externalName>
+        <isDataRequired>false</isDataRequired>
+        <isEventDate>false</isEventDate>
+        <isFormula>false</isFormula>
+        <isRecordModified>false</isRecordModified>
+        <keyQualifierName>KQ_DataSpaceId</keyQualifierName>
+        <masterLabel>Data Space ID</masterLabel>
+        <sequence xsi:nil="true"/>
+        <usageTag>NONE</usageTag>
+        <versionNumber xsi:nil="true"/>
+    </dataSourceFields>
+    <dataSourceFields>
+        <fullName>sf_persnl__ExperimentAnalysisStatus</fullName>
+        <datatype>S</datatype>
+        <definitionCreationType>Custom</definitionCreationType>
+        <externalName>ExperimentAnalysisStatus</externalName>
+        <isDataRequired>false</isDataRequired>
+        <isEventDate>false</isEventDate>
+        <isFormula>false</isFormula>
+        <isRecordModified>false</isRecordModified>
+        <keyQualifierName>KQ_ExperimentAnalysisStatus</keyQualifierName>
+        <masterLabel>Experiment Analysis Status</masterLabel>
+        <sequence xsi:nil="true"/>
+        <usageTag>NONE</usageTag>
+        <versionNumber xsi:nil="true"/>
+    </dataSourceFields>
+    <dataSourceFields>
+        <fullName>sf_persnl__ExperimentSummaryMetricType</fullName>
+        <datatype>S</datatype>
+        <definitionCreationType>Custom</definitionCreationType>
+        <externalName>ExperimentSummaryMetricType</externalName>
+        <isDataRequired>false</isDataRequired>
+        <isEventDate>false</isEventDate>
+        <isFormula>false</isFormula>
+        <isRecordModified>false</isRecordModified>
+        <keyQualifierName>KQ_ExperimentSummaryMetricType</keyQualifierName>
+        <masterLabel>Metric Type</masterLabel>
+        <sequence xsi:nil="true"/>
+        <usageTag>NONE</usageTag>
+        <versionNumber xsi:nil="true"/>
+    </dataSourceFields>
+    <dataSourceFields>
+        <fullName>sf_persnl__Id</fullName>
+        <datatype>S</datatype>
+        <definitionCreationType>Custom</definitionCreationType>
+        <externalName>Id</externalName>
+        <isDataRequired>false</isDataRequired>
+        <isEventDate>false</isEventDate>
+        <isFormula>false</isFormula>
+        <isRecordModified>false</isRecordModified>
+        <keyQualifierName>KQ_Id</keyQualifierName>
+        <masterLabel>Abn Experimentation Summary Id</masterLabel>
+        <primaryIndexOrder>1</primaryIndexOrder>
+        <sequence xsi:nil="true"/>
+        <usageTag>NONE</usageTag>
+        <versionNumber xsi:nil="true"/>
+    </dataSourceFields>
+    <dataSourceFields>
+        <fullName>sf_persnl__InternalOrganization</fullName>
+        <datatype>S</datatype>
+        <definitionCreationType>System</definitionCreationType>
+        <externalName>InternalOrganization</externalName>
+        <isDataRequired>false</isDataRequired>
+        <isEventDate>false</isEventDate>
+        <isFormula>false</isFormula>
+        <isRecordModified>false</isRecordModified>
+        <keyQualifierName>KQ_InternalOrganization</keyQualifierName>
+        <masterLabel>Internal Organization</masterLabel>
+        <sequence xsi:nil="true"/>
+        <usageTag>NONE</usageTag>
+        <versionNumber xsi:nil="true"/>
+    </dataSourceFields>
+    <dataSourceFields>
+        <fullName>sf_persnl__IsPrimary</fullName>
+        <datatype>B</datatype>
+        <definitionCreationType>Custom</definitionCreationType>
+        <externalName>IsPrimary</externalName>
+        <isDataRequired>false</isDataRequired>
+        <isEventDate>false</isEventDate>
+        <isFormula>false</isFormula>
+        <isRecordModified>false</isRecordModified>
+        <keyQualifierName>KQ_IsPrimary</keyQualifierName>
+        <masterLabel>Is Primary</masterLabel>
+        <sequence xsi:nil="true"/>
+        <usageTag>NONE</usageTag>
+        <versionNumber xsi:nil="true"/>
+    </dataSourceFields>
+    <dataSourceFields>
+        <fullName>sf_persnl__LastUpdatedDateTime</fullName>
+        <datatype>F</datatype>
+        <definitionCreationType>Custom</definitionCreationType>
+        <externalName>LastUpdatedDateTime</externalName>
+        <isDataRequired>false</isDataRequired>
+        <isEventDate>false</isEventDate>
+        <isFormula>false</isFormula>
+        <isRecordModified>false</isRecordModified>
+        <keyQualifierName>KQ_LastUpdatedDateTime</keyQualifierName>
+        <masterLabel>Last Updated Date Time</masterLabel>
+        <sequence xsi:nil="true"/>
+        <usageTag>NONE</usageTag>
+        <versionNumber>1.0</versionNumber>
+    </dataSourceFields>
+    <dataSourceFields>
+        <fullName>sf_persnl__MaxMetricValueNumber</fullName>
+        <datatype>N</datatype>
+        <definitionCreationType>Custom</definitionCreationType>
+        <externalName>MaxMetricValueNumber</externalName>
+        <isDataRequired>false</isDataRequired>
+        <isEventDate>false</isEventDate>
+        <isFormula>false</isFormula>
+        <isRecordModified>false</isRecordModified>
+        <keyQualifierName>KQ_MaxMetricValueNumber</keyQualifierName>
+        <masterLabel>Max Metric Value</masterLabel>
+        <sequence xsi:nil="true"/>
+        <usageTag>NONE</usageTag>
+        <versionNumber xsi:nil="true"/>
+    </dataSourceFields>
+    <dataSourceFields>
+        <fullName>sf_persnl__MeanMetricValueNumber</fullName>
+        <datatype>N</datatype>
+        <definitionCreationType>Custom</definitionCreationType>
+        <externalName>MeanMetricValueNumber</externalName>
+        <isDataRequired>false</isDataRequired>
+        <isEventDate>false</isEventDate>
+        <isFormula>false</isFormula>
+        <isRecordModified>false</isRecordModified>
+        <keyQualifierName>KQ_MeanMetricValueNumber</keyQualifierName>
+        <masterLabel>Mean Metric Value</masterLabel>
+        <sequence xsi:nil="true"/>
+        <usageTag>NONE</usageTag>
+        <versionNumber xsi:nil="true"/>
+    </dataSourceFields>
+    <dataSourceFields>
+        <fullName>sf_persnl__MetricId</fullName>
+        <datatype>S</datatype>
+        <definitionCreationType>Custom</definitionCreationType>
+        <externalName>MetricId</externalName>
+        <isDataRequired>false</isDataRequired>
+        <isEventDate>false</isEventDate>
+        <isFormula>false</isFormula>
+        <isRecordModified>false</isRecordModified>
+        <keyQualifierName>KQ_MetricId</keyQualifierName>
+        <masterLabel>Metric Id</masterLabel>
+        <sequence xsi:nil="true"/>
+        <usageTag>NONE</usageTag>
+        <versionNumber xsi:nil="true"/>
+    </dataSourceFields>
+    <dataSourceFields>
+        <fullName>sf_persnl__MetricName</fullName>
+        <datatype>S</datatype>
+        <definitionCreationType>Custom</definitionCreationType>
+        <externalName>MetricName</externalName>
+        <isDataRequired>false</isDataRequired>
+        <isEventDate>false</isEventDate>
+        <isFormula>false</isFormula>
+        <isRecordModified>false</isRecordModified>
+        <keyQualifierName>KQ_MetricName</keyQualifierName>
+        <masterLabel>Metric Name</masterLabel>
+        <sequence xsi:nil="true"/>
+        <usageTag>NONE</usageTag>
+        <versionNumber xsi:nil="true"/>
+    </dataSourceFields>
+    <dataSourceFields>
+        <fullName>sf_persnl__MetricValueNumber</fullName>
+        <datatype>N</datatype>
+        <definitionCreationType>Custom</definitionCreationType>
+        <externalName>MetricValueNumber</externalName>
+        <isDataRequired>false</isDataRequired>
+        <isEventDate>false</isEventDate>
+        <isFormula>false</isFormula>
+        <isRecordModified>false</isRecordModified>
+        <keyQualifierName>KQ_MetricValueNumber</keyQualifierName>
+        <masterLabel>Metric Value</masterLabel>
+        <sequence xsi:nil="true"/>
+        <usageTag>NONE</usageTag>
+        <versionNumber xsi:nil="true"/>
+    </dataSourceFields>
+    <dataSourceFields>
+        <fullName>sf_persnl__MinMetricValueNumber</fullName>
+        <datatype>N</datatype>
+        <definitionCreationType>Custom</definitionCreationType>
+        <externalName>MinMetricValueNumber</externalName>
+        <isDataRequired>false</isDataRequired>
+        <isEventDate>false</isEventDate>
+        <isFormula>false</isFormula>
+        <isRecordModified>false</isRecordModified>
+        <keyQualifierName>KQ_MinMetricValueNumber</keyQualifierName>
+        <masterLabel>Min Metric Value</masterLabel>
+        <sequence xsi:nil="true"/>
+        <usageTag>NONE</usageTag>
+        <versionNumber xsi:nil="true"/>
+    </dataSourceFields>
+    <dataSourceFields>
+        <fullName>sf_persnl__ProbabilityToBeatAllPercent</fullName>
+        <datatype>N</datatype>
+        <definitionCreationType>Custom</definitionCreationType>
+        <externalName>ProbabilityToBeatAllPercent</externalName>
+        <isDataRequired>false</isDataRequired>
+        <isEventDate>false</isEventDate>
+        <isFormula>false</isFormula>
+        <isRecordModified>false</isRecordModified>
+        <keyQualifierName>KQ_ProbabilityToBeatAllPercent</keyQualifierName>
+        <masterLabel>Probability To Beat All</masterLabel>
+        <sequence xsi:nil="true"/>
+        <usageTag>NONE</usageTag>
+        <versionNumber xsi:nil="true"/>
+    </dataSourceFields>
+    <dataSourceFields>
+        <fullName>sf_persnl__ProbabilityToBeatControlPercent</fullName>
+        <datatype>N</datatype>
+        <definitionCreationType>Custom</definitionCreationType>
+        <externalName>ProbabilityToBeatControlPercent</externalName>
+        <isDataRequired>false</isDataRequired>
+        <isEventDate>false</isEventDate>
+        <isFormula>false</isFormula>
+        <isRecordModified>false</isRecordModified>
+        <keyQualifierName>KQ_ProbabilityToBeatControlPercent</keyQualifierName>
+        <masterLabel>Probability To Beat Control</masterLabel>
+        <sequence xsi:nil="true"/>
+        <usageTag>NONE</usageTag>
+        <versionNumber xsi:nil="true"/>
+    </dataSourceFields>
+    <dataSourceFields>
+        <fullName>sf_persnl__SignalDenominatorValue</fullName>
+        <datatype>N</datatype>
+        <definitionCreationType>Custom</definitionCreationType>
+        <externalName>SignalDenominatorValue</externalName>
+        <isDataRequired>false</isDataRequired>
+        <isEventDate>false</isEventDate>
+        <isFormula>false</isFormula>
+        <isRecordModified>false</isRecordModified>
+        <keyQualifierName>KQ_SignalDenominatorValue</keyQualifierName>
+        <masterLabel>Signal Denominator Value</masterLabel>
+        <sequence xsi:nil="true"/>
+        <usageTag>NONE</usageTag>
+        <versionNumber xsi:nil="true"/>
+    </dataSourceFields>
+    <dataSourceFields>
+        <fullName>sf_persnl__SignalNumeratorValue</fullName>
+        <datatype>N</datatype>
+        <definitionCreationType>Custom</definitionCreationType>
+        <externalName>SignalNumeratorValue</externalName>
+        <isDataRequired>false</isDataRequired>
+        <isEventDate>false</isEventDate>
+        <isFormula>false</isFormula>
+        <isRecordModified>false</isRecordModified>
+        <keyQualifierName>KQ_SignalNumeratorValue</keyQualifierName>
+        <masterLabel>Signal Numerator Value</masterLabel>
+        <sequence xsi:nil="true"/>
+        <usageTag>NONE</usageTag>
+        <versionNumber xsi:nil="true"/>
+    </dataSourceFields>
+    <dataSourceFields>
+        <fullName>sf_persnl__VarianceNumber</fullName>
+        <datatype>N</datatype>
+        <definitionCreationType>Custom</definitionCreationType>
+        <externalName>VarianceNumber</externalName>
+        <isDataRequired>false</isDataRequired>
+        <isEventDate>false</isEventDate>
+        <isFormula>false</isFormula>
+        <isRecordModified>false</isRecordModified>
+        <keyQualifierName>KQ_VarianceNumber</keyQualifierName>
+        <masterLabel>Variance</masterLabel>
+        <sequence xsi:nil="true"/>
+        <usageTag>NONE</usageTag>
+        <versionNumber xsi:nil="true"/>
+    </dataSourceFields>
+    <masterLabel>AbnExperimentationSummary</masterLabel>
+    <objectCategory>Related</objectCategory>
+    <objectType>Object</objectType>
+    <sourceObject>sf_persnl__AbnExperimentationSummary__dll</sourceObject>
+    <storageType>LOCAL</storageType>
+    <templateVersion>1</templateVersion>
+</DataSourceObject>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Exclude_from_Review__c</fullName>
+    <formula>OR(
+  ISPICKVAL(Status, &quot;Not yet uploaded&quot;),
+  ISPICKVAL(Status, &quot;Verified and uploaded&quot;),
+  ISPICKVAL(Status, &quot;N/A, returning student&quot;),
+  ISPICKVAL(Status, &quot;N/A, family does not require proof of residency&quot;),
+  ISPICKVAL(Status, &quot;N/A, not returning&quot;),
+  ISPICKVAL(Status, &quot;Not yet done&quot;),
+  ISPICKVAL(Status, &quot;Verified&quot;),
+  ISPICKVAL(Status, &quot;Not yet uploaded/unknown if applicable&quot;),
+  ISPICKVAL(Status, &quot;Verified and uploaded all pages included&quot;),
+  ISPICKVAL(Status, &quot;N/A, family states their child does not have an IEP&quot;),
+  ISPICKVAL(Status, &quot;N/A to student&quot;),
+  ISPICKVAL(Status, &quot;N/A, child has not attended another school&quot;),
+  ISPICKVAL(Status, &quot;Verified and parent filled out&quot;),
+  ISPICKVAL(Status, &quot;Verified, but filled out by admin&quot;),
+  ISPICKVAL(Status, &quot;Verified on Cheddar Up&quot;)
+)</formula>
+    <label>Exclude from Review</label>
+    <trackHistory>false</trackHistory>
+    <type>Checkbox</type>
+</CustomField>

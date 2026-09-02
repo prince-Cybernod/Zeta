@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Birthdate_TEXT__c</fullName>
+    <description>Updated when the PersonBirthdate field on Account is updated. Necessary for comparing in Matching Rules</description>
+    <externalId>false</externalId>
+    <inlineHelpText>Updated when the PersonBirthdate field on Account is updated. Necessary for comparing in Matching Rules</inlineHelpText>
+    <label>Birthdate_TEXT</label>
+    <length>55</length>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

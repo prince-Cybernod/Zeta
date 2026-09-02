@@ -1,0 +1,988 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<DataSourceObject xmlns="http://soap.sforce.com/2006/04/metadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <dataSource>cdp_crm_dk1__Salesforce</dataSource>
+    <dataSourceFields>
+        <fullName>cdp_crm_dk1__AccountId</fullName>
+        <datatype>S</datatype>
+        <definitionCreationType>Custom</definitionCreationType>
+        <externalName>AccountId</externalName>
+        <fieldFormula>sourceField[&apos;AccountId&apos;]</fieldFormula>
+        <isDataRequired>false</isDataRequired>
+        <isEventDate>false</isEventDate>
+        <isFormula>false</isFormula>
+        <isRecordModified>false</isRecordModified>
+        <keyQualifierName>KQ_AccountId</keyQualifierName>
+        <masterLabel>Account ID</masterLabel>
+        <sequence xsi:nil="true"/>
+        <usageTag>NONE</usageTag>
+        <versionNumber xsi:nil="true"/>
+    </dataSourceFields>
+    <dataSourceFields>
+        <fullName>cdp_crm_dk1__ActivityDate</fullName>
+        <datatype>F</datatype>
+        <dateFormat>yyyy-MM-dd</dateFormat>
+        <definitionCreationType>Custom</definitionCreationType>
+        <externalName>ActivityDate</externalName>
+        <fieldFormula>sourceField[&apos;ActivityDate&apos;]</fieldFormula>
+        <isDataRequired>false</isDataRequired>
+        <isEventDate>false</isEventDate>
+        <isFormula>false</isFormula>
+        <isRecordModified>false</isRecordModified>
+        <keyQualifierName>KQ_ActivityDate</keyQualifierName>
+        <masterLabel>Due Date Only</masterLabel>
+        <sequence xsi:nil="true"/>
+        <usageTag>NONE</usageTag>
+        <versionNumber>1.0</versionNumber>
+    </dataSourceFields>
+    <dataSourceFields>
+        <fullName>cdp_crm_dk1__ActivityDateOnly</fullName>
+        <datatype>D</datatype>
+        <definitionCreationType>Custom</definitionCreationType>
+        <externalName>ActivityDateOnly</externalName>
+        <fieldFormula>DAYPRECISION(sourceField[&apos;ActivityDateTime&apos;])</fieldFormula>
+        <isDataRequired>false</isDataRequired>
+        <isEventDate>false</isEventDate>
+        <isFormula>true</isFormula>
+        <isRecordModified>false</isRecordModified>
+        <keyQualifierName>KQ_ActivityDateOnly</keyQualifierName>
+        <masterLabel>Computed Activity Date Only</masterLabel>
+        <sequence xsi:nil="true"/>
+        <usageTag>NONE</usageTag>
+        <versionNumber>1.0</versionNumber>
+    </dataSourceFields>
+    <dataSourceFields>
+        <fullName>cdp_crm_dk1__ActivityDateTime</fullName>
+        <datatype>F</datatype>
+        <dateFormat>yyyy-MM-dd&apos;T&apos;HH:mm:ss.SSS&apos;Z&apos;</dateFormat>
+        <definitionCreationType>Custom</definitionCreationType>
+        <externalName>ActivityDateTime</externalName>
+        <fieldFormula>sourceField[&apos;ActivityDateTime&apos;]</fieldFormula>
+        <isDataRequired>false</isDataRequired>
+        <isEventDate>false</isEventDate>
+        <isFormula>false</isFormula>
+        <isRecordModified>false</isRecordModified>
+        <keyQualifierName>KQ_ActivityDateTime</keyQualifierName>
+        <masterLabel>Due Date Time</masterLabel>
+        <sequence xsi:nil="true"/>
+        <usageTag>NONE</usageTag>
+        <versionNumber>1.0</versionNumber>
+    </dataSourceFields>
+    <dataSourceFields>
+        <fullName>cdp_crm_dk1__ActivityType</fullName>
+        <datatype>S</datatype>
+        <definitionCreationType>Custom</definitionCreationType>
+        <externalName>ActivityType</externalName>
+        <fieldFormula>&apos;CalendarEvent&apos;</fieldFormula>
+        <isDataRequired>false</isDataRequired>
+        <isEventDate>false</isEventDate>
+        <isFormula>true</isFormula>
+        <isRecordModified>false</isRecordModified>
+        <keyQualifierName>KQ_ActivityType</keyQualifierName>
+        <masterLabel>Computed Activity Type</masterLabel>
+        <sequence xsi:nil="true"/>
+        <usageTag>NONE</usageTag>
+        <versionNumber xsi:nil="true"/>
+    </dataSourceFields>
+    <dataSourceFields>
+        <fullName>cdp_crm_dk1__cdp_sys_PartitionDate</fullName>
+        <datatype>F</datatype>
+        <definitionCreationType>System</definitionCreationType>
+        <externalName>cdp_sys_PartitionDate</externalName>
+        <fieldFormula>if(ISEMPTY(formulaField[&apos;CreatedDate__c&apos;])) { null; } else { DAYPRECISION(formulaField[&apos;CreatedDate__c&apos;]); }</fieldFormula>
+        <isDataRequired>false</isDataRequired>
+        <isEventDate>false</isEventDate>
+        <isFormula>true</isFormula>
+        <isRecordModified>false</isRecordModified>
+        <keyQualifierName>KQ_cdp_sys_PartitionDate</keyQualifierName>
+        <masterLabel>cdp_sys_PartitionDate</masterLabel>
+        <sequence xsi:nil="true"/>
+        <usageTag>NONE</usageTag>
+        <versionNumber>1.0</versionNumber>
+    </dataSourceFields>
+    <dataSourceFields>
+        <fullName>cdp_crm_dk1__CreatedById</fullName>
+        <datatype>S</datatype>
+        <definitionCreationType>Custom</definitionCreationType>
+        <externalName>CreatedById</externalName>
+        <fieldFormula>sourceField[&apos;CreatedById&apos;]</fieldFormula>
+        <isDataRequired>false</isDataRequired>
+        <isEventDate>false</isEventDate>
+        <isFormula>false</isFormula>
+        <isRecordModified>false</isRecordModified>
+        <keyQualifierName>KQ_CreatedById</keyQualifierName>
+        <masterLabel>Created By ID</masterLabel>
+        <sequence xsi:nil="true"/>
+        <usageTag>NONE</usageTag>
+        <versionNumber xsi:nil="true"/>
+    </dataSourceFields>
+    <dataSourceFields>
+        <fullName>cdp_crm_dk1__CreatedDate</fullName>
+        <datatype>F</datatype>
+        <dateFormat>yyyy-MM-dd&apos;T&apos;HH:mm:ss.SSS&apos;Z&apos;</dateFormat>
+        <definitionCreationType>Custom</definitionCreationType>
+        <externalName>CreatedDate</externalName>
+        <fieldFormula>sourceField[&apos;CreatedDate&apos;]</fieldFormula>
+        <isDataRequired>false</isDataRequired>
+        <isEventDate>false</isEventDate>
+        <isFormula>false</isFormula>
+        <isRecordModified>false</isRecordModified>
+        <keyQualifierName>KQ_CreatedDate</keyQualifierName>
+        <masterLabel>Created Date</masterLabel>
+        <sequence xsi:nil="true"/>
+        <usageTag>NONE</usageTag>
+        <versionNumber>1.0</versionNumber>
+    </dataSourceFields>
+    <dataSourceFields>
+        <fullName>cdp_crm_dk1__DataSource</fullName>
+        <datatype>S</datatype>
+        <definitionCreationType>System</definitionCreationType>
+        <externalName>DataSource</externalName>
+        <fieldFormula>&quot;Salesforce&quot;</fieldFormula>
+        <isDataRequired>false</isDataRequired>
+        <isEventDate>false</isEventDate>
+        <isFormula>true</isFormula>
+        <isRecordModified>false</isRecordModified>
+        <keyQualifierName>KQ_DataSource</keyQualifierName>
+        <masterLabel>Data Source</masterLabel>
+        <sequence xsi:nil="true"/>
+        <usageTag>NONE</usageTag>
+        <versionNumber xsi:nil="true"/>
+    </dataSourceFields>
+    <dataSourceFields>
+        <fullName>cdp_crm_dk1__DataSourceObject</fullName>
+        <datatype>S</datatype>
+        <definitionCreationType>System</definitionCreationType>
+        <externalName>DataSourceObject</externalName>
+        <fieldFormula>&quot;Event&quot;</fieldFormula>
+        <isDataRequired>false</isDataRequired>
+        <isEventDate>false</isEventDate>
+        <isFormula>true</isFormula>
+        <isRecordModified>false</isRecordModified>
+        <keyQualifierName>KQ_DataSourceObject</keyQualifierName>
+        <masterLabel>Data Source Object</masterLabel>
+        <sequence xsi:nil="true"/>
+        <usageTag>NONE</usageTag>
+        <versionNumber xsi:nil="true"/>
+    </dataSourceFields>
+    <dataSourceFields>
+        <fullName>cdp_crm_dk1__Description</fullName>
+        <datatype>S</datatype>
+        <definitionCreationType>Custom</definitionCreationType>
+        <externalName>Description</externalName>
+        <fieldFormula>sourceField[&apos;Description&apos;]</fieldFormula>
+        <isDataRequired>false</isDataRequired>
+        <isEventDate>false</isEventDate>
+        <isFormula>false</isFormula>
+        <isRecordModified>false</isRecordModified>
+        <keyQualifierName>KQ_Description</keyQualifierName>
+        <masterLabel>Description</masterLabel>
+        <sequence xsi:nil="true"/>
+        <usageTag>NONE</usageTag>
+        <versionNumber xsi:nil="true"/>
+    </dataSourceFields>
+    <dataSourceFields>
+        <fullName>cdp_crm_dk1__DurationInMinutes</fullName>
+        <datatype>N</datatype>
+        <definitionCreationType>Custom</definitionCreationType>
+        <externalName>DurationInMinutes</externalName>
+        <fieldFormula>sourceField[&apos;DurationInMinutes&apos;]</fieldFormula>
+        <isDataRequired>false</isDataRequired>
+        <isEventDate>false</isEventDate>
+        <isFormula>false</isFormula>
+        <isRecordModified>false</isRecordModified>
+        <keyQualifierName>KQ_DurationInMinutes</keyQualifierName>
+        <masterLabel>Duration</masterLabel>
+        <sequence xsi:nil="true"/>
+        <usageTag>NONE</usageTag>
+        <versionNumber xsi:nil="true"/>
+    </dataSourceFields>
+    <dataSourceFields>
+        <fullName>cdp_crm_dk1__EndDate</fullName>
+        <datatype>F</datatype>
+        <dateFormat>yyyy-MM-dd</dateFormat>
+        <definitionCreationType>Custom</definitionCreationType>
+        <externalName>EndDate</externalName>
+        <fieldFormula>sourceField[&apos;EndDate&apos;]</fieldFormula>
+        <isDataRequired>false</isDataRequired>
+        <isEventDate>false</isEventDate>
+        <isFormula>false</isFormula>
+        <isRecordModified>false</isRecordModified>
+        <keyQualifierName>KQ_EndDate</keyQualifierName>
+        <masterLabel>End Date</masterLabel>
+        <sequence xsi:nil="true"/>
+        <usageTag>NONE</usageTag>
+        <versionNumber>1.0</versionNumber>
+    </dataSourceFields>
+    <dataSourceFields>
+        <fullName>cdp_crm_dk1__EndDateOnly</fullName>
+        <datatype>D</datatype>
+        <definitionCreationType>Custom</definitionCreationType>
+        <externalName>EndDateOnly</externalName>
+        <fieldFormula>DAYPRECISION(sourceField[&apos;EndDateTime&apos;])</fieldFormula>
+        <isDataRequired>false</isDataRequired>
+        <isEventDate>false</isEventDate>
+        <isFormula>true</isFormula>
+        <isRecordModified>false</isRecordModified>
+        <keyQualifierName>KQ_EndDateOnly</keyQualifierName>
+        <masterLabel>Computed End Date Only</masterLabel>
+        <sequence xsi:nil="true"/>
+        <usageTag>NONE</usageTag>
+        <versionNumber>1.0</versionNumber>
+    </dataSourceFields>
+    <dataSourceFields>
+        <fullName>cdp_crm_dk1__EndDateTime</fullName>
+        <datatype>F</datatype>
+        <dateFormat>yyyy-MM-dd&apos;T&apos;HH:mm:ss.SSS&apos;Z&apos;</dateFormat>
+        <definitionCreationType>Custom</definitionCreationType>
+        <externalName>EndDateTime</externalName>
+        <fieldFormula>sourceField[&apos;EndDateTime&apos;]</fieldFormula>
+        <isDataRequired>false</isDataRequired>
+        <isEventDate>false</isEventDate>
+        <isFormula>false</isFormula>
+        <isRecordModified>false</isRecordModified>
+        <keyQualifierName>KQ_EndDateTime</keyQualifierName>
+        <masterLabel>End Date Time</masterLabel>
+        <sequence xsi:nil="true"/>
+        <usageTag>NONE</usageTag>
+        <versionNumber>1.0</versionNumber>
+    </dataSourceFields>
+    <dataSourceFields>
+        <fullName>cdp_crm_dk1__EventSubtype</fullName>
+        <datatype>S</datatype>
+        <definitionCreationType>Custom</definitionCreationType>
+        <externalName>EventSubtype</externalName>
+        <fieldFormula>sourceField[&apos;EventSubtype&apos;]</fieldFormula>
+        <isDataRequired>false</isDataRequired>
+        <isEventDate>false</isEventDate>
+        <isFormula>false</isFormula>
+        <isRecordModified>false</isRecordModified>
+        <keyQualifierName>KQ_EventSubtype</keyQualifierName>
+        <masterLabel>Event Subtype</masterLabel>
+        <sequence xsi:nil="true"/>
+        <usageTag>NONE</usageTag>
+        <versionNumber xsi:nil="true"/>
+    </dataSourceFields>
+    <dataSourceFields>
+        <fullName>cdp_crm_dk1__GroupEventType</fullName>
+        <datatype>S</datatype>
+        <definitionCreationType>Custom</definitionCreationType>
+        <externalName>GroupEventType</externalName>
+        <fieldFormula>sourceField[&apos;GroupEventType&apos;]</fieldFormula>
+        <isDataRequired>false</isDataRequired>
+        <isEventDate>false</isEventDate>
+        <isFormula>false</isFormula>
+        <isRecordModified>false</isRecordModified>
+        <keyQualifierName>KQ_GroupEventType</keyQualifierName>
+        <masterLabel>Group Event Type</masterLabel>
+        <sequence xsi:nil="true"/>
+        <usageTag>NONE</usageTag>
+        <versionNumber xsi:nil="true"/>
+    </dataSourceFields>
+    <dataSourceFields>
+        <fullName>cdp_crm_dk1__Id</fullName>
+        <datatype>S</datatype>
+        <definitionCreationType>Custom</definitionCreationType>
+        <externalName>Id</externalName>
+        <fieldFormula>sourceField[&apos;Id&apos;]</fieldFormula>
+        <isDataRequired>false</isDataRequired>
+        <isEventDate>false</isEventDate>
+        <isFormula>false</isFormula>
+        <isRecordModified>false</isRecordModified>
+        <keyQualifierName>KQ_Id</keyQualifierName>
+        <masterLabel>Activity ID</masterLabel>
+        <primaryIndexOrder>1</primaryIndexOrder>
+        <sequence xsi:nil="true"/>
+        <usageTag>NONE</usageTag>
+        <versionNumber xsi:nil="true"/>
+    </dataSourceFields>
+    <dataSourceFields>
+        <fullName>cdp_crm_dk1__IsAllDayEvent</fullName>
+        <datatype>S</datatype>
+        <definitionCreationType>Custom</definitionCreationType>
+        <externalName>IsAllDayEvent</externalName>
+        <fieldFormula>sourceField[&apos;IsAllDayEvent&apos;]</fieldFormula>
+        <isDataRequired>false</isDataRequired>
+        <isEventDate>false</isEventDate>
+        <isFormula>false</isFormula>
+        <isRecordModified>false</isRecordModified>
+        <keyQualifierName>KQ_IsAllDayEvent</keyQualifierName>
+        <masterLabel>All-Day Event</masterLabel>
+        <sequence xsi:nil="true"/>
+        <usageTag>NONE</usageTag>
+        <versionNumber xsi:nil="true"/>
+    </dataSourceFields>
+    <dataSourceFields>
+        <fullName>cdp_crm_dk1__IsArchived</fullName>
+        <datatype>S</datatype>
+        <definitionCreationType>Custom</definitionCreationType>
+        <externalName>IsArchived</externalName>
+        <fieldFormula>sourceField[&apos;IsArchived&apos;]</fieldFormula>
+        <isDataRequired>false</isDataRequired>
+        <isEventDate>false</isEventDate>
+        <isFormula>false</isFormula>
+        <isRecordModified>false</isRecordModified>
+        <keyQualifierName>KQ_IsArchived</keyQualifierName>
+        <masterLabel>Archived</masterLabel>
+        <sequence xsi:nil="true"/>
+        <usageTag>NONE</usageTag>
+        <versionNumber xsi:nil="true"/>
+    </dataSourceFields>
+    <dataSourceFields>
+        <fullName>cdp_crm_dk1__IsChild</fullName>
+        <datatype>S</datatype>
+        <definitionCreationType>Custom</definitionCreationType>
+        <externalName>IsChild</externalName>
+        <fieldFormula>sourceField[&apos;IsChild&apos;]</fieldFormula>
+        <isDataRequired>false</isDataRequired>
+        <isEventDate>false</isEventDate>
+        <isFormula>false</isFormula>
+        <isRecordModified>false</isRecordModified>
+        <keyQualifierName>KQ_IsChild</keyQualifierName>
+        <masterLabel>Is Child</masterLabel>
+        <sequence xsi:nil="true"/>
+        <usageTag>NONE</usageTag>
+        <versionNumber xsi:nil="true"/>
+    </dataSourceFields>
+    <dataSourceFields>
+        <fullName>cdp_crm_dk1__IsDeleted</fullName>
+        <datatype>S</datatype>
+        <definitionCreationType>Custom</definitionCreationType>
+        <externalName>IsDeleted</externalName>
+        <fieldFormula>sourceField[&apos;IsDeleted&apos;]</fieldFormula>
+        <isDataRequired>false</isDataRequired>
+        <isEventDate>false</isEventDate>
+        <isFormula>false</isFormula>
+        <isRecordModified>false</isRecordModified>
+        <keyQualifierName>KQ_IsDeleted</keyQualifierName>
+        <masterLabel>Deleted</masterLabel>
+        <sequence xsi:nil="true"/>
+        <usageTag>NONE</usageTag>
+        <versionNumber xsi:nil="true"/>
+    </dataSourceFields>
+    <dataSourceFields>
+        <fullName>cdp_crm_dk1__IsGroupEvent</fullName>
+        <datatype>S</datatype>
+        <definitionCreationType>Custom</definitionCreationType>
+        <externalName>IsGroupEvent</externalName>
+        <fieldFormula>sourceField[&apos;IsGroupEvent&apos;]</fieldFormula>
+        <isDataRequired>false</isDataRequired>
+        <isEventDate>false</isEventDate>
+        <isFormula>false</isFormula>
+        <isRecordModified>false</isRecordModified>
+        <keyQualifierName>KQ_IsGroupEvent</keyQualifierName>
+        <masterLabel>Is Group Event</masterLabel>
+        <sequence xsi:nil="true"/>
+        <usageTag>NONE</usageTag>
+        <versionNumber xsi:nil="true"/>
+    </dataSourceFields>
+    <dataSourceFields>
+        <fullName>cdp_crm_dk1__IsPrivate</fullName>
+        <datatype>S</datatype>
+        <definitionCreationType>Custom</definitionCreationType>
+        <externalName>IsPrivate</externalName>
+        <fieldFormula>sourceField[&apos;IsPrivate&apos;]</fieldFormula>
+        <isDataRequired>false</isDataRequired>
+        <isEventDate>false</isEventDate>
+        <isFormula>false</isFormula>
+        <isRecordModified>false</isRecordModified>
+        <keyQualifierName>KQ_IsPrivate</keyQualifierName>
+        <masterLabel>Private</masterLabel>
+        <sequence xsi:nil="true"/>
+        <usageTag>NONE</usageTag>
+        <versionNumber xsi:nil="true"/>
+    </dataSourceFields>
+    <dataSourceFields>
+        <fullName>cdp_crm_dk1__IsRecurrence</fullName>
+        <datatype>S</datatype>
+        <definitionCreationType>Custom</definitionCreationType>
+        <externalName>IsRecurrence</externalName>
+        <fieldFormula>sourceField[&apos;IsRecurrence&apos;]</fieldFormula>
+        <isDataRequired>false</isDataRequired>
+        <isEventDate>false</isEventDate>
+        <isFormula>false</isFormula>
+        <isRecordModified>false</isRecordModified>
+        <keyQualifierName>KQ_IsRecurrence</keyQualifierName>
+        <masterLabel>Create Recurring Series of Events</masterLabel>
+        <sequence xsi:nil="true"/>
+        <usageTag>NONE</usageTag>
+        <versionNumber xsi:nil="true"/>
+    </dataSourceFields>
+    <dataSourceFields>
+        <fullName>cdp_crm_dk1__IsRecurrence2</fullName>
+        <datatype>S</datatype>
+        <definitionCreationType>Custom</definitionCreationType>
+        <externalName>IsRecurrence2</externalName>
+        <fieldFormula>sourceField[&apos;IsRecurrence2&apos;]</fieldFormula>
+        <isDataRequired>false</isDataRequired>
+        <isEventDate>false</isEventDate>
+        <isFormula>false</isFormula>
+        <isRecordModified>false</isRecordModified>
+        <keyQualifierName>KQ_IsRecurrence2</keyQualifierName>
+        <masterLabel>Repeat</masterLabel>
+        <sequence xsi:nil="true"/>
+        <usageTag>NONE</usageTag>
+        <versionNumber xsi:nil="true"/>
+    </dataSourceFields>
+    <dataSourceFields>
+        <fullName>cdp_crm_dk1__IsRecurrence2Exception</fullName>
+        <datatype>S</datatype>
+        <definitionCreationType>Custom</definitionCreationType>
+        <externalName>IsRecurrence2Exception</externalName>
+        <fieldFormula>sourceField[&apos;IsRecurrence2Exception&apos;]</fieldFormula>
+        <isDataRequired>false</isDataRequired>
+        <isEventDate>false</isEventDate>
+        <isFormula>false</isFormula>
+        <isRecordModified>false</isRecordModified>
+        <keyQualifierName>KQ_IsRecurrence2Exception</keyQualifierName>
+        <masterLabel>Is Exception</masterLabel>
+        <sequence xsi:nil="true"/>
+        <usageTag>NONE</usageTag>
+        <versionNumber xsi:nil="true"/>
+    </dataSourceFields>
+    <dataSourceFields>
+        <fullName>cdp_crm_dk1__IsReminderSet</fullName>
+        <datatype>S</datatype>
+        <definitionCreationType>Custom</definitionCreationType>
+        <externalName>IsReminderSet</externalName>
+        <fieldFormula>sourceField[&apos;IsReminderSet&apos;]</fieldFormula>
+        <isDataRequired>false</isDataRequired>
+        <isEventDate>false</isEventDate>
+        <isFormula>false</isFormula>
+        <isRecordModified>false</isRecordModified>
+        <keyQualifierName>KQ_IsReminderSet</keyQualifierName>
+        <masterLabel>Reminder Set</masterLabel>
+        <sequence xsi:nil="true"/>
+        <usageTag>NONE</usageTag>
+        <versionNumber xsi:nil="true"/>
+    </dataSourceFields>
+    <dataSourceFields>
+        <fullName>cdp_crm_dk1__LastModifiedById</fullName>
+        <datatype>S</datatype>
+        <definitionCreationType>Custom</definitionCreationType>
+        <externalName>LastModifiedById</externalName>
+        <fieldFormula>sourceField[&apos;LastModifiedById&apos;]</fieldFormula>
+        <isDataRequired>false</isDataRequired>
+        <isEventDate>false</isEventDate>
+        <isFormula>false</isFormula>
+        <isRecordModified>false</isRecordModified>
+        <keyQualifierName>KQ_LastModifiedById</keyQualifierName>
+        <masterLabel>Last Modified By ID</masterLabel>
+        <sequence xsi:nil="true"/>
+        <usageTag>NONE</usageTag>
+        <versionNumber xsi:nil="true"/>
+    </dataSourceFields>
+    <dataSourceFields>
+        <fullName>cdp_crm_dk1__LastModifiedDate</fullName>
+        <datatype>F</datatype>
+        <dateFormat>yyyy-MM-dd&apos;T&apos;HH:mm:ss.SSS&apos;Z&apos;</dateFormat>
+        <definitionCreationType>Custom</definitionCreationType>
+        <externalName>LastModifiedDate</externalName>
+        <fieldFormula>sourceField[&apos;LastModifiedDate&apos;]</fieldFormula>
+        <isDataRequired>false</isDataRequired>
+        <isEventDate>false</isEventDate>
+        <isFormula>false</isFormula>
+        <isRecordModified>false</isRecordModified>
+        <keyQualifierName>KQ_LastModifiedDate</keyQualifierName>
+        <masterLabel>Last Modified Date</masterLabel>
+        <sequence xsi:nil="true"/>
+        <usageTag>NONE</usageTag>
+        <versionNumber>1.0</versionNumber>
+    </dataSourceFields>
+    <dataSourceFields>
+        <fullName>cdp_crm_dk1__Location</fullName>
+        <datatype>S</datatype>
+        <definitionCreationType>Custom</definitionCreationType>
+        <externalName>Location</externalName>
+        <fieldFormula>sourceField[&apos;Location&apos;]</fieldFormula>
+        <isDataRequired>false</isDataRequired>
+        <isEventDate>false</isEventDate>
+        <isFormula>false</isFormula>
+        <isRecordModified>false</isRecordModified>
+        <keyQualifierName>KQ_Location</keyQualifierName>
+        <masterLabel>Location</masterLabel>
+        <sequence xsi:nil="true"/>
+        <usageTag>NONE</usageTag>
+        <versionNumber xsi:nil="true"/>
+    </dataSourceFields>
+    <dataSourceFields>
+        <fullName>cdp_crm_dk1__OwnerId</fullName>
+        <datatype>S</datatype>
+        <definitionCreationType>Custom</definitionCreationType>
+        <externalName>OwnerId</externalName>
+        <fieldFormula>sourceField[&apos;OwnerId&apos;]</fieldFormula>
+        <isDataRequired>false</isDataRequired>
+        <isEventDate>false</isEventDate>
+        <isFormula>false</isFormula>
+        <isRecordModified>false</isRecordModified>
+        <keyQualifierName>KQ_OwnerId</keyQualifierName>
+        <masterLabel>Assigned To ID</masterLabel>
+        <sequence xsi:nil="true"/>
+        <usageTag>NONE</usageTag>
+        <versionNumber xsi:nil="true"/>
+    </dataSourceFields>
+    <dataSourceFields>
+        <fullName>cdp_crm_dk1__Recurrence2PatternStartDate</fullName>
+        <datatype>F</datatype>
+        <dateFormat>yyyy-MM-dd&apos;T&apos;HH:mm:ss.SSS&apos;Z&apos;</dateFormat>
+        <definitionCreationType>Custom</definitionCreationType>
+        <externalName>Recurrence2PatternStartDate</externalName>
+        <fieldFormula>sourceField[&apos;Recurrence2PatternStartDate&apos;]</fieldFormula>
+        <isDataRequired>false</isDataRequired>
+        <isEventDate>false</isEventDate>
+        <isFormula>false</isFormula>
+        <isRecordModified>false</isRecordModified>
+        <keyQualifierName>KQ_Recurrence2PatternStartDate</keyQualifierName>
+        <masterLabel>Recurrence Pattern Start Date</masterLabel>
+        <sequence xsi:nil="true"/>
+        <usageTag>NONE</usageTag>
+        <versionNumber>1.0</versionNumber>
+    </dataSourceFields>
+    <dataSourceFields>
+        <fullName>cdp_crm_dk1__Recurrence2PatternText</fullName>
+        <datatype>S</datatype>
+        <definitionCreationType>Custom</definitionCreationType>
+        <externalName>Recurrence2PatternText</externalName>
+        <fieldFormula>sourceField[&apos;Recurrence2PatternText&apos;]</fieldFormula>
+        <isDataRequired>false</isDataRequired>
+        <isEventDate>false</isEventDate>
+        <isFormula>false</isFormula>
+        <isRecordModified>false</isRecordModified>
+        <keyQualifierName>KQ_Recurrence2PatternText</keyQualifierName>
+        <masterLabel>Recurrence Pattern</masterLabel>
+        <sequence xsi:nil="true"/>
+        <usageTag>NONE</usageTag>
+        <versionNumber xsi:nil="true"/>
+    </dataSourceFields>
+    <dataSourceFields>
+        <fullName>cdp_crm_dk1__Recurrence2PatternTimeZone</fullName>
+        <datatype>S</datatype>
+        <definitionCreationType>Custom</definitionCreationType>
+        <externalName>Recurrence2PatternTimeZone</externalName>
+        <fieldFormula>sourceField[&apos;Recurrence2PatternTimeZone&apos;]</fieldFormula>
+        <isDataRequired>false</isDataRequired>
+        <isEventDate>false</isEventDate>
+        <isFormula>false</isFormula>
+        <isRecordModified>false</isRecordModified>
+        <keyQualifierName>KQ_Recurrence2PatternTimeZone</keyQualifierName>
+        <masterLabel>Recurrence Pattern Time Zone Reference</masterLabel>
+        <sequence xsi:nil="true"/>
+        <usageTag>NONE</usageTag>
+        <versionNumber xsi:nil="true"/>
+    </dataSourceFields>
+    <dataSourceFields>
+        <fullName>cdp_crm_dk1__Recurrence2PatternVersion</fullName>
+        <datatype>S</datatype>
+        <definitionCreationType>Custom</definitionCreationType>
+        <externalName>Recurrence2PatternVersion</externalName>
+        <fieldFormula>sourceField[&apos;Recurrence2PatternVersion&apos;]</fieldFormula>
+        <isDataRequired>false</isDataRequired>
+        <isEventDate>false</isEventDate>
+        <isFormula>false</isFormula>
+        <isRecordModified>false</isRecordModified>
+        <keyQualifierName>KQ_Recurrence2PatternVersion</keyQualifierName>
+        <masterLabel>Pattern Version</masterLabel>
+        <sequence xsi:nil="true"/>
+        <usageTag>NONE</usageTag>
+        <versionNumber xsi:nil="true"/>
+    </dataSourceFields>
+    <dataSourceFields>
+        <fullName>cdp_crm_dk1__RecurrenceActivityId</fullName>
+        <datatype>S</datatype>
+        <definitionCreationType>Custom</definitionCreationType>
+        <externalName>RecurrenceActivityId</externalName>
+        <fieldFormula>sourceField[&apos;RecurrenceActivityId&apos;]</fieldFormula>
+        <isDataRequired>false</isDataRequired>
+        <isEventDate>false</isEventDate>
+        <isFormula>false</isFormula>
+        <isRecordModified>false</isRecordModified>
+        <keyQualifierName>KQ_RecurrenceActivityId</keyQualifierName>
+        <masterLabel>Recurrence Activity ID</masterLabel>
+        <sequence xsi:nil="true"/>
+        <usageTag>NONE</usageTag>
+        <versionNumber xsi:nil="true"/>
+    </dataSourceFields>
+    <dataSourceFields>
+        <fullName>cdp_crm_dk1__RecurrenceDayOfMonth</fullName>
+        <datatype>N</datatype>
+        <definitionCreationType>Custom</definitionCreationType>
+        <externalName>RecurrenceDayOfMonth</externalName>
+        <fieldFormula>sourceField[&apos;RecurrenceDayOfMonth&apos;]</fieldFormula>
+        <isDataRequired>false</isDataRequired>
+        <isEventDate>false</isEventDate>
+        <isFormula>false</isFormula>
+        <isRecordModified>false</isRecordModified>
+        <keyQualifierName>KQ_RecurrenceDayOfMonth</keyQualifierName>
+        <masterLabel>Recurrence Day of Month</masterLabel>
+        <sequence xsi:nil="true"/>
+        <usageTag>NONE</usageTag>
+        <versionNumber xsi:nil="true"/>
+    </dataSourceFields>
+    <dataSourceFields>
+        <fullName>cdp_crm_dk1__RecurrenceDayOfWeekMask</fullName>
+        <datatype>N</datatype>
+        <definitionCreationType>Custom</definitionCreationType>
+        <externalName>RecurrenceDayOfWeekMask</externalName>
+        <fieldFormula>sourceField[&apos;RecurrenceDayOfWeekMask&apos;]</fieldFormula>
+        <isDataRequired>false</isDataRequired>
+        <isEventDate>false</isEventDate>
+        <isFormula>false</isFormula>
+        <isRecordModified>false</isRecordModified>
+        <keyQualifierName>KQ_RecurrenceDayOfWeekMask</keyQualifierName>
+        <masterLabel>Recurrence Day of Week Mask</masterLabel>
+        <sequence xsi:nil="true"/>
+        <usageTag>NONE</usageTag>
+        <versionNumber xsi:nil="true"/>
+    </dataSourceFields>
+    <dataSourceFields>
+        <fullName>cdp_crm_dk1__RecurrenceEndDateOnly</fullName>
+        <datatype>F</datatype>
+        <dateFormat>yyyy-MM-dd</dateFormat>
+        <definitionCreationType>Custom</definitionCreationType>
+        <externalName>RecurrenceEndDateOnly</externalName>
+        <fieldFormula>sourceField[&apos;RecurrenceEndDateOnly&apos;]</fieldFormula>
+        <isDataRequired>false</isDataRequired>
+        <isEventDate>false</isEventDate>
+        <isFormula>false</isFormula>
+        <isRecordModified>false</isRecordModified>
+        <keyQualifierName>KQ_RecurrenceEndDateOnly</keyQualifierName>
+        <masterLabel>Recurrence End</masterLabel>
+        <sequence xsi:nil="true"/>
+        <usageTag>NONE</usageTag>
+        <versionNumber>1.0</versionNumber>
+    </dataSourceFields>
+    <dataSourceFields>
+        <fullName>cdp_crm_dk1__RecurrenceInstance</fullName>
+        <datatype>S</datatype>
+        <definitionCreationType>Custom</definitionCreationType>
+        <externalName>RecurrenceInstance</externalName>
+        <fieldFormula>sourceField[&apos;RecurrenceInstance&apos;]</fieldFormula>
+        <isDataRequired>false</isDataRequired>
+        <isEventDate>false</isEventDate>
+        <isFormula>false</isFormula>
+        <isRecordModified>false</isRecordModified>
+        <keyQualifierName>KQ_RecurrenceInstance</keyQualifierName>
+        <masterLabel>Recurrence Instance</masterLabel>
+        <sequence xsi:nil="true"/>
+        <usageTag>NONE</usageTag>
+        <versionNumber xsi:nil="true"/>
+    </dataSourceFields>
+    <dataSourceFields>
+        <fullName>cdp_crm_dk1__RecurrenceInterval</fullName>
+        <datatype>N</datatype>
+        <definitionCreationType>Custom</definitionCreationType>
+        <externalName>RecurrenceInterval</externalName>
+        <fieldFormula>sourceField[&apos;RecurrenceInterval&apos;]</fieldFormula>
+        <isDataRequired>false</isDataRequired>
+        <isEventDate>false</isEventDate>
+        <isFormula>false</isFormula>
+        <isRecordModified>false</isRecordModified>
+        <keyQualifierName>KQ_RecurrenceInterval</keyQualifierName>
+        <masterLabel>Recurrence Interval</masterLabel>
+        <sequence xsi:nil="true"/>
+        <usageTag>NONE</usageTag>
+        <versionNumber xsi:nil="true"/>
+    </dataSourceFields>
+    <dataSourceFields>
+        <fullName>cdp_crm_dk1__RecurrenceMonthOfYear</fullName>
+        <datatype>S</datatype>
+        <definitionCreationType>Custom</definitionCreationType>
+        <externalName>RecurrenceMonthOfYear</externalName>
+        <fieldFormula>sourceField[&apos;RecurrenceMonthOfYear&apos;]</fieldFormula>
+        <isDataRequired>false</isDataRequired>
+        <isEventDate>false</isEventDate>
+        <isFormula>false</isFormula>
+        <isRecordModified>false</isRecordModified>
+        <keyQualifierName>KQ_RecurrenceMonthOfYear</keyQualifierName>
+        <masterLabel>Recurrence Month of Year</masterLabel>
+        <sequence xsi:nil="true"/>
+        <usageTag>NONE</usageTag>
+        <versionNumber xsi:nil="true"/>
+    </dataSourceFields>
+    <dataSourceFields>
+        <fullName>cdp_crm_dk1__RecurrenceStartDateTime</fullName>
+        <datatype>F</datatype>
+        <dateFormat>yyyy-MM-dd&apos;T&apos;HH:mm:ss.SSS&apos;Z&apos;</dateFormat>
+        <definitionCreationType>Custom</definitionCreationType>
+        <externalName>RecurrenceStartDateTime</externalName>
+        <fieldFormula>sourceField[&apos;RecurrenceStartDateTime&apos;]</fieldFormula>
+        <isDataRequired>false</isDataRequired>
+        <isEventDate>false</isEventDate>
+        <isFormula>false</isFormula>
+        <isRecordModified>false</isRecordModified>
+        <keyQualifierName>KQ_RecurrenceStartDateTime</keyQualifierName>
+        <masterLabel>Recurrence Start</masterLabel>
+        <sequence xsi:nil="true"/>
+        <usageTag>NONE</usageTag>
+        <versionNumber>1.0</versionNumber>
+    </dataSourceFields>
+    <dataSourceFields>
+        <fullName>cdp_crm_dk1__RecurrenceTimeZoneSidKey</fullName>
+        <datatype>S</datatype>
+        <definitionCreationType>Custom</definitionCreationType>
+        <externalName>RecurrenceTimeZoneSidKey</externalName>
+        <fieldFormula>sourceField[&apos;RecurrenceTimeZoneSidKey&apos;]</fieldFormula>
+        <isDataRequired>false</isDataRequired>
+        <isEventDate>false</isEventDate>
+        <isFormula>false</isFormula>
+        <isRecordModified>false</isRecordModified>
+        <keyQualifierName>KQ_RecurrenceTimeZoneSidKey</keyQualifierName>
+        <masterLabel>Recurrence Time Zone</masterLabel>
+        <sequence xsi:nil="true"/>
+        <usageTag>NONE</usageTag>
+        <versionNumber xsi:nil="true"/>
+    </dataSourceFields>
+    <dataSourceFields>
+        <fullName>cdp_crm_dk1__RecurrenceType</fullName>
+        <datatype>S</datatype>
+        <definitionCreationType>Custom</definitionCreationType>
+        <externalName>RecurrenceType</externalName>
+        <fieldFormula>sourceField[&apos;RecurrenceType&apos;]</fieldFormula>
+        <isDataRequired>false</isDataRequired>
+        <isEventDate>false</isEventDate>
+        <isFormula>false</isFormula>
+        <isRecordModified>false</isRecordModified>
+        <keyQualifierName>KQ_RecurrenceType</keyQualifierName>
+        <masterLabel>Recurrence Type</masterLabel>
+        <sequence xsi:nil="true"/>
+        <usageTag>NONE</usageTag>
+        <versionNumber xsi:nil="true"/>
+    </dataSourceFields>
+    <dataSourceFields>
+        <fullName>cdp_crm_dk1__ReminderDateTime</fullName>
+        <datatype>F</datatype>
+        <dateFormat>yyyy-MM-dd&apos;T&apos;HH:mm:ss.SSS&apos;Z&apos;</dateFormat>
+        <definitionCreationType>Custom</definitionCreationType>
+        <externalName>ReminderDateTime</externalName>
+        <fieldFormula>sourceField[&apos;ReminderDateTime&apos;]</fieldFormula>
+        <isDataRequired>false</isDataRequired>
+        <isEventDate>false</isEventDate>
+        <isFormula>false</isFormula>
+        <isRecordModified>false</isRecordModified>
+        <keyQualifierName>KQ_ReminderDateTime</keyQualifierName>
+        <masterLabel>Reminder Date/Time</masterLabel>
+        <sequence xsi:nil="true"/>
+        <usageTag>NONE</usageTag>
+        <versionNumber>1.0</versionNumber>
+    </dataSourceFields>
+    <dataSourceFields>
+        <fullName>cdp_crm_dk1__SfdcOrganizationId</fullName>
+        <datatype>S</datatype>
+        <definitionCreationType>Custom</definitionCreationType>
+        <externalName>SfdcOrganizationId</externalName>
+        <fieldFormula>sourceField[&apos;SfdcOrganizationId&apos;]</fieldFormula>
+        <isDataRequired>false</isDataRequired>
+        <isEventDate>false</isEventDate>
+        <isFormula>false</isFormula>
+        <isRecordModified>false</isRecordModified>
+        <keyQualifierName>KQ_SfdcOrganizationId</keyQualifierName>
+        <masterLabel>SfdcOrganizationId</masterLabel>
+        <sequence xsi:nil="true"/>
+        <usageTag>NONE</usageTag>
+        <versionNumber xsi:nil="true"/>
+    </dataSourceFields>
+    <dataSourceFields>
+        <fullName>cdp_crm_dk1__ShowAs</fullName>
+        <datatype>S</datatype>
+        <definitionCreationType>Custom</definitionCreationType>
+        <externalName>ShowAs</externalName>
+        <fieldFormula>sourceField[&apos;ShowAs&apos;]</fieldFormula>
+        <isDataRequired>false</isDataRequired>
+        <isEventDate>false</isEventDate>
+        <isFormula>false</isFormula>
+        <isRecordModified>false</isRecordModified>
+        <keyQualifierName>KQ_ShowAs</keyQualifierName>
+        <masterLabel>Show Time As</masterLabel>
+        <sequence xsi:nil="true"/>
+        <usageTag>NONE</usageTag>
+        <versionNumber xsi:nil="true"/>
+    </dataSourceFields>
+    <dataSourceFields>
+        <fullName>cdp_crm_dk1__Snippet</fullName>
+        <datatype>S</datatype>
+        <definitionCreationType>Custom</definitionCreationType>
+        <externalName>Snippet</externalName>
+        <fieldFormula>SUBSTRING(sourceField[&apos;Description&apos;],0,255)</fieldFormula>
+        <isDataRequired>false</isDataRequired>
+        <isEventDate>false</isEventDate>
+        <isFormula>true</isFormula>
+        <isRecordModified>false</isRecordModified>
+        <keyQualifierName>KQ_Snippet</keyQualifierName>
+        <masterLabel>Computed Snippet</masterLabel>
+        <sequence xsi:nil="true"/>
+        <usageTag>NONE</usageTag>
+        <versionNumber xsi:nil="true"/>
+    </dataSourceFields>
+    <dataSourceFields>
+        <fullName>cdp_crm_dk1__StartDateOnly</fullName>
+        <datatype>D</datatype>
+        <definitionCreationType>Custom</definitionCreationType>
+        <externalName>StartDateOnly</externalName>
+        <fieldFormula>DAYPRECISION(sourceField[&apos;StartDateTime&apos;])</fieldFormula>
+        <isDataRequired>false</isDataRequired>
+        <isEventDate>false</isEventDate>
+        <isFormula>true</isFormula>
+        <isRecordModified>false</isRecordModified>
+        <keyQualifierName>KQ_StartDateOnly</keyQualifierName>
+        <masterLabel>Computed Start Date Only</masterLabel>
+        <sequence xsi:nil="true"/>
+        <usageTag>NONE</usageTag>
+        <versionNumber>1.0</versionNumber>
+    </dataSourceFields>
+    <dataSourceFields>
+        <fullName>cdp_crm_dk1__StartDateTime</fullName>
+        <datatype>F</datatype>
+        <dateFormat>yyyy-MM-dd&apos;T&apos;HH:mm:ss.SSS&apos;Z&apos;</dateFormat>
+        <definitionCreationType>Custom</definitionCreationType>
+        <externalName>StartDateTime</externalName>
+        <fieldFormula>sourceField[&apos;StartDateTime&apos;]</fieldFormula>
+        <isDataRequired>false</isDataRequired>
+        <isEventDate>false</isEventDate>
+        <isFormula>false</isFormula>
+        <isRecordModified>false</isRecordModified>
+        <keyQualifierName>KQ_StartDateTime</keyQualifierName>
+        <masterLabel>Start Date Time</masterLabel>
+        <sequence xsi:nil="true"/>
+        <usageTag>NONE</usageTag>
+        <versionNumber>1.0</versionNumber>
+    </dataSourceFields>
+    <dataSourceFields>
+        <fullName>cdp_crm_dk1__Subject</fullName>
+        <datatype>S</datatype>
+        <definitionCreationType>Custom</definitionCreationType>
+        <externalName>Subject</externalName>
+        <fieldFormula>sourceField[&apos;Subject&apos;]</fieldFormula>
+        <isDataRequired>false</isDataRequired>
+        <isEventDate>false</isEventDate>
+        <isFormula>false</isFormula>
+        <isRecordModified>false</isRecordModified>
+        <keyQualifierName>KQ_Subject</keyQualifierName>
+        <masterLabel>Subject</masterLabel>
+        <sequence xsi:nil="true"/>
+        <usageTag>NONE</usageTag>
+        <versionNumber xsi:nil="true"/>
+    </dataSourceFields>
+    <dataSourceFields>
+        <fullName>cdp_crm_dk1__SystemModstamp</fullName>
+        <datatype>F</datatype>
+        <dateFormat>yyyy-MM-dd&apos;T&apos;HH:mm:ss.SSS&apos;Z&apos;</dateFormat>
+        <definitionCreationType>Custom</definitionCreationType>
+        <externalName>SystemModstamp</externalName>
+        <fieldFormula>sourceField[&apos;SystemModstamp&apos;]</fieldFormula>
+        <isDataRequired>true</isDataRequired>
+        <isEventDate>false</isEventDate>
+        <isFormula>false</isFormula>
+        <isRecordModified>false</isRecordModified>
+        <keyQualifierName>KQ_SystemModstamp</keyQualifierName>
+        <masterLabel>System Modstamp</masterLabel>
+        <sequence xsi:nil="true"/>
+        <usageTag>NONE</usageTag>
+        <versionNumber>1.0</versionNumber>
+    </dataSourceFields>
+    <dataSourceFields>
+        <fullName>cdp_crm_dk1__WhatCount</fullName>
+        <datatype>N</datatype>
+        <definitionCreationType>Custom</definitionCreationType>
+        <externalName>WhatCount</externalName>
+        <fieldFormula>sourceField[&apos;WhatCount&apos;]</fieldFormula>
+        <isDataRequired>false</isDataRequired>
+        <isEventDate>false</isEventDate>
+        <isFormula>false</isFormula>
+        <isRecordModified>false</isRecordModified>
+        <keyQualifierName>KQ_WhatCount</keyQualifierName>
+        <masterLabel>Related To Count</masterLabel>
+        <sequence xsi:nil="true"/>
+        <usageTag>NONE</usageTag>
+        <versionNumber xsi:nil="true"/>
+    </dataSourceFields>
+    <dataSourceFields>
+        <fullName>cdp_crm_dk1__WhatId</fullName>
+        <datatype>S</datatype>
+        <definitionCreationType>Custom</definitionCreationType>
+        <externalName>WhatId</externalName>
+        <fieldFormula>sourceField[&apos;WhatId&apos;]</fieldFormula>
+        <isDataRequired>false</isDataRequired>
+        <isEventDate>false</isEventDate>
+        <isFormula>false</isFormula>
+        <isRecordModified>false</isRecordModified>
+        <keyQualifierName>KQ_WhatId</keyQualifierName>
+        <masterLabel>Related To ID</masterLabel>
+        <sequence xsi:nil="true"/>
+        <usageTag>NONE</usageTag>
+        <versionNumber xsi:nil="true"/>
+    </dataSourceFields>
+    <dataSourceFields>
+        <fullName>cdp_crm_dk1__WhatObject</fullName>
+        <datatype>S</datatype>
+        <definitionCreationType>Custom</definitionCreationType>
+        <externalName>WhatObject</externalName>
+        <fieldFormula>IF(LEFT(sourceField[&apos;WhatId&apos;],3)==&quot;001&quot;,&quot;Account&quot;,
+IF(LEFT(sourceField[&apos;WhatId&apos;],3)==&quot;500&quot;,&quot;Case&quot;,
+IF(LEFT(sourceField[&apos;WhatId&apos;],3)==&quot;800&quot;,&quot;Contract&quot;,
+IF(LEFT(sourceField[&apos;WhatId&apos;],3)==&quot;006&quot;,&quot;Opportunity&quot;,))))</fieldFormula>
+        <isDataRequired>false</isDataRequired>
+        <isEventDate>false</isEventDate>
+        <isFormula>true</isFormula>
+        <isRecordModified>false</isRecordModified>
+        <keyQualifierName>KQ_WhatObject</keyQualifierName>
+        <masterLabel>Computed What Object</masterLabel>
+        <sequence xsi:nil="true"/>
+        <usageTag>NONE</usageTag>
+        <versionNumber xsi:nil="true"/>
+    </dataSourceFields>
+    <dataSourceFields>
+        <fullName>cdp_crm_dk1__WhoCount</fullName>
+        <datatype>N</datatype>
+        <definitionCreationType>Custom</definitionCreationType>
+        <externalName>WhoCount</externalName>
+        <fieldFormula>sourceField[&apos;WhoCount&apos;]</fieldFormula>
+        <isDataRequired>false</isDataRequired>
+        <isEventDate>false</isEventDate>
+        <isFormula>false</isFormula>
+        <isRecordModified>false</isRecordModified>
+        <keyQualifierName>KQ_WhoCount</keyQualifierName>
+        <masterLabel>Relation Count</masterLabel>
+        <sequence xsi:nil="true"/>
+        <usageTag>NONE</usageTag>
+        <versionNumber xsi:nil="true"/>
+    </dataSourceFields>
+    <dataSourceFields>
+        <fullName>cdp_crm_dk1__WhoId</fullName>
+        <datatype>S</datatype>
+        <definitionCreationType>Custom</definitionCreationType>
+        <externalName>WhoId</externalName>
+        <fieldFormula>sourceField[&apos;WhoId&apos;]</fieldFormula>
+        <isDataRequired>false</isDataRequired>
+        <isEventDate>false</isEventDate>
+        <isFormula>false</isFormula>
+        <isRecordModified>false</isRecordModified>
+        <keyQualifierName>KQ_WhoId</keyQualifierName>
+        <masterLabel>Name ID</masterLabel>
+        <sequence xsi:nil="true"/>
+        <usageTag>NONE</usageTag>
+        <versionNumber xsi:nil="true"/>
+    </dataSourceFields>
+    <dataSourceFields>
+        <fullName>cdp_crm_dk1__WhoObject</fullName>
+        <datatype>S</datatype>
+        <definitionCreationType>Custom</definitionCreationType>
+        <externalName>WhoObject</externalName>
+        <fieldFormula>IF(LEFT(sourceField[&apos;WhoId&apos;],3)==&quot;003&quot;,&quot;AccountContact&quot;,
+IF(LEFT(sourceField[&apos;WhoId&apos;],3)==&quot;00Q&quot;,&quot;Lead&quot;,
+IF(LEFT(sourceField[&apos;WhoId&apos;],3)==&quot;005&quot;,&quot;User&quot;,)))</fieldFormula>
+        <isDataRequired>false</isDataRequired>
+        <isEventDate>false</isEventDate>
+        <isFormula>true</isFormula>
+        <isRecordModified>false</isRecordModified>
+        <keyQualifierName>KQ_WhoObject</keyQualifierName>
+        <masterLabel>Computed Who Object</masterLabel>
+        <sequence xsi:nil="true"/>
+        <usageTag>NONE</usageTag>
+        <versionNumber xsi:nil="true"/>
+    </dataSourceFields>
+    <externalRecordIdentifier>Event</externalRecordIdentifier>
+    <masterLabel>Event</masterLabel>
+    <objectType>Object</objectType>
+    <sourceObject>Event__dll</sourceObject>
+    <storageType>LOCAL</storageType>
+    <templateVersion>1</templateVersion>
+</DataSourceObject>

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<FieldSrcTrgtRelationship xmlns="http://soap.sforce.com/2006/04/metadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <definitionCreationType>Custom</definitionCreationType>
+    <lookupFieldName>GenAIGtwyObjRecCitationRef__dlm.rel_1778081158956_end__c</lookupFieldName>
+    <masterLabel>GenAIGtwyObjRecCitationRef_parent_map_GenAIGtwyObjRecord_id_1778081158956</masterLabel>
+    <owner>DataCloud</owner>
+    <relationshipCardinality>ManyToOne</relationshipCardinality>
+    <sourceFieldName>GenAIGtwyObjRecCitationRef__dlm.parent__c</sourceFieldName>
+    <targetEntity xsi:nil="true"/>
+    <targetFieldName>GenAIGtwyObjRecord__dlm.id__c</targetFieldName>
+</FieldSrcTrgtRelationship>

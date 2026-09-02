@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Show_Guardian_1_Address_Section__c</fullName>
+    <description>Drives visibility of the Guardian 1 Address section in the application form. True when Guardian 1 has no PersonMailingStreet on file AND the student does not live with Guardian 1 — i.e., we need to ask the applicant for Guardian 1&apos;s address explicitly.</description>
+    <formula>ISBLANK(Primary_Guardian__r.PersonMailingStreet) &amp;&amp; NOT(Lives_With_Guardian_1__c)</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>Show Guardian 1 Address Section</label>
+    <trackHistory>false</trackHistory>
+    <type>Checkbox</type>
+</CustomField>

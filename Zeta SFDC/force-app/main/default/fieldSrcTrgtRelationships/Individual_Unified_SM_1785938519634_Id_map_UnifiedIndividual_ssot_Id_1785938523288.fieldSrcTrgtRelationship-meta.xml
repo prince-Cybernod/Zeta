@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<FieldSrcTrgtRelationship xmlns="http://soap.sforce.com/2006/04/metadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <definitionCreationType>Segment_Membership</definitionCreationType>
+    <lookupFieldName>Individual_Unified_SM_1785938519634__dlm.rel_1785938523288_end__c</lookupFieldName>
+    <masterLabel>Individual_Unified_SM_1785938519634_Id_map_UnifiedIndividual_ssot_Id_1785938523288</masterLabel>
+    <owner>DataCloud</owner>
+    <relationshipCardinality>ManyToOne</relationshipCardinality>
+    <sourceFieldName>Individual_Unified_SM_1785938519634__dlm.Id__c</sourceFieldName>
+    <targetEntity xsi:nil="true"/>
+    <targetFieldName>UnifiedIndividual__dlm.ssot__Id__c</targetFieldName>
+</FieldSrcTrgtRelationship>

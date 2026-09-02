@@ -1,0 +1,394 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionCalls>
+        <name>District</name>
+        <label>District</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <actionName>FindDistrictInvocable</actionName>
+        <actionType>apex</actionType>
+        <connector>
+            <targetReference>Active_District</targetReference>
+        </connector>
+        <faultConnector>
+            <isGoTo>true</isGoTo>
+            <targetReference>Active_District</targetReference>
+        </faultConnector>
+        <flowTransactionModel>Automatic</flowTransactionModel>
+        <inputParameters>
+            <name>latitude</name>
+            <value>
+                <elementReference>Geocode.latitude</elementReference>
+                <inputConfiguratorMode>Resource</inputConfiguratorMode>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>longitude</name>
+            <value>
+                <elementReference>Geocode.longitude</elementReference>
+                <inputConfiguratorMode>Resource</inputConfiguratorMode>
+            </value>
+        </inputParameters>
+        <nameSegment>FindDistrictInvocable</nameSegment>
+        <offset>0</offset>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </actionCalls>
+    <actionCalls>
+        <name>Find_Nearest_School</name>
+        <label>Find Nearest School</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <actionName>FindNearestSchoolInvocable</actionName>
+        <actionType>apex</actionType>
+        <connector>
+            <targetReference>Assign_CBO_values_to_vAccount</targetReference>
+        </connector>
+        <flowTransactionModel>Automatic</flowTransactionModel>
+        <inputParameters>
+            <name>latitude</name>
+            <value>
+                <elementReference>Geocode.latitude</elementReference>
+                <inputConfiguratorMode>Resource</inputConfiguratorMode>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>longitude</name>
+            <value>
+                <elementReference>Geocode.longitude</elementReference>
+                <inputConfiguratorMode>Resource</inputConfiguratorMode>
+            </value>
+        </inputParameters>
+        <nameSegment>FindNearestSchoolInvocable</nameSegment>
+        <offset>0</offset>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </actionCalls>
+    <actionCalls>
+        <name>Geocode</name>
+        <label>Geocode</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <actionName>GeocodeAddressInvocable</actionName>
+        <actionType>apex</actionType>
+        <connector>
+            <targetReference>District</targetReference>
+        </connector>
+        <flowTransactionModel>Automatic</flowTransactionModel>
+        <inputParameters>
+            <name>address</name>
+            <value>
+                <elementReference>fxAddress</elementReference>
+                <inputConfiguratorMode>Resource</inputConfiguratorMode>
+            </value>
+        </inputParameters>
+        <nameSegment>GeocodeAddressInvocable</nameSegment>
+        <offset>0</offset>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </actionCalls>
+    <apiVersion>67.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <assignments>
+        <name>Assign_CBO_values_to_vAccount</name>
+        <label>Assign CBO values to vAccount</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <assignmentItems>
+            <assignToReference>vAccountToUpdate.Closest_School__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>Find_Nearest_School.schoolId</elementReference>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>vAccountToUpdate.Distance_to_Closest_School__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>Find_Nearest_School.distanceInMiles</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Assign_vAccount_Values</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <name>Assign_vAccount_Values</name>
+        <label>Assign vAccount Values</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <assignmentItems>
+            <assignToReference>vAccountToUpdate.Id</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>$Record.Id</elementReference>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>vAccountToUpdate.District_Id__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>vDistrict</elementReference>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>vAccountToUpdate.Needs_Geocoding__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <booleanValue>false</booleanValue>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>vAccountToUpdate.Geocoding_Latitude__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>Geocode.latitude</elementReference>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>vAccountToUpdate.Geocoding_Longitude__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>Geocode.longitude</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Update_Account</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <name>Assign_vDistrict</name>
+        <label>Assign vDistrict</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <assignmentItems>
+            <assignToReference>vDistrict</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>District.district</elementReference>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>vAccountToUpdate.Geocoding_Status__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <stringValue>geocoded</stringValue>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>CBO_Account</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <name>Assign_vDistrict_NULL</name>
+        <label>Assign vDistrict NULL</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <assignmentItems>
+            <assignToReference>vDistrict</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <stringValue>N/A</stringValue>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>vAccountToUpdate.Geocoding_Status__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <stringValue>out_of_district</stringValue>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>CBO_Account</targetReference>
+        </connector>
+    </assignments>
+    <decisions>
+        <name>Active_District</name>
+        <label>Active District?</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <defaultConnector>
+            <targetReference>Assign_vDistrict</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>No_Active_District</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Flow.FaultMessage</leftValueReference>
+                <operator>Contains</operator>
+                <rightValue>
+                    <stringValue>No active District</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Assign_vDistrict_NULL</targetReference>
+            </connector>
+            <label>No Active District</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>CBO_Account</name>
+        <label>CBO Account</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <defaultConnector>
+            <targetReference>Assign_vAccount_Values</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>CBO</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.RecordType.DeveloperName</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>CBO</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Find_Nearest_School</targetReference>
+            </connector>
+            <label>CBO</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>Person_Account</name>
+        <label>Person Account?</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Yes_Person_Account</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.IsPersonAccount</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Update_Contact</targetReference>
+            </connector>
+            <label>Yes, Person Account</label>
+        </rules>
+    </decisions>
+    <environments>Default</environments>
+    <formulas>
+        <name>fxAddress</name>
+        <dataType>String</dataType>
+        <expression>IF(
+    {!$Record.IsPersonAccount},
+    TRIM(
+        BLANKVALUE({!$Record.PersonMailingStreet}, &apos;&apos;) &amp;
+        IF(NOT(ISBLANK({!$Record.PersonMailingStreet})), &apos;, &apos;, &apos;&apos;) &amp;
+        BLANKVALUE({!$Record.PersonMailingCity}, &apos;&apos;) &amp;
+        IF(NOT(ISBLANK({!$Record.PersonMailingCity})), &apos;, &apos;, &apos;&apos;) &amp;
+        BLANKVALUE({!$Record.PersonMailingState}, &apos;&apos;) &amp;
+        IF(NOT(ISBLANK({!$Record.PersonMailingPostalCode})), &apos; &apos;, &apos;&apos;) &amp;
+        BLANKVALUE({!$Record.PersonMailingPostalCode}, &apos;&apos;) &amp;
+        IF(NOT(ISBLANK({!$Record.PersonMailingCountry})), &apos;, &apos;, &apos;&apos;) &amp;
+        BLANKVALUE({!$Record.PersonMailingCountry}, &apos;&apos;)
+    ),
+    TRIM(
+        BLANKVALUE({!$Record.BillingStreet}, &apos;&apos;) &amp;
+        IF(NOT(ISBLANK({!$Record.BillingStreet})), &apos;, &apos;, &apos;&apos;) &amp;
+        BLANKVALUE({!$Record.BillingCity}, &apos;&apos;) &amp;
+        IF(NOT(ISBLANK({!$Record.BillingCity})), &apos;, &apos;, &apos;&apos;) &amp;
+        BLANKVALUE({!$Record.BillingState}, &apos;&apos;) &amp;
+        IF(NOT(ISBLANK({!$Record.BillingPostalCode})), &apos; &apos;, &apos;&apos;) &amp;
+        BLANKVALUE({!$Record.BillingPostalCode}, &apos;&apos;) &amp;
+        IF(NOT(ISBLANK({!$Record.BillingCountry})), &apos;, &apos;, &apos;&apos;) &amp;
+        BLANKVALUE({!$Record.BillingCountry}, &apos;&apos;)
+    )
+)</expression>
+    </formulas>
+    <interviewLabel>Account (After Save) Update Geocode and District {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Account (After Save) Update Geocode and District</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordUpdates>
+        <name>Update_Account</name>
+        <label>Update Account</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>Person_Account</targetReference>
+        </connector>
+        <inputReference>vAccountToUpdate</inputReference>
+    </recordUpdates>
+    <recordUpdates>
+        <name>Update_Contact</name>
+        <label>Update Contact</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>AccountId</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>$Record.Id</elementReference>
+            </value>
+        </filters>
+        <inputAssignments>
+            <field>MailingLatitude</field>
+            <value>
+                <elementReference>Geocode.latitude</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>MailingLongitude</field>
+            <value>
+                <elementReference>Geocode.longitude</elementReference>
+            </value>
+        </inputAssignments>
+        <object>Contact</object>
+    </recordUpdates>
+    <start>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <doesRequireRecordChangedToMeetCriteria>true</doesRequireRecordChangedToMeetCriteria>
+        <filterFormula>{!$Record.Needs_Geocoding__c} = true</filterFormula>
+        <object>Account</object>
+        <recordTriggerType>Update</recordTriggerType>
+        <scheduledPaths>
+            <connector>
+                <targetReference>Geocode</targetReference>
+            </connector>
+            <pathType>AsyncAfterCommit</pathType>
+        </scheduledPaths>
+        <triggerType>RecordAfterSave</triggerType>
+    </start>
+    <status>Active</status>
+    <triggerOrder>1500</triggerOrder>
+    <variables>
+        <name>vAccountToUpdate</name>
+        <dataType>SObject</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+        <objectType>Account</objectType>
+    </variables>
+    <variables>
+        <name>vDistrict</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+    </variables>
+</Flow>

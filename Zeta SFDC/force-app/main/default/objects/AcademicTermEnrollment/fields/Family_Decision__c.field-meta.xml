@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Family_Decision__c</fullName>
+    <description>Enrollment decision made by the family after receiving the offer.</description>
+    <label>Family Decision</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Accept decision to remain in applied grade</fullName>
+                <default>false</default>
+                <label>Accept decision to remain in applied grade</label>
+            </value>
+            <value>
+                <fullName>Accept holdover</fullName>
+                <default>false</default>
+                <label>Accept holdover</label>
+            </value>
+            <value>
+                <fullName>Decline holdover/offer</fullName>
+                <default>false</default>
+                <label>Decline holdover/offer</label>
+            </value>
+            <value>
+                <fullName>N/A, no assessment required</fullName>
+                <default>false</default>
+                <label>N/A, no assessment required</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

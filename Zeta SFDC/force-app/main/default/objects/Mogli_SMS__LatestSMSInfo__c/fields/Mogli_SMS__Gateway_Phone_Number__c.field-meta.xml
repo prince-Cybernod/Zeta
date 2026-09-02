@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Mogli_SMS__Gateway_Phone_Number__c</fullName>
+    <deprecated>false</deprecated>
+    <externalId>false</externalId>
+    <formula>IF( ISBLANK(  Mogli_SMS__Gateway__c  )  , &quot;&quot;, 
+  IF( NOT ( ISBLANK ( Mogli_SMS__Gateway__r.Mogli_SMS__PhoneNumber__c )), Mogli_SMS__Gateway__r.Mogli_SMS__PhoneNumber__c  ,
+    CASE(Mogli_SMS__Gateway__r.RecordType.DeveloperName,
+    &quot;Twilio&quot;, Mogli_SMS__Gateway__r.Mogli_SMS__Twilio_Messaging_Service_SID__c ,
+    &quot;Twilio_Voice&quot;,  Mogli_SMS__Gateway__r.Mogli_SMS__Twilio_Messaging_Service_SID__c ,
+    &quot;WhatsApp&quot;,  Mogli_SMS__Gateway__r.Mogli_SMS__Twilio_Messaging_Service_SID__c  ,
+    &quot;Telnyx&quot;,  Mogli_SMS__Gateway__r.Mogli_SMS__Messaging_Profile_ID__c ,
+    &quot;&quot;)
+))</formula>
+    <label>Gateway Phone Number</label>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<DataSourceObject xmlns="http://soap.sforce.com/2006/04/metadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <dataSource>cdp_crm_dk2__Salesforce_00DSG000002R9kQ</dataSource>
+    <dataSourceFields>
+        <fullName>cdp_crm_dk2__DataSource</fullName>
+        <datatype>S</datatype>
+        <definitionCreationType>System</definitionCreationType>
+        <externalName>DataSource</externalName>
+        <fieldFormula>&quot;Salesforce_00DRO000000KsET&quot;</fieldFormula>
+        <isDataRequired>false</isDataRequired>
+        <isEventDate>false</isEventDate>
+        <isFormula>true</isFormula>
+        <isRecordModified>false</isRecordModified>
+        <keyQualifierName>KQ_DataSource</keyQualifierName>
+        <masterLabel>Data Source</masterLabel>
+        <sequence xsi:nil="true"/>
+        <usageTag>NONE</usageTag>
+        <versionNumber xsi:nil="true"/>
+    </dataSourceFields>
+    <dataSourceFields>
+        <fullName>cdp_crm_dk2__DataSourceObject</fullName>
+        <datatype>S</datatype>
+        <definitionCreationType>System</definitionCreationType>
+        <externalName>DataSourceObject</externalName>
+        <fieldFormula>&quot;GroupMember&quot;</fieldFormula>
+        <isDataRequired>false</isDataRequired>
+        <isEventDate>false</isEventDate>
+        <isFormula>true</isFormula>
+        <isRecordModified>false</isRecordModified>
+        <keyQualifierName>KQ_DataSourceObject</keyQualifierName>
+        <masterLabel>Data Source Object</masterLabel>
+        <sequence xsi:nil="true"/>
+        <usageTag>NONE</usageTag>
+        <versionNumber xsi:nil="true"/>
+    </dataSourceFields>
+    <dataSourceFields>
+        <fullName>cdp_crm_dk2__GroupId</fullName>
+        <datatype>S</datatype>
+        <definitionCreationType>Custom</definitionCreationType>
+        <externalName>GroupId</externalName>
+        <fieldFormula>sourceField[&apos;GroupId&apos;]</fieldFormula>
+        <isDataRequired>false</isDataRequired>
+        <isEventDate>false</isEventDate>
+        <isFormula>false</isFormula>
+        <isRecordModified>false</isRecordModified>
+        <keyQualifierName>KQ_GroupId</keyQualifierName>
+        <masterLabel>Group ID</masterLabel>
+        <sequence xsi:nil="true"/>
+        <usageTag>NONE</usageTag>
+        <versionNumber xsi:nil="true"/>
+    </dataSourceFields>
+    <dataSourceFields>
+        <fullName>cdp_crm_dk2__Id</fullName>
+        <datatype>S</datatype>
+        <definitionCreationType>Custom</definitionCreationType>
+        <externalName>Id</externalName>
+        <fieldFormula>sourceField[&apos;Id&apos;]</fieldFormula>
+        <isDataRequired>false</isDataRequired>
+        <isEventDate>false</isEventDate>
+        <isFormula>false</isFormula>
+        <isRecordModified>false</isRecordModified>
+        <keyQualifierName>KQ_Id</keyQualifierName>
+        <masterLabel>Group Member ID</masterLabel>
+        <primaryIndexOrder>1</primaryIndexOrder>
+        <sequence xsi:nil="true"/>
+        <usageTag>NONE</usageTag>
+        <versionNumber xsi:nil="true"/>
+    </dataSourceFields>
+    <dataSourceFields>
+        <fullName>cdp_crm_dk2__RelatedUserGroupId</fullName>
+        <datatype>S</datatype>
+        <definitionCreationType>Custom</definitionCreationType>
+        <externalName>RelatedUserGroupId</externalName>
+        <fieldFormula>IF(LEFT(sourceField[&apos;UserOrGroupId&apos;],3)==&apos;00G&apos;,sourceField[&apos;UserOrGroupId&apos;],&apos;&apos;)</fieldFormula>
+        <isDataRequired>false</isDataRequired>
+        <isEventDate>false</isEventDate>
+        <isFormula>true</isFormula>
+        <isRecordModified>false</isRecordModified>
+        <keyQualifierName>KQ_RelatedUserGroupId</keyQualifierName>
+        <masterLabel>RelatedUserGroupId</masterLabel>
+        <sequence xsi:nil="true"/>
+        <usageTag>NONE</usageTag>
+        <versionNumber xsi:nil="true"/>
+    </dataSourceFields>
+    <dataSourceFields>
+        <fullName>cdp_crm_dk2__RelatedUserId</fullName>
+        <datatype>S</datatype>
+        <definitionCreationType>Custom</definitionCreationType>
+        <externalName>RelatedUserId</externalName>
+        <fieldFormula>IF(LEFT(sourceField[&apos;UserOrGroupId&apos;],3)==&apos;005&apos;,sourceField[&apos;UserOrGroupId&apos;],&apos;&apos;)</fieldFormula>
+        <isDataRequired>false</isDataRequired>
+        <isEventDate>false</isEventDate>
+        <isFormula>true</isFormula>
+        <isRecordModified>false</isRecordModified>
+        <keyQualifierName>KQ_RelatedUserId</keyQualifierName>
+        <masterLabel>RelatedUserId</masterLabel>
+        <sequence xsi:nil="true"/>
+        <usageTag>NONE</usageTag>
+        <versionNumber xsi:nil="true"/>
+    </dataSourceFields>
+    <dataSourceFields>
+        <fullName>cdp_crm_dk2__SfdcOrganizationId</fullName>
+        <datatype>S</datatype>
+        <definitionCreationType>Custom</definitionCreationType>
+        <externalName>SfdcOrganizationId</externalName>
+        <fieldFormula>sourceField[&apos;SfdcOrganizationId&apos;]</fieldFormula>
+        <isDataRequired>false</isDataRequired>
+        <isEventDate>false</isEventDate>
+        <isFormula>false</isFormula>
+        <isRecordModified>false</isRecordModified>
+        <keyQualifierName>KQ_SfdcOrganizationId</keyQualifierName>
+        <masterLabel>SfdcOrganizationId</masterLabel>
+        <sequence xsi:nil="true"/>
+        <usageTag>NONE</usageTag>
+        <versionNumber xsi:nil="true"/>
+    </dataSourceFields>
+    <dataSourceFields>
+        <fullName>cdp_crm_dk2__SystemModstamp</fullName>
+        <datatype>F</datatype>
+        <dateFormat>yyyy-MM-dd&apos;T&apos;HH:mm:ss.SSS&apos;Z&apos;</dateFormat>
+        <definitionCreationType>Custom</definitionCreationType>
+        <externalName>SystemModstamp</externalName>
+        <fieldFormula>sourceField[&apos;SystemModstamp&apos;]</fieldFormula>
+        <isDataRequired>true</isDataRequired>
+        <isEventDate>false</isEventDate>
+        <isFormula>false</isFormula>
+        <isRecordModified>false</isRecordModified>
+        <keyQualifierName>KQ_SystemModstamp</keyQualifierName>
+        <masterLabel>System Modstamp</masterLabel>
+        <sequence xsi:nil="true"/>
+        <usageTag>NONE</usageTag>
+        <versionNumber>1.0</versionNumber>
+    </dataSourceFields>
+    <dataSourceFields>
+        <fullName>cdp_crm_dk2__UserOrGroupId</fullName>
+        <datatype>S</datatype>
+        <definitionCreationType>Custom</definitionCreationType>
+        <externalName>UserOrGroupId</externalName>
+        <fieldFormula>sourceField[&apos;UserOrGroupId&apos;]</fieldFormula>
+        <isDataRequired>false</isDataRequired>
+        <isEventDate>false</isEventDate>
+        <isFormula>false</isFormula>
+        <isRecordModified>false</isRecordModified>
+        <keyQualifierName>KQ_UserOrGroupId</keyQualifierName>
+        <masterLabel>User/Group ID</masterLabel>
+        <sequence xsi:nil="true"/>
+        <usageTag>NONE</usageTag>
+        <versionNumber xsi:nil="true"/>
+    </dataSourceFields>
+    <externalRecordIdentifier>GroupMember</externalRecordIdentifier>
+    <masterLabel>GroupMember</masterLabel>
+    <objectType>Object</objectType>
+    <storageType>LOCAL</storageType>
+    <templateVersion>1</templateVersion>
+</DataSourceObject>

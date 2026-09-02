@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<FieldSrcTrgtRelationship xmlns="http://soap.sforce.com/2006/04/metadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <definitionCreationType>Standard</definitionCreationType>
+    <lookupFieldName>ssot__KnowledgeArticleCategory__dlm.ssot__rel_1710432584477_end__c</lookupFieldName>
+    <masterLabel>KnowledgeArticleCategory_KnowledgeArticleVersionId_map_KnowledgeArticleVersion_Id_N_1</masterLabel>
+    <owner>DataCloud</owner>
+    <relationshipCardinality>ManyToOne</relationshipCardinality>
+    <sourceFieldName>ssot__KnowledgeArticleCategory__dlm.ssot__KnowledgeArticleVersionId__c</sourceFieldName>
+    <targetEntity xsi:nil="true"/>
+    <targetFieldName>ssot__KnowledgeArticleVersion__dlm.ssot__Id__c</targetFieldName>
+</FieldSrcTrgtRelationship>

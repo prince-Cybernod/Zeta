@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Mogli_SMS__SMS_Hold_Status__c</fullName>
+    <defaultValue>&quot;Holding&quot;</defaultValue>
+    <deprecated>false</deprecated>
+    <description>Allows message to be sent when an outgoing SMS record status changes from this value to Queued.</description>
+    <externalId>false</externalId>
+    <label>Outgoing Message Hold Status</label>
+    <length>50</length>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

@@ -1,0 +1,1000 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>66.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <assignments>
+        <description>assigns the current school app to a collection to be bulk updated</description>
+        <name>Assign_current_app_to_collection</name>
+        <label>Assign current app to collection</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <assignmentItems>
+            <assignToReference>colSchoolAppstoUpdate</assignToReference>
+            <operator>Add</operator>
+            <value>
+                <elementReference>Loop_through_selected_school_apps</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Loop_through_selected_school_apps</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <description>assigns the submitted status to the current school application in the loop</description>
+        <name>Assign_Submitted_Status</name>
+        <label>Assign Submitted Status</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <assignmentItems>
+            <assignToReference>Loop_through_selected_school_apps.Status</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <stringValue>Submitted</stringValue>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Assign_current_app_to_collection</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <description>Stages the Individual Application update to mark Eligible and stamp reviewer audit fields. No DML is performed here.</description>
+        <name>Assignment_Eligibility_Stamp_Eligible_Values</name>
+        <label>Assignment | Eligibility | Stamp Eligible Values</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <assignmentItems>
+            <assignToReference>Get_Individual_Application.Status</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <stringValue>Eligible</stringValue>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>Get_Individual_Application.Eligibility_Reviewer__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>$User.Id</elementReference>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>Get_Individual_Application.Eligibility_Review_Date__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>$Flow.CurrentDateTime</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>confirmMarkEligible</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <description>Assigns Grade Applying To and Birthdate values from the Individual Application and its related Student Account into header variables for display.</description>
+        <name>Assignment_Header_Set_Grade_and_Birthdate</name>
+        <label>Assignment | Header | Set Grade and Birthdate</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <assignmentItems>
+            <assignToReference>varHeaderBirthdate</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>Get_Individual_Application.Account.PersonBirthdate</elementReference>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>varHeaderGradeApplyingTo</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>Get_Individual_Application.Grade_Applying_To__c</elementReference>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>varAddress</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>Get_Individual_Application.Account.PersonMailingAddress</elementReference>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>varSchoolStartAge</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>Get_Individual_Application.School_Start_Age__c</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Decision_Masterflow_button_selected</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <description>Stages Withdrawn/Declined status, reviewer audit fields, and reason on the Individual Application record variable prior to update. No database update occurs in this step.</description>
+        <name>Assignment_Individual_Application_Stage_Withdrawn_Declined</name>
+        <label>Assignment | Individual Application | Stage Withdrawn/Declined</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <assignmentItems>
+            <assignToReference>Get_Individual_Application.Status</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <stringValue>Withdrawn/Declined</stringValue>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>Get_Individual_Application.Withdrawn_Declined_Reason__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>Reason_for_Withdrawn_Declined</elementReference>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>Get_Individual_Application.Eligibility_Review_Date__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>$Flow.CurrentDateTime</elementReference>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>Get_Individual_Application.Eligibility_Reviewer__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>$User.Id</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Update_Individual_Application_Withdrawn_Declined</targetReference>
+        </connector>
+    </assignments>
+    <customProperties>
+        <name>ScreenProgressIndicator</name>
+        <value>
+            <stringValue>{&quot;location&quot;:&quot;top&quot;,&quot;type&quot;:&quot;simple&quot;}</stringValue>
+        </value>
+    </customProperties>
+    <decisions>
+        <description>Routes the user based on the selected button on the eligibility screen (Mark Eligible, Cancel/Withdraw, Review Items).</description>
+        <name>Decision_Eligibility_Action_Selected</name>
+        <label>Decision | Eligibility | Action Selected?</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <defaultConnectorLabel>Default</defaultConnectorLabel>
+        <rules>
+            <name>Mark_Eligible</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Button_EligibilityNextSteps.value</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Mark Eligible</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Decision_Eligibility_Prereqs_Met</targetReference>
+            </connector>
+            <label>Mark Eligible</label>
+        </rules>
+        <rules>
+            <name>Mark_Applied</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>markAppliedButton.value</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Mark Applied</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Get_School_Applications</targetReference>
+            </connector>
+            <label>Mark Applied</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <description>Determines whether the Individual Application meets all eligibility prerequisites (District set, Age/Grade appropriate, no Priority Items pending review). Routes to the Eligible path when met; otherwise routes to the Not Completed path.</description>
+        <name>Decision_Eligibility_Prereqs_Met</name>
+        <label>Decision | Eligibility | Prereqs Met?</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <defaultConnector>
+            <targetReference>Screen_Eligibility_Not_Completed</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>No</defaultConnectorLabel>
+        <rules>
+            <name>Yes_prereqsmet</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>fxPrereq_DistrictMet</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>fxPrereq_AgeGradeMet</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>Get_Individual_Application.Priority_Items_Pending_Review__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <numberValue>0.0</numberValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>Get_Individual_Application.Residency_Restriction__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Assignment_Eligibility_Stamp_Eligible_Values</targetReference>
+            </connector>
+            <label>Yes</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <description>Routes user to withdrawn declined screen if that&apos;s what the user selected in the main flow.</description>
+        <name>Decision_Masterflow_button_selected</name>
+        <label>Decision | Masterflow button selected?</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <defaultConnector>
+            <targetReference>Screen_Eligibility_Confirm_Eligible</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Confirm Eligibility</defaultConnectorLabel>
+        <rules>
+            <name>Selected_Withdrawn_Declined</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>varMasterflowButtonSelected</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Mark Withdrawn/Declined</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Screen_Individual_Application_Withdrawn_Declined_Reason</targetReference>
+            </connector>
+            <label>Selected Withdrawn/Declined</label>
+        </rules>
+    </decisions>
+    <description>Created by: Elevation Solutions
+
+Sub-screenflow that supports the Validate Priorities and Eligibility process by confirming overall applicant eligibility for an Individual Application. Pulls Priority Items, evaluates prerequisite completion (age/grade, district, priority item review/verification, special character review, residency restriction as applicable), and controls outcomes: allow marking Eligible (stamping reviewer date/time) or allow cancel/withdraw with reason. DML occurs outside of screens.`</description>
+    <environments>Default</environments>
+    <formulas>
+        <description>Human-readable list of unmet eligibility prerequisites for display on the Not Completed screen.</description>
+        <name>fxEligibility_Blocking_Reasons</name>
+        <dataType>String</dataType>
+        <expression>IF(
+  NOT({!fxPrereq_DistrictMet}),
+  &quot;• Student District is missing&lt;br/&gt;&quot;,
+  &quot;&quot;
+) &amp;
+IF(
+ {!Get_Individual_Application.Residency_Restriction__c},
+  &quot;• Residency requirement is not met (Pre-K must be New York City; K–12 must be NY State)&lt;br/&gt;&quot;,
+  &quot;&quot;
+) &amp;
+IF(
+  NOT({!fxPrereq_AgeGradeMet}),
+  &quot;• Age / Grade eligibility has not been approved&lt;br/&gt;&quot;,
+  &quot;&quot;
+) &amp;
+IF(
+  {!varPriorityItemCountNotVerified} &gt; 0,
+  &quot;• &quot; &amp; TEXT({!varPriorityItemCountNotVerified}) &amp; &quot; Priority Item(s) are still pending review&lt;br/&gt;&quot;,
+  &quot;&quot;
+)</expression>
+    </formulas>
+    <formulas>
+        <description>Builds Applicant full name for the header card from the Individual Application’s related Student Account, including optional middle name.</description>
+        <name>fxHeaderApplicantName</name>
+        <dataType>String</dataType>
+        <expression>{!Get_Individual_Application.Account.FirstName} &amp;
+IF(
+  ISBLANK({!Get_Individual_Application.Account.MiddleName}),
+  &quot; &quot;,
+  &quot; &quot; &amp; {!Get_Individual_Application.Account.MiddleName} &amp; &quot; &quot;
+) &amp;
+{!Get_Individual_Application.Account.LastName}</expression>
+    </formulas>
+    <formulas>
+        <description>Returns TRUE when age/grade prerequisite is satisfied: either no age inconsistency exists, or an exception has been approved (Age Inconsistency Review Status = Exception Made).</description>
+        <name>fxPrereq_AgeGradeMet</name>
+        <dataType>Boolean</dataType>
+        <expression>OR(
+  NOT({!Get_Individual_Application.Age_Inconsistency_Flag_c__c}),
+  ISPICKVAL({!Get_Individual_Application.Age_Inconsistency_Review_Status__c}, &quot;Exception Made&quot;)
+)</expression>
+    </formulas>
+    <formulas>
+        <description>Returns TRUE when the district prerequisite is satisfied: Student District is populated on the Individual Application.</description>
+        <name>fxPrereq_DistrictMet</name>
+        <dataType>Boolean</dataType>
+        <expression>NOT(
+  ISBLANK({!Get_Individual_Application.Student_District_Id__c})
+)</expression>
+    </formulas>
+    <interviewLabel>Validate Priorities and Eligibility (Sub-Screenflow) Confirm Overall Applicant Eligibility {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Validate Priorities and Eligibility (Sub-Screenflow) Confirm Overall Applicant Eligibility</label>
+    <loops>
+        <description>Loops through the selected school applications and sets them as applied status</description>
+        <name>Loop_through_selected_school_apps</name>
+        <label>Loop through selected school apps</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <collectionReference>schoolApplications.selectedRows</collectionReference>
+        <iterationOrder>Asc</iterationOrder>
+        <nextValueConnector>
+            <targetReference>Assign_Submitted_Status</targetReference>
+        </nextValueConnector>
+        <noMoreValuesConnector>
+            <targetReference>Update_School_Apps_Applied</targetReference>
+        </noMoreValuesConnector>
+    </loops>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>Flow</processType>
+    <recordLookups>
+        <description>Grabs the individual application being reviewed.</description>
+        <name>Get_Individual_Application</name>
+        <label>Get | Individual Application</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Assignment_Header_Set_Grade_and_Birthdate</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>recordId</elementReference>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>IndividualApplication</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordLookups>
+        <description>Grabs related School Applications</description>
+        <name>Get_School_Applications</name>
+        <label>Get | School Applications</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Screen_Applied</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>IndividualApplicationId</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>Get_Individual_Application.Id</elementReference>
+            </value>
+        </filters>
+        <getFirstRecordOnly>false</getFirstRecordOnly>
+        <object>AcademicInterest</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordUpdates>
+        <description>Commits the staged Eligible values (status + reviewer audit fields) to the current Individual Application record. Runs only when eligibility prerequisites are met and the reviewer selects Mark Eligible.</description>
+        <name>Update_Individual_Application_Mark_Eligible</name>
+        <label>Update | Individual Application | Mark Eligible</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <inputReference>Get_Individual_Application</inputReference>
+    </recordUpdates>
+    <recordUpdates>
+        <description>Updates the Individual Application to Withdrawn/Declined and stores the reviewer-provided reason.</description>
+        <name>Update_Individual_Application_Withdrawn_Declined</name>
+        <label>Update | Individual Application | Withdrawn/Declined</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <inputReference>Get_Individual_Application</inputReference>
+    </recordUpdates>
+    <recordUpdates>
+        <description>Updates the selected school Applications to applied</description>
+        <name>Update_School_Apps_Applied</name>
+        <label>Update School Apps - Applied</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <inputReference>colSchoolAppstoUpdate</inputReference>
+    </recordUpdates>
+    <screens>
+        <description>Gives the zeta user a chance to confirm the decision</description>
+        <name>confirmMarkEligible</name>
+        <label>confirmMarkEligible</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <allowBack>true</allowBack>
+        <allowFinish>true</allowFinish>
+        <allowPause>false</allowPause>
+        <connector>
+            <targetReference>Update_Individual_Application_Mark_Eligible</targetReference>
+        </connector>
+        <fields>
+            <name>eligibleconfirmationheader</name>
+            <fieldText>&lt;p&gt;{!TT_Master_Header}&lt;/p&gt;</fieldText>
+            <fieldType>DisplayText</fieldType>
+            <styleProperties>
+                <verticalAlignment>
+                    <stringValue>top</stringValue>
+                </verticalAlignment>
+                <width>
+                    <stringValue>12</stringValue>
+                </width>
+            </styleProperties>
+        </fields>
+        <fields>
+            <name>markelegibleconfirmation</name>
+            <fieldText>&lt;p&gt;{!TT_Confirm_Mark_Eligible_Message}&lt;/p&gt;</fieldText>
+            <fieldType>DisplayText</fieldType>
+            <styleProperties>
+                <verticalAlignment>
+                    <stringValue>top</stringValue>
+                </verticalAlignment>
+                <width>
+                    <stringValue>12</stringValue>
+                </width>
+            </styleProperties>
+        </fields>
+        <nextOrFinishButtonLabel>Confirm</nextOrFinishButtonLabel>
+        <showFooter>true</showFooter>
+        <showHeader>false</showHeader>
+    </screens>
+    <screens>
+        <name>Screen_Applied</name>
+        <label>Screen | Applied</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <allowBack>true</allowBack>
+        <allowFinish>true</allowFinish>
+        <allowPause>false</allowPause>
+        <connector>
+            <targetReference>Loop_through_selected_school_apps</targetReference>
+        </connector>
+        <fields>
+            <name>PrereqNotMetHeader</name>
+            <fieldText>&lt;p&gt;{!TT_Master_Header}&lt;/p&gt;</fieldText>
+            <fieldType>DisplayText</fieldType>
+            <styleProperties>
+                <verticalAlignment>
+                    <stringValue>top</stringValue>
+                </verticalAlignment>
+                <width>
+                    <stringValue>12</stringValue>
+                </width>
+            </styleProperties>
+        </fields>
+        <fields>
+            <name>appliedinstructions</name>
+            <fieldText>&lt;p&gt;{!TT_Reinstate_Applied_Intro}&lt;/p&gt;</fieldText>
+            <fieldType>DisplayText</fieldType>
+            <styleProperties>
+                <verticalAlignment>
+                    <stringValue>top</stringValue>
+                </verticalAlignment>
+                <width>
+                    <stringValue>12</stringValue>
+                </width>
+            </styleProperties>
+        </fields>
+        <fields>
+            <name>schoolApplications</name>
+            <dataTypeMappings>
+                <typeName>T</typeName>
+                <typeValue>AcademicInterest</typeValue>
+            </dataTypeMappings>
+            <extensionName>flowruntime:datatable</extensionName>
+            <fieldType>ComponentInstance</fieldType>
+            <inputParameters>
+                <name>label</name>
+                <value>
+                    <stringValue>schoolApplications</stringValue>
+                </value>
+            </inputParameters>
+            <inputParameters>
+                <name>selectionMode</name>
+                <value>
+                    <stringValue>MULTI_SELECT</stringValue>
+                </value>
+            </inputParameters>
+            <inputParameters>
+                <name>minRowSelection</name>
+                <value>
+                    <numberValue>0.0</numberValue>
+                </value>
+            </inputParameters>
+            <inputParameters>
+                <name>tableData</name>
+                <value>
+                    <elementReference>Get_School_Applications</elementReference>
+                </value>
+            </inputParameters>
+            <inputParameters>
+                <name>keyField</name>
+                <value>
+                    <complexValue>{&quot;dataType&quot;:&quot;SObject&quot;,&quot;objectType&quot;:&quot;AcademicInterest&quot;,&quot;fieldReferences&quot;:[&quot;Id&quot;],&quot;elementReference&quot;:&quot;Get_School_Applications&quot;}</complexValue>
+                    <complexValueType>ComplexObjectFieldDetails</complexValueType>
+                </value>
+            </inputParameters>
+            <inputParameters>
+                <name>columns</name>
+                <value>
+                    <stringValue>[{&quot;apiName&quot;:&quot;Name&quot;,&quot;guid&quot;:&quot;column-31eb&quot;,&quot;editable&quot;:false,&quot;hasCustomHeaderLabel&quot;:false,&quot;customHeaderLabel&quot;:&quot;&quot;,&quot;wrapText&quot;:true,&quot;order&quot;:0,&quot;sortable&quot;:false,&quot;label&quot;:&quot;Name&quot;,&quot;type&quot;:&quot;text&quot;},{&quot;apiName&quot;:&quot;fx_SchoolName__c&quot;,&quot;guid&quot;:&quot;column-2f48&quot;,&quot;editable&quot;:false,&quot;hasCustomHeaderLabel&quot;:true,&quot;customHeaderLabel&quot;:&quot;School Name&quot;,&quot;wrapText&quot;:true,&quot;order&quot;:1,&quot;sortable&quot;:false,&quot;label&quot;:&quot;fx_SchoolName&quot;,&quot;type&quot;:&quot;customRichText&quot;},{&quot;apiName&quot;:&quot;Status&quot;,&quot;guid&quot;:&quot;column-5d7c&quot;,&quot;editable&quot;:false,&quot;hasCustomHeaderLabel&quot;:false,&quot;customHeaderLabel&quot;:&quot;&quot;,&quot;wrapText&quot;:true,&quot;order&quot;:2,&quot;sortable&quot;:false,&quot;label&quot;:&quot;Status&quot;,&quot;type&quot;:&quot;text&quot;}]</stringValue>
+                </value>
+            </inputParameters>
+            <inputParameters>
+                <name>columnReferences</name>
+                <value>
+                    <complexValue>{&quot;dataType&quot;:&quot;SObject&quot;,&quot;objectType&quot;:&quot;AcademicInterest&quot;,&quot;fieldReferences&quot;:[&quot;Name&quot;,&quot;fx_SchoolName__c&quot;,&quot;Status&quot;],&quot;elementReference&quot;:&quot;Get_School_Applications&quot;}</complexValue>
+                    <complexValueType>ComplexObjectFieldDetails</complexValueType>
+                </value>
+            </inputParameters>
+            <inputsOnNextNavToAssocScrn>UseStoredValues</inputsOnNextNavToAssocScrn>
+            <isRequired>true</isRequired>
+            <storeOutputAutomatically>true</storeOutputAutomatically>
+            <styleProperties>
+                <verticalAlignment>
+                    <stringValue>top</stringValue>
+                </verticalAlignment>
+                <width>
+                    <stringValue>12</stringValue>
+                </width>
+            </styleProperties>
+        </fields>
+        <nextOrFinishButtonLabel>Submit Updates</nextOrFinishButtonLabel>
+        <showFooter>true</showFooter>
+        <showHeader>false</showHeader>
+    </screens>
+    <screens>
+        <description>Displayed when all eligibility prerequisites are met; allows reviewer to confirm eligibility or withdraw/cancel.</description>
+        <name>Screen_Eligibility_Confirm_Eligible</name>
+        <label>Screen | Eligibility | Confirm Eligible</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <allowBack>false</allowBack>
+        <allowFinish>true</allowFinish>
+        <allowPause>false</allowPause>
+        <connector>
+            <targetReference>Decision_Eligibility_Action_Selected</targetReference>
+        </connector>
+        <fields>
+            <name>txtdisplay_Header</name>
+            <fieldText>&lt;p&gt;{!TT_Master_Header}&lt;/p&gt;</fieldText>
+            <fieldType>DisplayText</fieldType>
+            <styleProperties>
+                <verticalAlignment>
+                    <stringValue>top</stringValue>
+                </verticalAlignment>
+                <width>
+                    <stringValue>12</stringValue>
+                </width>
+            </styleProperties>
+        </fields>
+        <fields>
+            <name>eligblestatus</name>
+            <fieldText>&lt;p&gt;{!txt_Status_Eligible}&lt;/p&gt;</fieldText>
+            <fieldType>DisplayText</fieldType>
+            <styleProperties>
+                <verticalAlignment>
+                    <stringValue>top</stringValue>
+                </verticalAlignment>
+                <width>
+                    <stringValue>12</stringValue>
+                </width>
+            </styleProperties>
+            <visibilityRule>
+                <conditionLogic>and</conditionLogic>
+                <conditions>
+                    <leftValueReference>Get_Individual_Application.Status</leftValueReference>
+                    <operator>EqualTo</operator>
+                    <rightValue>
+                        <stringValue>Eligible</stringValue>
+                    </rightValue>
+                </conditions>
+            </visibilityRule>
+        </fields>
+        <fields>
+            <name>withdrawnstatus</name>
+            <fieldText>&lt;p&gt;{!txt_Status_WithdrawnDeclined}&lt;/p&gt;</fieldText>
+            <fieldType>DisplayText</fieldType>
+            <styleProperties>
+                <verticalAlignment>
+                    <stringValue>top</stringValue>
+                </verticalAlignment>
+                <width>
+                    <stringValue>12</stringValue>
+                </width>
+            </styleProperties>
+            <visibilityRule>
+                <conditionLogic>and</conditionLogic>
+                <conditions>
+                    <leftValueReference>Get_Individual_Application.Status</leftValueReference>
+                    <operator>EqualTo</operator>
+                    <rightValue>
+                        <stringValue>Withdrawn/Declined</stringValue>
+                    </rightValue>
+                </conditions>
+            </visibilityRule>
+        </fields>
+        <fields>
+            <name>appliedstatus</name>
+            <fieldText>&lt;p&gt;{!txt_Status_Applied}&lt;/p&gt;</fieldText>
+            <fieldType>DisplayText</fieldType>
+            <styleProperties>
+                <verticalAlignment>
+                    <stringValue>top</stringValue>
+                </verticalAlignment>
+                <width>
+                    <stringValue>12</stringValue>
+                </width>
+            </styleProperties>
+            <visibilityRule>
+                <conditionLogic>and</conditionLogic>
+                <conditions>
+                    <leftValueReference>Get_Individual_Application.Status</leftValueReference>
+                    <operator>EqualTo</operator>
+                    <rightValue>
+                        <stringValue>Applied</stringValue>
+                    </rightValue>
+                </conditions>
+            </visibilityRule>
+        </fields>
+        <fields>
+            <name>Button_EligibilityNextSteps</name>
+            <extensionName>c:fsc_flowButtonBar</extensionName>
+            <fieldType>ComponentInstance</fieldType>
+            <inputParameters>
+                <name>alignment</name>
+                <value>
+                    <stringValue>center</stringValue>
+                </value>
+            </inputParameters>
+            <inputParameters>
+                <name>orientation</name>
+                <value>
+                    <stringValue>horizontal</stringValue>
+                </value>
+            </inputParameters>
+            <inputParameters>
+                <name>showLines</name>
+                <value>
+                    <stringValue>neither</stringValue>
+                </value>
+            </inputParameters>
+            <inputParameters>
+                <name>actionMode</name>
+                <value>
+                    <stringValue>navigation</stringValue>
+                </value>
+            </inputParameters>
+            <inputParameters>
+                <name>buttons</name>
+                <value>
+                    <stringValue>[{&quot;label&quot;:&quot;Mark Eligible&quot;,&quot;value&quot;:&quot;Mark Eligible&quot;,&quot;iconPosition&quot;:&quot;left&quot;,&quot;variant&quot;:&quot;brand&quot;,&quot;index&quot;:0}]</stringValue>
+                </value>
+            </inputParameters>
+            <inputsOnNextNavToAssocScrn>UseStoredValues</inputsOnNextNavToAssocScrn>
+            <isRequired>true</isRequired>
+            <storeOutputAutomatically>true</storeOutputAutomatically>
+            <styleProperties>
+                <verticalAlignment>
+                    <stringValue>top</stringValue>
+                </verticalAlignment>
+                <width>
+                    <stringValue>12</stringValue>
+                </width>
+            </styleProperties>
+            <visibilityRule>
+                <conditionLogic>and</conditionLogic>
+                <conditions>
+                    <leftValueReference>Get_Individual_Application.Status</leftValueReference>
+                    <operator>EqualTo</operator>
+                    <rightValue>
+                        <stringValue>Applied</stringValue>
+                    </rightValue>
+                </conditions>
+            </visibilityRule>
+        </fields>
+        <fields>
+            <name>markAppliedButton</name>
+            <extensionName>c:fsc_flowButtonBar</extensionName>
+            <fieldType>ComponentInstance</fieldType>
+            <inputParameters>
+                <name>alignment</name>
+                <value>
+                    <stringValue>center</stringValue>
+                </value>
+            </inputParameters>
+            <inputParameters>
+                <name>orientation</name>
+                <value>
+                    <stringValue>horizontal</stringValue>
+                </value>
+            </inputParameters>
+            <inputParameters>
+                <name>showLines</name>
+                <value>
+                    <stringValue>neither</stringValue>
+                </value>
+            </inputParameters>
+            <inputParameters>
+                <name>actionMode</name>
+                <value>
+                    <stringValue>navigation</stringValue>
+                </value>
+            </inputParameters>
+            <inputParameters>
+                <name>buttons</name>
+                <value>
+                    <stringValue>[{&quot;label&quot;:&quot;Mark Applied&quot;,&quot;value&quot;:&quot;Mark Applied&quot;,&quot;iconPosition&quot;:&quot;left&quot;,&quot;variant&quot;:&quot;brand&quot;,&quot;index&quot;:0}]</stringValue>
+                </value>
+            </inputParameters>
+            <inputsOnNextNavToAssocScrn>UseStoredValues</inputsOnNextNavToAssocScrn>
+            <isRequired>true</isRequired>
+            <storeOutputAutomatically>true</storeOutputAutomatically>
+            <styleProperties>
+                <verticalAlignment>
+                    <stringValue>top</stringValue>
+                </verticalAlignment>
+                <width>
+                    <stringValue>12</stringValue>
+                </width>
+            </styleProperties>
+            <visibilityRule>
+                <conditionLogic>and</conditionLogic>
+                <conditions>
+                    <leftValueReference>Get_Individual_Application.Status</leftValueReference>
+                    <operator>EqualTo</operator>
+                    <rightValue>
+                        <stringValue>Withdrawn/Declined</stringValue>
+                    </rightValue>
+                </conditions>
+            </visibilityRule>
+        </fields>
+        <nextOrFinishButtonLabel>Cancel</nextOrFinishButtonLabel>
+        <showFooter>true</showFooter>
+        <showHeader>false</showHeader>
+    </screens>
+    <screens>
+        <description>Informs the reviewer that eligibility cannot be confirmed yet because one or more prerequisites are incomplete (District missing, Age/Grade exception not approved, and/or Priority Items pending review).</description>
+        <name>Screen_Eligibility_Not_Completed</name>
+        <label>Screen | Eligibility | Not Completed</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <allowBack>true</allowBack>
+        <allowFinish>true</allowFinish>
+        <allowPause>false</allowPause>
+        <fields>
+            <name>Copy_1_of_PrereqNotMetHeader</name>
+            <fieldText>&lt;p&gt;{!TT_Master_Header}&lt;/p&gt;</fieldText>
+            <fieldType>DisplayText</fieldType>
+            <styleProperties>
+                <verticalAlignment>
+                    <stringValue>top</stringValue>
+                </verticalAlignment>
+                <width>
+                    <stringValue>12</stringValue>
+                </width>
+            </styleProperties>
+        </fields>
+        <fields>
+            <name>errorMessage</name>
+            <fieldText>&lt;p&gt;{!TT_Eligibility_Not_Completed_Message}&lt;/p&gt;</fieldText>
+            <fieldType>DisplayText</fieldType>
+            <styleProperties>
+                <verticalAlignment>
+                    <stringValue>top</stringValue>
+                </verticalAlignment>
+                <width>
+                    <stringValue>12</stringValue>
+                </width>
+            </styleProperties>
+        </fields>
+        <showFooter>true</showFooter>
+        <showHeader>false</showHeader>
+    </screens>
+    <screens>
+        <description>Captures a required reason when the reviewer selects Withdrawn/Declined for the Individual Application. No updates occur on this screen; values are staged for DML in the next steps.</description>
+        <name>Screen_Individual_Application_Withdrawn_Declined_Reason</name>
+        <label>Screen | Individual Application | Withdrawn/Declined Reason</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <allowBack>true</allowBack>
+        <allowFinish>true</allowFinish>
+        <allowPause>false</allowPause>
+        <connector>
+            <targetReference>Assignment_Individual_Application_Stage_Withdrawn_Declined</targetReference>
+        </connector>
+        <fields>
+            <name>WithdrawnDeclinedHeader</name>
+            <fieldText>&lt;p&gt;{!TT_Master_Header}&lt;/p&gt;</fieldText>
+            <fieldType>DisplayText</fieldType>
+            <styleProperties>
+                <verticalAlignment>
+                    <stringValue>top</stringValue>
+                </verticalAlignment>
+                <width>
+                    <stringValue>12</stringValue>
+                </width>
+            </styleProperties>
+        </fields>
+        <fields>
+            <name>Reason_for_Withdrawn_Declined</name>
+            <fieldText>Reason for Withdrawn/Declined</fieldText>
+            <fieldType>LargeTextArea</fieldType>
+            <helpText>&lt;p&gt;Enter the reason that should be recorded on the Individual Application.&lt;/p&gt;</helpText>
+            <inputsOnNextNavToAssocScrn>UseStoredValues</inputsOnNextNavToAssocScrn>
+            <isRequired>true</isRequired>
+            <styleProperties>
+                <verticalAlignment>
+                    <stringValue>top</stringValue>
+                </verticalAlignment>
+                <width>
+                    <stringValue>12</stringValue>
+                </width>
+            </styleProperties>
+        </fields>
+        <showFooter>true</showFooter>
+        <showHeader>false</showHeader>
+    </screens>
+    <start>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>Get_Individual_Application</targetReference>
+        </connector>
+    </start>
+    <status>Active</status>
+    <textTemplates>
+        <name>TT_Confirm_Mark_Eligible_Message</name>
+        <isViewedAsPlainText>false</isViewedAsPlainText>
+        <text>&lt;div style=&quot;width:100%;border:2px solid #E0B400;border-radius:10px;padding:14px;background-color:#FFF8E1;text-align:center;font-size:13px;line-height:18px;&quot;&gt;Confirming will mark this Individual Application as &lt;strong&gt;Eligible&lt;/strong&gt; and record the reviewer and review date/time.&lt;/div&gt;</text>
+    </textTemplates>
+    <textTemplates>
+        <description>Message shown when prerequisites are not met for confirming overall eligibility.</description>
+        <name>TT_Eligibility_Not_Completed_Message</name>
+        <isViewedAsPlainText>false</isViewedAsPlainText>
+        <text>&lt;div style=&quot;width:100%;border:2px solid #B04A4A;border-radius:10px;padding:16px;background-color:#FFF1F1;text-align:center;&quot;&gt;&lt;div style=&quot;font-size:14px;line-height:18px;font-weight:bold;margin:0;&quot;&gt;Eligibility cannot be confirmed yet.&lt;/div&gt;&lt;div style=&quot;height:8px;&quot;&gt;&lt;/div&gt;&lt;div style=&quot;font-size:14px;line-height:18px;text-align:left;display:inline-block;margin:0;&quot;&gt;&lt;strong&gt;The following items still require review:&lt;/strong&gt;&lt;br/&gt;{!fxEligibility_Blocking_Reasons}&lt;/div&gt;&lt;div style=&quot;height:8px;&quot;&gt;&lt;/div&gt;&lt;div style=&quot;font-size:13px;line-height:18px;margin:0;&quot;&gt;Complete the items above, then return to confirm eligibility.&lt;/div&gt;&lt;/div&gt;</text>
+    </textTemplates>
+    <textTemplates>
+        <description>Message with instructions for first screen</description>
+        <name>TT_First_Screen_Instruction</name>
+        <isViewedAsPlainText>true</isViewedAsPlainText>
+        <text>&lt;div style=&quot;width:100%;border:2px solid #4F497A;border-radius:10px;padding:16px;background-color:#F6F5FB;text-align:center;&quot;&gt;&lt;div style=&quot;font-size:14px;line-height:18px;font-weight:bold;margin:0;&quot;&gt;Review and Select Next Action&lt;/div&gt;&lt;div style=&quot;height:8px;&quot;&gt;&lt;/div&gt;&lt;div style=&quot;font-size:13px;line-height:18px;margin:0;&quot;&gt;Review the application status above, then choose the appropriate action below to continue.&lt;/div&gt;&lt;div style=&quot;height:6px;&quot;&gt;&lt;/div&gt;&lt;div style=&quot;font-size:13px;line-height:18px;margin:0;&quot;&gt;Available options are shown based on the current status of the application.&lt;/div&gt;&lt;/div&gt;</text>
+    </textTemplates>
+    <textTemplates>
+        <description>Formatted header displayed on the master Application Review start screen.</description>
+        <name>TT_Master_Header</name>
+        <isViewedAsPlainText>false</isViewedAsPlainText>
+        <text>&lt;div style=&quot;width:100%;border:2px solid #4F497A;border-radius:10px;padding:18px;background-color:#F6F5FB;text-align:center;&quot;&gt;&lt;div style=&quot;font-size:14px;line-height:20px;&quot;&gt;&lt;strong&gt;Applicant:&lt;/strong&gt; {!fxHeaderApplicantName}&lt;br/&gt;&lt;strong&gt;Grade Applying To:&lt;/strong&gt; {!varHeaderGradeApplyingTo}&lt;br/&gt;&lt;strong&gt;Birthdate:&lt;/strong&gt; {!varHeaderBirthdate}&lt;br/&gt;&lt;strong&gt;School Start Age:&lt;/strong&gt; {!varSchoolStartAge}&lt;br/&gt;&lt;strong&gt;Address:&lt;/strong&gt; {!Get_Individual_Application.Account.PersonMailingStreet}, {!Get_Individual_Application.Account.PersonMailingCity}, {!Get_Individual_Application.Account.PersonMailingState} {!Get_Individual_Application.Account.PersonMailingPostalCode}&lt;/div&gt;&lt;/div&gt;</text>
+    </textTemplates>
+    <textTemplates>
+        <description>reinstate to applied instruction</description>
+        <name>TT_Reinstate_Applied_Intro</name>
+        <isViewedAsPlainText>false</isViewedAsPlainText>
+        <text>&lt;div style=&quot;width:100%;border:2px solid #E0B400;border-radius:10px;padding:16px;background-color:#FFF8E1;text-align:center;&quot;&gt;&lt;div style=&quot;font-size:14px;line-height:18px;font-weight:bold;margin:0;&quot;&gt;Reinstate to Applied&lt;/div&gt;&lt;div style=&quot;height:8px;&quot;&gt;&lt;/div&gt;&lt;div style=&quot;font-size:13px;line-height:18px;margin:0;&quot;&gt;You are updating this Individual Application to &lt;strong&gt;Applied&lt;/strong&gt;.&lt;/div&gt;&lt;div style=&quot;height:6px;&quot;&gt;&lt;/div&gt;&lt;div style=&quot;font-size:13px;line-height:18px;margin:0;&quot;&gt;Select any related School Applications you want to also return to &lt;strong&gt;Applied&lt;/strong&gt;, then select &lt;strong&gt;Submit Updates&lt;/strong&gt;.&lt;/div&gt;&lt;/div&gt;</text>
+    </textTemplates>
+    <textTemplates>
+        <description>Shown when the Individual Application is in an applied / in-progress state.</description>
+        <name>txt_Status_Applied</name>
+        <isViewedAsPlainText>false</isViewedAsPlainText>
+        <text>&lt;div style=&quot;width:100%;border:2px solid #F2C94C;border-radius:10px;padding:14px;background-color:#FFF8E1;text-align:center;&quot;&gt;&lt;div style=&quot;font-size:14px;line-height:20px;&quot;&gt;&lt;strong&gt;Status:&lt;/strong&gt; Applied&lt;/div&gt;&lt;/div&gt;</text>
+    </textTemplates>
+    <textTemplates>
+        <description>Shown when the Individual Application status is Eligible.</description>
+        <name>txt_Status_Eligible</name>
+        <isViewedAsPlainText>false</isViewedAsPlainText>
+        <text>&lt;div style=&quot;width:100%;border:2px solid #27AE60;border-radius:10px;padding:14px;background-color:#EAF7F0;text-align:center;&quot;&gt;&lt;div style=&quot;font-size:14px;line-height:20px;&quot;&gt;&lt;strong&gt;Status:&lt;/strong&gt; Eligible&lt;/div&gt;&lt;/div&gt;</text>
+    </textTemplates>
+    <textTemplates>
+        <description>Shown when the application is Withdrawn or Declined, including the reason.</description>
+        <name>txt_Status_WithdrawnDeclined</name>
+        <isViewedAsPlainText>false</isViewedAsPlainText>
+        <text>&lt;div style=&quot;width:100%;border:2px solid #EB5757;border-radius:10px;padding:14px;background-color:#FFF1F1;text-align:center;&quot;&gt;&lt;div style=&quot;font-size:14px;line-height:20px;&quot;&gt;&lt;strong&gt;Status:&lt;/strong&gt; {!Get_Individual_Application.Status}&lt;br/&gt;&lt;strong&gt;Reason:&lt;/strong&gt; {!Get_Individual_Application.Withdrawn_Declined_Reason__c}&lt;/div&gt;&lt;/div&gt;</text>
+    </textTemplates>
+    <variables>
+        <description>a collection of school applications to update</description>
+        <name>colSchoolAppstoUpdate</name>
+        <dataType>SObject</dataType>
+        <isCollection>true</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+        <objectType>AcademicInterest</objectType>
+    </variables>
+    <variables>
+        <name>currentItem_Filter_Priority_Items_NOT_Verified</name>
+        <dataType>SObject</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+        <objectType>Priority_Item__c</objectType>
+    </variables>
+    <variables>
+        <description>Record context Id for the Individual Application when launched from the record page.</description>
+        <name>recordId</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>true</isInput>
+        <isOutput>false</isOutput>
+    </variables>
+    <variables>
+        <name>varAddress</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+    </variables>
+    <variables>
+        <description>Header display value for Birthdate (derived from the Individual Application’s related Student Account PersonBirthdate).</description>
+        <name>varHeaderBirthdate</name>
+        <dataType>Date</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+    </variables>
+    <variables>
+        <description>Header display value for Grade Applying To (copied from Individual Application.Grade_Applying_To__c).</description>
+        <name>varHeaderGradeApplyingTo</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+    </variables>
+    <variables>
+        <description>used to pass the value of the button selected from the master flow - purpose of when the user marks to update the app as declined/withdrawn it takes them right to that screen instead of the start of the overall eligibility process</description>
+        <name>varMasterflowButtonSelected</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>true</isInput>
+        <isOutput>false</isOutput>
+    </variables>
+    <variables>
+        <description>Total number of Priority Items associated with the Individual Application.</description>
+        <name>varPriorityItemCount</name>
+        <dataType>Number</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+        <scale>0</scale>
+    </variables>
+    <variables>
+        <description>Number of Priority Items related to the Individual Application that are not in Verified status.</description>
+        <name>varPriorityItemCountNotVerified</name>
+        <dataType>Number</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+        <scale>0</scale>
+    </variables>
+    <variables>
+        <name>varSchoolStartAge</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+    </variables>
+</Flow>

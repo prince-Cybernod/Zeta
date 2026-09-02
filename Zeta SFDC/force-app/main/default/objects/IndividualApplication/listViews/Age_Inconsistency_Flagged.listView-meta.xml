@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Age_Inconsistency_Flagged</fullName>
+    <columns>Name</columns>
+    <columns>Account</columns>
+    <columns>AppliedDate</columns>
+    <columns>Status</columns>
+    <columns>Age_Inconsistency_Flag_c__c</columns>
+    <columns>Grade_Inconsistency_Approved_Reason__c</columns>
+    <columns>Age_Inconsistency_Review_Status__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>Age_Inconsistency_Flag_c__c</field>
+        <operation>equals</operation>
+        <value>1</value>
+    </filters>
+    <filters>
+        <field>Age_Inconsistency_Review_Status__c</field>
+        <operation>equals</operation>
+    </filters>
+    <label>Age Inconsistency Flagged</label>
+</ListView>

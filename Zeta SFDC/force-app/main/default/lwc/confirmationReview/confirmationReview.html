@@ -1,0 +1,323 @@
+<template>
+  <template lwc:if={isLoading}>
+    <div
+      class="review-card"
+      aria-busy="true"
+      aria-label={labels.ariaLoadingReview}
+    >
+      <div class="skeleton-header"></div>
+      <div class="skeleton-rows">
+        <div class="skeleton-row"></div>
+        <div class="skeleton-row skeleton-row--short"></div>
+        <div class="skeleton-row"></div>
+      </div>
+      <div class="skeleton-header skeleton-header--second"></div>
+      <div class="skeleton-rows">
+        <div class="skeleton-row"></div>
+        <div class="skeleton-row skeleton-row--short"></div>
+      </div>
+    </div>
+  </template>
+
+  <template lwc:if={showContent}>
+    <template lwc:if={hasStudentInfo}>
+      <div class="review-card">
+        <div class="section-header">
+          <h3 class="section-title">{labels.studentInfo}</h3>
+          <template lwc:if={showStudentEditButton}>
+            <button class="edit-link" onclick={handleEditStudent}>
+              {labels.edit}
+            </button>
+          </template>
+        </div>
+        <div class="student-details">
+          <div class="sibling-field">
+            <span class="field-label">{labels.name}</span>
+            <span class="field-value">{studentName}</span>
+          </div>
+          <template lwc:if={studentDob}>
+            <div class="sibling-field">
+              <span class="field-label">{labels.dateOfBirth}</span>
+              <span class="field-value">{studentDob}</span>
+            </div>
+          </template>
+          <template lwc:if={studentGrade}>
+            <div class="sibling-field">
+              <span class="field-label">{labels.grade}</span>
+              <span class="field-value">{studentGrade}</span>
+            </div>
+          </template>
+          <template lwc:if={studentAddress}>
+            <div class="sibling-field">
+              <span class="field-label">{labels.address}</span>
+              <span class="field-value">{studentAddress}</span>
+            </div>
+          </template>
+        </div>
+      </div>
+    </template>
+
+    <template lwc:if={hasSchools}>
+      <div class="review-card">
+        <div class="section-header">
+          <h3 class="section-title">{labels.schoolRankings}</h3>
+          <template lwc:if={showSchoolsEditButton}>
+            <button class="edit-link" onclick={handleEditSchools}>
+              {labels.edit}
+            </button>
+          </template>
+          <template lwc:if={showUpdateRankingsButton}>
+            <button class="edit-link" onclick={handleEditSchools}>
+              {labels.updateRankings}
+            </button>
+          </template>
+        </div>
+        <div
+          class="ranking-list"
+          role="list"
+          aria-label={labels.schoolRankings}
+        >
+          <template for:each={schoolsForDisplay} for:item="school">
+            <div
+              key={school.academicInterestId}
+              class={school.rowClass}
+              role="listitem"
+            >
+              <div class="rank-badge">{school.rank}</div>
+              <p class="school-name">{school.name}</p>
+              <template lwc:if={school.isWithdrawn}>
+                <span class="school-withdrawn-badge">Withdrawn</span>
+              </template>
+              <template lwc:if={school.canWithdraw}>
+                <div class="menu-host">
+                  <button
+                    class="kebab"
+                    data-id={school.academicInterestId}
+                    onclick={handleKebabClick}
+                    aria-label="More actions"
+                    aria-haspopup="menu"
+                    aria-expanded={school.menuOpen}
+                  >
+                    <svg
+                      viewBox="0 0 24 24"
+                      width="20"
+                      height="20"
+                      aria-hidden="true"
+                    >
+                      <circle cx="12" cy="5" r="2" fill="currentColor" />
+                      <circle cx="12" cy="12" r="2" fill="currentColor" />
+                      <circle cx="12" cy="19" r="2" fill="currentColor" />
+                    </svg>
+                  </button>
+                  <template lwc:if={school.menuOpen}>
+                    <div
+                      class="menu-backdrop"
+                      onclick={handleMenuBackdropClick}
+                    ></div>
+                    <div class="menu" role="menu">
+                      <button
+                        class="menu-item menu-item--danger"
+                        role="menuitem"
+                        data-id={school.academicInterestId}
+                        onclick={handleWithdrawClick}
+                      >
+                        <svg
+                          viewBox="0 0 24 24"
+                          width="16"
+                          height="16"
+                          aria-hidden="true"
+                        >
+                          <path
+                            d="M6 7h12M9 7V5a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v2m1 0v12a1 1 0 0 1-1 1H8a1 1 0 0 1-1-1V7"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="1.6"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                          />
+                        </svg>
+                        Withdraw application
+                      </button>
+                    </div>
+                  </template>
+                </div>
+              </template>
+            </div>
+          </template>
+        </div>
+      </div>
+    </template>
+
+    <div class="review-card">
+      <div class="section-header">
+        <h3 class="section-title">{labels.applicationDetails}</h3>
+        <template lwc:if={showApplicationEditButton}>
+          <button class="edit-link" onclick={handleEditApplication}>
+            {labels.edit}
+          </button>
+        </template>
+      </div>
+      <c-application-form-page
+        record-id={recordId}
+        page-dev-name={pageDevName}
+        variant={variant}
+        read-only
+        embedded
+      ></c-application-form-page>
+    </div>
+
+    <template lwc:if={hasSiblings}>
+      <div class="review-card">
+        <div class="section-header">
+          <h3 class="section-title">{labels.siblings}</h3>
+          <template lwc:if={showSiblingsEditButton}>
+            <button class="edit-link" onclick={handleEditSiblings}>
+              {labels.edit}
+            </button>
+          </template>
+        </div>
+
+        <template lwc:if={hasAttendingSiblings}>
+          <h4 class="subsection-title">{labels.siblingsAttending}</h4>
+          <div class="sibling-list">
+            <template for:each={attendingSiblings} for:item="sibling">
+              <div key={sibling.id} class="sibling-row">
+                <div class="sibling-field">
+                  <span class="field-label">{labels.name}</span>
+                  <span class="field-value"
+                    >{sibling.firstName} {sibling.lastName}</span
+                  >
+                </div>
+                <template lwc:if={sibling.dateOfBirth}>
+                  <div class="sibling-field">
+                    <span class="field-label">{labels.dateOfBirth}</span>
+                    <span class="field-value">{sibling.dateOfBirth}</span>
+                  </div>
+                </template>
+                <template lwc:if={sibling.gender}>
+                  <div class="sibling-field">
+                    <span class="field-label">{labels.gender}</span>
+                    <span class="field-value">{sibling.gender}</span>
+                  </div>
+                </template>
+                <template lwc:if={sibling.zetaSchool}>
+                  <div class="sibling-field">
+                    <span class="field-label">{labels.zetaSchool}</span>
+                    <span class="field-value">{sibling.zetaSchool}</span>
+                  </div>
+                </template>
+              </div>
+            </template>
+          </div>
+        </template>
+
+        <template lwc:if={hasApplyingSiblings}>
+          <h4 class="subsection-title">{labels.siblingsApplying}</h4>
+          <div class="sibling-list">
+            <template for:each={applyingSiblings} for:item="sibling">
+              <div key={sibling.id} class="sibling-row">
+                <div class="sibling-field">
+                  <span class="field-label">{labels.name}</span>
+                  <span class="field-value"
+                    >{sibling.firstName} {sibling.lastName}</span
+                  >
+                </div>
+                <template lwc:if={sibling.dateOfBirth}>
+                  <div class="sibling-field">
+                    <span class="field-label">{labels.dateOfBirth}</span>
+                    <span class="field-value">{sibling.dateOfBirth}</span>
+                  </div>
+                </template>
+                <template lwc:if={sibling.gender}>
+                  <div class="sibling-field">
+                    <span class="field-label">{labels.gender}</span>
+                    <span class="field-value">{sibling.gender}</span>
+                  </div>
+                </template>
+              </div>
+            </template>
+          </div>
+        </template>
+      </div>
+    </template>
+
+    <template lwc:if={hasWarnings}>
+      <template lwc:if={hasResidencyWarning}>
+        <div class="submission-warning" role="alert">
+          <svg
+            class="warning-icon"
+            viewBox="0 0 24 24"
+            width="20"
+            height="20"
+            aria-hidden="true"
+          >
+            <path
+              d="M1 21h22L12 2 1 21zm12-3h-2v-2h2v2zm0-4h-2v-4h2v4z"
+              fill="currentColor"
+            />
+          </svg>
+          <p>{residencyWarningMessage}</p>
+        </div>
+      </template>
+    </template>
+
+    <template lwc:if={showLotteryMessage}>
+      <div class="lottery-notice" role="status">
+        <p class="lottery-notice__text">{labels.lotteryMessage}</p>
+      </div>
+    </template>
+
+    <template lwc:if={showWithdrawModal}>
+      <div class="modal-backdrop" onclick={handleWithdrawCancel}>
+        <div
+          class="modal-dialog"
+          role="dialog"
+          aria-label="Withdraw school application"
+          onclick={handleModalClick}
+        >
+          <h3 class="modal-title">Withdraw School Application?</h3>
+          <p class="modal-desc">{withdrawModalBody}</p>
+          <lightning-combobox
+            class="withdraw-combobox"
+            label="Reason (required)"
+            placeholder="Select a reason"
+            options={withdrawPicklistOptions}
+            value={_withdrawPicklistValue}
+            onchange={handleWithdrawPicklistChange}
+            disabled={_isWithdrawing}
+          ></lightning-combobox>
+          <template lwc:if={showWithdrawReasonText}>
+            <lightning-textarea
+              class="withdraw-textarea"
+              label="Please describe (required)"
+              value={_withdrawReason}
+              max-length="500"
+              onchange={handleWithdrawReasonChange}
+              disabled={_isWithdrawing}
+            ></lightning-textarea>
+          </template>
+          <template lwc:if={_withdrawError}>
+            <div class="withdraw-error" role="alert">{_withdrawError}</div>
+          </template>
+          <div class="modal-actions">
+            <button
+              class="btn btn--secondary"
+              onclick={handleWithdrawCancel}
+              disabled={_isWithdrawing}
+            >
+              Cancel
+            </button>
+            <button
+              class="btn btn--danger"
+              onclick={handleWithdrawConfirm}
+              disabled={withdrawConfirmDisabled}
+            >
+              <template lwc:if={_isWithdrawing}> Withdrawing… </template>
+              <template lwc:else> Withdraw </template>
+            </button>
+          </div>
+        </div>
+      </div>
+    </template>
+  </template>
+</template>

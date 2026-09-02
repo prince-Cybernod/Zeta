@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<DataStreamTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <dataSourceBundleDefinition>UMsgConsentProd__ConsentAuditTrailBundle</dataSourceBundleDefinition>
+    <dataSourceObject>UMsgConsentProd__ConsentAuditTrailV2_ConsentAudi_A62D46E3</dataSourceObject>
+    <masterLabel>ConsentAuditTrailV2-ConsentAuditTrail</masterLabel>
+    <objectCategory>Salesforce_SFDCReferenceModel_0_93.Related</objectCategory>
+    <refreshFrequency>NONE</refreshFrequency>
+    <refreshMode>UPSERT</refreshMode>
+    <sourceObjectName>UMsgConsentProd__ConsentAuditTrailV2_ConsentAuditTrail_A62D46E3</sourceObjectName>
+    <streamType>INGEST</streamType>
+    <templateVersion>2</templateVersion>
+</DataStreamTemplate>

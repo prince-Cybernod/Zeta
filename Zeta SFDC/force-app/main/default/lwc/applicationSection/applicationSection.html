@@ -1,0 +1,130 @@
+<template>
+  <div class="section-container">
+    <template lwc:if={isCollapsedRender}>
+      <div
+        class="summary-card"
+        role="button"
+        tabindex="0"
+        onclick={handleEditClick}
+        onkeydown={handleSummaryKeydown}
+      >
+        <div class="summary-row">
+          <div class="summary-text-wrap">
+            <p class="summary-label">{section.label}</p>
+            <p class="summary-text">{summaryText}</p>
+          </div>
+          <button type="button" class="edit-button" onclick={handleEditClick}>
+            Edit
+          </button>
+        </div>
+      </div>
+    </template>
+
+    <template lwc:if={isExpandedRender}>
+      <div class="section-header-row">
+        <h3 class="slds-text-heading_small slds-m-bottom_x-small">
+          {section.label}
+        </h3>
+        <template lwc:if={canCollapse}>
+          <button
+            type="button"
+            class="collapse-button"
+            onclick={handleCollapseClick}
+          >
+            Collapse
+          </button>
+        </template>
+      </div>
+      <template lwc:if={section.description}>
+        <p
+          class="slds-text-body_small slds-text-color_weak slds-m-bottom_small"
+        >
+          {section.description}
+        </p>
+      </template>
+
+      <div class={gridClass}>
+        <template for:each={enrichedQuestions} for:item="q">
+          <div key={q.developerName} class={q.itemClass}>
+            <c-question-input
+              question={q}
+              value={q.currentValue}
+              record-id={recordId}
+              read-only={readOnly}
+            ></c-question-input>
+          </div>
+        </template>
+      </div>
+
+      <template lwc:if={showTextOptInConsent}>
+        <div class="comm-prefs-info" role="note">
+          <svg
+            class="info-icon"
+            viewBox="0 0 24 24"
+            width="20"
+            height="20"
+            aria-hidden="true"
+          >
+            <path
+              d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"
+              fill="currentColor"
+            />
+          </svg>
+          <lightning-formatted-rich-text
+            value={textOptInConsentMessage}
+          ></lightning-formatted-rich-text>
+        </div>
+      </template>
+
+      <template lwc:if={showEmailOptOutWarning}>
+        <div class="comm-prefs-warning" role="alert">
+          <svg
+            class="warning-icon"
+            viewBox="0 0 24 24"
+            width="20"
+            height="20"
+            aria-hidden="true"
+          >
+            <path
+              d="M1 21h22L12 2 1 21zm12-3h-2v-2h2v2zm0-4h-2v-4h2v4z"
+              fill="currentColor"
+            />
+          </svg>
+          <p>{emailOptOutWarningMessage}</p>
+        </div>
+      </template>
+
+      <template lwc:if={showTextOptOutWarning}>
+        <div class="comm-prefs-warning" role="alert">
+          <svg
+            class="warning-icon"
+            viewBox="0 0 24 24"
+            width="20"
+            height="20"
+            aria-hidden="true"
+          >
+            <path
+              d="M1 21h22L12 2 1 21zm12-3h-2v-2h2v2zm0-4h-2v-4h2v4z"
+              fill="currentColor"
+            />
+          </svg>
+          <p>{textOptOutWarningMessage}</p>
+        </div>
+      </template>
+
+      <template lwc:if={showCommPrefsError}>
+        <div class="slds-text-color_error slds-m-top_small" role="alert">
+          {commPrefsValidationMessage}
+        </div>
+      </template>
+
+      <template lwc:if={showPrivacyLink}>
+        <p class="privacy-link slds-m-top_small">
+          <a href={privacyPolicyUrl} target="_blank" rel="noopener noreferrer"
+            >{privacyPolicyText}</a
+          >
+        </p>
+      </template>
+    </template>
+  </div>
+</template>

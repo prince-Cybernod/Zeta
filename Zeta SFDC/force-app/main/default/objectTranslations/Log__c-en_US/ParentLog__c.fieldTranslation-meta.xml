@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <help><!-- The log from the original transaction that initiated a child log - for example, batch jobs have start, execute and finish methods. All 3 are considered separate transactions. By using the parent log, logs from all 3 transactions can be linked together. --></help>
+    <label><!-- Parent Log --></label>
+    <name>ParentLog__c</name>
+    <relationshipLabel><!-- Related Logs --></relationshipLabel>
+</CustomFieldTranslation>

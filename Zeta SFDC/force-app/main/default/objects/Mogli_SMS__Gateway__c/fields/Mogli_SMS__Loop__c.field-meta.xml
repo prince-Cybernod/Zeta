@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Mogli_SMS__Loop__c</fullName>
+    <deprecated>false</deprecated>
+    <description>The &apos;loop&apos; attribute specifies how many times you&apos;d like the text repeated. The default is once. Specifying &apos;0&apos; will cause the &lt;Say&gt; verb to loop until either the call is hung up or 1,000 iterations are performed.</description>
+    <externalId>false</externalId>
+    <inlineHelpText>Specify how many times you&apos;d like your audio to play on the recipient&apos;s phone (the default is once). Entering &apos;0&apos; will cause the audio to loop indefinitely until the recipient hangs up.</inlineHelpText>
+    <label>Loop</label>
+    <precision>4</precision>
+    <required>false</required>
+    <scale>0</scale>
+    <trackTrending>false</trackTrending>
+    <type>Number</type>
+    <unique>false</unique>
+</CustomField>

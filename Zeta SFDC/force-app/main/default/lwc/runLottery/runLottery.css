@@ -1,0 +1,176 @@
+.school-item {
+  cursor: pointer;
+  transition: background-color 0.1s ease;
+}
+
+.school-item:hover {
+  background-color: var(--slds-c-card-color-background-hover, #f3f3f3);
+}
+
+.date-filter-section {
+  background-color: var(--slds-c-card-color-background, #fff);
+}
+
+.confirmation-summary {
+  background-color: var(--slds-c-card-color-background, #f4f6f9);
+}
+
+.confirmation-stat-right {
+  border-left: 1px solid var(--slds-c-card-color-border, #e5e5e5);
+}
+
+.slds-modal__header_warning {
+  background-color: #ffb75d;
+}
+
+.slds-modal__container {
+  width: 90%;
+  max-width: 900px;
+}
+
+.execution-state {
+  padding: 3rem 1rem;
+  min-height: 200px;
+}
+
+.hero-metric {
+  padding: 1.5rem;
+  background-color: var(--slds-c-card-color-background, #fff);
+}
+
+.hero-metric-value {
+  font-size: 4rem;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.audit-info {
+  padding: 0.5rem;
+}
+
+/* Grade-centric execution UI */
+.grade-queue {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.grade-badge-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.grade-app-count {
+  font-size: 0.7rem;
+  color: #706e6b;
+  line-height: 1;
+}
+
+.grade-badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.25rem 0.75rem;
+  border-radius: 0.25rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+}
+
+.grade-badge-pending {
+  background-color: #ecebea;
+  color: #706e6b;
+}
+
+.grade-badge-active {
+  background-color: #0176d3;
+  color: #fff;
+}
+
+.grade-badge-completed {
+  background-color: #2e844a;
+  color: #fff;
+}
+
+.grade-badge-assigned {
+  background-color: #0d9dda;
+  color: #fff;
+}
+
+.cross-grade-phase {
+  padding: 2rem;
+  text-align: center;
+}
+
+.current-step-box {
+  background-color: #f3f3f3;
+  max-width: 500px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Action bar with buttons */
+.action-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.action-bar-right {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.publish-spinner {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+/* Auto-scroll school stats */
+.school-stats-scroll {
+  max-height: 400px;
+  overflow-y: auto;
+}
+
+/* Confetti animation */
+.confetti-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 9999;
+  overflow: hidden;
+}
+
+.confetti-piece {
+  position: absolute;
+  top: -10px;
+  width: 10px;
+  height: 10px;
+  border-radius: 2px;
+  animation: confetti-fall 3s ease-in forwards;
+}
+
+.confetti-piece:nth-child(odd) {
+  width: 8px;
+  height: 14px;
+  border-radius: 50%;
+}
+
+@keyframes confetti-fall {
+  0% {
+    opacity: 1;
+    transform: translateY(0) translateX(0)
+      rotate(var(--confetti-rotation, 0deg));
+  }
+
+  100% {
+    opacity: 0;
+    transform: translateY(100vh) translateX(var(--confetti-drift, 0))
+      rotate(calc(var(--confetti-rotation, 0deg) + 720deg));
+  }
+}

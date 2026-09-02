@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Grade_Inconsistency_Approved_Reason__c</fullName>
+    <description>Stores the required staff justification when a Age Inconsistency is reviewed and marked Exception made (approved by exception). Used for auditability and downstream reporting.</description>
+    <inlineHelpText>Required when Age Inconsistency Review Decision is &quot;Exception made&quot;</inlineHelpText>
+    <label>Age Inconsistency Approved Reason</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <type>TextArea</type>
+</CustomField>

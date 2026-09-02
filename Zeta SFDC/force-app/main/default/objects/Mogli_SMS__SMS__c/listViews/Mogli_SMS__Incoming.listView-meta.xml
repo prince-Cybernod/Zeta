@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Mogli_SMS__Incoming</fullName>
+    <columns>NAME</columns>
+    <columns>Mogli_SMS__Contact__c</columns>
+    <columns>Mogli_SMS__Lead__c</columns>
+    <columns>Mogli_SMS__Message__c</columns>
+    <columns>Mogli_SMS__Phone_Number__c</columns>
+    <columns>Mogli_SMS__Status__c</columns>
+    <columns>Mogli_SMS__Gateway__c</columns>
+    <columns>Mogli_SMS__Attachments__c</columns>
+    <columns>CREATEDBY_USER</columns>
+    <columns>CREATED_DATE</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>Mogli_SMS__Direction__c</field>
+        <operation>equals</operation>
+        <value>Incoming</value>
+    </filters>
+    <label>Incoming</label>
+</ListView>

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Mogli_SMS__All</fullName>
+    <columns>NAME</columns>
+    <columns>Mogli_SMS__Status__c</columns>
+    <columns>Mogli_SMS__Personalized_Engagement_Tracking__c</columns>
+    <columns>CREATED_DATE</columns>
+    <columns>CREATEDBY_USER</columns>
+    <columns>Mogli_SMS__Shortened_URL__c</columns>
+    <columns>Mogli_SMS__Destination__c</columns>
+    <columns>Mogli_SMS__Parent_Domain__c</columns>
+    <filterScope>Mine</filterScope>
+    <label>All</label>
+</ListView>

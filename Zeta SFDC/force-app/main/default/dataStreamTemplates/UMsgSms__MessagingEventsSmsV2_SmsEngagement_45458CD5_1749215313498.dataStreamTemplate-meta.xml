@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<DataStreamTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <dataSourceBundleDefinition>UMsgSms__UnifiedSmsBundle</dataSourceBundleDefinition>
+    <dataSourceObject>UMsgSms__MessagingEventsSmsV2_SmsEngagem_45458CD5</dataSourceObject>
+    <masterLabel>MessagingEventsSmsV2-SmsEngagement</masterLabel>
+    <objectCategory>Salesforce_SFDCReferenceModel_0_93.Engagement</objectCategory>
+    <refreshFrequency>NONE</refreshFrequency>
+    <refreshMode>UPSERT</refreshMode>
+    <sourceObjectName>UMsgSms__MessagingEventsSmsV2_SmsEngagement_45458CD5</sourceObjectName>
+    <streamType>INGEST</streamType>
+    <templateVersion>2</templateVersion>
+</DataStreamTemplate>

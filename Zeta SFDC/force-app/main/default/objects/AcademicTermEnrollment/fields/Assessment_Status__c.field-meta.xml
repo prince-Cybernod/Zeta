@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Assessment_Status__c</fullName>
+    <description>Automatically calculated status showing where the student is in the assessment process.</description>
+    <externalId>false</externalId>
+    <formula>IF(
+OR(
+CONTAINS(TEXT( Grade_Applied__c ) ,&quot;K&quot;),
+CONTAINS(TEXT(Grade_Applied__c ),&quot;1&quot;),
+NOT(CONTAINS(TEXT(EnrollmentStatus),&quot;Phase&quot;)),
+CONTAINS(TEXT( LearnerAccount.Student_Type__c ),&quot;Returning&quot;)
+),
+&quot;N/A&quot;,
+IF(
+ISBLANK(Scheduled_Assessment_Date__c),
+&quot;Need to schedule&quot;,
+IF(
+OR(
+CONTAINS(TEXT(Family_Decision__c),&quot;Accept&quot;),
+CONTAINS(TEXT(Family_Decision__c),&quot;Decline&quot;)
+),
+&quot;Complete&quot;,
+IF(
+NOT(ISBLANK(TEXT(Zeta_Decision__c))),
+&quot;Approved, but needs call&quot;,
+IF(
+OR(
+CONTAINS(TEXT(Student_able_to_complete_Assessment__c),&quot;unable&quot;),
+AND(
+OR(
+CONTAINS(TEXT(Student_able_to_complete_Assessment__c),&quot;Yes, but&quot;),
+CONTAINS(TEXT(Student_able_to_complete_Assessment__c),&quot;Yes, completed&quot;)
+),
+OR(
+AND(
+OR(CQ1_Score__c=1,CQ1_Score__c=0),
+OR(CQ2_Score__c=1,CQ2_Score__c=0),
+OR(CQ3_Score__c=1,CQ3_Score__c=0),
+OR(CQ4_Score__c=1,CQ4_Score__c=0),
+Number_of_Errors__c&lt;&gt;NULL,
+Completed_Assessment_Date__c&lt;&gt;NULL
+),
+AND(
+OR(ELA_Q1_Score__c=1,ELA_Q1_Score__c=0),
+OR(ELA_Q2_Score__c=1,ELA_Q2_Score__c=0),
+OR(ELA_Q3_Score__c=1,ELA_Q3_Score__c=0),
+OR(ELA_Q4_Score__c=1,ELA_Q4_Score__c=0),
+OR(Math_Q1_Score__c=1,Math_Q1_Score__c=0),
+OR(Math_Q2_Score__c=1,Math_Q2_Score__c=0),
+OR(Math_Q3_Score__c=1,Math_Q3_Score__c=0)
+)
+)
+)
+),
+&quot;Administered, but not approved&quot;,
+IF(
+AND(
+NOT(ISBLANK(Scheduled_Assessment_Date__c)),
+ISBLANK(Completed_Assessment_Date__c)
+),
+&quot;Scheduled but not administered&quot;,
+IF(
+AND(
+Scheduled_Assessment_Date__c &lt;= NOW(),
+ISBLANK(Completed_Assessment_Date__c),
+CONTAINS(TEXT(Student_able_to_complete_Assessment__c),&quot;did not&quot;)
+),
+&quot;Scheduled, but not administered&quot;,
+IF(
+OR(
+CONTAINS(TEXT(Student_able_to_complete_Assessment__c),&quot;Yes, but&quot;),
+CONTAINS(TEXT(Student_able_to_complete_Assessment__c),&quot;Yes, completed&quot;),
+OR(CQ1_Score__c=1,CQ1_Score__c=0),
+OR(CQ2_Score__c=1,CQ2_Score__c=0),
+OR(CQ3_Score__c=1,CQ3_Score__c=0),
+OR(CQ4_Score__c=1,CQ4_Score__c=0),
+Number_of_Errors__c&lt;&gt;NULL,
+Completed_Assessment_Date__c&lt;&gt;NULL,
+OR(ELA_Q1_Score__c=1,ELA_Q1_Score__c=0),
+OR(ELA_Q2_Score__c=1,ELA_Q2_Score__c=0),
+OR(ELA_Q3_Score__c=1,ELA_Q3_Score__c=0),
+OR(ELA_Q4_Score__c=1,ELA_Q4_Score__c=0),
+OR(Math_Q1_Score__c=1,Math_Q1_Score__c=0),
+OR(Math_Q2_Score__c=1,Math_Q2_Score__c=0),
+OR(Math_Q3_Score__c=1,Math_Q3_Score__c=0),
+NOT(ISBLANK(TEXT(ELA_Q1__c))),
+NOT(ISBLANK(TEXT(ELA_Q2__c))),
+NOT(ISBLANK(TEXT(ELA_Q3__c))),
+NOT(ISBLANK(TEXT(ELA_Q4__c))),
+NOT(ISBLANK(TEXT(Math_Q1__c))),
+NOT(ISBLANK(TEXT(Math_Q2__c))),
+NOT(ISBLANK(TEXT(Math_Q3__c)))
+),
+&quot;Being Administered&quot;,
+&quot;Need to schedule&quot;
+)
+)
+)
+)
+)
+)
+)
+)</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <inlineHelpText>Automatically calculated status showing where the student is in the assessment process.</inlineHelpText>
+    <label>Assessment Status</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

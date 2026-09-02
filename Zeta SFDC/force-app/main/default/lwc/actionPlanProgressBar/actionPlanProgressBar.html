@@ -1,0 +1,7 @@
+<template>
+    <div class="progress-outer">
+        <template for:each={chunks} for:item="chunk">
+            <div key={chunk.id} class={chunk.className}></div>
+        </template>
+    </div>
+</template>

@@ -1,0 +1,322 @@
+<template>
+  <template lwc:if={isLoading}>
+    <div class="card" aria-busy="true" aria-label={labels.ariaLoadingStudents}>
+      <div class="skeleton-header"></div>
+      <div class="skeleton-tiles">
+        <div class="skeleton-tile"></div>
+        <div class="skeleton-tile"></div>
+        <div class="skeleton-tile skeleton-tile--short"></div>
+      </div>
+    </div>
+  </template>
+
+  <template lwc:if={showContent}>
+    <div class="card">
+      <h2 class="card-title">{labels.selectStudent}</h2>
+      <p class="card-subtitle">{labels.selectStudentDesc}</p>
+
+      <div
+        class="tile-grid"
+        role="radiogroup"
+        aria-label={labels.ariaSelectStudent}
+      >
+        <template for:each={studentTiles} for:item="student">
+          <div
+            key={student.id}
+            class={student.tileClass}
+            data-id={student.id}
+            onclick={handleSelectStudent}
+            role="radio"
+            aria-checked={student.ariaChecked}
+            tabindex="0"
+            onkeydown={handleTileKeydown}
+          >
+            <div class="tile-check" aria-hidden="true">
+              <template lwc:if={student.showLockIcon}>
+                <svg viewBox="0 0 24 24" width="20" height="20">
+                  <path
+                    d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zm-6 9c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm3.1-9H8.9V6c0-1.71 1.39-3.1 3.1-3.1s3.1 1.39 3.1 3.1v2z"
+                    fill="currentColor"
+                  />
+                </svg>
+              </template>
+              <template lwc:elseif={student.isSelected}>
+                <svg viewBox="0 0 24 24" width="20" height="20">
+                  <path
+                    d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"
+                    fill="currentColor"
+                  />
+                </svg>
+              </template>
+            </div>
+            <p class="tile-name">{student.displayName}</p>
+            <template lwc:if={student.gradeLabel}>
+              <p class="tile-detail tile-detail--grade">{student.gradeLabel}</p>
+            </template>
+            <template lwc:if={student.isEditing}>
+              <div
+                class="tile-edit-row"
+                onclick={stopEvent}
+                onkeydown={handleEditKeydown}
+              >
+                <lightning-input
+                  type="date"
+                  label={labels.dateOfBirth}
+                  variant="label-hidden"
+                  value={editBirthdate}
+                  onchange={handleEditBirthdateChange}
+                  required
+                ></lightning-input>
+                <div class="tile-edit-actions">
+                  <button
+                    type="button"
+                    class="tile-edit-cancel"
+                    onclick={handleCancelBirthdate}
+                    disabled={isSavingEdit}
+                  >
+                    {labels.cancel}
+                  </button>
+                  <button
+                    type="button"
+                    class="tile-edit-save"
+                    data-id={student.id}
+                    onclick={handleSaveBirthdate}
+                    disabled={isSavingEdit}
+                  >
+                    {labels.save}
+                  </button>
+                </div>
+              </div>
+              <template lwc:if={editError}>
+                <p class="tile-edit-error" role="alert">{editError}</p>
+              </template>
+            </template>
+            <template lwc:elseif={student.birthdate}>
+              <p class="tile-detail tile-detail--birthday">
+                <span>{student.birthdateFormatted}</span>
+                <template lwc:if={student.showEditButton}>
+                  <button
+                    type="button"
+                    class="tile-edit-button"
+                    data-id={student.id}
+                    aria-label={labels.editBirthday}
+                    title={labels.editBirthday}
+                    onclick={handleEditBirthdate}
+                    onkeydown={handleEditButtonKeydown}
+                  >
+                    <svg
+                      viewBox="0 0 24 24"
+                      width="14"
+                      height="14"
+                      aria-hidden="true"
+                    >
+                      <path
+                        d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM20.71 7.04c.39-.39.39-1.02 0-1.41l-2.34-2.34c-.39-.39-1.02-.39-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83z"
+                        fill="currentColor"
+                      />
+                    </svg>
+                  </button>
+                </template>
+              </p>
+            </template>
+            <template lwc:if={student.address}>
+              <p class="tile-detail">{student.address}</p>
+            </template>
+          </div>
+        </template>
+      </div>
+
+      <template lwc:if={showAddButton}>
+        <div class="add-tile-container">
+          <div
+            class="tile tile--add"
+            onclick={handleToggleAddForm}
+            role="button"
+            tabindex="0"
+            onkeydown={handleAddKeydown}
+          >
+            <div class="add-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" width="28" height="28">
+                <path
+                  d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"
+                  fill="currentColor"
+                />
+              </svg>
+            </div>
+            <p class="tile-name">{addStudentLabel}</p>
+          </div>
+        </div>
+      </template>
+
+      <template lwc:if={showAddForm}>
+        <div class="add-form">
+          <h3 class="form-title">{labels.newStudent}</h3>
+          <div class="form-grid">
+            <lightning-input
+              label={labels.firstName}
+              value={newStudent.firstName}
+              data-field="firstName"
+              onchange={handleNewStudentChange}
+              required
+            ></lightning-input>
+            <lightning-input
+              label={labels.lastName}
+              value={newStudent.lastName}
+              data-field="lastName"
+              onchange={handleNewStudentChange}
+              required
+            ></lightning-input>
+            <lightning-input
+              type="date"
+              label={labels.dateOfBirth}
+              value={newStudent.birthdate}
+              data-field="birthdate"
+              onchange={handleNewStudentChange}
+              required
+            ></lightning-input>
+            <lightning-combobox
+              label={labels.gender}
+              value={newStudent.gender}
+              options={genderOptions}
+              data-field="gender"
+              onchange={handleNewStudentChange}
+              required
+            ></lightning-combobox>
+          </div>
+          <template lwc:if={createError}>
+            <div class="form-error" role="alert">{createError}</div>
+          </template>
+          <div class="form-actions">
+            <lightning-button
+              variant="neutral"
+              label={labels.cancel}
+              onclick={handleCancelAdd}
+            ></lightning-button>
+            <lightning-button
+              variant="brand"
+              label={labels.addStudent}
+              onclick={handleCreateStudent}
+              disabled={isSaving}
+            ></lightning-button>
+          </div>
+        </div>
+      </template>
+
+      <template lwc:if={isAlreadyEnrolled}>
+        <div class="enrolled-error" role="alert">
+          <svg
+            class="warning-icon"
+            viewBox="0 0 24 24"
+            width="20"
+            height="20"
+            aria-hidden="true"
+          >
+            <path
+              d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"
+              fill="currentColor"
+            />
+          </svg>
+          <p>
+            {enrolledMessageParts.before}<a
+              href={contactUsUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              >{enrolledMessageParts.linkText}</a
+            >{enrolledMessageParts.after}
+          </p>
+        </div>
+      </template>
+
+      <template lwc:if={showGradeSection}>
+        <div class="grade-section">
+          <h3 class="form-title">{labels.gradeInfo}</h3>
+          <lightning-combobox
+            label={labels.currentGrade}
+            value={selectedCurrentGrade}
+            options={gradePicklistOptions}
+            onchange={handleCurrentGradeChange}
+            required
+          ></lightning-combobox>
+          <lightning-combobox
+            label={labels.gradeApplyingTo}
+            value={selectedGrade}
+            options={gradeApplyingToOptions}
+            onchange={handleGradeChange}
+            required
+          ></lightning-combobox>
+
+          <template lwc:if={showPreKBirthYearNote}>
+            <div class="grade-note" data-grade-note="prek" role="note">
+              <svg
+                class="warning-icon note-icon"
+                viewBox="0 0 24 24"
+                width="20"
+                height="20"
+                aria-hidden="true"
+              >
+                <path
+                  d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"
+                  fill="currentColor"
+                />
+              </svg>
+              <p>{preKBirthYearNote}</p>
+            </div>
+          </template>
+
+          <template lwc:if={showKindergartenBirthYearNote}>
+            <div class="grade-note" data-grade-note="k" role="note">
+              <svg
+                class="warning-icon note-icon"
+                viewBox="0 0 24 24"
+                width="20"
+                height="20"
+                aria-hidden="true"
+              >
+                <path
+                  d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"
+                  fill="currentColor"
+                />
+              </svg>
+              <p>{kindergartenBirthYearNote}</p>
+            </div>
+          </template>
+
+          <template lwc:if={gradeInconsistency}>
+            <div class="age-warning" role="alert">
+              <svg
+                class="warning-icon"
+                viewBox="0 0 24 24"
+                width="20"
+                height="20"
+                aria-hidden="true"
+              >
+                <path
+                  d="M1 21h22L12 2 1 21zm12-3h-2v-2h2v2zm0-4h-2v-4h2v4z"
+                  fill="currentColor"
+                />
+              </svg>
+              <p>{gradeInconsistencyMessage}</p>
+            </div>
+          </template>
+        </div>
+      </template>
+
+      <template lwc:if={showAddressCapture}>
+        <div class="address-section">
+          <c-application-form-page
+            record-id={recordId}
+            page-dev-name="Application_Details"
+            embedded
+            include-section-dev-names="Address,Guardian_1_Address,Student_Living_Status"
+          ></c-application-form-page>
+        </div>
+      </template>
+
+      <template lwc:if={validationError}>
+        <div class="form-error validation-error" role="alert">
+          {validationError}
+        </div>
+      </template>
+    </div>
+  </template>
+</template>

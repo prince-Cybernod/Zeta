@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Mogli_SMS__Select_All_Gateways__c</fullName>
+    <defaultValue>false</defaultValue>
+    <deprecated>false</deprecated>
+    <description>Per new requirement for Enhanced Notification Settings where the user can block or accept numbers from individual gateways.  This is an option to select all gateways.</description>
+    <inlineHelpText>Select/Deselects all the Gateways that are available.</inlineHelpText>
+    <label>Select All Gateways</label>
+    <trackTrending>false</trackTrending>
+    <type>Checkbox</type>
+</CustomField>

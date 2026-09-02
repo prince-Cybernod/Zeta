@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Mogli_SMS__SchedulerId__c</fullName>
+    <deprecated>false</deprecated>
+    <description>Field for storing the scheduler link ID included in an SMS.</description>
+    <externalId>false</externalId>
+    <inlineHelpText>Automatically populated when a user includes a scheduler link in an SMS.</inlineHelpText>
+    <label>Scheduler Id</label>
+    <length>255</length>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

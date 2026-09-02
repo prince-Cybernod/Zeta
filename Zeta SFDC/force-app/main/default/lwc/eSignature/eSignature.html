@@ -1,0 +1,44 @@
+<template>
+  <div class="signature-card">
+    <h3 class="section-title">{labels.title}</h3>
+
+    <div class="disclaimer" role="note">
+      <p class="disclaimer-text">{disclaimerText}</p>
+    </div>
+
+    <div class="signature-fields">
+      <div class="name-field">
+        <lightning-input
+          label={labels.nameLabel}
+          value={signatureName}
+          onchange={handleNameChange}
+          required
+          placeholder={labels.namePlaceholder}
+        ></lightning-input>
+      </div>
+
+      <div class="signature-preview">
+        <span class="signature-preview-text">{signatureName}</span>
+        <div class="signature-line"></div>
+      </div>
+
+      <div class="date-display">
+        <span class="date-display-label">{labels.dateLabel}</span>
+        <span class="date-display-value">{formattedDate}</span>
+      </div>
+
+      <div class="clear-action">
+        <lightning-button
+          variant="neutral"
+          label={labels.clear}
+          icon-name="utility:refresh"
+          onclick={handleClear}
+        ></lightning-button>
+      </div>
+    </div>
+
+    <template lwc:if={validationError}>
+      <div class="form-error" role="alert">{validationError}</div>
+    </template>
+  </div>
+</template>

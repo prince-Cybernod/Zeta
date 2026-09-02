@@ -1,0 +1,693 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<DataSourceObject xmlns="http://soap.sforce.com/2006/04/metadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <dataSource>cdp_crm_dk2__Salesforce_00DSG000002R9kQ</dataSource>
+    <dataSourceFields>
+        <fullName>cdp_crm_dk2__ArchivedById</fullName>
+        <datatype>S</datatype>
+        <definitionCreationType>Custom</definitionCreationType>
+        <externalName>ArchivedById</externalName>
+        <fieldFormula>sourceField[&apos;ArchivedById&apos;]</fieldFormula>
+        <isDataRequired>false</isDataRequired>
+        <isEventDate>false</isEventDate>
+        <isFormula>false</isFormula>
+        <isRecordModified>false</isRecordModified>
+        <keyQualifierName>KQ_ArchivedById</keyQualifierName>
+        <masterLabel>User ID</masterLabel>
+        <sequence xsi:nil="true"/>
+        <usageTag>NONE</usageTag>
+        <versionNumber xsi:nil="true"/>
+    </dataSourceFields>
+    <dataSourceFields>
+        <fullName>cdp_crm_dk2__ArchivedDate</fullName>
+        <datatype>F</datatype>
+        <dateFormat>yyyy-MM-dd&apos;T&apos;HH:mm:ss.SSS&apos;Z&apos;</dateFormat>
+        <definitionCreationType>Custom</definitionCreationType>
+        <externalName>ArchivedDate</externalName>
+        <fieldFormula>sourceField[&apos;ArchivedDate&apos;]</fieldFormula>
+        <isDataRequired>false</isDataRequired>
+        <isEventDate>false</isEventDate>
+        <isFormula>false</isFormula>
+        <isRecordModified>false</isRecordModified>
+        <keyQualifierName>KQ_ArchivedDate</keyQualifierName>
+        <masterLabel>Archived Date</masterLabel>
+        <sequence xsi:nil="true"/>
+        <usageTag>NONE</usageTag>
+        <versionNumber>1.0</versionNumber>
+    </dataSourceFields>
+    <dataSourceFields>
+        <fullName>cdp_crm_dk2__ArticleArchivedById</fullName>
+        <datatype>S</datatype>
+        <definitionCreationType>Custom</definitionCreationType>
+        <externalName>ArticleArchivedById</externalName>
+        <fieldFormula>sourceField[&apos;ArticleArchivedById&apos;]</fieldFormula>
+        <isDataRequired>false</isDataRequired>
+        <isEventDate>false</isEventDate>
+        <isFormula>false</isFormula>
+        <isRecordModified>false</isRecordModified>
+        <keyQualifierName>KQ_ArticleArchivedById</keyQualifierName>
+        <masterLabel>User ID</masterLabel>
+        <sequence xsi:nil="true"/>
+        <usageTag>NONE</usageTag>
+        <versionNumber xsi:nil="true"/>
+    </dataSourceFields>
+    <dataSourceFields>
+        <fullName>cdp_crm_dk2__ArticleArchivedDate</fullName>
+        <datatype>F</datatype>
+        <dateFormat>yyyy-MM-dd&apos;T&apos;HH:mm:ss.SSS&apos;Z&apos;</dateFormat>
+        <definitionCreationType>Custom</definitionCreationType>
+        <externalName>ArticleArchivedDate</externalName>
+        <fieldFormula>sourceField[&apos;ArticleArchivedDate&apos;]</fieldFormula>
+        <isDataRequired>false</isDataRequired>
+        <isEventDate>false</isEventDate>
+        <isFormula>false</isFormula>
+        <isRecordModified>false</isRecordModified>
+        <keyQualifierName>KQ_ArticleArchivedDate</keyQualifierName>
+        <masterLabel>Article Archived Date</masterLabel>
+        <sequence xsi:nil="true"/>
+        <usageTag>NONE</usageTag>
+        <versionNumber>1.0</versionNumber>
+    </dataSourceFields>
+    <dataSourceFields>
+        <fullName>cdp_crm_dk2__ArticleCaseAttachCount</fullName>
+        <datatype>N</datatype>
+        <definitionCreationType>Custom</definitionCreationType>
+        <externalName>ArticleCaseAttachCount</externalName>
+        <fieldFormula>sourceField[&apos;ArticleCaseAttachCount&apos;]</fieldFormula>
+        <isDataRequired>false</isDataRequired>
+        <isEventDate>false</isEventDate>
+        <isFormula>false</isFormula>
+        <isRecordModified>false</isRecordModified>
+        <keyQualifierName>KQ_ArticleCaseAttachCount</keyQualifierName>
+        <masterLabel>Article Case Association Count</masterLabel>
+        <sequence xsi:nil="true"/>
+        <usageTag>NONE</usageTag>
+        <versionNumber xsi:nil="true"/>
+    </dataSourceFields>
+    <dataSourceFields>
+        <fullName>cdp_crm_dk2__ArticleCreatedById</fullName>
+        <datatype>S</datatype>
+        <definitionCreationType>Custom</definitionCreationType>
+        <externalName>ArticleCreatedById</externalName>
+        <fieldFormula>sourceField[&apos;ArticleCreatedById&apos;]</fieldFormula>
+        <isDataRequired>false</isDataRequired>
+        <isEventDate>false</isEventDate>
+        <isFormula>false</isFormula>
+        <isRecordModified>false</isRecordModified>
+        <keyQualifierName>KQ_ArticleCreatedById</keyQualifierName>
+        <masterLabel>User ID</masterLabel>
+        <sequence xsi:nil="true"/>
+        <usageTag>NONE</usageTag>
+        <versionNumber xsi:nil="true"/>
+    </dataSourceFields>
+    <dataSourceFields>
+        <fullName>cdp_crm_dk2__ArticleCreatedDate</fullName>
+        <datatype>F</datatype>
+        <dateFormat>yyyy-MM-dd&apos;T&apos;HH:mm:ss.SSS&apos;Z&apos;</dateFormat>
+        <definitionCreationType>Custom</definitionCreationType>
+        <externalName>ArticleCreatedDate</externalName>
+        <fieldFormula>sourceField[&apos;ArticleCreatedDate&apos;]</fieldFormula>
+        <isDataRequired>false</isDataRequired>
+        <isEventDate>false</isEventDate>
+        <isFormula>false</isFormula>
+        <isRecordModified>false</isRecordModified>
+        <keyQualifierName>KQ_ArticleCreatedDate</keyQualifierName>
+        <masterLabel>Article Created Date</masterLabel>
+        <sequence xsi:nil="true"/>
+        <usageTag>NONE</usageTag>
+        <versionNumber>1.0</versionNumber>
+    </dataSourceFields>
+    <dataSourceFields>
+        <fullName>cdp_crm_dk2__ArticleMasterLanguage</fullName>
+        <datatype>S</datatype>
+        <definitionCreationType>Custom</definitionCreationType>
+        <externalName>ArticleMasterLanguage</externalName>
+        <fieldFormula>sourceField[&apos;ArticleMasterLanguage&apos;]</fieldFormula>
+        <isDataRequired>false</isDataRequired>
+        <isEventDate>false</isEventDate>
+        <isFormula>false</isFormula>
+        <isRecordModified>false</isRecordModified>
+        <keyQualifierName>KQ_ArticleMasterLanguage</keyQualifierName>
+        <masterLabel>Article Primary Language</masterLabel>
+        <sequence xsi:nil="true"/>
+        <usageTag>NONE</usageTag>
+        <versionNumber xsi:nil="true"/>
+    </dataSourceFields>
+    <dataSourceFields>
+        <fullName>cdp_crm_dk2__ArticleNumber</fullName>
+        <datatype>S</datatype>
+        <definitionCreationType>Custom</definitionCreationType>
+        <externalName>ArticleNumber</externalName>
+        <fieldFormula>sourceField[&apos;ArticleNumber&apos;]</fieldFormula>
+        <isDataRequired>false</isDataRequired>
+        <isEventDate>false</isEventDate>
+        <isFormula>false</isFormula>
+        <isRecordModified>false</isRecordModified>
+        <keyQualifierName>KQ_ArticleNumber</keyQualifierName>
+        <masterLabel>Article Number</masterLabel>
+        <sequence xsi:nil="true"/>
+        <usageTag>NONE</usageTag>
+        <versionNumber xsi:nil="true"/>
+    </dataSourceFields>
+    <dataSourceFields>
+        <fullName>cdp_crm_dk2__ArticleTotalViewCount</fullName>
+        <datatype>N</datatype>
+        <definitionCreationType>Custom</definitionCreationType>
+        <externalName>ArticleTotalViewCount</externalName>
+        <fieldFormula>sourceField[&apos;ArticleTotalViewCount&apos;]</fieldFormula>
+        <isDataRequired>false</isDataRequired>
+        <isEventDate>false</isEventDate>
+        <isFormula>false</isFormula>
+        <isRecordModified>false</isRecordModified>
+        <keyQualifierName>KQ_ArticleTotalViewCount</keyQualifierName>
+        <masterLabel>Article Total View Count</masterLabel>
+        <sequence xsi:nil="true"/>
+        <usageTag>NONE</usageTag>
+        <versionNumber xsi:nil="true"/>
+    </dataSourceFields>
+    <dataSourceFields>
+        <fullName>cdp_crm_dk2__AssignedById</fullName>
+        <datatype>S</datatype>
+        <definitionCreationType>Custom</definitionCreationType>
+        <externalName>AssignedById</externalName>
+        <fieldFormula>sourceField[&apos;AssignedById&apos;]</fieldFormula>
+        <isDataRequired>false</isDataRequired>
+        <isEventDate>false</isEventDate>
+        <isFormula>false</isFormula>
+        <isRecordModified>false</isRecordModified>
+        <keyQualifierName>KQ_AssignedById</keyQualifierName>
+        <masterLabel>User ID</masterLabel>
+        <sequence xsi:nil="true"/>
+        <usageTag>NONE</usageTag>
+        <versionNumber xsi:nil="true"/>
+    </dataSourceFields>
+    <dataSourceFields>
+        <fullName>cdp_crm_dk2__AssignedToId</fullName>
+        <datatype>S</datatype>
+        <definitionCreationType>Custom</definitionCreationType>
+        <externalName>AssignedToId</externalName>
+        <fieldFormula>sourceField[&apos;AssignedToId&apos;]</fieldFormula>
+        <isDataRequired>false</isDataRequired>
+        <isEventDate>false</isEventDate>
+        <isFormula>false</isFormula>
+        <isRecordModified>false</isRecordModified>
+        <keyQualifierName>KQ_AssignedToId</keyQualifierName>
+        <masterLabel>Assigned To</masterLabel>
+        <sequence xsi:nil="true"/>
+        <usageTag>NONE</usageTag>
+        <versionNumber xsi:nil="true"/>
+    </dataSourceFields>
+    <dataSourceFields>
+        <fullName>cdp_crm_dk2__AssignmentDate</fullName>
+        <datatype>F</datatype>
+        <dateFormat>yyyy-MM-dd&apos;T&apos;HH:mm:ss.SSS&apos;Z&apos;</dateFormat>
+        <definitionCreationType>Custom</definitionCreationType>
+        <externalName>AssignmentDate</externalName>
+        <fieldFormula>sourceField[&apos;AssignmentDate&apos;]</fieldFormula>
+        <isDataRequired>false</isDataRequired>
+        <isEventDate>false</isEventDate>
+        <isFormula>false</isFormula>
+        <isRecordModified>false</isRecordModified>
+        <keyQualifierName>KQ_AssignmentDate</keyQualifierName>
+        <masterLabel>Assignment Date</masterLabel>
+        <sequence xsi:nil="true"/>
+        <usageTag>NONE</usageTag>
+        <versionNumber>1.0</versionNumber>
+    </dataSourceFields>
+    <dataSourceFields>
+        <fullName>cdp_crm_dk2__AssignmentDueDate</fullName>
+        <datatype>F</datatype>
+        <dateFormat>yyyy-MM-dd&apos;T&apos;HH:mm:ss.SSS&apos;Z&apos;</dateFormat>
+        <definitionCreationType>Custom</definitionCreationType>
+        <externalName>AssignmentDueDate</externalName>
+        <fieldFormula>sourceField[&apos;AssignmentDueDate&apos;]</fieldFormula>
+        <isDataRequired>false</isDataRequired>
+        <isEventDate>false</isEventDate>
+        <isFormula>false</isFormula>
+        <isRecordModified>false</isRecordModified>
+        <keyQualifierName>KQ_AssignmentDueDate</keyQualifierName>
+        <masterLabel>Assignment Due Date</masterLabel>
+        <sequence xsi:nil="true"/>
+        <usageTag>NONE</usageTag>
+        <versionNumber>1.0</versionNumber>
+    </dataSourceFields>
+    <dataSourceFields>
+        <fullName>cdp_crm_dk2__AssignmentNote</fullName>
+        <datatype>S</datatype>
+        <definitionCreationType>Custom</definitionCreationType>
+        <externalName>AssignmentNote</externalName>
+        <fieldFormula>sourceField[&apos;AssignmentNote&apos;]</fieldFormula>
+        <isDataRequired>false</isDataRequired>
+        <isEventDate>false</isEventDate>
+        <isFormula>false</isFormula>
+        <isRecordModified>false</isRecordModified>
+        <keyQualifierName>KQ_AssignmentNote</keyQualifierName>
+        <masterLabel>Assignment Note</masterLabel>
+        <sequence xsi:nil="true"/>
+        <usageTag>NONE</usageTag>
+        <versionNumber xsi:nil="true"/>
+    </dataSourceFields>
+    <dataSourceFields>
+        <fullName>cdp_crm_dk2__CreatedById</fullName>
+        <datatype>S</datatype>
+        <definitionCreationType>Custom</definitionCreationType>
+        <externalName>CreatedById</externalName>
+        <fieldFormula>sourceField[&apos;CreatedById&apos;]</fieldFormula>
+        <isDataRequired>false</isDataRequired>
+        <isEventDate>false</isEventDate>
+        <isFormula>false</isFormula>
+        <isRecordModified>false</isRecordModified>
+        <keyQualifierName>KQ_CreatedById</keyQualifierName>
+        <masterLabel>Created By ID</masterLabel>
+        <sequence xsi:nil="true"/>
+        <usageTag>NONE</usageTag>
+        <versionNumber xsi:nil="true"/>
+    </dataSourceFields>
+    <dataSourceFields>
+        <fullName>cdp_crm_dk2__CreatedDate</fullName>
+        <datatype>F</datatype>
+        <dateFormat>yyyy-MM-dd&apos;T&apos;HH:mm:ss.SSS&apos;Z&apos;</dateFormat>
+        <definitionCreationType>Custom</definitionCreationType>
+        <externalName>CreatedDate</externalName>
+        <fieldFormula>sourceField[&apos;CreatedDate&apos;]</fieldFormula>
+        <isDataRequired>false</isDataRequired>
+        <isEventDate>false</isEventDate>
+        <isFormula>false</isFormula>
+        <isRecordModified>false</isRecordModified>
+        <keyQualifierName>KQ_CreatedDate</keyQualifierName>
+        <masterLabel>Created Date</masterLabel>
+        <sequence xsi:nil="true"/>
+        <usageTag>NONE</usageTag>
+        <versionNumber>1.0</versionNumber>
+    </dataSourceFields>
+    <dataSourceFields>
+        <fullName>cdp_crm_dk2__DataSource</fullName>
+        <datatype>S</datatype>
+        <definitionCreationType>System</definitionCreationType>
+        <externalName>DataSource</externalName>
+        <fieldFormula>&quot;Salesforce_00DSG000002R9kQ&quot;</fieldFormula>
+        <isDataRequired>false</isDataRequired>
+        <isEventDate>false</isEventDate>
+        <isFormula>true</isFormula>
+        <isRecordModified>false</isRecordModified>
+        <keyQualifierName>KQ_DataSource</keyQualifierName>
+        <masterLabel>Data Source</masterLabel>
+        <sequence xsi:nil="true"/>
+        <usageTag>NONE</usageTag>
+        <versionNumber xsi:nil="true"/>
+    </dataSourceFields>
+    <dataSourceFields>
+        <fullName>cdp_crm_dk2__DataSourceObject</fullName>
+        <datatype>S</datatype>
+        <definitionCreationType>System</definitionCreationType>
+        <externalName>DataSourceObject</externalName>
+        <fieldFormula>&quot;Knowledge__kav&quot;</fieldFormula>
+        <isDataRequired>false</isDataRequired>
+        <isEventDate>false</isEventDate>
+        <isFormula>true</isFormula>
+        <isRecordModified>false</isRecordModified>
+        <keyQualifierName>KQ_DataSourceObject</keyQualifierName>
+        <masterLabel>Data Source Object</masterLabel>
+        <sequence xsi:nil="true"/>
+        <usageTag>NONE</usageTag>
+        <versionNumber xsi:nil="true"/>
+    </dataSourceFields>
+    <dataSourceFields>
+        <fullName>cdp_crm_dk2__FirstPublishedDate</fullName>
+        <datatype>F</datatype>
+        <dateFormat>yyyy-MM-dd&apos;T&apos;HH:mm:ss.SSS&apos;Z&apos;</dateFormat>
+        <definitionCreationType>Custom</definitionCreationType>
+        <externalName>FirstPublishedDate</externalName>
+        <fieldFormula>sourceField[&apos;FirstPublishedDate&apos;]</fieldFormula>
+        <isDataRequired>false</isDataRequired>
+        <isEventDate>false</isEventDate>
+        <isFormula>false</isFormula>
+        <isRecordModified>false</isRecordModified>
+        <keyQualifierName>KQ_FirstPublishedDate</keyQualifierName>
+        <masterLabel>First Published Date</masterLabel>
+        <sequence xsi:nil="true"/>
+        <usageTag>NONE</usageTag>
+        <versionNumber>1.0</versionNumber>
+    </dataSourceFields>
+    <dataSourceFields>
+        <fullName>cdp_crm_dk2__Id</fullName>
+        <datatype>S</datatype>
+        <definitionCreationType>Custom</definitionCreationType>
+        <externalName>Id</externalName>
+        <fieldFormula>sourceField[&apos;Id&apos;]</fieldFormula>
+        <isDataRequired>false</isDataRequired>
+        <isEventDate>false</isEventDate>
+        <isFormula>false</isFormula>
+        <isRecordModified>false</isRecordModified>
+        <keyQualifierName>KQ_Id</keyQualifierName>
+        <masterLabel>Knowledge Article Version ID</masterLabel>
+        <primaryIndexOrder>1</primaryIndexOrder>
+        <sequence xsi:nil="true"/>
+        <usageTag>NONE</usageTag>
+        <versionNumber xsi:nil="true"/>
+    </dataSourceFields>
+    <dataSourceFields>
+        <fullName>cdp_crm_dk2__IsDeleted</fullName>
+        <datatype>S</datatype>
+        <definitionCreationType>Custom</definitionCreationType>
+        <externalName>IsDeleted</externalName>
+        <fieldFormula>sourceField[&apos;IsDeleted&apos;]</fieldFormula>
+        <isDataRequired>false</isDataRequired>
+        <isEventDate>false</isEventDate>
+        <isFormula>false</isFormula>
+        <isRecordModified>false</isRecordModified>
+        <keyQualifierName>KQ_IsDeleted</keyQualifierName>
+        <masterLabel>Is Deleted</masterLabel>
+        <sequence xsi:nil="true"/>
+        <usageTag>NONE</usageTag>
+        <versionNumber xsi:nil="true"/>
+    </dataSourceFields>
+    <dataSourceFields>
+        <fullName>cdp_crm_dk2__IsLatestVersion</fullName>
+        <datatype>S</datatype>
+        <definitionCreationType>Custom</definitionCreationType>
+        <externalName>IsLatestVersion</externalName>
+        <fieldFormula>sourceField[&apos;IsLatestVersion&apos;]</fieldFormula>
+        <isDataRequired>false</isDataRequired>
+        <isEventDate>false</isEventDate>
+        <isFormula>false</isFormula>
+        <isRecordModified>false</isRecordModified>
+        <keyQualifierName>KQ_IsLatestVersion</keyQualifierName>
+        <masterLabel>Is Latest Version</masterLabel>
+        <sequence xsi:nil="true"/>
+        <usageTag>NONE</usageTag>
+        <versionNumber xsi:nil="true"/>
+    </dataSourceFields>
+    <dataSourceFields>
+        <fullName>cdp_crm_dk2__IsVisibleInApp</fullName>
+        <datatype>S</datatype>
+        <definitionCreationType>Custom</definitionCreationType>
+        <externalName>IsVisibleInApp</externalName>
+        <fieldFormula>sourceField[&apos;IsVisibleInApp&apos;]</fieldFormula>
+        <isDataRequired>false</isDataRequired>
+        <isEventDate>false</isEventDate>
+        <isFormula>false</isFormula>
+        <isRecordModified>false</isRecordModified>
+        <keyQualifierName>KQ_IsVisibleInApp</keyQualifierName>
+        <masterLabel>Visible In Internal App</masterLabel>
+        <sequence xsi:nil="true"/>
+        <usageTag>NONE</usageTag>
+        <versionNumber xsi:nil="true"/>
+    </dataSourceFields>
+    <dataSourceFields>
+        <fullName>cdp_crm_dk2__IsVisibleInCsp</fullName>
+        <datatype>S</datatype>
+        <definitionCreationType>Custom</definitionCreationType>
+        <externalName>IsVisibleInCsp</externalName>
+        <fieldFormula>sourceField[&apos;IsVisibleInCsp&apos;]</fieldFormula>
+        <isDataRequired>false</isDataRequired>
+        <isEventDate>false</isEventDate>
+        <isFormula>false</isFormula>
+        <isRecordModified>false</isRecordModified>
+        <keyQualifierName>KQ_IsVisibleInCsp</keyQualifierName>
+        <masterLabel>Visible to Customer</masterLabel>
+        <sequence xsi:nil="true"/>
+        <usageTag>NONE</usageTag>
+        <versionNumber xsi:nil="true"/>
+    </dataSourceFields>
+    <dataSourceFields>
+        <fullName>cdp_crm_dk2__IsVisibleInPkb</fullName>
+        <datatype>S</datatype>
+        <definitionCreationType>Custom</definitionCreationType>
+        <externalName>IsVisibleInPkb</externalName>
+        <fieldFormula>sourceField[&apos;IsVisibleInPkb&apos;]</fieldFormula>
+        <isDataRequired>false</isDataRequired>
+        <isEventDate>false</isEventDate>
+        <isFormula>false</isFormula>
+        <isRecordModified>false</isRecordModified>
+        <keyQualifierName>KQ_IsVisibleInPkb</keyQualifierName>
+        <masterLabel>Visible In Public Knowledge Base</masterLabel>
+        <sequence xsi:nil="true"/>
+        <usageTag>NONE</usageTag>
+        <versionNumber xsi:nil="true"/>
+    </dataSourceFields>
+    <dataSourceFields>
+        <fullName>cdp_crm_dk2__IsVisibleInPrm</fullName>
+        <datatype>S</datatype>
+        <definitionCreationType>Custom</definitionCreationType>
+        <externalName>IsVisibleInPrm</externalName>
+        <fieldFormula>sourceField[&apos;IsVisibleInPrm&apos;]</fieldFormula>
+        <isDataRequired>false</isDataRequired>
+        <isEventDate>false</isEventDate>
+        <isFormula>false</isFormula>
+        <isRecordModified>false</isRecordModified>
+        <keyQualifierName>KQ_IsVisibleInPrm</keyQualifierName>
+        <masterLabel>Visible to Partner</masterLabel>
+        <sequence xsi:nil="true"/>
+        <usageTag>NONE</usageTag>
+        <versionNumber xsi:nil="true"/>
+    </dataSourceFields>
+    <dataSourceFields>
+        <fullName>cdp_crm_dk2__KnowledgeArticleId</fullName>
+        <datatype>S</datatype>
+        <definitionCreationType>Custom</definitionCreationType>
+        <externalName>KnowledgeArticleId</externalName>
+        <fieldFormula>sourceField[&apos;KnowledgeArticleId&apos;]</fieldFormula>
+        <isDataRequired>false</isDataRequired>
+        <isEventDate>false</isEventDate>
+        <isFormula>false</isFormula>
+        <isRecordModified>false</isRecordModified>
+        <keyQualifierName>KQ_KnowledgeArticleId</keyQualifierName>
+        <masterLabel>Knowledge Article ID</masterLabel>
+        <sequence xsi:nil="true"/>
+        <usageTag>NONE</usageTag>
+        <versionNumber xsi:nil="true"/>
+    </dataSourceFields>
+    <dataSourceFields>
+        <fullName>cdp_crm_dk2__Language</fullName>
+        <datatype>S</datatype>
+        <definitionCreationType>Custom</definitionCreationType>
+        <externalName>Language</externalName>
+        <fieldFormula>sourceField[&apos;Language&apos;]</fieldFormula>
+        <isDataRequired>false</isDataRequired>
+        <isEventDate>false</isEventDate>
+        <isFormula>false</isFormula>
+        <isRecordModified>false</isRecordModified>
+        <keyQualifierName>KQ_Language</keyQualifierName>
+        <masterLabel>Language</masterLabel>
+        <sequence xsi:nil="true"/>
+        <usageTag>NONE</usageTag>
+        <versionNumber xsi:nil="true"/>
+    </dataSourceFields>
+    <dataSourceFields>
+        <fullName>cdp_crm_dk2__LastModifiedById</fullName>
+        <datatype>S</datatype>
+        <definitionCreationType>Custom</definitionCreationType>
+        <externalName>LastModifiedById</externalName>
+        <fieldFormula>sourceField[&apos;LastModifiedById&apos;]</fieldFormula>
+        <isDataRequired>false</isDataRequired>
+        <isEventDate>false</isEventDate>
+        <isFormula>false</isFormula>
+        <isRecordModified>false</isRecordModified>
+        <keyQualifierName>KQ_LastModifiedById</keyQualifierName>
+        <masterLabel>Last Modified By ID</masterLabel>
+        <sequence xsi:nil="true"/>
+        <usageTag>NONE</usageTag>
+        <versionNumber xsi:nil="true"/>
+    </dataSourceFields>
+    <dataSourceFields>
+        <fullName>cdp_crm_dk2__LastModifiedDate</fullName>
+        <datatype>F</datatype>
+        <dateFormat>yyyy-MM-dd&apos;T&apos;HH:mm:ss.SSS&apos;Z&apos;</dateFormat>
+        <definitionCreationType>Custom</definitionCreationType>
+        <externalName>LastModifiedDate</externalName>
+        <fieldFormula>sourceField[&apos;LastModifiedDate&apos;]</fieldFormula>
+        <isDataRequired>false</isDataRequired>
+        <isEventDate>false</isEventDate>
+        <isFormula>false</isFormula>
+        <isRecordModified>false</isRecordModified>
+        <keyQualifierName>KQ_LastModifiedDate</keyQualifierName>
+        <masterLabel>Last Modified Date</masterLabel>
+        <sequence xsi:nil="true"/>
+        <usageTag>NONE</usageTag>
+        <versionNumber>1.0</versionNumber>
+    </dataSourceFields>
+    <dataSourceFields>
+        <fullName>cdp_crm_dk2__LastPublishedDate</fullName>
+        <datatype>F</datatype>
+        <dateFormat>yyyy-MM-dd&apos;T&apos;HH:mm:ss.SSS&apos;Z&apos;</dateFormat>
+        <definitionCreationType>Custom</definitionCreationType>
+        <externalName>LastPublishedDate</externalName>
+        <fieldFormula>sourceField[&apos;LastPublishedDate&apos;]</fieldFormula>
+        <isDataRequired>false</isDataRequired>
+        <isEventDate>false</isEventDate>
+        <isFormula>false</isFormula>
+        <isRecordModified>false</isRecordModified>
+        <keyQualifierName>KQ_LastPublishedDate</keyQualifierName>
+        <masterLabel>Last Published Date</masterLabel>
+        <sequence xsi:nil="true"/>
+        <usageTag>NONE</usageTag>
+        <versionNumber>1.0</versionNumber>
+    </dataSourceFields>
+    <dataSourceFields>
+        <fullName>cdp_crm_dk2__NextReviewDate</fullName>
+        <datatype>F</datatype>
+        <dateFormat>yyyy-MM-dd&apos;T&apos;HH:mm:ss.SSS&apos;Z&apos;</dateFormat>
+        <definitionCreationType>Custom</definitionCreationType>
+        <externalName>NextReviewDate</externalName>
+        <fieldFormula>sourceField[&apos;NextReviewDate&apos;]</fieldFormula>
+        <isDataRequired>false</isDataRequired>
+        <isEventDate>false</isEventDate>
+        <isFormula>false</isFormula>
+        <isRecordModified>false</isRecordModified>
+        <keyQualifierName>KQ_NextReviewDate</keyQualifierName>
+        <masterLabel>Next Review Date</masterLabel>
+        <sequence xsi:nil="true"/>
+        <usageTag>NONE</usageTag>
+        <versionNumber>1.0</versionNumber>
+    </dataSourceFields>
+    <dataSourceFields>
+        <fullName>cdp_crm_dk2__OwnerId</fullName>
+        <datatype>S</datatype>
+        <definitionCreationType>Custom</definitionCreationType>
+        <externalName>OwnerId</externalName>
+        <fieldFormula>sourceField[&apos;OwnerId&apos;]</fieldFormula>
+        <isDataRequired>false</isDataRequired>
+        <isEventDate>false</isEventDate>
+        <isFormula>false</isFormula>
+        <isRecordModified>false</isRecordModified>
+        <keyQualifierName>KQ_OwnerId</keyQualifierName>
+        <masterLabel>Owner ID</masterLabel>
+        <sequence xsi:nil="true"/>
+        <usageTag>NONE</usageTag>
+        <versionNumber xsi:nil="true"/>
+    </dataSourceFields>
+    <dataSourceFields>
+        <fullName>cdp_crm_dk2__PublishStatus</fullName>
+        <datatype>S</datatype>
+        <definitionCreationType>Custom</definitionCreationType>
+        <externalName>PublishStatus</externalName>
+        <fieldFormula>sourceField[&apos;PublishStatus&apos;]</fieldFormula>
+        <isDataRequired>false</isDataRequired>
+        <isEventDate>false</isEventDate>
+        <isFormula>false</isFormula>
+        <isRecordModified>false</isRecordModified>
+        <keyQualifierName>KQ_PublishStatus</keyQualifierName>
+        <masterLabel>Publication Status</masterLabel>
+        <sequence xsi:nil="true"/>
+        <usageTag>NONE</usageTag>
+        <versionNumber xsi:nil="true"/>
+    </dataSourceFields>
+    <dataSourceFields>
+        <fullName>cdp_crm_dk2__SfdcOrganizationId</fullName>
+        <datatype>S</datatype>
+        <definitionCreationType>Custom</definitionCreationType>
+        <externalName>SfdcOrganizationId</externalName>
+        <fieldFormula>sourceField[&apos;SfdcOrganizationId&apos;]</fieldFormula>
+        <isDataRequired>false</isDataRequired>
+        <isEventDate>false</isEventDate>
+        <isFormula>false</isFormula>
+        <isRecordModified>false</isRecordModified>
+        <keyQualifierName>KQ_SfdcOrganizationId</keyQualifierName>
+        <masterLabel>SfdcOrganizationId</masterLabel>
+        <sequence xsi:nil="true"/>
+        <usageTag>NONE</usageTag>
+        <versionNumber xsi:nil="true"/>
+    </dataSourceFields>
+    <dataSourceFields>
+        <fullName>cdp_crm_dk2__SourceId</fullName>
+        <datatype>S</datatype>
+        <definitionCreationType>Custom</definitionCreationType>
+        <externalName>SourceId</externalName>
+        <fieldFormula>sourceField[&apos;SourceId&apos;]</fieldFormula>
+        <isDataRequired>false</isDataRequired>
+        <isEventDate>false</isEventDate>
+        <isFormula>false</isFormula>
+        <isRecordModified>false</isRecordModified>
+        <keyQualifierName>KQ_SourceId</keyQualifierName>
+        <masterLabel>Source</masterLabel>
+        <sequence xsi:nil="true"/>
+        <usageTag>NONE</usageTag>
+        <versionNumber xsi:nil="true"/>
+    </dataSourceFields>
+    <dataSourceFields>
+        <fullName>cdp_crm_dk2__Summary</fullName>
+        <datatype>S</datatype>
+        <definitionCreationType>Custom</definitionCreationType>
+        <externalName>Summary</externalName>
+        <fieldFormula>sourceField[&apos;Summary&apos;]</fieldFormula>
+        <isDataRequired>false</isDataRequired>
+        <isEventDate>false</isEventDate>
+        <isFormula>false</isFormula>
+        <isRecordModified>false</isRecordModified>
+        <keyQualifierName>KQ_Summary</keyQualifierName>
+        <masterLabel>Summary</masterLabel>
+        <sequence xsi:nil="true"/>
+        <usageTag>NONE</usageTag>
+        <versionNumber xsi:nil="true"/>
+    </dataSourceFields>
+    <dataSourceFields>
+        <fullName>cdp_crm_dk2__SystemModstamp</fullName>
+        <datatype>F</datatype>
+        <dateFormat>yyyy-MM-dd&apos;T&apos;HH:mm:ss.SSS&apos;Z&apos;</dateFormat>
+        <definitionCreationType>Custom</definitionCreationType>
+        <externalName>SystemModstamp</externalName>
+        <fieldFormula>sourceField[&apos;SystemModstamp&apos;]</fieldFormula>
+        <isDataRequired>true</isDataRequired>
+        <isEventDate>false</isEventDate>
+        <isFormula>false</isFormula>
+        <isRecordModified>false</isRecordModified>
+        <keyQualifierName>KQ_SystemModstamp</keyQualifierName>
+        <masterLabel>System Modstamp</masterLabel>
+        <sequence xsi:nil="true"/>
+        <usageTag>NONE</usageTag>
+        <versionNumber>1.0</versionNumber>
+    </dataSourceFields>
+    <dataSourceFields>
+        <fullName>cdp_crm_dk2__Title</fullName>
+        <datatype>S</datatype>
+        <definitionCreationType>Custom</definitionCreationType>
+        <externalName>Title</externalName>
+        <fieldFormula>sourceField[&apos;Title&apos;]</fieldFormula>
+        <isDataRequired>false</isDataRequired>
+        <isEventDate>false</isEventDate>
+        <isFormula>false</isFormula>
+        <isRecordModified>false</isRecordModified>
+        <keyQualifierName>KQ_Title</keyQualifierName>
+        <masterLabel>Title</masterLabel>
+        <sequence xsi:nil="true"/>
+        <usageTag>NONE</usageTag>
+        <versionNumber xsi:nil="true"/>
+    </dataSourceFields>
+    <dataSourceFields>
+        <fullName>cdp_crm_dk2__UrlName</fullName>
+        <datatype>S</datatype>
+        <definitionCreationType>Custom</definitionCreationType>
+        <externalName>UrlName</externalName>
+        <fieldFormula>sourceField[&apos;UrlName&apos;]</fieldFormula>
+        <isDataRequired>false</isDataRequired>
+        <isEventDate>false</isEventDate>
+        <isFormula>false</isFormula>
+        <isRecordModified>false</isRecordModified>
+        <keyQualifierName>KQ_UrlName</keyQualifierName>
+        <masterLabel>URL Name</masterLabel>
+        <sequence xsi:nil="true"/>
+        <usageTag>NONE</usageTag>
+        <versionNumber xsi:nil="true"/>
+    </dataSourceFields>
+    <dataSourceFields>
+        <fullName>cdp_crm_dk2__VersionNumber</fullName>
+        <datatype>N</datatype>
+        <definitionCreationType>Custom</definitionCreationType>
+        <externalName>VersionNumber</externalName>
+        <fieldFormula>sourceField[&apos;VersionNumber&apos;]</fieldFormula>
+        <isDataRequired>false</isDataRequired>
+        <isEventDate>false</isEventDate>
+        <isFormula>false</isFormula>
+        <isRecordModified>false</isRecordModified>
+        <keyQualifierName>KQ_VersionNumber</keyQualifierName>
+        <masterLabel>Version Number</masterLabel>
+        <sequence xsi:nil="true"/>
+        <usageTag>NONE</usageTag>
+        <versionNumber xsi:nil="true"/>
+    </dataSourceFields>
+    <externalRecordIdentifier>Knowledge__kav</externalRecordIdentifier>
+    <masterLabel>Knowledge_kav</masterLabel>
+    <objectType>Object</objectType>
+    <storageType>LOCAL</storageType>
+    <templateVersion>1</templateVersion>
+</DataSourceObject>

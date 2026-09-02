@@ -1,0 +1,121 @@
+<template>
+  <!-- Loading State -->
+  <template lwc:if={isLoading}>
+    <div class="slds-p-around_medium slds-text-align_center slds-is-relative">
+      <lightning-spinner
+        alternative-text="Loading"
+        size="medium"
+      ></lightning-spinner>
+      <p class="slds-text-body_regular slds-m-top_medium">
+        Loading run log details...
+      </p>
+    </div>
+  </template>
+
+  <!-- Ready State: Confirmation UI -->
+  <template lwc:if={isReady}>
+    <div class="slds-p-around_medium">
+      <div
+        class="slds-notify slds-notify_alert slds-alert_error slds-m-bottom_medium"
+        role="alert"
+      >
+        <span class="slds-assistive-text">Error</span>
+        <lightning-icon
+          icon-name="utility:error"
+          size="x-small"
+          class="slds-m-right_x-small"
+        ></lightning-icon>
+        <h2>
+          This will permanently delete the lottery run log and reset all
+          affected student records back to Eligible status. This action cannot
+          be undone.
+        </h2>
+      </div>
+
+      <div class="slds-m-top_medium slds-text-align_right">
+        <lightning-button
+          variant="neutral"
+          label="Cancel"
+          onclick={handleCancel}
+        ></lightning-button>
+        <lightning-button
+          variant="destructive"
+          label="Rollback Lottery"
+          onclick={handleRollback}
+          class="slds-m-left_x-small"
+        ></lightning-button>
+      </div>
+    </div>
+  </template>
+
+  <!-- Invalid State: Validation Error -->
+  <template lwc:if={isInvalid}>
+    <div class="slds-p-around_medium">
+      <div
+        class="slds-notify slds-notify_alert slds-alert_warning"
+        role="alert"
+      >
+        <span class="slds-assistive-text">Warning</span>
+        <lightning-icon
+          icon-name="utility:warning"
+          size="x-small"
+          class="slds-m-right_x-small"
+        ></lightning-icon>
+        <h2>{validationError}</h2>
+      </div>
+
+      <div class="slds-m-top_medium slds-text-align_right">
+        <lightning-button
+          variant="neutral"
+          label="Close"
+          onclick={handleCancel}
+        ></lightning-button>
+      </div>
+    </div>
+  </template>
+
+  <!-- Rolling Back State: Progress -->
+  <template lwc:if={isRollingBack}>
+    <div class="slds-p-around_large slds-text-align_center rolling-back-state">
+      <lightning-icon
+        icon-name="utility:undo"
+        size="large"
+        class="slds-m-bottom_medium"
+      ></lightning-icon>
+      <h2 class="slds-text-heading_medium slds-m-bottom_small">
+        Rolling Back Lottery
+      </h2>
+      <div class="progress-row">
+        <lightning-spinner
+          alternative-text="Rolling back"
+          size="small"
+          class="spinner-inline"
+        ></lightning-spinner>
+        <p class="slds-text-body_regular slds-text-color_weak">
+          {progressMessage}
+        </p>
+      </div>
+      <p class="slds-text-body_small slds-text-color_weak slds-m-top_medium">
+        Please do not close this window.
+      </p>
+    </div>
+  </template>
+
+  <!-- Error State -->
+  <template lwc:if={isError}>
+    <div class="slds-p-around_medium">
+      <div class="slds-notify slds-notify_alert slds-alert_error" role="alert">
+        <span class="slds-assistive-text">Error</span>
+        <h2>{error}</h2>
+      </div>
+
+      <div class="slds-m-top_medium slds-text-align_right">
+        <lightning-button
+          variant="neutral"
+          label="Close"
+          onclick={handleCancel}
+        ></lightning-button>
+      </div>
+    </div>
+  </template>
+</template>

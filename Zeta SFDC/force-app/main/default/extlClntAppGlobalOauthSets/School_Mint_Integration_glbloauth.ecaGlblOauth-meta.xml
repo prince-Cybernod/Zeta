@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ExtlClntAppGlobalOauthSettings xmlns="http://soap.sforce.com/2006/04/metadata">
+    <callbackUrl>https://salesforce.com</callbackUrl>
+    <certificate>MIIC5TCCAc2gAwIBAgIIStCEX+1Jf3IwDQYJKoZIhvcNAQELBQAwITEfMB0GA1UE
+AxMWU2FsZXNmb3JjZSBJbnRlZ3JhdGlvbjAeFw0yNjAyMTMxNjU5MjFaFw0zNjAy
+MTExNjU5MjFaMCExHzAdBgNVBAMTFlNhbGVzZm9yY2UgSW50ZWdyYXRpb24wggEi
+MA0GCSqGSIb3DQEBAQUAA4IBDwAwggEKAoIBAQCY9IHvwm2ITNyUjHrjcUh96+b6
+7cs8XRyMfD+01y5/BcFupPeksbStMY4uj6H50Ct1NcoAtQetq0IPyVMYZ69avSmB
++iBcwXei3RDvw9/y/bClO+tqpXXM71bMnxAqqO13eJpxL1k2kajzD9uuUdCJFFvc
+cYmOlgtRVy4Xd0gfxOpDh4ZXXEuhB9u0rMcvhgitM0BUi4dND1toDHdsYVOfmw8t
+JMbucfSnTdsKjaX/bue4FGqzjVYGVPLvuNKHPTakqIrkdfUx9MdzkSID+5V0nXp4
+eNKGxt6oToocT7YvJ02gqlh2QUB553QcdtqRgHhOLOmwI+bf9AkYhfd6/JnvAgMB
+AAGjITAfMB0GA1UdDgQWBBRfxRqKgrdeG/Cq/2Uk4U5AE2Zr+zANBgkqhkiG9w0B
+AQsFAAOCAQEAiRdIPbos8tlpVEyfdor5A9detUGM/8B/b1/zFtrHzITqYQphJaBM
+vX2aQxUZuxpmLpSIILJNLQji13QCZkzjoKH8Qa2We3hKFwKg3XhxGe4lxFnHJTrt
+GbMS/88r1bYyL9FCj8dRO9kozfdALtjXMswQegUMJe7MVF3A1mp9NtG0TcGT65jR
+iJeHKHWPhr5ajVZzc8wl84Xo6pU0ZN8met/n3b3zoyUD0G/AohoVHRixOee09Llg
+81C7Ec3akmsp4BjZiiS8vkM4dzGOTI86p49CgXHdNZFtkfNdCwxOo7WIGe2V75vC
+HxMud8mOMr3UBFkVEEsOzIYs6yYXklT/ww==</certificate>
+    <consumerKey>3MVG9Gm6vbdjgMWRQ8_us_jw8pa_Hsahf8sLoBg4kyvAN3qxly4pSPc1L6p0fyvf5rVmAbS8_vDAPvMamsHxf</consumerKey>
+    <externalClientApplication>School_Mint_Integration</externalClientApplication>
+    <isClientCredentialsFlowEnabled>false</isClientCredentialsFlowEnabled>
+    <isCodeCredFlowEnabled>false</isCodeCredFlowEnabled>
+    <isCodeCredPostOnly>false</isCodeCredPostOnly>
+    <isConsumerSecretOptional>false</isConsumerSecretOptional>
+    <isDPopEnabled>false</isDPopEnabled>
+    <isDeviceFlowEnabled>false</isDeviceFlowEnabled>
+    <isEnforceRefreshTokenTTL>false</isEnforceRefreshTokenTTL>
+    <isIntrospectAllTokens>false</isIntrospectAllTokens>
+    <isNamedUserJwtEnabled>false</isNamedUserJwtEnabled>
+    <isPkceRequired>true</isPkceRequired>
+    <isRefreshTokenRotationEnabled>false</isRefreshTokenRotationEnabled>
+    <isSecretRequiredForRefreshToken>true</isSecretRequiredForRefreshToken>
+    <isSecretRequiredForTokenExchange>true</isSecretRequiredForTokenExchange>
+    <isTokenExchangeEnabled>false</isTokenExchangeEnabled>
+    <label>School_Mint_Integration_glbloauth</label>
+    <shouldRotateConsumerKey>false</shouldRotateConsumerKey>
+    <shouldRotateConsumerSecret>false</shouldRotateConsumerSecret>
+</ExtlClntAppGlobalOauthSettings>

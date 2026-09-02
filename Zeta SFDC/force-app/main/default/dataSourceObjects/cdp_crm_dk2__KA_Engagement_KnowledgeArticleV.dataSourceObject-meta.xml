@@ -1,0 +1,218 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<DataSourceObject xmlns="http://soap.sforce.com/2006/04/metadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <dataSource>cdp_crm_dk2__KA_Engagement_ac331eeb_171e_4b3a_931b_b60e5fefff51</dataSource>
+    <dataSourceFields>
+        <fullName>cdp_crm_dk2__ArticleViewContextDescription</fullName>
+        <datatype>S</datatype>
+        <definitionCreationType>Custom</definitionCreationType>
+        <externalName>ArticleViewContextDescription</externalName>
+        <fieldFormula>sourceField[&apos;ArticleViewContextDescription&apos;]</fieldFormula>
+        <isDataRequired>false</isDataRequired>
+        <isEventDate>false</isEventDate>
+        <isFormula>false</isFormula>
+        <isRecordModified>false</isRecordModified>
+        <keyQualifierName>KQ_ArticleViewContextDescription</keyQualifierName>
+        <masterLabel>ArticleViewContextDescription</masterLabel>
+        <sequence xsi:nil="true"/>
+        <usageTag>NONE</usageTag>
+        <versionNumber xsi:nil="true"/>
+    </dataSourceFields>
+    <dataSourceFields>
+        <fullName>cdp_crm_dk2__cdp_sys_PartitionDate</fullName>
+        <datatype>F</datatype>
+        <definitionCreationType>System</definitionCreationType>
+        <externalName>cdp_sys_PartitionDate</externalName>
+        <fieldFormula>if(ISEMPTY(formulaField[&apos;Timestamp__c&apos;])) { null; } else { DAYPRECISION(formulaField[&apos;Timestamp__c&apos;]); }</fieldFormula>
+        <isDataRequired>false</isDataRequired>
+        <isEventDate>false</isEventDate>
+        <isFormula>true</isFormula>
+        <isRecordModified>false</isRecordModified>
+        <keyQualifierName>KQ_cdp_sys_PartitionDate</keyQualifierName>
+        <masterLabel>cdp_sys_PartitionDate</masterLabel>
+        <sequence xsi:nil="true"/>
+        <usageTag>NONE</usageTag>
+        <versionNumber>1.0</versionNumber>
+    </dataSourceFields>
+    <dataSourceFields>
+        <fullName>cdp_crm_dk2__DataSource</fullName>
+        <datatype>S</datatype>
+        <definitionCreationType>System</definitionCreationType>
+        <externalName>DataSource</externalName>
+        <fieldFormula>&quot;KA_Engagement_ac331eeb_171e_4b3a_931b_b60e5fefff51&quot;</fieldFormula>
+        <isDataRequired>false</isDataRequired>
+        <isEventDate>false</isEventDate>
+        <isFormula>true</isFormula>
+        <isRecordModified>false</isRecordModified>
+        <keyQualifierName>KQ_DataSource</keyQualifierName>
+        <masterLabel>Data Source</masterLabel>
+        <sequence xsi:nil="true"/>
+        <usageTag>NONE</usageTag>
+        <versionNumber xsi:nil="true"/>
+    </dataSourceFields>
+    <dataSourceFields>
+        <fullName>cdp_crm_dk2__DataSourceObject</fullName>
+        <datatype>S</datatype>
+        <definitionCreationType>System</definitionCreationType>
+        <externalName>DataSourceObject</externalName>
+        <fieldFormula>&quot;KA_Engagement_KnowledgeArticleView&quot;</fieldFormula>
+        <isDataRequired>false</isDataRequired>
+        <isEventDate>false</isEventDate>
+        <isFormula>true</isFormula>
+        <isRecordModified>false</isRecordModified>
+        <keyQualifierName>KQ_DataSourceObject</keyQualifierName>
+        <masterLabel>Data Source Object</masterLabel>
+        <sequence xsi:nil="true"/>
+        <usageTag>NONE</usageTag>
+        <versionNumber xsi:nil="true"/>
+    </dataSourceFields>
+    <dataSourceFields>
+        <fullName>cdp_crm_dk2__Id</fullName>
+        <datatype>S</datatype>
+        <definitionCreationType>Custom</definitionCreationType>
+        <externalName>Id</externalName>
+        <fieldFormula>sourceField[&apos;Id&apos;]</fieldFormula>
+        <isDataRequired>false</isDataRequired>
+        <isEventDate>false</isEventDate>
+        <isFormula>false</isFormula>
+        <isRecordModified>false</isRecordModified>
+        <keyQualifierName>KQ_Id</keyQualifierName>
+        <masterLabel>Id</masterLabel>
+        <primaryIndexOrder>1</primaryIndexOrder>
+        <sequence xsi:nil="true"/>
+        <usageTag>NONE</usageTag>
+        <versionNumber xsi:nil="true"/>
+    </dataSourceFields>
+    <dataSourceFields>
+        <fullName>cdp_crm_dk2__KnowledgeArticleUserTypeId</fullName>
+        <datatype>S</datatype>
+        <definitionCreationType>Custom</definitionCreationType>
+        <externalName>KnowledgeArticleUserTypeId</externalName>
+        <fieldFormula>sourceField[&apos;KnowledgeArticleUserTypeId&apos;]</fieldFormula>
+        <isDataRequired>false</isDataRequired>
+        <isEventDate>false</isEventDate>
+        <isFormula>false</isFormula>
+        <isRecordModified>false</isRecordModified>
+        <keyQualifierName>KQ_KnowledgeArticleUserTypeId</keyQualifierName>
+        <masterLabel>KnowledgeArticleUserTypeId</masterLabel>
+        <sequence xsi:nil="true"/>
+        <usageTag>NONE</usageTag>
+        <versionNumber xsi:nil="true"/>
+    </dataSourceFields>
+    <dataSourceFields>
+        <fullName>cdp_crm_dk2__KnowledgeArticleVersionId</fullName>
+        <datatype>S</datatype>
+        <definitionCreationType>Custom</definitionCreationType>
+        <externalName>KnowledgeArticleVersionId</externalName>
+        <fieldFormula>sourceField[&apos;KnowledgeArticleVersionId&apos;]</fieldFormula>
+        <isDataRequired>false</isDataRequired>
+        <isEventDate>false</isEventDate>
+        <isFormula>false</isFormula>
+        <isRecordModified>false</isRecordModified>
+        <keyQualifierName>KQ_KnowledgeArticleVersionId</keyQualifierName>
+        <masterLabel>KnowledgeArticleVersionId</masterLabel>
+        <sequence xsi:nil="true"/>
+        <usageTag>NONE</usageTag>
+        <versionNumber xsi:nil="true"/>
+    </dataSourceFields>
+    <dataSourceFields>
+        <fullName>cdp_crm_dk2__SourceReferenceId</fullName>
+        <datatype>S</datatype>
+        <definitionCreationType>Custom</definitionCreationType>
+        <externalName>SourceReferenceId</externalName>
+        <fieldFormula>sourceField[&apos;SourceReferenceId&apos;]</fieldFormula>
+        <isDataRequired>false</isDataRequired>
+        <isEventDate>false</isEventDate>
+        <isFormula>false</isFormula>
+        <isRecordModified>false</isRecordModified>
+        <keyQualifierName>KQ_SourceReferenceId</keyQualifierName>
+        <masterLabel>SourceReferenceId</masterLabel>
+        <sequence xsi:nil="true"/>
+        <usageTag>NONE</usageTag>
+        <versionNumber xsi:nil="true"/>
+    </dataSourceFields>
+    <dataSourceFields>
+        <fullName>cdp_crm_dk2__SourceReferenceObject</fullName>
+        <datatype>S</datatype>
+        <definitionCreationType>Custom</definitionCreationType>
+        <externalName>SourceReferenceObject</externalName>
+        <fieldFormula>sourceField[&apos;SourceReferenceObject&apos;]</fieldFormula>
+        <isDataRequired>false</isDataRequired>
+        <isEventDate>false</isEventDate>
+        <isFormula>false</isFormula>
+        <isRecordModified>false</isRecordModified>
+        <keyQualifierName>KQ_SourceReferenceObject</keyQualifierName>
+        <masterLabel>SourceReferenceObject</masterLabel>
+        <sequence xsi:nil="true"/>
+        <usageTag>NONE</usageTag>
+        <versionNumber xsi:nil="true"/>
+    </dataSourceFields>
+    <dataSourceFields>
+        <fullName>cdp_crm_dk2__Timestamp</fullName>
+        <datatype>F</datatype>
+        <definitionCreationType>Custom</definitionCreationType>
+        <externalName>Timestamp</externalName>
+        <fieldFormula>sourceField[&apos;Timestamp&apos;]</fieldFormula>
+        <isDataRequired>false</isDataRequired>
+        <isEventDate>false</isEventDate>
+        <isFormula>false</isFormula>
+        <isRecordModified>false</isRecordModified>
+        <keyQualifierName>KQ_Timestamp</keyQualifierName>
+        <masterLabel>Timestamp</masterLabel>
+        <sequence xsi:nil="true"/>
+        <usageTag>NONE</usageTag>
+        <versionNumber>1.0</versionNumber>
+    </dataSourceFields>
+    <dataSourceFields>
+        <fullName>cdp_crm_dk2__UsedForGrounding</fullName>
+        <datatype>S</datatype>
+        <definitionCreationType>Custom</definitionCreationType>
+        <externalName>UsedForGrounding</externalName>
+        <fieldFormula>sourceField[&apos;UsedForGrounding&apos;]</fieldFormula>
+        <isDataRequired>false</isDataRequired>
+        <isEventDate>false</isEventDate>
+        <isFormula>false</isFormula>
+        <isRecordModified>false</isRecordModified>
+        <keyQualifierName>KQ_UsedForGrounding</keyQualifierName>
+        <masterLabel>UsedForGrounding</masterLabel>
+        <sequence xsi:nil="true"/>
+        <usageTag>NONE</usageTag>
+        <versionNumber xsi:nil="true"/>
+    </dataSourceFields>
+    <dataSourceFields>
+        <fullName>cdp_crm_dk2__userId</fullName>
+        <datatype>S</datatype>
+        <definitionCreationType>Custom</definitionCreationType>
+        <externalName>userId</externalName>
+        <fieldFormula>sourceField[&apos;userId&apos;]</fieldFormula>
+        <isDataRequired>false</isDataRequired>
+        <isEventDate>false</isEventDate>
+        <isFormula>false</isFormula>
+        <isRecordModified>false</isRecordModified>
+        <keyQualifierName>KQ_userId</keyQualifierName>
+        <masterLabel>userId</masterLabel>
+        <sequence xsi:nil="true"/>
+        <usageTag>NONE</usageTag>
+        <versionNumber xsi:nil="true"/>
+    </dataSourceFields>
+    <dataSourceFields>
+        <fullName>cdp_crm_dk2__WebsiteId</fullName>
+        <datatype>S</datatype>
+        <definitionCreationType>Custom</definitionCreationType>
+        <externalName>WebsiteId</externalName>
+        <fieldFormula>sourceField[&apos;WebsiteId&apos;]</fieldFormula>
+        <isDataRequired>false</isDataRequired>
+        <isEventDate>false</isEventDate>
+        <isFormula>false</isFormula>
+        <isRecordModified>false</isRecordModified>
+        <keyQualifierName>KQ_WebsiteId</keyQualifierName>
+        <masterLabel>WebsiteId</masterLabel>
+        <sequence xsi:nil="true"/>
+        <usageTag>NONE</usageTag>
+        <versionNumber xsi:nil="true"/>
+    </dataSourceFields>
+    <externalRecordIdentifier>KA_Engagement_KnowledgeArticleView</externalRecordIdentifier>
+    <masterLabel>KA_Engagement-KnowledgeArticleView</masterLabel>
+    <objectType>Object</objectType>
+    <storageType>LOCAL</storageType>
+    <templateVersion>1</templateVersion>
+</DataSourceObject>

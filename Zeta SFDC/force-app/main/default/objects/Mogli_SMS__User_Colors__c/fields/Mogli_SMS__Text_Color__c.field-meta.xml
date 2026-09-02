@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Mogli_SMS__Text_Color__c</fullName>
+    <defaultValue>&apos;ffffff&apos;</defaultValue>
+    <deprecated>false</deprecated>
+    <description>Hex code for the user&apos;s text color</description>
+    <externalId>false</externalId>
+    <inlineHelpText>Enter the hex code for your selected text color.</inlineHelpText>
+    <label>Text Color</label>
+    <length>6</length>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

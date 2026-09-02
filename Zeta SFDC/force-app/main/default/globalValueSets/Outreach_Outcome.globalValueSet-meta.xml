@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GlobalValueSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customValue>
+        <fullName>TBD – Lead not yet tried</fullName>
+        <default>false</default>
+        <label>TBD – Lead not yet tried</label>
+    </customValue>
+    <customValue>
+        <fullName>TBD – Lead requires further outreach</fullName>
+        <default>false</default>
+        <label>TBD – Lead requires further outreach</label>
+    </customValue>
+    <customValue>
+        <fullName>TBD – Suspected Duplicate</fullName>
+        <default>false</default>
+        <label>TBD – Suspected Duplicate</label>
+    </customValue>
+    <customValue>
+        <fullName>Unreachable – Wrong phone number / OOO</fullName>
+        <default>false</default>
+        <label>Unreachable – Wrong phone number / OOO</label>
+    </customValue>
+    <customValue>
+        <fullName>Unreachable – No answer (3+ attempts)</fullName>
+        <default>false</default>
+        <label>Unreachable – No answer (3+ attempts)</label>
+    </customValue>
+    <customValue>
+        <fullName>Applied w/o team call</fullName>
+        <default>false</default>
+        <label>Applied w/o team call</label>
+    </customValue>
+    <customValue>
+        <fullName>Applied through team call</fullName>
+        <default>false</default>
+        <label>Applied through team call</label>
+    </customValue>
+    <customValue>
+        <fullName>Ineligible – Outside NYC</fullName>
+        <default>false</default>
+        <label>Ineligible – Outside NYC</label>
+    </customValue>
+    <customValue>
+        <fullName>Ineligible – Too old</fullName>
+        <default>false</default>
+        <label>Ineligible – Too old</label>
+    </customValue>
+    <customValue>
+        <fullName>Ineligible – Too young for Pre-K</fullName>
+        <default>false</default>
+        <label>Ineligible – Too young for Pre-K</label>
+    </customValue>
+    <customValue>
+        <fullName>Reached, not interested – Location/distance</fullName>
+        <default>false</default>
+        <label>Reached, not interested – Location/distance</label>
+    </customValue>
+    <customValue>
+        <fullName>Reached, not interested – IEP/service not available</fullName>
+        <default>false</default>
+        <label>Reached, not interested – IEP/service not available</label>
+    </customValue>
+    <customValue>
+        <fullName>Reached, not interested – School schedule</fullName>
+        <default>false</default>
+        <label>Reached, not interested – School schedule</label>
+    </customValue>
+    <customValue>
+        <fullName>Reached, not interested – No bussing</fullName>
+        <default>false</default>
+        <label>Reached, not interested – No bussing</label>
+    </customValue>
+    <customValue>
+        <fullName>Reached, not interested – Do not want to change schools</fullName>
+        <default>false</default>
+        <label>Reached, not interested – Do not want to change schools</label>
+    </customValue>
+    <customValue>
+        <fullName>Reached, not interested – Other</fullName>
+        <default>false</default>
+        <label>Reached, not interested – Other</label>
+    </customValue>
+    <customValue>
+        <fullName>Duplicate – Enrolled Student</fullName>
+        <default>false</default>
+        <label>Duplicate – Enrolled Student</label>
+    </customValue>
+    <customValue>
+        <fullName>Duplicate – Applied Student</fullName>
+        <default>false</default>
+        <label>Duplicate – Applied Student</label>
+    </customValue>
+    <customValue>
+        <fullName>Duplicate – Active duplicate lead</fullName>
+        <default>false</default>
+        <label>Duplicate – Active duplicate lead</label>
+    </customValue>
+    <masterLabel>Outreach Outcome</masterLabel>
+    <sorted>false</sorted>
+</GlobalValueSet>

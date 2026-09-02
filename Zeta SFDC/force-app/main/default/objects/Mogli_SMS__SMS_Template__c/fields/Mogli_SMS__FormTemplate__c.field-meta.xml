@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Mogli_SMS__FormTemplate__c</fullName>
+    <deleteConstraint>SetNull</deleteConstraint>
+    <deprecated>false</deprecated>
+    <description>The form that will be initiated upon sending this template</description>
+    <inlineHelpText>The form that will be initiated upon sending this template</inlineHelpText>
+    <label>Form Template</label>
+    <lookupFilter>
+        <active>true</active>
+        <errorMessage>Only Active Forms maybe selected</errorMessage>
+        <filterItems>
+            <field>Mogli_SMS__FormTemplate__c.Mogli_SMS__Status__c</field>
+            <operation>equals</operation>
+            <value>Active</value>
+        </filterItems>
+        <infoMessage>Only Active Forms maybe selected</infoMessage>
+        <isOptional>false</isOptional>
+    </lookupFilter>
+    <referenceTo>Mogli_SMS__FormTemplate__c</referenceTo>
+    <relationshipLabel>SMS Templates</relationshipLabel>
+    <relationshipName>SMS_Templates</relationshipName>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Lookup</type>
+</CustomField>

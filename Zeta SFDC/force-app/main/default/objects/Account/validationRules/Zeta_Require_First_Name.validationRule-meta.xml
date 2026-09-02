@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Zeta_Require_First_Name</fullName>
+    <active>true</active>
+    <description>Requires a first name for Accounts</description>
+    <errorConditionFormula>AND( ISBLANK(FirstName),
+  OR(
+       RecordType.DeveloperName = &apos;Guardian&apos;,
+       RecordType.DeveloperName = &apos;Student&apos; )
+)</errorConditionFormula>
+    <errorDisplayField>FirstName</errorDisplayField>
+    <errorMessage>&quot;First Name&quot; is a required field.</errorMessage>
+</ValidationRule>

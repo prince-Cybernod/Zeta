@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Zeta_Approved_Grade__c</fullName>
+    <description>Calculates the grade approved by Zeta based on the student’s applied grade, Zeta decision, and student type. Returning students and PK–1 students retain their applied grade.</description>
+    <externalId>false</externalId>
+    <formula>IF(
+    OR(
+        TEXT(Grade_Applied__c) = &quot;PK&quot;,
+        TEXT(Grade_Applied__c) = &quot;K&quot;,
+        TEXT(Grade_Applied__c) = &quot;1&quot;,
+        TEXT(Zeta_Decision__c) = &quot;Remain in Applied Grade&quot;,
+        TEXT(LearnerAccount.Student_Type__c) = &quot;Returning&quot;
+    ),
+    TEXT(Grade_Applied__c),
+
+    IF(
+        TEXT(Zeta_Decision__c) = &quot;Retain/Holdover&quot;,
+        TEXT(
+            VALUE(TEXT(Grade_Applied__c)) - 1
+        ),
+        TEXT(Grade_Applied__c) &amp; &quot; (not yet assessed)&quot;
+    )
+)</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>Zeta Approved Grade</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

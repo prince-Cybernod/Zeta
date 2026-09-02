@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<FieldSrcTrgtRelationship xmlns="http://soap.sforce.com/2006/04/metadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <definitionCreationType>Standard</definitionCreationType>
+    <lookupFieldName>ssot__Account__dlm.ssot__rel_1697761191649_end__c</lookupFieldName>
+    <masterLabel>OrderDeliveryMethod_Id_map_Account_OrderDeliveryMethodId_N_1_1645552387922</masterLabel>
+    <owner>DataCloud</owner>
+    <relationshipCardinality>ManyToOne</relationshipCardinality>
+    <sourceFieldName>ssot__Account__dlm.ssot__OrderDeliveryMethodId__c</sourceFieldName>
+    <targetEntity xsi:nil="true"/>
+    <targetFieldName>ssot__OrderDeliveryMethod__dlm.ssot__Id__c</targetFieldName>
+</FieldSrcTrgtRelationship>

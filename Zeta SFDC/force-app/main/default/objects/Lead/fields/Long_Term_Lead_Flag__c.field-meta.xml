@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Long_Term_Lead_Flag__c</fullName>
+    <description>TRUE when &apos;Closed, Not Converted Reason&apos; is &apos;Next Year&apos;</description>
+    <formula>ISPICKVAL(  Reason_Not_Converted__c , &apos;Next Year&apos;)</formula>
+    <inlineHelpText>TRUE when &apos;Closed, Not Converted Reason&apos; is &apos;Next Year&apos;</inlineHelpText>
+    <label>Long-Term Lead Flag</label>
+    <type>Checkbox</type>
+</CustomField>

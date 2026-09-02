@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Total_Available_Seats_for_School_Year__c</fullName>
+    <defaultValue>0</defaultValue>
+    <description>Used in lottery for determining the overall cap for Zeta employee priority to not exceed 15% of charter seats available.</description>
+    <externalId>false</externalId>
+    <inlineHelpText>Manually Entered. Total available seats for school year.</inlineHelpText>
+    <label>Total Available Seats for School Year</label>
+    <precision>18</precision>
+    <required>false</required>
+    <scale>0</scale>
+    <trackHistory>false</trackHistory>
+    <type>Number</type>
+    <unique>false</unique>
+</CustomField>

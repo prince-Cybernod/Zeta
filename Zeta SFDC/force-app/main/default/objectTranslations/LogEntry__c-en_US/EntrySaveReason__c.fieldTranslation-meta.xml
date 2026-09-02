@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <help><!-- Indicates if entry was saved based on the logging user&apos;s settings, or based on a developer override in code --></help>
+    <label><!-- Entry Save Reason --></label>
+    <name>EntrySaveReason__c</name>
+    <picklistValues>
+        <masterLabel>Logging Level Met</masterLabel>
+        <translation><!-- Logging Level Met --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Save Overridden</masterLabel>
+        <translation><!-- Save Overridden --></translation>
+    </picklistValues>
+</CustomFieldTranslation>

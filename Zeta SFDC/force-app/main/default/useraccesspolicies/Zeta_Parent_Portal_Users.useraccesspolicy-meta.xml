@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<UserAccessPolicy xmlns="http://soap.sforce.com/2006/04/metadata">
+    <booleanFilter>1</booleanFilter>
+    <description>Assigns Parent Portal Permissions to Portal users</description>
+    <masterLabel>Zeta - Parent Portal Users</masterLabel>
+    <order>2</order>
+    <status>Active</status>
+    <triggerType>CreateAndUpdate</triggerType>
+    <userAccessPolicyActions>
+        <action>Grant</action>
+        <target>Zeta_Parent_Portal_User</target>
+        <type>PermissionSetGroup</type>
+    </userAccessPolicyActions>
+    <userAccessPolicyActions>
+        <action>Grant</action>
+        <target>Parent_Portal_Users</target>
+        <type>Group</type>
+    </userAccessPolicyActions>
+    <userAccessPolicyFilters>
+        <operation>equals</operation>
+        <sortOrder>1</sortOrder>
+        <target>zeta parent portal user</target>
+        <type>Profile</type>
+    </userAccessPolicyFilters>
+</UserAccessPolicy>

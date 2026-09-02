@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Mogli_SMS__Possible_Answers__c</fullName>
+    <deprecated>false</deprecated>
+    <description>Number of Possible Answers for this Question Template.</description>
+    <inlineHelpText>Number of Possible Answers for this Question Template.</inlineHelpText>
+    <label>Possible Answers</label>
+    <summaryForeignKey>Mogli_SMS__PossibleAnswer__c.Mogli_SMS__QuestionTemplate__c</summaryForeignKey>
+    <summaryOperation>count</summaryOperation>
+    <trackTrending>false</trackTrending>
+    <type>Summary</type>
+</CustomField>

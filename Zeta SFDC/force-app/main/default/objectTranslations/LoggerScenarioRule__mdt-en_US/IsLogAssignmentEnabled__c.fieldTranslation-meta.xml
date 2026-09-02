@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <help><!-- Controls if new Log__c records associated with the scenario (based on Log__c.TransactionScenario__c) are automatically assigned to the owner of the LoggerScenario__c record. --></help>
+    <label><!-- Assign Logs To Logger Scenario Owner --></label>
+    <name>IsLogAssignmentEnabled__c</name>
+    <picklistValues>
+        <masterLabel>false</masterLabel>
+        <translation><!-- false --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>true</masterLabel>
+        <translation><!-- true --></translation>
+    </picklistValues>
+</CustomFieldTranslation>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>CQ1_Score__c</fullName>
+    <description>Numeric rubric score for Comprehension Question 1.</description>
+    <externalId>false</externalId>
+    <label>CQ1 Score</label>
+    <precision>9</precision>
+    <required>false</required>
+    <scale>0</scale>
+    <trackHistory>false</trackHistory>
+    <type>Number</type>
+    <unique>false</unique>
+</CustomField>

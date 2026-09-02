@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ActivationPlatform xmlns="http://soap.sforce.com/2006/04/metadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <activationFlowType>SEGMENT</activationFlowType>
+    <activationPlatformAdditionalMetadata>{
+  &quot;hashMethod&quot; : null,
+  &quot;customerFileSources&quot; : [ ],
+  &quot;activationPlatformEventMetadata&quot; : {
+    &quot;supportedEventTypes&quot; : [ ],
+    &quot;standardEventDetails&quot; : null,
+    &quot;customEventDetails&quot; : null
+  },
+  &quot;mappingSchemas&quot; : [ {
+    &quot;name&quot; : &quot;PII&quot;,
+    &quot;title&quot; : &quot;Customer Match&quot;,
+    &quot;description&quot; : &quot;Leverage Hashed PII Match Keys&quot;,
+    &quot;icon&quot; : &quot;utility:contact&quot;
+  }, {
+    &quot;name&quot; : &quot;ANON&quot;,
+    &quot;title&quot; : &quot;Device ID Match&quot;,
+    &quot;description&quot; : &quot;Leverage synced 1P Cookie IDs and Device IDs&quot;,
+    &quot;icon&quot; : &quot;utility:desktop_and_phone&quot;
+  } ],
+  &quot;partnerSupportedIds&quot; : [ ],
+  &quot;outputProperties&quot; : null
+}</activationPlatformAdditionalMetadata>
+    <activationPlatformConnectorType>OAUTH</activationPlatformConnectorType>
+    <dataConnector>cdpactvstrgptnr__dv360Platform1714424677406</dataConnector>
+    <description>Create activation targets using a connected Google DV360 account.</description>
+    <enabled>false</enabled>
+    <includeSegmentNames>false</includeSegmentNames>
+    <masterLabel>Google Display &amp; Video 360</masterLabel>
+    <outputFormat>JSON</outputFormat>
+    <outputGrouping>PER_ACCOUNT</outputGrouping>
+    <periodicRefreshFrequecy>REFRESH_30</periodicRefreshFrequecy>
+    <platformProcessingType>Batch</platformProcessingType>
+    <platformType>Advertising</platformType>
+    <refreshFrequency xsi:nil="true"/>
+    <refreshMode>INCREMENTAL</refreshMode>
+</ActivationPlatform>

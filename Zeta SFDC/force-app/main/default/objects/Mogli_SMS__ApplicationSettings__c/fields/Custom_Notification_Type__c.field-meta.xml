@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Custom_Notification_Type__c</fullName>
+    <label>Custom Notification Type</label>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Record Owner</fullName>
+                <default>false</default>
+                <label>Record Owner</label>
+            </value>
+            <value>
+                <fullName>Last Outgoing Sender</fullName>
+                <default>false</default>
+                <label>Last Outgoing Sender</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

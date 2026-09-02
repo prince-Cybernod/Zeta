@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<DataCalcInsightTemplate xmlns="http://soap.sforce.com/2006/04/metadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <builderExpression xsi:nil="true"/>
+    <creationType>Custom</creationType>
+    <dataspaceName>default</dataspaceName>
+    <dataspacePrefix xsi:nil="true"/>
+    <definitionType>CALCULATED_METRIC</definitionType>
+    <description xsi:nil="true"/>
+    <developerName>SP_AverageHandleTime</developerName>
+    <expression>SELECT (SUM(CASE WHEN ssot__GeneratedOperationPlan__dlm.ssot__RelatedReferenceId__c IS NULL THEN SI_Case__dlm.ssot__TimetoClose__c END) / COUNT(CASE WHEN ssot__GeneratedOperationPlan__dlm.ssot__RelatedReferenceId__c IS NULL THEN 1 END)) * 3600 AS AHT_Without_ServicePlan__c, (SUM(CASE WHEN ssot__GeneratedOperationPlan__dlm.ssot__RelatedReferenceId__c IS NOT NULL THEN SI_Case__dlm.ssot__TimetoClose__c END) / COUNT(CASE WHEN ssot__GeneratedOperationPlan__dlm.ssot__RelatedReferenceId__c IS NOT NULL THEN 1 END)) * 3600 AS AHT_With_ServicePlan__c FROM SI_Case__dlm LEFT JOIN ssot__GeneratedOperationPlan__dlm ON SI_Case__dlm.ssot__Id__c = ssot__GeneratedOperationPlan__dlm.ssot__RelatedReferenceId__c
+WHERE SI_Case__dlm.ssot__IsClosedOnCreate__c = &apos;false&apos;</expression>
+    <masterLabel>SP_AverageHandleTime</masterLabel>
+    <scheduleInterval>SYSTEM_MANAGED</scheduleInterval>
+    <templateVersion>1</templateVersion>
+</DataCalcInsightTemplate>

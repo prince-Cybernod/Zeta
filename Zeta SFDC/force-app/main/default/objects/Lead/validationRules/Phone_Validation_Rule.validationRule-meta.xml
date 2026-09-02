@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Phone_Validation_Rule</fullName>
+    <active>true</active>
+    <errorConditionFormula>AND(
+  NOT($Permission.Bypass_Validation),
+  NOT(ISBLANK(Phone)),
+  OR(
+    ISNEW(),
+    ISCHANGED(Phone)
+  ),
+  OR(
+    LEN(Phone) &lt;&gt; 10,
+    NOT(REGEX(Phone, &quot;[0-9]{10}&quot;))
+  )
+)</errorConditionFormula>
+    <errorDisplayField>Phone</errorDisplayField>
+    <errorMessage>Please enter a valid 10-digit phone number (numbers only, no dashes or spaces).</errorMessage>
+</ValidationRule>

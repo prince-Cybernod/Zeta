@@ -1,0 +1,219 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<DataSourceObject xmlns="http://soap.sforce.com/2006/04/metadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <dataSource>datacloudflow__Flow_Run_Ingestion_6cc80c06_932b_479e_a0d5_5aa56584f62f</dataSource>
+    <dataSourceFields>
+        <fullName>datacloudflow__cdp_sys_PartitionDate</fullName>
+        <datatype>F</datatype>
+        <definitionCreationType>System</definitionCreationType>
+        <externalName>cdp_sys_PartitionDate</externalName>
+        <fieldFormula>if(ISEMPTY(formulaField[&apos;datacloudflow__ScheduledDateTime__c&apos;])) { null; } else { DAYPRECISION(formulaField[&apos;datacloudflow__ScheduledDateTime__c&apos;]); }</fieldFormula>
+        <isDataRequired>false</isDataRequired>
+        <isEventDate>false</isEventDate>
+        <isFormula>true</isFormula>
+        <isRecordModified>false</isRecordModified>
+        <keyQualifierName>KQ_cdp_sys_PartitionDate</keyQualifierName>
+        <masterLabel>cdp_sys_PartitionDate</masterLabel>
+        <sequence xsi:nil="true"/>
+        <usageTag>NONE</usageTag>
+        <versionNumber>1.0</versionNumber>
+    </dataSourceFields>
+    <dataSourceFields>
+        <fullName>datacloudflow__CompletedDateTime</fullName>
+        <datatype>F</datatype>
+        <definitionCreationType>Custom</definitionCreationType>
+        <externalName>CompletedDateTime</externalName>
+        <fieldFormula>sourceField[&apos;CompletedDateTime&apos;]</fieldFormula>
+        <isDataRequired>false</isDataRequired>
+        <isEventDate>false</isEventDate>
+        <isFormula>false</isFormula>
+        <isRecordModified>false</isRecordModified>
+        <keyQualifierName>KQ_CompletedDateTime</keyQualifierName>
+        <masterLabel>CompletedDateTime</masterLabel>
+        <sequence xsi:nil="true"/>
+        <usageTag>NONE</usageTag>
+        <versionNumber>1.0</versionNumber>
+    </dataSourceFields>
+    <dataSourceFields>
+        <fullName>datacloudflow__DataSource</fullName>
+        <datatype>S</datatype>
+        <definitionCreationType>System</definitionCreationType>
+        <externalName>DataSource</externalName>
+        <fieldFormula>&quot;datacloudflow__Flow_Run_Ingestion_6cc80c06_932b_479e_a0d5_5aa56584f62f&quot;</fieldFormula>
+        <isDataRequired>false</isDataRequired>
+        <isEventDate>false</isEventDate>
+        <isFormula>true</isFormula>
+        <isRecordModified>false</isRecordModified>
+        <keyQualifierName>KQ_DataSource</keyQualifierName>
+        <masterLabel>Data Source</masterLabel>
+        <sequence xsi:nil="true"/>
+        <usageTag>NONE</usageTag>
+        <versionNumber xsi:nil="true"/>
+    </dataSourceFields>
+    <dataSourceFields>
+        <fullName>datacloudflow__DataSourceObject</fullName>
+        <datatype>S</datatype>
+        <definitionCreationType>System</definitionCreationType>
+        <externalName>DataSourceObject</externalName>
+        <fieldFormula>&quot;Flow_Run_Ingestion_FlowElementRun_A396F54B&quot;</fieldFormula>
+        <isDataRequired>false</isDataRequired>
+        <isEventDate>false</isEventDate>
+        <isFormula>true</isFormula>
+        <isRecordModified>false</isRecordModified>
+        <keyQualifierName>KQ_DataSourceObject</keyQualifierName>
+        <masterLabel>Data Source Object</masterLabel>
+        <sequence xsi:nil="true"/>
+        <usageTag>NONE</usageTag>
+        <versionNumber xsi:nil="true"/>
+    </dataSourceFields>
+    <dataSourceFields>
+        <fullName>datacloudflow__DataSpaceId</fullName>
+        <datatype>S</datatype>
+        <definitionCreationType>Custom</definitionCreationType>
+        <externalName>DataSpaceId</externalName>
+        <fieldFormula>sourceField[&apos;DataSpaceId&apos;]</fieldFormula>
+        <isDataRequired>false</isDataRequired>
+        <isEventDate>false</isEventDate>
+        <isFormula>false</isFormula>
+        <isRecordModified>false</isRecordModified>
+        <keyQualifierName>KQ_DataSpaceId</keyQualifierName>
+        <masterLabel>DataSpaceId</masterLabel>
+        <sequence xsi:nil="true"/>
+        <usageTag>NONE</usageTag>
+        <versionNumber xsi:nil="true"/>
+    </dataSourceFields>
+    <dataSourceFields>
+        <fullName>datacloudflow__ErrorDescription</fullName>
+        <datatype>S</datatype>
+        <definitionCreationType>Custom</definitionCreationType>
+        <externalName>ErrorDescription</externalName>
+        <fieldFormula>sourceField[&apos;ErrorDescription&apos;]</fieldFormula>
+        <isDataRequired>false</isDataRequired>
+        <isEventDate>false</isEventDate>
+        <isFormula>false</isFormula>
+        <isRecordModified>false</isRecordModified>
+        <keyQualifierName>KQ_ErrorDescription</keyQualifierName>
+        <masterLabel>ErrorDescription</masterLabel>
+        <sequence xsi:nil="true"/>
+        <usageTag>NONE</usageTag>
+        <versionNumber xsi:nil="true"/>
+    </dataSourceFields>
+    <dataSourceFields>
+        <fullName>datacloudflow__ErrorReason</fullName>
+        <datatype>S</datatype>
+        <definitionCreationType>Custom</definitionCreationType>
+        <externalName>ErrorReason</externalName>
+        <fieldFormula>sourceField[&apos;ErrorReason&apos;]</fieldFormula>
+        <isDataRequired>false</isDataRequired>
+        <isEventDate>false</isEventDate>
+        <isFormula>false</isFormula>
+        <isRecordModified>false</isRecordModified>
+        <keyQualifierName>KQ_ErrorReason</keyQualifierName>
+        <masterLabel>ErrorReason</masterLabel>
+        <sequence xsi:nil="true"/>
+        <usageTag>NONE</usageTag>
+        <versionNumber xsi:nil="true"/>
+    </dataSourceFields>
+    <dataSourceFields>
+        <fullName>datacloudflow__FlowElementId</fullName>
+        <datatype>S</datatype>
+        <definitionCreationType>Custom</definitionCreationType>
+        <externalName>FlowElementId</externalName>
+        <fieldFormula>sourceField[&apos;FlowElementId&apos;]</fieldFormula>
+        <isDataRequired>false</isDataRequired>
+        <isEventDate>false</isEventDate>
+        <isFormula>false</isFormula>
+        <isRecordModified>false</isRecordModified>
+        <keyQualifierName>KQ_FlowElementId</keyQualifierName>
+        <masterLabel>FlowElementId</masterLabel>
+        <sequence xsi:nil="true"/>
+        <usageTag>NONE</usageTag>
+        <versionNumber xsi:nil="true"/>
+    </dataSourceFields>
+    <dataSourceFields>
+        <fullName>datacloudflow__FlowElementRunStatus</fullName>
+        <datatype>S</datatype>
+        <definitionCreationType>Custom</definitionCreationType>
+        <externalName>FlowElementRunStatus</externalName>
+        <fieldFormula>sourceField[&apos;FlowElementRunStatus&apos;]</fieldFormula>
+        <isDataRequired>false</isDataRequired>
+        <isEventDate>false</isEventDate>
+        <isFormula>false</isFormula>
+        <isRecordModified>false</isRecordModified>
+        <keyQualifierName>KQ_FlowElementRunStatus</keyQualifierName>
+        <masterLabel>FlowElementRunStatus</masterLabel>
+        <sequence xsi:nil="true"/>
+        <usageTag>NONE</usageTag>
+        <versionNumber xsi:nil="true"/>
+    </dataSourceFields>
+    <dataSourceFields>
+        <fullName>datacloudflow__FlowRunId</fullName>
+        <datatype>S</datatype>
+        <definitionCreationType>Custom</definitionCreationType>
+        <externalName>FlowRunId</externalName>
+        <fieldFormula>sourceField[&apos;FlowRunId&apos;]</fieldFormula>
+        <isDataRequired>false</isDataRequired>
+        <isEventDate>false</isEventDate>
+        <isFormula>false</isFormula>
+        <isRecordModified>false</isRecordModified>
+        <keyQualifierName>KQ_FlowRunId</keyQualifierName>
+        <masterLabel>FlowRunId</masterLabel>
+        <sequence xsi:nil="true"/>
+        <usageTag>NONE</usageTag>
+        <versionNumber xsi:nil="true"/>
+    </dataSourceFields>
+    <dataSourceFields>
+        <fullName>datacloudflow__Id</fullName>
+        <datatype>S</datatype>
+        <definitionCreationType>Custom</definitionCreationType>
+        <externalName>Id</externalName>
+        <fieldFormula>sourceField[&apos;Id&apos;]</fieldFormula>
+        <isDataRequired>false</isDataRequired>
+        <isEventDate>false</isEventDate>
+        <isFormula>false</isFormula>
+        <isRecordModified>false</isRecordModified>
+        <keyQualifierName>KQ_Id</keyQualifierName>
+        <masterLabel>Id</masterLabel>
+        <primaryIndexOrder>1</primaryIndexOrder>
+        <sequence xsi:nil="true"/>
+        <usageTag>NONE</usageTag>
+        <versionNumber xsi:nil="true"/>
+    </dataSourceFields>
+    <dataSourceFields>
+        <fullName>datacloudflow__OutcomeId</fullName>
+        <datatype>S</datatype>
+        <definitionCreationType>Custom</definitionCreationType>
+        <externalName>OutcomeId</externalName>
+        <fieldFormula>sourceField[&apos;OutcomeId&apos;]</fieldFormula>
+        <isDataRequired>false</isDataRequired>
+        <isEventDate>false</isEventDate>
+        <isFormula>false</isFormula>
+        <isRecordModified>false</isRecordModified>
+        <keyQualifierName>KQ_OutcomeId</keyQualifierName>
+        <masterLabel>OutcomeId</masterLabel>
+        <sequence xsi:nil="true"/>
+        <usageTag>NONE</usageTag>
+        <versionNumber xsi:nil="true"/>
+    </dataSourceFields>
+    <dataSourceFields>
+        <fullName>datacloudflow__ScheduledDateTime</fullName>
+        <datatype>F</datatype>
+        <definitionCreationType>Custom</definitionCreationType>
+        <externalName>ScheduledDateTime</externalName>
+        <fieldFormula>sourceField[&apos;ScheduledDateTime&apos;]</fieldFormula>
+        <isDataRequired>false</isDataRequired>
+        <isEventDate>true</isEventDate>
+        <isFormula>false</isFormula>
+        <isRecordModified>false</isRecordModified>
+        <keyQualifierName>KQ_ScheduledDateTime</keyQualifierName>
+        <masterLabel>ScheduledDateTime</masterLabel>
+        <sequence xsi:nil="true"/>
+        <usageTag>NONE</usageTag>
+        <versionNumber>1.0</versionNumber>
+    </dataSourceFields>
+    <externalRecordIdentifier>Flow_Run_Ingestion_FlowElementRun_A396F54B</externalRecordIdentifier>
+    <masterLabel>Flow Run Ingestion-FlowElementRun</masterLabel>
+    <objectType>Object</objectType>
+    <sourceObject>datacloudflow__Flow_Run_Ingestion_FlowElementR_A396F54B__dll</sourceObject>
+    <storageType>LOCAL</storageType>
+    <templateVersion>2</templateVersion>
+</DataSourceObject>

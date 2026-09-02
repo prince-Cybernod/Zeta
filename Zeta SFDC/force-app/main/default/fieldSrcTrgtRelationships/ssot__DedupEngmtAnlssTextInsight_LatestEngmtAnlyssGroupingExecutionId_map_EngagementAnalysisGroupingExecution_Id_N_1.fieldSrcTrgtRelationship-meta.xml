@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<FieldSrcTrgtRelationship xmlns="http://soap.sforce.com/2006/04/metadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <definitionCreationType>Standard</definitionCreationType>
+    <lookupFieldName>ssot__DedupEngmtAnlssTextInsight__dlm.ssot__rel_1749176960603_end__c</lookupFieldName>
+    <masterLabel>DedupEngmtAnlssTextInsight_LatestEngmtAnlyssGroupingExecutionId_map_EngagementAnalysisGroupingExecution_Id_N_1</masterLabel>
+    <owner>DataCloud</owner>
+    <relationshipCardinality>ManyToOne</relationshipCardinality>
+    <sourceFieldName>ssot__DedupEngmtAnlssTextInsight__dlm.ssot__LatestEngmtAnlyssGroupingExecutionId__c</sourceFieldName>
+    <targetEntity xsi:nil="true"/>
+    <targetFieldName>ssot__EngagementAnalysisGroupingExecution__dlm.ssot__Id__c</targetFieldName>
+</FieldSrcTrgtRelationship>

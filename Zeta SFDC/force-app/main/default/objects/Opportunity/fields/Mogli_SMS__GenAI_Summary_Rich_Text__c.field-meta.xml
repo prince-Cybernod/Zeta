@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Mogli_SMS__GenAI_Summary_Rich_Text__c</fullName>
+    <deprecated>false</deprecated>
+    <description>This is where the Mogli AI Summary is stored.</description>
+    <label>MogliAI Summary</label>
+    <length>50000</length>
+    <trackFeedHistory>false</trackFeedHistory>
+    <type>Html</type>
+    <visibleLines>10</visibleLines>
+</CustomField>

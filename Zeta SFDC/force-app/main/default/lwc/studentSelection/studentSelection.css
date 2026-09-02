@@ -1,0 +1,477 @@
+:host {
+  display: block;
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -400px 0;
+  }
+
+  100% {
+    background-position: 400px 0;
+  }
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+.card {
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 4px 12px rgb(49 53 110 / 10%);
+  padding: 2rem;
+  animation: fade-in 0.3s ease-out;
+}
+
+.card-title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #31356e;
+  margin: 0 0 0.25rem;
+}
+
+.card-subtitle {
+  font-size: 0.9375rem;
+  color: #6b7280;
+  margin: 0 0 1.5rem;
+}
+
+/* Skeleton */
+.skeleton-header {
+  height: 24px;
+  width: 40%;
+  border-radius: 4px;
+  margin-bottom: 1.5rem;
+  background: linear-gradient(90deg, #f3f4f6 25%, #e8f5fc 50%, #f3f4f6 75%);
+  background-size: 800px 100%;
+  animation: shimmer 1.5s infinite linear;
+}
+
+.skeleton-tiles {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+.skeleton-tile {
+  height: 120px;
+  border-radius: 10px;
+  background: linear-gradient(90deg, #f3f4f6 25%, #e8f5fc 50%, #f3f4f6 75%);
+  background-size: 800px 100%;
+  animation: shimmer 1.5s infinite linear;
+}
+
+.skeleton-tile--short {
+  height: 80px;
+}
+
+/* Tile Grid */
+.tile-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+.tile {
+  position: relative;
+  background: #f9fafb;
+  border: 2px solid #d1d5db;
+  border-radius: 10px;
+  padding: 1.25rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  min-height: 120px;
+  overflow: hidden;
+}
+
+.tile:hover {
+  border-color: #9ca3af;
+  box-shadow: 0 1px 3px rgb(49 53 110 / 8%);
+}
+
+.tile:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 3px rgb(74 181 227 / 35%);
+}
+
+.tile--selected {
+  border-color: #4ab5e3;
+  background: #e8f5fc;
+  box-shadow: 0 0 0 1px #4ab5e3;
+}
+
+.tile--selected:hover {
+  border-color: #4ab5e3;
+}
+
+.tile--locked {
+  pointer-events: none;
+  opacity: 0.5;
+  cursor: default;
+}
+
+.tile--locked-selected {
+  cursor: default;
+}
+
+.tile--add {
+  border: 2px solid transparent;
+  background: #f3f3f6;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100px;
+  color: #6b7085;
+  transition: all 0.2s ease;
+}
+
+.tile--add:hover {
+  background: #e8f5fc;
+  color: #31356e;
+  border-color: #4ab5e3;
+}
+
+.tile-check {
+  position: absolute;
+  top: 0.75rem;
+  right: 0.75rem;
+  width: 20px;
+  height: 20px;
+  color: #4ab5e3;
+}
+
+.tile--locked-selected .tile-check {
+  color: #31356e;
+}
+
+.tile-name {
+  font-size: 1rem;
+  font-weight: 700;
+  color: #31356e;
+  margin: 0 0 0.25rem;
+}
+
+.tile-detail {
+  font-size: 0.8125rem;
+  color: #6b7280;
+  margin: 0 0 0.125rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.tile-detail--grade {
+  color: #4ab5e3;
+  font-weight: 600;
+}
+
+.validation-error {
+  margin-top: 1rem;
+  margin-bottom: 0;
+}
+
+.add-tile-container {
+  margin-top: 1rem;
+}
+
+.add-icon {
+  margin-bottom: 0.5rem;
+}
+
+/* Add Form */
+.add-form {
+  margin-top: 1.5rem;
+  padding: 1.5rem;
+  background: #f9fafb;
+  border-radius: 10px;
+  border: 1px solid #d1d5db;
+  animation: fade-in 0.2s ease-out;
+}
+
+.form-title {
+  font-size: 1rem;
+  font-weight: 700;
+  color: #31356e;
+  margin: 0 0 1rem;
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.form-grid > * {
+  min-width: 0;
+}
+
+.form-subtitle {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: #6b7085;
+  margin: 1rem 0 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+
+.form-grid--full {
+  grid-template-columns: 1fr;
+}
+
+.form-error {
+  padding: 0.75rem 1rem;
+  margin-bottom: 1rem;
+  background: #fee2e2;
+  border: 1px solid #ef4444;
+  border-radius: 6px;
+  color: #991b1b;
+  font-size: 0.875rem;
+  line-height: 1.4;
+}
+
+.form-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.75rem;
+}
+
+/* Grade Section */
+.grade-section {
+  margin-top: 1.5rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid #d1d5db;
+}
+
+/* Address Section (embedded address capture) — reads as a continuation of the
+   student card with a separator, and fades in smoothly when it appears after
+   the student + grade are chosen (rather than popping in). */
+.address-section {
+  margin-top: 1.5rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid #d1d5db;
+  animation: fade-in 0.3s ease-out;
+}
+
+.enrolled-error {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  margin-top: 1.5rem;
+  padding: 0.875rem 1rem;
+  background: #fef2f2;
+  border: 1px solid #ef4444;
+  border-radius: 6px;
+  color: #991b1b;
+  font-size: 0.875rem;
+  line-height: 1.4;
+  animation: fade-in 0.3s ease-out;
+}
+
+.enrolled-error p {
+  margin: 0;
+}
+
+.warning-icon {
+  flex-shrink: 0;
+  color: #f59e0b;
+  margin-top: 1px;
+}
+
+.enrolled-error .warning-icon {
+  color: #ef4444;
+}
+
+.age-warning {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  margin-top: 1rem;
+  padding: 0.875rem 1rem;
+  background: #fef3c7;
+  border: 1px solid #f59e0b;
+  border-radius: 6px;
+  color: #92400e;
+  font-size: 0.875rem;
+  line-height: 1.4;
+}
+
+.age-warning p {
+  margin: 0;
+}
+
+/* Pre-K / Kindergarten birth-year note — mirrors .age-warning's banner layout
+   but uses the informational brand palette (this is guidance, not a warning). */
+.grade-note {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  margin-top: 1rem;
+  padding: 0.875rem 1rem;
+  background: #e8f5fc;
+  border: 1px solid #4ab5e3;
+  border-radius: 6px;
+  color: #1c5a78;
+  font-size: 0.875rem;
+  line-height: 1.4;
+}
+
+.grade-note p {
+  margin: 0;
+}
+
+.grade-note .note-icon {
+  color: #4ab5e3;
+}
+
+/* Birthday edit affordance */
+.tile-detail--birthday {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 4px;
+}
+
+.tile-edit-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 22px;
+  height: 22px;
+  padding: 4px;
+  background: transparent;
+  border: none;
+  border-radius: 4px;
+  color: #31356e;
+  opacity: 0.6;
+  cursor: pointer;
+  vertical-align: middle;
+  transition:
+    opacity 150ms ease,
+    color 150ms ease,
+    background 150ms ease;
+}
+
+.tile-edit-button:hover,
+.tile-edit-button:focus-visible {
+  opacity: 1;
+  color: #4ab5e3;
+  background: rgb(74 181 227 / 10%);
+}
+
+.tile-edit-button:focus-visible {
+  outline: 2px solid #4ab5e3;
+  outline-offset: 1px;
+}
+
+.tile--editing {
+  cursor: default;
+  box-shadow:
+    0 0 0 1px rgb(74 181 227 / 30%),
+    0 4px 12px rgb(49 53 110 / 12%);
+}
+
+.tile-edit-row {
+  display: flex;
+  align-items: flex-end;
+  gap: 0.5rem;
+  margin: 0.25rem 0;
+  animation: fade-in 200ms ease-out;
+}
+
+.tile-edit-row lightning-input {
+  flex: 1 1 auto;
+  min-width: 0;
+  width: 100%;
+}
+
+.tile-edit-actions {
+  display: flex;
+  gap: 0.375rem;
+  flex-shrink: 0;
+}
+
+.tile-edit-save,
+.tile-edit-cancel {
+  height: 32px;
+  padding: 0 0.625rem;
+  border-radius: 6px;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 150ms ease;
+}
+
+.tile-edit-save {
+  background: #4ab5e3;
+  color: #fff;
+  border: 1px solid #4ab5e3;
+}
+
+.tile-edit-save:hover:not([disabled]) {
+  background: #31356e;
+  border-color: #31356e;
+}
+
+.tile-edit-save[disabled],
+.tile-edit-cancel[disabled] {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.tile-edit-cancel {
+  background: transparent;
+  color: #6b7085;
+  border: 1px solid #d1d5db;
+}
+
+.tile-edit-cancel:hover:not([disabled]) {
+  border-color: #6b7085;
+  color: #31356e;
+}
+
+.tile-edit-error {
+  font-size: 0.75rem;
+  color: #991b1b;
+  margin: 0.25rem 0 0;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .tile-edit-row {
+    animation: none;
+  }
+}
+
+/* Responsive */
+@media (width <= 600px) {
+  .tile-grid,
+  .skeleton-tiles {
+    grid-template-columns: 1fr;
+  }
+
+  .form-grid,
+  .form-grid--full {
+    grid-template-columns: 1fr;
+  }
+
+  .card {
+    padding: 1.5rem 1rem;
+  }
+
+  .tile-edit-row {
+    flex-wrap: wrap;
+  }
+
+  .tile-edit-actions {
+    width: 100%;
+    justify-content: flex-end;
+  }
+}

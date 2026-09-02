@@ -1,0 +1,11 @@
+<template>
+  <lightning-input
+    type="checkbox"
+    label={question.label}
+    checked={displayChecked}
+    required={question.isRequired}
+    field-level-help={question.helpText}
+    disabled={readOnly}
+    onchange={handleChange}
+  ></lightning-input>
+</template>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Mogli_SMS__Mogli_Question__c</fullName>
+    <deleteConstraint>SetNull</deleteConstraint>
+    <deprecated>false</deprecated>
+    <description>This field will link the Question Response to the original Outbound Mogli message.</description>
+    <inlineHelpText>This field will link the Question Response to the original Outbound Mogli message.</inlineHelpText>
+    <label>Mogli Question</label>
+    <referenceTo>Mogli_SMS__SMS__c</referenceTo>
+    <relationshipLabel>Question Responses</relationshipLabel>
+    <relationshipName>Question_Responses</relationshipName>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Lookup</type>
+</CustomField>

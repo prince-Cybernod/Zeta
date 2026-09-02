@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>66.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <decisions>
+        <description>Checks whether an Academic Term Enrollment was found for the student tied to the new Individual Application.</description>
+        <name>Decision_Existing_ATE_Found</name>
+        <label>Decision | Existing ATE Found?</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <defaultConnectorLabel>No Existing ATE</defaultConnectorLabel>
+        <rules>
+            <name>Found</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Get_ATE</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Update_Individual_Application_Set_Existing_ATE_Flag</targetReference>
+            </connector>
+            <label>Found</label>
+        </rules>
+    </decisions>
+    <description>Created by: Elevation Solutions
+
+On create of an Individual Application, checks whether the student already has an Academic Term Enrollment and flags the application when found.</description>
+    <environments>Default</environments>
+    <interviewLabel>Individual Application (After Create) Flag Existing ATE {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Individual Application (After Create) Flag Existing ATE</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordLookups>
+        <description>Retrieves Academic Term Enrollment records related to the student on the triggering Individual Application.</description>
+        <name>Get_ATE</name>
+        <label>Get | ATE</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Decision_Existing_ATE_Found</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>LearnerAccountId</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>$Record.AccountId</elementReference>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>AcademicTermEnrollment</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordUpdates>
+        <description>Updates the triggering Individual Application to flag that an Academic Term Enrollment already exists for the student.</description>
+        <name>Update_Individual_Application_Set_Existing_ATE_Flag</name>
+        <label>Update | Individual Application | Set Existing ATE Flag</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <inputAssignments>
+            <field>Existing_ATE_Found__c</field>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Existing_ATE__c</field>
+            <value>
+                <elementReference>Get_ATE.Id</elementReference>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <start>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>Get_ATE</targetReference>
+        </connector>
+        <object>IndividualApplication</object>
+        <recordTriggerType>Create</recordTriggerType>
+        <triggerType>RecordAfterSave</triggerType>
+    </start>
+    <status>Active</status>
+</Flow>

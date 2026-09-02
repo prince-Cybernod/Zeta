@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<DataStreamTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <dataSourceBundleDefinition>sf_mktg__MarketingSetup_General</dataSourceBundleDefinition>
+    <dataSourceObject>sf_mktg__ManagedContentPublishedU_00D1Q000001eKrH1</dataSourceObject>
+    <masterLabel>ManagedContentPublishedU_00D1Q000001eKrH</masterLabel>
+    <objectCategory>Salesforce_SFDCReferenceModel_0_93.Related</objectCategory>
+    <refreshFrequency>BATCH</refreshFrequency>
+    <refreshMode>UPSERT</refreshMode>
+    <sourceObjectName>sf_mktg__ManagedContentPublishedU_00D1Q000001eKrH</sourceObjectName>
+    <streamType>INGEST</streamType>
+    <templateVersion>7</templateVersion>
+</DataStreamTemplate>

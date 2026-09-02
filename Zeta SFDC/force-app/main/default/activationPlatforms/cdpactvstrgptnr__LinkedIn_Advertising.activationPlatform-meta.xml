@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ActivationPlatform xmlns="http://soap.sforce.com/2006/04/metadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <activationFlowType>SEGMENT</activationFlowType>
+    <activationPlatformAdditionalMetadata>{
+  &quot;hashMethod&quot; : null,
+  &quot;customerFileSources&quot; : [ ],
+  &quot;activationPlatformEventMetadata&quot; : {
+    &quot;supportedEventTypes&quot; : [ ],
+    &quot;standardEventDetails&quot; : null,
+    &quot;customEventDetails&quot; : null
+  },
+  &quot;mappingSchemas&quot; : [ {
+    &quot;name&quot; : &quot;USER&quot;,
+    &quot;title&quot; : &quot;User Match&quot;,
+    &quot;description&quot; : &quot;Leverage Hashed PII Match Keys to target individuals&quot;,
+    &quot;icon&quot; : &quot;utility:contact&quot;,
+    &quot;isDefault&quot; : true
+  }, {
+    &quot;name&quot; : &quot;COMPANY&quot;,
+    &quot;title&quot; : &quot;Company Match&quot;,
+    &quot;description&quot; : &quot;Leverage account data to target businesses&quot;,
+    &quot;icon&quot; : &quot;utility:company&quot;,
+    &quot;isDefault&quot; : false
+  } ],
+  &quot;partnerSupportedIds&quot; : [ ],
+  &quot;outputProperties&quot; : null
+}</activationPlatformAdditionalMetadata>
+    <activationPlatformConnectorType>OAUTH</activationPlatformConnectorType>
+    <dataConnector>cdpactvstrgptnr__LinkedIn_Advertising1706573015645</dataConnector>
+    <description>Create activation targets using a connected LinkedIn account.</description>
+    <enabled>false</enabled>
+    <includeSegmentNames>false</includeSegmentNames>
+    <masterLabel>LinkedIn Advertising</masterLabel>
+    <outputFormat>JSON</outputFormat>
+    <outputGrouping>PER_ACCOUNT</outputGrouping>
+    <periodicRefreshFrequecy>REFRESH_30</periodicRefreshFrequecy>
+    <platformProcessingType>Batch</platformProcessingType>
+    <platformType>Advertising</platformType>
+    <refreshFrequency xsi:nil="true"/>
+    <refreshMode>INCREMENTAL</refreshMode>
+</ActivationPlatform>

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>MYP_FDOS_Excused__c</fullName>
+    <defaultValue>false</defaultValue>
+    <description>Indicates whether the student is excused from attending the MYP or FDOS requirement.</description>
+    <inlineHelpText>Indicates whether the student is excused from attending the MYP or FDOS requirement.</inlineHelpText>
+    <label>MYP / FDOS Excused?</label>
+    <trackHistory>false</trackHistory>
+    <type>Checkbox</type>
+</CustomField>

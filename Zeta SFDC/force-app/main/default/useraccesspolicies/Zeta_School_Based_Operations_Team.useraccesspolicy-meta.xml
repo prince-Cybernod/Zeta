@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<UserAccessPolicy xmlns="http://soap.sforce.com/2006/04/metadata">
+    <booleanFilter>1 AND 2 AND 3</booleanFilter>
+    <masterLabel>Zeta - School Based Operations Team</masterLabel>
+    <status>Design</status>
+    <userAccessPolicyActions>
+        <action>Grant</action>
+        <target>Zeta_SchoolBased_Operations</target>
+        <type>PermissionSetGroup</type>
+    </userAccessPolicyActions>
+    <userAccessPolicyFilters>
+        <operation>equals</operation>
+        <sortOrder>1</sortOrder>
+        <target>zeta integration user</target>
+        <type>Profile</type>
+    </userAccessPolicyFilters>
+    <userAccessPolicyFilters>
+        <columnName>Department</columnName>
+        <operation>equals</operation>
+        <sortOrder>2</sortOrder>
+        <target>User</target>
+        <type>User</type>
+        <value>School Based Operations Team</value>
+    </userAccessPolicyFilters>
+    <userAccessPolicyFilters>
+        <columnName>IsActive</columnName>
+        <operation>equals</operation>
+        <sortOrder>3</sortOrder>
+        <target>User</target>
+        <type>User</type>
+        <value>TRUE</value>
+    </userAccessPolicyFilters>
+</UserAccessPolicy>

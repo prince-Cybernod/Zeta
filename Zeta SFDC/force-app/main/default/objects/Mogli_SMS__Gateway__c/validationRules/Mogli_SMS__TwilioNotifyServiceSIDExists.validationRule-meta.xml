@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Mogli_SMS__TwilioNotifyServiceSIDExists</fullName>
+    <active>true</active>
+    <description>Checks to see if the Twilio Notify Service SID field is populated</description>
+    <errorConditionFormula>AND( Mogli_SMS__TwilioUseNotifyService__c  , ISBLANK( Mogli_SMS__Twilio_Notify_ServiceSid__c  ) )</errorConditionFormula>
+    <errorDisplayField>Mogli_SMS__Twilio_Notify_ServiceSid__c</errorDisplayField>
+    <errorMessage>You must enter a Twilio Notify Service SID in order to use Twilio Notify Service.</errorMessage>
+</ValidationRule>

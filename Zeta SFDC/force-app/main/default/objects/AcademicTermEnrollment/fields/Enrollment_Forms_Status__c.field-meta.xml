@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Enrollment_Forms_Status__c</fullName>
+    <description>Calculates an overall Enrollment Forms Status based on required document fields.
+
+Complete = all required enrollment documents are verified/accepted or have valid ATS/HLQ/race/ethnicity values.
+
+Started = student is New and at least one required document has been started or related demographic info is present.
+
+Not Started = no progress on required enrollment forms.</description>
+    <externalId>false</externalId>
+    <formula>IF(
+TEXT(LearnerAccount.Student_Type__c) = &quot;Returning&quot;,
+&quot;N/A&quot;,
+
+IF(
+AND(
+TEXT(Birth_Certificate__c)=&quot;V&quot;,
+TEXT(Immunization_Records__c)=&quot;V&quot;,
+TEXT(Physical_Upload__c)=&quot;V&quot;,
+OR(
+TEXT(Pre_K_Flu_Shot_Form__c)=&quot;Y&quot;,
+TEXT(Pre_K_Flu_Shot_Form__c)=&quot;A&quot;
+),
+TEXT(Parent_Contract__c)=&quot;V&quot;,
+TEXT(Student_Info_Contact_Form__c)=&quot;V&quot;,
+OR(
+TEXT(Uploaded_IEP__c)=&quot;V&quot;,
+TEXT(Uploaded_IEP__c)=&quot;A&quot;
+),
+OR(
+TEXT(MAF_Upload__c)=&quot;V&quot;,
+TEXT(MAF_Upload__c)=&quot;A&quot;
+),
+TEXT(Housing_Questionnaire__c)=&quot;V&quot;,
+CONTAINS(Housing_ATS_Code__c,&quot;(&quot;),
+TEXT(FERPA_Directory_Info_Notice__c)=&quot;V&quot;,
+OR(
+TEXT(Overnight_Trip_Form__c)=&quot;V&quot;,
+TEXT(Overnight_Trip_Form__c)=&quot;A&quot;
+),
+TEXT(TELA_Fee_Verification__c)=&quot;V&quot;,
+OR(
+TEXT(Proof_of_NYS_Residency_1__c)=&quot;V&quot;,
+TEXT(Proof_of_NYS_Residency_1__c)=&quot;A&quot;
+),
+OR(
+TEXT(Proof_of_NYS_Residency_2__c)=&quot;V&quot;,
+TEXT(Proof_of_NYS_Residency_2__c)=&quot;A&quot;
+),
+OR(
+TEXT(Proof_of_NYS_Residency_3__c)=&quot;V&quot;,
+TEXT(Proof_of_NYS_Residency_3__c)=&quot;A&quot;
+),
+TEXT(Home_Language_Questionnaire__c)=&quot;V&quot;,
+NOT(ISBLANK(Language_s_on_HLQ__c)),
+TEXT(Activities_Field_Trip_Consent_Form__c)=&quot;V&quot;,
+TEXT(Consent_to_Release_Student_Records__c)=&quot;V&quot;,
+TEXT(Computer_Tablet_Use_Consent_Form__c)=&quot;V&quot;,
+TEXT(Laptop_Tablet_Agreement__c)=&quot;V&quot;,
+TEXT(Ethnic_Identification_Form__c)=&quot;V&quot;,
+OR(
+TEXT(Ethnicity_Answer__c)=&quot;H&quot;,
+TEXT(Ethnicity_Answer__c)=&quot;N&quot;
+),
+TEXT(Race_Answers__c) &lt;&gt; &quot;N/A, returning student&quot;,
+TEXT(Media_Photo_Release__c)=&quot;V&quot;
+),
+&quot;Complete&quot;,
+
+IF(
+AND(
+TEXT(LearnerAccount.Student_Type__c)=&quot;N&quot;,
+OR(
+TEXT(Birth_Certificate__c)&lt;&gt;&quot;N&quot;,
+TEXT(Immunization_Records__c)&lt;&gt;&quot;N&quot;,
+TEXT(Physical_Upload__c)&lt;&gt;&quot;N&quot;,
+TEXT(Parent_Contract__c)&lt;&gt;&quot;N&quot;,
+TEXT(Student_Info_Contact_Form__c)&lt;&gt;&quot;N&quot;,
+TEXT(Uploaded_IEP__c)&lt;&gt;&quot;unk&quot;,
+TEXT(MAF_Upload__c)&lt;&gt;&quot;unk&quot;,
+TEXT(Housing_Questionnaire__c)&lt;&gt;&quot;N&quot;,
+CONTAINS(Housing_ATS_Code__c,&quot;(&quot;),
+TEXT(FERPA_Directory_Info_Notice__c)&lt;&gt;&quot;N&quot;,
+AND(TEXT(Overnight_Trip_Form__c)&lt;&gt;&quot;yet&quot;, TEXT(Overnight_Trip_Form__c)&lt;&gt;&quot;/&quot;),
+TEXT(TELA_Fee_Verification__c)&lt;&gt;&quot;N&quot;,
+TEXT(Proof_of_NYS_Residency_1__c)&lt;&gt;&quot;yet&quot;,
+TEXT(Proof_of_NYS_Residency_2__c)&lt;&gt;&quot;yet&quot;,
+TEXT(Proof_of_NYS_Residency_3__c)&lt;&gt;&quot;yet&quot;,
+TEXT(Home_Language_Questionnaire__c)&lt;&gt;&quot;N&quot;,
+NOT(ISBLANK(Language_s_on_HLQ__c)),
+TEXT(Activities_Field_Trip_Consent_Form__c)&lt;&gt;&quot;N&quot;,
+TEXT(Consent_to_Release_Student_Records__c)&lt;&gt;&quot;N&quot;,
+TEXT(Computer_Tablet_Use_Consent_Form__c)&lt;&gt;&quot;N&quot;,
+TEXT(Laptop_Tablet_Agreement__c)&lt;&gt;&quot;N&quot;,
+TEXT(TELA_Fee_Form__c)&lt;&gt;&quot;N&quot;,
+TEXT(Ethnic_Identification_Form__c)&lt;&gt;&quot;N&quot;,
+TEXT(Race_Answers__c) &lt;&gt; &quot;N/A, returning student&quot;,
+OR(
+TEXT(Ethnicity_Answer__c)=&quot;H&quot;,
+TEXT(Ethnicity_Answer__c)=&quot;N&quot;
+),
+TEXT(Media_Photo_Release__c)&lt;&gt;&quot;N&quot;
+)
+),
+&quot;Started&quot;,
+&quot;Not Started&quot;
+)
+)
+)</formula>
+    <label>Enrollment Forms Status</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <help><!-- Select how the fallback user for this task will be assigned. --></help>
+    <label><!-- Fallback User Assignment Type --></label>
+    <name>FallbackUserType__c</name>
+    <picklistValues>
+        <masterLabel>Standard User</masterLabel>
+        <translation><!-- Standard User --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>User Field Path</masterLabel>
+        <translation><!-- User Field Path --></translation>
+    </picklistValues>
+</CustomFieldTranslation>

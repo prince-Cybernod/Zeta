@@ -1,0 +1,565 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>65.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <decisions>
+        <name>ACR_Exists_for_Primary</name>
+        <label>ACR Exists for Primary</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <defaultConnector>
+            <targetReference>Secondary_Guardian_Exists</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Primary_ACR_Does_not_exist_create</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Get_Primary_ACR</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Create_Primary_ACR</targetReference>
+            </connector>
+            <label>Does not exist, create</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>ACR_Exists_for_Secondary</name>
+        <label>ACR Exists for Secondary</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Secondary_ACR_Does_not_exist_create</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Get_Secondary_ACR</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Create_Secondary_ACR</targetReference>
+            </connector>
+            <label>Does not exist, create</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <description>Ensures a new CCR is only created when one doesn’t already exist.</description>
+        <name>Primary_CCR_Found</name>
+        <label>Primary CCR Found?</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <defaultConnector>
+            <targetReference>Secondary_Guardian_Exists</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Exists</defaultConnectorLabel>
+        <rules>
+            <name>Does_not_exist_Create_CCR</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Get_Existing_Guardian_Student_CCR</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Create_Student_Guardian_CCR_1</targetReference>
+            </connector>
+            <label>Does not exist, Create CCR</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <description>Checks if a Primary Guardian is present before continuing CCR logic.</description>
+        <name>Primary_Guardian_Exists</name>
+        <label>Primary Guardian Exists?</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <defaultConnector>
+            <targetReference>Secondary_Guardian_Exists</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Does not exist</defaultConnectorLabel>
+        <rules>
+            <name>Yes_Primary_Guardian_Exists</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Primary_Guardian__c</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Update_Primary_Guardian_Set_is_Primary_Guardian</targetReference>
+            </connector>
+            <label>Yes, Primary Guardian Exists</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <description>Determines whether a CCR record already links the Student and Secondary Guardian.
+If none exists, proceeds to create it.</description>
+        <name>Secondary_CCR_Found</name>
+        <label>Secondary CCR Found?</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <defaultConnectorLabel>Found existing CCR</defaultConnectorLabel>
+        <rules>
+            <name>No_not_found</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Get_Existing_Secondary_Guardian_Student_CCR</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Create_Secondary_Student_Guardian_CCR</targetReference>
+            </connector>
+            <label>No, not found</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <description>Checks if a Secondary Guardian is populated on the Student record.
+If blank, skips this entire branch to avoid unnecessary CCR creation.</description>
+        <name>Secondary_Guardian_Exists</name>
+        <label>Secondary Guardian Exists?</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <defaultConnectorLabel>Does not exist</defaultConnectorLabel>
+        <rules>
+            <name>Yes_Secondary_Guardian_Exists</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Secondary_Guardian__c</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Get_Existing_Secondary_Guardian_Student_CCR</targetReference>
+            </connector>
+            <label>Yes, Secondary Guardian Exists</label>
+        </rules>
+    </decisions>
+    <description>Automatically creates Contact Contact Relationship (CCR) records between a Student (Person Account) and their Guardian Person Accounts when the guardian lookups are populated or changed.
+
+Prevents duplicate relationships by first checking for an existing CCR of type “Parent/Guardian.”
+
+Runs only for Student record type Person Accounts.
+
+Flow Designer: Elevation Solutions</description>
+    <environments>Default</environments>
+    <interviewLabel>Account (After Save) Auto-Create Guardian/Student CCR {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Account (After Save) Auto-Create Guardian/Student CCR</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordCreates>
+        <name>Create_Primary_ACR</name>
+        <label>Create Primary ACR</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>Secondary_Guardian_Exists</targetReference>
+        </connector>
+        <inputAssignments>
+            <field>AccountId</field>
+            <value>
+                <elementReference>$Record.Id</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>ContactId</field>
+            <value>
+                <elementReference>$Record.Primary_Guardian__r.PersonContactId</elementReference>
+            </value>
+        </inputAssignments>
+        <object>AccountContactRelation</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordCreates>
+    <recordCreates>
+        <name>Create_Secondary_ACR</name>
+        <label>Create Secondary ACR</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <inputAssignments>
+            <field>AccountId</field>
+            <value>
+                <elementReference>$Record.Id</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>ContactId</field>
+            <value>
+                <elementReference>$Record.Secondary_Guardian__r.PersonContactId</elementReference>
+            </value>
+        </inputAssignments>
+        <object>AccountContactRelation</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordCreates>
+    <recordCreates>
+        <description>Creates a new Contact–Contact Relationship record linking the Student to their Secondary Guardian.
+Uses “Parent/Guardian” as the relationship Type for consistent family mapping.</description>
+        <name>Create_Secondary_Student_Guardian_CCR</name>
+        <label>Create Secondary Student-Guardian CCR</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>Get_Secondary_ACR</targetReference>
+        </connector>
+        <inputAssignments>
+            <field>ContactId</field>
+            <value>
+                <elementReference>$Record.PersonContactId</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>IsActive</field>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>PartyRoleRelationId</field>
+            <value>
+                <elementReference>Get_Student_Guardian_CCR_ID.Id</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>RelatedContactId</field>
+            <value>
+                <elementReference>$Record.Secondary_Guardian__r.PersonContactId</elementReference>
+            </value>
+        </inputAssignments>
+        <object>ContactContactRelation</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordCreates>
+    <recordCreates>
+        <description>Creates a new CCR linking the Student to their Primary Guardian if no existing relationship is found.</description>
+        <name>Create_Student_Guardian_CCR_1</name>
+        <label>Create Student-Guardian CCR</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>Get_Primary_ACR</targetReference>
+        </connector>
+        <inputAssignments>
+            <field>ContactId</field>
+            <value>
+                <elementReference>$Record.PersonContactId</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>IsActive</field>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>PartyRoleRelationId</field>
+            <value>
+                <elementReference>Get_Student_Guardian_CCR_ID.Id</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>RelatedContactId</field>
+            <value>
+                <elementReference>$Record.Primary_Guardian__r.PersonContactId</elementReference>
+            </value>
+        </inputAssignments>
+        <object>ContactContactRelation</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordCreates>
+    <recordLookups>
+        <description>Looks for an existing CCR linking the student to their primary guardian.</description>
+        <name>Get_Existing_Guardian_Student_CCR</name>
+        <label>Get Existing Guardian-Student CCR</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Primary_CCR_Found</targetReference>
+        </connector>
+        <filterLogic>(1 AND 2 AND 3) OR (4 AND 5 AND 6)</filterLogic>
+        <filters>
+            <field>ContactId</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>$Record.Primary_Guardian__r.PersonContactId</elementReference>
+            </value>
+        </filters>
+        <filters>
+            <field>RelatedContactId</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>$Record.PersonContactId</elementReference>
+            </value>
+        </filters>
+        <filters>
+            <field>PartyRoleRelationId</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>Get_Guardian_Student_CCR_ID.Id</elementReference>
+            </value>
+        </filters>
+        <filters>
+            <field>ContactId</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>$Record.PersonContactId</elementReference>
+            </value>
+        </filters>
+        <filters>
+            <field>RelatedContactId</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>$Record.Primary_Guardian__r.PersonContactId</elementReference>
+            </value>
+        </filters>
+        <filters>
+            <field>PartyRoleRelationId</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>Get_Student_Guardian_CCR_ID.Id</elementReference>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>ContactContactRelation</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordLookups>
+        <description>Looks up an existing CCR between the Student (ContactId) and Secondary Guardian (RelatedContactId).
+Used to prevent duplicate CCR creation.</description>
+        <name>Get_Existing_Secondary_Guardian_Student_CCR</name>
+        <label>Get Existing Secondary Guardian-Student CCR</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Secondary_CCR_Found</targetReference>
+        </connector>
+        <filterLogic>(1 AND 2 AND 3) OR (4 AND 5 AND 6)</filterLogic>
+        <filters>
+            <field>ContactId</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>$Record.Secondary_Guardian__r.PersonContactId</elementReference>
+            </value>
+        </filters>
+        <filters>
+            <field>RelatedContactId</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>$Record.PersonContactId</elementReference>
+            </value>
+        </filters>
+        <filters>
+            <field>PartyRoleRelationId</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>Get_Guardian_Student_CCR_ID.Id</elementReference>
+            </value>
+        </filters>
+        <filters>
+            <field>ContactId</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>$Record.PersonContactId</elementReference>
+            </value>
+        </filters>
+        <filters>
+            <field>RelatedContactId</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>$Record.Secondary_Guardian__r.PersonContactId</elementReference>
+            </value>
+        </filters>
+        <filters>
+            <field>PartyRoleRelationId</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>Get_Student_Guardian_CCR_ID.Id</elementReference>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>ContactContactRelation</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordLookups>
+        <description>Grabs the ID for the Guardian-Student Party Role Relationship</description>
+        <name>Get_Guardian_Student_CCR_ID</name>
+        <label>Get Guardian-Student CCR ID</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Primary_Guardian_Exists</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Name</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Guardian-Student-CCR</stringValue>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>PartyRoleRelation</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordLookups>
+        <name>Get_Primary_ACR</name>
+        <label>Get Primary ACR</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>ACR_Exists_for_Primary</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>ContactId</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>$Record.Primary_Guardian__r.PersonContactId</elementReference>
+            </value>
+        </filters>
+        <filters>
+            <field>AccountId</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>$Record.Id</elementReference>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>AccountContactRelation</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordLookups>
+        <name>Get_Secondary_ACR</name>
+        <label>Get Secondary ACR</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>ACR_Exists_for_Secondary</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>ContactId</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>$Record.Secondary_Guardian__r.PersonContactId</elementReference>
+            </value>
+        </filters>
+        <filters>
+            <field>AccountId</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>$Record.Id</elementReference>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>AccountContactRelation</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordLookups>
+        <description>Grabs the ID for the Student-Guardian Party Role Relationship</description>
+        <name>Get_Student_Guardian_CCR_ID</name>
+        <label>Get Student-Guardian CCR ID</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Get_Guardian_Student_CCR_ID</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Name</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Student-Guardian-CCR</stringValue>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>PartyRoleRelation</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordUpdates>
+        <description>Sets is_Primary_Guardian = True</description>
+        <name>Update_Primary_Guardian_Set_is_Primary_Guardian</name>
+        <label>Update Primary Guardian | Set is_Primary_Guardian</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>Get_Existing_Guardian_Student_CCR</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>$Record.Primary_Guardian__c</elementReference>
+            </value>
+        </filters>
+        <inputAssignments>
+            <field>Is_Primary_Guardian__c</field>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </inputAssignments>
+        <object>Account</object>
+    </recordUpdates>
+    <start>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>Get_Student_Guardian_CCR_ID</targetReference>
+        </connector>
+        <filterFormula>AND(
+  {!$Record.RecordType.DeveloperName} = &quot;Student&quot;,
+  OR(
+    ISNEW(),
+    ISCHANGED({!$Record.Primary_Guardian__c}),
+    ISCHANGED({!$Record.Secondary_Guardian__c})
+  )
+)</filterFormula>
+        <object>Account</object>
+        <recordTriggerType>CreateAndUpdate</recordTriggerType>
+        <triggerType>RecordAfterSave</triggerType>
+    </start>
+    <status>Active</status>
+    <triggerOrder>1500</triggerOrder>
+    <variables>
+        <name>currentItem_Filter_Student_Guardian_CCR_ID</name>
+        <dataType>SObject</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+        <objectType>PartyRoleRelation</objectType>
+    </variables>
+</Flow>

@@ -1,0 +1,12 @@
+<template>
+  <lightning-textarea
+    label={question.label}
+    value={value}
+    required={question.isRequired}
+    field-level-help={question.helpText}
+    placeholder={question.placeholder}
+    max-length={question.maxLength}
+    disabled={readOnly}
+    onchange={handleChange}
+  ></lightning-textarea>
+</template>

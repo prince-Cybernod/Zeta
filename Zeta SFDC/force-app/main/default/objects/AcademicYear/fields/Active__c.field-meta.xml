@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Active__c</fullName>
+    <description>Evaluates to true if the current date falls between Start Date and End Date.</description>
+    <formula>AND(
+  NOT(ISNULL(Start_Date__c)),
+  NOT(ISNULL(End_Date__c)),
+  TODAY() &gt;= Start_Date__c,
+  TODAY() &lt;= End_Date__c
+)</formula>
+    <inlineHelpText>Evaluates to true if the current date falls between Start Date and End Date.</inlineHelpText>
+    <label>Active</label>
+    <trackHistory>false</trackHistory>
+    <type>Checkbox</type>
+</CustomField>

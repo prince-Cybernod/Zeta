@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Applications_Pending_Review</fullName>
+    <columns>Name</columns>
+    <columns>Account</columns>
+    <columns>Grade_Applying_To__c</columns>
+    <columns>AppliedDate</columns>
+    <columns>Application_Timeline__c</columns>
+    <columns>Age_Inconsistency_Flag_c__c</columns>
+    <columns>Residency_Restriction__c</columns>
+    <columns>Priority_Items_Pending_Review__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>Status</field>
+        <operation>equals</operation>
+        <value>Applied</value>
+    </filters>
+    <label>Applications Pending Review</label>
+</ListView>

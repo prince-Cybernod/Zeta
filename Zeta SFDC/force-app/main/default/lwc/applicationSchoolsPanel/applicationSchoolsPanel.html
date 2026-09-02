@@ -1,0 +1,69 @@
+<template>
+  <!-- Loading State -->
+  <template lwc:if={isLoading}>
+    <div class="slds-p-around_medium slds-text-align_center slds-is-relative">
+      <lightning-spinner
+        alternative-text="Loading"
+        size="small"
+      ></lightning-spinner>
+    </div>
+  </template>
+
+  <!-- Error State -->
+  <template lwc:if={error}>
+    <div class="slds-notify slds-notify_alert slds-alert_error" role="alert">
+      <span class="slds-assistive-text">error</span>
+      <h2>{error}</h2>
+    </div>
+  </template>
+
+  <!-- Empty State: no grade/timeline yet, eligibility can't be derived -->
+  <template lwc:if={showEmptyState}>
+    <div class="empty-state">
+      <p>{labels.emptyState}</p>
+    </div>
+  </template>
+
+  <template lwc:if={showPanels}>
+    <template lwc:if={isPreSubmit}>
+      <div class="panel-section">
+        <!-- for:each (rather than a plain key= on a static sibling) so LWC's
+             keyed diffing actually applies and a grade/timeline change tears
+             down and remounts the child instead of patching it in place. -->
+        <template for:each={childrenKeys} for:item="ck">
+          <c-school-selection
+            key={ck}
+            record-id={recordId}
+          ></c-school-selection>
+        </template>
+        <div class="panel-actions">
+          <lightning-button
+            variant="brand"
+            label={selectionSaveButtonLabel}
+            onclick={handleSaveSelection}
+            disabled={isSelectionSaving}
+          ></lightning-button>
+        </div>
+      </div>
+    </template>
+    <template lwc:else>
+      <div class="locked-note">
+        <p>{labels.selectionsLocked}</p>
+      </div>
+    </template>
+
+    <div class="panel-section">
+      <template for:each={rankingKeys} for:item="rk">
+        <c-school-ranking key={rk} record-id={recordId}></c-school-ranking>
+      </template>
+      <div class="panel-actions">
+        <lightning-button
+          variant="brand"
+          label={rankingSaveButtonLabel}
+          onclick={handleSaveRanking}
+          disabled={isRankingSaving}
+        ></lightning-button>
+      </div>
+    </div>
+  </template>
+</template>

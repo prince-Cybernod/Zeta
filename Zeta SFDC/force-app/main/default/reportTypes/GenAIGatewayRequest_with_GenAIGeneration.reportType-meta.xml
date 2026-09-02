@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ReportType xmlns="http://soap.sforce.com/2006/04/metadata">
+    <baseObject></baseObject>
+    <category>data_cloud</category>
+    <deployed>true</deployed>
+    <description>Custom Data Cloud report type for relationship between GenAIGatewayRequest and GenAIGeneration</description>
+    <label>GenAIGatewayRequest with GenAIGeneration</label>
+    <sections>
+        <masterLabel>GenAIGatewayRequest (Data Cloud)</masterLabel>
+    </sections>
+    <sections>
+        <masterLabel>GenAIGatewayResponse (Data Cloud)</masterLabel>
+    </sections>
+    <sections>
+        <masterLabel>GenAIGeneration (Data Cloud)</masterLabel>
+    </sections>
+</ReportType>

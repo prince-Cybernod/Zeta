@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<DataStreamTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <dataSourceBundleDefinition>UnifiedMsgEmail__UnifiedEmailBundleWebEng</dataSourceBundleDefinition>
+    <dataSourceObject>UnifiedMsgEmail__WebEngagementEventsV1_DeviceToI_4B2E6179</dataSourceObject>
+    <masterLabel>WebEngagementEventsV1-DeviceToIndividualMatch</masterLabel>
+    <objectCategory>Salesforce_SFDCReferenceModel_0_93.Engagement</objectCategory>
+    <refreshFrequency>NONE</refreshFrequency>
+    <refreshMode>UPSERT</refreshMode>
+    <sourceObjectName>UnifiedMsgEmail__WebEngagementEventsV1_DeviceToIndividualMatch_4B2E6179</sourceObjectName>
+    <streamType>INGEST</streamType>
+    <templateVersion>1</templateVersion>
+</DataStreamTemplate>

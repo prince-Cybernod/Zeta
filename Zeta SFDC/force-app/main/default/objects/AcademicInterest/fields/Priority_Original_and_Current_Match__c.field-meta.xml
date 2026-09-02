@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Priority_Original_and_Current_Match__c</fullName>
+    <formula>AND(Original_Priority_Group__c =  Current_Priority_Group__c , 
+NOT(ISBLANK(Original_Priority_Group__c))
+)</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>Priority Original and Current Match</label>
+    <trackHistory>false</trackHistory>
+    <type>Checkbox</type>
+</CustomField>

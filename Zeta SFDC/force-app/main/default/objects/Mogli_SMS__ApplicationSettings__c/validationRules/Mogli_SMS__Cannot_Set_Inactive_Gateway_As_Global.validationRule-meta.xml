@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Mogli_SMS__Cannot_Set_Inactive_Gateway_As_Global</fullName>
+    <active>true</active>
+    <errorConditionFormula>Mogli_SMS__DefaultGateway__r.Mogli_SMS__Inactive__c</errorConditionFormula>
+    <errorDisplayField>Mogli_SMS__DefaultGateway__c</errorDisplayField>
+    <errorMessage>Cannot deactivate: An active Global Default Gateway is required. Please set a new default first.</errorMessage>
+</ValidationRule>

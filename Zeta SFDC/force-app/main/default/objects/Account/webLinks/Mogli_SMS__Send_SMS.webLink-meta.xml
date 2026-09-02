@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<WebLink xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Mogli_SMS__Send_SMS</fullName>
+    <availability>online</availability>
+    <displayType>massActionButton</displayType>
+    <linkType>page</linkType>
+    <masterLabel>Send SMS</masterLabel>
+    <openType>replace</openType>
+    <page>Mogli_SMS__LightningSendSMSAccountAction</page>
+    <protected>false</protected>
+    <requireRowSelection>true</requireRowSelection>
+</WebLink>

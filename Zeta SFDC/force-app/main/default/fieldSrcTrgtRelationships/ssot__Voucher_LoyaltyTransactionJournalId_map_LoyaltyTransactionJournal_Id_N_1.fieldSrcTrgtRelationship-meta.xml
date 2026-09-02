@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<FieldSrcTrgtRelationship xmlns="http://soap.sforce.com/2006/04/metadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <definitionCreationType>Standard</definitionCreationType>
+    <lookupFieldName>ssot__Voucher__dlm.ssot__rel_1697761227880_end__c</lookupFieldName>
+    <masterLabel>Voucher_LoyaltyTransactionJournalId_map_LoyaltyTransactionJournal_Id_N_1</masterLabel>
+    <owner>DataCloud</owner>
+    <relationshipCardinality>ManyToOne</relationshipCardinality>
+    <sourceFieldName>ssot__Voucher__dlm.ssot__LoyaltyTransactionJournalId__c</sourceFieldName>
+    <targetEntity xsi:nil="true"/>
+    <targetFieldName>ssot__LoyaltyTransactionJournal__dlm.ssot__Id__c</targetFieldName>
+</FieldSrcTrgtRelationship>

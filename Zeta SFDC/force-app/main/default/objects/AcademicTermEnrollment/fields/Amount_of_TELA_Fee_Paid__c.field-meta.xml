@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Amount_of_TELA_Fee_Paid__c</fullName>
+    <description>Amount already paid by the family toward TELA fees.</description>
+    <externalId>false</externalId>
+    <inlineHelpText>Amount already paid by the family toward TELA fees.</inlineHelpText>
+    <label>Amount of TELA Fee Paid</label>
+    <precision>18</precision>
+    <required>false</required>
+    <scale>2</scale>
+    <trackHistory>false</trackHistory>
+    <type>Number</type>
+    <unique>false</unique>
+</CustomField>

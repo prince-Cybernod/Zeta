@@ -1,0 +1,288 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>65.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <assignments>
+        <description>Adds the modified School Application record to the collection for bulk update after the loop.</description>
+        <name>Add_to_Update_Collection</name>
+        <label>Add to Update Collection</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <assignmentItems>
+            <assignToReference>colUpdatedSchoolApps</assignToReference>
+            <operator>Add</operator>
+            <value>
+                <elementReference>Loop_Through_School_Applications</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Loop_Through_School_Applications</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <description>Sets the current School Application’s Status to Eligible when seats are still available.</description>
+        <name>Seats_Available_Set_Status_Eligible</name>
+        <label>Seats Available | Set Status Eligible</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <assignmentItems>
+            <assignToReference>Loop_Through_School_Applications.Status</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <stringValue>Eligible</stringValue>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Add_to_Update_Collection</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <description>Sets the current School Application’s Status to Eligible when LotteryRunResult is blank.</description>
+        <name>Set_Status_Eligible</name>
+        <label>Set Status Eligible</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <assignmentItems>
+            <assignToReference>Loop_Through_School_Applications.Status</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <stringValue>Eligible</stringValue>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Add_to_Update_Collection</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <description>Sets the current School Application’s Status to Waitlist when LotteryRunResult is populated.</description>
+        <name>Set_Status_Waitlist</name>
+        <label>Set Status Waitlist</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <assignmentItems>
+            <assignToReference>Loop_Through_School_Applications.Status</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <stringValue>Waitlisted</stringValue>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Add_to_Update_Collection</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <description>Sets the current School Application’s Status to Withdrawn/Declined to match the Individual Application.</description>
+        <name>Set_Status_Withdrawn_Declined</name>
+        <label>Set Status Withdrawn/Declined</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <assignmentItems>
+            <assignToReference>Loop_Through_School_Applications.Status</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <stringValue>Withdrawn/Declined</stringValue>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Add_to_Update_Collection</targetReference>
+        </connector>
+    </assignments>
+    <decisions>
+        <description>Determines whether the current School Application has a LotteryRunLog, which controls whether the new status is Eligible or Waitlist.</description>
+        <name>Has_Lottery_Log</name>
+        <label>Has Lottery Log? (Lottery run)</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <defaultConnector>
+            <targetReference>Set_Status_Eligible</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>No Result</defaultConnectorLabel>
+        <rules>
+            <name>Has_Result</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Loop_Through_School_Applications.Lottery_Capacity__r.Lottery_Run_Log__c</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Remaining_Seats_Available</targetReference>
+            </connector>
+            <label>Has Result</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <description>Routes School Application status sync based on whether the parent Individual Application is Withdrawn/Declined.</description>
+        <name>Individual_App_Withdrawn_Declined</name>
+        <label>Individual App Withdrawn/Declined?</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <defaultConnector>
+            <targetReference>Add_to_Update_Collection</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Default</defaultConnectorLabel>
+        <rules>
+            <name>Withdrawn_Declined</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Status</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Withdrawn/Declined</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Set_Status_Withdrawn_Declined</targetReference>
+            </connector>
+            <label>Withdrawn/Declined</label>
+        </rules>
+        <rules>
+            <name>Eligible</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Status</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Eligible</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Has_Lottery_Log</targetReference>
+            </connector>
+            <label>Eligible</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>Remaining_Seats_Available</name>
+        <label>Remaining Seats Available?</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <defaultConnector>
+            <targetReference>Set_Status_Waitlist</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>No Seats Available</defaultConnectorLabel>
+        <rules>
+            <name>Seats_Available</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Loop_Through_School_Applications.Lottery_Capacity__r.Remaining_Available_Seats__c</leftValueReference>
+                <operator>GreaterThan</operator>
+                <rightValue>
+                    <numberValue>0.0</numberValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Seats_Available_Set_Status_Eligible</targetReference>
+            </connector>
+            <label>Seats Available</label>
+        </rules>
+    </decisions>
+    <description>When an Individual Application becomes Eligible, updates related School Applications so that any with no LotteryRunLog become Eligible, and any with a LotteryRunResult become Waitlist.
+
+Flow Designer: Elevation Solutions</description>
+    <environments>Default</environments>
+    <interviewLabel>Individual Application | Sync Eligible to School Applications {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Individual Application (After Save) Sync Eligible to School Applications</label>
+    <loops>
+        <description>Loops through each related School Application so we can evaluate LotteryRunResult and assign the correct new Status.</description>
+        <name>Loop_Through_School_Applications</name>
+        <label>Loop Through School Applications</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <collectionReference>Get_School_Applications</collectionReference>
+        <iterationOrder>Asc</iterationOrder>
+        <nextValueConnector>
+            <targetReference>Individual_App_Withdrawn_Declined</targetReference>
+        </nextValueConnector>
+        <noMoreValuesConnector>
+            <targetReference>Update_School_Applications</targetReference>
+        </noMoreValuesConnector>
+    </loops>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordLookups>
+        <description>Retrieves all School Application (AcademicInterest) records related to this Individual Application.</description>
+        <name>Get_School_Applications</name>
+        <label>Get School Applications</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Loop_Through_School_Applications</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>IndividualApplicationId</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>$Record.Id</elementReference>
+            </value>
+        </filters>
+        <getFirstRecordOnly>false</getFirstRecordOnly>
+        <object>AcademicInterest</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordUpdates>
+        <description>Updates all School Application (AcademicInterest) records whose statuses were adjusted based on the Individual Application becoming Eligible.</description>
+        <name>Update_School_Applications</name>
+        <label>Update School Applications</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <inputReference>colUpdatedSchoolApps</inputReference>
+    </recordUpdates>
+    <start>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>Get_School_Applications</targetReference>
+        </connector>
+        <doesRequireRecordChangedToMeetCriteria>true</doesRequireRecordChangedToMeetCriteria>
+        <filterLogic>or</filterLogic>
+        <filters>
+            <field>Status</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Eligible</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>Status</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Withdrawn/Declined</stringValue>
+            </value>
+        </filters>
+        <object>IndividualApplication</object>
+        <recordTriggerType>Update</recordTriggerType>
+        <triggerType>RecordAfterSave</triggerType>
+    </start>
+    <status>Active</status>
+    <variables>
+        <description>Holds School Application records that need to be updated after the loop.</description>
+        <name>colUpdatedSchoolApps</name>
+        <dataType>SObject</dataType>
+        <isCollection>true</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+        <objectType>AcademicInterest</objectType>
+    </variables>
+</Flow>

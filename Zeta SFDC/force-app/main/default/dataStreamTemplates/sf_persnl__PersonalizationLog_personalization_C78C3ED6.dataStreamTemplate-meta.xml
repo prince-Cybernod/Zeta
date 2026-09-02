@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<DataStreamTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <dataSourceBundleDefinition>sf_persnl__PersonalizationBundleIngestAPI</dataSourceBundleDefinition>
+    <dataSourceObject>sf_persnl__PersonalizationLog_personalizat_C78C3ED6</dataSourceObject>
+    <masterLabel>PersonalizationLog-personalization</masterLabel>
+    <objectCategory>Salesforce_SFDCReferenceModel_0_93.Engagement</objectCategory>
+    <refreshFrequency>NONE</refreshFrequency>
+    <refreshMode>UPSERT</refreshMode>
+    <templateVersion>2</templateVersion>
+</DataStreamTemplate>

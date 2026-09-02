@@ -1,0 +1,91 @@
+.card-container {
+    background-color: #fff;
+    border: 1px solid #d8dde6;
+    border-radius: 12px;
+    width: 900px;
+    max-width: 100%;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    overflow: hidden; /* Ensure content doesn't spill out */
+}
+
+.student-name {
+    font-size: 2.25rem;
+    font-weight: 800;
+    color: #000;
+    word-break: break-word;
+    line-height: 1.1;
+    text-align: center;
+}
+
+.program-name {
+    font-size: 1.25rem;
+    color: #747474;
+    text-align: center;
+    word-break: break-word;
+    line-height: 1.2;
+}
+
+.header-grid {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+}
+
+.progress-text {
+    font-size: 0.9rem;
+    color: #3e3e3c;
+    font-weight: 600;
+    white-space: nowrap;
+}
+
+.view-all-section {
+    cursor: pointer;
+    white-space: nowrap;
+    flex-shrink: 0;
+    display: flex;
+    justify-content: center;
+}
+
+.view-all-text {
+    color: #3e3e3c;
+    font-size: 0.875rem;
+    font-weight: 500;
+}
+
+.progress-container {
+    flex: 1 1 100px;
+    min-width: 100px;
+}
+
+.view-all-icon {
+    --lwc-colorTextIconDefault: #3e3e3c;
+}
+
+@media (max-width: 480px) {
+    .card-container {
+        padding: 1rem !important;
+    }
+    
+    .student-name {
+        font-size: 1.5rem;
+    }
+
+    .header-grid {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        gap: 0.5rem;
+    }
+
+    .progress-container {
+        width: 100%;
+        flex: none;
+    }
+
+    .progress-text {
+        align-self: center;
+    }
+}

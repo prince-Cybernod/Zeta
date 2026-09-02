@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>CBO_Type__c</fullName>
+    <label>CBO Type</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>MultiselectPicklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>After School Program</fullName>
+                <default>false</default>
+                <label>After School Program</label>
+            </value>
+            <value>
+                <fullName>Daycare / Pre-k center</fullName>
+                <default>false</default>
+                <label>Daycare / Pre-k center</label>
+            </value>
+            <value>
+                <fullName>Library</fullName>
+                <default>false</default>
+                <label>Library</label>
+            </value>
+            <value>
+                <fullName>Medical center</fullName>
+                <default>false</default>
+                <label>Medical center</label>
+            </value>
+            <value>
+                <fullName>Place of worship</fullName>
+                <default>false</default>
+                <label>Place of worship</label>
+            </value>
+            <value>
+                <fullName>Shelter</fullName>
+                <default>false</default>
+                <label>Shelter</label>
+            </value>
+            <value>
+                <fullName>Sport center</fullName>
+                <default>false</default>
+                <label>Sport center</label>
+            </value>
+            <value>
+                <fullName>Play Center</fullName>
+                <default>false</default>
+                <label>Play Center</label>
+            </value>
+            <value>
+                <fullName>Other Community Organization</fullName>
+                <default>false</default>
+                <label>Other Community Organization</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+    <visibleLines>4</visibleLines>
+</CustomField>

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Trigger_Fields__c</fullName>
+    <deprecated>false</deprecated>
+    <description>Stores the fields that will trigger actions when creating action plans from this template.</description>
+    <inlineHelpText>Enter comma-separated field API names (e.g., Account.Rating, Account.Industry, Account.Name, Contact.Email, User.Name). These fields are derived from where clause and will be evaluated for change when trigger on relevant object runs. This is automatically generated from where clause above.</inlineHelpText>
+    <label>Trigger Fields</label>
+    <length>32768</length>
+    <trackTrending>false</trackTrending>
+    <type>LongTextArea</type>
+    <visibleLines>3</visibleLines>
+</CustomField>

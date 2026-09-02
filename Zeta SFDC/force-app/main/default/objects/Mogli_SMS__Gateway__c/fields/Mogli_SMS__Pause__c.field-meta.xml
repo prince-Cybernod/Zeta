@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Mogli_SMS__Pause__c</fullName>
+    <deprecated>false</deprecated>
+    <description>Twilio will wait the specified number of seconds before picking up the call.</description>
+    <externalId>false</externalId>
+    <inlineHelpText>Specify your preferred time delay (seconds) before audio begins playing on the recipient&apos;s phone (the default is zero).</inlineHelpText>
+    <label>Pause</label>
+    <precision>2</precision>
+    <required>false</required>
+    <scale>0</scale>
+    <trackTrending>false</trackTrending>
+    <type>Number</type>
+    <unique>false</unique>
+</CustomField>

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Active__c</fullName>
+    <description>Returns true if the associated Academic Term is active and the Enrollment Status is an active status.</description>
+    <formula>AND(AcademicTerm.Active__c = true, 
+NOT(ISPICKVAL(EnrollmentStatus, &apos;Declined/Withdrawn&apos;)),
+NOT(ISPICKVAL( EnrollmentStatus, &apos;Rescinded&apos;)))</formula>
+    <inlineHelpText>Returns true if the associated Academic Term is active and the Enrollment Status is an active status.</inlineHelpText>
+    <label>Active</label>
+    <trackHistory>false</trackHistory>
+    <type>Checkbox</type>
+</CustomField>

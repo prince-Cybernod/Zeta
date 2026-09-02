@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>All_Learning_Programs_SchoolMint</fullName>
+    <columns>Name</columns>
+    <columns>Learning</columns>
+    <columns>School__c</columns>
+    <columns>SchoolMint_LearningProgram_Id__c</columns>
+    <columns>Program_Type__c</columns>
+    <columns>Academic_Term__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>SchoolMint_LearningProgram_Id__c</field>
+        <operation>notEqual</operation>
+    </filters>
+    <label>All Learning Programs - SchoolMint</label>
+</ListView>

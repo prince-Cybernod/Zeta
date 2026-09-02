@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PolicyRuleDefinition xmlns="http://soap.sforce.com/2006/04/metadata">
+    <action>TupleRead</action>
+    <category>GOVERNANCE_POLICY_RULE_DEFINITION</category>
+    <effect>Permit</effect>
+    <label>All Data Access Rule</label>
+    <policyRuleDefinitionSetName>AllDataAccessRuleset</policyRuleDefinitionSetName>
+    <principalScopeType>ANY</principalScopeType>
+    <resourceScopeType>ANY</resourceScopeType>
+    <ruleConsumer>DATACLOUD</ruleConsumer>
+    <transformPrecedence>0</transformPrecedence>
+    <whenPolicyRuleDefinitionClauseConjunction>
+        <conditions>
+            <clause>WHEN</clause>
+            <operator>IS</operator>
+            <policyRuleValueSet>
+                <valueText>OBJECT</valueText>
+            </policyRuleValueSet>
+            <resourcePath>ENTITYTYPE</resourcePath>
+        </conditions>
+        <conditions>
+            <clause>WHEN</clause>
+            <operator>IS</operator>
+            <policyRuleValueSet>
+                <valueText>FIELD</valueText>
+            </policyRuleValueSet>
+            <resourcePath>ENTITYTYPE</resourcePath>
+        </conditions>
+        <conjunctionExpression>(AND (OR 1 2))</conjunctionExpression>
+    </whenPolicyRuleDefinitionClauseConjunction>
+</PolicyRuleDefinition>

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <help>
+        <!-- Summary: save the returned result in to GenAI Summary field
+Scoring: save the returned result in to GenAI Score and GenAI Scoring Notes instead. -->
+    </help>
+    <label><!-- User Goal --></label>
+    <name>Mogli_SMS__User_Goal__c</name>
+    <picklistValues>
+        <masterLabel>Conversation Summary</masterLabel>
+        <translation><!-- Conversation Summary --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Message Recommendation</masterLabel>
+        <translation><!-- Message Recommendation --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Scoring</masterLabel>
+        <translation><!-- Scoring --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Summarization</masterLabel>
+        <translation><!-- Summarization --></translation>
+    </picklistValues>
+</CustomFieldTranslation>

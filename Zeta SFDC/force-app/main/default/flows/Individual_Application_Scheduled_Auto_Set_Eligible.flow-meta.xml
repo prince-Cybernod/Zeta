@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>66.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <description>Created by: Elevation Solutions
+
+Daily sweep that sets Individual Application Status to Eligible when Priority_Items_Pending_Review__c = 0 and Residency_Restriction__c = FALSE and Age_Inconsistency_Flag__c = FALSE. Designed to catch applications that become eligible after creation due to downstream record creation (e.g., School Applications).</description>
+    <environments>Default</environments>
+    <interviewLabel>Individual Application (Scheduled) Auto Set Eligible {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Individual Application (Scheduled) Auto Set Eligible</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordUpdates>
+        <description>Mass-updates Individual Applications that meet auto-eligible criteria, setting Status to Eligible.</description>
+        <name>Update_Set_Eligible_Daily_Sweep</name>
+        <label>Update | Set Eligible | Daily Sweep</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Status</field>
+            <operator>NotEqualTo</operator>
+            <value>
+                <stringValue>Eligible</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>Residency_Restriction__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <booleanValue>false</booleanValue>
+            </value>
+        </filters>
+        <filters>
+            <field>Age_Inconsistency_Flag_c__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <booleanValue>false</booleanValue>
+            </value>
+        </filters>
+        <filters>
+            <field>Priority_Items_Pending_Review__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <numberValue>0.0</numberValue>
+            </value>
+        </filters>
+        <filters>
+            <field>Student_District_Id__c</field>
+            <operator>NotEqualTo</operator>
+        </filters>
+        <inputAssignments>
+            <field>Status</field>
+            <value>
+                <stringValue>Eligible</stringValue>
+            </value>
+        </inputAssignments>
+        <object>IndividualApplication</object>
+    </recordUpdates>
+    <start>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>Update_Set_Eligible_Daily_Sweep</targetReference>
+        </connector>
+        <schedule>
+            <dayOfMonthToRun>0</dayOfMonthToRun>
+            <frequency>Daily</frequency>
+            <frequencyNumber>0</frequencyNumber>
+            <startDate>2026-08-25</startDate>
+            <startTime>02:00:00.000Z</startTime>
+        </schedule>
+        <triggerType>Scheduled</triggerType>
+    </start>
+    <status>Active</status>
+</Flow>

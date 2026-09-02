@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>66.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <description>Populates the School Id field based on the related Account (Provider) School Id. School Id field is used to set sharing rules. Also Updates all related Academic Term Enrollment records.</description>
+    <environments>Default</environments>
+    <interviewLabel>Learning Program: Update School Id {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Learning Program: Update School Id</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordUpdates>
+        <name>UPDATE_Related_Academic_Term_Enrollments</name>
+        <label>UPDATE Related Academic Term Enrollments</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <inputAssignments>
+            <field>School_Id__c</field>
+            <value>
+                <elementReference>$Record.School__r.School_Id__c</elementReference>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record.Academic_Term_Enrollments__r</inputReference>
+    </recordUpdates>
+    <recordUpdates>
+        <name>UPDATE_School_Id</name>
+        <label>UPDATE School Id</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>UPDATE_Related_Academic_Term_Enrollments</targetReference>
+        </connector>
+        <inputAssignments>
+            <field>School_Id__c</field>
+            <value>
+                <elementReference>$Record.School__r.School_Id__c</elementReference>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <start>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>UPDATE_School_Id</targetReference>
+        </connector>
+        <filterFormula>ISNEW()
+||
+ISCHANGED({!$Record.School__c})</filterFormula>
+        <object>LearningProgram</object>
+        <recordTriggerType>CreateAndUpdate</recordTriggerType>
+        <triggerType>RecordAfterSave</triggerType>
+    </start>
+    <status>Active</status>
+</Flow>

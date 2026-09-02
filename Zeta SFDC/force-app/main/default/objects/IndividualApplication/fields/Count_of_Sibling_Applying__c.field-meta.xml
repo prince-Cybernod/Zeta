@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Count_of_Sibling_Applying__c</fullName>
+    <description>Calculated by apex rollup.</description>
+    <externalId>false</externalId>
+    <inlineHelpText>Sum of priority items related to the individual application where type is &apos;sibling applying&apos; &amp; status is &apos;approved&apos;.</inlineHelpText>
+    <label>Count of Sibling Applying</label>
+    <precision>18</precision>
+    <required>false</required>
+    <scale>0</scale>
+    <trackHistory>false</trackHistory>
+    <type>Number</type>
+    <unique>false</unique>
+</CustomField>

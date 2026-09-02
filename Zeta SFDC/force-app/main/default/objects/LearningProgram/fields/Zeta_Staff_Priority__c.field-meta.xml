@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Zeta_Staff_Priority__c</fullName>
+    <formula>Count_Lottery_Employee_Priority__c / Total_Available_Seats_for_School_Year__c</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <inlineHelpText>Count of Lottery Employee Priority / Total Available Seats for School Year</inlineHelpText>
+    <label>Zeta Staff Priority</label>
+    <precision>18</precision>
+    <required>false</required>
+    <scale>0</scale>
+    <trackHistory>false</trackHistory>
+    <type>Percent</type>
+</CustomField>

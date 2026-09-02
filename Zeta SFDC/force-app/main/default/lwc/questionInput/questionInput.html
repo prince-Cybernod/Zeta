@@ -1,0 +1,51 @@
+<template>
+  <template lwc:if={isReadOnlyScalar}>
+    <c-question-read-only
+      question={question}
+      value={value}
+    ></c-question-read-only>
+  </template>
+  <template lwc:if={isReadOnlyAddress}>
+    <c-question-address
+      question={question}
+      record-id={recordId}
+      read-only={readOnly}
+      value={value}
+    ></c-question-address>
+  </template>
+  <template lwc:if={isText}>
+    <c-question-text question={question} value={value}></c-question-text>
+  </template>
+  <template lwc:if={isDropdown}>
+    <c-question-dropdown
+      question={question}
+      value={value}
+    ></c-question-dropdown>
+  </template>
+  <template lwc:if={isCheckbox}>
+    <c-question-checkbox
+      question={question}
+      value={value}
+    ></c-question-checkbox>
+  </template>
+  <template lwc:if={isMultiCheckbox}>
+    <c-question-checkbox-group
+      question={question}
+      value={value}
+    ></c-question-checkbox-group>
+  </template>
+  <template lwc:if={isTextArea}>
+    <c-question-text-area
+      question={question}
+      value={value}
+    ></c-question-text-area>
+  </template>
+  <template lwc:if={isAddress}>
+    <c-question-address
+      question={question}
+      record-id={recordId}
+      read-only={readOnly}
+      value={value}
+    ></c-question-address>
+  </template>
+</template>

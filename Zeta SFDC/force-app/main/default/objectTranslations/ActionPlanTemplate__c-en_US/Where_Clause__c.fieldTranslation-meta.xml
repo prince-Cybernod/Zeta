@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <help><!-- A custom WHERE clause that can be used to select specific records when creating action plans from this template. Do not include the keyword WHERE. Note: When a WHERE Clause is specified, action plans will be created for each matching record at runtime, rather than for specific records. --></help>
+    <label><!-- WHERE Clause --></label>
+    <name>Where_Clause__c</name>
+</CustomFieldTranslation>

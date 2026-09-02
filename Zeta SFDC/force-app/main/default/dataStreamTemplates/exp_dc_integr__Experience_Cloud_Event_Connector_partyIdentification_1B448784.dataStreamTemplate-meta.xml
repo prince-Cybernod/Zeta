@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<DataStreamTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <dataSourceBundleDefinition>exp_dc_integr__Experience_Cloud_Event_Bundle</dataSourceBundleDefinition>
+    <dataSourceObject>exp_dc_integr__Experience_Cloud_Event_Connecto_1B448784</dataSourceObject>
+    <masterLabel>Experience_Cloud_Event_Connector-partyIdentification 1B448784</masterLabel>
+    <objectCategory>Salesforce_SFDCReferenceModel_0_93.Profile</objectCategory>
+    <refreshFrequency>NONE</refreshFrequency>
+    <refreshMode>INCREMENTAL</refreshMode>
+    <streamType>INGEST</streamType>
+    <templateVersion>5</templateVersion>
+</DataStreamTemplate>

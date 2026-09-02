@@ -1,0 +1,91 @@
+<template>
+  <template lwc:if={isLoading}>
+    <div class="card" aria-busy="true" aria-label={labels.ariaLoadingRankings}>
+      <div class="skeleton-header"></div>
+      <div class="skeleton-banner"></div>
+      <div class="skeleton-rows">
+        <div class="skeleton-row"></div>
+        <div class="skeleton-row skeleton-row--short"></div>
+        <div class="skeleton-row"></div>
+      </div>
+    </div>
+  </template>
+
+  <template lwc:if={showContent}>
+    <div class="card">
+      <h2 class="card-title">{labels.rankSchools}</h2>
+      <p class="card-subtitle">{rankSchoolsInstructions}</p>
+
+      <div class="info-banner" role="note">
+        <svg
+          class="info-icon"
+          viewBox="0 0 24 24"
+          width="20"
+          height="20"
+          aria-hidden="true"
+        >
+          <path
+            d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"
+            fill="currentColor"
+          />
+        </svg>
+        <span>{labels.rankInfoBanner}</span>
+      </div>
+
+      <div
+        class="ranking-list"
+        role="list"
+        aria-label={labels.ariaSchoolRankings}
+      >
+        <template for:each={rankedRows} for:item="school">
+          <div
+            key={school.academicInterestId}
+            class={school.rowClass}
+            role="listitem"
+            data-id={school.academicInterestId}
+            draggable="true"
+            ondragstart={handleDragStart}
+            ondragover={handleDragOver}
+            ondragleave={handleDragLeave}
+            ondragend={handleDragEnd}
+            ondrop={handleDrop}
+            ontouchstart={handleTouchStart}
+            ontouchmove={handleTouchMove}
+            ontouchend={handleTouchEnd}
+            ontouchcancel={handleTouchCancel}
+          >
+            <template lwc:if={multipleSchools}>
+              <div class="drag-handle" aria-hidden="true">
+                <svg viewBox="0 0 24 24" width="20" height="20">
+                  <path
+                    d="M11 18c0 1.1-.9 2-2 2s-2-.9-2-2 .9-2 2-2 2 .9 2 2zm-2-8c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm0-6c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm6 4c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zm0 2c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm0 6c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z"
+                    fill="currentColor"
+                  />
+                </svg>
+              </div>
+            </template>
+            <div class="rank-badge">{school.position}</div>
+            <div class="school-info">
+              <p class="school-name">{school.name}</p>
+            </div>
+            <div class="rank-select">
+              <lightning-combobox
+                label={labels.fieldRank}
+                variant="label-hidden"
+                value={school.rank}
+                options={school.rankOptions}
+                data-id={school.academicInterestId}
+                onchange={handleRankChange}
+                disabled={singleSchool}
+              ></lightning-combobox>
+            </div>
+          </div>
+        </template>
+      </div>
+
+      <template lwc:if={saveError}>
+        <div class="form-error" role="alert">{saveError}</div>
+      </template>
+    </div>
+  </template>
+</template>

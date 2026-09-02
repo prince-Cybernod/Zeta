@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <help><!-- The user who will always be assigned this task. Leaving this blank will, depending on Action Plans Settings, assign this task to the related record owner or the running user. --></help>
+    <label><!-- Assigned To --></label>
+    <name>User__c</name>
+    <relationshipLabel><!-- Action Plan Template Tasks (Assigned To) --></relationshipLabel>
+</CustomFieldTranslation>

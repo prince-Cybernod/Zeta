@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Has_This_Child_Been_ReActivated_In_ATS__c</fullName>
+    <defaultValue>false</defaultValue>
+    <description>Indicates whether the student’s ATS record has been reactivated.</description>
+    <inlineHelpText>Indicates whether the student’s ATS record has been reactivated.</inlineHelpText>
+    <label>Has this child been re-activated in ATS?</label>
+    <trackHistory>false</trackHistory>
+    <type>Checkbox</type>
+</CustomField>

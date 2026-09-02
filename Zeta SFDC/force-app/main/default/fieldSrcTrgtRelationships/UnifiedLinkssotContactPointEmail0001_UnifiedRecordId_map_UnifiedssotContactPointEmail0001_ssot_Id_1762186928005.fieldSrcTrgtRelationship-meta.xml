@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<FieldSrcTrgtRelationship xmlns="http://soap.sforce.com/2006/04/metadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <definitionCreationType>System</definitionCreationType>
+    <lookupFieldName>UnifiedLinkssotContactPointEmail0001__dlm.rel_1762186928005_end__c</lookupFieldName>
+    <masterLabel>UnifiedLinkssotContactPointEmail0001_UnifiedRecordId_map_UnifiedssotContactPointEmail0001_ssot_Id_1762186928005</masterLabel>
+    <owner>DataCloud</owner>
+    <relationshipCardinality>ManyToOne</relationshipCardinality>
+    <sourceFieldName>UnifiedLinkssotContactPointEmail0001__dlm.UnifiedRecordId__c</sourceFieldName>
+    <targetEntity xsi:nil="true"/>
+    <targetFieldName>UnifiedssotContactPointEmail0001__dlm.ssot__Id__c</targetFieldName>
+</FieldSrcTrgtRelationship>

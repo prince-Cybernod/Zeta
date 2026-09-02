@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<MktDataConnection xmlns="http://soap.sforce.com/2006/04/metadata">
+    <connectionMethod>Ingress</connectionMethod>
+    <connectionStatus>ACTIVE</connectionStatus>
+    <connectorName>AIPlatform</connectorName>
+    <externalRecordIdentifier>8f8f3fe3-63e2-47c2-a639-9a17da052083</externalRecordIdentifier>
+    <isActivityEnabled>false</isActivityEnabled>
+    <isSentosEnabled>false</isSentosEnabled>
+    <masterLabel>AIPlatform_AGENT_USAGE</masterLabel>
+    <parameters>
+        <fullName>AIPlatform_AGENT_USAGE_customerOrg</fullName>
+        <paramName>customerOrg</paramName>
+        <value>true</value>
+    </parameters>
+    <parameters>
+        <fullName>AIPlatform_AGENT_USAGE_providerName</fullName>
+        <paramName>providerName</paramName>
+        <value>AGENT_USAGE</value>
+    </parameters>
+    <shouldAutoCreatePolicies>false</shouldAutoCreatePolicies>
+</MktDataConnection>

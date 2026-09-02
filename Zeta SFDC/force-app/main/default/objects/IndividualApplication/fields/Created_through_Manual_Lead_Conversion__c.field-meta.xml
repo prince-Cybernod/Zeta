@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Created_through_Manual_Lead_Conversion__c</fullName>
+    <defaultValue>false</defaultValue>
+    <description>TRUE on Leads created via Apex Action that runs on Lead conversion</description>
+    <inlineHelpText>TRUE on Leads created via Apex Action that runs on Lead conversion</inlineHelpText>
+    <label>Created through Manual Lead Conversion</label>
+    <trackHistory>false</trackHistory>
+    <type>Checkbox</type>
+</CustomField>

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Mogli_SMS__Sender_Pool__c</fullName>
+    <defaultValue>false</defaultValue>
+    <deprecated>false</deprecated>
+    <description>to check telnyx sms go out either via from or message pool</description>
+    <label>Sender Pool</label>
+    <trackTrending>false</trackTrending>
+    <type>Checkbox</type>
+</CustomField>

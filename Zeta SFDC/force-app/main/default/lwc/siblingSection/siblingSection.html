@@ -1,0 +1,354 @@
+<template>
+  <template lwc:if={showSkeleton}>
+    <div
+      class="section-container"
+      aria-busy="true"
+      aria-label={labels.ariaLoadingSiblings}
+    >
+      <div class="skeleton-header"></div>
+      <div class="skeleton-row">
+        <div class="skeleton-row-grid">
+          <div class="skeleton-field skeleton-field--w80"></div>
+          <div class="skeleton-field"></div>
+          <div class="skeleton-field skeleton-field--w60"></div>
+          <div class="skeleton-field skeleton-field--w60"></div>
+          <div class="skeleton-field skeleton-field--w80"></div>
+        </div>
+      </div>
+    </div>
+  </template>
+
+  <template lwc:if={showComponent}>
+    <template lwc:if={showAttendingSection}>
+      <div class="section-container">
+        <h3 class="slds-text-heading_small slds-m-bottom_xx-small">
+          {labels.siblingsAttending}
+        </h3>
+        <p class="section-subtitle slds-m-bottom_small">
+          {labels.siblingsAttendingSubtitle}
+        </p>
+
+        <template lwc:if={hasAttendingCandidates}>
+          <ul class="candidate-list slds-m-bottom_small" role="list">
+            <template for:each={attendingCandidates} for:item="candidate">
+              <li
+                key={candidate.accountId}
+                class={candidate.rowClass}
+                data-id={candidate.accountId}
+                onclick={handleAttendingRowClick}
+                role="checkbox"
+                aria-checked={candidate.ariaChecked}
+                tabindex="0"
+                onkeydown={handleAttendingKeydown}
+              >
+                <span class="candidate-checkbox" aria-hidden="true">
+                  <template lwc:if={candidate.selected}>
+                    <svg
+                      class="checkbox-icon checkbox-icon--checked"
+                      viewBox="0 0 16 16"
+                      aria-hidden="true"
+                    >
+                      <rect
+                        x="1"
+                        y="1"
+                        width="14"
+                        height="14"
+                        rx="2"
+                        fill="#0070d2"
+                        stroke="#0070d2"
+                      />
+                      <polyline
+                        points="3.5,8 6.5,11 12.5,5"
+                        fill="none"
+                        stroke="white"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      />
+                    </svg>
+                  </template>
+                  <template lwc:else>
+                    <svg
+                      class="checkbox-icon"
+                      viewBox="0 0 16 16"
+                      aria-hidden="true"
+                    >
+                      <rect
+                        x="1"
+                        y="1"
+                        width="14"
+                        height="14"
+                        rx="2"
+                        fill="white"
+                        stroke="#aeaeae"
+                        stroke-width="1.5"
+                      />
+                    </svg>
+                  </template>
+                </span>
+                <span class="candidate-name">{candidate.name}</span>
+                <template lwc:if={candidate.detail}>
+                  <span class="candidate-detail">{candidate.detail}</span>
+                </template>
+              </li>
+            </template>
+          </ul>
+        </template>
+
+        <!-- Manual add: attending sibling not listed -->
+        <template lwc:if={attendingAddFormVisible}>
+          <div class="add-attending-form slds-box slds-m-bottom_small">
+            <div class="slds-grid slds-gutters slds-wrap">
+              <div class="slds-col slds-size_1-of-2 slds-p-bottom_x-small">
+                <lightning-input
+                  label="First Name"
+                  value={attendingDraft.firstName}
+                  data-field="firstName"
+                  onchange={handleAttendingDraftChange}
+                  required
+                ></lightning-input>
+              </div>
+              <div class="slds-col slds-size_1-of-2 slds-p-bottom_x-small">
+                <lightning-input
+                  label="Last Name"
+                  value={attendingDraft.lastName}
+                  data-field="lastName"
+                  onchange={handleAttendingDraftChange}
+                  required
+                ></lightning-input>
+              </div>
+              <div class="slds-col slds-size_1-of-2 slds-p-bottom_x-small">
+                <lightning-input
+                  type="date"
+                  label="Date of Birth"
+                  value={attendingDraft.birthdate}
+                  data-field="birthdate"
+                  onchange={handleAttendingDraftChange}
+                  required
+                ></lightning-input>
+              </div>
+              <div class="slds-col slds-size_1-of-1 slds-p-bottom_x-small">
+                <lightning-combobox
+                  label="Zeta School"
+                  value={attendingDraft.zetaSchool}
+                  options={schoolOptions}
+                  onchange={handleSchoolChange}
+                  placeholder="Select a school"
+                ></lightning-combobox>
+              </div>
+              <template lwc:if={attendingAddError}>
+                <div
+                  class="slds-col slds-size_1-of-1 slds-text-color_error slds-p-bottom_x-small"
+                >
+                  {attendingAddError}
+                </div>
+              </template>
+              <div class="slds-col slds-size_1-of-1 slds-p-bottom_x-small">
+                <lightning-button
+                  variant="brand"
+                  label="Save"
+                  onclick={handleAttendingAddSave}
+                  disabled={attendingAddSaveDisabled}
+                ></lightning-button>
+                <lightning-button
+                  variant="neutral"
+                  label="Cancel"
+                  onclick={handleAttendingAddCancel}
+                  class="slds-m-left_x-small"
+                ></lightning-button>
+              </div>
+            </div>
+          </div>
+        </template>
+        <template lwc:else>
+          <lightning-button
+            variant="neutral"
+            label={labels.addSibling}
+            icon-name="utility:add"
+            onclick={handleShowAttendingAddForm}
+            class="slds-m-top_x-small"
+          ></lightning-button>
+        </template>
+      </div>
+    </template>
+
+    <template lwc:if={showApplyingSection}>
+      <div class="section-container">
+        <h3 class="slds-text-heading_small slds-m-bottom_xx-small">
+          {labels.siblingsApplying}
+        </h3>
+        <p class="section-subtitle slds-m-bottom_small">
+          {labels.siblingsApplyingSubtitle}
+        </p>
+
+        <template lwc:if={hasApplyingCandidates}>
+          <ul class="candidate-list slds-m-bottom_small" role="list">
+            <template for:each={applyingCandidates} for:item="candidate">
+              <li
+                key={candidate.applicationId}
+                class={candidate.rowClass}
+                data-id={candidate.applicationId}
+                onclick={handleApplyingRowClick}
+                role="checkbox"
+                aria-checked={candidate.ariaChecked}
+                tabindex="0"
+                onkeydown={handleApplyingKeydown}
+              >
+                <span class="candidate-checkbox" aria-hidden="true">
+                  <template lwc:if={candidate.selected}>
+                    <svg
+                      class="checkbox-icon checkbox-icon--checked"
+                      viewBox="0 0 16 16"
+                      aria-hidden="true"
+                    >
+                      <rect
+                        x="1"
+                        y="1"
+                        width="14"
+                        height="14"
+                        rx="2"
+                        fill="#0070d2"
+                        stroke="#0070d2"
+                      />
+                      <polyline
+                        points="3.5,8 6.5,11 12.5,5"
+                        fill="none"
+                        stroke="white"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      />
+                    </svg>
+                  </template>
+                  <template lwc:else>
+                    <svg
+                      class="checkbox-icon"
+                      viewBox="0 0 16 16"
+                      aria-hidden="true"
+                    >
+                      <rect
+                        x="1"
+                        y="1"
+                        width="14"
+                        height="14"
+                        rx="2"
+                        fill="white"
+                        stroke="#aeaeae"
+                        stroke-width="1.5"
+                      />
+                    </svg>
+                  </template>
+                </span>
+                <span class="candidate-name">{candidate.name}</span>
+                <template lwc:if={candidate.detail}>
+                  <span class="candidate-detail">{candidate.detail}</span>
+                </template>
+              </li>
+            </template>
+          </ul>
+        </template>
+
+        <template lwc:if={showHouseholdSection}>
+          <div class="household-roster slds-m-bottom_small">
+            <h3 class="slds-text-heading_small slds-m-bottom_xx-small">
+              {labels.householdSiblings}
+            </h3>
+            <p class="section-subtitle slds-m-bottom_small">
+              {labels.householdSiblingsHelp}
+            </p>
+            <table
+              class="slds-table slds-table_cell-buffer slds-table_bordered slds-m-bottom_small"
+            >
+              <thead>
+                <tr class="slds-line-height_reset">
+                  <th scope="col" class="household-col-select">
+                    <span class="slds-assistive-text">
+                      {labels.householdSiblingsSelectColumn}
+                    </span>
+                  </th>
+                  <th scope="col">{labels.householdSiblingsNameColumn}</th>
+                  <th scope="col">{labels.householdSiblingsGradeColumn}</th>
+                </tr>
+              </thead>
+              <tbody>
+                <template for:each={householdCandidates} for:item="candidate">
+                  <tr key={candidate.accountId}>
+                    <td
+                      data-label={labels.householdSiblingsSelectColumn}
+                      class="household-col-select"
+                    >
+                      <lightning-input
+                        type="checkbox"
+                        variant="label-hidden"
+                        label={candidate.selectAriaLabel}
+                        data-account-id={candidate.accountId}
+                        checked={candidate.checked}
+                        onchange={handleHouseholdCheckboxChange}
+                      ></lightning-input>
+                    </td>
+                    <td data-label={labels.householdSiblingsNameColumn}>
+                      {candidate.displayLabel}
+                    </td>
+                    <td data-label={labels.householdSiblingsGradeColumn}>
+                      <lightning-combobox
+                        variant="label-hidden"
+                        label={labels.householdSiblingsGradeColumn}
+                        placeholder={labels.householdSiblingsGradeColumn}
+                        options={gradeOptions}
+                        value={candidate.gradeApplyingTo}
+                        data-account-id={candidate.accountId}
+                        onchange={handleHouseholdGradeChange}
+                      ></lightning-combobox>
+                      <template lwc:if={candidate.gradeError}>
+                        <div
+                          class="slds-text-color_error slds-text-body_small slds-m-top_xxx-small"
+                        >
+                          {labels.householdSiblingsSelectGrade}
+                        </div>
+                      </template>
+                    </td>
+                  </tr>
+                </template>
+              </tbody>
+            </table>
+
+            <template lwc:if={householdError}>
+              <div class="slds-text-color_error slds-m-bottom_x-small">
+                {householdError}
+              </div>
+            </template>
+            <template lwc:if={hasSkippedNames}>
+              <p class="slds-text-color_weak slds-m-bottom_x-small">
+                {skippedNoticeText}
+              </p>
+            </template>
+
+            <lightning-button
+              variant="brand"
+              label={householdSubmitLabel}
+              onclick={handleHouseholdCreateClick}
+              disabled={householdSubmitDisabled}
+            ></lightning-button>
+          </div>
+        </template>
+
+        <template lwc:if={applyingFormVisible}>
+          <c-sibling-new-student-form
+            record-id={recordId}
+            onsiblingcreated={handleSiblingCreated}
+            oncancel={handleCancelApplyingForm}
+          ></c-sibling-new-student-form>
+        </template>
+        <template lwc:else>
+          <lightning-button
+            variant="neutral"
+            label={labels.addSibling}
+            icon-name="utility:add"
+            onclick={handleShowApplyingForm}
+            class="slds-m-top_small"
+          ></lightning-button>
+        </template>
+      </div>
+    </template>
+  </template>
+</template>

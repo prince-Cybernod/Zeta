@@ -1,0 +1,149 @@
+.task-card {
+    border: 1px solid #d8dde6;
+    border-radius: 16px;
+    padding: 24px;
+    background-color: #fff;
+    min-height: 100px;
+    margin-bottom: 1rem;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 16px;
+    text-decoration: none;
+}
+
+.disabled-link {
+    pointer-events: none;
+    cursor: default;
+}
+
+.complete-card {
+    border-color: #d8dde6;
+    background-color: #f9f9f9;
+}
+
+.incomplete-card {
+    border-color: #4b80b0; /* Use the brand blue for active items */
+    box-shadow: 0 2px 8px rgba(75, 128, 176, 0.1);
+}
+
+.clickable {
+    cursor: pointer;
+}
+
+.icon-column {
+    flex: 0 0 24px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.name-column {
+    flex: 1 1 auto;
+    overflow-wrap: break-word;
+    word-break: break-word;
+}
+
+.task-subject {
+    font-size: 1.5rem;
+    font-weight: 500;
+}
+
+.task-due-date {
+    font-size: 1rem;
+    color: #747474;
+    margin-top: 4px;
+}
+
+.complete-card .name-column {
+    color: #969492; /* Muted text for completed items */
+}
+
+.incomplete-card .name-column {
+    color: #000; /* Stronger text for incomplete items */
+}
+
+.action-column {
+    flex: 0 0 auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.task-button {
+    border-radius: 12px;
+    padding: 12px 24px;
+    font-weight: 700;
+    font-size: 1.125rem;
+    border: none;
+    width: 100%;
+    min-width: 180px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    line-height: 1.2;
+}
+
+.complete-button {
+    background-color: #4b80b0;
+    color: white;
+}
+
+.complete-button:hover {
+    background-color: #3b6080;
+    color: white;
+}
+
+.complete-icon {
+    --slds-c-icon-color-foreground: white;
+}
+
+.incomplete-icon {
+    --slds-c-icon-color-foreground: white;
+}
+
+@media (max-width: 600px) {
+    .task-card {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        padding: 16px;
+        gap: 12px;
+    }
+
+    .icon-column {
+        order: 1;
+    }
+
+    .name-column {
+        order: 2;
+        width: 100%;
+    }
+
+    .task-subject {
+        font-size: 1.25rem;
+    }
+
+    .action-column {
+        order: 3;
+        width: 100%;
+    }
+
+    .task-button {
+        min-width: 100%;
+    }
+}
+
+@media (max-width: 320px) {
+    .task-card {
+        padding: 12px;
+    }
+    
+    .name-column {
+    }
+    
+    .task-subject {
+        font-size: 1.1rem;
+    }
+}

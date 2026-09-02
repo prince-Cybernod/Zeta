@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <label><!-- Trigger Operation Type --></label>
+    <name>TriggerOperationType__c</name>
+    <picklistValues>
+        <masterLabel>AFTER_DELETE</masterLabel>
+        <translation><!-- AFTER_DELETE --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>AFTER_INSERT</masterLabel>
+        <translation><!-- AFTER_INSERT --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>AFTER_UNDELETE</masterLabel>
+        <translation><!-- AFTER_UNDELETE --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>AFTER_UPDATE</masterLabel>
+        <translation><!-- AFTER_UPDATE --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>BEFORE_DELETE</masterLabel>
+        <translation><!-- BEFORE_DELETE --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>BEFORE_INSERT</masterLabel>
+        <translation><!-- BEFORE_INSERT --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>BEFORE_UPDATE</masterLabel>
+        <translation><!-- BEFORE_UPDATE --></translation>
+    </picklistValues>
+</CustomFieldTranslation>

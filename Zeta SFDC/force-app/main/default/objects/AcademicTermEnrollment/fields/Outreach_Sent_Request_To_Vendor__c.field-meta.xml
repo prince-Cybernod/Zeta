@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Outreach_Sent_Request_To_Vendor__c</fullName>
+    <defaultValue>false</defaultValue>
+    <description>Indicates whether an outreach request was sent to an external vendor.</description>
+    <inlineHelpText>Indicates whether an outreach request was sent to an external vendor.</inlineHelpText>
+    <label>Outreach Sent Request to Vendor?</label>
+    <trackHistory>false</trackHistory>
+    <type>Checkbox</type>
+</CustomField>

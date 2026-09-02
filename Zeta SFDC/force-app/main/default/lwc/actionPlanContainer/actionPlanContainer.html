@@ -1,0 +1,17 @@
+<template>
+  <div class="container">
+    <template lwc:if={hasTasks}>
+      <template for:each={actionPlans} for:item="plan">
+        <c-action-plan-card
+          key={plan.studentName}
+          action-plan={plan}
+        ></c-action-plan-card>
+      </template>
+    </template>
+    <template lwc:else>
+      <div class="slds-text-align_center slds-p-around_medium">
+        {labels.noTasks}
+      </div>
+    </template>
+  </div>
+</template>

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<FieldSrcTrgtRelationship xmlns="http://soap.sforce.com/2006/04/metadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <definitionCreationType>System</definitionCreationType>
+    <lookupFieldName>ssot__PartyIdentification__dlm.rel_1785942100657_end__c</lookupFieldName>
+    <masterLabel>ssot_PartyIdentification_ssot_Id_map_PartyIdentificationIdentityLink_SourceRecordId_1785942100657</masterLabel>
+    <owner>DataCloud</owner>
+    <relationshipCardinality>OneToOne</relationshipCardinality>
+    <sourceFieldName>ssot__PartyIdentification__dlm.ssot__Id__c</sourceFieldName>
+    <targetEntity xsi:nil="true"/>
+    <targetFieldName>PartyIdentificationIdentityLink__dlm.SourceRecordId__c</targetFieldName>
+</FieldSrcTrgtRelationship>

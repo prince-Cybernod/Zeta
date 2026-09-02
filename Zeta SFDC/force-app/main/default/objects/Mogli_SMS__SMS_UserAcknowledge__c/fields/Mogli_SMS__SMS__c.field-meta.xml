@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Mogli_SMS__SMS__c</fullName>
+    <deprecated>false</deprecated>
+    <description>Lookup to SMS__c.</description>
+    <label>SMS</label>
+    <referenceTo>Mogli_SMS__SMS__c</referenceTo>
+    <relationshipName>SMS_UserAcknowledges</relationshipName>
+    <relationshipOrder>0</relationshipOrder>
+    <reparentableMasterDetail>false</reparentableMasterDetail>
+    <trackTrending>false</trackTrending>
+    <type>MasterDetail</type>
+    <writeRequiresMasterRead>false</writeRequiresMasterRead>
+</CustomField>

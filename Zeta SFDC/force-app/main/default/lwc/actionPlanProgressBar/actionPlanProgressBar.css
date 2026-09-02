@@ -1,0 +1,21 @@
+.progress-outer {
+    width: 100%;
+    display: flex;
+    gap: 4px;
+    height: 12px;
+}
+
+.progress-chunk {
+    flex: 1;
+    height: 100%;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+}
+
+.complete {
+    background-color: #008a00; /* Green */
+}
+
+.incomplete {
+    background-color: #ffb75d; /* Amber */
+}

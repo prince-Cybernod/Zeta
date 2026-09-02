@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>64.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <decisions>
+        <description>If you do, then we do not need to reassign the owner to the Skyward user.</description>
+        <name>Does_the_current_record_Owner_have_a_Role</name>
+        <label>Does the current record Owner have a Role?</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <defaultConnector>
+            <targetReference>Get_User_with_a_Role</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Record_Owner_has_a_Role</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Get_Contact_record.Owner.UserRoleId</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <label>Record Owner has a Role</label>
+        </rules>
+    </decisions>
+    <description>Called as part of the Parent Portal User registration flow (Zeta_Portal_User_Registration). An Account&apos;s Owner must have a Role assigned or a Portal User cannot be created, so this flow updates the Contact&apos;s Owner to a User we know has a Role in order to successfully create a portal user.
+
+Created By: Elevation Solutions</description>
+    <environments>Default</environments>
+    <interviewLabel>Subflow | Reassign Account to Owner with a Role {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Subflow | Reassign Account to Owner with a Role</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordLookups>
+        <name>Get_Contact_record</name>
+        <label>Get Contact record</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Does_the_current_record_Owner_have_a_Role</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>input_ContactID</elementReference>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>Contact</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordLookups>
+        <name>Get_User_with_a_Role</name>
+        <label>Get User with a Role</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Update_Owner_of_this_Contact_record</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Name</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Zeta System Administrator</stringValue>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>User</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordUpdates>
+        <name>Update_Owner_of_this_Contact_record</name>
+        <label>Update Owner of this Contact record</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>input_ContactID</elementReference>
+            </value>
+        </filters>
+        <inputAssignments>
+            <field>OwnerId</field>
+            <value>
+                <elementReference>Get_User_with_a_Role.Id</elementReference>
+            </value>
+        </inputAssignments>
+        <object>Contact</object>
+    </recordUpdates>
+    <start>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>Get_Contact_record</targetReference>
+        </connector>
+    </start>
+    <status>Active</status>
+    <variables>
+        <name>input_ContactID</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>true</isInput>
+        <isOutput>false</isOutput>
+    </variables>
+</Flow>

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Ethnicity_Answer__c</fullName>
+    <label>Ethnicity Answer</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Yes, Hispanic</fullName>
+                <default>false</default>
+                <label>Yes, Hispanic</label>
+            </value>
+            <value>
+                <fullName>No, not Hispanic</fullName>
+                <default>false</default>
+                <label>No, not Hispanic</label>
+            </value>
+            <value>
+                <fullName>N/A, returning student</fullName>
+                <default>false</default>
+                <label>N/A, returning student</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

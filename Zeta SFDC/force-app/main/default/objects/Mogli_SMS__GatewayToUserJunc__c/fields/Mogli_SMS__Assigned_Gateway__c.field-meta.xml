@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Mogli_SMS__Assigned_Gateway__c</fullName>
+    <deprecated>false</deprecated>
+    <description>The Gateway to which the selected User is assigned.</description>
+    <inlineHelpText>The Gateway to which the selected User is assigned.</inlineHelpText>
+    <label>Assigned Gateway</label>
+    <referenceTo>Mogli_SMS__Gateway__c</referenceTo>
+    <relationshipName>GatewayToUserJuncs</relationshipName>
+    <relationshipOrder>0</relationshipOrder>
+    <reparentableMasterDetail>false</reparentableMasterDetail>
+    <trackTrending>false</trackTrending>
+    <type>MasterDetail</type>
+    <writeRequiresMasterRead>false</writeRequiresMasterRead>
+</CustomField>

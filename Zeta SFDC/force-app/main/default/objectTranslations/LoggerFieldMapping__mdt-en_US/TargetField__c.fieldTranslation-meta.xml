@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <help><!-- The target field to populate with the value of the source field. The data type of this field must match the data type of the source field - mappings that use different/incompatible data types will be ignored, resulting in lost logging data. --></help>
+    <label><!-- Target Field --></label>
+    <name>TargetField__c</name>
+</CustomFieldTranslation>

@@ -1,0 +1,14 @@
+<template>
+  <lightning-input
+    type={inputType}
+    label={question.label}
+    value={value}
+    required={question.isRequired}
+    field-level-help={question.helpText}
+    placeholder={question.placeholder}
+    max-length={question.maxLength}
+    pattern={question.validationPattern}
+    message-when-pattern-mismatch={question.validationMessage}
+    onchange={handleChange}
+  ></lightning-input>
+</template>

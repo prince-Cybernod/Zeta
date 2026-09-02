@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Withdrawn_Declined_Reason_Picklist__c</fullName>
+    <label>Withdrawn/Declined Reason</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Academic or Specialty Offerings</fullName>
+                <default>false</default>
+                <label>Academic or Specialty Offerings</label>
+            </value>
+            <value>
+                <fullName>Afterschool Offerings</fullName>
+                <default>false</default>
+                <label>Afterschool Offerings</label>
+            </value>
+            <value>
+                <fullName>Distance to school</fullName>
+                <default>false</default>
+                <label>Distance to school</label>
+            </value>
+            <value>
+                <fullName>Duplicate Application</fullName>
+                <default>false</default>
+                <label>Duplicate Application</label>
+            </value>
+            <value>
+                <fullName>Educational Philosophy or Values</fullName>
+                <default>false</default>
+                <label>Educational Philosophy or Values</label>
+            </value>
+            <value>
+                <fullName>Incorrect Grade/School</fullName>
+                <default>false</default>
+                <label>Incorrect Grade/School</label>
+            </value>
+            <value>
+                <fullName>Relocation</fullName>
+                <default>false</default>
+                <label>Relocation</label>
+            </value>
+            <value>
+                <fullName>School Schedule</fullName>
+                <default>false</default>
+                <label>School Schedule</label>
+            </value>
+            <value>
+                <fullName>Special Services</fullName>
+                <default>false</default>
+                <label>Special Services</label>
+            </value>
+            <value>
+                <fullName>Transportation</fullName>
+                <default>false</default>
+                <label>Transportation</label>
+            </value>
+            <value>
+                <fullName>Other</fullName>
+                <default>false</default>
+                <label>Other</label>
+            </value>
+            <value>
+                <fullName>TBD</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>TBD</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

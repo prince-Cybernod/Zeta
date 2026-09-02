@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<FieldSrcTrgtRelationship xmlns="http://soap.sforce.com/2006/04/metadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <definitionCreationType>Standard</definitionCreationType>
+    <lookupFieldName>ssot__EducationalInfoRequest__dlm.ssot__rel_1719819890186_end__c</lookupFieldName>
+    <masterLabel>EducationalInfoRequest_Learning_map_Learning_Id_N_1</masterLabel>
+    <owner>DataCloud</owner>
+    <relationshipCardinality>ManyToOne</relationshipCardinality>
+    <sourceFieldName>ssot__EducationalInfoRequest__dlm.ssot__Learning__c</sourceFieldName>
+    <targetEntity xsi:nil="true"/>
+    <targetFieldName>ssot__Learning__dlm.ssot__Id__c</targetFieldName>
+</FieldSrcTrgtRelationship>

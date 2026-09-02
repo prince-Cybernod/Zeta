@@ -1,0 +1,256 @@
+:host {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -400px 0;
+  }
+
+  100% {
+    background-position: 400px 0;
+  }
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+.card {
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 4px 12px rgb(49 53 110 / 10%);
+  padding: 2rem;
+  animation: fade-in 0.3s ease-out;
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+.card-title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #31356e;
+  margin: 0 0 0.25rem;
+}
+
+.card-subtitle {
+  font-size: 0.9375rem;
+  color: #6b7280;
+  margin: 0 0 0.5rem;
+}
+
+.grade-filter-note {
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: #4ab5e3;
+  margin: 0 0 1.5rem;
+}
+
+.skeleton-header {
+  height: 24px;
+  width: 50%;
+  border-radius: 4px;
+  margin-bottom: 1rem;
+  background: linear-gradient(90deg, #f3f4f6 25%, #e8f5fc 50%, #f3f4f6 75%);
+  background-size: 800px 100%;
+  animation: shimmer 1.5s infinite linear;
+}
+
+.skeleton-map {
+  height: 280px;
+  border-radius: 10px;
+  margin-bottom: 1rem;
+  background: linear-gradient(90deg, #f3f4f6 25%, #e8f5fc 50%, #f3f4f6 75%);
+  background-size: 800px 100%;
+  animation: shimmer 1.5s infinite linear;
+}
+
+.skeleton-rows {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.skeleton-row {
+  height: 56px;
+  border-radius: 8px;
+  background: linear-gradient(90deg, #f3f4f6 25%, #e8f5fc 50%, #f3f4f6 75%);
+  background-size: 800px 100%;
+  animation: shimmer 1.5s infinite linear;
+}
+
+.skeleton-row--short {
+  width: 80%;
+}
+
+.map-container {
+  margin-bottom: 1.5rem;
+  border-radius: 10px;
+  overflow: hidden;
+  border: 1px solid #d1d5db;
+  height: 300px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.list-section {
+  animation: fade-in 0.2s ease-out;
+}
+
+.list-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 0.75rem;
+  gap: 1rem;
+}
+
+.selection-summary {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: #31356e;
+  white-space: nowrap;
+}
+
+.search-container {
+  flex: 1;
+  max-width: 280px;
+}
+
+.school-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  max-height: 400px;
+  overflow-y: auto;
+}
+
+.school-row {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.75rem 1rem;
+  background: #f9fafb;
+  border: 2px solid #d1d5db;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.school-row:hover {
+  border-color: #9ca3af;
+  box-shadow: 0 1px 3px rgb(49 53 110 / 8%);
+}
+
+.school-row:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 3px rgb(74 181 227 / 35%);
+}
+
+.school-row--selected {
+  border-color: #4ab5e3;
+  background: #e8f5fc;
+}
+
+.school-row--selected:hover {
+  border-color: #4ab5e3;
+}
+
+.school-checkbox {
+  flex-shrink: 0;
+  width: 20px;
+  height: 20px;
+  border: 2px solid #d1d5db;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.15s ease;
+  color: #fff;
+}
+
+.school-checkbox--checked {
+  background: #4ab5e3;
+  border-color: #4ab5e3;
+}
+
+.school-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.school-name {
+  font-size: 0.9375rem;
+  font-weight: 600;
+  color: #31356e;
+  margin: 0 0 0.125rem;
+}
+
+.school-address {
+  font-size: 0.8125rem;
+  color: #6b7280;
+  margin: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.school-distance {
+  flex-shrink: 0;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: #6b7280;
+  background: #f3f4f6;
+  padding: 0.25rem 0.5rem;
+  border-radius: 9999px;
+  white-space: nowrap;
+}
+
+.form-error {
+  padding: 0.75rem 1rem;
+  margin-top: 1rem;
+  background: #fee2e2;
+  border: 1px solid #ef4444;
+  border-radius: 6px;
+  color: #991b1b;
+  font-size: 0.875rem;
+  line-height: 1.4;
+}
+
+@media (width <= 600px) {
+  .card {
+    padding: 1.5rem 1rem;
+  }
+
+  .map-container {
+    height: 220px;
+  }
+
+  lightning-map {
+    display: block;
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .list-header {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .search-container {
+    max-width: none;
+  }
+
+  .school-address {
+    white-space: normal;
+  }
+}

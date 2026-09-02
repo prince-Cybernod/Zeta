@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Mogli_SMS__Response__c</fullName>
+    <deprecated>false</deprecated>
+    <inlineHelpText>This field displays the first 255 characters of the response. For the full response, please see Response field</inlineHelpText>
+    <label>Response (short)</label>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>TextArea</type>
+</CustomField>

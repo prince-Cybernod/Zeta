@@ -1,0 +1,758 @@
+:host {
+  /* Palette adopted from the client mockup (zeta_landing_page_mockup.html).
+     Token names kept stable so existing var() refs hold; brand blue #243b8f,
+     orange reserved for the edit / in-progress affordance. */
+  --zeta-navy: #243b8f;
+  --zeta-navy-dark: #18225e;
+  --zeta-cyan: #4fc3df;
+  --zeta-cyan-light: #9bd9ec;
+  --zeta-cyan-pale: #e4f6fb;
+  --zeta-cyan-dark: #2e99c9;
+  --zeta-orange: #ff8b2b;
+  --zeta-orange-dark: #c2410c;
+  --zeta-gold: #f5bd3d;
+  --zeta-teal: #2fa9b5;
+  --zeta-ink: #171724;
+  --zeta-muted: #5c6173;
+  --zeta-line: #dce0ea;
+  --zeta-paper: #f4f6fb;
+  --zeta-gray-50: #f9fafb;
+  --zeta-gray-100: #f3f4f6;
+  --zeta-gray-300: #d1d5db;
+  --zeta-gray-400: #9ca3af;
+  --zeta-gray-500: #6b7280;
+  --zeta-gray-700: #374151;
+  --zeta-shadow-sm: 0 1px 3px rgb(23 23 36 / 8%);
+  --zeta-shadow-md: 0 8px 22px rgb(23 23 36 / 8%);
+  --zeta-radius-sm: 6px;
+  --zeta-radius-md: 10px;
+  --zeta-radius-lg: 16px;
+
+  display: block;
+  font-family: Lato, sans-serif;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  ::before,
+  ::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -400px 0;
+  }
+
+  100% {
+    background-position: 400px 0;
+  }
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+.skel-content-card {
+  width: 100%;
+  background: #fff;
+  border-radius: var(--zeta-radius-lg);
+  box-shadow: var(--zeta-shadow-md);
+  padding: 2rem;
+  animation: fade-in 0.3s ease-out;
+}
+
+.skel-content-header {
+  height: 20px;
+  width: 40%;
+  border-radius: 4px;
+  margin-bottom: 1rem;
+  background: linear-gradient(
+    90deg,
+    var(--zeta-gray-100) 25%,
+    var(--zeta-cyan-pale) 50%,
+    var(--zeta-gray-100) 75%
+  );
+  background-size: 800px 100%;
+  animation: shimmer 1.5s infinite linear;
+}
+
+.skel-content-header--second {
+  margin-top: 1.5rem;
+  width: 35%;
+}
+
+.skel-content-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+.skel-content-field {
+  height: 40px;
+  border-radius: 4px;
+  background: linear-gradient(
+    90deg,
+    var(--zeta-gray-100) 25%,
+    var(--zeta-cyan-pale) 50%,
+    var(--zeta-gray-100) 75%
+  );
+  background-size: 800px 100%;
+  animation: shimmer 1.5s infinite linear;
+}
+
+.skel-content-field--w80 {
+  width: 80%;
+}
+
+.skel-content-field--w60 {
+  width: 60%;
+}
+
+.skel-content-field--w45 {
+  width: 45%;
+}
+
+.zeta-app-shell {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: var(--zeta-gray-50);
+  background-image:
+    linear-gradient(135deg, rgb(49 53 110 / 2%) 25%, transparent 25%),
+    linear-gradient(225deg, rgb(74 181 227 / 2%) 25%, transparent 25%);
+}
+
+/* Header */
+.zeta-header {
+  position: sticky;
+  top: 0;
+
+  /* Sit above the stepper (whose active circle creates its own stacking
+     context via transform and also resolves to z-index:1). Without a higher
+     z-index the later-in-DOM stepper wins the tie and its circles/labels
+     bleed through this sticky header while scrolling. Kept below the modal
+     overlays (z-index:200). */
+  z-index: 100;
+  background: var(--zeta-navy);
+  box-shadow: var(--zeta-shadow-md);
+}
+
+/* Hosts that supply their own page chrome opt out of the sticky, which would
+   otherwise pin this header over their navigation. */
+.zeta-header--static {
+  position: static;
+}
+
+.header-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 0.75rem 2rem;
+}
+
+.header-left {
+  display: flex;
+  align-items: baseline;
+  gap: 0.75rem;
+}
+
+.header-brand {
+  color: #fff;
+  font-size: 1.125rem;
+  font-weight: 900;
+  letter-spacing: 0.01em;
+}
+
+.header-right {
+  display: flex;
+  align-items: center;
+}
+
+/* Save Status Dot */
+.save-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  transition: background-color 0.3s ease;
+}
+
+.save-dot--saved {
+  background-color: #34d399;
+}
+
+.save-dot--saving {
+  background-color: var(--zeta-cyan);
+  animation: pulse-dot 1.2s ease-in-out infinite;
+}
+
+.save-dot--unsaved {
+  background-color: #f59e0b;
+}
+
+.save-dot--failed {
+  background-color: #ef4444;
+}
+
+@keyframes pulse-dot {
+  0%,
+  100% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0.4;
+  }
+}
+
+/* Student Header */
+.student-header {
+  background: var(--zeta-cyan-pale);
+  padding: 0.5rem 2rem;
+  text-align: center;
+}
+
+.student-header-text {
+  font-size: 0.8125rem;
+  font-weight: 700;
+  color: var(--zeta-navy);
+  letter-spacing: 0.01em;
+}
+
+/* Stepper */
+.stepper-container {
+  background: #fff;
+  box-shadow: var(--zeta-shadow-sm);
+  padding: 1.25rem 2rem;
+}
+
+.stepper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  list-style: none;
+  padding: 0;
+  margin: 0 auto;
+  max-width: 720px;
+}
+
+.step-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  flex: 1;
+}
+
+.step-item--clickable {
+  cursor: pointer;
+}
+
+.step-item--future {
+  cursor: default;
+  opacity: 0.7;
+}
+
+/* Step Circles */
+.step-circle {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.8125rem;
+  font-weight: 700;
+  transition: all 0.3s ease;
+  position: relative;
+  z-index: 1;
+}
+
+.step-item--clickable:hover .step-circle {
+  filter: brightness(1.1);
+}
+
+.step-circle--complete {
+  background: var(--zeta-navy);
+  color: #fff;
+}
+
+.step-circle--active {
+  background: var(--zeta-cyan);
+  color: #fff;
+  transform: scale(1.1);
+  box-shadow:
+    0 0 0 6px var(--zeta-cyan-pale),
+    0 0 16px rgb(74 181 227 / 30%);
+}
+
+.step-circle--future {
+  background: var(--zeta-gray-100);
+  color: var(--zeta-gray-400);
+  border: 2px solid var(--zeta-gray-300);
+}
+
+.check-icon {
+  width: 18px;
+  height: 18px;
+}
+
+.step-number {
+  line-height: 1;
+}
+
+/* Step Labels */
+.step-label {
+  margin-top: 0.5rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-align: center;
+  white-space: nowrap;
+}
+
+.step-label--complete {
+  color: var(--zeta-navy);
+}
+
+.step-label--active {
+  color: var(--zeta-cyan-dark);
+  font-weight: 700;
+}
+
+.step-label--future {
+  color: var(--zeta-gray-400);
+}
+
+/* Connectors */
+.step-connector {
+  position: absolute;
+  top: 18px;
+  left: calc(50% + 22px);
+  width: calc(100% - 44px);
+  height: 2px;
+}
+
+.step-connector--complete {
+  background: var(--zeta-navy);
+}
+
+.step-connector--active {
+  background: linear-gradient(to right, var(--zeta-navy), var(--zeta-gray-300));
+}
+
+.step-connector--future {
+  background: var(--zeta-gray-300);
+}
+
+/* Content Area */
+.content-area {
+  width: 100%;
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 3rem 2rem 2rem;
+  flex: 1;
+}
+
+/* Stub Card */
+.stub-card {
+  background: #fff;
+  border-radius: var(--zeta-radius-lg);
+  box-shadow: var(--zeta-shadow-md);
+  padding: 3rem;
+  text-align: center;
+  animation: fade-in 0.3s ease-out;
+}
+
+.stub-icon {
+  color: var(--zeta-gray-300);
+  margin-bottom: 1rem;
+}
+
+.stub-title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--zeta-navy);
+  margin: 0 0 0.5rem;
+}
+
+.stub-text {
+  font-size: 0.9375rem;
+  color: var(--zeta-gray-400);
+  margin: 0;
+}
+
+.landing-content {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 1.5rem 2rem;
+  font-size: 1rem;
+  line-height: 1.6;
+  color: var(--zeta-gray-700);
+  animation: fade-in 0.3s ease-out;
+}
+
+.landing-content-banner {
+  margin: 0 0 1.5rem;
+  padding: 1rem 1.25rem;
+  background: #fff;
+  border-radius: var(--zeta-radius-md);
+  box-shadow: var(--zeta-shadow-md);
+  font-size: 1rem;
+  line-height: 1.6;
+  color: var(--zeta-gray-700);
+  animation: fade-in 0.3s ease-out;
+}
+
+.closed-card {
+  background: #fff;
+  border-radius: var(--zeta-radius-lg);
+  box-shadow: var(--zeta-shadow-md);
+  padding: 3rem;
+  text-align: center;
+  animation: fade-in 0.3s ease-out;
+}
+
+.closed-icon {
+  color: var(--zeta-gray-400);
+  margin-bottom: 1rem;
+}
+
+.closed-title {
+  font-size: 1rem;
+  font-weight: 400;
+  color: var(--zeta-gray-700);
+  margin: 0;
+  line-height: 1.5;
+  max-width: 480px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.submitted-banner {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  background: #ecfdf5;
+  border: 1px solid #34d399;
+  border-radius: var(--zeta-radius-md);
+  padding: 1rem 1.25rem;
+  margin-bottom: 1.5rem;
+  color: #065f46;
+  animation: fade-in 0.3s ease-out;
+}
+
+.submitted-banner__title {
+  font-size: 1rem;
+  font-weight: 700;
+  margin: 0;
+  color: #065f46;
+}
+
+.submitted-banner__message {
+  font-size: 0.875rem;
+  margin: 0.125rem 0 0;
+  color: #047857;
+}
+
+.submitted-home-btn {
+  margin-top: 0.5rem;
+  margin-bottom: 2rem;
+}
+
+.submit-error {
+  background: #fef2f2;
+  border: 1px solid #fecaca;
+  border-radius: var(--zeta-radius-sm);
+  color: #dc2626;
+  padding: 0.75rem 1rem;
+  margin-top: 1rem;
+  font-size: 0.875rem;
+}
+
+/* Transition Error */
+.transition-error {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: #fef2f2;
+  border: 1px solid #fecaca;
+  border-radius: var(--zeta-radius-sm);
+  color: #dc2626;
+  padding: 0.75rem 1rem;
+  margin-top: 1rem;
+  font-size: 0.875rem;
+  animation: fade-in 0.2s ease-out;
+}
+
+/* Confirmation Modal */
+.modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgb(49 53 110 / 50%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 200;
+  animation: fade-in 0.15s ease-out;
+}
+
+.modal-dialog {
+  background: #fff;
+  border-radius: var(--zeta-radius-lg);
+  box-shadow: 0 20px 60px rgb(49 53 110 / 30%);
+  padding: 2rem;
+  max-width: 440px;
+  width: calc(100% - 2rem);
+}
+
+.modal-title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--zeta-navy);
+  margin: 0 0 0.75rem;
+}
+
+.modal-desc {
+  font-size: 0.9375rem;
+  color: var(--zeta-gray-700);
+  line-height: 1.5;
+  margin: 0 0 1.5rem;
+}
+
+.modal-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.75rem;
+}
+
+.submitting-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgb(49 53 110 / 50%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 200;
+  animation: fade-in 0.15s ease-out;
+}
+
+.submitting-card {
+  background: #fff;
+  border-radius: var(--zeta-radius-lg);
+  box-shadow: 0 20px 60px rgb(49 53 110 / 30%);
+  padding: 3rem;
+  text-align: center;
+  min-width: 240px;
+}
+
+.submitting-text {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--zeta-navy);
+  margin: 1rem 0 0;
+}
+
+/* Footer */
+.wizard-footer {
+  position: sticky;
+  bottom: 0;
+
+  /* Match the header: keep this sticky footer above the scrolling content
+     (including the stepper's transformed circles) but below modal overlays. */
+  z-index: 100;
+  background: #fff;
+  border-top: 1px solid var(--zeta-gray-100);
+  box-shadow: 0 -2px 8px rgb(49 53 110 / 6%);
+  padding: 1rem 2rem;
+}
+
+.footer-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 720px;
+  margin: 0 auto;
+}
+
+.footer-left {
+  display: flex;
+  align-items: center;
+}
+
+.footer-right {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.step-counter {
+  font-size: 0.8125rem;
+  color: var(--zeta-gray-500);
+  font-weight: 600;
+}
+
+/* Buttons */
+.btn {
+  font-family: Lato, sans-serif;
+  font-size: 0.9375rem;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  padding: 0.625rem 1.5rem;
+  border-radius: var(--zeta-radius-sm);
+  cursor: pointer;
+  border: none;
+}
+
+.btn--primary {
+  background: var(--zeta-navy);
+  color: #fff;
+}
+
+.btn--primary:hover {
+  background: var(--zeta-navy-dark);
+}
+
+.btn--secondary {
+  background: transparent;
+  color: var(--zeta-navy);
+  border: 1.5px solid var(--zeta-gray-300);
+}
+
+.btn--secondary:hover {
+  border-color: var(--zeta-navy);
+  background: var(--zeta-gray-50);
+}
+
+.btn:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 3px rgb(74 181 227 / 35%);
+}
+
+/* Disabled affordance. Without this the button stays full-navy with a pointer
+   cursor while disabled (e.g. during the step-1 selection save), so it looks
+   clickable even though it is not. Grey it out and block the hover/cursor. */
+.btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.btn--primary:disabled:hover {
+  background: var(--zeta-navy);
+}
+
+.btn--secondary:disabled:hover {
+  border-color: var(--zeta-gray-300);
+  background: transparent;
+}
+
+/* Responsive: Tablet */
+@media (width <= 768px) {
+  .content-area {
+    padding: 2rem 1.5rem;
+  }
+
+  .header-content,
+  .footer-content {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+}
+
+/* Responsive: Mobile */
+@media (width <= 600px) {
+  .header-content {
+    padding: 0.5rem 1rem;
+  }
+
+  .header-brand {
+    font-size: 0.9375rem;
+  }
+
+  .student-header {
+    padding: 0.375rem 1rem;
+  }
+
+  .student-header-text {
+    font-size: 0.75rem;
+  }
+
+  .stepper-container {
+    padding: 0.75rem 1rem;
+  }
+
+  .wizard-footer {
+    padding: 0.625rem 1rem;
+  }
+
+  .step-circle {
+    width: 30px;
+    height: 30px;
+    font-size: 0.6875rem;
+  }
+
+  .step-circle--active {
+    box-shadow:
+      0 0 0 4px var(--zeta-cyan-pale),
+      0 0 12px rgb(74 181 227 / 25%);
+  }
+
+  .step-label {
+    font-size: 0.5625rem;
+    max-width: 56px;
+    white-space: normal;
+    line-height: 1.2;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+  }
+
+  .step-connector {
+    top: 15px;
+    left: calc(50% + 18px);
+    width: calc(100% - 36px);
+  }
+
+  .content-area {
+    padding: 1.5rem 1rem;
+  }
+
+  .stub-card {
+    padding: 2rem 1rem;
+  }
+
+  .footer-content {
+    flex-direction: column-reverse;
+    gap: 0.75rem;
+  }
+
+  .footer-left {
+    width: 100%;
+  }
+
+  .btn {
+    font-size: 0.875rem;
+    padding: 0.5rem 1rem;
+  }
+
+  .footer-left .btn {
+    width: 100%;
+  }
+
+  .footer-right {
+    width: 100%;
+    justify-content: space-between;
+  }
+}

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Enrollment_Date_Formula__c</fullName>
+    <description>Used for Data Cloud DMO Mapping. Requires Date instead of Date Time.</description>
+    <formula>DATE(YEAR( EnrollmentDate ), MONTH( EnrollmentDate ), DAY( EnrollmentDate ))</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>Enrollment Date Formula</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <type>Date</type>
+</CustomField>

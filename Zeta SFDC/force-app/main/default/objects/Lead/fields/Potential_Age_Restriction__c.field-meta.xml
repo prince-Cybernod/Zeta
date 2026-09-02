@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Potential_Age_Restriction__c</fullName>
+    <defaultValue>false</defaultValue>
+    <description>TRUE if none of the Grade Levels Interested values match the Birth Date</description>
+    <inlineHelpText>TRUE if none of the Grade Levels Interested values match the Birth Date</inlineHelpText>
+    <label>Potential Age Restriction</label>
+    <trackFeedHistory>false</trackFeedHistory>
+    <type>Checkbox</type>
+</CustomField>

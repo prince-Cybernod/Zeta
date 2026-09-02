@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Age_Inconsistency_Review_Status__c</fullName>
+    <description>Indicates the outcome of a manual review when a student has an age inconsistency flagged for PK or K.
+• Exception Made = Approved to proceed despite age mismatch
+• Denied = Application not approved due to age mismatch
+Field only used when Age Inconsistency Flag = TRUE.</description>
+    <label>Age Inconsistency Review Status</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Exception Made</fullName>
+                <default>false</default>
+                <label>Exception Made</label>
+            </value>
+            <value>
+                <fullName>Denied</fullName>
+                <default>false</default>
+                <label>Denied</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

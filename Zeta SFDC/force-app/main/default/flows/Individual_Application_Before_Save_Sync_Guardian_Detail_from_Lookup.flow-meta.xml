@@ -1,0 +1,287 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>66.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <assignments>
+        <description>Fills only blank Primary Guardian fields on the application from the guardian account.</description>
+        <name>Assignment_App_Fill_Blank_Primary_Guardian_Fields</name>
+        <label>Assignment | App | Fill Blank Primary Guardian Fields</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <assignmentItems>
+            <assignToReference>$Record.Parent_Guardian_1_First_Name__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>fxPrimaryGuardian1FirstName</elementReference>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>$Record.Parent_Guardian_1_Last_Name__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>fxPrimaryGuardian1LastName</elementReference>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>$Record.Parent_Guardian_1_Phone__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>fxPrimaryGuardian1Phone</elementReference>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>$Record.Parent_Guardian_1_Email__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>fxPrimaryGuardian1Email</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Decision_Secondary_Guardian_Lookup_Populated</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <description>Sets Secondary Guardian fields on the application using formula resources that preserve existing values and only backfill blanks.</description>
+        <name>Set_Secondary_Guardian_Fields_from_Lookup</name>
+        <label>Set Secondary Guardian Fields from Lookup</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <assignmentItems>
+            <assignToReference>$Record.Parent_Guardian_2_First_Name__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>fxSecondaryGuardian2FirstName</elementReference>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>$Record.Parent_Guardian_2_Last_Name__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>fxSecondaryGuardian2LastName</elementReference>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>$Record.Parent_Guardian_2_Email__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>fxSecondaryGuardian2Email</elementReference>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>$Record.Parent_Guardian_2_Phone__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>fxSecondaryGuardian2Phone</elementReference>
+            </value>
+        </assignmentItems>
+    </assignments>
+    <decisions>
+        <description>Checks if Primary Guardian lookup exists before attempting to sync detail fields.</description>
+        <name>Decision_Primary_Guardian_Lookup_Populated</name>
+        <label>Decision | Primary Guardian Lookup Populated?</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <defaultConnector>
+            <targetReference>Decision_Secondary_Guardian_Lookup_Populated</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>No Primary</defaultConnectorLabel>
+        <rules>
+            <name>Yes_has_Primary</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Primary_Guardian__c</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Get_Primary_Guardian_Account</targetReference>
+            </connector>
+            <label>Yes, has Primary</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <description>Checks if Secondary Guardian lookup exists before syncing detail fields.</description>
+        <name>Decision_Secondary_Guardian_Lookup_Populated</name>
+        <label>Decision | Secondary Guardian Lookup Populated?</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <defaultConnectorLabel>No Secondary</defaultConnectorLabel>
+        <rules>
+            <name>Yes_Secondary</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Secondary_Guardian__c</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Get_Secondary_Guardian_Account</targetReference>
+            </connector>
+            <label>Yes, Secondary</label>
+        </rules>
+    </decisions>
+    <description>Populates guardian detail fields on the Individual Application from the Primary and Secondary Guardian lookups when those lookups are populated and the corresponding fields on the application are blank.</description>
+    <environments>Default</environments>
+    <formulas>
+        <description>Returns the existing App Guardian 1 Email if populated, otherwise the Primary Guardian Account email.</description>
+        <name>fxPrimaryGuardian1Email</name>
+        <dataType>String</dataType>
+        <expression>IF(
+  ISBLANK({!$Record.Parent_Guardian_1_Email__c}),
+  {!Get_Primary_Guardian_Account.PersonEmail},
+  {!$Record.Parent_Guardian_1_Email__c}
+)</expression>
+    </formulas>
+    <formulas>
+        <description>Returns the existing App Guardian 1 First Name if populated, otherwise the Primary Guardian Account First Name.</description>
+        <name>fxPrimaryGuardian1FirstName</name>
+        <dataType>String</dataType>
+        <expression>IF(
+  ISBLANK({!$Record.Parent_Guardian_1_First_Name__c}),
+  {!Get_Primary_Guardian_Account.FirstName},
+  {!$Record.Parent_Guardian_1_First_Name__c}
+)</expression>
+    </formulas>
+    <formulas>
+        <description>Returns the existing App Guardian 1 Last Name if populated, otherwise the Primary Guardian Account Last Name.</description>
+        <name>fxPrimaryGuardian1LastName</name>
+        <dataType>String</dataType>
+        <expression>IF(
+  ISBLANK({!$Record.Parent_Guardian_1_Last_Name__c}),
+  {!Get_Primary_Guardian_Account.LastName},
+  {!$Record.Parent_Guardian_1_Last_Name__c}
+)</expression>
+    </formulas>
+    <formulas>
+        <description>Returns the existing App Guardian 1 Phone if populated, otherwise the Primary Guardian Account phone value.</description>
+        <name>fxPrimaryGuardian1Phone</name>
+        <dataType>String</dataType>
+        <expression>IF(
+  ISBLANK({!$Record.Parent_Guardian_1_Phone__c}),
+  {!Get_Primary_Guardian_Account.PersonMobilePhone},
+  {!$Record.Parent_Guardian_1_Phone__c}
+)</expression>
+    </formulas>
+    <formulas>
+        <description>Returns the existing App Guardian 2 Email if populated, otherwise the Secondary Guardian Account email.</description>
+        <name>fxSecondaryGuardian2Email</name>
+        <dataType>String</dataType>
+        <expression>IF(
+  ISBLANK({!$Record.Parent_Guardian_2_Email__c}),
+  {!Get_Secondary_Guardian_Account.PersonEmail},
+  {!$Record.Parent_Guardian_2_Email__c}
+)</expression>
+    </formulas>
+    <formulas>
+        <description>Returns the existing App Guardian 2 First Name if populated, otherwise the Secondary Guardian Account First Name.</description>
+        <name>fxSecondaryGuardian2FirstName</name>
+        <dataType>String</dataType>
+        <expression>IF(
+  ISBLANK({!$Record.Parent_Guardian_2_First_Name__c}),
+  {!Get_Secondary_Guardian_Account.FirstName},
+  {!$Record.Parent_Guardian_2_First_Name__c}
+)</expression>
+    </formulas>
+    <formulas>
+        <description>Returns the existing App Guardian 2 Last Name if populated, otherwise the Secondary Guardian Account Last Name.</description>
+        <name>fxSecondaryGuardian2LastName</name>
+        <dataType>String</dataType>
+        <expression>IF(
+  ISBLANK({!$Record.Parent_Guardian_2_Last_Name__c}),
+  {!Get_Secondary_Guardian_Account.LastName},
+  {!$Record.Parent_Guardian_2_Last_Name__c}
+)</expression>
+    </formulas>
+    <formulas>
+        <description>Returns the existing App Guardian 2 Phone if populated, otherwise the Secondary Guardian Account phone value.</description>
+        <name>fxSecondaryGuardian2Phone</name>
+        <dataType>String</dataType>
+        <expression>IF(
+  ISBLANK({!$Record.Parent_Guardian_2_Phone__c}),
+  {!Get_Secondary_Guardian_Account.PersonMobilePhone},
+  {!$Record.Parent_Guardian_2_Phone__c}
+)</expression>
+    </formulas>
+    <interviewLabel>Individual Application (Before Save) Sync Guardian Detail from Lookup {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Individual Application (Before Save) Sync Guardian Detail from Lookup</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordLookups>
+        <description>Gets the Primary Guardian account to pull values from.</description>
+        <name>Get_Primary_Guardian_Account</name>
+        <label>Get | Primary Guardian | Account</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Assignment_App_Fill_Blank_Primary_Guardian_Fields</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>fxAccountID18__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>$Record.Primary_Guardian__c</elementReference>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>Account</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordLookups>
+        <description>Gets the Secondary Guardian account to pull values from.</description>
+        <name>Get_Secondary_Guardian_Account</name>
+        <label>Get | Secondary Guardian | Account</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Set_Secondary_Guardian_Fields_from_Lookup</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>fxAccountID18__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>$Record.Secondary_Guardian__c</elementReference>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>Account</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <start>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>Decision_Primary_Guardian_Lookup_Populated</targetReference>
+        </connector>
+        <filterFormula>OR( AND( ISNEW(), OR(NOT(ISBLANK({!$Record.Primary_Guardian__c})), NOT(ISBLANK({!$Record.Secondary_Guardian__c})))), 
+ISCHANGED({!$Record.Primary_Guardian__c}), ISCHANGED({!$Record.Secondary_Guardian__c}))</filterFormula>
+        <object>IndividualApplication</object>
+        <recordTriggerType>CreateAndUpdate</recordTriggerType>
+        <triggerType>RecordBeforeSave</triggerType>
+    </start>
+    <status>Active</status>
+</Flow>

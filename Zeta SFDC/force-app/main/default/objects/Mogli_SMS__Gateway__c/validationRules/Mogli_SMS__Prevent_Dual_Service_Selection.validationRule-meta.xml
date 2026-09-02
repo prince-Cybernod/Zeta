@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Mogli_SMS__Prevent_Dual_Service_Selection</fullName>
+    <active>true</active>
+    <description>Prevents users from selecting both the Notify Service and Messaging Service at the same time by ensuring that only one of the checkboxes, SenderPool__c or UseNotifyService__c, can be checked.</description>
+    <errorConditionFormula>AND(
+  Mogli_SMS__Sender_Pool__c = TRUE,
+  Mogli_SMS__TwilioUseNotifyService__c = TRUE
+)</errorConditionFormula>
+    <errorMessage>Only one service can be selected at a time: either Notify Service or Messaging Service.</errorMessage>
+</ValidationRule>

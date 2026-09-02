@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Residency_Restriction__c</fullName>
+    <description>Indicates whether the applicant fails residency eligibility requirements based on grade applying to.
+
+Pre-K: Mailing City must be New York
+
+K–12: Mailing State must be NY
+Used to block eligibility decisions and drive review UI.</description>
+    <formula>OR(
+  /* Pre-K rule violation */
+  AND(
+    ISPICKVAL(Grade_Applying_To__c, &quot;PK&quot;),
+    LOWER(Account.PersonMailingCity) &lt;&gt; &quot;new york&quot;
+  ),
+
+  /* K–12 rule violation */
+  AND(
+    NOT(ISPICKVAL(Grade_Applying_To__c, &quot;PK&quot;)),
+    UPPER(Account.PersonMailingState) &lt;&gt; &quot;NY&quot;
+  )
+)</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <inlineHelpText>Automatically flags when residency requirements are not met based on grade applying to.
+Pre-K applicants must have a Mailing City of “New York”.
+K–12 applicants must have a Mailing State of “NY”.</inlineHelpText>
+    <label>Residency Restriction</label>
+    <trackHistory>false</trackHistory>
+    <type>Checkbox</type>
+</CustomField>

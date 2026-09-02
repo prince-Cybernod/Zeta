@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<LightningComponentBundle xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>64.0</apiVersion>
+    <isExposed>false</isExposed>
+    <masterLabel>Criteria Evaluator</masterLabel>
+    <description>Client-side evaluator for SObject_Field_Criteria__mdt formula expressions. Mirrors the subset of Salesforce Formula syntax used by Application visibility criteria so checkbox-driven visibility updates can run with zero server round-trips.</description>
+</LightningComponentBundle>

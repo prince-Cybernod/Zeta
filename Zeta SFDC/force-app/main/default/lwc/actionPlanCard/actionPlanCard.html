@@ -1,0 +1,34 @@
+<template>
+    <template lwc:if={hasTasks}>
+        <div class="card-container slds-p-around_xx-large">
+            <template lwc:if={data}>
+                <h1 class="student-name slds-m-bottom_x-small">{data.studentName}</h1>
+                <template lwc:if={data.programName}>
+                    <p class="program-name slds-m-bottom_medium">{data.programName}</p>
+                </template>
+                
+                <div class="header-grid slds-m-bottom_medium">
+                    <div class="view-all-section slds-grid slds-grid_vertical-align-center" onclick={handleToggleExpand}>
+                        <span class="view-all-text slds-m-right_xx-small">{labels.viewAllTasks}</span>
+                        <lightning-icon icon-name={viewAllIcon} size="x-small" alternative-text="Toggle View" class="view-all-icon"></lightning-icon>
+                    </div>
+
+                    <div class="progress-container">
+                        <c-action-plan-progress-bar tasks={data.tasks}></c-action-plan-progress-bar>
+                    </div>
+
+                    <div class="progress-text">
+                        {completedCount}/{totalCount} {labels.completed}
+                    </div>
+                </div>
+
+                <template lwc:if={isExpanded}>
+                    <c-action-plan-task-table tasks={data.tasks}></c-action-plan-task-table>
+                </template>
+            </template>
+            <template lwc:elseif={error}>
+                <p>Error loading action plan data: {error}</p>
+            </template>
+        </div>
+    </template>
+</template>

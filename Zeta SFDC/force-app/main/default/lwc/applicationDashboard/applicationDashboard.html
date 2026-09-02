@@ -1,0 +1,423 @@
+<template>
+  <template lwc:if={showWizard}>
+    <div class="dashboard-back-bar">
+      <button class="btn btn--text" onclick={handleBackToDashboard}>
+        <svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true">
+          <path
+            d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"
+            fill="currentColor"
+          />
+        </svg>
+        Back to Applications
+      </button>
+    </div>
+    <c-zeta-application
+      record-id={_wizardApplicationId}
+      variant={variant}
+      page-dev-name={pageDevName}
+      timeline-id={_wizardTimelineId}
+      timeline-name={_wizardTimelineName}
+      force-new={_wizardForceNew}
+      onreturntodashboard={handleBackToDashboard}
+    ></c-zeta-application>
+  </template>
+
+  <template lwc:else>
+    <div class="dashboard-shell">
+      <template lwc:if={showHeader}>
+        <header class="dashboard-header">
+          <div class="header-content">
+            <span class="header-brand">Zeta Charter Schools</span>
+            <span class="header-title">My Applications</span>
+          </div>
+        </header>
+      </template>
+
+      <main class="dashboard-content">
+        <template lwc:if={isLoading}>
+          <div class="loading-card">
+            <lightning-spinner
+              alternative-text="Loading applications"
+              size="medium"
+            ></lightning-spinner>
+          </div>
+        </template>
+
+        <template lwc:else>
+          <template lwc:if={showWelcomeBlock}>
+            <div class="dash-welcome">
+              <h2 class="dash-welcome-title">{welcomeGreeting}</h2>
+              <p class="dash-welcome-text">{welcomeMessage}</p>
+            </div>
+          </template>
+
+          <template lwc:if={showClosedMessage}>
+            <template lwc:if={hasLandingContent}>
+              <div class="landing-content">
+                <lightning-formatted-rich-text
+                  value={landingContent}
+                ></lightning-formatted-rich-text>
+              </div>
+            </template>
+            <template lwc:else>
+              <div class="closed-banner">
+                <svg
+                  viewBox="0 0 24 24"
+                  width="20"
+                  height="20"
+                  aria-hidden="true"
+                >
+                  <path
+                    d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zm-6 9c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm3.1-9H8.9V6c0-1.71 1.39-3.1 3.1-3.1s3.1 1.39 3.1 3.1v2z"
+                    fill="currentColor"
+                  />
+                </svg>
+                <span>Applications are currently closed.</span>
+              </div>
+            </template>
+          </template>
+
+          <template lwc:if={showTimelinePicker}>
+            <div class="modal-backdrop" onclick={handleCloseTimelinePicker}>
+              <div
+                class="modal-dialog"
+                role="dialog"
+                aria-label="Select application period"
+                onclick={handleModalClick}
+              >
+                <h3 class="modal-title">Which application period?</h3>
+                <p class="modal-desc">
+                  Select the period you'd like to apply for.
+                </p>
+                <div class="picker-options">
+                  <template for:each={pickerOptions} for:item="tl">
+                    <button
+                      key={tl.id}
+                      class={tl.pickerClass}
+                      data-id={tl.id}
+                      onclick={handlePickTimeline}
+                    >
+                      <span class="picker-radio" aria-hidden="true">
+                        <template lwc:if={tl.isSelected}>
+                          <span class="picker-radio-dot"></span>
+                        </template>
+                      </span>
+                      <span class="picker-label">
+                        <span class="picker-name">{tl.name}</span>
+                        <template lwc:if={tl.dateRange}>
+                          <span class="picker-dates">{tl.dateRange}</span>
+                        </template>
+                      </span>
+                    </button>
+                  </template>
+                </div>
+                <div class="modal-actions">
+                  <button
+                    class="btn btn--secondary"
+                    onclick={handleCloseTimelinePicker}
+                  >
+                    Cancel
+                  </button>
+                  <button
+                    class="btn btn--action"
+                    disabled={pickerContinueDisabled}
+                    onclick={handlePickerContinue}
+                  >
+                    Continue
+                  </button>
+                </div>
+              </div>
+            </div>
+          </template>
+
+          <template lwc:if={hasApplications}>
+            <div class="toolbar">
+              <h2 class="toolbar-title">Your Applications</h2>
+              <template lwc:if={showStartNew}>
+                <button class="btn btn--action" onclick={handleStartNew}>
+                  <svg
+                    viewBox="0 0 24 24"
+                    width="16"
+                    height="16"
+                    aria-hidden="true"
+                  >
+                    <path
+                      d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"
+                      fill="currentColor"
+                    />
+                  </svg>
+                  New Application
+                </button>
+              </template>
+            </div>
+            <template for:each={displayGroups} for:item="group">
+              <div key={group.key} class="app-group">
+                <template lwc:if={group.showHeader}>
+                  <button
+                    type="button"
+                    class="app-group-header"
+                    data-key={group.key}
+                    aria-expanded={group.expanded}
+                    aria-controls={group.listId}
+                    onclick={handleToggleGroup}
+                  >
+                    <svg
+                      class={group.chevronClass}
+                      viewBox="0 0 24 24"
+                      width="16"
+                      height="16"
+                      aria-hidden="true"
+                    >
+                      <path
+                        d="M9 6l6 6-6 6"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2.5"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      />
+                    </svg>
+                    <span class="app-group-header-label"
+                      >{group.headerLabel}</span
+                    >
+                  </button>
+                </template>
+                <template lwc:if={group.expanded}>
+                  <div class="app-list" id={group.listId}>
+                    <template for:each={group.apps} for:item="app">
+                      <div key={app.id} class={app.rowClass}>
+                        <div class="app-row-student">{app.studentName}</div>
+                        <div class="app-card-rule"></div>
+                        <div class="app-card-body">
+                          <div class="app-row-info">
+                            <template lwc:if={app.timelineLabel}>
+                              <p class="app-card-label">{app.timelineLabel}</p>
+                            </template>
+                            <div class="app-row-meta-line">
+                              <span class={app.statusTagClass}
+                                >{app.statusLabel}</span
+                              >
+                              <span class="meta-text"
+                                >Grade {app.gradeDisplay}</span
+                              >
+                            </div>
+                            <template lwc:if={app.deadlineDisplay}>
+                              <p class="app-card-deadline">
+                                <span
+                                  class="deadline-icon"
+                                  aria-hidden="true"
+                                ></span
+                                >{app.deadlineDisplay}
+                              </p>
+                            </template>
+                          </div>
+                          <div class="row-tail">
+                            <button
+                              class={app.actionClass}
+                              data-id={app.id}
+                              onclick={handleOpenApplication}
+                            >
+                              {app.actionLabel}
+                            </button>
+                            <template lwc:if={app.canWithdraw}>
+                              <div class="menu-host">
+                                <button
+                                  class="kebab"
+                                  data-id={app.id}
+                                  onclick={handleKebabClick}
+                                  aria-label="More actions"
+                                  aria-haspopup="menu"
+                                  aria-expanded={app.menuOpen}
+                                >
+                                  <svg
+                                    viewBox="0 0 24 24"
+                                    width="18"
+                                    height="18"
+                                    aria-hidden="true"
+                                  >
+                                    <circle
+                                      cx="5"
+                                      cy="12"
+                                      r="1.6"
+                                      fill="currentColor"
+                                    ></circle>
+                                    <circle
+                                      cx="12"
+                                      cy="12"
+                                      r="1.6"
+                                      fill="currentColor"
+                                    ></circle>
+                                    <circle
+                                      cx="19"
+                                      cy="12"
+                                      r="1.6"
+                                      fill="currentColor"
+                                    ></circle>
+                                  </svg>
+                                </button>
+                                <template lwc:if={app.menuOpen}>
+                                  <div
+                                    class="menu-backdrop"
+                                    onclick={handleMenuBackdropClick}
+                                  ></div>
+                                  <div class="menu" role="menu">
+                                    <button
+                                      class="menu-item menu-item--danger"
+                                      role="menuitem"
+                                      data-id={app.id}
+                                      onclick={handleWithdrawClick}
+                                    >
+                                      <svg
+                                        viewBox="0 0 24 24"
+                                        width="14"
+                                        height="14"
+                                        aria-hidden="true"
+                                      >
+                                        <path
+                                          d="M3 6h18M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2m3 0l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6"
+                                          fill="none"
+                                          stroke="currentColor"
+                                          stroke-width="2"
+                                          stroke-linecap="round"
+                                          stroke-linejoin="round"
+                                        />
+                                      </svg>
+                                      Withdraw application
+                                    </button>
+                                  </div>
+                                </template>
+                              </div>
+                            </template>
+                          </div>
+                        </div>
+                      </div>
+                    </template>
+                  </div>
+                </template>
+              </div>
+            </template>
+          </template>
+
+          <template lwc:if={showWithdrawModal}>
+            <div class="modal-backdrop" onclick={handleWithdrawCancel}>
+              <div
+                class="modal-dialog"
+                role="dialog"
+                aria-label="Withdraw application"
+                onclick={handleModalClick}
+              >
+                <h3 class="modal-title">Withdraw Application?</h3>
+                <p class="modal-desc">{withdrawModalBody}</p>
+                <lightning-combobox
+                  class="withdraw-combobox"
+                  label="Reason (required)"
+                  placeholder="Select a reason"
+                  options={withdrawPicklistOptions}
+                  value={_withdrawPicklistValue}
+                  onchange={handleWithdrawPicklistChange}
+                  disabled={_isWithdrawing}
+                ></lightning-combobox>
+                <template lwc:if={showWithdrawReasonText}>
+                  <lightning-textarea
+                    class="withdraw-textarea"
+                    label="Please describe (required)"
+                    value={_withdrawReason}
+                    max-length="500"
+                    onchange={handleWithdrawReasonChange}
+                    disabled={_isWithdrawing}
+                  ></lightning-textarea>
+                </template>
+                <template lwc:if={_withdrawError}>
+                  <div class="withdraw-error" role="alert">
+                    {_withdrawError}
+                  </div>
+                </template>
+                <div class="modal-actions">
+                  <button
+                    class="btn btn--secondary"
+                    onclick={handleWithdrawCancel}
+                    disabled={_isWithdrawing}
+                  >
+                    Cancel
+                  </button>
+                  <button
+                    class="btn btn--danger"
+                    onclick={handleWithdrawConfirm}
+                    disabled={withdrawConfirmDisabled}
+                  >
+                    <template lwc:if={_isWithdrawing}> Withdrawing… </template>
+                    <template lwc:else> Withdraw </template>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </template>
+
+          <template lwc:if={showEmptyOpen}>
+            <div class="welcome-card">
+              <div class="welcome-icon">
+                <svg
+                  viewBox="0 0 24 24"
+                  width="40"
+                  height="40"
+                  aria-hidden="true"
+                >
+                  <path
+                    d="M19 3h-4.18C14.4 1.84 13.3 1 12 1s-2.4.84-2.82 2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-7 0c.55 0 1 .45 1 1s-.45 1-1 1-1-.45-1-1 .45-1 1-1zm2 14H7v-2h7v2zm3-4H7v-2h10v2zm0-4H7V7h10v2z"
+                    fill="currentColor"
+                  />
+                </svg>
+              </div>
+              <h2 class="welcome-title">Ready to apply?</h2>
+              <p class="welcome-text">
+                Start your child's application to Zeta Charter Schools.
+              </p>
+              <button class="btn btn--cta" onclick={handleStartNew}>
+                <svg
+                  viewBox="0 0 24 24"
+                  width="20"
+                  height="20"
+                  aria-hidden="true"
+                >
+                  <path
+                    d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"
+                    fill="currentColor"
+                  />
+                </svg>
+                Start New Application
+              </button>
+            </div>
+          </template>
+
+          <template lwc:if={showEmptyClosed}>
+            <div class="empty-state">
+              <p class="empty-text">No applications found.</p>
+            </div>
+          </template>
+
+          <template lwc:if={showFilteredEmpty}>
+            <div class="empty-state">
+              <p class="empty-text">{filteredEmptyText}</p>
+              <template lwc:if={showFilteredEmptyCta}>
+                <button class="btn btn--cta" onclick={handleStartNew}>
+                  <svg
+                    viewBox="0 0 24 24"
+                    width="20"
+                    height="20"
+                    aria-hidden="true"
+                  >
+                    <path
+                      d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"
+                      fill="currentColor"
+                    />
+                  </svg>
+                  Start New Application
+                </button>
+              </template>
+            </div>
+          </template>
+        </template>
+      </main>
+    </div>
+  </template>
+</template>

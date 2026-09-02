@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Outside_of_NY__c</fullName>
+    <description>Flags when the applicant’s primary address is outside the state of New York.
+Used for eligibility, residency checks, and lottery prioritization where NY residency is required.</description>
+    <formula>Account.PersonContact.MailingState &lt;&gt; &quot;NY&quot;</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>Outside of NY</label>
+    <trackHistory>false</trackHistory>
+    <type>Checkbox</type>
+</CustomField>

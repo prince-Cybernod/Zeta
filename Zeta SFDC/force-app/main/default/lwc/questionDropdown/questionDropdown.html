@@ -1,0 +1,11 @@
+<template>
+  <lightning-combobox
+    label={question.label}
+    value={value}
+    options={dropdownOptions}
+    required={question.isRequired}
+    field-level-help={question.helpText}
+    placeholder={placeholderText}
+    onchange={handleChange}
+  ></lightning-combobox>
+</template>

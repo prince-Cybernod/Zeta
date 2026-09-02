@@ -1,0 +1,25 @@
+:host {
+  display: block;
+}
+
+.panel-section {
+  margin-bottom: 1.5rem;
+}
+
+.panel-actions {
+  margin-top: 0.75rem;
+}
+
+.empty-state,
+.locked-note {
+  padding: 1.5rem;
+  background: #f9fafb;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  color: #6b7280;
+  font-size: 0.9375rem;
+}
+
+.locked-note {
+  margin-bottom: 1.5rem;
+}

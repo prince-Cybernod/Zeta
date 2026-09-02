@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Grade_Exception_Reason_Required</fullName>
+    <active>true</active>
+    <description>Prevents saving an Individual Application when a Grade Inconsistency is marked Exception made without providing a Grade Exception Reason. This enforces auditability and ensures staff documents why the exception was approved.</description>
+    <errorConditionFormula>AND(
+   Age_Inconsistency_Flag_c__c ,
+  ISPICKVAL( Age_Inconsistency_Review_Status__c , &quot;Exception made&quot;),
+  ISBLANK(Grade_Inconsistency_Approved_Reason__c)
+)</errorConditionFormula>
+    <errorDisplayField>Grade_Inconsistency_Approved_Reason__c</errorDisplayField>
+    <errorMessage>Enter a Grade Approved Reason when the Grade Inconsistency decision is &quot;Exception made&quot;.</errorMessage>
+</ValidationRule>

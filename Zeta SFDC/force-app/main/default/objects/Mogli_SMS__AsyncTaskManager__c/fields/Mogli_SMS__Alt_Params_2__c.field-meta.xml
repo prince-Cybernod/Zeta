@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Mogli_SMS__Alt_Params_2__c</fullName>
+    <deprecated>false</deprecated>
+    <description>Replaces the Alt_Params field with new longer field length</description>
+    <label>Alt_Params_2</label>
+    <length>32768</length>
+    <trackTrending>false</trackTrending>
+    <type>LongTextArea</type>
+    <visibleLines>3</visibleLines>
+</CustomField>

@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Forms_to_be_Reviewed__c</fullName>
+    <description>If checked, there are forms that need to be reviewed.</description>
+    <formula>OR(
+
+/* ---------- NEW STUDENTS ---------- */
+AND(
+    CONTAINS(TEXT(LearnerAccount.Student_Type__c),&quot;New&quot;),
+    NOT(ISBLANK(TEXT( EnrollmentStatus ))),
+    OR(
+        CONTAINS(TEXT(Birth_Certificate__c),&quot;Uploaded&quot;),
+        CONTAINS(TEXT(Proof_of_NYS_Residency_1__c),&quot;Uploaded&quot;),
+        CONTAINS(TEXT(Immunization_Records__c),&quot;Uploaded&quot;),
+        CONTAINS(TEXT(Proof_of_NYS_Residency_2__c),&quot;Uploaded&quot;),
+        CONTAINS(TEXT(Home_Language_Questionnaire__c),&quot;Uploaded&quot;),
+        CONTAINS(TEXT(Physical_Upload__c),&quot;Uploaded&quot;),
+        CONTAINS(TEXT(Activities_Field_Trip_Consent_Form__c),&quot;Completed&quot;),
+        CONTAINS(TEXT(Parent_Contract__c),&quot;Completed&quot;),
+        CONTAINS(TEXT(Consent_to_Release_Student_Records__c),&quot;Completed&quot;),
+        CONTAINS(TEXT(Student_Info_Contact_Form__c),&quot;Completed&quot;),
+        CONTAINS(TEXT(Computer_Tablet_Use_Consent_Form__c),&quot;Completed&quot;),
+        CONTAINS(TEXT(Uploaded_IEP__c),&quot;but&quot;),
+        CONTAINS(TEXT(Laptop_Tablet_Agreement__c),&quot;Completed&quot;),
+        CONTAINS(TEXT(MAF_Upload__c),&quot;but&quot;),
+        CONTAINS(TEXT(Ethnic_Identification_Form__c),&quot;Completed&quot;),
+        CONTAINS(TEXT(Housing_Questionnaire__c),&quot;Completed&quot;),
+        CONTAINS(TEXT(FERPA_Directory_Info_Notice__c),&quot;Completed&quot;),
+        CONTAINS(TEXT(Media_Photo_Release__c),&quot;Completed&quot;),
+        CONTAINS(TEXT(TELA_Fee_Form__c),&quot;Completed&quot;),
+        CONTAINS(TEXT(Overnight_Trip_Form__c),&quot;Completed&quot;)
+    )
+),
+
+/* ---------- RETURNING STUDENTS ---------- */
+AND(
+    CONTAINS(TEXT(LearnerAccount.Student_Type__c),&quot;Returning&quot;),
+    NOT(ISBLANK(TEXT( EnrollmentStatus ))),
+    OR(
+        CONTAINS(TEXT(Parent_Contract__c),&quot;Completed&quot;),
+        CONTAINS(TEXT(Student_Info_Contact_Form__c),&quot;Completed&quot;),
+        CONTAINS(TEXT(Housing_Questionnaire__c),&quot;Completed&quot;),
+        CONTAINS(TEXT(Overnight_Trip_Form__c),&quot;Completed&quot;),
+        CONTAINS(TEXT(FERPA_Directory_Info_Notice__c),&quot;Completed&quot;)
+    )
+)
+
+)</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <inlineHelpText>If checked, there are forms that need to be reviewed.</inlineHelpText>
+    <label>Forms to be Reviewed?</label>
+    <trackHistory>false</trackHistory>
+    <type>Checkbox</type>
+</CustomField>

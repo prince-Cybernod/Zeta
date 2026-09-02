@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Call_Outcome__c</fullName>
+    <label>Call Outcome</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>No Contact: able to leave voicemail</fullName>
+                <default>false</default>
+                <label>No Contact: able to leave voicemail</label>
+            </value>
+            <value>
+                <fullName>No Contact: voicemail is full</fullName>
+                <default>false</default>
+                <label>No Contact: voicemail is full</label>
+            </value>
+            <value>
+                <fullName>No Contact: phone OOS</fullName>
+                <default>false</default>
+                <label>No Contact: phone OOS</label>
+            </value>
+            <value>
+                <fullName>No Contact: Wrong number</fullName>
+                <default>false</default>
+                <label>No Contact: Wrong number</label>
+            </value>
+            <value>
+                <fullName>Contacted but needs Spanish speaker</fullName>
+                <default>false</default>
+                <label>Contacted but needs Spanish speaker</label>
+            </value>
+            <value>
+                <fullName>Not yet called</fullName>
+                <default>false</default>
+                <label>Not yet called</label>
+            </value>
+            <value>
+                <fullName>Contacted and call completed successfully</fullName>
+                <default>false</default>
+                <label>Contacted and call completed successfully</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

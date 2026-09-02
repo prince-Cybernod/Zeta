@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Mogli_SMS__Response_Schema__c</fullName>
+    <deprecated>false</deprecated>
+    <description>(Optional) This is the Response Schema used to enforce JSON formatting in Gemini output</description>
+    <fieldManageability>DeveloperControlled</fieldManageability>
+    <label>Response Schema</label>
+    <length>5000</length>
+    <type>LongTextArea</type>
+    <visibleLines>6</visibleLines>
+</CustomField>

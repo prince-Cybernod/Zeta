@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>66.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <description>Created by: Elevation Solutions
+
+Automatically sets Individual Application Status to Eligible when there are no relationship priority items requiring review and both Residency Restriction and Age Inconsistency flags are FALSE. Runs only when Status is not already Eligible to avoid unnecessary updates.</description>
+    <environments>Default</environments>
+    <interviewLabel>Individual Application (After Save) Auto Set Eligible {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Individual Application (After Save) Auto Set Eligible</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordUpdates>
+        <description>Sets Individual Application Status to Eligible when auto-eligible criteria are met. Runs only when entry conditions evaluate to true.</description>
+        <name>Update_Set_Status_to_Eligible</name>
+        <label>Update | Set Status to Eligible</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <inputAssignments>
+            <field>Status</field>
+            <value>
+                <stringValue>Eligible</stringValue>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <start>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>Update_Set_Status_to_Eligible</targetReference>
+        </connector>
+        <doesRequireRecordChangedToMeetCriteria>true</doesRequireRecordChangedToMeetCriteria>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Status</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Applied</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>Residency_Restriction__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <booleanValue>false</booleanValue>
+            </value>
+        </filters>
+        <filters>
+            <field>Age_Inconsistency_Flag_c__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <booleanValue>false</booleanValue>
+            </value>
+        </filters>
+        <filters>
+            <field>Priority_Items_Pending_Review__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <numberValue>0.0</numberValue>
+            </value>
+        </filters>
+        <filters>
+            <field>Student_District_Id__c</field>
+            <operator>IsNull</operator>
+            <value>
+                <booleanValue>false</booleanValue>
+            </value>
+        </filters>
+        <object>IndividualApplication</object>
+        <recordTriggerType>CreateAndUpdate</recordTriggerType>
+        <triggerType>RecordAfterSave</triggerType>
+    </start>
+    <status>Active</status>
+</Flow>

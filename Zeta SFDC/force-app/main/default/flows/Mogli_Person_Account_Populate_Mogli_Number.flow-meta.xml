@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>66.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <description>This flows runs when a Person Account record is created/updated. It will check if the PersonMobilePhone is populated, and if yes, will use that value to populate the Mogli Number on the Person Account</description>
+    <environments>Default</environments>
+    <formulas>
+        <name>fMogliNumber</name>
+        <dataType>String</dataType>
+        <expression>IF(ISBLANK(TRIM({!$Record.PersonMobilePhone})),&quot;&quot;,
+IF(REGEX(TRIM({!$Record.PersonMobilePhone}),&quot;[\\s\\S\\w\\W]*[a-zA-Z@#$%^&amp;*&lt;&gt;!?\\[\\]_{};:&apos;/~`]+[\\s\\S\\w\\W]*&quot;),&quot;&quot;,
+&quot;+1&quot; &amp; SUBSTITUTE( SUBSTITUTE( SUBSTITUTE( SUBSTITUTE( SUBSTITUTE( SUBSTITUTE( SUBSTITUTE( SUBSTITUTE( SUBSTITUTE(
+(&quot;+&quot;&amp; TRIM({!$Record.PersonMobilePhone})),&quot;++1&quot;,&quot;&quot;),&quot;+1&quot;,&quot;&quot;),&quot;+&quot;,&quot;&quot;),&quot;(&quot;,&quot;&quot;),&quot;)&quot;,&quot;&quot;),&quot; &quot;,&quot;&quot;),&quot;-&quot;,&quot;&quot;),&quot;.&quot;,&quot;&quot;),&quot;,&quot;,&quot;&quot;)))</expression>
+    </formulas>
+    <interviewLabel>[Mogli] Person Account - Populate Mogli Number {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>[Mogli] Person Account - Populate Mogli Number</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>FREE_FORM_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordUpdates>
+        <name>Update_Mogli_Number</name>
+        <label>Update Mogli Number</label>
+        <locationX>547</locationX>
+        <locationY>426</locationY>
+        <inputAssignments>
+            <field>Mogli_SMS__Mogli_Number__pc</field>
+            <value>
+                <elementReference>vMogliNumber</elementReference>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <start>
+        <locationX>425</locationX>
+        <locationY>48</locationY>
+        <connector>
+            <targetReference>Update_Mogli_Number</targetReference>
+        </connector>
+        <filterFormula>OR(
+    AND(
+        NOT(ISBLANK({!$Record.PersonMobilePhone})),
+        ISBLANK({!$Record.Mogli_SMS__Mogli_Number__pc}),
+        {!$Record.IsPersonAccount} = true
+    ),
+    ISCHANGED({!$Record.PersonMobilePhone}),
+    {!$Record.IsPersonAccount} = true
+)</filterFormula>
+        <object>Account</object>
+        <recordTriggerType>CreateAndUpdate</recordTriggerType>
+        <triggerType>RecordAfterSave</triggerType>
+    </start>
+    <status>Active</status>
+    <variables>
+        <name>vMogliNumber</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+        <value>
+            <elementReference>fMogliNumber</elementReference>
+        </value>
+    </variables>
+</Flow>

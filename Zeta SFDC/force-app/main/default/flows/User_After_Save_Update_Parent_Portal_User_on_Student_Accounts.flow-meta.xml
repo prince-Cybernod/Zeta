@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>65.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <decisions>
+        <name>Is_Account_Populated</name>
+        <label>Is Account Populated?</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Yes_Account_is_Populated</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.AccountId</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Update_Student_Accounts_where_User_is_Primary_Guardian</targetReference>
+            </connector>
+            <label>Yes, Account is Populated</label>
+        </rules>
+    </decisions>
+    <description>When a Parent Portal User is created, flow updates any Student Accounts where the parent is listed as primary</description>
+    <environments>Default</environments>
+    <interviewLabel>User (After Save) Update Parent Portal User on Student Accounts {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>User (After Save) Update Parent Portal User on Student Accounts</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordUpdates>
+        <name>Update_Student_Accounts_where_User_is_Primary_Guardian</name>
+        <label>Update Student Accounts where User is Primary Guardian</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <filterLogic>(1 AND 4) OR (1 AND 2 AND 3)</filterLogic>
+        <filters>
+            <field>Primary_Guardian__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>$Record.AccountId</elementReference>
+            </value>
+        </filters>
+        <filters>
+            <field>Primary_Parent_Portal_User__c</field>
+            <operator>NotEqualTo</operator>
+            <value>
+                <elementReference>$Record.Id</elementReference>
+            </value>
+        </filters>
+        <filters>
+            <field>Primary_Parent_Portal_User__c</field>
+            <operator>IsNull</operator>
+            <value>
+                <booleanValue>false</booleanValue>
+            </value>
+        </filters>
+        <filters>
+            <field>Primary_Parent_Portal_User__c</field>
+            <operator>IsNull</operator>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </filters>
+        <inputAssignments>
+            <field>Primary_Parent_Portal_User__c</field>
+            <value>
+                <elementReference>$Record.Id</elementReference>
+            </value>
+        </inputAssignments>
+        <object>Account</object>
+    </recordUpdates>
+    <start>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <filterFormula>AND({!$Record.Profile.Name} = &apos;Zeta Parent Portal User&apos;, 
+{!$Record.IsActive}=TRUE
+)</filterFormula>
+        <object>User</object>
+        <recordTriggerType>Create</recordTriggerType>
+        <scheduledPaths>
+            <connector>
+                <targetReference>Is_Account_Populated</targetReference>
+            </connector>
+            <pathType>AsyncAfterCommit</pathType>
+        </scheduledPaths>
+        <triggerType>RecordAfterSave</triggerType>
+    </start>
+    <status>Active</status>
+</Flow>

@@ -1,0 +1,36 @@
+<template>
+    <div class="task-list">
+        <template for:each={processedTasks} for:item="task">
+            <a
+                key={task.id}
+                href={task.formUrl}
+                class={task.cardClass}
+                data-url={task.formUrl}
+                onclick={handleAnchorClick}
+            >
+                <div class="icon-column">
+                    <lightning-icon
+                        icon-name={task.iconName}
+                        size="small"
+                        class={task.iconClass}
+                    ></lightning-icon>
+                </div>
+                <div class="name-column">
+                    <div class="task-subject">{task.subject}</div>
+                    <template lwc:if={task.displayDueDate}>
+                        <div class="task-due-date">{task.displayDueDate}</div>
+                    </template>
+                </div>
+                <div class="action-column">
+                    <template if:false={task.isComplete}>
+                        <button
+                            class={task.buttonClass}
+                        >
+                            {task.buttonLabel}
+                        </button>
+                    </template>
+                </div>
+            </a>
+        </template>
+    </div>
+</template>

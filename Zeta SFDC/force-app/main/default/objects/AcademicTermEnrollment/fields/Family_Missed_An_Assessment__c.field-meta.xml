@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Family_Missed_An_Assessment__c</fullName>
+    <defaultValue>false</defaultValue>
+    <description>Indicates whether the family has previously missed an assessment appointment.</description>
+    <inlineHelpText>Indicates whether the family has previously missed an assessment appointment.</inlineHelpText>
+    <label>Family Missed an Assessment?</label>
+    <trackHistory>false</trackHistory>
+    <type>Checkbox</type>
+</CustomField>

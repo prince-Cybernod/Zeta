@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Is_Primary_Guardian__c</fullName>
+    <defaultValue>false</defaultValue>
+    <description>Flags this Account as the student’s Primary Guardian. Used for UI conditional visibility and downstream automation. Set automatically by the Guardian–Student relationship flow.</description>
+    <label>Primary Guardian</label>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>Checkbox</type>
+</CustomField>

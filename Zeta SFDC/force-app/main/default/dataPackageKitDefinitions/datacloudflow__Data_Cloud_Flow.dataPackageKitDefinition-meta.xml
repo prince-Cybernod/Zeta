@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<DataPackageKitDefinition xmlns="http://soap.sforce.com/2006/04/metadata">
+    <dataKitSource>EXTERNAL</dataKitSource>
+    <dataKitType>NONE</dataKitType>
+    <deploymentOrder>{&quot;isAutoSequence&quot;:true,&quot;sequence&quot;:[{&quot;devName&quot;:&quot;datacloudflow__Flows&quot;,&quot;type&quot;:&quot;DataStream&quot;},{&quot;devName&quot;:&quot;datacloudflow__Flow_Ingestion&quot;,&quot;type&quot;:&quot;DataStream&quot;}]}</deploymentOrder>
+    <description>Flow configuration for Data Cloud</description>
+    <developerName>Data_Cloud_Flow</developerName>
+    <isDeployed>false</isDeployed>
+    <isEnabled>false</isEnabled>
+    <masterLabel>Data Cloud Flow</masterLabel>
+    <useDeterministicNaming>false</useDeterministicNaming>
+    <versionNumber>9.0</versionNumber>
+</DataPackageKitDefinition>

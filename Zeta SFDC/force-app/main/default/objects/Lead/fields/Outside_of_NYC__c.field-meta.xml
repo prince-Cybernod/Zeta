@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Outside_of_NYC__c</fullName>
+    <description>TRUE if Mailing State does not equal &quot;NY&quot;</description>
+    <formula>UPPER(  State  ) &lt;&gt; &quot;NY&quot;</formula>
+    <inlineHelpText>TRUE if Mailing State does not equal &quot;NY&quot;</inlineHelpText>
+    <label>Outside of NYC</label>
+    <type>Checkbox</type>
+</CustomField>

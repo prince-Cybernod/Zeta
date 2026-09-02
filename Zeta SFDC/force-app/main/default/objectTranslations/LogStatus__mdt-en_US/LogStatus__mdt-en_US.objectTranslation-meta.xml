@@ -9,4 +9,8 @@
         <value>Log Statuses</value>
     </caseValues>
     <startsWith>Consonant</startsWith>
+    <validationRules>
+        <errorMessage><!-- Is Resolved cannot be set to true unless Is Closed is true --></errorMessage>
+        <name>Only_closed_can_be_resolved</name>
+    </validationRules>
 </CustomObjectTranslation>

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>fxStatus_Sort_Order__c</fullName>
+    <description>Used in flow Document_Checklist_Items_Review_Documents to sort critical statuses for review at the top of the datatable.</description>
+    <externalId>false</externalId>
+    <formula>IF( LOWER( TEXT( Status ) ) = &apos;uploaded&apos;, 1,  IF( OR( CONTAINS(LOWER( TEXT( Status ) ), &apos;not verified&apos;) , CONTAINS(LOWER( TEXT( Status ) ), &apos;not yet verified&apos;) ) , 2, null) )</formula>
+    <label>Status Sort Order</label>
+    <precision>18</precision>
+    <required>false</required>
+    <scale>2</scale>
+    <trackHistory>false</trackHistory>
+    <type>Number</type>
+    <unique>false</unique>
+</CustomField>

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Mogli_SMS__Duration_of_Notifications__c</fullName>
+    <defaultValue>30</defaultValue>
+    <deprecated>false</deprecated>
+    <description>how long a notification is visible for before disappearing</description>
+    <externalId>false</externalId>
+    <inlineHelpText>Number of minutes a notification is visible for</inlineHelpText>
+    <label>Duration of Notifications (minutes)</label>
+    <precision>2</precision>
+    <required>false</required>
+    <scale>0</scale>
+    <trackTrending>false</trackTrending>
+    <type>Number</type>
+    <unique>false</unique>
+</CustomField>

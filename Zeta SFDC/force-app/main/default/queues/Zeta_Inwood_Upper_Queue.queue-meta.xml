@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Queue xmlns="http://soap.sforce.com/2006/04/metadata">
+    <description>Case queue for Zeta Inwood Upper</description>
+    <doesIncludeBosses>true</doesIncludeBosses>
+    <doesSendEmailToMembers>false</doesSendEmailToMembers>
+    <name>Zeta Inwood Upper Queue</name>
+    <queueSobject>
+        <sobjectType>Case</sobjectType>
+    </queueSobject>
+</Queue>

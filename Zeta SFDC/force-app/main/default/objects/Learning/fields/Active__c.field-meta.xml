@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Active__c</fullName>
+    <description>Returns true if today&apos;s date is between the Active From Date and Active To Date.</description>
+    <formula>AND(
+NOT(ISNULL( ActiveFromDate )),
+NOT(ISNULL( ActiveToDate )),
+TODAY() &gt;=  ActiveFromDate ,
+TODAY() &lt;=  ActiveToDate 
+)</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <inlineHelpText>Returns true if today&apos;s date is between the Active From Date and Active To Date.</inlineHelpText>
+    <label>Active</label>
+    <trackHistory>false</trackHistory>
+    <type>Checkbox</type>
+</CustomField>

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Count_of_Pre_Offer_School_Applications__c</fullName>
+    <description>Calculated by apex automation.</description>
+    <externalId>false</externalId>
+    <inlineHelpText>Count of sibling school applications with Pre-Offer status.</inlineHelpText>
+    <label>Count of Pre-Offer School Applications</label>
+    <precision>18</precision>
+    <required>false</required>
+    <scale>0</scale>
+    <trackHistory>false</trackHistory>
+    <type>Number</type>
+    <unique>false</unique>
+</CustomField>

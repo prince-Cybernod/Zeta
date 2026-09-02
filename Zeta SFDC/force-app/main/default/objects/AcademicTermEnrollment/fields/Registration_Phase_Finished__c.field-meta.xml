@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Registration_Phase_Finished__c</fullName>
+    <formula>IF(
+  TEXT(LearnerAccount.Student_Type__c) = &quot;Returning&quot;,
+  TRUE,
+
+  AND(
+    /* Must contain &quot;Verified&quot; */
+    CONTAINS(TEXT(Birth_Certificate__c), &quot;Verified&quot;),
+    CONTAINS(TEXT(Physical_Upload__c), &quot;Verified&quot;),
+    CONTAINS(TEXT(Immunization_Records__c), &quot;Verified&quot;),
+    CONTAINS(TEXT(Parent_Contract__c), &quot;Verified&quot;),
+    CONTAINS(TEXT(Student_Info_Contact_Form__c), &quot;Verified&quot;),
+    CONTAINS(TEXT(Housing_Questionnaire__c), &quot;Verified&quot;),
+    CONTAINS(TEXT(FERPA_Directory_Info_Notice__c), &quot;Verified&quot;),
+    CONTAINS(TEXT(TELA_Fee_Verification__c), &quot;Verified&quot;),
+    CONTAINS(TEXT(Media_Photo_Release__c), &quot;Verified&quot;),
+
+    /* Verified OR N/A */
+    OR(CONTAINS(TEXT(Pre_K_Flu_Shot_Form__c), &quot;Verified&quot;), CONTAINS(TEXT(Pre_K_Flu_Shot_Form__c), &quot;N/A&quot;)),
+    OR(CONTAINS(TEXT(MAF_Upload__c), &quot;Verified&quot;), CONTAINS(TEXT(MAF_Upload__c), &quot;N/A&quot;)),
+    OR(CONTAINS(TEXT(Uploaded_IEP__c), &quot;Verified&quot;), CONTAINS(TEXT(Uploaded_IEP__c), &quot;N/A&quot;)),
+    OR(CONTAINS(TEXT(Overnight_Trip_Form__c), &quot;Verified&quot;), CONTAINS(TEXT(Overnight_Trip_Form__c), &quot;N/A&quot;)),
+    OR(CONTAINS(TEXT(Proof_of_NYS_Residency_1__c), &quot;Verified&quot;), CONTAINS(TEXT(Proof_of_NYS_Residency_1__c), &quot;N/A&quot;)),
+    OR(CONTAINS(TEXT(Proof_of_NYS_Residency_2__c), &quot;Verified&quot;), CONTAINS(TEXT(Proof_of_NYS_Residency_2__c), &quot;N/A&quot;)),
+    OR(CONTAINS(TEXT(Proof_of_NYS_Residency_3__c), &quot;Verified&quot;), CONTAINS(TEXT(Proof_of_NYS_Residency_3__c), &quot;N/A&quot;)),
+    OR(CONTAINS(TEXT(Home_Language_Questionnaire__c), &quot;Verified&quot;), CONTAINS(TEXT(Home_Language_Questionnaire__c), &quot;N/A&quot;)),
+    OR(CONTAINS(TEXT(Activities_Field_Trip_Consent_Form__c), &quot;Verified&quot;), CONTAINS(TEXT(Activities_Field_Trip_Consent_Form__c), &quot;N/A&quot;)),
+    OR(CONTAINS(TEXT(Consent_to_Release_Student_Records__c), &quot;Verified&quot;), CONTAINS(TEXT(Consent_to_Release_Student_Records__c), &quot;N/A&quot;)),
+    OR(CONTAINS(TEXT(Computer_Tablet_Use_Consent_Form__c), &quot;Verified&quot;), CONTAINS(TEXT(Computer_Tablet_Use_Consent_Form__c), &quot;N/A&quot;)),
+    OR(CONTAINS(TEXT(Laptop_Tablet_Agreement__c), &quot;Verified&quot;), CONTAINS(TEXT(Laptop_Tablet_Agreement__c), &quot;N/A&quot;)),
+    OR(CONTAINS(TEXT(Ethnic_Identification_Form__c), &quot;Verified&quot;), CONTAINS(TEXT(Ethnic_Identification_Form__c), &quot;N/A&quot;)),
+
+    /* HLQ + ATS */
+    CONTAINS(Housing_ATS_Code__c, &quot;(&quot;),
+    NOT(INCLUDES(Language_s_on_HLQ__c, &quot;Not yet done&quot;)),
+
+    /* Ethnicity and Race */
+    OR(CONTAINS(TEXT(Ethnicity_Answer__c), &quot;Hispanic&quot;), CONTAINS(TEXT(Ethnicity_Answer__c), &quot;N/A&quot;)),
+    OR(
+      CONTAINS(TEXT(Race_Answers__c), &quot;B&quot;),
+      CONTAINS(TEXT(Race_Answers__c), &quot;C&quot;),
+      CONTAINS(TEXT(Race_Answers__c), &quot;D&quot;),
+      CONTAINS(TEXT(Race_Answers__c), &quot;E&quot;),
+      CONTAINS(TEXT(Race_Answers__c), &quot;F&quot;),
+      CONTAINS(TEXT(Race_Answers__c), &quot;N/A&quot;)
+    ),
+
+    /* Family Decision logic */
+    OR(
+      CONTAINS(TEXT(Family_Decision__c), &quot;Accept&quot;),
+      AND(
+        CONTAINS(TEXT(Family_Decision__c), &quot;N/A&quot;),
+        OR(TEXT(Grade_Applied__c) = &quot;K&quot;, TEXT(Grade_Applied__c) = &quot;1&quot;)
+      )
+    )
+  )
+)</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>Registration Phase Finished?</label>
+    <trackHistory>false</trackHistory>
+    <type>Checkbox</type>
+</CustomField>

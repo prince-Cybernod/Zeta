@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Mogli_SMS__Language__c</fullName>
+    <deprecated>false</deprecated>
+    <description>Select English with an American accent (en), English with a British accent (en-gb), Spanish (es), French (fr) and German (de). The default is English with an American accent (en)</description>
+    <inlineHelpText>If using text-to-speech, this will determine the voice that is used to read your text (the default is English-US).</inlineHelpText>
+    <label>Voice</label>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>en-US</fullName>
+                <default>false</default>
+                <label>English (US)</label>
+            </value>
+            <value>
+                <fullName>en-gb</fullName>
+                <default>false</default>
+                <label>English (British)</label>
+            </value>
+            <value>
+                <fullName>es-US</fullName>
+                <default>false</default>
+                <label>Spanish</label>
+            </value>
+            <value>
+                <fullName>fr-FR</fullName>
+                <default>false</default>
+                <label>French</label>
+            </value>
+            <value>
+                <fullName>de-DE</fullName>
+                <default>false</default>
+                <label>German</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

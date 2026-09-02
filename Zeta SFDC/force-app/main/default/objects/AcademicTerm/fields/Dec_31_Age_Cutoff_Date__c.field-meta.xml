@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Dec_31_Age_Cutoff_Date__c</fullName>
+    <formula>IF(
+    AND(
+        DATE(YEAR(DATEVALUE(StartDate)), 12, 31) &gt;= DATEVALUE(StartDate),
+        DATE(YEAR(DATEVALUE(StartDate)), 12, 31) &lt;= DATEVALUE(EndDate)
+    ),
+    DATE(YEAR(DATEVALUE(StartDate)), 12, 31),
+    IF(
+        AND(
+            DATE(YEAR(DATEVALUE(EndDate)), 12, 31) &gt;= DATEVALUE(StartDate),
+            DATE(YEAR(DATEVALUE(EndDate)), 12, 31) &lt;= DATEVALUE(EndDate)
+        ),
+        DATE(YEAR(DATEVALUE(EndDate)), 12, 31),
+        NULL
+    )
+)</formula>
+    <label>Dec 31 Age Cutoff Date</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <type>Date</type>
+</CustomField>

@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <help><!-- Overrides the user&apos;s logging level (normally controlled via LoggerSettings__c.LoggingLevel__c) for any transactions with the specified Scenario --></help>
+    <label><!-- User Logging Level --></label>
+    <name>UserLoggingLevel__c</name>
+    <picklistValues>
+        <masterLabel>DEBUG</masterLabel>
+        <translation><!-- DEBUG --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>ERROR</masterLabel>
+        <translation><!-- ERROR --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>FINE</masterLabel>
+        <translation><!-- FINE --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>FINER</masterLabel>
+        <translation><!-- FINER --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>FINEST</masterLabel>
+        <translation><!-- FINEST --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>INFO</masterLabel>
+        <translation><!-- INFO --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>WARN</masterLabel>
+        <translation><!-- WARN --></translation>
+    </picklistValues>
+</CustomFieldTranslation>

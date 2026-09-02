@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Does_this_child_s_OSIS_have_an_IEP_on_SE__c</fullName>
+    <description>Indicates whether the student has an IEP recorded in SEIS based on their OSIS record.
+Used for cross-validation during enrollment and special education intake.</description>
+    <externalId>false</externalId>
+    <label>Does this child&apos;s OSIS have an IEP on SE</label>
+    <length>255</length>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Mogli_SMS__User_Goal__c</fullName>
+    <deprecated>false</deprecated>
+    <fieldManageability>SubscriberControlled</fieldManageability>
+    <inlineHelpText>Summary: save the returned result in to GenAI Summary field
+Scoring: save the returned result in to GenAI Score and GenAI Scoring Notes instead.</inlineHelpText>
+    <label>User Goal</label>
+    <required>true</required>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>ConversationSummary</fullName>
+                <default>true</default>
+                <label>Conversation Summary</label>
+            </value>
+            <value>
+                <fullName>Scoring</fullName>
+                <default>false</default>
+                <label>Scoring</label>
+            </value>
+            <value>
+                <fullName>Summarization</fullName>
+                <default>false</default>
+                <label>Summarization</label>
+            </value>
+            <value>
+                <fullName>MessageRecommendation</fullName>
+                <default>false</default>
+                <label>Message Recommendation</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

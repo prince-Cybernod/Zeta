@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<MktCalcInsightObjectDef xmlns="http://soap.sforce.com/2006/04/metadata">
+    <creationType>Custom</creationType>
+    <description>Explicit Feedback Reasons at Prompt Template Level</description>
+    <expression>SELECT GenAIFeedbackDetail__dlm.appFeedback__c AS app_feedback__c, GenAIGatewayRequest__dlm.promptTemplateDevName__c AS prompt_template__c,
+    GenAIFeedback__dlm.feedback__c AS feedback__c, COUNT(GenAIGatewayRequest__dlm.promptTemplateDevName__c ) AS counts__c
+FROM GenAIFeedbackDetail__dlm
+    FULL OUTER JOIN GenAIFeedback__dlm ON (GenAIFeedbackDetail__dlm.parent__c = GenAIFeedback__dlm.feedbackId__c)
+    FULL OUTER JOIN GenAIGeneration__dlm ON (GenAIFeedback__dlm.generationId__c = GenAIGeneration__dlm.generationId__c) 
+    FULL OUTER JOIN GenAIGatewayResponse__dlm ON (GenAIGeneration__dlm.generationResponseId__c = GenAIGatewayResponse__dlm.generationResponseId__c) 
+    FULL OUTER JOIN GenAIGatewayRequest__dlm ON (GenAIGatewayResponse__dlm.generationRequestId__c = GenAIGatewayRequest__dlm.gatewayRequestId__c)
+WHERE GenAIGatewayRequest__dlm.promptTemplateDevName__c  IS NOT NULL
+AND GenAIFeedback__dlm.feedback__c = &apos;BAD&apos;
+GROUP BY prompt_template__c, feedback__c, app_feedback__c</expression>
+    <masterLabel>Prompt Template Feedback Reasons</masterLabel>
+</MktCalcInsightObjectDef>

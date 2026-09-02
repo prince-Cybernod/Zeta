@@ -1,0 +1,17 @@
+.rolling-back-state {
+  padding: 2rem 1rem;
+  min-height: 180px;
+}
+
+.progress-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.spinner-inline {
+  position: relative;
+  width: 1.5rem;
+  height: 1.5rem;
+}

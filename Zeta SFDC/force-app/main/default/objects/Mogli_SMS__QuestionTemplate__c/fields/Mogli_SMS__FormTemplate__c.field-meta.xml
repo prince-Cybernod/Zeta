@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Mogli_SMS__FormTemplate__c</fullName>
+    <deprecated>false</deprecated>
+    <label>Form Template</label>
+    <referenceTo>Mogli_SMS__FormTemplate__c</referenceTo>
+    <relationshipLabel>Question Templates</relationshipLabel>
+    <relationshipName>Question_Templates</relationshipName>
+    <relationshipOrder>0</relationshipOrder>
+    <reparentableMasterDetail>false</reparentableMasterDetail>
+    <trackTrending>false</trackTrending>
+    <type>MasterDetail</type>
+    <writeRequiresMasterRead>true</writeRequiresMasterRead>
+</CustomField>

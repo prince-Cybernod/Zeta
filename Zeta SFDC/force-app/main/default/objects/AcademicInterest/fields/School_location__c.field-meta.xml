@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>School_location__c</fullName>
+    <description>Displays the school’s ZIP code for quick geographic context during district review.</description>
+    <externalId>false</externalId>
+    <formula>IF(
+  ISBLANK(LearningProgramId),
+  &quot;&quot;,
+  IF(
+    ISBLANK(LearningProgram.School__c),
+    &quot;&quot;,
+    LearningProgram.School__r.BillingPostalCode
+  )
+)</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>School location</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

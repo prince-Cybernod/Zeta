@@ -1,0 +1,390 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>65.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <assignments>
+        <name>Assign_Set_Relationship_Valid_Shared_Guardian</name>
+        <label>Assign | Set Relationship Valid (Shared Guardian)</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <assignmentItems>
+            <assignToReference>outRelationshipValid</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </assignmentItems>
+    </assignments>
+    <assignments>
+        <name>Assign_Set_Relationship_Valid_Sibling_CCR</name>
+        <label>Assign | Set Relationship Valid (Sibling CCR)</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <assignmentItems>
+            <assignToReference>outRelationshipValid</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </assignmentItems>
+    </assignments>
+    <assignments>
+        <description>Flags that we found a shared guardian.</description>
+        <name>Assign_Set_Shared_Guardian_Found</name>
+        <label>Assign | Set Shared Guardian Found</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <assignmentItems>
+            <assignToReference>varSharedGuardianFound</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </assignmentItems>
+        <connector>
+            <isGoTo>true</isGoTo>
+            <targetReference>Decision_Shared_Guardian_Exists</targetReference>
+        </connector>
+    </assignments>
+    <decisions>
+        <description>If true, skip remaining comparisons.</description>
+        <name>Decision_Already_Found_Shared_Guardian</name>
+        <label>Decision | Already Found Shared Guardian?</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <defaultConnector>
+            <targetReference>Loop_Candidate_Sibling_Guardian_CCRs</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Not Found</defaultConnectorLabel>
+        <rules>
+            <name>Already_found</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>varSharedGuardianFound</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <isGoTo>true</isGoTo>
+                <targetReference>Decision_Shared_Guardian_Exists</targetReference>
+            </connector>
+            <label>Already found</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <description>Checks whether the two CCR records refer to the same guardian.</description>
+        <name>Decision_Guardian_Match</name>
+        <label>Decision | Guardian Match</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <defaultConnector>
+            <targetReference>Loop_Candidate_Sibling_Guardian_CCRs</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>No Match</defaultConnectorLabel>
+        <rules>
+            <name>Match</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Loop_Current_Student_Guardian_CCRs.RelatedContactId</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <elementReference>Loop_Candidate_Sibling_Guardian_CCRs.RelatedContactId</elementReference>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Assign_Set_Shared_Guardian_Found</targetReference>
+            </connector>
+            <label>Match</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <description>Proceeds only if at least one shared guardian was found.</description>
+        <name>Decision_Shared_Guardian_Exists</name>
+        <label>Decision | Shared Guardian Exists</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <defaultConnector>
+            <targetReference>Get_Party_Role_Relation_Student_Sibling_CCR</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>No</defaultConnectorLabel>
+        <rules>
+            <name>Yes</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>varSharedGuardianFound</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Assign_Set_Relationship_Valid_Shared_Guardian</targetReference>
+            </connector>
+            <label>Yes</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <description>If a sibling-sibling CCR exists between the two students, allow sibling IA stamping even though no shared guardian was found.</description>
+        <name>Decision_Sibling_CCR_Found_Fallback</name>
+        <label>Decision | Sibling CCR Found? (Fallback)</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <defaultConnectorLabel>Not Found</defaultConnectorLabel>
+        <rules>
+            <name>Found</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Get_Sibling_CCR_Between_Students</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Assign_Set_Relationship_Valid_Sibling_CCR</targetReference>
+            </connector>
+            <label>Found</label>
+        </rules>
+    </decisions>
+    <description>Created by: Elevation Solutions
+
+Given a current student and a matched sibling student, confirm that either (1) a shared guardian exists via Student-Guardian CCR or (2) a direct Sibling-Sibling CCR exists. Returns pass/fail for downstream sibling priority logic.</description>
+    <environments>Default</environments>
+    <interviewLabel>Priority Item (Auto-launched) Find Sibling with CCR {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Priority Item (Auto-launched) Find Sibling with CCR</label>
+    <loops>
+        <description>Compare candidate guardian to the current guardian</description>
+        <name>Loop_Candidate_Sibling_Guardian_CCRs</name>
+        <label>Loop | Candidate Sibling Guardian CCRs</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <collectionReference>Get_Sibling_Student_Guardians_CCR</collectionReference>
+        <iterationOrder>Asc</iterationOrder>
+        <nextValueConnector>
+            <targetReference>Decision_Guardian_Match</targetReference>
+        </nextValueConnector>
+        <noMoreValuesConnector>
+            <targetReference>Loop_Current_Student_Guardian_CCRs</targetReference>
+        </noMoreValuesConnector>
+    </loops>
+    <loops>
+        <description>Iterate each current guardian to see if candidate has the same guardian.</description>
+        <name>Loop_Current_Student_Guardian_CCRs</name>
+        <label>Loop | Current Student Guardian CCRs</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <collectionReference>Get_Current_Student_Guardians_CCR</collectionReference>
+        <iterationOrder>Asc</iterationOrder>
+        <nextValueConnector>
+            <targetReference>Decision_Already_Found_Shared_Guardian</targetReference>
+        </nextValueConnector>
+        <noMoreValuesConnector>
+            <targetReference>Decision_Shared_Guardian_Exists</targetReference>
+        </noMoreValuesConnector>
+    </loops>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordLookups>
+        <description>Pulls Student→Guardian CCR records for the current student so we can enforce shared-guardian validation before linking siblings.</description>
+        <name>Get_Current_Student_Guardians_CCR</name>
+        <label>Get | Current Student Guardians (CCR)</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Get_Sibling_Student_Guardians_CCR</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>ContactId</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>inCurrentStudentContactId</elementReference>
+            </value>
+        </filters>
+        <filters>
+            <field>PartyRoleRelationId</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>Get_Party_Role_Relation_Student_Guardian_CCR.Id</elementReference>
+            </value>
+        </filters>
+        <getFirstRecordOnly>false</getFirstRecordOnly>
+        <object>ContactContactRelation</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordLookups>
+        <description>Retrieves the Party Role Relation record so CCR queries can filter by PartyRoleRelationId using the correct Id value.</description>
+        <name>Get_Party_Role_Relation_Student_Guardian_CCR</name>
+        <label>Get | Party Role Relation (Student-Guardian-CCR)</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Get_Current_Student_Guardians_CCR</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Name</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Student-Guardian-CCR</stringValue>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>PartyRoleRelation</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordLookups>
+        <description>Retrieves the PartyRoleRelation Id used to query sibling CCRs between students for fallback validation.</description>
+        <name>Get_Party_Role_Relation_Student_Sibling_CCR</name>
+        <label>Get | Party Role Relation (Student-Sibling-CCR)</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Get_Sibling_CCR_Between_Students</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Name</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Sibling-Sibling-CCR</stringValue>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>PartyRoleRelation</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordLookups>
+        <description>Fallback validation. Finds an existing sibling CCR between the current student and the matched sibling student when no shared guardian was found.</description>
+        <name>Get_Sibling_CCR_Between_Students</name>
+        <label>Get | Sibling CCR Between Students</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Decision_Sibling_CCR_Found_Fallback</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>PartyRoleRelationId</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>Get_Party_Role_Relation_Student_Sibling_CCR.Id</elementReference>
+            </value>
+        </filters>
+        <filters>
+            <field>RelatedContactId</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>inSiblingStudentContactId</elementReference>
+            </value>
+        </filters>
+        <filters>
+            <field>ContactId</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>inCurrentStudentContactId</elementReference>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>ContactContactRelation</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordLookups>
+        <description>Pulls guardian CCR records for the candidate sibling student to check for overlap with the current student&apos;s guardians.</description>
+        <name>Get_Sibling_Student_Guardians_CCR</name>
+        <label>Get | Sibling Student Guardians (CCR)</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Loop_Current_Student_Guardian_CCRs</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>PartyRoleRelationId</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>Get_Party_Role_Relation_Student_Guardian_CCR.Id</elementReference>
+            </value>
+        </filters>
+        <filters>
+            <field>ContactId</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>inSiblingStudentContactId</elementReference>
+            </value>
+        </filters>
+        <getFirstRecordOnly>false</getFirstRecordOnly>
+        <object>ContactContactRelation</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <start>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>Get_Party_Role_Relation_Student_Guardian_CCR</targetReference>
+        </connector>
+    </start>
+    <status>Active</status>
+    <variables>
+        <description>PersonContactId for the current Student (the one whose eligibility we’re reviewing).</description>
+        <name>inCurrentStudentContactId</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>true</isInput>
+        <isOutput>false</isOutput>
+    </variables>
+    <variables>
+        <description>Sibling student PersonContactId (the result of the ‘Get Sibling Contact’ match using Priority Item fields).</description>
+        <name>inSiblingStudentContactId</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>true</isInput>
+        <isOutput>false</isOutput>
+    </variables>
+    <variables>
+        <description>True when either shared guardian validation passes or a direct sibling-sibling CCR exists.</description>
+        <name>outRelationshipValid</name>
+        <dataType>Boolean</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>true</isOutput>
+        <value>
+            <booleanValue>false</booleanValue>
+        </value>
+    </variables>
+    <variables>
+        <description>True once we find at least one guardian ContactId shared by both students.</description>
+        <name>varSharedGuardianFound</name>
+        <dataType>Boolean</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+        <value>
+            <booleanValue>false</booleanValue>
+        </value>
+    </variables>
+</Flow>

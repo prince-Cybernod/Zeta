@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>ZetaInternalDWReason__c</fullName>
+    <description>Internal Use: Standardized reason for withdrawing the application.</description>
+    <inlineHelpText>Internal Use: Standardized reason for withdrawing the application.</inlineHelpText>
+    <label>Zeta Internal D/W Reason</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <type>MultiselectPicklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>No response/missed deadline</fullName>
+                <default>false</default>
+                <label>No response/missed deadline</label>
+            </value>
+            <value>
+                <fullName>Moved/is moving away</fullName>
+                <default>false</default>
+                <label>Moved/is moving away</label>
+            </value>
+            <value>
+                <fullName>Commute issues</fullName>
+                <default>false</default>
+                <label>Commute issues</label>
+            </value>
+            <value>
+                <fullName>Got into another school</fullName>
+                <default>false</default>
+                <label>Got into another school</label>
+            </value>
+            <value>
+                <fullName>Did not agree with holdover decision</fullName>
+                <default>false</default>
+                <label>Did not agree with holdover decision</label>
+            </value>
+            <value>
+                <fullName>Declined/withdrawn on Schoolmint</fullName>
+                <default>false</default>
+                <label>Declined/withdrawn on Schoolmint</label>
+            </value>
+            <value>
+                <fullName>Special services not available at Zeta</fullName>
+                <default>false</default>
+                <label>Special services not available at Zeta</label>
+            </value>
+            <value>
+                <fullName>Sibling did not get in</fullName>
+                <default>false</default>
+                <label>Sibling did not get in</label>
+            </value>
+            <value>
+                <fullName>Other (please put it Notes section)</fullName>
+                <default>false</default>
+                <label>Other (please put it Notes section)</label>
+            </value>
+            <value>
+                <fullName>Culture</fullName>
+                <default>false</default>
+                <label>Culture</label>
+            </value>
+            <value>
+                <fullName>Not interested in Zeta (Outreach only)</fullName>
+                <default>false</default>
+                <label>Not interested in Zeta (Outreach only)</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+    <visibleLines>4</visibleLines>
+</CustomField>

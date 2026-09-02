@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Mogli_SMS__Max_Tokens__c</fullName>
+    <deprecated>false</deprecated>
+    <externalId>false</externalId>
+    <fieldManageability>SubscriberControlled</fieldManageability>
+    <inlineHelpText>The maximum number of tokens to generate in the completion</inlineHelpText>
+    <label>Max Tokens</label>
+    <precision>7</precision>
+    <required>true</required>
+    <scale>0</scale>
+    <type>Number</type>
+    <unique>false</unique>
+</CustomField>

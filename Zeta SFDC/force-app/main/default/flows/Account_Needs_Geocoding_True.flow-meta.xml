@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>67.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <description>Sets needs geocoding = true whenever an address is updated on the account to trigger the geocoding flow. Account_After_Save_Update_Geocode_and_District</description>
+    <environments>Default</environments>
+    <interviewLabel>Account | Needs Geocoding True {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Account | Needs Geocoding True</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordUpdates>
+        <name>Set_Need_Geocoding_TRUE</name>
+        <label>Set Need Geocoding TRUE</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <inputAssignments>
+            <field>Needs_Geocoding__c</field>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <start>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>Set_Need_Geocoding_TRUE</targetReference>
+        </connector>
+        <filterFormula>AND(
+    OR(
+        NOT(ISBLANK({!$Record.PersonMailingAddress})),
+        NOT(ISBLANK({!$Record.BillingAddress})),
+        NOT(ISBLANK({!$Record.ShippingAddress}))
+    ),
+    OR(
+        ISNEW(),
+        ISCHANGED({!$Record.PersonMailingStreet}),
+        ISCHANGED({!$Record.PersonMailingCity}),
+        ISCHANGED({!$Record.PersonMailingState}),
+        ISCHANGED({!$Record.PersonMailingPostalCode}),
+        ISCHANGED({!$Record.BillingStreet}),
+        ISCHANGED({!$Record.BillingCity}),
+        ISCHANGED({!$Record.BillingState}),
+        ISCHANGED({!$Record.BillingPostalCode}),
+        ISCHANGED({!$Record.ShippingStreet}),
+        ISCHANGED({!$Record.ShippingCity}),
+        ISCHANGED({!$Record.ShippingState}),
+        ISCHANGED({!$Record.ShippingPostalCode})
+    )
+)</filterFormula>
+        <object>Account</object>
+        <recordTriggerType>CreateAndUpdate</recordTriggerType>
+        <triggerType>RecordAfterSave</triggerType>
+    </start>
+    <status>Active</status>
+    <triggerOrder>500</triggerOrder>
+</Flow>

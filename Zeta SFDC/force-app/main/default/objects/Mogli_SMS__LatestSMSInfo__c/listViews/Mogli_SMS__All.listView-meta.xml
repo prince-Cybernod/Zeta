@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Mogli_SMS__All</fullName>
+    <columns>NAME</columns>
+    <columns>Mogli_SMS__ExternalId__c</columns>
+    <columns>Mogli_SMS__Gateway__c</columns>
+    <columns>Mogli_SMS__Opt_Out__c</columns>
+    <columns>Mogli_SMS__Opt_Out_Date_Time__c</columns>
+    <columns>Mogli_SMS__Opt_Out_Method__c</columns>
+    <columns>Mogli_SMS__Opt_In__c</columns>
+    <columns>Mogli_SMS__Opt_In_Date_Time__c</columns>
+    <columns>Mogli_SMS__Opt_In_Method__c</columns>
+    <columns>Mogli_SMS__Keyword__c</columns>
+    <columns>Mogli_SMS__latestSMS__c</columns>
+    <columns>Mogli_SMS__lastOutgoingSMS__c</columns>
+    <columns>Mogli_SMS__lastIncomingSMS__c</columns>
+    <columns>LAST_UPDATE</columns>
+    <columns>CREATED_DATE</columns>
+    <filterScope>Everything</filterScope>
+    <label>All</label>
+</ListView>

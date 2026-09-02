@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<FieldSrcTrgtRelationship xmlns="http://soap.sforce.com/2006/04/metadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <definitionCreationType>Standard</definitionCreationType>
+    <lookupFieldName>ssot__EmailEngagement__dlm.ssot__rel_1697761171575_end__c</lookupFieldName>
+    <masterLabel>EmailTemplate_Id_map_EmailEngagement_EngagementAssetId_N_1_1645552385351</masterLabel>
+    <owner>DataCloud</owner>
+    <relationshipCardinality>ManyToOne</relationshipCardinality>
+    <sourceFieldName>ssot__EmailEngagement__dlm.ssot__EngagementAssetId__c</sourceFieldName>
+    <targetEntity xsi:nil="true"/>
+    <targetFieldName>ssot__EmailTemplate__dlm.ssot__Id__c</targetFieldName>
+</FieldSrcTrgtRelationship>

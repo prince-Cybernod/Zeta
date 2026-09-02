@@ -1,0 +1,306 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <apiVersion>66.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <customProperties>
+        <name>ScreenProgressIndicator</name>
+        <value>
+            <stringValue>{&quot;location&quot;:&quot;top&quot;,&quot;type&quot;:&quot;simple&quot;}</stringValue>
+        </value>
+    </customProperties>
+    <decisions>
+        <description>update records based on decision</description>
+        <name>Denied_or_Made_Exception</name>
+        <label>Denied or Made Exception?</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <defaultConnector>
+            <targetReference>Update_Individual_Application_Denied</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Denied</defaultConnectorLabel>
+        <rules>
+            <name>Made_Exception</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Age_Inconsistency_Review_Status</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Exception Made</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Update_Individual_Application_Made_Exception</targetReference>
+            </connector>
+            <label>Made Exception</label>
+        </rules>
+    </decisions>
+    <description>Review-only sub screen flow launched from the master eligibility flow when an Individual Application is flagged for age inconsistency. Accepts the Individual Application Id as input (recordId), displays the standard applicant header (same UX pattern as other validation subflows), and records a reviewer decision in Age Inconsistency Review picklist (Denied or Exception made).</description>
+    <dynamicChoiceSets>
+        <description>picklist for the field</description>
+        <name>AgeInconsistencyReviewStatus</name>
+        <dataType>Picklist</dataType>
+        <displayField xsi:nil="true"/>
+        <object xsi:nil="true"/>
+        <picklistField>Age_Inconsistency_Review_Status__c</picklistField>
+        <picklistObject>IndividualApplication</picklistObject>
+    </dynamicChoiceSets>
+    <environments>Default</environments>
+    <interviewLabel>Individual Application (Sub-Screenflow) Age Inconsistency Review {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Individual Application (Sub-Screenflow) Age Inconsistency Review</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>Flow</processType>
+    <recordLookups>
+        <description>Grabs the individual application for this screenflow</description>
+        <name>Get_Individual_Application</name>
+        <label>Get | Individual Application</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Screen_Review_Birthdate_Age</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>recordId</elementReference>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>IndividualApplication</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordUpdates>
+        <name>Update_Individual_Application_Denied</name>
+        <label>Update Individual Application | Denied</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>Get_Individual_Application.Id</elementReference>
+            </value>
+        </filters>
+        <inputAssignments>
+            <field>Age_Inconsistency_Review_Status__c</field>
+            <value>
+                <elementReference>Age_Inconsistency_Review_Status</elementReference>
+            </value>
+        </inputAssignments>
+        <object>IndividualApplication</object>
+    </recordUpdates>
+    <recordUpdates>
+        <name>Update_Individual_Application_Made_Exception</name>
+        <label>Update Individual Application | Made Exception</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>Get_Individual_Application.Id</elementReference>
+            </value>
+        </filters>
+        <inputAssignments>
+            <field>Age_Inconsistency_Review_Status__c</field>
+            <value>
+                <elementReference>Age_Inconsistency_Review_Status</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Grade_Inconsistency_Approved_Reason__c</field>
+            <value>
+                <elementReference>Grade_Exception_Reason</elementReference>
+            </value>
+        </inputAssignments>
+        <object>IndividualApplication</object>
+    </recordUpdates>
+    <screens>
+        <description>used to confirm the users selection</description>
+        <name>confirmationscreen</name>
+        <label>confirmationscreen</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <allowBack>true</allowBack>
+        <allowFinish>true</allowFinish>
+        <allowPause>false</allowPause>
+        <connector>
+            <targetReference>Denied_or_Made_Exception</targetReference>
+        </connector>
+        <fields>
+            <name>headerApplicant</name>
+            <fieldText>&lt;p&gt;{!TT_Applicant_Header_Individual_Application}&lt;/p&gt;</fieldText>
+            <fieldType>DisplayText</fieldType>
+            <styleProperties>
+                <verticalAlignment>
+                    <stringValue>top</stringValue>
+                </verticalAlignment>
+                <width>
+                    <stringValue>12</stringValue>
+                </width>
+            </styleProperties>
+        </fields>
+        <fields>
+            <name>ConfirmChoiceInstructions</name>
+            <fieldText>&lt;p&gt;{!Confirmation_Instructions}&lt;/p&gt;</fieldText>
+            <fieldType>DisplayText</fieldType>
+            <styleProperties>
+                <verticalAlignment>
+                    <stringValue>top</stringValue>
+                </verticalAlignment>
+                <width>
+                    <stringValue>12</stringValue>
+                </width>
+            </styleProperties>
+        </fields>
+        <nextOrFinishButtonLabel>Submit</nextOrFinishButtonLabel>
+        <showFooter>true</showFooter>
+        <showHeader>false</showHeader>
+    </screens>
+    <screens>
+        <description>Primary review screen for the Birthdate / Age validation subflow. Displays the standardized applicant header and captures a required reviewer decision for the age inconsistency (Denied or Exception made). No free-form logic, no defensive checks.</description>
+        <name>Screen_Review_Birthdate_Age</name>
+        <label>Screen Review Birthdate Age</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <allowBack>false</allowBack>
+        <allowFinish>true</allowFinish>
+        <allowPause>false</allowPause>
+        <connector>
+            <targetReference>confirmationscreen</targetReference>
+        </connector>
+        <fields>
+            <name>applicantHeader</name>
+            <fieldText>&lt;p&gt;{!TT_Applicant_Header_Individual_Application}&lt;/p&gt;</fieldText>
+            <fieldType>DisplayText</fieldType>
+            <styleProperties>
+                <verticalAlignment>
+                    <stringValue>top</stringValue>
+                </verticalAlignment>
+                <width>
+                    <stringValue>12</stringValue>
+                </width>
+            </styleProperties>
+        </fields>
+        <fields>
+            <name>reviewContext</name>
+            <fieldText>&lt;p&gt;{!TT_Applicant_Age_Inconsistency_Context}&lt;/p&gt;</fieldText>
+            <fieldType>DisplayText</fieldType>
+            <styleProperties>
+                <verticalAlignment>
+                    <stringValue>top</stringValue>
+                </verticalAlignment>
+                <width>
+                    <stringValue>12</stringValue>
+                </width>
+            </styleProperties>
+        </fields>
+        <fields>
+            <name>Age_Inconsistency_Review_Status</name>
+            <choiceReferences>AgeInconsistencyReviewStatus</choiceReferences>
+            <dataType>String</dataType>
+            <fieldText>Age Inconsistency Review Status</fieldText>
+            <fieldType>DropdownBox</fieldType>
+            <inputsOnNextNavToAssocScrn>UseStoredValues</inputsOnNextNavToAssocScrn>
+            <isRequired>true</isRequired>
+            <styleProperties>
+                <verticalAlignment>
+                    <stringValue>top</stringValue>
+                </verticalAlignment>
+                <width>
+                    <stringValue>12</stringValue>
+                </width>
+            </styleProperties>
+        </fields>
+        <fields>
+            <name>Grade_Exception_Reason</name>
+            <dataType>String</dataType>
+            <fieldText>Exception Reason</fieldText>
+            <fieldType>InputField</fieldType>
+            <inputsOnNextNavToAssocScrn>UseStoredValues</inputsOnNextNavToAssocScrn>
+            <isRequired>true</isRequired>
+            <styleProperties>
+                <verticalAlignment>
+                    <stringValue>top</stringValue>
+                </verticalAlignment>
+                <width>
+                    <stringValue>12</stringValue>
+                </width>
+            </styleProperties>
+            <visibilityRule>
+                <conditionLogic>and</conditionLogic>
+                <conditions>
+                    <leftValueReference>Age_Inconsistency_Review_Status</leftValueReference>
+                    <operator>EqualTo</operator>
+                    <rightValue>
+                        <stringValue>Exception Made</stringValue>
+                    </rightValue>
+                </conditions>
+            </visibilityRule>
+        </fields>
+        <showFooter>true</showFooter>
+        <showHeader>false</showHeader>
+    </screens>
+    <start>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>Get_Individual_Application</targetReference>
+        </connector>
+    </start>
+    <status>Active</status>
+    <textTemplates>
+        <name>Confirmation_Instructions</name>
+        <isViewedAsPlainText>true</isViewedAsPlainText>
+        <text>&lt;div style=&quot;width:100%;border:2px solid #F9A825;border-radius:10px;padding:16px;text-align:center;background-color:#FFF8E1;&quot;&gt;&lt;div style=&quot;font-size:16px;line-height:22px;font-weight:700;&quot;&gt;Confirm Your Decision&lt;/div&gt;&lt;div style=&quot;height:10px;&quot;&gt;&lt;/div&gt;&lt;div style=&quot;font-size:14px;line-height:20px;&quot;&gt;You selected: &lt;strong&gt;{!Age_Inconsistency_Review_Status}&lt;/strong&gt;. Select &lt;strong&gt;Submit Decision&lt;/strong&gt; to record this on the application, or select &lt;strong&gt;Previous&lt;/strong&gt; to navigate back to the application.&lt;/div&gt;&lt;/div&gt;</text>
+    </textTemplates>
+    <textTemplates>
+        <description>provides context to whats being reviewed</description>
+        <name>TT_Applicant_Age_Inconsistency_Context</name>
+        <isViewedAsPlainText>false</isViewedAsPlainText>
+        <text>&lt;div style=&quot;width:100%;border:2px solid #F9A825;border-radius:10px;padding:16px;text-align:center;background-color:#FFF8E1;&quot;&gt;&lt;div style=&quot;font-size:14px;line-height:20px;&quot;&gt;&lt;strong&gt;Birthdate / Age Validation Required.&lt;/strong&gt; This application was flagged because the applicant’s birthdate is missing or does not align with the grade applying to based on Zeta’s age eligibility rules (calculated as of December 31 of the enrolling academic year). Review the applicant details above and select &lt;strong&gt;Make Exception&lt;/strong&gt; to allow the application to proceed, or &lt;strong&gt;Deny&lt;/strong&gt; if the application does not meet age requirements.&lt;/div&gt;&lt;/div&gt;</text>
+    </textTemplates>
+    <textTemplates>
+        <description>Displays the standard applicant header for this subflow using Account first and last name fields (no derived full-name field), along with grade, birthdate, and academic term. Read-only, informational only.</description>
+        <name>TT_Applicant_Header_Individual_Application</name>
+        <isViewedAsPlainText>false</isViewedAsPlainText>
+        <text>&lt;div style=&quot;width:100%;border:2px solid #4F497A;border-radius:10px;padding:18px;text-align:center;background-color:#F6F5FB;&quot;&gt;&lt;div style=&quot;font-size:16px;line-height:22px;&quot;&gt;&lt;strong&gt;Applicant Birthdate / Age Review&lt;/strong&gt;&lt;/div&gt;&lt;div style=&quot;height:12px;&quot;&gt;&lt;/div&gt;&lt;div style=&quot;font-size:14px;line-height:22px;&quot;&gt;&lt;strong&gt;Applicant:&lt;/strong&gt; {!Get_Individual_Application.Account.FirstName} {!Get_Individual_Application.Account.LastName}&lt;br/&gt;&lt;strong&gt;Grade Applying To:&lt;/strong&gt; {!Get_Individual_Application.Grade_Applying_To__c}&lt;br/&gt;&lt;strong&gt;Birthdate:&lt;/strong&gt; {!Get_Individual_Application.Account.PersonContact.Birthdate}&lt;br/&gt;&lt;strong&gt;Current Age:&lt;/strong&gt; {!Get_Individual_Application.Account.Age__c}&lt;br/&gt;&lt;strong&gt;School Start Age: &lt;/strong&gt;{!Get_Individual_Application.School_Start_Age__c}&lt;br/&gt;&lt;strong&gt;Academic Term:&lt;/strong&gt; {!Get_Individual_Application.Application_Timeline__r.Academic_Term__r.Name}&lt;/div&gt;&lt;/div&gt;</text>
+    </textTemplates>
+    <variables>
+        <description>the record id being passed into the screenflow</description>
+        <name>recordId</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>true</isInput>
+        <isOutput>false</isOutput>
+    </variables>
+    <variables>
+        <description>Stores the normalized decision value that will later be written to the Individual Application field Age_Inconsistency_Review__c. This keeps the screen button output separate from the record update logic and matches the established Staff Validation pattern.</description>
+        <name>varAgeReviewDecision</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+    </variables>
+</Flow>

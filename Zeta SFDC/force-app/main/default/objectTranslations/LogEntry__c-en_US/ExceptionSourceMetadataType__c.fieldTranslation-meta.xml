@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <label><!-- Exception Source Metadata Type --></label>
+    <name>ExceptionSourceMetadataType__c</name>
+    <picklistValues>
+        <masterLabel>AnonymousBlock</masterLabel>
+        <translation><!-- AnonymousBlock --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>ApexClass</masterLabel>
+        <translation><!-- ApexClass --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>ApexTrigger</masterLabel>
+        <translation><!-- ApexTrigger --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>AuraDefinitionBundle</masterLabel>
+        <translation><!-- AuraDefinitionBundle --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Flow</masterLabel>
+        <translation><!-- Flow --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>LightningComponentBundle</masterLabel>
+        <translation><!-- LightningComponentBundle --></translation>
+    </picklistValues>
+</CustomFieldTranslation>

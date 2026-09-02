@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Amount_for_Uniform_Voucher__c</fullName>
+    <description>Stores the approved uniform voucher amount allocated to the family.</description>
+    <externalId>false</externalId>
+    <inlineHelpText>Stores the approved uniform voucher amount allocated to the family.</inlineHelpText>
+    <label>Amount for Uniform Voucher</label>
+    <precision>18</precision>
+    <required>false</required>
+    <scale>2</scale>
+    <trackHistory>false</trackHistory>
+    <type>Number</type>
+    <unique>false</unique>
+</CustomField>

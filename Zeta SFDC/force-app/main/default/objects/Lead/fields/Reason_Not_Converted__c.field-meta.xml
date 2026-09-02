@@ -1,0 +1,224 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Reason_Not_Converted__c</fullName>
+    <label>Reason Not Converted</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <type>Picklist</type>
+    <valueSet>
+        <controllingField>Status</controllingField>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Outside NYC/Yonkers</fullName>
+                <default>false</default>
+                <label>Outside NYC/Yonkers</label>
+            </value>
+            <value>
+                <fullName>Student too old</fullName>
+                <default>false</default>
+                <label>Student too old</label>
+            </value>
+            <value>
+                <fullName>Student too young for Pre-K</fullName>
+                <default>false</default>
+                <label>Student too young for Pre-K</label>
+            </value>
+            <value>
+                <fullName>Not interested – Location</fullName>
+                <default>false</default>
+                <label>Not interested – Location</label>
+            </value>
+            <value>
+                <fullName>Not interested – IEP/services</fullName>
+                <default>false</default>
+                <label>Not interested – IEP/services</label>
+            </value>
+            <value>
+                <fullName>Not interested – Schedule</fullName>
+                <default>false</default>
+                <label>Not interested – Schedule</label>
+            </value>
+            <value>
+                <fullName>Not interested – No bussing</fullName>
+                <default>false</default>
+                <label>Not interested – No bussing</label>
+            </value>
+            <value>
+                <fullName>Not interested – Does not want to change schools</fullName>
+                <default>false</default>
+                <label>Not interested – Does not want to change schools</label>
+            </value>
+            <value>
+                <fullName>Not interested – Other</fullName>
+                <default>false</default>
+                <label>Not interested – Other</label>
+            </value>
+            <value>
+                <fullName>Duplicate of enrolled student</fullName>
+                <default>false</default>
+                <label>Duplicate of enrolled student</label>
+            </value>
+            <value>
+                <fullName>Duplicate of applied student</fullName>
+                <default>false</default>
+                <label>Duplicate of applied student</label>
+            </value>
+            <value>
+                <fullName>Duplicate lead</fullName>
+                <default>false</default>
+                <label>Duplicate lead</label>
+            </value>
+            <value>
+                <fullName>Spam</fullName>
+                <default>false</default>
+                <label>Spam</label>
+            </value>
+            <value>
+                <fullName>Next Year</fullName>
+                <default>false</default>
+                <label>Next Year</label>
+            </value>
+            <value>
+                <fullName>Archived</fullName>
+                <default>false</default>
+                <label>Archived</label>
+            </value>
+            <value>
+                <fullName>Duplicate</fullName>
+                <default>false</default>
+                <label>Duplicate</label>
+            </value>
+            <value>
+                <fullName>Unreachable – Wrong phone number / OOO</fullName>
+                <default>false</default>
+                <label>Unreachable – Wrong phone number / OOO</label>
+            </value>
+            <value>
+                <fullName>Unreachable – No answer (3+ attempts)</fullName>
+                <default>false</default>
+                <label>Unreachable – No answer (3+ attempts)</label>
+            </value>
+            <value>
+                <fullName>Reached, not interested – Location/distance</fullName>
+                <default>false</default>
+                <label>Reached, not interested – Location/distance</label>
+            </value>
+            <value>
+                <fullName>Reached, not interested – IEP/service not available</fullName>
+                <default>false</default>
+                <label>Reached, not interested – IEP/service not available</label>
+            </value>
+            <value>
+                <fullName>Duplicate – Enrolled Student</fullName>
+                <default>false</default>
+                <label>Duplicate – Enrolled Student</label>
+            </value>
+            <value>
+                <fullName>Duplicate – Applied Student</fullName>
+                <default>false</default>
+                <label>Duplicate – Applied Student</label>
+            </value>
+            <value>
+                <fullName>Duplicate – Active duplicate lead</fullName>
+                <default>false</default>
+                <label>Duplicate – Active duplicate lead</label>
+            </value>
+        </valueSetDefinition>
+        <valueSettings>
+            <controllingFieldValue>Closed – Not Converted, Archived</controllingFieldValue>
+            <controllingFieldValue>Disqualified</controllingFieldValue>
+            <valueName>Outside NYC/Yonkers</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Closed – Not Converted, Archived</controllingFieldValue>
+            <controllingFieldValue>Disqualified</controllingFieldValue>
+            <valueName>Student too old</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Closed – Not Converted, Archived</controllingFieldValue>
+            <valueName>Archived</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Closed – Not Converted, Archived</controllingFieldValue>
+            <valueName>Unreachable – Wrong phone number / OOO</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Closed – Not Converted, Archived</controllingFieldValue>
+            <valueName>Unreachable – No answer (3+ attempts)</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Closed – Not Converted, Archived</controllingFieldValue>
+            <valueName>Reached, not interested – Location/distance</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Closed – Not Converted, Archived</controllingFieldValue>
+            <valueName>Reached, not interested – IEP/service not available</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Closed – Duplicate, Archived</controllingFieldValue>
+            <valueName>Duplicate</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Closed – Duplicate, Archived</controllingFieldValue>
+            <valueName>Duplicate – Enrolled Student</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Closed – Duplicate, Archived</controllingFieldValue>
+            <valueName>Duplicate – Applied Student</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Closed – Duplicate, Archived</controllingFieldValue>
+            <valueName>Duplicate – Active duplicate lead</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Disqualified</controllingFieldValue>
+            <valueName>Student too young for Pre-K</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Disqualified</controllingFieldValue>
+            <valueName>Not interested – Location</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Disqualified</controllingFieldValue>
+            <valueName>Not interested – IEP/services</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Disqualified</controllingFieldValue>
+            <valueName>Not interested – Schedule</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Disqualified</controllingFieldValue>
+            <valueName>Not interested – No bussing</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Disqualified</controllingFieldValue>
+            <valueName>Not interested – Does not want to change schools</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Disqualified</controllingFieldValue>
+            <valueName>Not interested – Other</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Disqualified</controllingFieldValue>
+            <valueName>Duplicate of enrolled student</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Disqualified</controllingFieldValue>
+            <valueName>Duplicate of applied student</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Disqualified</controllingFieldValue>
+            <valueName>Duplicate lead</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Disqualified</controllingFieldValue>
+            <valueName>Spam</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Closed – Not Converted, Next Year</controllingFieldValue>
+            <valueName>Next Year</valueName>
+        </valueSettings>
+    </valueSet>
+</CustomField>

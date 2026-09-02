@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <help><!-- Specifies what causes the flow to run. --></help>
+    <label><!-- Flow Trigger Type --></label>
+    <name>FlowTriggerType__c</name>
+    <picklistValues>
+        <masterLabel>PlatformEvent</masterLabel>
+        <translation><!-- PlatformEvent --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>RecordAfterSave</masterLabel>
+        <translation><!-- RecordAfterSave --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>RecordBeforeSave</masterLabel>
+        <translation><!-- RecordBeforeSave --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Scheduled</masterLabel>
+        <translation><!-- Scheduled --></translation>
+    </picklistValues>
+</CustomFieldTranslation>

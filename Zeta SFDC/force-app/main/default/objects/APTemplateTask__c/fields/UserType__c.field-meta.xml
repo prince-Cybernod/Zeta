@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>UserType__c</fullName>
+    <deprecated>false</deprecated>
+    <description>Determines how the user for this task will be assigned</description>
+    <inlineHelpText>Select how the user for this task will be assigned</inlineHelpText>
+    <label>User Assignment Type</label>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>USER</fullName>
+                <default>true</default>
+                <label>Standard User</label>
+            </value>
+            <value>
+                <fullName>FIELD</fullName>
+                <default>false</default>
+                <label>User Field Path</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

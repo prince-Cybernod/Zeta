@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Mogli_SMS__Params__c</fullName>
+    <deprecated>false</deprecated>
+    <description>primary source of task&apos;s params</description>
+    <inlineHelpText>SMS Records Information on Insert / Gateway Id on send</inlineHelpText>
+    <label>Params</label>
+    <length>131072</length>
+    <trackTrending>false</trackTrending>
+    <type>LongTextArea</type>
+    <visibleLines>3</visibleLines>
+</CustomField>

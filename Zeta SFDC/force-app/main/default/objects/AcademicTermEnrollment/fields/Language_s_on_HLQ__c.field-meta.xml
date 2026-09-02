@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Language_s_on_HLQ__c</fullName>
+    <label>Language(s) on HLQ</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <type>MultiselectPicklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>English (ENG)</fullName>
+                <default>false</default>
+                <label>English (ENG)</label>
+            </value>
+            <value>
+                <fullName>Spanish (SPA)</fullName>
+                <default>false</default>
+                <label>Spanish (SPA)</label>
+            </value>
+            <value>
+                <fullName>N/A (returning student)</fullName>
+                <default>false</default>
+                <label>N/A (returning student)</label>
+            </value>
+            <value>
+                <fullName>Albanian (ALB)</fullName>
+                <default>false</default>
+                <label>Albanian (ALB)</label>
+            </value>
+            <value>
+                <fullName>Amharic (AMH)</fullName>
+                <default>false</default>
+                <label>Amharic (AMH)</label>
+            </value>
+            <value>
+                <fullName>Arabic (ARA)</fullName>
+                <default>false</default>
+                <label>Arabic (ARA)</label>
+            </value>
+            <value>
+                <fullName>Bengali (BEN)</fullName>
+                <default>false</default>
+                <label>Bengali (BEN)</label>
+            </value>
+            <value>
+                <fullName>Chinese Simplified (CHI)</fullName>
+                <default>false</default>
+                <label>Chinese Simplified (CHI)</label>
+            </value>
+            <value>
+                <fullName>Chinese Traditional (ZHO)</fullName>
+                <default>false</default>
+                <label>Chinese Traditional (ZHO)</label>
+            </value>
+            <value>
+                <fullName>Farsi (FAS)</fullName>
+                <default>false</default>
+                <label>Farsi (FAS)</label>
+            </value>
+            <value>
+                <fullName>French (FRE)</fullName>
+                <default>false</default>
+                <label>French (FRE)</label>
+            </value>
+            <value>
+                <fullName>German (GER)</fullName>
+                <default>false</default>
+                <label>German (GER)</label>
+            </value>
+            <value>
+                <fullName>Greek (GRE)</fullName>
+                <default>false</default>
+                <label>Greek (GRE)</label>
+            </value>
+            <value>
+                <fullName>Haitian Creole (HAT)</fullName>
+                <default>false</default>
+                <label>Haitian Creole (HAT)</label>
+            </value>
+            <value>
+                <fullName>Hindi (HIN)</fullName>
+                <default>false</default>
+                <label>Hindi (HIN)</label>
+            </value>
+            <value>
+                <fullName>Italian (ITA)</fullName>
+                <default>false</default>
+                <label>Italian (ITA)</label>
+            </value>
+            <value>
+                <fullName>Japanese (JPN)</fullName>
+                <default>false</default>
+                <label>Japanese (JPN)</label>
+            </value>
+            <value>
+                <fullName>Khmer (KHM)</fullName>
+                <default>false</default>
+                <label>Khmer (KHM)</label>
+            </value>
+            <value>
+                <fullName>Korean (KOR)</fullName>
+                <default>false</default>
+                <label>Korean (KOR)</label>
+            </value>
+            <value>
+                <fullName>Lao (LAO)</fullName>
+                <default>false</default>
+                <label>Lao (LAO)</label>
+            </value>
+            <value>
+                <fullName>Malay (MAY)</fullName>
+                <default>false</default>
+                <label>Malay (MAY)</label>
+            </value>
+            <value>
+                <fullName>Nepali (NEP)</fullName>
+                <default>false</default>
+                <label>Nepali (NEP)</label>
+            </value>
+            <value>
+                <fullName>Polish (POL)</fullName>
+                <default>false</default>
+                <label>Polish (POL)</label>
+            </value>
+            <value>
+                <fullName>Portuguese (POR)</fullName>
+                <default>false</default>
+                <label>Portuguese (POR)</label>
+            </value>
+            <value>
+                <fullName>Romanian (RUM)</fullName>
+                <default>false</default>
+                <label>Romanian (RUM)</label>
+            </value>
+            <value>
+                <fullName>Russian (RUS)</fullName>
+                <default>false</default>
+                <label>Russian (RUS)</label>
+            </value>
+            <value>
+                <fullName>Serbo-Croatian (SCR)</fullName>
+                <default>false</default>
+                <label>Serbo-Croatian (SCR)</label>
+            </value>
+            <value>
+                <fullName>Tagalog (TGL)</fullName>
+                <default>false</default>
+                <label>Tagalog (TGL)</label>
+            </value>
+            <value>
+                <fullName>Thai (THA)</fullName>
+                <default>false</default>
+                <label>Thai (THA)</label>
+            </value>
+            <value>
+                <fullName>Turkish (TUR)</fullName>
+                <default>false</default>
+                <label>Turkish (TUR)</label>
+            </value>
+            <value>
+                <fullName>Urdu (URD)</fullName>
+                <default>false</default>
+                <label>Urdu (URD)</label>
+            </value>
+            <value>
+                <fullName>Vietnamese (VIE)</fullName>
+                <default>false</default>
+                <label>Vietnamese (VIE)</label>
+            </value>
+            <value>
+                <fullName>Other (OTH)</fullName>
+                <default>false</default>
+                <label>Other (OTH)</label>
+            </value>
+            <value>
+                <fullName>Not yet done</fullName>
+                <default>false</default>
+                <label>Not yet done</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+    <visibleLines>4</visibleLines>
+</CustomField>

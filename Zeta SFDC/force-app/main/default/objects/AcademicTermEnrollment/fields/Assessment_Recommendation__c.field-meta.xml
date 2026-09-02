@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Assessment_Recommendation__c</fullName>
+    <description>System-generated recommendation based on assessment data, rubric logic, or scoring criteria.</description>
+    <externalId>false</externalId>
+    <formula>IF(
+OR(
+CONTAINS(TEXT(Zeta_Decision__c),&quot;N/A&quot;),
+NOT(CONTAINS(TEXT(EnrollmentStatus),&quot;.&quot;)),
+CONTAINS(TEXT(Grade_Applied__c),&quot;K&quot;),
+TEXT(Grade_Applied__c)=&quot;1&quot;
+),
+&quot;N/A&quot;,
+IF(
+OR(
+AND(
+OR(TEXT(Grade_Applied__c)=&quot;2&quot;,TEXT(Grade_Applied__c )=&quot;3&quot;),
+OR(
+ISBLANK(TEXT(Student_able_to_complete_Assessment__c)),
+AND(
+NOT(CONTAINS(TEXT(Student_able_to_complete_Assessment__c),&quot;Yes&quot;)),
+NOT(CONTAINS(TEXT(Student_able_to_complete_Assessment__c),&quot;No, was unable&quot;))
+)
+)
+),
+AND(
+VALUE(TEXT(Grade_Applied__c))&gt;3,
+NOT(CSV_Score_Upload_Confirmation__c)
+)
+),
+&quot;Assessment not finalized&quot;,
+IF(
+OR(
+CONTAINS(TEXT(Student_able_to_complete_Assessment__c),&quot;Yes, but completed level below&quot;),
+CONTAINS(TEXT(Student_able_to_complete_Assessment__c),&quot;No, was unable&quot;)
+),
+&quot;Holdover&quot;,
+IF(
+AND(
+OR(TEXT(Grade_Applied__c)=&quot;2&quot;,TEXT(Grade_Applied__c )=&quot;3&quot;),
+Number_of_Errors__c&gt;4,
+(CQ1_Score__c+CQ2_Score__c+CQ3_Score__c+CQ4_Score__c)&lt;=2,
+CQ1_Score__c&lt;&gt;NULL,CQ2_Score__c&lt;&gt;NULL,CQ3_Score__c&lt;&gt;NULL,CQ4_Score__c&lt;&gt;NULL
+),
+&quot;Holdover&quot;,
+IF(
+AND(
+OR(TEXT(Grade_Applied__c)=&quot;2&quot;,TEXT(Grade_Applied__c )=&quot;3&quot;),
+OR(
+Number_of_Errors__c&gt;4,
+(CQ1_Score__c+CQ2_Score__c+CQ3_Score__c+CQ4_Score__c)&lt;=2
+),
+CQ1_Score__c&lt;&gt;NULL,CQ2_Score__c&lt;&gt;NULL,CQ3_Score__c&lt;&gt;NULL,CQ4_Score__c&lt;&gt;NULL
+),
+&quot;Cusp&quot;,
+IF(
+AND(
+OR(TEXT(Grade_Applied__c)=&quot;2&quot;,TEXT(Grade_Applied__c )=&quot;3&quot;),
+Number_of_Errors__c&lt;=4,
+(CQ1_Score__c+CQ2_Score__c+CQ3_Score__c+CQ4_Score__c)&gt;=3
+),
+&quot;Promote&quot;,
+IF(
+AND(
+VALUE(TEXT(Grade_Applied__c))&gt;3,
+Completed_Assessment_Date__c&lt;&gt;NULL,
+CSV_Score_Upload_Confirmation__c
+),
+IF(
+AND(
+(ELA_Q1_Score__c+ELA_Q2_Score__c+ELA_Q3_Score__c+ELA_Q4_Score__c)&gt;=2,
+(Math_Q1_Score__c+Math_Q2_Score__c+Math_Q3_Score__c)&gt;=2,
+(ELA_Q1_Score__c+ELA_Q2_Score__c+ELA_Q3_Score__c+ELA_Q4_Score__c+
+ Math_Q1_Score__c+Math_Q2_Score__c+Math_Q3_Score__c)&gt;=4
+),
+&quot;Promote&quot;,
+IF(
+(ELA_Q1_Score__c+ELA_Q2_Score__c+ELA_Q3_Score__c+ELA_Q4_Score__c+
+ Math_Q1_Score__c+Math_Q2_Score__c+Math_Q3_Score__c)&gt;=4,
+&quot;Cusp&quot;,
+&quot;Holdover&quot;
+)
+),
+&quot;check&quot;
+)
+)
+)
+)
+)
+)
+)</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <inlineHelpText>System-generated recommendation based on assessment data, rubric logic, or scoring criteria.</inlineHelpText>
+    <label>Assessment Recommendation</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

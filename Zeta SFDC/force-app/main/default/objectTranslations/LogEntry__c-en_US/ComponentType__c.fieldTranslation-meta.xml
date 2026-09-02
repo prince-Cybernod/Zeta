@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <help><!-- Indicates if the component is a lightning web component (lwc) or an aura component --></help>
+    <label><!-- Component Type --></label>
+    <name>ComponentType__c</name>
+    <picklistValues>
+        <masterLabel>Aura</masterLabel>
+        <translation><!-- Aura --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>LWC</masterLabel>
+        <translation><!-- LWC --></translation>
+    </picklistValues>
+</CustomFieldTranslation>

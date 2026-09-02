@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PermissionSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customPermissions>
+        <enabled>true</enabled>
+        <name>Zeta_Create_Parent_Portal_Tasks</name>
+    </customPermissions>
+    <description>Grants the Create Parent Portal Tasks custom permission for users allowed to create Parent Portal Task records from the mass task creation flow.</description>
+    <hasActivationRequired>false</hasActivationRequired>
+    <label>Zeta Create Parent Portal Tasks</label>
+</PermissionSet>

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Mogli_SMS__Default_Gateway__c</fullName>
+    <deleteConstraint>SetNull</deleteConstraint>
+    <deprecated>false</deprecated>
+    <label>Default Gateway</label>
+    <lookupFilter>
+        <active>true</active>
+        <errorMessage>Cannot assign an inactive gateway as the record default</errorMessage>
+        <filterItems>
+            <field>Mogli_SMS__Gateway__c.Mogli_SMS__Inactive__c</field>
+            <operation>equals</operation>
+            <value>False</value>
+        </filterItems>
+        <isOptional>false</isOptional>
+    </lookupFilter>
+    <referenceTo>Mogli_SMS__Gateway__c</referenceTo>
+    <relationshipLabel>Leads</relationshipLabel>
+    <relationshipName>Leads</relationshipName>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <type>Lookup</type>
+</CustomField>

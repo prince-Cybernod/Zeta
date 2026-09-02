@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Mogli_SMS__Batch_Group_ID__c</fullName>
+    <deprecated>false</deprecated>
+    <description>If the SMS record is part of a batch transaction this number will contain the Batch Group Id that it belongs with</description>
+    <externalId>true</externalId>
+    <label>Batch Group ID</label>
+    <length>40</length>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

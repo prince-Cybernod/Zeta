@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Queue xmlns="http://soap.sforce.com/2006/04/metadata">
+    <doesIncludeBosses>false</doesIncludeBosses>
+    <doesSendEmailToMembers>false</doesSendEmailToMembers>
+    <name>Outreach and Enrollment Queue</name>
+    <queueMembers>
+        <users>
+            <user>aashmeeta.melendez@zetaschools.org</user>
+            <user>andres.martinez@zetaschools.org</user>
+            <user>angel.chang@zetaschools.org</user>
+            <user>charlene.matos@zetaschools.org</user>
+            <user>ileiny.then@zetaschools.org</user>
+            <user>isabelle.cui@zetaschools.org</user>
+            <user>jisu.kim@zetaschools.org</user>
+            <user>lali.uceta@zetaschools.org</user>
+            <user>lindsey.remuzgo@zetaschools.org</user>
+            <user>madeline.toribio@zetaschools.org</user>
+            <user>marcia.bueno@zetaschools.org</user>
+            <user>rongfei.jiang@zetaschools.org</user>
+            <user>victoria.mariscal@zetaconsultant.org</user>
+        </users>
+    </queueMembers>
+    <queueSobject>
+        <sobjectType>Case</sobjectType>
+    </queueSobject>
+    <queueSobject>
+        <sobjectType>Lead</sobjectType>
+    </queueSobject>
+</Queue>

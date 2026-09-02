@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Mogli_SMS__Full_Access_User_cant_edit_system_fields</fullName>
+    <active>false</active>
+    <errorConditionFormula>AND(
+   OR( ISCHANGED( Name ), ISCHANGED(  RecordTypeId  ), ISCHANGED(  OwnerId  ) ),
+ $Permission.Mogli_SMS__Mogli_SMS_User_Full_Access 
+)</errorConditionFormula>
+    <errorMessage>Users with Mogli Full Access Permissions cannot edit the Name, Owner or Record Type of Gateways</errorMessage>
+</ValidationRule>

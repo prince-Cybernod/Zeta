@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>How_Did_You_Hear_About_Us__c</fullName>
+    <label>How Did You Hear About Us</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <type>MultiselectPicklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Flyer/Poster in my community or home</fullName>
+                <default>false</default>
+                <label>Flyer/Poster in my community or home</label>
+            </value>
+            <value>
+                <fullName>Through mail (e.g. postcards)</fullName>
+                <default>false</default>
+                <label>Through mail (e.g. postcards)</label>
+            </value>
+            <value>
+                <fullName>Zeta team in the community or at current school</fullName>
+                <default>false</default>
+                <label>Zeta team in the community or at current school</label>
+            </value>
+            <value>
+                <fullName>Word of mouth by friends, family, colleagues who are affiliated with Zeta</fullName>
+                <default>false</default>
+                <label>Word of mouth by friends, family, colleagues who are affiliated with Zeta</label>
+            </value>
+            <value>
+                <fullName>Word of mouth by friends, family, colleagues who are NOT affiliated with Zeta</fullName>
+                <default>false</default>
+                <label>Word of mouth by friends, family, colleagues who are NOT affiliated with Zeta</label>
+            </value>
+            <value>
+                <fullName>Someone from my child&apos;s current school</fullName>
+                <default>false</default>
+                <label>Someone from my child&apos;s current school</label>
+            </value>
+            <value>
+                <fullName>Newspaper ad</fullName>
+                <default>false</default>
+                <label>Newspaper ad</label>
+            </value>
+            <value>
+                <fullName>Online ad</fullName>
+                <default>false</default>
+                <label>Online ad</label>
+            </value>
+            <value>
+                <fullName>Social media presence</fullName>
+                <default>false</default>
+                <label>Social media presence</label>
+            </value>
+            <value>
+                <fullName>Bus station ad</fullName>
+                <default>false</default>
+                <label>Bus station ad</label>
+            </value>
+            <value>
+                <fullName>Train station ad</fullName>
+                <default>false</default>
+                <label>Train station ad</label>
+            </value>
+            <value>
+                <fullName>Other</fullName>
+                <default>false</default>
+                <label>Other</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+    <visibleLines>4</visibleLines>
+</CustomField>

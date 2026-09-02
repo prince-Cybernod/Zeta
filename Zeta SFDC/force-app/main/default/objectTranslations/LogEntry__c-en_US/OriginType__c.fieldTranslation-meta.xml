@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <label><!-- Origin Type --></label>
+    <name>OriginType__c</name>
+    <picklistValues>
+        <masterLabel>Apex</masterLabel>
+        <translation><!-- Apex --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Component</masterLabel>
+        <translation><!-- Component --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Flow</masterLabel>
+        <translation><!-- Flow --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>OmniStudio</masterLabel>
+        <translation><!-- OmniStudio --></translation>
+    </picklistValues>
+</CustomFieldTranslation>

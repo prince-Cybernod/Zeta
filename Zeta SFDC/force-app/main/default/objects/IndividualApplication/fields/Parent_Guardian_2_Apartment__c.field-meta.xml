@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Parent_Guardian_2_Apartment__c</fullName>
+    <description>Apartment / unit identifier for Guardian 2&apos;s denormalized address. Bound to the `subpremise` slot of `lightning-input-address`.</description>
+    <externalId>false</externalId>
+    <inlineHelpText>Apartment or unit number (e.g., Apt 4B). Optional.</inlineHelpText>
+    <label>Parent/Guardian 2 Apartment</label>
+    <length>80</length>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

@@ -1,0 +1,369 @@
+<template>
+  <template lwc:if={showIntake}>
+    <div class="intake-page">
+      <div class="intake-header">
+        <h1>Submit an Application</h1>
+        <p>Start an application on a family's behalf.</p>
+      </div>
+
+      <template lwc:if={hasError}>
+        <div class="slds-m-bottom_medium">
+          <lightning-card>
+            <div
+              class="slds-p-around_medium slds-text-color_error"
+              role="alert"
+            >
+              {errorMessage}
+            </div>
+          </lightning-card>
+        </div>
+      </template>
+
+      <lightning-card title="1. Guardian">
+        <div class="slds-p-horizontal_medium slds-p-bottom_medium">
+          <lightning-radio-group
+            name="guardianMode"
+            label="Is this an existing guardian?"
+            options={guardianModeOptions}
+            value={guardianMode}
+            type="button"
+            onchange={handleGuardianMode}
+          ></lightning-radio-group>
+
+          <template lwc:if={hasGuardian}>
+            <div class="selected-guardian slds-m-top_medium">
+              <lightning-icon
+                icon-name="utility:check"
+                size="x-small"
+                variant="success"
+              ></lightning-icon>
+              <span class="slds-m-left_x-small">{selectedGuardian.name}</span>
+              <span class="slds-text-body_small slds-m-left_small"
+                >{selectedGuardian.email}</span
+              >
+            </div>
+          </template>
+
+          <template lwc:else>
+            <template lwc:if={isExistingGuardian}>
+              <lightning-input
+                class="slds-m-top_medium"
+                type="search"
+                label="Find the guardian"
+                placeholder="Name, email or phone"
+                value={guardianSearchTerm}
+                onchange={handleGuardianSearch}
+              ></lightning-input>
+              <template lwc:if={hasGuardianResults}>
+                <ul class="result-list slds-m-top_small">
+                  <template for:each={guardianResults} for:item="guardian">
+                    <li key={guardian.id}>
+                      <button
+                        type="button"
+                        class="result-row"
+                        data-id={guardian.id}
+                        onclick={handleGuardianPick}
+                      >
+                        <span class="result-name">{guardian.name}</span>
+                        <span class="result-meta"
+                          >{guardian.email} {guardian.phone}</span
+                        >
+                      </button>
+                    </li>
+                  </template>
+                </ul>
+                <template lwc:if={resultsWereCapped}>
+                  <p class="result-cap slds-m-top_x-small" role="status">
+                    {resultCapText}
+                  </p>
+                </template>
+              </template>
+            </template>
+
+            <template lwc:if={isNewGuardian}>
+              <div
+                class="slds-grid slds-wrap slds-gutters_small slds-m-top_medium"
+              >
+                <div class="slds-col slds-size_1-of-2">
+                  <lightning-input
+                    class="new-guardian-field"
+                    name="firstName"
+                    label="First Name"
+                    onchange={handleNewGuardianChange}
+                  ></lightning-input>
+                </div>
+                <div class="slds-col slds-size_1-of-2">
+                  <lightning-input
+                    class="new-guardian-field"
+                    name="lastName"
+                    label="Last Name"
+                    required
+                    onchange={handleNewGuardianChange}
+                  ></lightning-input>
+                </div>
+                <div class="slds-col slds-size_1-of-2">
+                  <lightning-input
+                    class="new-guardian-field"
+                    name="email"
+                    type="email"
+                    label="Email"
+                    required
+                    onchange={handleNewGuardianChange}
+                    onblur={handleDuplicateCheck}
+                  ></lightning-input>
+                </div>
+                <div class="slds-col slds-size_1-of-2">
+                  <lightning-input
+                    class="new-guardian-field"
+                    name="phone"
+                    type="tel"
+                    label="Phone"
+                    required
+                    onchange={handleNewGuardianChange}
+                    onblur={handleDuplicateCheck}
+                  ></lightning-input>
+                </div>
+                <div class="slds-col slds-size_1-of-2">
+                  <lightning-combobox
+                    class="new-guardian-field"
+                    name="languagePreference"
+                    label="Preferred Language"
+                    required
+                    placeholder="Select an option"
+                    value={newGuardian.languagePreference}
+                    options={languageOptions}
+                    onchange={handleNewGuardianChange}
+                  ></lightning-combobox>
+                </div>
+                <div class="slds-col slds-size_1-of-1">
+                  <lightning-input-address
+                    show-address-lookup
+                    address-label="Address"
+                    street-label="Street"
+                    city-label="City"
+                    province-label="State"
+                    postal-code-label="ZIP"
+                    country-label="Country"
+                    address-lookup-placeholder="Search address"
+                    street={newGuardian.street}
+                    city={newGuardian.city}
+                    province={newGuardian.state}
+                    postal-code={newGuardian.zip}
+                    country="US"
+                    onchange={handleAddressChange}
+                  ></lightning-input-address>
+                </div>
+              </div>
+
+              <template lwc:if={hasDuplicateWarnings}>
+                <div class="dup-warning slds-m-top_small" role="status">
+                  {duplicateWarningText}
+                </div>
+              </template>
+
+              <div class="form-actions">
+                <lightning-button
+                  variant="brand-outline"
+                  label="Create Guardian"
+                  disabled={isBusy}
+                  onclick={handleCreateGuardian}
+                ></lightning-button>
+              </div>
+            </template>
+          </template>
+        </div>
+      </lightning-card>
+
+      <lightning-card
+        title="2. Student &amp; Timeline"
+        class="slds-m-top_medium"
+      >
+        <div class="slds-p-horizontal_medium slds-p-bottom_medium">
+          <template lwc:if={hasGuardian}>
+            <template lwc:if={hasStudents}>
+              <div
+                class="tile-grid"
+                role="radiogroup"
+                aria-label="Select the student"
+              >
+                <template for:each={studentTiles} for:item="student">
+                  <div
+                    key={student.id}
+                    class={student.tileClass}
+                    data-id={student.id}
+                    onclick={handleStudentSelect}
+                    onkeydown={handleTileKeydown}
+                    role="radio"
+                    aria-checked={student.ariaChecked}
+                    tabindex="0"
+                  >
+                    <div class="tile-check" aria-hidden="true">
+                      <template lwc:if={student.isSelected}>
+                        <svg viewBox="0 0 24 24" width="20" height="20">
+                          <path
+                            d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"
+                            fill="currentColor"
+                          />
+                        </svg>
+                      </template>
+                    </div>
+                    <p class="tile-name">{student.displayName}</p>
+                    <template lwc:if={student.birthdateLabel}>
+                      <p class="tile-detail">{student.birthdateLabel}</p>
+                    </template>
+                  </div>
+                </template>
+
+                <template lwc:if={showAddStudentTile}>
+                  <div
+                    class="tile tile--add"
+                    onclick={handleAddStudent}
+                    onkeydown={handleAddKeydown}
+                    role="button"
+                    tabindex="0"
+                  >
+                    <div class="add-icon" aria-hidden="true">
+                      <svg viewBox="0 0 24 24" width="28" height="28">
+                        <path
+                          d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"
+                          fill="currentColor"
+                        />
+                      </svg>
+                    </div>
+                    <p class="tile-name">Add another student</p>
+                  </div>
+                </template>
+              </div>
+            </template>
+
+            <template lwc:if={showStudentForm}>
+              <div class="add-form slds-m-top_medium">
+                <div class="slds-grid slds-wrap slds-gutters_small">
+                  <div class="slds-col slds-size_1-of-2">
+                    <lightning-input
+                      class="new-student-field"
+                      name="firstName"
+                      label="Student First Name"
+                      required
+                      value={newStudent.firstName}
+                      onchange={handleNewStudentChange}
+                    ></lightning-input>
+                  </div>
+                  <div class="slds-col slds-size_1-of-2">
+                    <lightning-input
+                      class="new-student-field"
+                      name="lastName"
+                      label="Student Last Name"
+                      required
+                      value={newStudent.lastName}
+                      onchange={handleNewStudentChange}
+                    ></lightning-input>
+                  </div>
+                  <div class="slds-col slds-size_1-of-2">
+                    <lightning-input
+                      class="new-student-field"
+                      name="birthdate"
+                      type="date"
+                      label="Date of Birth"
+                      required
+                      value={newStudent.birthdate}
+                      onchange={handleNewStudentChange}
+                    ></lightning-input>
+                  </div>
+                  <div class="slds-col slds-size_1-of-2">
+                    <lightning-combobox
+                      class="new-student-field"
+                      name="gender"
+                      label="Gender"
+                      required
+                      placeholder="Select an option"
+                      value={newStudent.gender}
+                      options={genderOptions}
+                      onchange={handleNewStudentChange}
+                    ></lightning-combobox>
+                  </div>
+                </div>
+                <div class="form-actions">
+                  <template lwc:if={showCancelStudent}>
+                    <lightning-button
+                      variant="neutral"
+                      label="Cancel"
+                      onclick={handleCancelStudent}
+                    ></lightning-button>
+                  </template>
+                  <lightning-button
+                    variant="brand-outline"
+                    label="Add Student"
+                    disabled={isBusy}
+                    onclick={handleCreateStudent}
+                  ></lightning-button>
+                </div>
+              </div>
+            </template>
+
+            <lightning-combobox
+              class="slds-m-top_medium"
+              label="Application Timeline"
+              required
+              placeholder="Select an option"
+              options={timelineOptions}
+              value={timelineId}
+              onchange={handleTimelineChange}
+            ></lightning-combobox>
+          </template>
+
+          <template lwc:else>
+            <p class="slds-text-body_small">
+              Choose or create a guardian first.
+            </p>
+          </template>
+        </div>
+      </lightning-card>
+
+      <lightning-card title="3. Lead Information" class="slds-m-top_medium">
+        <div class="slds-p-horizontal_medium slds-p-bottom_medium">
+          <p class="lead-summary">{leadInfoSummary}</p>
+          <div class="slds-grid slds-wrap slds-gutters_small">
+            <div class="slds-col slds-size_1-of-2">
+              <lightning-combobox
+                label="How did we solicit this application?"
+                required
+                placeholder="Select an option"
+                options={leadSourceOptions}
+                value={leadSource}
+                onchange={handleLeadSourceChange}
+              ></lightning-combobox>
+            </div>
+            <div class="slds-col slds-size_1-of-2">
+              <lightning-combobox
+                label="How did the family provide the information?"
+                placeholder="Select an option"
+                options={appInfoSourceOptions}
+                value={appInfoSource}
+                onchange={handleAppInfoSourceChange}
+              ></lightning-combobox>
+            </div>
+          </div>
+        </div>
+      </lightning-card>
+
+      <div class="intake-actions">
+        <lightning-button
+          variant="brand"
+          label="Start Application"
+          disabled={canStartDisabled}
+          onclick={handleStart}
+        ></lightning-button>
+      </div>
+    </div>
+  </template>
+
+  <template lwc:else>
+    <div class="on-behalf-banner" role="status">{onBehalfOfText}</div>
+    <c-zeta-application
+      record-id={applicationId}
+      static-header={hostSuppliesChrome}
+      onreturntodashboard={handleReturnToIntake}
+    ></c-zeta-application>
+  </template>
+</template>

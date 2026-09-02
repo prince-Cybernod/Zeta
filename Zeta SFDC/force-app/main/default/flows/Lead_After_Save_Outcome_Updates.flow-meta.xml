@@ -1,0 +1,750 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>67.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <assignments>
+        <description>This is for testing purposes; to validate the formula</description>
+        <name>Assign_fx_ChangedOutcomeValue_to_var_txt_Outcome</name>
+        <label>Assign fx_ChangedOutcomeValue to var_txt_Outcome</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <assignmentItems>
+            <assignToReference>var_txt_Outcome</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>fx_ChangedOutcomeValue</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Outcome</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <name>Assign_High_Priority</name>
+        <label>Assign High Priority</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <assignmentItems>
+            <assignToReference>var_rec_Lead.Lead_Priority__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <stringValue>High</stringValue>
+            </value>
+        </assignmentItems>
+        <connector>
+            <isGoTo>true</isGoTo>
+            <targetReference>Update_Lead</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <name>Assign_Lead_record_variable</name>
+        <label>Assign Lead record variable</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <assignmentItems>
+            <assignToReference>var_rec_Lead</assignToReference>
+            <operator>Assign</operator>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>var_rec_Lead.Id</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>$Record.Id</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Assign_fx_ChangedOutcomeValue_to_var_txt_Outcome</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <name>Assign_Medium_Priority</name>
+        <label>Assign Medium Priority</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <assignmentItems>
+            <assignToReference>var_rec_Lead.Lead_Priority__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <stringValue>Medium</stringValue>
+            </value>
+        </assignmentItems>
+        <connector>
+            <isGoTo>true</isGoTo>
+            <targetReference>Update_Lead</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <name>Assign_Open_Working_Status</name>
+        <label>Assign &apos;Open - Working&apos; Status</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <assignmentItems>
+            <assignToReference>var_rec_Lead.Status</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <stringValue>Open – Working</stringValue>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Potential_Age_Restriction</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <name>Closed_Duplicate_Archived_Status</name>
+        <label>&apos;Closed – Duplicate, Archived&apos; Status</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <assignmentItems>
+            <assignToReference>var_rec_Lead.Status</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <stringValue>Closed – Duplicate, Archived</stringValue>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>var_rec_Lead.Reason_Not_Converted__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>fx_Duplicate_ReasonNotConverted</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <isGoTo>true</isGoTo>
+            <targetReference>Update_Lead</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <name>Closed_Not_Converted_Archived_Status</name>
+        <label>&apos;Closed – Not Converted, Archived&apos; Status</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <assignmentItems>
+            <assignToReference>var_rec_Lead.Status</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <stringValue>Closed – Not Converted, Archived</stringValue>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>var_rec_Lead.Reason_Not_Converted__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <stringValue>Outside NYC/Yonkers</stringValue>
+            </value>
+        </assignmentItems>
+        <connector>
+            <isGoTo>true</isGoTo>
+            <targetReference>Update_Lead</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <name>Closed_Not_Converted_Archived_Status_Priority</name>
+        <label>&apos;Closed – Not Converted, Archived&apos; Status + Priority</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <assignmentItems>
+            <assignToReference>var_rec_Lead.Status</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <stringValue>Closed – Not Converted, Archived</stringValue>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>var_rec_Lead.Lead_Priority__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <stringValue>Low</stringValue>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>var_rec_Lead.Reason_Not_Converted__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>var_txt_Outcome</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <isGoTo>true</isGoTo>
+            <targetReference>Update_Lead</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <name>Closed_Not_Converted_Next_Year_Status</name>
+        <label>&apos;Closed – Not Converted, Next Year&apos; Status</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <assignmentItems>
+            <assignToReference>var_rec_Lead.Status</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <stringValue>Closed – Not Converted, Next Year</stringValue>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>var_rec_Lead.Reason_Not_Converted__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <stringValue>Next Year</stringValue>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>var_rec_Lead.Year_Effective__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>fx_next_year_txt</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <isGoTo>true</isGoTo>
+            <targetReference>Update_Lead</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <name>Closed_Not_Converted_Next_Year_Status0</name>
+        <label>&apos;Closed – Not Converted, Next Year&apos; Status</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <assignmentItems>
+            <assignToReference>var_rec_Lead.Status</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <stringValue>Closed – Not Converted, Next Year</stringValue>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>var_rec_Lead.Reason_Not_Converted__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <stringValue>Next Year</stringValue>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>var_rec_Lead.Year_Effective__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>fx_next_year_txt</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Update_Lead</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <name>Copy_2_of_Closed_Not_Converted_Archived_Status</name>
+        <label>&apos;Closed – Not Converted, Archived&apos; Status</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <assignmentItems>
+            <assignToReference>var_rec_Lead.Status</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <stringValue>Closed – Not Converted, Archived</stringValue>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>var_rec_Lead.Reason_Not_Converted__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <stringValue>Student too old</stringValue>
+            </value>
+        </assignmentItems>
+        <connector>
+            <isGoTo>true</isGoTo>
+            <targetReference>Update_Lead</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <name>Copy_3_of_Closed_Not_Converted_Archived_Status</name>
+        <label>&apos;Closed – Not Converted, Archived&apos; Status</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <assignmentItems>
+            <assignToReference>var_rec_Lead.Status</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <stringValue>Closed – Not Converted, Archived</stringValue>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>var_rec_Lead.Reason_Not_Converted__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>var_txt_Outcome</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <isGoTo>true</isGoTo>
+            <targetReference>Update_Lead</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <name>Copy_4_of_Closed_Not_Converted_Archived_Status</name>
+        <label>&apos;Closed – Not Converted, Archived&apos; Status</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <assignmentItems>
+            <assignToReference>var_rec_Lead.Status</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <stringValue>Closed – Not Converted, Archived</stringValue>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>var_rec_Lead.Reason_Not_Converted__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>var_txt_Outcome</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <isGoTo>true</isGoTo>
+            <targetReference>Update_Lead</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <name>Open_Suspected_Duplicate_Status</name>
+        <label>&apos;Open – Suspected Duplicate&apos; Status</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <assignmentItems>
+            <assignToReference>var_rec_Lead.Status</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <stringValue>Open – Suspected Duplicate</stringValue>
+            </value>
+        </assignmentItems>
+        <connector>
+            <isGoTo>true</isGoTo>
+            <targetReference>Update_Lead</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <name>Open_Working_Status_Priority</name>
+        <label>&apos;Open – Working&apos; Status + Priority</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <assignmentItems>
+            <assignToReference>var_rec_Lead.Status</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <stringValue>Open – Working</stringValue>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>var_rec_Lead.Lead_Priority__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <stringValue>Low</stringValue>
+            </value>
+        </assignmentItems>
+        <connector>
+            <isGoTo>true</isGoTo>
+            <targetReference>Update_Lead</targetReference>
+        </connector>
+    </assignments>
+    <decisions>
+        <name>Email_Bounce_Status</name>
+        <label>Email Bounce Status</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <defaultConnector>
+            <targetReference>Open_Working_Status_Priority</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>!= Bounced</defaultConnectorLabel>
+        <rules>
+            <name>Bounced</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Email_Bounce_Status__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Bounced</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Closed_Not_Converted_Archived_Status_Priority</targetReference>
+            </connector>
+            <label>Bounced</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>Outcome</name>
+        <label>Outcome</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>TBD_Lead_requires_further_reachout</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>var_txt_Outcome</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>TBD – Lead requires further outreach</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Assign_Open_Working_Status</targetReference>
+            </connector>
+            <label>TBD - Lead requires further reachout</label>
+        </rules>
+        <rules>
+            <name>Unreachable</name>
+            <conditionLogic>or</conditionLogic>
+            <conditions>
+                <leftValueReference>var_txt_Outcome</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Unreachable – Wrong phone number / OOO</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>var_txt_Outcome</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Unreachable – No answer (3+ attempts)</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Email_Bounce_Status</targetReference>
+            </connector>
+            <label>Unreachable</label>
+        </rules>
+        <rules>
+            <name>Suspected_Duplicate</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>var_txt_Outcome</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>TBD – Suspected Duplicate</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Open_Suspected_Duplicate_Status</targetReference>
+            </connector>
+            <label>Suspected Duplicate</label>
+        </rules>
+        <rules>
+            <name>Ineligible_Outside_NYC</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>var_txt_Outcome</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Ineligible – Outside NYC</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Closed_Not_Converted_Archived_Status</targetReference>
+            </connector>
+            <label>Ineligible – Outside NYC</label>
+        </rules>
+        <rules>
+            <name>Ineligible_Too_old</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>var_txt_Outcome</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Ineligible – Too old</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Copy_2_of_Closed_Not_Converted_Archived_Status</targetReference>
+            </connector>
+            <label>Ineligible – Too old</label>
+        </rules>
+        <rules>
+            <name>Ineligible_too_young_for_Pre_K</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>var_txt_Outcome</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Ineligible – Too young for Pre-K</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Closed_Not_Converted_Next_Year_Status</targetReference>
+            </connector>
+            <label>Ineligible - too young for Pre-K</label>
+        </rules>
+        <rules>
+            <name>Reached_not_interested_Location_distance</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>var_txt_Outcome</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Reached, not interested – Location/distance</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Copy_3_of_Closed_Not_Converted_Archived_Status</targetReference>
+            </connector>
+            <label>Reached, not interested – Location/distance</label>
+        </rules>
+        <rules>
+            <name>Reached_not_interested_IEP_service_not_available</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>var_txt_Outcome</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Reached, not interested – IEP/service not available</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Copy_4_of_Closed_Not_Converted_Archived_Status</targetReference>
+            </connector>
+            <label>Reached, not interested – IEP/service not available</label>
+        </rules>
+        <rules>
+            <name>Reached_not_interested_School_schedule</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>var_txt_Outcome</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Reached, not interested – School schedule</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Closed_Not_Converted_Next_Year_Status0</targetReference>
+            </connector>
+            <label>Reached, not interested – School schedule</label>
+        </rules>
+        <rules>
+            <name>Reached_not_interested_No_bussing</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>var_txt_Outcome</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Reached, not interested – No bussing</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Closed_Not_Converted_Next_Year_Status0</targetReference>
+            </connector>
+            <label>Reached, not interested – No bussing</label>
+        </rules>
+        <rules>
+            <name>Reached_not_interested_Do_not_want_to_change_schools</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>var_txt_Outcome</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Reached, not interested – Do not want to change schools</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Closed_Not_Converted_Next_Year_Status0</targetReference>
+            </connector>
+            <label>Reached, not interested – Do not want to change schools</label>
+        </rules>
+        <rules>
+            <name>Reached_not_interested_Other</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>var_txt_Outcome</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Reached, not interested – Other</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Closed_Not_Converted_Next_Year_Status0</targetReference>
+            </connector>
+            <label>Reached, not interested - Other</label>
+        </rules>
+        <rules>
+            <name>Duplicate</name>
+            <conditionLogic>or</conditionLogic>
+            <conditions>
+                <leftValueReference>var_txt_Outcome</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Duplicate – Enrolled Student</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>var_txt_Outcome</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Duplicate – Applied Student</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>var_txt_Outcome</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Duplicate – Active duplicate lead</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Closed_Duplicate_Archived_Status</targetReference>
+            </connector>
+            <label>Duplicate</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>Potential_Age_Restriction</name>
+        <label>Potential Age Restriction</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>True</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Potential_Age_Restriction__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Assign_Medium_Priority</targetReference>
+            </connector>
+            <label>True</label>
+        </rules>
+        <rules>
+            <name>False</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Potential_Age_Restriction__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Assign_High_Priority</targetReference>
+            </connector>
+            <label>False</label>
+        </rules>
+    </decisions>
+    <description>When an Outreach # Outcome field is updated on a Lead record, evaluate and update its Status accordingly.
+
+Created By: Elevation Solutions</description>
+    <environments>Default</environments>
+    <formulas>
+        <description>Outcome of the latest Outreach # Outcome field to be changed (i.e. Outreach 3 Outcome value take priority over Outreach 2 Outcome which takes priority over Outreach 1 Outcome)</description>
+        <name>fx_ChangedOutcomeValue</name>
+        <dataType>String</dataType>
+        <expression>IF(ISCHANGED({!$Record.Outreach_3_Outcome__c}), TEXT({!$Record.Outreach_3_Outcome__c}),
+IF(ISCHANGED({!$Record.Outreach_2_Outcome__c}), TEXT({!$Record.Outreach_2_Outcome__c}),
+IF(ISCHANGED({!$Record.Outreach_1_Outcome__c}), TEXT({!$Record.Outreach_1_Outcome__c}), &apos;&apos;)))</expression>
+    </formulas>
+    <formulas>
+        <description>Returns &apos;Duplicate of enrolled student&apos; or &apos;Duplicate of applied student&apos; depending on the Outcome value.</description>
+        <name>fx_Duplicate_ReasonNotConverted</name>
+        <dataType>String</dataType>
+        <expression>IF(CONTAINS(LOWER({!var_txt_Outcome}), &apos;enrolled&apos;), &apos;Duplicate – Enrolled Student&apos;, IF(CONTAINS(LOWER({!var_txt_Outcome}), &apos;applied&apos;), &apos;Duplicate – Applied Student&apos;, &apos;Duplicate – Active duplicate lead&apos;))</expression>
+    </formulas>
+    <formulas>
+        <name>fx_next_year_txt</name>
+        <dataType>String</dataType>
+        <expression>TEXT(YEAR({!$Flow.CurrentDate})+1)</expression>
+    </formulas>
+    <interviewLabel>Lead {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Lead (After Save) Outcome Updates</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordUpdates>
+        <name>Update_Lead</name>
+        <label>Update Lead</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <inputReference>var_rec_Lead</inputReference>
+    </recordUpdates>
+    <start>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>Assign_Lead_record_variable</targetReference>
+        </connector>
+        <filterLogic>(1 AND 2) OR (3 AND 4) OR (5 AND 6)</filterLogic>
+        <filters>
+            <field>Outreach_1_Outcome__c</field>
+            <operator>IsChanged</operator>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </filters>
+        <filters>
+            <field>Outreach_1_Outcome__c</field>
+            <operator>IsNull</operator>
+            <value>
+                <booleanValue>false</booleanValue>
+            </value>
+        </filters>
+        <filters>
+            <field>Outreach_2_Outcome__c</field>
+            <operator>IsChanged</operator>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </filters>
+        <filters>
+            <field>Outreach_2_Outcome__c</field>
+            <operator>IsNull</operator>
+            <value>
+                <booleanValue>false</booleanValue>
+            </value>
+        </filters>
+        <filters>
+            <field>Outreach_3_Outcome__c</field>
+            <operator>IsChanged</operator>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </filters>
+        <filters>
+            <field>Outreach_3_Outcome__c</field>
+            <operator>IsNull</operator>
+            <value>
+                <booleanValue>false</booleanValue>
+            </value>
+        </filters>
+        <object>Lead</object>
+        <recordTriggerType>Update</recordTriggerType>
+        <triggerType>RecordAfterSave</triggerType>
+    </start>
+    <status>Active</status>
+    <variables>
+        <name>var_rec_Lead</name>
+        <dataType>SObject</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+        <objectType>Lead</objectType>
+    </variables>
+    <variables>
+        <name>var_txt_Outcome</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+    </variables>
+</Flow>

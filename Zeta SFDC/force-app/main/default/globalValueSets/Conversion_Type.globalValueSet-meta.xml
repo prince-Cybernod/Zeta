@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GlobalValueSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customValue>
+        <fullName>Self-Converted (No Team Call)</fullName>
+        <default>false</default>
+        <label>Self-Converted (No Team Call)</label>
+    </customValue>
+    <customValue>
+        <fullName>Team-Assisted Conversion</fullName>
+        <default>false</default>
+        <label>Team-Assisted Conversion</label>
+    </customValue>
+    <masterLabel>Conversion Type</masterLabel>
+    <sorted>false</sorted>
+</GlobalValueSet>

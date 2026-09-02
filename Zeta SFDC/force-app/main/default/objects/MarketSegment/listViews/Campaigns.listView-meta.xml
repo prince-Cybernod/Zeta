@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Campaigns</fullName>
+    <columns>Name</columns>
+    <columns>CreatedDate</columns>
+    <columns>CreatedBy</columns>
+    <columns>LastModifiedDate</columns>
+    <columns>LastPublishedEndDateTime</columns>
+    <columns>SegmentStatus</columns>
+    <columns>LastSegmentMemberCount</columns>
+    <columns>PublishStatus</columns>
+    <columns>DataSpace</columns>
+    <columns>MarketSegmentType</columns>
+    <columns>PublishType</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>Name</field>
+        <operation>contains</operation>
+        <value>Campaign</value>
+    </filters>
+    <label>Campaigns</label>
+</ListView>

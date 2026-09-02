@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ActivationPlatform xmlns="http://soap.sforce.com/2006/04/metadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <activationFlowType>DMO</activationFlowType>
+    <activationPlatformAdditionalMetadata>{
+  &quot;hashMethod&quot; : null,
+  &quot;customerFileSources&quot; : [ ],
+  &quot;activationPlatformEventMetadata&quot; : {
+    &quot;supportedEventTypes&quot; : [ &quot;Standard&quot; ],
+    &quot;showEventSourceAnnotations&quot; : false,
+    &quot;standardEventDetails&quot; : null,
+    &quot;customEventDetails&quot; : {
+      &quot;attributesOverride&quot; : {
+        &quot;required&quot; : [ {
+          &quot;destinationName&quot; : &quot;eventId&quot;,
+          &quot;value&quot; : null
+        }, {
+          &quot;destinationName&quot; : &quot;conversionHappenedAt&quot;,
+          &quot;value&quot; : null
+        }, {
+          &quot;destinationName&quot; : &quot;user_userIds_email&quot;,
+          &quot;value&quot; : null
+        } ],
+        &quot;optional&quot; : [ {
+          &quot;destinationName&quot; : &quot;conversionValue_currencyCode&quot;,
+          &quot;value&quot; : null
+        }, {
+          &quot;destinationName&quot; : &quot;conversionValue_amount&quot;,
+          &quot;value&quot; : null
+        }, {
+          &quot;destinationName&quot; : &quot;user_userIds_linkedInFirstPartyTrackingUuid&quot;,
+          &quot;value&quot; : null
+        }, {
+          &quot;destinationName&quot; : &quot;user_userInfo_firstName&quot;,
+          &quot;value&quot; : null
+        }, {
+          &quot;destinationName&quot; : &quot;user_userInfo_lastName&quot;,
+          &quot;value&quot; : null
+        }, {
+          &quot;destinationName&quot; : &quot;user_userInfo_companyName&quot;,
+          &quot;value&quot; : null
+        }, {
+          &quot;destinationName&quot; : &quot;user_userInfo_title&quot;,
+          &quot;value&quot; : null
+        }, {
+          &quot;destinationName&quot; : &quot;user_userInfo_countryCode&quot;,
+          &quot;value&quot; : null
+        }, {
+          &quot;destinationName&quot; : &quot;user_externalIds&quot;,
+          &quot;value&quot; : null
+        } ],
+        &quot;identifiers&quot; : [ ],
+        &quot;exclude&quot; : [ ],
+        &quot;systemMappingAttributes&quot; : [ ]
+      },
+      &quot;attributeMappingInfo&quot; : [ ]
+    }
+  },
+  &quot;mappingSchemas&quot; : [ ],
+  &quot;customAttributePrefix&quot; : null,
+  &quot;partnerSupportedIds&quot; : [ ],
+  &quot;outputProperties&quot; : null
+}</activationPlatformAdditionalMetadata>
+    <activationPlatformConnectorType>OAUTH</activationPlatformConnectorType>
+    <dataConnector>cdpactvstrgptnr__LinkedIn_Conversions_API1762538826103</dataConnector>
+    <description>Activate customer engagement and CRM Lead event data to LinkedIn&apos;s Conversion API.</description>
+    <enabled>false</enabled>
+    <includeSegmentNames>false</includeSegmentNames>
+    <masterLabel>LinkedIn Conversions API</masterLabel>
+    <outputFormat>JSON</outputFormat>
+    <outputGrouping>PER_ACCOUNT</outputGrouping>
+    <periodicRefreshFrequecy>REFRESH_30</periodicRefreshFrequecy>
+    <platformProcessingType>Streaming</platformProcessingType>
+    <platformType>Advertising</platformType>
+    <refreshFrequency xsi:nil="true"/>
+    <refreshMode>INCREMENTAL</refreshMode>
+</ActivationPlatform>

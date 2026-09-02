@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>65.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <description>Automatically updates the related Student Person Account’s Primary and Secondary Guardian lookups when those fields are changed on an Individual Application record.
+
+Runs only when the Individual Application has a valid Student lookup (Student__c not blank) and when either the Primary or Secondary Guardian lookup fields are updated.
+
+Keeps guardian information on the student record in sync with the latest data from the family’s application process.
+
+Flow Designer: Elevation Solutions</description>
+    <environments>Default</environments>
+    <interviewLabel>Individual Application (After Save): Sync Guardians to Student {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Individual Application (After Save): Sync Guardians to Student</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordUpdates>
+        <description>Updates the related Student Account when the Primary or Secondary Guardian fields change on the Individual Application.</description>
+        <name>Update_Student_Account_with_Guardians</name>
+        <label>Update Student Account with Guardians</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>$Record.AccountId</elementReference>
+            </value>
+        </filters>
+        <inputAssignments>
+            <field>Primary_Guardian__c</field>
+            <value>
+                <elementReference>$Record.Primary_Guardian__c</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Secondary_Guardian__c</field>
+            <value>
+                <elementReference>$Record.Secondary_Guardian__c</elementReference>
+            </value>
+        </inputAssignments>
+        <object>Account</object>
+    </recordUpdates>
+    <start>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>Update_Student_Account_with_Guardians</targetReference>
+        </connector>
+        <filterFormula>AND(
+    NOT(ISBLANK({!$Record.AccountId})),
+    OR(
+        NOT(ISBLANK({!$Record.Primary_Guardian__c})),
+        NOT(ISBLANK({!$Record.Secondary_Guardian__c}))
+    ),
+    OR(
+        ISNEW(),
+        ISCHANGED({!$Record.Primary_Guardian__c}),
+        ISCHANGED({!$Record.Secondary_Guardian__c})
+    )
+)</filterFormula>
+        <object>IndividualApplication</object>
+        <recordTriggerType>CreateAndUpdate</recordTriggerType>
+        <triggerType>RecordAfterSave</triggerType>
+    </start>
+    <status>Obsolete</status>
+    <triggerOrder>1500</triggerOrder>
+</Flow>

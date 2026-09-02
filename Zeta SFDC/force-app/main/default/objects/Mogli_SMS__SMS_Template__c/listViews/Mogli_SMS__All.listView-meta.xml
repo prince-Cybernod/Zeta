@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Mogli_SMS__All</fullName>
+    <columns>NAME</columns>
+    <columns>Mogli_SMS__Name__c</columns>
+    <columns>Mogli_SMS__Text__c</columns>
+    <columns>Mogli_SMS__FormTemplate__c</columns>
+    <columns>Mogli_SMS__private__c</columns>
+    <columns>OWNER.ALIAS</columns>
+    <filterScope>Everything</filterScope>
+    <label>All</label>
+</ListView>

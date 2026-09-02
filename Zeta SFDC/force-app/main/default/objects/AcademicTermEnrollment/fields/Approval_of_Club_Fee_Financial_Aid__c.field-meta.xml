@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Approval_of_Club_Fee_Financial_Aid__c</fullName>
+    <defaultValue>false</defaultValue>
+    <description>Indicates whether financial aid for club fees has been approved, denied, or is pending.</description>
+    <inlineHelpText>Indicates whether financial aid for club fees has been approved, denied, or is pending.</inlineHelpText>
+    <label>Approval of Club Fee Financial Aid</label>
+    <trackHistory>false</trackHistory>
+    <type>Checkbox</type>
+</CustomField>

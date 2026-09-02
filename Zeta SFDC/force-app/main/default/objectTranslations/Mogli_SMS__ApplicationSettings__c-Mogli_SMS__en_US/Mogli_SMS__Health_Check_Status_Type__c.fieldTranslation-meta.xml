@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <label><!-- Health Check Status Type --></label>
+    <name>Mogli_SMS__Health_Check_Status_Type__c</name>
+    <picklistValues>
+        <masterLabel>Error</masterLabel>
+        <translation><!-- Error --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Success</masterLabel>
+        <translation><!-- Success --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Warning</masterLabel>
+        <translation><!-- Warning --></translation>
+    </picklistValues>
+</CustomFieldTranslation>

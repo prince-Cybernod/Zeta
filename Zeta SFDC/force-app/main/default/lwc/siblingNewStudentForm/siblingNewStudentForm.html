@@ -1,0 +1,83 @@
+<template>
+  <div class="sibling-row slds-box slds-m-bottom_small">
+    <div class="slds-grid slds-gutters slds-wrap">
+      <div class="slds-col slds-size_1-of-2 slds-p-bottom_x-small">
+        <lightning-input
+          label="First Name"
+          value={draft.firstName}
+          data-field="firstName"
+          onchange={handleChange}
+          required
+        ></lightning-input>
+      </div>
+      <div class="slds-col slds-size_1-of-2 slds-p-bottom_x-small">
+        <lightning-input
+          label="Last Name"
+          value={draft.lastName}
+          data-field="lastName"
+          onchange={handleChange}
+          required
+        ></lightning-input>
+      </div>
+      <div class="slds-col slds-size_1-of-2 slds-p-bottom_x-small">
+        <lightning-input
+          type="date"
+          label="Date of Birth"
+          value={draft.birthdate}
+          data-field="birthdate"
+          onchange={handleChange}
+          required
+        ></lightning-input>
+      </div>
+      <div class="slds-col slds-size_1-of-2 slds-p-bottom_x-small">
+        <lightning-combobox
+          label="Gender"
+          value={draft.gender}
+          options={genderOptions}
+          data-field="gender"
+          onchange={handleChange}
+        ></lightning-combobox>
+      </div>
+      <div class="slds-col slds-size_1-of-2 slds-p-bottom_x-small">
+        <lightning-combobox
+          label="Current Grade"
+          value={draft.currentGrade}
+          options={gradeOptions}
+          data-field="currentGrade"
+          onchange={handleChange}
+        ></lightning-combobox>
+      </div>
+      <div class="slds-col slds-size_1-of-2 slds-p-bottom_x-small">
+        <lightning-combobox
+          label="Grade Applying To"
+          value={draft.gradeApplyingTo}
+          options={gradeOptions}
+          data-field="gradeApplyingTo"
+          onchange={handleChange}
+          required
+        ></lightning-combobox>
+      </div>
+      <template lwc:if={errorMessage}>
+        <div
+          class="slds-col slds-size_1-of-1 slds-text-color_error slds-p-bottom_x-small"
+        >
+          {errorMessage}
+        </div>
+      </template>
+      <div class="slds-col slds-size_1-of-1 slds-p-bottom_x-small">
+        <lightning-button
+          variant="brand"
+          label="Save"
+          onclick={handleSave}
+          disabled={saveDisabled}
+        ></lightning-button>
+        <lightning-button
+          variant="neutral"
+          label="Cancel"
+          onclick={handleCancel}
+          class="slds-m-left_x-small"
+        ></lightning-button>
+      </div>
+    </div>
+  </div>
+</template>

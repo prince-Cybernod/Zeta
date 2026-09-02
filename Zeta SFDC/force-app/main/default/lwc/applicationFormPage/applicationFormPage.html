@@ -1,0 +1,125 @@
+<template>
+  <!-- Loading State: Skeleton -->
+  <template lwc:if={isLoading}>
+    <div class={containerClass} aria-busy="true" aria-label={ariaLoadingForm}>
+      <div class="skeleton-section">
+        <div class="skeleton-header"></div>
+        <div class="skeleton-grid">
+          <div class="skeleton-field skeleton-field--w80"></div>
+          <div class="skeleton-field"></div>
+          <div class="skeleton-field skeleton-field--w45"></div>
+          <div class="skeleton-field skeleton-field--w80"></div>
+        </div>
+      </div>
+      <div class="skeleton-section">
+        <div class="skeleton-header"></div>
+        <div class="skeleton-grid">
+          <div class="skeleton-field"></div>
+          <div class="skeleton-field skeleton-field--w60"></div>
+        </div>
+      </div>
+      <div class="skeleton-section">
+        <div class="skeleton-header"></div>
+        <div class="skeleton-grid">
+          <div class="skeleton-field skeleton-field--w60"></div>
+          <div class="skeleton-field"></div>
+          <div class="skeleton-field skeleton-field--w80"></div>
+          <div class="skeleton-field skeleton-field--w45"></div>
+        </div>
+      </div>
+    </div>
+  </template>
+
+  <!-- Error State -->
+  <template lwc:if={error}>
+    <div class="slds-notify slds-notify_alert slds-alert_error" role="alert">
+      <span class="slds-assistive-text">error</span>
+      <h2>{error}</h2>
+    </div>
+  </template>
+
+  <!-- Form Content -->
+  <template lwc:if={hasFormData}>
+    <div class={containerClass} onanswerchange={handleAnswerChange}>
+      <template lwc:if={showFormHeader}>
+        <div class="form-header">
+          <h1 class="slds-text-heading_medium">{formStructure.page.label}</h1>
+          <template lwc:if={formStructure.page.description}>
+            <p class="slds-text-body_regular slds-text-color_weak">
+              {formStructure.page.description}
+            </p>
+          </template>
+        </div>
+      </template>
+
+      <!-- Residency Warning -->
+      <template lwc:if={showResidencyWarning}>
+        <div class="submission-warning" role="alert">
+          <svg
+            class="warning-icon"
+            viewBox="0 0 24 24"
+            width="20"
+            height="20"
+            aria-hidden="true"
+          >
+            <path
+              d="M1 21h22L12 2 1 21zm12-3h-2v-2h2v2zm0-4h-2v-4h2v4z"
+              fill="currentColor"
+            />
+          </svg>
+          <p>{residencyWarningMessage}</p>
+        </div>
+      </template>
+
+      <!-- Sections -->
+      <template for:each={sectionsBeforeSlot} for:item="section">
+        <c-application-section
+          key={section.developerName}
+          section={section}
+          answers={answers}
+          record-id={recordId}
+          read-only={readOnly}
+          visibility-map={questionVisibilityMap}
+          visibility-resolved={isVisibilityResolved}
+        ></c-application-section>
+      </template>
+      <template lwc:if={hasSlotContent}>
+        <slot></slot>
+      </template>
+      <template for:each={sectionsAfterSlot} for:item="section">
+        <c-application-section
+          key={section.developerName}
+          section={section}
+          answers={answers}
+          record-id={recordId}
+          read-only={readOnly}
+          visibility-map={questionVisibilityMap}
+          visibility-resolved={isVisibilityResolved}
+        ></c-application-section>
+      </template>
+      <template lwc:if={isVisibilityEvaluating}>
+        <div class="visibility-evaluating" aria-live="polite">
+          <lightning-spinner
+            size="small"
+            alternative-text={ariaUpdatingForm}
+          ></lightning-spinner>
+        </div>
+      </template>
+
+      <!-- Save Button -->
+      <template lwc:if={showSaveButton}>
+        <div class="slds-m-top_medium">
+          <lightning-button
+            variant="brand"
+            label={saveButtonLabel}
+            onclick={handleSave}
+            disabled={isSaving}
+          ></lightning-button>
+          <span class="save-status" aria-live="polite"
+            >{saveStatusMessage}</span
+          >
+        </div>
+      </template>
+    </div>
+  </template>
+</template>

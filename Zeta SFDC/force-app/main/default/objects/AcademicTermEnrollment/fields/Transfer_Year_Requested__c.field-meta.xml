@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Transfer_Year_Requested__c</fullName>
+    <description>Academic year for which the student transfer was requested.</description>
+    <inlineHelpText>Academic year for which the student transfer was requested.</inlineHelpText>
+    <label>Transfer Year Requested</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <type>Picklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>2024/2025</fullName>
+                <default>false</default>
+                <label>2024/2025</label>
+            </value>
+            <value>
+                <fullName>2025/2026</fullName>
+                <default>false</default>
+                <label>2025/2026</label>
+            </value>
+            <value>
+                <fullName>2026/2027</fullName>
+                <default>false</default>
+                <label>2026/2027</label>
+            </value>
+            <value>
+                <fullName>2027/2028</fullName>
+                <default>false</default>
+                <label>2027/2028</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

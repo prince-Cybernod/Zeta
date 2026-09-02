@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<FieldSrcTrgtRelationship xmlns="http://soap.sforce.com/2006/04/metadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <definitionCreationType>Standard</definitionCreationType>
+    <lookupFieldName>ssot__ShoppingCartEngagement__dlm.ssot__rel_1697761177253_end__c</lookupFieldName>
+    <masterLabel>Individual_Id_map_ShoppingCartEngagement_IndividualId_N_1_1645552384413</masterLabel>
+    <owner>DataCloud</owner>
+    <relationshipCardinality>ManyToOne</relationshipCardinality>
+    <sourceFieldName>ssot__ShoppingCartEngagement__dlm.ssot__IndividualId__c</sourceFieldName>
+    <targetEntity xsi:nil="true"/>
+    <targetFieldName>ssot__Individual__dlm.ssot__Id__c</targetFieldName>
+</FieldSrcTrgtRelationship>

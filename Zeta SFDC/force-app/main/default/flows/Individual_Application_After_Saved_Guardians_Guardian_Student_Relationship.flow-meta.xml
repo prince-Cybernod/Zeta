@@ -1,0 +1,247 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>65.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <decisions>
+        <description>Route to Update existing guardian or Create new guardian.</description>
+        <name>Decision_Guardian_1_Match_Found</name>
+        <label>Decision | Guardian 1 | Match Found?</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <defaultConnectorLabel>Not Found</defaultConnectorLabel>
+        <rules>
+            <name>Found</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Get_Guardian_1_Match_Guardian</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <label>Found</label>
+        </rules>
+    </decisions>
+    <description>When an Individual Application is created or its parent/guardian fields change, upsert Guardian Account record(s), stamp the guardian lookups onto the Individual Application, and upsert Guardian↔Student relationship(s).</description>
+    <environments>Default</environments>
+    <formulas>
+        <description>Returns the submitted email, or a guaranteed non-matching string when blank.</description>
+        <name>fxGuardian1_EmailForMatch</name>
+        <dataType>String</dataType>
+        <expression>IF(
+  ISBLANK($Record.Parent_Guardian_1_Email__c),
+  &quot;NO_EMAIL_MATCH_&quot; &amp; $Record.Id,
+  $Record.Parent_Guardian_1_Email__c
+)</expression>
+    </formulas>
+    <formulas>
+        <description>True when Guardian 1 has enough data to attempt an upsert.</description>
+        <name>fxGuardian1_HasIdentifiers</name>
+        <dataType>Boolean</dataType>
+        <expression>OR(
+  NOT(ISBLANK($Record.Parent_Guardian_1_Email__c)),
+  NOT(ISBLANK($Record.Parent_Guardian_1_Phone__c))
+)</expression>
+    </formulas>
+    <formulas>
+        <description>Returns the submitted phone, or a guaranteed non-matching string when blank.</description>
+        <name>fxGuardian1_PhoneForMatch</name>
+        <dataType>String</dataType>
+        <expression>IF(
+  ISBLANK($Record.Parent_Guardian_1_Phone__c),
+  &quot;NO_PHONE_MATCH_&quot; &amp; $Record.Id,
+  $Record.Parent_Guardian_1_Phone__c
+)</expression>
+    </formulas>
+    <formulas>
+        <description>Returns the submitted email, or a guaranteed non-matching string when blank.</description>
+        <name>fxGuardian2_EmailForMatch</name>
+        <dataType>String</dataType>
+        <expression>IF(
+  ISBLANK($Record.Parent_Guardian_2_Email__c),
+  &quot;NO_EMAIL_MATCH_&quot; &amp; $Record.Id,
+  $Record.Parent_Guardian_2_Email__c
+)</expression>
+    </formulas>
+    <formulas>
+        <description>True when Guardian 2 has Email or Phone.</description>
+        <name>fxGuardian2_HasIdentifiers</name>
+        <dataType>Boolean</dataType>
+        <expression>OR(
+  NOT(ISBLANK($Record.Parent_Guardian_2_Email__c)),
+  NOT(ISBLANK($Record.Parent_Guardian_2_Phone__c))
+)</expression>
+    </formulas>
+    <formulas>
+        <description>Returns the submitted phone, or a guaranteed non-matching string when blank.</description>
+        <name>fxGuardian2_PhoneForMatch</name>
+        <dataType>String</dataType>
+        <expression>IF(
+  ISBLANK($Record.Parent_Guardian_2_Phone__c),
+  &quot;NO_PHONE_MATCH_&quot; &amp; $Record.Id,
+  $Record.Parent_Guardian_2_Phone__c
+)</expression>
+    </formulas>
+    <interviewLabel>Individual Application (After Saved) Upsert Guardians + Upsert Guardian-Student Relationship {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Individual Application (After Saved) Guardians + Guardian-Student Relationship</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordLookups>
+        <description>Attempt to find an existing guardian.</description>
+        <name>Get_Guardian_1_Match_Guardian</name>
+        <label>Get | Guardian 1 | Match Guardian</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Decision_Guardian_1_Match_Found</targetReference>
+        </connector>
+        <filterLogic>1 AND 4 AND (2 OR 3)</filterLogic>
+        <filters>
+            <field>LastName</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>$Record.Parent_Guardian_1_Last_Name__c</elementReference>
+            </value>
+        </filters>
+        <filters>
+            <field>Phone</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>fxGuardian1_PhoneForMatch</elementReference>
+            </value>
+        </filters>
+        <filters>
+            <field>PersonEmail</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>fxGuardian1_EmailForMatch</elementReference>
+            </value>
+        </filters>
+        <filters>
+            <field>RecordTypeId</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>Get_Guardian_Record_Type.Id</elementReference>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>Account</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordLookups>
+        <name>Get_Guardian_Record_Type</name>
+        <label>Get Guardian Record Type</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Get_Guardian_1_Match_Guardian</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>SobjectType</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Account</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>DeveloperName</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Guardian</stringValue>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>RecordType</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <start>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>Get_Guardian_Record_Type</targetReference>
+        </connector>
+        <filterFormula>AND(
+  /* 1) Only run if there is any guardian identifying info present */
+  OR(
+    NOT(ISBLANK({!$Record.Parent_Guardian_1_Email__c})),
+    NOT(ISBLANK({!$Record.Parent_Guardian_1_Phone__c})),
+    NOT(ISBLANK({!$Record.Parent_Guardian_1_First_Name__c})),
+    NOT(ISBLANK({!$Record.Parent_Guardian_1_Last_Name__c})),
+
+    NOT(ISBLANK({!$Record.Parent_Guardian_2_Email__c})),
+    NOT(ISBLANK({!$Record.Parent_Guardian_2_Phone__c})),
+    NOT(ISBLANK({!$Record.Parent_Guardian_2_First_Name__c})),
+    NOT(ISBLANK({!$Record.Parent_Guardian_2_Last_Name__c})),
+    NOT(ISBLANK({!$Record.Parent_Guardian_2_Full_Name__c}))
+  ),
+
+  /* 2) Run on create OR when guardian INPUT fields change */
+  OR(
+    ISNEW(),
+
+    ISCHANGED({!$Record.Parent_Guardian_1_Email__c}),
+    ISCHANGED({!$Record.Parent_Guardian_1_Phone__c}),
+    ISCHANGED({!$Record.Parent_Guardian_1_First_Name__c}),
+    ISCHANGED({!$Record.Parent_Guardian_1_Last_Name__c}),
+    ISCHANGED({!$Record.Parent_Guardian_1_Relationship__c}),
+
+    ISCHANGED({!$Record.Parent_Guardian_2_Email__c}),
+    ISCHANGED({!$Record.Parent_Guardian_2_Phone__c}),
+    ISCHANGED({!$Record.Parent_Guardian_2_First_Name__c}),
+    ISCHANGED({!$Record.Parent_Guardian_2_Last_Name__c}),
+    ISCHANGED({!$Record.Parent_Guardian_2_Full_Name__c}),
+    ISCHANGED({!$Record.Parent_Guardian_2_Relationship__c})
+  ),
+
+  /* 3) Guardrail: don&apos;t re-fire when only lookups are stamped */
+  NOT(
+    OR(
+      ISCHANGED({!$Record.Primary_Guardian__c}),
+      ISCHANGED({!$Record.Secondary_Guardian__c})
+    )
+  )
+)</filterFormula>
+        <object>IndividualApplication</object>
+        <recordTriggerType>CreateAndUpdate</recordTriggerType>
+        <triggerType>RecordAfterSave</triggerType>
+    </start>
+    <status>Active</status>
+    <variables>
+        <description>Holds the Guardian 1 Account record to create or update.</description>
+        <name>varGuardian1</name>
+        <dataType>SObject</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+        <objectType>Account</objectType>
+    </variables>
+    <variables>
+        <description>Holds the Guardian 2 Account record to create or update.</description>
+        <name>varGuardian2</name>
+        <dataType>SObject</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+        <objectType>Account</objectType>
+    </variables>
+</Flow>

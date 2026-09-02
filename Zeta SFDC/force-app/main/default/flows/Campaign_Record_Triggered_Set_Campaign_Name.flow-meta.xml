@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>67.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <description>Sets the campaign name for Marketing campaign record types based on Time Period, Asset, Initiative, and Type</description>
+    <environments>Default</environments>
+    <formulas>
+        <name>fxCampaignName</name>
+        <dataType>String</dataType>
+        <expression>LEFT(
+  &quot;MC&quot;&amp;&quot; | &quot;&amp;
+  {!$Record.Time_Period__c}&amp;&quot; | &quot;&amp;
+  {!$Record.Initiative__c}&amp;&quot; | &quot;&amp;
+  TEXT({!$Record.Type})&amp;&quot; | &quot;&amp;
+  {!$Record.Asset__c},
+  40
+)</expression>
+    </formulas>
+    <interviewLabel>Campaign (Record Triggered) Set Campaign Name {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Campaign (Record Triggered) Set Campaign Name</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordUpdates>
+        <name>Set_Campaign_Name</name>
+        <label>Set Campaign Name</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <inputAssignments>
+            <field>Name</field>
+            <value>
+                <elementReference>fxCampaignName</elementReference>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <start>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>Set_Campaign_Name</targetReference>
+        </connector>
+        <filterFormula>AND(
+    {!$Record.RecordType.DeveloperName} = &quot;Marketing&quot;,
+    OR(
+        AND(
+            ISNEW(),
+            OR(
+                NOT(ISBLANK({!$Record.Initiative__c})),
+                NOT(ISBLANK({!$Record.Asset__c})),
+                NOT(ISBLANK({!$Record.Time_Period__c})),
+                NOT(ISBLANK(TEXT({!$Record.Type})))
+            )
+        ),
+        AND(
+            NOT(ISNEW()),
+            OR(
+                ISCHANGED({!$Record.RecordTypeId}),
+                ISCHANGED({!$Record.Initiative__c}),
+                ISCHANGED({!$Record.Asset__c}),
+                ISCHANGED({!$Record.Time_Period__c}),
+                ISCHANGED({!$Record.Type})
+            )
+        )
+    )
+)</filterFormula>
+        <object>Campaign</object>
+        <recordTriggerType>Create</recordTriggerType>
+        <triggerType>RecordBeforeSave</triggerType>
+    </start>
+    <status>Active</status>
+</Flow>

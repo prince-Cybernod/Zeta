@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <label><!-- Database Result Type --></label>
+    <name>DatabaseResultType__c</name>
+    <picklistValues>
+        <masterLabel>Approval.LockResult</masterLabel>
+        <translation><!-- Approval.LockResult --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Approval.ProcessResult</masterLabel>
+        <translation><!-- Approval.ProcessResult --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Approval.UnlockResult</masterLabel>
+        <translation><!-- Approval.UnlockResult --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Database.DeleteResult</masterLabel>
+        <translation><!-- Database.DeleteResult --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Database.EmptyRecycleBinResult</masterLabel>
+        <translation><!-- Database.EmptyRecycleBinResult --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Database.LeadConvertResult</masterLabel>
+        <translation><!-- Database.LeadConvertResult --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Database.MergeResult</masterLabel>
+        <translation><!-- Database.MergeResult --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Database.SaveResult</masterLabel>
+        <translation><!-- Database.SaveResult --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Database.UndeleteResult</masterLabel>
+        <translation><!-- Database.UndeleteResult --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Database.UpsertResult</masterLabel>
+        <translation><!-- Database.UpsertResult --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Database.UpsertResult.Insert</masterLabel>
+        <translation><!-- Database.UpsertResult.Insert --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Database.UpsertResult.Update</masterLabel>
+        <translation><!-- Database.UpsertResult.Update --></translation>
+    </picklistValues>
+</CustomFieldTranslation>

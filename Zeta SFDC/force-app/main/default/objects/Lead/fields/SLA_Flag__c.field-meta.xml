@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>SLA_Flag__c</fullName>
+    <formula>AND(
+    Is_Open_Status__c = TRUE,
+
+    OR(
+        /* No first outreach within 24 hours of record creation */
+        AND(
+            ISBLANK(Outreach_Attempt_1__c),
+            CreatedDate &lt; (NOW() - 1)
+        ),
+
+        /* No second outreach within 48 hours of first outreach */
+        AND(
+            NOT(ISBLANK(Outreach_Attempt_1__c)),
+            ISBLANK(Outreach_Attempt_2__c),
+            Outreach_Attempt_1__c &lt; (NOW() - 2)
+        ),
+
+        /* No third outreach within one week of second outreach */
+        AND(
+            NOT(ISBLANK(Outreach_Attempt_2__c)),
+            ISBLANK(Outreach_Attempt_3__c),
+            Outreach_Attempt_2__c &lt; (NOW() - 7)
+        )
+    )
+)</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <inlineHelpText>ndicates that the constituent is due for their next outreach attempt. This field becomes true when the record is open and one of the following applies:
+No first outreach has been recorded within 24 hours of record creation.
+No second outreach has been recorded within 48 hours of the first outreach.
+No third outreach has been recorded within 7 days of the second outreach.</inlineHelpText>
+    <label>SLA Flag</label>
+    <type>Checkbox</type>
+</CustomField>

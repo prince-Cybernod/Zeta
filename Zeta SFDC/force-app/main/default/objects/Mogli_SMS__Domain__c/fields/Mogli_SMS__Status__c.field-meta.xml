@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Mogli_SMS__Status__c</fullName>
+    <deprecated>false</deprecated>
+    <description>Custom domain&apos;s status.</description>
+    <label>Status</label>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>New</fullName>
+                <default>false</default>
+                <label>New</label>
+            </value>
+            <value>
+                <fullName>Certificate Pending</fullName>
+                <default>false</default>
+                <label>Certificate Pending</label>
+            </value>
+            <value>
+                <fullName>Certificate Issued</fullName>
+                <default>false</default>
+                <label>Certificate Issued</label>
+            </value>
+            <value>
+                <fullName>Register Domain</fullName>
+                <default>false</default>
+                <label>Register Domain</label>
+            </value>
+            <value>
+                <fullName>Domain Pending</fullName>
+                <default>false</default>
+                <label>Domain Pending</label>
+            </value>
+            <value>
+                <fullName>Active</fullName>
+                <default>false</default>
+                <label>Active</label>
+            </value>
+            <value>
+                <fullName>Inactive</fullName>
+                <default>false</default>
+                <label>Inactive</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

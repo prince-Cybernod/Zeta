@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <help><!-- Select how the due date for this task will be calculated --></help>
+    <label><!-- Due Date Type --></label>
+    <name>DueDateType__c</name>
+    <picklistValues>
+        <masterLabel>Assigned Date</masterLabel>
+        <translation><!-- Assigned Date --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Dependent Task Due Date</masterLabel>
+        <translation><!-- Dependent Task Due Date --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Object date field</masterLabel>
+        <translation><!-- Object date field --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>User sets a static date</masterLabel>
+        <translation><!-- User sets a static date --></translation>
+    </picklistValues>
+</CustomFieldTranslation>

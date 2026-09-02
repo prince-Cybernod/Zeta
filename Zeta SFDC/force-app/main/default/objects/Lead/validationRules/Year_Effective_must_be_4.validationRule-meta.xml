@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Year_Effective_must_be_4</fullName>
+    <active>true</active>
+    <description>Year Effective must be exactly 4 numeric digits.</description>
+    <errorConditionFormula>AND(
+  NOT(ISBLANK(Year_Effective__c)),
+  ISCHANGED(Year_Effective__c),
+  NOT(REGEX(Year_Effective__c, &quot;(19|20|21)[0-9]{2}&quot;))
+)</errorConditionFormula>
+    <errorDisplayField>Year_Effective__c</errorDisplayField>
+    <errorMessage>Year Effective must be exactly 4 numeric digits.</errorMessage>
+</ValidationRule>

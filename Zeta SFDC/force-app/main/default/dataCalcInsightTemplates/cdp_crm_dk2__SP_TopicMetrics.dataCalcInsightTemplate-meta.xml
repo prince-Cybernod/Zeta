@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<DataCalcInsightTemplate xmlns="http://soap.sforce.com/2006/04/metadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <builderExpression xsi:nil="true"/>
+    <creationType>Custom</creationType>
+    <dataspaceName>default</dataspaceName>
+    <dataspacePrefix xsi:nil="true"/>
+    <definitionType>CALCULATED_METRIC</definitionType>
+    <description xsi:nil="true"/>
+    <developerName>SP_TopicMetrics</developerName>
+    <expression>SELECT ssot__GeneratedOperationPlan__dlm.ssot__RelatedReferenceId__c AS case__c, 
+    ssot__GeneratedOperationPlan__dlm.ssot__TopicName__c AS topic__c, ssot__GeneratedOperationPlan__dlm.ssot__TopicDescription__c AS topicdesc__c, 
+    ssot__GeneratedOperationPlan__dlm.ssot__Id__c AS planID__c, 
+    SUM( CASE WHEN ssot__GeneratedOperationPlan__dlm.ssot__GeneratedOperationPlanType__c = &apos;SummaryPlan&apos; THEN 1 ELSE 0 END) AS totalplans__c, 
+    SUM( CASE WHEN ssot__GeneratedOperationPlan__dlm.ssot__GeneratedOperationPlanType__c = &apos;ExecutablePlan&apos; THEN 1 ELSE 0 END) AS totalgenerated__c, 
+    SUM( CASE WHEN ssot__GeneratedOperationPlanExecution__dlm.ssot__GeneratedOpPlanExecutionStatus__c = &apos;Completed&apos; THEN 1 ELSE 0 END) completed_plans__c, 
+    COUNT(ssot__GeneratedOperationPlanStep__dlm.ssot__Id__c) AS stepCount__c, 
+    SUM( CASE WHEN ssot__GeneratedOperationPlanStepExecution__dlm.ssot__GeneratedOpPlanStepExecutionStatus__c = &apos;Completed&apos; THEN 1 ELSE 0 END) AS completed_steps__c, 
+    APPROX_COUNT_DISTINCT(FeedbackQry.FeedbackId__c) AS total_feedback__c, 
+    SUM( CASE WHEN FeedbackQry.Feedback__c = &apos;BAD&apos; THEN 1 ELSE 0 END) AS total_negative_feedback__c, 
+    SUM( CASE WHEN FeedbackQry.Feedback__c = &apos;GOOD&apos; THEN 1 ELSE 0 END) AS total_positive_feedback__c, 
+    CASE WHEN (GenAIFeedbackDetail__dlm.appFeedback__c contains &apos;inaccurate&apos;) THEN 1 ELSE 0 END AS reason_inaccurate__c, 
+    CASE WHEN (GenAIFeedbackDetail__dlm.appFeedback__c contains &apos;incomplete&apos;) THEN 1 ELSE 0 END AS reason_incomplete__c, 
+    CASE WHEN (GenAIFeedbackDetail__dlm.appFeedback__c contains &apos;harmful&apos;) THEN 1 ELSE 0 END AS reason_harmful__c, 
+    CASE WHEN (GenAIFeedbackDetail__dlm.appFeedback__c contains &apos;inappropriate&apos;) THEN 1 ELSE 0 END AS reason_inappropriate__c, 
+    CASE WHEN (GenAIFeedbackDetail__dlm.feedbackText__c != &apos;&apos;) THEN 1 ELSE 0 END AS reason_other__c, 
+    CASE WHEN (GenAIFeedbackDetail__dlm.feedbackText__c != &apos;&apos;) THEN GenAIFeedbackDetail__dlm.feedbackText__c ELSE &apos;&apos; END AS reason_other_text__c 
+    FROM ssot__GeneratedOperationPlan__dlm 
+    LEFT OUTER JOIN ssot__GeneratedOperationPlanExecution__dlm ON (ssot__GeneratedOperationPlan__dlm.ssot__Id__c = ssot__GeneratedOperationPlanExecution__dlm.ssot__GeneratedOperationPlanId__c) 
+    LEFT OUTER JOIN ssot__GeneratedOperationPlanStep__dlm ON (ssot__GeneratedOperationPlan__dlm.ssot__Id__c = ssot__GeneratedOperationPlanStep__dlm.ssot__GeneratedOperationPlanId__c) 
+    LEFT OUTER JOIN ssot__GeneratedOperationPlanStepExecution__dlm ON (ssot__GeneratedOperationPlanStep__dlm.ssot__Id__c = ssot__GeneratedOperationPlanStepExecution__dlm.ssot__GeneratedOperationPlanStepId__c) 
+    LEFT OUTER JOIN (SELECT ROW_NUMBER() OVER (PARTITION BY GenAIFeedback__dlm.generationId__c ORDER BY MAX(GenAIFeedback__dlm.timestamp__c) DESC) AS FeedbackRow__c, 
+    GenAIFeedback__dlm.feedback__c as Feedback__c, GenAIFeedback__dlm.feedbackId__c as FeedbackId__c,GenAIFeedback__dlm.generationId__c as GenerationId__c FROM GenAIFeedback__dlm GROUP BY GenAIFeedback__dlm.feedback__c, 
+    GenAIFeedback__dlm.feedbackId__c, GenAIFeedback__dlm.generationId__c) AS FeedbackQry ON(ssot__GeneratedOperationPlan__dlm.ssot__FeedbackIdentifier__c = FeedbackQry.GenerationId__c AND FeedbackQry.FeedbackRow__c = 1) 
+    LEFT OUTER JOIN GenAIFeedbackDetail__dlm ON (FeedbackQry.FeedbackId__c = GenAIFeedbackDetail__dlm.parent__c) 
+    GROUP BY topic__c, topicdesc__c, planID__c, case__c, reason_inaccurate__c, reason_incomplete__c, reason_harmful__c, reason_inappropriate__c, reason_other_text__c, reason_other__c</expression>
+    <masterLabel>SP_TopicMetrics</masterLabel>
+    <scheduleInterval>SYSTEM_MANAGED</scheduleInterval>
+    <templateVersion>1</templateVersion>
+</DataCalcInsightTemplate>

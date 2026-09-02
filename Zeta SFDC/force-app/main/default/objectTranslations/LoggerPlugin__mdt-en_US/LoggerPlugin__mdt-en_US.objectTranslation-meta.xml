@@ -9,4 +9,8 @@
         <value>Logger Plugins</value>
     </caseValues>
     <startsWith>Consonant</startsWith>
+    <validationRules>
+        <errorMessage><!-- Plugins are not supported for this SObject Handler --></errorMessage>
+        <name>Plugins_are_not_supported</name>
+    </validationRules>
 </CustomObjectTranslation>

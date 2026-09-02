@@ -1,0 +1,575 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionCalls>
+        <name>District</name>
+        <label>District</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <actionName>FindDistrictInvocable</actionName>
+        <actionType>apex</actionType>
+        <connector>
+            <targetReference>Active_District</targetReference>
+        </connector>
+        <faultConnector>
+            <isGoTo>true</isGoTo>
+            <targetReference>Active_District</targetReference>
+        </faultConnector>
+        <flowTransactionModel>Automatic</flowTransactionModel>
+        <inputParameters>
+            <name>latitude</name>
+            <value>
+                <elementReference>Geocode.latitude</elementReference>
+                <inputConfiguratorMode>Resource</inputConfiguratorMode>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>longitude</name>
+            <value>
+                <elementReference>Geocode.longitude</elementReference>
+                <inputConfiguratorMode>Resource</inputConfiguratorMode>
+            </value>
+        </inputParameters>
+        <nameSegment>FindDistrictInvocable</nameSegment>
+        <offset>0</offset>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </actionCalls>
+    <actionCalls>
+        <name>Geocode</name>
+        <label>Geocode</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <actionName>GeocodeAddressInvocable</actionName>
+        <actionType>apex</actionType>
+        <connector>
+            <targetReference>District</targetReference>
+        </connector>
+        <flowTransactionModel>Automatic</flowTransactionModel>
+        <inputParameters>
+            <name>address</name>
+            <value>
+                <elementReference>fxAddress</elementReference>
+                <inputConfiguratorMode>Resource</inputConfiguratorMode>
+            </value>
+        </inputParameters>
+        <nameSegment>GeocodeAddressInvocable</nameSegment>
+        <offset>0</offset>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </actionCalls>
+    <apiVersion>66.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <assignments>
+        <name>Assign_varStudentDistrictId</name>
+        <label>Assign varStudentDistrictId</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <assignmentItems>
+            <assignToReference>varStudentDistrictId</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>District.district</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Review_Student_District</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <name>Assign_varStudentDistrictId_NULL</name>
+        <label>Assign varStudentDistrictId NULL</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <assignmentItems>
+            <assignToReference>varStudentDistrictId</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <stringValue>N/A</stringValue>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Review_Student_District</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <description>assigns the zeta staff entered district ID to the individual application</description>
+        <name>Assignment_Student_District_ID</name>
+        <label>Assignment | Student District ID</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <assignmentItems>
+            <assignToReference>varStudentDistrictId</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>Student_District_ID</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Update_Individual_Application_Stamp_District_ID</targetReference>
+        </connector>
+    </assignments>
+    <customProperties>
+        <name>ScreenProgressIndicator</name>
+        <value>
+            <stringValue>{&quot;location&quot;:&quot;top&quot;,&quot;type&quot;:&quot;simple&quot;}</stringValue>
+        </value>
+    </customProperties>
+    <decisions>
+        <name>Active_District</name>
+        <label>Active District</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <defaultConnector>
+            <targetReference>Assign_varStudentDistrictId</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>No_Active_District</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Flow.FaultMessage</leftValueReference>
+                <operator>Contains</operator>
+                <rightValue>
+                    <stringValue>No active District</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Assign_varStudentDistrictId_NULL</targetReference>
+            </connector>
+            <label>No Active District</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>District_Id_Populated</name>
+        <label>District Id Populated?</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <defaultConnector>
+            <targetReference>Review_Student_District</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>No_not_populated</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Get_Records_Individual_Application_Current_Record.Student_District_Id__c</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Get_Account</targetReference>
+            </connector>
+            <label>No, not populated</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <description>Allows user to cancel and return to main screen flow</description>
+        <name>Set_District_ID_Selected</name>
+        <label>Set District ID Selected?</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <defaultConnectorLabel>cancel</defaultConnectorLabel>
+        <rules>
+            <name>Yes_Set_District_Id</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>setDistrictId.value</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Set District ID</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Assignment_Student_District_ID</targetReference>
+            </connector>
+            <label>Yes, Set District ID</label>
+        </rules>
+    </decisions>
+    <description>Created by: Elevation Solutions
+
+Manual review subflow for Zeta staff to determine the student’s district using the student’s address (Google Maps link) and to apply In-District Priority on selected School Applications for the current Individual Application. Intended to be launched from the Master Eligibility Review screen flow and return control back to that flow on Finish.</description>
+    <environments>Default</environments>
+    <formulas>
+        <name>fx_GoogleMapsCSDUrl</name>
+        <dataType>String</dataType>
+        <expression>&quot;https://www.google.com/maps/d/embed?mid=1ygG3l1c60y44FEjrjHWmJVAefFyOqL0&amp;ehbc=2E312F&amp;ll=40.84058589050526%2C-73.87117008508005&amp;z=13&quot;</expression>
+    </formulas>
+    <formulas>
+        <description>Google Maps search URL built from the student’s mailing address on the Individual Application. Used on the district validation screen as a clickable link.</description>
+        <name>fx_GoogleMapsUrl</name>
+        <dataType>String</dataType>
+        <expression>&quot;https://www.google.com/maps/search/?api=1&amp;query=&quot;
+&amp;
+SUBSTITUTE(
+  {!Get_Records_Individual_Application_Current_Record.Account.PersonMailingStreet},
+  &quot; &quot;,
+  &quot;+&quot;
+)
+&amp; &quot;+&quot;
+&amp;
+SUBSTITUTE(
+  {!Get_Records_Individual_Application_Current_Record.Account.PersonMailingCity},
+  &quot; &quot;,
+  &quot;+&quot;
+)
+&amp; &quot;+&quot;
+&amp;
+SUBSTITUTE(
+  {!Get_Records_Individual_Application_Current_Record.Account.PersonMailingState},
+  &quot; &quot;,
+  &quot;+&quot;
+)
+&amp; &quot;+&quot;
+&amp;
+SUBSTITUTE(
+  {!Get_Records_Individual_Application_Current_Record.Account.PersonMailingPostalCode},
+  &quot; &quot;,
+  &quot;+&quot;
+)</expression>
+    </formulas>
+    <formulas>
+        <name>fxAddress</name>
+        <dataType>String</dataType>
+        <expression>TRIM(
+    BLANKVALUE({!Get_Account.PersonMailingStreet}, &apos;&apos;) &amp;
+    IF(NOT(ISBLANK({!Get_Account.PersonMailingStreet})), &apos;, &apos;, &apos;&apos;) &amp;
+    BLANKVALUE({!Get_Account.PersonMailingCity}, &apos;&apos;) &amp;
+    IF(NOT(ISBLANK({!Get_Account.PersonMailingCity})), &apos;, &apos;, &apos;&apos;) &amp;
+    BLANKVALUE({!Get_Account.PersonMailingState}, &apos;&apos;) &amp;
+    IF(NOT(ISBLANK({!Get_Account.PersonMailingPostalCode})), &apos; &apos;, &apos;&apos;) &amp;
+    BLANKVALUE({!Get_Account.PersonMailingPostalCode}, &apos;&apos;) &amp;
+    IF(NOT(ISBLANK({!Get_Account.PersonMailingCountry})), &apos;, &apos;, &apos;&apos;) &amp;
+    BLANKVALUE({!Get_Account.PersonMailingCountry}, &apos;&apos;)
+)</expression>
+    </formulas>
+    <formulas>
+        <name>fxDistrcitId</name>
+        <dataType>String</dataType>
+        <expression>IF(ISBLANK({!Get_Records_Individual_Application_Current_Record.Student_District_Id__c}), 
+{!varStudentDistrictId}, 
+{!Get_Records_Individual_Application_Current_Record.Student_District_Id__c})</expression>
+    </formulas>
+    <interviewLabel>Validate Priorities and Eligibility (Sub-Screenflow) District Priority {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Validate Priorities and Eligibility (Sub-Screenflow) District Priority</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>Flow</processType>
+    <recordLookups>
+        <name>Get_Account</name>
+        <label>Get Account</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Geocode</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>Get_Records_Individual_Application_Current_Record.AccountId</elementReference>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>Account</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordLookups>
+        <description>Loads the Individual Application context for district review and to query related School Applications.</description>
+        <name>Get_Records_Individual_Application_Current_Record</name>
+        <label>Get Records | Individual Application | Current Record</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>District_Id_Populated</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>in_IndividualApplicationId</elementReference>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>IndividualApplication</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordUpdates>
+        <description>Updates the Individual Application record to reflect the district determination made by Zeta staff.</description>
+        <name>Update_Individual_Application_Stamp_District_ID</name>
+        <label>Update | Individual Application | Stamp District ID</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>in_IndividualApplicationId</elementReference>
+            </value>
+        </filters>
+        <inputAssignments>
+            <field>Student_District_Id__c</field>
+            <value>
+                <elementReference>varStudentDistrictId</elementReference>
+            </value>
+        </inputAssignments>
+        <object>IndividualApplication</object>
+    </recordUpdates>
+    <screens>
+        <name>Review_Student_District</name>
+        <label>Review Student District</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <allowBack>false</allowBack>
+        <allowFinish>true</allowFinish>
+        <allowPause>false</allowPause>
+        <connector>
+            <targetReference>Set_District_ID_Selected</targetReference>
+        </connector>
+        <fields>
+            <name>formattedtext</name>
+            <fieldText>&lt;p style=&quot;text-align: center;&quot;&gt;{!tt_Screen_1_Formatting}&lt;/p&gt;</fieldText>
+            <fieldType>DisplayText</fieldType>
+            <styleProperties>
+                <verticalAlignment>
+                    <stringValue>top</stringValue>
+                </verticalAlignment>
+                <width>
+                    <stringValue>12</stringValue>
+                </width>
+            </styleProperties>
+            <visibilityRule>
+                <conditionLogic>or</conditionLogic>
+                <conditions>
+                    <leftValueReference>varStudentDistrictId</leftValueReference>
+                    <operator>EqualTo</operator>
+                </conditions>
+                <conditions>
+                    <leftValueReference>varStudentDistrictId</leftValueReference>
+                    <operator>EqualTo</operator>
+                    <rightValue>
+                        <stringValue>N/A</stringValue>
+                    </rightValue>
+                </conditions>
+            </visibilityRule>
+        </fields>
+        <fields>
+            <name>District_found</name>
+            <fieldText>&lt;p style=&quot;text-align: center;&quot;&gt;{!tt_Screen_District_Updated}&lt;/p&gt;</fieldText>
+            <fieldType>DisplayText</fieldType>
+            <styleProperties>
+                <verticalAlignment>
+                    <stringValue>top</stringValue>
+                </verticalAlignment>
+                <width>
+                    <stringValue>12</stringValue>
+                </width>
+            </styleProperties>
+            <visibilityRule>
+                <conditionLogic>and</conditionLogic>
+                <conditions>
+                    <leftValueReference>varStudentDistrictId</leftValueReference>
+                    <operator>NotEqualTo</operator>
+                    <rightValue>
+                        <stringValue>N/A</stringValue>
+                    </rightValue>
+                </conditions>
+                <conditions>
+                    <leftValueReference>varStudentDistrictId</leftValueReference>
+                    <operator>NotEqualTo</operator>
+                </conditions>
+            </visibilityRule>
+        </fields>
+        <fields>
+            <name>Student_District_ID</name>
+            <dataType>String</dataType>
+            <defaultValue>
+                <elementReference>fxDistrcitId</elementReference>
+            </defaultValue>
+            <fieldText>Student District ID</fieldText>
+            <fieldType>InputField</fieldType>
+            <inputsOnNextNavToAssocScrn>UseStoredValues</inputsOnNextNavToAssocScrn>
+            <isRequired>true</isRequired>
+            <styleProperties>
+                <styleSettings>
+                    <propertyName>--slds-c-input-color-background</propertyName>
+                    <propertyValue>
+                        <stringValue>#F6F5FB</stringValue>
+                    </propertyValue>
+                </styleSettings>
+                <styleSettings>
+                    <propertyName>--slds-c-input-text-color</propertyName>
+                    <propertyValue>
+                        <stringValue>#4F497A</stringValue>
+                    </propertyValue>
+                </styleSettings>
+                <styleSettings>
+                    <propertyName>--slds-c-input-color-border</propertyName>
+                    <propertyValue>
+                        <stringValue>#4F497A</stringValue>
+                    </propertyValue>
+                </styleSettings>
+                <verticalAlignment>
+                    <stringValue>top</stringValue>
+                </verticalAlignment>
+                <width>
+                    <stringValue>12</stringValue>
+                </width>
+            </styleProperties>
+        </fields>
+        <fields>
+            <name>setDistrictId</name>
+            <extensionName>c:fsc_flowButtonBar</extensionName>
+            <fieldType>ComponentInstance</fieldType>
+            <inputParameters>
+                <name>alignment</name>
+                <value>
+                    <stringValue>center</stringValue>
+                </value>
+            </inputParameters>
+            <inputParameters>
+                <name>orientation</name>
+                <value>
+                    <stringValue>horizontal</stringValue>
+                </value>
+            </inputParameters>
+            <inputParameters>
+                <name>showLines</name>
+                <value>
+                    <stringValue>neither</stringValue>
+                </value>
+            </inputParameters>
+            <inputParameters>
+                <name>actionMode</name>
+                <value>
+                    <stringValue>navigation</stringValue>
+                </value>
+            </inputParameters>
+            <inputParameters>
+                <name>buttons</name>
+                <value>
+                    <stringValue>[{&quot;label&quot;:&quot;Set District ID&quot;,&quot;value&quot;:&quot;Set District ID&quot;,&quot;iconPosition&quot;:&quot;left&quot;,&quot;variant&quot;:&quot;brand&quot;,&quot;index&quot;:0}]</stringValue>
+                </value>
+            </inputParameters>
+            <inputsOnNextNavToAssocScrn>UseStoredValues</inputsOnNextNavToAssocScrn>
+            <isRequired>true</isRequired>
+            <storeOutputAutomatically>true</storeOutputAutomatically>
+            <styleProperties>
+                <verticalAlignment>
+                    <stringValue>top</stringValue>
+                </verticalAlignment>
+                <width>
+                    <stringValue>12</stringValue>
+                </width>
+            </styleProperties>
+        </fields>
+        <nextOrFinishButtonLabel>Cancel</nextOrFinishButtonLabel>
+        <showFooter>true</showFooter>
+        <showHeader>false</showHeader>
+    </screens>
+    <start>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>Get_Records_Individual_Application_Current_Record</targetReference>
+        </connector>
+    </start>
+    <status>Active</status>
+    <textTemplates>
+        <description>Formats the not in district confirmation message for better UI.</description>
+        <name>tt_NotinDistrictConfirmation_Formatting</name>
+        <isViewedAsPlainText>false</isViewedAsPlainText>
+        <text>&lt;div style=&quot;width:100%;text-align:center;&quot;&gt;&lt;div style=&quot;display:inline-block;border:2px solid #4F497A;border-radius:10px;padding:18px;text-align:center;background-color:#F6F5FB;max-width:560px;&quot;&gt;&lt;div style=&quot;font-size:14px;line-height:18px;&quot;&gt;You have selected this student to be &lt;strong&gt;Not in District&lt;/strong&gt;.&lt;/div&gt;&lt;div style=&quot;height:14px;&quot;&gt;&lt;/div&gt;&lt;div style=&quot;font-size:14px;line-height:20px;&quot;&gt;If this is correct, please select &lt;strong&gt;Submit&lt;/strong&gt; to navigate back to the eligibility review process. Otherwise, select &lt;strong&gt;Previous&lt;/strong&gt; to make a different selection.&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;</text>
+    </textTemplates>
+    <textTemplates>
+        <description>used to format the first screen displayed</description>
+        <name>tt_Screen_1_Formatting</name>
+        <isViewedAsPlainText>false</isViewedAsPlainText>
+        <text>&lt;p style=&quot;text-align: center;&quot;&gt;The address below is not in an active District. Please review against the CSD map to confirm or update.&lt;/p&gt;&lt;p style=&quot;text-align: center;&quot;&gt;&lt;strong&gt;{!Get_Records_Individual_Application_Current_Record.Account.PersonMailingStreet}&lt;/strong&gt;&lt;/p&gt;&lt;p style=&quot;text-align: center;&quot;&gt;&lt;strong&gt;{!Get_Records_Individual_Application_Current_Record.Account.PersonMailingCity}, {!Get_Records_Individual_Application_Current_Record.Account.PersonMailingState} {!Get_Records_Individual_Application_Current_Record.Account.PersonMailingPostalCode}&lt;/strong&gt;&lt;/p&gt;&lt;p style=&quot;text-align: center;&quot;&gt;{!ttViewinGoogleMaps}&lt;/p&gt;</text>
+    </textTemplates>
+    <textTemplates>
+        <name>tt_Screen_District_Updated</name>
+        <isViewedAsPlainText>true</isViewedAsPlainText>
+        <text>&lt;div style=&quot;width:100%;border:2px solid #27AE60;border-radius:10px;padding:14px;background-color:#EAF7F0;text-align:center;&quot;&gt;&lt;div style=&quot;font-size:14px;line-height:20px;&quot;&gt;&lt;strong&gt;District Found:&lt;/strong&gt; {!varStudentDistrictId}&lt;/div&gt;&lt;/div&gt;</text>
+    </textTemplates>
+    <textTemplates>
+        <name>ttInDistrictReviewConfirmation_Boxed</name>
+        <isViewedAsPlainText>false</isViewedAsPlainText>
+        <text>&lt;div style=&quot;width:100%;text-align:center;&quot;&gt;&lt;div style=&quot;display:inline-block;border:2px solid #4F497A;border-radius:10px;padding:18px;text-align:center;background-color:#F6F5FB;&quot;&gt;&lt;div style=&quot;font-size:14px;line-height:18px;&quot;&gt;Review the selected &lt;strong&gt;School Application(s)&lt;/strong&gt; below that you have marked for &lt;strong&gt;In District Priority&lt;/strong&gt;.&lt;/div&gt;&lt;div style=&quot;height:14px;&quot;&gt;&lt;/div&gt;&lt;div style=&quot;font-size:14px;line-height:20px;&quot;&gt;If your selections are accurate, select &lt;strong&gt;Submit Updates&lt;/strong&gt;. Otherwise, select &lt;strong&gt;Previous&lt;/strong&gt; to make different selections.&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;</text>
+    </textTemplates>
+    <textTemplates>
+        <name>ttInDistrictSelectionInstruction_Boxed</name>
+        <isViewedAsPlainText>true</isViewedAsPlainText>
+        <text>&lt;div style=&quot;width:100%;text-align:center;&quot;&gt;&lt;div style=&quot;display:inline-block;border:2px solid #4F497A;border-radius:10px;padding:14px 18px;text-align:center;background-color:#F6F5FB;&quot;&gt;&lt;div style=&quot;font-size:14px;line-height:18px;&quot;&gt;Select the School Applications below to mark them as having &lt;strong&gt;In District Priority&lt;/strong&gt;. If you do not need to update any School Applications, select submit.&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;</text>
+    </textTemplates>
+    <textTemplates>
+        <description>Better UI</description>
+        <name>ttViewinGoogleMaps</name>
+        <isViewedAsPlainText>false</isViewedAsPlainText>
+        <text>&lt;div style=&quot;text-align:center;&quot;&gt;&lt;table role=&quot;presentation&quot; cellpadding=&quot;0&quot; cellspacing=&quot;0&quot; border=&quot;0&quot; style=&quot;margin:0 auto;&quot;&gt;&lt;tr&gt;&lt;td style=&quot;background-color:#4F497A;border-radius:6px;border:1px solid #4F497A;&quot;&gt;&lt;a href=&quot;{!fx_GoogleMapsCSDUrl}&quot; target=&quot;_blank&quot; style=&quot;display:block;padding:10px 16px;text-decoration:none !important;&quot;&gt;&lt;span style=&quot;color:#FFFFFF;font-weight:600;font-size:14px;line-height:14px;&quot;&gt;View in Google Maps&lt;/span&gt;&lt;/a&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/div&gt;</text>
+    </textTemplates>
+    <variables>
+        <description>collection of school applications to be updated.</description>
+        <name>colSchoolAppstoUpdate</name>
+        <dataType>SObject</dataType>
+        <isCollection>true</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+        <objectType>AcademicInterest</objectType>
+    </variables>
+    <variables>
+        <description>Record Id of the Individual Application that launched this subflow (passed from the master eligibility screen flow).</description>
+        <name>in_IndividualApplicationId</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>true</isInput>
+        <isOutput>false</isOutput>
+    </variables>
+    <variables>
+        <description>record id to be used for district priority</description>
+        <name>recordId</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>true</isInput>
+        <isOutput>false</isOutput>
+    </variables>
+    <variables>
+        <description>Stores the staff district decision from the button bar for stamping on the Individual Application.</description>
+        <name>varInDistrict</name>
+        <dataType>Boolean</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+        <value>
+            <booleanValue>false</booleanValue>
+        </value>
+    </variables>
+    <variables>
+        <description>District identifier entered by staff; stamped to Individual Application.Student_District_Id__c.</description>
+        <name>varStudentDistrictId</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+    </variables>
+</Flow>

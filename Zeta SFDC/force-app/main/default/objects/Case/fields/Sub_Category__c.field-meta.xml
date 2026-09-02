@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Sub_Category__c</fullName>
+    <description>Provides a more specific classification within the selected Category to support reporting and assignment.</description>
+    <label>Sub Category</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Application</fullName>
+                <default>false</default>
+                <label>Application</label>
+            </value>
+            <value>
+                <fullName>Location and Hours</fullName>
+                <default>false</default>
+                <label>Location and Hours</label>
+            </value>
+            <value>
+                <fullName>Curriculum / Academics</fullName>
+                <default>false</default>
+                <label>Curriculum / Academics</label>
+            </value>
+            <value>
+                <fullName>Specialty Programming</fullName>
+                <default>false</default>
+                <label>Specialty Programming</label>
+            </value>
+            <value>
+                <fullName>Student Information</fullName>
+                <default>false</default>
+                <label>Student Information</label>
+            </value>
+            <value>
+                <fullName>Outreach</fullName>
+                <default>false</default>
+                <label>Outreach</label>
+            </value>
+            <value>
+                <fullName>Values</fullName>
+                <default>false</default>
+                <label>Values</label>
+            </value>
+            <value>
+                <fullName>Other</fullName>
+                <default>false</default>
+                <label>Other</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

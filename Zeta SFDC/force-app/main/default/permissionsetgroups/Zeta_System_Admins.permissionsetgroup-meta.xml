@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PermissionSetGroup xmlns="http://soap.sforce.com/2006/04/metadata">
+    <description>PSG for Zeta System Administrators. Assigned in addition to the standard System Administrator profile.</description>
+    <hasActivationRequired>false</hasActivationRequired>
+    <label>Zeta System Admins</label>
+    <permissionSets>Access_to_Email_Builder</permissionSets>
+    <permissionSets>Access_to_Relationship_Center</permissionSets>
+    <permissionSets>Action_Plans_Admin</permissionSets>
+    <permissionSets>Action_Plans_Creator</permissionSets>
+    <permissionSets>Action_Plans_Import_Export</permissionSets>
+    <permissionSets>Action_Plans_Template_Creator</permissionSets>
+    <permissionSets>Action_Plans_User</permissionSets>
+    <permissionSets>External_Id_Access</permissionSets>
+    <permissionSets>Google_Maps_Geocoding</permissionSets>
+    <permissionSets>Mogli_SMS__Mogli_SMS_Feature_Bulk_SMS</permissionSets>
+    <permissionSets>Mogli_SMS__Mogli_SMS_Feature_Manual_Opt_In_Opt_Out</permissionSets>
+    <permissionSets>Mogli_SMS__Mogli_SMS_Feature_Mogli_Inbox</permissionSets>
+    <permissionSets>Mogli_SMS__Mogli_SMS_Feature_URL</permissionSets>
+    <permissionSets>Mogli_SMS__Mogli_SMS_User_Full_Access</permissionSets>
+    <permissionSets>Zeta_Application_Access</permissionSets>
+    <permissionSets>Zeta_Base_System_Access</permissionSets>
+    <permissionSets>Zeta_Case_Management_Access</permissionSets>
+    <permissionSets>Zeta_Create_Parent_Portal_Tasks</permissionSets>
+    <permissionSets>Zeta_Enrollment_Custom_Object_Access</permissionSets>
+    <permissionSets>Zeta_Enrollment_Custom_Object_Access_Read_Only</permissionSets>
+    <permissionSets>Zeta_Enrollment_Education_Cloud_Access</permissionSets>
+    <permissionSets>Zeta_Enrollment_Education_Cloud_Access_Read_Only</permissionSets>
+    <permissionSets>Zeta_IEP_Access</permissionSets>
+    <permissionSets>Zeta_Lottery_Custom_Object_Access</permissionSets>
+    <permissionSets>Zeta_Lottery_Custom_Object_Access_Read_Only</permissionSets>
+    <permissionSets>Zeta_Lottery_Education_Cloud_Access</permissionSets>
+    <permissionSets>Zeta_Lottery_Education_Cloud_Access_Read_Only</permissionSets>
+    <permissionSets>Zeta_Manage_Lottery_Custom_Object_Access_Read_Write</permissionSets>
+    <permissionSets>Zeta_Manage_Lottery_Education_Cloud_Access</permissionSets>
+    <permissionSets>Zeta_Manage_Schools</permissionSets>
+    <permissionSets>Zeta_Parent_Portal_User_Custom_Permissions</permissionSets>
+    <permissionSets>Zeta_Password_Never_Expires</permissionSets>
+    <permissionSets>Zeta_Rollback_Lottery</permissionSets>
+    <permissionSets>Zeta_Run_Lottery</permissionSets>
+    <permissionSets>Zeta_View_Encrypted_Data</permissionSets>
+    <permissionSets>force__DocumentChecklist</permissionSets>
+    <permissionSets>force__OmniStudioExecution</permissionSets>
+    <permissionSets>force__OmniStudioUser</permissionSets>
+    <status>Updated</status>
+</PermissionSetGroup>

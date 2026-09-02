@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Mogli_SMS__TelnyxMessagingProfileIDExists</fullName>
+    <active>true</active>
+    <description>Checks to see if the Twilio Messaging Service SID field is populated</description>
+    <errorConditionFormula>AND( RecordType.DeveloperName  = &apos;Telnyx&apos;,
+  Mogli_SMS__Sender_Pool__c,
+  ISBLANK(  Mogli_SMS__Messaging_Profile_ID__c  ) )</errorConditionFormula>
+    <errorDisplayField>Mogli_SMS__Messaging_Profile_ID__c</errorDisplayField>
+    <errorMessage>You must enter a Telnyx Messaging Profile ID in order to use Telnyx Messaging Service.</errorMessage>
+</ValidationRule>

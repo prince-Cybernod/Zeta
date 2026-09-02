@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Is_Open_Status__c</fullName>
+    <description>Returns TRUE if the Lead&apos;s Status contains the word &apos;Open&apos;</description>
+    <formula>CONTAINS(LOWER(TEXT( Status) ), &apos;open&apos;)</formula>
+    <inlineHelpText>Returns TRUE if the Lead&apos;s Status contains the word &apos;Open&apos;</inlineHelpText>
+    <label>Is Open Status</label>
+    <type>Checkbox</type>
+</CustomField>

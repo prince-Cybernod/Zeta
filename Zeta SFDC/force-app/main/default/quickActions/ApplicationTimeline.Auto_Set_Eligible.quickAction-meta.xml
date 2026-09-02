@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<QuickAction xmlns="http://soap.sforce.com/2006/04/metadata">
+    <description>used to automatically update individual applications related to the app timeline with a eligible status if they meet reqs</description>
+    <flowDefinition>Application_Timeline_Screenflow_Auto_Set_Eligible</flowDefinition>
+    <label>Auto-Set Eligible</label>
+    <optionsCreateFeedItem>false</optionsCreateFeedItem>
+    <type>Flow</type>
+</QuickAction>

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Mogli_SMS__User_Profile__c</fullName>
+    <deprecated>false</deprecated>
+    <description>The profile of the user that created the record.</description>
+    <externalId>false</externalId>
+    <formula>HYPERLINK(&quot;/&quot; &amp; CreatedBy.ProfileId, CreatedBy.Profile.Name)</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>User Profile</label>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Physical_Expiration_Date__c</fullName>
+    <description>Expiration date of the student’s physical examination documentation.</description>
+    <inlineHelpText>Expiration date of the student’s physical examination documentation.</inlineHelpText>
+    <label>Physical Expiration Date</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <type>Date</type>
+</CustomField>

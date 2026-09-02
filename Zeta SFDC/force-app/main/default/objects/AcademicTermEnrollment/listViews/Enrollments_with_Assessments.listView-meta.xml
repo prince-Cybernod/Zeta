@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Enrollments_with_Assessments</fullName>
+    <columns>Name</columns>
+    <columns>LearnerContact</columns>
+    <columns>AcademicTerm</columns>
+    <columns>Assessment_Recommendation__c</columns>
+    <columns>Assessment_Status__c</columns>
+    <columns>Grade_Applied__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>Assessment_Status__c</field>
+        <operation>notEqual</operation>
+        <value>N/A</value>
+    </filters>
+    <filters>
+        <field>Assessment_Recommendation__c</field>
+        <operation>equals</operation>
+        <value>HoldOver</value>
+    </filters>
+    <filters>
+        <field>Assessment_Status__c</field>
+        <operation>notEqual</operation>
+        <value>Complete</value>
+    </filters>
+    <label>Enrollments with Holdover Status</label>
+</ListView>

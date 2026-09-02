@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Secondary_Guardian__c</fullName>
+    <deleteConstraint>SetNull</deleteConstraint>
+    <description>Lookup to the guardian’s Person Account record serving as the secondary guardian for this student.</description>
+    <label>Secondary Guardian</label>
+    <lookupFilter>
+        <active>true</active>
+        <filterItems>
+            <field>Account.IsPersonAccount</field>
+            <operation>equals</operation>
+            <value>True</value>
+        </filterItems>
+        <filterItems>
+            <field>Account.RecordType.DeveloperName</field>
+            <operation>equals</operation>
+            <value>Guardian</value>
+        </filterItems>
+        <isOptional>false</isOptional>
+    </lookupFilter>
+    <referenceTo>Account</referenceTo>
+    <relationshipLabel>Accounts (Secondary Guardian)</relationshipLabel>
+    <relationshipName>SecondaryGuardianAccounts</relationshipName>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>Lookup</type>
+</CustomField>

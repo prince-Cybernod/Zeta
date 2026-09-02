@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<LightningComponentBundle xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>64.0</apiVersion>
+    <isExposed>true</isExposed>
+    <masterLabel>Application Form Page</masterLabel>
+    <description>Metadata-driven application form page. Loads form structure from CMDT and renders sections with questions dynamically.</description>
+    <targets>
+        <target>lightning__AppPage</target>
+        <target>lightning__RecordPage</target>
+        <target>lightning__Tab</target>
+    </targets>
+    <targetConfigs>
+        <targetConfig targets="lightning__AppPage,lightning__RecordPage">
+            <property default="Application_Details" description="DeveloperName of the Application_Page__mdt record to render." label="Page Developer Name" name="pageDevName" type="String" />
+            <property description="Optional variant filter for form structure." label="Variant" name="variant" type="String" />
+            <property default="false" description="When true, all fields are disabled and the save button is hidden." label="Read Only" name="readOnly" type="Boolean" />
+            <property default="true" description="When true, shows toast messages on save success/error." label="Show Toast" name="showToast" type="Boolean" />
+        </targetConfig>
+    </targetConfigs>
+</LightningComponentBundle>

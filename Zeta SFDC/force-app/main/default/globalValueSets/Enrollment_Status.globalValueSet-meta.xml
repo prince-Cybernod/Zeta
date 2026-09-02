@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GlobalValueSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customValue>
+        <fullName>Pre-Enrollment</fullName>
+        <default>false</default>
+        <label>Pre-Enrollment</label>
+    </customValue>
+    <customValue>
+        <fullName>1. Welcome Phase</fullName>
+        <default>false</default>
+        <label>1. Welcome Phase</label>
+    </customValue>
+    <customValue>
+        <fullName>2. Registration Phase</fullName>
+        <default>false</default>
+        <label>2. Registration Phase</label>
+    </customValue>
+    <customValue>
+        <fullName>3. ATS Phase</fullName>
+        <default>false</default>
+        <label>3. ATS Phase</label>
+    </customValue>
+    <customValue>
+        <fullName>4. School Preparation Phase</fullName>
+        <default>false</default>
+        <label>4. School Preparation Phase</label>
+    </customValue>
+    <customValue>
+        <fullName>5. Finished and on SchoolRunner</fullName>
+        <default>false</default>
+        <label>5. Finished and on SchoolRunner</label>
+    </customValue>
+    <customValue>
+        <fullName>Cancelled</fullName>
+        <default>false</default>
+        <label>Cancelled</label>
+    </customValue>
+    <customValue>
+        <fullName>Declined/Withdrawn</fullName>
+        <default>false</default>
+        <label>Declined/Withdrawn</label>
+    </customValue>
+    <customValue>
+        <fullName>Previously Inactive</fullName>
+        <default>false</default>
+        <label>Previously Inactive</label>
+    </customValue>
+    <customValue>
+        <fullName>Rescinded</fullName>
+        <default>false</default>
+        <label>Rescinded</label>
+    </customValue>
+    <customValue>
+        <fullName>Submitted</fullName>
+        <default>false</default>
+        <label>Submitted</label>
+    </customValue>
+    <customValue>
+        <fullName>Waitlisted</fullName>
+        <default>false</default>
+        <label>Waitlisted</label>
+    </customValue>
+    <customValue>
+        <fullName>Welcome Phase</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>Welcome Phase</label>
+    </customValue>
+    <customValue>
+        <fullName>Finished and on SchoolRunner</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>Finished and on SchoolRunner</label>
+    </customValue>
+    <customValue>
+        <fullName>School Preparation Phase</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>School Preparation Phase</label>
+    </customValue>
+    <customValue>
+        <fullName>ATS Phase</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>ATS Phase</label>
+    </customValue>
+    <customValue>
+        <fullName>Registration Phase</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>Registration Phase</label>
+    </customValue>
+    <description>Global value set for enrollment status</description>
+    <masterLabel>Enrollment Status</masterLabel>
+    <sorted>false</sorted>
+</GlobalValueSet>

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<FieldSrcTrgtRelationship xmlns="http://soap.sforce.com/2006/04/metadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <definitionCreationType>Standard</definitionCreationType>
+    <lookupFieldName>ssot__Case__dlm.ssot__rel_1697761156829_end__c</lookupFieldName>
+    <masterLabel>Case_ParentCaseId_map_Case_Id_N_1_1645552387156</masterLabel>
+    <owner>DataCloud</owner>
+    <relationshipCardinality>ManyToOne</relationshipCardinality>
+    <sourceFieldName>ssot__Case__dlm.ssot__ParentCaseId__c</sourceFieldName>
+    <targetEntity xsi:nil="true"/>
+    <targetFieldName>ssot__Case__dlm.ssot__Id__c</targetFieldName>
+</FieldSrcTrgtRelationship>

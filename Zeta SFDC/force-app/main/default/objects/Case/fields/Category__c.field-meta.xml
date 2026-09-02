@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Category__c</fullName>
+    <description>Identifies the primary type of case or request submitted by a family or staff member. Used to group cases into major operational areas for reporting and routing.</description>
+    <label>Category</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>General</fullName>
+                <default>false</default>
+                <label>General</label>
+            </value>
+            <value>
+                <fullName>Lottery</fullName>
+                <default>false</default>
+                <label>Lottery</label>
+            </value>
+            <value>
+                <fullName>Waitlist</fullName>
+                <default>false</default>
+                <label>Waitlist</label>
+            </value>
+            <value>
+                <fullName>Enrollment</fullName>
+                <default>false</default>
+                <label>Enrollment</label>
+            </value>
+            <value>
+                <fullName>Other</fullName>
+                <default>false</default>
+                <label>Other</label>
+            </value>
+            <value>
+                <fullName>Application</fullName>
+                <default>false</default>
+                <label>Application</label>
+            </value>
+            <value>
+                <fullName>Location and Hours</fullName>
+                <default>false</default>
+                <label>Location and Hours</label>
+            </value>
+            <value>
+                <fullName>Uniforms</fullName>
+                <default>false</default>
+                <label>Uniforms</label>
+            </value>
+            <value>
+                <fullName>Curriculum / Academics</fullName>
+                <default>false</default>
+                <label>Curriculum / Academics</label>
+            </value>
+            <value>
+                <fullName>Specialty Programming</fullName>
+                <default>false</default>
+                <label>Specialty Programming</label>
+            </value>
+            <value>
+                <fullName>After-School</fullName>
+                <default>false</default>
+                <label>After-School</label>
+            </value>
+            <value>
+                <fullName>Special Services</fullName>
+                <default>false</default>
+                <label>Special Services</label>
+            </value>
+            <value>
+                <fullName>Educational Philosophy / Values</fullName>
+                <default>false</default>
+                <label>Educational Philosophy / Values</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

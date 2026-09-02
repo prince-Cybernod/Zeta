@@ -1,0 +1,620 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>65.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <decisions>
+        <description>Route to Update existing guardian or Create new guardian.</description>
+        <name>Decision_Guardian_1_Match_Found</name>
+        <label>Decision | Primary Guardian 1 | Match Found?</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <defaultConnector>
+            <targetReference>Create_Guardian_1_Account</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Not Found</defaultConnectorLabel>
+        <rules>
+            <name>Found</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Get_Guardian_1_Match_Guardian</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Update_Guardian_1_Account</targetReference>
+            </connector>
+            <label>Found</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <description>Route to Update existing guardian or Create new guardian for secondary guardian</description>
+        <name>Decision_Guardian_2_Match_Found</name>
+        <label>Decision | Guardian 2 | Match Found?</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <defaultConnector>
+            <targetReference>Create_Guardian_2_Account</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Not Found</defaultConnectorLabel>
+        <rules>
+            <name>Found_Guardian_2</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Get_Guardian_2_Match_Guardian</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Update_Guardian_2_Account</targetReference>
+            </connector>
+            <label>Found Guardian 2</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <description>Checks if there is a secondary guardian</description>
+        <name>Secondary_Guardian_Information_on_Application</name>
+        <label>Secondary Guardian Information on Application?</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <defaultConnectorLabel>No Secondary Guardian Details</defaultConnectorLabel>
+        <rules>
+            <name>Yes_Secondary_Guardian_Details</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Get_Individual_Application.Parent_Guardian_2_First_Name__c</leftValueReference>
+                <operator>IsBlank</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>Get_Individual_Application.Parent_Guardian_2_Last_Name__c</leftValueReference>
+                <operator>IsBlank</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Get_Guardian_2_Match_Guardian</targetReference>
+            </connector>
+            <label>Yes, Secondary Guardian Details</label>
+        </rules>
+    </decisions>
+    <description>Created by: Elevation Solutions
+
+When a Individual Application is created or updated and data exists in the fields for guardian information - this will look for existing guardians based on criteria and if found, stamps the lookup field on the application. If not found, creates the guardian account and stamps the Application lookup for the guardian fields.</description>
+    <environments>Default</environments>
+    <formulas>
+        <description>Returns the submitted email, or a guaranteed non-matching string when blank.</description>
+        <name>fxGuardian1_EmailForMatch</name>
+        <dataType>String</dataType>
+        <expression>IF(
+  ISBLANK({!Get_Individual_Application.Parent_Guardian_1_Email__c}),
+  &quot;NO_EMAIL_MATCH_&quot; &amp; {!recordId},
+  {!Get_Individual_Application.Parent_Guardian_1_Email__c}
+)</expression>
+    </formulas>
+    <formulas>
+        <description>Returns the submitted phone, or a guaranteed non-matching string when blank.</description>
+        <name>fxGuardian1_PhoneForMatch</name>
+        <dataType>String</dataType>
+        <expression>IF(
+  ISBLANK({!Get_Individual_Application.Parent_Guardian_1_Phone__c}),
+  &quot;NO_PHONE_MATCH_&quot; &amp; {!recordId},
+  {!Get_Individual_Application.Parent_Guardian_1_Phone__c}
+)</expression>
+    </formulas>
+    <formulas>
+        <description>Returns the submitted email, or a guaranteed non-matching string when blank.</description>
+        <name>fxGuardian2_EmailForMatch</name>
+        <dataType>String</dataType>
+        <expression>IF(
+  ISBLANK({!Get_Individual_Application.Parent_Guardian_2_Email__c}),
+  &quot;NO_EMAIL_MATCH_&quot; &amp; {!recordId},
+  {!Get_Individual_Application.Parent_Guardian_2_Email__c}
+)</expression>
+    </formulas>
+    <formulas>
+        <description>Returns the submitted phone, or a guaranteed non-matching string when blank.</description>
+        <name>fxGuardian2_PhoneForMatch</name>
+        <dataType>String</dataType>
+        <expression>IF(
+  ISBLANK({!Get_Individual_Application.Parent_Guardian_2_Phone__c}),
+  &quot;NO_PHONE_MATCH_&quot; &amp; {!recordId},
+  {!Get_Individual_Application.Parent_Guardian_2_Phone__c}
+)</expression>
+    </formulas>
+    <formulas>
+        <name>fxPrimaryGuardianPersonContactId</name>
+        <dataType>String</dataType>
+        <expression>IF(ISBLANK({!Get_Guardian_1_Match_Guardian.Id}), {!Create_Guardian_1_Account.PersonContactId}, {!Get_Guardian_1_Match_Guardian.PersonContactId})</expression>
+    </formulas>
+    <formulas>
+        <name>fxSecondaryGuardian_PersonContactId</name>
+        <dataType>String</dataType>
+        <expression>IF(
+  NOT(ISBLANK({!Get_Guardian_2_Match_Guardian.Id})),
+  {!Get_Guardian_2_Match_Guardian.PersonContactId},
+  {!Create_Guardian_2_Account.PersonContactId}
+)</expression>
+    </formulas>
+    <interviewLabel>Individual Application (After Save): Upsert Guardians on Application {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Individual Application (After Save): Upsert Guardians on Application</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordCreates>
+        <description>Creates a primary guardian account if one was not found</description>
+        <name>Create_Guardian_1_Account</name>
+        <label>Create | Guardian 1 | Account</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>Update_App_Stamp_Primary_Guardian_Created</targetReference>
+        </connector>
+        <inputAssignments>
+            <field>FirstName</field>
+            <value>
+                <elementReference>Get_Individual_Application.Parent_Guardian_1_First_Name__c</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>LastName</field>
+            <value>
+                <elementReference>Get_Individual_Application.Parent_Guardian_1_Last_Name__c</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>PersonEmail</field>
+            <value>
+                <elementReference>Get_Individual_Application.Parent_Guardian_1_Email__c</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Phone</field>
+            <value>
+                <elementReference>Get_Individual_Application.Parent_Guardian_1_Phone__c</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>RecordTypeId</field>
+            <value>
+                <elementReference>Get_Guardian_Record_Type.Id</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>SchoolMint_Guardian_Id__pc</field>
+            <value>
+                <elementReference>Get_Individual_Application.SchoolMint_Applicant_Id__c</elementReference>
+            </value>
+        </inputAssignments>
+        <object>Account</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordCreates>
+    <recordCreates>
+        <description>Creates a secondary guardian account if one was not found</description>
+        <name>Create_Guardian_2_Account</name>
+        <label>Create | Guardian 2 | Account</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>Update_App_Stamp_Secondary_Guardian_Created</targetReference>
+        </connector>
+        <inputAssignments>
+            <field>FirstName</field>
+            <value>
+                <elementReference>Get_Individual_Application.Parent_Guardian_2_First_Name__c</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>LastName</field>
+            <value>
+                <elementReference>Get_Individual_Application.Parent_Guardian_2_Last_Name__c</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>PersonEmail</field>
+            <value>
+                <elementReference>Get_Individual_Application.Parent_Guardian_2_Email__c</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Phone</field>
+            <value>
+                <elementReference>Get_Individual_Application.Parent_Guardian_2_Phone__c</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>RecordTypeId</field>
+            <value>
+                <elementReference>Get_Guardian_Record_Type.Id</elementReference>
+            </value>
+        </inputAssignments>
+        <object>Account</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordCreates>
+    <recordLookups>
+        <description>Attempt to find an existing guardian.
+
+Always Guardian record type
+
+Match by SchoolMint ID OR fallback logic</description>
+        <name>Get_Guardian_1_Match_Guardian</name>
+        <label>Get | Primary Guardian 1 | Match Guardian</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Decision_Guardian_1_Match_Found</targetReference>
+        </connector>
+        <filterLogic>4 AND (5 OR (1 AND (2 OR 3)))</filterLogic>
+        <filters>
+            <field>LastName</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>Get_Individual_Application.Parent_Guardian_1_Last_Name__c</elementReference>
+            </value>
+        </filters>
+        <filters>
+            <field>Phone</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>fxGuardian1_PhoneForMatch</elementReference>
+            </value>
+        </filters>
+        <filters>
+            <field>PersonEmail</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>fxGuardian1_EmailForMatch</elementReference>
+            </value>
+        </filters>
+        <filters>
+            <field>RecordTypeId</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>Get_Guardian_Record_Type.Id</elementReference>
+            </value>
+        </filters>
+        <filters>
+            <field>SchoolMint_Guardian_Id__pc</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>Get_Individual_Application.SchoolMint_Applicant_Id__c</elementReference>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>Account</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordLookups>
+        <description>Attempt to find an existing guardian 2</description>
+        <name>Get_Guardian_2_Match_Guardian</name>
+        <label>Get | Guardian 2 | Match Guardian</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Decision_Guardian_2_Match_Found</targetReference>
+        </connector>
+        <filterLogic>1 AND 4 AND (2 OR 3)</filterLogic>
+        <filters>
+            <field>LastName</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>Get_Individual_Application.Parent_Guardian_2_Last_Name__c</elementReference>
+            </value>
+        </filters>
+        <filters>
+            <field>Phone</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>fxGuardian2_PhoneForMatch</elementReference>
+            </value>
+        </filters>
+        <filters>
+            <field>PersonEmail</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>fxGuardian2_EmailForMatch</elementReference>
+            </value>
+        </filters>
+        <filters>
+            <field>RecordTypeId</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>Get_Guardian_Record_Type.Id</elementReference>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>Account</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordLookups>
+        <name>Get_Guardian_Record_Type</name>
+        <label>Get Guardian Record Type</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Get_Guardian_1_Match_Guardian</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>SobjectType</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Account</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>DeveloperName</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Guardian</stringValue>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>RecordType</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordLookups>
+        <description>Grabs Individual Application from recordID</description>
+        <name>Get_Individual_Application</name>
+        <label>Get | Individual Application | By ID</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Get_Guardian_Record_Type</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>recordId</elementReference>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>IndividualApplication</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordUpdates>
+        <description>Update primary guardian lookup on the individual application</description>
+        <name>Update_App_Stamp_Primary_Guardian</name>
+        <label>Update | App | Stamp Primary Guardian</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>Secondary_Guardian_Information_on_Application</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>Get_Individual_Application.Id</elementReference>
+            </value>
+        </filters>
+        <inputAssignments>
+            <field>Primary_Guardian__c</field>
+            <value>
+                <elementReference>Get_Guardian_1_Match_Guardian.Id</elementReference>
+            </value>
+        </inputAssignments>
+        <object>IndividualApplication</object>
+    </recordUpdates>
+    <recordUpdates>
+        <description>Sets primary guardian lookup on individual application</description>
+        <name>Update_App_Stamp_Primary_Guardian_Created</name>
+        <label>Update | App | Stamp Primary Guardian (Created)</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>Secondary_Guardian_Information_on_Application</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>Get_Individual_Application.Id</elementReference>
+            </value>
+        </filters>
+        <inputAssignments>
+            <field>Primary_Guardian__c</field>
+            <value>
+                <elementReference>Create_Guardian_1_Account.Id</elementReference>
+            </value>
+        </inputAssignments>
+        <object>IndividualApplication</object>
+    </recordUpdates>
+    <recordUpdates>
+        <description>Update secondary guardian lookup on the individual application</description>
+        <name>Update_App_Stamp_Secondary_Guardian</name>
+        <label>Update | App | Stamp Secondary Guardian</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>Get_Individual_Application.Id</elementReference>
+            </value>
+        </filters>
+        <inputAssignments>
+            <field>Secondary_Guardian__c</field>
+            <value>
+                <elementReference>Get_Guardian_2_Match_Guardian.Id</elementReference>
+            </value>
+        </inputAssignments>
+        <object>IndividualApplication</object>
+    </recordUpdates>
+    <recordUpdates>
+        <description>Sets secondary guardian lookup on individual application</description>
+        <name>Update_App_Stamp_Secondary_Guardian_Created</name>
+        <label>Update | App | Stamp Secondary Guardian (Created)</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>Get_Individual_Application.Id</elementReference>
+            </value>
+        </filters>
+        <inputAssignments>
+            <field>Secondary_Guardian__c</field>
+            <value>
+                <elementReference>Create_Guardian_2_Account.Id</elementReference>
+            </value>
+        </inputAssignments>
+        <object>IndividualApplication</object>
+    </recordUpdates>
+    <recordUpdates>
+        <description>Update guardian account fields from application values.</description>
+        <name>Update_Guardian_1_Account</name>
+        <label>Update | Primary Guardian 1 | Account</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>Update_App_Stamp_Primary_Guardian</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>Get_Guardian_1_Match_Guardian.Id</elementReference>
+            </value>
+        </filters>
+        <inputAssignments>
+            <field>FirstName</field>
+            <value>
+                <elementReference>Get_Individual_Application.Parent_Guardian_1_First_Name__c</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>LastName</field>
+            <value>
+                <elementReference>Get_Individual_Application.Parent_Guardian_1_Last_Name__c</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>PersonEmail</field>
+            <value>
+                <elementReference>Get_Individual_Application.Parent_Guardian_1_Email__c</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Phone</field>
+            <value>
+                <elementReference>Get_Individual_Application.Parent_Guardian_1_Phone__c</elementReference>
+            </value>
+        </inputAssignments>
+        <object>Account</object>
+    </recordUpdates>
+    <recordUpdates>
+        <description>Update secondary guardian account fields from application values.</description>
+        <name>Update_Guardian_2_Account</name>
+        <label>Update | Guardian 2 | Account</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>Update_App_Stamp_Secondary_Guardian</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>Get_Guardian_2_Match_Guardian.Id</elementReference>
+            </value>
+        </filters>
+        <inputAssignments>
+            <field>FirstName</field>
+            <value>
+                <elementReference>Get_Individual_Application.Parent_Guardian_2_First_Name__c</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>LastName</field>
+            <value>
+                <elementReference>Get_Individual_Application.Parent_Guardian_2_Last_Name__c</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>PersonEmail</field>
+            <value>
+                <elementReference>Get_Individual_Application.Parent_Guardian_2_Email__c</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Phone</field>
+            <value>
+                <elementReference>Get_Individual_Application.Parent_Guardian_2_Phone__c</elementReference>
+            </value>
+        </inputAssignments>
+        <object>Account</object>
+    </recordUpdates>
+    <start>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>Get_Individual_Application</targetReference>
+        </connector>
+        <object>IndividualApplication</object>
+        <recordTriggerType>Create</recordTriggerType>
+        <triggerType>RecordAfterSave</triggerType>
+    </start>
+    <status>Obsolete</status>
+    <variables>
+        <description>passes the individual application Id</description>
+        <name>recordId</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>true</isInput>
+        <isOutput>false</isOutput>
+    </variables>
+    <variables>
+        <description>Holds the Guardian 1 Account record to create or update.</description>
+        <name>varGuardian1</name>
+        <dataType>SObject</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+        <objectType>Account</objectType>
+    </variables>
+    <variables>
+        <description>Holds the Guardian 2 Account record to create or update.</description>
+        <name>varGuardian2</name>
+        <dataType>SObject</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+        <objectType>Account</objectType>
+    </variables>
+</Flow>

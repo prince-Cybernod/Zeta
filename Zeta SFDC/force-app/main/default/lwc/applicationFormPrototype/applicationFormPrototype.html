@@ -1,0 +1,60 @@
+<template>
+  <lightning-card title="Application Question Prototype">
+    <div class="slds-p-horizontal_medium slds-p-bottom_medium">
+      <div class="slds-grid slds-gutters slds-wrap">
+        <div class="slds-col slds-size_1-of-4">
+          <lightning-input
+            label="Page Dev Name"
+            value={inputPageDevName}
+            onchange={handlePageDevNameChange}
+          ></lightning-input>
+        </div>
+        <div class="slds-col slds-size_1-of-4">
+          <lightning-combobox
+            label="Variant"
+            value={inputVariant}
+            options={variantOptions}
+            onchange={handleVariantChange}
+            placeholder="(none)"
+          ></lightning-combobox>
+        </div>
+        <div class="slds-col slds-size_1-of-4">
+          <lightning-input
+            label="Record ID"
+            value={inputRecordId}
+            onchange={handleRecordIdChange}
+            placeholder="e.g. a0B..."
+          ></lightning-input>
+        </div>
+        <div
+          class="slds-col slds-size_1-of-4 slds-grid slds-grid_vertical-align-end"
+        >
+          <lightning-input
+            type="checkbox"
+            label="Read Only"
+            checked={inputReadOnly}
+            onchange={handleReadOnlyChange}
+            class="slds-m-right_medium"
+          ></lightning-input>
+          <lightning-button
+            variant="brand"
+            label="Load Form"
+            onclick={handleLoad}
+          ></lightning-button>
+        </div>
+      </div>
+    </div>
+  </lightning-card>
+
+  <template if:true={isFormVisible}>
+    <div class="slds-m-top_medium">
+      <c-application-form-page
+        page-dev-name={activePageDevName}
+        variant={activeVariant}
+        record-id={activeRecordId}
+        read-only={activeReadOnly}
+        show-toast
+      ></c-application-form-page>
+    </div>
+  </template>
+</template>

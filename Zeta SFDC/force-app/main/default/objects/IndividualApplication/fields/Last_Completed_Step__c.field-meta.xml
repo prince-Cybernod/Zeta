@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Last_Completed_Step__c</fullName>
+    <defaultValue>0</defaultValue>
+    <description>Tracks the last completed wizard step (1-5) for save/resume functionality</description>
+    <externalId>false</externalId>
+    <label>Last Completed Step</label>
+    <precision>2</precision>
+    <required>false</required>
+    <scale>0</scale>
+    <trackHistory>false</trackHistory>
+    <type>Number</type>
+    <unique>false</unique>
+</CustomField>

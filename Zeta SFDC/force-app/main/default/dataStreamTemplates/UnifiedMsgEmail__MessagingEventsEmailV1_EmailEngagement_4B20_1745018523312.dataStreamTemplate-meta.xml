@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<DataStreamTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <dataSourceBundleDefinition>UnifiedMsgEmail__UnifiedEmailBundle</dataSourceBundleDefinition>
+    <dataSourceObject>UnifiedMsgEmail__MessagingEventsEmailV1_EmailEng_4B20EB51</dataSourceObject>
+    <masterLabel>MessagingEventsEmailV1-EmailEngagement</masterLabel>
+    <objectCategory>Salesforce_SFDCReferenceModel_0_93.Engagement</objectCategory>
+    <refreshFrequency>NONE</refreshFrequency>
+    <refreshMode>UPSERT</refreshMode>
+    <sourceObjectName>UnifiedMsgEmail__MessagingEventsEmailV1_EmailEngagement_4B20EB51</sourceObjectName>
+    <streamType>INGEST</streamType>
+    <templateVersion>1</templateVersion>
+</DataStreamTemplate>

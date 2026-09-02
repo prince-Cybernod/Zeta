@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Mogli_SMS__Task_Type__c</fullName>
+    <deprecated>false</deprecated>
+    <description>name of async task</description>
+    <externalId>false</externalId>
+    <label>Task Type</label>
+    <length>30</length>
+    <required>true</required>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

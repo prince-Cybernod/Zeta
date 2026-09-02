@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Zeta_Require_Birthdate_for_Students</fullName>
+    <active>true</active>
+    <description>Requires birthdate for students.</description>
+    <errorConditionFormula>AND( ISBLANK( PersonBirthdate ),
+
+(RecordType.DeveloperName = &apos;Student&apos; ))</errorConditionFormula>
+    <errorDisplayField>PersonBirthdate</errorDisplayField>
+    <errorMessage>Birthdate is required in order to save the record.</errorMessage>
+</ValidationRule>

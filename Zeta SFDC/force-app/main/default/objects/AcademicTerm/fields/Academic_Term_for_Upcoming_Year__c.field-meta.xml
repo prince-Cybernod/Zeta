@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Academic_Term_for_Upcoming_Year__c</fullName>
+    <deleteConstraint>SetNull</deleteConstraint>
+    <inlineHelpText>The Academic Term for the next school year. Used in automation to generate future year Academic Term Enrollments.</inlineHelpText>
+    <label>Academic Term for Upcoming Year</label>
+    <referenceTo>AcademicTerm</referenceTo>
+    <relationshipLabel>Academic Terms</relationshipLabel>
+    <relationshipName>Academic_Terms</relationshipName>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <type>Lookup</type>
+</CustomField>

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <label><!-- Call Outcome --></label>
+    <name>Call_Outcome__c</name>
+    <picklistValues>
+        <masterLabel>Contacted and call completed successfully</masterLabel>
+        <translation><!-- Contacted and call completed successfully --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Contacted but needs Spanish speaker</masterLabel>
+        <translation><!-- Contacted but needs Spanish speaker --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>No Contact: Wrong number</masterLabel>
+        <translation><!-- No Contact: Wrong number --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>No Contact: able to leave voicemail</masterLabel>
+        <translation><!-- No Contact: able to leave voicemail --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>No Contact: phone OOS</masterLabel>
+        <translation><!-- No Contact: phone OOS --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>No Contact: voicemail is full</masterLabel>
+        <translation><!-- No Contact: voicemail is full --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Not yet called</masterLabel>
+        <translation><!-- Not yet called --></translation>
+    </picklistValues>
+</CustomFieldTranslation>

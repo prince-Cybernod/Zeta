@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<FieldSrcTrgtRelationship xmlns="http://soap.sforce.com/2006/04/metadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <definitionCreationType>System</definitionCreationType>
+    <lookupFieldName>IndividualIdentityLink__dlm.rel_1762186485184_end__c</lookupFieldName>
+    <masterLabel>IndividualIdentityLink_UnifiedRecordId_map_UnifiedIndividual_ssot_Id_1762186485184</masterLabel>
+    <owner>DataCloud</owner>
+    <relationshipCardinality>ManyToOne</relationshipCardinality>
+    <sourceFieldName>IndividualIdentityLink__dlm.UnifiedRecordId__c</sourceFieldName>
+    <targetEntity xsi:nil="true"/>
+    <targetFieldName>UnifiedIndividual__dlm.ssot__Id__c</targetFieldName>
+</FieldSrcTrgtRelationship>

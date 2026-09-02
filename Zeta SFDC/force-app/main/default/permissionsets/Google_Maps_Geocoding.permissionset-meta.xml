@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PermissionSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <description>Grants access to the Google Maps Geocoding named credential.</description>
+    <externalCredentialPrincipalAccesses>
+        <enabled>true</enabled>
+        <externalCredentialPrincipal>Google_Maps_Geocoding-Production</externalCredentialPrincipal>
+    </externalCredentialPrincipalAccesses>
+    <hasActivationRequired>false</hasActivationRequired>
+    <label>Google Maps Geocoding</label>
+</PermissionSet>

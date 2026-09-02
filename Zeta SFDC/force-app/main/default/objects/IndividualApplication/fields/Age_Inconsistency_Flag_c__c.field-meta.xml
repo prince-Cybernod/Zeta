@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Age_Inconsistency_Flag_c__c</fullName>
+    <description>Flags when the student’s Date of Birth does not meet age requirements for the grade applying to.
+• PK: Student must turn 4 by December 31 of the enrollment year
+• K/TK: Student must turn 5 by December 31 of the enrollment year
+• Grades 1–12: integer age at the term start date must be within [grade+5, grade+6] (e.g. 7th = 12–13, 8th = 13–14)
+Returns TRUE if the DOB falls outside the required age range.</description>
+    <formula>/* TRUE = needs review */
+IF(
+    OR(
+        ISBLANK(Account.PersonContact.Birthdate),
+        ISBLANK(
+            Application_Timeline__r.Academic_Term__r.Dec_31_Age_Cutoff_Date__c
+        )
+    ),
+
+    TRUE,
+
+    IF(
+        OR(
+            TEXT(Grade_Applying_To__c) = &quot;PK&quot;,
+            TEXT(Grade_Applying_To__c) = &quot;K&quot;,
+            TEXT(Grade_Applying_To__c) = &quot;TK&quot;,
+            AND(
+                ISNUMBER(TEXT(Grade_Applying_To__c)),
+                VALUE(BLANKVALUE(TEXT(Grade_Applying_To__c), &quot;0&quot;)) &gt;= 1,
+                VALUE(BLANKVALUE(TEXT(Grade_Applying_To__c), &quot;0&quot;)) &lt;= 12
+            )
+        ),
+
+        OR(
+            /* Too young */
+            ADDMONTHS(
+                Account.PersonContact.Birthdate,
+                CASE(
+                    TEXT(Grade_Applying_To__c),
+                    &quot;PK&quot;, 48,
+                    &quot;K&quot;, 60,
+                    &quot;TK&quot;, 60,
+                    (
+                        VALUE(BLANKVALUE(TEXT(Grade_Applying_To__c), &quot;0&quot;)) + 5
+                    ) * 12
+                )
+            ) &gt;
+            Application_Timeline__r.Academic_Term__r.Dec_31_Age_Cutoff_Date__c,
+
+            /* Too old */
+            ADDMONTHS(
+                Account.PersonContact.Birthdate,
+                CASE(
+                    TEXT(Grade_Applying_To__c),
+                    &quot;PK&quot;, 60,
+                    &quot;K&quot;, 72,
+                    &quot;TK&quot;, 72,
+                    (
+                        VALUE(BLANKVALUE(TEXT(Grade_Applying_To__c), &quot;0&quot;)) + 7
+                    ) * 12
+                )
+            ) &lt;=
+            Application_Timeline__r.Academic_Term__r.Dec_31_Age_Cutoff_Date__c
+        ),
+
+        /* Unsupported grade */
+        FALSE
+    )
+)</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <inlineHelpText>Flags when the student’s Date of Birth does not meet requirements.</inlineHelpText>
+    <label>Age Inconsistency Flag</label>
+    <trackHistory>false</trackHistory>
+    <type>Checkbox</type>
+</CustomField>

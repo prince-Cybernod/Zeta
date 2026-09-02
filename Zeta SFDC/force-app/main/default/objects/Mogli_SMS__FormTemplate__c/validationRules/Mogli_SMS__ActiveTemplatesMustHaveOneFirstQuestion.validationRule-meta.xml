@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Mogli_SMS__ActiveTemplatesMustHaveOneFirstQuestion</fullName>
+    <active>true</active>
+    <errorConditionFormula>Mogli_SMS__TotalFirstQuestions__c == 0 &amp;&amp;
+ISPICKVAL( Mogli_SMS__Status__c , &apos;Active&apos;)</errorConditionFormula>
+    <errorDisplayField>Mogli_SMS__Status__c</errorDisplayField>
+    <errorMessage>Active Templates must have a first question</errorMessage>
+</ValidationRule>

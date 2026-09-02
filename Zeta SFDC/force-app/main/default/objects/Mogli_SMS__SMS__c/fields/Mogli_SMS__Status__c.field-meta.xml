@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Mogli_SMS__Status__c</fullName>
+    <deprecated>false</deprecated>
+    <label>Status</label>
+    <required>false</required>
+    <trackHistory>true</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Scheduled</fullName>
+                <default>false</default>
+                <label>Scheduled</label>
+            </value>
+            <value>
+                <fullName>Queued</fullName>
+                <default>false</default>
+                <label>Queued</label>
+            </value>
+            <value>
+                <fullName>Ready To Send</fullName>
+                <default>false</default>
+                <label>Ready To Send</label>
+            </value>
+            <value>
+                <fullName>Sending</fullName>
+                <default>false</default>
+                <label>Sending</label>
+            </value>
+            <value>
+                <fullName>Sent Successfully</fullName>
+                <default>false</default>
+                <label>Sent Successfully</label>
+            </value>
+            <value>
+                <fullName>Received Successfully</fullName>
+                <default>false</default>
+                <label>Received Successfully</label>
+            </value>
+            <value>
+                <fullName>Error</fullName>
+                <default>false</default>
+                <label>Error</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

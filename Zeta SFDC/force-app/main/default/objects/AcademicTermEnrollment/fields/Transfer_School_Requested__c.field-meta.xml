@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Transfer_School_Requested__c</fullName>
+    <defaultValue>false</defaultValue>
+    <description>Indicates whether a transfer to another school has been requested.</description>
+    <inlineHelpText>Indicates whether a transfer to another school has been requested.</inlineHelpText>
+    <label>Transfer School Requested</label>
+    <trackHistory>false</trackHistory>
+    <type>Checkbox</type>
+</CustomField>

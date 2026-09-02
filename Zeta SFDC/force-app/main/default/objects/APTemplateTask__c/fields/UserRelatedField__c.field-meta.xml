@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>UserRelatedField__c</fullName>
+    <deprecated>false</deprecated>
+    <description>The field path to use for user assignment when UserType is FIELD</description>
+    <externalId>false</externalId>
+    <inlineHelpText>Enter the field API name or related field path (e.g., Account.Owner.Id) to use for user assignment</inlineHelpText>
+    <label>User Field Path</label>
+    <length>255</length>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

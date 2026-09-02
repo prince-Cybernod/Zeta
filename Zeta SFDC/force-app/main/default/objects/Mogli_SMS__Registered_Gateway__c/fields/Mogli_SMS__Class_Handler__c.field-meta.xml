@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Mogli_SMS__Class_Handler__c</fullName>
+    <deprecated>false</deprecated>
+    <description>locates the correct object to handle SMS send logic</description>
+    <externalId>false</externalId>
+    <label>SMS Class Handler</label>
+    <length>255</length>
+    <required>true</required>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

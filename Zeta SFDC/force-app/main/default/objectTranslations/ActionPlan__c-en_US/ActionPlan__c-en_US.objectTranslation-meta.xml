@@ -8,5 +8,49 @@
         <plural>true</plural>
         <value>Action Plans</value>
     </caseValues>
+    <fieldSets>
+        <label><!-- Related Objects --></label>
+        <name>Related_Objects</name>
+    </fieldSets>
     <startsWith>Vowel</startsWith>
+    <validationRules>
+        <errorMessage><!-- Cannot change Template value once it is set --></errorMessage>
+        <name>Cannot_clear_Template_field</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- If Skip Weekends is selected, must choose a skip day; if it is not selected, do not choose a skip day --></errorMessage>
+        <name>Skip_Weekend_Due_Date_Dependency</name>
+    </validationRules>
+    <webLinks>
+        <label><!-- Create_Account_Action_Plan --></label>
+        <name>Create_Account_Action_Plan</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- Create_Campaign_Action_Plan --></label>
+        <name>Create_Campaign_Action_Plan</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- Create_Case_Action_Plan --></label>
+        <name>Create_Case_Action_Plan</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- Create_Contact_Action_Plan --></label>
+        <name>Create_Contact_Action_Plan</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- Create_Contract_Action_Plan --></label>
+        <name>Create_Contract_Action_Plan</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- Create_Lead_Action_Plan --></label>
+        <name>Create_Lead_Action_Plan</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- Create_Opportunity_Action_Plan --></label>
+        <name>Create_Opportunity_Action_Plan</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- Delete_Multiple_Action_Plans --></label>
+        <name>Delete_Multiple_Action_Plans</name>
+    </webLinks>
 </CustomObjectTranslation>

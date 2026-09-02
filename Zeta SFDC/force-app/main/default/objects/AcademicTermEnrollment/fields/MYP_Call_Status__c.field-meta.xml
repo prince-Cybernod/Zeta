@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>MYP_Call_Status__c</fullName>
+    <description>Tracks the current status of outreach calls related to MYP follow-up.</description>
+    <inlineHelpText>Tracks the current status of outreach calls related to MYP follow-up.</inlineHelpText>
+    <label>MYP Call Status</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Needed but not done</fullName>
+                <default>false</default>
+                <label>Needed but not done</label>
+            </value>
+            <value>
+                <fullName>Completed successfully</fullName>
+                <default>false</default>
+                <label>Completed successfully</label>
+            </value>
+            <value>
+                <fullName>Incomplete - Left voicemail</fullName>
+                <default>false</default>
+                <label>Incomplete - Left voicemail</label>
+            </value>
+            <value>
+                <fullName>Incomplete - Mailbox full</fullName>
+                <default>false</default>
+                <label>Incomplete - Mailbox full</label>
+            </value>
+            <value>
+                <fullName>Incomplete - Number OOS</fullName>
+                <default>false</default>
+                <label>Incomplete - Number OOS</label>
+            </value>
+            <value>
+                <fullName>Incomplete - Wrong number</fullName>
+                <default>false</default>
+                <label>Incomplete - Wrong number</label>
+            </value>
+            <value>
+                <fullName>N/A</fullName>
+                <default>false</default>
+                <label>N/A</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

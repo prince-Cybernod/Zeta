@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Where_Clause__c</fullName>
+    <deprecated>false</deprecated>
+    <description>Stores a custom WHERE clause used to select related records when creating action plans.</description>
+    <inlineHelpText>A custom WHERE clause that can be used to select specific records when creating action plans. Do not include the keyword WHERE.</inlineHelpText>
+    <label>WHERE Clause</label>
+    <length>32768</length>
+    <trackTrending>false</trackTrending>
+    <type>LongTextArea</type>
+    <visibleLines>3</visibleLines>
+</CustomField>

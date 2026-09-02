@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<FieldSrcTrgtRelationship xmlns="http://soap.sforce.com/2006/04/metadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <definitionCreationType>Custom</definitionCreationType>
+    <lookupFieldName>GenAIGtwyObjRecord__dlm.rel_1778081140981_end__c</lookupFieldName>
+    <masterLabel>GenAIGtwyObjRecord_parent_map_GenAIFeedback_feedbackId_1778081140981</masterLabel>
+    <owner>DataCloud</owner>
+    <relationshipCardinality>ManyToOne</relationshipCardinality>
+    <sourceFieldName>GenAIGtwyObjRecord__dlm.parent__c</sourceFieldName>
+    <targetEntity xsi:nil="true"/>
+    <targetFieldName>GenAIFeedback__dlm.feedbackId__c</targetFieldName>
+</FieldSrcTrgtRelationship>

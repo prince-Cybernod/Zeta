@@ -1,0 +1,41 @@
+<template>
+  <template lwc:if={readOnly}>
+    <div class="slds-form-element">
+      <span class="slds-form-element__label">{addressLabel}</span>
+      <div class="slds-form-element__control">
+        <lightning-formatted-text
+          value={formattedAddress}
+        ></lightning-formatted-text>
+      </div>
+    </div>
+  </template>
+  <template lwc:else>
+    <lightning-input-address
+      show-address-lookup
+      address-label={addressLabel}
+      street-label={streetLabel}
+      city-label={cityLabel}
+      province-label={stateLabel}
+      postal-code-label={zipLabel}
+      country-label={countryLabel}
+      address-lookup-placeholder={lookupPlaceholder}
+      street={addressValues.street}
+      city={addressValues.city}
+      province={addressValues.province}
+      postal-code={addressValues.postalCode}
+      country={addressValues.country}
+      province-options={stateOptions}
+      country-options={countryOptions}
+      field-level-help={question.helpText}
+      required={question.isRequired}
+      onchange={handleAddressChange}
+    ></lightning-input-address>
+    <lightning-input
+      type="text"
+      label={apartmentLabel}
+      value={addressValues.subpremise}
+      onchange={handleApartmentChange}
+      class="apartment-input slds-m-top_x-small"
+    ></lightning-input>
+  </template>
+</template>

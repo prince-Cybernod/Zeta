@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Family_Status__c</fullName>
+    <description>Indicates the current engagement status of the student’s family based on outreach or application activity. Used to track where each family is in the communication and application journey.</description>
+    <inlineHelpText>Select the option that best represents the family’s current engagement or outreach status</inlineHelpText>
+    <label>Family Status</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>New Family</fullName>
+                <default>false</default>
+                <label>New Family</label>
+            </value>
+            <value>
+                <fullName>Needs Follow Up</fullName>
+                <default>false</default>
+                <label>Needs Follow Up</label>
+            </value>
+            <value>
+                <fullName>Contacted via SchoolMint</fullName>
+                <default>false</default>
+                <label>Contacted via SchoolMint</label>
+            </value>
+            <value>
+                <fullName>Contacted Manually</fullName>
+                <default>false</default>
+                <label>Contacted Manually</label>
+            </value>
+            <value>
+                <fullName>Unable to Contact</fullName>
+                <default>false</default>
+                <label>Unable to Contact</label>
+            </value>
+            <value>
+                <fullName>Not Interested</fullName>
+                <default>false</default>
+                <label>Not Interested</label>
+            </value>
+            <value>
+                <fullName>Applied</fullName>
+                <default>false</default>
+                <label>Applied</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

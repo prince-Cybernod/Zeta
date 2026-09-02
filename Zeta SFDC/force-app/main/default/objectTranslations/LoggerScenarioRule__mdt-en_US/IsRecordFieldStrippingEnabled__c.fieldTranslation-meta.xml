@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <help><!-- When enabled, any time an SObject record is logged, only fields that the current user can access will be included in the record&apos;s JSON. --></help>
+    <label><!-- Strip Inaccessible Record Fields --></label>
+    <name>IsRecordFieldStrippingEnabled__c</name>
+    <picklistValues>
+        <masterLabel>false</masterLabel>
+        <translation><!-- false --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>true</masterLabel>
+        <translation><!-- true --></translation>
+    </picklistValues>
+</CustomFieldTranslation>

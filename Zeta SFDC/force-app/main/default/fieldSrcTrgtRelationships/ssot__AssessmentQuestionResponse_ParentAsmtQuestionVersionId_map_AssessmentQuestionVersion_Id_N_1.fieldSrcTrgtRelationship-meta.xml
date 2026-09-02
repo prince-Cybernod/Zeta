@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<FieldSrcTrgtRelationship xmlns="http://soap.sforce.com/2006/04/metadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <definitionCreationType>Standard</definitionCreationType>
+    <lookupFieldName>ssot__AssessmentQuestionResponse__dlm.ssot__rel_1720291820096_end__c</lookupFieldName>
+    <masterLabel>AssessmentQuestionResponse_ParentAsmtQuestionVersionId_map_AssessmentQuestionVersion_Id_N_1</masterLabel>
+    <owner>DataCloud</owner>
+    <relationshipCardinality>ManyToOne</relationshipCardinality>
+    <sourceFieldName>ssot__AssessmentQuestionResponse__dlm.ssot__ParentAsmtQuestionVersionId__c</sourceFieldName>
+    <targetEntity xsi:nil="true"/>
+    <targetFieldName>ssot__AssessmentQuestionVersion__dlm.ssot__Id__c</targetFieldName>
+</FieldSrcTrgtRelationship>

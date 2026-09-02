@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Registration_Deadline__c</fullName>
+    <description>Calculates the deadline by which the student must complete registration requirements.</description>
+    <formula>Start_Date_Of_Registration_Phase__c  + 7</formula>
+    <inlineHelpText>Calculates the deadline by which the student must complete registration requirements.</inlineHelpText>
+    <label>Registration Deadline</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <type>Date</type>
+</CustomField>

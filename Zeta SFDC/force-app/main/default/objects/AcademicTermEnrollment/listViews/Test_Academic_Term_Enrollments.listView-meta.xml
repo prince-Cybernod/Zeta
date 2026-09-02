@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Test_Academic_Term_Enrollments</fullName>
+    <columns>Name</columns>
+    <columns>LearnerContact</columns>
+    <columns>Grade_Applied__c</columns>
+    <columns>AcademicTerm</columns>
+    <columns>Intent_To_Return__c</columns>
+    <columns>EnrollmentStatus</columns>
+    <columns>Intent_to_Return_Task_Creation_Date__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>Created_for_Testing__c</field>
+        <operation>equals</operation>
+        <value>1</value>
+    </filters>
+    <label>Test Academic Term Enrollments</label>
+</ListView>

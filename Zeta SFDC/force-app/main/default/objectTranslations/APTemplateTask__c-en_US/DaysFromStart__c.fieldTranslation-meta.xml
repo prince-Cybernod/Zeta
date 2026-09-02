@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <help><!-- This value determines the due date of the task. For tasks with no dependency, the task&apos;s due date will be offset from the plan start date. For tasks with a dependency, the due date will be offset from the expected due date of the task on which it depends. --></help>
+    <label><!-- Days After --></label>
+    <name>DaysFromStart__c</name>
+</CustomFieldTranslation>

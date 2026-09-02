@@ -1,0 +1,96 @@
+<template>
+  <template lwc:if={isLoading}>
+    <div class="card" aria-busy="true" aria-label={labels.ariaLoadingSchools}>
+      <div class="skeleton-header"></div>
+      <div class="skeleton-map"></div>
+      <div class="skeleton-rows">
+        <div class="skeleton-row"></div>
+        <div class="skeleton-row skeleton-row--short"></div>
+        <div class="skeleton-row"></div>
+        <div class="skeleton-row skeleton-row--short"></div>
+      </div>
+    </div>
+  </template>
+
+  <template lwc:if={showContent}>
+    <div class="card">
+      <h2 class="card-title">{labels.chooseSchools}</h2>
+      <p class="card-subtitle">{labels.chooseSchoolsDesc}</p>
+      <template lwc:if={gradeSubtitle}>
+        <p class="grade-filter-note">{gradeSubtitle}</p>
+      </template>
+
+      <template lwc:if={hasMapMarkers}>
+        <div class="map-container">
+          <lightning-map
+            map-markers={mapMarkers}
+            markers-title={labels.zetaSchools}
+            zoom-level="11"
+            list-view="hidden"
+            onmarkerselect={handleMarkerSelect}
+          ></lightning-map>
+        </div>
+      </template>
+
+      <div class="list-section">
+        <div class="list-header">
+          <span class="selection-summary">{selectionSummary}</span>
+          <div class="search-container">
+            <lightning-input
+              type="search"
+              label={labels.searchSchools}
+              variant="label-hidden"
+              placeholder={labels.filterBySchool}
+              value={searchTerm}
+              onchange={handleSearchChange}
+            ></lightning-input>
+          </div>
+        </div>
+
+        <div
+          class="school-list"
+          role="group"
+          aria-label={labels.ariaSchoolSelections}
+        >
+          <template for:each={filteredSchools} for:item="school">
+            <div
+              key={school.schoolAccountId}
+              class={school.rowClass}
+              data-id={school.schoolAccountId}
+              onclick={handleSchoolToggle}
+              onkeydown={handleRowKeydown}
+              role="checkbox"
+              aria-checked={school.isSelected}
+              tabindex="0"
+            >
+              <div class={school.checkboxClass} aria-hidden="true">
+                <template lwc:if={school.isSelected}>
+                  <svg viewBox="0 0 24 24" width="16" height="16">
+                    <path
+                      d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"
+                      fill="currentColor"
+                    />
+                  </svg>
+                </template>
+              </div>
+              <div class="school-info">
+                <p class="school-name">{school.name}</p>
+                <p class="school-address">
+                  {school.street}, {school.city}, {school.state}
+                  {school.postalCode}
+                </p>
+              </div>
+              <template lwc:if={school.hasDistance}>
+                <span class="school-distance">{school.distanceLabel}</span>
+              </template>
+            </div>
+          </template>
+        </div>
+
+        <template lwc:if={saveError}>
+          <div class="form-error" role="alert">{saveError}</div>
+        </template>
+      </div>
+    </div>
+  </template>
+</template>

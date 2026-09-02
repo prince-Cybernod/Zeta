@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Zeta_Decision__c</fullName>
+    <description>Internal admissions decision determined by Zeta.</description>
+    <label>Zeta Decision</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Retain/Holdover</fullName>
+                <default>false</default>
+                <label>Retain/Holdover</label>
+            </value>
+            <value>
+                <fullName>Remain in Applied Grade</fullName>
+                <default>false</default>
+                <label>Remain in Applied Grade</label>
+            </value>
+            <value>
+                <fullName>N/A, no assessment required</fullName>
+                <default>false</default>
+                <label>N/A, no assessment required</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

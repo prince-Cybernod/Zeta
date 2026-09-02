@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Transfer_Cataloguer__c</fullName>
+    <deleteConstraint>SetNull</deleteConstraint>
+    <description>User responsible for cataloguing and processing the student’s transfer or withdrawal.</description>
+    <inlineHelpText>User responsible for cataloguing and processing the student’s transfer or withdrawal.</inlineHelpText>
+    <label>Transfer Cataloguer</label>
+    <referenceTo>User</referenceTo>
+    <relationshipName>Academic_Term_Enrollments3</relationshipName>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <type>Lookup</type>
+</CustomField>

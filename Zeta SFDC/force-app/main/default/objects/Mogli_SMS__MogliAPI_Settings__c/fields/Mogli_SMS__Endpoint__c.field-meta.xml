@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Mogli_SMS__Endpoint__c</fullName>
+    <defaultValue>&quot;https://api.mogli.com&quot;</defaultValue>
+    <deprecated>false</deprecated>
+    <label>Endpoint</label>
+    <required>true</required>
+    <trackTrending>false</trackTrending>
+    <type>Url</type>
+</CustomField>

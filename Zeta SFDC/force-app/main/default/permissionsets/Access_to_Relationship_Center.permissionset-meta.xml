@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PermissionSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <description>Grants users access to view and use Actionable Relationship Center relationship graphs.</description>
+    <hasActivationRequired>false</hasActivationRequired>
+    <label>Access to Relationship Center</label>
+    <userPermissions>
+        <enabled>true</enabled>
+        <name>FinancialServices2UserAccess</name>
+    </userPermissions>
+</PermissionSet>

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Mogli_SMS__Callbacks_through_Guest__c</fullName>
+    <defaultValue>true</defaultValue>
+    <deprecated>false</deprecated>
+    <inlineHelpText>If enabled, Twilio SMS callbacks will be received through the Mogli SMS Site using a Site Guest User</inlineHelpText>
+    <label>Receive Callbacks through Guest User</label>
+    <trackTrending>false</trackTrending>
+    <type>Checkbox</type>
+</CustomField>

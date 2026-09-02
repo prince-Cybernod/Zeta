@@ -1,0 +1,573 @@
+<template>
+  <lightning-card title="Run Lottery" icon-name="custom:custom57">
+    <!-- Initial Loading State -->
+    <template lwc:if={isLoading}>
+      <template lwc:if={isConfigureStep}>
+        <div class="slds-p-around_medium">
+          <lightning-spinner
+            alternative-text="Loading capacities"
+            size="medium"
+          ></lightning-spinner>
+        </div>
+      </template>
+    </template>
+
+    <!-- Error State -->
+    <template lwc:if={error}>
+      <div class="slds-p-around_medium">
+        <div
+          class="slds-notify slds-notify_alert slds-alert_error"
+          role="alert"
+        >
+          <span class="slds-assistive-text">error</span>
+          <h2>{error}</h2>
+        </div>
+      </div>
+    </template>
+
+    <!-- Main Content -->
+    <template lwc:if={showContent}>
+      <!-- Step Indicator -->
+      <div class="slds-p-horizontal_medium slds-p-top_medium">
+        <lightning-progress-indicator
+          current-step={currentStep}
+          type="path"
+          variant="base"
+        >
+          <template for:each={steps} for:item="step">
+            <lightning-progress-step
+              key={step.value}
+              label={step.label}
+              value={step.value}
+            ></lightning-progress-step>
+          </template>
+        </lightning-progress-indicator>
+      </div>
+
+      <!-- Step 1: Select Schools -->
+      <template lwc:if={showCapacitySelection}>
+        <div class="slds-p-around_medium">
+          <!-- Date Range Filter -->
+          <div class="slds-box slds-m-bottom_medium date-filter-section">
+            <h3 class="slds-text-heading_small slds-m-bottom_x-small">
+              Application Date Range
+            </h3>
+            <p
+              class="slds-text-body_small slds-text-color_weak slds-m-bottom_small"
+            >
+              Filter lottery entries by applied date. Leave blank
+              to include all eligible applications.
+            </p>
+            <div class="slds-grid slds-gutters slds-wrap">
+              <div class="slds-col slds-size_1-of-2 slds-medium-size_1-of-4">
+                <lightning-input
+                  type="date"
+                  label="From"
+                  name="startDate"
+                  value={startDate}
+                  onchange={handleStartDateChange}
+                ></lightning-input>
+              </div>
+              <div class="slds-col slds-size_1-of-2 slds-medium-size_1-of-4">
+                <lightning-input
+                  type="date"
+                  label="To"
+                  name="endDate"
+                  value={endDate}
+                  onchange={handleEndDateChange}
+                ></lightning-input>
+              </div>
+            </div>
+          </div>
+
+          <h3 class="slds-text-heading_small slds-m-bottom_small">
+            Select Schools
+          </h3>
+
+          <template lwc:if={hasSchools}>
+            <div
+              class="slds-p-bottom_small slds-border_bottom slds-m-bottom_small"
+            >
+              <lightning-input
+                type="checkbox"
+                label="Select All Schools"
+                checked={allSelected}
+                onchange={handleSelectAll}
+              ></lightning-input>
+            </div>
+
+            <div class="school-list">
+              <template for:each={schools} for:item="school">
+                <div
+                  key={school.id}
+                  class="slds-box slds-m-bottom_x-small school-item"
+                  data-school-id={school.id}
+                  onclick={handleSchoolBoxClick}
+                >
+                  <div
+                    class="slds-grid slds-grid_vertical-align-center slds-grid_align-spread"
+                  >
+                    <lightning-input
+                      type="checkbox"
+                      label={school.name}
+                      data-school-id={school.id}
+                      checked={school.selected}
+                      onchange={handleSchoolSelect}
+                    ></lightning-input>
+                    <span class="slds-text-body_small slds-text-color_weak">
+                      {school.gradeCount} grades &bull; {school.totalSeats}
+                      seats
+                    </span>
+                  </div>
+                </div>
+              </template>
+            </div>
+
+            <lightning-button
+              variant="brand"
+              label="Run Lottery"
+              onclick={handleRunLottery}
+              disabled={runButtonDisabled}
+              class="slds-m-top_small"
+            ></lightning-button>
+          </template>
+
+          <template lwc:else>
+            <div class="slds-illustration slds-illustration_small">
+              <div class="slds-text-longform">
+                <h3 class="slds-text-heading_medium">No Schools Available</h3>
+                <p class="slds-text-body_regular">
+                  All lottery capacities have already been run for this
+                  timeline.
+                </p>
+              </div>
+            </div>
+          </template>
+        </div>
+      </template>
+
+      <!-- Step 2: Execution State -->
+      <template lwc:if={showExecutionState}>
+        <div class="slds-p-around_large slds-text-align_center execution-state">
+          <!-- Phase A: Per-grade with 2 dots -->
+          <template lwc:if={isPhaseA}>
+            <h2 class="slds-text-heading_medium slds-m-bottom_x-small">
+              Running Lottery
+            </h2>
+            <p
+              class="slds-text-body_regular slds-text-color_weak slds-m-bottom_medium"
+            >
+              Assigning offers per grade
+            </p>
+
+            <!-- Grade Queue Badges -->
+            <div class="grade-queue slds-m-bottom_medium">
+              <template for:each={gradeQueue} for:item="g">
+                <div key={g.grade} class="grade-badge-container">
+                  <span class={g.badgeClass}>
+                    <template lwc:if={g.isCompleted}>
+                      <lightning-icon
+                        icon-name="utility:check"
+                        size="xx-small"
+                        variant="inverse"
+                        class="slds-m-right_xx-small"
+                      ></lightning-icon>
+                    </template>
+                    <template lwc:elseif={g.isAssigned}>
+                      <lightning-icon
+                        icon-name="utility:check"
+                        size="xx-small"
+                        variant="inverse"
+                        class="slds-m-right_xx-small"
+                      ></lightning-icon>
+                    </template>
+                    {g.grade}
+                  </span>
+                  <template lwc:if={g.showCount}>
+                    <span class="grade-app-count">{g.applicationCount}</span>
+                  </template>
+                </div>
+              </template>
+            </div>
+
+            <!-- Current Step Box -->
+            <div class="current-step-box slds-box slds-m-horizontal_large">
+              <p class="slds-text-body_regular slds-m-bottom_small">
+                <strong>{currentActionLabel}</strong>
+                <span class="slds-text-color_weak">
+                  · Grade {currentGrade}</span
+                >
+              </p>
+
+              <!-- Step Progress Indicator (2 steps) -->
+              <lightning-progress-indicator
+                current-step={currentStepValue}
+                type="base"
+                variant="base"
+              >
+                <template for:each={gradeStepDots} for:item="dot">
+                  <lightning-progress-step
+                    key={dot.id}
+                    label={dot.label}
+                    value={dot.id}
+                  ></lightning-progress-step>
+                </template>
+              </lightning-progress-indicator>
+
+              <p
+                class="slds-text-body_small slds-text-color_weak slds-m-top_small"
+              >
+                {gradesAssigned} of {totalGrades} grades assigned
+              </p>
+            </div>
+
+            <!-- Overall progress bar -->
+            <div class="slds-m-top_medium slds-m-horizontal_large">
+              <lightning-progress-bar
+                value={executionProgress}
+                variant="circular"
+              ></lightning-progress-bar>
+            </div>
+          </template>
+
+          <!-- Phase B/C: Cross-grade with icon -->
+          <template lwc:elseif={isCrossGradePhase}>
+            <h2 class="slds-text-heading_medium slds-m-bottom_x-small">
+              Running Lottery
+            </h2>
+
+            <!-- Grade Queue Badges (all assigned) -->
+            <div class="grade-queue slds-m-bottom_medium">
+              <template for:each={gradeQueue} for:item="g">
+                <div key={g.grade} class="grade-badge-container">
+                  <span class={g.badgeClass}>
+                    <template lwc:if={g.isCompleted}>
+                      <lightning-icon
+                        icon-name="utility:check"
+                        size="xx-small"
+                        variant="inverse"
+                        class="slds-m-right_xx-small"
+                      ></lightning-icon>
+                    </template>
+                    <template lwc:elseif={g.isAssigned}>
+                      <lightning-icon
+                        icon-name="utility:check"
+                        size="xx-small"
+                        variant="inverse"
+                        class="slds-m-right_xx-small"
+                      ></lightning-icon>
+                    </template>
+                    {g.grade}
+                  </span>
+                </div>
+              </template>
+            </div>
+
+            <!-- Cross-grade phase display -->
+            <div class="cross-grade-phase slds-m-horizontal_large">
+              <lightning-icon
+                icon-name={crossGradeIcon}
+                size="large"
+                class="slds-m-bottom_small"
+              ></lightning-icon>
+              <p class="slds-text-heading_small slds-m-bottom_x-small">
+                {crossGradePhaseLabel}
+              </p>
+              <p class="slds-text-body_small slds-text-color_weak">
+                Processing all {totalGrades} grades
+              </p>
+            </div>
+
+            <!-- Overall progress bar -->
+            <div class="slds-m-top_medium slds-m-horizontal_large">
+              <lightning-progress-bar
+                value={executionProgress}
+                variant="circular"
+              ></lightning-progress-bar>
+            </div>
+          </template>
+
+          <!-- Fallback execution UI -->
+          <template lwc:elseif={showExecutionProgress}>
+            <!-- Step-by-step progress -->
+            <lightning-icon
+              icon-name={executionStepInfo.icon}
+              size="large"
+              class="slds-m-bottom_medium"
+            ></lightning-icon>
+            <h2 class="slds-text-heading_medium slds-m-bottom_small">
+              {executionStepInfo.label}
+            </h2>
+            <p class="slds-text-body_regular slds-text-color_weak">
+              {executionStepInfo.message}
+            </p>
+            <div class="slds-m-top_medium">
+              <lightning-progress-bar
+                value={executionProgress}
+                variant="circular"
+              ></lightning-progress-bar>
+            </div>
+          </template>
+
+          <template lwc:else>
+            <!-- Fallback spinner -->
+            <lightning-spinner
+              alternative-text="Running lottery"
+              size="large"
+            ></lightning-spinner>
+            <h2 class="slds-text-heading_medium slds-m-top_large">
+              Running Lottery...
+            </h2>
+          </template>
+
+          <p
+            class="slds-text-body_small slds-text-color_weak slds-m-top_medium"
+          >
+            Please do not close this window.
+          </p>
+        </div>
+      </template>
+
+      <!-- Step 3: Show Results -->
+      <template lwc:if={showResults}>
+        <div class="slds-p-around_medium">
+          <!-- Confetti -->
+          <template lwc:if={showConfetti}>
+            <div class="confetti-container">
+              <template for:each={confettiPieces} for:item="piece">
+                <div
+                  key={piece.id}
+                  class="confetti-piece"
+                  style={piece.style}
+                ></div>
+              </template>
+            </div>
+          </template>
+
+          <!-- Hero Metric: Offers Made -->
+          <div
+            class="slds-box slds-text-align_center hero-metric slds-m-bottom_medium"
+          >
+            <div class="slds-text-title_caps slds-text-color_weak">
+              Offers Made
+            </div>
+            <div class={heroMetricClass}>{runResponse.preOffersAssigned}</div>
+            <template lwc:if={zeroOffersMessage}>
+              <div
+                class="slds-text-body_small slds-text-color_weak slds-m-top_x-small"
+              >
+                {zeroOffersMessage}
+              </div>
+            </template>
+          </div>
+
+          <!-- Secondary Metrics Row -->
+          <div class="slds-grid slds-wrap slds-gutters slds-m-bottom_medium">
+            <div class="slds-col slds-size_1-of-3">
+              <div class="slds-box slds-text-align_center">
+                <div class="slds-text-title_caps">Total Eligible</div>
+                <div class="slds-text-heading_medium">
+                  {runResponse.totalEligible}
+                </div>
+              </div>
+            </div>
+            <div class="slds-col slds-size_1-of-3">
+              <div class="slds-box slds-text-align_center">
+                <div class="slds-text-title_caps">Offers Optimized</div>
+                <div class="slds-text-heading_medium slds-text-color_weak">
+                  {runResponse.offersRescinded}
+                </div>
+              </div>
+            </div>
+            <div class="slds-col slds-size_1-of-3">
+              <div class="slds-box slds-text-align_center">
+                <div class="slds-text-title_caps">Waitlisted</div>
+                <div class="slds-text-heading_medium">
+                  {runResponse.waitlisted}
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Audit Metadata -->
+          <div
+            class="slds-text-align_center slds-text-body_small slds-text-color_weak slds-m-bottom_medium audit-info"
+          >
+            <template lwc:if={runResponse.runLogId}>
+              <span>Run Log: </span>
+              <a href={runLogUrl}>{runResponse.runLogName}</a>
+            </template>
+          </div>
+
+          <!-- Action Buttons -->
+          <div class="slds-m-bottom_medium action-bar">
+            <lightning-button
+              variant="neutral"
+              label="Run Another"
+              title="Run Another Lottery"
+              onclick={handleReset}
+            ></lightning-button>
+            <div class="action-bar-right">
+              <template lwc:if={canPublish}>
+                <lightning-button
+                  variant="brand"
+                  label="Publish Results"
+                  title="Publish Lottery Results"
+                  onclick={handlePublish}
+                  disabled={isPublishing}
+                ></lightning-button>
+                <template lwc:if={isPublishing}>
+                  <lightning-spinner
+                    alternative-text="Publishing"
+                    size="small"
+                    class="publish-spinner"
+                  ></lightning-spinner>
+                </template>
+              </template>
+              <template lwc:if={isPublished}>
+                <span class="slds-badge slds-badge_success">
+                  <lightning-icon
+                    icon-name="utility:check"
+                    size="x-small"
+                    class="slds-m-right_xx-small"
+                  ></lightning-icon>
+                  Published
+                </span>
+              </template>
+            </div>
+          </div>
+
+          <!-- School Statistics Table -->
+          <template lwc:if={hasSchoolStats}>
+            <div class="slds-m-top_medium">
+              <h3 class="slds-text-heading_small slds-m-bottom_small">
+                Results by School
+              </h3>
+              <div class="school-stats-scroll">
+                <lightning-datatable
+                  key-field="id"
+                  data={schoolStats}
+                  columns={schoolStatsColumns}
+                  hide-checkbox-column
+                ></lightning-datatable>
+              </div>
+            </div>
+          </template>
+        </div>
+      </template>
+    </template>
+  </lightning-card>
+
+  <!-- Confirmation Modal -->
+  <template lwc:if={showConfirmationModal}>
+    <section
+      role="dialog"
+      tabindex="-1"
+      aria-modal="true"
+      aria-labelledby="confirm-heading"
+      class="slds-modal slds-fade-in-open"
+    >
+      <div class="slds-modal__container">
+        <header class="slds-modal__header slds-modal__header_warning">
+          <h2 id="confirm-heading" class="slds-modal__title slds-hyphenate">
+            <lightning-icon
+              icon-name="utility:warning"
+              variant="warning"
+              size="small"
+              class="slds-m-right_small"
+            ></lightning-icon>
+            Confirm Lottery Run
+          </h2>
+        </header>
+        <div class="slds-modal__content slds-p-around_medium">
+          <!-- Summary Stats -->
+          <div class="slds-box slds-m-bottom_medium confirmation-summary">
+            <dl class="slds-grid slds-wrap">
+              <div
+                class="slds-col slds-size_1-of-2 slds-p-around_small slds-text-align_center"
+              >
+                <dt
+                  class="slds-text-title_caps slds-text-color_weak slds-m-bottom_xx-small"
+                >
+                  Grades
+                </dt>
+                <dd class="slds-text-heading_large">
+                  {confirmationSummary.capacityCount}
+                </dd>
+              </div>
+              <div
+                class="slds-col slds-size_1-of-2 slds-p-around_small slds-text-align_center confirmation-stat-right"
+              >
+                <dt
+                  class="slds-text-title_caps slds-text-color_weak slds-m-bottom_xx-small"
+                >
+                  Seats
+                </dt>
+                <dd class="slds-text-heading_large">
+                  {confirmationSummary.totalSeats}
+                </dd>
+              </div>
+            </dl>
+          </div>
+
+          <!-- School/Grade Table -->
+          <div class="slds-m-bottom_medium">
+            <h3 class="slds-text-heading_small slds-m-bottom_x-small">
+              Schools & Grades
+            </h3>
+            <template lwc:if={isLoadingStats}>
+              <div class="slds-is-relative" style="min-height: 100px">
+                <lightning-spinner
+                  alternative-text="Loading statistics"
+                  size="small"
+                ></lightning-spinner>
+              </div>
+            </template>
+            <template lwc:elseif={hasPreRunStats}>
+              <lightning-datatable
+                key-field="id"
+                data={preRunStats}
+                columns={preRunStatsColumns}
+                hide-checkbox-column
+              ></lightning-datatable>
+            </template>
+            <template lwc:else>
+              <p class="slds-text-color_weak">No capacity data available</p>
+            </template>
+          </div>
+
+          <!-- Warning Message -->
+          <div
+            class="slds-notify slds-notify_alert slds-alert_warning slds-m-top_medium"
+            role="alert"
+          >
+            <span class="slds-assistive-text">Warning</span>
+            <lightning-icon
+              icon-name="utility:warning"
+              size="x-small"
+              class="slds-m-right_x-small"
+            ></lightning-icon>
+            <h2>
+              This action cannot be undone. The lottery will assign pre-offers
+              and waitlist positions based on priority and random keys.
+            </h2>
+          </div>
+        </div>
+        <footer class="slds-modal__footer">
+          <lightning-button
+            variant="neutral"
+            label="Cancel"
+            onclick={handleCancelConfirmation}
+          ></lightning-button>
+          <lightning-button
+            variant="brand"
+            label="Run Lottery"
+            onclick={handleConfirmLottery}
+            class="slds-m-left_x-small"
+          ></lightning-button>
+        </footer>
+      </div>
+    </section>
+    <div class="slds-backdrop slds-backdrop_open"></div>
+  </template>
+</template>

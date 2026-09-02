@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Mogli_SMS__Allow_Parallel_Queues__c</fullName>
+    <defaultValue>false</defaultValue>
+    <deprecated>false</deprecated>
+    <description>Allows parallel processing of the queueable system within MogliSMS.</description>
+    <inlineHelpText>Allows parallel processing of the queueable system within MogliSMS. Activate only when necessary.</inlineHelpText>
+    <label>Allow Parallel Queues</label>
+    <trackTrending>false</trackTrending>
+    <type>Checkbox</type>
+</CustomField>

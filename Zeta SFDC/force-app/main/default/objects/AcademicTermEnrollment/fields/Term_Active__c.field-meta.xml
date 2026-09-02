@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Term_Active__c</fullName>
+    <description>True when TODAY() falls between the related Academic Term Start Date and End Date (inclusive).</description>
+    <formula>AND(
+  NOT(ISBLANK(AcademicTermId)),
+  NOT(ISBLANK(AcademicTerm.StartDate)),
+  NOT(ISBLANK(AcademicTerm.EndDate)),
+  TODAY() &gt;= DATEVALUE(AcademicTerm.StartDate),
+  TODAY() &lt;= DATEVALUE(AcademicTerm.EndDate)
+)</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>Term Active?</label>
+    <trackHistory>false</trackHistory>
+    <type>Checkbox</type>
+</CustomField>

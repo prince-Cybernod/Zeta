@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<FieldSrcTrgtRelationship xmlns="http://soap.sforce.com/2006/04/metadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <definitionCreationType>Calculated_Insight</definitionCreationType>
+    <masterLabel>Marketing_Fit_Score_VY89_Unified_Individual_map_UnifiedIndividual_ssot_Id_1762214245449</masterLabel>
+    <owner>DataCloud</owner>
+    <relationshipCardinality>ManyToOne</relationshipCardinality>
+    <sourceFieldName>Marketing_Fit_Score_VY89__cio.Unified_Individual__c</sourceFieldName>
+    <targetEntity xsi:nil="true"/>
+    <targetFieldName>UnifiedIndividual__dlm.ssot__Id__c</targetFieldName>
+</FieldSrcTrgtRelationship>

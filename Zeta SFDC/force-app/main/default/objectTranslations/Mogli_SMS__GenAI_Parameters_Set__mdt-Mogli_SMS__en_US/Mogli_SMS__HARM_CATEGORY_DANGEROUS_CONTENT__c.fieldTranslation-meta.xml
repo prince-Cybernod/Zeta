@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <label><!-- HARM_CATEGORY_DANGEROUS_CONTENT --></label>
+    <name>Mogli_SMS__HARM_CATEGORY_DANGEROUS_CONTENT__c</name>
+    <picklistValues>
+        <masterLabel>BLOCK_LOW_AND_ABOVE</masterLabel>
+        <translation><!-- BLOCK_LOW_AND_ABOVE --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>BLOCK_MEDIUM_AND_ABOVE</masterLabel>
+        <translation><!-- BLOCK_MEDIUM_AND_ABOVE --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>BLOCK_NONE</masterLabel>
+        <translation><!-- BLOCK_NONE --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>BLOCK_ONLY_HIGH</masterLabel>
+        <translation><!-- BLOCK_ONLY_HIGH --></translation>
+    </picklistValues>
+</CustomFieldTranslation>

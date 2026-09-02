@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Application_Timeline__c</fullName>
+    <deleteConstraint>Restrict</deleteConstraint>
+    <label>Application Timeline</label>
+    <referenceTo>ApplicationTimeline</referenceTo>
+    <relationshipLabel>Individual Applications</relationshipLabel>
+    <relationshipName>Individual_Applications</relationshipName>
+    <required>true</required>
+    <trackHistory>false</trackHistory>
+    <type>Lookup</type>
+</CustomField>

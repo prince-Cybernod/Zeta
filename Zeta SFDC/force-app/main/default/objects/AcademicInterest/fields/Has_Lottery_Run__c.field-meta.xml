@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Has_Lottery_Run__c</fullName>
+    <description>TRUE when the related Lottery Capacity record has a Lottery Run Log. Used to control allowed status changes after the lottery has run.</description>
+    <formula>NOT(
+    ISBLANK( Lottery_Capacity__r.Lottery_Run_Log__c )
+)</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>Has Lottery Run?</label>
+    <trackHistory>false</trackHistory>
+    <type>Checkbox</type>
+</CustomField>

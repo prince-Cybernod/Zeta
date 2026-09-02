@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Grade_Applying_For_Match__c</fullName>
+    <description>TRUE if the Grade Applying To on the Individual App matches that of the Lottery Capacity</description>
+    <formula>TEXT(IndividualApplication.Grade_Applying_To__c ) = TEXT( Lottery_Capacity__r.Grade__c )</formula>
+    <inlineHelpText>TRUE if the Grade Applying To on the Individual App matches that of the Lottery Capacity</inlineHelpText>
+    <label>Grade Applying For Match</label>
+    <trackHistory>false</trackHistory>
+    <type>Checkbox</type>
+</CustomField>

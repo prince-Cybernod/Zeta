@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Mogli_SMS__TwilioMessagingServiceSIDExists</fullName>
+    <active>true</active>
+    <description>Checks to see if the Twilio Messaging Service SID field is populated</description>
+    <errorConditionFormula>AND( OR( RecordType.DeveloperName  = &apos;Twilio&apos;, 
+  RecordType.DeveloperName  = &apos;Twilio_Voice&apos; ),
+  Mogli_SMS__Sender_Pool__c,
+  ISBLANK( Mogli_SMS__Twilio_Messaging_Service_SID__c ) )</errorConditionFormula>
+    <errorDisplayField>Mogli_SMS__Twilio_Messaging_Service_SID__c</errorDisplayField>
+    <errorMessage>You must enter a Twilio Messaging Service SID in order to use Twilio Messaging Service.</errorMessage>
+</ValidationRule>

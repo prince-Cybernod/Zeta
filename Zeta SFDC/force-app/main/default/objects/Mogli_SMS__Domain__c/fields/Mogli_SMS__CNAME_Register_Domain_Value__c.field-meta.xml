@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Mogli_SMS__CNAME_Register_Domain_Value__c</fullName>
+    <deprecated>false</deprecated>
+    <description>The register domain VALUE issued by the Mogli API which needs to be used in the 2nd CNAME record created in your domain provider.</description>
+    <externalId>false</externalId>
+    <label>CNAME Register Domain Value</label>
+    <length>255</length>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

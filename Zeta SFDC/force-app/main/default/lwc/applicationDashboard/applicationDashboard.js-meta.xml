@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<LightningComponentBundle xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>64.0</apiVersion>
+    <isExposed>true</isExposed>
+    <masterLabel>Application Dashboard</masterLabel>
+    <description>Pre-apply landing page showing existing applications with status and resume/view actions.</description>
+    <targets>
+        <target>lightningCommunity__Page</target>
+        <target>lightningCommunity__Default</target>
+    </targets>
+    <targetConfigs>
+        <targetConfig targets="lightningCommunity__Default">
+            <property description="Elementary, Middle, or High. Filters form questions by school level." label="School Level" name="variant" type="String" />
+            <property default="Application_Details" description="DeveloperName of the Application_Page__mdt record for Step 4." label="Page Developer Name" name="pageDevName" type="String" />
+            <property datasource="all,in-progress,submitted" default="all" description="Which applications to show. 'in-progress' = open/editable only (use on the Dashboard tab). 'submitted' = Applied/Eligible/Withdrawn (use on the Application Status tab). 'all' = everything." label="Applications Shown" name="view" type="String" />
+            <property default="false" description="Hide the navy 'My Applications' header bar. Turn ON for the Dashboard tab (it sits under the family welcome); leave OFF for the Application Status tab." label="Hide header" name="hideHeader" type="Boolean" />
+            <property default="false" description="Show the 'Welcome, &lt;Family&gt;!' greeting and intro at the top. Turn ON for the Dashboard tab." label="Show welcome greeting" name="showWelcome" type="Boolean" />
+            <property default="We are delighted to welcome you to your one-stop destination for your child’s enrollment at Zeta." description="Intro text shown under the welcome greeting." label="Welcome message" name="welcomeMessage" type="String" />
+        </targetConfig>
+    </targetConfigs>
+</LightningComponentBundle>

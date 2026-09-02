@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<WebLink xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Mass_Create_Tasks</fullName>
+    <availability>online</availability>
+    <description>Launches the mass task creation screen flow for selected Individual Application records from the list view.</description>
+    <displayType>massActionButton</displayType>
+    <encodingKey>UTF-8</encodingKey>
+    <height>600</height>
+    <linkType>url</linkType>
+    <masterLabel>Mass Create Tasks</masterLabel>
+    <openType>sidebar</openType>
+    <protected>false</protected>
+    <requireRowSelection>true</requireRowSelection>
+    <url>/flow/Task_Screen_Flow_Mass_Create_Tasks_For_Selected_Records</url>
+</WebLink>

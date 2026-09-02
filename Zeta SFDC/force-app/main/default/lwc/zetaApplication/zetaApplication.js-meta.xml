@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<LightningComponentBundle xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>64.0</apiVersion>
+    <isExposed>true</isExposed>
+    <masterLabel>Zeta Application Wizard</masterLabel>
+    <description>5-step application wizard for Zeta Charter Schools admissions.</description>
+    <targets>
+        <target>lightningCommunity__Page</target>
+        <target>lightningCommunity__Default</target>
+        <target>lightning__RecordPage</target>
+        <target>lightning__AppPage</target>
+        <target>lightning__Tab</target>
+    </targets>
+    <targetConfigs>
+        <targetConfig targets="lightningCommunity__Default">
+            <property description="ID of the IndividualApplication record. If blank, reads from URL param applicationId." label="Application Record ID" name="recordId" type="String" />
+            <property description="Elementary, Middle, or High. Filters form questions by school level." label="School Level" name="variant" type="String" />
+            <property default="Application_Details" description="DeveloperName of the Application_Page__mdt record for Step 4." label="Page Developer Name" name="pageDevName" type="String" />
+            <property default="/parents/s/contactsupport" description="Where the 'contact us' link on step 1 points. Set this if the site path changes." label="Contact Support URL" name="contactSupportUrl" type="String" />
+        </targetConfig>
+        <targetConfig targets="lightning__RecordPage,lightning__AppPage">
+            <!-- No recordId property: the page auto-injects the record Id into @api recordId.
+                 Declaring it would override that with a blank designer value. -->
+            <property description="Elementary, Middle, or High. Filters form questions by school level. Leave blank to show all." label="School Level" name="variant" type="String" />
+            <property default="Application_Details" description="DeveloperName of the Application_Page__mdt record for Step 4." label="Page Developer Name" name="pageDevName" type="String" />
+        </targetConfig>
+    </targetConfigs>
+</LightningComponentBundle>

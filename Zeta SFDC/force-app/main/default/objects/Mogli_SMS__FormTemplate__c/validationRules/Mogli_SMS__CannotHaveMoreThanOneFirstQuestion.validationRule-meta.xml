@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Mogli_SMS__CannotHaveMoreThanOneFirstQuestion</fullName>
+    <active>true</active>
+    <errorConditionFormula>Mogli_SMS__TotalFirstQuestions__c &gt;1</errorConditionFormula>
+    <errorMessage>There cannot be more than one first question marked for this Form Template.</errorMessage>
+</ValidationRule>

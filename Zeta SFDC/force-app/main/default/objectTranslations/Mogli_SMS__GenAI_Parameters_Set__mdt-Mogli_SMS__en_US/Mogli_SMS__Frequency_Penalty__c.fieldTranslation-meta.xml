@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <help><!-- Number between -2.0 and 2.0. Positive values penalize new tokens based on their existing frequency in the text so far, decreasing the models likelihood to repeat the same line verbatim. --></help>
+    <label><!-- Frequency Penalty --></label>
+    <name>Mogli_SMS__Frequency_Penalty__c</name>
+</CustomFieldTranslation>

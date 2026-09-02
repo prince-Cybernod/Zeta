@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<DataStreamTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <dataSourceBundleDefinition>sf_persnl__ExperimentationBundleIngestAPI</dataSourceBundleDefinition>
+    <dataSourceObject>sf_persnl__ExperimentationLog_experimentat_F576747E</dataSourceObject>
+    <masterLabel>ExperimentationLog-experimentation</masterLabel>
+    <objectCategory>Salesforce_SFDCReferenceModel_0_93.Engagement</objectCategory>
+    <refreshFrequency>NONE</refreshFrequency>
+    <refreshMode>UPSERT</refreshMode>
+    <sourceObjectName>sf_persnl__ExperimentationLog_experimentation_F576747E</sourceObjectName>
+    <streamType>INGEST</streamType>
+    <templateVersion>1</templateVersion>
+</DataStreamTemplate>

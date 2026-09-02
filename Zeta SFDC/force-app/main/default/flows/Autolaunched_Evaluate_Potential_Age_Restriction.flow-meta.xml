@@ -1,0 +1,326 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionCalls>
+        <name>Convert_Grades_Interested_to_Text_Collection</name>
+        <label>Convert Grades Interested to Text Collection</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <actionName>ConvertCSVToStringCollection_CP</actionName>
+        <actionType>apex</actionType>
+        <connector>
+            <targetReference>Loop_Grades_Interested</targetReference>
+        </connector>
+        <flowTransactionModel>Automatic</flowTransactionModel>
+        <inputParameters>
+            <name>csvString</name>
+            <value>
+                <elementReference>txt_GradeInterestedIn</elementReference>
+                <inputConfiguratorMode>Resource</inputConfiguratorMode>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>delimiter</name>
+            <value>
+                <inputConfiguratorMode>Resource</inputConfiguratorMode>
+                <stringValue>;</stringValue>
+            </value>
+        </inputParameters>
+        <nameSegment>ConvertCSVToStringCollection_CP</nameSegment>
+        <offset>0</offset>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </actionCalls>
+    <apiVersion>67.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <assignments>
+        <name>Assign_Interested_Grades_to_text_variable</name>
+        <label>Assign Interested Grades to text variable</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <assignmentItems>
+            <assignToReference>txt_GradeInterestedIn</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>input_rec_Lead.Interested_Grade_s__c</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Convert_Grades_Interested_to_Text_Collection</targetReference>
+        </connector>
+    </assignments>
+    <decisions>
+        <description>As long as at least one loop yields a FALSE result, the age will be deemed consistent with Grade and we will end the flow</description>
+        <name>Evaluate_Age_Consistency</name>
+        <label>Evaluate Age Consistency</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <defaultConnector>
+            <targetReference>Loop_Grades_Interested</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Age Inconsistency Formula = TRUE</defaultConnectorLabel>
+        <rules>
+            <name>Age_Inconsistency_Formula_FALSE</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>fx_AgeInconsistency</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Update_Potential_Age_Restriction_c_to_FALSE</targetReference>
+            </connector>
+            <label>Age Inconsistency Formula = FALSE</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <description>If this field is not populated, immediately update Potential_Age_Restriction__c to TRUE and end flow</description>
+        <name>Grades_Interested_In_populated</name>
+        <label>Grades Interested In populated?</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <defaultConnector>
+            <targetReference>Update_Potential_Age_Restriction_c_to_TRUE</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Older_than_17</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>fx_ageToday</leftValueReference>
+                <operator>GreaterThanOrEqualTo</operator>
+                <rightValue>
+                    <numberValue>17.0</numberValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Update_Potential_Age_Restriction_c_to_TRUE</targetReference>
+            </connector>
+            <label>Older than 17</label>
+        </rules>
+        <rules>
+            <name>Yes_populated</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>input_rec_Lead.Interested_Grade_s__c</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Get_Academic_Term</targetReference>
+            </connector>
+            <label>Yes, populated</label>
+        </rules>
+    </decisions>
+    <description>Logic to flag Leads (via Potential_Age_Restriction__c) where none of the Grades Interested In correspond to the Birth Date
+Created by: Elevation Solutions</description>
+    <environments>Default</environments>
+    <formulas>
+        <description>Returns TRUE if the Age does not meet the Grade Level</description>
+        <name>fx_AgeInconsistency</name>
+        <dataType>Boolean</dataType>
+        <expression>IF(
+   {!Loop_Grades_Interested} = &quot;PK&quot;,
+    /* PK: must be 4 by Dec 31 AND NOT 5+ by Dec 31 (birthday-accurate) */
+    OR(
+      /* too young: 4th birthday is AFTER cutoff */
+      ADDMONTHS({!input_rec_Lead.Date_of_Birth__c}, 48) &gt;
+      DATE(
+        YEAR(DATEVALUE({!Get_Academic_Term.StartDate})),
+        12,
+        31
+      ),
+      /* too old: 5th birthday is ON or BEFORE cutoff */
+      ADDMONTHS({!input_rec_Lead.Date_of_Birth__c}, 60) &lt;=
+      DATE(
+        YEAR(DATEVALUE({!Get_Academic_Term.StartDate})),
+        12,
+        31
+      )
+    ),
+    IF(
+      OR(
+       {!Loop_Grades_Interested} = &quot;K&quot;,
+        {!Loop_Grades_Interested} = &quot;TK&quot;
+      ),
+      /* K/TK: must be 5 by Dec 31 AND NOT 6+ by Dec 31 (birthday-accurate) */
+      OR(
+        /* too young: 5th birthday is AFTER cutoff */
+        ADDMONTHS({!input_rec_Lead.Date_of_Birth__c}, 60) &gt;
+        DATE(
+          YEAR(DATEVALUE({!Get_Academic_Term.StartDate})),
+          12,
+          31
+        ),
+        /* too old: 6th birthday is ON or BEFORE cutoff */
+        ADDMONTHS({!input_rec_Lead.Date_of_Birth__c}, 72) &lt;=
+        DATE(
+          YEAR(DATEVALUE({!Get_Academic_Term.StartDate})),
+          12,
+          31
+        )
+      ),
+      /* Grades 1–12: stored picklist values are &quot;1&quot;..&quot;12&quot; */
+      IF(
+        ISNUMBER({!Loop_Grades_Interested}),
+        OR(
+          /* too young: age at cutoff &lt; grade + 4 */
+          (
+            (
+              DATE(
+                YEAR(DATEVALUE({!Get_Academic_Term.StartDate})),
+                12,
+                31
+              )
+              - {!input_rec_Lead.Date_of_Birth__c}
+            ) / 365.2425
+          ) &lt; (VALUE({!Loop_Grades_Interested}) + 4),
+          /* too old: age at cutoff &gt; grade + 6 */
+          (
+            (
+              DATE(
+                YEAR(DATEVALUE({!Get_Academic_Term.StartDate})),
+                12,
+                31
+              )
+              - {!input_rec_Lead.Date_of_Birth__c}
+            ) / 365.2425
+          ) &gt; (VALUE({!Loop_Grades_Interested}) + 6)
+        ),
+        FALSE
+      )
+    )
+  )</expression>
+    </formulas>
+    <formulas>
+        <name>fx_ageToday</name>
+        <dataType>Number</dataType>
+        <expression>({!$Flow.CurrentDate}-{!input_rec_Lead.Date_of_Birth__c})/365</expression>
+        <scale>2</scale>
+    </formulas>
+    <interviewLabel>Autolaunched | Evaluate Age Consistency {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Autolaunched | Evaluate Potential Age Restriction</label>
+    <loops>
+        <description>Compare each Grade against the birthdate</description>
+        <name>Loop_Grades_Interested</name>
+        <label>Loop Grades Interested</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <collectionReference>Convert_Grades_Interested_to_Text_Collection.stringCollection</collectionReference>
+        <iterationOrder>Asc</iterationOrder>
+        <nextValueConnector>
+            <targetReference>Evaluate_Age_Consistency</targetReference>
+        </nextValueConnector>
+        <noMoreValuesConnector>
+            <targetReference>Update_Potential_Age_Restriction_c_to_TRUE</targetReference>
+        </noMoreValuesConnector>
+    </loops>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordLookups>
+        <name>Get_Academic_Term</name>
+        <label>Get Academic Term</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Assign_Interested_Grades_to_text_variable</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>input_rec_Lead.Application_Timeline__r.Academic_Term__c</elementReference>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>AcademicTerm</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordUpdates>
+        <name>Update_Potential_Age_Restriction_c_to_FALSE</name>
+        <label>Update Potential_Age_Restriction__c to FALSE</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>input_rec_Lead.Id</elementReference>
+            </value>
+        </filters>
+        <inputAssignments>
+            <field>Potential_Age_Restriction__c</field>
+            <value>
+                <booleanValue>false</booleanValue>
+            </value>
+        </inputAssignments>
+        <object>Lead</object>
+    </recordUpdates>
+    <recordUpdates>
+        <description>If the Birthdate is null OR the flow is still running after finishing the loop, update to TRUE</description>
+        <name>Update_Potential_Age_Restriction_c_to_TRUE</name>
+        <label>Update Potential_Age_Restriction__c to TRUE</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>input_rec_Lead.Id</elementReference>
+            </value>
+        </filters>
+        <inputAssignments>
+            <field>Potential_Age_Restriction__c</field>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </inputAssignments>
+        <object>Lead</object>
+    </recordUpdates>
+    <start>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>Grades_Interested_In_populated</targetReference>
+        </connector>
+    </start>
+    <status>Active</status>
+    <variables>
+        <name>input_rec_Lead</name>
+        <dataType>SObject</dataType>
+        <isCollection>false</isCollection>
+        <isInput>true</isInput>
+        <isOutput>false</isOutput>
+        <objectType>Lead</objectType>
+    </variables>
+    <variables>
+        <name>txt_GradeInterestedIn</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+    </variables>
+</Flow>

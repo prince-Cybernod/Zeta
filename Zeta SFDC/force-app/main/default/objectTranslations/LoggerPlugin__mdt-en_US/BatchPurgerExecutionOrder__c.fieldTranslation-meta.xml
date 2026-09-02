@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <help><!-- The specific order to execute plugins in the org. Plugins are executed in order by sorting by execution order, then plugin name (ORDER BY ExecutionOrder__c NULLS LAST, DeveloperName). --></help>
+    <label><!-- Batch Purger Execution Order --></label>
+    <name>BatchPurgerExecutionOrder__c</name>
+</CustomFieldTranslation>

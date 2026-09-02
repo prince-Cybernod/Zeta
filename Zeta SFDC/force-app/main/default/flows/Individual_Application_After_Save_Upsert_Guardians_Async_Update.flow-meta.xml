@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>66.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <description>Runs on update. When SchoolMint + Guardian fields change (and we didn’t just stamp the lookups), launches async path to upsert guardian accounts and stamp guardian lookups on the Individual Application.</description>
+    <environments>Default</environments>
+    <interviewLabel>Individual Application (After Save) {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Individual Application (After Save) Upsert Guardians (Async - Update)</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <start>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>Run_Upsert_Guardians_Flow</targetReference>
+        </connector>
+        <filterFormula>OR(
+
+  AND(
+    ISBLANK({!$Record.Primary_Guardian__c}),
+
+    OR(
+      ISCHANGED({!$Record.Parent_Guardian_1_Email__c}),
+      ISCHANGED({!$Record.Parent_Guardian_1_Phone__c}),
+      ISCHANGED({!$Record.Parent_Guardian_1_First_Name__c}),
+      ISCHANGED({!$Record.Parent_Guardian_1_Last_Name__c})
+    ),
+
+    OR(
+      NOT(ISBLANK({!$Record.Parent_Guardian_1_Email__c})),
+      NOT(ISBLANK({!$Record.Parent_Guardian_1_Phone__c})),
+      AND(
+        NOT(ISBLANK({!$Record.Parent_Guardian_1_First_Name__c})),
+        NOT(ISBLANK({!$Record.Parent_Guardian_1_Last_Name__c}))
+      )
+    )
+  ),
+
+  AND(
+    ISBLANK({!$Record.Secondary_Guardian__c}),
+
+    OR(
+      ISCHANGED({!$Record.Parent_Guardian_2_Email__c}),
+      ISCHANGED({!$Record.Parent_Guardian_2_Phone__c}),
+      ISCHANGED({!$Record.Parent_Guardian_2_First_Name__c}),
+      ISCHANGED({!$Record.Parent_Guardian_2_Last_Name__c})
+    ),
+
+    OR(
+      NOT(ISBLANK({!$Record.Parent_Guardian_2_Email__c})),
+      NOT(ISBLANK({!$Record.Parent_Guardian_2_Phone__c})),
+      AND(
+        NOT(ISBLANK({!$Record.Parent_Guardian_2_First_Name__c})),
+        NOT(ISBLANK({!$Record.Parent_Guardian_2_Last_Name__c}))
+      )
+    )
+  )
+
+)</filterFormula>
+        <object>IndividualApplication</object>
+        <recordTriggerType>Update</recordTriggerType>
+        <triggerType>RecordAfterSave</triggerType>
+    </start>
+    <status>Active</status>
+    <subflows>
+        <name>Run_Upsert_Guardians_Flow</name>
+        <label>Run Upsert Guardians Flow</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <flowName>Individual_Application_Autolaunched_Upsert_Guardian</flowName>
+        <inputAssignments>
+            <name>recordId</name>
+            <value>
+                <elementReference>$Record.Id</elementReference>
+            </value>
+        </inputAssignments>
+    </subflows>
+</Flow>

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Age_Appropriate_Grade__c</fullName>
+    <description>Calculated grade level based on student age at the time of assessment.</description>
+    <externalId>false</externalId>
+    <formula>IF(
+    TEXT(Individual_Application__r.Account.Student_Type__c) &lt;&gt; &quot;New&quot;,
+    &quot;N/A&quot;,
+    CASE(
+        FLOOR( ( DATE(YEAR(TODAY()),12,31) -  Individual_Application__r.Account.PersonContact.Birthdate  ) / 365.2425 ),
+        4, &quot;PK&quot;,
+        5, &quot;K&quot;,
+        6, &quot;1&quot;,
+        7, &quot;2&quot;,
+        8, &quot;3&quot;,
+        9, &quot;4&quot;,
+        10, &quot;5&quot;,
+        11, &quot;6&quot;,
+        12, &quot;7&quot;,
+        13, &quot;8&quot;,
+        14, &quot;9&quot;,
+        15, &quot;10&quot;,
+        16, &quot;11&quot;,
+        17, &quot;12&quot;,
+        /* Default when not matched */
+        IF(
+            FLOOR( ( DATE(YEAR(TODAY()),12,31) - Individual_Application__r.Account.PersonContact.Birthdate) / 365.2425 ) &gt;= 18,
+            &quot;College&quot;,
+            &quot;N/A&quot;
+        )
+    )
+)</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <inlineHelpText>Calculated grade level based on student age at the time of assessment.</inlineHelpText>
+    <label>Age-Appropriate Grade</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

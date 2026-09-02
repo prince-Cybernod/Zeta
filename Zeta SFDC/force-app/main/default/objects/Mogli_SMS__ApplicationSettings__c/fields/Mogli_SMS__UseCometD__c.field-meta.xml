@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Mogli_SMS__UseCometD__c</fullName>
+    <defaultValue>false</defaultValue>
+    <deprecated>false</deprecated>
+    <description>Enable the use of CometD instead of empApi to subscribe to PushTopics in the Mogli Inbox, allowing real-time notifications to be displayed on mobile devices.</description>
+    <label>Use CometD (Legacy Subscription)</label>
+    <trackTrending>false</trackTrending>
+    <type>Checkbox</type>
+</CustomField>

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Mogli_SMS__Destination_URL__c</fullName>
+    <deprecated>false</deprecated>
+    <description>Used to store the destination URL or long URL.</description>
+    <label>Destination URL</label>
+    <length>32768</length>
+    <trackTrending>false</trackTrending>
+    <type>LongTextArea</type>
+    <visibleLines>4</visibleLines>
+</CustomField>

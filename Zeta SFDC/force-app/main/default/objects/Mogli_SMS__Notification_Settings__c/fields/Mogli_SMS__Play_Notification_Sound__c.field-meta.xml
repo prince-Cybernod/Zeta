@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Mogli_SMS__Play_Notification_Sound__c</fullName>
+    <defaultValue>false</defaultValue>
+    <deprecated>false</deprecated>
+    <description>Plays audio file for incoming notifications</description>
+    <inlineHelpText>Allow tone for incoming notifications</inlineHelpText>
+    <label>Play Notification Sound</label>
+    <trackTrending>false</trackTrending>
+    <type>Checkbox</type>
+</CustomField>

@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>ReEnrollment_Forms_Status__c</fullName>
+    <description>Indicates the current completion status of required re-enrollment forms based on student type, enrollment status, intent to return, and form activity. Values reflect whether re-enrollment has not started, is in progress, is complete, or is not applicable.</description>
+    <externalId>false</externalId>
+    <formula>IF(
+
+/* ---------- COMPLETE ---------- */
+AND(
+TEXT(LearnerAccount.Student_Type__c) = &quot;Returning&quot;,
+OR(
+TEXT(TELA_Fee_Verification__c) = &quot;Verified&quot;,
+TEXT(TELA_Fee_Verification__c) = &quot;Waived&quot;
+),
+CONTAINS(TEXT(Student_Info_Contact_Form__c),&quot;V&quot;),
+CONTAINS(TEXT(Parent_Contract__c),&quot;V&quot;),
+CONTAINS(TEXT(FERPA_Directory_Info_Notice__c),&quot;V&quot;),
+CONTAINS(TEXT(Housing_Questionnaire__c),&quot;V&quot;),
+NOT(ISBLANK(Housing_ATS_Code__c))
+),
+
+&quot;Complete&quot;,
+
+IF(
+
+/* ---------- STARTED ---------- */
+AND(
+CONTAINS(TEXT(LearnerAccount.Student_Type__c),&quot;R&quot;),
+OR(
+CONTAINS(TEXT(EnrollmentStatus),&quot;2&quot;),
+CONTAINS(TEXT(EnrollmentStatus),&quot;5&quot;)
+),
+OR(
+CONTAINS(TEXT(TELA_Fee_Form__c),&quot;fi&quot;),
+CONTAINS(TEXT(TELA_Fee_Verification__c),&quot;fi&quot;),
+CONTAINS(TEXT(Student_Info_Contact_Form__c),&quot;fi&quot;),
+CONTAINS(TEXT(Uploaded_IEP__c),&quot;fi&quot;),
+CONTAINS(TEXT(MAF_Upload__c),&quot;fi&quot;),
+CONTAINS(TEXT(Parent_Contract__c),&quot;fi&quot;),
+CONTAINS(TEXT(FERPA_Directory_Info_Notice__c),&quot;fi&quot;),
+CONTAINS(TEXT(Immunization_Records__c),&quot;fi&quot;),
+CONTAINS(TEXT(Physical_Upload__c),&quot;fi&quot;),
+CONTAINS(TEXT(Housing_Questionnaire__c),&quot;fi&quot;),
+NOT(ISBLANK(Housing_ATS_Code__c))
+)
+),
+
+&quot;Started&quot;,
+
+IF(
+TEXT(LearnerAccount.Student_Type__c) = &quot;Returning&quot;,
+&quot;Not Started&quot;,
+&quot;N/A&quot;
+)
+
+)
+
+)</formula>
+    <inlineHelpText>Indicates the current completion status of required re-enrollment forms based on student type, enrollment status, intent to return, and form activity. Values reflect whether re-enrollment has not started, is in progress, is complete, or is not applicable.</inlineHelpText>
+    <label>Re-Enrollment Forms Status</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

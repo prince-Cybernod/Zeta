@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Text_Message_Opt_In__c</fullName>
+    <defaultValue>false</defaultValue>
+    <description>Indicates whether the applicant has opted in to receive text messages about their application.</description>
+    <label>Text Message Opt-In</label>
+    <trackHistory>false</trackHistory>
+    <type>Checkbox</type>
+</CustomField>

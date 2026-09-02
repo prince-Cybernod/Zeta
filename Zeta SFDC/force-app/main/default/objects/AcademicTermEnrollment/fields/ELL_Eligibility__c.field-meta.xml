@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>ELL_Eligibility__c</fullName>
+    <description>6 or higher → DNQ (Does Not Qualify)
+
+5 or lower → NYSITELL Eligible
+
+Blank HLQ Result → Blank</description>
+    <externalId>false</externalId>
+    <formula>IF(
+    ISBLANK(HLQ_Result__c),
+    &quot;&quot;,
+    IF(
+        HLQ_Result__c &gt;= 6,
+        &quot;DNQ&quot;,
+        IF(
+            HLQ_Result__c &lt;= 5,
+            &quot;NYSITELL Eligible&quot;,
+            &quot;&quot;
+        )
+    )
+)</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <inlineHelpText>Determines ELL eligibility based on the student’s HLQ (Home Language Questionnaire) score:
+
+6 or higher → DNQ (Does Not Qualify)
+
+5 or lower → NYSITELL Eligible
+
+Blank HLQ Result → Blank</inlineHelpText>
+    <label>ELL Eligibility</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

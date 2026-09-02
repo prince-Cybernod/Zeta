@@ -1,0 +1,3248 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ActivationPlatform xmlns="http://soap.sforce.com/2006/04/metadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <activationFlowType>DMO</activationFlowType>
+    <activationPlatformAdditionalMetadata>{
+  &quot;hashMethod&quot; : null,
+  &quot;customerFileSources&quot; : [ ],
+  &quot;activationPlatformEventMetadata&quot; : {
+    &quot;supportedEventTypes&quot; : [ &quot;Standard&quot;, &quot;Custom&quot; ],
+    &quot;showEventSourceAnnotations&quot; : true,
+    &quot;standardEventDetails&quot; : {
+      &quot;eventParameters&quot; : [ {
+        &quot;name&quot; : &quot;Event&quot;,
+        &quot;type&quot; : &quot;Event&quot;,
+        &quot;hierarchy&quot; : 1,
+        &quot;values&quot; : [ &quot;Submit Application&quot;, &quot;Loan Approval&quot;, &quot;Application Approval&quot;, &quot;In App AD Impr&quot;, &quot;Customize Product&quot;, &quot;Install App&quot;, &quot;Subscribe&quot;, &quot;In App AD Click&quot;, &quot;Create Group&quot;, &quot;Checkout&quot;, &quot;Registration&quot;, &quot;Search&quot;, &quot;Lead&quot;, &quot;Loan Disbursal&quot;, &quot;Download&quot;, &quot;Find Location&quot;, &quot;Join Group&quot;, &quot;Purchase&quot;, &quot;Add Payment Info&quot;, &quot;Add to Cart&quot;, &quot;Complete Registration&quot;, &quot;Rate&quot;, &quot;View Content&quot;, &quot;Complete Tutorial&quot;, &quot;Loan Application&quot;, &quot;Initiate Checkout&quot;, &quot;Add to Wishlist&quot;, &quot;Login&quot;, &quot;Achieve Level&quot;, &quot;Create Role&quot;, &quot;Generate Lead&quot;, &quot;Contact&quot;, &quot;Schedule&quot;, &quot;Unlock Achievement&quot;, &quot;Start Trial&quot;, &quot;Spend Credits&quot;, &quot;Launch App&quot; ]
+      }, {
+        &quot;name&quot; : &quot;Event Source&quot;,
+        &quot;type&quot; : &quot;ActionSource&quot;,
+        &quot;hierarchy&quot; : 2,
+        &quot;values&quot; : [ &quot;app&quot;, &quot;offline&quot;, &quot;web&quot;, &quot;crm&quot; ]
+      } ],
+      &quot;eventParameterHierarchy&quot; : [ {
+        &quot;hierarchyCombination&quot; : &quot;Event__ActionSource&quot;,
+        &quot;hierarchyCombinationData&quot; : [ {
+          &quot;key&quot; : &quot;Achieve Level&quot;,
+          &quot;values&quot; : [ &quot;app&quot; ]
+        }, {
+          &quot;key&quot; : &quot;Add Payment Info&quot;,
+          &quot;values&quot; : [ &quot;app&quot;, &quot;offline&quot;, &quot;web&quot;, &quot;crm&quot; ]
+        }, {
+          &quot;key&quot; : &quot;Add to Cart&quot;,
+          &quot;values&quot; : [ &quot;app&quot;, &quot;offline&quot;, &quot;web&quot;, &quot;crm&quot; ]
+        }, {
+          &quot;key&quot; : &quot;Add to Wishlist&quot;,
+          &quot;values&quot; : [ &quot;app&quot;, &quot;offline&quot;, &quot;web&quot;, &quot;crm&quot; ]
+        }, {
+          &quot;key&quot; : &quot;Application Approval&quot;,
+          &quot;values&quot; : [ &quot;offline&quot;, &quot;web&quot;, &quot;crm&quot; ]
+        }, {
+          &quot;key&quot; : &quot;Checkout&quot;,
+          &quot;values&quot; : [ &quot;app&quot; ]
+        }, {
+          &quot;key&quot; : &quot;Complete Registration&quot;,
+          &quot;values&quot; : [ &quot;offline&quot;, &quot;web&quot;, &quot;crm&quot; ]
+        }, {
+          &quot;key&quot; : &quot;Complete Tutorial&quot;,
+          &quot;values&quot; : [ &quot;app&quot; ]
+        }, {
+          &quot;key&quot; : &quot;Contact&quot;,
+          &quot;values&quot; : [ &quot;offline&quot;, &quot;web&quot;, &quot;crm&quot; ]
+        }, {
+          &quot;key&quot; : &quot;Create Group&quot;,
+          &quot;values&quot; : [ &quot;app&quot; ]
+        }, {
+          &quot;key&quot; : &quot;Create Role&quot;,
+          &quot;values&quot; : [ &quot;app&quot; ]
+        }, {
+          &quot;key&quot; : &quot;Customize Product&quot;,
+          &quot;values&quot; : [ &quot;offline&quot;, &quot;web&quot;, &quot;crm&quot; ]
+        }, {
+          &quot;key&quot; : &quot;Download&quot;,
+          &quot;values&quot; : [ &quot;offline&quot;, &quot;web&quot;, &quot;crm&quot; ]
+        }, {
+          &quot;key&quot; : &quot;Find Location&quot;,
+          &quot;values&quot; : [ &quot;offline&quot;, &quot;web&quot;, &quot;crm&quot; ]
+        }, {
+          &quot;key&quot; : &quot;Generate Lead&quot;,
+          &quot;values&quot; : [ &quot;app&quot; ]
+        }, {
+          &quot;key&quot; : &quot;In App AD Click&quot;,
+          &quot;values&quot; : [ &quot;app&quot; ]
+        }, {
+          &quot;key&quot; : &quot;In App AD Impr&quot;,
+          &quot;values&quot; : [ &quot;app&quot; ]
+        }, {
+          &quot;key&quot; : &quot;Initiate Checkout&quot;,
+          &quot;values&quot; : [ &quot;offline&quot;, &quot;web&quot;, &quot;crm&quot; ]
+        }, {
+          &quot;key&quot; : &quot;Install App&quot;,
+          &quot;values&quot; : [ &quot;app&quot; ]
+        }, {
+          &quot;key&quot; : &quot;Join Group&quot;,
+          &quot;values&quot; : [ &quot;app&quot; ]
+        }, {
+          &quot;key&quot; : &quot;Launch App&quot;,
+          &quot;values&quot; : [ &quot;app&quot; ]
+        }, {
+          &quot;key&quot; : &quot;Lead&quot;,
+          &quot;values&quot; : [ &quot;offline&quot;, &quot;web&quot;, &quot;crm&quot; ]
+        }, {
+          &quot;key&quot; : &quot;Loan Application&quot;,
+          &quot;values&quot; : [ &quot;app&quot; ]
+        }, {
+          &quot;key&quot; : &quot;Loan Approval&quot;,
+          &quot;values&quot; : [ &quot;app&quot; ]
+        }, {
+          &quot;key&quot; : &quot;Loan Disbursal&quot;,
+          &quot;values&quot; : [ &quot;app&quot; ]
+        }, {
+          &quot;key&quot; : &quot;Login&quot;,
+          &quot;values&quot; : [ &quot;app&quot; ]
+        }, {
+          &quot;key&quot; : &quot;Purchase&quot;,
+          &quot;values&quot; : [ &quot;app&quot;, &quot;offline&quot;, &quot;web&quot;, &quot;crm&quot; ]
+        }, {
+          &quot;key&quot; : &quot;Rate&quot;,
+          &quot;values&quot; : [ &quot;app&quot; ]
+        }, {
+          &quot;key&quot; : &quot;Registration&quot;,
+          &quot;values&quot; : [ &quot;app&quot; ]
+        }, {
+          &quot;key&quot; : &quot;Schedule&quot;,
+          &quot;values&quot; : [ &quot;offline&quot;, &quot;web&quot;, &quot;crm&quot; ]
+        }, {
+          &quot;key&quot; : &quot;Search&quot;,
+          &quot;values&quot; : [ &quot;app&quot;, &quot;offline&quot;, &quot;web&quot;, &quot;crm&quot; ]
+        }, {
+          &quot;key&quot; : &quot;Spend Credits&quot;,
+          &quot;values&quot; : [ &quot;app&quot; ]
+        }, {
+          &quot;key&quot; : &quot;Start Trial&quot;,
+          &quot;values&quot; : [ &quot;app&quot;, &quot;offline&quot;, &quot;web&quot;, &quot;crm&quot; ]
+        }, {
+          &quot;key&quot; : &quot;Submit Application&quot;,
+          &quot;values&quot; : [ &quot;offline&quot;, &quot;web&quot;, &quot;crm&quot; ]
+        }, {
+          &quot;key&quot; : &quot;Subscribe&quot;,
+          &quot;values&quot; : [ &quot;app&quot;, &quot;offline&quot;, &quot;web&quot;, &quot;crm&quot; ]
+        }, {
+          &quot;key&quot; : &quot;Unlock Achievement&quot;,
+          &quot;values&quot; : [ &quot;app&quot; ]
+        }, {
+          &quot;key&quot; : &quot;View Content&quot;,
+          &quot;values&quot; : [ &quot;app&quot;, &quot;offline&quot;, &quot;web&quot;, &quot;crm&quot; ]
+        } ]
+      } ],
+      &quot;attributeMappingInfo&quot; : [ {
+        &quot;key&quot; : &quot;Global&quot;,
+        &quot;eventParameter&quot; : null,
+        &quot;attributesOverride&quot; : {
+          &quot;required&quot; : [ {
+            &quot;destinationName&quot; : &quot;event_time&quot;,
+            &quot;value&quot; : null
+          }, {
+            &quot;destinationName&quot; : &quot;event_source_id&quot;,
+            &quot;value&quot; : &quot;dynamic&quot;
+          } ],
+          &quot;optional&quot; : [ {
+            &quot;destinationName&quot; : &quot;event_id&quot;,
+            &quot;value&quot; : null
+          }, {
+            &quot;destinationName&quot; : &quot;user_external_id&quot;,
+            &quot;value&quot; : null
+          }, {
+            &quot;destinationName&quot; : &quot;user_ttclid&quot;,
+            &quot;value&quot; : null
+          }, {
+            &quot;destinationName&quot; : &quot;user_ttp&quot;,
+            &quot;value&quot; : null
+          }, {
+            &quot;destinationName&quot; : &quot;user_ip&quot;,
+            &quot;value&quot; : null
+          }, {
+            &quot;destinationName&quot; : &quot;user_user_agent&quot;,
+            &quot;value&quot; : null
+          }, {
+            &quot;destinationName&quot; : &quot;user_idfa&quot;,
+            &quot;value&quot; : null
+          }, {
+            &quot;destinationName&quot; : &quot;user_idfv&quot;,
+            &quot;value&quot; : null
+          }, {
+            &quot;destinationName&quot; : &quot;user_gaid&quot;,
+            &quot;value&quot; : null
+          }, {
+            &quot;destinationName&quot; : &quot;user_locale&quot;,
+            &quot;value&quot; : null
+          }, {
+            &quot;destinationName&quot; : &quot;user_att_status&quot;,
+            &quot;value&quot; : null
+          }, {
+            &quot;destinationName&quot; : &quot;properties_currency&quot;,
+            &quot;value&quot; : null
+          }, {
+            &quot;destinationName&quot; : &quot;properties_value&quot;,
+            &quot;value&quot; : null
+          }, {
+            &quot;destinationName&quot; : &quot;properties_content_ids&quot;,
+            &quot;value&quot; : null
+          }, {
+            &quot;destinationName&quot; : &quot;properties_contents&quot;,
+            &quot;value&quot; : null
+          }, {
+            &quot;destinationName&quot; : &quot;properties_content_type&quot;,
+            &quot;value&quot; : null
+          }, {
+            &quot;destinationName&quot; : &quot;properties_num_items&quot;,
+            &quot;value&quot; : null
+          }, {
+            &quot;destinationName&quot; : &quot;properties_order_id&quot;,
+            &quot;value&quot; : null
+          }, {
+            &quot;destinationName&quot; : &quot;properties_search_string&quot;,
+            &quot;value&quot; : null
+          }, {
+            &quot;destinationName&quot; : &quot;properties_description&quot;,
+            &quot;value&quot; : null
+          }, {
+            &quot;destinationName&quot; : &quot;properties_shop_id&quot;,
+            &quot;value&quot; : null
+          }, {
+            &quot;destinationName&quot; : &quot;page_url&quot;,
+            &quot;value&quot; : null
+          }, {
+            &quot;destinationName&quot; : &quot;page_referrer&quot;,
+            &quot;value&quot; : null
+          }, {
+            &quot;destinationName&quot; : &quot;app_app_id&quot;,
+            &quot;value&quot; : null
+          }, {
+            &quot;destinationName&quot; : &quot;app_app_name&quot;,
+            &quot;value&quot; : null
+          }, {
+            &quot;destinationName&quot; : &quot;app_app_version&quot;,
+            &quot;value&quot; : null
+          }, {
+            &quot;destinationName&quot; : &quot;ad_callback&quot;,
+            &quot;value&quot; : null
+          }, {
+            &quot;destinationName&quot; : &quot;ad_campaign_id&quot;,
+            &quot;value&quot; : null
+          }, {
+            &quot;destinationName&quot; : &quot;ad_ad_id&quot;,
+            &quot;value&quot; : null
+          }, {
+            &quot;destinationName&quot; : &quot;ad_creative_id&quot;,
+            &quot;value&quot; : null
+          }, {
+            &quot;destinationName&quot; : &quot;ad_is_retargeting&quot;,
+            &quot;value&quot; : null
+          }, {
+            &quot;destinationName&quot; : &quot;ad_attributed&quot;,
+            &quot;value&quot; : null
+          }, {
+            &quot;destinationName&quot; : &quot;ad_attribution_type&quot;,
+            &quot;value&quot; : null
+          }, {
+            &quot;destinationName&quot; : &quot;ad_attribution_provider&quot;,
+            &quot;value&quot; : null
+          }, {
+            &quot;destinationName&quot; : &quot;lead_lead_id&quot;,
+            &quot;value&quot; : null
+          }, {
+            &quot;destinationName&quot; : &quot;lead_lead_event_source&quot;,
+            &quot;value&quot; : null
+          } ],
+          &quot;identifiers&quot; : [ {
+            &quot;destinationName&quot; : &quot;user_email&quot;,
+            &quot;value&quot; : null
+          }, {
+            &quot;destinationName&quot; : &quot;user_phone&quot;,
+            &quot;value&quot; : null
+          } ],
+          &quot;exclude&quot; : [ ],
+          &quot;systemMappingAttributes&quot; : [ ]
+        },
+        &quot;referenceAttributes&quot; : [ ]
+      }, {
+        &quot;key&quot; : &quot;WebSourceFields&quot;,
+        &quot;eventParameter&quot; : null,
+        &quot;attributesOverride&quot; : {
+          &quot;required&quot; : [ {
+            &quot;destinationName&quot; : &quot;event_id&quot;,
+            &quot;value&quot; : null
+          }, {
+            &quot;destinationName&quot; : &quot;page_url&quot;,
+            &quot;value&quot; : null
+          } ],
+          &quot;optional&quot; : [ {
+            &quot;destinationName&quot; : &quot;page_referrer&quot;,
+            &quot;value&quot; : null
+          }, {
+            &quot;destinationName&quot; : &quot;user_ttp&quot;,
+            &quot;value&quot; : null
+          } ],
+          &quot;identifiers&quot; : [ ],
+          &quot;exclude&quot; : [ ],
+          &quot;systemMappingAttributes&quot; : [ ]
+        },
+        &quot;referenceAttributes&quot; : [ ]
+      }, {
+        &quot;key&quot; : &quot;CrmSourceFields&quot;,
+        &quot;eventParameter&quot; : null,
+        &quot;attributesOverride&quot; : {
+          &quot;required&quot; : [ {
+            &quot;destinationName&quot; : &quot;lead_lead_id&quot;,
+            &quot;value&quot; : null
+          }, {
+            &quot;destinationName&quot; : &quot;event_id&quot;,
+            &quot;value&quot; : null
+          } ],
+          &quot;optional&quot; : [ {
+            &quot;destinationName&quot; : &quot;lead_lead_event_source&quot;,
+            &quot;value&quot; : null
+          } ],
+          &quot;identifiers&quot; : [ ],
+          &quot;exclude&quot; : [ ],
+          &quot;systemMappingAttributes&quot; : [ ]
+        },
+        &quot;referenceAttributes&quot; : [ ]
+      }, {
+        &quot;key&quot; : &quot;AppSourceFields&quot;,
+        &quot;eventParameter&quot; : null,
+        &quot;attributesOverride&quot; : {
+          &quot;required&quot; : [ {
+            &quot;destinationName&quot; : &quot;app_app_id&quot;,
+            &quot;value&quot; : null
+          } ],
+          &quot;optional&quot; : [ {
+            &quot;destinationName&quot; : &quot;user_idfa&quot;,
+            &quot;value&quot; : null
+          }, {
+            &quot;destinationName&quot; : &quot;user_gaid&quot;,
+            &quot;value&quot; : null
+          } ],
+          &quot;identifiers&quot; : [ ],
+          &quot;exclude&quot; : [ ],
+          &quot;systemMappingAttributes&quot; : [ ]
+        },
+        &quot;referenceAttributes&quot; : [ ]
+      }, {
+        &quot;key&quot; : &quot;OfflineSourceFields&quot;,
+        &quot;eventParameter&quot; : null,
+        &quot;attributesOverride&quot; : {
+          &quot;required&quot; : [ ],
+          &quot;optional&quot; : [ ],
+          &quot;identifiers&quot; : [ ],
+          &quot;exclude&quot; : [ ],
+          &quot;systemMappingAttributes&quot; : [ ]
+        },
+        &quot;referenceAttributes&quot; : [ ]
+      }, {
+        &quot;key&quot; : &quot;Achieve Level&quot;,
+        &quot;eventParameter&quot; : {
+          &quot;name&quot; : &quot;Achieve Level&quot;,
+          &quot;type&quot; : &quot;Event&quot;,
+          &quot;subEventParameter&quot; : null
+        },
+        &quot;attributesOverride&quot; : {
+          &quot;required&quot; : [ {
+            &quot;destinationName&quot; : &quot;event&quot;,
+            &quot;value&quot; : &quot;AchieveLevel&quot;
+          } ],
+          &quot;optional&quot; : [ ],
+          &quot;identifiers&quot; : [ ],
+          &quot;exclude&quot; : [ ],
+          &quot;systemMappingAttributes&quot; : [ ]
+        },
+        &quot;referenceAttributes&quot; : [ &quot;Global&quot; ]
+      }, {
+        &quot;key&quot; : &quot;Add Payment Info&quot;,
+        &quot;eventParameter&quot; : {
+          &quot;name&quot; : &quot;Add Payment Info&quot;,
+          &quot;type&quot; : &quot;Event&quot;,
+          &quot;subEventParameter&quot; : null
+        },
+        &quot;attributesOverride&quot; : {
+          &quot;required&quot; : [ {
+            &quot;destinationName&quot; : &quot;event&quot;,
+            &quot;value&quot; : &quot;AddPaymentInfo&quot;
+          } ],
+          &quot;optional&quot; : [ ],
+          &quot;identifiers&quot; : [ ],
+          &quot;exclude&quot; : [ ],
+          &quot;systemMappingAttributes&quot; : [ ]
+        },
+        &quot;referenceAttributes&quot; : [ &quot;Global&quot; ]
+      }, {
+        &quot;key&quot; : &quot;Add to Cart&quot;,
+        &quot;eventParameter&quot; : {
+          &quot;name&quot; : &quot;Add to Cart&quot;,
+          &quot;type&quot; : &quot;Event&quot;,
+          &quot;subEventParameter&quot; : null
+        },
+        &quot;attributesOverride&quot; : {
+          &quot;required&quot; : [ {
+            &quot;destinationName&quot; : &quot;event&quot;,
+            &quot;value&quot; : &quot;AddToCart&quot;
+          } ],
+          &quot;optional&quot; : [ ],
+          &quot;identifiers&quot; : [ ],
+          &quot;exclude&quot; : [ ],
+          &quot;systemMappingAttributes&quot; : [ ]
+        },
+        &quot;referenceAttributes&quot; : [ &quot;Global&quot; ]
+      }, {
+        &quot;key&quot; : &quot;Add to Wishlist&quot;,
+        &quot;eventParameter&quot; : {
+          &quot;name&quot; : &quot;Add to Wishlist&quot;,
+          &quot;type&quot; : &quot;Event&quot;,
+          &quot;subEventParameter&quot; : null
+        },
+        &quot;attributesOverride&quot; : {
+          &quot;required&quot; : [ {
+            &quot;destinationName&quot; : &quot;event&quot;,
+            &quot;value&quot; : &quot;AddToWishlist&quot;
+          } ],
+          &quot;optional&quot; : [ ],
+          &quot;identifiers&quot; : [ ],
+          &quot;exclude&quot; : [ ],
+          &quot;systemMappingAttributes&quot; : [ ]
+        },
+        &quot;referenceAttributes&quot; : [ &quot;Global&quot; ]
+      }, {
+        &quot;key&quot; : &quot;Application Approval&quot;,
+        &quot;eventParameter&quot; : {
+          &quot;name&quot; : &quot;Application Approval&quot;,
+          &quot;type&quot; : &quot;Event&quot;,
+          &quot;subEventParameter&quot; : null
+        },
+        &quot;attributesOverride&quot; : {
+          &quot;required&quot; : [ {
+            &quot;destinationName&quot; : &quot;event&quot;,
+            &quot;value&quot; : &quot;ApplicationApproval&quot;
+          } ],
+          &quot;optional&quot; : [ ],
+          &quot;identifiers&quot; : [ ],
+          &quot;exclude&quot; : [ ],
+          &quot;systemMappingAttributes&quot; : [ ]
+        },
+        &quot;referenceAttributes&quot; : [ &quot;Global&quot; ]
+      }, {
+        &quot;key&quot; : &quot;Checkout&quot;,
+        &quot;eventParameter&quot; : {
+          &quot;name&quot; : &quot;Checkout&quot;,
+          &quot;type&quot; : &quot;Event&quot;,
+          &quot;subEventParameter&quot; : null
+        },
+        &quot;attributesOverride&quot; : {
+          &quot;required&quot; : [ {
+            &quot;destinationName&quot; : &quot;event&quot;,
+            &quot;value&quot; : &quot;Checkout&quot;
+          } ],
+          &quot;optional&quot; : [ ],
+          &quot;identifiers&quot; : [ ],
+          &quot;exclude&quot; : [ ],
+          &quot;systemMappingAttributes&quot; : [ ]
+        },
+        &quot;referenceAttributes&quot; : [ &quot;Global&quot; ]
+      }, {
+        &quot;key&quot; : &quot;Complete Registration&quot;,
+        &quot;eventParameter&quot; : {
+          &quot;name&quot; : &quot;Complete Registration&quot;,
+          &quot;type&quot; : &quot;Event&quot;,
+          &quot;subEventParameter&quot; : null
+        },
+        &quot;attributesOverride&quot; : {
+          &quot;required&quot; : [ {
+            &quot;destinationName&quot; : &quot;event&quot;,
+            &quot;value&quot; : &quot;CompleteRegistration&quot;
+          } ],
+          &quot;optional&quot; : [ ],
+          &quot;identifiers&quot; : [ ],
+          &quot;exclude&quot; : [ ],
+          &quot;systemMappingAttributes&quot; : [ ]
+        },
+        &quot;referenceAttributes&quot; : [ &quot;Global&quot; ]
+      }, {
+        &quot;key&quot; : &quot;Complete Tutorial&quot;,
+        &quot;eventParameter&quot; : {
+          &quot;name&quot; : &quot;Complete Tutorial&quot;,
+          &quot;type&quot; : &quot;Event&quot;,
+          &quot;subEventParameter&quot; : null
+        },
+        &quot;attributesOverride&quot; : {
+          &quot;required&quot; : [ {
+            &quot;destinationName&quot; : &quot;event&quot;,
+            &quot;value&quot; : &quot;CompleteTutorial&quot;
+          } ],
+          &quot;optional&quot; : [ ],
+          &quot;identifiers&quot; : [ ],
+          &quot;exclude&quot; : [ ],
+          &quot;systemMappingAttributes&quot; : [ ]
+        },
+        &quot;referenceAttributes&quot; : [ &quot;Global&quot; ]
+      }, {
+        &quot;key&quot; : &quot;Contact&quot;,
+        &quot;eventParameter&quot; : {
+          &quot;name&quot; : &quot;Contact&quot;,
+          &quot;type&quot; : &quot;Event&quot;,
+          &quot;subEventParameter&quot; : null
+        },
+        &quot;attributesOverride&quot; : {
+          &quot;required&quot; : [ {
+            &quot;destinationName&quot; : &quot;event&quot;,
+            &quot;value&quot; : &quot;Contact&quot;
+          } ],
+          &quot;optional&quot; : [ ],
+          &quot;identifiers&quot; : [ ],
+          &quot;exclude&quot; : [ ],
+          &quot;systemMappingAttributes&quot; : [ ]
+        },
+        &quot;referenceAttributes&quot; : [ &quot;Global&quot; ]
+      }, {
+        &quot;key&quot; : &quot;Create Group&quot;,
+        &quot;eventParameter&quot; : {
+          &quot;name&quot; : &quot;Create Group&quot;,
+          &quot;type&quot; : &quot;Event&quot;,
+          &quot;subEventParameter&quot; : null
+        },
+        &quot;attributesOverride&quot; : {
+          &quot;required&quot; : [ {
+            &quot;destinationName&quot; : &quot;event&quot;,
+            &quot;value&quot; : &quot;CreateGroup&quot;
+          } ],
+          &quot;optional&quot; : [ ],
+          &quot;identifiers&quot; : [ ],
+          &quot;exclude&quot; : [ ],
+          &quot;systemMappingAttributes&quot; : [ ]
+        },
+        &quot;referenceAttributes&quot; : [ &quot;Global&quot; ]
+      }, {
+        &quot;key&quot; : &quot;Create Role&quot;,
+        &quot;eventParameter&quot; : {
+          &quot;name&quot; : &quot;Create Role&quot;,
+          &quot;type&quot; : &quot;Event&quot;,
+          &quot;subEventParameter&quot; : null
+        },
+        &quot;attributesOverride&quot; : {
+          &quot;required&quot; : [ {
+            &quot;destinationName&quot; : &quot;event&quot;,
+            &quot;value&quot; : &quot;CreateRole&quot;
+          } ],
+          &quot;optional&quot; : [ ],
+          &quot;identifiers&quot; : [ ],
+          &quot;exclude&quot; : [ ],
+          &quot;systemMappingAttributes&quot; : [ ]
+        },
+        &quot;referenceAttributes&quot; : [ &quot;Global&quot; ]
+      }, {
+        &quot;key&quot; : &quot;Customize Product&quot;,
+        &quot;eventParameter&quot; : {
+          &quot;name&quot; : &quot;Customize Product&quot;,
+          &quot;type&quot; : &quot;Event&quot;,
+          &quot;subEventParameter&quot; : null
+        },
+        &quot;attributesOverride&quot; : {
+          &quot;required&quot; : [ {
+            &quot;destinationName&quot; : &quot;event&quot;,
+            &quot;value&quot; : &quot;CustomizeProduct&quot;
+          } ],
+          &quot;optional&quot; : [ ],
+          &quot;identifiers&quot; : [ ],
+          &quot;exclude&quot; : [ ],
+          &quot;systemMappingAttributes&quot; : [ ]
+        },
+        &quot;referenceAttributes&quot; : [ &quot;Global&quot; ]
+      }, {
+        &quot;key&quot; : &quot;Download&quot;,
+        &quot;eventParameter&quot; : {
+          &quot;name&quot; : &quot;Download&quot;,
+          &quot;type&quot; : &quot;Event&quot;,
+          &quot;subEventParameter&quot; : null
+        },
+        &quot;attributesOverride&quot; : {
+          &quot;required&quot; : [ {
+            &quot;destinationName&quot; : &quot;event&quot;,
+            &quot;value&quot; : &quot;Download&quot;
+          } ],
+          &quot;optional&quot; : [ ],
+          &quot;identifiers&quot; : [ ],
+          &quot;exclude&quot; : [ ],
+          &quot;systemMappingAttributes&quot; : [ ]
+        },
+        &quot;referenceAttributes&quot; : [ &quot;Global&quot; ]
+      }, {
+        &quot;key&quot; : &quot;Find Location&quot;,
+        &quot;eventParameter&quot; : {
+          &quot;name&quot; : &quot;Find Location&quot;,
+          &quot;type&quot; : &quot;Event&quot;,
+          &quot;subEventParameter&quot; : null
+        },
+        &quot;attributesOverride&quot; : {
+          &quot;required&quot; : [ {
+            &quot;destinationName&quot; : &quot;event&quot;,
+            &quot;value&quot; : &quot;FindLocation&quot;
+          } ],
+          &quot;optional&quot; : [ ],
+          &quot;identifiers&quot; : [ ],
+          &quot;exclude&quot; : [ ],
+          &quot;systemMappingAttributes&quot; : [ ]
+        },
+        &quot;referenceAttributes&quot; : [ &quot;Global&quot; ]
+      }, {
+        &quot;key&quot; : &quot;Generate Lead&quot;,
+        &quot;eventParameter&quot; : {
+          &quot;name&quot; : &quot;Generate Lead&quot;,
+          &quot;type&quot; : &quot;Event&quot;,
+          &quot;subEventParameter&quot; : null
+        },
+        &quot;attributesOverride&quot; : {
+          &quot;required&quot; : [ {
+            &quot;destinationName&quot; : &quot;event&quot;,
+            &quot;value&quot; : &quot;GenerateLead&quot;
+          } ],
+          &quot;optional&quot; : [ ],
+          &quot;identifiers&quot; : [ ],
+          &quot;exclude&quot; : [ ],
+          &quot;systemMappingAttributes&quot; : [ ]
+        },
+        &quot;referenceAttributes&quot; : [ &quot;Global&quot; ]
+      }, {
+        &quot;key&quot; : &quot;In App AD Click&quot;,
+        &quot;eventParameter&quot; : {
+          &quot;name&quot; : &quot;In App AD Click&quot;,
+          &quot;type&quot; : &quot;Event&quot;,
+          &quot;subEventParameter&quot; : null
+        },
+        &quot;attributesOverride&quot; : {
+          &quot;required&quot; : [ {
+            &quot;destinationName&quot; : &quot;event&quot;,
+            &quot;value&quot; : &quot;InAppADClick&quot;
+          } ],
+          &quot;optional&quot; : [ ],
+          &quot;identifiers&quot; : [ ],
+          &quot;exclude&quot; : [ ],
+          &quot;systemMappingAttributes&quot; : [ ]
+        },
+        &quot;referenceAttributes&quot; : [ &quot;Global&quot; ]
+      }, {
+        &quot;key&quot; : &quot;In App AD Impr&quot;,
+        &quot;eventParameter&quot; : {
+          &quot;name&quot; : &quot;In App AD Impr&quot;,
+          &quot;type&quot; : &quot;Event&quot;,
+          &quot;subEventParameter&quot; : null
+        },
+        &quot;attributesOverride&quot; : {
+          &quot;required&quot; : [ {
+            &quot;destinationName&quot; : &quot;event&quot;,
+            &quot;value&quot; : &quot;InAppADImpr&quot;
+          } ],
+          &quot;optional&quot; : [ ],
+          &quot;identifiers&quot; : [ ],
+          &quot;exclude&quot; : [ ],
+          &quot;systemMappingAttributes&quot; : [ ]
+        },
+        &quot;referenceAttributes&quot; : [ &quot;Global&quot; ]
+      }, {
+        &quot;key&quot; : &quot;Initiate Checkout&quot;,
+        &quot;eventParameter&quot; : {
+          &quot;name&quot; : &quot;Initiate Checkout&quot;,
+          &quot;type&quot; : &quot;Event&quot;,
+          &quot;subEventParameter&quot; : null
+        },
+        &quot;attributesOverride&quot; : {
+          &quot;required&quot; : [ {
+            &quot;destinationName&quot; : &quot;event&quot;,
+            &quot;value&quot; : &quot;InitiateCheckout&quot;
+          } ],
+          &quot;optional&quot; : [ ],
+          &quot;identifiers&quot; : [ ],
+          &quot;exclude&quot; : [ ],
+          &quot;systemMappingAttributes&quot; : [ ]
+        },
+        &quot;referenceAttributes&quot; : [ &quot;Global&quot; ]
+      }, {
+        &quot;key&quot; : &quot;Install App&quot;,
+        &quot;eventParameter&quot; : {
+          &quot;name&quot; : &quot;Install App&quot;,
+          &quot;type&quot; : &quot;Event&quot;,
+          &quot;subEventParameter&quot; : null
+        },
+        &quot;attributesOverride&quot; : {
+          &quot;required&quot; : [ {
+            &quot;destinationName&quot; : &quot;event&quot;,
+            &quot;value&quot; : &quot;InstallApp&quot;
+          } ],
+          &quot;optional&quot; : [ ],
+          &quot;identifiers&quot; : [ ],
+          &quot;exclude&quot; : [ ],
+          &quot;systemMappingAttributes&quot; : [ ]
+        },
+        &quot;referenceAttributes&quot; : [ &quot;Global&quot; ]
+      }, {
+        &quot;key&quot; : &quot;Join Group&quot;,
+        &quot;eventParameter&quot; : {
+          &quot;name&quot; : &quot;Join Group&quot;,
+          &quot;type&quot; : &quot;Event&quot;,
+          &quot;subEventParameter&quot; : null
+        },
+        &quot;attributesOverride&quot; : {
+          &quot;required&quot; : [ {
+            &quot;destinationName&quot; : &quot;event&quot;,
+            &quot;value&quot; : &quot;JoinGroup&quot;
+          } ],
+          &quot;optional&quot; : [ ],
+          &quot;identifiers&quot; : [ ],
+          &quot;exclude&quot; : [ ],
+          &quot;systemMappingAttributes&quot; : [ ]
+        },
+        &quot;referenceAttributes&quot; : [ &quot;Global&quot; ]
+      }, {
+        &quot;key&quot; : &quot;Launch App&quot;,
+        &quot;eventParameter&quot; : {
+          &quot;name&quot; : &quot;Launch App&quot;,
+          &quot;type&quot; : &quot;Event&quot;,
+          &quot;subEventParameter&quot; : null
+        },
+        &quot;attributesOverride&quot; : {
+          &quot;required&quot; : [ {
+            &quot;destinationName&quot; : &quot;event&quot;,
+            &quot;value&quot; : &quot;LaunchApp&quot;
+          } ],
+          &quot;optional&quot; : [ ],
+          &quot;identifiers&quot; : [ ],
+          &quot;exclude&quot; : [ ],
+          &quot;systemMappingAttributes&quot; : [ ]
+        },
+        &quot;referenceAttributes&quot; : [ &quot;Global&quot; ]
+      }, {
+        &quot;key&quot; : &quot;Lead&quot;,
+        &quot;eventParameter&quot; : {
+          &quot;name&quot; : &quot;Lead&quot;,
+          &quot;type&quot; : &quot;Event&quot;,
+          &quot;subEventParameter&quot; : null
+        },
+        &quot;attributesOverride&quot; : {
+          &quot;required&quot; : [ {
+            &quot;destinationName&quot; : &quot;event&quot;,
+            &quot;value&quot; : &quot;Lead&quot;
+          } ],
+          &quot;optional&quot; : [ ],
+          &quot;identifiers&quot; : [ ],
+          &quot;exclude&quot; : [ ],
+          &quot;systemMappingAttributes&quot; : [ ]
+        },
+        &quot;referenceAttributes&quot; : [ &quot;Global&quot; ]
+      }, {
+        &quot;key&quot; : &quot;Loan Application&quot;,
+        &quot;eventParameter&quot; : {
+          &quot;name&quot; : &quot;Loan Application&quot;,
+          &quot;type&quot; : &quot;Event&quot;,
+          &quot;subEventParameter&quot; : null
+        },
+        &quot;attributesOverride&quot; : {
+          &quot;required&quot; : [ {
+            &quot;destinationName&quot; : &quot;event&quot;,
+            &quot;value&quot; : &quot;LoanApplication&quot;
+          } ],
+          &quot;optional&quot; : [ ],
+          &quot;identifiers&quot; : [ ],
+          &quot;exclude&quot; : [ ],
+          &quot;systemMappingAttributes&quot; : [ ]
+        },
+        &quot;referenceAttributes&quot; : [ &quot;Global&quot; ]
+      }, {
+        &quot;key&quot; : &quot;Loan Approval&quot;,
+        &quot;eventParameter&quot; : {
+          &quot;name&quot; : &quot;Loan Approval&quot;,
+          &quot;type&quot; : &quot;Event&quot;,
+          &quot;subEventParameter&quot; : null
+        },
+        &quot;attributesOverride&quot; : {
+          &quot;required&quot; : [ {
+            &quot;destinationName&quot; : &quot;event&quot;,
+            &quot;value&quot; : &quot;LoanApproval&quot;
+          } ],
+          &quot;optional&quot; : [ ],
+          &quot;identifiers&quot; : [ ],
+          &quot;exclude&quot; : [ ],
+          &quot;systemMappingAttributes&quot; : [ ]
+        },
+        &quot;referenceAttributes&quot; : [ &quot;Global&quot; ]
+      }, {
+        &quot;key&quot; : &quot;Loan Disbursal&quot;,
+        &quot;eventParameter&quot; : {
+          &quot;name&quot; : &quot;Loan Disbursal&quot;,
+          &quot;type&quot; : &quot;Event&quot;,
+          &quot;subEventParameter&quot; : null
+        },
+        &quot;attributesOverride&quot; : {
+          &quot;required&quot; : [ {
+            &quot;destinationName&quot; : &quot;event&quot;,
+            &quot;value&quot; : &quot;LoanDisbursal&quot;
+          } ],
+          &quot;optional&quot; : [ ],
+          &quot;identifiers&quot; : [ ],
+          &quot;exclude&quot; : [ ],
+          &quot;systemMappingAttributes&quot; : [ ]
+        },
+        &quot;referenceAttributes&quot; : [ &quot;Global&quot; ]
+      }, {
+        &quot;key&quot; : &quot;Login&quot;,
+        &quot;eventParameter&quot; : {
+          &quot;name&quot; : &quot;Login&quot;,
+          &quot;type&quot; : &quot;Event&quot;,
+          &quot;subEventParameter&quot; : null
+        },
+        &quot;attributesOverride&quot; : {
+          &quot;required&quot; : [ {
+            &quot;destinationName&quot; : &quot;event&quot;,
+            &quot;value&quot; : &quot;Login&quot;
+          } ],
+          &quot;optional&quot; : [ ],
+          &quot;identifiers&quot; : [ ],
+          &quot;exclude&quot; : [ ],
+          &quot;systemMappingAttributes&quot; : [ ]
+        },
+        &quot;referenceAttributes&quot; : [ &quot;Global&quot; ]
+      }, {
+        &quot;key&quot; : &quot;Purchase&quot;,
+        &quot;eventParameter&quot; : {
+          &quot;name&quot; : &quot;Purchase&quot;,
+          &quot;type&quot; : &quot;Event&quot;,
+          &quot;subEventParameter&quot; : null
+        },
+        &quot;attributesOverride&quot; : {
+          &quot;required&quot; : [ {
+            &quot;destinationName&quot; : &quot;event&quot;,
+            &quot;value&quot; : &quot;Purchase&quot;
+          } ],
+          &quot;optional&quot; : [ ],
+          &quot;identifiers&quot; : [ ],
+          &quot;exclude&quot; : [ ],
+          &quot;systemMappingAttributes&quot; : [ ]
+        },
+        &quot;referenceAttributes&quot; : [ &quot;Global&quot; ]
+      }, {
+        &quot;key&quot; : &quot;Rate&quot;,
+        &quot;eventParameter&quot; : {
+          &quot;name&quot; : &quot;Rate&quot;,
+          &quot;type&quot; : &quot;Event&quot;,
+          &quot;subEventParameter&quot; : null
+        },
+        &quot;attributesOverride&quot; : {
+          &quot;required&quot; : [ {
+            &quot;destinationName&quot; : &quot;event&quot;,
+            &quot;value&quot; : &quot;Rate&quot;
+          } ],
+          &quot;optional&quot; : [ ],
+          &quot;identifiers&quot; : [ ],
+          &quot;exclude&quot; : [ ],
+          &quot;systemMappingAttributes&quot; : [ ]
+        },
+        &quot;referenceAttributes&quot; : [ &quot;Global&quot; ]
+      }, {
+        &quot;key&quot; : &quot;Registration&quot;,
+        &quot;eventParameter&quot; : {
+          &quot;name&quot; : &quot;Registration&quot;,
+          &quot;type&quot; : &quot;Event&quot;,
+          &quot;subEventParameter&quot; : null
+        },
+        &quot;attributesOverride&quot; : {
+          &quot;required&quot; : [ {
+            &quot;destinationName&quot; : &quot;event&quot;,
+            &quot;value&quot; : &quot;Registration&quot;
+          } ],
+          &quot;optional&quot; : [ ],
+          &quot;identifiers&quot; : [ ],
+          &quot;exclude&quot; : [ ],
+          &quot;systemMappingAttributes&quot; : [ ]
+        },
+        &quot;referenceAttributes&quot; : [ &quot;Global&quot; ]
+      }, {
+        &quot;key&quot; : &quot;Schedule&quot;,
+        &quot;eventParameter&quot; : {
+          &quot;name&quot; : &quot;Schedule&quot;,
+          &quot;type&quot; : &quot;Event&quot;,
+          &quot;subEventParameter&quot; : null
+        },
+        &quot;attributesOverride&quot; : {
+          &quot;required&quot; : [ {
+            &quot;destinationName&quot; : &quot;event&quot;,
+            &quot;value&quot; : &quot;Schedule&quot;
+          } ],
+          &quot;optional&quot; : [ ],
+          &quot;identifiers&quot; : [ ],
+          &quot;exclude&quot; : [ ],
+          &quot;systemMappingAttributes&quot; : [ ]
+        },
+        &quot;referenceAttributes&quot; : [ &quot;Global&quot; ]
+      }, {
+        &quot;key&quot; : &quot;Search&quot;,
+        &quot;eventParameter&quot; : {
+          &quot;name&quot; : &quot;Search&quot;,
+          &quot;type&quot; : &quot;Event&quot;,
+          &quot;subEventParameter&quot; : null
+        },
+        &quot;attributesOverride&quot; : {
+          &quot;required&quot; : [ {
+            &quot;destinationName&quot; : &quot;event&quot;,
+            &quot;value&quot; : &quot;Search&quot;
+          } ],
+          &quot;optional&quot; : [ ],
+          &quot;identifiers&quot; : [ ],
+          &quot;exclude&quot; : [ ],
+          &quot;systemMappingAttributes&quot; : [ ]
+        },
+        &quot;referenceAttributes&quot; : [ &quot;Global&quot; ]
+      }, {
+        &quot;key&quot; : &quot;Spend Credits&quot;,
+        &quot;eventParameter&quot; : {
+          &quot;name&quot; : &quot;Spend Credits&quot;,
+          &quot;type&quot; : &quot;Event&quot;,
+          &quot;subEventParameter&quot; : null
+        },
+        &quot;attributesOverride&quot; : {
+          &quot;required&quot; : [ {
+            &quot;destinationName&quot; : &quot;event&quot;,
+            &quot;value&quot; : &quot;SpendCredits&quot;
+          } ],
+          &quot;optional&quot; : [ ],
+          &quot;identifiers&quot; : [ ],
+          &quot;exclude&quot; : [ ],
+          &quot;systemMappingAttributes&quot; : [ ]
+        },
+        &quot;referenceAttributes&quot; : [ &quot;Global&quot; ]
+      }, {
+        &quot;key&quot; : &quot;Start Trial&quot;,
+        &quot;eventParameter&quot; : {
+          &quot;name&quot; : &quot;Start Trial&quot;,
+          &quot;type&quot; : &quot;Event&quot;,
+          &quot;subEventParameter&quot; : null
+        },
+        &quot;attributesOverride&quot; : {
+          &quot;required&quot; : [ {
+            &quot;destinationName&quot; : &quot;event&quot;,
+            &quot;value&quot; : &quot;StartTrial&quot;
+          } ],
+          &quot;optional&quot; : [ ],
+          &quot;identifiers&quot; : [ ],
+          &quot;exclude&quot; : [ ],
+          &quot;systemMappingAttributes&quot; : [ ]
+        },
+        &quot;referenceAttributes&quot; : [ &quot;Global&quot; ]
+      }, {
+        &quot;key&quot; : &quot;Submit Application&quot;,
+        &quot;eventParameter&quot; : {
+          &quot;name&quot; : &quot;Submit Application&quot;,
+          &quot;type&quot; : &quot;Event&quot;,
+          &quot;subEventParameter&quot; : null
+        },
+        &quot;attributesOverride&quot; : {
+          &quot;required&quot; : [ {
+            &quot;destinationName&quot; : &quot;event&quot;,
+            &quot;value&quot; : &quot;SubmitApplication&quot;
+          } ],
+          &quot;optional&quot; : [ ],
+          &quot;identifiers&quot; : [ ],
+          &quot;exclude&quot; : [ ],
+          &quot;systemMappingAttributes&quot; : [ ]
+        },
+        &quot;referenceAttributes&quot; : [ &quot;Global&quot; ]
+      }, {
+        &quot;key&quot; : &quot;Subscribe&quot;,
+        &quot;eventParameter&quot; : {
+          &quot;name&quot; : &quot;Subscribe&quot;,
+          &quot;type&quot; : &quot;Event&quot;,
+          &quot;subEventParameter&quot; : null
+        },
+        &quot;attributesOverride&quot; : {
+          &quot;required&quot; : [ {
+            &quot;destinationName&quot; : &quot;event&quot;,
+            &quot;value&quot; : &quot;Subscribe&quot;
+          } ],
+          &quot;optional&quot; : [ ],
+          &quot;identifiers&quot; : [ ],
+          &quot;exclude&quot; : [ ],
+          &quot;systemMappingAttributes&quot; : [ ]
+        },
+        &quot;referenceAttributes&quot; : [ &quot;Global&quot; ]
+      }, {
+        &quot;key&quot; : &quot;Unlock Achievement&quot;,
+        &quot;eventParameter&quot; : {
+          &quot;name&quot; : &quot;Unlock Achievement&quot;,
+          &quot;type&quot; : &quot;Event&quot;,
+          &quot;subEventParameter&quot; : null
+        },
+        &quot;attributesOverride&quot; : {
+          &quot;required&quot; : [ {
+            &quot;destinationName&quot; : &quot;event&quot;,
+            &quot;value&quot; : &quot;UnlockAchievement&quot;
+          } ],
+          &quot;optional&quot; : [ ],
+          &quot;identifiers&quot; : [ ],
+          &quot;exclude&quot; : [ ],
+          &quot;systemMappingAttributes&quot; : [ ]
+        },
+        &quot;referenceAttributes&quot; : [ &quot;Global&quot; ]
+      }, {
+        &quot;key&quot; : &quot;View Content&quot;,
+        &quot;eventParameter&quot; : {
+          &quot;name&quot; : &quot;View Content&quot;,
+          &quot;type&quot; : &quot;Event&quot;,
+          &quot;subEventParameter&quot; : null
+        },
+        &quot;attributesOverride&quot; : {
+          &quot;required&quot; : [ {
+            &quot;destinationName&quot; : &quot;event&quot;,
+            &quot;value&quot; : &quot;ViewContent&quot;
+          } ],
+          &quot;optional&quot; : [ ],
+          &quot;identifiers&quot; : [ ],
+          &quot;exclude&quot; : [ ],
+          &quot;systemMappingAttributes&quot; : [ ]
+        },
+        &quot;referenceAttributes&quot; : [ &quot;Global&quot; ]
+      }, {
+        &quot;key&quot; : &quot;Achieve Level__app&quot;,
+        &quot;eventParameter&quot; : {
+          &quot;name&quot; : &quot;Achieve Level&quot;,
+          &quot;type&quot; : &quot;Event&quot;,
+          &quot;subEventParameter&quot; : {
+            &quot;name&quot; : &quot;app&quot;,
+            &quot;type&quot; : &quot;ActionSource&quot;,
+            &quot;subEventParameter&quot; : null
+          }
+        },
+        &quot;attributesOverride&quot; : {
+          &quot;required&quot; : [ {
+            &quot;destinationName&quot; : &quot;event_source&quot;,
+            &quot;value&quot; : &quot;app&quot;
+          } ],
+          &quot;optional&quot; : [ ],
+          &quot;identifiers&quot; : [ ],
+          &quot;exclude&quot; : [ ],
+          &quot;systemMappingAttributes&quot; : [ ]
+        },
+        &quot;referenceAttributes&quot; : [ &quot;AppSourceFields&quot;, &quot;Achieve Level&quot; ]
+      }, {
+        &quot;key&quot; : &quot;Add Payment Info__web&quot;,
+        &quot;eventParameter&quot; : {
+          &quot;name&quot; : &quot;Add Payment Info&quot;,
+          &quot;type&quot; : &quot;Event&quot;,
+          &quot;subEventParameter&quot; : {
+            &quot;name&quot; : &quot;web&quot;,
+            &quot;type&quot; : &quot;ActionSource&quot;,
+            &quot;subEventParameter&quot; : null
+          }
+        },
+        &quot;attributesOverride&quot; : {
+          &quot;required&quot; : [ {
+            &quot;destinationName&quot; : &quot;event_source&quot;,
+            &quot;value&quot; : &quot;web&quot;
+          } ],
+          &quot;optional&quot; : [ ],
+          &quot;identifiers&quot; : [ ],
+          &quot;exclude&quot; : [ ],
+          &quot;systemMappingAttributes&quot; : [ ]
+        },
+        &quot;referenceAttributes&quot; : [ &quot;WebSourceFields&quot;, &quot;Add Payment Info&quot; ]
+      }, {
+        &quot;key&quot; : &quot;Add Payment Info__offline&quot;,
+        &quot;eventParameter&quot; : {
+          &quot;name&quot; : &quot;Add Payment Info&quot;,
+          &quot;type&quot; : &quot;Event&quot;,
+          &quot;subEventParameter&quot; : {
+            &quot;name&quot; : &quot;offline&quot;,
+            &quot;type&quot; : &quot;ActionSource&quot;,
+            &quot;subEventParameter&quot; : null
+          }
+        },
+        &quot;attributesOverride&quot; : {
+          &quot;required&quot; : [ {
+            &quot;destinationName&quot; : &quot;event_source&quot;,
+            &quot;value&quot; : &quot;offline&quot;
+          } ],
+          &quot;optional&quot; : [ ],
+          &quot;identifiers&quot; : [ ],
+          &quot;exclude&quot; : [ ],
+          &quot;systemMappingAttributes&quot; : [ ]
+        },
+        &quot;referenceAttributes&quot; : [ &quot;Add Payment Info&quot;, &quot;OfflineSourceFields&quot; ]
+      }, {
+        &quot;key&quot; : &quot;Add Payment Info__crm&quot;,
+        &quot;eventParameter&quot; : {
+          &quot;name&quot; : &quot;Add Payment Info&quot;,
+          &quot;type&quot; : &quot;Event&quot;,
+          &quot;subEventParameter&quot; : {
+            &quot;name&quot; : &quot;crm&quot;,
+            &quot;type&quot; : &quot;ActionSource&quot;,
+            &quot;subEventParameter&quot; : null
+          }
+        },
+        &quot;attributesOverride&quot; : {
+          &quot;required&quot; : [ {
+            &quot;destinationName&quot; : &quot;event_source&quot;,
+            &quot;value&quot; : &quot;crm&quot;
+          } ],
+          &quot;optional&quot; : [ ],
+          &quot;identifiers&quot; : [ ],
+          &quot;exclude&quot; : [ ],
+          &quot;systemMappingAttributes&quot; : [ ]
+        },
+        &quot;referenceAttributes&quot; : [ &quot;Add Payment Info&quot;, &quot;CrmSourceFields&quot; ]
+      }, {
+        &quot;key&quot; : &quot;Add Payment Info__app&quot;,
+        &quot;eventParameter&quot; : {
+          &quot;name&quot; : &quot;Add Payment Info&quot;,
+          &quot;type&quot; : &quot;Event&quot;,
+          &quot;subEventParameter&quot; : {
+            &quot;name&quot; : &quot;app&quot;,
+            &quot;type&quot; : &quot;ActionSource&quot;,
+            &quot;subEventParameter&quot; : null
+          }
+        },
+        &quot;attributesOverride&quot; : {
+          &quot;required&quot; : [ {
+            &quot;destinationName&quot; : &quot;event_source&quot;,
+            &quot;value&quot; : &quot;app&quot;
+          } ],
+          &quot;optional&quot; : [ ],
+          &quot;identifiers&quot; : [ ],
+          &quot;exclude&quot; : [ ],
+          &quot;systemMappingAttributes&quot; : [ ]
+        },
+        &quot;referenceAttributes&quot; : [ &quot;Add Payment Info&quot;, &quot;AppSourceFields&quot; ]
+      }, {
+        &quot;key&quot; : &quot;Add to Cart__web&quot;,
+        &quot;eventParameter&quot; : {
+          &quot;name&quot; : &quot;Add to Cart&quot;,
+          &quot;type&quot; : &quot;Event&quot;,
+          &quot;subEventParameter&quot; : {
+            &quot;name&quot; : &quot;web&quot;,
+            &quot;type&quot; : &quot;ActionSource&quot;,
+            &quot;subEventParameter&quot; : null
+          }
+        },
+        &quot;attributesOverride&quot; : {
+          &quot;required&quot; : [ {
+            &quot;destinationName&quot; : &quot;event_source&quot;,
+            &quot;value&quot; : &quot;web&quot;
+          } ],
+          &quot;optional&quot; : [ ],
+          &quot;identifiers&quot; : [ ],
+          &quot;exclude&quot; : [ ],
+          &quot;systemMappingAttributes&quot; : [ ]
+        },
+        &quot;referenceAttributes&quot; : [ &quot;WebSourceFields&quot;, &quot;Add to Cart&quot; ]
+      }, {
+        &quot;key&quot; : &quot;Add to Cart__offline&quot;,
+        &quot;eventParameter&quot; : {
+          &quot;name&quot; : &quot;Add to Cart&quot;,
+          &quot;type&quot; : &quot;Event&quot;,
+          &quot;subEventParameter&quot; : {
+            &quot;name&quot; : &quot;offline&quot;,
+            &quot;type&quot; : &quot;ActionSource&quot;,
+            &quot;subEventParameter&quot; : null
+          }
+        },
+        &quot;attributesOverride&quot; : {
+          &quot;required&quot; : [ {
+            &quot;destinationName&quot; : &quot;event_source&quot;,
+            &quot;value&quot; : &quot;offline&quot;
+          } ],
+          &quot;optional&quot; : [ ],
+          &quot;identifiers&quot; : [ ],
+          &quot;exclude&quot; : [ ],
+          &quot;systemMappingAttributes&quot; : [ ]
+        },
+        &quot;referenceAttributes&quot; : [ &quot;Add to Cart&quot;, &quot;OfflineSourceFields&quot; ]
+      }, {
+        &quot;key&quot; : &quot;Add to Cart__crm&quot;,
+        &quot;eventParameter&quot; : {
+          &quot;name&quot; : &quot;Add to Cart&quot;,
+          &quot;type&quot; : &quot;Event&quot;,
+          &quot;subEventParameter&quot; : {
+            &quot;name&quot; : &quot;crm&quot;,
+            &quot;type&quot; : &quot;ActionSource&quot;,
+            &quot;subEventParameter&quot; : null
+          }
+        },
+        &quot;attributesOverride&quot; : {
+          &quot;required&quot; : [ {
+            &quot;destinationName&quot; : &quot;event_source&quot;,
+            &quot;value&quot; : &quot;crm&quot;
+          } ],
+          &quot;optional&quot; : [ ],
+          &quot;identifiers&quot; : [ ],
+          &quot;exclude&quot; : [ ],
+          &quot;systemMappingAttributes&quot; : [ ]
+        },
+        &quot;referenceAttributes&quot; : [ &quot;Add to Cart&quot;, &quot;CrmSourceFields&quot; ]
+      }, {
+        &quot;key&quot; : &quot;Add to Cart__app&quot;,
+        &quot;eventParameter&quot; : {
+          &quot;name&quot; : &quot;Add to Cart&quot;,
+          &quot;type&quot; : &quot;Event&quot;,
+          &quot;subEventParameter&quot; : {
+            &quot;name&quot; : &quot;app&quot;,
+            &quot;type&quot; : &quot;ActionSource&quot;,
+            &quot;subEventParameter&quot; : null
+          }
+        },
+        &quot;attributesOverride&quot; : {
+          &quot;required&quot; : [ {
+            &quot;destinationName&quot; : &quot;event_source&quot;,
+            &quot;value&quot; : &quot;app&quot;
+          } ],
+          &quot;optional&quot; : [ ],
+          &quot;identifiers&quot; : [ ],
+          &quot;exclude&quot; : [ ],
+          &quot;systemMappingAttributes&quot; : [ ]
+        },
+        &quot;referenceAttributes&quot; : [ &quot;Add to Cart&quot;, &quot;AppSourceFields&quot; ]
+      }, {
+        &quot;key&quot; : &quot;Add to Wishlist__web&quot;,
+        &quot;eventParameter&quot; : {
+          &quot;name&quot; : &quot;Add to Wishlist&quot;,
+          &quot;type&quot; : &quot;Event&quot;,
+          &quot;subEventParameter&quot; : {
+            &quot;name&quot; : &quot;web&quot;,
+            &quot;type&quot; : &quot;ActionSource&quot;,
+            &quot;subEventParameter&quot; : null
+          }
+        },
+        &quot;attributesOverride&quot; : {
+          &quot;required&quot; : [ {
+            &quot;destinationName&quot; : &quot;event_source&quot;,
+            &quot;value&quot; : &quot;web&quot;
+          } ],
+          &quot;optional&quot; : [ ],
+          &quot;identifiers&quot; : [ ],
+          &quot;exclude&quot; : [ ],
+          &quot;systemMappingAttributes&quot; : [ ]
+        },
+        &quot;referenceAttributes&quot; : [ &quot;WebSourceFields&quot;, &quot;Add to Wishlist&quot; ]
+      }, {
+        &quot;key&quot; : &quot;Add to Wishlist__offline&quot;,
+        &quot;eventParameter&quot; : {
+          &quot;name&quot; : &quot;Add to Wishlist&quot;,
+          &quot;type&quot; : &quot;Event&quot;,
+          &quot;subEventParameter&quot; : {
+            &quot;name&quot; : &quot;offline&quot;,
+            &quot;type&quot; : &quot;ActionSource&quot;,
+            &quot;subEventParameter&quot; : null
+          }
+        },
+        &quot;attributesOverride&quot; : {
+          &quot;required&quot; : [ {
+            &quot;destinationName&quot; : &quot;event_source&quot;,
+            &quot;value&quot; : &quot;offline&quot;
+          } ],
+          &quot;optional&quot; : [ ],
+          &quot;identifiers&quot; : [ ],
+          &quot;exclude&quot; : [ ],
+          &quot;systemMappingAttributes&quot; : [ ]
+        },
+        &quot;referenceAttributes&quot; : [ &quot;Add to Wishlist&quot;, &quot;OfflineSourceFields&quot; ]
+      }, {
+        &quot;key&quot; : &quot;Add to Wishlist__crm&quot;,
+        &quot;eventParameter&quot; : {
+          &quot;name&quot; : &quot;Add to Wishlist&quot;,
+          &quot;type&quot; : &quot;Event&quot;,
+          &quot;subEventParameter&quot; : {
+            &quot;name&quot; : &quot;crm&quot;,
+            &quot;type&quot; : &quot;ActionSource&quot;,
+            &quot;subEventParameter&quot; : null
+          }
+        },
+        &quot;attributesOverride&quot; : {
+          &quot;required&quot; : [ {
+            &quot;destinationName&quot; : &quot;event_source&quot;,
+            &quot;value&quot; : &quot;crm&quot;
+          } ],
+          &quot;optional&quot; : [ ],
+          &quot;identifiers&quot; : [ ],
+          &quot;exclude&quot; : [ ],
+          &quot;systemMappingAttributes&quot; : [ ]
+        },
+        &quot;referenceAttributes&quot; : [ &quot;CrmSourceFields&quot;, &quot;Add to Wishlist&quot; ]
+      }, {
+        &quot;key&quot; : &quot;Add to Wishlist__app&quot;,
+        &quot;eventParameter&quot; : {
+          &quot;name&quot; : &quot;Add to Wishlist&quot;,
+          &quot;type&quot; : &quot;Event&quot;,
+          &quot;subEventParameter&quot; : {
+            &quot;name&quot; : &quot;app&quot;,
+            &quot;type&quot; : &quot;ActionSource&quot;,
+            &quot;subEventParameter&quot; : null
+          }
+        },
+        &quot;attributesOverride&quot; : {
+          &quot;required&quot; : [ {
+            &quot;destinationName&quot; : &quot;event_source&quot;,
+            &quot;value&quot; : &quot;app&quot;
+          } ],
+          &quot;optional&quot; : [ ],
+          &quot;identifiers&quot; : [ ],
+          &quot;exclude&quot; : [ ],
+          &quot;systemMappingAttributes&quot; : [ ]
+        },
+        &quot;referenceAttributes&quot; : [ &quot;AppSourceFields&quot;, &quot;Add to Wishlist&quot; ]
+      }, {
+        &quot;key&quot; : &quot;Application Approval__web&quot;,
+        &quot;eventParameter&quot; : {
+          &quot;name&quot; : &quot;Application Approval&quot;,
+          &quot;type&quot; : &quot;Event&quot;,
+          &quot;subEventParameter&quot; : {
+            &quot;name&quot; : &quot;web&quot;,
+            &quot;type&quot; : &quot;ActionSource&quot;,
+            &quot;subEventParameter&quot; : null
+          }
+        },
+        &quot;attributesOverride&quot; : {
+          &quot;required&quot; : [ {
+            &quot;destinationName&quot; : &quot;event_source&quot;,
+            &quot;value&quot; : &quot;web&quot;
+          } ],
+          &quot;optional&quot; : [ ],
+          &quot;identifiers&quot; : [ ],
+          &quot;exclude&quot; : [ ],
+          &quot;systemMappingAttributes&quot; : [ ]
+        },
+        &quot;referenceAttributes&quot; : [ &quot;WebSourceFields&quot;, &quot;Application Approval&quot; ]
+      }, {
+        &quot;key&quot; : &quot;Application Approval__offline&quot;,
+        &quot;eventParameter&quot; : {
+          &quot;name&quot; : &quot;Application Approval&quot;,
+          &quot;type&quot; : &quot;Event&quot;,
+          &quot;subEventParameter&quot; : {
+            &quot;name&quot; : &quot;offline&quot;,
+            &quot;type&quot; : &quot;ActionSource&quot;,
+            &quot;subEventParameter&quot; : null
+          }
+        },
+        &quot;attributesOverride&quot; : {
+          &quot;required&quot; : [ {
+            &quot;destinationName&quot; : &quot;event_source&quot;,
+            &quot;value&quot; : &quot;offline&quot;
+          } ],
+          &quot;optional&quot; : [ ],
+          &quot;identifiers&quot; : [ ],
+          &quot;exclude&quot; : [ ],
+          &quot;systemMappingAttributes&quot; : [ ]
+        },
+        &quot;referenceAttributes&quot; : [ &quot;Application Approval&quot;, &quot;OfflineSourceFields&quot; ]
+      }, {
+        &quot;key&quot; : &quot;Application Approval__crm&quot;,
+        &quot;eventParameter&quot; : {
+          &quot;name&quot; : &quot;Application Approval&quot;,
+          &quot;type&quot; : &quot;Event&quot;,
+          &quot;subEventParameter&quot; : {
+            &quot;name&quot; : &quot;crm&quot;,
+            &quot;type&quot; : &quot;ActionSource&quot;,
+            &quot;subEventParameter&quot; : null
+          }
+        },
+        &quot;attributesOverride&quot; : {
+          &quot;required&quot; : [ {
+            &quot;destinationName&quot; : &quot;event_source&quot;,
+            &quot;value&quot; : &quot;crm&quot;
+          } ],
+          &quot;optional&quot; : [ ],
+          &quot;identifiers&quot; : [ ],
+          &quot;exclude&quot; : [ ],
+          &quot;systemMappingAttributes&quot; : [ ]
+        },
+        &quot;referenceAttributes&quot; : [ &quot;Application Approval&quot;, &quot;CrmSourceFields&quot; ]
+      }, {
+        &quot;key&quot; : &quot;Checkout__app&quot;,
+        &quot;eventParameter&quot; : {
+          &quot;name&quot; : &quot;Checkout&quot;,
+          &quot;type&quot; : &quot;Event&quot;,
+          &quot;subEventParameter&quot; : {
+            &quot;name&quot; : &quot;app&quot;,
+            &quot;type&quot; : &quot;ActionSource&quot;,
+            &quot;subEventParameter&quot; : null
+          }
+        },
+        &quot;attributesOverride&quot; : {
+          &quot;required&quot; : [ {
+            &quot;destinationName&quot; : &quot;event_source&quot;,
+            &quot;value&quot; : &quot;app&quot;
+          } ],
+          &quot;optional&quot; : [ ],
+          &quot;identifiers&quot; : [ ],
+          &quot;exclude&quot; : [ ],
+          &quot;systemMappingAttributes&quot; : [ ]
+        },
+        &quot;referenceAttributes&quot; : [ &quot;Checkout&quot;, &quot;AppSourceFields&quot; ]
+      }, {
+        &quot;key&quot; : &quot;Complete Registration__web&quot;,
+        &quot;eventParameter&quot; : {
+          &quot;name&quot; : &quot;Complete Registration&quot;,
+          &quot;type&quot; : &quot;Event&quot;,
+          &quot;subEventParameter&quot; : {
+            &quot;name&quot; : &quot;web&quot;,
+            &quot;type&quot; : &quot;ActionSource&quot;,
+            &quot;subEventParameter&quot; : null
+          }
+        },
+        &quot;attributesOverride&quot; : {
+          &quot;required&quot; : [ {
+            &quot;destinationName&quot; : &quot;event_source&quot;,
+            &quot;value&quot; : &quot;web&quot;
+          } ],
+          &quot;optional&quot; : [ ],
+          &quot;identifiers&quot; : [ ],
+          &quot;exclude&quot; : [ ],
+          &quot;systemMappingAttributes&quot; : [ ]
+        },
+        &quot;referenceAttributes&quot; : [ &quot;WebSourceFields&quot;, &quot;Complete Registration&quot; ]
+      }, {
+        &quot;key&quot; : &quot;Complete Registration__offline&quot;,
+        &quot;eventParameter&quot; : {
+          &quot;name&quot; : &quot;Complete Registration&quot;,
+          &quot;type&quot; : &quot;Event&quot;,
+          &quot;subEventParameter&quot; : {
+            &quot;name&quot; : &quot;offline&quot;,
+            &quot;type&quot; : &quot;ActionSource&quot;,
+            &quot;subEventParameter&quot; : null
+          }
+        },
+        &quot;attributesOverride&quot; : {
+          &quot;required&quot; : [ {
+            &quot;destinationName&quot; : &quot;event_source&quot;,
+            &quot;value&quot; : &quot;offline&quot;
+          } ],
+          &quot;optional&quot; : [ ],
+          &quot;identifiers&quot; : [ ],
+          &quot;exclude&quot; : [ ],
+          &quot;systemMappingAttributes&quot; : [ ]
+        },
+        &quot;referenceAttributes&quot; : [ &quot;Complete Registration&quot;, &quot;OfflineSourceFields&quot; ]
+      }, {
+        &quot;key&quot; : &quot;Complete Registration__crm&quot;,
+        &quot;eventParameter&quot; : {
+          &quot;name&quot; : &quot;Complete Registration&quot;,
+          &quot;type&quot; : &quot;Event&quot;,
+          &quot;subEventParameter&quot; : {
+            &quot;name&quot; : &quot;crm&quot;,
+            &quot;type&quot; : &quot;ActionSource&quot;,
+            &quot;subEventParameter&quot; : null
+          }
+        },
+        &quot;attributesOverride&quot; : {
+          &quot;required&quot; : [ {
+            &quot;destinationName&quot; : &quot;event_source&quot;,
+            &quot;value&quot; : &quot;crm&quot;
+          } ],
+          &quot;optional&quot; : [ ],
+          &quot;identifiers&quot; : [ ],
+          &quot;exclude&quot; : [ ],
+          &quot;systemMappingAttributes&quot; : [ ]
+        },
+        &quot;referenceAttributes&quot; : [ &quot;Complete Registration&quot;, &quot;CrmSourceFields&quot; ]
+      }, {
+        &quot;key&quot; : &quot;Complete Tutorial__app&quot;,
+        &quot;eventParameter&quot; : {
+          &quot;name&quot; : &quot;Complete Tutorial&quot;,
+          &quot;type&quot; : &quot;Event&quot;,
+          &quot;subEventParameter&quot; : {
+            &quot;name&quot; : &quot;app&quot;,
+            &quot;type&quot; : &quot;ActionSource&quot;,
+            &quot;subEventParameter&quot; : null
+          }
+        },
+        &quot;attributesOverride&quot; : {
+          &quot;required&quot; : [ {
+            &quot;destinationName&quot; : &quot;event_source&quot;,
+            &quot;value&quot; : &quot;app&quot;
+          } ],
+          &quot;optional&quot; : [ ],
+          &quot;identifiers&quot; : [ ],
+          &quot;exclude&quot; : [ ],
+          &quot;systemMappingAttributes&quot; : [ ]
+        },
+        &quot;referenceAttributes&quot; : [ &quot;AppSourceFields&quot;, &quot;Complete Tutorial&quot; ]
+      }, {
+        &quot;key&quot; : &quot;Contact__web&quot;,
+        &quot;eventParameter&quot; : {
+          &quot;name&quot; : &quot;Contact&quot;,
+          &quot;type&quot; : &quot;Event&quot;,
+          &quot;subEventParameter&quot; : {
+            &quot;name&quot; : &quot;web&quot;,
+            &quot;type&quot; : &quot;ActionSource&quot;,
+            &quot;subEventParameter&quot; : null
+          }
+        },
+        &quot;attributesOverride&quot; : {
+          &quot;required&quot; : [ {
+            &quot;destinationName&quot; : &quot;event_source&quot;,
+            &quot;value&quot; : &quot;web&quot;
+          } ],
+          &quot;optional&quot; : [ ],
+          &quot;identifiers&quot; : [ ],
+          &quot;exclude&quot; : [ ],
+          &quot;systemMappingAttributes&quot; : [ ]
+        },
+        &quot;referenceAttributes&quot; : [ &quot;WebSourceFields&quot;, &quot;Contact&quot; ]
+      }, {
+        &quot;key&quot; : &quot;Contact__offline&quot;,
+        &quot;eventParameter&quot; : {
+          &quot;name&quot; : &quot;Contact&quot;,
+          &quot;type&quot; : &quot;Event&quot;,
+          &quot;subEventParameter&quot; : {
+            &quot;name&quot; : &quot;offline&quot;,
+            &quot;type&quot; : &quot;ActionSource&quot;,
+            &quot;subEventParameter&quot; : null
+          }
+        },
+        &quot;attributesOverride&quot; : {
+          &quot;required&quot; : [ {
+            &quot;destinationName&quot; : &quot;event_source&quot;,
+            &quot;value&quot; : &quot;offline&quot;
+          } ],
+          &quot;optional&quot; : [ ],
+          &quot;identifiers&quot; : [ ],
+          &quot;exclude&quot; : [ ],
+          &quot;systemMappingAttributes&quot; : [ ]
+        },
+        &quot;referenceAttributes&quot; : [ &quot;OfflineSourceFields&quot;, &quot;Contact&quot; ]
+      }, {
+        &quot;key&quot; : &quot;Contact__crm&quot;,
+        &quot;eventParameter&quot; : {
+          &quot;name&quot; : &quot;Contact&quot;,
+          &quot;type&quot; : &quot;Event&quot;,
+          &quot;subEventParameter&quot; : {
+            &quot;name&quot; : &quot;crm&quot;,
+            &quot;type&quot; : &quot;ActionSource&quot;,
+            &quot;subEventParameter&quot; : null
+          }
+        },
+        &quot;attributesOverride&quot; : {
+          &quot;required&quot; : [ {
+            &quot;destinationName&quot; : &quot;event_source&quot;,
+            &quot;value&quot; : &quot;crm&quot;
+          } ],
+          &quot;optional&quot; : [ ],
+          &quot;identifiers&quot; : [ ],
+          &quot;exclude&quot; : [ ],
+          &quot;systemMappingAttributes&quot; : [ ]
+        },
+        &quot;referenceAttributes&quot; : [ &quot;CrmSourceFields&quot;, &quot;Contact&quot; ]
+      }, {
+        &quot;key&quot; : &quot;Create Group__app&quot;,
+        &quot;eventParameter&quot; : {
+          &quot;name&quot; : &quot;Create Group&quot;,
+          &quot;type&quot; : &quot;Event&quot;,
+          &quot;subEventParameter&quot; : {
+            &quot;name&quot; : &quot;app&quot;,
+            &quot;type&quot; : &quot;ActionSource&quot;,
+            &quot;subEventParameter&quot; : null
+          }
+        },
+        &quot;attributesOverride&quot; : {
+          &quot;required&quot; : [ {
+            &quot;destinationName&quot; : &quot;event_source&quot;,
+            &quot;value&quot; : &quot;app&quot;
+          } ],
+          &quot;optional&quot; : [ ],
+          &quot;identifiers&quot; : [ ],
+          &quot;exclude&quot; : [ ],
+          &quot;systemMappingAttributes&quot; : [ ]
+        },
+        &quot;referenceAttributes&quot; : [ &quot;AppSourceFields&quot;, &quot;Create Group&quot; ]
+      }, {
+        &quot;key&quot; : &quot;Create Role__app&quot;,
+        &quot;eventParameter&quot; : {
+          &quot;name&quot; : &quot;Create Role&quot;,
+          &quot;type&quot; : &quot;Event&quot;,
+          &quot;subEventParameter&quot; : {
+            &quot;name&quot; : &quot;app&quot;,
+            &quot;type&quot; : &quot;ActionSource&quot;,
+            &quot;subEventParameter&quot; : null
+          }
+        },
+        &quot;attributesOverride&quot; : {
+          &quot;required&quot; : [ {
+            &quot;destinationName&quot; : &quot;event_source&quot;,
+            &quot;value&quot; : &quot;app&quot;
+          } ],
+          &quot;optional&quot; : [ ],
+          &quot;identifiers&quot; : [ ],
+          &quot;exclude&quot; : [ ],
+          &quot;systemMappingAttributes&quot; : [ ]
+        },
+        &quot;referenceAttributes&quot; : [ &quot;AppSourceFields&quot;, &quot;Create Role&quot; ]
+      }, {
+        &quot;key&quot; : &quot;Customize Product__web&quot;,
+        &quot;eventParameter&quot; : {
+          &quot;name&quot; : &quot;Customize Product&quot;,
+          &quot;type&quot; : &quot;Event&quot;,
+          &quot;subEventParameter&quot; : {
+            &quot;name&quot; : &quot;web&quot;,
+            &quot;type&quot; : &quot;ActionSource&quot;,
+            &quot;subEventParameter&quot; : null
+          }
+        },
+        &quot;attributesOverride&quot; : {
+          &quot;required&quot; : [ {
+            &quot;destinationName&quot; : &quot;event_source&quot;,
+            &quot;value&quot; : &quot;web&quot;
+          } ],
+          &quot;optional&quot; : [ ],
+          &quot;identifiers&quot; : [ ],
+          &quot;exclude&quot; : [ ],
+          &quot;systemMappingAttributes&quot; : [ ]
+        },
+        &quot;referenceAttributes&quot; : [ &quot;WebSourceFields&quot;, &quot;Customize Product&quot; ]
+      }, {
+        &quot;key&quot; : &quot;Customize Product__offline&quot;,
+        &quot;eventParameter&quot; : {
+          &quot;name&quot; : &quot;Customize Product&quot;,
+          &quot;type&quot; : &quot;Event&quot;,
+          &quot;subEventParameter&quot; : {
+            &quot;name&quot; : &quot;offline&quot;,
+            &quot;type&quot; : &quot;ActionSource&quot;,
+            &quot;subEventParameter&quot; : null
+          }
+        },
+        &quot;attributesOverride&quot; : {
+          &quot;required&quot; : [ {
+            &quot;destinationName&quot; : &quot;event_source&quot;,
+            &quot;value&quot; : &quot;offline&quot;
+          } ],
+          &quot;optional&quot; : [ ],
+          &quot;identifiers&quot; : [ ],
+          &quot;exclude&quot; : [ ],
+          &quot;systemMappingAttributes&quot; : [ ]
+        },
+        &quot;referenceAttributes&quot; : [ &quot;Customize Product&quot;, &quot;OfflineSourceFields&quot; ]
+      }, {
+        &quot;key&quot; : &quot;Customize Product__crm&quot;,
+        &quot;eventParameter&quot; : {
+          &quot;name&quot; : &quot;Customize Product&quot;,
+          &quot;type&quot; : &quot;Event&quot;,
+          &quot;subEventParameter&quot; : {
+            &quot;name&quot; : &quot;crm&quot;,
+            &quot;type&quot; : &quot;ActionSource&quot;,
+            &quot;subEventParameter&quot; : null
+          }
+        },
+        &quot;attributesOverride&quot; : {
+          &quot;required&quot; : [ {
+            &quot;destinationName&quot; : &quot;event_source&quot;,
+            &quot;value&quot; : &quot;crm&quot;
+          } ],
+          &quot;optional&quot; : [ ],
+          &quot;identifiers&quot; : [ ],
+          &quot;exclude&quot; : [ ],
+          &quot;systemMappingAttributes&quot; : [ ]
+        },
+        &quot;referenceAttributes&quot; : [ &quot;CrmSourceFields&quot;, &quot;Customize Product&quot; ]
+      }, {
+        &quot;key&quot; : &quot;Download__web&quot;,
+        &quot;eventParameter&quot; : {
+          &quot;name&quot; : &quot;Download&quot;,
+          &quot;type&quot; : &quot;Event&quot;,
+          &quot;subEventParameter&quot; : {
+            &quot;name&quot; : &quot;web&quot;,
+            &quot;type&quot; : &quot;ActionSource&quot;,
+            &quot;subEventParameter&quot; : null
+          }
+        },
+        &quot;attributesOverride&quot; : {
+          &quot;required&quot; : [ {
+            &quot;destinationName&quot; : &quot;event_source&quot;,
+            &quot;value&quot; : &quot;web&quot;
+          } ],
+          &quot;optional&quot; : [ ],
+          &quot;identifiers&quot; : [ ],
+          &quot;exclude&quot; : [ ],
+          &quot;systemMappingAttributes&quot; : [ ]
+        },
+        &quot;referenceAttributes&quot; : [ &quot;WebSourceFields&quot;, &quot;Download&quot; ]
+      }, {
+        &quot;key&quot; : &quot;Download__offline&quot;,
+        &quot;eventParameter&quot; : {
+          &quot;name&quot; : &quot;Download&quot;,
+          &quot;type&quot; : &quot;Event&quot;,
+          &quot;subEventParameter&quot; : {
+            &quot;name&quot; : &quot;offline&quot;,
+            &quot;type&quot; : &quot;ActionSource&quot;,
+            &quot;subEventParameter&quot; : null
+          }
+        },
+        &quot;attributesOverride&quot; : {
+          &quot;required&quot; : [ {
+            &quot;destinationName&quot; : &quot;event_source&quot;,
+            &quot;value&quot; : &quot;offline&quot;
+          } ],
+          &quot;optional&quot; : [ ],
+          &quot;identifiers&quot; : [ ],
+          &quot;exclude&quot; : [ ],
+          &quot;systemMappingAttributes&quot; : [ ]
+        },
+        &quot;referenceAttributes&quot; : [ &quot;Download&quot;, &quot;OfflineSourceFields&quot; ]
+      }, {
+        &quot;key&quot; : &quot;Download__crm&quot;,
+        &quot;eventParameter&quot; : {
+          &quot;name&quot; : &quot;Download&quot;,
+          &quot;type&quot; : &quot;Event&quot;,
+          &quot;subEventParameter&quot; : {
+            &quot;name&quot; : &quot;crm&quot;,
+            &quot;type&quot; : &quot;ActionSource&quot;,
+            &quot;subEventParameter&quot; : null
+          }
+        },
+        &quot;attributesOverride&quot; : {
+          &quot;required&quot; : [ {
+            &quot;destinationName&quot; : &quot;event_source&quot;,
+            &quot;value&quot; : &quot;crm&quot;
+          } ],
+          &quot;optional&quot; : [ ],
+          &quot;identifiers&quot; : [ ],
+          &quot;exclude&quot; : [ ],
+          &quot;systemMappingAttributes&quot; : [ ]
+        },
+        &quot;referenceAttributes&quot; : [ &quot;CrmSourceFields&quot;, &quot;Download&quot; ]
+      }, {
+        &quot;key&quot; : &quot;Find Location__web&quot;,
+        &quot;eventParameter&quot; : {
+          &quot;name&quot; : &quot;Find Location&quot;,
+          &quot;type&quot; : &quot;Event&quot;,
+          &quot;subEventParameter&quot; : {
+            &quot;name&quot; : &quot;web&quot;,
+            &quot;type&quot; : &quot;ActionSource&quot;,
+            &quot;subEventParameter&quot; : null
+          }
+        },
+        &quot;attributesOverride&quot; : {
+          &quot;required&quot; : [ {
+            &quot;destinationName&quot; : &quot;event_source&quot;,
+            &quot;value&quot; : &quot;web&quot;
+          } ],
+          &quot;optional&quot; : [ ],
+          &quot;identifiers&quot; : [ ],
+          &quot;exclude&quot; : [ ],
+          &quot;systemMappingAttributes&quot; : [ ]
+        },
+        &quot;referenceAttributes&quot; : [ &quot;Find Location&quot;, &quot;WebSourceFields&quot; ]
+      }, {
+        &quot;key&quot; : &quot;Find Location__offline&quot;,
+        &quot;eventParameter&quot; : {
+          &quot;name&quot; : &quot;Find Location&quot;,
+          &quot;type&quot; : &quot;Event&quot;,
+          &quot;subEventParameter&quot; : {
+            &quot;name&quot; : &quot;offline&quot;,
+            &quot;type&quot; : &quot;ActionSource&quot;,
+            &quot;subEventParameter&quot; : null
+          }
+        },
+        &quot;attributesOverride&quot; : {
+          &quot;required&quot; : [ {
+            &quot;destinationName&quot; : &quot;event_source&quot;,
+            &quot;value&quot; : &quot;offline&quot;
+          } ],
+          &quot;optional&quot; : [ ],
+          &quot;identifiers&quot; : [ ],
+          &quot;exclude&quot; : [ ],
+          &quot;systemMappingAttributes&quot; : [ ]
+        },
+        &quot;referenceAttributes&quot; : [ &quot;Find Location&quot;, &quot;OfflineSourceFields&quot; ]
+      }, {
+        &quot;key&quot; : &quot;Find Location__crm&quot;,
+        &quot;eventParameter&quot; : {
+          &quot;name&quot; : &quot;Find Location&quot;,
+          &quot;type&quot; : &quot;Event&quot;,
+          &quot;subEventParameter&quot; : {
+            &quot;name&quot; : &quot;crm&quot;,
+            &quot;type&quot; : &quot;ActionSource&quot;,
+            &quot;subEventParameter&quot; : null
+          }
+        },
+        &quot;attributesOverride&quot; : {
+          &quot;required&quot; : [ {
+            &quot;destinationName&quot; : &quot;event_source&quot;,
+            &quot;value&quot; : &quot;crm&quot;
+          } ],
+          &quot;optional&quot; : [ ],
+          &quot;identifiers&quot; : [ ],
+          &quot;exclude&quot; : [ ],
+          &quot;systemMappingAttributes&quot; : [ ]
+        },
+        &quot;referenceAttributes&quot; : [ &quot;Find Location&quot;, &quot;CrmSourceFields&quot; ]
+      }, {
+        &quot;key&quot; : &quot;Generate Lead__app&quot;,
+        &quot;eventParameter&quot; : {
+          &quot;name&quot; : &quot;Generate Lead&quot;,
+          &quot;type&quot; : &quot;Event&quot;,
+          &quot;subEventParameter&quot; : {
+            &quot;name&quot; : &quot;app&quot;,
+            &quot;type&quot; : &quot;ActionSource&quot;,
+            &quot;subEventParameter&quot; : null
+          }
+        },
+        &quot;attributesOverride&quot; : {
+          &quot;required&quot; : [ {
+            &quot;destinationName&quot; : &quot;event_source&quot;,
+            &quot;value&quot; : &quot;app&quot;
+          } ],
+          &quot;optional&quot; : [ ],
+          &quot;identifiers&quot; : [ ],
+          &quot;exclude&quot; : [ ],
+          &quot;systemMappingAttributes&quot; : [ ]
+        },
+        &quot;referenceAttributes&quot; : [ &quot;AppSourceFields&quot;, &quot;Generate Lead&quot; ]
+      }, {
+        &quot;key&quot; : &quot;In App AD Click__app&quot;,
+        &quot;eventParameter&quot; : {
+          &quot;name&quot; : &quot;In App AD Click&quot;,
+          &quot;type&quot; : &quot;Event&quot;,
+          &quot;subEventParameter&quot; : {
+            &quot;name&quot; : &quot;app&quot;,
+            &quot;type&quot; : &quot;ActionSource&quot;,
+            &quot;subEventParameter&quot; : null
+          }
+        },
+        &quot;attributesOverride&quot; : {
+          &quot;required&quot; : [ {
+            &quot;destinationName&quot; : &quot;event_source&quot;,
+            &quot;value&quot; : &quot;app&quot;
+          } ],
+          &quot;optional&quot; : [ ],
+          &quot;identifiers&quot; : [ ],
+          &quot;exclude&quot; : [ ],
+          &quot;systemMappingAttributes&quot; : [ ]
+        },
+        &quot;referenceAttributes&quot; : [ &quot;AppSourceFields&quot;, &quot;In App AD Click&quot; ]
+      }, {
+        &quot;key&quot; : &quot;In App AD Impr__app&quot;,
+        &quot;eventParameter&quot; : {
+          &quot;name&quot; : &quot;In App AD Impr&quot;,
+          &quot;type&quot; : &quot;Event&quot;,
+          &quot;subEventParameter&quot; : {
+            &quot;name&quot; : &quot;app&quot;,
+            &quot;type&quot; : &quot;ActionSource&quot;,
+            &quot;subEventParameter&quot; : null
+          }
+        },
+        &quot;attributesOverride&quot; : {
+          &quot;required&quot; : [ {
+            &quot;destinationName&quot; : &quot;event_source&quot;,
+            &quot;value&quot; : &quot;app&quot;
+          } ],
+          &quot;optional&quot; : [ ],
+          &quot;identifiers&quot; : [ ],
+          &quot;exclude&quot; : [ ],
+          &quot;systemMappingAttributes&quot; : [ ]
+        },
+        &quot;referenceAttributes&quot; : [ &quot;In App AD Impr&quot;, &quot;AppSourceFields&quot; ]
+      }, {
+        &quot;key&quot; : &quot;Initiate Checkout__web&quot;,
+        &quot;eventParameter&quot; : {
+          &quot;name&quot; : &quot;Initiate Checkout&quot;,
+          &quot;type&quot; : &quot;Event&quot;,
+          &quot;subEventParameter&quot; : {
+            &quot;name&quot; : &quot;web&quot;,
+            &quot;type&quot; : &quot;ActionSource&quot;,
+            &quot;subEventParameter&quot; : null
+          }
+        },
+        &quot;attributesOverride&quot; : {
+          &quot;required&quot; : [ {
+            &quot;destinationName&quot; : &quot;event_source&quot;,
+            &quot;value&quot; : &quot;web&quot;
+          } ],
+          &quot;optional&quot; : [ ],
+          &quot;identifiers&quot; : [ ],
+          &quot;exclude&quot; : [ ],
+          &quot;systemMappingAttributes&quot; : [ ]
+        },
+        &quot;referenceAttributes&quot; : [ &quot;WebSourceFields&quot;, &quot;Initiate Checkout&quot; ]
+      }, {
+        &quot;key&quot; : &quot;Initiate Checkout__offline&quot;,
+        &quot;eventParameter&quot; : {
+          &quot;name&quot; : &quot;Initiate Checkout&quot;,
+          &quot;type&quot; : &quot;Event&quot;,
+          &quot;subEventParameter&quot; : {
+            &quot;name&quot; : &quot;offline&quot;,
+            &quot;type&quot; : &quot;ActionSource&quot;,
+            &quot;subEventParameter&quot; : null
+          }
+        },
+        &quot;attributesOverride&quot; : {
+          &quot;required&quot; : [ {
+            &quot;destinationName&quot; : &quot;event_source&quot;,
+            &quot;value&quot; : &quot;offline&quot;
+          } ],
+          &quot;optional&quot; : [ ],
+          &quot;identifiers&quot; : [ ],
+          &quot;exclude&quot; : [ ],
+          &quot;systemMappingAttributes&quot; : [ ]
+        },
+        &quot;referenceAttributes&quot; : [ &quot;Initiate Checkout&quot;, &quot;OfflineSourceFields&quot; ]
+      }, {
+        &quot;key&quot; : &quot;Initiate Checkout__crm&quot;,
+        &quot;eventParameter&quot; : {
+          &quot;name&quot; : &quot;Initiate Checkout&quot;,
+          &quot;type&quot; : &quot;Event&quot;,
+          &quot;subEventParameter&quot; : {
+            &quot;name&quot; : &quot;crm&quot;,
+            &quot;type&quot; : &quot;ActionSource&quot;,
+            &quot;subEventParameter&quot; : null
+          }
+        },
+        &quot;attributesOverride&quot; : {
+          &quot;required&quot; : [ {
+            &quot;destinationName&quot; : &quot;event_source&quot;,
+            &quot;value&quot; : &quot;crm&quot;
+          } ],
+          &quot;optional&quot; : [ ],
+          &quot;identifiers&quot; : [ ],
+          &quot;exclude&quot; : [ ],
+          &quot;systemMappingAttributes&quot; : [ ]
+        },
+        &quot;referenceAttributes&quot; : [ &quot;CrmSourceFields&quot;, &quot;Initiate Checkout&quot; ]
+      }, {
+        &quot;key&quot; : &quot;Install App__app&quot;,
+        &quot;eventParameter&quot; : {
+          &quot;name&quot; : &quot;Install App&quot;,
+          &quot;type&quot; : &quot;Event&quot;,
+          &quot;subEventParameter&quot; : {
+            &quot;name&quot; : &quot;app&quot;,
+            &quot;type&quot; : &quot;ActionSource&quot;,
+            &quot;subEventParameter&quot; : null
+          }
+        },
+        &quot;attributesOverride&quot; : {
+          &quot;required&quot; : [ {
+            &quot;destinationName&quot; : &quot;event_source&quot;,
+            &quot;value&quot; : &quot;app&quot;
+          } ],
+          &quot;optional&quot; : [ ],
+          &quot;identifiers&quot; : [ ],
+          &quot;exclude&quot; : [ ],
+          &quot;systemMappingAttributes&quot; : [ ]
+        },
+        &quot;referenceAttributes&quot; : [ &quot;AppSourceFields&quot;, &quot;Install App&quot; ]
+      }, {
+        &quot;key&quot; : &quot;Join Group__app&quot;,
+        &quot;eventParameter&quot; : {
+          &quot;name&quot; : &quot;Join Group&quot;,
+          &quot;type&quot; : &quot;Event&quot;,
+          &quot;subEventParameter&quot; : {
+            &quot;name&quot; : &quot;app&quot;,
+            &quot;type&quot; : &quot;ActionSource&quot;,
+            &quot;subEventParameter&quot; : null
+          }
+        },
+        &quot;attributesOverride&quot; : {
+          &quot;required&quot; : [ {
+            &quot;destinationName&quot; : &quot;event_source&quot;,
+            &quot;value&quot; : &quot;app&quot;
+          } ],
+          &quot;optional&quot; : [ ],
+          &quot;identifiers&quot; : [ ],
+          &quot;exclude&quot; : [ ],
+          &quot;systemMappingAttributes&quot; : [ ]
+        },
+        &quot;referenceAttributes&quot; : [ &quot;Join Group&quot;, &quot;AppSourceFields&quot; ]
+      }, {
+        &quot;key&quot; : &quot;Launch App__app&quot;,
+        &quot;eventParameter&quot; : {
+          &quot;name&quot; : &quot;Launch App&quot;,
+          &quot;type&quot; : &quot;Event&quot;,
+          &quot;subEventParameter&quot; : {
+            &quot;name&quot; : &quot;app&quot;,
+            &quot;type&quot; : &quot;ActionSource&quot;,
+            &quot;subEventParameter&quot; : null
+          }
+        },
+        &quot;attributesOverride&quot; : {
+          &quot;required&quot; : [ {
+            &quot;destinationName&quot; : &quot;event_source&quot;,
+            &quot;value&quot; : &quot;app&quot;
+          } ],
+          &quot;optional&quot; : [ ],
+          &quot;identifiers&quot; : [ ],
+          &quot;exclude&quot; : [ ],
+          &quot;systemMappingAttributes&quot; : [ ]
+        },
+        &quot;referenceAttributes&quot; : [ &quot;AppSourceFields&quot;, &quot;Launch App&quot; ]
+      }, {
+        &quot;key&quot; : &quot;Lead__web&quot;,
+        &quot;eventParameter&quot; : {
+          &quot;name&quot; : &quot;Lead&quot;,
+          &quot;type&quot; : &quot;Event&quot;,
+          &quot;subEventParameter&quot; : {
+            &quot;name&quot; : &quot;web&quot;,
+            &quot;type&quot; : &quot;ActionSource&quot;,
+            &quot;subEventParameter&quot; : null
+          }
+        },
+        &quot;attributesOverride&quot; : {
+          &quot;required&quot; : [ {
+            &quot;destinationName&quot; : &quot;event_source&quot;,
+            &quot;value&quot; : &quot;web&quot;
+          } ],
+          &quot;optional&quot; : [ ],
+          &quot;identifiers&quot; : [ ],
+          &quot;exclude&quot; : [ ],
+          &quot;systemMappingAttributes&quot; : [ ]
+        },
+        &quot;referenceAttributes&quot; : [ &quot;WebSourceFields&quot;, &quot;Lead&quot; ]
+      }, {
+        &quot;key&quot; : &quot;Lead__offline&quot;,
+        &quot;eventParameter&quot; : {
+          &quot;name&quot; : &quot;Lead&quot;,
+          &quot;type&quot; : &quot;Event&quot;,
+          &quot;subEventParameter&quot; : {
+            &quot;name&quot; : &quot;offline&quot;,
+            &quot;type&quot; : &quot;ActionSource&quot;,
+            &quot;subEventParameter&quot; : null
+          }
+        },
+        &quot;attributesOverride&quot; : {
+          &quot;required&quot; : [ {
+            &quot;destinationName&quot; : &quot;event_source&quot;,
+            &quot;value&quot; : &quot;offline&quot;
+          } ],
+          &quot;optional&quot; : [ ],
+          &quot;identifiers&quot; : [ ],
+          &quot;exclude&quot; : [ ],
+          &quot;systemMappingAttributes&quot; : [ ]
+        },
+        &quot;referenceAttributes&quot; : [ &quot;Lead&quot;, &quot;OfflineSourceFields&quot; ]
+      }, {
+        &quot;key&quot; : &quot;Lead__crm&quot;,
+        &quot;eventParameter&quot; : {
+          &quot;name&quot; : &quot;Lead&quot;,
+          &quot;type&quot; : &quot;Event&quot;,
+          &quot;subEventParameter&quot; : {
+            &quot;name&quot; : &quot;crm&quot;,
+            &quot;type&quot; : &quot;ActionSource&quot;,
+            &quot;subEventParameter&quot; : null
+          }
+        },
+        &quot;attributesOverride&quot; : {
+          &quot;required&quot; : [ {
+            &quot;destinationName&quot; : &quot;event_source&quot;,
+            &quot;value&quot; : &quot;crm&quot;
+          } ],
+          &quot;optional&quot; : [ ],
+          &quot;identifiers&quot; : [ ],
+          &quot;exclude&quot; : [ ],
+          &quot;systemMappingAttributes&quot; : [ ]
+        },
+        &quot;referenceAttributes&quot; : [ &quot;Lead&quot;, &quot;CrmSourceFields&quot; ]
+      }, {
+        &quot;key&quot; : &quot;Loan Application__app&quot;,
+        &quot;eventParameter&quot; : {
+          &quot;name&quot; : &quot;Loan Application&quot;,
+          &quot;type&quot; : &quot;Event&quot;,
+          &quot;subEventParameter&quot; : {
+            &quot;name&quot; : &quot;app&quot;,
+            &quot;type&quot; : &quot;ActionSource&quot;,
+            &quot;subEventParameter&quot; : null
+          }
+        },
+        &quot;attributesOverride&quot; : {
+          &quot;required&quot; : [ {
+            &quot;destinationName&quot; : &quot;event_source&quot;,
+            &quot;value&quot; : &quot;app&quot;
+          } ],
+          &quot;optional&quot; : [ ],
+          &quot;identifiers&quot; : [ ],
+          &quot;exclude&quot; : [ ],
+          &quot;systemMappingAttributes&quot; : [ ]
+        },
+        &quot;referenceAttributes&quot; : [ &quot;AppSourceFields&quot;, &quot;Loan Application&quot; ]
+      }, {
+        &quot;key&quot; : &quot;Loan Approval__app&quot;,
+        &quot;eventParameter&quot; : {
+          &quot;name&quot; : &quot;Loan Approval&quot;,
+          &quot;type&quot; : &quot;Event&quot;,
+          &quot;subEventParameter&quot; : {
+            &quot;name&quot; : &quot;app&quot;,
+            &quot;type&quot; : &quot;ActionSource&quot;,
+            &quot;subEventParameter&quot; : null
+          }
+        },
+        &quot;attributesOverride&quot; : {
+          &quot;required&quot; : [ {
+            &quot;destinationName&quot; : &quot;event_source&quot;,
+            &quot;value&quot; : &quot;app&quot;
+          } ],
+          &quot;optional&quot; : [ ],
+          &quot;identifiers&quot; : [ ],
+          &quot;exclude&quot; : [ ],
+          &quot;systemMappingAttributes&quot; : [ ]
+        },
+        &quot;referenceAttributes&quot; : [ &quot;Loan Approval&quot;, &quot;AppSourceFields&quot; ]
+      }, {
+        &quot;key&quot; : &quot;Loan Disbursal__app&quot;,
+        &quot;eventParameter&quot; : {
+          &quot;name&quot; : &quot;Loan Disbursal&quot;,
+          &quot;type&quot; : &quot;Event&quot;,
+          &quot;subEventParameter&quot; : {
+            &quot;name&quot; : &quot;app&quot;,
+            &quot;type&quot; : &quot;ActionSource&quot;,
+            &quot;subEventParameter&quot; : null
+          }
+        },
+        &quot;attributesOverride&quot; : {
+          &quot;required&quot; : [ {
+            &quot;destinationName&quot; : &quot;event_source&quot;,
+            &quot;value&quot; : &quot;app&quot;
+          } ],
+          &quot;optional&quot; : [ ],
+          &quot;identifiers&quot; : [ ],
+          &quot;exclude&quot; : [ ],
+          &quot;systemMappingAttributes&quot; : [ ]
+        },
+        &quot;referenceAttributes&quot; : [ &quot;AppSourceFields&quot;, &quot;Loan Disbursal&quot; ]
+      }, {
+        &quot;key&quot; : &quot;Login__app&quot;,
+        &quot;eventParameter&quot; : {
+          &quot;name&quot; : &quot;Login&quot;,
+          &quot;type&quot; : &quot;Event&quot;,
+          &quot;subEventParameter&quot; : {
+            &quot;name&quot; : &quot;app&quot;,
+            &quot;type&quot; : &quot;ActionSource&quot;,
+            &quot;subEventParameter&quot; : null
+          }
+        },
+        &quot;attributesOverride&quot; : {
+          &quot;required&quot; : [ {
+            &quot;destinationName&quot; : &quot;event_source&quot;,
+            &quot;value&quot; : &quot;app&quot;
+          } ],
+          &quot;optional&quot; : [ ],
+          &quot;identifiers&quot; : [ ],
+          &quot;exclude&quot; : [ ],
+          &quot;systemMappingAttributes&quot; : [ ]
+        },
+        &quot;referenceAttributes&quot; : [ &quot;AppSourceFields&quot;, &quot;Login&quot; ]
+      }, {
+        &quot;key&quot; : &quot;Purchase__web&quot;,
+        &quot;eventParameter&quot; : {
+          &quot;name&quot; : &quot;Purchase&quot;,
+          &quot;type&quot; : &quot;Event&quot;,
+          &quot;subEventParameter&quot; : {
+            &quot;name&quot; : &quot;web&quot;,
+            &quot;type&quot; : &quot;ActionSource&quot;,
+            &quot;subEventParameter&quot; : null
+          }
+        },
+        &quot;attributesOverride&quot; : {
+          &quot;required&quot; : [ {
+            &quot;destinationName&quot; : &quot;event_source&quot;,
+            &quot;value&quot; : &quot;web&quot;
+          } ],
+          &quot;optional&quot; : [ ],
+          &quot;identifiers&quot; : [ ],
+          &quot;exclude&quot; : [ ],
+          &quot;systemMappingAttributes&quot; : [ ]
+        },
+        &quot;referenceAttributes&quot; : [ &quot;Purchase&quot;, &quot;WebSourceFields&quot; ]
+      }, {
+        &quot;key&quot; : &quot;Purchase__offline&quot;,
+        &quot;eventParameter&quot; : {
+          &quot;name&quot; : &quot;Purchase&quot;,
+          &quot;type&quot; : &quot;Event&quot;,
+          &quot;subEventParameter&quot; : {
+            &quot;name&quot; : &quot;offline&quot;,
+            &quot;type&quot; : &quot;ActionSource&quot;,
+            &quot;subEventParameter&quot; : null
+          }
+        },
+        &quot;attributesOverride&quot; : {
+          &quot;required&quot; : [ {
+            &quot;destinationName&quot; : &quot;event_source&quot;,
+            &quot;value&quot; : &quot;offline&quot;
+          } ],
+          &quot;optional&quot; : [ ],
+          &quot;identifiers&quot; : [ ],
+          &quot;exclude&quot; : [ ],
+          &quot;systemMappingAttributes&quot; : [ ]
+        },
+        &quot;referenceAttributes&quot; : [ &quot;Purchase&quot;, &quot;OfflineSourceFields&quot; ]
+      }, {
+        &quot;key&quot; : &quot;Purchase__crm&quot;,
+        &quot;eventParameter&quot; : {
+          &quot;name&quot; : &quot;Purchase&quot;,
+          &quot;type&quot; : &quot;Event&quot;,
+          &quot;subEventParameter&quot; : {
+            &quot;name&quot; : &quot;crm&quot;,
+            &quot;type&quot; : &quot;ActionSource&quot;,
+            &quot;subEventParameter&quot; : null
+          }
+        },
+        &quot;attributesOverride&quot; : {
+          &quot;required&quot; : [ {
+            &quot;destinationName&quot; : &quot;event_source&quot;,
+            &quot;value&quot; : &quot;crm&quot;
+          } ],
+          &quot;optional&quot; : [ ],
+          &quot;identifiers&quot; : [ ],
+          &quot;exclude&quot; : [ ],
+          &quot;systemMappingAttributes&quot; : [ ]
+        },
+        &quot;referenceAttributes&quot; : [ &quot;Purchase&quot;, &quot;CrmSourceFields&quot; ]
+      }, {
+        &quot;key&quot; : &quot;Purchase__app&quot;,
+        &quot;eventParameter&quot; : {
+          &quot;name&quot; : &quot;Purchase&quot;,
+          &quot;type&quot; : &quot;Event&quot;,
+          &quot;subEventParameter&quot; : {
+            &quot;name&quot; : &quot;app&quot;,
+            &quot;type&quot; : &quot;ActionSource&quot;,
+            &quot;subEventParameter&quot; : null
+          }
+        },
+        &quot;attributesOverride&quot; : {
+          &quot;required&quot; : [ {
+            &quot;destinationName&quot; : &quot;event_source&quot;,
+            &quot;value&quot; : &quot;app&quot;
+          } ],
+          &quot;optional&quot; : [ ],
+          &quot;identifiers&quot; : [ ],
+          &quot;exclude&quot; : [ ],
+          &quot;systemMappingAttributes&quot; : [ ]
+        },
+        &quot;referenceAttributes&quot; : [ &quot;Purchase&quot;, &quot;AppSourceFields&quot; ]
+      }, {
+        &quot;key&quot; : &quot;Rate__app&quot;,
+        &quot;eventParameter&quot; : {
+          &quot;name&quot; : &quot;Rate&quot;,
+          &quot;type&quot; : &quot;Event&quot;,
+          &quot;subEventParameter&quot; : {
+            &quot;name&quot; : &quot;app&quot;,
+            &quot;type&quot; : &quot;ActionSource&quot;,
+            &quot;subEventParameter&quot; : null
+          }
+        },
+        &quot;attributesOverride&quot; : {
+          &quot;required&quot; : [ {
+            &quot;destinationName&quot; : &quot;event_source&quot;,
+            &quot;value&quot; : &quot;app&quot;
+          } ],
+          &quot;optional&quot; : [ ],
+          &quot;identifiers&quot; : [ ],
+          &quot;exclude&quot; : [ ],
+          &quot;systemMappingAttributes&quot; : [ ]
+        },
+        &quot;referenceAttributes&quot; : [ &quot;AppSourceFields&quot;, &quot;Rate&quot; ]
+      }, {
+        &quot;key&quot; : &quot;Registration__app&quot;,
+        &quot;eventParameter&quot; : {
+          &quot;name&quot; : &quot;Registration&quot;,
+          &quot;type&quot; : &quot;Event&quot;,
+          &quot;subEventParameter&quot; : {
+            &quot;name&quot; : &quot;app&quot;,
+            &quot;type&quot; : &quot;ActionSource&quot;,
+            &quot;subEventParameter&quot; : null
+          }
+        },
+        &quot;attributesOverride&quot; : {
+          &quot;required&quot; : [ {
+            &quot;destinationName&quot; : &quot;event_source&quot;,
+            &quot;value&quot; : &quot;app&quot;
+          } ],
+          &quot;optional&quot; : [ ],
+          &quot;identifiers&quot; : [ ],
+          &quot;exclude&quot; : [ ],
+          &quot;systemMappingAttributes&quot; : [ ]
+        },
+        &quot;referenceAttributes&quot; : [ &quot;AppSourceFields&quot;, &quot;Registration&quot; ]
+      }, {
+        &quot;key&quot; : &quot;Schedule__web&quot;,
+        &quot;eventParameter&quot; : {
+          &quot;name&quot; : &quot;Schedule&quot;,
+          &quot;type&quot; : &quot;Event&quot;,
+          &quot;subEventParameter&quot; : {
+            &quot;name&quot; : &quot;web&quot;,
+            &quot;type&quot; : &quot;ActionSource&quot;,
+            &quot;subEventParameter&quot; : null
+          }
+        },
+        &quot;attributesOverride&quot; : {
+          &quot;required&quot; : [ {
+            &quot;destinationName&quot; : &quot;event_source&quot;,
+            &quot;value&quot; : &quot;web&quot;
+          } ],
+          &quot;optional&quot; : [ ],
+          &quot;identifiers&quot; : [ ],
+          &quot;exclude&quot; : [ ],
+          &quot;systemMappingAttributes&quot; : [ ]
+        },
+        &quot;referenceAttributes&quot; : [ &quot;WebSourceFields&quot;, &quot;Schedule&quot; ]
+      }, {
+        &quot;key&quot; : &quot;Schedule__offline&quot;,
+        &quot;eventParameter&quot; : {
+          &quot;name&quot; : &quot;Schedule&quot;,
+          &quot;type&quot; : &quot;Event&quot;,
+          &quot;subEventParameter&quot; : {
+            &quot;name&quot; : &quot;offline&quot;,
+            &quot;type&quot; : &quot;ActionSource&quot;,
+            &quot;subEventParameter&quot; : null
+          }
+        },
+        &quot;attributesOverride&quot; : {
+          &quot;required&quot; : [ {
+            &quot;destinationName&quot; : &quot;event_source&quot;,
+            &quot;value&quot; : &quot;offline&quot;
+          } ],
+          &quot;optional&quot; : [ ],
+          &quot;identifiers&quot; : [ ],
+          &quot;exclude&quot; : [ ],
+          &quot;systemMappingAttributes&quot; : [ ]
+        },
+        &quot;referenceAttributes&quot; : [ &quot;Schedule&quot;, &quot;OfflineSourceFields&quot; ]
+      }, {
+        &quot;key&quot; : &quot;Schedule__crm&quot;,
+        &quot;eventParameter&quot; : {
+          &quot;name&quot; : &quot;Schedule&quot;,
+          &quot;type&quot; : &quot;Event&quot;,
+          &quot;subEventParameter&quot; : {
+            &quot;name&quot; : &quot;crm&quot;,
+            &quot;type&quot; : &quot;ActionSource&quot;,
+            &quot;subEventParameter&quot; : null
+          }
+        },
+        &quot;attributesOverride&quot; : {
+          &quot;required&quot; : [ {
+            &quot;destinationName&quot; : &quot;event_source&quot;,
+            &quot;value&quot; : &quot;crm&quot;
+          } ],
+          &quot;optional&quot; : [ ],
+          &quot;identifiers&quot; : [ ],
+          &quot;exclude&quot; : [ ],
+          &quot;systemMappingAttributes&quot; : [ ]
+        },
+        &quot;referenceAttributes&quot; : [ &quot;Schedule&quot;, &quot;CrmSourceFields&quot; ]
+      }, {
+        &quot;key&quot; : &quot;Search__web&quot;,
+        &quot;eventParameter&quot; : {
+          &quot;name&quot; : &quot;Search&quot;,
+          &quot;type&quot; : &quot;Event&quot;,
+          &quot;subEventParameter&quot; : {
+            &quot;name&quot; : &quot;web&quot;,
+            &quot;type&quot; : &quot;ActionSource&quot;,
+            &quot;subEventParameter&quot; : null
+          }
+        },
+        &quot;attributesOverride&quot; : {
+          &quot;required&quot; : [ {
+            &quot;destinationName&quot; : &quot;event_source&quot;,
+            &quot;value&quot; : &quot;web&quot;
+          } ],
+          &quot;optional&quot; : [ ],
+          &quot;identifiers&quot; : [ ],
+          &quot;exclude&quot; : [ ],
+          &quot;systemMappingAttributes&quot; : [ ]
+        },
+        &quot;referenceAttributes&quot; : [ &quot;WebSourceFields&quot;, &quot;Search&quot; ]
+      }, {
+        &quot;key&quot; : &quot;Search__offline&quot;,
+        &quot;eventParameter&quot; : {
+          &quot;name&quot; : &quot;Search&quot;,
+          &quot;type&quot; : &quot;Event&quot;,
+          &quot;subEventParameter&quot; : {
+            &quot;name&quot; : &quot;offline&quot;,
+            &quot;type&quot; : &quot;ActionSource&quot;,
+            &quot;subEventParameter&quot; : null
+          }
+        },
+        &quot;attributesOverride&quot; : {
+          &quot;required&quot; : [ {
+            &quot;destinationName&quot; : &quot;event_source&quot;,
+            &quot;value&quot; : &quot;offline&quot;
+          } ],
+          &quot;optional&quot; : [ ],
+          &quot;identifiers&quot; : [ ],
+          &quot;exclude&quot; : [ ],
+          &quot;systemMappingAttributes&quot; : [ ]
+        },
+        &quot;referenceAttributes&quot; : [ &quot;Search&quot;, &quot;OfflineSourceFields&quot; ]
+      }, {
+        &quot;key&quot; : &quot;Search__crm&quot;,
+        &quot;eventParameter&quot; : {
+          &quot;name&quot; : &quot;Search&quot;,
+          &quot;type&quot; : &quot;Event&quot;,
+          &quot;subEventParameter&quot; : {
+            &quot;name&quot; : &quot;crm&quot;,
+            &quot;type&quot; : &quot;ActionSource&quot;,
+            &quot;subEventParameter&quot; : null
+          }
+        },
+        &quot;attributesOverride&quot; : {
+          &quot;required&quot; : [ {
+            &quot;destinationName&quot; : &quot;event_source&quot;,
+            &quot;value&quot; : &quot;crm&quot;
+          } ],
+          &quot;optional&quot; : [ ],
+          &quot;identifiers&quot; : [ ],
+          &quot;exclude&quot; : [ ],
+          &quot;systemMappingAttributes&quot; : [ ]
+        },
+        &quot;referenceAttributes&quot; : [ &quot;Search&quot;, &quot;CrmSourceFields&quot; ]
+      }, {
+        &quot;key&quot; : &quot;Search__app&quot;,
+        &quot;eventParameter&quot; : {
+          &quot;name&quot; : &quot;Search&quot;,
+          &quot;type&quot; : &quot;Event&quot;,
+          &quot;subEventParameter&quot; : {
+            &quot;name&quot; : &quot;app&quot;,
+            &quot;type&quot; : &quot;ActionSource&quot;,
+            &quot;subEventParameter&quot; : null
+          }
+        },
+        &quot;attributesOverride&quot; : {
+          &quot;required&quot; : [ {
+            &quot;destinationName&quot; : &quot;event_source&quot;,
+            &quot;value&quot; : &quot;app&quot;
+          } ],
+          &quot;optional&quot; : [ ],
+          &quot;identifiers&quot; : [ ],
+          &quot;exclude&quot; : [ ],
+          &quot;systemMappingAttributes&quot; : [ ]
+        },
+        &quot;referenceAttributes&quot; : [ &quot;AppSourceFields&quot;, &quot;Search&quot; ]
+      }, {
+        &quot;key&quot; : &quot;Spend Credits__app&quot;,
+        &quot;eventParameter&quot; : {
+          &quot;name&quot; : &quot;Spend Credits&quot;,
+          &quot;type&quot; : &quot;Event&quot;,
+          &quot;subEventParameter&quot; : {
+            &quot;name&quot; : &quot;app&quot;,
+            &quot;type&quot; : &quot;ActionSource&quot;,
+            &quot;subEventParameter&quot; : null
+          }
+        },
+        &quot;attributesOverride&quot; : {
+          &quot;required&quot; : [ {
+            &quot;destinationName&quot; : &quot;event_source&quot;,
+            &quot;value&quot; : &quot;app&quot;
+          } ],
+          &quot;optional&quot; : [ ],
+          &quot;identifiers&quot; : [ ],
+          &quot;exclude&quot; : [ ],
+          &quot;systemMappingAttributes&quot; : [ ]
+        },
+        &quot;referenceAttributes&quot; : [ &quot;AppSourceFields&quot;, &quot;Spend Credits&quot; ]
+      }, {
+        &quot;key&quot; : &quot;Start Trial__web&quot;,
+        &quot;eventParameter&quot; : {
+          &quot;name&quot; : &quot;Start Trial&quot;,
+          &quot;type&quot; : &quot;Event&quot;,
+          &quot;subEventParameter&quot; : {
+            &quot;name&quot; : &quot;web&quot;,
+            &quot;type&quot; : &quot;ActionSource&quot;,
+            &quot;subEventParameter&quot; : null
+          }
+        },
+        &quot;attributesOverride&quot; : {
+          &quot;required&quot; : [ {
+            &quot;destinationName&quot; : &quot;event_source&quot;,
+            &quot;value&quot; : &quot;web&quot;
+          } ],
+          &quot;optional&quot; : [ ],
+          &quot;identifiers&quot; : [ ],
+          &quot;exclude&quot; : [ ],
+          &quot;systemMappingAttributes&quot; : [ ]
+        },
+        &quot;referenceAttributes&quot; : [ &quot;WebSourceFields&quot;, &quot;Start Trial&quot; ]
+      }, {
+        &quot;key&quot; : &quot;Start Trial__offline&quot;,
+        &quot;eventParameter&quot; : {
+          &quot;name&quot; : &quot;Start Trial&quot;,
+          &quot;type&quot; : &quot;Event&quot;,
+          &quot;subEventParameter&quot; : {
+            &quot;name&quot; : &quot;offline&quot;,
+            &quot;type&quot; : &quot;ActionSource&quot;,
+            &quot;subEventParameter&quot; : null
+          }
+        },
+        &quot;attributesOverride&quot; : {
+          &quot;required&quot; : [ {
+            &quot;destinationName&quot; : &quot;event_source&quot;,
+            &quot;value&quot; : &quot;offline&quot;
+          } ],
+          &quot;optional&quot; : [ ],
+          &quot;identifiers&quot; : [ ],
+          &quot;exclude&quot; : [ ],
+          &quot;systemMappingAttributes&quot; : [ ]
+        },
+        &quot;referenceAttributes&quot; : [ &quot;Start Trial&quot;, &quot;OfflineSourceFields&quot; ]
+      }, {
+        &quot;key&quot; : &quot;Start Trial__crm&quot;,
+        &quot;eventParameter&quot; : {
+          &quot;name&quot; : &quot;Start Trial&quot;,
+          &quot;type&quot; : &quot;Event&quot;,
+          &quot;subEventParameter&quot; : {
+            &quot;name&quot; : &quot;crm&quot;,
+            &quot;type&quot; : &quot;ActionSource&quot;,
+            &quot;subEventParameter&quot; : null
+          }
+        },
+        &quot;attributesOverride&quot; : {
+          &quot;required&quot; : [ {
+            &quot;destinationName&quot; : &quot;event_source&quot;,
+            &quot;value&quot; : &quot;crm&quot;
+          } ],
+          &quot;optional&quot; : [ ],
+          &quot;identifiers&quot; : [ ],
+          &quot;exclude&quot; : [ ],
+          &quot;systemMappingAttributes&quot; : [ ]
+        },
+        &quot;referenceAttributes&quot; : [ &quot;CrmSourceFields&quot;, &quot;Start Trial&quot; ]
+      }, {
+        &quot;key&quot; : &quot;Start Trial__app&quot;,
+        &quot;eventParameter&quot; : {
+          &quot;name&quot; : &quot;Start Trial&quot;,
+          &quot;type&quot; : &quot;Event&quot;,
+          &quot;subEventParameter&quot; : {
+            &quot;name&quot; : &quot;app&quot;,
+            &quot;type&quot; : &quot;ActionSource&quot;,
+            &quot;subEventParameter&quot; : null
+          }
+        },
+        &quot;attributesOverride&quot; : {
+          &quot;required&quot; : [ {
+            &quot;destinationName&quot; : &quot;event_source&quot;,
+            &quot;value&quot; : &quot;app&quot;
+          } ],
+          &quot;optional&quot; : [ ],
+          &quot;identifiers&quot; : [ ],
+          &quot;exclude&quot; : [ ],
+          &quot;systemMappingAttributes&quot; : [ ]
+        },
+        &quot;referenceAttributes&quot; : [ &quot;AppSourceFields&quot;, &quot;Start Trial&quot; ]
+      }, {
+        &quot;key&quot; : &quot;Submit Application__web&quot;,
+        &quot;eventParameter&quot; : {
+          &quot;name&quot; : &quot;Submit Application&quot;,
+          &quot;type&quot; : &quot;Event&quot;,
+          &quot;subEventParameter&quot; : {
+            &quot;name&quot; : &quot;web&quot;,
+            &quot;type&quot; : &quot;ActionSource&quot;,
+            &quot;subEventParameter&quot; : null
+          }
+        },
+        &quot;attributesOverride&quot; : {
+          &quot;required&quot; : [ {
+            &quot;destinationName&quot; : &quot;event_source&quot;,
+            &quot;value&quot; : &quot;web&quot;
+          } ],
+          &quot;optional&quot; : [ ],
+          &quot;identifiers&quot; : [ ],
+          &quot;exclude&quot; : [ ],
+          &quot;systemMappingAttributes&quot; : [ ]
+        },
+        &quot;referenceAttributes&quot; : [ &quot;Submit Application&quot;, &quot;WebSourceFields&quot; ]
+      }, {
+        &quot;key&quot; : &quot;Submit Application__offline&quot;,
+        &quot;eventParameter&quot; : {
+          &quot;name&quot; : &quot;Submit Application&quot;,
+          &quot;type&quot; : &quot;Event&quot;,
+          &quot;subEventParameter&quot; : {
+            &quot;name&quot; : &quot;offline&quot;,
+            &quot;type&quot; : &quot;ActionSource&quot;,
+            &quot;subEventParameter&quot; : null
+          }
+        },
+        &quot;attributesOverride&quot; : {
+          &quot;required&quot; : [ {
+            &quot;destinationName&quot; : &quot;event_source&quot;,
+            &quot;value&quot; : &quot;offline&quot;
+          } ],
+          &quot;optional&quot; : [ ],
+          &quot;identifiers&quot; : [ ],
+          &quot;exclude&quot; : [ ],
+          &quot;systemMappingAttributes&quot; : [ ]
+        },
+        &quot;referenceAttributes&quot; : [ &quot;Submit Application&quot;, &quot;OfflineSourceFields&quot; ]
+      }, {
+        &quot;key&quot; : &quot;Submit Application__crm&quot;,
+        &quot;eventParameter&quot; : {
+          &quot;name&quot; : &quot;Submit Application&quot;,
+          &quot;type&quot; : &quot;Event&quot;,
+          &quot;subEventParameter&quot; : {
+            &quot;name&quot; : &quot;crm&quot;,
+            &quot;type&quot; : &quot;ActionSource&quot;,
+            &quot;subEventParameter&quot; : null
+          }
+        },
+        &quot;attributesOverride&quot; : {
+          &quot;required&quot; : [ {
+            &quot;destinationName&quot; : &quot;event_source&quot;,
+            &quot;value&quot; : &quot;crm&quot;
+          } ],
+          &quot;optional&quot; : [ ],
+          &quot;identifiers&quot; : [ ],
+          &quot;exclude&quot; : [ ],
+          &quot;systemMappingAttributes&quot; : [ ]
+        },
+        &quot;referenceAttributes&quot; : [ &quot;Submit Application&quot;, &quot;CrmSourceFields&quot; ]
+      }, {
+        &quot;key&quot; : &quot;Subscribe__web&quot;,
+        &quot;eventParameter&quot; : {
+          &quot;name&quot; : &quot;Subscribe&quot;,
+          &quot;type&quot; : &quot;Event&quot;,
+          &quot;subEventParameter&quot; : {
+            &quot;name&quot; : &quot;web&quot;,
+            &quot;type&quot; : &quot;ActionSource&quot;,
+            &quot;subEventParameter&quot; : null
+          }
+        },
+        &quot;attributesOverride&quot; : {
+          &quot;required&quot; : [ {
+            &quot;destinationName&quot; : &quot;event_source&quot;,
+            &quot;value&quot; : &quot;web&quot;
+          } ],
+          &quot;optional&quot; : [ ],
+          &quot;identifiers&quot; : [ ],
+          &quot;exclude&quot; : [ ],
+          &quot;systemMappingAttributes&quot; : [ ]
+        },
+        &quot;referenceAttributes&quot; : [ &quot;WebSourceFields&quot;, &quot;Subscribe&quot; ]
+      }, {
+        &quot;key&quot; : &quot;Subscribe__offline&quot;,
+        &quot;eventParameter&quot; : {
+          &quot;name&quot; : &quot;Subscribe&quot;,
+          &quot;type&quot; : &quot;Event&quot;,
+          &quot;subEventParameter&quot; : {
+            &quot;name&quot; : &quot;offline&quot;,
+            &quot;type&quot; : &quot;ActionSource&quot;,
+            &quot;subEventParameter&quot; : null
+          }
+        },
+        &quot;attributesOverride&quot; : {
+          &quot;required&quot; : [ {
+            &quot;destinationName&quot; : &quot;event_source&quot;,
+            &quot;value&quot; : &quot;offline&quot;
+          } ],
+          &quot;optional&quot; : [ ],
+          &quot;identifiers&quot; : [ ],
+          &quot;exclude&quot; : [ ],
+          &quot;systemMappingAttributes&quot; : [ ]
+        },
+        &quot;referenceAttributes&quot; : [ &quot;Subscribe&quot;, &quot;OfflineSourceFields&quot; ]
+      }, {
+        &quot;key&quot; : &quot;Subscribe__crm&quot;,
+        &quot;eventParameter&quot; : {
+          &quot;name&quot; : &quot;Subscribe&quot;,
+          &quot;type&quot; : &quot;Event&quot;,
+          &quot;subEventParameter&quot; : {
+            &quot;name&quot; : &quot;crm&quot;,
+            &quot;type&quot; : &quot;ActionSource&quot;,
+            &quot;subEventParameter&quot; : null
+          }
+        },
+        &quot;attributesOverride&quot; : {
+          &quot;required&quot; : [ {
+            &quot;destinationName&quot; : &quot;event_source&quot;,
+            &quot;value&quot; : &quot;crm&quot;
+          } ],
+          &quot;optional&quot; : [ ],
+          &quot;identifiers&quot; : [ ],
+          &quot;exclude&quot; : [ ],
+          &quot;systemMappingAttributes&quot; : [ ]
+        },
+        &quot;referenceAttributes&quot; : [ &quot;CrmSourceFields&quot;, &quot;Subscribe&quot; ]
+      }, {
+        &quot;key&quot; : &quot;Subscribe__app&quot;,
+        &quot;eventParameter&quot; : {
+          &quot;name&quot; : &quot;Subscribe&quot;,
+          &quot;type&quot; : &quot;Event&quot;,
+          &quot;subEventParameter&quot; : {
+            &quot;name&quot; : &quot;app&quot;,
+            &quot;type&quot; : &quot;ActionSource&quot;,
+            &quot;subEventParameter&quot; : null
+          }
+        },
+        &quot;attributesOverride&quot; : {
+          &quot;required&quot; : [ {
+            &quot;destinationName&quot; : &quot;event_source&quot;,
+            &quot;value&quot; : &quot;app&quot;
+          } ],
+          &quot;optional&quot; : [ ],
+          &quot;identifiers&quot; : [ ],
+          &quot;exclude&quot; : [ ],
+          &quot;systemMappingAttributes&quot; : [ ]
+        },
+        &quot;referenceAttributes&quot; : [ &quot;AppSourceFields&quot;, &quot;Subscribe&quot; ]
+      }, {
+        &quot;key&quot; : &quot;Unlock Achievement__app&quot;,
+        &quot;eventParameter&quot; : {
+          &quot;name&quot; : &quot;Unlock Achievement&quot;,
+          &quot;type&quot; : &quot;Event&quot;,
+          &quot;subEventParameter&quot; : {
+            &quot;name&quot; : &quot;app&quot;,
+            &quot;type&quot; : &quot;ActionSource&quot;,
+            &quot;subEventParameter&quot; : null
+          }
+        },
+        &quot;attributesOverride&quot; : {
+          &quot;required&quot; : [ {
+            &quot;destinationName&quot; : &quot;event_source&quot;,
+            &quot;value&quot; : &quot;app&quot;
+          } ],
+          &quot;optional&quot; : [ ],
+          &quot;identifiers&quot; : [ ],
+          &quot;exclude&quot; : [ ],
+          &quot;systemMappingAttributes&quot; : [ ]
+        },
+        &quot;referenceAttributes&quot; : [ &quot;AppSourceFields&quot;, &quot;Unlock Achievement&quot; ]
+      }, {
+        &quot;key&quot; : &quot;View Content__web&quot;,
+        &quot;eventParameter&quot; : {
+          &quot;name&quot; : &quot;View Content&quot;,
+          &quot;type&quot; : &quot;Event&quot;,
+          &quot;subEventParameter&quot; : {
+            &quot;name&quot; : &quot;web&quot;,
+            &quot;type&quot; : &quot;ActionSource&quot;,
+            &quot;subEventParameter&quot; : null
+          }
+        },
+        &quot;attributesOverride&quot; : {
+          &quot;required&quot; : [ {
+            &quot;destinationName&quot; : &quot;event_source&quot;,
+            &quot;value&quot; : &quot;web&quot;
+          } ],
+          &quot;optional&quot; : [ ],
+          &quot;identifiers&quot; : [ ],
+          &quot;exclude&quot; : [ ],
+          &quot;systemMappingAttributes&quot; : [ ]
+        },
+        &quot;referenceAttributes&quot; : [ &quot;WebSourceFields&quot;, &quot;View Content&quot; ]
+      }, {
+        &quot;key&quot; : &quot;View Content__offline&quot;,
+        &quot;eventParameter&quot; : {
+          &quot;name&quot; : &quot;View Content&quot;,
+          &quot;type&quot; : &quot;Event&quot;,
+          &quot;subEventParameter&quot; : {
+            &quot;name&quot; : &quot;offline&quot;,
+            &quot;type&quot; : &quot;ActionSource&quot;,
+            &quot;subEventParameter&quot; : null
+          }
+        },
+        &quot;attributesOverride&quot; : {
+          &quot;required&quot; : [ {
+            &quot;destinationName&quot; : &quot;event_source&quot;,
+            &quot;value&quot; : &quot;offline&quot;
+          } ],
+          &quot;optional&quot; : [ ],
+          &quot;identifiers&quot; : [ ],
+          &quot;exclude&quot; : [ ],
+          &quot;systemMappingAttributes&quot; : [ ]
+        },
+        &quot;referenceAttributes&quot; : [ &quot;View Content&quot;, &quot;OfflineSourceFields&quot; ]
+      }, {
+        &quot;key&quot; : &quot;View Content__crm&quot;,
+        &quot;eventParameter&quot; : {
+          &quot;name&quot; : &quot;View Content&quot;,
+          &quot;type&quot; : &quot;Event&quot;,
+          &quot;subEventParameter&quot; : {
+            &quot;name&quot; : &quot;crm&quot;,
+            &quot;type&quot; : &quot;ActionSource&quot;,
+            &quot;subEventParameter&quot; : null
+          }
+        },
+        &quot;attributesOverride&quot; : {
+          &quot;required&quot; : [ {
+            &quot;destinationName&quot; : &quot;event_source&quot;,
+            &quot;value&quot; : &quot;crm&quot;
+          } ],
+          &quot;optional&quot; : [ ],
+          &quot;identifiers&quot; : [ ],
+          &quot;exclude&quot; : [ ],
+          &quot;systemMappingAttributes&quot; : [ ]
+        },
+        &quot;referenceAttributes&quot; : [ &quot;View Content&quot;, &quot;CrmSourceFields&quot; ]
+      }, {
+        &quot;key&quot; : &quot;View Content__app&quot;,
+        &quot;eventParameter&quot; : {
+          &quot;name&quot; : &quot;View Content&quot;,
+          &quot;type&quot; : &quot;Event&quot;,
+          &quot;subEventParameter&quot; : {
+            &quot;name&quot; : &quot;app&quot;,
+            &quot;type&quot; : &quot;ActionSource&quot;,
+            &quot;subEventParameter&quot; : null
+          }
+        },
+        &quot;attributesOverride&quot; : {
+          &quot;required&quot; : [ {
+            &quot;destinationName&quot; : &quot;event_source&quot;,
+            &quot;value&quot; : &quot;app&quot;
+          } ],
+          &quot;optional&quot; : [ ],
+          &quot;identifiers&quot; : [ ],
+          &quot;exclude&quot; : [ ],
+          &quot;systemMappingAttributes&quot; : [ ]
+        },
+        &quot;referenceAttributes&quot; : [ &quot;AppSourceFields&quot;, &quot;View Content&quot; ]
+      } ],
+      &quot;categoryHierarchyMap&quot; : {
+        &quot;Event__ActionSource&quot; : {
+          &quot;Submit Application&quot; : [ &quot;offline&quot;, &quot;web&quot;, &quot;crm&quot; ],
+          &quot;Loan Approval&quot; : [ &quot;app&quot; ],
+          &quot;Application Approval&quot; : [ &quot;offline&quot;, &quot;web&quot;, &quot;crm&quot; ],
+          &quot;In App AD Impr&quot; : [ &quot;app&quot; ],
+          &quot;Customize Product&quot; : [ &quot;offline&quot;, &quot;web&quot;, &quot;crm&quot; ],
+          &quot;Install App&quot; : [ &quot;app&quot; ],
+          &quot;Subscribe&quot; : [ &quot;app&quot;, &quot;offline&quot;, &quot;web&quot;, &quot;crm&quot; ],
+          &quot;In App AD Click&quot; : [ &quot;app&quot; ],
+          &quot;Create Group&quot; : [ &quot;app&quot; ],
+          &quot;Checkout&quot; : [ &quot;app&quot; ],
+          &quot;Registration&quot; : [ &quot;app&quot; ],
+          &quot;Search&quot; : [ &quot;app&quot;, &quot;offline&quot;, &quot;web&quot;, &quot;crm&quot; ],
+          &quot;Lead&quot; : [ &quot;offline&quot;, &quot;web&quot;, &quot;crm&quot; ],
+          &quot;Loan Disbursal&quot; : [ &quot;app&quot; ],
+          &quot;Download&quot; : [ &quot;offline&quot;, &quot;web&quot;, &quot;crm&quot; ],
+          &quot;Find Location&quot; : [ &quot;offline&quot;, &quot;web&quot;, &quot;crm&quot; ],
+          &quot;Join Group&quot; : [ &quot;app&quot; ],
+          &quot;Purchase&quot; : [ &quot;app&quot;, &quot;offline&quot;, &quot;web&quot;, &quot;crm&quot; ],
+          &quot;Add Payment Info&quot; : [ &quot;app&quot;, &quot;offline&quot;, &quot;web&quot;, &quot;crm&quot; ],
+          &quot;Add to Cart&quot; : [ &quot;app&quot;, &quot;offline&quot;, &quot;web&quot;, &quot;crm&quot; ],
+          &quot;Complete Registration&quot; : [ &quot;offline&quot;, &quot;web&quot;, &quot;crm&quot; ],
+          &quot;Rate&quot; : [ &quot;app&quot; ],
+          &quot;View Content&quot; : [ &quot;app&quot;, &quot;offline&quot;, &quot;web&quot;, &quot;crm&quot; ],
+          &quot;Complete Tutorial&quot; : [ &quot;app&quot; ],
+          &quot;Loan Application&quot; : [ &quot;app&quot; ],
+          &quot;Initiate Checkout&quot; : [ &quot;offline&quot;, &quot;web&quot;, &quot;crm&quot; ],
+          &quot;Add to Wishlist&quot; : [ &quot;app&quot;, &quot;offline&quot;, &quot;web&quot;, &quot;crm&quot; ],
+          &quot;Login&quot; : [ &quot;app&quot; ],
+          &quot;Achieve Level&quot; : [ &quot;app&quot; ],
+          &quot;Create Role&quot; : [ &quot;app&quot; ],
+          &quot;Generate Lead&quot; : [ &quot;app&quot; ],
+          &quot;Contact&quot; : [ &quot;offline&quot;, &quot;web&quot;, &quot;crm&quot; ],
+          &quot;Schedule&quot; : [ &quot;offline&quot;, &quot;web&quot;, &quot;crm&quot; ],
+          &quot;Unlock Achievement&quot; : [ &quot;app&quot; ],
+          &quot;Start Trial&quot; : [ &quot;app&quot;, &quot;offline&quot;, &quot;web&quot;, &quot;crm&quot; ],
+          &quot;Spend Credits&quot; : [ &quot;app&quot; ],
+          &quot;Launch App&quot; : [ &quot;app&quot; ]
+        }
+      }
+    },
+    &quot;customEventDetails&quot; : {
+      &quot;attributesOverride&quot; : {
+        &quot;required&quot; : [ {
+          &quot;destinationName&quot; : &quot;event&quot;,
+          &quot;value&quot; : null
+        }, {
+          &quot;destinationName&quot; : &quot;event_time&quot;,
+          &quot;value&quot; : null
+        }, {
+          &quot;destinationName&quot; : &quot;event_source_id&quot;,
+          &quot;value&quot; : &quot;dynamic&quot;
+        } ],
+        &quot;optional&quot; : [ {
+          &quot;destinationName&quot; : &quot;event_id&quot;,
+          &quot;value&quot; : null
+        }, {
+          &quot;destinationName&quot; : &quot;user_external_id&quot;,
+          &quot;value&quot; : null
+        }, {
+          &quot;destinationName&quot; : &quot;user_ttclid&quot;,
+          &quot;value&quot; : null
+        }, {
+          &quot;destinationName&quot; : &quot;user_ttp&quot;,
+          &quot;value&quot; : null
+        }, {
+          &quot;destinationName&quot; : &quot;user_ip&quot;,
+          &quot;value&quot; : null
+        }, {
+          &quot;destinationName&quot; : &quot;user_user_agent&quot;,
+          &quot;value&quot; : null
+        }, {
+          &quot;destinationName&quot; : &quot;user_idfa&quot;,
+          &quot;value&quot; : null
+        }, {
+          &quot;destinationName&quot; : &quot;user_idfv&quot;,
+          &quot;value&quot; : null
+        }, {
+          &quot;destinationName&quot; : &quot;user_gaid&quot;,
+          &quot;value&quot; : null
+        }, {
+          &quot;destinationName&quot; : &quot;user_locale&quot;,
+          &quot;value&quot; : null
+        }, {
+          &quot;destinationName&quot; : &quot;user_att_status&quot;,
+          &quot;value&quot; : null
+        }, {
+          &quot;destinationName&quot; : &quot;properties_currency&quot;,
+          &quot;value&quot; : null
+        }, {
+          &quot;destinationName&quot; : &quot;properties_value&quot;,
+          &quot;value&quot; : null
+        }, {
+          &quot;destinationName&quot; : &quot;properties_content_ids&quot;,
+          &quot;value&quot; : null
+        }, {
+          &quot;destinationName&quot; : &quot;properties_contents&quot;,
+          &quot;value&quot; : null
+        }, {
+          &quot;destinationName&quot; : &quot;properties_content_type&quot;,
+          &quot;value&quot; : null
+        }, {
+          &quot;destinationName&quot; : &quot;properties_num_items&quot;,
+          &quot;value&quot; : null
+        }, {
+          &quot;destinationName&quot; : &quot;properties_order_id&quot;,
+          &quot;value&quot; : null
+        }, {
+          &quot;destinationName&quot; : &quot;properties_search_string&quot;,
+          &quot;value&quot; : null
+        }, {
+          &quot;destinationName&quot; : &quot;properties_description&quot;,
+          &quot;value&quot; : null
+        }, {
+          &quot;destinationName&quot; : &quot;properties_shop_id&quot;,
+          &quot;value&quot; : null
+        }, {
+          &quot;destinationName&quot; : &quot;page_url&quot;,
+          &quot;value&quot; : null
+        }, {
+          &quot;destinationName&quot; : &quot;page_referrer&quot;,
+          &quot;value&quot; : null
+        }, {
+          &quot;destinationName&quot; : &quot;app_app_id&quot;,
+          &quot;value&quot; : null
+        }, {
+          &quot;destinationName&quot; : &quot;app_app_name&quot;,
+          &quot;value&quot; : null
+        }, {
+          &quot;destinationName&quot; : &quot;app_app_version&quot;,
+          &quot;value&quot; : null
+        }, {
+          &quot;destinationName&quot; : &quot;ad_callback&quot;,
+          &quot;value&quot; : null
+        }, {
+          &quot;destinationName&quot; : &quot;ad_campaign_id&quot;,
+          &quot;value&quot; : null
+        }, {
+          &quot;destinationName&quot; : &quot;ad_ad_id&quot;,
+          &quot;value&quot; : null
+        }, {
+          &quot;destinationName&quot; : &quot;ad_creative_id&quot;,
+          &quot;value&quot; : null
+        }, {
+          &quot;destinationName&quot; : &quot;ad_is_retargeting&quot;,
+          &quot;value&quot; : null
+        }, {
+          &quot;destinationName&quot; : &quot;ad_attributed&quot;,
+          &quot;value&quot; : null
+        }, {
+          &quot;destinationName&quot; : &quot;ad_attribution_type&quot;,
+          &quot;value&quot; : null
+        }, {
+          &quot;destinationName&quot; : &quot;ad_attribution_provider&quot;,
+          &quot;value&quot; : null
+        }, {
+          &quot;destinationName&quot; : &quot;lead_lead_id&quot;,
+          &quot;value&quot; : null
+        }, {
+          &quot;destinationName&quot; : &quot;lead_lead_event_source&quot;,
+          &quot;value&quot; : null
+        } ],
+        &quot;identifiers&quot; : [ {
+          &quot;destinationName&quot; : &quot;user_email&quot;,
+          &quot;value&quot; : null
+        }, {
+          &quot;destinationName&quot; : &quot;user_phone&quot;,
+          &quot;value&quot; : null
+        } ],
+        &quot;exclude&quot; : [ ],
+        &quot;systemMappingAttributes&quot; : [ ]
+      },
+      &quot;attributeMappingInfo&quot; : [ {
+        &quot;key&quot; : &quot;CustomEventBaseFields&quot;,
+        &quot;eventParameter&quot; : null,
+        &quot;attributesOverride&quot; : {
+          &quot;required&quot; : [ {
+            &quot;destinationName&quot; : &quot;event&quot;,
+            &quot;value&quot; : null
+          }, {
+            &quot;destinationName&quot; : &quot;event_time&quot;,
+            &quot;value&quot; : null
+          }, {
+            &quot;destinationName&quot; : &quot;event_source_id&quot;,
+            &quot;value&quot; : &quot;dynamic&quot;
+          } ],
+          &quot;optional&quot; : [ {
+            &quot;destinationName&quot; : &quot;event_id&quot;,
+            &quot;value&quot; : null
+          }, {
+            &quot;destinationName&quot; : &quot;user_external_id&quot;,
+            &quot;value&quot; : null
+          }, {
+            &quot;destinationName&quot; : &quot;user_ttclid&quot;,
+            &quot;value&quot; : null
+          }, {
+            &quot;destinationName&quot; : &quot;user_ttp&quot;,
+            &quot;value&quot; : null
+          }, {
+            &quot;destinationName&quot; : &quot;user_ip&quot;,
+            &quot;value&quot; : null
+          }, {
+            &quot;destinationName&quot; : &quot;user_user_agent&quot;,
+            &quot;value&quot; : null
+          }, {
+            &quot;destinationName&quot; : &quot;user_idfa&quot;,
+            &quot;value&quot; : null
+          }, {
+            &quot;destinationName&quot; : &quot;user_idfv&quot;,
+            &quot;value&quot; : null
+          }, {
+            &quot;destinationName&quot; : &quot;user_gaid&quot;,
+            &quot;value&quot; : null
+          }, {
+            &quot;destinationName&quot; : &quot;user_locale&quot;,
+            &quot;value&quot; : null
+          }, {
+            &quot;destinationName&quot; : &quot;user_att_status&quot;,
+            &quot;value&quot; : null
+          }, {
+            &quot;destinationName&quot; : &quot;properties_currency&quot;,
+            &quot;value&quot; : null
+          }, {
+            &quot;destinationName&quot; : &quot;properties_value&quot;,
+            &quot;value&quot; : null
+          }, {
+            &quot;destinationName&quot; : &quot;properties_content_ids&quot;,
+            &quot;value&quot; : null
+          }, {
+            &quot;destinationName&quot; : &quot;properties_contents&quot;,
+            &quot;value&quot; : null
+          }, {
+            &quot;destinationName&quot; : &quot;properties_content_type&quot;,
+            &quot;value&quot; : null
+          }, {
+            &quot;destinationName&quot; : &quot;properties_num_items&quot;,
+            &quot;value&quot; : null
+          }, {
+            &quot;destinationName&quot; : &quot;properties_order_id&quot;,
+            &quot;value&quot; : null
+          }, {
+            &quot;destinationName&quot; : &quot;properties_search_string&quot;,
+            &quot;value&quot; : null
+          }, {
+            &quot;destinationName&quot; : &quot;properties_description&quot;,
+            &quot;value&quot; : null
+          }, {
+            &quot;destinationName&quot; : &quot;properties_shop_id&quot;,
+            &quot;value&quot; : null
+          }, {
+            &quot;destinationName&quot; : &quot;page_url&quot;,
+            &quot;value&quot; : null
+          }, {
+            &quot;destinationName&quot; : &quot;page_referrer&quot;,
+            &quot;value&quot; : null
+          }, {
+            &quot;destinationName&quot; : &quot;app_app_id&quot;,
+            &quot;value&quot; : null
+          }, {
+            &quot;destinationName&quot; : &quot;app_app_name&quot;,
+            &quot;value&quot; : null
+          }, {
+            &quot;destinationName&quot; : &quot;app_app_version&quot;,
+            &quot;value&quot; : null
+          }, {
+            &quot;destinationName&quot; : &quot;ad_callback&quot;,
+            &quot;value&quot; : null
+          }, {
+            &quot;destinationName&quot; : &quot;ad_campaign_id&quot;,
+            &quot;value&quot; : null
+          }, {
+            &quot;destinationName&quot; : &quot;ad_ad_id&quot;,
+            &quot;value&quot; : null
+          }, {
+            &quot;destinationName&quot; : &quot;ad_creative_id&quot;,
+            &quot;value&quot; : null
+          }, {
+            &quot;destinationName&quot; : &quot;ad_is_retargeting&quot;,
+            &quot;value&quot; : null
+          }, {
+            &quot;destinationName&quot; : &quot;ad_attributed&quot;,
+            &quot;value&quot; : null
+          }, {
+            &quot;destinationName&quot; : &quot;ad_attribution_type&quot;,
+            &quot;value&quot; : null
+          }, {
+            &quot;destinationName&quot; : &quot;ad_attribution_provider&quot;,
+            &quot;value&quot; : null
+          }, {
+            &quot;destinationName&quot; : &quot;lead_lead_id&quot;,
+            &quot;value&quot; : null
+          }, {
+            &quot;destinationName&quot; : &quot;lead_lead_event_source&quot;,
+            &quot;value&quot; : null
+          } ],
+          &quot;identifiers&quot; : [ {
+            &quot;destinationName&quot; : &quot;user_email&quot;,
+            &quot;value&quot; : null
+          }, {
+            &quot;destinationName&quot; : &quot;user_phone&quot;,
+            &quot;value&quot; : null
+          } ],
+          &quot;exclude&quot; : [ ],
+          &quot;systemMappingAttributes&quot; : [ ]
+        },
+        &quot;referenceAttributes&quot; : [ ]
+      }, {
+        &quot;key&quot; : &quot;CustomWebSourceFields&quot;,
+        &quot;eventParameter&quot; : null,
+        &quot;attributesOverride&quot; : {
+          &quot;required&quot; : [ {
+            &quot;destinationName&quot; : &quot;event_id&quot;,
+            &quot;value&quot; : null
+          }, {
+            &quot;destinationName&quot; : &quot;page_url&quot;,
+            &quot;value&quot; : null
+          } ],
+          &quot;optional&quot; : [ {
+            &quot;destinationName&quot; : &quot;page_referrer&quot;,
+            &quot;value&quot; : null
+          }, {
+            &quot;destinationName&quot; : &quot;user_ttp&quot;,
+            &quot;value&quot; : null
+          } ],
+          &quot;identifiers&quot; : [ ],
+          &quot;exclude&quot; : [ ],
+          &quot;systemMappingAttributes&quot; : [ ]
+        },
+        &quot;referenceAttributes&quot; : [ ]
+      }, {
+        &quot;key&quot; : &quot;CustomCrmSourceFields&quot;,
+        &quot;eventParameter&quot; : null,
+        &quot;attributesOverride&quot; : {
+          &quot;required&quot; : [ {
+            &quot;destinationName&quot; : &quot;lead_lead_id&quot;,
+            &quot;value&quot; : null
+          }, {
+            &quot;destinationName&quot; : &quot;event_id&quot;,
+            &quot;value&quot; : null
+          } ],
+          &quot;optional&quot; : [ {
+            &quot;destinationName&quot; : &quot;lead_lead_event_source&quot;,
+            &quot;value&quot; : null
+          } ],
+          &quot;identifiers&quot; : [ ],
+          &quot;exclude&quot; : [ ],
+          &quot;systemMappingAttributes&quot; : [ ]
+        },
+        &quot;referenceAttributes&quot; : [ ]
+      }, {
+        &quot;key&quot; : &quot;CustomAppSourceFields&quot;,
+        &quot;eventParameter&quot; : null,
+        &quot;attributesOverride&quot; : {
+          &quot;required&quot; : [ {
+            &quot;destinationName&quot; : &quot;app_app_id&quot;,
+            &quot;value&quot; : null
+          } ],
+          &quot;optional&quot; : [ {
+            &quot;destinationName&quot; : &quot;user_idfa&quot;,
+            &quot;value&quot; : null
+          }, {
+            &quot;destinationName&quot; : &quot;user_gaid&quot;,
+            &quot;value&quot; : null
+          } ],
+          &quot;identifiers&quot; : [ ],
+          &quot;exclude&quot; : [ ],
+          &quot;systemMappingAttributes&quot; : [ ]
+        },
+        &quot;referenceAttributes&quot; : [ ]
+      }, {
+        &quot;key&quot; : &quot;CustomOfflineSourceFields&quot;,
+        &quot;eventParameter&quot; : null,
+        &quot;attributesOverride&quot; : {
+          &quot;required&quot; : [ ],
+          &quot;optional&quot; : [ ],
+          &quot;identifiers&quot; : [ ],
+          &quot;exclude&quot; : [ ],
+          &quot;systemMappingAttributes&quot; : [ ]
+        },
+        &quot;referenceAttributes&quot; : [ ]
+      }, {
+        &quot;key&quot; : &quot;web&quot;,
+        &quot;eventParameter&quot; : null,
+        &quot;attributesOverride&quot; : {
+          &quot;required&quot; : [ {
+            &quot;destinationName&quot; : &quot;event_source&quot;,
+            &quot;value&quot; : &quot;web&quot;
+          } ],
+          &quot;optional&quot; : [ ],
+          &quot;identifiers&quot; : [ ],
+          &quot;exclude&quot; : [ ],
+          &quot;systemMappingAttributes&quot; : [ ]
+        },
+        &quot;referenceAttributes&quot; : [ &quot;CustomEventBaseFields&quot;, &quot;CustomWebSourceFields&quot; ]
+      }, {
+        &quot;key&quot; : &quot;crm&quot;,
+        &quot;eventParameter&quot; : null,
+        &quot;attributesOverride&quot; : {
+          &quot;required&quot; : [ {
+            &quot;destinationName&quot; : &quot;event_source&quot;,
+            &quot;value&quot; : &quot;crm&quot;
+          } ],
+          &quot;optional&quot; : [ ],
+          &quot;identifiers&quot; : [ ],
+          &quot;exclude&quot; : [ ],
+          &quot;systemMappingAttributes&quot; : [ ]
+        },
+        &quot;referenceAttributes&quot; : [ &quot;CustomCrmSourceFields&quot;, &quot;CustomEventBaseFields&quot; ]
+      }, {
+        &quot;key&quot; : &quot;app&quot;,
+        &quot;eventParameter&quot; : null,
+        &quot;attributesOverride&quot; : {
+          &quot;required&quot; : [ {
+            &quot;destinationName&quot; : &quot;event_source&quot;,
+            &quot;value&quot; : &quot;app&quot;
+          } ],
+          &quot;optional&quot; : [ ],
+          &quot;identifiers&quot; : [ ],
+          &quot;exclude&quot; : [ ],
+          &quot;systemMappingAttributes&quot; : [ ]
+        },
+        &quot;referenceAttributes&quot; : [ &quot;CustomEventBaseFields&quot;, &quot;CustomAppSourceFields&quot; ]
+      }, {
+        &quot;key&quot; : &quot;offline&quot;,
+        &quot;eventParameter&quot; : null,
+        &quot;attributesOverride&quot; : {
+          &quot;required&quot; : [ {
+            &quot;destinationName&quot; : &quot;event_source&quot;,
+            &quot;value&quot; : &quot;offline&quot;
+          } ],
+          &quot;optional&quot; : [ ],
+          &quot;identifiers&quot; : [ ],
+          &quot;exclude&quot; : [ ],
+          &quot;systemMappingAttributes&quot; : [ ]
+        },
+        &quot;referenceAttributes&quot; : [ &quot;CustomEventBaseFields&quot;, &quot;CustomOfflineSourceFields&quot; ]
+      } ]
+    }
+  },
+  &quot;mappingSchemas&quot; : [ ],
+  &quot;partnerSupportedIds&quot; : [ ],
+  &quot;outputProperties&quot; : null
+}</activationPlatformAdditionalMetadata>
+    <activationPlatformConnectorType>OAUTH</activationPlatformConnectorType>
+    <dataConnector>cdpactvstrgptnr__TikTok_Conversions_API1776101839828</dataConnector>
+    <description>Activate customer engagement and conversion event data to TikTok&apos;s Conversions API.</description>
+    <enabled>false</enabled>
+    <includeSegmentNames>false</includeSegmentNames>
+    <masterLabel>TikTok Conversions API</masterLabel>
+    <outputFormat>JSON</outputFormat>
+    <outputGrouping>PER_ACCOUNT</outputGrouping>
+    <periodicRefreshFrequecy>REFRESH_30</periodicRefreshFrequecy>
+    <platformProcessingType>Streaming</platformProcessingType>
+    <platformType>Advertising</platformType>
+    <refreshFrequency xsi:nil="true"/>
+    <refreshMode>INCREMENTAL</refreshMode>
+</ActivationPlatform>

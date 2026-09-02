@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Mogli_SMS__EnableMessagingAPI__c</fullName>
+    <defaultValue>false</defaultValue>
+    <deprecated>false</deprecated>
+    <description>Field to enable the use of the Mogli Messsaging API service.</description>
+    <inlineHelpText>Do you want to use Mogli Messaging API? Yes =  Checked, No = Unchecked.</inlineHelpText>
+    <label>Enable Mogli Messaging API</label>
+    <trackTrending>false</trackTrending>
+    <type>Checkbox</type>
+</CustomField>

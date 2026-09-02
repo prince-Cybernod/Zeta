@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<FieldSrcTrgtRelationship xmlns="http://soap.sforce.com/2006/04/metadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <definitionCreationType>Standard</definitionCreationType>
+    <lookupFieldName>ssot__LoyaltyMembershipLifecycle__dlm.ssot__rel_1729227487895_end__c</lookupFieldName>
+    <masterLabel>LoyaltyMembershipLifecycle_OrderItemId_map_SalesOrderProduct_Id_N_1</masterLabel>
+    <owner>DataCloud</owner>
+    <relationshipCardinality>ManyToOne</relationshipCardinality>
+    <sourceFieldName>ssot__LoyaltyMembershipLifecycle__dlm.ssot__OrderItemId__c</sourceFieldName>
+    <targetEntity xsi:nil="true"/>
+    <targetFieldName>ssot__SalesOrderProduct__dlm.ssot__Id__c</targetFieldName>
+</FieldSrcTrgtRelationship>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>FallbackUser__c</fullName>
+    <deleteConstraint>SetNull</deleteConstraint>
+    <deprecated>false</deprecated>
+    <description>Fallback assignee for this template task when primary assignment cannot be resolved.</description>
+    <inlineHelpText>Optional fallback user. Used when the primary assignee cannot be determined.</inlineHelpText>
+    <label>Fallback User</label>
+    <referenceTo>User</referenceTo>
+    <relationshipLabel>Fallback User</relationshipLabel>
+    <relationshipName>FallbackUser</relationshipName>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Lookup</type>
+</CustomField>

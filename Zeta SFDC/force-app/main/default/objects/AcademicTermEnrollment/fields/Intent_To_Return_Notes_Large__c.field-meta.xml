@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Intent_To_Return_Notes_Large__c</fullName>
+    <description>Extended notes related to the family’s intent to return.</description>
+    <inlineHelpText>Extended notes related to the family’s intent to return.</inlineHelpText>
+    <label>Intent to Return Notes (Large)</label>
+    <length>32768</length>
+    <trackHistory>false</trackHistory>
+    <type>LongTextArea</type>
+    <visibleLines>3</visibleLines>
+</CustomField>

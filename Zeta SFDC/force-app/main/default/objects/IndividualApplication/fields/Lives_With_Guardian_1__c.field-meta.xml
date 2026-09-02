@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Lives_With_Guardian_1__c</fullName>
+    <defaultValue>true</defaultValue>
+    <description>Per-student flag indicating that the student lives at the same address as Guardian 1. Defaults TRUE: most students live with Guardian 1, so the create-screen &quot;Student lives at a different address&quot; checkbox (an inverted view of this field) starts unchecked and the separate Student Address section stays hidden until the parent indicates otherwise. When true, the Guardian 1 address is treated as the student&apos;s address (and is copied to the student record on edit).</description>
+    <label>Lives With Guardian 1</label>
+    <trackHistory>false</trackHistory>
+    <type>Checkbox</type>
+</CustomField>

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<FieldSrcTrgtRelationship xmlns="http://soap.sforce.com/2006/04/metadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <definitionCreationType>Standard</definitionCreationType>
+    <lookupFieldName>ssot__VehicleTelematicsEvent__dlm.ssot__rel_1697761233925_end__c</lookupFieldName>
+    <masterLabel>VehicleTelematicsEvent_VehicleId_map_Vehicle_Id_N_1</masterLabel>
+    <owner>DataCloud</owner>
+    <relationshipCardinality>ManyToOne</relationshipCardinality>
+    <sourceFieldName>ssot__VehicleTelematicsEvent__dlm.ssot__VehicleId__c</sourceFieldName>
+    <targetEntity xsi:nil="true"/>
+    <targetFieldName>ssot__Vehicle__dlm.ssot__Id__c</targetFieldName>
+</FieldSrcTrgtRelationship>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>All_AcademicTerms</fullName>
+    <columns>Name</columns>
+    <columns>AcademicYear</columns>
+    <columns>Active__c</columns>
+    <columns>StartDate</columns>
+    <columns>EndDate</columns>
+    <columns>RegistrationOpenDate</columns>
+    <columns>RegistrationCloseDate</columns>
+    <filterScope>Everything</filterScope>
+    <label>All Academic Terms</label>
+</ListView>

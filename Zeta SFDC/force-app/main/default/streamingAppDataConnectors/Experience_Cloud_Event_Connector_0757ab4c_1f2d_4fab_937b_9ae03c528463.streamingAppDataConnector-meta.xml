@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<StreamingAppDataConnector xmlns="http://soap.sforce.com/2006/04/metadata">
+    <appIdentifier>0757ab4c-1f2d-4fab-937b-9ae03c528463</appIdentifier>
+    <connectorParameters>
+        <paramName>moduleConfig</paramName>
+        <paramValue>[{&quot;moduleName&quot;:&quot;personalization&quot;,&quot;path&quot;:&quot;npm/@salesforce/interactions-personalization/1.0/build/dist/index.min.js&quot;,&quot;enabled&quot;:true,&quot;moduleConfiguration&quot;:&quot;&quot;},{&quot;moduleName&quot;:&quot;utm&quot;,&quot;path&quot;:null,&quot;enabled&quot;:false,&quot;moduleConfiguration&quot;:null},{&quot;moduleName&quot;:&quot;custom_parameters&quot;,&quot;path&quot;:null,&quot;enabled&quot;:false,&quot;moduleConfiguration&quot;:null}]</paramValue>
+    </connectorParameters>
+    <connectorParameters>
+        <paramName>sitemap</paramName>
+        <paramValue>&quot;&quot;</paramValue>
+    </connectorParameters>
+    <dataConnectorType>StreamingApp</dataConnectorType>
+    <masterLabel>Experience_Cloud_Event_Connector</masterLabel>
+    <streamingAppDataConnectorType>WebApp</streamingAppDataConnectorType>
+</StreamingAppDataConnector>

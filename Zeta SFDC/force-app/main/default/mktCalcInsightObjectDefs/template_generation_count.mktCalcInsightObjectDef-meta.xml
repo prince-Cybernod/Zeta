@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<MktCalcInsightObjectDef xmlns="http://soap.sforce.com/2006/04/metadata">
+    <creationType>Custom</creationType>
+    <description>Number of generations at Prompt Template Level</description>
+    <expression>SELECT GenAIGatewayRequest__dlm.promptTemplateDevName__c AS prompt_template__c, COUNT(GenAIGatewayRequest__dlm.gatewayRequestId__c) AS generation_count__c
+FROM GenAIGatewayRequest__dlm
+WHERE GenAIGatewayRequest__dlm.promptTemplateDevName__c  IS NOT NULL
+GROUP BY GenAIGatewayRequest__dlm.promptTemplateDevName__c</expression>
+    <masterLabel>Prompt Template Generation Count</masterLabel>
+</MktCalcInsightObjectDef>

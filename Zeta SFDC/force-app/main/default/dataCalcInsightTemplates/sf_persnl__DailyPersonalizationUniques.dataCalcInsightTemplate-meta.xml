@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<DataCalcInsightTemplate xmlns="http://soap.sforce.com/2006/04/metadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <builderExpression xsi:nil="true"/>
+    <creationType>Custom</creationType>
+    <dataspaceName>default</dataspaceName>
+    <dataspacePrefix xsi:nil="true"/>
+    <definitionType>CALCULATED_METRIC</definitionType>
+    <description>Calculated Insight for Daily Personalization Uniques</description>
+    <developerName>DailyPersonalizationUniques</developerName>
+    <expression>SELECT DATE_ADD(ssot__PersonalizationLog__dlm.ssot__RequestDateTime__c,0) as RequestDate__c, APPROX_COUNT_DISTINCT(ssot__PersonalizationLog__dlm.ssot__IndividualId__c) as NumUniqueIndividuals__c, APPROX_COUNT_DISTINCT(ssot__PersonalizationLog__dlm.ssot__PersonalizationRequestId__c) as NumRequests__c, APPROX_COUNT_DISTINCT(ssot__PersonalizationLog__dlm.ssot__PersonalizationId__c) as NumPersonalizationRequests__c, APPROX_COUNT_DISTINCT(ssot__PersonalizationLog__dlm.ssot__ContentObjectAPIName__c) as NumUniqueRecordTypes__c, APPROX_COUNT_DISTINCT(ssot__PersonalizationLog__dlm.ssot__ContentObjectRecordId__c) as NumUniqueRecords__c FROM ssot__PersonalizationLog__dlm GROUP BY RequestDate__c</expression>
+    <masterLabel>Daily Personalization Uniques</masterLabel>
+    <scheduleInterval>SYSTEM_MANAGED</scheduleInterval>
+    <templateVersion>1</templateVersion>
+</DataCalcInsightTemplate>

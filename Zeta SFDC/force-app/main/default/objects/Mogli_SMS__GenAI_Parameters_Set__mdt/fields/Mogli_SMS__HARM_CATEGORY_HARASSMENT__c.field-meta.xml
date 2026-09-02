@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Mogli_SMS__HARM_CATEGORY_HARASSMENT__c</fullName>
+    <deprecated>false</deprecated>
+    <fieldManageability>SubscriberControlled</fieldManageability>
+    <inlineHelpText>Negative or harmful comments targeting identity and/or protected attributes.</inlineHelpText>
+    <label>HARM_CATEGORY_HARASSMENT</label>
+    <required>false</required>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>BLOCK_NONE</fullName>
+                <default>true</default>
+                <label>BLOCK_NONE</label>
+            </value>
+            <value>
+                <fullName>BLOCK_ONLY_HIGH</fullName>
+                <default>false</default>
+                <label>BLOCK_ONLY_HIGH</label>
+            </value>
+            <value>
+                <fullName>BLOCK_MEDIUM_AND_ABOVE</fullName>
+                <default>false</default>
+                <label>BLOCK_MEDIUM_AND_ABOVE</label>
+            </value>
+            <value>
+                <fullName>BLOCK_LOW_AND_ABOVE</fullName>
+                <default>false</default>
+                <label>BLOCK_LOW_AND_ABOVE</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

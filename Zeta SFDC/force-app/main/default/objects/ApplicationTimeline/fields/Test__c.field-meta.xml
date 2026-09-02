@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Test__c</fullName>
+    <defaultValue>false</defaultValue>
+    <description>When checked, lottery runs from this timeline can be rolled back for testing.</description>
+    <inlineHelpText>Check to enable rollback for test lottery runs.</inlineHelpText>
+    <label>Test</label>
+    <trackHistory>false</trackHistory>
+    <type>Checkbox</type>
+</CustomField>

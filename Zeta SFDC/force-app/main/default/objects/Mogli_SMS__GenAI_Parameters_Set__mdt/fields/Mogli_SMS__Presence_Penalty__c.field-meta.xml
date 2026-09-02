@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Mogli_SMS__Presence_Penalty__c</fullName>
+    <defaultValue>0</defaultValue>
+    <deprecated>false</deprecated>
+    <externalId>false</externalId>
+    <fieldManageability>SubscriberControlled</fieldManageability>
+    <inlineHelpText>Number between -2.0 and 2.0. Positive values penalize new tokens based on whether they appear in the text so far, increasing the models likelihood to talk about new topics.</inlineHelpText>
+    <label>Presence Penalty</label>
+    <precision>2</precision>
+    <required>false</required>
+    <scale>1</scale>
+    <type>Number</type>
+    <unique>false</unique>
+</CustomField>

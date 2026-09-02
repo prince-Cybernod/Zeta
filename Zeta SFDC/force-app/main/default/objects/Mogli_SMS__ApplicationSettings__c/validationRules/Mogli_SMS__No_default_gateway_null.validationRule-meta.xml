@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Mogli_SMS__No_default_gateway_null</fullName>
+    <active>true</active>
+    <description>No default gateway null on default gateway mode</description>
+    <errorConditionFormula>ISPICKVAL( Mogli_SMS__DefaultGatewayMode__c , &apos;Default Gateway&apos;) &amp;&amp;  ISBLANK(Mogli_SMS__DefaultGateway__c)</errorConditionFormula>
+    <errorDisplayField>Mogli_SMS__DefaultGateway__c</errorDisplayField>
+    <errorMessage>You have to populate &quot;Default Gateway&quot; if &quot;Default Gateway&quot; mode is selected</errorMessage>
+</ValidationRule>

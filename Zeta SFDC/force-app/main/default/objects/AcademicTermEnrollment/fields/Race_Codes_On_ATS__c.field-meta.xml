@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Race_Codes_On_ATS__c</fullName>
+    <description>If ATS can return multiple codes later, this can be converted to Multi-Select Picklist without breaking history.</description>
+    <label>Race Codes on ATS</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <type>MultiselectPicklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>B</fullName>
+                <default>false</default>
+                <label>B</label>
+            </value>
+            <value>
+                <fullName>C</fullName>
+                <default>false</default>
+                <label>C</label>
+            </value>
+            <value>
+                <fullName>D</fullName>
+                <default>false</default>
+                <label>D</label>
+            </value>
+            <value>
+                <fullName>E</fullName>
+                <default>false</default>
+                <label>E</label>
+            </value>
+            <value>
+                <fullName>F</fullName>
+                <default>false</default>
+                <label>F</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+    <visibleLines>3</visibleLines>
+</CustomField>

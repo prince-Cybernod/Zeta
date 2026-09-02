@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Default_Gateway__c</fullName>
+    <deleteConstraint>SetNull</deleteConstraint>
+    <label>Default Gateway</label>
+    <referenceTo>Mogli_SMS__Gateway__c</referenceTo>
+    <relationshipLabel>Academic Term Enrollments</relationshipLabel>
+    <relationshipName>Academic_Term_Enrollments</relationshipName>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <type>Lookup</type>
+</CustomField>

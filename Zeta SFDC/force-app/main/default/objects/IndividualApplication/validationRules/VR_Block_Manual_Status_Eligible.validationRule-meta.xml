@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>VR_Block_Manual_Status_Eligible</fullName>
+    <active>true</active>
+    <errorConditionFormula>AND(
+/* Only enforce when Status is changed to Eligible */
+ISCHANGED(Status),
+ISPICKVAL(Status, &quot;Eligible&quot;),
+
+/* Block if ANY prerequisite is not met */
+OR(
+
+/* Priority Items still pending review */
+Priority_Items_Pending_Review__c &gt; 0,
+
+/* Student District must be populated */
+ISBLANK(Student_District_Id__c),
+
+/* Residency restriction not met */
+Residency_Restriction__c = TRUE,
+
+/* Age / Grade inconsistency not approved */
+AND(
+Age_Inconsistency_Flag_c__c = TRUE,
+NOT(
+ISPICKVAL(
+Age_Inconsistency_Review_Status__c,
+&quot;Exception Made&quot;
+)
+)
+)
+)
+)</errorConditionFormula>
+    <errorDisplayField>Status</errorDisplayField>
+    <errorMessage>Eligibility prerequisites are not complete. Use the “Review Eligibility” button to mark this application Eligible.</errorMessage>
+</ValidationRule>

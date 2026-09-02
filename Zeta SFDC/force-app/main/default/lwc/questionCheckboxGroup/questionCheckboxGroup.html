@@ -1,0 +1,10 @@
+<template>
+  <lightning-checkbox-group
+    label={question.label}
+    options={question.options}
+    value={selectedValues}
+    required={question.isRequired}
+    disabled={readOnly}
+    onchange={handleChange}
+  ></lightning-checkbox-group>
+</template>

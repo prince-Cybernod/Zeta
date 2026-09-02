@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <label><!-- Gen AI Provider --></label>
+    <name>Mogli_SMS__Gen_AI_Provider__c</name>
+    <picklistValues>
+        <masterLabel>Anthropic</masterLabel>
+        <translation><!-- Anthropic --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Google Gemini</masterLabel>
+        <translation><!-- Google Gemini --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>OpenAI</masterLabel>
+        <translation><!-- OpenAI --></translation>
+    </picklistValues>
+</CustomFieldTranslation>

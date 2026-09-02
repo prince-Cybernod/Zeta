@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>65.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <description>Updates the School Learning Program lookup on the School Application from the related Lottery Capacity record.
+Created by: Elevation Solutions</description>
+    <environments>Default</environments>
+    <interviewLabel>School Application (Before Save) Update School Lookup {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>School Application (Before Save) Update School Lookup</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordUpdates>
+        <name>Update_School_Lookup_to_Related_Learning_Program</name>
+        <label>Update School Lookup to Related Learning Program</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <inputAssignments>
+            <field>AccountId</field>
+            <value>
+                <elementReference>$Record.IndividualApplication.AccountId</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>LearningProgramId</field>
+            <value>
+                <elementReference>$Record.Lottery_Capacity__r.Program_Term_Application_Timeline__r.LearningProgram.Id</elementReference>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <start>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>Update_School_Lookup_to_Related_Learning_Program</targetReference>
+        </connector>
+        <filterFormula>OR (ISNEW(), 
+ISCHANGED({!$Record.Lottery_Capacity__c}), 
+ISBLANK({!$Record.LearningProgramId})
+)</filterFormula>
+        <object>AcademicInterest</object>
+        <recordTriggerType>CreateAndUpdate</recordTriggerType>
+        <triggerType>RecordAfterSave</triggerType>
+    </start>
+    <status>Active</status>
+</Flow>

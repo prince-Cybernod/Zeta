@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<RecordType xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Mogli_SMS__Twilio_Voice</fullName>
+    <active>true</active>
+    <label>Twilio Voice</label>
+    <picklistValues>
+        <picklist>Mogli_SMS__Language__c</picklist>
+        <values>
+            <fullName>de-DE</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>en-US</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>en-gb</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>es-US</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>fr-FR</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Mogli_SMS__Voice_Type__c</picklist>
+        <values>
+            <fullName>File to Voice</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Text to Voice</fullName>
+            <default>true</default>
+        </values>
+    </picklistValues>
+</RecordType>
