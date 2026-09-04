@@ -1,6 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ListView xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Outreach_and_Enrollment_Queue_Lead</fullName>
+    <columns>FULL_NAME</columns>
+    <columns>Next_Follow_Up_Due__c</columns>
+    <columns>Guardian_First_Name__c</columns>
+    <columns>Guardian_Last_Name__c</columns>
+    <columns>Multiple_Students_Interested__c</columns>
+    <columns>LEAD.EMAIL</columns>
+    <columns>LEAD.STATUS</columns>
+    <columns>LEAD.CREATED_DATE</columns>
+    <columns>LEAD.UNREAD</columns>
+    <columns>Outreach_1_Outcome__c</columns>
+    <columns>Outreach_2_Outcome__c</columns>
+    <columns>Outreach_3_Outcome__c</columns>
+    <columns>Outreach_Attempt_1__c</columns>
+    <columns>Outreach_Attempt_2__c</columns>
+    <columns>Outreach_Attempt_3__c</columns>
     <filterScope>Queue</filterScope>
     <label>Outreach and Enrollment Queue</label>
     <queue>Outreach_and_Enrollment_Queue</queue>

@@ -1,20 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ActivationPlatform xmlns="http://soap.sforce.com/2006/04/metadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-    <activationFlowType>SEGMENT</activationFlowType>
-    <activationPlatformAdditionalMetadata>{
-  &quot;hashMethod&quot; : null,
-  &quot;customerFileSources&quot; : [ ],
-  &quot;activationPlatformEventMetadata&quot; : {
-    &quot;supportedEventTypes&quot; : [ ],
-    &quot;showEventSourceAnnotations&quot; : false,
-    &quot;standardEventDetails&quot; : null,
-    &quot;customEventDetails&quot; : null
-  },
-  &quot;mappingSchemas&quot; : [ ],
-  &quot;customAttributePrefix&quot; : null,
-  &quot;partnerSupportedIds&quot; : [ ],
-  &quot;outputProperties&quot; : null
-}</activationPlatformAdditionalMetadata>
+    <activationPlatformAdditionalMetadata>{&quot;customerFileSources&quot;:[]}</activationPlatformAdditionalMetadata>
     <activationPlatformConnectorType>OAUTH</activationPlatformConnectorType>
     <dataConnector>cdpactvstrgptnr__AmazonPlatform1692661548313</dataConnector>
     <description>Activate audiences to Amazon Ads for use in Amazon DSP campaigns and Amazon Marketing Cloud reporting.</description>
@@ -24,7 +10,6 @@
     <outputFormat>JSON</outputFormat>
     <outputGrouping>PER_ACCOUNT</outputGrouping>
     <periodicRefreshFrequecy>REFRESH_30</periodicRefreshFrequecy>
-    <platformProcessingType>Batch</platformProcessingType>
     <platformType>Advertising</platformType>
     <refreshFrequency xsi:nil="true"/>
     <refreshMode>INCREMENTAL</refreshMode>

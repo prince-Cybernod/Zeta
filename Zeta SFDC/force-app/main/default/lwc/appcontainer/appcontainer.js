@@ -1,25 +1,25 @@
-import { LightningElement, track, wire } from 'lwc';
-import { NavigationMixin } from 'lightning/navigation';
-import { ShowToastEvent } from 'lightning/platformShowToastEvent';
-import getSectionsWithBlocksByType from '@salesforce/apex/SectionBlockController.getSectionsWithBlocksByType';
-import { getPageReferenceByDynamicType } from 'c/commonFunctions';
+import { LightningElement, track, wire } from "lwc";
+import { NavigationMixin } from "lightning/navigation";
+import getSectionsWithBlocksByType from "@salesforce/apex/SectionBlockController.getSectionsWithBlocksByType";
+import { getPageReferenceByDynamicType } from "c/commonFunctions";
+import { ShowToastEvent } from "lightning/platformShowToastEvent";
 
 export default class Appcontainer extends NavigationMixin(LightningElement) {
   @track sectionsWithBlocks = [];
   @track error;
 
-  sectionType = 'Left_Bottom';
-  pageType = 'Home';
+  sectionType = "Left_Bottom";
+  pageType = "Home";
 
   dynamicLinksMap = {};
 
   @wire(getSectionsWithBlocksByType, {
-    sectionType: '$sectionType',
-    pageType: '$pageType'
+    sectionType: "$sectionType",
+    pageType: "$pageType"
   })
   wiredSections({ error, data }) {
     if (data) {
-      console.log('Wired Data:', data);
+      console.log("Wired Data:", data);
       this.sectionsWithBlocks = JSON.parse(JSON.stringify(data)).map(
         (section) => {
           // Process SectionBlocks__r
@@ -50,7 +50,7 @@ export default class Appcontainer extends NavigationMixin(LightningElement) {
       this.createDynamicLinksMap(data);
     } else if (error) {
       this.error = error.body.message;
-      console.error('Error fetching section and blocks:', error);
+      console.error("Error fetching section and blocks:", error);
     }
   }
 
@@ -71,26 +71,26 @@ export default class Appcontainer extends NavigationMixin(LightningElement) {
     try {
       var appNameValue = event.target.dataset.id;
       if (!appNameValue) {
-        throw new Error('Action is undefined. Please update a action type');
+        throw new Error("Action is undefined. Please update a action type");
       }
       var appNameValue = event.target.dataset.id;
-      console.log('inside handle on btn click for app = ' + appNameValue);
+      console.log("inside handle on btn click for app = " + appNameValue);
       const dynamicLink = this.dynamicLinksMap[appNameValue];
-      console.log('dynamicLink  = ' + dynamicLink.Link__c);
+      console.log("dynamicLink  = " + dynamicLink.Link__c);
       const pageRef = await getPageReferenceByDynamicType(dynamicLink);
       try {
         let url = await this[NavigationMixin.GenerateUrl](pageRef);
-        if (dynamicLink.RecordType.DeveloperName == 'SetupPage') {
+        if (dynamicLink.RecordType.DeveloperName == "SetupPage") {
           url = pageRef.attributes.url;
         }
-        console.log('url: ' + url);
+        console.log("url: " + url);
         if (!url) {
-          throw new Error('Unable to generate URL. Possibly an invalid link');
+          throw new Error("Unable to generate URL. Possibly an invalid link");
         }
         if (
-          dynamicLink.RecordType.DeveloperName == 'InAppDetailsPage' ||
-          dynamicLink.RecordType.DeveloperName == 'WebPage' ||
-          dynamicLink.RecordType.DeveloperName == 'CommunityPage'
+          dynamicLink.RecordType.DeveloperName == "InAppDetailsPage" ||
+          dynamicLink.RecordType.DeveloperName == "WebPage" ||
+          dynamicLink.RecordType.DeveloperName == "CommunityPage"
         ) {
           this[NavigationMixin.Navigate](pageRef);
         } else {
@@ -99,7 +99,7 @@ export default class Appcontainer extends NavigationMixin(LightningElement) {
             .substring(2, 7);
           console.log(windowContextNameUniqueStr);
           const windowContextNameUUID = crypto.randomUUID();
-          window.open('', windowContextNameUUID);
+          window.open("", windowContextNameUUID);
           window.open(url, windowContextNameUUID);
         }
       } catch (error) {
@@ -112,16 +112,16 @@ export default class Appcontainer extends NavigationMixin(LightningElement) {
 
   showToast(error, errorMessage) {
     const toastEvent = new ShowToastEvent({
-      title: 'Error',
+      title: "Error",
       message: error.body ? error.body.message : errorMessage,
-      variant: 'error'
+      variant: "error"
     });
     this.dispatchEvent(toastEvent);
   }
 
   stripHtmlTags(htmlString) {
-    const tempDiv = document.createElement('div');
+    const tempDiv = document.createElement("div");
     tempDiv.innerHTML = htmlString;
-    return tempDiv.textContent || tempDiv.innerText || '';
+    return tempDiv.textContent || tempDiv.innerText || "";
   }
 }

@@ -53,7 +53,7 @@
             </value>
         </assignmentItems>
         <connector>
-            <targetReference>Assign_fx_ChangedOutcomeValue_to_var_txt_Outcome</targetReference>
+            <targetReference>Outcome_1_changed</targetReference>
         </connector>
     </assignments>
     <assignments>
@@ -87,6 +87,54 @@
         </assignmentItems>
         <connector>
             <targetReference>Potential_Age_Restriction</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <name>Assign_Outreach_Attempt_1_c_value</name>
+        <label>Assign Outreach_Attempt_1__c value</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <assignmentItems>
+            <assignToReference>var_rec_Lead.Outreach_Attempt_1__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>$Flow.CurrentDateTime</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Outcome_2_changed</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <name>Assign_Outreach_Attempt_2_c_value</name>
+        <label>Assign Outreach_Attempt_2__c value</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <assignmentItems>
+            <assignToReference>var_rec_Lead.Outreach_Attempt_2__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>$Flow.CurrentDateTime</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Outcome_3_changed</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <name>Assign_Outreach_Attempt_3_c_value</name>
+        <label>Assign Outreach_Attempt_3__c value</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <assignmentItems>
+            <assignToReference>var_rec_Lead.Outreach_Attempt_3__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>$Flow.CurrentDateTime</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Assign_fx_ChangedOutcomeValue_to_var_txt_Outcome</targetReference>
         </connector>
     </assignments>
     <assignments>
@@ -184,7 +232,7 @@
             <assignToReference>var_rec_Lead.Reason_Not_Converted__c</assignToReference>
             <operator>Assign</operator>
             <value>
-                <stringValue>Next Year</stringValue>
+                <stringValue>Too young for this year; Eligible for next year</stringValue>
             </value>
         </assignmentItems>
         <assignmentItems>
@@ -215,7 +263,7 @@
             <assignToReference>var_rec_Lead.Reason_Not_Converted__c</assignToReference>
             <operator>Assign</operator>
             <value>
-                <stringValue>Next Year</stringValue>
+                <stringValue>Not interested this year; Eligible for next year</stringValue>
             </value>
         </assignmentItems>
         <assignmentItems>
@@ -402,7 +450,7 @@
                 <leftValueReference>var_txt_Outcome</leftValueReference>
                 <operator>EqualTo</operator>
                 <rightValue>
-                    <stringValue>Unreachable – No answer (3+ attempts)</stringValue>
+                    <stringValue>Unreachable - no answer</stringValue>
                 </rightValue>
             </conditions>
             <connector>
@@ -588,6 +636,81 @@
                 <targetReference>Closed_Duplicate_Archived_Status</targetReference>
             </connector>
             <label>Duplicate</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>Outcome_1_changed</name>
+        <label>Outcome 1 changed?</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <defaultConnector>
+            <targetReference>Outcome_2_changed</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Yes0</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Outreach_1_Outcome__c</leftValueReference>
+                <operator>IsChanged</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Assign_Outreach_Attempt_1_c_value</targetReference>
+            </connector>
+            <label>Yes</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>Outcome_2_changed</name>
+        <label>Outcome 2 changed?</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <defaultConnector>
+            <targetReference>Outcome_3_changed</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Yes2</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Outreach_2_Outcome__c</leftValueReference>
+                <operator>IsChanged</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Assign_Outreach_Attempt_2_c_value</targetReference>
+            </connector>
+            <label>Yes</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>Outcome_3_changed</name>
+        <label>Outcome 3 changed?</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <defaultConnector>
+            <targetReference>Assign_fx_ChangedOutcomeValue_to_var_txt_Outcome</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Yes3</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Outreach_3_Outcome__c</leftValueReference>
+                <operator>IsChanged</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Assign_Outreach_Attempt_3_c_value</targetReference>
+            </connector>
+            <label>Yes</label>
         </rules>
     </decisions>
     <decisions>

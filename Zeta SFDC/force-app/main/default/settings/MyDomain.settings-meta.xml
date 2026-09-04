@@ -6,7 +6,7 @@
     <doesApiLoginRequireOrgDomain>false</doesApiLoginRequireOrgDomain>
     <doesWarnOnForceComRedirect>false</doesWarnOnForceComRedirect>
     <doesWarnOnRedirect>false</doesWarnOnRedirect>
-    <domainPartition>none</domainPartition>
+    <domainPartition>sandbox</domainPartition>
     <edgeRoutingMethod>global</edgeRoutingMethod>
     <enableCrossDomainPreviewCookies>true</enableCrossDomainPreviewCookies>
     <enableEdgeDuringRollout>true</enableEdgeDuringRollout>
@@ -18,7 +18,7 @@
     <enableShareBrowserSessionIOSForAuth>false</enableShareBrowserSessionIOSForAuth>
     <instancedUrlRedirectHandling>NoRedirect</instancedUrlRedirectHandling>
     <isFirstPartyCookieUseRequired>false</isFirstPartyCookieUseRequired>
-    <isIcorInstApiTrafficBlocked>false</isIcorInstApiTrafficBlocked>
+    <isIcorInstApiTrafficBlocked>true</isIcorInstApiTrafficBlocked>
     <isInstancedApiTrafficBlocked>false</isInstancedApiTrafficBlocked>
     <logRedirections>false</logRedirections>
     <myDomainName>zetacharterschools</myDomainName>

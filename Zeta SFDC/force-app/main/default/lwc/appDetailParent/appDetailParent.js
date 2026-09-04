@@ -1,5 +1,5 @@
-import { LightningElement, wire } from 'lwc';
-import { CurrentPageReference } from 'lightning/navigation';
+import { LightningElement, wire } from "lwc";
+import { CurrentPageReference } from "lightning/navigation";
 export default class AppDetailParent extends LightningElement {
   isHome = false;
   pageId;

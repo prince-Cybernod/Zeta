@@ -3,16 +3,6 @@
     <description>Provides read access to lottery run log, lottery capacity, lottery run result, waitlist movement history, priority item.</description>
     <fieldPermissions>
         <editable>false</editable>
-        <field>AcademicInterest.Primary_Guardian_Contact_Id__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>false</editable>
-        <field>AcademicInterest.fx_Charter_Name__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>false</editable>
         <field>IndividualApplication.CBO_Account__c</field>
         <readable>true</readable>
     </fieldPermissions>
@@ -185,7 +175,7 @@
         <allowRead>true</allowRead>
         <modifyAllRecords>false</modifyAllRecords>
         <object>Lottery_Run_Result__c</object>
-        <viewAllFields>false</viewAllFields>
+        <viewAllFields>true</viewAllFields>
         <viewAllRecords>false</viewAllRecords>
     </objectPermissions>
     <objectPermissions>
@@ -205,7 +195,7 @@
         <allowRead>true</allowRead>
         <modifyAllRecords>false</modifyAllRecords>
         <object>Waitlist_Movement_History__c</object>
-        <viewAllFields>false</viewAllFields>
+        <viewAllFields>true</viewAllFields>
         <viewAllRecords>false</viewAllRecords>
     </objectPermissions>
     <tabSettings>

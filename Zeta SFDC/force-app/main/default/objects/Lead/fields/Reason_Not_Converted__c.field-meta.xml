@@ -4,6 +4,7 @@
     <label>Reason Not Converted</label>
     <required>false</required>
     <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
     <type>Picklist</type>
     <valueSet>
         <controllingField>Status</controllingField>
@@ -125,6 +126,16 @@
                 <default>false</default>
                 <label>Duplicate – Active duplicate lead</label>
             </value>
+            <value>
+                <fullName>Too young for this year; Eligible for next year</fullName>
+                <default>false</default>
+                <label>Too young for this year; Eligible for next year</label>
+            </value>
+            <value>
+                <fullName>Not interested this year; Eligible for next year</fullName>
+                <default>false</default>
+                <label>Not interested this year; Eligible for next year</label>
+            </value>
         </valueSetDefinition>
         <valueSettings>
             <controllingFieldValue>Closed – Not Converted, Archived</controllingFieldValue>
@@ -219,6 +230,14 @@
         <valueSettings>
             <controllingFieldValue>Closed – Not Converted, Next Year</controllingFieldValue>
             <valueName>Next Year</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Closed – Not Converted, Next Year</controllingFieldValue>
+            <valueName>Too young for this year; Eligible for next year</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Closed – Not Converted, Next Year</controllingFieldValue>
+            <valueName>Not interested this year; Eligible for next year</valueName>
         </valueSettings>
     </valueSet>
 </CustomField>

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Form_Link_to_Form__c</fullName>
+    <externalId>false</externalId>
+    <formula>IF(
+    Campaign_Record_Type_Name__c = &quot;Event&quot;,
+    $CustomMetadata.Form_Assembly_Forms__mdt.Event_Registration_Form.Form_URL__c &amp;
+    CASESAFEID(Id),
+    &quot;&quot;
+)</formula>
+    <label>Form: Link to Form</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

@@ -2,18 +2,8 @@
 <MatchingRules xmlns="http://soap.sforce.com/2006/04/metadata">
     <matchingRules>
         <fullName>Guardian_Leads</fullName>
-        <booleanFilter>(1 AND 2) AND (3 OR 4)</booleanFilter>
+        <booleanFilter>1 OR 2</booleanFilter>
         <label>Guardian Leads</label>
-        <matchingRuleItems>
-            <blankValueBehavior>NullNotAllowed</blankValueBehavior>
-            <fieldName>Guardian_First_Name__c</fieldName>
-            <matchingMethod>FirstName</matchingMethod>
-        </matchingRuleItems>
-        <matchingRuleItems>
-            <blankValueBehavior>NullNotAllowed</blankValueBehavior>
-            <fieldName>Guardian_Last_Name__c</fieldName>
-            <matchingMethod>Exact</matchingMethod>
-        </matchingRuleItems>
         <matchingRuleItems>
             <blankValueBehavior>NullNotAllowed</blankValueBehavior>
             <fieldName>Phone</fieldName>

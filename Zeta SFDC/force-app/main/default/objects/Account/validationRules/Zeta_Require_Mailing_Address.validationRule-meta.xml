@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Zeta_Require_Mailing_Address</fullName>
+    <active>false</active>
+    <description>Requires a mailing address for person accounts.</description>
+    <errorConditionFormula>AND(
+  OR(
+    RecordType.DeveloperName = &quot;Guardian&quot;,
+    RecordType.DeveloperName = &quot;Student&quot;
+  ),
+
+  /* Only enforce when NOT coming from SchoolMint (type-specific) */
+  OR(
+    AND(
+      RecordType.DeveloperName = &quot;Guardian&quot;,
+      ISBLANK(SchoolMint_Guardian_Id__pc)
+    ),
+    AND(
+      RecordType.DeveloperName = &quot;Student&quot;,
+      ISBLANK(SchoolMint_Student_Id__pc)
+    )
+  ),
+
+  OR(
+    ISBLANK(PersonMailingStreet),
+    ISBLANK(PersonMailingCity),
+    ISBLANK(PersonMailingState),
+    ISBLANK(PersonMailingPostalCode),
+    ISBLANK(PersonMailingCountry)
+  )
+)</errorConditionFormula>
+    <errorDisplayField>PersonMailingStreet</errorDisplayField>
+    <errorMessage>The full mailing address, including Street, City, State/Province, Zip/Postal Code, and Country, is required for all Guardian and Student records.</errorMessage>
+</ValidationRule>

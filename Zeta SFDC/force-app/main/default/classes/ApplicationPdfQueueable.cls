@@ -12,6 +12,14 @@ public without sharing class ApplicationPdfQueueable implements Queueable, Datab
     this.databaseRepo = databaseRepo;
   }
 
+  /**
+   * Single, reusable seam for regenerating an application's PDF after a
+   * post-submit edit. Appends a new version to the existing document.
+   */
+  public static void enqueueRegeneration(Id applicationId) {
+    System.enqueueJob(new ApplicationPdfQueueable(applicationId));
+  }
+
   public void execute(QueueableContext context) {
     try {
       PageReference pdfPage = buildPdfPageReference();

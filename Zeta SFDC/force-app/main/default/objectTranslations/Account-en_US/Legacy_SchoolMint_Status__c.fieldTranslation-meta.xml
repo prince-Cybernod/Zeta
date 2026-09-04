@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <help><!-- Legacy status value imported from SchoolMint for historical reference and reporting (e.g., RP, RC, RV). --></help>
+    <label><!-- Legacy SchoolMint Status --></label>
+    <name>Legacy_SchoolMint_Status__c</name>
+    <picklistValues>
+        <masterLabel>RC</masterLabel>
+        <translation><!-- RC --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>RP</masterLabel>
+        <translation><!-- RP --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>RV</masterLabel>
+        <translation><!-- RV --></translation>
+    </picklistValues>
+</CustomFieldTranslation>

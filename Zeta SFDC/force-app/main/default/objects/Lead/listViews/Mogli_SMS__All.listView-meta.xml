@@ -2,12 +2,15 @@
 <ListView xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Mogli_SMS__All</fullName>
     <columns>FULL_NAME</columns>
+    <columns>Guardian_First_Name__c</columns>
+    <columns>Guardian_Last_Name__c</columns>
     <columns>LEAD.EMAIL</columns>
-    <columns>LEAD.COMPANY</columns>
     <columns>LEAD.STATUS</columns>
+    <columns>Next_Follow_Up_Due__c</columns>
+    <columns>SLA_Flag__c</columns>
     <columns>LEAD.UNREAD</columns>
     <columns>LEAD.CREATED_DATE</columns>
     <columns>CORE.USERS.ALIAS</columns>
-    <filterScope>Mine</filterScope>
+    <filterScope>Everything</filterScope>
     <label>All</label>
 </ListView>

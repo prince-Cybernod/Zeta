@@ -138,8 +138,8 @@
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>false</editable>
-        <field>AcademicTermEnrollment.Charter_Name__c</field>
+        <editable>true</editable>
+        <field>AcademicTermEnrollment.Default_Gateway__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -158,11 +158,6 @@
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>false</editable>
-        <field>AcademicTermEnrollment.Enrollment_Date_Formula__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
         <editable>true</editable>
         <field>AcademicTermEnrollment.ExitDate</field>
         <readable>true</readable>
@@ -170,6 +165,11 @@
     <fieldPermissions>
         <editable>true</editable>
         <field>AcademicTermEnrollment.ExitReason</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>AcademicTermEnrollment.GenAI_Summary_Rich_Text__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -184,12 +184,12 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
-        <field>AcademicTermEnrollment.Primary_Guardian_Contact_Id__c</field>
+        <field>AcademicTermEnrollment.Mogli_Number_from_Person_Acccount__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>false</editable>
-        <field>AcademicTermEnrollment.School_Name__c</field>
+        <editable>true</editable>
+        <field>AcademicTermEnrollment.Mogli_Opt_Out__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -230,6 +230,16 @@
     <fieldPermissions>
         <editable>false</editable>
         <field>Account.Primary_Guardian_Contact_Id__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>Account.Zoho_Guardian_Id__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>Account.Zoho_Student_Id__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -389,6 +399,11 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
+        <field>ApplicationTimeline.Academic_Term__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
         <field>ApplicationTimeline.ApplicationCategory</field>
         <readable>true</readable>
     </fieldPermissions>
@@ -508,6 +523,11 @@
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
+        <editable>true</editable>
+        <field>Case.School_Inquiry__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
         <editable>false</editable>
         <field>Case.Subject</field>
         <readable>true</readable>
@@ -585,6 +605,11 @@
     <fieldPermissions>
         <editable>true</editable>
         <field>Contact.Pronouns</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>Contact.Zoho_Guardian_Id__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -864,6 +889,11 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
+        <field>DocumentChecklistItem.Document_Type_Name__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
         <field>DocumentChecklistItem.Instruction</field>
         <readable>true</readable>
     </fieldPermissions>
@@ -885,6 +915,11 @@
     <fieldPermissions>
         <editable>false</editable>
         <field>DocumentChecklistItem.UploadedById</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>DocumentChecklistItem.fxStatus_Sort_Order__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -940,6 +975,16 @@
     <fieldPermissions>
         <editable>true</editable>
         <field>IndividualApplication.DueDate</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>IndividualApplication.Grade_Applying_To__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>IndividualApplication.Grade_Inconsistency_Approved_Reason__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -1015,11 +1060,6 @@
     <fieldPermissions>
         <editable>false</editable>
         <field>Lead.Interested_Grade_s__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>false</editable>
-        <field>Lead.Interested_School_s__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>

@@ -1,2 +1,2 @@
 // dynamicLink Utils
-export * from './dynamicLinkFunctions';
+export * from "./dynamicLinkFunctions";

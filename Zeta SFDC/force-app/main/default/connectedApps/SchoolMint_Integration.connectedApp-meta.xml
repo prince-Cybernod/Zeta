@@ -4,20 +4,25 @@
     <label>SchoolMint Integration</label>
     <oauthConfig>
         <callbackUrl>https://elevation.solutions</callbackUrl>
-        <consumerKey>3MVG9Gm6vbdjgMWRQ8_us_jw8pUULXnFpuO2Z7k3hLXlz1XRy4GgSIWb4ccB8aa2c4kowGGEwh5K_DKXX811j</consumerKey>
+        <consumerKey>3MVG9dG9pUXcsrJAC6_4ZLiEEy7qQH9soVfkd1STmZ7Ynzq6ibH7K91JFGGu5KBOgHpQA7f48dnJTuG1HWhJX</consumerKey>
         <isAdminApproved>false</isAdminApproved>
         <isClientCredentialEnabled>true</isClientCredentialEnabled>
         <isCodeCredentialEnabled>false</isCodeCredentialEnabled>
         <isCodeCredentialPostOnly>false</isCodeCredentialPostOnly>
         <isConsumerSecretOptional>false</isConsumerSecretOptional>
+        <isDPopEnabled>false</isDPopEnabled>
+        <isDeviceFlowEnabled>false</isDeviceFlowEnabled>
+        <isEnforceRefreshTokenTTL>false</isEnforceRefreshTokenTTL>
         <isIntrospectAllTokens>false</isIntrospectAllTokens>
+        <isIpBindingEnabled>false</isIpBindingEnabled>
         <isNamedUserJwtEnabled>false</isNamedUserJwtEnabled>
+        <isPKImTLSEnabled>false</isPKImTLSEnabled>
         <isPkceRequired>true</isPkceRequired>
         <isRefreshTokenRotationEnabled>false</isRefreshTokenRotationEnabled>
         <isSecretRequiredForRefreshToken>true</isSecretRequiredForRefreshToken>
         <isSecretRequiredForTokenExchange>false</isSecretRequiredForTokenExchange>
         <isTokenExchangeEnabled>false</isTokenExchangeEnabled>
-        <oauthClientCredentialUser>schoolmint@zetaschools.org</oauthClientCredentialUser>
+        <oauthClientCredentialUser>schoolmint@zetaschools.org.full</oauthClientCredentialUser>
         <scopes>Api</scopes>
         <scopes>RefreshToken</scopes>
     </oauthConfig>

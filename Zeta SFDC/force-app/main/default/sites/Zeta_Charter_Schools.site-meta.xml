@@ -14,22 +14,17 @@
     <cachePublicVisualforcePagesInProxyServers>true</cachePublicVisualforcePagesInProxyServers>
     <clickjackProtectionLevel>SameOriginOnly</clickjackProtectionLevel>
     <contentSniffingProtection>true</contentSniffingProtection>
-    <customWebAddresses>
-        <certificate>myportal_zetaschools_org</certificate>
-        <domainName>myportal.zetaschools.org</domainName>
-        <primary>false</primary>
-    </customWebAddresses>
     <enableAuraRequests>true</enableAuraRequests>
     <fileNotFoundPage>FileNotFound</fileNotFoundPage>
     <genericErrorPage>Exception</genericErrorPage>
     <inMaintenancePage>InMaintenance</inMaintenancePage>
     <indexPage>CommunitiesLanding</indexPage>
     <masterLabel>Zeta Charter Schools</masterLabel>
-    <redirectToCustomDomain>true</redirectToCustomDomain>
+    <redirectToCustomDomain>false</redirectToCustomDomain>
     <referrerPolicyOriginWhenCrossOrigin>true</referrerPolicyOriginWhenCrossOrigin>
     <selfRegPage>CommunitiesSelfReg</selfRegPage>
     <siteAdmin>elevation@zetaschools.org</siteAdmin>
-    <siteGuestRecordDefaultOwner>unicorn+zetacharterschools@elevation.solutions.prod</siteGuestRecordDefaultOwner>
+    <siteGuestRecordDefaultOwner>elevation@zetaschools.org</siteGuestRecordDefaultOwner>
     <siteType>ChatterNetwork</siteType>
     <urlPathPrefix>parents</urlPathPrefix>
 </CustomSite>

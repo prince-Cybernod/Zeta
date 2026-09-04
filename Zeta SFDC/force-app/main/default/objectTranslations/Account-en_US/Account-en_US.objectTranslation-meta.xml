@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <layouts>
+        <layout>CBO Layout</layout>
+        <sections>
+            <label><!-- Partnership --></label>
+            <section>Partnership</section>
+        </sections>
+        <sections>
+            <label><!-- System Information --></label>
+            <section>System Information</section>
+        </sections>
+    </layouts>
+    <quickActions>
+        <label><!-- New Relationship --></label>
+        <name>New_Relationship</name>
+    </quickActions>
+    <recordTypes>
+        <label><!-- Business Account --></label>
+        <name>Business_Account</name>
+    </recordTypes>
+    <recordTypes>
+        <description><!-- For Accounts engaged in CBO Partnerships --></description>
+        <label><!-- CBO --></label>
+        <name>CBO</name>
+    </recordTypes>
+    <recordTypes>
+        <label><!-- Charter --></label>
+        <name>Charter</name>
+    </recordTypes>
+    <recordTypes>
+        <label><!-- College --></label>
+        <name>College</name>
+    </recordTypes>
+    <recordTypes>
+        <label><!-- Household --></label>
+        <name>Household</name>
+    </recordTypes>
+    <recordTypes>
+        <description><!-- Record type for a School Account --></description>
+        <label><!-- School --></label>
+        <name>School</name>
+    </recordTypes>
+    <recordTypes>
+        <label><!-- Secondary School --></label>
+        <name>Secondary_School</name>
+    </recordTypes>
+    <validationRules>
+        <errorMessage><!-- Guardians must have both Email and Phone populated if they don&apos;t have a Schoolmint Id. --></errorMessage>
+        <name>Guardian_Email_and_Phone_Required</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Birthdate is required in order to save the record. --></errorMessage>
+        <name>Zeta_Require_Birthdate_for_Students</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Please provide an address. --></errorMessage>
+        <name>Zeta_Require_CBO_Address</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- &quot;First Name&quot; is a required field. --></errorMessage>
+        <name>Zeta_Require_First_Name</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- The full mailing address, including Street, City, State/Province, Zip/Postal Code, and Country, is required for all Guardian and Student records. --></errorMessage>
+        <name>Zeta_Require_Mailing_Address</name>
+    </validationRules>
+    <webLinks>
+        <label><!-- AltavistaNews --></label>
+        <name>AltavistaNews</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- Create_Action_Plan --></label>
+        <name>Create_Action_Plan</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- Create_Action_Plans --></label>
+        <name>Create_Action_Plans</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- GoogleMaps --></label>
+        <name>GoogleMaps</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- GoogleNews --></label>
+        <name>GoogleNews</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- GoogleSearch --></label>
+        <name>GoogleSearch</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- HooversProfile --></label>
+        <name>HooversProfile</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- Send_SMS --></label>
+        <name>Mogli_SMS__Send_SMS</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- Send_Person_Account_SMS --></label>
+        <name>Send_Person_Account_SMS</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- YahooMaps --></label>
+        <name>YahooMaps</name>
+    </webLinks>
+</CustomObjectTranslation>

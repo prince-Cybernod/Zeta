@@ -9,12 +9,4 @@
         <value>Application Settings</value>
     </caseValues>
     <startsWith>Consonant</startsWith>
-    <validationRules>
-        <errorMessage><!-- Cannot deactivate: An active Global Default Gateway is required. Please set a new default first. --></errorMessage>
-        <name>Mogli_SMS__Cannot_Set_Inactive_Gateway_As_Global</name>
-    </validationRules>
-    <validationRules>
-        <errorMessage><!-- You have to populate &quot;Default Gateway&quot; if &quot;Default Gateway&quot; mode is selected --></errorMessage>
-        <name>Mogli_SMS__No_default_gateway_null</name>
-    </validationRules>
 </CustomObjectTranslation>

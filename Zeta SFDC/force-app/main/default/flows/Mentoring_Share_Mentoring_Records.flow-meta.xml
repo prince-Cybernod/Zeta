@@ -415,7 +415,7 @@ The Opportunity Access field of CurrentAccountShare is set to None.</description
         <recordTriggerType>CreateAndUpdate</recordTriggerType>
         <triggerType>RecordAfterSave</triggerType>
     </start>
-    <status>Obsolete</status>
+    <status>Active</status>
     <variables>
         <description>Stores a collection of the account share records to add to the list to insert.</description>
         <name>AccountSharesToInsert</name>

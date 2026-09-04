@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Status_Progression_Lottery_Validation</fullName>
+    <active>false</active>
+    <description>Enforces allowed status transitions on School Applications, including all pre-lottery and post-lottery rules using Has_Lottery_Run__c.</description>
+    <errorConditionFormula>AND(
+    ISCHANGED(Status),
+    NOT(OR(
+
+        /* PRE-LOTTERY: → Eligible */
+        AND(NOT(Has_Lottery_Run__c),
+            OR(TEXT(PRIORVALUE(Status)) = &quot;Submitted&quot;,
+               TEXT(PRIORVALUE(Status)) = &quot;Withdrawn/Declined&quot;,
+               TEXT(PRIORVALUE(Status)) = &quot;Rescinded&quot;),
+            TEXT(Status) = &quot;Eligible&quot;),
+
+        /* PRE-LOTTERY: Submitted → Withdrawn/Declined */
+        AND(NOT(Has_Lottery_Run__c),
+            TEXT(PRIORVALUE(Status)) = &quot;Submitted&quot;,
+            TEXT(Status) = &quot;Withdrawn/Declined&quot;),
+
+        /* POST-LOTTERY: → Waitlisted */
+        AND(Has_Lottery_Run__c,
+            OR(TEXT(PRIORVALUE(Status)) = &quot;Submitted&quot;,
+               TEXT(PRIORVALUE(Status)) = &quot;Withdrawn/Declined&quot;,
+               TEXT(PRIORVALUE(Status)) = &quot;Rescinded&quot;,
+               TEXT(PRIORVALUE(Status)) = &quot;Pre-Offer&quot;),
+            TEXT(Status) = &quot;Waitlisted&quot;),
+
+        /* POST-LOTTERY: Waitlisted → Pre-Offer */
+        AND(Has_Lottery_Run__c,
+            TEXT(PRIORVALUE(Status)) = &quot;Waitlisted&quot;,
+            TEXT(Status) = &quot;Pre-Offer&quot;),
+
+        /* POST-LOTTERY: Eligible &amp;rarr; Pre-Offer */
+        AND(Has_Lottery_Run__c,
+            TEXT(PRIORVALUE(Status)) = &quot;Eligible&quot;,
+            TEXT(Status) = &quot;Pre-Offer&quot;),
+
+        /* POST-LOTTERY: Pre-Offer → Seat Offered */
+        AND(Has_Lottery_Run__c,
+            TEXT(PRIORVALUE(Status)) = &quot;Pre-Offer&quot;,
+            TEXT(Status) = &quot;Seat Offered&quot;),
+
+        /* POST-LOTTERY: Pre-Offer → Offer Rescinded due to Seat Optimization */
+        AND(Has_Lottery_Run__c,
+            TEXT(PRIORVALUE(Status)) = &quot;Pre-Offer&quot;,
+            TEXT(Status) = &quot;Offer Rescinded due to Seat Optimization&quot;),
+
+        /* POST-LOTTERY: Seat Offered &amp;rarr; Offer Rescinded due to Seat Optimization */
+        AND(Has_Lottery_Run__c,
+            TEXT(PRIORVALUE(Status)) = &quot;Seat Offered&quot;,
+            TEXT(Status) = &quot;Offer Rescinded due to Seat Optimization&quot;),
+
+        /* POST-LOTTERY: Seat Offered → Accepted */
+        AND(Has_Lottery_Run__c,
+            TEXT(PRIORVALUE(Status)) = &quot;Seat Offered&quot;,
+            TEXT(Status) = &quot;Accepted&quot;),
+
+        /* POST-LOTTERY: → Withdrawn/Declined */
+        AND(Has_Lottery_Run__c,
+            OR(TEXT(PRIORVALUE(Status)) = &quot;Eligible&quot;,
+               TEXT(PRIORVALUE(Status)) = &quot;Waitlisted&quot;,
+               TEXT(PRIORVALUE(Status)) = &quot;Seat Offered&quot;,
+               TEXT(PRIORVALUE(Status)) = &quot;Seat Accepted&quot;),
+            TEXT(Status) = &quot;Withdrawn/Declined&quot;)
+    ))
+)</errorConditionFormula>
+    <errorDisplayField>Status</errorDisplayField>
+    <errorMessage>This status transition is not allowed based on lottery rules.</errorMessage>
+</ValidationRule>

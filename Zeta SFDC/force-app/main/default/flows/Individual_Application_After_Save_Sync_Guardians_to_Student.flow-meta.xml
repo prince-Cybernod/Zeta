@@ -66,16 +66,12 @@ Flow Designer: Elevation Solutions</description>
             <targetReference>Update_Student_Account_with_Guardians</targetReference>
         </connector>
         <filterFormula>AND(
-    NOT(ISBLANK({!$Record.AccountId})),
-    OR(
-        NOT(ISBLANK({!$Record.Primary_Guardian__c})),
-        NOT(ISBLANK({!$Record.Secondary_Guardian__c}))
-    ),
-    OR(
-        ISNEW(),
-        ISCHANGED({!$Record.Primary_Guardian__c}),
-        ISCHANGED({!$Record.Secondary_Guardian__c})
-    )
+  NOT(ISBLANK({!$Record.AccountId})),
+  OR(
+    ISNEW(),
+    ISCHANGED({!$Record.Primary_Guardian__c}),
+    ISCHANGED({!$Record.Secondary_Guardian__c})
+  )
 )</filterFormula>
         <object>IndividualApplication</object>
         <recordTriggerType>CreateAndUpdate</recordTriggerType>

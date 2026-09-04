@@ -1246,4 +1246,28 @@ private class AcademicInterestTriggerHandlerTest {
       'Event should contain capacity ID'
     );
   }
+
+  @IsTest
+  private static void onAfterInsert_appliedStatus_callsServiceWithCapacityId() {
+    ROLLUP_SERVICE_MOCK.when(ROLLUP_SERVICE_MOCK.method.recalculate()).thenReturnVoid();
+    RANK_VALIDATION_SERVICE_MOCK.when(RANK_VALIDATION_SERVICE_MOCK.method.validateUniqueRanks())
+      .thenReturnVoid();
+    Id capacityId = SObjectIds.generateFakeId(Schema.Lottery_Capacity__c.SObjectType);
+    List<SObject> records = new List<SObject>{
+      new AcademicInterest(
+        Id = SObjectIds.generateFakeId(Schema.AcademicInterest.SObjectType),
+        Lottery_Capacity__c = capacityId,
+        Status = 'Applied'
+      )
+    };
+
+    HANDLER.onAfterInsert(records);
+
+    ROLLUP_SERVICE_MOCK.verify(ROLLUP_SERVICE_MOCK.method.recalculate(), 1);
+    List<Map<String, Object>> calls = ROLLUP_SERVICE_MOCK.getCalls(
+      ROLLUP_SERVICE_MOCK.method.recalculate()
+    );
+    Set<Id> capturedIds = (Set<Id>) calls[0].get('lotteryCapacityIds');
+    Assert.isTrue(capturedIds.contains(capacityId), 'Should include the capacity ID');
+  }
 }

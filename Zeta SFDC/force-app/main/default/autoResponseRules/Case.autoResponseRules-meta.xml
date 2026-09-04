@@ -1,3 +1,40 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<AutoResponseRules xmlns="http://soap.sforce.com/2006/04/metadata"/>
-
+<AutoResponseRules xmlns="http://soap.sforce.com/2006/04/metadata">
+    <autoResponseRule>
+        <fullName>Zeta Parent Inquiry</fullName>
+        <active>false</active>
+        <ruleEntry>
+            <criteriaItems>
+                <field>Case.RecordTypeId</field>
+                <operation>equals</operation>
+                <value>Parent Inquiry</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Case.Status</field>
+                <operation>equals</operation>
+                <value>New</value>
+            </criteriaItems>
+            <notifyCcRecipients>false</notifyCcRecipients>
+            <replyToEmail>enroll@zetaschools.org</replyToEmail>
+            <senderEmail>unicorn+zetacharterschools@elevation.solutions</senderEmail>
+            <senderName>Zeta Schools</senderName>
+            <template>unfiled$public/Zeta_Parent_Inquiry_Confirmation</template>
+        </ruleEntry>
+        <ruleEntry>
+            <criteriaItems>
+                <field>Case.Status</field>
+                <operation>equals</operation>
+                <value>Closed</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Account.PersonHasOptedOutOfEmail</field>
+                <operation>notEqual</operation>
+                <value>True</value>
+            </criteriaItems>
+            <notifyCcRecipients>false</notifyCcRecipients>
+            <senderEmail>unicorn+zetacharterschools@elevation.solutions</senderEmail>
+            <senderName>Zeta Enrollment</senderName>
+            <template>unfiled$public/Zeta_Parent_Inquiry_Closed</template>
+        </ruleEntry>
+    </autoResponseRule>
+</AutoResponseRules>

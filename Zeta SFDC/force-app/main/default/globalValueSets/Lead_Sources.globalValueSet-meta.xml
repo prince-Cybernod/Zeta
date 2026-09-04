@@ -1,34 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <GlobalValueSet xmlns="http://soap.sforce.com/2006/04/metadata">
     <customValue>
-        <fullName>Meta – Facebook Form</fullName>
+        <fullName>Account Created – No Application</fullName>
         <default>false</default>
-        <label>Meta – Facebook Form</label>
+        <label>Account Created – No Application</label>
     </customValue>
     <customValue>
-        <fullName>Meta – Instagram Form</fullName>
+        <fullName>Account w/o App</fullName>
         <default>false</default>
-        <label>Meta – Instagram Form</label>
+        <label>Account w/o App</label>
     </customValue>
     <customValue>
-        <fullName>Meta – DM</fullName>
+        <fullName>All Hands</fullName>
         <default>false</default>
-        <label>Meta – DM</label>
+        <label>All Hands</label>
     </customValue>
     <customValue>
-        <fullName>TikTok Form</fullName>
+        <fullName>CBO Tabling</fullName>
         <default>false</default>
-        <label>TikTok Form</label>
-    </customValue>
-    <customValue>
-        <fullName>Text</fullName>
-        <default>false</default>
-        <label>Text</label>
-    </customValue>
-    <customValue>
-        <fullName>Google Voice – Phone Call</fullName>
-        <default>false</default>
-        <label>Google Voice – Phone Call</label>
+        <label>CBO Tabling</label>
     </customValue>
     <customValue>
         <fullName>Email – Contact Us Form</fullName>
@@ -41,19 +31,9 @@
         <label>Email – Direct</label>
     </customValue>
     <customValue>
-        <fullName>Website – Pop-Up Form</fullName>
+        <fullName>Event / Tour RSVP</fullName>
         <default>false</default>
-        <label>Website – Pop-Up Form</label>
-    </customValue>
-    <customValue>
-        <fullName>Website – Flushing Google Form</fullName>
-        <default>false</default>
-        <label>Website – Flushing Google Form</label>
-    </customValue>
-    <customValue>
-        <fullName>FO&amp;E Team – Outreach Collection</fullName>
-        <default>false</default>
-        <label>FO&amp;E Team – Outreach Collection</label>
+        <label>Event / Tour RSVP</label>
     </customValue>
     <customValue>
         <fullName>External Vendor Lead</fullName>
@@ -61,19 +41,9 @@
         <label>External Vendor Lead</label>
     </customValue>
     <customValue>
-        <fullName>Event / Tour RSVP</fullName>
+        <fullName>Family came to school site</fullName>
         <default>false</default>
-        <label>Event / Tour RSVP</label>
-    </customValue>
-    <customValue>
-        <fullName>Zoom Event Attendance</fullName>
-        <default>false</default>
-        <label>Zoom Event Attendance</label>
-    </customValue>
-    <customValue>
-        <fullName>Account Created – No Application</fullName>
-        <default>false</default>
-        <label>Account Created – No Application</label>
+        <label>Family came to school site</label>
     </customValue>
     <customValue>
         <fullName>Family Referral [Potential]</fullName>
@@ -81,9 +51,91 @@
         <label>Family Referral [Potential]</label>
     </customValue>
     <customValue>
+        <fullName>FO&amp;E Team – Outreach Collection</fullName>
+        <default>false</default>
+        <label>FO&amp;E Team – Outreach Collection</label>
+    </customValue>
+    <customValue>
+        <fullName>Google Voice – Phone Call</fullName>
+        <default>false</default>
+        <label>Google Voice – Phone Call</label>
+    </customValue>
+    <customValue>
+        <fullName>Hotspotting</fullName>
+        <default>false</default>
+        <label>Hotspotting</label>
+    </customValue>
+    <customValue>
+        <fullName>Meta – DM</fullName>
+        <default>false</default>
+        <label>Meta – DM</label>
+    </customValue>
+    <customValue>
+        <fullName>Meta – Facebook Form</fullName>
+        <default>false</default>
+        <label>Meta – Facebook Form</label>
+    </customValue>
+    <customValue>
+        <fullName>Meta – Instagram Form</fullName>
+        <default>false</default>
+        <label>Meta – Instagram Form</label>
+    </customValue>
+    <customValue>
+        <fullName>Text</fullName>
+        <default>false</default>
+        <label>Text</label>
+    </customValue>
+    <customValue>
+        <fullName>Text or Email Lead</fullName>
+        <default>false</default>
+        <label>Text or Email Lead</label>
+    </customValue>
+    <customValue>
+        <fullName>TikTok Form</fullName>
+        <default>false</default>
+        <label>TikTok Form</label>
+    </customValue>
+    <customValue>
+        <fullName>Website – Flushing Google Form</fullName>
+        <default>false</default>
+        <label>Website – Flushing Google Form</label>
+    </customValue>
+    <customValue>
+        <fullName>Website – Pop-Up Form</fullName>
+        <default>false</default>
+        <label>Website – Pop-Up Form</label>
+    </customValue>
+    <customValue>
+        <fullName>Zeta Drive/Pizza Party</fullName>
+        <default>false</default>
+        <label>Zeta Drive/Pizza Party</label>
+    </customValue>
+    <customValue>
+        <fullName>Zeta Postcard</fullName>
+        <default>false</default>
+        <label>Zeta Postcard</label>
+    </customValue>
+    <customValue>
         <fullName>Other</fullName>
         <default>false</default>
         <label>Other</label>
+    </customValue>
+    <customValue>
+        <fullName>Attended or RSVPd to event</fullName>
+        <default>false</default>
+        <label>Attended or RSVPd to event</label>
+    </customValue>
+    <customValue>
+        <fullName>Zoom Event Registration</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>Zoom Event Registration</label>
+    </customValue>
+    <customValue>
+        <fullName>Zoom Event Attendance</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>Zoom Event Attendance</label>
     </customValue>
     <masterLabel>Lead Sources</masterLabel>
     <sorted>false</sorted>

@@ -61,7 +61,7 @@ private class LotteryCapacityRollupServiceImplTest {
     Assert.areEqual(
       0,
       updated.Total_Applied_Applications__c,
-      'Total_Applied_Applications__c should be 0 (no Submitted/Eligible/Waitlisted)'
+      'Total_Applied_Applications__c should be 0 (no Submitted/Eligible/Waitlisted/Applied)'
     );
   }
 
@@ -348,6 +348,7 @@ private class LotteryCapacityRollupServiceImplTest {
       new LotteryCapacityAggregateResult(capacityId, 'Submitted', 4),
       new LotteryCapacityAggregateResult(capacityId, 'Eligible', 3),
       new LotteryCapacityAggregateResult(capacityId, 'Waitlisted', 2),
+      new LotteryCapacityAggregateResult(capacityId, 'Applied', 6),
       new LotteryCapacityAggregateResult(capacityId, AcademicInterestConstants.STATUS_PRE_OFFER, 5)
     };
 
@@ -360,9 +361,9 @@ private class LotteryCapacityRollupServiceImplTest {
 
     Lottery_Capacity__c updated = (Lottery_Capacity__c) updatedRecords[0];
     Assert.areEqual(
-      9,
+      15,
       updated.Total_Applied_Applications__c,
-      'Total_Applied_Applications__c should be Submitted + Eligible + Waitlisted (4 + 3 + 2)'
+      'Total_Applied_Applications__c should be Submitted + Eligible + Waitlisted + Applied (4 + 3 + 2 + 6)'
     );
     Assert.areEqual(
       5,

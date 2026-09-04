@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Guardian_Email_and_Phone_Required</fullName>
+    <active>false</active>
+    <description>Requires Email and Phone for Guardian Accounts only. Students and all other record types are excluded.</description>
+    <errorConditionFormula>AND(
+    RecordType.DeveloperName = &quot;Guardian&quot;,
+
+    /* Exempt integrated guardians coming from SchoolMint */
+    ISBLANK(SchoolMint_Guardian_Id__pc),
+
+    OR(
+        ISBLANK(PersonEmail),
+        ISBLANK(Phone)
+    )
+)</errorConditionFormula>
+    <errorMessage>Guardians must have both Email and Phone populated if they don&apos;t have a Schoolmint Id.</errorMessage>
+</ValidationRule>

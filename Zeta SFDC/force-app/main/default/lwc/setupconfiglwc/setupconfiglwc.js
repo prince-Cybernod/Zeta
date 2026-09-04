@@ -1,31 +1,31 @@
-import { LightningElement, track, wire, api } from 'lwc';
-import { NavigationMixin, CurrentPageReference } from 'lightning/navigation';
-import getSectionsWithBlocksByPageId from '@salesforce/apex/SectionBlockController.getSectionsWithBlocksByPageId';
-import getSectionWithBlockBySectionId from '@salesforce/apex/SectionBlockController.getSectionWithBlockBySectionId';
+import { LightningElement, track, wire, api } from "lwc";
+import { NavigationMixin, CurrentPageReference } from "lightning/navigation";
+import sectionDetailModal from "c/sectionDetailModal";
+import getSectionsWithBlocksByPageId from "@salesforce/apex/SectionBlockController.getSectionsWithBlocksByPageId";
 import {
   findDynamicLinkIdentifier,
   getDynamicLinkByIdentifier,
   getPageReferenceByDynamicType
-} from 'c/commonFunctions';
-import sectionDetailModal from 'c/sectionDetailModal';
+} from "c/commonFunctions";
+import getSectionWithBlockBySectionId from "@salesforce/apex/SectionBlockController.getSectionWithBlockBySectionId";
 
 export default class Setupconfiglwc extends NavigationMixin(LightningElement) {
   @track sectionsWithBlocks = [];
 
-  sectionType = 'Left_Bottom';
-  @api pageId = '';
+  sectionType = "Left_Bottom";
+  @api pageId = "";
   dynamicLinksMap = {};
 
   @wire(getSectionsWithBlocksByPageId, {
-    sectionType: '$sectionType',
-    pageId: '$pageId'
+    sectionType: "$sectionType",
+    pageId: "$pageId"
   })
   wiredSections({ error, data }) {
     if (data) {
       this.sectionsWithBlocks = data;
       this.createDynamicLinksMap(data);
     } else if (error) {
-      console.error('Error fetching section and blocks:', error);
+      console.error("Error fetching section and blocks:", error);
     }
   }
 
@@ -44,7 +44,7 @@ export default class Setupconfiglwc extends NavigationMixin(LightningElement) {
     var appNameValue = event.target.dataset.id;
     try {
       if (!appNameValue) {
-        throw new Error('Application name is not defined');
+        throw new Error("Application name is not defined");
       }
       const dynamicLink = this.dynamicLinksMap[appNameValue];
       if (
@@ -61,7 +61,7 @@ export default class Setupconfiglwc extends NavigationMixin(LightningElement) {
         const result = await sectionDetailModal.open({
           // `label` is not included here in this example.
           // it is set on lightning-modal-header instead
-          size: 'medium',
+          size: "medium",
           header: sectionWithBlock.section.Header__c,
           subHeader: sectionWithBlock.section.Sub_Header__c,
           description: description
@@ -70,17 +70,17 @@ export default class Setupconfiglwc extends NavigationMixin(LightningElement) {
         try {
           const pageRef = await getPageReferenceByDynamicType(dynamicLink);
           let url = await this[NavigationMixin.GenerateUrl](pageRef);
-          if (dynamicLink.RecordType.DeveloperName == 'SetupPage') {
+          if (dynamicLink.RecordType.DeveloperName == "SetupPage") {
             url = pageRef.attributes.url;
           }
-          console.log('url: ' + url);
+          console.log("url: " + url);
           if (!url) {
-            throw new Error('Unable to generate URL. Possibly an invalid link');
+            throw new Error("Unable to generate URL. Possibly an invalid link");
           }
           if (
-            dynamicLink.RecordType.DeveloperName == 'InAppDetailsPage' ||
-            dynamicLink.RecordType.DeveloperName == 'WebPage' ||
-            dynamicLink.RecordType.DeveloperName == 'CommunityPage'
+            dynamicLink.RecordType.DeveloperName == "InAppDetailsPage" ||
+            dynamicLink.RecordType.DeveloperName == "WebPage" ||
+            dynamicLink.RecordType.DeveloperName == "CommunityPage"
           ) {
             this[NavigationMixin.Navigate](pageRef);
           } else {
@@ -89,7 +89,7 @@ export default class Setupconfiglwc extends NavigationMixin(LightningElement) {
               .substring(2, 7);
             console.log(windowContextNameUniqueStr);
             const windowContextNameUUID = crypto.randomUUID();
-            window.open('', windowContextNameUUID);
+            window.open("", windowContextNameUUID);
             window.open(url, windowContextNameUUID);
           }
         } catch (error) {
@@ -107,7 +107,7 @@ export default class Setupconfiglwc extends NavigationMixin(LightningElement) {
     let searchIndex = 0;
 
     while (true) {
-      const startIndex = content.indexOf('DYN_LINK', searchIndex);
+      const startIndex = content.indexOf("DYN_LINK", searchIndex);
       if (startIndex === -1) break;
 
       const identifier = findDynamicLinkIdentifier(content, startIndex);
@@ -121,14 +121,14 @@ export default class Setupconfiglwc extends NavigationMixin(LightningElement) {
     for (const identifier of identifiers) {
       try {
         const dynamicLink = await getDynamicLinkByIdentifier(identifier);
-        let url = '';
-        if (dynamicLink.RecordType.DeveloperName === 'WebPage') {
+        let url = "";
+        if (dynamicLink.RecordType.DeveloperName === "WebPage") {
           url = dynamicLink.Link__c;
         } else {
           const pageRef = await getPageReferenceByDynamicType(dynamicLink);
           if (
-            dynamicLink.RecordType.DeveloperName === 'SetupPage' ||
-            dynamicLink.RecordType.DeveloperName == 'CommunityPage'
+            dynamicLink.RecordType.DeveloperName === "SetupPage" ||
+            dynamicLink.RecordType.DeveloperName == "CommunityPage"
           ) {
             url = pageRef.attributes.url;
           } else {
@@ -137,7 +137,7 @@ export default class Setupconfiglwc extends NavigationMixin(LightningElement) {
           try {
             if (!url) {
               throw new Error(
-                'Unable to generate URL. Possibly an invalid link'
+                "Unable to generate URL. Possibly an invalid link"
               );
             }
           } catch (error) {
@@ -149,7 +149,7 @@ export default class Setupconfiglwc extends NavigationMixin(LightningElement) {
           url +
           "' target='_blank' style='color: rgb(0,0,238);'>" +
           dynamicLink.Text_Value__c +
-          '</a>';
+          "</a>";
         content = content.replace(identifier, replaceString);
       } catch (error) {
         console.error(`Error processing identifier "${identifier}":`, error);
@@ -165,9 +165,9 @@ export default class Setupconfiglwc extends NavigationMixin(LightningElement) {
 
   showToast(error, errorMessage) {
     const toastEvent = new ShowToastEvent({
-      title: 'Error',
+      title: "Error",
       message: error.body ? error.body.message : errorMessage,
-      variant: 'error'
+      variant: "error"
     });
     this.dispatchEvent(toastEvent);
   }

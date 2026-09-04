@@ -1006,7 +1006,7 @@ IF(NOT(ISNULL({!existingGroupedAcademicInterest.Opportunity.Amount})), {!existin
         <recordTriggerType>CreateAndUpdate</recordTriggerType>
         <triggerType>RecordAfterSave</triggerType>
     </start>
-    <status>Obsolete</status>
+    <status>Active</status>
     <variables>
         <description>The current record in the collection Filter Academic Interests By Grouped.</description>
         <name>currentItem_Filter_Academic_Interests_By_Grouped</name>

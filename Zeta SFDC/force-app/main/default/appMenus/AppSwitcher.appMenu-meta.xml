@@ -9,6 +9,10 @@
         <type>CustomApplication</type>
     </appMenuItems>
     <appMenuItems>
+        <name>standard__LightningService</name>
+        <type>CustomApplication</type>
+    </appMenuItems>
+    <appMenuItems>
         <name>standard__Platform</name>
         <type>CustomApplication</type>
     </appMenuItems>
@@ -26,10 +30,6 @@
     </appMenuItems>
     <appMenuItems>
         <name>standard__Chatter</name>
-        <type>CustomApplication</type>
-    </appMenuItems>
-    <appMenuItems>
-        <name>standard__LightningInstrumentation</name>
         <type>CustomApplication</type>
     </appMenuItems>
     <appMenuItems>
@@ -193,19 +193,11 @@
         <type>CustomApplication</type>
     </appMenuItems>
     <appMenuItems>
-        <name>standard__LightningService</name>
-        <type>CustomApplication</type>
-    </appMenuItems>
-    <appMenuItems>
         <name>OIQ_Integration</name>
         <type>ConnectedApp</type>
     </appMenuItems>
     <appMenuItems>
         <name>standard__Personalization</name>
-        <type>CustomApplication</type>
-    </appMenuItems>
-    <appMenuItems>
-        <name>standard__EasyMarketing</name>
         <type>CustomApplication</type>
     </appMenuItems>
     <appMenuItems>
@@ -221,34 +213,6 @@
         <type>ConnectedApp</type>
     </appMenuItems>
     <appMenuItems>
-        <name>standard__DigitalWallet</name>
-        <type>CustomApplication</type>
-    </appMenuItems>
-    <appMenuItems>
-        <name>standard__AgentforceStudio</name>
-        <type>CustomApplication</type>
-    </appMenuItems>
-    <appMenuItems>
-        <name>standard__AIWorkbench</name>
-        <type>CustomApplication</type>
-    </appMenuItems>
-    <appMenuItems>
-        <name>standard__IndustriesEpc</name>
-        <type>CustomApplication</type>
-    </appMenuItems>
-    <appMenuItems>
-        <name>standard__IndustriesEcm</name>
-        <type>CustomApplication</type>
-    </appMenuItems>
-    <appMenuItems>
-        <name>LoggerConsole</name>
-        <type>CustomApplication</type>
-    </appMenuItems>
-    <appMenuItems>
-        <name>School_Mint_Integration</name>
-        <type>ExternalClientApplication</type>
-    </appMenuItems>
-    <appMenuItems>
         <name>tfa__FormAssembly</name>
         <type>CustomApplication</type>
     </appMenuItems>
@@ -261,11 +225,15 @@
         <type>ConnectedApp</type>
     </appMenuItems>
     <appMenuItems>
-        <name>Action_Plans</name>
+        <name>Zeta Charter Schools</name>
+        <type>Network</type>
+    </appMenuItems>
+    <appMenuItems>
+        <name>standard__AgentforceStudio</name>
         <type>CustomApplication</type>
     </appMenuItems>
     <appMenuItems>
-        <name>Action_Plans_Lightning</name>
+        <name>mockstar__Mockstar</name>
         <type>CustomApplication</type>
     </appMenuItems>
     <appMenuItems>
@@ -285,7 +253,35 @@
         <type>ConnectedApp</type>
     </appMenuItems>
     <appMenuItems>
-        <name>Zeta Charter Schools</name>
-        <type>Network</type>
+        <name>Action_Plans</name>
+        <type>CustomApplication</type>
+    </appMenuItems>
+    <appMenuItems>
+        <name>Action_Plans_Lightning</name>
+        <type>CustomApplication</type>
+    </appMenuItems>
+    <appMenuItems>
+        <name>standard__IndustriesEpc</name>
+        <type>CustomApplication</type>
+    </appMenuItems>
+    <appMenuItems>
+        <name>standard__IndustriesEcm</name>
+        <type>CustomApplication</type>
+    </appMenuItems>
+    <appMenuItems>
+        <name>LoggerConsole</name>
+        <type>CustomApplication</type>
+    </appMenuItems>
+    <appMenuItems>
+        <name>ZVC__Zoom_Admin_for_Lightning</name>
+        <type>CustomApplication</type>
+    </appMenuItems>
+    <appMenuItems>
+        <name>standard__OEConsole</name>
+        <type>CustomApplication</type>
+    </appMenuItems>
+    <appMenuItems>
+        <name>Application_Submission</name>
+        <type>CustomApplication</type>
     </appMenuItems>
 </AppMenu>

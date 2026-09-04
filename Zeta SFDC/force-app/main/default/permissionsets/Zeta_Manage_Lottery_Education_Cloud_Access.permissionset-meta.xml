@@ -23,11 +23,6 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
-        <field>AcademicInterest.Primary_Guardian_Contact_Id__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>false</editable>
         <field>AcademicInterest.Priority_Original_and_Current_Match__c</field>
         <readable>true</readable>
     </fieldPermissions>
@@ -49,11 +44,6 @@
     <fieldPermissions>
         <editable>false</editable>
         <field>AcademicInterest.fxStudent_Name__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>false</editable>
-        <field>AcademicInterest.fx_Charter_Name__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -132,11 +122,6 @@
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>false</editable>
-        <field>AcademicTermEnrollment.Charter_Name__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
         <editable>true</editable>
         <field>AcademicTermEnrollment.Chromebook_Collection_Notes__c</field>
         <readable>true</readable>
@@ -204,11 +189,6 @@
     <fieldPermissions>
         <editable>true</editable>
         <field>AcademicTermEnrollment.EnrollmentStatus</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>false</editable>
-        <field>AcademicTermEnrollment.Enrollment_Date_Formula__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -523,12 +503,12 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
-        <field>AcademicTermEnrollment.Primary_Guardian_Contact_Id__c</field>
+        <field>AcademicTermEnrollment.Primary_Guardian_Full_Name__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
-        <field>AcademicTermEnrollment.Primary_Guardian_Full_Name__c</field>
+        <field>AcademicTermEnrollment.Primary_Guardian__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -554,11 +534,6 @@
     <fieldPermissions>
         <editable>true</editable>
         <field>AcademicTermEnrollment.Race_Codes_On_ATS__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>false</editable>
-        <field>AcademicTermEnrollment.School_Name__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -684,6 +659,11 @@
     <fieldPermissions>
         <editable>true</editable>
         <field>ApplicationTimeline.Test__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>Contact.Zoho_Guardian_Id__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>

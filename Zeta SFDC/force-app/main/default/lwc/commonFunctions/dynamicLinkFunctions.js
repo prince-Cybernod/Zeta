@@ -1,19 +1,19 @@
-import getDynamicLinkByIdentity from '@salesforce/apex/DynamicLinkHelper.getDynamicLinkByIdentity';
-import getObjectIdFromQuery from '@salesforce/apex/DynamicLinkHelper.getObjectIdFromQuery';
-import getRecordIdFromDynamicLinkType from '@salesforce/apex/DynamicLinkHelper.getRecordIdFromDynamicLinkType';
-import getSetupPageLink from '@salesforce/apex/DynamicLinkHelper.getSetupPageLink';
-import getSiteUrl from '@salesforce/apex/DynamicLinkHelper.getSiteUrl';
+import getObjectIdFromQuery from "@salesforce/apex/DynamicLinkHelper.getObjectIdFromQuery";
+import getDynamicLinkByIdentity from "@salesforce/apex/DynamicLinkHelper.getDynamicLinkByIdentity";
+import getRecordIdFromDynamicLinkType from "@salesforce/apex/DynamicLinkHelper.getRecordIdFromDynamicLinkType";
+import getSiteUrl from "@salesforce/apex/DynamicLinkHelper.getSiteUrl";
+import getSetupPageLink from "@salesforce/apex/DynamicLinkHelper.getSetupPageLink";
 
 const getPageReferenceByDynamicType = async (dynamicLink) => {
   var pageReference;
   switch (dynamicLink.RecordType.DeveloperName) {
-    case 'NamedPage':
+    case "NamedPage":
       pageReference = {
-        type: 'standard__app',
+        type: "standard__app",
         attributes: {
           appTarget: dynamicLink.App_API_Name__c,
           pageRef: {
-            type: 'standard__namedPage',
+            type: "standard__namedPage",
             attributes: {
               pageName: dynamicLink.Page_Name__c
             }
@@ -21,13 +21,13 @@ const getPageReferenceByDynamicType = async (dynamicLink) => {
         }
       };
       break;
-    case 'APINamePage':
+    case "APINamePage":
       pageReference = {
-        type: 'standard__app',
+        type: "standard__app",
         attributes: {
           appTarget: dynamicLink.App_API_Name__c,
           pageRef: {
-            type: 'standard__navItemPage',
+            type: "standard__navItemPage",
             attributes: {
               apiName: dynamicLink.Page_Name__c
             }
@@ -35,24 +35,24 @@ const getPageReferenceByDynamicType = async (dynamicLink) => {
         }
       };
       break;
-    case 'AppPage':
+    case "AppPage":
       pageReference = {
-        type: 'standard__app',
+        type: "standard__app",
         attributes: {
           appTarget: dynamicLink.App_API_Name__c
         }
       };
       break;
-    case 'ObjectPage':
+    case "ObjectPage":
       pageReference = {
-        type: 'standard__app',
+        type: "standard__app",
         attributes: {
           appTarget: dynamicLink.App_API_Name__c,
           pageRef: {
-            type: 'standard__objectPage',
+            type: "standard__objectPage",
             attributes: {
               objectApiName: dynamicLink.Object__c,
-              actionName: 'list'
+              actionName: "list"
             }
           }
         }
@@ -63,7 +63,7 @@ const getPageReferenceByDynamicType = async (dynamicLink) => {
         };
       }
       break;
-    case 'RecordPage':
+    case "RecordPage":
       // execute select query and get the id
       const SELECTQUERYRESULT = await getObjectIdFromQuery({
         objectAPIName: dynamicLink.Object__c,
@@ -73,21 +73,21 @@ const getPageReferenceByDynamicType = async (dynamicLink) => {
       const objectId = SELECTQUERYRESULT[0].Id;
 
       pageReference = {
-        type: 'standard__app',
+        type: "standard__app",
         attributes: {
           appTarget: dynamicLink.App_API_Name__c,
           pageRef: {
-            type: 'standard__recordPage',
+            type: "standard__recordPage",
             attributes: {
               objectApiName: dynamicLink.Object__c,
-              actionName: 'view',
+              actionName: "view",
               recordId: objectId
             }
           }
         }
       };
       break;
-    case 'RecordRelationshipPage':
+    case "RecordRelationshipPage":
       // execute select query and get the id
       const SELECTRESULT = await getObjectIdFromQuery({
         objectAPIName: dynamicLink.Object__c,
@@ -97,14 +97,14 @@ const getPageReferenceByDynamicType = async (dynamicLink) => {
       const objectResultId = SELECTRESULT[0].Id;
 
       pageReference = {
-        type: 'standard__app',
+        type: "standard__app",
         attributes: {
           appTarget: dynamicLink.App_API_Name__c,
           pageRef: {
-            type: 'standard__recordRelationshipPage',
+            type: "standard__recordRelationshipPage",
             attributes: {
               objectApiName: dynamicLink.Object__c,
-              actionName: 'view',
+              actionName: "view",
               recordId: objectResultId,
               relationshipApiName: dynamicLink.Relationship_API_Name__c
             }
@@ -112,15 +112,15 @@ const getPageReferenceByDynamicType = async (dynamicLink) => {
         }
       };
       break;
-    case 'WebPage':
+    case "WebPage":
       pageReference = {
-        type: 'standard__webPage',
+        type: "standard__webPage",
         attributes: {
           url: dynamicLink.Link__c
         }
       };
       break;
-    case 'CommunityPage':
+    case "CommunityPage":
       const communityPage = await getRecordIdFromDynamicLinkType({
         dyanmicLinkType: dynamicLink.RecordType.DeveloperName,
         whereCondition: "Name='" + dynamicLink.Site_Name__c + "'"
@@ -132,67 +132,67 @@ const getPageReferenceByDynamicType = async (dynamicLink) => {
         siteUrl += dynamicLink.Relative_Url__c;
       }
       pageReference = {
-        type: 'standard__webPage',
+        type: "standard__webPage",
         attributes: {
           url: siteUrl
         }
       };
       break;
-    case 'InAppDetailsPage':
+    case "InAppDetailsPage":
       pageReference = {
-        type: 'standard__app',
+        type: "standard__app",
         attributes: {
-          appTarget: 'c__Learning_Home',
+          appTarget: "c__Learning_Home",
           pageRef: {
-            type: 'standard__navItemPage',
+            type: "standard__navItemPage",
             attributes: {
-              apiName: 'Learning_Application_Details_Page'
+              apiName: "Learning_Application_Details_Page"
             }
           }
         }
       };
       break;
-    case 'SurveyRecordPage':
+    case "SurveyRecordPage":
       const survey = await getRecordIdFromDynamicLinkType({
         dyanmicLinkType: dynamicLink.RecordType.DeveloperName,
         whereCondition: dynamicLink.Where_Condition__c
       });
       pageReference = {
-        type: 'standard__webPage',
+        type: "standard__webPage",
         attributes: {
-          url: '/survey/builderApp.app?surveyId=' + survey[0].Id
+          url: "/survey/builderApp.app?surveyId=" + survey[0].Id
         }
       };
       break;
-    case 'DPERecordPage':
+    case "DPERecordPage":
       const dpeRecord = await getRecordIdFromDynamicLinkType({
         dyanmicLinkType: dynamicLink.RecordType.DeveloperName,
         whereCondition: dynamicLink.Where_Condition__c
       });
       pageReference = {
-        type: 'standard__webPage',
+        type: "standard__webPage",
         attributes: {
           url:
-            '/builder_industries_dataprocessingengine/dataProcessingEngine.app?dataProcessingEngineId=' +
+            "/builder_industries_dataprocessingengine/dataProcessingEngine.app?dataProcessingEngineId=" +
             dpeRecord[0].Id
         }
       };
       break;
-    case 'FlowRecordPage':
+    case "FlowRecordPage":
       const flowActiveVersion = await getRecordIdFromDynamicLinkType({
         dyanmicLinkType: dynamicLink.RecordType.DeveloperName,
         whereCondition: dynamicLink.Where_Condition__c
       });
       pageReference = {
-        type: 'standard__webPage',
+        type: "standard__webPage",
         attributes: {
           url:
-            '/builder_platform_interaction/flowBuilder.app?flowId=' +
+            "/builder_platform_interaction/flowBuilder.app?flowId=" +
             flowActiveVersion[0].ActiveVersionId
         }
       };
       break;
-    case 'SetupPage':
+    case "SetupPage":
       const records = await getObjectIdFromQuery({
         objectAPIName: dynamicLink.Setup_Page__c,
         whereCondition: dynamicLink.Where_Condition__c
@@ -203,7 +203,7 @@ const getPageReferenceByDynamicType = async (dynamicLink) => {
       });
 
       pageReference = {
-        type: 'standard__webPage',
+        type: "standard__webPage",
         attributes: {
           url: setupPage
         }
@@ -211,7 +211,7 @@ const getPageReferenceByDynamicType = async (dynamicLink) => {
       break;
     default:
       pageReference = {
-        type: 'standard__webPage',
+        type: "standard__webPage",
         attributes: {
           url: dynamicLink.Link__c
         }
@@ -240,7 +240,7 @@ const findDynamicLinkIdentifier = (input, middlePosition) => {
     ;
     ((input.charCodeAt(spacePosition) >= 65 &&
       input.charCodeAt(spacePosition) <= 90) ||
-      input.charCodeAt(spacePosition) == 95) != ' ';
+      input.charCodeAt(spacePosition) == 95) != " ";
     spacePosition--
   ) {}
 

@@ -357,38 +357,6 @@ private class ApplicationDashboardControllerTest {
   }
 
   @IsTest
-  private static void withdrawApplication_eligibleApp_succeeds() {
-    DATABASE_REPO_MOCK.reset();
-
-    Id contactId = SObjectIds.generateFakeId(Schema.Contact.SObjectType);
-    Id appId = SObjectIds.generateFakeId(Schema.IndividualApplication.SObjectType);
-
-    List<User> users = new List<User>{ new User(Id = UserInfo.getUserId(), ContactId = contactId) };
-    List<IndividualApplication> apps = new List<IndividualApplication>{
-      new IndividualApplication(Id = appId, Status = 'Eligible', SubmittedByContactId = contactId)
-    };
-
-    DATABASE_REPO_MOCK.when(DATABASE_REPO_MOCK.method.queryWithBinds())
-      .thenReturn(users)
-      .thenReturn(apps);
-    DATABASE_REPO_MOCK.when(DATABASE_REPO_MOCK.method.updateSObjects()).thenReturnVoid();
-
-    Map<String, Object> result = ApplicationDashboardController.withdrawApplication(
-      appId,
-      null,
-      'Relocation'
-    );
-
-    Assert.areEqual(true, result.get('success'), 'Should return success');
-    List<Map<String, Object>> calls = DATABASE_REPO_MOCK.getCalls(
-      DATABASE_REPO_MOCK.method.updateSObjects()
-    );
-    List<SObject> updated = (List<SObject>) calls[0].get('sobjects');
-    Assert.areEqual('Withdrawn/Declined', (String) updated[0].get('Status'));
-    Assert.areEqual('Relocation', (String) updated[0].get('Withdrawn_Declined_Reason__c'));
-  }
-
-  @IsTest
   private static void withdrawApplication_blankPicklistReason_throws() {
     DATABASE_REPO_MOCK.reset();
     Id appId = SObjectIds.generateFakeId(Schema.IndividualApplication.SObjectType);

@@ -7,6 +7,9 @@
         <label>Create Inverse?</label>
         <locationX>0</locationX>
         <locationY>0</locationY>
+        <defaultConnector>
+            <targetReference>END_ELEMENT_6</targetReference>
+        </defaultConnector>
         <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
         <rules>
             <name>Yes_Create_inverse</name>
@@ -43,9 +46,32 @@
                     <booleanValue>false</booleanValue>
                 </rightValue>
             </conditions>
+            <connector>
+                <targetReference>END_ELEMENT_7</targetReference>
+            </connector>
             <label>Yes, Inverse Exists</label>
         </rules>
     </decisions>
+    <ends>
+        <name>END_ELEMENT_5</name>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+    </ends>
+    <ends>
+        <name>END_ELEMENT_6</name>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+    </ends>
+    <ends>
+        <name>END_ELEMENT_7</name>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+    </ends>
+    <ends>
+        <name>END_ELEMENT_8</name>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+    </ends>
     <environments>Default</environments>
     <interviewLabel>Contact Contact Relationship | Auto-Create Reciprocal {!$Flow.CurrentDateTime}</interviewLabel>
     <label>Contact Contact Relationship | Auto-Create Reciprocal</label>
@@ -163,6 +189,9 @@
         <label>Update Triggering Relationship</label>
         <locationX>0</locationX>
         <locationY>0</locationY>
+        <connector>
+            <targetReference>END_ELEMENT_8</targetReference>
+        </connector>
         <inputAssignments>
             <field>RelatedInverseRecordId</field>
             <value>
@@ -174,6 +203,9 @@
     <start>
         <locationX>0</locationX>
         <locationY>0</locationY>
+        <connector>
+            <targetReference>END_ELEMENT_5</targetReference>
+        </connector>
         <filterLogic>and</filterLogic>
         <filters>
             <field>RelatedInverseRecordId</field>

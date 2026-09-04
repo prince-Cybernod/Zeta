@@ -7,10 +7,5 @@
     <columns>CAMPAIGN.CAMPAIGN_TYPE</columns>
     <columns>CAMPAIGN.STATUS</columns>
     <filterScope>Everything</filterScope>
-    <filters>
-        <field>CAMPAIGN.ACTIVE</field>
-        <operation>equals</operation>
-        <value>1</value>
-    </filters>
     <label>All Active Campaigns</label>
 </ListView>

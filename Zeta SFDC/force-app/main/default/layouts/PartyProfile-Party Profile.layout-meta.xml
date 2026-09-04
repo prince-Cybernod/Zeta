@@ -73,6 +73,10 @@
                 <behavior>Edit</behavior>
                 <field>TaxpayerIdentificationNumber</field>
             </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>IsDisabled</field>
+            </layoutItems>
         </layoutColumns>
         <style>TwoColumnsTopToBottom</style>
     </layoutSections>

@@ -21,15 +21,11 @@
             <name>senderType</name>
             <value>
                 <inputConfiguratorMode>Custom</inputConfiguratorMode>
-                <stringValue>OrgWideEmailAddress</stringValue>
+                <stringValue>DefaultWorkflowUser</stringValue>
             </value>
         </inputParameters>
         <inputParameters>
             <name>senderAddress</name>
-            <value>
-                <inputConfiguratorMode>Custom</inputConfiguratorMode>
-                <stringValue>enroll@connect.zetaschools.org</stringValue>
-            </value>
         </inputParameters>
         <inputParameters>
             <name>useEmailTemplate</name>

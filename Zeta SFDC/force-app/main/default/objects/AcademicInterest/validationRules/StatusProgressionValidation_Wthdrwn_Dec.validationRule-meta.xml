@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>StatusProgressionValidation_Wthdrwn_Dec</fullName>
+    <active>false</active>
+    <description>Blocks all invalid transitions from Withdrawn/Declined on School Application. Applies both pre-lottery and post-lottery rules based on Has_Lottery_Run__c.</description>
+    <errorConditionFormula>AND(
+    /* Bypass validation for authorized rollback users */
+    NOT($Permission.Zeta_Rollback_Lottery),
+
+    TEXT(PRIORVALUE(Status)) = &quot;Withdrawn/Declined&quot;,
+
+    /* Only validate when the value is actually changing */
+    TEXT(Status) &lt;&gt; TEXT(PRIORVALUE(Status)),
+
+    NOT(
+        OR(
+            /* Always-allowed transition */
+            ISPICKVAL(Status, &quot;Submitted&quot;),
+
+            /* Pre-Lottery allowed transitions */
+            AND(NOT(Has_Lottery_Run__c), ISPICKVAL(Status, &quot;Eligible&quot;)),
+
+            /* Post-Lottery allowed transitions */
+            AND(Has_Lottery_Run__c, ISPICKVAL(Status, &quot;Waitlisted&quot;))
+        )
+    )
+)</errorConditionFormula>
+    <errorDisplayField>Status</errorDisplayField>
+    <errorMessage>When a School Application is in Withdrawn/Declined status, it may only progress to:
+Pre-Lottery: Eligible and Submitted
+Post-Lottery: Waitlisted and Submitted</errorMessage>
+</ValidationRule>

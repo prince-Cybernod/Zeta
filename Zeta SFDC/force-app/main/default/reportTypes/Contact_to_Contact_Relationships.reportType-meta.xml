@@ -76,6 +76,11 @@
             <field>HierarchyType</field>
             <table>ContactContactRelation</table>
         </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Related_Contact_Enrollment_Status__c</field>
+            <table>ContactContactRelation</table>
+        </columns>
         <masterLabel>Contact Contact Relationships</masterLabel>
     </sections>
 </ReportType>

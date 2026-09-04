@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>StatusProgressionValidation_Eligible</fullName>
+    <active>false</active>
+    <description>Prevents invalid status transitions when the prior status was Eligible. Pre-lottery, Eligible can only move to Pre-Offer or back to Submitted. Post-lottery, Eligible can only move to Waitlisted.
+
+*Inactive</description>
+    <errorConditionFormula>AND(
+TEXT(PRIORVALUE(Status)) = &quot;Eligible&quot;,
+
+/* Only validate when the value is actually changing */
+TEXT(Status) &lt;&gt; TEXT(PRIORVALUE(Status)),
+
+NOT(
+OR(
+/* Pre-Lottery allowed transitions from Eligible */
+AND(NOT(Has_Lottery_Run__c), ISPICKVAL(Status, &quot;Pre-Offer&quot;)),
+AND(NOT(Has_Lottery_Run__c), ISPICKVAL(Status, &quot;Submitted&quot;)),
+AND(NOT(Has_Lottery_Run__c), ISPICKVAL(Status, &quot;Withdrawn/Declined&quot;)),
+
+/* Post-Lottery allowed transition from Eligible */
+AND(Has_Lottery_Run__c, ISPICKVAL(Status, &quot;Waitlisted&quot;)),
+AND(NOT(Has_Lottery_Run__c), ISPICKVAL(Status, &quot;Withdrawn/Declined&quot;))
+)
+)
+)</errorConditionFormula>
+    <errorDisplayField>Status</errorDisplayField>
+    <errorMessage>INACTIVE - When a School Application is in Eligible status, it may only progress to:
+Pre-Lottery: Withdrawn/Declined, Pre-Offer or Submitted.
+Post-Lottery: Waitlisted.</errorMessage>
+</ValidationRule>

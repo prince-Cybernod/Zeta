@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>StatusProgressionValidation_PreOffer</fullName>
+    <active>false</active>
+    <description>Enforces valid transitions from Pre-Offer on School Application. Blocks all pre-lottery transitions and restricts post-lottery transitions to Seat Offered, Waitlisted, or Offer Rescinded due to Seat Optimization.</description>
+    <errorConditionFormula>AND(
+  TEXT(PRIORVALUE(Status)) = &quot;Pre-Offer&quot;,
+
+  /* Only validate when the value is actually changing */
+  TEXT(Status) &lt;&gt; TEXT(PRIORVALUE(Status)),
+
+  NOT(
+    OR(
+      /* Always allowed */
+      ISPICKVAL(Status, &quot;Withdrawn/Declined&quot;),
+
+      /* Post-Lottery allowed transitions */
+      AND(Has_Lottery_Run__c, ISPICKVAL(Status, &quot;Seat Offered&quot;)),
+      AND(Has_Lottery_Run__c, ISPICKVAL(Status, &quot;Waitlisted&quot;)),
+      AND(Has_Lottery_Run__c, ISPICKVAL(Status, &quot;Offer Rescinded due to Seat Optimization&quot;))
+    )
+  )
+)</errorConditionFormula>
+    <errorDisplayField>Status</errorDisplayField>
+    <errorMessage>INACTIVE - When a School Application is in Pre-Offer status, it may only progress to Seat Offered, Waitlisted, or Offer Rescinded due to Seat Optimization after the lottery has run. At any time, it may be updated to Withdrawn/Declined.</errorMessage>
+</ValidationRule>

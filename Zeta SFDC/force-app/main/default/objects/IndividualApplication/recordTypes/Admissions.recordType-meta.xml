@@ -78,7 +78,7 @@
         <picklist>Conversion_Type__c</picklist>
         <values>
             <fullName>Self-Converted %28No Team Call%29</fullName>
-            <default>false</default>
+            <default>true</default>
         </values>
         <values>
             <fullName>Team-Assisted Conversion</fullName>
@@ -89,10 +89,6 @@
         <picklist>Current_Grade__c</picklist>
         <values>
             <fullName>1</fullName>
-            <default>false</default>
-        </values>
-        <values>
-            <fullName>10</fullName>
             <default>false</default>
         </values>
         <values>
@@ -155,10 +151,6 @@
         <picklist>Grade_Applying_To__c</picklist>
         <values>
             <fullName>1</fullName>
-            <default>false</default>
-        </values>
-        <values>
-            <fullName>10</fullName>
             <default>false</default>
         </values>
         <values>
@@ -264,6 +256,22 @@
             <default>false</default>
         </values>
         <values>
+            <fullName>Account w%2Fo App</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>All Hands</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Attended or RSVPd to event</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>CBO Tabling</fullName>
+            <default>false</default>
+        </values>
+        <values>
             <fullName>Email %E2%80%93 Contact Us Form</fullName>
             <default>false</default>
         </values>
@@ -288,7 +296,15 @@
             <default>false</default>
         </values>
         <values>
+            <fullName>Family came to school site</fullName>
+            <default>false</default>
+        </values>
+        <values>
             <fullName>Google Voice %E2%80%93 Phone Call</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Hotspotting</fullName>
             <default>false</default>
         </values>
         <values>
@@ -312,6 +328,10 @@
             <default>false</default>
         </values>
         <values>
+            <fullName>Text or Email Lead</fullName>
+            <default>false</default>
+        </values>
+        <values>
             <fullName>TikTok Form</fullName>
             <default>false</default>
         </values>
@@ -324,7 +344,11 @@
             <default>false</default>
         </values>
         <values>
-            <fullName>Zoom Event Attendance</fullName>
+            <fullName>Zeta Drive%2FPizza Party</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Zeta Postcard</fullName>
             <default>false</default>
         </values>
     </picklistValues>

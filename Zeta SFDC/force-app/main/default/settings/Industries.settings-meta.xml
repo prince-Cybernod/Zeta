@@ -7,17 +7,16 @@
     <disableGiftCommitmentValidations>false</disableGiftCommitmentValidations>
     <disableGiftTransactionValidations>false</disableGiftTransactionValidations>
     <enableAIAccelerator>false</enableAIAccelerator>
-    <enableAcademicInsightsAI>false</enableAcademicInsightsAI>
     <enableAcademicOperations>true</enableAcademicOperations>
     <enableAccountScoreEnabled>false</enableAccountScoreEnabled>
     <enableActionPlanTaskComment>false</enableActionPlanTaskComment>
     <enableActionableList>false</enableActionableList>
-    <enableAdvancementGenAI>false</enableAdvancementGenAI>
-    <enableAdvisingSummaryAI>false</enableAdvisingSummaryAI>
+    <enableActionableListDMO>false</enableActionableListDMO>
     <enableAlumniRelations>true</enableAlumniRelations>
     <enableAnyResourceTypeOrgPref>false</enableAnyResourceTypeOrgPref>
     <enableAppFrmAnywhereOrgPref>true</enableAppFrmAnywhereOrgPref>
     <enableAppInviteOrgPref>false</enableAppInviteOrgPref>
+    <enableAppMaterialsProtection>true</enableAppMaterialsProtection>
     <enableApplnDecStdSharing>false</enableApplnDecStdSharing>
     <enableAutoIdentifyDocAITemplates>false</enableAutoIdentifyDocAITemplates>
     <enableBenefitAndGoalSharingPref>true</enableBenefitAndGoalSharingPref>
@@ -41,15 +40,14 @@
     <enableCompliantDataSharingForOpportunity>false</enableCompliantDataSharingForOpportunity>
     <enableCorporateRelations>false</enableCorporateRelations>
     <enableCosConflicts>false</enableCosConflicts>
-    <enableCourseOpsAgent>false</enableCourseOpsAgent>
-    <enableCourseSearchAgent>false</enableCourseSearchAgent>
     <enableCreateMultiAttendeeEventOrgPref>false</enableCreateMultiAttendeeEventOrgPref>
     <enableCriteriaBasedSearchAndFilter>false</enableCriteriaBasedSearchAndFilter>
-    <enableDataCloudEventsOnTimeline>false</enableDataCloudEventsOnTimeline>
     <enableDataTrueUpPreference>false</enableDataTrueUpPreference>
     <enableDelegatedAccessManagement>false</enableDelegatedAccessManagement>
+    <enableDependentTaskAssignment>false</enableDependentTaskAssignment>
     <enableDepriveSoqlAccessGuestUserOrgPref>true</enableDepriveSoqlAccessGuestUserOrgPref>
     <enableDepriveSoqlAccessOrgPref>true</enableDepriveSoqlAccessOrgPref>
+    <enableDesignDocumentTemplate>true</enableDesignDocumentTemplate>
     <enableDisbursementPreference>false</enableDisbursementPreference>
     <enableDiscoveryFrameworkMetadata>false</enableDiscoveryFrameworkMetadata>
     <enableDiscoveryFrmwrkMltLangPref>false</enableDiscoveryFrmwrkMltLangPref>
@@ -60,17 +58,17 @@
     <enableDropInAppointmentsOrgPref>true</enableDropInAppointmentsOrgPref>
     <enableDropInFallbackMechOrgPref>false</enableDropInFallbackMechOrgPref>
     <enableDropInSkillMatchingOrgPref>false</enableDropInSkillMatchingOrgPref>
-    <enableEDCSkillsGenerator>false</enableEDCSkillsGenerator>
     <enableEduAdvncdAcadOper>false</enableEduAdvncdAcadOper>
+    <enableEduMortarCAPS>false</enableEduMortarCAPS>
     <enableEduUKRgnlFeatr>false</enableEduUKRgnlFeatr>
     <enableEducationCloud>true</enableEducationCloud>
-    <enableEngagementVisualsAI>false</enableEngagementVisualsAI>
     <enableEnhancedCommitmentProcessor>false</enableEnhancedCommitmentProcessor>
     <enableEnhancedQuestionCreation>true</enableEnhancedQuestionCreation>
     <enableEnhancedSaveResponsesPref>false</enableEnhancedSaveResponsesPref>
     <enableEnhancedUIForISPref>false</enableEnhancedUIForISPref>
     <enableEpcDeleteAccess>false</enableEpcDeleteAccess>
     <enableEventManagementOrgPref>true</enableEventManagementOrgPref>
+    <enableEventMgmtBudgetEvntTypeFilter>false</enableEventMgmtBudgetEvntTypeFilter>
     <enableEventWriteOrgPref>false</enableEventWriteOrgPref>
     <enableFinancialAid>false</enableFinancialAid>
     <enableFormFramework>false</enableFormFramework>
@@ -79,7 +77,6 @@
     <enableGiftEntryGrid>false</enableGiftEntryGrid>
     <enableGiftPlanning>false</enableGiftPlanning>
     <enableGnrcDisclsFrmwrk>false</enableGnrcDisclsFrmwrk>
-    <enableGoalsAgent>false</enableGoalsAgent>
     <enableGroupMembershipPref>true</enableGroupMembershipPref>
     <enableIndustriesAssessment>true</enableIndustriesAssessment>
     <enableIndustriesAssessmentGuestOrgPref>false</enableIndustriesAssessmentGuestOrgPref>
@@ -107,6 +104,12 @@
     <enablePrimaryProviderRestriction>false</enablePrimaryProviderRestriction>
     <enableProgramCohorts>false</enableProgramCohorts>
     <enablePulseChecks>true</enablePulseChecks>
+    <enableRNADynamicApplications>false</enableRNADynamicApplications>
+    <enableRNAEnrlAndMatricActionPlans>false</enableRNAEnrlAndMatricActionPlans>
+    <enableRNALearnerEnrollment>false</enableRNALearnerEnrollment>
+    <enableRNAProgramAndCampusFinder>false</enableRNAProgramAndCampusFinder>
+    <enableRNARFIInquiryManagement>false</enableRNARFIInquiryManagement>
+    <enableRNAThirdPartyApplicantPortal>false</enableRNAThirdPartyApplicantPortal>
     <enableRecordAlertCustomSharingPref>true</enableRecordAlertCustomSharingPref>
     <enableReminders>false</enableReminders>
     <enableSaveAssessmentAsDraft>false</enableSaveAssessmentAsDraft>
@@ -117,15 +120,13 @@
     <enableSmartTags>false</enableSmartTags>
     <enableSourceCodeGeneration>false</enableSourceCodeGeneration>
     <enableStageAssignmentRulesReEvaluation>false</enableStageAssignmentRulesReEvaluation>
-    <enableStuFinancials>false</enableStuFinancials>
-    <enableStudentFinAgent>false</enableStudentFinAgent>
     <enableStudentGoals>false</enableStudentGoals>
     <enableStudentManagement>false</enableStudentManagement>
-    <enableStudentRecruitmentAgent>false</enableStudentRecruitmentAgent>
     <enableStudentSuccess>true</enableStudentSuccess>
     <enableSyncInteractionsPref>false</enableSyncInteractionsPref>
     <enableTimelineCachePref>true</enableTimelineCachePref>
     <enableTimelinePref>true</enableTimelinePref>
+    <enableTlntRcrtMgmtCampaignsPref>false</enableTlntRcrtMgmtCampaignsPref>
     <enableTopicOrTemplate>false</enableTopicOrTemplate>
     <enableTopicTimeSlot>true</enableTopicTimeSlot>
     <enableTurnOffDsclsReprtPbsrName>false</enableTurnOffDsclsReprtPbsrName>

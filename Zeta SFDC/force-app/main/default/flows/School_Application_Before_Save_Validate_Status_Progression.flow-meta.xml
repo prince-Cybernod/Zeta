@@ -1,0 +1,1071 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>66.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <customErrors>
+        <description>Prevents invalid status transitions from Applied.</description>
+        <name>Error_Invalid_Transition_Applied</name>
+        <label>Error | Invalid Transition | Applied</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <customErrorMessages>
+            <errorMessage>Status cannot move from Applied to {!$Record.Status} based on lottery rules.</errorMessage>
+            <fieldSelection>Status</fieldSelection>
+            <isFieldError>true</isFieldError>
+        </customErrorMessages>
+    </customErrors>
+    <customErrors>
+        <description>Prevents invalid status transitions from Draft.</description>
+        <name>Error_Invalid_Transition_Draft</name>
+        <label>Error | Invalid Transition | Draft</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <customErrorMessages>
+            <errorMessage>Status cannot move from Draft to {!$Record.Status} based on lottery rules.</errorMessage>
+            <fieldSelection>Status</fieldSelection>
+            <isFieldError>true</isFieldError>
+        </customErrorMessages>
+    </customErrors>
+    <customErrors>
+        <description>Prevents invalid status transitions from Eligible.</description>
+        <name>Error_Invalid_Transition_Eligible</name>
+        <label>Error | Invalid Transition | Eligible</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <customErrorMessages>
+            <errorMessage>Status cannot move from Eligible to {!$Record.Status} based on lottery rules.</errorMessage>
+            <fieldSelection>Status</fieldSelection>
+            <isFieldError>true</isFieldError>
+        </customErrorMessages>
+    </customErrors>
+    <customErrors>
+        <description>Prevents invalid status transitions from Offer Rescinded due to Seat Optimization.</description>
+        <name>Error_Invalid_Transition_Offer_Rescinded_Due_to_Optimization</name>
+        <label>Error | Invalid Transition | Offer Rescinded Due to Optimization</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <customErrorMessages>
+            <errorMessage>Status cannot move from Offer Rescinded due to Seat Optimization to {!$Record.Status} based on lottery rules.</errorMessage>
+            <fieldSelection>Status</fieldSelection>
+            <isFieldError>true</isFieldError>
+        </customErrorMessages>
+    </customErrors>
+    <customErrors>
+        <description>Prevents invalid status transitions from Pre-Offer.</description>
+        <name>Error_Invalid_Transition_Pre_Offer</name>
+        <label>Error | Invalid Transition | Pre-Offer</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <customErrorMessages>
+            <errorMessage>Status cannot move from Pre-Offer to {!$Record.Status} based on lottery rules.</errorMessage>
+            <fieldSelection>Status</fieldSelection>
+            <isFieldError>true</isFieldError>
+        </customErrorMessages>
+    </customErrors>
+    <customErrors>
+        <description>Prevents invalid status transitions from Rescinded.</description>
+        <name>Error_Invalid_Transition_Rescinded</name>
+        <label>Error | Invalid Transition | Rescinded</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <customErrorMessages>
+            <errorMessage>Status cannot move from Rescinded to {!$Record.Status} based on lottery rules.</errorMessage>
+            <fieldSelection>Status</fieldSelection>
+            <isFieldError>true</isFieldError>
+        </customErrorMessages>
+    </customErrors>
+    <customErrors>
+        <description>Prevents invalid status transitions from Seat Accepted.</description>
+        <name>Error_Invalid_Transition_Seat_Accepted</name>
+        <label>Error | Invalid Transition | Seat Accepted</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <customErrorMessages>
+            <errorMessage>Status cannot move from Seat Accepted to {!$Record.Status} based on lottery rules.</errorMessage>
+            <fieldSelection>Status</fieldSelection>
+            <isFieldError>true</isFieldError>
+        </customErrorMessages>
+    </customErrors>
+    <customErrors>
+        <description>Prevents invalid status transitions from Seat Offered.</description>
+        <name>Error_Invalid_Transition_Seat_Offered</name>
+        <label>Error | Invalid Transition | Seat Offered</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <customErrorMessages>
+            <errorMessage>Status cannot move from Seat Offered to {!$Record.Status} based on lottery rules.</errorMessage>
+            <fieldSelection>Status</fieldSelection>
+            <isFieldError>true</isFieldError>
+        </customErrorMessages>
+    </customErrors>
+    <customErrors>
+        <description>Prevents invalid status transitions from Submitted.</description>
+        <name>Error_Invalid_Transition_Submitted</name>
+        <label>Error | Invalid Transition | Submitted</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <customErrorMessages>
+            <errorMessage>Status cannot move from Submitted to {!$Record.Status} based on lottery rules.</errorMessage>
+            <fieldSelection>Status</fieldSelection>
+            <isFieldError>true</isFieldError>
+        </customErrorMessages>
+    </customErrors>
+    <customErrors>
+        <description>Prevents invalid status transitions from Waitlisted.</description>
+        <name>Error_Invalid_Transition_Waitlisted</name>
+        <label>Error | Invalid Transition | Waitlisted</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <customErrorMessages>
+            <errorMessage>Status cannot move from Waitlisted to {!$Record.Status} based on lottery rules.</errorMessage>
+            <fieldSelection>Status</fieldSelection>
+            <isFieldError>true</isFieldError>
+        </customErrorMessages>
+    </customErrors>
+    <customErrors>
+        <description>Prevents invalid status transitions from Withdrawn/Declined.</description>
+        <name>Error_Invalid_Transition_Withdrawn_Declined</name>
+        <label>Error | Invalid Transition | Withdrawn/Declined</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <customErrorMessages>
+            <errorMessage>Status cannot move from Withdrawn/Declined to {!$Record.Status} based on lottery rules.</errorMessage>
+            <fieldSelection>Status</fieldSelection>
+            <isFieldError>true</isFieldError>
+        </customErrorMessages>
+    </customErrors>
+    <decisions>
+        <description>Validates allowed status transitions when prior status is Applied, based on whether the lottery has run.</description>
+        <name>Decision_Allowed_Transition_Applied</name>
+        <label>Decision | Allowed Transition | Applied</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <defaultConnector>
+            <targetReference>Error_Invalid_Transition_Applied</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Invalid Transition</defaultConnectorLabel>
+        <rules>
+            <name>Applied_Allowed_Pre_Lottery_Eligible</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>fxHasLotteryRun</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Status</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Eligible</stringValue>
+                </rightValue>
+            </conditions>
+            <label>Applied | Allowed | Pre-Lottery | Eligible</label>
+        </rules>
+        <rules>
+            <name>Applied_Allowed_Pre_Lottery_Withdraw</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>fxHasLotteryRun</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Status</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Withdrawn/Declined</stringValue>
+                </rightValue>
+            </conditions>
+            <label>Applied | Allowed | Pre-Lottery | Withdraw</label>
+        </rules>
+        <rules>
+            <name>Applied_Allowed_Post_Lottery_Waitlisted</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>fxHasLotteryRun</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Status</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Waitlisted</stringValue>
+                </rightValue>
+            </conditions>
+            <label>Applied | Allowed | Post-Lottery | Waitlisted</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <description>Validates allowed status transitions when prior status is Draft.</description>
+        <name>Decision_Allowed_Transition_Draft</name>
+        <label>Decision | Allowed Transition | Draft</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <defaultConnector>
+            <targetReference>Error_Invalid_Transition_Draft</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Invalid transition</defaultConnectorLabel>
+        <rules>
+            <name>Draft_Allowed_Pre_Lottery_Applied</name>
+            <conditionLogic>1 AND (2 OR 3 OR 4)</conditionLogic>
+            <conditions>
+                <leftValueReference>fxHasLotteryRun</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Status</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Applied</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Status</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Withdrawn/Declined</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Status</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Rescinded</stringValue>
+                </rightValue>
+            </conditions>
+            <label>Draft | Allowed | Pre-Lottery | Applied</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <description>Validates allowed status transitions when prior status is Eligible, based on whether the lottery has run.</description>
+        <name>Decision_Allowed_Transition_Eligible</name>
+        <label>Decision | Allowed Transition | Eligible</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <defaultConnector>
+            <targetReference>Error_Invalid_Transition_Eligible</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Invalid Transition</defaultConnectorLabel>
+        <rules>
+            <name>Eligible_Allowed_Pre_Lottery_Submitted</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>fxHasLotteryRun</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Status</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Submitted</stringValue>
+                </rightValue>
+            </conditions>
+            <label>Eligible | Allowed | Pre-Lottery | Submitted</label>
+        </rules>
+        <rules>
+            <name>Eligible_Allowed_Pre_Lottery_Withdraw</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>fxHasLotteryRun</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Status</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Withdrawn/Declined</stringValue>
+                </rightValue>
+            </conditions>
+            <label>Eligible | Allowed | Pre-Lottery | Withdraw</label>
+        </rules>
+        <rules>
+            <name>Eligible_Allowed_Post_Lottery_Waitlisted</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>fxHasLotteryRun</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Status</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Waitlisted</stringValue>
+                </rightValue>
+            </conditions>
+            <label>Eligible | Allowed | Post-Lottery | Waitlisted</label>
+        </rules>
+        <rules>
+            <name>Eligible_Allowed_Post_Lottery_Pre_Offer</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>fxHasLotteryRun</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Status</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Pre-Offer</stringValue>
+                </rightValue>
+            </conditions>
+            <label>Eligible | Allowed | Post-Lottery | Pre-Offer</label>
+        </rules>
+        <rules>
+            <name>Eligible_Allowed_Post_Lottery_Withdraw</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>fxHasLotteryRun</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Status</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Withdrawn/Declined</stringValue>
+                </rightValue>
+            </conditions>
+            <label>Eligible | Allowed | Post-Lottery | Withdraw</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <description>Validates allowed status transitions when prior status is Offer Rescinded due to Seat Optimization.</description>
+        <name>Decision_Allowed_Transition_Offer_Rescinded_Due_to_Optimization</name>
+        <label>Decision | Allowed Transition | Offer Rescinded Due to Optimization</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <defaultConnector>
+            <targetReference>Error_Invalid_Transition_Offer_Rescinded_Due_to_Optimization</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Invalid Transition</defaultConnectorLabel>
+        <rules>
+            <name>Offer_Rescinded_Due_to_Optimization_Allowed_Always_Withdraw</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Status</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Withdrawn/Declined</stringValue>
+                </rightValue>
+            </conditions>
+            <label>Offer Rescinded Due to Optimization | Allowed | Always | Withdraw</label>
+        </rules>
+        <rules>
+            <name>Offer_Rescinded_Due_to_Optimization_Allowed_Always_Seat_Offered</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Status</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Seat Offered</stringValue>
+                </rightValue>
+            </conditions>
+            <label>Offer Rescinded Due to Optimization | Allowed | Always | Seat Offered</label>
+        </rules>
+        <rules>
+            <name>Offer_Rescinded_Due_to_Optimization_Allowed_Always_Seat_Accepted</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Status</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Seat Accepted</stringValue>
+                </rightValue>
+            </conditions>
+            <label>Offer Rescinded Due to Optimization | Allowed | Always | Seat Accepted</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <description>Validates allowed status transitions when prior status is Pre-Offer, based on whether the lottery has run.</description>
+        <name>Decision_Allowed_Transition_Pre_Offer</name>
+        <label>Decision | Allowed Transition | Pre-Offer</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <defaultConnector>
+            <targetReference>Error_Invalid_Transition_Pre_Offer</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Invalid Transition</defaultConnectorLabel>
+        <rules>
+            <name>Pre_Offer_Allowed_Always_Withdraw</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Status</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Withdrawn/Declined</stringValue>
+                </rightValue>
+            </conditions>
+            <label>Pre-Offer | Allowed | Always | Withdraw</label>
+        </rules>
+        <rules>
+            <name>Pre_Offer_Allowed_Post_Lottery_Seat_Offered</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>fxHasLotteryRun</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Status</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Seat Offered</stringValue>
+                </rightValue>
+            </conditions>
+            <label>Pre-Offer | Allowed | Post-Lottery | Seat Offered</label>
+        </rules>
+        <rules>
+            <name>Pre_Offer_Allowed_Post_Lottery_Waitlisted</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>fxHasLotteryRun</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Status</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Waitlisted</stringValue>
+                </rightValue>
+            </conditions>
+            <label>Pre-Offer | Allowed | Post-Lottery | Waitlisted</label>
+        </rules>
+        <rules>
+            <name>Pre_Offer_Allowed_Post_Lottery_Rescinded_Due_to_Optimization</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>fxHasLotteryRun</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Status</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Offer Rescinded due to Seat Optimization</stringValue>
+                </rightValue>
+            </conditions>
+            <label>Pre-Offer | Allowed | Post-Lottery | Rescinded Due to Optimization</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <description>Validates allowed status transitions when prior status is Rescinded, based on whether the lottery has run.</description>
+        <name>Decision_Allowed_Transition_Rescinded</name>
+        <label>Decision | Allowed Transition | Rescinded</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <defaultConnector>
+            <targetReference>Error_Invalid_Transition_Rescinded</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Invalid Transition</defaultConnectorLabel>
+        <rules>
+            <name>Rescinded_Allowed_Always_Withdraw</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Status</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Withdrawn/Declined</stringValue>
+                </rightValue>
+            </conditions>
+            <label>Rescinded | Allowed | Always | Withdraw</label>
+        </rules>
+        <rules>
+            <name>Rescinded_Allowed_Pre_Lottery_Eligible</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>fxHasLotteryRun</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Status</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Eligible</stringValue>
+                </rightValue>
+            </conditions>
+            <label>Rescinded | Allowed | Pre-Lottery | Eligible</label>
+        </rules>
+        <rules>
+            <name>Rescinded_Allowed_Post_Lottery_Waitlisted</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>fxHasLotteryRun</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Status</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Waitlisted</stringValue>
+                </rightValue>
+            </conditions>
+            <label>Rescinded | Allowed | Post-Lottery | Waitlisted</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <description>Validates allowed status transitions when prior status is Seat Accepted.</description>
+        <name>Decision_Allowed_Transition_Seat_Accepted</name>
+        <label>Decision | Allowed Transition | Seat Accepted</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <defaultConnector>
+            <targetReference>Error_Invalid_Transition_Seat_Accepted</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Invalid Transition</defaultConnectorLabel>
+        <rules>
+            <name>Seat_Accepted_Allowed_Always_Withdraw</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Status</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Withdrawn/Declined</stringValue>
+                </rightValue>
+            </conditions>
+            <label>Seat Accepted | Allowed | Always | Withdraw</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <description>Validates allowed status transitions when prior status is Seat Offered, based on whether the lottery has run.</description>
+        <name>Decision_Allowed_Transition_Seat_Offered</name>
+        <label>Decision | Allowed Transition | Seat Offered</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <defaultConnector>
+            <targetReference>Error_Invalid_Transition_Seat_Offered</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Invalid transition</defaultConnectorLabel>
+        <rules>
+            <name>Seat_Offered_Allowed_Always_Withdraw</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Status</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Withdrawn/Declined</stringValue>
+                </rightValue>
+            </conditions>
+            <label>Seat Offered | Allowed | Always | Withdraw</label>
+        </rules>
+        <rules>
+            <name>Seat_Offered_Allowed_Post_Lottery_Seat_Accepted</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>fxHasLotteryRun</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Status</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Seat Accepted</stringValue>
+                </rightValue>
+            </conditions>
+            <label>Seat Offered | Allowed | Post-Lottery | Seat Accepted</label>
+        </rules>
+        <rules>
+            <name>Seat_Offered_Allowed_Post_Lottery_Rescinded_Due_to_Optimization</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>fxHasLotteryRun</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Status</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Offer Rescinded due to Seat Optimization</stringValue>
+                </rightValue>
+            </conditions>
+            <label>Seat Offered | Allowed | Post-Lottery | Rescinded Due to Optimization</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <description>Validates allowed status transitions when prior status is Submitted, based on whether the lottery has run.</description>
+        <name>Decision_Allowed_Transition_Submitted</name>
+        <label>Decision | Allowed Transition | Submitted</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <defaultConnector>
+            <targetReference>Error_Invalid_Transition_Submitted</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Invalid Transition</defaultConnectorLabel>
+        <rules>
+            <name>Allowed_Pre_Lottery</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>fxHasLotteryRun</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Status</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Eligible</stringValue>
+                </rightValue>
+            </conditions>
+            <label>Allowed | Pre-Lottery</label>
+        </rules>
+        <rules>
+            <name>Allowed_Pre_Lottery_Withdraw</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>fxHasLotteryRun</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Status</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Withdrawn/Declined</stringValue>
+                </rightValue>
+            </conditions>
+            <label>Allowed | Pre-Lottery Withdraw</label>
+        </rules>
+        <rules>
+            <name>Allowed_Post_Lottery</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>fxHasLotteryRun</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Status</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Waitlisted</stringValue>
+                </rightValue>
+            </conditions>
+            <label>Allowed | Post-Lottery</label>
+        </rules>
+        <rules>
+            <name>Allowed_Post_Lottery_Withdraw</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>fxHasLotteryRun</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Status</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Withdrawn/Declined</stringValue>
+                </rightValue>
+            </conditions>
+            <label>Allowed | Post-Lottery Withdraw</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <description>Validates allowed status transitions when prior status is Waitlisted, based on whether the lottery has run.</description>
+        <name>Decision_Allowed_Transition_Waitlisted</name>
+        <label>Decision | Allowed Transition | Waitlisted</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <defaultConnector>
+            <targetReference>Error_Invalid_Transition_Waitlisted</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Invalid Transition</defaultConnectorLabel>
+        <rules>
+            <name>Waitlisted_Allowed_Post_Lottery_Pre_Offer</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>fxHasLotteryRun</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Status</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Pre-Offer</stringValue>
+                </rightValue>
+            </conditions>
+            <label>Waitlisted | Allowed | Post-Lottery | Pre-Offer</label>
+        </rules>
+        <rules>
+            <name>Waitlisted_Allowed_Post_Lottery_Withdraw</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>fxHasLotteryRun</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Status</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Withdrawn/Declined</stringValue>
+                </rightValue>
+            </conditions>
+            <label>Waitlisted | Allowed | Post-Lottery | Withdraw</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <description>Validates allowed status transitions when prior status is Withdrawn/Declined, based on whether the lottery has run.</description>
+        <name>Decision_Allowed_Transition_Withdrawn_Declined</name>
+        <label>Decision | Allowed Transition | Withdrawn/Declined</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <defaultConnector>
+            <targetReference>Error_Invalid_Transition_Withdrawn_Declined</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Invalid Transition</defaultConnectorLabel>
+        <rules>
+            <name>Withdrawn_Declined_Allowed_Always_Submitted</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Status</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Submitted</stringValue>
+                </rightValue>
+            </conditions>
+            <label>Withdrawn/Declined | Allowed | Always | Submitted</label>
+        </rules>
+        <rules>
+            <name>Withdrawn_Declined_Allowed_Pre_Lottery_Eligible</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>fxHasLotteryRun</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Status</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Eligible</stringValue>
+                </rightValue>
+            </conditions>
+            <label>Withdrawn/Declined | Allowed | Pre-Lottery | Eligible</label>
+        </rules>
+        <rules>
+            <name>Withdrawn_Declined_Allowed_Post_Lottery_Waitlisted</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>fxHasLotteryRun</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Status</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Waitlisted</stringValue>
+                </rightValue>
+            </conditions>
+            <label>Withdrawn/Declined | Allowed | Post-Lottery | Waitlisted</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <description>Determines whether the current user should bypass School Application status progression validation based on lottery-related permissions.</description>
+        <name>Decision_Bypass_Status_Validation</name>
+        <label>Decision | Bypass Status Validation</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <defaultConnector>
+            <targetReference>Decision_Prior_Status</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Continue Validation</defaultConnectorLabel>
+        <rules>
+            <name>Bypass</name>
+            <conditionLogic>or</conditionLogic>
+            <conditions>
+                <leftValueReference>$Permission.Zeta_Run_Lottery</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <label>Bypass</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <description>Routes the School Application to the correct validation branch based on the prior Status value before the current update.</description>
+        <name>Decision_Prior_Status</name>
+        <label>Decision | Prior Status</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <defaultConnectorLabel>No Matching Prior Status</defaultConnectorLabel>
+        <rules>
+            <name>Prior_Status_Submitted</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record__Prior.Status</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Submitted</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Decision_Allowed_Transition_Submitted</targetReference>
+            </connector>
+            <label>Prior Status = Submitted</label>
+        </rules>
+        <rules>
+            <name>Prior_Status_Eligible</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record__Prior.Status</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Eligible</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Decision_Allowed_Transition_Eligible</targetReference>
+            </connector>
+            <label>Prior Status = Eligible</label>
+        </rules>
+        <rules>
+            <name>Prior_Status_Waitlisted</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record__Prior.Status</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Waitlisted</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Decision_Allowed_Transition_Waitlisted</targetReference>
+            </connector>
+            <label>Prior Status = Waitlisted</label>
+        </rules>
+        <rules>
+            <name>Prior_Status_Pre_Offer</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record__Prior.Status</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Pre-Offer</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Decision_Allowed_Transition_Pre_Offer</targetReference>
+            </connector>
+            <label>Prior Status = Pre-Offer</label>
+        </rules>
+        <rules>
+            <name>Prior_Status_Seat_Offered</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record__Prior.Status</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Seat Offered</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Decision_Allowed_Transition_Seat_Offered</targetReference>
+            </connector>
+            <label>Prior Status = Seat Offered</label>
+        </rules>
+        <rules>
+            <name>Prior_Status_Seat_Accepted</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record__Prior.Status</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Seat Accepted</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Decision_Allowed_Transition_Seat_Accepted</targetReference>
+            </connector>
+            <label>Prior Status = Seat Accepted</label>
+        </rules>
+        <rules>
+            <name>Prior_Status_Withdrawn_Declined</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record__Prior.Status</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Withdrawn/Declined</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Decision_Allowed_Transition_Withdrawn_Declined</targetReference>
+            </connector>
+            <label>Prior Status = Withdrawn/Declined</label>
+        </rules>
+        <rules>
+            <name>Prior_Status_Rescinded</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record__Prior.Status</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Rescinded</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Decision_Allowed_Transition_Rescinded</targetReference>
+            </connector>
+            <label>Prior Status = Rescinded</label>
+        </rules>
+        <rules>
+            <name>Prior_Status_Offer_Rescinded_Due_to_Optimization</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record__Prior.Status</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Offer Rescinded due to Seat Optimization</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Decision_Allowed_Transition_Offer_Rescinded_Due_to_Optimization</targetReference>
+            </connector>
+            <label>Prior Status = Offer Rescinded Due to Optimization</label>
+        </rules>
+        <rules>
+            <name>Prior_Status_Applied</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record__Prior.Status</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Applied</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Decision_Allowed_Transition_Applied</targetReference>
+            </connector>
+            <label>Prior Status = Applied</label>
+        </rules>
+        <rules>
+            <name>Prior_Status_Draft</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record__Prior.Status</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Draft</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Decision_Allowed_Transition_Draft</targetReference>
+            </connector>
+            <label>Prior Status = Draft</label>
+        </rules>
+    </decisions>
+    <description>Created by: Elevation Solutions
+
+Validates School Application status transitions and required withdraw/rescind reason using custom errors. Runs only when Status changes and bypasses validation for designated lottery users.</description>
+    <environments>Default</environments>
+    <formulas>
+        <name>fxHasLotteryRun</name>
+        <dataType>Boolean</dataType>
+        <expression>NOT(
+  ISBLANK({!$Record.Lottery_Capacity__r.Lottery_Run_Log__c})
+)</expression>
+    </formulas>
+    <interviewLabel>School Application (Before Save) Validate Status Progression {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>School Application (Before Save) Validate Status Progression</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <start>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>Decision_Bypass_Status_Validation</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Status</field>
+            <operator>IsChanged</operator>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </filters>
+        <object>AcademicInterest</object>
+        <recordTriggerType>Update</recordTriggerType>
+        <triggerType>RecordBeforeSave</triggerType>
+    </start>
+    <status>Active</status>
+</Flow>

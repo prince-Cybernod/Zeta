@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<WebLink xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>ZVC__Add_To_Webinar</fullName>
+    <availability>online</availability>
+    <description>add to webinar on list view</description>
+    <displayType>massActionButton</displayType>
+    <linkType>page</linkType>
+    <masterLabel>Add To Webinar</masterLabel>
+    <openType>replace</openType>
+    <page>ZVC__addLeadsToZoomWebinar</page>
+    <protected>false</protected>
+    <requireRowSelection>true</requireRowSelection>
+</WebLink>

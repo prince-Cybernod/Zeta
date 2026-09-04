@@ -13,13 +13,13 @@
     <cdpQueryCachingOptIn>false</cdpQueryCachingOptIn>
     <concurrencyLimitSharing>false</concurrencyLimitSharing>
     <disableIncrementalDatasetCreation>false</disableIncrementalDatasetCreation>
+    <enableAiSentimentInDcrPref>false</enableAiSentimentInDcrPref>
     <enableAmazonRedshiftOutputConnector>false</enableAmazonRedshiftOutputConnector>
     <enableAnalyticsSharingEnable>true</enableAnalyticsSharingEnable>
     <enableAutoCompleteCombo>true</enableAutoCompleteCombo>
     <enableAzureDLGen2OutputConnector>false</enableAzureDLGen2OutputConnector>
     <enableCioHistoryReportingPref>false</enableCioHistoryReportingPref>
     <enableCreateLegacyDataflows>false</enableCreateLegacyDataflows>
-    <enableCrmaDataCloudIntegration>false</enableCrmaDataCloudIntegration>
     <enableCrmaSubsForExpCloud>false</enableCrmaSubsForExpCloud>
     <enableCrtSetupLightningUiPref>true</enableCrtSetupLightningUiPref>
     <enableCurrencySupportInDCRPref>false</enableCurrencySupportInDCRPref>
@@ -28,28 +28,33 @@
     <enableDashboardSubOrgEmailPref>false</enableDashboardSubOrgEmailPref>
     <enableDashboardToPDFEnable>false</enableDashboardToPDFEnable>
     <enableDataCloudReportingPref>true</enableDataCloudReportingPref>
-    <enableDimensionalHierarchyInDcrPref>false</enableDimensionalHierarchyInDcrPref>
+    <enableEasySetupAI>false</enableEasySetupAI>
     <enableEmailReportsToPortalUsers>false</enableEmailReportsToPortalUsers>
+    <enableExploreInTableau>false</enableExploreInTableau>
     <enableFirebirdEditor>false</enableFirebirdEditor>
     <enableFloatingReportHeaders>true</enableFloatingReportHeaders>
+    <enableHeadlessBrowserServiceTOS>false</enableHeadlessBrowserServiceTOS>
     <enableIncludeDisclaimerMessage>false</enableIncludeDisclaimerMessage>
-    <enableIncrementalUpsert>false</enableIncrementalUpsert>
     <enableInsights>true</enableInsights>
     <enableInsightsHCMode>false</enableInsightsHCMode>
-    <enableJoinedReportInDcrPref>false</enableJoinedReportInDcrPref>
+    <enableLightningDashboardLWRPref>false</enableLightningDashboardLWRPref>
     <enableLightningReportBuilder>true</enableLightningReportBuilder>
     <enableLotusNotesImages>false</enableLotusNotesImages>
     <enableMassEnableReportBuilder>true</enableMassEnableReportBuilder>
+    <enableNativeTableauLWC>false</enableNativeTableauLWC>
     <enableNewChartsEngine>true</enableNewChartsEngine>
     <enableNullDimension>false</enableNullDimension>
-    <enableOrgCanSeeLivePreviews>false</enableOrgCanSeeLivePreviews>
     <enableOrgCanViewTableau>false</enableOrgCanViewTableau>
     <enableOrgCanViewThumbnailForOA>true</enableOrgCanViewThumbnailForOA>
     <enableOrgHasMobileOfflineEnabled>true</enableOrgHasMobileOfflineEnabled>
     <enableOrgHasWatchlistEnabled>true</enableOrgHasWatchlistEnabled>
+    <enableOrgHierarchy>false</enableOrgHierarchy>
+    <enableOrgHierarchyInDcrPref>false</enableOrgHierarchyInDcrPref>
     <enableOrgWideEmailNotification>false</enableOrgWideEmailNotification>
+    <enablePredictFunction>false</enablePredictFunction>
     <enablePupparazziForNotifications>false</enablePupparazziForNotifications>
     <enableQueryLiveConnectors>true</enableQueryLiveConnectors>
+    <enableRemoteHomeOrgOps>true</enableRemoteHomeOrgOps>
     <enableRemoveFooterForRepDisplay>false</enableRemoveFooterForRepDisplay>
     <enableRemoveFooterFromRepExp>false</enableRemoveFooterFromRepExp>
     <enableReportCdnPref>false</enableReportCdnPref>
@@ -58,6 +63,7 @@
     <enableReportHideXlsExportPref>false</enableReportHideXlsExportPref>
     <enableReportNotificationsEnable>true</enableReportNotificationsEnable>
     <enableReportSubOrgEmailPref>false</enableReportSubOrgEmailPref>
+    <enableReportTypeSearchPref>false</enableReportTypeSearchPref>
     <enableReportingOnSDMPref>false</enableReportingOnSDMPref>
     <enableRequestPrioritySchdl>false</enableRequestPrioritySchdl>
     <enableS1AnalyticsEclairEnable>true</enableS1AnalyticsEclairEnable>
@@ -68,12 +74,22 @@
     <enableShowHighContrastChart>false</enableShowHighContrastChart>
     <enableSnowflakeOutputConnector>false</enableSnowflakeOutputConnector>
     <enableSummaryFilterOrgPref>false</enableSummaryFilterOrgPref>
+    <enableTNAppAutoInstall>false</enableTNAppAutoInstall>
+    <enableTNAppAutoUpdate>false</enableTNAppAutoUpdate>
+    <enableTableauAgenticTransforms>false</enableTableauAgenticTransforms>
+    <enableTableauAssetThumbnail>false</enableTableauAssetThumbnail>
     <enableTableauHyperOutputConnector>false</enableTableauHyperOutputConnector>
+    <enableTableauSdmAiOptimization>false</enableTableauSdmAiOptimization>
+    <enableTableauSeamlessAuth>false</enableTableauSeamlessAuth>
+    <enableTableauSlackApp>false</enableTableauSlackApp>
+    <enableTableauSlackCollab>false</enableTableauSlackCollab>
     <enableUseOldChartsLookAndFeel>false</enableUseOldChartsLookAndFeel>
     <enableWaveAssetsNewDateVersion>false</enableWaveAssetsNewDateVersion>
+    <enableWaveIframeDashboard>false</enableWaveIframeDashboard>
     <enableWaveIndexMVDim>false</enableWaveIndexMVDim>
     <enableWaveIndexMVDimV2>false</enableWaveIndexMVDimV2>
     <enableWaveRecordNavigation>false</enableWaveRecordNavigation>
+    <enableWaveReplication>true</enableWaveReplication>
     <enableWaveReplication>true</enableWaveReplication>
     <enableWaveSharingInheritance>true</enableWaveSharingInheritance>
     <enableWaveSqlCFIndexing>false</enableWaveSqlCFIndexing>

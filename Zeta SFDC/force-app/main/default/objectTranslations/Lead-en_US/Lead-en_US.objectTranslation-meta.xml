@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <layouts>
+        <layout>Lead Layout</layout>
+        <sections>
+            <label><!-- Guardian --></label>
+            <section>Guardian</section>
+        </sections>
+        <sections>
+            <label><!-- Outreach --></label>
+            <section>Outreach</section>
+        </sections>
+        <sections>
+            <label><!-- Status &amp; Priority --></label>
+            <section>Status &amp; Priority</section>
+        </sections>
+        <sections>
+            <label><!-- Student --></label>
+            <section>Student</section>
+        </sections>
+    </layouts>
+    <quickActions>
+        <label><!-- Convert Lead --></label>
+        <name>Convert_Lead</name>
+    </quickActions>
+    <validationRules>
+        <errorMessage><!-- You must populate the Child First Name field in order to save this record. --></errorMessage>
+        <name>Child_First_Name_required</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Please enter a valid 10-digit phone number (numbers only, no dashes or spaces). --></errorMessage>
+        <name>Phone_Validation_Rule</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Enter either a Phone Number or Email Address. --></errorMessage>
+        <name>Require_Phone_or_Email</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Year Effective must be exactly 4 numeric digits. --></errorMessage>
+        <name>Year_Effective_must_be_4</name>
+    </validationRules>
+    <webLinks>
+        <label><!-- AltavistaNews --></label>
+        <name>AltavistaNews</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- Convert_Lead --></label>
+        <name>Convert_Lead</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- Create_Action_Plan --></label>
+        <name>Create_Action_Plan</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- Create_Action_Plans --></label>
+        <name>Create_Action_Plans</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- GoogleMaps --></label>
+        <name>GoogleMaps</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- GoogleNews --></label>
+        <name>GoogleNews</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- GoogleSearch --></label>
+        <name>GoogleSearch</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- HooversProfile --></label>
+        <name>HooversProfile</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- Send_SMS_Lead --></label>
+        <name>Mogli_SMS__Send_SMS_Lead</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- Send_SMS_Lightning --></label>
+        <name>Mogli_SMS__Send_SMS_Lightning</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- SendGmail --></label>
+        <name>SendGmail</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- YahooMaps --></label>
+        <name>YahooMaps</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- Add_To_Webinar --></label>
+        <name>ZVC__Add_To_Webinar</name>
+    </webLinks>
+</CustomObjectTranslation>

@@ -1,8 +1,8 @@
-import { LightningElement, track, wire, api } from 'lwc';
-import { NavigationMixin } from 'lightning/navigation';
-import getSectionsWithBlocksByPageId from '@salesforce/apex/SectionBlockController.getSectionsWithBlocksByPageId';
-import getSectionsWithBlocksByType from '@salesforce/apex/SectionBlockController.getSectionsWithBlocksByType';
-import { getPageReferenceByDynamicType } from 'c/commonFunctions';
+import { LightningElement, track, wire, api } from "lwc";
+import { NavigationMixin } from "lightning/navigation";
+import getSectionsWithBlocksByType from "@salesforce/apex/SectionBlockController.getSectionsWithBlocksByType";
+import getSectionsWithBlocksByPageId from "@salesforce/apex/SectionBlockController.getSectionsWithBlocksByPageId";
+import { getPageReferenceByDynamicType } from "c/commonFunctions";
 
 export default class RightContainer extends NavigationMixin(LightningElement) {
   @track sectionsWithBlocks = [];
@@ -17,16 +17,16 @@ export default class RightContainer extends NavigationMixin(LightningElement) {
   set pageId(value) {
     if (value) {
       getSectionsWithBlocksByPageId({
-        sectionType: 'Right',
+        sectionType: "Right",
         pageId: value
       })
         .then((data) => {
-          console.log('Learning Data:', data);
+          console.log("Learning Data:", data);
           this.sectionsWithBlocks = data;
           this.createDynamicLinksMap(data);
         })
         .catch((error) => {
-          console.error('Error fetching section and blocks:', error);
+          console.error("Error fetching section and blocks:", error);
         });
     }
   }
@@ -35,16 +35,16 @@ export default class RightContainer extends NavigationMixin(LightningElement) {
   connectedCallback() {
     if (this.isHome) {
       getSectionsWithBlocksByType({
-        sectionType: 'Right',
-        pageType: 'Home'
+        sectionType: "Right",
+        pageType: "Home"
       })
         .then((data) => {
-          console.log('Learning Data:', data);
+          console.log("Learning Data:", data);
           this.sectionsWithBlocks = data;
           this.createDynamicLinksMap(data);
         })
         .catch((error) => {
-          console.error('Error fetching section and blocks:', error);
+          console.error("Error fetching section and blocks:", error);
         });
     }
   }
@@ -63,27 +63,27 @@ export default class RightContainer extends NavigationMixin(LightningElement) {
   async handleClick(event) {
     const appNameValue = event.target.dataset.id;
     try {
-      console.log('inside handle on btn click for app = ' + appNameValue);
+      console.log("inside handle on btn click for app = " + appNameValue);
       if (!appNameValue) {
-        throw new Error('Application name is not defined');
+        throw new Error("Application name is not defined");
       }
       const dynamicLink = this.dynamicLinksMap[appNameValue];
-      console.log('dynamicLink = ' + dynamicLink.Link__c);
+      console.log("dynamicLink = " + dynamicLink.Link__c);
       const pageRef = await getPageReferenceByDynamicType(dynamicLink);
-      console.log('pageRef: ' + JSON.stringify(pageRef));
+      console.log("pageRef: " + JSON.stringify(pageRef));
       try {
         let url = await this[NavigationMixin.GenerateUrl](pageRef);
-        if (dynamicLink.RecordType.DeveloperName == 'SetupPage') {
+        if (dynamicLink.RecordType.DeveloperName == "SetupPage") {
           url = pageRef.attributes.url;
         }
-        console.log('url: ' + url);
+        console.log("url: " + url);
         if (!url) {
-          throw new Error('Unable to generate URL. Possibly an invalid link');
+          throw new Error("Unable to generate URL. Possibly an invalid link");
         }
         if (
-          dynamicLink.RecordType.DeveloperName == 'InAppDetailsPage' ||
-          dynamicLink.RecordType.DeveloperName == 'WebPage' ||
-          dynamicLink.RecordType.DeveloperName == 'CommunityPage'
+          dynamicLink.RecordType.DeveloperName == "InAppDetailsPage" ||
+          dynamicLink.RecordType.DeveloperName == "WebPage" ||
+          dynamicLink.RecordType.DeveloperName == "CommunityPage"
         ) {
           this[NavigationMixin.Navigate](pageRef);
         } else {
@@ -92,7 +92,7 @@ export default class RightContainer extends NavigationMixin(LightningElement) {
             .substring(2, 7);
           console.log(windowContextNameUniqueStr);
           const windowContextNameUUID = crypto.randomUUID();
-          window.open('', windowContextNameUUID);
+          window.open("", windowContextNameUUID);
           window.open(url, windowContextNameUUID);
         }
       } catch (error) {
@@ -105,9 +105,9 @@ export default class RightContainer extends NavigationMixin(LightningElement) {
 
   showToast(error, errorMessage) {
     const toastEvent = new ShowToastEvent({
-      title: 'Error',
+      title: "Error",
       message: error.body ? error.body.message : errorMessage,
-      variant: 'error'
+      variant: "error"
     });
     this.dispatchEvent(toastEvent);
   }

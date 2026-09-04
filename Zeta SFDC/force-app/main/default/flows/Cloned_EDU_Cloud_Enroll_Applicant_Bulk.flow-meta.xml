@@ -47,7 +47,7 @@
         </schedule>
         <triggerType>Scheduled</triggerType>
     </start>
-    <status>Obsolete</status>
+    <status>Active</status>
     <subflows>
         <description>Gets the application details and calls the enrollLearner action to enroll an applicant into a learning program.</description>
         <name>EnrollApplicant</name>

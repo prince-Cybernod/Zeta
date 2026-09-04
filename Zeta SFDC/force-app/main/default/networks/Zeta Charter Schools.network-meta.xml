@@ -5,15 +5,15 @@
     <changePasswordTemplate>unfiled$public/CommunityChangePasswordEmailTemplate</changePasswordTemplate>
     <communityRoles/>
     <disablePvtPagesForPwdResetInLWR>false</disablePvtPagesForPwdResetInLWR>
-    <disableReputationRecordConversations>false</disableReputationRecordConversations>
+    <disableReputationRecordConversations>true</disableReputationRecordConversations>
     <emailFooterLogo>Experiences_Shared_Document_Folder/Zeta_Purple_Email_Logo.png</emailFooterLogo>
     <emailFooterText>Zeta Charter Schools</emailFooterText>
     <emailSenderAddress>unicorn+zetacharterschools@elevation.solutions</emailSenderAddress>
     <emailSenderName>Zeta Charter Schools</emailSenderName>
     <embeddedLoginEnabled>false</embeddedLoginEnabled>
-    <enableApexCDNCaching>false</enableApexCDNCaching>
+    <enableApexCDNCaching>true</enableApexCDNCaching>
     <enableCustomVFErrorPageOverrides>false</enableCustomVFErrorPageOverrides>
-    <enableDirectMessages>false</enableDirectMessages>
+    <enableDirectMessages>true</enableDirectMessages>
     <enableExpFriendlyUrlsAsDefault>false</enableExpFriendlyUrlsAsDefault>
     <enableExperienceBundleBasedSnaOverrideEnabled>true</enableExperienceBundleBasedSnaOverrideEnabled>
     <enableGuestChatter>false</enableGuestChatter>
@@ -29,7 +29,7 @@
     <enableReputation>false</enableReputation>
     <enableShowAllNetworkSettings>false</enableShowAllNetworkSettings>
     <enableSiteAsContainer>true</enableSiteAsContainer>
-    <enableTalkingAboutStats>false</enableTalkingAboutStats>
+    <enableTalkingAboutStats>true</enableTalkingAboutStats>
     <enableTopicAssignmentRules>true</enableTopicAssignmentRules>
     <enableTopicSuggestions>false</enableTopicSuggestions>
     <enableUpDownVote>false</enableUpDownVote>
@@ -61,9 +61,9 @@
     <networkMemberGroups>
         <permissionSet>Zeta_Lottery_Custom_Object_Access</permissionSet>
         <permissionSet>Zeta_Enrollment_Custom_Object_Access</permissionSet>
+        <profile>zeta parent portal user</profile>
         <profile>admin</profile>
         <profile>zeta standard user</profile>
-        <profile>zeta parent portal user</profile>
     </networkMemberGroups>
     <networkPageOverrides>
         <changePasswordPageOverrideSetting>Standard</changePasswordPageOverrideSetting>
@@ -72,7 +72,7 @@
         <loginPageOverrideSetting>Configurable</loginPageOverrideSetting>
         <selfRegProfilePageOverrideSetting>Designer</selfRegProfilePageOverrideSetting>
     </networkPageOverrides>
-    <newSenderAddress>enroll@connect.zetaschools.org</newSenderAddress>
+    <newSenderAddress>enroll@zetaschools.org</newSenderAddress>
     <picassoSite>Zeta_Charter_Schools1</picassoSite>
     <secondaryEmailSenderEnabled>false</secondaryEmailSenderEnabled>
     <selfRegistration>true</selfRegistration>

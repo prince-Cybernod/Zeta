@@ -590,7 +590,7 @@ Match by SchoolMint ID OR fallback logic</description>
         <recordTriggerType>Create</recordTriggerType>
         <triggerType>RecordAfterSave</triggerType>
     </start>
-    <status>Obsolete</status>
+    <status>Draft</status>
     <variables>
         <description>passes the individual application Id</description>
         <name>recordId</name>

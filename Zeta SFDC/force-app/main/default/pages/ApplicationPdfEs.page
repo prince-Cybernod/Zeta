@@ -1,0 +1,239 @@
+<apex:page controller="ApplicationPdfController"
+  renderAs="pdf"
+  applyBodyTag="false"
+  sidebar="false"
+  showHeader="false"
+  standardStylesheets="false"
+  language="es"
+>
+  <head>
+    <style type="text/css">
+      @page {
+        size: letter;
+        margin: 0.75in;
+      }
+      body {
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: 10pt;
+        color: #333333;
+        line-height: 1.4;
+      }
+      .header {
+        text-align: center;
+        border-bottom: 2px solid #31356e;
+        padding-bottom: 10px;
+        margin-bottom: 20px;
+      }
+      .header h1 {
+        font-size: 18pt;
+        color: #31356e;
+        margin: 0 0 4px 0;
+      }
+      .header .subtitle {
+        font-size: 10pt;
+        color: #666666;
+      }
+      .section-title {
+        font-size: 12pt;
+        font-weight: bold;
+        color: #31356e;
+        border-bottom: 1px solid #cccccc;
+        padding-bottom: 4px;
+        margin: 20px 0 10px 0;
+      }
+      .field-row {
+        display: block;
+        margin-bottom: 6px;
+      }
+      .field-label {
+        font-weight: bold;
+        color: #555555;
+        display: inline-block;
+        width: 200px;
+      }
+      .field-value {
+        display: inline;
+      }
+      table.data-table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 8px 0;
+      }
+      table.data-table th {
+        background-color: #f3f4f6;
+        font-weight: bold;
+        text-align: left;
+        padding: 6px 8px;
+        border: 1px solid #d1d5db;
+        font-size: 9pt;
+        color: #31356e;
+      }
+      table.data-table td {
+        padding: 5px 8px;
+        border: 1px solid #d1d5db;
+        font-size: 9pt;
+      }
+      .signature-block {
+        margin-top: 30px;
+        border-top: 1px solid #cccccc;
+        padding-top: 15px;
+      }
+      .signature-line {
+        margin-bottom: 6px;
+      }
+      .footer {
+        text-align: center;
+        font-size: 8pt;
+        color: #999999;
+        margin-top: 30px;
+        border-top: 1px solid #eeeeee;
+        padding-top: 8px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="header">
+      <h1>{!$Label.AppUI_ApplicationTitle}</h1>
+      <div class="subtitle">
+        {!$Label.AppPdf_SubmittedOn} {!formattedSubmissionDate}
+      </div>
+      <div class="subtitle">
+        {!$Label.AppPdf_ReferenceNumber}: {!application.Name}
+      </div>
+    </div>
+
+    <!-- Student Information -->
+    <div class="section-title">{!$Label.AppUI_StepStudentInfo}</div>
+    <div class="field-row">
+      <span class="field-label">{!$Label.AppUI_FieldName}:</span>
+      <span class="field-value">{!studentName}</span>
+    </div>
+    <div class="field-row">
+      <span class="field-label">{!$Label.AppUI_FieldDateOfBirth}:</span>
+      <span class="field-value">{!studentDateOfBirth}</span>
+    </div>
+    <div class="field-row">
+      <span class="field-label">{!$Label.AppPdf_GradeApplyingTo}:</span>
+      <span class="field-value">{!gradeApplyingTo}</span>
+    </div>
+
+    <!-- Guardian Information -->
+    <div class="section-title">{!$Label.AppPdf_GuardianInformation}</div>
+    <div class="field-row">
+      <span class="field-label">{!$Label.AppPdf_Guardian1Name}:</span>
+      <span class="field-value">{!guardian1Name}</span>
+    </div>
+    <div class="field-row">
+      <span class="field-label">{!$Label.AppPdf_Email}:</span>
+      <span class="field-value">{!guardian1Email}</span>
+    </div>
+    <div class="field-row">
+      <span class="field-label">{!$Label.AppPdf_Phone}:</span>
+      <span class="field-value">{!guardian1Phone}</span>
+    </div>
+    <div class="field-row">
+      <span class="field-label">{!$Label.AppPdf_Relationship}:</span>
+      <span class="field-value">{!guardian1Relationship}</span>
+    </div>
+
+    <apex:outputPanel rendered="{!hasGuardian2}">
+      <div class="section-title">{!$Label.AppPdf_Guardian2}</div>
+      <div class="field-row">
+        <span class="field-label">{!$Label.AppUI_FieldName}:</span>
+        <span class="field-value">{!guardian2Name}</span>
+      </div>
+      <div class="field-row">
+        <span class="field-label">{!$Label.AppPdf_Email}:</span>
+        <span class="field-value">{!guardian2Email}</span>
+      </div>
+      <div class="field-row">
+        <span class="field-label">{!$Label.AppPdf_Phone}:</span>
+        <span class="field-value">{!guardian2Phone}</span>
+      </div>
+      <div class="field-row">
+        <span class="field-label">{!$Label.AppPdf_Relationship}:</span>
+        <span class="field-value">{!guardian2Relationship}</span>
+      </div>
+    </apex:outputPanel>
+
+    <!-- School Rankings -->
+    <div class="section-title">{!$Label.AppUI_SectionSchoolRankings}</div>
+    <table class="data-table">
+      <tr>
+        <th style="width: 60px">{!$Label.AppPdf_Rank}</th>
+        <th>{!$Label.AppPdf_SchoolName}</th>
+      </tr>
+      <apex:repeat value="{!rankedSchools}" var="school">
+        <tr>
+          <td>{!school['rank']}</td>
+          <td>{!school['name']}</td>
+        </tr>
+      </apex:repeat>
+    </table>
+
+    <!-- Application Details (CMDT-driven form answers) -->
+    <apex:outputPanel rendered="{!formAnswers.size > 0}">
+      <div class="section-title">{!$Label.AppUI_SectionApplicationDetails}</div>
+      <apex:repeat value="{!formAnswers}" var="answer">
+        <div class="field-row">
+          <span class="field-label">{!answer['label']}:</span>
+          <span class="field-value">{!answer['value']}</span>
+        </div>
+      </apex:repeat>
+    </apex:outputPanel>
+
+    <!-- Siblings -->
+    <apex:outputPanel rendered="{!hasAttendingSiblings}">
+      <div class="section-title">{!$Label.AppUI_SiblingsAttending}</div>
+      <table class="data-table">
+        <tr>
+          <th>{!$Label.AppUI_FieldName}</th>
+          <th>{!$Label.AppUI_FieldDateOfBirth}</th>
+          <th>{!$Label.AppUI_FieldGender}</th>
+          <th>{!$Label.AppUI_FieldZetaSchool}</th>
+        </tr>
+        <apex:repeat value="{!attendingSiblings}" var="sib">
+          <tr>
+            <td>{!sib['name']}</td>
+            <td>{!sib['dateOfBirth']}</td>
+            <td>{!sib['gender']}</td>
+            <td>{!sib['zetaSchool']}</td>
+          </tr>
+        </apex:repeat>
+      </table>
+    </apex:outputPanel>
+
+    <apex:outputPanel rendered="{!hasApplyingSiblings}">
+      <div class="section-title">{!$Label.AppUI_SiblingsApplying}</div>
+      <table class="data-table">
+        <tr>
+          <th>{!$Label.AppUI_FieldName}</th>
+          <th>{!$Label.AppUI_FieldDateOfBirth}</th>
+          <th>{!$Label.AppUI_FieldGender}</th>
+        </tr>
+        <apex:repeat value="{!applyingSiblings}" var="sib">
+          <tr>
+            <td>{!sib['name']}</td>
+            <td>{!sib['dateOfBirth']}</td>
+            <td>{!sib['gender']}</td>
+          </tr>
+        </apex:repeat>
+      </table>
+    </apex:outputPanel>
+
+    <!-- Signature -->
+    <div class="signature-block">
+      <div class="section-title">{!$Label.AppUI_ESignatureTitle}</div>
+      <div class="signature-line">
+        <span class="field-label">{!$Label.AppUI_ESignatureNameLabel}:</span>
+        <span class="field-value">{!signatureName}</span>
+      </div>
+      <div class="signature-line">
+        <span class="field-label">{!$Label.AppUI_ESignatureDateLabel}:</span>
+        <span class="field-value">{!formattedSignatureDate}</span>
+      </div>
+    </div>
+
+    <div class="footer">{!$Label.AppPdf_Footer}</div>
+  </body>
+</apex:page>

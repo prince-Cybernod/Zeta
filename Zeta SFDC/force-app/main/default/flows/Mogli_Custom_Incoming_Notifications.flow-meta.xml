@@ -36,6 +36,7 @@
             </value>
         </inputParameters>
         <nameSegment>emailSimple</nameSegment>
+        <offset>0</offset>
     </actionCalls>
     <actionCalls>
         <name>Push_Notification</name>
@@ -79,9 +80,105 @@
             </value>
         </inputParameters>
         <nameSegment>customNotificationAction</nameSegment>
+        <offset>0</offset>
     </actionCalls>
     <apiVersion>60.0</apiVersion>
     <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <assignments>
+        <name>Academic_Term_Enrollment_Assignments</name>
+        <label>Academic Term Enrollment Assignments</label>
+        <locationX>1529</locationX>
+        <locationY>125</locationY>
+        <assignmentItems>
+            <assignToReference>vRecipientCollection</assignToReference>
+            <operator>Add</operator>
+            <value>
+                <elementReference>Get_Last_Outgoing_Sender.OwnerId</elementReference>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>vRecipientEmail</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>Get_Last_Outgoing_Sender.Owner:User.Email</elementReference>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>vRecipientPhone</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>Get_Last_Outgoing_Sender.Owner:User.MobilePhone</elementReference>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>vRecordId</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>$Record.Academic_Term_Enrollment__c</elementReference>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>vSenderName</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>$Record.Academic_Term_Enrollment__r.Student_Name__c</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>dPush_Notification</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <name>Academic_Term_Enrollment_Assignments_0</name>
+        <label>Academic Term Enrollment Assignments</label>
+        <locationX>910</locationX>
+        <locationY>716</locationY>
+        <assignmentItems>
+            <assignToReference>vRecipientCollection</assignToReference>
+            <operator>Add</operator>
+            <value>
+                <elementReference>$Record.Academic_Term_Enrollment__r.OwnerId</elementReference>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>vRecipientEmail</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>$Record.Academic_Term_Enrollment__r.Owner:User.Email</elementReference>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>vRecipientPhone</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>$Record.Academic_Term_Enrollment__r.Owner:User.MobilePhone</elementReference>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>vRecordId</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>$Record.Academic_Term_Enrollment__c</elementReference>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>vSenderName</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>$Record.Academic_Term_Enrollment__r.Student_Name__c</elementReference>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>vUserActive</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>$Record.Academic_Term_Enrollment__r.Owner:User.IsActive</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>User_Active</targetReference>
+        </connector>
+    </assignments>
     <assignments>
         <name>Contact_Assignments</name>
         <label>Contact Assignments</label>
@@ -500,9 +597,24 @@
     <decisions>
         <name>Object_Lookup</name>
         <label>Object Lookup</label>
-        <locationX>1240</locationX>
+        <locationX>1241</locationX>
         <locationY>604</locationY>
         <defaultConnectorLabel>None</defaultConnectorLabel>
+        <rules>
+            <name>Academic_Term_Enrollment_0</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Academic_Term_Enrollment__c</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Academic_Term_Enrollment_Assignments_0</targetReference>
+            </connector>
+            <label>Academic Term Enrollment</label>
+        </rules>
         <rules>
             <name>Contact</name>
             <conditionLogic>and</conditionLogic>
@@ -555,6 +667,21 @@
         <locationX>1360</locationX>
         <locationY>259</locationY>
         <defaultConnectorLabel>None</defaultConnectorLabel>
+        <rules>
+            <name>Academic_Term_Enrollment</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Academic_Term_Enrollment__c</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Academic_Term_Enrollment_Assignments</targetReference>
+            </connector>
+            <label>Academic Term Enrollment</label>
+        </rules>
         <rules>
             <name>Contact_0</name>
             <conditionLogic>and</conditionLogic>
@@ -777,7 +904,7 @@
             <targetReference>Get_Application_Settings</targetReference>
         </connector>
         <doesRequireRecordChangedToMeetCriteria>true</doesRequireRecordChangedToMeetCriteria>
-        <filterLogic>1 AND (2 OR 3 OR 4)</filterLogic>
+        <filterLogic>1 AND (2 OR 3 OR 4 OR 5)</filterLogic>
         <filters>
             <field>Mogli_SMS__Direction__c</field>
             <operator>EqualTo</operator>
@@ -806,11 +933,18 @@
                 <booleanValue>false</booleanValue>
             </value>
         </filters>
+        <filters>
+            <field>Academic_Term_Enrollment__c</field>
+            <operator>IsNull</operator>
+            <value>
+                <booleanValue>false</booleanValue>
+            </value>
+        </filters>
         <object>Mogli_SMS__SMS__c</object>
         <recordTriggerType>CreateAndUpdate</recordTriggerType>
         <triggerType>RecordAfterSave</triggerType>
     </start>
-    <status>Draft</status>
+    <status>Active</status>
     <textTemplates>
         <name>tBody</name>
         <isViewedAsPlainText>true</isViewedAsPlainText>

@@ -5,6 +5,17 @@
             <componentInstance>
                 <componentInstanceProperties>
                     <name>actionNames</name>
+                    <valueList>
+                        <valueListItems>
+                            <value>Lead.Convert_Lead</value>
+                        </valueListItems>
+                        <valueListItems>
+                            <value>Lead.ZVC__Add_To_Webinar</value>
+                        </valueListItems>
+                        <valueListItems>
+                            <value>ChangeOwnerOne</value>
+                        </valueListItems>
+                    </valueList>
                 </componentInstanceProperties>
                 <componentInstanceProperties>
                     <name>collapsed</name>
@@ -20,7 +31,7 @@
                 </componentInstanceProperties>
                 <componentInstanceProperties>
                     <name>hideChatterActions</name>
-                    <value>false</value>
+                    <value>true</value>
                 </componentInstanceProperties>
                 <componentInstanceProperties>
                     <name>hideSlackAction</name>
@@ -62,6 +73,58 @@
             <fieldInstance>
                 <fieldInstanceProperties>
                     <name>uiBehavior</name>
+                    <value>none</value>
+                </fieldInstanceProperties>
+                <fieldItem>Record.Next_Follow_Up_Due__c</fieldItem>
+                <identifier>RecordNext_Follow_Up_Due__cField</identifier>
+            </fieldInstance>
+        </itemInstances>
+        <name>Facet-e1d5ab9d-fb35-42b3-9ebf-5633a4811c3f</name>
+        <type>Facet</type>
+    </flexiPageRegions>
+    <flexiPageRegions>
+        <itemInstances>
+            <fieldInstance>
+                <fieldInstanceProperties>
+                    <name>uiBehavior</name>
+                    <value>none</value>
+                </fieldInstanceProperties>
+                <fieldItem>Record.SLA_Flag__c</fieldItem>
+                <identifier>RecordSLA_Flag__cField</identifier>
+            </fieldInstance>
+        </itemInstances>
+        <name>Facet-a4d62f74-b6e5-4d43-ada0-3e3c40d2b72d</name>
+        <type>Facet</type>
+    </flexiPageRegions>
+    <flexiPageRegions>
+        <itemInstances>
+            <componentInstance>
+                <componentInstanceProperties>
+                    <name>body</name>
+                    <value>Facet-e1d5ab9d-fb35-42b3-9ebf-5633a4811c3f</value>
+                </componentInstanceProperties>
+                <componentName>flexipage:column</componentName>
+                <identifier>flexipage_column</identifier>
+            </componentInstance>
+        </itemInstances>
+        <itemInstances>
+            <componentInstance>
+                <componentInstanceProperties>
+                    <name>body</name>
+                    <value>Facet-a4d62f74-b6e5-4d43-ada0-3e3c40d2b72d</value>
+                </componentInstanceProperties>
+                <componentName>flexipage:column</componentName>
+                <identifier>flexipage_column2</identifier>
+            </componentInstance>
+        </itemInstances>
+        <name>Facet-a756303f-0bd6-4471-9369-e911aaa82e31</name>
+        <type>Facet</type>
+    </flexiPageRegions>
+    <flexiPageRegions>
+        <itemInstances>
+            <fieldInstance>
+                <fieldInstanceProperties>
+                    <name>uiBehavior</name>
                     <value>required</value>
                 </fieldInstanceProperties>
                 <fieldItem>Record.Guardian_First_Name__c</fieldItem>
@@ -88,16 +151,6 @@
                 <identifier>RecordOutside_of_NYC__cField</identifier>
             </fieldInstance>
         </itemInstances>
-        <itemInstances>
-            <fieldInstance>
-                <fieldInstanceProperties>
-                    <name>uiBehavior</name>
-                    <value>none</value>
-                </fieldInstanceProperties>
-                <fieldItem>Record.Application_Timeline__c</fieldItem>
-                <identifier>RecordApplication_Timeline__cField</identifier>
-            </fieldInstance>
-        </itemInstances>
         <name>Facet-7f507d70-bc43-4604-9a86-70ba02160f07</name>
         <type>Facet</type>
     </flexiPageRegions>
@@ -106,7 +159,7 @@
             <fieldInstance>
                 <fieldInstanceProperties>
                     <name>uiBehavior</name>
-                    <value>required</value>
+                    <value>none</value>
                 </fieldInstanceProperties>
                 <fieldItem>Record.Email</fieldItem>
                 <identifier>RecordEmailField</identifier>
@@ -116,10 +169,20 @@
             <fieldInstance>
                 <fieldInstanceProperties>
                     <name>uiBehavior</name>
-                    <value>required</value>
+                    <value>none</value>
                 </fieldInstanceProperties>
                 <fieldItem>Record.Phone</fieldItem>
                 <identifier>RecordPhoneField</identifier>
+            </fieldInstance>
+        </itemInstances>
+        <itemInstances>
+            <fieldInstance>
+                <fieldInstanceProperties>
+                    <name>uiBehavior</name>
+                    <value>required</value>
+                </fieldInstanceProperties>
+                <fieldItem>Record.Application_Timeline__c</fieldItem>
+                <identifier>RecordApplication_Timeline__cField</identifier>
             </fieldInstance>
         </itemInstances>
         <name>Facet-3e6b935d-004f-4925-9c82-8efe6c3e19d8</name>
@@ -208,7 +271,7 @@
             <fieldInstance>
                 <fieldInstanceProperties>
                     <name>uiBehavior</name>
-                    <value>required</value>
+                    <value>none</value>
                 </fieldInstanceProperties>
                 <fieldItem>Record.Date_of_Birth__c</fieldItem>
                 <identifier>RecordDate_of_Birth_cField</identifier>
@@ -222,16 +285,6 @@
                 </fieldInstanceProperties>
                 <fieldItem>Record.Interested_School_s__c</fieldItem>
                 <identifier>RecordInterested_School_s_cField</identifier>
-            </fieldInstance>
-        </itemInstances>
-        <itemInstances>
-            <fieldInstance>
-                <fieldInstanceProperties>
-                    <name>uiBehavior</name>
-                    <value>none</value>
-                </fieldInstanceProperties>
-                <fieldItem>Record.Interested_School_s_Ranking__c</fieldItem>
-                <identifier>RecordInterested_School_s_Ranking_cField</identifier>
             </fieldInstance>
         </itemInstances>
         <itemInstances>
@@ -566,8 +619,8 @@
                     <name>uiBehavior</name>
                     <value>none</value>
                 </fieldInstanceProperties>
-                <fieldItem>Record.LeadSource</fieldItem>
-                <identifier>RecordLeadSourceField</identifier>
+                <fieldItem>Record.Lead_Source__c</fieldItem>
+                <identifier>RecordLead_Source_cField</identifier>
             </fieldInstance>
         </itemInstances>
         <itemInstances>
@@ -578,6 +631,16 @@
                 </fieldInstanceProperties>
                 <fieldItem>Record.QR_Code_UTM_Source__c</fieldItem>
                 <identifier>RecordQR_Code_UTM_Source_cField</identifier>
+            </fieldInstance>
+        </itemInstances>
+        <itemInstances>
+            <fieldInstance>
+                <fieldInstanceProperties>
+                    <name>uiBehavior</name>
+                    <value>none</value>
+                </fieldInstanceProperties>
+                <fieldItem>Record.CBO_Account__c</fieldItem>
+                <identifier>RecordCBO_Account__cField</identifier>
             </fieldInstance>
         </itemInstances>
         <name>Facet-ddb6fc69-2018-4838-ae66-81c615467694</name>
@@ -708,6 +771,24 @@
         <type>Facet</type>
     </flexiPageRegions>
     <flexiPageRegions>
+        <itemInstances>
+            <componentInstance>
+                <componentInstanceProperties>
+                    <name>columns</name>
+                    <value>Facet-a756303f-0bd6-4471-9369-e911aaa82e31</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>horizontalAlignment</name>
+                    <value>false</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>label</name>
+                    <value>SLA Flags</value>
+                </componentInstanceProperties>
+                <componentName>flexipage:fieldSection</componentName>
+                <identifier>flexipage_fieldSection</identifier>
+            </componentInstance>
+        </itemInstances>
         <itemInstances>
             <componentInstance>
                 <componentInstanceProperties>
@@ -963,6 +1044,30 @@
                 </componentInstanceProperties>
                 <componentName>runtime_sales_merge:mergeCandidatesPreviewCard</componentName>
                 <identifier>runtime_sales_merge_mergeCandidatesPreviewCard</identifier>
+            </componentInstance>
+        </itemInstances>
+        <itemInstances>
+            <componentInstance>
+                <componentInstanceProperties>
+                    <name>attachmentsDisabled</name>
+                    <value>false</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>canOverrideDefaults</name>
+                    <value>Enabled</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>customLimitUnit</name>
+                    <value>Segments</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>mcvConfigurationRecord</name>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>recordId</name>
+                </componentInstanceProperties>
+                <componentName>Mogli_SMS:TextMessageComponentEmpApi</componentName>
+                <identifier>Mogli_SMS_TextMessageComponentEmpApi</identifier>
             </componentInstance>
         </itemInstances>
         <itemInstances>

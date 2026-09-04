@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <UserAccessPolicy xmlns="http://soap.sforce.com/2006/04/metadata">
-    <booleanFilter>1 AND 2</booleanFilter>
+    <booleanFilter>1</booleanFilter>
     <description>Auto-assign the “Zeta System Admins” Permission Set Group when a user’s profile is System Administrator. Revoke the PSG if the profile changes.</description>
     <masterLabel>Zeta — Assign System Admin PSG</masterLabel>
     <order>1</order>
@@ -16,13 +16,5 @@
         <sortOrder>1</sortOrder>
         <target>admin</target>
         <type>Profile</type>
-    </userAccessPolicyFilters>
-    <userAccessPolicyFilters>
-        <columnName>IsActive</columnName>
-        <operation>equals</operation>
-        <sortOrder>2</sortOrder>
-        <target>User</target>
-        <type>User</type>
-        <value>TRUE</value>
     </userAccessPolicyFilters>
 </UserAccessPolicy>

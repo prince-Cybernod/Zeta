@@ -16,6 +16,16 @@
                 <label>After School Program</label>
             </value>
             <value>
+                <fullName>Business</fullName>
+                <default>false</default>
+                <label>Business</label>
+            </value>
+            <value>
+                <fullName>Community Organization</fullName>
+                <default>false</default>
+                <label>Community Organization</label>
+            </value>
+            <value>
                 <fullName>Daycare / Pre-k center</fullName>
                 <default>false</default>
                 <label>Daycare / Pre-k center</label>
@@ -31,9 +41,19 @@
                 <label>Medical center</label>
             </value>
             <value>
+                <fullName>Pediatric Clinic</fullName>
+                <default>false</default>
+                <label>Pediatric Clinic</label>
+            </value>
+            <value>
                 <fullName>Place of worship</fullName>
                 <default>false</default>
                 <label>Place of worship</label>
+            </value>
+            <value>
+                <fullName>Play Center</fullName>
+                <default>false</default>
+                <label>Play Center</label>
             </value>
             <value>
                 <fullName>Shelter</fullName>
@@ -46,14 +66,9 @@
                 <label>Sport center</label>
             </value>
             <value>
-                <fullName>Play Center</fullName>
+                <fullName>Other</fullName>
                 <default>false</default>
-                <label>Play Center</label>
-            </value>
-            <value>
-                <fullName>Other Community Organization</fullName>
-                <default>false</default>
-                <label>Other Community Organization</label>
+                <label>Other</label>
             </value>
         </valueSetDefinition>
     </valueSet>

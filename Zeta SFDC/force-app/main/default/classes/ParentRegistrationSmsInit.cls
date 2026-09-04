@@ -45,7 +45,8 @@ public without sharing class ParentRegistrationSmsInit extends ParentRegistratio
           }
           when else {
             if (req.contactId == null) {
-              Account account = AccountService.getNewAccount(email, firstName, lastName, phone, req.street, req.city, req.state, req.postalCode, req.country);
+              Account account = AccountService.getNewAccount(email, firstName, lastName, phone, req.street, req.city, req.state, req.postalCode, req.country
+              );
               accountId = account?.Id;
               contactId = account?.PersonContactId;
             } else {

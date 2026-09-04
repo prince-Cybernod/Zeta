@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Sold_Out__c</fullName>
+    <formula>Total_Tickets_Sold__c&gt;=Event_Capacity__c</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>Sold Out</label>
+    <trackHistory>false</trackHistory>
+    <type>Checkbox</type>
+</CustomField>

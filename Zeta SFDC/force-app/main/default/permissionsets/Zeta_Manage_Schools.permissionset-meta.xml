@@ -392,11 +392,6 @@
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>false</editable>
-        <field>AcademicTermEnrollment.Charter_Name__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
         <editable>true</editable>
         <field>AcademicTermEnrollment.Chromebook_Collection_Notes__c</field>
         <readable>true</readable>
@@ -529,11 +524,6 @@
     <fieldPermissions>
         <editable>true</editable>
         <field>AcademicTermEnrollment.EnrollmentStatus</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>false</editable>
-        <field>AcademicTermEnrollment.Enrollment_Date_Formula__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -932,11 +922,6 @@
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>false</editable>
-        <field>AcademicTermEnrollment.Primary_Guardian_Contact_Id__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
         <editable>true</editable>
         <field>AcademicTermEnrollment.Proof_of_NYS_Residency_1__c</field>
         <readable>true</readable>
@@ -994,11 +979,6 @@
     <fieldPermissions>
         <editable>true</editable>
         <field>AcademicTermEnrollment.School_Id__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>false</editable>
-        <field>AcademicTermEnrollment.School_Name__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -1393,6 +1373,16 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
+        <field>Account.Zoho_Guardian_Id__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>Account.Zoho_Student_Id__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
         <field>ApplicationTimeline.Academic_Term__c</field>
         <readable>true</readable>
     </fieldPermissions>
@@ -1469,6 +1459,11 @@
     <fieldPermissions>
         <editable>false</editable>
         <field>Contact.Portal_User__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>Contact.Zoho_Guardian_Id__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>

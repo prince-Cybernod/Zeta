@@ -18,12 +18,28 @@
             <label>Expected Revenue</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
+            <field>00NWJ0000080o2I</field>
+            <label>Mogli Number</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
             <field>OPPORTUNITY.PROBABILITY</field>
             <label>Probability (%)</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
             <field>CORE.USERS.ALIAS</field>
             <label>Opportunity Owner Alias</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NWJ0000080o2H</field>
+            <label>MogliAI Summary</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NWJ0000080o2G</field>
+            <label>Default Gateway</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NWJ0000080o2F</field>
+            <label>Mogli Avatar URL</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
             <field>OPPORTUNITY.FISCAL_QUARTER</field>
@@ -58,10 +74,6 @@
             <label>Opportunity Name</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
-            <field>00Ncv00000GHshi</field>
-            <label>Mogli Opt Out</label>
-        </forecastingObjectListLabelMappings>
-        <forecastingObjectListLabelMappings>
             <field>OPPORTUNITY.ISPRIORITYRECORD</field>
             <label>Important</label>
         </forecastingObjectListLabelMappings>
@@ -72,22 +84,6 @@
         <forecastingObjectListLabelMappings>
             <field>ACCOUNT.SITE</field>
             <label>Account Site</label>
-        </forecastingObjectListLabelMappings>
-        <forecastingObjectListLabelMappings>
-            <field>00Ncv00000GHshe</field>
-            <label>Mogli Avatar URL</label>
-        </forecastingObjectListLabelMappings>
-        <forecastingObjectListLabelMappings>
-            <field>00Ncv00000GHshf</field>
-            <label>Default Gateway</label>
-        </forecastingObjectListLabelMappings>
-        <forecastingObjectListLabelMappings>
-            <field>00Ncv00000GHshg</field>
-            <label>MogliAI Summary</label>
-        </forecastingObjectListLabelMappings>
-        <forecastingObjectListLabelMappings>
-            <field>00Ncv00000GHshh</field>
-            <label>Mogli Number</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
             <field>OPPORTUNITY.PRIVATE</field>
@@ -178,6 +174,10 @@
             <label>Fiscal Year</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
+            <field>00NWJ0000080o2J</field>
+            <label>Mogli Opt Out</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
             <field>Contacts</field>
             <label>__MISSING LABEL__ PropertyFile - val Contacts not found in section ForecastingOppListFilter</label>
         </forecastingObjectListLabelMappings>
@@ -236,11 +236,11 @@
             <field>OPPORTUNITY.LAST_ACTIVITY</field>
             <field>OPPORTUNITY.CREATED_DATE</field>
             <field>OPPORTUNITY.LAST_UPDATE</field>
-            <field>00Ncv00000GHshf</field>
-            <field>00Ncv00000GHshg</field>
-            <field>00Ncv00000GHshe</field>
-            <field>00Ncv00000GHshh</field>
-            <field>00Ncv00000GHshi</field>
+            <field>00NWJ0000080o2G</field>
+            <field>00NWJ0000080o2H</field>
+            <field>00NWJ0000080o2F</field>
+            <field>00NWJ0000080o2I</field>
+            <field>00NWJ0000080o2J</field>
             <field>PARTNER.NAME</field>
             <field>OPPORTUNITY.ISPRIORITYRECORD</field>
             <field>OPPORTUNITY.LAST_STG_CHG_DAYS</field>
@@ -270,12 +270,28 @@
             <label>Expected Revenue</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
+            <field>00NWJ0000080o2I</field>
+            <label>Mogli Number</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
             <field>OPPORTUNITY.PROBABILITY</field>
             <label>Probability (%)</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
             <field>CORE.USERS.ALIAS</field>
             <label>Opportunity Owner Alias</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NWJ0000080o2H</field>
+            <label>MogliAI Summary</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NWJ0000080o2G</field>
+            <label>Default Gateway</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NWJ0000080o2F</field>
+            <label>Mogli Avatar URL</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
             <field>OPPORTUNITY.FISCAL_QUARTER</field>
@@ -310,10 +326,6 @@
             <label>Opportunity Name</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
-            <field>00Ncv00000GHshi</field>
-            <label>Mogli Opt Out</label>
-        </forecastingObjectListLabelMappings>
-        <forecastingObjectListLabelMappings>
             <field>OPPORTUNITY.ISPRIORITYRECORD</field>
             <label>Important</label>
         </forecastingObjectListLabelMappings>
@@ -324,22 +336,6 @@
         <forecastingObjectListLabelMappings>
             <field>ACCOUNT.SITE</field>
             <label>Account Site</label>
-        </forecastingObjectListLabelMappings>
-        <forecastingObjectListLabelMappings>
-            <field>00Ncv00000GHshe</field>
-            <label>Mogli Avatar URL</label>
-        </forecastingObjectListLabelMappings>
-        <forecastingObjectListLabelMappings>
-            <field>00Ncv00000GHshf</field>
-            <label>Default Gateway</label>
-        </forecastingObjectListLabelMappings>
-        <forecastingObjectListLabelMappings>
-            <field>00Ncv00000GHshg</field>
-            <label>MogliAI Summary</label>
-        </forecastingObjectListLabelMappings>
-        <forecastingObjectListLabelMappings>
-            <field>00Ncv00000GHshh</field>
-            <label>Mogli Number</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
             <field>OPPORTUNITY.PRIVATE</field>
@@ -430,6 +426,10 @@
             <label>Fiscal Year</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
+            <field>00NWJ0000080o2J</field>
+            <label>Mogli Opt Out</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
             <field>Contacts</field>
             <label>__MISSING LABEL__ PropertyFile - val Contacts not found in section ForecastingOppListFilter</label>
         </forecastingObjectListLabelMappings>
@@ -488,11 +488,11 @@
             <field>OPPORTUNITY.LAST_ACTIVITY</field>
             <field>OPPORTUNITY.CREATED_DATE</field>
             <field>OPPORTUNITY.LAST_UPDATE</field>
-            <field>00Ncv00000GHshf</field>
-            <field>00Ncv00000GHshg</field>
-            <field>00Ncv00000GHshe</field>
-            <field>00Ncv00000GHshh</field>
-            <field>00Ncv00000GHshi</field>
+            <field>00NWJ0000080o2G</field>
+            <field>00NWJ0000080o2H</field>
+            <field>00NWJ0000080o2F</field>
+            <field>00NWJ0000080o2I</field>
+            <field>00NWJ0000080o2J</field>
             <field>PARTNER.NAME</field>
             <field>OPPORTUNITY.ISPRIORITYRECORD</field>
             <field>OPPORTUNITY.LAST_STG_CHG_DAYS</field>
@@ -522,12 +522,28 @@
             <label>Expected Revenue</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
+            <field>00NWJ0000080o2I</field>
+            <label>Mogli Number</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
             <field>OPPORTUNITY.PROBABILITY</field>
             <label>Probability (%)</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
             <field>CORE.USERS.ALIAS</field>
             <label>Opportunity Owner Alias</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NWJ0000080o2H</field>
+            <label>MogliAI Summary</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NWJ0000080o2G</field>
+            <label>Default Gateway</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NWJ0000080o2F</field>
+            <label>Mogli Avatar URL</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
             <field>OPPORTUNITY.FISCAL_QUARTER</field>
@@ -562,10 +578,6 @@
             <label>Opportunity Name</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
-            <field>00Ncv00000GHshi</field>
-            <label>Mogli Opt Out</label>
-        </forecastingObjectListLabelMappings>
-        <forecastingObjectListLabelMappings>
             <field>OPPORTUNITY.ISPRIORITYRECORD</field>
             <label>Important</label>
         </forecastingObjectListLabelMappings>
@@ -576,22 +588,6 @@
         <forecastingObjectListLabelMappings>
             <field>ACCOUNT.SITE</field>
             <label>Account Site</label>
-        </forecastingObjectListLabelMappings>
-        <forecastingObjectListLabelMappings>
-            <field>00Ncv00000GHshe</field>
-            <label>Mogli Avatar URL</label>
-        </forecastingObjectListLabelMappings>
-        <forecastingObjectListLabelMappings>
-            <field>00Ncv00000GHshf</field>
-            <label>Default Gateway</label>
-        </forecastingObjectListLabelMappings>
-        <forecastingObjectListLabelMappings>
-            <field>00Ncv00000GHshg</field>
-            <label>MogliAI Summary</label>
-        </forecastingObjectListLabelMappings>
-        <forecastingObjectListLabelMappings>
-            <field>00Ncv00000GHshh</field>
-            <label>Mogli Number</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
             <field>OPPORTUNITY.PRIVATE</field>
@@ -682,6 +678,10 @@
             <label>Fiscal Year</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
+            <field>00NWJ0000080o2J</field>
+            <label>Mogli Opt Out</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
             <field>Contacts</field>
             <label>__MISSING LABEL__ PropertyFile - val Contacts not found in section ForecastingOppQtyListFilter</label>
         </forecastingObjectListLabelMappings>
@@ -740,11 +740,11 @@
             <field>OPPORTUNITY.LAST_ACTIVITY</field>
             <field>OPPORTUNITY.CREATED_DATE</field>
             <field>OPPORTUNITY.LAST_UPDATE</field>
-            <field>00Ncv00000GHshf</field>
-            <field>00Ncv00000GHshg</field>
-            <field>00Ncv00000GHshe</field>
-            <field>00Ncv00000GHshh</field>
-            <field>00Ncv00000GHshi</field>
+            <field>00NWJ0000080o2G</field>
+            <field>00NWJ0000080o2H</field>
+            <field>00NWJ0000080o2F</field>
+            <field>00NWJ0000080o2I</field>
+            <field>00NWJ0000080o2J</field>
             <field>PARTNER.NAME</field>
             <field>OPPORTUNITY.ISPRIORITYRECORD</field>
             <field>OPPORTUNITY.LAST_STG_CHG_DAYS</field>
@@ -774,12 +774,28 @@
             <label>Expected Revenue</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
+            <field>00NWJ0000080o2I</field>
+            <label>Mogli Number</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
             <field>OPPORTUNITY.PROBABILITY</field>
             <label>Probability (%)</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
             <field>CORE.USERS.ALIAS</field>
             <label>Opportunity Owner Alias</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NWJ0000080o2H</field>
+            <label>MogliAI Summary</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NWJ0000080o2G</field>
+            <label>Default Gateway</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NWJ0000080o2F</field>
+            <label>Mogli Avatar URL</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
             <field>OPPORTUNITY.FISCAL_QUARTER</field>
@@ -818,10 +834,6 @@
             <label>Opportunity Name</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
-            <field>00Ncv00000GHshi</field>
-            <label>Mogli Opt Out</label>
-        </forecastingObjectListLabelMappings>
-        <forecastingObjectListLabelMappings>
             <field>OPPORTUNITY.ISPRIORITYRECORD</field>
             <label>Important</label>
         </forecastingObjectListLabelMappings>
@@ -832,22 +844,6 @@
         <forecastingObjectListLabelMappings>
             <field>ACCOUNT.SITE</field>
             <label>Account Site</label>
-        </forecastingObjectListLabelMappings>
-        <forecastingObjectListLabelMappings>
-            <field>00Ncv00000GHshe</field>
-            <label>Mogli Avatar URL</label>
-        </forecastingObjectListLabelMappings>
-        <forecastingObjectListLabelMappings>
-            <field>00Ncv00000GHshf</field>
-            <label>Default Gateway</label>
-        </forecastingObjectListLabelMappings>
-        <forecastingObjectListLabelMappings>
-            <field>00Ncv00000GHshg</field>
-            <label>MogliAI Summary</label>
-        </forecastingObjectListLabelMappings>
-        <forecastingObjectListLabelMappings>
-            <field>00Ncv00000GHshh</field>
-            <label>Mogli Number</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
             <field>OPPORTUNITY.PRIVATE</field>
@@ -938,6 +934,10 @@
             <label>Fiscal Year</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
+            <field>00NWJ0000080o2J</field>
+            <label>Mogli Opt Out</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
             <field>Contacts</field>
             <label>__MISSING LABEL__ PropertyFile - val Contacts not found in section ForecastingProductFamilyOppListFilter</label>
         </forecastingObjectListLabelMappings>
@@ -997,11 +997,11 @@
             <field>OPPORTUNITY.LAST_ACTIVITY</field>
             <field>OPPORTUNITY.CREATED_DATE</field>
             <field>OPPORTUNITY.LAST_UPDATE</field>
-            <field>00Ncv00000GHshf</field>
-            <field>00Ncv00000GHshg</field>
-            <field>00Ncv00000GHshe</field>
-            <field>00Ncv00000GHshh</field>
-            <field>00Ncv00000GHshi</field>
+            <field>00NWJ0000080o2G</field>
+            <field>00NWJ0000080o2H</field>
+            <field>00NWJ0000080o2F</field>
+            <field>00NWJ0000080o2I</field>
+            <field>00NWJ0000080o2J</field>
             <field>PARTNER.NAME</field>
             <field>OPPORTUNITY.ISPRIORITYRECORD</field>
             <field>OPPORTUNITY.LAST_STG_CHG_DAYS</field>
@@ -1031,12 +1031,28 @@
             <label>Expected Revenue</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
+            <field>00NWJ0000080o2I</field>
+            <label>Mogli Number</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
             <field>OPPORTUNITY.PROBABILITY</field>
             <label>Probability (%)</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
             <field>CORE.USERS.ALIAS</field>
             <label>Opportunity Owner Alias</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NWJ0000080o2H</field>
+            <label>MogliAI Summary</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NWJ0000080o2G</field>
+            <label>Default Gateway</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NWJ0000080o2F</field>
+            <label>Mogli Avatar URL</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
             <field>OPPORTUNITY.FISCAL_QUARTER</field>
@@ -1071,10 +1087,6 @@
             <label>Opportunity Name</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
-            <field>00Ncv00000GHshi</field>
-            <label>Mogli Opt Out</label>
-        </forecastingObjectListLabelMappings>
-        <forecastingObjectListLabelMappings>
             <field>OPPORTUNITY.ISPRIORITYRECORD</field>
             <label>Important</label>
         </forecastingObjectListLabelMappings>
@@ -1085,22 +1097,6 @@
         <forecastingObjectListLabelMappings>
             <field>ACCOUNT.SITE</field>
             <label>Account Site</label>
-        </forecastingObjectListLabelMappings>
-        <forecastingObjectListLabelMappings>
-            <field>00Ncv00000GHshe</field>
-            <label>Mogli Avatar URL</label>
-        </forecastingObjectListLabelMappings>
-        <forecastingObjectListLabelMappings>
-            <field>00Ncv00000GHshf</field>
-            <label>Default Gateway</label>
-        </forecastingObjectListLabelMappings>
-        <forecastingObjectListLabelMappings>
-            <field>00Ncv00000GHshg</field>
-            <label>MogliAI Summary</label>
-        </forecastingObjectListLabelMappings>
-        <forecastingObjectListLabelMappings>
-            <field>00Ncv00000GHshh</field>
-            <label>Mogli Number</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
             <field>OPPORTUNITY.PRIVATE</field>
@@ -1191,6 +1187,10 @@
             <label>Fiscal Year</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
+            <field>00NWJ0000080o2J</field>
+            <label>Mogli Opt Out</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
             <field>Contacts</field>
             <label>__MISSING LABEL__ PropertyFile - val Contacts not found in section ForecastingProductFamilyOppQtyListFilter</label>
         </forecastingObjectListLabelMappings>
@@ -1249,11 +1249,11 @@
             <field>OPPORTUNITY.LAST_ACTIVITY</field>
             <field>OPPORTUNITY.CREATED_DATE</field>
             <field>OPPORTUNITY.LAST_UPDATE</field>
-            <field>00Ncv00000GHshf</field>
-            <field>00Ncv00000GHshg</field>
-            <field>00Ncv00000GHshe</field>
-            <field>00Ncv00000GHshh</field>
-            <field>00Ncv00000GHshi</field>
+            <field>00NWJ0000080o2G</field>
+            <field>00NWJ0000080o2H</field>
+            <field>00NWJ0000080o2F</field>
+            <field>00NWJ0000080o2I</field>
+            <field>00NWJ0000080o2J</field>
             <field>PARTNER.NAME</field>
             <field>OPPORTUNITY.ISPRIORITYRECORD</field>
             <field>OPPORTUNITY.LAST_STG_CHG_DAYS</field>
@@ -1283,12 +1283,28 @@
             <label>Expected Revenue</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
+            <field>00NWJ0000080o2I</field>
+            <label>Mogli Number</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
             <field>OPPORTUNITY.PROBABILITY</field>
             <label>Probability (%)</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
             <field>CORE.USERS.ALIAS</field>
             <label>Opportunity Owner Alias</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NWJ0000080o2H</field>
+            <label>MogliAI Summary</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NWJ0000080o2G</field>
+            <label>Default Gateway</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NWJ0000080o2F</field>
+            <label>Mogli Avatar URL</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
             <field>OPPORTUNITY.FISCAL_QUARTER</field>
@@ -1327,10 +1343,6 @@
             <label>Opportunity Name</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
-            <field>00Ncv00000GHshi</field>
-            <label>Mogli Opt Out</label>
-        </forecastingObjectListLabelMappings>
-        <forecastingObjectListLabelMappings>
             <field>OPPORTUNITY.ISPRIORITYRECORD</field>
             <label>Important</label>
         </forecastingObjectListLabelMappings>
@@ -1341,22 +1353,6 @@
         <forecastingObjectListLabelMappings>
             <field>ACCOUNT.SITE</field>
             <label>Account Site</label>
-        </forecastingObjectListLabelMappings>
-        <forecastingObjectListLabelMappings>
-            <field>00Ncv00000GHshe</field>
-            <label>Mogli Avatar URL</label>
-        </forecastingObjectListLabelMappings>
-        <forecastingObjectListLabelMappings>
-            <field>00Ncv00000GHshf</field>
-            <label>Default Gateway</label>
-        </forecastingObjectListLabelMappings>
-        <forecastingObjectListLabelMappings>
-            <field>00Ncv00000GHshg</field>
-            <label>MogliAI Summary</label>
-        </forecastingObjectListLabelMappings>
-        <forecastingObjectListLabelMappings>
-            <field>00Ncv00000GHshh</field>
-            <label>Mogli Number</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
             <field>OPPORTUNITY.PRIVATE</field>
@@ -1447,6 +1443,10 @@
             <label>Fiscal Year</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
+            <field>00NWJ0000080o2J</field>
+            <label>Mogli Opt Out</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
             <field>Contacts</field>
             <label>__MISSING LABEL__ PropertyFile - val Contacts not found in section ForecastingOpportunityRevenueProductDateOppListFilter</label>
         </forecastingObjectListLabelMappings>
@@ -1506,11 +1506,11 @@
             <field>OPPORTUNITY.LAST_ACTIVITY</field>
             <field>OPPORTUNITY.CREATED_DATE</field>
             <field>OPPORTUNITY.LAST_UPDATE</field>
-            <field>00Ncv00000GHshf</field>
-            <field>00Ncv00000GHshg</field>
-            <field>00Ncv00000GHshe</field>
-            <field>00Ncv00000GHshh</field>
-            <field>00Ncv00000GHshi</field>
+            <field>00NWJ0000080o2G</field>
+            <field>00NWJ0000080o2H</field>
+            <field>00NWJ0000080o2F</field>
+            <field>00NWJ0000080o2I</field>
+            <field>00NWJ0000080o2J</field>
             <field>PARTNER.NAME</field>
             <field>OPPORTUNITY.ISPRIORITYRECORD</field>
             <field>OPPORTUNITY.LAST_STG_CHG_DAYS</field>
@@ -1540,12 +1540,28 @@
             <label>Expected Revenue</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
+            <field>00NWJ0000080o2I</field>
+            <label>Mogli Number</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
             <field>OPPORTUNITY.PROBABILITY</field>
             <label>Probability (%)</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
             <field>CORE.USERS.ALIAS</field>
             <label>Opportunity Owner Alias</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NWJ0000080o2H</field>
+            <label>MogliAI Summary</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NWJ0000080o2G</field>
+            <label>Default Gateway</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NWJ0000080o2F</field>
+            <label>Mogli Avatar URL</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
             <field>OPPORTUNITY.FISCAL_QUARTER</field>
@@ -1580,10 +1596,6 @@
             <label>Opportunity Name</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
-            <field>00Ncv00000GHshi</field>
-            <label>Mogli Opt Out</label>
-        </forecastingObjectListLabelMappings>
-        <forecastingObjectListLabelMappings>
             <field>OPPORTUNITY.ISPRIORITYRECORD</field>
             <label>Important</label>
         </forecastingObjectListLabelMappings>
@@ -1594,22 +1606,6 @@
         <forecastingObjectListLabelMappings>
             <field>ACCOUNT.SITE</field>
             <label>Account Site</label>
-        </forecastingObjectListLabelMappings>
-        <forecastingObjectListLabelMappings>
-            <field>00Ncv00000GHshe</field>
-            <label>Mogli Avatar URL</label>
-        </forecastingObjectListLabelMappings>
-        <forecastingObjectListLabelMappings>
-            <field>00Ncv00000GHshf</field>
-            <label>Default Gateway</label>
-        </forecastingObjectListLabelMappings>
-        <forecastingObjectListLabelMappings>
-            <field>00Ncv00000GHshg</field>
-            <label>MogliAI Summary</label>
-        </forecastingObjectListLabelMappings>
-        <forecastingObjectListLabelMappings>
-            <field>00Ncv00000GHshh</field>
-            <label>Mogli Number</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
             <field>OPPORTUNITY.PRIVATE</field>
@@ -1700,6 +1696,10 @@
             <label>Fiscal Year</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
+            <field>00NWJ0000080o2J</field>
+            <label>Mogli Opt Out</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
             <field>Contacts</field>
             <label>__MISSING LABEL__ PropertyFile - val Contacts not found in section ForecastingOpportunityQuantityProductDateOppListFilter</label>
         </forecastingObjectListLabelMappings>
@@ -1758,11 +1758,11 @@
             <field>OPPORTUNITY.LAST_ACTIVITY</field>
             <field>OPPORTUNITY.CREATED_DATE</field>
             <field>OPPORTUNITY.LAST_UPDATE</field>
-            <field>00Ncv00000GHshf</field>
-            <field>00Ncv00000GHshg</field>
-            <field>00Ncv00000GHshe</field>
-            <field>00Ncv00000GHshh</field>
-            <field>00Ncv00000GHshi</field>
+            <field>00NWJ0000080o2G</field>
+            <field>00NWJ0000080o2H</field>
+            <field>00NWJ0000080o2F</field>
+            <field>00NWJ0000080o2I</field>
+            <field>00NWJ0000080o2J</field>
             <field>PARTNER.NAME</field>
             <field>OPPORTUNITY.ISPRIORITYRECORD</field>
             <field>OPPORTUNITY.LAST_STG_CHG_DAYS</field>
@@ -1792,12 +1792,28 @@
             <label>Expected Revenue</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
+            <field>00NWJ0000080o2I</field>
+            <label>Mogli Number</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
             <field>OPPORTUNITY.PROBABILITY</field>
             <label>Probability (%)</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
             <field>CORE.USERS.ALIAS</field>
             <label>Opportunity Owner Alias</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NWJ0000080o2H</field>
+            <label>MogliAI Summary</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NWJ0000080o2G</field>
+            <label>Default Gateway</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NWJ0000080o2F</field>
+            <label>Mogli Avatar URL</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
             <field>OPPORTUNITY.FISCAL_QUARTER</field>
@@ -1836,10 +1852,6 @@
             <label>Opportunity Name</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
-            <field>00Ncv00000GHshi</field>
-            <label>Mogli Opt Out</label>
-        </forecastingObjectListLabelMappings>
-        <forecastingObjectListLabelMappings>
             <field>OPPORTUNITY.ISPRIORITYRECORD</field>
             <label>Important</label>
         </forecastingObjectListLabelMappings>
@@ -1850,22 +1862,6 @@
         <forecastingObjectListLabelMappings>
             <field>ACCOUNT.SITE</field>
             <label>Account Site</label>
-        </forecastingObjectListLabelMappings>
-        <forecastingObjectListLabelMappings>
-            <field>00Ncv00000GHshe</field>
-            <label>Mogli Avatar URL</label>
-        </forecastingObjectListLabelMappings>
-        <forecastingObjectListLabelMappings>
-            <field>00Ncv00000GHshf</field>
-            <label>Default Gateway</label>
-        </forecastingObjectListLabelMappings>
-        <forecastingObjectListLabelMappings>
-            <field>00Ncv00000GHshg</field>
-            <label>MogliAI Summary</label>
-        </forecastingObjectListLabelMappings>
-        <forecastingObjectListLabelMappings>
-            <field>00Ncv00000GHshh</field>
-            <label>Mogli Number</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
             <field>OPPORTUNITY.PRIVATE</field>
@@ -1956,6 +1952,10 @@
             <label>Fiscal Year</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
+            <field>00NWJ0000080o2J</field>
+            <label>Mogli Opt Out</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
             <field>Contacts</field>
             <label>__MISSING LABEL__ PropertyFile - val Contacts not found in section ForecastingProductFamilyRevenueProductDateOppListFilter</label>
         </forecastingObjectListLabelMappings>
@@ -2015,11 +2015,11 @@
             <field>OPPORTUNITY.LAST_ACTIVITY</field>
             <field>OPPORTUNITY.CREATED_DATE</field>
             <field>OPPORTUNITY.LAST_UPDATE</field>
-            <field>00Ncv00000GHshf</field>
-            <field>00Ncv00000GHshg</field>
-            <field>00Ncv00000GHshe</field>
-            <field>00Ncv00000GHshh</field>
-            <field>00Ncv00000GHshi</field>
+            <field>00NWJ0000080o2G</field>
+            <field>00NWJ0000080o2H</field>
+            <field>00NWJ0000080o2F</field>
+            <field>00NWJ0000080o2I</field>
+            <field>00NWJ0000080o2J</field>
             <field>PARTNER.NAME</field>
             <field>OPPORTUNITY.ISPRIORITYRECORD</field>
             <field>OPPORTUNITY.LAST_STG_CHG_DAYS</field>
@@ -2049,12 +2049,28 @@
             <label>Expected Revenue</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
+            <field>00NWJ0000080o2I</field>
+            <label>Mogli Number</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
             <field>OPPORTUNITY.PROBABILITY</field>
             <label>Probability (%)</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
             <field>CORE.USERS.ALIAS</field>
             <label>Opportunity Owner Alias</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NWJ0000080o2H</field>
+            <label>MogliAI Summary</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NWJ0000080o2G</field>
+            <label>Default Gateway</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NWJ0000080o2F</field>
+            <label>Mogli Avatar URL</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
             <field>OPPORTUNITY.FISCAL_QUARTER</field>
@@ -2089,10 +2105,6 @@
             <label>Opportunity Name</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
-            <field>00Ncv00000GHshi</field>
-            <label>Mogli Opt Out</label>
-        </forecastingObjectListLabelMappings>
-        <forecastingObjectListLabelMappings>
             <field>OPPORTUNITY.ISPRIORITYRECORD</field>
             <label>Important</label>
         </forecastingObjectListLabelMappings>
@@ -2103,22 +2115,6 @@
         <forecastingObjectListLabelMappings>
             <field>ACCOUNT.SITE</field>
             <label>Account Site</label>
-        </forecastingObjectListLabelMappings>
-        <forecastingObjectListLabelMappings>
-            <field>00Ncv00000GHshe</field>
-            <label>Mogli Avatar URL</label>
-        </forecastingObjectListLabelMappings>
-        <forecastingObjectListLabelMappings>
-            <field>00Ncv00000GHshf</field>
-            <label>Default Gateway</label>
-        </forecastingObjectListLabelMappings>
-        <forecastingObjectListLabelMappings>
-            <field>00Ncv00000GHshg</field>
-            <label>MogliAI Summary</label>
-        </forecastingObjectListLabelMappings>
-        <forecastingObjectListLabelMappings>
-            <field>00Ncv00000GHshh</field>
-            <label>Mogli Number</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
             <field>OPPORTUNITY.PRIVATE</field>
@@ -2209,6 +2205,10 @@
             <label>Fiscal Year</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
+            <field>00NWJ0000080o2J</field>
+            <label>Mogli Opt Out</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
             <field>Contacts</field>
             <label>__MISSING LABEL__ PropertyFile - val Contacts not found in section ForecastingProductFamilyQuantityProductDateOppListFilter</label>
         </forecastingObjectListLabelMappings>
@@ -2267,11 +2267,11 @@
             <field>OPPORTUNITY.LAST_ACTIVITY</field>
             <field>OPPORTUNITY.CREATED_DATE</field>
             <field>OPPORTUNITY.LAST_UPDATE</field>
-            <field>00Ncv00000GHshf</field>
-            <field>00Ncv00000GHshg</field>
-            <field>00Ncv00000GHshe</field>
-            <field>00Ncv00000GHshh</field>
-            <field>00Ncv00000GHshi</field>
+            <field>00NWJ0000080o2G</field>
+            <field>00NWJ0000080o2H</field>
+            <field>00NWJ0000080o2F</field>
+            <field>00NWJ0000080o2I</field>
+            <field>00NWJ0000080o2J</field>
             <field>PARTNER.NAME</field>
             <field>OPPORTUNITY.ISPRIORITYRECORD</field>
             <field>OPPORTUNITY.LAST_STG_CHG_DAYS</field>

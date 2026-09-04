@@ -1,10 +1,11 @@
-import { LightningElement, wire, track } from 'lwc';
+import { LightningElement, wire, track } from "lwc";
 import getSectionsWithBlocksByType from '@salesforce/apex/SectionBlockController.getSectionsWithBlocksByType';
-import getExpiryDays from '@salesforce/apex/UserInformation.getExpiryDays';
 import getName from '@salesforce/apex/UserInformation.getName';
 import getTiming from '@salesforce/apex/UserInformation.getTiming';
+import getExpiryDays from '@salesforce/apex/UserInformation.getExpiryDays';
 
 export default class WelcomeEU extends LightningElement {
+
   @track sectionsWithBlocks = [];
   @track error;
 
@@ -20,10 +21,7 @@ export default class WelcomeEU extends LightningElement {
   @wire(getExpiryDays)
   getExpiryDays;
 
-  @wire(getSectionsWithBlocksByType, {
-    sectionType: '$sectionType',
-    pageType: '$pageType'
-  })
+  @wire(getSectionsWithBlocksByType, { sectionType: '$sectionType', pageType: '$pageType' })
   wiredSections({ error, data }) {
     if (data) {
       console.log('Wired Data:', data);

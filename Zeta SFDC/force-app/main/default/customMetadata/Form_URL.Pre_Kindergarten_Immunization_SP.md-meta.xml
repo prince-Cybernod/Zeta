@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomMetadata xmlns="http://soap.sforce.com/2006/04/metadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <label>Pre-Kindergarten Immunization (SP)</label>
+    <protected>false</protected>
+    <values>
+        <field>Experience_URL__c</field>
+        <value xsi:type="xsd:string">/pre-kindergarten-immunization-form</value>
+    </values>
+    <values>
+        <field>Form_Alias__c</field>
+        <value xsi:type="xsd:string">tfa_355</value>
+    </values>
+    <values>
+        <field>Task_Subject__c</field>
+        <value xsi:type="xsd:string">Formulario de vacunación de Pre-Kindergarten</value>
+    </values>
+    <values>
+        <field>Task_Type__c</field>
+        <value xsi:type="xsd:string">Registration Task</value>
+    </values>
+</CustomMetadata>

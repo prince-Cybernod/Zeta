@@ -5,7 +5,7 @@
     <masterLabel>Zeta - Parent Portal Users</masterLabel>
     <order>2</order>
     <status>Active</status>
-    <triggerType>CreateAndUpdate</triggerType>
+    <triggerType>Create</triggerType>
     <userAccessPolicyActions>
         <action>Grant</action>
         <target>Zeta_Parent_Portal_User</target>

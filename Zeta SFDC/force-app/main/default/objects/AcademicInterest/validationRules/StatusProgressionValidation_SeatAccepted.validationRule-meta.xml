@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>StatusProgressionValidation_SeatAccepted</fullName>
+    <active>false</active>
+    <description>Enforces valid transitions from Seat Accepted on School Application. Blocks all pre-lottery transitions and allows only Seat Accepted → Withdrawn/Declined after the lottery has run.</description>
+    <errorConditionFormula>AND(
+    /* Bypass validation for authorized rollback users */
+    NOT($Permission.Zeta_Rollback_Lottery),
+
+    TEXT(PRIORVALUE(Status)) = &quot;Seat Accepted&quot;,
+
+    /* Only validate when Status actually changes */
+    TEXT(Status) &lt;&gt; TEXT(PRIORVALUE(Status)),
+
+    /* Always allow Withdrawn/Declined */
+    NOT(ISPICKVAL(Status, &quot;Withdrawn/Declined&quot;))
+)</errorConditionFormula>
+    <errorDisplayField>Status</errorDisplayField>
+    <errorMessage>When a School Application is in Seat Accepted status, it may only be updated to Withdrawn/Declined.</errorMessage>
+</ValidationRule>

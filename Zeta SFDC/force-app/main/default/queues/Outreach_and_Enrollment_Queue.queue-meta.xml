@@ -1,23 +1,29 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Queue xmlns="http://soap.sforce.com/2006/04/metadata">
+    <description>Case queue routing for students not in school preperation phase or finished and on schoolrunner.</description>
     <doesIncludeBosses>false</doesIncludeBosses>
     <doesSendEmailToMembers>false</doesSendEmailToMembers>
+    <email>enroll@zetaschools.org.invalid</email>
     <name>Outreach and Enrollment Queue</name>
     <queueMembers>
         <users>
-            <user>aashmeeta.melendez@zetaschools.org</user>
-            <user>andres.martinez@zetaschools.org</user>
-            <user>angel.chang@zetaschools.org</user>
-            <user>charlene.matos@zetaschools.org</user>
-            <user>ileiny.then@zetaschools.org</user>
-            <user>isabelle.cui@zetaschools.org</user>
-            <user>jisu.kim@zetaschools.org</user>
-            <user>lali.uceta@zetaschools.org</user>
-            <user>lindsey.remuzgo@zetaschools.org</user>
-            <user>madeline.toribio@zetaschools.org</user>
-            <user>marcia.bueno@zetaschools.org</user>
-            <user>rongfei.jiang@zetaschools.org</user>
-            <user>victoria.mariscal@zetaconsultant.org</user>
+            <user>alessandra.devia@zetaschools.org</user>
+            <user>ali.rubin@zetaschools.org</user>
+            <user>courtenay.harry@zetaschools.org</user>
+            <user>daniela.bartalini@zetaschools.org</user>
+            <user>david.briggs@zetaschools.org</user>
+            <user>doug.phipps@zetaschools.org</user>
+            <user>elevation@zetaschools.org</user>
+            <user>felipe.bustamante@zetaschools.org</user>
+            <user>harsh.sanjaypithadia@zetaschools.org</user>
+            <user>jennifer.duran@zetaschools.org</user>
+            <user>markus.mueller@zetaschools.org</user>
+            <user>mercedes.wentworthnice@zetaschools.org</user>
+            <user>neil.bhargava@zetaschools.org</user>
+            <user>patricia.marsa@zetaschools.org</user>
+            <user>raven-olivia.kellum@zetaschools.org</user>
+            <user>samreen.khan@zetaschools.org</user>
+            <user>vyshnavi.parthipan@zetaschools.org</user>
         </users>
     </queueMembers>
     <queueSobject>

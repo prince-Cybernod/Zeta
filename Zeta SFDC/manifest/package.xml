@@ -20,345 +20,13 @@
 		<members>cdpactvstrgptnr__LinkedIn_Conversions_API</members>
 		<members>cdpactvstrgptnr__Meta_Conversions_API</members>
 		<members>cdpactvstrgptnr__Meta_Facebook</members>
-		<members>cdpactvstrgptnr__Pinterest_Conversions_API</members>
 		<members>cdpactvstrgptnr__PremiumPartnerGam</members>
 		<members>cdpactvstrgptnr__PremiumPartnerPinterest</members>
 		<members>cdpactvstrgptnr__PremiumPartnerTikTok</members>
-		<members>cdpactvstrgptnr__Reddit_Ads</members>
 		<members>cdpactvstrgptnr__SnapchatPlatform</members>
-		<members>cdpactvstrgptnr__Snapchat_Conversions_API</members>
-		<members>cdpactvstrgptnr__TikTok_Conversions_API</members>
 		<members>cdpactvstrgptnr__dv360Platform</members>
 		<name>ActivationPlatform</name>
 	</types>
-	<!-- Unsupported by the Salesforce CLI metadata registry.
-	<types>
-		<members>cdpactvstrgptnr__AmazonPlatform1692661548432</members>
-		<members>cdpactvstrgptnr__AmazonPlatform1702424526623</members>
-		<members>cdpactvstrgptnr__AmazonPlatform1717096013255</members>
-		<members>cdpactvstrgptnr__AmazonPlatform1777400147904</members>
-		<members>cdpactvstrgptnr__AmazonPlatform1777400147942</members>
-		<members>cdpactvstrgptnr__AmazonPlatform1777400147973</members>
-		<members>cdpactvstrgptnr__AmazonPlatform1777400148001</members>
-		<members>cdpactvstrgptnr__AmazonPlatform1783462474345</members>
-		<members>cdpactvstrgptnr__AmazonPlatform1783462474388</members>
-		<members>cdpactvstrgptnr__AmazonPlatform1783462474428</members>
-		<members>cdpactvstrgptnr__AmazonPlatform1783462474463</members>
-		<members>cdpactvstrgptnr__AmazonPlatform1783462474499</members>
-		<members>cdpactvstrgptnr__AmazonPlatform1783462474534</members>
-		<members>cdpactvstrgptnr__Google_Ads1669683128224</members>
-		<members>cdpactvstrgptnr__Google_Ads1702424634091</members>
-		<members>cdpactvstrgptnr__Google_Ads1708995822825</members>
-		<members>cdpactvstrgptnr__Google_Ads1708995822885</members>
-		<members>cdpactvstrgptnr__Google_Ads1750111573694</members>
-		<members>cdpactvstrgptnr__LinkedIn_Advertising1706573015779</members>
-		<members>cdpactvstrgptnr__LinkedIn_Advertising1724105301642</members>
-		<members>cdpactvstrgptnr__LinkedIn_Advertising1724105301680</members>
-		<members>cdpactvstrgptnr__LinkedIn_Advertising1724105301700</members>
-		<members>cdpactvstrgptnr__LinkedIn_Advertising1724105301711</members>
-		<members>cdpactvstrgptnr__LinkedIn_Advertising1724105301724</members>
-		<members>cdpactvstrgptnr__LinkedIn_Advertising1724105301735</members>
-		<members>cdpactvstrgptnr__LinkedIn_Advertising1765309618507</members>
-		<members>cdpactvstrgptnr__LinkedIn_Advertising1765309618548</members>
-		<members>cdpactvstrgptnr__LinkedIn_Advertising1765309618561</members>
-		<members>cdpactvstrgptnr__LinkedIn_Advertising1765309618571</members>
-		<members>cdpactvstrgptnr__LinkedIn_Advertising1765309618582</members>
-		<members>cdpactvstrgptnr__LinkedIn_Advertising1765309618592</members>
-		<members>cdpactvstrgptnr__LinkedIn_Advertising1765309618603</members>
-		<members>cdpactvstrgptnr__LinkedIn_Conversions_API1762538826199</members>
-		<members>cdpactvstrgptnr__LinkedIn_Conversions_API1762538826221</members>
-		<members>cdpactvstrgptnr__LinkedIn_Conversions_API1762538826232</members>
-		<members>cdpactvstrgptnr__LinkedIn_Conversions_API1762538826243</members>
-		<members>cdpactvstrgptnr__LinkedIn_Conversions_API1762538826254</members>
-		<members>cdpactvstrgptnr__LinkedIn_Conversions_API1762538826265</members>
-		<members>cdpactvstrgptnr__LinkedIn_Conversions_API1762538826275</members>
-		<members>cdpactvstrgptnr__LinkedIn_Conversions_API1762538826287</members>
-		<members>cdpactvstrgptnr__LinkedIn_Conversions_API1762538826298</members>
-		<members>cdpactvstrgptnr__LinkedIn_Conversions_API1762538826308</members>
-		<members>cdpactvstrgptnr__LinkedIn_Conversions_API1762538826319</members>
-		<members>cdpactvstrgptnr__LinkedIn_Conversions_API1762538826330</members>
-		<members>cdpactvstrgptnr__LinkedIn_Conversions_API1762538826348</members>
-		<members>cdpactvstrgptnr__Meta_Conversions_API1720567120662</members>
-		<members>cdpactvstrgptnr__Meta_Conversions_API1720567120691</members>
-		<members>cdpactvstrgptnr__Meta_Conversions_API1720567120702</members>
-		<members>cdpactvstrgptnr__Meta_Conversions_API1720567120712</members>
-		<members>cdpactvstrgptnr__Meta_Conversions_API1720567120721</members>
-		<members>cdpactvstrgptnr__Meta_Conversions_API1720567120729</members>
-		<members>cdpactvstrgptnr__Meta_Conversions_API17205671207391720567120740</members>
-		<members>cdpactvstrgptnr__Meta_Conversions_API17205671208851720567120886</members>
-		<members>cdpactvstrgptnr__Meta_Conversions_API1720567120917</members>
-		<members>cdpactvstrgptnr__Meta_Conversions_API1720567120928</members>
-		<members>cdpactvstrgptnr__Meta_Conversions_API1720567120937</members>
-		<members>cdpactvstrgptnr__Meta_Conversions_API1720567120947</members>
-		<members>cdpactvstrgptnr__Meta_Conversions_API1720567120957</members>
-		<members>cdpactvstrgptnr__Meta_Conversions_API1720567120967</members>
-		<members>cdpactvstrgptnr__Meta_Conversions_API1720567120976</members>
-		<members>cdpactvstrgptnr__Meta_Conversions_API1724271403069</members>
-		<members>cdpactvstrgptnr__Meta_Conversions_API1724271403115</members>
-		<members>cdpactvstrgptnr__Meta_Conversions_API1729740444559</members>
-		<members>cdpactvstrgptnr__Meta_Conversions_API1729740444610</members>
-		<members>cdpactvstrgptnr__Meta_Conversions_API1729740444693</members>
-		<members>cdpactvstrgptnr__Meta_Conversions_API1729740444709</members>
-		<members>cdpactvstrgptnr__Meta_Conversions_API1729740444719</members>
-		<members>cdpactvstrgptnr__Meta_Conversions_API1729740444729</members>
-		<members>cdpactvstrgptnr__Meta_Conversions_API1729740444739</members>
-		<members>cdpactvstrgptnr__Meta_Conversions_API1729740444749</members>
-		<members>cdpactvstrgptnr__Meta_Conversions_API1729740444758</members>
-		<members>cdpactvstrgptnr__Meta_Conversions_API1729740444767</members>
-		<members>cdpactvstrgptnr__Meta_Conversions_API1729740444776</members>
-		<members>cdpactvstrgptnr__Meta_Conversions_API1729740444785</members>
-		<members>cdpactvstrgptnr__Meta_Conversions_API1729740444793</members>
-		<members>cdpactvstrgptnr__Meta_Conversions_API1729740444802</members>
-		<members>cdpactvstrgptnr__Meta_Conversions_API1729740444811</members>
-		<members>cdpactvstrgptnr__Meta_Conversions_API1729740444820</members>
-		<members>cdpactvstrgptnr__Meta_Conversions_API1729740444829</members>
-		<members>cdpactvstrgptnr__Meta_Conversions_API1729740444839</members>
-		<members>cdpactvstrgptnr__Meta_Conversions_API1729740444849</members>
-		<members>cdpactvstrgptnr__Meta_Conversions_API1729740444864</members>
-		<members>cdpactvstrgptnr__Meta_Conversions_API1729740444882</members>
-		<members>cdpactvstrgptnr__Meta_Conversions_API1729740444891</members>
-		<members>cdpactvstrgptnr__Meta_Conversions_API1729740444900</members>
-		<members>cdpactvstrgptnr__Meta_Conversions_API1729740444909</members>
-		<members>cdpactvstrgptnr__Meta_Conversions_API1729740444922</members>
-		<members>cdpactvstrgptnr__Meta_Conversions_API1729740444931</members>
-		<members>cdpactvstrgptnr__Meta_Conversions_API1729740444940</members>
-		<members>cdpactvstrgptnr__Meta_Conversions_API1729740444954</members>
-		<members>cdpactvstrgptnr__Meta_Conversions_API1775596253232</members>
-		<members>cdpactvstrgptnr__Meta_Conversions_API1775596253252</members>
-		<members>cdpactvstrgptnr__Meta_Conversions_API1775596253262</members>
-		<members>cdpactvstrgptnr__Meta_Facebook1669683165387</members>
-		<members>cdpactvstrgptnr__Meta_Facebook1692661006995</members>
-		<members>cdpactvstrgptnr__Meta_Facebook1692661007043</members>
-		<members>cdpactvstrgptnr__Meta_Facebook1692661007053</members>
-		<members>cdpactvstrgptnr__Meta_Facebook1692661007062</members>
-		<members>cdpactvstrgptnr__Meta_Facebook1692661007072</members>
-		<members>cdpactvstrgptnr__Meta_Facebook1702424685569</members>
-		<members>cdpactvstrgptnr__Meta_Facebook1702424685586</members>
-		<members>cdpactvstrgptnr__Meta_Facebook1781734111137</members>
-		<members>cdpactvstrgptnr__Meta_Facebook1781734111168</members>
-		<members>cdpactvstrgptnr__Meta_Facebook1781734111197</members>
-		<members>cdpactvstrgptnr__Meta_Facebook1781734111226</members>
-		<members>cdpactvstrgptnr__Pinterest_Conversions_API1783462066014</members>
-		<members>cdpactvstrgptnr__Pinterest_Conversions_API1783462066056</members>
-		<members>cdpactvstrgptnr__Pinterest_Conversions_API1783462066088</members>
-		<members>cdpactvstrgptnr__Pinterest_Conversions_API1783462066118</members>
-		<members>cdpactvstrgptnr__Pinterest_Conversions_API1783462066149</members>
-		<members>cdpactvstrgptnr__Pinterest_Conversions_API1783462066179</members>
-		<members>cdpactvstrgptnr__Pinterest_Conversions_API17834620662081783462066209</members>
-		<members>cdpactvstrgptnr__Pinterest_Conversions_API17834620663021783462066302</members>
-		<members>cdpactvstrgptnr__Pinterest_Conversions_API1783462066372</members>
-		<members>cdpactvstrgptnr__Pinterest_Conversions_API1783462066405</members>
-		<members>cdpactvstrgptnr__Pinterest_Conversions_API1783462066436</members>
-		<members>cdpactvstrgptnr__Pinterest_Conversions_API1783462066472</members>
-		<members>cdpactvstrgptnr__Pinterest_Conversions_API1783462066508</members>
-		<members>cdpactvstrgptnr__Pinterest_Conversions_API1783462066541</members>
-		<members>cdpactvstrgptnr__Pinterest_Conversions_API1783462066572</members>
-		<members>cdpactvstrgptnr__Pinterest_Conversions_API1783462066606</members>
-		<members>cdpactvstrgptnr__Pinterest_Conversions_API1783462066638</members>
-		<members>cdpactvstrgptnr__Pinterest_Conversions_API1783462066667</members>
-		<members>cdpactvstrgptnr__Pinterest_Conversions_API1783462066697</members>
-		<members>cdpactvstrgptnr__Pinterest_Conversions_API1783462066728</members>
-		<members>cdpactvstrgptnr__Pinterest_Conversions_API1783462066763</members>
-		<members>cdpactvstrgptnr__Pinterest_Conversions_API1783462066791</members>
-		<members>cdpactvstrgptnr__Pinterest_Conversions_API1783462066822</members>
-		<members>cdpactvstrgptnr__Pinterest_Conversions_API1783462066852</members>
-		<members>cdpactvstrgptnr__Pinterest_Conversions_API1783462066882</members>
-		<members>cdpactvstrgptnr__Pinterest_Conversions_API1783462066910</members>
-		<members>cdpactvstrgptnr__Pinterest_Conversions_API1783462066938</members>
-		<members>cdpactvstrgptnr__Pinterest_Conversions_API1783462066966</members>
-		<members>cdpactvstrgptnr__Pinterest_Conversions_API1783462066997</members>
-		<members>cdpactvstrgptnr__Pinterest_Conversions_API1783462067025</members>
-		<members>cdpactvstrgptnr__Pinterest_Conversions_API1783462067054</members>
-		<members>cdpactvstrgptnr__Pinterest_Conversions_API1783462067083</members>
-		<members>cdpactvstrgptnr__Pinterest_Conversions_API1783462067112</members>
-		<members>cdpactvstrgptnr__Pinterest_Conversions_API1783462067141</members>
-		<members>cdpactvstrgptnr__PremiumPartnerGam1748899667746</members>
-		<members>cdpactvstrgptnr__PremiumPartnerGam1779397956246</members>
-		<members>cdpactvstrgptnr__PremiumPartnerGam1779397956287</members>
-		<members>cdpactvstrgptnr__PremiumPartnerPinterest1764612543399</members>
-		<members>cdpactvstrgptnr__PremiumPartnerPinterest1764612543426</members>
-		<members>cdpactvstrgptnr__PremiumPartnerTikTok1747692509095</members>
-		<members>cdpactvstrgptnr__PremiumPartnerTikTok1747692509171</members>
-		<members>cdpactvstrgptnr__PremiumPartnerTikTok1747692509189</members>
-		<members>cdpactvstrgptnr__PremiumPartnerTikTok1747692509201</members>
-		<members>cdpactvstrgptnr__Reddit_Ads1786655442262</members>
-		<members>cdpactvstrgptnr__Reddit_Ads1786655442302</members>
-		<members>cdpactvstrgptnr__Reddit_Ads1786655442334</members>
-		<members>cdpactvstrgptnr__SnapchatPlatform1712772097728</members>
-		<members>cdpactvstrgptnr__SnapchatPlatform1781733634367</members>
-		<members>cdpactvstrgptnr__SnapchatPlatform1781733634405</members>
-		<members>cdpactvstrgptnr__Snapchat_Conversions_API1777399726695</members>
-		<members>cdpactvstrgptnr__Snapchat_Conversions_API1777399726730</members>
-		<members>cdpactvstrgptnr__Snapchat_Conversions_API1777399726762</members>
-		<members>cdpactvstrgptnr__Snapchat_Conversions_API1777399726793</members>
-		<members>cdpactvstrgptnr__Snapchat_Conversions_API1777399726824</members>
-		<members>cdpactvstrgptnr__Snapchat_Conversions_API1777399726869</members>
-		<members>cdpactvstrgptnr__Snapchat_Conversions_API1777399726900</members>
-		<members>cdpactvstrgptnr__Snapchat_Conversions_API17773997269321777399726933</members>
-		<members>cdpactvstrgptnr__Snapchat_Conversions_API17773997270331777399727034</members>
-		<members>cdpactvstrgptnr__Snapchat_Conversions_API1777399727115</members>
-		<members>cdpactvstrgptnr__Snapchat_Conversions_API1777399727149</members>
-		<members>cdpactvstrgptnr__Snapchat_Conversions_API1777399727183</members>
-		<members>cdpactvstrgptnr__Snapchat_Conversions_API1777399727214</members>
-		<members>cdpactvstrgptnr__Snapchat_Conversions_API1777399727247</members>
-		<members>cdpactvstrgptnr__Snapchat_Conversions_API1777399727282</members>
-		<members>cdpactvstrgptnr__Snapchat_Conversions_API1777399727317</members>
-		<members>cdpactvstrgptnr__Snapchat_Conversions_API1777399727347</members>
-		<members>cdpactvstrgptnr__Snapchat_Conversions_API1777399727379</members>
-		<members>cdpactvstrgptnr__Snapchat_Conversions_API1777399727413</members>
-		<members>cdpactvstrgptnr__Snapchat_Conversions_API1777399727448</members>
-		<members>cdpactvstrgptnr__Snapchat_Conversions_API1777399727483</members>
-		<members>cdpactvstrgptnr__Snapchat_Conversions_API1777399727519</members>
-		<members>cdpactvstrgptnr__Snapchat_Conversions_API1777399727554</members>
-		<members>cdpactvstrgptnr__Snapchat_Conversions_API1777399727590</members>
-		<members>cdpactvstrgptnr__Snapchat_Conversions_API1777399727623</members>
-		<members>cdpactvstrgptnr__Snapchat_Conversions_API1777399727655</members>
-		<members>cdpactvstrgptnr__Snapchat_Conversions_API1777399727688</members>
-		<members>cdpactvstrgptnr__Snapchat_Conversions_API1777399727728</members>
-		<members>cdpactvstrgptnr__Snapchat_Conversions_API1777399727766</members>
-		<members>cdpactvstrgptnr__Snapchat_Conversions_API1777399727803</members>
-		<members>cdpactvstrgptnr__Snapchat_Conversions_API1777399727837</members>
-		<members>cdpactvstrgptnr__Snapchat_Conversions_API1777399727874</members>
-		<members>cdpactvstrgptnr__Snapchat_Conversions_API1777399727917</members>
-		<members>cdpactvstrgptnr__Snapchat_Conversions_API1777399727951</members>
-		<members>cdpactvstrgptnr__Snapchat_Conversions_API1777399727985</members>
-		<members>cdpactvstrgptnr__Snapchat_Conversions_API1777399728018</members>
-		<members>cdpactvstrgptnr__Snapchat_Conversions_API1777399728055</members>
-		<members>cdpactvstrgptnr__Snapchat_Conversions_API1777399728096</members>
-		<members>cdpactvstrgptnr__Snapchat_Conversions_API1777399728132</members>
-		<members>cdpactvstrgptnr__Snapchat_Conversions_API1777399728169</members>
-		<members>cdpactvstrgptnr__Snapchat_Conversions_API1777399728205</members>
-		<members>cdpactvstrgptnr__Snapchat_Conversions_API1777399728240</members>
-		<members>cdpactvstrgptnr__Snapchat_Conversions_API1777399728276</members>
-		<members>cdpactvstrgptnr__Snapchat_Conversions_API1777399728315</members>
-		<members>cdpactvstrgptnr__Snapchat_Conversions_API1777399728349</members>
-		<members>cdpactvstrgptnr__Snapchat_Conversions_API1777399728382</members>
-		<members>cdpactvstrgptnr__Snapchat_Conversions_API1777399728415</members>
-		<members>cdpactvstrgptnr__Snapchat_Conversions_API1777399728449</members>
-		<members>cdpactvstrgptnr__Snapchat_Conversions_API1777399728483</members>
-		<members>cdpactvstrgptnr__Snapchat_Conversions_API1777399728526</members>
-		<members>cdpactvstrgptnr__Snapchat_Conversions_API1777399728562</members>
-		<members>cdpactvstrgptnr__Snapchat_Conversions_API1777399728597</members>
-		<members>cdpactvstrgptnr__Snapchat_Conversions_API1777399728638</members>
-		<members>cdpactvstrgptnr__Snapchat_Conversions_API1777399728674</members>
-		<members>cdpactvstrgptnr__Snapchat_Conversions_API1777399728707</members>
-		<members>cdpactvstrgptnr__Snapchat_Conversions_API1777399728743</members>
-		<members>cdpactvstrgptnr__Snapchat_Conversions_API1777399728784</members>
-		<members>cdpactvstrgptnr__Snapchat_Conversions_API1777399728821</members>
-		<members>cdpactvstrgptnr__Snapchat_Conversions_API1777399728857</members>
-		<members>cdpactvstrgptnr__Snapchat_Conversions_API1777399728890</members>
-		<members>cdpactvstrgptnr__Snapchat_Conversions_API1777399728927</members>
-		<members>cdpactvstrgptnr__Snapchat_Conversions_API1777399728963</members>
-		<members>cdpactvstrgptnr__Snapchat_Conversions_API1777399728999</members>
-		<members>cdpactvstrgptnr__Snapchat_Conversions_API1777399729034</members>
-		<members>cdpactvstrgptnr__Snapchat_Conversions_API1777399729070</members>
-		<members>cdpactvstrgptnr__Snapchat_Conversions_API1777399729105</members>
-		<members>cdpactvstrgptnr__Snapchat_Conversions_API1777399729140</members>
-		<members>cdpactvstrgptnr__Snapchat_Conversions_API1777399729182</members>
-		<members>cdpactvstrgptnr__Snapchat_Conversions_API1777399729219</members>
-		<members>cdpactvstrgptnr__Snapchat_Conversions_API1777399729256</members>
-		<members>cdpactvstrgptnr__Snapchat_Conversions_API1777399729296</members>
-		<members>cdpactvstrgptnr__Snapchat_Conversions_API1777399729334</members>
-		<members>cdpactvstrgptnr__Snapchat_Conversions_API1777399729371</members>
-		<members>cdpactvstrgptnr__Snapchat_Conversions_API1777399729405</members>
-		<members>cdpactvstrgptnr__Snapchat_Conversions_API1777399729443</members>
-		<members>cdpactvstrgptnr__Snapchat_Conversions_API1777399729482</members>
-		<members>cdpactvstrgptnr__Snapchat_Conversions_API1777399729536</members>
-		<members>cdpactvstrgptnr__Snapchat_Conversions_API1777399729576</members>
-		<members>cdpactvstrgptnr__Snapchat_Conversions_API1777399729611</members>
-		<members>cdpactvstrgptnr__Snapchat_Conversions_API1777399729644</members>
-		<members>cdpactvstrgptnr__Snapchat_Conversions_API1777399729684</members>
-		<members>cdpactvstrgptnr__Snapchat_Conversions_API1777399729722</members>
-		<members>cdpactvstrgptnr__Snapchat_Conversions_API1777399729757</members>
-		<members>cdpactvstrgptnr__Snapchat_Conversions_API1777399729797</members>
-		<members>cdpactvstrgptnr__Snapchat_Conversions_API1777399729833</members>
-		<members>cdpactvstrgptnr__Snapchat_Conversions_API1777399729869</members>
-		<members>cdpactvstrgptnr__Snapchat_Conversions_API1777399729902</members>
-		<members>cdpactvstrgptnr__TikTok_Conversions_API1776101839932</members>
-		<members>cdpactvstrgptnr__TikTok_Conversions_API1776101839964</members>
-		<members>cdpactvstrgptnr__TikTok_Conversions_API1776101839993</members>
-		<members>cdpactvstrgptnr__TikTok_Conversions_API1776101840023</members>
-		<members>cdpactvstrgptnr__TikTok_Conversions_API1776101840052</members>
-		<members>cdpactvstrgptnr__TikTok_Conversions_API17761018401921776101840193</members>
-		<members>cdpactvstrgptnr__TikTok_Conversions_API17761018402751776101840276</members>
-		<members>cdpactvstrgptnr__TikTok_Conversions_API1776101840351</members>
-		<members>cdpactvstrgptnr__TikTok_Conversions_API1776101840385</members>
-		<members>cdpactvstrgptnr__TikTok_Conversions_API1776101840416</members>
-		<members>cdpactvstrgptnr__TikTok_Conversions_API1776101840446</members>
-		<members>cdpactvstrgptnr__TikTok_Conversions_API1776101840477</members>
-		<members>cdpactvstrgptnr__TikTok_Conversions_API1776101840507</members>
-		<members>cdpactvstrgptnr__TikTok_Conversions_API1776101840535</members>
-		<members>cdpactvstrgptnr__TikTok_Conversions_API1776101840561</members>
-		<members>cdpactvstrgptnr__TikTok_Conversions_API1776101840589</members>
-		<members>cdpactvstrgptnr__TikTok_Conversions_API1776101840622</members>
-		<members>cdpactvstrgptnr__TikTok_Conversions_API1776101840653</members>
-		<members>cdpactvstrgptnr__TikTok_Conversions_API1776101840683</members>
-		<members>cdpactvstrgptnr__TikTok_Conversions_API1776101840714</members>
-		<members>cdpactvstrgptnr__TikTok_Conversions_API1776101840744</members>
-		<members>cdpactvstrgptnr__TikTok_Conversions_API1776101840773</members>
-		<members>cdpactvstrgptnr__TikTok_Conversions_API1776101840806</members>
-		<members>cdpactvstrgptnr__TikTok_Conversions_API1776101840837</members>
-		<members>cdpactvstrgptnr__TikTok_Conversions_API1776101840866</members>
-		<members>cdpactvstrgptnr__TikTok_Conversions_API1776101840897</members>
-		<members>cdpactvstrgptnr__TikTok_Conversions_API1776101840926</members>
-		<members>cdpactvstrgptnr__TikTok_Conversions_API1776101840955</members>
-		<members>cdpactvstrgptnr__TikTok_Conversions_API1776101840984</members>
-		<members>cdpactvstrgptnr__TikTok_Conversions_API1776101841016</members>
-		<members>cdpactvstrgptnr__TikTok_Conversions_API1776101841049</members>
-		<members>cdpactvstrgptnr__TikTok_Conversions_API1776101841078</members>
-		<members>cdpactvstrgptnr__TikTok_Conversions_API1776101841108</members>
-		<members>cdpactvstrgptnr__TikTok_Conversions_API1776101841141</members>
-		<members>cdpactvstrgptnr__TikTok_Conversions_API1776101841170</members>
-		<members>cdpactvstrgptnr__TikTok_Conversions_API1776101841198</members>
-		<members>cdpactvstrgptnr__TikTok_Conversions_API1776101841228</members>
-		<members>cdpactvstrgptnr__TikTok_Conversions_API1776101841258</members>
-		<members>cdpactvstrgptnr__TikTok_Conversions_API1776101841291</members>
-		<members>cdpactvstrgptnr__TikTok_Conversions_API1776101841320</members>
-		<members>cdpactvstrgptnr__TikTok_Conversions_API1776101841348</members>
-		<members>cdpactvstrgptnr__TikTok_Conversions_API1776101841377</members>
-		<members>cdpactvstrgptnr__dv360Platform1714424677518</members>
-		<members>cdpactvstrgptnr__dv360Platform1714424677531</members>
-		<members>cdpactvstrgptnr__dv360Platform1714592854191</members>
-		<members>cdpactvstrgptnr__dv360Platform1714592854237</members>
-		<members>cdpactvstrgptnr__dv360Platform1750112568755</members>
-		<members>cdpactvstrgptnr__dv360Platform1750112568769</members>
-		<members>cdpactvstrgptnr__dv360Platform1750112568780</members>
-		<name>ActivationPlatformActvAttr</name>
-	</types>
-	-->
-	<!-- Unsupported by the Salesforce CLI metadata registry.
-	<types>
-		<members>cdpactvstrgptnr__Meta_Conversions_API172056712073917205671207401720567120741</members>
-		<members>cdpactvstrgptnr__Meta_Conversions_API172056712088517205671208861720567120887</members>
-		<members>cdpactvstrgptnr__Pinterest_Conversions_API178346206620817834620662091783462066209</members>
-		<members>cdpactvstrgptnr__Pinterest_Conversions_API178346206630217834620663021783462066303</members>
-		<members>cdpactvstrgptnr__Snapchat_Conversions_API177739972693217773997269331777399726934</members>
-		<members>cdpactvstrgptnr__Snapchat_Conversions_API177739972703317773997270341777399727035</members>
-		<members>cdpactvstrgptnr__TikTok_Conversions_API177610184019217761018401931776101840194</members>
-		<members>cdpactvstrgptnr__TikTok_Conversions_API177610184027517761018402761776101840277</members>
-		<name>ActvPlatformAdncIdentifier</name>
-	</types>
-	-->
-	<!-- Unsupported by the Salesforce CLI metadata registry.
-	<types>
-		<members>cdpactvstrgptnr__AmazonPlatform1692661548313</members>
-		<members>cdpactvstrgptnr__Google_Ads1669683128100</members>
-		<members>cdpactvstrgptnr__LinkedIn_Advertising1706573015645</members>
-		<members>cdpactvstrgptnr__LinkedIn_Conversions_API1762538826103</members>
-		<members>cdpactvstrgptnr__Meta_Conversions_API1720567120590</members>
-		<members>cdpactvstrgptnr__Meta_Facebook1669683165348</members>
-		<members>cdpactvstrgptnr__Pinterest_Conversions_API1783462065862</members>
-		<members>cdpactvstrgptnr__PremiumPartnerGam1748899667654</members>
-		<members>cdpactvstrgptnr__PremiumPartnerPinterest1764612543301</members>
-		<members>cdpactvstrgptnr__PremiumPartnerTikTok1747692508989</members>
-		<members>cdpactvstrgptnr__Reddit_Ads1786655442134</members>
-		<members>cdpactvstrgptnr__SnapchatPlatform1712772097662</members>
-		<members>cdpactvstrgptnr__Snapchat_Conversions_API1777399726576</members>
-		<members>cdpactvstrgptnr__TikTok_Conversions_API1776101839828</members>
-		<members>cdpactvstrgptnr__dv360Platform1714424677406</members>
-		<name>ActvPlatformOAuthConnector</name>
-	</types>
-	-->
 	<types>
 		<members>Account_Engagement_Dashboard</members>
 		<members>Aggregated_Campaign_Deliverability</members>
@@ -502,10 +170,6 @@
 		<members>Update_Learner_Profiles_with_CRM_Data</members>
 		<members>Update_Public_Profile_Records_with_Latest_CRM_Data</members>
 		<name>BatchCalcJobDefinition</name>
-	</types>
-	<types>
-		<members>*</members>
-		<name>Bot</name>
 	</types>
 	<types>
 		<members>*</members>
@@ -1285,48 +949,6 @@
 		<members>tfa__Notification_Handler__c</members>
 		<name>CustomObject</name>
 	</types>
-	<!-- Unsupported by the Salesforce CLI metadata registry.
-	<types>
-		<members>AiAgentGenerativeAiUsage_std_AiAgentGenerativeAiUsageDmo</members>
-		<members>GenAiContentQualityCategory_std_GenAiContentQualityCategoryDmo</members>
-		<members>GenAiContentQuality_std_GenAiContentQualityDmo</members>
-		<members>GenAiFeedbackAdditionalInfo_std_GenAiFeedbackAdditionalInfoDmo</members>
-		<members>GenAiFeedback_std_GenAiFeedbackDmo</members>
-		<members>GenAiGatewayReqObjRecCtn_std_GenAiGatewayReqObjRecCtnDmo</members>
-		<members>GenAiGatewayReqObjRec_std_GenAiGatewayReqObjRecDmo</members>
-		<members>GenAiGatewayRequestAddlInfo_std_GenAiGatewayRequestAddlInfoDmo</members>
-		<members>GenAiGatewayRequestTag_std_GenAiGatewayRequestTagDmo</members>
-		<members>GenAiGatewayRequest_std_GenAiGatewayRequestDmo</members>
-		<members>GenAiGatewayResponse_std_GenAiGatewayResponseDmo</members>
-		<members>GenAiGtwyReqModelDiagnostic_std_GenAiGtwyReqModelDiagnosticDmo</members>
-		<members>GenAiResponseAppGeneration_std_GenAiResponseAppGenerationDmo</members>
-		<members>GenAiResponseGeneration_std_GenAiResponseGenerationDmo</members>
-		<members>JourneyDecisioningAgentDecision_std_JourneyDecisioningAgentDecisionDmo</members>
-		<members>PersnlRcmdItemLog_std_PersnlRcmdItemLogDmo</members>
-		<members>PersnlRcmdLog_std_PersnlRcmdLogDmo</members>
-		<members>ssot_AcademicTermEnrollment_AcademicTermEnrollmentDmo</members>
-		<members>ssot_AccountContact_AccountContactDmo</members>
-		<members>ssot_Account_AccountDmo</members>
-		<members>ssot_Application_ApplicationDmo</members>
-		<members>ssot_BulkEmailMessage_BulkEmailMessageDmo</members>
-		<members>ssot_Campaign_CampaignDmo</members>
-		<members>ssot_CommunicationSubscriptionConsent_CommunicationSubscriptionConsentDmo</members>
-		<members>ssot_ContactPointPhone_ContactPointPhoneDmo</members>
-		<members>ssot_DigitalContent_DigitalContentDmo</members>
-		<members>ssot_EmailEngagement_EmailEngagementDmo</members>
-		<members>ssot_EngagementChannelType_EngagementChannelTypeDmo</members>
-		<members>ssot_FlowElementRun_FlowElementRunDmo</members>
-		<members>ssot_FlowRun_FlowRunDmo</members>
-		<members>ssot_IdentityMatch_IdentityMatchDmo</members>
-		<members>ssot_Individual_IndividualDmo</members>
-		<members>ssot_Lead_LeadDmo</members>
-		<members>ssot_MarketSegment_MarketSegmentDmo</members>
-		<members>ssot_MessageEngagement_MessageEngagementDmo</members>
-		<members>ssot_WebsiteEngagement_WebsiteEngagementDmo</members>
-		<members>ssot_WebsitePublication_WebsitePublicationDmo</members>
-		<name>CustomObjectBinding</name>
-	</types>
-	-->
 	<types>
 		<members>*</members>
 		<name>CustomObjectTranslation</name>
@@ -9302,10 +8924,6 @@
 	</types>
 	<types>
 		<members>*</members>
-		<name>MlDomain</name>
-	</types>
-	<types>
-		<members>*</members>
 		<name>ModerationRule</name>
 	</types>
 	<types>
@@ -9675,14 +9293,6 @@
 		<name>PlatformEventChannelMember</name>
 	</types>
 	<types>
-		<members>AllDataAccessRule</members>
-		<name>PolicyRuleDefinition</name>
-	</types>
-	<types>
-		<members>AllDataAccessRuleset</members>
-		<name>PolicyRuleDefinitionSet</name>
-	</types>
-	<types>
 		<members>*</members>
 		<name>PostTemplate</name>
 	</types>
@@ -9847,5 +9457,5 @@
 		<members>*</members>
 		<name>Workflow</name>
 	</types>
-	<version>67.0</version>
+	<version>68.0</version>
 </Package>

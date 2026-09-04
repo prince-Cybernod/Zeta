@@ -610,7 +610,7 @@ NOT(ISBLANK({!$Record.ProgramEnrollmentId})),ISPICKVAL({!$Record.Benefit.Benefit
         </scheduledPaths>
         <triggerType>RecordAfterSave</triggerType>
     </start>
-    <status>Obsolete</status>
+    <status>Active</status>
     <variables>
         <description>Stores the record ID for the mentoring party role relationship.</description>
         <name>PartyRoleRelationshipId</name>

@@ -399,7 +399,7 @@ export default class ApplicationDashboard extends LightningElement {
   }
 
   _isWithdrawable(app) {
-    return app.status !== 'Withdrawn/Declined';
+    return app.status === 'Draft' || app.status === 'Applied';
   }
 
   _buildDeadlineLookup(timelines) {

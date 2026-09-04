@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PermissionSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <description>Grants visibility to the Application Question Prototype tab.</description>
+    <hasActivationRequired>false</hasActivationRequired>
+    <label>Application Question Prototype</label>
+    <tabSettings>
+        <tab>Application_Question_Prototype</tab>
+        <visibility>Visible</visibility>
+    </tabSettings>
+</PermissionSet>

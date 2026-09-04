@@ -1,0 +1,443 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>66.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <assignments>
+        <description>Adds the current Individual Application record to the skipped collection when no parent email is found and increments the skipped count.</description>
+        <name>Assign_Add_Skipped_Record_IA</name>
+        <label>Assign | Add Skipped Record | IA</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <assignmentItems>
+            <assignToReference>varSkippedSourceRecordIds</assignToReference>
+            <operator>Add</operator>
+            <value>
+                <elementReference>Loop_Individual_Applications.fxIndividualApplicationID18__c</elementReference>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>varSkippedRecipientCount</assignToReference>
+            <operator>Add</operator>
+            <value>
+                <numberValue>1.0</numberValue>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Loop_Individual_Applications</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <description>Adds the current Individual Application record to the valid-send working collections and increments the valid recipient count.</description>
+        <name>Assign_Add_Valid_Recipient_IA</name>
+        <label>Assign | Add Valid Recipient | IA</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <assignmentItems>
+            <assignToReference>varRecipientEmails</assignToReference>
+            <operator>Add</operator>
+            <value>
+                <elementReference>Loop_Individual_Applications.Parent_Guardian_1_Email__c</elementReference>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>varValidSourceRecordIds</assignToReference>
+            <operator>Add</operator>
+            <value>
+                <elementReference>Loop_Individual_Applications.fxIndividualApplicationID18__c</elementReference>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>varValidRecipientCount</assignToReference>
+            <operator>Add</operator>
+            <value>
+                <numberValue>1.0</numberValue>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Loop_Individual_Applications</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <description>Adds the current Individual Application record to the skipped collection when no parent email is found and increments the skipped count.</description>
+        <name>Copy_1_of_Assign_Add_Skipped_Record_IA</name>
+        <label>Copy 1 of Assign | Add Skipped Record | IA</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <assignmentItems>
+            <assignToReference>varSkippedSourceRecordIds</assignToReference>
+            <operator>Add</operator>
+            <value>
+                <elementReference>Loop_Individual_Applications.fxIndividualApplicationID18__c</elementReference>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>varSkippedRecipientCount</assignToReference>
+            <operator>Add</operator>
+            <value>
+                <numberValue>1.0</numberValue>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Loop_School_Applications</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <description>Adds the current Individual Application record to the valid-send working collections and increments the valid recipient count.</description>
+        <name>Copy_1_of_Assign_Add_Valid_Recipient_IA</name>
+        <label>Copy 1 of Assign | Add Valid Recipient | IA</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <assignmentItems>
+            <assignToReference>varRecipientEmails</assignToReference>
+            <operator>Add</operator>
+            <value>
+                <elementReference>Loop_Individual_Applications.Parent_Guardian_1_Email__c</elementReference>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>varValidSourceRecordIds</assignToReference>
+            <operator>Add</operator>
+            <value>
+                <elementReference>Loop_Individual_Applications.fxIndividualApplicationID18__c</elementReference>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>varValidRecipientCount</assignToReference>
+            <operator>Add</operator>
+            <value>
+                <numberValue>1.0</numberValue>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Loop_School_Applications</targetReference>
+        </connector>
+    </assignments>
+    <customProperties>
+        <name>ScreenProgressIndicator</name>
+        <value>
+            <stringValue>{&quot;location&quot;:&quot;top&quot;,&quot;type&quot;:&quot;simple&quot;}</stringValue>
+        </value>
+    </customProperties>
+    <decisions>
+        <description>Checks whether the current Individual Application record has a usable primary parent email.</description>
+        <name>Decision_Parent_Email_Found_IA</name>
+        <label>Decision | Parent Email Found? | IA</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <defaultConnector>
+            <targetReference>Assign_Add_Skipped_Record_IA</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>No Parent Email, IA</defaultConnectorLabel>
+        <rules>
+            <name>Has_Parent_Email_IA</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Loop_Individual_Applications.Parent_Guardian_1_Email__c</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Assign_Add_Valid_Recipient_IA</targetReference>
+            </connector>
+            <label>Has Parent Email, IA</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <description>Checks whether the current School Application record has a usable primary parent email.</description>
+        <name>Decision_Parent_Email_Found_SA</name>
+        <label>Decision | Parent Email Found? | SA</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <defaultConnector>
+            <targetReference>Copy_1_of_Assign_Add_Skipped_Record_IA</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>No Parent Email, SA</defaultConnectorLabel>
+        <rules>
+            <name>Has_Parent_Email_SA</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Loop_School_Applications.IndividualApplication.Parent_Guardian_1_Email__c</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Copy_1_of_Assign_Add_Valid_Recipient_IA</targetReference>
+            </connector>
+            <label>Has Parent Email, SA</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <description>Routes the flow to the correct record retrieval and recipient resolution path based on the source object.</description>
+        <name>Decision_Source_Object</name>
+        <label>Decision | Source Object</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <defaultConnector>
+            <targetReference>Unsupported_Object</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Unsupported Object</defaultConnectorLabel>
+        <rules>
+            <name>Individual_Application</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>in_sourceObjectApiName</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>IndividualApplication</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Get_Individual_Applications_Selected</targetReference>
+            </connector>
+            <label>Individual Application</label>
+        </rules>
+        <rules>
+            <name>School_Application</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>in_sourceObjectApiName</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>AcademicInterest</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Get_School_Applications_Selected</targetReference>
+            </connector>
+            <label>School Application</label>
+        </rules>
+        <rules>
+            <name>Academic_Term_Enrollment</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>in_sourceObjectApiName</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>AcademicTermEnrollment</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Get_ATE_Records_Selected</targetReference>
+            </connector>
+            <label>Academic Term Enrollment</label>
+        </rules>
+    </decisions>
+    <description>Launched from list views on Individual Application, School Application, or Academic Term Enrollment. Resolves parent recipients, filters templates by action, previews email content, sends communications, and stamps outreach fields.</description>
+    <environments>Default</environments>
+    <interviewLabel>Mass Email (Screen flow) From a List View {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Mass Email (Screen flow) From a List View</label>
+    <loops>
+        <description>Loops through the selected Individual Application records one at a time so the flow can resolve the parent email and categorize each record as valid or skipped.</description>
+        <name>Loop_Individual_Applications</name>
+        <label>Loop | Individual Applications</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <collectionReference>Get_Individual_Applications_Selected</collectionReference>
+        <iterationOrder>Asc</iterationOrder>
+        <nextValueConnector>
+            <targetReference>Decision_Parent_Email_Found_IA</targetReference>
+        </nextValueConnector>
+    </loops>
+    <loops>
+        <description>Loops through selected School Application records to evaluate whether a valid parent email exists for each record.</description>
+        <name>Loop_School_Applications</name>
+        <label>Loop | School Applications</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <collectionReference>Get_School_Applications_Selected</collectionReference>
+        <iterationOrder>Asc</iterationOrder>
+        <nextValueConnector>
+            <targetReference>Decision_Parent_Email_Found_SA</targetReference>
+        </nextValueConnector>
+    </loops>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>Flow</processType>
+    <recordLookups>
+        <description>Retrieves all Academic Term Enrollment records selected from the list view using the passed-in record IDs.</description>
+        <name>Get_ATE_Records_Selected</name>
+        <label>Get | ATE Records | Selected</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Id</field>
+            <operator>In</operator>
+            <value>
+                <elementReference>in_recordIds</elementReference>
+            </value>
+        </filters>
+        <getFirstRecordOnly>false</getFirstRecordOnly>
+        <object>AcademicTermEnrollment</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordLookups>
+        <description>Retrieves all Individual Application records selected from the list view using the passed-in record IDs.</description>
+        <name>Get_Individual_Applications_Selected</name>
+        <label>Get | Individual Applications | Selected</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Loop_Individual_Applications</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>fxIndividualApplicationID18__c</field>
+            <operator>In</operator>
+            <value>
+                <elementReference>in_recordIds</elementReference>
+            </value>
+        </filters>
+        <getFirstRecordOnly>false</getFirstRecordOnly>
+        <object>IndividualApplication</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordLookups>
+        <description>Retrieves all School Application records selected from the list view using the passed-in record IDs.</description>
+        <name>Get_School_Applications_Selected</name>
+        <label>Get | School Applications | Selected</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Loop_School_Applications</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>fxSchoolApplicationID18__c</field>
+            <operator>In</operator>
+            <value>
+                <elementReference>in_recordIds</elementReference>
+            </value>
+        </filters>
+        <getFirstRecordOnly>false</getFirstRecordOnly>
+        <object>AcademicInterest</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <screens>
+        <description>error screen</description>
+        <name>Unsupported_Object</name>
+        <label>Unsupported Object</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <allowBack>false</allowBack>
+        <allowFinish>true</allowFinish>
+        <allowPause>false</allowPause>
+        <fields>
+            <name>errorTitle</name>
+            <fieldText>&lt;p style=&quot;text-align: center;&quot;&gt;&lt;strong style=&quot;color: rgb(255, 0, 0); font-size: 16px;&quot;&gt;ERROR&lt;/strong&gt;&lt;/p&gt;</fieldText>
+            <fieldType>DisplayText</fieldType>
+            <styleProperties>
+                <verticalAlignment>
+                    <stringValue>top</stringValue>
+                </verticalAlignment>
+                <width>
+                    <stringValue>12</stringValue>
+                </width>
+            </styleProperties>
+        </fields>
+        <fields>
+            <name>errorMessage</name>
+            <fieldText>&lt;p&gt;You must select Individual Applications, School Applications or Enrollments in order to send mass communication. &lt;/p&gt;</fieldText>
+            <fieldType>DisplayText</fieldType>
+            <styleProperties>
+                <verticalAlignment>
+                    <stringValue>top</stringValue>
+                </verticalAlignment>
+                <width>
+                    <stringValue>12</stringValue>
+                </width>
+            </styleProperties>
+        </fields>
+        <showFooter>true</showFooter>
+        <showHeader>false</showHeader>
+    </screens>
+    <start>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>Decision_Source_Object</targetReference>
+        </connector>
+    </start>
+    <status>Draft</status>
+    <variables>
+        <description>Collection of selected record IDs passed from the list view mass action.</description>
+        <name>in_recordIds</name>
+        <dataType>String</dataType>
+        <isCollection>true</isCollection>
+        <isInput>true</isInput>
+        <isOutput>false</isOutput>
+    </variables>
+    <variables>
+        <description>API name of the object the mass email flow was launched from.</description>
+        <name>in_sourceObjectApiName</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>true</isInput>
+        <isOutput>false</isOutput>
+    </variables>
+    <variables>
+        <description>Stores resolved primary parent email addresses for selected records that are valid to send.</description>
+        <name>varRecipientEmails</name>
+        <dataType>String</dataType>
+        <isCollection>true</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+    </variables>
+    <variables>
+        <description>Tracks how many selected records were skipped because no valid primary parent email was found.</description>
+        <name>varSkippedRecipientCount</name>
+        <dataType>Number</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+        <scale>0</scale>
+    </variables>
+    <variables>
+        <description>Stores selected source record IDs that were skipped because no valid primary parent email was found.</description>
+        <name>varSkippedSourceRecordIds</name>
+        <dataType>String</dataType>
+        <isCollection>true</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+    </variables>
+    <variables>
+        <description>Tracks how many selected records have a valid resolved primary parent email.</description>
+        <name>varValidRecipientCount</name>
+        <dataType>Number</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+        <scale>0</scale>
+    </variables>
+    <variables>
+        <description>Stores selected source record IDs that have a valid resolved primary parent email.</description>
+        <name>varValidSourceRecordIds</name>
+        <dataType>String</dataType>
+        <isCollection>true</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+    </variables>
+</Flow>

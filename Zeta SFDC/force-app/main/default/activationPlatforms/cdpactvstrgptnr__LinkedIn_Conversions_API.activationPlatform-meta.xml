@@ -6,12 +6,14 @@
   &quot;customerFileSources&quot; : [ ],
   &quot;activationPlatformEventMetadata&quot; : {
     &quot;supportedEventTypes&quot; : [ &quot;Standard&quot; ],
-    &quot;showEventSourceAnnotations&quot; : false,
     &quot;standardEventDetails&quot; : null,
     &quot;customEventDetails&quot; : {
       &quot;attributesOverride&quot; : {
         &quot;required&quot; : [ {
           &quot;destinationName&quot; : &quot;eventId&quot;,
+          &quot;value&quot; : null
+        }, {
+          &quot;destinationName&quot; : &quot;type&quot;,
           &quot;value&quot; : null
         }, {
           &quot;destinationName&quot; : &quot;conversionHappenedAt&quot;,
@@ -51,12 +53,10 @@
         &quot;identifiers&quot; : [ ],
         &quot;exclude&quot; : [ ],
         &quot;systemMappingAttributes&quot; : [ ]
-      },
-      &quot;attributeMappingInfo&quot; : [ ]
+      }
     }
   },
   &quot;mappingSchemas&quot; : [ ],
-  &quot;customAttributePrefix&quot; : null,
   &quot;partnerSupportedIds&quot; : [ ],
   &quot;outputProperties&quot; : null
 }</activationPlatformAdditionalMetadata>

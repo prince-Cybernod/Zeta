@@ -312,7 +312,7 @@ private class ApplicationQuestionControllerTest {
       Assert.fail('Expected IllegalArgumentException listing both required fields');
     } catch (IllegalArgumentException e) {
       Assert.isTrue(
-        e.getMessage().containsIgnoreCase('Email') && e.getMessage().containsIgnoreCase('Phone'),
+        e.getMessage().contains('Email') && e.getMessage().contains('Phone'),
         'Message should name both missing required fields: ' + e.getMessage()
       );
     }

@@ -5,5 +5,97 @@
     <required>false</required>
     <trackFeedHistory>false</trackFeedHistory>
     <trackHistory>false</trackHistory>
-    <type>TextArea</type>
+    <type>MultiselectPicklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Zeta South Bronx Lower</fullName>
+                <default>false</default>
+                <label>Zeta South Bronx Lower</label>
+            </value>
+            <value>
+                <fullName>Zeta South Bronx Upper</fullName>
+                <default>false</default>
+                <label>Zeta South Bronx Upper</label>
+            </value>
+            <value>
+                <fullName>Zeta Bronx MS</fullName>
+                <default>false</default>
+                <label>Zeta Bronx MS</label>
+            </value>
+            <value>
+                <fullName>Zeta High School serving Zeta South Bronx High</fullName>
+                <default>false</default>
+                <label>Zeta High School serving Zeta South Bronx High</label>
+            </value>
+            <value>
+                <fullName>Zeta Bronx Tremont Park Lower</fullName>
+                <default>false</default>
+                <label>Zeta Bronx Tremont Park Lower</label>
+            </value>
+            <value>
+                <fullName>Zeta Bronx Tremont Park Upper</fullName>
+                <default>false</default>
+                <label>Zeta Bronx Tremont Park Upper</label>
+            </value>
+            <value>
+                <fullName>Zeta Bronx Tremont Park MS</fullName>
+                <default>false</default>
+                <label>Zeta Bronx Tremont Park MS</label>
+            </value>
+            <value>
+                <fullName>Zeta Bronx Mount Eden EC</fullName>
+                <default>false</default>
+                <label>Zeta Bronx Mount Eden EC</label>
+            </value>
+            <value>
+                <fullName>Zeta Bronx Mount Eden ES</fullName>
+                <default>false</default>
+                <label>Zeta Bronx Mount Eden ES</label>
+            </value>
+            <value>
+                <fullName>Zeta Bronx Mount Eden MS</fullName>
+                <default>false</default>
+                <label>Zeta Bronx Mount Eden MS</label>
+            </value>
+            <value>
+                <fullName>Zeta Inwood Lower</fullName>
+                <default>false</default>
+                <label>Zeta Inwood Lower</label>
+            </value>
+            <value>
+                <fullName>Zeta Inwood Upper</fullName>
+                <default>false</default>
+                <label>Zeta Inwood Upper</label>
+            </value>
+            <value>
+                <fullName>Zeta Manhattan MS</fullName>
+                <default>false</default>
+                <label>Zeta Manhattan MS</label>
+            </value>
+            <value>
+                <fullName>Zeta High School serving Zeta Manhattan High</fullName>
+                <default>false</default>
+                <label>Zeta High School serving Zeta Manhattan High</label>
+            </value>
+            <value>
+                <fullName>Zeta Queens Elmhurst</fullName>
+                <default>false</default>
+                <label>Zeta Queens Elmhurst</label>
+            </value>
+            <value>
+                <fullName>Zeta Queens Flushing</fullName>
+                <default>false</default>
+                <label>Zeta Queens Flushing</label>
+            </value>
+            <value>
+                <fullName>Zeta Queens Jamaica</fullName>
+                <default>false</default>
+                <label>Zeta Queens Jamaica</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+    <visibleLines>5</visibleLines>
 </CustomField>

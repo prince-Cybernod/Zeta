@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CaseSettings xmlns="http://soap.sforce.com/2006/04/metadata">
+    <aiCaseCommentRefine>false</aiCaseCommentRefine>
     <caseAssignRuleCommunity>false</caseAssignRuleCommunity>
     <caseAutoProcUser>false</caseAutoProcUser>
     <caseDescAttachments>false</caseDescAttachments>
@@ -16,6 +17,7 @@
     <defaultCaseOwner>Outreach_and_Enrollment_Queue</defaultCaseOwner>
     <defaultCaseOwnerType>Queue</defaultCaseOwnerType>
     <emailToCase>
+        <enableE2CAdvancedSecurity>false</enableE2CAdvancedSecurity>
         <enableE2CAttachmentAsFile>true</enableE2CAttachmentAsFile>
         <enableE2CDeduplicateAttachments>false</enableE2CDeduplicateAttachments>
         <enableE2CExternalServer>false</enableE2CExternalServer>
@@ -23,28 +25,17 @@
         <enableEmailToCase>true</enableEmailToCase>
         <enableHtmlEmail>false</enableHtmlEmail>
         <enableNewToReadTriggers>false</enableNewToReadTriggers>
-        <enableOnDemandEmailToCase>false</enableOnDemandEmailToCase>
+        <enableOnDemandEmailToCase>true</enableOnDemandEmailToCase>
         <enableThreadTokenInBody>true</enableThreadTokenInBody>
-        <enableThreadTokenInSubject>false</enableThreadTokenInSubject>
+        <enableThreadTokenInSubject>true</enableThreadTokenInSubject>
         <movingEmailEnabled>false</movingEmailEnabled>
         <notifyOwnerOnNewCaseEmail>false</notifyOwnerOnNewCaseEmail>
         <notifySenderE2CError>false</notifySenderE2CError>
+        <overEmailLimitAction>Bounce</overEmailLimitAction>
         <preQuoteSignature>false</preQuoteSignature>
         <replyWithNewContentOnly>false</replyWithNewContentOnly>
-        <routingAddresses>
-            <addressType>EmailToCase</addressType>
-            <caseOrigin>Email</caseOrigin>
-            <caseOwner>Outreach_and_Enrollment_Queue</caseOwner>
-            <caseOwnerType>Queue</caseOwnerType>
-            <casePriority>Medium</casePriority>
-            <createTask>false</createTask>
-            <emailAddress>enroll@connect.zetaschools.org</emailAddress>
-            <isPermsetControlled>false</isPermsetControlled>
-            <isVerified>true</isVerified>
-            <routingName>Zeta Charter Schools Enrollment</routingName>
-            <saveEmailHeaders>false</saveEmailHeaders>
-        </routingAddresses>
         <showWordCountInComposer>false</showWordCountInComposer>
+        <unauthorizedSenderAction>Discard</unauthorizedSenderAction>
         <useEmailHeadersForThreading>true</useEmailHeadersForThreading>
     </emailToCase>
     <enableCaseFeed>true</enableCaseFeed>
@@ -64,7 +55,7 @@
     <enableSolutionCategory>false</enableSolutionCategory>
     <enableSolutionInlineCategory>true</enableSolutionInlineCategory>
     <enableSolutionShortSummary>true</enableSolutionShortSummary>
-    <enableSuggestedSolutions>false</enableSuggestedSolutions>
+    <enableSuggestedSolutions>true</enableSuggestedSolutions>
     <escalateCaseBefore>false</escalateCaseBefore>
     <hidePublicInCaseComment>false</hidePublicInCaseComment>
     <keepRecordTypeOnAssignmentRule>true</keepRecordTypeOnAssignmentRule>
@@ -76,9 +67,9 @@
     <rtaCaseDescFieldAccess>false</rtaCaseDescFieldAccess>
     <showEmailAttachmentsInCaseAttachmentsRL>true</showEmailAttachmentsInCaseAttachmentsRL>
     <systemUserEmail>unicorn+zetacharterschools@elevation.solutions</systemUserEmail>
-    <useSystemEmailAddress>false</useSystemEmailAddress>
+    <useSystemEmailAddress>true</useSystemEmailAddress>
     <useSystemUserAsDefaultCaseUser>true</useSystemUserAsDefaultCaseUser>
-    <visibleInCssCheckbox>true</visibleInCssCheckbox>
+    <visibleInCssCheckbox>false</visibleInCssCheckbox>
     <webToCase>
         <enableWebToCase>false</enableWebToCase>
     </webToCase>

@@ -9,12 +9,4 @@
         <value>Action Plan Tasks</value>
     </caseValues>
     <startsWith>Vowel</startsWith>
-    <validationRules>
-        <errorMessage><!-- You must enter a non-negative value --></errorMessage>
-        <name>DaysNotBlankNotNegative</name>
-    </validationRules>
-    <validationRules>
-        <errorMessage><!-- Minutes Reminder must be a whole number --></errorMessage>
-        <name>Minutes_must_be_an_integer</name>
-    </validationRules>
 </CustomObjectTranslation>

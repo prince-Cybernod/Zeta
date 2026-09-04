@@ -96,8 +96,14 @@
         </itemInstances>
         <itemInstances>
             <fieldInstance>
-                <fieldItem>Record.Zoho_Id__c</fieldItem>
+                <fieldItem>Record.Zoho_Student_Id__c</fieldItem>
                 <identifier>RecordZoho_Id__cField</identifier>
+            </fieldInstance>
+        </itemInstances>
+        <itemInstances>
+            <fieldInstance>
+                <fieldItem>Record.Zoho_Guardian_Id__c</fieldItem>
+                <identifier>RecordZoho_Guardian_Id__cField</identifier>
             </fieldInstance>
         </itemInstances>
         <name>Facet-52f0caed-7f05-4167-a4d5-bb241221a74d</name>

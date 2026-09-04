@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>StatusProgressionValidation_Waitlisted</fullName>
+    <active>false</active>
+    <description>Enforces valid transitions from Waitlisted on School Application. Blocks all pre-lottery movements and all post-lottery transitions except Waitlisted → Pre-Offer.</description>
+    <errorConditionFormula>AND(
+    /* Bypass validation for authorized rollback users */
+    NOT($Permission.Zeta_Rollback_Lottery),
+
+    TEXT(PRIORVALUE(Status)) = &quot;Waitlisted&quot;,
+
+    /* Only validate when the value is actually changing */
+    TEXT(Status) &lt;&gt; TEXT(PRIORVALUE(Status)),
+
+    /* Only enforce the specific transition being controlled */
+    ISPICKVAL(Status, &quot;Pre-Offer&quot;),
+
+    /* Block if lottery has NOT run */
+    NOT(Has_Lottery_Run__c)
+)</errorConditionFormula>
+    <errorDisplayField>Status</errorDisplayField>
+    <errorMessage>When a School Application is in Waitlisted status, it may only progress to Pre-Offer after the lottery has run. At any time, it may be updated to Withdrawn/Declined.</errorMessage>
+</ValidationRule>

@@ -192,7 +192,7 @@ When a School Application status changes to Seat Offered or Offer Rescinded due 
         <recordTriggerType>Update</recordTriggerType>
         <triggerType>RecordAfterSave</triggerType>
     </start>
-    <status>Obsolete</status>
+    <status>Draft</status>
     <textTemplates>
         <description>SMS body for offer canceled due to seat optimization.</description>
         <name>ttSMS_OfferRescindedOptimization</name>

@@ -429,7 +429,7 @@ When a sibling-related Priority Item is created, automatically find the siblingâ
         </schedule>
         <triggerType>Scheduled</triggerType>
     </start>
-    <status>Active</status>
+    <status>Draft</status>
     <variables>
         <description>True once we find at least one guardian ContactId shared by both students.</description>
         <name>varSharedGuardianFound</name>

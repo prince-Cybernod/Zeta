@@ -1,8 +1,8 @@
-import { LightningElement, track, api } from 'lwc';
-import { CloseActionScreenEvent } from 'lightning/actions';
-import getAllBlocks from '@salesforce/apex/SectionBlockSequence.getAllBlocks';
-import getBlocksForSection from '@salesforce/apex/SectionBlockSequence.getBlocksForSection';
-import updateSectionBlocks from '@salesforce/apex/SectionBlockSequence.updateSectionBlocks';
+import { LightningElement, track, api } from "lwc";
+import { CloseActionScreenEvent } from "lightning/actions";
+import getAllBlocks from "@salesforce/apex/SectionBlockSequence.getAllBlocks";
+import getBlocksForSection from "@salesforce/apex/SectionBlockSequence.getBlocksForSection";
+import updateSectionBlocks from "@salesforce/apex/SectionBlockSequence.updateSectionBlocks";
 
 export default class ReorderableList extends LightningElement {
   @api objectApiName;
