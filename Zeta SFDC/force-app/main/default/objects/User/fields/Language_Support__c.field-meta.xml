@@ -6,5 +6,42 @@
     <required>false</required>
     <trackFeedHistory>false</trackFeedHistory>
     <trackHistory>false</trackHistory>
-    <type>TextArea</type>
+    <type>MultiselectPicklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Spanish</fullName>
+                <default>false</default>
+                <label>Spanish</label>
+            </value>
+            <value>
+                <fullName>Hindi</fullName>
+                <default>false</default>
+                <label>Hindi</label>
+            </value>
+            <value>
+                <fullName>Punjabi</fullName>
+                <default>false</default>
+                <label>Punjabi</label>
+            </value>
+            <value>
+                <fullName>Chinese</fullName>
+                <default>false</default>
+                <label>Chinese</label>
+            </value>
+            <value>
+                <fullName>Korean</fullName>
+                <default>false</default>
+                <label>Korean</label>
+            </value>
+            <value>
+                <fullName>Mandarin</fullName>
+                <default>false</default>
+                <label>Mandarin</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+    <visibleLines>5</visibleLines>
 </CustomField>

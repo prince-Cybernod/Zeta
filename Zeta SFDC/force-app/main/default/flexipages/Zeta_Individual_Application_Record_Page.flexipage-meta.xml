@@ -154,6 +154,12 @@
                 <identifier>RecordAccountPersonMailingAddressField</identifier>
             </fieldInstance>
         </itemInstances>
+        <itemInstances>
+            <fieldInstance>
+                <fieldItem>Record.Active_Academic_Term__c</fieldItem>
+                <identifier>RecordActive_Academic_Term__cField</identifier>
+            </fieldInstance>
+        </itemInstances>
         <name>Facet-26cfc815-670e-48f4-b46c-bbb8c228e4fd</name>
         <type>Facet</type>
     </flexiPageRegions>
@@ -1252,6 +1258,12 @@
                 <identifier>lst_dynamicRelatedList3</identifier>
             </componentInstance>
         </itemInstances>
+        <itemInstances>
+            <componentInstance>
+                <componentName>applicationSchoolsPanel</componentName>
+                <identifier>c_applicationSchoolsPanel</identifier>
+            </componentInstance>
+        </itemInstances>
         <name>Facet-7ec9f97d-a167-4456-b12c-39146d98ef1b</name>
         <type>Facet</type>
     </flexiPageRegions>
@@ -1573,6 +1585,20 @@
         <itemInstances>
             <componentInstance>
                 <componentInstanceProperties>
+                    <name>pageDevName</name>
+                    <value>Application_Details</value>
+                </componentInstanceProperties>
+                <componentName>zetaApplication</componentName>
+                <identifier>c_zetaApplication</identifier>
+            </componentInstance>
+        </itemInstances>
+        <name>Facet-85b4ef85-a4f4-4557-b154-3a1d2731b120</name>
+        <type>Facet</type>
+    </flexiPageRegions>
+    <flexiPageRegions>
+        <itemInstances>
+            <componentInstance>
+                <componentInstanceProperties>
                     <name>active</name>
                     <value>true</value>
                 </componentInstanceProperties>
@@ -1632,6 +1658,20 @@
                 </componentInstanceProperties>
                 <componentName>flexipage:tab</componentName>
                 <identifier>flexipage_tab5</identifier>
+            </componentInstance>
+        </itemInstances>
+        <itemInstances>
+            <componentInstance>
+                <componentInstanceProperties>
+                    <name>body</name>
+                    <value>Facet-85b4ef85-a4f4-4557-b154-3a1d2731b120</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>title</name>
+                    <value>Submit Application</value>
+                </componentInstanceProperties>
+                <componentName>flexipage:tab</componentName>
+                <identifier>flexipage_tab6</identifier>
             </componentInstance>
         </itemInstances>
         <name>Facet-ea2d1cbe-a322-4b6a-841f-d857dcab08df</name>

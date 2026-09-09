@@ -23,12 +23,13 @@
         <enableEmailToCase>true</enableEmailToCase>
         <enableHtmlEmail>false</enableHtmlEmail>
         <enableNewToReadTriggers>false</enableNewToReadTriggers>
-        <enableOnDemandEmailToCase>false</enableOnDemandEmailToCase>
+        <enableOnDemandEmailToCase>true</enableOnDemandEmailToCase>
         <enableThreadTokenInBody>true</enableThreadTokenInBody>
         <enableThreadTokenInSubject>false</enableThreadTokenInSubject>
         <movingEmailEnabled>false</movingEmailEnabled>
         <notifyOwnerOnNewCaseEmail>false</notifyOwnerOnNewCaseEmail>
         <notifySenderE2CError>false</notifySenderE2CError>
+        <overEmailLimitAction>Requeue</overEmailLimitAction>
         <preQuoteSignature>false</preQuoteSignature>
         <replyWithNewContentOnly>false</replyWithNewContentOnly>
         <routingAddresses>
@@ -39,12 +40,30 @@
             <casePriority>Medium</casePriority>
             <createTask>false</createTask>
             <emailAddress>enroll@connect.zetaschools.org</emailAddress>
+            <emailServicesAddress>enroll@1goty8nne5p5fr4ciyefh8b2now43gouuoq5ng8nvstwn6abz.a5-1aa4bbea1.usa918.case.salesforce.com</emailServicesAddress>
             <isPermsetControlled>false</isPermsetControlled>
             <isVerified>true</isVerified>
+            <newEntityRecordType>Case.Parent_Inquiry</newEntityRecordType>
+            <routingName>Zeta Charter Schools Enrollment</routingName>
+            <saveEmailHeaders>false</saveEmailHeaders>
+        </routingAddresses>
+        <routingAddresses>
+            <addressType>EmailToCase</addressType>
+            <caseOrigin>Email</caseOrigin>
+            <caseOwner>Outreach_and_Enrollment_Queue</caseOwner>
+            <caseOwnerType>Queue</caseOwnerType>
+            <casePriority>Medium</casePriority>
+            <createTask>false</createTask>
+            <emailAddress>enroll@zetaschools.org</emailAddress>
+            <emailServicesAddress>enroll@2179jx63h7pv013gg28pgt3ja1ybskxnd9sm9ponnu1yych8wc.a5-1aa4bbea1.usa918.case.salesforce.com</emailServicesAddress>
+            <isPermsetControlled>false</isPermsetControlled>
+            <isVerified>false</isVerified>
+            <newEntityRecordType>Case.Parent_Inquiry</newEntityRecordType>
             <routingName>Zeta Charter Schools Enrollment</routingName>
             <saveEmailHeaders>false</saveEmailHeaders>
         </routingAddresses>
         <showWordCountInComposer>false</showWordCountInComposer>
+        <unauthorizedSenderAction>Bounce</unauthorizedSenderAction>
         <useEmailHeadersForThreading>true</useEmailHeadersForThreading>
     </emailToCase>
     <enableCaseFeed>true</enableCaseFeed>

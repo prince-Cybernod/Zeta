@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Audience xmlns="http://soap.sforce.com/2006/04/metadata">
+    <audienceName>Logged in Portal User</audienceName>
+    <container>Zeta Charter Schools</container>
+    <criteria>
+        <criterion>
+            <criteriaNumber>1</criteriaNumber>
+            <criterionValue>
+                <profile>zeta parent portal user</profile>
+            </criterionValue>
+            <operator>Equal</operator>
+            <type>Profile</type>
+        </criterion>
+    </criteria>
+    <formulaFilterType>AllCriteriaMatch</formulaFilterType>
+    <isDefaultAudience>false</isDefaultAudience>
+    <targets>
+        <target>
+            <groupName>b70b055c-3253-4526-acf0-e717e6ac0a56</groupName>
+            <priority>1</priority>
+            <targetType>ExperienceVariation</targetType>
+            <targetValue>Contact_Support_Contact_Us_Page</targetValue>
+        </target>
+        <target>
+            <groupName>3e4dd3cf-7c39-473e-9dd1-7db2fcfee45e$#$bcb20713-401c-43b8-82e5-85babe21f12f</groupName>
+            <priority>1</priority>
+            <targetType>ExperienceVariation</targetType>
+            <targetValue>Events_HTML_Editor_Component</targetValue>
+        </target>
+        <target>
+            <groupName>a3ed7dca-5e42-4fda-b348-ef522750ba61</groupName>
+            <priority>1</priority>
+            <targetType>ExperienceVariation</targetType>
+            <targetValue>Events_Events_Page</targetValue>
+        </target>
+    </targets>
+</Audience>

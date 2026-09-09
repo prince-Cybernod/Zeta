@@ -1089,6 +1089,22 @@
         <sourceFormula>Sibling_Attending_Gender__c</sourceFormula>
         <targetField>IndividualApplication_Home__dll.Sibling_Attending_Gender_c__c</targetField>
     </fieldSourceTargetMaps>
+    <fieldSourceTargetMaps>
+        <creationType>Custom</creationType>
+        <filterApplied>false</filterApplied>
+        <isSourceFormula>false</isSourceFormula>
+        <sourceField>IndividualApplication_Home.Active_Academic_Term_c__c</sourceField>
+        <sourceFormula>Active_Academic_Term__c</sourceFormula>
+        <targetField>IndividualApplication_Home__dll.Active_Academic_Term_c__c</targetField>
+    </fieldSourceTargetMaps>
+    <fieldSourceTargetMaps>
+        <creationType>Custom</creationType>
+        <filterApplied>false</filterApplied>
+        <isSourceFormula>false</isSourceFormula>
+        <sourceField>IndividualApplication_Home.Academic_Term_Name_c__c</sourceField>
+        <sourceFormula>Academic_Term_Name__c</sourceFormula>
+        <targetField>IndividualApplication_Home__dll.Academic_Term_Name_c__c</targetField>
+    </fieldSourceTargetMaps>
     <masterLabel>IndividualApplication_Home_map_IndividualApplication_Home_1785769198396</masterLabel>
     <sourceObjectName>IndividualApplication_Home</sourceObjectName>
     <targetObjectName>IndividualApplication_Home__dll</targetObjectName>

@@ -9,12 +9,4 @@
         <value>Logger Field Mappings</value>
     </caseValues>
     <startsWith>Consonant</startsWith>
-    <validationRules>
-        <errorMessage><!-- Only LogEntryEvent__e is supported as the Source SObject Type --></errorMessage>
-        <name>UnsupportedSourceSObjectType</name>
-    </validationRules>
-    <validationRules>
-        <errorMessage><!-- Only Log__c, LogEntry__c, and LoggerScenario__c are supported as the Target SObject Type --></errorMessage>
-        <name>UnsupportedTargetSObjectType</name>
-    </validationRules>
 </CustomObjectTranslation>

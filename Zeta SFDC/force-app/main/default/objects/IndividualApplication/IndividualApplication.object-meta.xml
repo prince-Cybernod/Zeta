@@ -140,6 +140,8 @@
         <customTabListAdditionalFields>Account</customTabListAdditionalFields>
         <customTabListAdditionalFields>AppliedDate</customTabListAdditionalFields>
         <customTabListAdditionalFields>Status</customTabListAdditionalFields>
+        <listViewButtons>Mass_Create_Tasks</listViewButtons>
+        <listViewButtons>Send_Email</listViewButtons>
         <lookupDialogsAdditionalFields>Account</lookupDialogsAdditionalFields>
         <lookupDialogsAdditionalFields>AppliedDate</lookupDialogsAdditionalFields>
         <lookupDialogsAdditionalFields>Status</lookupDialogsAdditionalFields>
@@ -154,5 +156,5 @@
         <searchResultsAdditionalFields>Status</searchResultsAdditionalFields>
         <searchResultsAdditionalFields>Current_School_Offer__c</searchResultsAdditionalFields>
     </searchLayouts>
-    <sharingModel>ReadWrite</sharingModel>
+    <sharingModel>Private</sharingModel>
 </CustomObject>

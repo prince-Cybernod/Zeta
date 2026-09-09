@@ -114,19 +114,25 @@
     </actionOverrides>
     <actionOverrides>
         <actionName>View</actionName>
-        <type>Default</type>
-    </actionOverrides>
-    <actionOverrides>
-        <actionName>View</actionName>
+        <comment>Action override created by Lightning App Builder during activation.</comment>
+        <content>Zeta_Academic_Term_Enrollment_Record_Page</content>
         <formFactor>Large</formFactor>
-        <type>Default</type>
+        <skipRecordTypeSelect>false</skipRecordTypeSelect>
+        <type>Flexipage</type>
     </actionOverrides>
     <actionOverrides>
         <actionName>View</actionName>
+        <comment>Action override created by Lightning App Builder during activation.</comment>
+        <content>Zeta_Academic_Term_Enrollment_Record_Page</content>
         <formFactor>Small</formFactor>
+        <skipRecordTypeSelect>false</skipRecordTypeSelect>
+        <type>Flexipage</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
         <type>Default</type>
     </actionOverrides>
-    <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
+    <compactLayoutAssignment>Zeta_Compact_Layout</compactLayoutAssignment>
     <enableFeeds>false</enableFeeds>
     <externalSharingModel>Private</externalSharingModel>
     <searchLayouts>
@@ -135,7 +141,14 @@
         <customTabListAdditionalFields>EnrollmentStatus</customTabListAdditionalFields>
         <customTabListAdditionalFields>HoursAttempted</customTabListAdditionalFields>
         <customTabListAdditionalFields>TermGradePointAverage</customTabListAdditionalFields>
-        <listViewButtons>Send_Academic_Term_Enrollment_SMS_Lightning</listViewButtons>
+        <excludedStandardButtons>OpenListInQuip</excludedStandardButtons>
+        <excludedStandardButtons>NewFromDocument</excludedStandardButtons>
+        <excludedStandardButtons>PrintableListView</excludedStandardButtons>
+        <excludedStandardButtons>AssignPulseCheckAction</excludedStandardButtons>
+        <excludedStandardButtons>AddToWatchListAction</excludedStandardButtons>
+        <listViewButtons>Create_Intent_to_Return_Task</listViewButtons>
+        <listViewButtons>Mass_Create_Tasks</listViewButtons>
+        <listViewButtons>Send_Email</listViewButtons>
         <lookupDialogsAdditionalFields>LearnerContact</lookupDialogsAdditionalFields>
         <lookupDialogsAdditionalFields>AcademicTerm</lookupDialogsAdditionalFields>
         <lookupDialogsAdditionalFields>EnrollmentStatus</lookupDialogsAdditionalFields>
@@ -149,8 +162,8 @@
         <searchResultsAdditionalFields>LearnerContact</searchResultsAdditionalFields>
         <searchResultsAdditionalFields>AcademicTerm</searchResultsAdditionalFields>
         <searchResultsAdditionalFields>EnrollmentStatus</searchResultsAdditionalFields>
-        <searchResultsAdditionalFields>HoursAttempted</searchResultsAdditionalFields>
-        <searchResultsAdditionalFields>TermGradePointAverage</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>Learning_Program__c</searchResultsAdditionalFields>
+        <searchResultsCustomButtons>Create_Intent_to_Return_Task</searchResultsCustomButtons>
     </searchLayouts>
-    <sharingModel>Read</sharingModel>
+    <sharingModel>Private</sharingModel>
 </CustomObject>

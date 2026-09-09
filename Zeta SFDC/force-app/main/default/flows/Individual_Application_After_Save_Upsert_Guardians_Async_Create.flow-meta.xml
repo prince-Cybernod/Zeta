@@ -28,35 +28,19 @@
     <start>
         <locationX>0</locationX>
         <locationY>0</locationY>
-        <filterLogic>(1 AND (2 OR 3)) OR 4</filterLogic>
-        <filters>
-            <field>Parent_Guardian_1_Last_Name__c</field>
-            <operator>IsNull</operator>
-            <value>
-                <booleanValue>false</booleanValue>
-            </value>
-        </filters>
-        <filters>
-            <field>Parent_Guardian_1_Phone__c</field>
-            <operator>IsNull</operator>
-            <value>
-                <booleanValue>false</booleanValue>
-            </value>
-        </filters>
-        <filters>
-            <field>Parent_Guardian_1_Email__c</field>
-            <operator>IsNull</operator>
-            <value>
-                <booleanValue>false</booleanValue>
-            </value>
-        </filters>
-        <filters>
-            <field>SchoolMint_Applicant_Id__c</field>
-            <operator>IsNull</operator>
-            <value>
-                <booleanValue>false</booleanValue>
-            </value>
-        </filters>
+        <filterFormula>AND(
+    NOT({!$Permission.Bypass_Validation}),
+    OR(
+        AND(
+            NOT(ISBLANK({!$Record.Parent_Guardian_1_Last_Name__c})),
+            OR(
+                NOT(ISBLANK({!$Record.Parent_Guardian_1_Phone__c})),
+                NOT(ISBLANK({!$Record.Parent_Guardian_1_Email__c}))
+            )
+        ),
+        NOT(ISBLANK({!$Record.SchoolMint_Applicant_Id__c}))
+    )
+)</filterFormula>
         <object>IndividualApplication</object>
         <recordTriggerType>Create</recordTriggerType>
         <scheduledPaths>

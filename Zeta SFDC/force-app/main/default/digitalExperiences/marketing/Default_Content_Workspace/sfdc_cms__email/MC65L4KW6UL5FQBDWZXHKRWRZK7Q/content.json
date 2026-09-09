@@ -1,0 +1,186 @@
+{
+  "type" : "sfdc_cms__email",
+  "title" : "MC | Applicant | ES Email 1 w/ Spanish Translation",
+  "contentBody" : {
+    "backgroundColor" : "#f3f3f3",
+    "lightning:backgroundImage" : {
+      "position" : "center center",
+      "repeat" : "no-repeat",
+      "size" : "cover"
+    },
+    "lightning:brandSource" : "MCXD6TZ6XKJRGNBB72AH4B5UPAKA",
+    "lightning:colorScheme" : "{!$brand.colorScheme}",
+    "lightning:dataProviders" : [ {
+      "attributes" : {
+        "dataGraphApiName" : "Unified_Individual_Full_Graph",
+        "dataspace" : "default"
+      },
+      "definition" : "sfdc_cms__dataGraphDataProvider",
+      "sfdcExpressionKey" : "$dataGraph"
+    } ],
+    "lightning:expressions" : [ ],
+    "lightning:padding" : "{!$brand.spacing.none}",
+    "messagePurpose" : "promotional",
+    "preheader" : "Thank you for applying to Zeta! ",
+    "sfdc_cms:attachments" : [ ],
+    "sfdc_cms:block" : {
+      "definition" : "sfdc_cms/rootContentBlock",
+      "id" : "a075fbb6-2872-434d-a91b-6bc32f72b357",
+      "type" : "block",
+      "children" : [ {
+        "attributes" : {
+          "lightning:backgroundImage" : {
+            "position" : "center center",
+            "repeat" : "no-repeat",
+            "size" : "cover"
+          },
+          "lightning:borderRadius" : "{!$brand.borderRadius.square}",
+          "lightning:borderWidth" : "{!$brand.borderWeight.none}",
+          "lightning:colorScheme" : "{!$brand.colorScheme}",
+          "lightning:margin" : "{!$brand.spacing.none}",
+          "lightning:padding" : "{!$brand.spacing.none}",
+          "reverseOrderOnMobile" : false,
+          "stackOnMobile" : true
+        },
+        "definition" : "lightning/section",
+        "id" : "9e3012c9-62b9-4be9-9fc4-1338c5fda646",
+        "type" : "block",
+        "children" : [ {
+          "attributes" : {
+            "columnWidth" : 12.0,
+            "lightning:backgroundImage" : {
+              "position" : "center center",
+              "repeat" : "no-repeat",
+              "size" : "cover"
+            },
+            "lightning:borderRadius" : "{!$brand.borderRadius.square}",
+            "lightning:borderWidth" : "{!$brand.borderWeight.none}",
+            "lightning:colorScheme" : "{!$brand.colorScheme}",
+            "lightning:margin" : "{!$brand.spacing.none}",
+            "lightning:padding" : "{!$brand.spacing.none}",
+            "lightning:verticalAlignment" : "top"
+          },
+          "definition" : "lightning/column",
+          "id" : "e62d45eb-988f-436a-a3cf-890855f1f411",
+          "type" : "block",
+          "children" : [ {
+            "attributes" : {
+              "imageFitConfig" : {
+                "width" : {
+                  "unit" : "%",
+                  "value" : 100.0
+                }
+              },
+              "imageInfo" : {
+                "altText" : "",
+                "overrideAltText" : false,
+                "source" : {
+                  "mimeType" : "image/jpeg",
+                  "ref" : "MCF7QYTUV4VBA53DAAIX43SCYAEE",
+                  "size" : 48416.0,
+                  "type" : "imageReference"
+                },
+                "url" : "/cms/media/MCF7QYTUV4VBA53DAAIX43SCYAEE?fileName=Zeta+Email+Header+-+ES+App+1.jpg&fileHash=42397bcc400c3ff53d4bc6992be912e7"
+              },
+              "lightning:borderRadius" : "{!$brand.borderRadius.square}",
+              "lightning:borderWidth" : "{!$brand.borderWeight.none}",
+              "lightning:colorGroup" : {
+                "backgroundColor" : "{!$brand.colorScheme.root}",
+                "borderColor" : "{!$brand.colorScheme.neutral}",
+                "linkColor" : "{!$brand.colorScheme.primaryAccent}",
+                "textColor" : "{!$brand.colorScheme.contrast}"
+              },
+              "lightning:horizontalAlignment" : "center",
+              "lightning:margin" : "{!$brand.spacing.none}",
+              "lightning:padding" : "{!$brand.spacing.none}",
+              "lightning:typography" : "{!$brand.typography.paragraph.paragraph1}"
+            },
+            "definition" : "lightning/image",
+            "id" : "d54f7b6d-6a9d-4e45-9e5c-21411c20b74c",
+            "type" : "block"
+          } ]
+        } ]
+      }, {
+        "attributes" : {
+          "lightning:backgroundImage" : {
+            "position" : "center center",
+            "repeat" : "no-repeat",
+            "size" : "cover"
+          },
+          "lightning:borderRadius" : "{!$brand.borderRadius.square}",
+          "lightning:borderWidth" : "{!$brand.borderWeight.none}",
+          "lightning:colorScheme" : "{!$brand.colorScheme}",
+          "lightning:margin" : "{!$brand.spacing.none}",
+          "lightning:padding" : "{!$brand.spacing.xSmall}",
+          "reverseOrderOnMobile" : false,
+          "stackOnMobile" : true
+        },
+        "definition" : "lightning/section",
+        "id" : "c07f380e-bc03-4a60-b5cb-215d99cb33f5",
+        "type" : "block",
+        "children" : [ {
+          "attributes" : {
+            "columnWidth" : 12.0,
+            "lightning:backgroundImage" : {
+              "position" : "center center",
+              "repeat" : "no-repeat",
+              "size" : "cover"
+            },
+            "lightning:borderRadius" : "{!$brand.borderRadius.square}",
+            "lightning:borderWidth" : "{!$brand.borderWeight.none}",
+            "lightning:colorScheme" : "{!$brand.colorScheme}",
+            "lightning:margin" : "{!$brand.spacing.none}",
+            "lightning:padding" : "{!$brand.spacing.xSmall}",
+            "lightning:verticalAlignment" : "top"
+          },
+          "definition" : "lightning/column",
+          "id" : "9af07a8f-aa74-4c30-aa64-58446531dbd5",
+          "type" : "block",
+          "children" : [ {
+            "attributes" : {
+              "align" : "left",
+              "lightning:borderRadius" : "{!$brand.borderRadius.square}",
+              "lightning:borderWidth" : "{!$brand.borderWeight.none}",
+              "lightning:colorGroup" : {
+                "backgroundColor" : "{!$brand.colorScheme.root}",
+                "borderColor" : "{!$brand.colorScheme.neutral}",
+                "linkColor" : "{!$brand.colorScheme.primaryAccent}",
+                "textColor" : "{!$brand.colorScheme.contrast}"
+              },
+              "lightning:margin" : "{!$brand.spacing.none}",
+              "lightning:padding" : "{!$brand.spacing.none}",
+              "lightning:typography" : {
+                "fontFamily" : "{!$brand.baseFontFamily}",
+                "fontSize" : "{!$brand.fontSize.medium}",
+                "fontWeight" : "{!$brand.fontWeight.normal}",
+                "letterSpacing" : "normal",
+                "lineHeight" : 1.5,
+                "textTransform" : "none"
+              },
+              "text" : "Dear &lt;Parent Last Name&gt; Family,<br /><br />Thank you for applying to &lt;Highest Ranked School Application &gt; School&gt;! <br />We are so excited that you are considering Zeta for your family. Choosing a school is an important decision, and our Enrollment Team looks forward to supporting you every step of the way.<br /><br />At Zeta Elementary, we believe the early years of school shape everything that follows. In warm, joyful, and structured classrooms, children build confidence, curiosity, and a lasting love of learning. Our teachers know each student deeply and provide the academic, social, and emotional support they need to thrive.<br /><br />Zeta students benefit from:<br /><br /><ul style=\"display: block; padding-left: 2.5rem; margin: 0.5rem 0px; list-style-position: outside; list-style-type: disc;\"><li style=\"display: list-item; margin: 0.35rem 0px;\">A <strong>strong academic foundation </strong>that prepares them for long-term success</li><li style=\"display: list-item; margin: 0.35rem 0px;\">A school culture rooted in <strong>love, belonging, and high expectations</strong></li><li style=\"display: list-item; margin: 0.35rem 0px;\"><strong>Thoughtful partnership with families</strong> at every stage</li><li style=\"display: list-item; margin: 0.35rem 0px;\">A<strong> tuition-free public charter education</strong> open to all students</li></ul><br />Our Enrollment Team will be your main point of contact throughout the enrollment process. We will share important updates, key dates, and opportunities to get to know our community, and we are always here to answer your questions.<br /><br />We would love to <a href=\"https://zetaschools.org/events-for-prospective-families/\" target=\"_blank\" part=\"link\" rel=\"noopener noreferrer noopener noreferrer noopener noreferrer\"><u>welcome you for a visit</u></a> at the Zeta Elementary School of your choice. <br /><br />And remember, <br /><br /><a href=\"https://www.youtube.com/watch?v&#61;iEZaTTtgbS8\" target=\"_blank\" part=\"link\" rel=\"noopener noreferrer noopener noreferrer noopener noreferrer\"><u>You Have a Friend at Zeta!</u></a><br /><br />Thank you again for considering Zeta Elementary. We cannot wait to get to know your family!<br /><br />Warmly,<br /><strong>The Zeta Enrollment Team</strong><br /><br />Zeta Charter Schools<br /><br />Please reach out if you have any questions about Zeta, our Enrollment Team is here for you every step of the way. ✉︎  enroll&#64;zetaschools.org&#96;11q&#96; &#x1f4de;(646) 480-1654<br /><br /><br />"
+            },
+            "definition" : "lightning/paragraph",
+            "id" : "bbf0ea99-526d-48e3-960b-d6dbbefe7dd2",
+            "type" : "block"
+          } ]
+        } ]
+      }, {
+        "attributes" : {
+          "content" : {
+            "attributes" : { },
+            "definition" : "@cms/MCPIKVRK7PBBGXBPNPUOYZAFQI2U",
+            "type" : "block"
+          }
+        },
+        "definition" : "sfdc_cms/reusableContentBlock",
+        "id" : "c3ec9ede-0f85-43ee-a443-56e7a11d2f73",
+        "type" : "block"
+      } ]
+    },
+    "sfdc_cms:title" : "MC | Applicant | ES Email 1 w/ Spanish Translation",
+    "sfdc_cms:urlName" : "mc-applicant-es-email-1",
+    "subjectLine" : "Thank you for applying to Zeta! ",
+    "sfdc_cms:variants" : [ ]
+  },
+  "urlName" : "mc-applicant-es-email-1"
+}

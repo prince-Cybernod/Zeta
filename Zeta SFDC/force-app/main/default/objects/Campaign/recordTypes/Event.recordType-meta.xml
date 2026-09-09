@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<RecordType xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Event</fullName>
+    <active>true</active>
+    <compactLayoutAssignment>Zeta_Compact_Layout</compactLayoutAssignment>
+    <label>Event</label>
+    <picklistValues>
+        <picklist>Status</picklist>
+        <values>
+            <fullName>Not Yet Online</fullName>
+            <default>true</default>
+        </values>
+        <values>
+            <fullName>Past Event</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Tickets Available</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Tickets Sold Out</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Ticket_Type__c</picklist>
+        <values>
+            <fullName>General Admission</fullName>
+            <default>true</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Type</picklist>
+        <values>
+            <fullName>Event</fullName>
+            <default>true</default>
+        </values>
+        <values>
+            <fullName>Information Session</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Meet Your Principal</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Other</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Tour</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Webinar</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Welcome Event</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Zoom Webinar</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+</RecordType>

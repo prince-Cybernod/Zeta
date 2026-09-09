@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomMetadata xmlns="http://soap.sforce.com/2006/04/metadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <label>Event Check-In Form - Event</label>
+    <protected>false</protected>
+    <values>
+        <field>Form_URL__c</field>
+        <value xsi:type="xsd:string">https://zetacharterschools.tfaforms.net/28?Eventid=</value>
+    </values>
+    <values>
+        <field>Secret_Key__c</field>
+        <value xsi:nil="true"/>
+    </values>
+</CustomMetadata>

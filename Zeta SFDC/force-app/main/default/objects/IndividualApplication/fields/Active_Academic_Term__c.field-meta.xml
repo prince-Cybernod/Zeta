@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Active_Academic_Term__c</fullName>
+    <description>Used for Segmentation in Data Cloud</description>
+    <formula>Application_Timeline__r.Academic_Term__r.Active__c</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>Active Academic Term</label>
+    <trackHistory>false</trackHistory>
+    <type>Checkbox</type>
+</CustomField>

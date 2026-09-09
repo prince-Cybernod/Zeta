@@ -5,6 +5,14 @@
             <componentInstance>
                 <componentInstanceProperties>
                     <name>actionNames</name>
+                    <valueList>
+                        <valueListItems>
+                            <value>Edit</value>
+                        </valueListItems>
+                        <valueListItems>
+                            <value>Delete</value>
+                        </valueListItems>
+                    </valueList>
                 </componentInstanceProperties>
                 <componentInstanceProperties>
                     <name>collapsed</name>
@@ -20,7 +28,7 @@
                 </componentInstanceProperties>
                 <componentInstanceProperties>
                     <name>hideChatterActions</name>
-                    <value>true</value>
+                    <value>false</value>
                 </componentInstanceProperties>
                 <componentInstanceProperties>
                     <name>hideSlackAction</name>
@@ -100,6 +108,12 @@
                 </fieldInstanceProperties>
                 <fieldItem>Record.ContactEmail</fieldItem>
                 <identifier>RecordContactEmailField</identifier>
+            </fieldInstance>
+        </itemInstances>
+        <itemInstances>
+            <fieldInstance>
+                <fieldItem>Record.Related_Lead__c</fieldItem>
+                <identifier>RecordRelated_Lead__cField</identifier>
             </fieldInstance>
         </itemInstances>
         <name>Facet-f196ecf2-7afb-420a-97b2-7f41a0c5339d</name>

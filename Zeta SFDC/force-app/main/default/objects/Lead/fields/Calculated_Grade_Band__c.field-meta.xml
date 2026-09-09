@@ -29,6 +29,7 @@ FLOOR( ( DATE(YEAR(TODAY()),12,31) - Date_of_Birth__c) / 365.2425 ) &gt;= 18,
     <inlineHelpText>Expected birthdate based on the Lead&apos;s Date of Birth</inlineHelpText>
     <label>Calculated Grade Band</label>
     <required>false</required>
+    <trackHistory>false</trackHistory>
     <type>Text</type>
     <unique>false</unique>
 </CustomField>

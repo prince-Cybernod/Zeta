@@ -9,12 +9,4 @@
         <value>Mogli Form Templates</value>
     </caseValues>
     <startsWith>Consonant</startsWith>
-    <validationRules>
-        <errorMessage><!-- Active Templates must have a first question --></errorMessage>
-        <name>Mogli_SMS__ActiveTemplatesMustHaveOneFirstQuestion</name>
-    </validationRules>
-    <validationRules>
-        <errorMessage><!-- There cannot be more than one first question marked for this Form Template. --></errorMessage>
-        <name>Mogli_SMS__CannotHaveMoreThanOneFirstQuestion</name>
-    </validationRules>
 </CustomObjectTranslation>

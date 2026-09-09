@@ -25,5 +25,6 @@
     <inlineHelpText>Displays the date and time the next outreach attempt is due. The follow-up schedule is 24 hours after record creation, 48 hours after the first outreach attempt, and 7 days after the second outreach attempt. The field is blank when the record is closed or all outreach attempts are complete.</inlineHelpText>
     <label>Next Follow-Up Due</label>
     <required>false</required>
+    <trackHistory>false</trackHistory>
     <type>DateTime</type>
 </CustomField>

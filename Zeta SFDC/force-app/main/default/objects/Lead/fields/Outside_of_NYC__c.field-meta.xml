@@ -5,5 +5,6 @@
     <formula>UPPER(  State  ) &lt;&gt; &quot;NY&quot;</formula>
     <inlineHelpText>TRUE if Mailing State does not equal &quot;NY&quot;</inlineHelpText>
     <label>Outside of NYC</label>
+    <trackHistory>false</trackHistory>
     <type>Checkbox</type>
 </CustomField>

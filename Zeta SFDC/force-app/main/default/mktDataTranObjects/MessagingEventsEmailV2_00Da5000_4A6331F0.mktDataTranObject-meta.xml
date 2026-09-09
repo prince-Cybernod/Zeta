@@ -45,6 +45,19 @@
         <sequence>0</sequence>
     </mktDataTranFields>
     <mktDataTranFields>
+        <fullName>BccAddress</fullName>
+        <creationType>Custom</creationType>
+        <datatype>S</datatype>
+        <externalName>BccAddress</externalName>
+        <isDataRequired>false</isDataRequired>
+        <length>0</length>
+        <masterLabel>BccAddress</masterLabel>
+        <precision>0</precision>
+        <primaryIndexOrder>0</primaryIndexOrder>
+        <scale>0</scale>
+        <sequence>0</sequence>
+    </mktDataTranFields>
+    <mktDataTranFields>
         <fullName>BounceReason</fullName>
         <creationType>Custom</creationType>
         <datatype>S</datatype>

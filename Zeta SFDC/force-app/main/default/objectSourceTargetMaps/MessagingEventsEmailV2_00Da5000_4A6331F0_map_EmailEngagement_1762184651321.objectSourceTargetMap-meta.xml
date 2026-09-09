@@ -329,6 +329,22 @@
         <sourceField>MessagingEventsEmailV2_00Da5000_4A6331F0__dll.ReplyToAddress__c</sourceField>
         <targetField>ssot__EmailEngagement__dlm.ReplyToAddress__c</targetField>
     </fieldSourceTargetMaps>
+    <fieldSourceTargetMaps>
+        <creationType>Custom</creationType>
+        <filterApplied>false</filterApplied>
+        <filterOperationType>Equal</filterOperationType>
+        <isSourceFormula>false</isSourceFormula>
+        <sourceField>MessagingEventsEmailV2_00Da5000_4A6331F0__dll.ConversationId__c</sourceField>
+        <targetField>ssot__EmailEngagement__dlm.ConversationId__c</targetField>
+    </fieldSourceTargetMaps>
+    <fieldSourceTargetMaps>
+        <creationType>Custom</creationType>
+        <filterApplied>false</filterApplied>
+        <filterOperationType>Equal</filterOperationType>
+        <isSourceFormula>false</isSourceFormula>
+        <sourceField>MessagingEventsEmailV2_00Da5000_4A6331F0__dll.BccAddress__c</sourceField>
+        <targetField>ssot__EmailEngagement__dlm.BccAddress__c</targetField>
+    </fieldSourceTargetMaps>
     <masterLabel>MessagingEventsEmailV2_00Da5000_4A6331F0_map_EmailEngagement_1762184651321</masterLabel>
     <sourceObjectName>MessagingEventsEmailV2_00Da5000_4A6331F0__dll</sourceObjectName>
     <targetObjectName>ssot__EmailEngagement__dlm</targetObjectName>

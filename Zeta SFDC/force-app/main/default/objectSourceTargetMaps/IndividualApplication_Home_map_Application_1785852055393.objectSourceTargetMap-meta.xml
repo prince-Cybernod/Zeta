@@ -177,6 +177,22 @@
         <sourceField>IndividualApplication_Home__dll.ContactId__c</sourceField>
         <targetField>ssot__Application__dlm.ssot__AccountContactId__c</targetField>
     </fieldSourceTargetMaps>
+    <fieldSourceTargetMaps>
+        <creationType>Custom</creationType>
+        <filterApplied>false</filterApplied>
+        <filterOperationType>Equal</filterOperationType>
+        <isSourceFormula>false</isSourceFormula>
+        <sourceField>IndividualApplication_Home__dll.Academic_Term_Name_c__c</sourceField>
+        <targetField>ssot__Application__dlm.Academic_Term_Name__c</targetField>
+    </fieldSourceTargetMaps>
+    <fieldSourceTargetMaps>
+        <creationType>Custom</creationType>
+        <filterApplied>false</filterApplied>
+        <filterOperationType>Equal</filterOperationType>
+        <isSourceFormula>false</isSourceFormula>
+        <sourceField>IndividualApplication_Home__dll.Active_Academic_Term_c__c</sourceField>
+        <targetField>ssot__Application__dlm.Active_Academic_Term__c</targetField>
+    </fieldSourceTargetMaps>
     <masterLabel>IndividualApplication_Home_map_Application_1785852055393</masterLabel>
     <sourceObjectName>IndividualApplication_Home__dll</sourceObjectName>
     <targetObjectName>ssot__Application__dlm</targetObjectName>

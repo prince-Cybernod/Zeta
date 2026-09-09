@@ -1,0 +1,370 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>65.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <decisions>
+        <name>Does_ATE_Already_Exist</name>
+        <label>Does ATE Already Exist?</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <defaultConnector>
+            <targetReference>Update_Contact</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Yes_ATE_Already_Exists</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Get_Existing_ATE_for_Next_Year</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <label>Yes, ATE Already Exists</label>
+        </rules>
+    </decisions>
+    <description>Creates a new Academic Term Enrollment for the upcoming school year for returning students when Intent to Return is updated to &apos;Yes&apos;.
+
+Created by: Elevation Solutions</description>
+    <environments>Default</environments>
+    <formulas>
+        <name>fxGradeApplied</name>
+        <dataType>String</dataType>
+        <expression>IF(
+    $Record.Zeta_Approved_Grade__c = &quot;PK&quot;, &quot;K&quot;,
+    IF(
+        $Record.Zeta_Approved_Grade__c = &quot;K&quot;, &quot;1&quot;,
+        IF(
+            $Record.Zeta_Approved_Grade__c = &quot;1&quot;, &quot;2&quot;,
+            IF(
+                $Record.Zeta_Approved_Grade__c = &quot;2&quot;, &quot;3&quot;,
+                IF(
+                    $Record.Zeta_Approved_Grade__c = &quot;3&quot;, &quot;4&quot;,
+                    IF(
+                        $Record.Zeta_Approved_Grade__c = &quot;4&quot;, &quot;5&quot;,
+                        IF(
+                            $Record.Zeta_Approved_Grade__c = &quot;5&quot;, &quot;6&quot;,
+                            IF(
+                                $Record.Zeta_Approved_Grade__c = &quot;6&quot;, &quot;7&quot;,
+                                IF(
+                                    $Record.Zeta_Approved_Grade__c = &quot;7&quot;, &quot;8&quot;,
+                                    IF(
+                                        $Record.Zeta_Approved_Grade__c = &quot;8&quot;, &quot;9&quot;,
+                                        IF(
+                                            $Record.Zeta_Approved_Grade__c = &quot;9&quot;, &quot;10&quot;,
+                                            IF(
+                                                $Record.Zeta_Approved_Grade__c = &quot;10&quot;, &quot;11&quot;,
+                                                IF(
+                                                    $Record.Zeta_Approved_Grade__c = &quot;11&quot;, &quot;12&quot;,
+                                                    NULL
+                                                )
+                                            )
+                                        )
+                                    )
+                                )
+                            )
+                        )
+                    )
+                )
+            )
+        )
+    )
+)</expression>
+    </formulas>
+    <interviewLabel>Academic Term Enrollment (After Save) Returning Student ATE Creation {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Academic Term Enrollment (After Save) Returning Student ATE Creation</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordCreates>
+        <name>Create_ATE_for_Next_Year</name>
+        <label>Create ATE for Next Year</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <inputAssignments>
+            <field>AcademicTermId</field>
+            <value>
+                <elementReference>Get_Next_Year_Academic_Term.Id</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Activities_Field_Trip_Consent_Form__c</field>
+            <value>
+                <stringValue>N/A, returning student</stringValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Computer_Tablet_Use_Consent_Form__c</field>
+            <value>
+                <stringValue>N/A, returning student</stringValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Does_Not_Consent_Media_Release__c</field>
+            <value>
+                <elementReference>$Record.Does_Not_Consent_Media_Release__c</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>EnrollmentReason</field>
+            <value>
+                <stringValue>Continuing</stringValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>EnrollmentStatus</field>
+            <value>
+                <stringValue>2. Registration Phase</stringValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Ethnic_Identification_Form__c</field>
+            <value>
+                <stringValue>N/A, returning student</stringValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Ethnicity_Answer__c</field>
+            <value>
+                <stringValue>N/A, returning student</stringValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>FERPA_Directory_Info_Notice__c</field>
+            <value>
+                <stringValue>Not yet done</stringValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Grade_Applied__c</field>
+            <value>
+                <elementReference>fxGradeApplied</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Home_Language_Questionnaire__c</field>
+            <value>
+                <stringValue>N/A, returning student</stringValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Housing_ATS_Code__c</field>
+            <value>
+                <elementReference>$Record.Housing_ATS_Code__c</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Language_Code_On_ATS__c</field>
+            <value>
+                <elementReference>$Record.Language_Code_On_ATS__c</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Laptop_Tablet_Agreement__c</field>
+            <value>
+                <stringValue>N/A, returning student</stringValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>LearnerAccountId</field>
+            <value>
+                <elementReference>$Record.LearnerAccountId</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>LearnerContactId</field>
+            <value>
+                <elementReference>$Record.LearnerContactId</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Learning_Program__c</field>
+            <value>
+                <elementReference>$Record.Learning_Program__r.Learning_Program_for_Upcoming_Year__r.Id</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>MAF_Upload__c</field>
+            <value>
+                <stringValue>Not yet uploaded/unknown if applicable</stringValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Media_Photo_Release__c</field>
+            <value>
+                <stringValue>N/A, returning student</stringValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>OSISNumber__c</field>
+            <value>
+                <elementReference>$Record.OSISNumber__c</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>OSISOnATS__c</field>
+            <value>
+                <elementReference>$Record.OSISOnATS__c</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>PreK_Flu_Shot_Verification__c</field>
+            <value>
+                <stringValue>N/A to student</stringValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Pre_K_Flu_Shot_Form__c</field>
+            <value>
+                <stringValue>N/A to student</stringValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Proof_of_NYS_Residency_1__c</field>
+            <value>
+                <stringValue>N/A, returning student</stringValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Proof_of_NYS_Residency_2__c</field>
+            <value>
+                <stringValue>N/A, returning student</stringValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Proof_of_NYS_Residency_3__c</field>
+            <value>
+                <stringValue>N/A, returning student</stringValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Race_Answers__c</field>
+            <value>
+                <stringValue>N/A, returning student</stringValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Race_Codes_On_ATS__c</field>
+            <value>
+                <elementReference>$Record.Race_Codes_On_ATS__c</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Start_Date_Of_Registration_Phase__c</field>
+            <value>
+                <elementReference>$Flow.CurrentDate</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Start_Date__c</field>
+            <value>
+                <elementReference>Get_Next_Year_Academic_Term.StartDate</elementReference>
+            </value>
+        </inputAssignments>
+        <object>AcademicTermEnrollment</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordCreates>
+    <recordLookups>
+        <name>Get_Existing_ATE_for_Next_Year</name>
+        <label>Get Existing ATE for Next Year</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Does_ATE_Already_Exist</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>AcademicTermId</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>Get_Next_Year_Academic_Term.Id</elementReference>
+            </value>
+        </filters>
+        <filters>
+            <field>LearnerAccountId</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>$Record.LearnerAccountId</elementReference>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>AcademicTermEnrollment</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordLookups>
+        <name>Get_Next_Year_Academic_Term</name>
+        <label>Get Next Year Academic Term</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Get_Existing_ATE_for_Next_Year</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>$Record.AcademicTerm.Academic_Term_for_Upcoming_Year__r.Id</elementReference>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>AcademicTerm</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordUpdates>
+        <name>Update_Contact</name>
+        <label>Update Contact</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>Create_ATE_for_Next_Year</targetReference>
+        </connector>
+        <filterLogic>1</filterLogic>
+        <filters>
+            <field>Student_Type__c</field>
+            <operator>NotEqualTo</operator>
+            <value>
+                <stringValue>Returning</stringValue>
+            </value>
+        </filters>
+        <inputAssignments>
+            <field>Student_Type__c</field>
+            <value>
+                <stringValue>Returning</stringValue>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record.LearnerAccount</inputReference>
+    </recordUpdates>
+    <start>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>Get_Next_Year_Academic_Term</targetReference>
+        </connector>
+        <filterFormula>AND( ISPICKVAL({!$Record.Intent_To_Return__c},&apos;Yes&apos;), 
+NOT(ISPICKVAL({!$Record__Prior.Intent_To_Return__c},&apos;Yes&apos;)))</filterFormula>
+        <object>AcademicTermEnrollment</object>
+        <recordTriggerType>Update</recordTriggerType>
+        <triggerType>RecordAfterSave</triggerType>
+    </start>
+    <status>Active</status>
+</Flow>

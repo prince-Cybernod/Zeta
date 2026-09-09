@@ -1,0 +1,739 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>65.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <assignments>
+        <description>Assigns Student Type and Phase from the Student Person Account related to the Program Enrollment.</description>
+        <name>Assign_Student_Type_and_Phase</name>
+        <label>Assign Student Type and Phase</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <assignmentItems>
+            <assignToReference>VarStudentType</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>$Record.Academic_Term_Enrollment__r.LearnerAccount.Student_Type__c</elementReference>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>VarPhase</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>$Record.Academic_Term_Enrollment__r.EnrollmentStatus</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Determine_IEP_Status</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <description>Sets IEP Status to “IEP Process Complete” when either Network or Principal approval is granted, or when Classification = N/A, Has 504 Plan = TRUE, and 504 Accommodations are documented.</description>
+        <name>IEP_Status_IEP_Process_Complete</name>
+        <label>IEP Status = IEP Process Complete</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <assignmentItems>
+            <assignToReference>$Record.IEP_Status__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <stringValue>IEP Process Complete</stringValue>
+            </value>
+        </assignmentItems>
+    </assignments>
+    <assignments>
+        <description>Sets IEP Status to “N/A” when any of the following are true: (1) Student Type = Returning; (2) Phase = Declined/Withdrawn, Rescinded, Cancelled, Waitlisted, or Previously Inactive; or (3) Uploaded IEP indicates “Not yet uploaded/unknown if applicable” or “N/A, family states their child does not have an IEP” AND SESIS IEP ≠ “Yes”.</description>
+        <name>IEP_Status_N_A</name>
+        <label>IEP Status = N/A</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <assignmentItems>
+            <assignToReference>$Record.IEP_Status__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <stringValue>N/A</stringValue>
+            </value>
+        </assignmentItems>
+    </assignments>
+    <assignments>
+        <description>Assigns the IEP Status when the student’s IEP program is specialized, the family wants to remain at Zeta, the principal escalated the case, and the network approval is still pending.</description>
+        <name>Set_IEP_Status_Escalate_to_School_Excellence</name>
+        <label>Set IEP Status = Escalate to School Excellence</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <assignmentItems>
+            <assignToReference>$Record.IEP_Status__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <stringValue>School Excellence Support Needed</stringValue>
+            </value>
+        </assignmentItems>
+    </assignments>
+    <assignments>
+        <description>Sets the IEP Status field to “IEP Process Complete” once the formula fxIEPProcessComplete evaluates to TRUE.</description>
+        <name>Set_IEP_Status_IEP_Process_Complete</name>
+        <label>Set IEP Status = IEP Process Complete</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <assignmentItems>
+            <assignToReference>$Record.IEP_Status__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <stringValue>IEP Process Complete</stringValue>
+            </value>
+        </assignmentItems>
+    </assignments>
+    <assignments>
+        <description>Assigns the IEP Status when the student’s IEP program indicates specialized services, the family wants to remain at Zeta, and both IEP approvals are still pending (“Not yet done” or “N/A”).</description>
+        <name>Set_IEP_Status_Principal_Support_Needed</name>
+        <label>Set IEP Status = Principal Support Needed</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <assignmentItems>
+            <assignToReference>$Record.IEP_Status__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <stringValue>Principal Support Needed</stringValue>
+            </value>
+        </assignmentItems>
+    </assignments>
+    <assignments>
+        <description>Assigns the IEP Status field to “StAT needs to call family” when the student’s program indicates specialized services, the family hasn’t made a decision, and both Principal and Network approvals are pending (contain “N”).</description>
+        <name>Set_IEP_Status_StAT_needs_to_call_family</name>
+        <label>Set IEP Status = StAT needs to call family</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <assignmentItems>
+            <assignToReference>$Record.IEP_Status__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <stringValue>StAT needs to call family</stringValue>
+            </value>
+        </assignmentItems>
+    </assignments>
+    <assignments>
+        <description>Assigns the IEP Status field to “StAT needs to call family” when the Primary IEP Program includes specialized instruction types (1, SEIT, or D).</description>
+        <name>Set_IEP_Status_StAT_needs_to_call_family_2</name>
+        <label>Set IEP Status = StAT needs to call family</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <assignmentItems>
+            <assignToReference>$Record.IEP_Status__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <stringValue>StAT needs to call family</stringValue>
+            </value>
+        </assignmentItems>
+    </assignments>
+    <assignments>
+        <description>Assigns the IEP Status field to “StAT needs to review IEP” when the formula fxIEPNeedsReview evaluates to TRUE.
+This indicates that the IEP record is missing required data, SESIS information is not updated, or the Network IEP Approval status is “Needs” with no active revisions.</description>
+        <name>Set_IEP_Status_StAT_needs_to_review_IEP</name>
+        <label>Set IEP Status = StAT needs to review IEP</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <assignmentItems>
+            <assignToReference>$Record.IEP_Status__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <stringValue>StAT needs to review IEP</stringValue>
+            </value>
+        </assignmentItems>
+    </assignments>
+    <assignments>
+        <description>Default assignment for any IEP record that doesn’t meet higher-priority outcomes.
+Sets IEP Status to “StAT needs to review IEP” when the record requires review but doesn’t meet criteria for other statuses such as “Process Complete” or “Call Family.”</description>
+        <name>Set_IEP_Status_StAT_needs_to_review_IEP_Default</name>
+        <label>Set IEP Status = StAT needs to review IEP Default</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <assignmentItems>
+            <assignToReference>$Record.IEP_Status__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <stringValue>StAT needs to review IEP</stringValue>
+            </value>
+        </assignmentItems>
+    </assignments>
+    <decisions>
+        <description>Evaluates all key IEP and Enrollment conditions to assign a single IEP Status value. Outcomes mirror the Zoho logic order (first match wins).</description>
+        <name>Determine_IEP_Status</name>
+        <label>Determine IEP Status</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <defaultConnector>
+            <targetReference>Set_IEP_Status_StAT_needs_to_review_IEP_Default</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>N_A</name>
+            <conditionLogic>or</conditionLogic>
+            <conditions>
+                <leftValueReference>VarStudentType</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Returning</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>VarPhase</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Declined/Withdrawn</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>VarPhase</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Rescinded</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>VarPhase</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Cancelled</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>VarPhase</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Waitlisted</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>VarPhase</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Previously Inactive</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>fxInvalidIEPUpload</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>IEP_Status_N_A</targetReference>
+            </connector>
+            <label>N/A</label>
+        </rules>
+        <rules>
+            <name>IEP_Process_Complete</name>
+            <conditionLogic>or</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Network_IEP_Approval__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Approved</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Principal_IEP_Approval__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Approved</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>fx504PlanComplete</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>IEP_Status_IEP_Process_Complete</targetReference>
+            </connector>
+            <label>IEP Process Complete</label>
+        </rules>
+        <rules>
+            <name>StAT_needs_to_call_family</name>
+            <conditionLogic>(1 OR 2 OR 3) AND 4 AND 5 AND 6</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Primary_IEP_Program__c</leftValueReference>
+                <operator>Contains</operator>
+                <rightValue>
+                    <stringValue>1</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Primary_IEP_Program__c</leftValueReference>
+                <operator>Contains</operator>
+                <rightValue>
+                    <stringValue>SEIT</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Primary_IEP_Program__c</leftValueReference>
+                <operator>Contains</operator>
+                <rightValue>
+                    <stringValue>D</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.IEP_Family_Decision__c</leftValueReference>
+                <operator>IsBlank</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Principal_IEP_Approval__c</leftValueReference>
+                <operator>Contains</operator>
+                <rightValue>
+                    <stringValue>N</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Network_IEP_Approval__c</leftValueReference>
+                <operator>Contains</operator>
+                <rightValue>
+                    <stringValue>N</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Set_IEP_Status_StAT_needs_to_call_family</targetReference>
+            </connector>
+            <label>StAT needs to call family</label>
+        </rules>
+        <rules>
+            <name>Principal_Support_Needed</name>
+            <conditionLogic>(1 OR 2 OR 3) AND 4 AND 5 AND (6 OR 7)</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Primary_IEP_Program__c</leftValueReference>
+                <operator>Contains</operator>
+                <rightValue>
+                    <stringValue>1</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Primary_IEP_Program__c</leftValueReference>
+                <operator>Contains</operator>
+                <rightValue>
+                    <stringValue>SEIT</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Primary_IEP_Program__c</leftValueReference>
+                <operator>Contains</operator>
+                <rightValue>
+                    <stringValue>D</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.IEP_Family_Decision__c</leftValueReference>
+                <operator>Contains</operator>
+                <rightValue>
+                    <stringValue>remain</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Principal_IEP_Approval__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Not yet done</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Network_IEP_Approval__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Not yet done</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Network_IEP_Approval__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>N/A</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Set_IEP_Status_Principal_Support_Needed</targetReference>
+            </connector>
+            <label>Principal Support Needed</label>
+        </rules>
+        <rules>
+            <name>Escalate_to_School_Excellence</name>
+            <conditionLogic>(1 OR 2 OR 3) AND 4 AND 5 AND 6</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Primary_IEP_Program__c</leftValueReference>
+                <operator>Contains</operator>
+                <rightValue>
+                    <stringValue>1</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Primary_IEP_Program__c</leftValueReference>
+                <operator>Contains</operator>
+                <rightValue>
+                    <stringValue>SEIT</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Primary_IEP_Program__c</leftValueReference>
+                <operator>Contains</operator>
+                <rightValue>
+                    <stringValue>D</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.IEP_Family_Decision__c</leftValueReference>
+                <operator>Contains</operator>
+                <rightValue>
+                    <stringValue>remain</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Principal_IEP_Approval__c</leftValueReference>
+                <operator>Contains</operator>
+                <rightValue>
+                    <stringValue>E</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Network_IEP_Approval__c</leftValueReference>
+                <operator>Contains</operator>
+                <rightValue>
+                    <stringValue>N</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Set_IEP_Status_Escalate_to_School_Excellence</targetReference>
+            </connector>
+            <label>Escalate to School Excellence</label>
+        </rules>
+        <rules>
+            <name>Set_IEP_Process_Complete</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>fxIEPProcessComplete</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Set_IEP_Status_IEP_Process_Complete</targetReference>
+            </connector>
+            <label>IEP Process Complete</label>
+        </rules>
+        <rules>
+            <name>StAT_needs_to_review_IEP</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>fxIEPNeedsReview</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Set_IEP_Status_StAT_needs_to_review_IEP</targetReference>
+            </connector>
+            <label>StAT needs to review IEP</label>
+        </rules>
+        <rules>
+            <name>Set_StAT_needs_to_call_family</name>
+            <conditionLogic>or</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Primary_IEP_Program__c</leftValueReference>
+                <operator>Contains</operator>
+                <rightValue>
+                    <stringValue>1</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Primary_IEP_Program__c</leftValueReference>
+                <operator>Contains</operator>
+                <rightValue>
+                    <stringValue>SEIT</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Primary_IEP_Program__c</leftValueReference>
+                <operator>Contains</operator>
+                <rightValue>
+                    <stringValue>D</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Set_IEP_Status_StAT_needs_to_call_family_2</targetReference>
+            </connector>
+            <label>Set StAT needs to call family</label>
+        </rules>
+    </decisions>
+    <description>This Flow evaluates a student’s IEP (Individualized Education Program) data to determine their current status in the IEP review and approval process. It replicates the existing Zoho logic that drives the “IEP Status” field, using multiple layers of conditional logic to assess whether the IEP process is complete or if further review, family contact, or administrative action is required.
+The Flow considers key factors such as:
+Student Type and Enrollment Status (e.g., Returning, Canceled, Rescinded)
+Uploaded IEP status and SESIS record alignment
+Network and Principal IEP approval outcomes
+Family decisions regarding IEP placement
+Completion of all required IEP program and service fields (e.g., SETSS, OT, PT, Counseling, Transportation, etc.)
+Existence of 504 plans and accommodations
+
+Flow Designer: Elevation Solutions</description>
+    <environments>Default</environments>
+    <formulas>
+        <description>Returns TRUE when the student’s IEP Classification is “N/A”, the Has 504 Plan checkbox is selected (TRUE), and the 504 Accommodations field contains text. This indicates the student does not have an active IEP but has a valid and documented 504 Plan.</description>
+        <name>fx504PlanComplete</name>
+        <dataType>Boolean</dataType>
+        <expression>AND(
+  CONTAINS(TEXT({!$Record.Classification__c}), &quot;N&quot;),
+  {!$Record.Has_504_Plan__c} = TRUE,
+  NOT(ISBLANK({!$Record.Accommodations_504__c}))
+)</expression>
+    </formulas>
+    <formulas>
+        <description>Returns TRUE when the IEP record has incomplete required data, missing SESIS updates, or a “Needs Review” Network IEP Approval with no active revisions. Used by the Decision element to set IEP Status = “StAT needs to review IEP”.</description>
+        <name>fxIEPNeedsReview</name>
+        <dataType>Boolean</dataType>
+        <expression>OR(
+
+  /* --- SESIS Section --- */
+  AND(
+    CONTAINS(TEXT({!$Record.Is_there_an_IEP_on_SESIS__c}), &quot;Yes&quot;),
+    NOT({!$Record.Updated_with_the_IEP_from_SESIS__c})
+  ),
+
+  /* --- Missing Core Fields --- */
+  ISBLANK(TEXT({!$Record.Service_Category__c})),
+  ISBLANK({!$Record.Most_Recent_IEP_Date__c}),
+  ISBLANK(TEXT({!$Record.Classification__c})),
+  ISBLANK(TEXT({!$Record.Primary_IEP_Program__c})),
+  ISBLANK(TEXT({!$Record.IEP_Primary_Language__c})),
+  ISBLANK({!$Record.Primary_Math_Mandate__c}),
+  ISBLANK({!$Record.Primary_ELA_Mandate__c}),
+
+  /* --- Missing Service Checkboxes --- */
+  NOT({!$Record.SETSS__c}),
+  NOT({!$Record.Para__c}),
+  NOT({!$Record.Speech__c}),
+  NOT({!$Record.OT__c}),
+  NOT({!$Record.PT__c}),
+  NOT({!$Record.Counseling__c}),
+  NOT({!$Record.Other_Services__c}),
+  NOT({!$Record.Assistive_Technology__c}),
+  NOT({!$Record.Has_504_Plan__c}),
+  NOT({!$Record.Specialized_Transportation__c}),
+
+  /* --- Needs Review Case --- */
+  AND(
+    CONTAINS(TEXT({!$Record.Network_IEP_Approval__c}), &quot;Needs&quot;),
+    NOT({!$Record.Revisions_Made__c})
+  )
+)</expression>
+    </formulas>
+    <formulas>
+        <description>Returns TRUE when all required IEP fields, services, and approvals meet the conditions for “IEP Process Complete.”</description>
+        <name>fxIEPProcessComplete</name>
+        <dataType>Boolean</dataType>
+        <expression>AND(
+
+  /* --- Approvals --- */
+  CONTAINS(TEXT({!$Record.Network_IEP_Approval__c}), &quot;N&quot;),
+  CONTAINS(TEXT({!$Record.Principal_IEP_Approval__c}), &quot;N&quot;),
+
+  /* --- Revisions / Core Info --- */
+  NOT({!$Record.Revisions_Made__c}), /* checkbox */
+  NOT(ISBLANK(TEXT({!$Record.Service_Category__c}))), /* picklist */
+  NOT(ISBLANK({!$Record.Most_Recent_IEP_Date__c})), /* date */
+  NOT(ISBLANK(TEXT({!$Record.Classification__c}))), /* picklist */
+  NOT(ISBLANK(TEXT({!$Record.Primary_IEP_Program__c}))), /* picklist */
+  OR(
+    TEXT({!$Record.Primary_IEP_Program__c}) = &quot;ICT&quot;,
+    TEXT({!$Record.Primary_IEP_Program__c}) = &quot;SETSS&quot;,
+    TEXT({!$Record.Primary_IEP_Program__c}) = &quot;RS Only&quot;
+  ),
+  NOT(ISBLANK(TEXT({!$Record.IEP_Primary_Language__c}))), /* picklist */
+  NOT(ISBLANK({!$Record.Primary_Math_Mandate__c})), /* text */
+  NOT(ISBLANK({!$Record.Primary_ELA_Mandate__c})), /* text */
+
+  /* --- SETSS --- */
+  OR(
+    NOT({!$Record.SETSS__c}),
+    AND(
+      {!$Record.SETSS__c},
+      NOT(ISBLANK(TEXT({!$Record.SETSS_Language__c}))),
+      NOT(ISBLANK({!$Record.SETSS_ELA_Mandate__c})),
+      NOT(ISBLANK({!$Record.SETSS_Math_Mandate__c}))
+    )
+  ),
+
+  /* --- Para --- */
+  OR(
+    NOT({!$Record.Para__c}),
+    AND(
+      {!$Record.Para__c},
+      NOT(ISBLANK({!$Record.Para_Mandate__c}))
+    )
+  ),
+
+  /* --- Speech --- */
+  OR(
+    NOT({!$Record.Speech__c}),
+    AND(
+      {!$Record.Speech__c},
+      NOT(ISBLANK(TEXT({!$Record.Speech_Language_of_Service__c}))),
+      NOT(ISBLANK({!$Record.Individual_Speech_Mandate__c})),
+      NOT(ISBLANK({!$Record.Group_Speech_Mandate__c}))
+    )
+  ),
+
+  /* --- OT --- */
+  OR(
+    NOT({!$Record.OT__c}),
+    AND(
+      {!$Record.OT__c},
+      NOT(ISBLANK({!$Record.Individual_OT_Mandate__c})),
+      NOT(ISBLANK({!$Record.Group_OT_Mandate__c}))
+    )
+  ),
+
+  /* --- PT --- */
+  OR(
+    NOT({!$Record.PT__c}),
+    AND(
+      {!$Record.PT__c},
+      NOT(ISBLANK({!$Record.Individual_PT_Mandate__c})),
+      NOT(ISBLANK({!$Record.Group_PT_Mandate__c}))
+    )
+  ),
+
+  /* --- Counseling --- */
+  OR(
+    NOT({!$Record.Counseling__c}),
+    AND(
+      {!$Record.Counseling__c},
+      NOT(ISBLANK(TEXT({!$Record.Counseling_Language_of_Service__c}))),
+      NOT(ISBLANK({!$Record.Individual_Counseling_Mandate__c})),
+      NOT(ISBLANK({!$Record.Group_Counseling_Mandate__c}))
+    )
+  ),
+
+  /* --- Other Services --- */
+  OR(
+    NOT({!$Record.Other_Services__c}),
+    AND(
+      {!$Record.Other_Services__c},
+      NOT(ISBLANK({!$Record.Other_Services_Type__c})),
+      NOT(ISBLANK({!$Record.Individual_Other_Mandate__c})),
+      NOT(ISBLANK({!$Record.Group_Other_Mandate__c}))
+    )
+  ),
+
+  /* --- Assistive Technology --- */
+  OR(
+    NOT({!$Record.Assistive_Technology__c}),
+    {!$Record.Assistive_Technology__c}
+  ),
+
+  /* --- 504 Plan --- */
+  OR(
+    NOT({!$Record.Has_504_Plan__c}),
+    AND(
+      {!$Record.Has_504_Plan__c},
+      NOT(ISBLANK({!$Record.Accommodations_504__c}))
+    )
+  ),
+
+  /* --- Specialized Transportation --- */
+  OR(
+    NOT({!$Record.Specialized_Transportation__c}),
+    AND(
+      {!$Record.Specialized_Transportation__c},
+      NOT(ISBLANK(TEXT({!$Record.Specialized_Transportation_Criteria__c})))
+    )
+  )
+)</expression>
+    </formulas>
+    <formulas>
+        <description>Checks if Uploaded_IEP__c is exactly one of the two values from your picklist that represent “no valid IEP.”
+
+Also confirms that Is_there_an_IEP_on_SESIS__c ≠ Yes.
+
+Returns TRUE only when both are met — meaning, “no valid upload and no SESIS IEP.”</description>
+        <name>fxInvalidIEPUpload</name>
+        <dataType>Boolean</dataType>
+        <expression>AND(
+  OR(
+    CONTAINS(TEXT({!$Record.Uploaded_IEP__c}), &quot;UNK&quot;),
+    CONTAINS(TEXT({!$Record.Uploaded_IEP__c}), &quot;N/A&quot;)
+  ),
+  NOT(TEXT({!$Record.Is_there_an_IEP_on_SESIS__c}) = &quot;Yes&quot;)
+)</expression>
+    </formulas>
+    <interviewLabel>IEP (Before Save) Set IEP Status {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>IEP (Before Save) Set IEP Status</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordLookups>
+        <name>Get_Academic_Term_Enrollment</name>
+        <label>Get Academic Term Enrollment</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Assign_Student_Type_and_Phase</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>$Record.Academic_Term_Enrollment__c</elementReference>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>AcademicTermEnrollment</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <start>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>Get_Academic_Term_Enrollment</targetReference>
+        </connector>
+        <object>Individualized_Education_Program__c</object>
+        <recordTriggerType>CreateAndUpdate</recordTriggerType>
+        <triggerType>RecordBeforeSave</triggerType>
+    </start>
+    <status>Active</status>
+    <variables>
+        <description>Used in the IEP Status formula</description>
+        <name>VarPhase</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+    </variables>
+    <variables>
+        <description>Student type used for the IEP Status formula (New, Returning, Check)</description>
+        <name>VarStudentType</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+    </variables>
+</Flow>

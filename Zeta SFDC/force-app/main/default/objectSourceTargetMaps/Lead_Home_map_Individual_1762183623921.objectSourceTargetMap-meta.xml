@@ -92,6 +92,14 @@
         <sourceField>Lead_Home__dll.FirstName__c</sourceField>
         <targetField>ssot__Individual__dlm.ssot__FirstName__c</targetField>
     </fieldSourceTargetMaps>
+    <fieldSourceTargetMaps>
+        <creationType>Custom</creationType>
+        <filterApplied>false</filterApplied>
+        <filterOperationType>Equal</filterOperationType>
+        <isSourceFormula>false</isSourceFormula>
+        <sourceField>Lead_Home__dll.Preferred_Contact_Language_c__c</sourceField>
+        <targetField>ssot__Individual__dlm.ssot__PrimaryLanguageId__c</targetField>
+    </fieldSourceTargetMaps>
     <masterLabel>Lead_Home_map_Individual_1762183623921</masterLabel>
     <sourceObjectName>Lead_Home__dll</sourceObjectName>
     <targetObjectName>ssot__Individual__dlm</targetObjectName>

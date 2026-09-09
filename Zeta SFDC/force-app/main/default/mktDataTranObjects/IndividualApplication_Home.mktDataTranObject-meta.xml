@@ -19,6 +19,19 @@
         <sequence>107</sequence>
     </mktDataTranFields>
     <mktDataTranFields>
+        <fullName>Academic_Term_Name_c</fullName>
+        <creationType>Custom</creationType>
+        <datatype>S</datatype>
+        <externalName>Academic_Term_Name__c</externalName>
+        <isDataRequired>false</isDataRequired>
+        <length>0</length>
+        <masterLabel>Academic Term Name</masterLabel>
+        <precision>0</precision>
+        <primaryIndexOrder>0</primaryIndexOrder>
+        <scale>0</scale>
+        <sequence>134</sequence>
+    </mktDataTranFields>
+    <mktDataTranFields>
         <fullName>AcademicTerm</fullName>
         <creationType>Custom</creationType>
         <datatype>S</datatype>
@@ -43,6 +56,19 @@
         <primaryIndexOrder>0</primaryIndexOrder>
         <scale>0</scale>
         <sequence>12</sequence>
+    </mktDataTranFields>
+    <mktDataTranFields>
+        <fullName>Active_Academic_Term_c</fullName>
+        <creationType>Custom</creationType>
+        <datatype>B</datatype>
+        <externalName>Active_Academic_Term__c</externalName>
+        <isDataRequired>false</isDataRequired>
+        <length>0</length>
+        <masterLabel>Active Academic Term</masterLabel>
+        <precision>0</precision>
+        <primaryIndexOrder>0</primaryIndexOrder>
+        <scale>0</scale>
+        <sequence>135</sequence>
     </mktDataTranFields>
     <mktDataTranFields>
         <fullName>Age_Inconsistency_Flag_c_c</fullName>

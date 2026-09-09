@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>65.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <assignments>
+        <name>Update_Learner_Contact_to_match_Learner_Account</name>
+        <label>Update Learner Contact to match Learner Account</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <assignmentItems>
+            <assignToReference>$Record.LearnerContactId</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>$Record.LearnerAccount.PersonContactId</elementReference>
+            </value>
+        </assignmentItems>
+    </assignments>
+    <description>Created By: Elevation Solutions</description>
+    <environments>Default</environments>
+    <interviewLabel>Academic Term Enrollment (Before Save): Update Learner {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Academic Term Enrollment (Before Save): Update Learner Contact to match Learner Account</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <start>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>Update_Learner_Contact_to_match_Learner_Account</targetReference>
+        </connector>
+        <filterFormula>OR(AND(ISNEW(), NOT(ISBLANK({!$Record.LearnerAccountId}))),
+AND(ISCHANGED({!$Record.LearnerAccountId})))</filterFormula>
+        <object>AcademicTermEnrollment</object>
+        <recordTriggerType>CreateAndUpdate</recordTriggerType>
+        <triggerType>RecordBeforeSave</triggerType>
+    </start>
+    <status>Active</status>
+</Flow>

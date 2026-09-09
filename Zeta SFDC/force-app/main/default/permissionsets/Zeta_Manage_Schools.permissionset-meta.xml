@@ -228,6 +228,11 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
+        <field>AcademicTermEnrollment.Academic_Term_Name__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
         <field>AcademicTermEnrollment.Accuracy__c</field>
         <readable>true</readable>
     </fieldPermissions>
@@ -1393,6 +1398,16 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
+        <field>Account.Zoho_Guardian_Id__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>Account.Zoho_Student_Id__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
         <field>ApplicationTimeline.Academic_Term__c</field>
         <readable>true</readable>
     </fieldPermissions>
@@ -1469,6 +1484,11 @@
     <fieldPermissions>
         <editable>false</editable>
         <field>Contact.Portal_User__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>Contact.Zoho_Guardian_Id__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>

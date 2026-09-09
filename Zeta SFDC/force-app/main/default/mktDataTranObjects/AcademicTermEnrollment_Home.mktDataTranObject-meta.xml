@@ -6,6 +6,19 @@
     <dataSourceObject>AcademicTermEnrollment_Home</dataSourceObject>
     <masterLabel>AcademicTermEnrollment_Home</masterLabel>
     <mktDataTranFields>
+        <fullName>Academic_Term_Name_c</fullName>
+        <creationType>Custom</creationType>
+        <datatype>S</datatype>
+        <externalName>Academic_Term_Name__c</externalName>
+        <isDataRequired>false</isDataRequired>
+        <length>0</length>
+        <masterLabel>Academic Term Name</masterLabel>
+        <precision>0</precision>
+        <primaryIndexOrder>0</primaryIndexOrder>
+        <scale>0</scale>
+        <sequence>212</sequence>
+    </mktDataTranFields>
+    <mktDataTranFields>
         <fullName>AcademicStanding</fullName>
         <creationType>Custom</creationType>
         <datatype>S</datatype>

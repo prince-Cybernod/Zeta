@@ -21,15 +21,11 @@
             <name>senderType</name>
             <value>
                 <inputConfiguratorMode>Custom</inputConfiguratorMode>
-                <stringValue>OrgWideEmailAddress</stringValue>
+                <stringValue>DefaultWorkflowUser</stringValue>
             </value>
         </inputParameters>
         <inputParameters>
             <name>senderAddress</name>
-            <value>
-                <inputConfiguratorMode>Custom</inputConfiguratorMode>
-                <stringValue>enroll@connect.zetaschools.org</stringValue>
-            </value>
         </inputParameters>
         <inputParameters>
             <name>useEmailTemplate</name>
@@ -145,14 +141,8 @@ Sends a confirmation email when an Individual Application is submitted (Applicat
             <targetReference>Get_Email_Template</targetReference>
         </connector>
         <doesRequireRecordChangedToMeetCriteria>true</doesRequireRecordChangedToMeetCriteria>
-        <filterLogic>and</filterLogic>
-        <filters>
-            <field>Status</field>
-            <operator>EqualTo</operator>
-            <value>
-                <stringValue>Applied</stringValue>
-            </value>
-        </filters>
+        <filterFormula>AND(ISPICKVAL({!$Record.Status},&apos;Applied&apos;), 
+NOT({!$Permission.Bypass_Validation}))</filterFormula>
         <object>IndividualApplication</object>
         <recordTriggerType>CreateAndUpdate</recordTriggerType>
         <triggerType>RecordAfterSave</triggerType>

@@ -5,5 +5,6 @@
     <formula>ISPICKVAL(  Reason_Not_Converted__c , &apos;Next Year&apos;)</formula>
     <inlineHelpText>TRUE when &apos;Closed, Not Converted Reason&apos; is &apos;Next Year&apos;</inlineHelpText>
     <label>Long-Term Lead Flag</label>
+    <trackHistory>false</trackHistory>
     <type>Checkbox</type>
 </CustomField>

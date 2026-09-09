@@ -31,48 +31,51 @@
         <connector>
             <targetReference>Run_Upsert_Guardians_Flow</targetReference>
         </connector>
-        <filterFormula>OR(
-
-  AND(
-    ISBLANK({!$Record.Primary_Guardian__c}),
+        <filterFormula>AND(
+    NOT({!$Permission.Bypass_Validation}),
 
     OR(
-      ISCHANGED({!$Record.Parent_Guardian_1_Email__c}),
-      ISCHANGED({!$Record.Parent_Guardian_1_Phone__c}),
-      ISCHANGED({!$Record.Parent_Guardian_1_First_Name__c}),
-      ISCHANGED({!$Record.Parent_Guardian_1_Last_Name__c})
-    ),
 
-    OR(
-      NOT(ISBLANK({!$Record.Parent_Guardian_1_Email__c})),
-      NOT(ISBLANK({!$Record.Parent_Guardian_1_Phone__c})),
-      AND(
-        NOT(ISBLANK({!$Record.Parent_Guardian_1_First_Name__c})),
-        NOT(ISBLANK({!$Record.Parent_Guardian_1_Last_Name__c}))
-      )
+        AND(
+            ISBLANK({!$Record.Primary_Guardian__c}),
+
+            OR(
+                ISCHANGED({!$Record.Parent_Guardian_1_Email__c}),
+                ISCHANGED({!$Record.Parent_Guardian_1_Phone__c}),
+                ISCHANGED({!$Record.Parent_Guardian_1_First_Name__c}),
+                ISCHANGED({!$Record.Parent_Guardian_1_Last_Name__c})
+            ),
+
+            OR(
+                NOT(ISBLANK({!$Record.Parent_Guardian_1_Email__c})),
+                NOT(ISBLANK({!$Record.Parent_Guardian_1_Phone__c})),
+                AND(
+                    NOT(ISBLANK({!$Record.Parent_Guardian_1_First_Name__c})),
+                    NOT(ISBLANK({!$Record.Parent_Guardian_1_Last_Name__c}))
+                )
+            )
+        ),
+
+        AND(
+            ISBLANK({!$Record.Secondary_Guardian__c}),
+
+            OR(
+                ISCHANGED({!$Record.Parent_Guardian_2_Email__c}),
+                ISCHANGED({!$Record.Parent_Guardian_2_Phone__c}),
+                ISCHANGED({!$Record.Parent_Guardian_2_First_Name__c}),
+                ISCHANGED({!$Record.Parent_Guardian_2_Last_Name__c})
+            ),
+
+            OR(
+                NOT(ISBLANK({!$Record.Parent_Guardian_2_Email__c})),
+                NOT(ISBLANK({!$Record.Parent_Guardian_2_Phone__c})),
+                AND(
+                    NOT(ISBLANK({!$Record.Parent_Guardian_2_First_Name__c})),
+                    NOT(ISBLANK({!$Record.Parent_Guardian_2_Last_Name__c}))
+                )
+            )
+        )
     )
-  ),
-
-  AND(
-    ISBLANK({!$Record.Secondary_Guardian__c}),
-
-    OR(
-      ISCHANGED({!$Record.Parent_Guardian_2_Email__c}),
-      ISCHANGED({!$Record.Parent_Guardian_2_Phone__c}),
-      ISCHANGED({!$Record.Parent_Guardian_2_First_Name__c}),
-      ISCHANGED({!$Record.Parent_Guardian_2_Last_Name__c})
-    ),
-
-    OR(
-      NOT(ISBLANK({!$Record.Parent_Guardian_2_Email__c})),
-      NOT(ISBLANK({!$Record.Parent_Guardian_2_Phone__c})),
-      AND(
-        NOT(ISBLANK({!$Record.Parent_Guardian_2_First_Name__c})),
-        NOT(ISBLANK({!$Record.Parent_Guardian_2_Last_Name__c}))
-      )
-    )
-  )
-
 )</filterFormula>
         <object>IndividualApplication</object>
         <recordTriggerType>Update</recordTriggerType>
