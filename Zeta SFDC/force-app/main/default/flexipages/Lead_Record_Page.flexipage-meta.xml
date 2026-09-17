@@ -5,6 +5,17 @@
             <componentInstance>
                 <componentInstanceProperties>
                     <name>actionNames</name>
+                    <valueList>
+                        <valueListItems>
+                            <value>Lead.Convert_Lead</value>
+                        </valueListItems>
+                        <valueListItems>
+                            <value>Lead.ZVC__Add_To_Webinar</value>
+                        </valueListItems>
+                        <valueListItems>
+                            <value>ChangeOwnerOne</value>
+                        </valueListItems>
+                    </valueList>
                 </componentInstanceProperties>
                 <componentInstanceProperties>
                     <name>collapsed</name>
@@ -20,7 +31,7 @@
                 </componentInstanceProperties>
                 <componentInstanceProperties>
                     <name>hideChatterActions</name>
-                    <value>false</value>
+                    <value>true</value>
                 </componentInstanceProperties>
                 <componentInstanceProperties>
                     <name>hideSlackAction</name>
@@ -162,6 +173,26 @@
                 </fieldInstanceProperties>
                 <fieldItem>Record.Phone</fieldItem>
                 <identifier>RecordPhoneField</identifier>
+            </fieldInstance>
+        </itemInstances>
+        <itemInstances>
+            <fieldInstance>
+                <fieldInstanceProperties>
+                    <name>uiBehavior</name>
+                    <value>none</value>
+                </fieldInstanceProperties>
+                <fieldItem>Record.Mogli_SMS__Mogli_Number__c</fieldItem>
+                <identifier>RecordMogli_SMS_Mogli_Number_cField</identifier>
+            </fieldInstance>
+        </itemInstances>
+        <itemInstances>
+            <fieldInstance>
+                <fieldInstanceProperties>
+                    <name>uiBehavior</name>
+                    <value>none</value>
+                </fieldInstanceProperties>
+                <fieldItem>Record.Mogli_SMS__Mogli_Opt_Out__c</fieldItem>
+                <identifier>RecordMogli_SMS_Mogli_Opt_Out_cField</identifier>
             </fieldInstance>
         </itemInstances>
         <itemInstances>
@@ -1037,6 +1068,12 @@
         </itemInstances>
         <itemInstances>
             <componentInstance>
+                <componentName>leadSiblingFlags</componentName>
+                <identifier>c_leadSiblingFlags</identifier>
+            </componentInstance>
+        </itemInstances>
+        <itemInstances>
+            <componentInstance>
                 <componentInstanceProperties>
                     <name>attachmentsDisabled</name>
                     <value>false</value>
@@ -1051,12 +1088,20 @@
                 </componentInstanceProperties>
                 <componentInstanceProperties>
                     <name>mcvConfigurationRecord</name>
+                    <value>Lead01</value>
                 </componentInstanceProperties>
                 <componentInstanceProperties>
                     <name>recordId</name>
                 </componentInstanceProperties>
                 <componentName>Mogli_SMS:TextMessageComponentEmpApi</componentName>
                 <identifier>Mogli_SMS_TextMessageComponentEmpApi</identifier>
+                <visibilityRule>
+                    <criteria>
+                        <leftValue>{!$Permission.CustomPermission.Mogli_SMS__Mogli_Conversation_View_Access}</leftValue>
+                        <operator>EQUAL</operator>
+                        <rightValue>true</rightValue>
+                    </criteria>
+                </visibilityRule>
             </componentInstance>
         </itemInstances>
         <itemInstances>

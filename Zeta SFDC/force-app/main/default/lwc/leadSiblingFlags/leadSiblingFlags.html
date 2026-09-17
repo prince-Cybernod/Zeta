@@ -1,0 +1,429 @@
+<template>
+  <section
+    class="hero-banner slds-is-relative"
+    aria-label="Lead siblings and duplicates"
+  >
+    <lightning-button-icon
+      class="slds-float_right slds-m-left_small"
+      icon-name="utility:refresh"
+      alternative-text="Refresh related records"
+      title="Refresh related records"
+      onclick={refresh}
+      disabled={loading}
+      variant="bare"
+    ></lightning-button-icon>
+    <template lwc:if={loading}>
+      <lightning-spinner
+        size="small"
+        alternative-text="Checking for siblings and duplicates"
+      ></lightning-spinner>
+    </template>
+    <template lwc:elseif={error}>
+      <p role="alert" class="slds-text-color_error">{error}</p>
+    </template>
+    <template lwc:elseif={showResults}>
+      <div class="hero-content slds-media slds-media_center">
+        <lightning-icon
+          class="hero-icon slds-media__figure"
+          icon-name="standard:lead"
+          size="medium"
+          alternative-text="Related records"
+        ></lightning-icon>
+        <div class="hero-copy slds-media__body">
+          <template lwc:if={hasMatches}>
+            <h2 class="banner-title slds-text-heading_small">
+              It looks as if duplicates or siblings exist for this Lead.
+            </h2>
+          </template>
+          <template lwc:else>
+            <p>Related record results are limited. More matches may exist.</p>
+          </template>
+          <button
+            class="hero-action slds-button slds-button_reset"
+            data-action="view"
+            onclick={openMatches}
+          >
+            <span>View Here.</span>
+            <lightning-icon
+              class="hero-action-icon"
+              icon-name="utility:forward"
+              size="xx-small"
+              alternative-text=""
+            ></lightning-icon>
+          </button>
+        </div>
+      </div>
+    </template>
+    <template lwc:else>
+      <p class="slds-text-color_weak">
+        No possible siblings or duplicates found.
+      </p>
+    </template>
+  </section>
+
+  <template lwc:if={isOpen}>
+    <dialog
+      lwc:ref="dialog"
+      aria-labelledby="siblings-heading"
+      class="siblings-dialog slds-theme_default"
+      oncancel={closeModal}
+    >
+      <header class="modal-hero slds-modal__header">
+        <div class="modal-title">
+          <lightning-icon
+            class="modal-title-icon"
+            icon-name="standard:lead"
+            size="small"
+            alternative-text="Related records"
+          ></lightning-icon>
+          <h2
+            id="siblings-heading"
+            class="modal-heading slds-text-heading_medium"
+            tabindex="-1"
+            lwc:ref="heading"
+          >
+            Possible Siblings or Duplicate Records
+          </h2>
+        </div>
+      </header>
+      <div
+        class="modal-body slds-modal__content slds-p-around_medium slds-is-relative"
+      >
+        <template lwc:if={busy}>
+          <lightning-spinner
+            alternative-text="Processing selected Leads"
+            size="small"
+          ></lightning-spinner>
+        </template>
+        <template lwc:if={modalError}>
+          <p
+            role="alert"
+            class="slds-box slds-theme_error slds-m-bottom_medium"
+          >
+            {modalError}
+          </p>
+        </template>
+        <div class="modal-progress">
+          <lightning-progress-indicator current-step={step} type="base">
+            <lightning-progress-step
+              label="Select Leads"
+              value="select"
+            ></lightning-progress-step>
+            <lightning-progress-step
+              label="Compare Records"
+              value="compare"
+            ></lightning-progress-step>
+            <lightning-progress-step
+              label="Confirm Merge"
+              value="confirm"
+            ></lightning-progress-step>
+          </lightning-progress-indicator>
+        </div>
+        <template lwc:if={isSelecting}>
+          <template lwc:if={matches.limited}>
+            <p
+              role="status"
+              class="slds-box slds-theme_warning slds-m-bottom_medium"
+            >
+              Results are limited for this shared contact information. More
+              related records may exist.
+            </p>
+          </template>
+          <template for:each={sections} for:item="section">
+            <section
+              key={section.key}
+              class="record-section slds-box slds-p-around_none slds-m-bottom_medium"
+              data-group={section.key}
+              aria-label={section.title}
+            >
+              <header class="record-section-header slds-border_bottom">
+                <button
+                  type="button"
+                  class="record-section-toggle slds-button slds-button_reset slds-size_1-of-1 slds-p-around_medium"
+                  data-section={section.key}
+                  aria-expanded={section.expanded}
+                  aria-controls={section.bodyId}
+                  onclick={toggleSection}
+                >
+                  <div class="slds-media slds-media_center">
+                    <lightning-icon
+                      class="slds-media__figure"
+                      icon-name={section.chevron}
+                      size="x-small"
+                      alternative-text="Toggle section"
+                    ></lightning-icon>
+                    <span class="record-section-icon-pulse slds-media__figure">
+                      <lightning-icon
+                        class="record-section-icon"
+                        icon-name={section.icon}
+                        size="small"
+                      ></lightning-icon>
+                    </span>
+                    <div class="slds-media__body">
+                      <h2 class="slds-text-heading_small slds-text-title_bold">
+                        {section.title}
+                        <span class="slds-badge slds-m-left_small"
+                          >{section.count}</span
+                        >
+                      </h2>
+                    </div>
+                  </div>
+                </button>
+              </header>
+              <template lwc:if={section.expanded}>
+                <div id={section.bodyId} data-section-body>
+                  <p class="section-help slds-p-around_medium">
+                    <em>{section.help}</em>
+                  </p>
+                  <template lwc:if={section.canSelect}>
+                    <p class="slds-p-horizontal_medium slds-p-bottom_small">
+                      To compare duplicates, select up to three Leads including
+                      the current Lead. Siblings are different children and must
+                      remain separate.
+                    </p>
+                  </template>
+                  <template lwc:if={section.hasRows}>
+                    <div
+                      class="slds-scrollable_x"
+                      tabindex="0"
+                      role="region"
+                      aria-label={section.title}
+                    >
+                      <table
+                        class="record-table slds-table slds-table_cell-buffer slds-table_bordered slds-table_striped"
+                        aria-label={section.title}
+                      >
+                        <colgroup>
+                          <col class="name-column" />
+                          <col class="phone-column" />
+                          <col class="email-column" />
+                          <col class="guardian-column" />
+                          <col class="status-column" />
+                        </colgroup>
+                        <thead>
+                          <tr>
+                            <th scope="col">{section.nameHeading}</th>
+                            <th scope="col">Phone</th>
+                            <th scope="col">Email</th>
+                            <th scope="col">Guardian</th>
+                            <th scope="col">Status</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <template for:each={section.rows} for:item="row">
+                            <tr key={row.id}>
+                              <th scope="row">
+                                <template lwc:if={section.canSelect}>
+                                  <lightning-input
+                                    class="lead-selection"
+                                    type="checkbox"
+                                    label={row.name}
+                                    variant="label-hidden"
+                                    data-select={row.id}
+                                    checked={row.selected}
+                                    disabled={row.selectionDisabled}
+                                    onchange={selectLead}
+                                  ></lightning-input>
+                                </template>
+                                <a href={row.url} target="_blank" rel="noopener"
+                                  >{row.name}</a
+                                >
+                                <template lwc:if={row.isCurrent}>
+                                  <span
+                                    class="current-lead-badge slds-badge slds-m-left_small"
+                                    >Current Lead</span
+                                  >
+                                </template>
+                              </th>
+                              <td>
+                                <lightning-formatted-phone
+                                  value={row.phone}
+                                ></lightning-formatted-phone>
+                              </td>
+                              <td>
+                                <lightning-formatted-email
+                                  value={row.email}
+                                ></lightning-formatted-email>
+                              </td>
+                              <td>{row.guardian}</td>
+                              <td>
+                                <template lwc:if={row.status}>
+                                  <span class="slds-badge slds-badge_lightest"
+                                    >{row.status}</span
+                                  >
+                                </template>
+                              </td>
+                            </tr>
+                          </template>
+                        </tbody>
+                      </table>
+                    </div>
+                  </template>
+                  <template lwc:else>
+                    <p
+                      class="slds-p-horizontal_medium slds-p-bottom_medium slds-text-color_weak"
+                    >
+                      No related records found.
+                    </p>
+                  </template>
+                </div>
+              </template>
+            </section>
+          </template>
+        </template>
+        <template lwc:elseif={isComparing}>
+          <p class="slds-m-bottom_medium">
+            Choose the Lead to keep, then select the field values to retain.
+            Other fields stay on the Lead you keep.
+          </p>
+          <div
+            class="slds-scrollable_x"
+            tabindex="0"
+            role="region"
+            aria-label="Compare selected Leads"
+          >
+            <table
+              class="slds-table slds-table_bordered slds-table_cell-buffer slds-table_striped"
+              aria-label="Compare selected Leads"
+            >
+              <thead>
+                <tr>
+                  <th scope="col">Field</th>
+                  <template for:each={leadHeaders} for:item="record">
+                    <th key={record.Id} scope="col">
+                      <a href={record.url} target="_blank" rel="noopener"
+                        >{record.Name}</a
+                      >
+                      <template lwc:if={record.isCurrent}
+                        ><span
+                          class="current-lead-badge slds-badge slds-m-left_small"
+                          >Current Lead</span
+                        ></template
+                      >
+                      <lightning-input
+                        class="slds-m-top_small"
+                        type="radio"
+                        name="primaryLead"
+                        label="Keep this Lead"
+                        checked={record.isPrimary}
+                        data-record={record.Id}
+                        onchange={choosePrimary}
+                      ></lightning-input>
+                    </th>
+                  </template>
+                </tr>
+              </thead>
+              <tbody>
+                <template for:each={comparisonRows} for:item="field">
+                  <tr key={field.name}>
+                    <th scope="row">{field.label}</th>
+                    <template for:each={field.choices} for:item="choice">
+                      <td key={choice.id}>
+                        <div class="slds-grid slds-grid_vertical-align-center">
+                          <lightning-input
+                            type="radio"
+                            name={field.name}
+                            label={choice.label}
+                            variant="label-hidden"
+                            checked={choice.selected}
+                            data-field={field.name}
+                            data-record={choice.id}
+                            onchange={chooseValue}
+                          ></lightning-input>
+                          <span class="slds-m-left_x-small"
+                            >{choice.value}</span
+                          >
+                        </div>
+                      </td>
+                    </template>
+                  </tr>
+                </template>
+              </tbody>
+            </table>
+          </div>
+        </template>
+        <template lwc:else>
+          <div class="slds-box slds-theme_shade">
+            <h2 class="slds-text-heading_small">Confirm Lead merge</h2>
+            <p class="slds-m-top_medium">
+              Keep
+              <a href={primaryRecord.url} target="_blank" rel="noopener"
+                >{primaryRecord.Name}</a
+              >
+              with your selected field values.
+            </p>
+            <p class="slds-m-top_small">
+              These duplicate records will be merged into it and removed:
+            </p>
+            <ul class="slds-list_dotted slds-m-top_small">
+              <template for:each={removedRecords} for:item="record">
+                <li key={record.Id}>
+                  <a href={record.url} target="_blank" rel="noopener"
+                    >{record.Name}</a
+                  >
+                </li>
+              </template>
+            </ul>
+            <lightning-input
+              class="slds-m-top_medium"
+              type="checkbox"
+              label="I confirm these records refer to the same child, not siblings."
+              checked={confirmed}
+              data-confirm
+              onchange={acknowledge}
+              disabled={busy}
+            ></lightning-input>
+          </div>
+        </template>
+      </div>
+      <footer class="modal-footer slds-modal__footer">
+        <lightning-button
+          label="Close"
+          data-action="close"
+          onclick={closeModal}
+          disabled={busy}
+        ></lightning-button>
+        <template lwc:if={isSelecting}>
+          <lightning-button
+            class="slds-m-left_small"
+            variant="brand"
+            label="Compare Leads"
+            data-action="compare"
+            onclick={compareLeads}
+            disabled={cannotCompare}
+          ></lightning-button>
+        </template>
+        <template lwc:else>
+          <lightning-button
+            class="slds-m-left_small"
+            label="Back"
+            data-action="back"
+            data-step={previousStep}
+            onclick={changeStep}
+            disabled={busy}
+          ></lightning-button>
+          <template lwc:if={isComparing}>
+            <lightning-button
+              class="slds-m-left_small"
+              variant="brand"
+              label="Next"
+              data-action="confirm"
+              data-step="confirm"
+              onclick={changeStep}
+            ></lightning-button>
+          </template>
+          <template lwc:else>
+            <lightning-button
+              class="slds-m-left_small"
+              variant="brand"
+              label="Merge Leads"
+              data-action="merge"
+              onclick={mergeSelectedLeads}
+              disabled={cannotMerge}
+            ></lightning-button>
+          </template>
+        </template>
+      </footer>
+    </dialog>
+  </template>
+</template>
