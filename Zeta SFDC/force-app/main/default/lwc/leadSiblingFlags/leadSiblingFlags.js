@@ -65,6 +65,9 @@ export default class LeadSiblingFlags extends NavigationMixin(
   collapsedSections = new Set();
   wiredResult;
   refreshRegistration;
+  toastDismissed = false;
+  toastClosing = false;
+  closingModal = false;
 
   @api
   get recordId() {
@@ -72,14 +75,14 @@ export default class LeadSiblingFlags extends NavigationMixin(
   }
   set recordId(value) {
     if (value !== this.leadId) {
-      this.modalSession++;
-      if (this.isOpen) this.refs.dialog.close();
-      this.isOpen = false;
+      this.hideModal();
       this.busy = false;
       this.leadId = value;
       this.matches = undefined;
       this.error = undefined;
       this.loading = true;
+      this.toastDismissed = false;
+      this.toastClosing = false;
     }
   }
 
@@ -95,6 +98,7 @@ export default class LeadSiblingFlags extends NavigationMixin(
       this.loading = false;
     }
   }
+
   connectedCallback() {
     this.refreshRegistration = registerRefreshHandler(
       this,
@@ -108,6 +112,7 @@ export default class LeadSiblingFlags extends NavigationMixin(
     unregisterRefreshHandler(this.refreshRegistration);
   }
   renderedCallback() {
+    this.measureOrigin();
     if (!this.isOpen) return;
     if (!this.refs.dialog.open) this.refs.dialog.showModal();
     if (this.lastStep !== this.step) {
@@ -121,6 +126,40 @@ export default class LeadSiblingFlags extends NavigationMixin(
   }
   get showResults() {
     return this.hasMatches || this.matches?.limited;
+  }
+  /** Points the minimise/maximise animations at the banner the component occupies. */
+  measureOrigin() {
+    const banner = this.template.querySelector(".hero-banner");
+    const root = this.refs.root;
+    if (!banner || !root) return;
+    const target = banner.getBoundingClientRect();
+    const x = target.left + target.width / 2;
+    const y = target.top + target.height / 2;
+    const toast = this.template.querySelector(".sibling-toast");
+    if (toast) {
+      const from = toast.getBoundingClientRect();
+      root.style.setProperty(
+        "--toast-dx",
+        `${x - (from.left + from.width / 2)}px`
+      );
+      root.style.setProperty(
+        "--toast-dy",
+        `${y - (from.top + from.height / 2)}px`
+      );
+    }
+    root.style.setProperty("--dialog-dx", `${x - window.innerWidth / 2}px`);
+    root.style.setProperty("--dialog-dy", `${y - window.innerHeight / 2}px`);
+  }
+
+  get showToast() {
+    return this.hasMatches && !this.toastDismissed;
+  }
+  get toastClass() {
+    return this.toastClosing ? "sibling-toast is-minimising" : "sibling-toast";
+  }
+  get dialogClass() {
+    const base = "siblings-dialog slds-theme_default";
+    return this.closingModal ? `${base} is-minimising` : base;
   }
   get isSelecting() {
     return this.step === "select";
@@ -177,6 +216,7 @@ export default class LeadSiblingFlags extends NavigationMixin(
     }
   }
   openMatches() {
+    if (this.showToast) this.toastClosing = true;
     this.modalSession++;
     this.lastStep = undefined;
     this.selectedIds = this.matches?.currentLead
@@ -189,6 +229,14 @@ export default class LeadSiblingFlags extends NavigationMixin(
     this.step = "select";
     this.isOpen = true;
   }
+  dismissToast() {
+    this.toastClosing = true;
+  }
+  toastAnimationEnd() {
+    if (!this.toastClosing) return;
+    this.toastDismissed = true;
+    this.toastClosing = false;
+  }
   toggleSection(event) {
     const sectionKey = event.currentTarget.dataset.section;
     const collapsedSections = new Set(this.collapsedSections);
@@ -199,9 +247,18 @@ export default class LeadSiblingFlags extends NavigationMixin(
   closeModal(event) {
     event?.preventDefault();
     if (this.busy) return;
+    this.closingModal = true;
+  }
+  hideModal() {
     this.modalSession++;
-    this.refs.dialog.close();
+    // refs only exist after the first render, and the recordId setter runs before it.
+    if (this.isOpen) this.refs.dialog.close();
     this.isOpen = false;
+    this.closingModal = false;
+  }
+  dialogAnimationEnd() {
+    if (!this.closingModal) return;
+    this.hideModal();
     this.template.querySelector('[data-action="view"]')?.focus();
   }
   changeStep(event) {
@@ -291,7 +348,7 @@ export default class LeadSiblingFlags extends NavigationMixin(
   }
   async finishMerge(primaryId) {
     this.busy = false;
-    this.closeModal();
+    this.hideModal();
     const session = this.modalSession;
     Toast.show(
       { label: "Leads merged successfully", variant: "success" },

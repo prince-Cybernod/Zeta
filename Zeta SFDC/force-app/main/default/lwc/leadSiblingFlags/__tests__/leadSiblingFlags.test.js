@@ -89,6 +89,12 @@ const flush = async () => {
   for (let i = 0; i < 8; i++) await Promise.resolve();
 };
 const find = (element, selector) => element.shadowRoot.querySelector(selector);
+const endAnimation = async (element, selector) => {
+  find(element, selector).dispatchEvent(
+    new Event("animationend", { bubbles: true })
+  );
+  await flush();
+};
 const click = async (element, action) => {
   find(element, `[data-action="${action}"]`).click();
   await flush();
@@ -346,6 +352,8 @@ it("closes on Escape and resets selections when reopened", async () => {
     new CustomEvent("cancel", { cancelable: true })
   );
   await flush();
+  expect(find(element, "dialog").className).toContain("is-minimising");
+  await endAnimation(element, "dialog");
   expect(find(element, "dialog")).toBeNull();
   await click(element, "view");
   expect(find(element, '[data-select="sibling"]').checked).toBe(false);
@@ -395,7 +403,10 @@ it("ignores a merge response after the component is disconnected", async () => {
   finish("sibling");
   await flush();
   expect(mockNavigate).not.toHaveBeenCalled();
-  expect(Toast.show).not.toHaveBeenCalled();
+  expect(Toast.show).not.toHaveBeenCalledWith(
+    expect.objectContaining({ label: "Leads merged successfully" }),
+    expect.anything()
+  );
 });
 
 it("does not navigate away from a new Lead while the merged record cache refreshes", async () => {
@@ -462,12 +473,10 @@ it("refreshes results and handles refresh failure", async () => {
     getMatches.emit(empty);
     return Promise.resolve();
   });
-  find(element, "lightning-button-icon").click();
-  await flush();
+  await click(element, "refresh");
   expect(find(element, '[data-action="view"]')).toBeNull();
   refreshApex.mockRejectedValueOnce(new Error("Offline"));
-  find(element, "lightning-button-icon").click();
-  await flush();
+  await click(element, "refresh");
   expect(find(element, '[role="alert"]').textContent).toContain(
     "Unable to refresh"
   );
@@ -511,4 +520,30 @@ it("shows the matching secondary guardian without adding guardian rows", async (
   expect(section.querySelector("lightning-formatted-email").value).toBe(
     "match@example.invalid"
   );
+});
+
+it("shows its own toast when matches exist and opens the modal in place", async () => {
+  const element = await mount(household, false);
+  expect(find(element, ".sibling-toast")).not.toBeNull();
+  expect(Toast.show).not.toHaveBeenCalled();
+  await click(element, "toast-view");
+  expect(find(element, "dialog").open).toBe(true);
+  expect(find(element, ".sibling-toast").className).toContain("is-minimising");
+  await endAnimation(element, ".sibling-toast");
+  expect(find(element, ".sibling-toast")).toBeNull();
+  expect(mockNavigate).not.toHaveBeenCalled();
+});
+
+it("stays silent when no siblings or duplicates exist", async () => {
+  const element = await mount(empty, false);
+  expect(find(element, ".sibling-toast")).toBeNull();
+});
+
+it("keeps the toast dismissed once closed", async () => {
+  const element = await mount(household, false);
+  find(element, '[data-action="toast-close"]').click();
+  await flush();
+  await endAnimation(element, ".sibling-toast");
+  expect(find(element, ".sibling-toast")).toBeNull();
+  expect(find(element, "dialog")).toBeNull();
 });
