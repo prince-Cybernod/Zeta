@@ -8,6 +8,13 @@ import {
   unregisterRefreshHandler,
   RefreshEvent
 } from "lightning/refresh";
+import {
+  buildGenie,
+  measureToast,
+  GENIE_HEADING,
+  GENIE_BODY,
+  GENIE_ACTION
+} from "./genie";
 import getMatches from "@salesforce/apex/LeadSiblingFlagsController.getMatches";
 import getLeadComparison from "@salesforce/apex/LeadSiblingFlagsController.getLeadComparison";
 import mergeLeads from "@salesforce/apex/LeadSiblingFlagsController.mergeLeads";
@@ -67,6 +74,7 @@ export default class LeadSiblingFlags extends NavigationMixin(
   refreshRegistration;
   toastDismissed = false;
   toastClosing = false;
+  genie;
   closingModal = false;
 
   @api
@@ -83,6 +91,7 @@ export default class LeadSiblingFlags extends NavigationMixin(
       this.loading = true;
       this.toastDismissed = false;
       this.toastClosing = false;
+      this.genie = undefined;
     }
   }
 
@@ -107,6 +116,7 @@ export default class LeadSiblingFlags extends NavigationMixin(
   }
   disconnectedCallback() {
     this.modalSession++;
+    this.genie = undefined;
     this.isOpen = false;
     this.busy = false;
     unregisterRefreshHandler(this.refreshRegistration);
@@ -135,7 +145,11 @@ export default class LeadSiblingFlags extends NavigationMixin(
     const target = banner.getBoundingClientRect();
     const x = target.left + target.width / 2;
     const y = target.top + target.height / 2;
-    const toast = this.template.querySelector(".sibling-toast");
+    // Re-measuring mid-collapse would rewrite the travel the animation is
+    // already running against, so only the resting toast is measured.
+    const toast = this.toastClosing
+      ? null
+      : this.template.querySelector(".sibling-toast");
     if (toast) {
       const from = toast.getBoundingClientRect();
       root.style.setProperty(
@@ -155,7 +169,41 @@ export default class LeadSiblingFlags extends NavigationMixin(
     return this.hasMatches && !this.toastDismissed;
   }
   get toastClass() {
-    return this.toastClosing ? "sibling-toast is-minimising" : "sibling-toast";
+    if (!this.toastClosing) return "sibling-toast";
+    return this.genie
+      ? "sibling-toast is-minimising has-genie"
+      : "sibling-toast is-minimising";
+  }
+  get toastHeading() {
+    return GENIE_HEADING;
+  }
+  get toastBody() {
+    return GENIE_BODY;
+  }
+  get toastAction() {
+    return GENIE_ACTION;
+  }
+  /** jsdom has no matchMedia, so the call itself has to be guarded. */
+  get reducedMotion() {
+    return (
+      typeof window.matchMedia === "function" &&
+      window.matchMedia("(prefers-reduced-motion: reduce)").matches
+    );
+  }
+  /**
+   * Starts the dismissal. The slice stage is decorative: when it cannot be
+   * built the toast collapses on its own instead, and either way the toast's
+   * own animation is what ends the dismissal.
+   */
+  startMinimise() {
+    if (this.toastClosing || this.toastDismissed) return;
+    const toast = this.template.querySelector(".sibling-toast");
+    const banner = this.template.querySelector(".hero-banner");
+    this.genie =
+      toast && banner && !this.reducedMotion
+        ? buildGenie(measureToast(toast), banner.getBoundingClientRect())
+        : undefined;
+    this.toastClosing = true;
   }
   get dialogClass() {
     const base = "siblings-dialog slds-theme_default";
@@ -216,7 +264,7 @@ export default class LeadSiblingFlags extends NavigationMixin(
     }
   }
   openMatches() {
-    if (this.showToast) this.toastClosing = true;
+    if (this.showToast) this.startMinimise();
     this.modalSession++;
     this.lastStep = undefined;
     this.selectedIds = this.matches?.currentLead
@@ -230,12 +278,16 @@ export default class LeadSiblingFlags extends NavigationMixin(
     this.isOpen = true;
   }
   dismissToast() {
-    this.toastClosing = true;
+    this.startMinimise();
   }
-  toastAnimationEnd() {
+  toastAnimationEnd(event) {
+    // Only the toast's own collapse ends the dismissal; a descendant animation
+    // must never unmount it early.
+    if (event && event.target !== event.currentTarget) return;
     if (!this.toastClosing) return;
     this.toastDismissed = true;
     this.toastClosing = false;
+    this.genie = undefined;
   }
   toggleSection(event) {
     const sectionKey = event.currentTarget.dataset.section;

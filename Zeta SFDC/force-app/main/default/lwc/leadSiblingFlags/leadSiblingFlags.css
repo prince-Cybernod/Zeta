@@ -139,7 +139,8 @@ dialog.siblings-dialog {
   overflow: hidden;
   box-shadow: 0 1rem 3rem rgb(24 24 24 / 22%);
   transform-origin: center center;
-  animation: dialog-maximise 360ms cubic-bezier(0.22, 1, 0.36, 1) both;
+  will-change: transform, opacity;
+  animation: dialog-genie-in 560ms linear backwards;
 }
 
 dialog::backdrop {
@@ -460,6 +461,10 @@ dialog::backdrop {
     top: 8rem;
     width: calc(100vw - 1rem);
   }
+
+  .genie-stage {
+    top: 8rem;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -472,61 +477,796 @@ dialog::backdrop {
 /* Genie: the toast squeezes and drops away, macOS minimise style. */
 .sibling-toast.is-minimising {
   pointer-events: none;
-  animation: toast-minimise 380ms cubic-bezier(0.5, 0, 0.75, 0.1) forwards;
+  transform-origin: 50% 0%;
+  transform-style: preserve-3d;
+  backface-visibility: hidden;
+  will-change: transform, clip-path, opacity;
+  animation: toast-genie 700ms linear forwards;
 }
 
-@keyframes toast-minimise {
+/* Real genie: clip-path bends the outline into a curved funnel while the content
+   squeezes through it. A transform alone stays affine - straight lines stay
+   straight - so the curved neck has to come from the clip. Every step keeps the
+   same 12 vertices in the same order; that is what makes polygon interpolation
+   smooth rather than a jump. */
+@keyframes toast-genie {
   0% {
     opacity: 1;
-    transform: translateX(-50%) translate(0, 0) scale(1);
+    transform: translateX(-50%) perspective(620px) translate(0, 0)
+      rotateX(-0deg) scaleX(1) scaleY(1);
+    clip-path: polygon(
+      0% 0%,
+      100% 0%,
+      100% 20%,
+      100% 40%,
+      100% 60%,
+      100% 80%,
+      91.92% 100%,
+      8.08% 100%,
+      0% 80%,
+      0% 60%,
+      0% 40%,
+      0% 20%
+    );
   }
-  45% {
-    opacity: 0.9;
-    transform: translateX(-50%)
+  12% {
+    opacity: 1;
+    transform: translateX(-50%) perspective(620px)
       translate(
-        calc(var(--toast-dx, 0px) * 0.4),
-        calc(var(--toast-dy, 6rem) * 0.4)
+        calc(var(--toast-dx, 0px) * 0.0007),
+        calc(var(--toast-dy, 8rem) * 0.0286)
       )
-      scale(0.78) scaleX(0.62);
+      rotateX(-0.67deg) scaleX(0.997) scaleY(1.01);
+    clip-path: polygon(
+      0% 0%,
+      100% 0%,
+      100% 20%,
+      100% 40%,
+      100% 60%,
+      100% 80%,
+      90.93% 100%,
+      9.07% 100%,
+      0% 80%,
+      0% 60%,
+      0% 40%,
+      0% 20%
+    );
+  }
+  24% {
+    opacity: 1;
+    transform: translateX(-50%) perspective(620px)
+      translate(
+        calc(var(--toast-dx, 0px) * 0.0074),
+        calc(var(--toast-dy, 8rem) * 0.0913)
+      )
+      rotateX(-2.98deg) scaleX(0.981) scaleY(1.043);
+    clip-path: polygon(
+      0% 0%,
+      100% 0%,
+      100% 20%,
+      100% 40%,
+      100% 60%,
+      100% 80%,
+      87.56% 100%,
+      12.44% 100%,
+      0% 80%,
+      0% 60%,
+      0% 40%,
+      0% 20%
+    );
+  }
+  37% {
+    opacity: 1;
+    transform: translateX(-50%) perspective(620px)
+      translate(
+        calc(var(--toast-dx, 0px) * 0.0327),
+        calc(var(--toast-dy, 8rem) * 0.1887)
+      )
+      rotateX(-7.55deg) scaleX(0.938) scaleY(1.103);
+    clip-path: polygon(
+      0.08% 0%,
+      99.92% 0%,
+      99.92% 20%,
+      99.92% 40%,
+      99.92% 60%,
+      93.79% 80%,
+      80.86% 100%,
+      19.14% 100%,
+      6.21% 80%,
+      0.08% 60%,
+      0.08% 40%,
+      0.08% 20%
+    );
+  }
+  50% {
+    opacity: 1;
+    transform: translateX(-50%) perspective(620px)
+      translate(
+        calc(var(--toast-dx, 0px) * 0.0921),
+        calc(var(--toast-dy, 8rem) * 0.3127)
+      )
+      rotateX(-14.42deg) scaleX(0.86) scaleY(1.166);
+    clip-path: polygon(
+      0.55% 0%,
+      99.45% 0%,
+      99.45% 20%,
+      99.45% 40%,
+      96.66% 60%,
+      83.72% 80%,
+      70.79% 100%,
+      29.21% 100%,
+      16.28% 80%,
+      3.34% 60%,
+      0.55% 40%,
+      0.55% 20%
+    );
+  }
+  63% {
+    opacity: 1;
+    transform: translateX(-50%) perspective(620px)
+      translate(
+        calc(var(--toast-dx, 0px) * 0.204),
+        calc(var(--toast-dy, 8rem) * 0.4608)
+      )
+      rotateX(-23.7deg) scaleX(0.74) scaleY(1.174);
+    clip-path: polygon(
+      2.46% 0%,
+      97.54% 0%,
+      97.54% 20%,
+      95.99% 40%,
+      83.06% 60%,
+      70.13% 80%,
+      57.19% 100%,
+      42.81% 100%,
+      29.87% 80%,
+      16.94% 60%,
+      4.01% 40%,
+      2.46% 20%
+    );
+  }
+  76% {
+    opacity: 1;
+    transform: translateX(-50%) perspective(620px)
+      translate(
+        calc(var(--toast-dx, 0px) * 0.389),
+        calc(var(--toast-dy, 8rem) * 0.6311)
+      )
+      rotateX(-35.48deg) scaleX(0.57) scaleY(1.025);
+    clip-path: polygon(
+      8.26% 0%,
+      91.74% 0%,
+      91.68% 20%,
+      78.74% 40%,
+      65.81% 60%,
+      52.88% 80%,
+      51.5% 100%,
+      48.5% 100%,
+      47.12% 80%,
+      34.19% 60%,
+      21.26% 40%,
+      8.32% 20%
+    );
+  }
+  88% {
+    opacity: 1;
+    transform: translateX(-50%) perspective(620px)
+      translate(
+        calc(var(--toast-dx, 0px) * 0.6442),
+        calc(var(--toast-dy, 8rem) * 0.8071)
+      )
+      rotateX(-48.62deg) scaleX(0.362) scaleY(0.669);
+    clip-path: polygon(
+      21.27% 0%,
+      78.73% 0%,
+      72.42% 20%,
+      59.48% 40%,
+      51.5% 60%,
+      51.5% 80%,
+      51.5% 100%,
+      48.5% 100%,
+      48.5% 80%,
+      48.5% 60%,
+      40.52% 40%,
+      27.58% 20%
+    );
   }
   100% {
     opacity: 0;
-    transform: translateX(-50%)
-      translate(var(--toast-dx, 0px), var(--toast-dy, 12rem)) scale(0.14)
-      scaleX(0.26);
+    transform: translateX(-50%) perspective(620px)
+      translate(calc(var(--toast-dx, 0px) * 1), calc(var(--toast-dy, 8rem) * 1))
+      rotateX(-64deg) scaleX(0.1) scaleY(0.14);
+    clip-path: polygon(
+      48.5% 0%,
+      51.5% 0%,
+      51.5% 20%,
+      51.5% 40%,
+      51.5% 60%,
+      51.5% 80%,
+      51.5% 100%,
+      48.5% 100%,
+      48.5% 80%,
+      48.5% 60%,
+      48.5% 40%,
+      48.5% 20%
+    );
+  }
+}
+
+/* The slice stage took over: it is pixel-aligned over the toast and painted
+   above it, so the live toast only has to get out of the way. The clip-path
+   collapse above stays on as the fallback for when the stage cannot be built,
+   and both run for the same 700ms, so animationend lands at the same moment
+   either way. */
+.sibling-toast.is-minimising.has-genie {
+  will-change: opacity;
+  animation: toast-handoff 700ms linear forwards;
+}
+
+/* Only the fallback clips. A 22px backdrop-filter re-sampled under an animating
+   clip-path is costly everywhere and a known problem area in WebKit, so the
+   glass is swapped for its opaque equivalent for the duration. */
+.sibling-toast.is-minimising:not(.has-genie) .slds-notify_toast {
+  background: linear-gradient(135deg, #fdfdff 0%, #f7f5fd 55%, #eff3fd 100%);
+  backdrop-filter: blur(0px) saturate(100%);
+  -webkit-backdrop-filter: blur(0px) saturate(100%);
+}
+
+/* The shine sweep is infinite, so it never fires animationend, but it would
+   keep repainting the panel for the whole dismissal. */
+.sibling-toast.is-minimising .slds-notify_toast::after {
+  animation: none;
+}
+
+@keyframes toast-handoff {
+  0%,
+  100% {
+    opacity: 0;
+  }
+}
+
+/* The genie stage: the toast redrawn as a stack of thin horizontal slices, each
+   clipped to its own band of the panel and carrying its own translate and scale
+   at six shared stops. The side walls curve because each slice narrows by a
+   different amount, not because anything is being cropped. Placed with the same
+   rules as .sibling-toast rather than from viewport coordinates, so the two land
+   on each other whatever containing block a Lightning ancestor establishes. */
+.genie-stage {
+  position: fixed;
+  top: 9rem;
+  left: 50%;
+  z-index: 9002;
+  width: var(--genie-w, 0);
+  height: var(--genie-h, 0);
+  transform: translateX(-50%);
+  pointer-events: none;
+  animation: genie-fade 700ms linear forwards;
+}
+
+/* One clipped window onto one band. contain: strict keeps the copies from
+   costing a full layout each; where it is unsupported the declaration is
+   dropped and overflow still does the clipping. */
+.genie-strip {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  overflow: hidden;
+  contain: strict;
+  transform-origin: 50% 50%;
+  animation: genie-strip 700ms linear both;
+}
+
+/* Opaque stand-in for the frosted panel: a backdrop-filter per slice would be
+   dozens of backdrop reads a frame, and translucent slices would darken where
+   they overlap. The gradient is the glass as it composites over the Lightning
+   record-page background. */
+.genie-face {
+  position: absolute;
+  top: var(--face-y, 0);
+  left: 0;
+  box-sizing: border-box;
+  width: 100%;
+  height: var(--genie-h, 0);
+  border: 1px solid #fdfdff;
+  border-radius: 1.25rem;
+  background: linear-gradient(135deg, #fdfdff 0%, #f7f5fd 55%, #eff3fd 100%);
+  color: #181818;
+}
+
+/* Both boxes are measured off the live toast, so the handoff cannot shift the
+   text even if SLDS changes its icon or content metrics. */
+.genie-glyph {
+  position: absolute;
+  top: var(--glyph-y, 0);
+  left: var(--glyph-x, 0);
+  width: var(--glyph-w, 1rem);
+  height: var(--glyph-h, 1rem);
+  border-radius: 50%;
+  background: #706e6b;
+}
+
+.genie-copy {
+  position: absolute;
+  top: var(--copy-y, 0);
+  left: var(--copy-x, 0);
+  width: var(--copy-w, auto);
+}
+
+.genie-copy h2 {
+  color: #181818;
+  font-weight: 700;
+}
+
+.genie-copy p {
+  margin: 0;
+}
+
+.genie-link {
+  color: rgb(72 86 214);
+  font-weight: 600;
+  text-decoration: underline;
+}
+
+@keyframes genie-fade {
+  0%,
+  82% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+/* Six stops of precomputed geometry per slice, held at rest for the first 9% so
+   the handoff from the live toast happens while the two are identical. No
+   stagger: the shape comes from each slice's own geometry, and a stagger would
+   tear the bands apart. Every var() carries a fallback, so a missing property
+   degrades to the rest pose instead of dropping the transform outright. */
+@keyframes genie-strip {
+  0%,
+  9% {
+    transform: translate(0, 0) scale(1, 1);
+  }
+  24.167% {
+    transform: translate(var(--x1, 0), var(--y1, 0))
+      scale(var(--a1, 1), var(--b1, 1));
+  }
+  39.333% {
+    transform: translate(var(--x2, 0), var(--y2, 0))
+      scale(var(--a2, 1), var(--b2, 1));
+  }
+  54.5% {
+    transform: translate(var(--x3, 0), var(--y3, 0))
+      scale(var(--a3, 1), var(--b3, 1));
+  }
+  69.667% {
+    transform: translate(var(--x4, 0), var(--y4, 0))
+      scale(var(--a4, 1), var(--b4, 1));
+  }
+  84.833% {
+    transform: translate(var(--x5, 0), var(--y5, 0))
+      scale(var(--a5, 1), var(--b5, 1));
+  }
+  100% {
+    transform: translate(var(--x6, 0), var(--y6, 0))
+      scale(var(--a6, 1), var(--b6, 1));
   }
 }
 
 /* Maximise lives on dialog.siblings-dialog above; this is only the reverse. */
 .siblings-dialog.is-minimising {
-  animation: dialog-minimise 300ms cubic-bezier(0.5, 0, 0.75, 0.1) forwards;
+  animation: dialog-genie-out 620ms linear forwards;
   pointer-events: none;
 }
 
-@keyframes dialog-maximise {
+@keyframes dialog-genie-in {
   0% {
     opacity: 0;
-    transform: translate(var(--dialog-dx, 0px), var(--dialog-dy, 4rem))
-      scale(0.16) scaleX(0.3);
+    transform: perspective(620px)
+      translate(
+        calc(var(--dialog-dx, 0px) * 1),
+        calc(var(--dialog-dy, 8rem) * 1)
+      )
+      rotateX(-64deg) scaleX(0.1) scaleY(0.14);
+    clip-path: polygon(
+      48.5% 0%,
+      51.5% 0%,
+      51.5% 20%,
+      51.5% 40%,
+      51.5% 60%,
+      51.5% 80%,
+      51.5% 100%,
+      48.5% 100%,
+      48.5% 80%,
+      48.5% 60%,
+      48.5% 40%,
+      48.5% 20%
+    );
   }
-  60% {
+  12% {
     opacity: 1;
+    transform: perspective(620px)
+      translate(
+        calc(var(--dialog-dx, 0px) * 0.5756),
+        calc(var(--dialog-dy, 8rem) * 0.764)
+      )
+      rotateX(-45.32deg) scaleX(0.415) scaleY(0.773);
+    clip-path: polygon(
+      17.22% 0%,
+      82.78% 0%,
+      77.25% 20%,
+      64.32% 40%,
+      51.5% 60%,
+      51.5% 80%,
+      51.5% 100%,
+      48.5% 100%,
+      48.5% 80%,
+      48.5% 60%,
+      35.68% 40%,
+      22.75% 20%
+    );
+  }
+  24% {
+    opacity: 1;
+    transform: perspective(620px)
+      translate(
+        calc(var(--dialog-dx, 0px) * 0.3055),
+        calc(var(--dialog-dy, 8rem) * 0.561)
+      )
+      rotateX(-30.5deg) scaleX(0.644) scaleY(1.111);
+    clip-path: polygon(
+      5.25% 0%,
+      94.75% 0%,
+      94.75% 20%,
+      86.03% 40%,
+      73.09% 60%,
+      60.16% 80%,
+      51.5% 100%,
+      48.5% 100%,
+      39.84% 80%,
+      26.91% 60%,
+      13.97% 40%,
+      5.25% 20%
+    );
+  }
+  37% {
+    opacity: 1;
+    transform: perspective(620px)
+      translate(
+        calc(var(--dialog-dx, 0px) * 0.1359),
+        calc(var(--dialog-dy, 8rem) * 0.3779)
+      )
+      rotateX(-18.38deg) scaleX(0.811) scaleY(1.182);
+    clip-path: polygon(
+      1.15% 0%,
+      98.85% 0%,
+      98.85% 20%,
+      98.85% 40%,
+      90.85% 60%,
+      77.92% 80%,
+      64.99% 100%,
+      35.01% 100%,
+      22.08% 80%,
+      9.15% 60%,
+      1.15% 40%,
+      1.15% 20%
+    );
+  }
+  50% {
+    opacity: 1;
+    transform: perspective(620px)
+      translate(
+        calc(var(--dialog-dx, 0px) * 0.0501),
+        calc(var(--dialog-dy, 8rem) * 0.2323)
+      )
+      rotateX(-9.85deg) scaleX(0.913) scaleY(1.128);
+    clip-path: polygon(
+      0.18% 0%,
+      99.82% 0%,
+      99.82% 20%,
+      99.82% 40%,
+      99.82% 60%,
+      90.42% 80%,
+      77.49% 100%,
+      22.51% 100%,
+      9.58% 80%,
+      0.18% 60%,
+      0.18% 40%,
+      0.18% 20%
+    );
+  }
+  63% {
+    opacity: 1;
+    transform: perspective(620px)
+      translate(
+        calc(var(--dialog-dx, 0px) * 0.0136),
+        calc(var(--dialog-dy, 8rem) * 0.1233)
+      )
+      rotateX(-4.37deg) scaleX(0.969) scaleY(1.062);
+    clip-path: polygon(
+      0.02% 0%,
+      99.98% 0%,
+      99.98% 20%,
+      99.98% 40%,
+      99.98% 60%,
+      98.45% 80%,
+      85.51% 100%,
+      14.49% 100%,
+      1.55% 80%,
+      0.02% 60%,
+      0.02% 40%,
+      0.02% 20%
+    );
+  }
+  76% {
+    opacity: 1;
+    transform: perspective(620px)
+      translate(
+        calc(var(--dialog-dx, 0px) * 0.0021),
+        calc(var(--dialog-dy, 8rem) * 0.0495)
+      )
+      rotateX(-1.36deg) scaleX(0.993) scaleY(1.02);
+    clip-path: polygon(
+      0% 0%,
+      100% 0%,
+      100% 20%,
+      100% 40%,
+      100% 60%,
+      100% 80%,
+      89.93% 100%,
+      10.07% 100%,
+      0% 80%,
+      0% 60%,
+      0% 40%,
+      0% 20%
+    );
+  }
+  88% {
+    opacity: 1;
+    transform: perspective(620px)
+      translate(
+        calc(var(--dialog-dx, 0px) * 0.0001),
+        calc(var(--dialog-dy, 8rem) * 0.0116)
+      )
+      rotateX(-0.21deg) scaleX(0.999) scaleY(1.003);
+    clip-path: polygon(
+      0% 0%,
+      100% 0%,
+      100% 20%,
+      100% 40%,
+      100% 60%,
+      100% 80%,
+      91.61% 100%,
+      8.39% 100%,
+      0% 80%,
+      0% 60%,
+      0% 40%,
+      0% 20%
+    );
   }
   100% {
     opacity: 1;
-    transform: translate(0, 0) scale(1);
+    transform: perspective(620px) translate(0, 0) rotateX(-0deg) scaleX(1)
+      scaleY(1);
+    clip-path: polygon(
+      0% 0%,
+      100% 0%,
+      100% 20%,
+      100% 40%,
+      100% 60%,
+      100% 80%,
+      91.92% 100%,
+      8.08% 100%,
+      0% 80%,
+      0% 60%,
+      0% 40%,
+      0% 20%
+    );
   }
 }
 
-@keyframes dialog-minimise {
+@keyframes dialog-genie-out {
   0% {
     opacity: 1;
-    transform: translate(0, 0) scale(1);
+    transform: perspective(620px) translate(0, 0) rotateX(-0deg) scaleX(1)
+      scaleY(1);
+    clip-path: polygon(
+      0% 0%,
+      100% 0%,
+      100% 20%,
+      100% 40%,
+      100% 60%,
+      100% 80%,
+      91.92% 100%,
+      8.08% 100%,
+      0% 80%,
+      0% 60%,
+      0% 40%,
+      0% 20%
+    );
+  }
+  12% {
+    opacity: 1;
+    transform: perspective(620px)
+      translate(
+        calc(var(--dialog-dx, 0px) * 0.0007),
+        calc(var(--dialog-dy, 8rem) * 0.0286)
+      )
+      rotateX(-0.67deg) scaleX(0.997) scaleY(1.01);
+    clip-path: polygon(
+      0% 0%,
+      100% 0%,
+      100% 20%,
+      100% 40%,
+      100% 60%,
+      100% 80%,
+      90.93% 100%,
+      9.07% 100%,
+      0% 80%,
+      0% 60%,
+      0% 40%,
+      0% 20%
+    );
+  }
+  24% {
+    opacity: 1;
+    transform: perspective(620px)
+      translate(
+        calc(var(--dialog-dx, 0px) * 0.0074),
+        calc(var(--dialog-dy, 8rem) * 0.0913)
+      )
+      rotateX(-2.98deg) scaleX(0.981) scaleY(1.043);
+    clip-path: polygon(
+      0% 0%,
+      100% 0%,
+      100% 20%,
+      100% 40%,
+      100% 60%,
+      100% 80%,
+      87.56% 100%,
+      12.44% 100%,
+      0% 80%,
+      0% 60%,
+      0% 40%,
+      0% 20%
+    );
+  }
+  37% {
+    opacity: 1;
+    transform: perspective(620px)
+      translate(
+        calc(var(--dialog-dx, 0px) * 0.0327),
+        calc(var(--dialog-dy, 8rem) * 0.1887)
+      )
+      rotateX(-7.55deg) scaleX(0.938) scaleY(1.103);
+    clip-path: polygon(
+      0.08% 0%,
+      99.92% 0%,
+      99.92% 20%,
+      99.92% 40%,
+      99.92% 60%,
+      93.79% 80%,
+      80.86% 100%,
+      19.14% 100%,
+      6.21% 80%,
+      0.08% 60%,
+      0.08% 40%,
+      0.08% 20%
+    );
+  }
+  50% {
+    opacity: 1;
+    transform: perspective(620px)
+      translate(
+        calc(var(--dialog-dx, 0px) * 0.0921),
+        calc(var(--dialog-dy, 8rem) * 0.3127)
+      )
+      rotateX(-14.42deg) scaleX(0.86) scaleY(1.166);
+    clip-path: polygon(
+      0.55% 0%,
+      99.45% 0%,
+      99.45% 20%,
+      99.45% 40%,
+      96.66% 60%,
+      83.72% 80%,
+      70.79% 100%,
+      29.21% 100%,
+      16.28% 80%,
+      3.34% 60%,
+      0.55% 40%,
+      0.55% 20%
+    );
+  }
+  63% {
+    opacity: 1;
+    transform: perspective(620px)
+      translate(
+        calc(var(--dialog-dx, 0px) * 0.204),
+        calc(var(--dialog-dy, 8rem) * 0.4608)
+      )
+      rotateX(-23.7deg) scaleX(0.74) scaleY(1.174);
+    clip-path: polygon(
+      2.46% 0%,
+      97.54% 0%,
+      97.54% 20%,
+      95.99% 40%,
+      83.06% 60%,
+      70.13% 80%,
+      57.19% 100%,
+      42.81% 100%,
+      29.87% 80%,
+      16.94% 60%,
+      4.01% 40%,
+      2.46% 20%
+    );
+  }
+  76% {
+    opacity: 1;
+    transform: perspective(620px)
+      translate(
+        calc(var(--dialog-dx, 0px) * 0.389),
+        calc(var(--dialog-dy, 8rem) * 0.6311)
+      )
+      rotateX(-35.48deg) scaleX(0.57) scaleY(1.025);
+    clip-path: polygon(
+      8.26% 0%,
+      91.74% 0%,
+      91.68% 20%,
+      78.74% 40%,
+      65.81% 60%,
+      52.88% 80%,
+      51.5% 100%,
+      48.5% 100%,
+      47.12% 80%,
+      34.19% 60%,
+      21.26% 40%,
+      8.32% 20%
+    );
+  }
+  88% {
+    opacity: 1;
+    transform: perspective(620px)
+      translate(
+        calc(var(--dialog-dx, 0px) * 0.6442),
+        calc(var(--dialog-dy, 8rem) * 0.8071)
+      )
+      rotateX(-48.62deg) scaleX(0.362) scaleY(0.669);
+    clip-path: polygon(
+      21.27% 0%,
+      78.73% 0%,
+      72.42% 20%,
+      59.48% 40%,
+      51.5% 60%,
+      51.5% 80%,
+      51.5% 100%,
+      48.5% 100%,
+      48.5% 80%,
+      48.5% 60%,
+      40.52% 40%,
+      27.58% 20%
+    );
   }
   100% {
     opacity: 0;
-    transform: translate(var(--dialog-dx, 0px), var(--dialog-dy, 4rem))
-      scale(0.16) scaleX(0.3);
+    transform: perspective(620px)
+      translate(
+        calc(var(--dialog-dx, 0px) * 1),
+        calc(var(--dialog-dy, 8rem) * 1)
+      )
+      rotateX(-64deg) scaleX(0.1) scaleY(0.14);
+    clip-path: polygon(
+      48.5% 0%,
+      51.5% 0%,
+      51.5% 20%,
+      51.5% 40%,
+      51.5% 60%,
+      51.5% 80%,
+      51.5% 100%,
+      48.5% 100%,
+      48.5% 80%,
+      48.5% 60%,
+      48.5% 40%,
+      48.5% 20%
+    );
   }
 }
 
@@ -534,6 +1274,8 @@ dialog::backdrop {
 @media (prefers-reduced-motion: reduce) {
   .sibling-toast,
   .sibling-toast.is-minimising,
+  .genie-stage,
+  .genie-strip,
   dialog.siblings-dialog,
   .siblings-dialog.is-minimising {
     animation-duration: 1ms;

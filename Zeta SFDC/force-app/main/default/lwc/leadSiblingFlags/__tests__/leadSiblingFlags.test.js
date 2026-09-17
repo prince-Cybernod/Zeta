@@ -91,7 +91,7 @@ const flush = async () => {
 const find = (element, selector) => element.shadowRoot.querySelector(selector);
 const endAnimation = async (element, selector) => {
   find(element, selector).dispatchEvent(
-    new Event("animationend", { bubbles: true })
+    new CustomEvent("animationend", { bubbles: true })
   );
   await flush();
 };

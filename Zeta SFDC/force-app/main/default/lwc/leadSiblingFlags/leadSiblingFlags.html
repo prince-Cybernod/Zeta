@@ -11,17 +11,15 @@
             alternative-text=""
           ></lightning-icon>
           <div class="slds-notify__content">
-            <h2 class="slds-text-heading_small">
-              Possible siblings or duplicates
-            </h2>
+            <h2 class="slds-text-heading_small">{toastHeading}</h2>
             <p>
-              It looks as if duplicates or siblings exist for this Lead.
+              {toastBody}
               <button
                 class="toast-action slds-button slds-button_reset"
                 data-action="toast-view"
                 onclick={openMatches}
               >
-                View Here
+                {toastAction}
               </button>
             </p>
           </div>
@@ -35,6 +33,25 @@
             onclick={dismissToast}
           ></lightning-button-icon>
         </div>
+      </div>
+    </template>
+
+    <template lwc:if={genie}>
+      <div class="genie-stage" style={genie.stageStyle} aria-hidden="true">
+        <template for:each={genie.strips} for:item="strip">
+          <div class="genie-strip" key={strip.key} style={strip.style}>
+            <div class="genie-face">
+              <span class="genie-glyph"></span>
+              <div class="genie-copy">
+                <h2 class="slds-text-heading_small">{genie.heading}</h2>
+                <p>
+                  {genie.body}
+                  <span class="genie-link">{genie.action}</span>
+                </p>
+              </div>
+            </div>
+          </div>
+        </template>
       </div>
     </template>
 
