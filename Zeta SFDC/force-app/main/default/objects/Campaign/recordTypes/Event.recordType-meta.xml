@@ -24,17 +24,22 @@
         </values>
     </picklistValues>
     <picklistValues>
-        <picklist>Ticket_Type__c</picklist>
+        <picklist>Subtype__c</picklist>
         <values>
-            <fullName>General Admission</fullName>
-            <default>true</default>
+            <fullName>Advertisement</fullName>
+            <default>false</default>
         </values>
-    </picklistValues>
-    <picklistValues>
-        <picklist>Type</picklist>
+        <values>
+            <fullName>Banner Ads</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Email</fullName>
+            <default>false</default>
+        </values>
         <values>
             <fullName>Event</fullName>
-            <default>true</default>
+            <default>false</default>
         </values>
         <values>
             <fullName>Information Session</fullName>
@@ -46,6 +51,26 @@
         </values>
         <values>
             <fullName>Other</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Partners</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Public Relations</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Referral Program</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Seminar %2F Conference</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Telemarketing</fullName>
             <default>false</default>
         </values>
         <values>
@@ -63,6 +88,28 @@
         <values>
             <fullName>Zoom Webinar</fullName>
             <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Ticket_Type__c</picklist>
+        <values>
+            <fullName>General Admission</fullName>
+            <default>true</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Type</picklist>
+        <values>
+            <fullName>Community Events</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>School Tours</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Webinar</fullName>
+            <default>true</default>
         </values>
     </picklistValues>
 </RecordType>

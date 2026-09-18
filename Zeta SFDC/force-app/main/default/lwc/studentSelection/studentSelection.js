@@ -1,4 +1,5 @@
-import { LightningElement, api } from 'lwc';
+import { LightningElement, api, wire } from 'lwc';
+import { getObjectInfo, getPicklistValues } from 'lightning/uiObjectInfoApi';
 import createStudent from '@salesforce/apex/StudentSelectionController.createStudent';
 import getApplicationStudent from '@salesforce/apex/StudentSelectionController.getApplicationStudent';
 import getGradeBirthYearGuidance from '@salesforce/apex/StudentSelectionController.getGradeBirthYearGuidance';
@@ -38,11 +39,12 @@ import labelValidateSelectCurrentGrade from '@salesforce/label/c.AppUI_ValidateS
 import labelValidateSelectGrade from '@salesforce/label/c.AppUI_ValidateSelectGrade';
 import labelValidateSelectStudent from '@salesforce/label/c.AppUI_ValidateSelectStudent';
 import labelZipCodeError from '@salesforce/label/c.AppUI_ZipCodeError';
+import GENDER_FIELD from '@salesforce/schema/Contact.GenderIdentity';
 
-const GENDER_OPTIONS = [
-  { label: 'Male', value: 'M' },
-  { label: 'Female', value: 'F' }
-];
+// Master record type id — Salesforce's sentinel for "the object has no record
+// types", used as the getPicklistValues fallback when getObjectInfo reports no
+// default.
+const NULL_RECORD_TYPE_ID = '012000000000000AAA';
 
 const VALID_NEXT_GRADES = {
   // A student with no prior schooling (current grade "N/A") may enter at
@@ -70,6 +72,10 @@ const PORTAL_CONTACT_SUPPORT_URL = '/parents/s/contactsupport';
 
 export default class StudentSelection extends LightningElement {
   @api recordId;
+  // The cycle the host wizard is applying to. Two timelines can be open at once,
+  // so the birth-year guidance must be keyed off this one rather than whichever
+  // timeline the server would pick as active.
+  @api timelineId;
   @api isLocked = false;
   @api contactSupportUrl;
   // Set by the host wizard when the selected student already has a submitted
@@ -79,12 +85,12 @@ export default class StudentSelection extends LightningElement {
 
   students = [];
   gradePicklistOptions = [];
+  genderOptions = [];
   selectedStudentId = null;
   selectedGrade = '';
   selectedCurrentGrade = '';
   // Birth-year guidance for the Pre-K / Kindergarten note under "Grade Applying
-  // To". Sourced server-side (placeholder today, ApplicationTimeline fields once
-  // they exist — see StudentSelectionController.getGradeBirthYearGuidance).
+  // To", configured per enrollment cycle on the Application Timeline.
   preKBirthYear = '';
   kindergartenBirthYear = '';
   gradeInconsistency = false;
@@ -109,6 +115,8 @@ export default class StudentSelection extends LightningElement {
     gender: ''
   };
 
+  _contactRecordTypeId = NULL_RECORD_TYPE_ID;
+
   labels = {
     selectStudent: labelSelectStudent,
     selectStudentDesc: labelSelectStudentDesc,
@@ -128,10 +136,6 @@ export default class StudentSelection extends LightningElement {
     ariaLoadingStudents: labelAriaLoadingStudents,
     ariaSelectStudent: labelAriaSelectStudent
   };
-
-  get genderOptions() {
-    return GENDER_OPTIONS;
-  }
 
   // "Grade applying to" never includes the no-prior-schooling sentinel ("N/A");
   // that value only makes sense as a CURRENT grade. The current-grade picker
@@ -230,6 +234,31 @@ export default class StudentSelection extends LightningElement {
     );
   }
 
+  // The student gender picklist is a person-account field. Those are Contact
+  // fields surfaced on Account, and getPicklistValues resolves them only from
+  // Contact — asking for Account.PersonGenderIdentity errors. Apex still writes
+  // PersonGenderIdentity; the value sets match.
+  @wire(getObjectInfo, { objectApiName: 'Contact' })
+  wiredContactInfo({ data }) {
+    if (data) {
+      this._contactRecordTypeId =
+        data.defaultRecordTypeId || NULL_RECORD_TYPE_ID;
+    }
+  }
+
+  @wire(getPicklistValues, {
+    recordTypeId: '$_contactRecordTypeId',
+    fieldApiName: GENDER_FIELD
+  })
+  wiredGender({ data }) {
+    if (data) {
+      this.genderOptions = data.values.map((v) => ({
+        label: v.label,
+        value: v.value
+      }));
+    }
+  }
+
   connectedCallback() {
     this._loadData();
   }
@@ -242,7 +271,10 @@ export default class StudentSelection extends LightningElement {
         this.recordId
           ? getApplicationStudent({ applicationId: this.recordId })
           : Promise.resolve({}),
-        getGradeBirthYearGuidance({ applicationId: this.recordId })
+        getGradeBirthYearGuidance({
+          applicationId: this.recordId,
+          timelineId: this.timelineId || null
+        })
       ]);
 
       this.students = students;

@@ -86,10 +86,6 @@
         <connector>
             <targetReference>Enter_Code_Received_via_Email</targetReference>
         </connector>
-        <faultConnector>
-            <isGoTo>true</isGoTo>
-            <targetReference>Unable_to_create_a_User</targetReference>
-        </faultConnector>
         <flowTransactionModel>Automatic</flowTransactionModel>
         <inputParameters>
             <name>city</name>
@@ -142,6 +138,56 @@
         <storeOutputAutomatically>true</storeOutputAutomatically>
     </actionCalls>
     <actionCalls>
+        <name>Send_Verification_SMS_1</name>
+        <label>Send Verification SMS</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <actionName>ParentRegistrationSmsInit</actionName>
+        <actionType>apex</actionType>
+        <connector>
+            <targetReference>Enter_Code_Received_via_SMS</targetReference>
+        </connector>
+        <flowTransactionModel>Automatic</flowTransactionModel>
+        <inputParameters>
+            <name>contactId</name>
+            <value>
+                <elementReference>fxContactId</elementReference>
+                <inputConfiguratorMode>Resource</inputConfiguratorMode>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>email</name>
+            <value>
+                <elementReference>screen_email2.value</elementReference>
+                <inputConfiguratorMode>Resource</inputConfiguratorMode>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>firstName</name>
+            <value>
+                <elementReference>First_Name</elementReference>
+                <inputConfiguratorMode>Resource</inputConfiguratorMode>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>lastName</name>
+            <value>
+                <elementReference>Last_Name</elementReference>
+                <inputConfiguratorMode>Resource</inputConfiguratorMode>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>phone</name>
+            <value>
+                <elementReference>ConfirmPhone.value</elementReference>
+                <inputConfiguratorMode>Resource</inputConfiguratorMode>
+            </value>
+        </inputParameters>
+        <nameSegment>ParentRegistrationSmsInit</nameSegment>
+        <offset>0</offset>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </actionCalls>
+    <actionCalls>
         <name>Verify_Code_and_Create_User</name>
         <label>Verify Code and Create User</label>
         <locationX>0</locationX>
@@ -151,10 +197,6 @@
         <connector>
             <targetReference>Assign_redirect_URL_Account_Id</targetReference>
         </connector>
-        <faultConnector>
-            <isGoTo>true</isGoTo>
-            <targetReference>Unable_to_create_a_User</targetReference>
-        </faultConnector>
         <flowTransactionModel>Automatic</flowTransactionModel>
         <inputParameters>
             <name>code</name>
@@ -181,6 +223,56 @@
             </value>
         </inputParameters>
         <nameSegment>ParentRegistrationEmailConfirm</nameSegment>
+        <offset>0</offset>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </actionCalls>
+    <actionCalls>
+        <name>Verify_Code_and_Create_User_SMS</name>
+        <label>Verify Code and Create User</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <actionName>ParentRegistrationSmsConfirm</actionName>
+        <actionType>apex</actionType>
+        <connector>
+            <targetReference>Assign_redirect_URL_Account_Id_SMS</targetReference>
+        </connector>
+        <flowTransactionModel>Automatic</flowTransactionModel>
+        <inputParameters>
+            <name>code</name>
+            <value>
+                <elementReference>Enter_the_code_you_received_via_text_message</elementReference>
+                <inputConfiguratorMode>Resource</inputConfiguratorMode>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>contactId</name>
+            <value>
+                <elementReference>Send_Verification_SMS_1.contactId</elementReference>
+                <inputConfiguratorMode>Resource</inputConfiguratorMode>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>email</name>
+            <value>
+                <elementReference>screen_email2.value</elementReference>
+                <inputConfiguratorMode>Resource</inputConfiguratorMode>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>phone</name>
+            <value>
+                <elementReference>ConfirmPhone.value</elementReference>
+                <inputConfiguratorMode>Resource</inputConfiguratorMode>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>selfRegId</name>
+            <value>
+                <elementReference>Send_Verification_SMS_1.selfRegId</elementReference>
+                <inputConfiguratorMode>Resource</inputConfiguratorMode>
+            </value>
+        </inputParameters>
+        <nameSegment>ParentRegistrationSmsConfirm</nameSegment>
         <offset>0</offset>
         <storeOutputAutomatically>true</storeOutputAutomatically>
     </actionCalls>
@@ -238,14 +330,14 @@
             <assignToReference>var_rec_GuardianAccount.PersonEmail</assignToReference>
             <operator>Assign</operator>
             <value>
-                <elementReference>screen_email1.value</elementReference>
+                <elementReference>fx_AccountEmailToSave</elementReference>
             </value>
         </assignmentItems>
         <assignmentItems>
             <assignToReference>var_rec_GuardianAccount.Phone</assignToReference>
             <operator>Assign</operator>
             <value>
-                <elementReference>formattedPhoneNumber</elementReference>
+                <elementReference>fx_AccountPhoneToSave</elementReference>
             </value>
         </assignmentItems>
         <assignmentItems>
@@ -259,14 +351,14 @@
             <assignToReference>var_rec_GuardianAccount.FirstName</assignToReference>
             <operator>Assign</operator>
             <value>
-                <elementReference>First_Name</elementReference>
+                <elementReference>fx_FirstNameCapitalized</elementReference>
             </value>
         </assignmentItems>
         <assignmentItems>
             <assignToReference>var_rec_GuardianAccount.LastName</assignToReference>
             <operator>Assign</operator>
             <value>
-                <elementReference>Last_Name</elementReference>
+                <elementReference>fx_LastNameCapitalized</elementReference>
             </value>
         </assignmentItems>
         <assignmentItems>
@@ -274,6 +366,20 @@
             <operator>Assign</operator>
             <value>
                 <elementReference>PreferredLanguage</elementReference>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>var_bool_EmailMatched</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>fx_EmailMatchedAccount</elementReference>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>var_bool_PhoneMatched</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>fx_PhoneMatchedAccount</elementReference>
             </value>
         </assignmentItems>
         <connector>
@@ -320,6 +426,75 @@
         </connector>
     </assignments>
     <assignments>
+        <name>Assign_redirect_URL_Account_Id_SMS</name>
+        <label>Assign redirect URL + Account Id</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <assignmentItems>
+            <assignToReference>var_redirect_URL</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>Verify_Code_and_Create_User_SMS.redirectUrl</elementReference>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>var_Account_Id</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>Verify_Code_and_Create_User_SMS.accountId</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Redirect_URL_not_null</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <name>Assign_User_and_Accounts_to_variables</name>
+        <label>Assign User and Accounts to variables</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <assignmentItems>
+            <assignToReference>var_rec_Found_User</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>Get_User_with_matching_details</elementReference>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>var_col_Found_Accounts</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>Get_Guardian_Account_with_matching_details</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Found_records</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <name>Assign_User_and_Accounts_to_variables_phone</name>
+        <label>Assign User and Accounts to variables</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <assignmentItems>
+            <assignToReference>var_rec_Found_User</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>Copy_1_of_Get_User_with_matching_details_phone</elementReference>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>var_col_Found_Accounts</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>Get_Guardian_Account_with_matching_details_phone</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Found_records</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
         <name>Assign_User_Id</name>
         <label>Assign User Id</label>
         <locationX>0</locationX>
@@ -360,19 +535,36 @@
             <assignToReference>varPortalUser</assignToReference>
             <operator>Assign</operator>
             <value>
-                <elementReference>Get_User_with_matching_details</elementReference>
+                <elementReference>var_rec_Found_User</elementReference>
             </value>
         </assignmentItems>
         <connector>
+            <isGoTo>true</isGoTo>
             <targetReference>Is_the_User_active</targetReference>
         </connector>
     </assignments>
+    <choices>
+        <name>chEmail</name>
+        <choiceText>Email</choiceText>
+        <dataType>String</dataType>
+        <value>
+            <stringValue>Email</stringValue>
+        </value>
+    </choices>
     <choices>
         <name>chEnglish</name>
         <choiceText>English</choiceText>
         <dataType>String</dataType>
         <value>
             <stringValue>en_US</stringValue>
+        </value>
+    </choices>
+    <choices>
+        <name>chSMS</name>
+        <choiceText>Text Message</choiceText>
+        <dataType>String</dataType>
+        <value>
+            <stringValue>SMS</stringValue>
         </value>
     </choices>
     <choices>
@@ -389,12 +581,12 @@
         <label>Filter to Accounts where Portal_User__pc not null</label>
         <locationX>0</locationX>
         <locationY>0</locationY>
-        <assignNextValueToReference>currentItem_Filter_to_Accounts_where_Primary_Parent_Portal_User_c_not_null</assignNextValueToReference>
+        <assignNextValueToReference>currentItem_Filter_to_Accounts_where_Portal_User_pc_not_null</assignNextValueToReference>
         <collectionProcessorType>FilterCollectionProcessor</collectionProcessorType>
-        <collectionReference>Get_Guardian_Account_with_matching_details</collectionReference>
+        <collectionReference>var_col_Found_Accounts</collectionReference>
         <conditionLogic>and</conditionLogic>
         <conditions>
-            <leftValueReference>currentItem_Filter_to_Accounts_where_Primary_Parent_Portal_User_c_not_null.Portal_User__pc</leftValueReference>
+            <leftValueReference>currentItem_Filter_to_Accounts_where_Portal_User_pc_not_null.Portal_User__pc</leftValueReference>
             <operator>IsNull</operator>
             <rightValue>
                 <booleanValue>false</booleanValue>
@@ -412,13 +604,18 @@
         <locationX>0</locationX>
         <locationY>0</locationY>
         <collectionProcessorType>SortCollectionProcessor</collectionProcessorType>
-        <collectionReference>Get_Guardian_Account_with_matching_details</collectionReference>
+        <collectionReference>var_col_Found_Accounts</collectionReference>
         <connector>
             <targetReference>Loop_through_once_to_assign_values_to_the_found_Account</targetReference>
         </connector>
         <sortOptions>
             <doesPutEmptyStringAndNullFirst>false</doesPutEmptyStringAndNullFirst>
             <sortField>Is_Primary_Guardian__c</sortField>
+            <sortOrder>Desc</sortOrder>
+        </sortOptions>
+        <sortOptions>
+            <doesPutEmptyStringAndNullFirst>false</doesPutEmptyStringAndNullFirst>
+            <sortField>CreatedDate</sortField>
             <sortOrder>Desc</sortOrder>
         </sortOptions>
     </collectionProcessors>
@@ -462,6 +659,33 @@
         </rules>
     </decisions>
     <decisions>
+        <description>Phone is always required; email is optional. If the user entered both Email and Phone, we need to display both options to them. If they only entered a phone, we know to send verification code to their Phone.</description>
+        <name>Did_user_enter_an_email</name>
+        <label>Did user enter an email?</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <defaultConnector>
+            <isGoTo>true</isGoTo>
+            <targetReference>Send_Verification_SMS_1</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Email_Entered</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>screen_email1.value</leftValueReference>
+                <operator>IsBlank</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Select_Verification_Method</targetReference>
+            </connector>
+            <label>Email Entered</label>
+        </rules>
+    </decisions>
+    <decisions>
         <description>If Account Owner has a Role, no need to update. If they do NOT have a Role, update to the Zeta System Administrator user which we know has a Role. To create an Experience Site User, the Contact you&apos;re creating for must have an Owner with a Role.</description>
         <name>Does_the_Account_Owner_have_a_Role</name>
         <label>Does the Account Owner have a Role?</label>
@@ -494,7 +718,7 @@
         <locationX>0</locationX>
         <locationY>0</locationY>
         <defaultConnector>
-            <targetReference>Format_Phone_Number</targetReference>
+            <targetReference>Phone_Number_Entered</targetReference>
         </defaultConnector>
         <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
         <rules>
@@ -544,15 +768,14 @@
         <locationX>0</locationX>
         <locationY>0</locationY>
         <defaultConnector>
-            <isGoTo>true</isGoTo>
-            <targetReference>Send_Verification_Email</targetReference>
+            <targetReference>Did_user_enter_an_email</targetReference>
         </defaultConnector>
         <defaultConnectorLabel>No Matching User or Guardian Account</defaultConnectorLabel>
         <rules>
             <name>Matching_User</name>
             <conditionLogic>and</conditionLogic>
             <conditions>
-                <leftValueReference>Get_User_with_matching_details</leftValueReference>
+                <leftValueReference>var_rec_Found_User</leftValueReference>
                 <operator>IsNull</operator>
                 <rightValue>
                     <booleanValue>false</booleanValue>
@@ -567,7 +790,7 @@
             <name>Matching_Guardian_Account_s</name>
             <conditionLogic>and</conditionLogic>
             <conditions>
-                <leftValueReference>Get_Guardian_Account_with_matching_details</leftValueReference>
+                <leftValueReference>var_col_Found_Accounts</leftValueReference>
                 <operator>IsNull</operator>
                 <rightValue>
                     <booleanValue>false</booleanValue>
@@ -577,6 +800,60 @@
                 <targetReference>Filter_to_Accounts_where_Portal_User_pc_not_null</targetReference>
             </connector>
             <label>Matching Guardian Account(s)</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>GET_based_on_the_entered_Phone_and_Email_field_s</name>
+        <label>GET based on the entered Phone and Email field(s)</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <defaultConnector>
+            <targetReference>Found_records</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Phone_and_Email</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>ConfirmPhone.value</leftValueReference>
+                <operator>IsBlank</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>screen_email2.value</leftValueReference>
+                <operator>IsBlank</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Get_User_with_matching_details</targetReference>
+            </connector>
+            <label>Phone and Email</label>
+        </rules>
+        <rules>
+            <name>Phone_Only</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>screen_Phone.value</leftValueReference>
+                <operator>IsBlank</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>screen_email2.value</leftValueReference>
+                <operator>IsBlank</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Copy_1_of_Get_User_with_matching_details_phone</targetReference>
+            </connector>
+            <label>Phone Only</label>
         </rules>
     </decisions>
     <decisions>
@@ -599,7 +876,7 @@
                 </rightValue>
             </conditions>
             <connector>
-                <targetReference>Existing_Portal_Login</targetReference>
+                <targetReference>User_Auth_Method</targetReference>
             </connector>
             <label>Yes</label>
         </rules>
@@ -631,6 +908,71 @@
         </rules>
     </decisions>
     <decisions>
+        <name>Method_Selected</name>
+        <label>Method Selected</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <defaultConnector>
+            <targetReference>Redirect_URL_not_null</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>SMS</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>chSMS</leftValueReference>
+                <operator>WasSelected</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Send_Verification_SMS_1</targetReference>
+            </connector>
+            <label>SMS</label>
+        </rules>
+        <rules>
+            <name>Email</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>chEmail</leftValueReference>
+                <operator>WasSelected</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Send_Verification_Email</targetReference>
+            </connector>
+            <label>Email</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>Phone_Number_Entered</name>
+        <label>Phone Number Entered?</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <defaultConnector>
+            <targetReference>Get_Zeta_Parent_Portal_Profile</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Yes_entered</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>ConfirmPhone.value</leftValueReference>
+                <operator>IsBlank</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Format_Phone_Number</targetReference>
+            </connector>
+            <label>Yes, entered</label>
+        </rules>
+    </decisions>
+    <decisions>
         <description>If the URL is not null, the user creation was successful</description>
         <name>Redirect_URL_not_null</name>
         <label>Redirect URL not null?</label>
@@ -657,6 +999,83 @@
         </rules>
     </decisions>
     <decisions>
+        <name>User_Auth_Method</name>
+        <label>User Auth Method</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <defaultConnector>
+            <isGoTo>true</isGoTo>
+            <targetReference>Unable_to_create_a_User</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Email_Auth</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Get_Portal_User.HasUserVerifiedEmail</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>Get_Portal_User.HasUserVerifiedPhone</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Existing_Portal_Login_Email</targetReference>
+            </connector>
+            <label>Email Auth</label>
+        </rules>
+        <rules>
+            <name>Phone_Auth</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Get_Portal_User.HasUserVerifiedEmail</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>Get_Portal_User.HasUserVerifiedPhone</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Existing_Portal_Login_Phone</targetReference>
+            </connector>
+            <label>Phone Auth</label>
+        </rules>
+        <rules>
+            <name>Email_or_Phone</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Get_Portal_User.HasUserVerifiedEmail</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>Get_Portal_User.HasUserVerifiedPhone</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Existing_Portal_Login_Email_or_Phone</targetReference>
+            </connector>
+            <label>Email or Phone</label>
+        </rules>
+    </decisions>
+    <decisions>
         <description>After 2 attempts, prevent them from further attempts.</description>
         <name>User_has_made_2_attempts_at_entering_code</name>
         <label>User has made 2 attempts at entering code</label>
@@ -677,12 +1096,92 @@
                 </rightValue>
             </conditions>
             <connector>
+                <isGoTo>true</isGoTo>
                 <targetReference>Unable_to_create_a_User</targetReference>
             </connector>
             <label>Yes, user made 2 attempts</label>
         </rules>
     </decisions>
-    <description>Google Search added; language selector removed; updated formula for valid email
+    <decisions>
+        <name>Verification_Method_Available</name>
+        <label>Verification Method Available</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <defaultConnector>
+            <isGoTo>true</isGoTo>
+            <targetReference>Unable_to_create_a_User</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Both_Matched</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>var_bool_EmailMatched</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>var_bool_PhoneMatched</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Did_user_enter_an_email</targetReference>
+            </connector>
+            <label>Both Matched</label>
+        </rules>
+        <rules>
+            <name>Email_Only_Matched</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>var_bool_EmailMatched</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>var_bool_PhoneMatched</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <isGoTo>true</isGoTo>
+                <targetReference>Send_Verification_Email</targetReference>
+            </connector>
+            <label>Email Only Matched</label>
+        </rules>
+        <rules>
+            <name>Phone_Only_Matched</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>var_bool_EmailMatched</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>var_bool_PhoneMatched</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <isGoTo>true</isGoTo>
+                <targetReference>Send_Verification_SMS_1</targetReference>
+            </connector>
+            <label>Phone Only Matched</label>
+        </rules>
+    </decisions>
+    <description>Google Search added; language selector removed; updated formula for valid email; SMS verification added; queries updated to account for email OR phone
 Created By: Elevation Solutions</description>
     <dynamicChoiceSets>
         <name>ch_Languages</name>
@@ -694,32 +1193,73 @@ Created By: Elevation Solutions</description>
     </dynamicChoiceSets>
     <environments>Default</environments>
     <formulas>
+        <name>fx_AccountEmailToSave</name>
+        <dataType>String</dataType>
+        <expression>IF({!fx_EmailMatchedAccount}, {!screen_email1.value}, {!Loop_through_once_to_assign_values_to_the_found_Account.PersonEmail})</expression>
+    </formulas>
+    <formulas>
+        <name>fx_AccountPhoneToSave</name>
+        <dataType>String</dataType>
+        <expression>IF({!fx_PhoneMatchedAccount}, {!formattedPhoneNumber}, {!Loop_through_once_to_assign_values_to_the_found_Account.Phone})</expression>
+    </formulas>
+    <formulas>
+        <description>also returns TRUE if screen_email1.value is blank. This is in order to avoid hitting the validation error for blank screen_email1.value values.</description>
         <name>fx_email_is_valid</name>
         <dataType>Boolean</dataType>
-        <expression>NOT(ISBLANK({!screen_email1.value})) &amp;&amp;
+        <expression>OR(
+    ISBLANK({!screen_email1.value}),
+    AND(
+        /* exactly one &quot;@&quot; */
+        (LEN({!screen_email1.value}) - LEN(SUBSTITUTE({!screen_email1.value}, &quot;@&quot;, &quot;&quot;))) = 1,
 
-/* exactly one &quot;@&quot; */
-(LEN({!screen_email1.value}) - LEN(SUBSTITUTE({!screen_email1.value}, &quot;@&quot;, &quot;&quot;))) = 1 &amp;&amp;
+        /* &quot;@&quot; is not the first character */
+        FIND(&quot;@&quot;, {!screen_email1.value}) &gt; 1,
 
-/* &quot;@&quot; is not the first character */
-FIND(&quot;@&quot;, {!screen_email1.value}) &gt; 1 &amp;&amp;
+        /* no spaces */
+        NOT(CONTAINS({!screen_email1.value}, &quot; &quot;)),
 
-/* no spaces */
-NOT(CONTAINS({!screen_email1.value}, &quot; &quot;)) &amp;&amp;
+        /* the part AFTER the &quot;@&quot; contains a &quot;.&quot; */
+        CONTAINS(
+            MID({!screen_email1.value},
+                FIND(&quot;@&quot;, {!screen_email1.value}) + 1,
+                LEN({!screen_email1.value})),
+            &quot;.&quot;
+        ),
 
-/* the part AFTER the &quot;@&quot; contains a &quot;.&quot; */
-CONTAINS(
-    MID({!screen_email1.value},
-        FIND(&quot;@&quot;, {!screen_email1.value}) + 1,
-        LEN({!screen_email1.value})),
-    &quot;.&quot;
-) &amp;&amp;
+        /* the character right after &quot;@&quot; is not &quot;.&quot; (blocks &quot;@.&quot;) */
+        NOT(MID({!screen_email1.value}, FIND(&quot;@&quot;, {!screen_email1.value}) + 1, 1) = &quot;.&quot;),
 
-/* the character right after &quot;@&quot; is not &quot;.&quot; (blocks &quot;@.&quot;) */
-NOT(MID({!screen_email1.value}, FIND(&quot;@&quot;, {!screen_email1.value}) + 1, 1) = &quot;.&quot;) &amp;&amp;
-
-/* does not end in &quot;.&quot; */
-NOT(RIGHT({!screen_email1.value}, 1) = &quot;.&quot;)</expression>
+        /* does not end in &quot;.&quot; */
+        NOT(RIGHT({!screen_email1.value}, 1) = &quot;.&quot;)
+    )
+)</expression>
+    </formulas>
+    <formulas>
+        <name>fx_EmailMatchedAccount</name>
+        <dataType>Boolean</dataType>
+        <expression>AND(
+    NOT(ISBLANK({!screen_email1.value})),
+    NOT(ISBLANK({!Loop_through_once_to_assign_values_to_the_found_Account.PersonEmail})),
+    UPPER({!screen_email1.value}) = UPPER({!Loop_through_once_to_assign_values_to_the_found_Account.PersonEmail})
+)</expression>
+    </formulas>
+    <formulas>
+        <name>fx_FirstNameCapitalized</name>
+        <dataType>String</dataType>
+        <expression>IF(
+    ISBLANK({!First_Name}),
+    {!First_Name},
+    UPPER(LEFT({!First_Name}, 1)) &amp; MID({!First_Name}, 2, LEN({!First_Name}) - 1)
+)</expression>
+    </formulas>
+    <formulas>
+        <name>fx_LastNameCapitalized</name>
+        <dataType>String</dataType>
+        <expression>IF(
+    ISBLANK({!Last_Name}),
+    {!Last_Name},
+    UPPER(LEFT({!Last_Name}, 1)) &amp; MID({!Last_Name}, 2, LEN({!Last_Name}) - 1)
+)</expression>
     </formulas>
     <formulas>
         <description>Returns TRUE if the entered Phone number is exactly 10 numerical digits with no special characters.</description>
@@ -728,6 +1268,15 @@ NOT(RIGHT({!screen_email1.value}, 1) = &quot;.&quot;)</expression>
         <expression>AND(
   LEN({!screen_Phone.value}) = 10,
   ISNUMBER({!screen_Phone.value})
+)</expression>
+    </formulas>
+    <formulas>
+        <name>fx_PhoneMatchedAccount</name>
+        <dataType>Boolean</dataType>
+        <expression>AND(
+    NOT(ISBLANK({!formattedPhoneNumber})),
+    NOT(ISBLANK({!Loop_through_once_to_assign_values_to_the_found_Account.Phone})),
+    {!formattedPhoneNumber} = {!Loop_through_once_to_assign_values_to_the_found_Account.Phone}
 )</expression>
     </formulas>
     <formulas>
@@ -769,7 +1318,7 @@ NOT(RIGHT({!screen_email1.value}, 1) = &quot;.&quot;)</expression>
         <label>Loop through once to assign values to the found Account</label>
         <locationX>0</locationX>
         <locationY>0</locationY>
-        <collectionReference>Get_Guardian_Account_with_matching_details</collectionReference>
+        <collectionReference>var_col_Found_Accounts</collectionReference>
         <iterationOrder>Asc</iterationOrder>
         <nextValueConnector>
             <targetReference>Add_1_to_var_loop_cnt</targetReference>
@@ -798,13 +1347,41 @@ NOT(RIGHT({!screen_email1.value}, 1) = &quot;.&quot;)</expression>
     </processMetadataValues>
     <processType>Flow</processType>
     <recordLookups>
+        <name>Copy_1_of_Get_User_with_matching_details_phone</name>
+        <label>Get User with matching details</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Get_Guardian_Account_with_matching_details_phone</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>ProfileId</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>Get_Zeta_Parent_Portal_Profile.Id</elementReference>
+            </value>
+        </filters>
+        <filters>
+            <field>MobilePhone</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>formattedPhoneNumber</elementReference>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>User</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordLookups>
         <name>Get_Guardian_Account_with_matching_details</name>
         <label>Get Guardian Account with matching details</label>
         <locationX>0</locationX>
         <locationY>0</locationY>
         <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
         <connector>
-            <targetReference>Found_records</targetReference>
+            <targetReference>Assign_User_and_Accounts_to_variables</targetReference>
         </connector>
         <filterLogic>(1 OR 2) AND 3</filterLogic>
         <filters>
@@ -819,6 +1396,34 @@ NOT(RIGHT({!screen_email1.value}, 1) = &quot;.&quot;)</expression>
             <operator>EqualTo</operator>
             <value>
                 <elementReference>screen_email1.value</elementReference>
+            </value>
+        </filters>
+        <filters>
+            <field>Record_Type_Name__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Guardian</stringValue>
+            </value>
+        </filters>
+        <getFirstRecordOnly>false</getFirstRecordOnly>
+        <object>Account</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordLookups>
+        <name>Get_Guardian_Account_with_matching_details_phone</name>
+        <label>Get Guardian Account with matching details</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Assign_User_and_Accounts_to_variables_phone</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Phone</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>formattedPhoneNumber</elementReference>
             </value>
         </filters>
         <filters>
@@ -895,7 +1500,7 @@ NOT(RIGHT({!screen_email1.value}, 1) = &quot;.&quot;)</expression>
         <locationY>0</locationY>
         <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
         <connector>
-            <targetReference>Get_User_with_matching_details</targetReference>
+            <targetReference>GET_based_on_the_entered_Phone_and_Email_field_s</targetReference>
         </connector>
         <filterLogic>and</filterLogic>
         <filters>
@@ -940,7 +1545,7 @@ NOT(RIGHT({!screen_email1.value}, 1) = &quot;.&quot;)</expression>
         <locationX>0</locationX>
         <locationY>0</locationY>
         <connector>
-            <targetReference>Send_Verification_Email</targetReference>
+            <targetReference>Verification_Method_Available</targetReference>
         </connector>
         <faultConnector>
             <isGoTo>true</isGoTo>
@@ -954,10 +1559,9 @@ NOT(RIGHT({!screen_email1.value}, 1) = &quot;.&quot;)</expression>
         <locationX>0</locationX>
         <locationY>0</locationY>
         <connector>
-            <targetReference>Existing_Portal_Login</targetReference>
+            <targetReference>User_Auth_Method</targetReference>
         </connector>
         <faultConnector>
-            <isGoTo>true</isGoTo>
             <targetReference>Unable_to_create_a_User</targetReference>
         </faultConnector>
         <filterLogic>and</filterLogic>
@@ -965,7 +1569,7 @@ NOT(RIGHT({!screen_email1.value}, 1) = &quot;.&quot;)</expression>
             <field>Id</field>
             <operator>EqualTo</operator>
             <value>
-                <elementReference>Get_User_with_matching_details.Id</elementReference>
+                <elementReference>var_rec_Found_User.Id</elementReference>
             </value>
         </filters>
         <inputAssignments>
@@ -1051,6 +1655,84 @@ NOT(RIGHT({!screen_email1.value}, 1) = &quot;.&quot;)</expression>
             <name>Enter_the_code_you_received_via_email</name>
             <dataType>String</dataType>
             <fieldText>Enter the code you received via email.</fieldText>
+            <fieldType>InputField</fieldType>
+            <inputsOnNextNavToAssocScrn>UseStoredValues</inputsOnNextNavToAssocScrn>
+            <isRequired>true</isRequired>
+            <styleProperties>
+                <verticalAlignment>
+                    <stringValue>top</stringValue>
+                </verticalAlignment>
+                <width>
+                    <stringValue>12</stringValue>
+                </width>
+            </styleProperties>
+        </fields>
+        <nextOrFinishButtonLabel>Enter</nextOrFinishButtonLabel>
+        <showFooter>true</showFooter>
+        <showHeader>false</showHeader>
+    </screens>
+    <screens>
+        <name>Enter_Code_Received_via_SMS</name>
+        <label>Enter Code Received via SMS</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <allowBack>true</allowBack>
+        <allowFinish>true</allowFinish>
+        <allowPause>false</allowPause>
+        <backButtonLabel>Back</backButtonLabel>
+        <connector>
+            <targetReference>Verify_Code_and_Create_User_SMS</targetReference>
+        </connector>
+        <fields>
+            <name>Copy_1_of_dt_enter</name>
+            <fieldText>&lt;p&gt;We just sent a verification code to your phone &lt;strong style=&quot;background-color: rgb(255, 255, 255);&quot;&gt;{!ConfirmPhone.value}&lt;/strong&gt;.&lt;/p&gt;</fieldText>
+            <fieldType>DisplayText</fieldType>
+            <styleProperties>
+                <verticalAlignment>
+                    <stringValue>top</stringValue>
+                </verticalAlignment>
+                <width>
+                    <stringValue>12</stringValue>
+                </width>
+            </styleProperties>
+            <visibilityRule>
+                <conditionLogic>and</conditionLogic>
+                <conditions>
+                    <leftValueReference>cnt_verificationattempts</leftValueReference>
+                    <operator>EqualTo</operator>
+                    <rightValue>
+                        <numberValue>0.0</numberValue>
+                    </rightValue>
+                </conditions>
+            </visibilityRule>
+        </fields>
+        <fields>
+            <name>Copy_1_of_dt_secondattempt</name>
+            <fieldText>&lt;p&gt;&lt;span style=&quot;background-color: rgb(255, 255, 255);&quot;&gt;We just sent another verification code to your phone &lt;/span&gt;&lt;strong style=&quot;background-color: rgb(255, 255, 255);&quot;&gt;{!ConfirmPhone.value}&lt;/strong&gt;&lt;span style=&quot;background-color: rgb(255, 255, 255);&quot;&gt;.&lt;/span&gt;&lt;/p&gt;</fieldText>
+            <fieldType>DisplayText</fieldType>
+            <styleProperties>
+                <verticalAlignment>
+                    <stringValue>top</stringValue>
+                </verticalAlignment>
+                <width>
+                    <stringValue>12</stringValue>
+                </width>
+            </styleProperties>
+            <visibilityRule>
+                <conditionLogic>and</conditionLogic>
+                <conditions>
+                    <leftValueReference>cnt_verificationattempts</leftValueReference>
+                    <operator>GreaterThan</operator>
+                    <rightValue>
+                        <numberValue>0.0</numberValue>
+                    </rightValue>
+                </conditions>
+            </visibilityRule>
+        </fields>
+        <fields>
+            <name>Enter_the_code_you_received_via_text_message</name>
+            <dataType>String</dataType>
+            <fieldText>Enter the code you received via text message.</fieldText>
             <fieldType>InputField</fieldType>
             <inputsOnNextNavToAssocScrn>UseStoredValues</inputsOnNextNavToAssocScrn>
             <isRequired>true</isRequired>
@@ -1225,7 +1907,7 @@ NOT(RIGHT({!screen_email1.value}, 1) = &quot;.&quot;)</expression>
                     <inputParameters>
                         <name>required</name>
                         <value>
-                            <booleanValue>true</booleanValue>
+                            <booleanValue>false</booleanValue>
                         </value>
                     </inputParameters>
                     <inputsOnNextNavToAssocScrn>UseStoredValues</inputsOnNextNavToAssocScrn>
@@ -1413,8 +2095,8 @@ NOT(RIGHT({!screen_email1.value}, 1) = &quot;.&quot;)</expression>
         <showHeader>false</showHeader>
     </screens>
     <screens>
-        <name>Existing_Portal_Login</name>
-        <label>Existing Portal Login</label>
+        <name>Existing_Portal_Login_Email</name>
+        <label>Existing Portal Login Email</label>
         <locationX>0</locationX>
         <locationY>0</locationY>
         <allowBack>true</allowBack>
@@ -1424,8 +2106,64 @@ NOT(RIGHT({!screen_email1.value}, 1) = &quot;.&quot;)</expression>
             <targetReference>Go_to_Login_Page</targetReference>
         </connector>
         <fields>
-            <name>dt_PortalUserFound</name>
-            <fieldText>&lt;p&gt;&lt;span style=&quot;background-color: rgb(255, 255, 255);&quot;&gt;We found an existing Parent Portal User matching the information you entered. Please log in with your existing account. Click &quot;Go to Login&quot; below to be routed to the login page.&lt;/span&gt;&lt;/p&gt;</fieldText>
+            <name>dt_PortalUserFound_Email</name>
+            <fieldText>&lt;p&gt;&lt;span style=&quot;background-color: rgb(255, 255, 255);&quot;&gt;We found an existing Parent Portal User matching the information you entered. Please log in with the email associated with your existing account. Click &quot;Go to Login&quot; below to be routed to the login page.&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;For support, please contact Zeta Charter Schools.&lt;/p&gt;&lt;p&gt;&lt;a href=&quot;mailto:enroll@zetaschools.org&quot; rel=&quot;noopener noreferrer&quot; target=&quot;_blank&quot; style=&quot;color: rgb(18, 100, 163);&quot;&gt;enroll@zetaschools.org&lt;/a&gt; | &lt;a href=&quot;tel:6464801654&quot; rel=&quot;noopener noreferrer&quot; target=&quot;_blank&quot; style=&quot;color: rgb(18, 100, 163);&quot;&gt;(646) 480-1654&lt;/a&gt;&lt;/p&gt;</fieldText>
+            <fieldType>DisplayText</fieldType>
+            <styleProperties>
+                <verticalAlignment>
+                    <stringValue>top</stringValue>
+                </verticalAlignment>
+                <width>
+                    <stringValue>12</stringValue>
+                </width>
+            </styleProperties>
+        </fields>
+        <nextOrFinishButtonLabel>Go to Login</nextOrFinishButtonLabel>
+        <showFooter>true</showFooter>
+        <showHeader>false</showHeader>
+    </screens>
+    <screens>
+        <name>Existing_Portal_Login_Email_or_Phone</name>
+        <label>Existing Portal Login Email or Phone</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <allowBack>true</allowBack>
+        <allowFinish>true</allowFinish>
+        <allowPause>false</allowPause>
+        <connector>
+            <targetReference>Go_to_Login_Page</targetReference>
+        </connector>
+        <fields>
+            <name>dt_PortalUserFound_Email_or_Phone</name>
+            <fieldText>&lt;p&gt;&lt;span style=&quot;background-color: rgb(255, 255, 255);&quot;&gt;We found an existing Parent Portal User matching the information you entered. Please log in with the email or phone number associated with your existing account. Click &quot;Go to Login&quot; below to be routed to the login page.&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;For support, please contact Zeta Charter Schools.&lt;/p&gt;&lt;p&gt;&lt;a href=&quot;mailto:enroll@zetaschools.org&quot; rel=&quot;noopener noreferrer&quot; target=&quot;_blank&quot; style=&quot;color: rgb(18, 100, 163);&quot;&gt;enroll@zetaschools.org&lt;/a&gt; | &lt;a href=&quot;tel:6464801654&quot; rel=&quot;noopener noreferrer&quot; target=&quot;_blank&quot; style=&quot;color: rgb(18, 100, 163);&quot;&gt;(646) 480-1654&lt;/a&gt;&lt;/p&gt;</fieldText>
+            <fieldType>DisplayText</fieldType>
+            <styleProperties>
+                <verticalAlignment>
+                    <stringValue>top</stringValue>
+                </verticalAlignment>
+                <width>
+                    <stringValue>12</stringValue>
+                </width>
+            </styleProperties>
+        </fields>
+        <nextOrFinishButtonLabel>Go to Login</nextOrFinishButtonLabel>
+        <showFooter>true</showFooter>
+        <showHeader>false</showHeader>
+    </screens>
+    <screens>
+        <name>Existing_Portal_Login_Phone</name>
+        <label>Existing Portal Login Phone</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <allowBack>true</allowBack>
+        <allowFinish>true</allowFinish>
+        <allowPause>false</allowPause>
+        <connector>
+            <targetReference>Go_to_Login_Page</targetReference>
+        </connector>
+        <fields>
+            <name>dt_PortalUserFound_Phone</name>
+            <fieldText>&lt;p&gt;&lt;span style=&quot;background-color: rgb(255, 255, 255);&quot;&gt;We found an existing Parent Portal User matching the information you entered. Please log in with the phone number associated with your existing account. Click &quot;Go to Login&quot; below to be routed to the login page.&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;For support, please contact Zeta Charter Schools.&lt;/p&gt;&lt;p&gt;&lt;a href=&quot;mailto:enroll@zetaschools.org&quot; rel=&quot;noopener noreferrer&quot; target=&quot;_blank&quot; style=&quot;color: rgb(18, 100, 163);&quot;&gt;enroll@zetaschools.org&lt;/a&gt; | &lt;a href=&quot;tel:6464801654&quot; rel=&quot;noopener noreferrer&quot; target=&quot;_blank&quot; style=&quot;color: rgb(18, 100, 163);&quot;&gt;(646) 480-1654&lt;/a&gt;&lt;/p&gt;</fieldText>
             <fieldType>DisplayText</fieldType>
             <styleProperties>
                 <verticalAlignment>
@@ -1450,7 +2188,7 @@ NOT(RIGHT({!screen_email1.value}, 1) = &quot;.&quot;)</expression>
         <allowPause>false</allowPause>
         <connector>
             <isGoTo>true</isGoTo>
-            <targetReference>Send_Verification_Email</targetReference>
+            <targetReference>Select_Verification_Method</targetReference>
         </connector>
         <fields>
             <name>Copy_1_of_dt_error</name>
@@ -1495,6 +2233,40 @@ NOT(RIGHT({!screen_email1.value}, 1) = &quot;.&quot;)</expression>
         <showHeader>false</showHeader>
     </screens>
     <screens>
+        <name>Select_Verification_Method</name>
+        <label>Select Verification Method</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <allowBack>true</allowBack>
+        <allowFinish>true</allowFinish>
+        <allowPause>false</allowPause>
+        <backButtonLabel>Back</backButtonLabel>
+        <connector>
+            <targetReference>Method_Selected</targetReference>
+        </connector>
+        <fields>
+            <name>Select_a_verification_method</name>
+            <choiceReferences>chSMS</choiceReferences>
+            <choiceReferences>chEmail</choiceReferences>
+            <dataType>String</dataType>
+            <fieldText>Select a verification method</fieldText>
+            <fieldType>RadioButtons</fieldType>
+            <inputsOnNextNavToAssocScrn>UseStoredValues</inputsOnNextNavToAssocScrn>
+            <isRequired>true</isRequired>
+            <styleProperties>
+                <verticalAlignment>
+                    <stringValue>top</stringValue>
+                </verticalAlignment>
+                <width>
+                    <stringValue>12</stringValue>
+                </width>
+            </styleProperties>
+        </fields>
+        <nextOrFinishButtonLabel>Send Verification</nextOrFinishButtonLabel>
+        <showFooter>true</showFooter>
+        <showHeader>false</showHeader>
+    </screens>
+    <screens>
         <name>Success</name>
         <label>Success</label>
         <locationX>0</locationX>
@@ -1530,7 +2302,7 @@ NOT(RIGHT({!screen_email1.value}, 1) = &quot;.&quot;)</expression>
         <backButtonLabel>Back</backButtonLabel>
         <fields>
             <name>dt_error</name>
-            <fieldText>&lt;p&gt;&lt;span style=&quot;background-color: rgb(255, 255, 255);&quot;&gt;We were unable to create a user for you in the Parent Portal. We are sorry for the inconvenience. Please contact Zeta Charter Schools for assistance.&lt;/span&gt;&lt;/p&gt;</fieldText>
+            <fieldText>&lt;p&gt;&lt;span style=&quot;background-color: rgb(255, 255, 255);&quot;&gt;We were unable to create a user for you in the Parent Portal. We are sorry for the inconvenience. &lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot;background-color: rgb(255, 255, 255);&quot;&gt;﻿For support, &lt;/span&gt;please contact Zeta Charter Schools.&amp;nbsp;&lt;/p&gt;&lt;p&gt;enroll@zetaschools.org | (646) 480-1654&lt;/p&gt;</fieldText>
             <fieldType>DisplayText</fieldType>
             <styleProperties>
                 <verticalAlignment>
@@ -1576,7 +2348,7 @@ NOT(RIGHT({!screen_email1.value}, 1) = &quot;.&quot;)</expression>
         </value>
     </variables>
     <variables>
-        <name>currentItem_Filter_to_Accounts_where_Primary_Parent_Portal_User_c_not_null</name>
+        <name>currentItem_Filter_to_Accounts_where_Portal_User_pc_not_null</name>
         <dataType>SObject</dataType>
         <isCollection>false</isCollection>
         <isInput>false</isInput>
@@ -1599,6 +2371,28 @@ NOT(RIGHT({!screen_email1.value}, 1) = &quot;.&quot;)</expression>
         <isOutput>false</isOutput>
     </variables>
     <variables>
+        <name>var_bool_EmailMatched</name>
+        <dataType>Boolean</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+    </variables>
+    <variables>
+        <name>var_bool_PhoneMatched</name>
+        <dataType>Boolean</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+    </variables>
+    <variables>
+        <name>var_col_Found_Accounts</name>
+        <dataType>SObject</dataType>
+        <isCollection>true</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+        <objectType>Account</objectType>
+    </variables>
+    <variables>
         <name>var_loop_cnt</name>
         <dataType>Number</dataType>
         <isCollection>false</isCollection>
@@ -1608,6 +2402,14 @@ NOT(RIGHT({!screen_email1.value}, 1) = &quot;.&quot;)</expression>
         <value>
             <numberValue>0.0</numberValue>
         </value>
+    </variables>
+    <variables>
+        <name>var_rec_Found_User</name>
+        <dataType>SObject</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+        <objectType>User</objectType>
     </variables>
     <variables>
         <name>var_rec_GuardianAccount</name>

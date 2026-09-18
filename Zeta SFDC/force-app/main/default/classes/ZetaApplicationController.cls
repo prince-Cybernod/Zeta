@@ -491,7 +491,7 @@ public without sharing class ZetaApplicationController {
     return timelines.isEmpty() ? null : timelines[0];
   }
 
-  private static Id findActiveTimelineId() {
+  public static Id findActiveTimelineId() {
     String query =
       'SELECT Id FROM ApplicationTimeline' +
       ' WHERE Active__c = true' +

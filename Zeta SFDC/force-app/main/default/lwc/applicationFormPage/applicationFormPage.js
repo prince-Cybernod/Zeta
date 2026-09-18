@@ -66,6 +66,13 @@ export default class ApplicationFormPage extends LightningElement {
   // shared, page-scoped bundle — single source of truth is preserved.
   @api includeSectionDevNames = '';
   @api excludeSectionDevNames = '';
+  // Comma-separated sections to render non-editable while the rest of the page
+  // stays editable. Their answers still travel in the page's save payload.
+  @api readOnlySectionDevNames = '';
+  // Comma-separated sections captured on an earlier step: once their answers are
+  // complete they render as a locked summary. While still incomplete they stay
+  // editable, so a required question is never both locked and unanswerable.
+  @api lockWhenCompleteSectionDevNames = '';
 
   formStructure;
   answers = {};
@@ -180,6 +187,14 @@ export default class ApplicationFormPage extends LightningElement {
     return this._parseSectionList(this.excludeSectionDevNames);
   }
 
+  get _readOnlySet() {
+    return this._parseSectionList(this.readOnlySectionDevNames);
+  }
+
+  get _lockWhenCompleteSet() {
+    return this._parseSectionList(this.lockWhenCompleteSectionDevNames);
+  }
+
   _parseSectionList(raw) {
     if (!raw || typeof raw !== 'string') {
       return null;
@@ -237,17 +252,36 @@ export default class ApplicationFormPage extends LightningElement {
     });
   }
 
+  // Rows keep the section object itself by reference so the child's `section`
+  // prop identity stays stable across renders.
+  _toSectionRows(sections) {
+    const readOnlySet = this._readOnlySet;
+    const lockSet = this._lockWhenCompleteSet;
+    return sections.map((section) => ({
+      key: section.developerName,
+      section,
+      readOnly: this.readOnly || !!readOnlySet?.has(section.developerName),
+      lockWhenComplete: !!lockSet?.has(section.developerName)
+    }));
+  }
+
   get sectionsBeforeSlot() {
-    if (!this.insertSlotAfterSortOrder) return this.visibleSections;
-    return this.visibleSections.filter(
-      (s) => s.sortOrder <= this.insertSlotAfterSortOrder
+    if (!this.insertSlotAfterSortOrder) {
+      return this._toSectionRows(this.visibleSections);
+    }
+    return this._toSectionRows(
+      this.visibleSections.filter(
+        (s) => s.sortOrder <= this.insertSlotAfterSortOrder
+      )
     );
   }
 
   get sectionsAfterSlot() {
     if (!this.insertSlotAfterSortOrder) return [];
-    return this.visibleSections.filter(
-      (s) => s.sortOrder > this.insertSlotAfterSortOrder
+    return this._toSectionRows(
+      this.visibleSections.filter(
+        (s) => s.sortOrder > this.insertSlotAfterSortOrder
+      )
     );
   }
 

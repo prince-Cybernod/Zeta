@@ -1,0 +1,26 @@
+{
+  "type" : "sfdc_cms__email",
+  "title" : "MC | Applicant | ES Email 5",
+  "contentBody" : {
+    "subjectLine" : "Donde la excelencia se encuentra con el corazón, desde pre kínder a 12.° grado",
+    "preheader" : "¡Los estudiantes de Zeta han tenido un año escolar muy ocupado!",
+    "sfdc_cms:block" : {
+      "children" : [ {
+        "id" : "c185f74c-2ace-41a9-b6f1-193ca60db472",
+        "attributes" : {
+          "text" : "<strong>En Zeta</strong>, nuestro modelo educativo de próxima generación se enfoca en potenciar al alumno en su totalidad. Los estudiantes se exponen a una currícula académica rigurosa, especialidades que van desde el ajedrez hasta el fútbol, prácticas de aprendizaje socioemocional y todo ello en colaboración con las familias. A través de todo esto, seguimos comprometidos con nuestra creencia fundamental: <strong>cada niño merece una educación extraordinaria impulsada por el amor.</strong><br><br>En <strong>las escuelas primarias Zeta, eso comienza con construir una base para todo lo que sigue</strong>. El rigor académico se combina con un aprendizaje práctico y alegre, mientras que las especialidades guiadas por expertos en arte, música, ajedrez, danza, deportes y más ayudan a los niños a descubrir lo que aman y lo que pueden hacer.<br><br>En <strong>los Z Labs, nuestros centros de innovación de vanguardia, los estudiantes aprenden creando</strong>. Piensan como constructores, científicos y emprendedores, desarrollando ideas y aprendiendo a darles vida. Estas experiencias crecen con los estudiantes, hasta llegar a desarrollar y presentar propuestas en la escuela secundaria superior.<br><br>Y los resultados hablan por sí mismos:<strong> los estudiantes de Zeta se encuentran entre los mejores del estado. Nuestros resultados en Matemáticas, Ciencias y ELA cumplen o superan constantemente los promedios del estado de Nueva York y de la ciudad de Nueva York.</strong><br><br>"
+        }
+      }, {
+        "id" : "bbf0ea99-526d-48e3-960b-d6dbbefe7dd2",
+        "attributes" : {
+          "text" : "Estimado/a {!$Expression.First_Name} {!$Expression.Last_Name}:<br><br>¡Los estudiantes de Zeta han tenido un año escolar muy ocupado! Desde las aulas hasta los pasillos, ha sido una temporada de aprendizaje y diversión. <br><br>"
+        }
+      }, {
+        "id" : "18ab3856-066c-47f3-be32-7e0c1a2d60d8",
+        "attributes" : {
+          "text" : "La escuela primaria es solo el comienzo.<br><br>En la escuela intermedia Zeta, los estudiantes desarrollan su independencia y descubren más sobre quiénes son mientras se enfrentan a desafíos académicos cada vez mayores. Las experiencias prácticas conectan lo que aprenden en el aula con aprendizajes de la vida real. En la escuela secundaria Zeta, el enfoque se expande hacia <strong>el propósito, la pasión y el poder</strong>, con preparación universitaria y oportunidades para experimentar el mundo más allá de la escuela a través de Z Journeys. Las Z Houses y los pequeños Z Pods (grupos de aprendizaje) crean un fuerte sentido de pertenencia durante todo el proceso.<br><br><strong>Las familias que eligen Zeta para la escuela primaria cuentan con una escuela que se asocia con ellas durante toda la trayectoria escolar hasta la secundaria.</strong> A lo largo del camino, los niños aprenderán en una comunidad que los conoce profundamente y crece con ellos.<br><br>Si deseas obtener más información sobre nuestra trayectoria desde prejardín hasta el 12.° grado, inscríbete aquí para <a href=\"https://zetaschools.org/events-for-prospective-families/\" target=\"_blank\" part=\"link\" rel=\"noopener noreferrer noopener noreferrer\">una visita próxima</a>.<br><br>Esperamos darte la bienvenida pronto.<br><br><br>Con afecto,<br><strong>El equipo de inscripciones de Zeta</strong><br>Escuelas Chárter Zeta<br><br><em>Por favor, comunícate si tienes alguna pregunta sobre Zeta; nuestro equipo de inscripciones está aquí para ayudarte en cada paso del camino. ✉ enroll@zetaschools.org \uD83D\uDCDE(646) 480-1654</em><br><br>"
+        }
+      } ]
+    }
+  }
+}

@@ -37,6 +37,10 @@
                     <value>false</value>
                 </componentInstanceProperties>
                 <componentInstanceProperties>
+                    <name>hideSlackAction</name>
+                    <value>false</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
                     <name>numVisibleActions</name>
                     <value>3</value>
                 </componentInstanceProperties>
@@ -94,12 +98,20 @@
         </itemInstances>
         <itemInstances>
             <fieldInstance>
+                <fieldInstanceProperties>
+                    <name>uiBehavior</name>
+                    <value>none</value>
+                </fieldInstanceProperties>
                 <fieldItem>Record.Active__c</fieldItem>
                 <identifier>RecordActive__cField</identifier>
             </fieldInstance>
         </itemInstances>
         <itemInstances>
             <fieldInstance>
+                <fieldInstanceProperties>
+                    <name>uiBehavior</name>
+                    <value>none</value>
+                </fieldInstanceProperties>
                 <fieldItem>Record.Academic_Term_Name__c</fieldItem>
                 <identifier>RecordAcademic_Term_Name__cField</identifier>
             </fieldInstance>
@@ -136,6 +148,26 @@
                 </fieldInstanceProperties>
                 <fieldItem>Record.Individual_Application__c</fieldItem>
                 <identifier>RecordIndividual_Application_cField</identifier>
+            </fieldInstance>
+        </itemInstances>
+        <itemInstances>
+            <fieldInstance>
+                <fieldInstanceProperties>
+                    <name>uiBehavior</name>
+                    <value>none</value>
+                </fieldInstanceProperties>
+                <fieldItem>Record.Mogli_Number_from_Person_Account__c</fieldItem>
+                <identifier>RecordMogli_Number_from_Person_Account_cField</identifier>
+            </fieldInstance>
+        </itemInstances>
+        <itemInstances>
+            <fieldInstance>
+                <fieldInstanceProperties>
+                    <name>uiBehavior</name>
+                    <value>none</value>
+                </fieldInstanceProperties>
+                <fieldItem>Record.Mogli_Opt_Out__c</fieldItem>
+                <identifier>RecordMogli_Opt_Out_cField</identifier>
             </fieldInstance>
         </itemInstances>
         <name>Facet-228e110a-bfce-4de4-b5c5-c332e6cb166e</name>
@@ -3610,6 +3642,38 @@
                 </componentInstanceProperties>
                 <componentName>flexipage:tabset</componentName>
                 <identifier>flexipage_tabset2</identifier>
+            </componentInstance>
+        </itemInstances>
+        <itemInstances>
+            <componentInstance>
+                <componentInstanceProperties>
+                    <name>attachmentsDisabled</name>
+                    <value>false</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>canOverrideDefaults</name>
+                    <value>Enabled</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>customLimitUnit</name>
+                    <value>Segments</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>mcvConfigurationRecord</name>
+                    <value>AcademicTermEnrollment01</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>recordId</name>
+                </componentInstanceProperties>
+                <componentName>Mogli_SMS:TextMessageComponentEmpApi</componentName>
+                <identifier>Mogli_SMS_TextMessageComponentEmpApi</identifier>
+                <visibilityRule>
+                    <criteria>
+                        <leftValue>{!$Permission.CustomPermission.Mogli_SMS__Mogli_Conversation_View_Access}</leftValue>
+                        <operator>EQUAL</operator>
+                        <rightValue>true</rightValue>
+                    </criteria>
+                </visibilityRule>
             </componentInstance>
         </itemInstances>
         <name>sidebar</name>

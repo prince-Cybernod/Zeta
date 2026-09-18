@@ -3,6 +3,11 @@
   "title" : "MC | Applicant | ES Footer",
   "contentBody" : {
     "backgroundColor" : "#f3f3f3",
+    "lightning:backgroundImage" : {
+      "position" : "center center",
+      "repeat" : "no-repeat",
+      "size" : "cover"
+    },
     "lightning:brandSource" : "MCXD6TZ6XKJRGNBB72AH4B5UPAKA",
     "lightning:colorScheme" : "{!$brand.colorScheme}",
     "lightning:dataProviders" : [ {
@@ -13,25 +18,27 @@
       "definition" : "sfdc_cms__dataGraphDataProvider",
       "sfdcExpressionKey" : "$dataGraph"
     } ],
+    "lightning:expressions" : [ ],
     "lightning:padding" : "{!$brand.spacing.none}",
+    "sfdc_cms:attachments" : [ ],
     "sfdc_cms:block" : {
       "definition" : "sfdc_cms/rootContentBlock",
       "id" : "d787f0d4-78a4-417c-8d14-54d73e5f5e7f",
       "type" : "block",
       "children" : [ {
         "attributes" : {
+          "lightning:backgroundImage" : {
+            "position" : "center center",
+            "repeat" : "no-repeat",
+            "size" : "cover"
+          },
           "lightning:borderRadius" : "{!$brand.borderRadius.square}",
           "lightning:borderWidth" : "{!$brand.borderWeight.none}",
           "lightning:colorScheme" : "{!$brand.colorScheme}",
           "lightning:margin" : "{!$brand.spacing.none}",
           "lightning:padding" : "{!$brand.spacing.none}",
-          "stackOnMobile" : true,
           "reverseOrderOnMobile" : false,
-          "lightning:backgroundImage" : {
-            "repeat" : "no-repeat",
-            "position" : "center center",
-            "size" : "cover"
-          }
+          "stackOnMobile" : true
         },
         "definition" : "lightning/section",
         "id" : "ff367c5c-ebb7-410b-919d-f97411301497",
@@ -39,17 +46,17 @@
         "children" : [ {
           "attributes" : {
             "columnWidth" : 12.0,
+            "lightning:backgroundImage" : {
+              "position" : "center center",
+              "repeat" : "no-repeat",
+              "size" : "cover"
+            },
             "lightning:borderRadius" : "{!$brand.borderRadius.square}",
             "lightning:borderWidth" : "{!$brand.borderWeight.none}",
             "lightning:colorScheme" : "{!$brand.colorScheme}",
             "lightning:margin" : "{!$brand.spacing.none}",
             "lightning:padding" : "{!$brand.spacing.xSmall}",
-            "lightning:verticalAlignment" : "top",
-            "lightning:backgroundImage" : {
-              "repeat" : "no-repeat",
-              "position" : "center center",
-              "size" : "cover"
-            }
+            "lightning:verticalAlignment" : "top"
           },
           "definition" : "lightning/column",
           "id" : "e4d0ee20-fba6-4b17-9123-2d4884c33782",
@@ -68,7 +75,7 @@
               "lightning:margin" : "{!$brand.spacing.none}",
               "lightning:padding" : "{!$brand.spacing.none}",
               "lightning:typography" : "{!$brand.typography.paragraph.paragraph1}",
-              "text" : "<span style=\"font-size: 12px;\">{!$organization.Address} <br />{!$link.PreferenceCenterUrl}</span>"
+              "text" : "<span style=\"font-size: 12px;\">{!$organization.Address} <br /><a href=\"{!$link.PreferenceCenterUrl}\" target=\"_blank\" part=\"link\" rel=\"noopener noreferrer\">Update My Preferences</a></span>"
             },
             "definition" : "lightning/paragraph",
             "id" : "f9e734c7-2534-4ca5-88b0-354b946ddf39",
@@ -113,13 +120,7 @@
       } ]
     },
     "sfdc_cms:title" : "MC | Applicant | ES Footer",
-    "lightning:expressions" : [ ],
-    "lightning:backgroundImage" : {
-      "repeat" : "no-repeat",
-      "position" : "center center",
-      "size" : "cover"
-    },
-    "sfdc_cms:attachments" : [ ],
+    "sfdc_cms:urlName" : "mc-applicant-es-footer",
     "sfdc_cms:variants" : [ ]
   },
   "urlName" : "mc-applicant-es-footer"

@@ -75,7 +75,7 @@
               "lightning:margin" : "{!$brand.spacing.none}",
               "lightning:padding" : "{!$brand.spacing.none}",
               "lightning:typography" : "{!$brand.typography.paragraph.paragraph1}",
-              "text" : "<span style=\"font-size: 12px;\">{!$organization.Address} <br />{!$link.PreferenceCenterUrl}</span>"
+              "text" : "<span style=\"font-size: 12px;\">{!$organization.Address} <br /><a href=\"{!$link.PreferenceCenterUrl}\" target=\"_blank\" part=\"link\" rel=\"noopener noreferrer\">Update My Preferences</a></span>"
             },
             "definition" : "lightning/paragraph",
             "id" : "f9e734c7-2534-4ca5-88b0-354b946ddf39",

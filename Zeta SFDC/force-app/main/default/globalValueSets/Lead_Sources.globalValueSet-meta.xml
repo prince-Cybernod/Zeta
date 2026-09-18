@@ -1,6 +1,36 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <GlobalValueSet xmlns="http://soap.sforce.com/2006/04/metadata">
     <customValue>
+        <fullName>Outreach – Community Event (We Host)</fullName>
+        <default>false</default>
+        <label>Outreach – Community Event (We Host)</label>
+    </customValue>
+    <customValue>
+        <fullName>Outreach – Community Event (We Attend)</fullName>
+        <default>false</default>
+        <label>Outreach – Community Event (We Attend)</label>
+    </customValue>
+    <customValue>
+        <fullName>Outreach – Pizza Party</fullName>
+        <default>false</default>
+        <label>Outreach – Pizza Party</label>
+    </customValue>
+    <customValue>
+        <fullName>Outreach – CBO Tabling</fullName>
+        <default>false</default>
+        <label>Outreach – CBO Tabling</label>
+    </customValue>
+    <customValue>
+        <fullName>Outreach – School/ After-School Dismissal</fullName>
+        <default>false</default>
+        <label>Outreach – School/ After-School Dismissal</label>
+    </customValue>
+    <customValue>
+        <fullName>Outreach – Hotspot</fullName>
+        <default>false</default>
+        <label>Outreach – Hotspot</label>
+    </customValue>
+    <customValue>
         <fullName>Meta – Facebook Form</fullName>
         <default>false</default>
         <label>Meta – Facebook Form</label>
@@ -26,9 +56,9 @@
         <label>Text</label>
     </customValue>
     <customValue>
-        <fullName>Google Voice – Phone Call</fullName>
+        <fullName>Enroll Phone Number Call or Voicemail</fullName>
         <default>false</default>
-        <label>Google Voice – Phone Call</label>
+        <label>Enroll Phone Number Call or Voicemail</label>
     </customValue>
     <customValue>
         <fullName>Email – Contact Us Form</fullName>
@@ -41,19 +71,14 @@
         <label>Email – Direct</label>
     </customValue>
     <customValue>
-        <fullName>Website – Pop-Up Form</fullName>
+        <fullName>Website – Text Me the Application Link Form</fullName>
         <default>false</default>
-        <label>Website – Pop-Up Form</label>
+        <label>Website – Text Me the Application Link Form</label>
     </customValue>
     <customValue>
-        <fullName>Website – Flushing Google Form</fullName>
+        <fullName>Website – Lead Interest Form</fullName>
         <default>false</default>
-        <label>Website – Flushing Google Form</label>
-    </customValue>
-    <customValue>
-        <fullName>FO&amp;E Team – Outreach Collection</fullName>
-        <default>false</default>
-        <label>FO&amp;E Team – Outreach Collection</label>
+        <label>Website – Lead Interest Form</label>
     </customValue>
     <customValue>
         <fullName>External Vendor Lead</fullName>
@@ -66,9 +91,9 @@
         <label>Event / Tour RSVP</label>
     </customValue>
     <customValue>
-        <fullName>Zoom Event Attendance</fullName>
+        <fullName>Webinar RSVP</fullName>
         <default>false</default>
-        <label>Zoom Event Attendance</label>
+        <label>Webinar RSVP</label>
     </customValue>
     <customValue>
         <fullName>Account Created – No Application</fullName>
@@ -76,14 +101,60 @@
         <label>Account Created – No Application</label>
     </customValue>
     <customValue>
-        <fullName>Family Referral [Potential]</fullName>
+        <fullName>Call Campaign – Former Waitlisted</fullName>
         <default>false</default>
-        <label>Family Referral [Potential]</label>
+        <label>Call Campaign – Former Waitlisted</label>
+    </customValue>
+    <customValue>
+        <fullName>Call Campaign – Former Rescinded</fullName>
+        <default>false</default>
+        <label>Call Campaign – Former Rescinded</label>
+    </customValue>
+    <customValue>
+        <fullName>Call Campaign – Former Withdrawn/Declined</fullName>
+        <default>false</default>
+        <label>Call Campaign – Former Withdrawn/Declined</label>
     </customValue>
     <customValue>
         <fullName>Other</fullName>
         <default>false</default>
         <label>Other</label>
+    </customValue>
+    <customValue>
+        <fullName>FO&amp;E Team – Outreach Collection</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>FO&amp;E Team – Outreach Collection</label>
+    </customValue>
+    <customValue>
+        <fullName>Website – Flushing Google Form</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>Website – Flushing Google Form</label>
+    </customValue>
+    <customValue>
+        <fullName>Website – Pop-Up Form</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>Website – Pop-Up Form</label>
+    </customValue>
+    <customValue>
+        <fullName>Google Voice – Phone Call</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>Google Voice – Phone Call</label>
+    </customValue>
+    <customValue>
+        <fullName>Family Referral [Potential]</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>Family Referral [Potential]</label>
+    </customValue>
+    <customValue>
+        <fullName>Zoom Event Attendance</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>Zoom Event Attendance</label>
     </customValue>
     <masterLabel>Lead Sources</masterLabel>
     <sorted>false</sorted>

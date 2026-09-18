@@ -3,9 +3,9 @@
   "title" : "main",
   "contentBody" : {
     "currentThemeId" : "Marketing_Landing_Page_LWR",
-    "headMarkup" : "<link rel=\"stylesheet\" href=\"{ styles/styles.css }\" />\n\r\n<link rel=\"stylesheet\" href=\"{ basePath }/assets/styles/salesforce-lightning-design-system.min.css?{ versionKey }\"/>\r\n",
+    "headMarkup" : "<link rel=\"stylesheet\" href=\"{ styles/styles.css }\" />\n\n<link rel=\"stylesheet\" href=\"{ basePath }/assets/styles/salesforce-lightning-design-system.min.css?{ versionKey }\"/>\n\n<script>\ndocument.dispatchEvent(\n        new CustomEvent('experience_interaction', {\n            bubbles: true,\n            composed: true,\n            detail: {\n                name: 'set-consent',\n                value: true,\n            },\n        })\n    );\n</script>",
     "isLockerServiceEnabled" : true,
-    "isRelaxedCSPLevel" : false,
+    "isRelaxedCSPLevel" : true,
     "templateName" : "marketing-landing-template"
   },
   "urlName" : "main"

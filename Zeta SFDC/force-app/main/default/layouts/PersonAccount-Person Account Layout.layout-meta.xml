@@ -23,66 +23,6 @@
                 <behavior>Edit</behavior>
                 <field>PersonMailingAddress</field>
             </layoutItems>
-            <layoutItems>
-                <behavior>Edit</behavior>
-                <field>Primary_Guardian__c</field>
-            </layoutItems>
-            <layoutItems>
-                <behavior>Edit</behavior>
-                <field>Secondary_Guardian__c</field>
-            </layoutItems>
-            <layoutItems>
-                <behavior>Edit</behavior>
-                <field>Student_Type__c</field>
-            </layoutItems>
-            <layoutItems>
-                <behavior>Edit</behavior>
-                <field>Enrollment_Status__c</field>
-            </layoutItems>
-            <layoutItems>
-                <behavior>Edit</behavior>
-                <field>Family_Status__c</field>
-            </layoutItems>
-            <layoutItems>
-                <behavior>Edit</behavior>
-                <field>Is_Primary_Guardian__c</field>
-            </layoutItems>
-            <layoutItems>
-                <behavior>Edit</behavior>
-                <field>School__c</field>
-            </layoutItems>
-            <layoutItems>
-                <behavior>Edit</behavior>
-                <field>SchoolMint_Student_Id__pc</field>
-            </layoutItems>
-            <layoutItems>
-                <behavior>Edit</behavior>
-                <field>SchoolMint_Guardian_Id__pc</field>
-            </layoutItems>
-            <layoutItems>
-                <behavior>Readonly</behavior>
-                <field>Age__c</field>
-            </layoutItems>
-            <layoutItems>
-                <behavior>Edit</behavior>
-                <field>SIS_ID__c</field>
-            </layoutItems>
-            <layoutItems>
-                <behavior>Edit</behavior>
-                <field>Current_Zeta_School__c</field>
-            </layoutItems>
-            <layoutItems>
-                <behavior>Edit</behavior>
-                <field>Legacy_SchoolMint_Status__c</field>
-            </layoutItems>
-            <layoutItems>
-                <behavior>Edit</behavior>
-                <field>Legacy_SchoolMint_Username__c</field>
-            </layoutItems>
-            <layoutItems>
-                <behavior>Edit</behavior>
-                <field>Primary_Parent_Portal_User__c</field>
-            </layoutItems>
         </layoutColumns>
         <layoutColumns>
             <layoutItems>
@@ -95,11 +35,11 @@
             </layoutItems>
             <layoutItems>
                 <behavior>Edit</behavior>
-                <field>Current_Grade__c</field>
+                <field>Mogli_SMS__Mogli_Number__pc</field>
             </layoutItems>
             <layoutItems>
                 <behavior>Edit</behavior>
-                <field>PersonBirthdate</field>
+                <field>Mogli_SMS__Mogli_Opt_Out__pc</field>
             </layoutItems>
         </layoutColumns>
         <style>TwoColumnsLeftToRight</style>
@@ -481,6 +421,18 @@
     <relatedLists>
         <fields>NAME</fields>
         <relatedList>ActionPlan__c.Account__c</relatedList>
+    </relatedLists>
+    <relatedLists>
+        <fields>NAME</fields>
+        <fields>Mogli_SMS__Lead__c</fields>
+        <fields>Mogli_SMS__Phone_Number__c</fields>
+        <fields>Mogli_SMS__Direction__c</fields>
+        <fields>Mogli_SMS__Status__c</fields>
+        <fields>Mogli_SMS__Message__c</fields>
+        <fields>CREATED_DATE</fields>
+        <relatedList>Mogli_SMS__SMS__c.Mogli_SMS__Contact__c</relatedList>
+        <sortField>CREATED_DATE</sortField>
+        <sortOrder>Desc</sortOrder>
     </relatedLists>
     <showEmailCheckbox>false</showEmailCheckbox>
     <showHighlightsPanel>false</showHighlightsPanel>

@@ -42,6 +42,14 @@
   cursor: pointer;
 }
 
+.summary-card.is-static {
+  cursor: default;
+}
+
+.summary-card.is-static:hover {
+  background: transparent;
+}
+
 .summary-card:hover,
 .summary-card:focus {
   background: #fafafa;

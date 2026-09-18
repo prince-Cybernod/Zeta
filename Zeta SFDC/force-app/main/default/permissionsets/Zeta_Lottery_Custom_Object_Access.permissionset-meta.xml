@@ -322,6 +322,11 @@
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
+        <editable>true</editable>
+        <field>User.Bypass_Validations__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
         <editable>false</editable>
         <field>Waitlist_Movement_History__c.fxWaitlistMovementHistoryID18__c</field>
         <readable>true</readable>

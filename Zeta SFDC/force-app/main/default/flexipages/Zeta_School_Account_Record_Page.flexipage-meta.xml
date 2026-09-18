@@ -12,9 +12,6 @@
                         <valueListItems>
                             <value>Edit</value>
                         </valueListItems>
-                        <valueListItems>
-                            <value>Delete</value>
-                        </valueListItems>
                     </valueList>
                 </componentInstanceProperties>
                 <componentInstanceProperties>
@@ -63,7 +60,7 @@
             <fieldInstance>
                 <fieldInstanceProperties>
                     <name>uiBehavior</name>
-                    <value>none</value>
+                    <value>required</value>
                 </fieldInstanceProperties>
                 <fieldItem>Record.ParentId</fieldItem>
                 <identifier>RecordParentIdField</identifier>
@@ -83,7 +80,7 @@
             <fieldInstance>
                 <fieldInstanceProperties>
                     <name>uiBehavior</name>
-                    <value>none</value>
+                    <value>required</value>
                 </fieldInstanceProperties>
                 <fieldItem>Record.Grades_Served__c</fieldItem>
                 <identifier>RecordGrades_Served__cField</identifier>
@@ -93,10 +90,20 @@
             <fieldInstance>
                 <fieldInstanceProperties>
                     <name>uiBehavior</name>
-                    <value>none</value>
+                    <value>required</value>
                 </fieldInstanceProperties>
                 <fieldItem>Record.Zeta_School_Name__c</fieldItem>
                 <identifier>RecordZeta_School_Name__cField</identifier>
+            </fieldInstance>
+        </itemInstances>
+        <itemInstances>
+            <fieldInstance>
+                <fieldInstanceProperties>
+                    <name>uiBehavior</name>
+                    <value>none</value>
+                </fieldInstanceProperties>
+                <fieldItem>Record.SchoolMint_School_Name__c</fieldItem>
+                <identifier>RecordSchoolMint_School_Name__cField</identifier>
             </fieldInstance>
         </itemInstances>
         <name>Facet-07e17b64-2f96-473f-b626-c697fce3dc00</name>
@@ -141,6 +148,16 @@
                 </fieldInstanceProperties>
                 <fieldItem>Record.District_Id__c</fieldItem>
                 <identifier>RecordDistrict_Id__cField</identifier>
+            </fieldInstance>
+        </itemInstances>
+        <itemInstances>
+            <fieldInstance>
+                <fieldInstanceProperties>
+                    <name>uiBehavior</name>
+                    <value>required</value>
+                </fieldInstanceProperties>
+                <fieldItem>Record.Target_Market__c</fieldItem>
+                <identifier>RecordTarget_Market_cField</identifier>
             </fieldInstance>
         </itemInstances>
         <name>Facet-6f803f43-33dd-4f1e-ad03-1a0e8c9e14c9</name>

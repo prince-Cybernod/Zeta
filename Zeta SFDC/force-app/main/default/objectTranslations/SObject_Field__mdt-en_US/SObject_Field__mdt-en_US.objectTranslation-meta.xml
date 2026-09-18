@@ -8,5 +8,16 @@
         <plural>true</plural>
         <value>SObject Fields</value>
     </caseValues>
+    <layouts>
+        <layout>SObject Field Layout</layout>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+        <sections>
+            <label><!-- Field Configuration --></label>
+            <section>Field Configuration</section>
+        </sections>
+    </layouts>
     <startsWith>Consonant</startsWith>
 </CustomObjectTranslation>

@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <AnalyticsVisualization xmlns="http://soap.sforce.com/2006/04/metadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-    <analyticsWorkspace>Marketing_Performance</analyticsWorkspace>
-    <dataSource>Marketing_Performance_Semantic_Mod_945</dataSource>
-    <description>Marketing Performance - Activities By Activity Type Over Day visualization</description>
+    <analyticsWorkspace>Marketing_Performance_Intelligence</analyticsWorkspace>
+    <dataSource>Marketing_Intelligence_Custom_Semantic_Model_00Da500001AA4BB</dataSource>
+    <description>Marketing Engagement Intelligence - Activities By Activity Type Over Day visualization</description>
     <fields>
         <displayCategory>Continuous</displayCategory>
         <fieldKey>F1</fieldKey>
-        <fieldName>Total_Number_of_Activities</fieldName>
+        <fieldName>Total_Activities_clc</fieldName>
         <function>UserAgg</function>
         <role>Measure</role>
         <type>Field</type>
@@ -14,42 +14,41 @@
     <fields>
         <displayCategory>Discrete</displayCategory>
         <fieldKey>F2</fieldKey>
-        <fieldName>Activity_Type</fieldName>
+        <fieldName>Activity_Type_clc</fieldName>
         <role>Dimension</role>
         <type>Field</type>
     </fields>
     <fields>
         <displayCategory>Discrete</displayCategory>
         <fieldKey>F4</fieldKey>
-        <fieldName>Activity_Type</fieldName>
+        <fieldName>Activity_Type_clc</fieldName>
         <role>Dimension</role>
         <type>Field</type>
     </fields>
     <fields>
         <displayCategory>Continuous</displayCategory>
         <fieldKey>F5</fieldKey>
-        <fieldName>Activity_Date</fieldName>
+        <fieldName>Engagement_Date_Time_clc</fieldName>
         <function>DatePartWeekDay</function>
-        <objectName>Logical_View_Engagement_Union</objectName>
         <role>Dimension</role>
         <type>Field</type>
     </fields>
     <masterLabel>Activity Trends Over Day</masterLabel>
     <templateAssetSourceName>Viz_Activity_Trends_Over_Day</templateAssetSourceName>
-    <templateSource>sfdc_internal__uma</templateSource>
-    <version>66.0</version>
+    <templateSource>sfdc_internal__umi</templateSource>
+    <version>66.08</version>
     <views>
         <fullName>Viz_Activity_Trends_Over_Day_default</fullName>
         <isOriginal>true</isOriginal>
         <masterLabel>default</masterLabel>
-        <version>66.0</version>
-        <viewSpecification>{&quot;filters&quot;:[{&quot;fieldKey&quot;:&quot;F4&quot;,&quot;isContext&quot;:false,&quot;filterInfos&quot;:[{&quot;type&quot;:&quot;In&quot;,&quot;useAll&quot;:false,&quot;isCustom&quot;:false,&quot;values&quot;:[null],&quot;isExcludes&quot;:true},{&quot;type&quot;:&quot;WildCard&quot;,&quot;value&quot;:&quot;&quot;,&quot;operator&quot;:&quot;Contains&quot;,&quot;isExcludes&quot;:false,&quot;includeAllValuesWhenEmpty&quot;:true}]}],&quot;sortOrders&quot;:{&quot;fields&quot;:{},&quot;rows&quot;:[],&quot;columns&quot;:[]}}</viewSpecification>
+        <version>66.08</version>
+        <viewSpecification>{&quot;filters&quot;:[{&quot;isContext&quot;:false,&quot;fieldKeys&quot;:[&quot;F4&quot;],&quot;filter&quot;:{&quot;operator&quot;:&quot;NotIn&quot;,&quot;fields&quot;:[{&quot;model&quot;:&quot;Activity_Type_clc&quot;}],&quot;values&quot;:[],&quot;includeNulls&quot;:false}},{&quot;isContext&quot;:false,&quot;fieldKeys&quot;:[&quot;F4&quot;],&quot;filter&quot;:{&quot;operator&quot;:&quot;ContainsIgnoreCase&quot;,&quot;fields&quot;:[{&quot;model&quot;:&quot;Activity_Type_clc&quot;}],&quot;values&quot;:[&quot;&quot;]},&quot;includeAllValues&quot;:true}],&quot;sortOrders&quot;:{&quot;fields&quot;:{},&quot;rows&quot;:[],&quot;columns&quot;:[]}}</viewSpecification>
     </views>
-    <visualSpecification>eyJtb2RlIjoiVmlzdWFsaXphdGlvbiIsInJvd3MiOlsiRjEiXSwiY29sdW1ucyI6WyJGNSJdLCJtYXJrcyI6eyJBTEwiOnsidHlwZSI6IkxpbmUiLCJpc0F1dG9tYXRpYyI6ZmFsc2UsInN0YWNrIjp7ImlzQXV0b21hdGljIjp0cnVlLCJpc1N0YWNrZWQiOmZhbHNlfSwiZW5jb2RpbmdzIjpbeyJmaWVsZEtleSI6IkYyIiwidHlwZSI6IkNvbG9yIn1dfX0sInN0eWxlIjp7ImZpdCI6IkVudGlyZSIsInRpdGxlIjp7ImlzVmlzaWJsZSI6dHJ1ZX0sInNob3dEYXRhUGxhY2Vob2xkZXIiOnRydWUsImF4aXMiOnsiRjEiOnsiaXNWaXNpYmxlIjp0cnVlLCJyYW5nZSI6eyJ0eXBlIjoiQXV0byIsImluY2x1ZGVaZXJvIjp0cnVlfSwidGl0bGVUZXh0IjoiVG90YWwgQWN0aXZpdGllcyIsInNjYWxlIjp7ImZvcm1hdCI6eyJudW1iZXJGb3JtYXRJbmZvIjp7InR5cGUiOiJOdW1iZXJTaG9ydCIsImRlY2ltYWxQbGFjZXMiOjIsIm5lZ2F0aXZlVmFsdWVzRm9ybWF0IjoiQXV0byIsImRpc3BsYXlVbml0cyI6IkF1dG8iLCJwcmVmaXgiOiIiLCJzdWZmaXgiOiIiLCJpbmNsdWRlVGhvdXNhbmRTZXBhcmF0b3IiOnRydWV9fX0sInRpY2tzIjp7Im1ham9yVGlja3MiOnsidHlwZSI6IkF1dG8ifSwibWlub3JUaWNrcyI6eyJ0eXBlIjoiQXV0byJ9fSwiaXNaZXJvTGluZVZpc2libGUiOnRydWV9LCJGNSI6eyJpc1Zpc2libGUiOnRydWUsInJhbmdlIjp7InR5cGUiOiJBdXRvIiwiaW5jbHVkZVplcm8iOmZhbHNlfSwic2NhbGUiOnsiZm9ybWF0Ijp7ImRhdGVUZW1wbGF0ZSI6IiJ9fSwidGlja3MiOnsibWFqb3JUaWNrcyI6eyJ0eXBlIjoiQXV0byJ9LCJtaW5vclRpY2tzIjp7InR5cGUiOiJBdXRvIn19LCJpc1plcm9MaW5lVmlzaWJsZSI6dHJ1ZX19LCJwYW5lcyI6eyJGMSI6eyJkZWZhdWx0cyI6eyJmb3JtYXQiOnsibnVtYmVyRm9ybWF0SW5mbyI6eyJ0eXBlIjoiTnVtYmVyIiwiZGVjaW1hbFBsYWNlcyI6MiwibmVnYXRpdmVWYWx1ZXNGb3JtYXQiOiJBdXRvIiwiZGlzcGxheVVuaXRzIjoiQXV0byIsInByZWZpeCI6IiIsInN1ZmZpeCI6IiIsImluY2x1ZGVUaG91c2FuZFNlcGFyYXRvciI6dHJ1ZX19fX19LCJtYXJrcyI6eyJBTEwiOnsibGFiZWwiOnsiY2FuT3ZlcmxhcExhYmVscyI6ZmFsc2UsInNob3dNYXJrTGFiZWxzIjpmYWxzZSwibWFya3NUb0xhYmVsIjp7InR5cGUiOiJBbGwifX0sImNvbG9yIjp7ImNvbG9yIjoiIn0sInJhbmdlIjp7InJldmVyc2UiOnRydWV9LCJzaXplIjp7InR5cGUiOiJQaXhlbCIsImlzQXV0b21hdGljIjp0cnVlLCJ2YWx1ZSI6M30sImlzQXV0b21hdGljU2l6ZSI6dHJ1ZX19LCJmaWVsZExhYmVscyI6eyJyb3dzIjp7InNob3dMYWJlbHMiOnRydWUsInNob3dEaXZpZGVyTGluZSI6ZmFsc2V9LCJjb2x1bW5zIjp7InNob3dMYWJlbHMiOnRydWUsInNob3dEaXZpZGVyTGluZSI6ZmFsc2V9fSwicmVmZXJlbmNlTGluZXMiOnt9LCJmb250cyI6eyJhY3Rpb25hYmxlSGVhZGVycyI6eyJzaXplIjoxMiwiY29sb3IiOiIjMDI1MEQ5In0sImhlYWRlcnMiOnsic2l6ZSI6MTIsImNvbG9yIjoiIzVDNUM1QyJ9LCJmaWVsZExhYmVscyI6eyJzaXplIjoxMiwiY29sb3IiOiIjMkUyRTJFIn0sIm1hcmtzIjp7InNpemUiOjEyLCJjb2xvciI6IiM1QzVDNUMifSwibWFya0xhYmVscyI6eyJzaXplIjoxMiwiY29sb3IiOiIjMDAwMDAwIn0sImxlZ2VuZExhYmVscyI6eyJzaXplIjoxMiwiY29sb3IiOiIjMkUyRTJFIn0sImF4aXNUaWNrTGFiZWxzIjp7InNpemUiOjEyLCJjb2xvciI6IiM1QzVDNUMifX0sInNoYWRpbmciOnsiYmFja2dyb3VuZENvbG9yIjoiI0ZGRkZGRiIsImJhbmRpbmciOnsicm93cyI6eyJjb2xvciI6IiNFNUU1RTUiLCJhcHBsaWNhdGlvbiI6eyJsZXZlbCI6MSwic2l6ZSI6MX19fX0sImxpbmVzIjp7ImZpZWxkTGFiZWxEaXZpZGVyTGluZSI6eyJjb2xvciI6IiNDOUM5QzkifSwic2VwYXJhdG9yTGluZSI6eyJjb2xvciI6IiNDOUM5QzkifSwiYXhpc0xpbmUiOnsiY29sb3IiOiIjQzlDOUM5In0sInplcm9MaW5lIjp7ImNvbG9yIjoiI0U1RTVFNSJ9fSwiYWxsSGVhZGVycyI6eyJmaWVsZHMiOnt9LCJyb3dzIjp7Im1lcmdlUmVwZWF0ZWRDZWxscyI6dHJ1ZSwic2hvd0luZGV4IjpmYWxzZX0sImNvbHVtbnMiOnsibWVyZ2VSZXBlYXRlZENlbGxzIjp0cnVlLCJzaG93SW5kZXgiOmZhbHNlfX19LCJsZWdlbmRzIjp7IkYyIjp7ImlzVmlzaWJsZSI6dHJ1ZSwidGl0bGUiOnsiaXNWaXNpYmxlIjp0cnVlLCJ0aXRsZVRleHQiOiJBY3Rpdml0eSBUeXBlIn0sInBvc2l0aW9uIjoiUmlnaHQifX0sIm1lYXN1cmVWYWx1ZXMiOltdLCJyZWZlcmVuY2VMaW5lcyI6e30sImZvcmVjYXN0cyI6e319</visualSpecification>
+    <visualSpecification>eyJsYXlvdXQiOiJWaXpxbCIsImxlZ2VuZHMiOnsiRjIiOnsiaXNWaXNpYmxlIjp0cnVlLCJ0aXRsZSI6eyJpc1Zpc2libGUiOnRydWUsInRpdGxlVGV4dCI6IkFjdGl2aXR5IFR5cGUifSwicG9zaXRpb24iOiJSaWdodCJ9fSwicm93cyI6WyJGMSJdLCJjb2x1bW5zIjpbIkY1Il0sIm1hcmtzIjp7InBhbmVzIjp7InR5cGUiOiJMaW5lIiwiaXNBdXRvbWF0aWMiOmZhbHNlLCJzdGFjayI6eyJpc0F1dG9tYXRpYyI6dHJ1ZSwiaXNTdGFja2VkIjpmYWxzZX0sImVuY29kaW5ncyI6W3siZmllbGRLZXkiOiJGMiIsInR5cGUiOiJDb2xvciJ9XX0sImZpZWxkcyI6e30sImhlYWRlcnMiOnsidHlwZSI6IlRleHQiLCJlbmNvZGluZ3MiOltdLCJpc0F1dG9tYXRpYyI6dHJ1ZX19LCJyZWZlcmVuY2VMaW5lcyI6e30sImZvcmVjYXN0cyI6e30sIm1lYXN1cmVWYWx1ZXMiOltdLCJzdHlsZSI6eyJ0aXRsZSI6eyJpc1Zpc2libGUiOnRydWV9LCJmaWVsZExhYmVscyI6eyJyb3dzIjp7InNob3dMYWJlbHMiOnRydWUsInNob3dEaXZpZGVyTGluZSI6ZmFsc2V9LCJjb2x1bW5zIjp7InNob3dMYWJlbHMiOnRydWUsInNob3dEaXZpZGVyTGluZSI6ZmFsc2V9fSwiZm9udHMiOnsiYWN0aW9uYWJsZUhlYWRlcnMiOnsic2l6ZSI6MTIsImNvbG9yIjoiIzAyNTBEOSJ9LCJoZWFkZXJzIjp7InNpemUiOjEyLCJjb2xvciI6IiM1QzVDNUMifSwiZmllbGRMYWJlbHMiOnsic2l6ZSI6MTIsImNvbG9yIjoiIzJFMkUyRSJ9LCJtYXJrcyI6eyJzaXplIjoxMiwiY29sb3IiOiIjNUM1QzVDIn0sIm1hcmtMYWJlbHMiOnsic2l6ZSI6MTIsImNvbG9yIjoiIzAwMDAwMCJ9LCJsZWdlbmRMYWJlbHMiOnsic2l6ZSI6MTIsImNvbG9yIjoiIzJFMkUyRSJ9LCJheGlzVGlja0xhYmVscyI6eyJzaXplIjoxMiwiY29sb3IiOiIjNUM1QzVDIn19LCJzaGFkaW5nIjp7ImJhY2tncm91bmRDb2xvciI6IiNGRkZGRkYiLCJiYW5kaW5nIjp7InJvd3MiOnsiY29sb3IiOiIjRTVFNUU1IiwiYXBwbGljYXRpb24iOnsibGV2ZWwiOjEsInNpemUiOjF9fX19LCJsaW5lcyI6eyJmaWVsZExhYmVsRGl2aWRlckxpbmUiOnsiY29sb3IiOiIjQzlDOUM5In0sInNlcGFyYXRvckxpbmUiOnsiY29sb3IiOiIjQzlDOUM5In0sImF4aXNMaW5lIjp7ImNvbG9yIjoiI0M5QzlDOSJ9LCJ6ZXJvTGluZSI6eyJjb2xvciI6IiNFNUU1RTUifX0sImVuY29kaW5ncyI6eyJmaWVsZHMiOnsiRjEiOnsiZGVmYXVsdHMiOnsiZm9ybWF0Ijp7Im51bWJlckZvcm1hdEluZm8iOnsidHlwZSI6Ik51bWJlciIsImRlY2ltYWxQbGFjZXMiOjIsIm5lZ2F0aXZlVmFsdWVzRm9ybWF0IjoiQXV0byIsImRpc3BsYXlVbml0cyI6IkF1dG8iLCJwcmVmaXgiOiIiLCJzdWZmaXgiOiIiLCJpbmNsdWRlVGhvdXNhbmRTZXBhcmF0b3IiOnRydWV9fX19fX0sImZpdCI6IkVudGlyZSIsIm1hcmtzIjp7InBhbmVzIjp7ImxhYmVsIjp7ImNhbk92ZXJsYXBMYWJlbHMiOmZhbHNlLCJzaG93TWFya0xhYmVscyI6ZmFsc2UsIm1hcmtzVG9MYWJlbCI6eyJ0eXBlIjoiQWxsIn19LCJjb2xvciI6eyJjb2xvciI6IiJ9LCJyYW5nZSI6eyJyZXZlcnNlIjp0cnVlfSwic2l6ZSI6eyJ0eXBlIjoiUGl4ZWwiLCJpc0F1dG9tYXRpYyI6dHJ1ZSwidmFsdWUiOjN9LCJpc0F1dG9tYXRpY1NpemUiOnRydWV9LCJoZWFkZXJzIjp7ImNvbG9yIjp7ImNvbG9yIjoiIn0sImxhYmVsIjp7ImNhbk92ZXJsYXBMYWJlbHMiOmZhbHNlLCJzaG93TWFya0xhYmVscyI6ZmFsc2UsIm1hcmtzVG9MYWJlbCI6eyJ0eXBlIjoiQWxsIn19LCJpc0F1dG9tYXRpY1NpemUiOnRydWV9LCJmaWVsZHMiOnt9fSwic2hvd0RhdGFQbGFjZWhvbGRlciI6dHJ1ZSwiaGVhZGVycyI6eyJmaWVsZHMiOnt9LCJyb3dzIjp7Im1lcmdlUmVwZWF0ZWRDZWxscyI6dHJ1ZSwic2hvd0luZGV4IjpmYWxzZX0sImNvbHVtbnMiOnsibWVyZ2VSZXBlYXRlZENlbGxzIjp0cnVlLCJzaG93SW5kZXgiOmZhbHNlfX0sImF4aXMiOnsiZmllbGRzIjp7IkYxIjp7ImlzVmlzaWJsZSI6dHJ1ZSwicmFuZ2UiOnsidHlwZSI6IkF1dG8iLCJpbmNsdWRlWmVybyI6dHJ1ZX0sInRpdGxlVGV4dCI6IlRvdGFsIEFjdGl2aXRpZXMiLCJzY2FsZSI6eyJmb3JtYXQiOnsibnVtYmVyRm9ybWF0SW5mbyI6eyJ0eXBlIjoiTnVtYmVyU2hvcnQiLCJkZWNpbWFsUGxhY2VzIjoyLCJuZWdhdGl2ZVZhbHVlc0Zvcm1hdCI6IkF1dG8iLCJkaXNwbGF5VW5pdHMiOiJBdXRvIiwicHJlZml4IjoiIiwic3VmZml4IjoiIiwiaW5jbHVkZVRob3VzYW5kU2VwYXJhdG9yIjp0cnVlfX19LCJ0aWNrcyI6eyJtYWpvclRpY2tzIjp7InR5cGUiOiJBdXRvIn0sIm1pbm9yVGlja3MiOnsidHlwZSI6IkF1dG8ifX0sImlzWmVyb0xpbmVWaXNpYmxlIjp0cnVlfSwiRjUiOnsiaXNWaXNpYmxlIjp0cnVlLCJyYW5nZSI6eyJ0eXBlIjoiQXV0byIsImluY2x1ZGVaZXJvIjpmYWxzZX0sInNjYWxlIjp7ImZvcm1hdCI6eyJkYXRlVGVtcGxhdGUiOiIifX0sInRpY2tzIjp7Im1ham9yVGlja3MiOnsidHlwZSI6IkF1dG8ifSwibWlub3JUaWNrcyI6eyJ0eXBlIjoiQXV0byJ9fSwiaXNaZXJvTGluZVZpc2libGUiOnRydWV9fX0sInJlZmVyZW5jZUxpbmVzIjp7fX19</visualSpecification>
     <workspaceAssetRelationships>
         <asset xsi:nil="true"/>
         <assetType>AnalyticsVisualization</assetType>
         <assetUsageType>Created</assetUsageType>
-        <workspace>Marketing_Performance</workspace>
+        <workspace>Marketing_Performance_Intelligence</workspace>
     </workspaceAssetRelationships>
 </AnalyticsVisualization>

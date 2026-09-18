@@ -222,7 +222,7 @@
         <language>en_US</language>
         <protected>false</protected>
         <shortDescription>Employee priority question label</shortDescription>
-        <value>Is a guardian a Zeta employee?</value>
+        <value>Is the applicant a student of a Zeta employee?</value>
     </labels>
     <labels>
         <fullName>AppQ_EmployeeWorkplace_Label</fullName>
@@ -294,7 +294,7 @@
         <language>en_US</language>
         <protected>false</protected>
         <shortDescription>Guardian 2 same address checkbox label</shortDescription>
-        <value>Same address as primary guardian?</value>
+        <value>Same address as primary guardian</value>
     </labels>
     <labels>
         <fullName>AppQ_Guardian2City_Label</fullName>
@@ -366,7 +366,7 @@
         <language>en_US</language>
         <protected>false</protected>
         <shortDescription>Has second guardian question label</shortDescription>
-        <value>Add Second Guardian?</value>
+        <value>Would you like to add a second guardian?</value>
     </labels>
     <labels>
         <fullName>AppQ_HowDidYouHear_Label</fullName>
@@ -910,7 +910,12 @@
         <language>en_US</language>
         <protected>false</protected>
         <shortDescription>E-signature legal disclaimer</shortDescription>
-        <value>By typing my name below, I certify that the information provided in this application is true and complete to the best of my knowledge. I understand that providing false or misleading information may result in the revocation of any offer of enrollment. I authorize Zeta Charter Schools to verify the information provided in this application.</value>
+        <value>Admission is determined by a lottery. Admission is not limited based on any factor, but a lottery preference is given to:
+- Siblings of accepted students
+- Children of Zeta Charter School employees
+- Community School District (CSD) residents
+
+There is no fee to apply or attend a Zeta Charter School. If you sign below, you are permitting Zeta Charter Schools and its schools to use your child&apos;s school records for data collection and analysis. No personal information is ever disclosed in these studies. Consenting to future studies, or not consenting, does not affect your child&apos;s chances of being admitted. By submitting this application, you are confirming that all of the information you provided is true to the best of your knowledge and understand that admission may be revoked if information provided is inaccurate.</value>
     </labels>
     <labels>
         <fullName>AppUI_ESignatureNameLabel</fullName>
@@ -1230,7 +1235,11 @@
         <language>en_US</language>
         <protected>false</protected>
         <shortDescription>Post-lottery informational message</shortDescription>
-        <value>The lottery is scheduled to take place in April 2026. Results will be communicated via email to the address provided on your application.</value>
+        <value>The Zeta Charter Schools application lottery for all schools and grades will take place on Tuesday April 6th, 2027 at 8:30 AM at 401 West 218th Street, New York, NY 10034.
+
+Non-Discrimination Statement: A charter school shall not discriminate against or limit the admission of any student on any unlawful basis, including on the basis of ethnicity, national origin, disability, intellectual ability, measures of achievement or aptitude, athletic ability, race, creed, gender, religion, or ancestry. A school may not require any action by a student or family (such as an admissions test, interview, essay, attendance at an information session, etc.) in order for an applicant to either receive or submit an application for admission to that school.
+
+Zeta reserves the right to adjust grade placements based on post-admission assessment.</value>
     </labels>
     <labels>
         <fullName>AppUI_MailingAddress</fullName>
@@ -1414,7 +1423,7 @@
         <language>en_US</language>
         <protected>false</protected>
         <shortDescription>Ranking info banner text</shortDescription>
-        <value>Rankings do not affect your lottery chances. They help us place your child at their preferred school if accepted to more than one.</value>
+        <value>Your child will be entered in the lottery for all schools you apply to, regardless of ranking. Your school rankings will not increase or decrease your chances of acceptance into that school. Ranking is only to assign your child to your preferred Zeta Charter School if he or she is accepted to more than one Zeta school.</value>
     </labels>
     <labels>
         <fullName>AppUI_RankSchools</fullName>
@@ -1430,7 +1439,7 @@
         <language>en_US</language>
         <protected>false</protected>
         <shortDescription>Rank schools description</shortDescription>
-        <value>Order your selected schools by preference. Place your first choice as rank 1.</value>
+        <value>If you are applying to more than one Zeta school, please rank them below. Place your first choice as rank 1.</value>
     </labels>
     <labels>
         <fullName>AppUI_RankSchoolsDrag</fullName>
@@ -1630,7 +1639,7 @@
         <language>en_US</language>
         <protected>false</protected>
         <shortDescription>Select student description</shortDescription>
-        <value>Choose the student you are applying for, or add a new student.</value>
+        <value>Choose the student you are applying for, or add a new student. Each applying student requires a separate application.</value>
     </labels>
     <labels>
         <fullName>AppUI_SelectionsLockedAfterSubmission</fullName>
@@ -1662,7 +1671,7 @@
         <language>en_US</language>
         <protected>false</protected>
         <shortDescription>Siblings applying section subtitle/instruction</shortDescription>
-        <value>Select the children below who are your student&apos;s siblings also applying this cycle. Households may include children from multiple families — only select actual siblings.</value>
+        <value>A separate application must be completed for each student applying for admission. Siblings must share at least one parent or guardian in order to qualify for the sibling preference.</value>
     </labels>
     <labels>
         <fullName>AppUI_SiblingsAttending</fullName>
@@ -1678,7 +1687,7 @@
         <language>en_US</language>
         <protected>false</protected>
         <shortDescription>Siblings attending section subtitle/instruction</shortDescription>
-        <value>Select the children below who are your student&apos;s siblings attending a Zeta school. Households may include children from multiple families — only select actual siblings.</value>
+        <value>Add a sibling if your student has a sibling who currently attends a Zeta Charter school. Siblings must share at least one parent or guardian in order to qualify for the sibling preference.</value>
     </labels>
     <labels>
         <fullName>AppUI_StartNew</fullName>
@@ -1942,7 +1951,7 @@
         <language>en_US</language>
         <protected>false</protected>
         <shortDescription>Parent Portal Base URL</shortDescription>
-        <value>https://zetacharterschools--full.sandbox.my.site.com/parents/</value>
+        <value>https://myportal.zetaschools.org/</value>
     </labels>
     <labels>
         <fullName>Zeta_Sys_Admin</fullName>
@@ -2920,6 +2929,38 @@
         <language>en_US</language>
         <protected>false</protected>
         <shortDescription>Default App Timeline</shortDescription>
-        <value>0ykWJ0000000L7hYAE</value>
+        <value>0ykcv000000039BAAQ</value>
+    </labels>
+    <labels>
+        <fullName>AppQ_CurrentSchoolName_Label</fullName>
+        <categories>Application</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Current school name question label</shortDescription>
+        <value>Current School Name (if applicable)</value>
+    </labels>
+    <labels>
+        <fullName>AppQ_ResponsibleAdult_HelpText</fullName>
+        <categories>Application</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Responsible adult help text</shortDescription>
+        <value>The Responsible Adult must be this student&apos;s parent or guardian with whom the student resides. The Responsible Adult will be the main contact and primary decision-maker for information submitted or edited on this application.</value>
+    </labels>
+    <labels>
+        <fullName>AppQ_ResponsibleAdult_Label</fullName>
+        <categories>Application</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Responsible adult question label</shortDescription>
+        <value>Responsible Adult</value>
+    </labels>
+    <labels>
+        <fullName>AppS_Guardian1Address_Desc</fullName>
+        <categories>Application</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Guardian 1 address section description</shortDescription>
+        <value>Home address for Guardian 1. If your student does not reside at this address, select &quot;Student lives at a different address&quot; below.</value>
     </labels>
 </CustomLabels>

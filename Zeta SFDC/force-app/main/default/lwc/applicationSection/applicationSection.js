@@ -13,6 +13,10 @@ export default class ApplicationSection extends LightningElement {
   @api readOnly = false;
   @api visibilityMap = {};
   @api visibilityResolved = false;
+  // Opt-in, set per section by the parent. A locked section is read-only and
+  // collapsed together, and only once its answers are complete: locking it while
+  // blank would leave a required question with no way to answer it.
+  @api lockWhenComplete = false;
 
   _commPrefsError = false;
   // Sections never auto-collapse on completion (that jump was jarring). They
@@ -164,13 +168,22 @@ export default class ApplicationSection extends LightningElement {
     return 'incomplete';
   }
 
+  get isLocked() {
+    return this.lockWhenComplete === true && this.sectionState === 'complete';
+  }
+
+  get effectiveReadOnly() {
+    return this.readOnly === true || this.isLocked;
+  }
+
   get isCollapsedRender() {
-    return (
-      this.section?.collapsible === true &&
-      this.sectionState === 'complete' &&
-      this._userCollapsed === true &&
-      !this.readOnly
-    );
+    if (
+      this.section?.collapsible !== true ||
+      this.sectionState !== 'complete'
+    ) {
+      return false;
+    }
+    return this.isLocked || (this._userCollapsed === true && !this.readOnly);
   }
 
   get isExpandedRender() {
@@ -184,8 +197,24 @@ export default class ApplicationSection extends LightningElement {
       this.section?.collapsible === true &&
       this.sectionState === 'complete' &&
       this._userCollapsed === false &&
-      !this.readOnly
+      !this.effectiveReadOnly
     );
+  }
+
+  get canEditSummary() {
+    return !this.effectiveReadOnly;
+  }
+
+  get summaryCardClass() {
+    return this.canEditSummary ? 'summary-card' : 'summary-card is-static';
+  }
+
+  get summaryRole() {
+    return this.canEditSummary ? 'button' : undefined;
+  }
+
+  get summaryTabIndex() {
+    return this.canEditSummary ? 0 : undefined;
   }
 
   handleCollapseClick(event) {
@@ -211,10 +240,16 @@ export default class ApplicationSection extends LightningElement {
 
   handleEditClick(event) {
     event?.stopPropagation();
+    if (!this.canEditSummary) {
+      return;
+    }
     this._userCollapsed = false;
   }
 
   handleSummaryKeydown(event) {
+    if (!this.canEditSummary) {
+      return;
+    }
     if (event.key === 'Enter' || event.key === ' ') {
       event.preventDefault();
       this._userCollapsed = false;

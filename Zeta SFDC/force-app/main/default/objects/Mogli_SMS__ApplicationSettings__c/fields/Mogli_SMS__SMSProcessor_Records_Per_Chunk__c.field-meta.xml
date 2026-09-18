@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Mogli_SMS__SMSProcessor_Records_Per_Chunk__c</fullName>
+    <defaultValue>200</defaultValue>
+    <deprecated>false</deprecated>
+    <description>How many SMS records the SMSProcessor queueable pre-processes per chained job. Higher values shorten the queueable chain (fewer re-enqueues) at the cost of more work per transaction. Capped at 2000.</description>
+    <externalId>false</externalId>
+    <inlineHelpText>Records the SMS pre-processor handles per chained job. Higher = shorter job chain. Max 2000.</inlineHelpText>
+    <label>SMS Processor Records Per Chunk</label>
+    <precision>4</precision>
+    <required>false</required>
+    <scale>0</scale>
+    <trackTrending>false</trackTrending>
+    <type>Number</type>
+    <unique>false</unique>
+</CustomField>

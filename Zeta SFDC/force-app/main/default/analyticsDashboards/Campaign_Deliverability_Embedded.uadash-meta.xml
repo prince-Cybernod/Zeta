@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <AnalyticsDashboard xmlns="http://soap.sforce.com/2006/04/metadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-    <analyticsWorkspace>Marketing_Performance</analyticsWorkspace>
+    <analyticsWorkspace>Marketing_Performance_Intelligence</analyticsWorkspace>
+    <customConfig>null</customConfig>
     <description>Campaign Deliverability Embedded Dashboard</description>
     <layouts>
         <analyticsDashboard>Campaign_Deliverability_Embedded</analyticsDashboard>
@@ -449,8 +450,8 @@
     <masterLabel>Campaign Deliverability Embedded</masterLabel>
     <style>{&quot;widgetStyle&quot;:{&quot;backgroundColor&quot;:&quot;#ffffff&quot;,&quot;borderEdges&quot;:[],&quot;borderColor&quot;:&quot;#cccccc&quot;,&quot;borderWidth&quot;:1,&quot;borderRadius&quot;:0}}</style>
     <templateAssetSourceName>Campaign_Deliverability_Embedded</templateAssetSourceName>
-    <templateSource>sfdc_internal__uma</templateSource>
-    <version>66.0</version>
+    <templateSource>sfdc_internal__umi</templateSource>
+    <version>66.08</version>
     <widgets>
         <analyticsDashboard>Campaign_Deliverability_Embedded</analyticsDashboard>
         <type>visualization</type>
@@ -472,8 +473,8 @@
     <widgets>
         <analyticsDashboard>Campaign_Deliverability_Embedded</analyticsDashboard>
         <metricWidgetDefs>
-            <parameters>{&quot;metricOption&quot;:{&quot;layout&quot;:{&quot;componentVisibility&quot;:{&quot;details&quot;:false,&quot;title&quot;:true,&quot;value&quot;:true,&quot;comparison&quot;:true,&quot;chart&quot;:false,&quot;insights&quot;:false}},&quot;sdmApiName&quot;:&quot;Marketing_Performance_Semantic_Mod_945&quot;},&quot;receiveFilterSource&quot;:{&quot;filterMode&quot;:&quot;include&quot;,&quot;publishers&quot;:[],&quot;widgetIds&quot;:[&quot;list_filter_Flow_Name&quot;,&quot;list_filter_Logical_View_Engagement_Union_Activity_Date&quot;,&quot;list_filter_Market_Segment_Name&quot;]},&quot;widgetStyle&quot;:{&quot;borderColor&quot;:&quot;#C9C9C9&quot;,&quot;borderEdges&quot;:[&quot;all&quot;],&quot;borderRadius&quot;:20}}</parameters>
-            <source>Email_Opt_Out_Rate_md</source>
+            <parameters>{&quot;metricOption&quot;:{&quot;layout&quot;:{&quot;componentVisibility&quot;:{&quot;details&quot;:false,&quot;title&quot;:true,&quot;value&quot;:true,&quot;comparison&quot;:true,&quot;chart&quot;:false,&quot;insights&quot;:false}},&quot;sdmApiName&quot;:&quot;Marketing_Intelligence_Custom_Semantic_Model_00Da500001AA4BB&quot;},&quot;receiveFilterSource&quot;:{&quot;filterMode&quot;:&quot;include&quot;,&quot;publishers&quot;:[],&quot;widgetIds&quot;:[&quot;list_filter_Flow_Name&quot;,&quot;list_filter_Logical_View_Engagement_Union_Activity_Date&quot;,&quot;list_filter_Market_Segment_Name&quot;]},&quot;widgetStyle&quot;:{&quot;borderColor&quot;:&quot;#C9C9C9&quot;,&quot;borderEdges&quot;:[&quot;all&quot;],&quot;borderRadius&quot;:20}}</parameters>
+            <source>Email_Opt_Out_Rate_mtc</source>
         </metricWidgetDefs>
         <type>metric</type>
         <widgetName>metric_Email_Opt_Out_Rate</widgetName>
@@ -481,8 +482,8 @@
     <widgets>
         <analyticsDashboard>Campaign_Deliverability_Embedded</analyticsDashboard>
         <metricWidgetDefs>
-            <parameters>{&quot;metricOption&quot;:{&quot;layout&quot;:{&quot;componentVisibility&quot;:{&quot;details&quot;:false,&quot;title&quot;:true,&quot;value&quot;:true,&quot;comparison&quot;:true,&quot;chart&quot;:false,&quot;insights&quot;:false}},&quot;sdmApiName&quot;:&quot;Marketing_Performance_Semantic_Mod_945&quot;},&quot;receiveFilterSource&quot;:{&quot;filterMode&quot;:&quot;include&quot;,&quot;publishers&quot;:[],&quot;widgetIds&quot;:[&quot;list_filter_Flow_Name&quot;,&quot;list_filter_Logical_View_Engagement_Union_Activity_Date&quot;,&quot;list_filter_Market_Segment_Name&quot;]},&quot;widgetStyle&quot;:{&quot;borderColor&quot;:&quot;#C9C9C9&quot;,&quot;borderEdges&quot;:[&quot;all&quot;],&quot;borderRadius&quot;:20}}</parameters>
-            <source>Email_Bounce_Rate_md</source>
+            <parameters>{&quot;metricOption&quot;:{&quot;layout&quot;:{&quot;componentVisibility&quot;:{&quot;details&quot;:false,&quot;title&quot;:true,&quot;value&quot;:true,&quot;comparison&quot;:true,&quot;chart&quot;:false,&quot;insights&quot;:false}},&quot;sdmApiName&quot;:&quot;Marketing_Intelligence_Custom_Semantic_Model_00Da500001AA4BB&quot;},&quot;receiveFilterSource&quot;:{&quot;filterMode&quot;:&quot;include&quot;,&quot;publishers&quot;:[],&quot;widgetIds&quot;:[&quot;list_filter_Flow_Name&quot;,&quot;list_filter_Logical_View_Engagement_Union_Activity_Date&quot;,&quot;list_filter_Market_Segment_Name&quot;]},&quot;widgetStyle&quot;:{&quot;borderColor&quot;:&quot;#C9C9C9&quot;,&quot;borderEdges&quot;:[&quot;all&quot;],&quot;borderRadius&quot;:20}}</parameters>
+            <source>Email_Bounce_Rate_mtc</source>
         </metricWidgetDefs>
         <type>metric</type>
         <widgetName>metric_Email_Bounce_Rate</widgetName>
@@ -556,8 +557,8 @@
         <analyticsDashboard>Campaign_Deliverability_Embedded</analyticsDashboard>
         <filterWidgetDefs>
             <initialValues>null</initialValues>
-            <parameters>{&quot;viewType&quot;:&quot;list&quot;,&quot;widgetStyle&quot;:{&quot;backgroundColor&quot;:&quot;#F3F3F3&quot;,&quot;borderEdges&quot;:[],&quot;borderRadius&quot;:8},&quot;receiveFilterSource&quot;:{&quot;filterMode&quot;:&quot;all&quot;,&quot;widgetIds&quot;:[]},&quot;filterOption&quot;:{&quot;objectName&quot;:&quot;Flow&quot;,&quot;fieldName&quot;:&quot;Name&quot;,&quot;dataType&quot;:&quot;Text&quot;,&quot;selectionType&quot;:&quot;multiple&quot;},&quot;isLabelHidden&quot;:false}</parameters>
-            <source>Marketing_Performance_Semantic_Mod_945</source>
+            <parameters>{&quot;viewType&quot;:&quot;list&quot;,&quot;widgetStyle&quot;:{&quot;backgroundColor&quot;:&quot;#F3F3F3&quot;,&quot;borderEdges&quot;:[],&quot;borderRadius&quot;:8},&quot;receiveFilterSource&quot;:{&quot;filterMode&quot;:&quot;all&quot;,&quot;widgetIds&quot;:[]},&quot;filterOption&quot;:{&quot;objectName&quot;:&quot;Flow&quot;,&quot;fieldName&quot;:&quot;Flow_Name&quot;,&quot;dataType&quot;:&quot;Text&quot;,&quot;selectionType&quot;:&quot;multiple&quot;},&quot;isLabelHidden&quot;:false}</parameters>
+            <source>Marketing_Intelligence_Custom_Semantic_Model_00Da500001AA4BB</source>
         </filterWidgetDefs>
         <label>Flows</label>
         <type>filter</type>
@@ -566,8 +567,8 @@
     <widgets>
         <analyticsDashboard>Campaign_Deliverability_Embedded</analyticsDashboard>
         <metricWidgetDefs>
-            <parameters>{&quot;metricOption&quot;:{&quot;layout&quot;:{&quot;componentVisibility&quot;:{&quot;details&quot;:false,&quot;title&quot;:true,&quot;value&quot;:true,&quot;comparison&quot;:true,&quot;chart&quot;:true,&quot;insights&quot;:false}},&quot;sdmApiName&quot;:&quot;Marketing_Performance_Semantic_Mod_945&quot;},&quot;receiveFilterSource&quot;:{&quot;filterMode&quot;:&quot;include&quot;,&quot;publishers&quot;:[],&quot;widgetIds&quot;:[&quot;list_filter_Flow_Name&quot;,&quot;list_filter_Logical_View_Engagement_Union_Activity_Date&quot;,&quot;list_filter_Market_Segment_Name&quot;]},&quot;widgetStyle&quot;:{&quot;borderColor&quot;:&quot;#C9C9C9&quot;,&quot;borderEdges&quot;:[&quot;all&quot;],&quot;borderRadius&quot;:20}}</parameters>
-            <source>Email_Delivery_Rate_md</source>
+            <parameters>{&quot;metricOption&quot;:{&quot;layout&quot;:{&quot;componentVisibility&quot;:{&quot;details&quot;:false,&quot;title&quot;:true,&quot;value&quot;:true,&quot;comparison&quot;:true,&quot;chart&quot;:true,&quot;insights&quot;:false}},&quot;sdmApiName&quot;:&quot;Marketing_Intelligence_Custom_Semantic_Model_00Da500001AA4BB&quot;},&quot;receiveFilterSource&quot;:{&quot;filterMode&quot;:&quot;include&quot;,&quot;publishers&quot;:[],&quot;widgetIds&quot;:[&quot;list_filter_Flow_Name&quot;,&quot;list_filter_Logical_View_Engagement_Union_Activity_Date&quot;,&quot;list_filter_Market_Segment_Name&quot;]},&quot;widgetStyle&quot;:{&quot;borderColor&quot;:&quot;#C9C9C9&quot;,&quot;borderEdges&quot;:[&quot;all&quot;],&quot;borderRadius&quot;:20}}</parameters>
+            <source>Email_Delivery_Rate_mtc</source>
         </metricWidgetDefs>
         <type>metric</type>
         <widgetName>metric_Email_Delivery_Rate</widgetName>
@@ -575,8 +576,8 @@
     <widgets>
         <analyticsDashboard>Campaign_Deliverability_Embedded</analyticsDashboard>
         <metricWidgetDefs>
-            <parameters>{&quot;metricOption&quot;:{&quot;layout&quot;:{&quot;componentVisibility&quot;:{&quot;details&quot;:false,&quot;title&quot;:true,&quot;value&quot;:true,&quot;comparison&quot;:true,&quot;chart&quot;:false,&quot;insights&quot;:false}},&quot;sdmApiName&quot;:&quot;Marketing_Performance_Semantic_Mod_945&quot;},&quot;receiveFilterSource&quot;:{&quot;filterMode&quot;:&quot;include&quot;,&quot;publishers&quot;:[],&quot;widgetIds&quot;:[&quot;list_filter_Flow_Name&quot;,&quot;list_filter_Market_Segment_Name&quot;,&quot;list_filter_Logical_View_Engagement_Union_Activity_Date&quot;]},&quot;widgetStyle&quot;:{&quot;backgroundColor&quot;:&quot;#ffffff&quot;,&quot;borderColor&quot;:&quot;#cccccc&quot;,&quot;borderEdges&quot;:[&quot;all&quot;],&quot;borderRadius&quot;:20,&quot;borderWidth&quot;:1}}</parameters>
-            <source>SMS_Failed_To_Sent_md</source>
+            <parameters>{&quot;metricOption&quot;:{&quot;layout&quot;:{&quot;componentVisibility&quot;:{&quot;details&quot;:false,&quot;title&quot;:true,&quot;value&quot;:true,&quot;comparison&quot;:true,&quot;chart&quot;:false,&quot;insights&quot;:false}},&quot;sdmApiName&quot;:&quot;Marketing_Intelligence_Custom_Semantic_Model_00Da500001AA4BB&quot;},&quot;receiveFilterSource&quot;:{&quot;filterMode&quot;:&quot;include&quot;,&quot;publishers&quot;:[],&quot;widgetIds&quot;:[&quot;list_filter_Flow_Name&quot;,&quot;list_filter_Market_Segment_Name&quot;,&quot;list_filter_Logical_View_Engagement_Union_Activity_Date&quot;]},&quot;widgetStyle&quot;:{&quot;backgroundColor&quot;:&quot;#ffffff&quot;,&quot;borderColor&quot;:&quot;#cccccc&quot;,&quot;borderEdges&quot;:[&quot;all&quot;],&quot;borderRadius&quot;:20,&quot;borderWidth&quot;:1}}</parameters>
+            <source>SMS_Not_Sent_mtc</source>
         </metricWidgetDefs>
         <type>metric</type>
         <widgetName>metric_SMS_Not_Sent</widgetName>
@@ -584,8 +585,8 @@
     <widgets>
         <analyticsDashboard>Campaign_Deliverability_Embedded</analyticsDashboard>
         <metricWidgetDefs>
-            <parameters>{&quot;metricOption&quot;:{&quot;layout&quot;:{&quot;componentVisibility&quot;:{&quot;details&quot;:false,&quot;title&quot;:true,&quot;value&quot;:true,&quot;comparison&quot;:false,&quot;chart&quot;:false,&quot;insights&quot;:false}},&quot;sdmApiName&quot;:&quot;Marketing_Performance_Semantic_Mod_945&quot;},&quot;receiveFilterSource&quot;:{&quot;filterMode&quot;:&quot;include&quot;,&quot;publishers&quot;:[],&quot;widgetIds&quot;:[&quot;list_filter_Flow_Name&quot;,&quot;list_filter_Market_Segment_Name&quot;,&quot;list_filter_Logical_View_Engagement_Union_Activity_Date&quot;]},&quot;widgetStyle&quot;:{&quot;backgroundColor&quot;:&quot;#ffffff&quot;,&quot;borderColor&quot;:&quot;#cccccc&quot;,&quot;borderEdges&quot;:[&quot;all&quot;],&quot;borderRadius&quot;:20,&quot;borderWidth&quot;:1}}</parameters>
-            <source>SMS_Failed_Deliveries_md</source>
+            <parameters>{&quot;metricOption&quot;:{&quot;layout&quot;:{&quot;componentVisibility&quot;:{&quot;details&quot;:false,&quot;title&quot;:true,&quot;value&quot;:true,&quot;comparison&quot;:false,&quot;chart&quot;:false,&quot;insights&quot;:false}},&quot;sdmApiName&quot;:&quot;Marketing_Intelligence_Custom_Semantic_Model_00Da500001AA4BB&quot;},&quot;receiveFilterSource&quot;:{&quot;filterMode&quot;:&quot;include&quot;,&quot;publishers&quot;:[],&quot;widgetIds&quot;:[&quot;list_filter_Flow_Name&quot;,&quot;list_filter_Market_Segment_Name&quot;,&quot;list_filter_Logical_View_Engagement_Union_Activity_Date&quot;]},&quot;widgetStyle&quot;:{&quot;backgroundColor&quot;:&quot;#ffffff&quot;,&quot;borderColor&quot;:&quot;#cccccc&quot;,&quot;borderEdges&quot;:[&quot;all&quot;],&quot;borderRadius&quot;:20,&quot;borderWidth&quot;:1}}</parameters>
+            <source>SMS_Undelivered_mtc</source>
         </metricWidgetDefs>
         <type>metric</type>
         <widgetName>metric_SMS_Undelivered</widgetName>
@@ -593,8 +594,8 @@
     <widgets>
         <analyticsDashboard>Campaign_Deliverability_Embedded</analyticsDashboard>
         <metricWidgetDefs>
-            <parameters>{&quot;metricOption&quot;:{&quot;layout&quot;:{&quot;componentVisibility&quot;:{&quot;details&quot;:false,&quot;title&quot;:true,&quot;value&quot;:true,&quot;comparison&quot;:false,&quot;chart&quot;:false,&quot;insights&quot;:false}},&quot;sdmApiName&quot;:&quot;Marketing_Performance_Semantic_Mod_945&quot;},&quot;receiveFilterSource&quot;:{&quot;filterMode&quot;:&quot;include&quot;,&quot;publishers&quot;:[],&quot;widgetIds&quot;:[&quot;list_filter_Flow_Name&quot;,&quot;list_filter_Market_Segment_Name&quot;,&quot;list_filter_Logical_View_Engagement_Union_Activity_Date&quot;]},&quot;widgetStyle&quot;:{&quot;backgroundColor&quot;:&quot;#ffffff&quot;,&quot;borderColor&quot;:&quot;#cccccc&quot;,&quot;borderEdges&quot;:[&quot;all&quot;],&quot;borderRadius&quot;:20,&quot;borderWidth&quot;:1}}</parameters>
-            <source>SMS_Sends_md</source>
+            <parameters>{&quot;metricOption&quot;:{&quot;layout&quot;:{&quot;componentVisibility&quot;:{&quot;details&quot;:false,&quot;title&quot;:true,&quot;value&quot;:true,&quot;comparison&quot;:false,&quot;chart&quot;:false,&quot;insights&quot;:false}},&quot;sdmApiName&quot;:&quot;Marketing_Intelligence_Custom_Semantic_Model_00Da500001AA4BB&quot;},&quot;receiveFilterSource&quot;:{&quot;filterMode&quot;:&quot;include&quot;,&quot;publishers&quot;:[],&quot;widgetIds&quot;:[&quot;list_filter_Flow_Name&quot;,&quot;list_filter_Market_Segment_Name&quot;,&quot;list_filter_Logical_View_Engagement_Union_Activity_Date&quot;]},&quot;widgetStyle&quot;:{&quot;backgroundColor&quot;:&quot;#ffffff&quot;,&quot;borderColor&quot;:&quot;#cccccc&quot;,&quot;borderEdges&quot;:[&quot;all&quot;],&quot;borderRadius&quot;:20,&quot;borderWidth&quot;:1}}</parameters>
+            <source>SMS_Sends_mtc</source>
         </metricWidgetDefs>
         <type>metric</type>
         <widgetName>metric_SMS_Sends</widgetName>
@@ -602,8 +603,8 @@
     <widgets>
         <analyticsDashboard>Campaign_Deliverability_Embedded</analyticsDashboard>
         <metricWidgetDefs>
-            <parameters>{&quot;metricOption&quot;:{&quot;layout&quot;:{&quot;componentVisibility&quot;:{&quot;details&quot;:false,&quot;title&quot;:true,&quot;value&quot;:true,&quot;comparison&quot;:false,&quot;chart&quot;:false,&quot;insights&quot;:false}},&quot;sdmApiName&quot;:&quot;Marketing_Performance_Semantic_Mod_945&quot;},&quot;receiveFilterSource&quot;:{&quot;filterMode&quot;:&quot;include&quot;,&quot;publishers&quot;:[],&quot;widgetIds&quot;:[&quot;list_filter_Flow_Name&quot;,&quot;list_filter_Market_Segment_Name&quot;,&quot;list_filter_Logical_View_Engagement_Union_Activity_Date&quot;]},&quot;widgetStyle&quot;:{&quot;backgroundColor&quot;:&quot;#ffffff&quot;,&quot;borderColor&quot;:&quot;#cccccc&quot;,&quot;borderEdges&quot;:[&quot;all&quot;],&quot;borderRadius&quot;:20,&quot;borderWidth&quot;:1}}</parameters>
-            <source>SMS_Deliveries_md</source>
+            <parameters>{&quot;metricOption&quot;:{&quot;layout&quot;:{&quot;componentVisibility&quot;:{&quot;details&quot;:false,&quot;title&quot;:true,&quot;value&quot;:true,&quot;comparison&quot;:false,&quot;chart&quot;:false,&quot;insights&quot;:false}},&quot;sdmApiName&quot;:&quot;Marketing_Intelligence_Custom_Semantic_Model_00Da500001AA4BB&quot;},&quot;receiveFilterSource&quot;:{&quot;filterMode&quot;:&quot;include&quot;,&quot;publishers&quot;:[],&quot;widgetIds&quot;:[&quot;list_filter_Flow_Name&quot;,&quot;list_filter_Market_Segment_Name&quot;,&quot;list_filter_Logical_View_Engagement_Union_Activity_Date&quot;]},&quot;widgetStyle&quot;:{&quot;backgroundColor&quot;:&quot;#ffffff&quot;,&quot;borderColor&quot;:&quot;#cccccc&quot;,&quot;borderEdges&quot;:[&quot;all&quot;],&quot;borderRadius&quot;:20,&quot;borderWidth&quot;:1}}</parameters>
+            <source>SMS_Deliveries_mtc</source>
         </metricWidgetDefs>
         <type>metric</type>
         <widgetName>metric_SMS_Deliveries</widgetName>
@@ -611,8 +612,8 @@
     <widgets>
         <analyticsDashboard>Campaign_Deliverability_Embedded</analyticsDashboard>
         <metricWidgetDefs>
-            <parameters>{&quot;metricOption&quot;:{&quot;layout&quot;:{&quot;componentVisibility&quot;:{&quot;details&quot;:false,&quot;title&quot;:true,&quot;value&quot;:true,&quot;comparison&quot;:true,&quot;chart&quot;:true,&quot;insights&quot;:false}},&quot;sdmApiName&quot;:&quot;Marketing_Performance_Semantic_Mod_945&quot;},&quot;receiveFilterSource&quot;:{&quot;filterMode&quot;:&quot;include&quot;,&quot;publishers&quot;:[],&quot;widgetIds&quot;:[&quot;list_filter_Flow_Name&quot;,&quot;list_filter_Market_Segment_Name&quot;,&quot;list_filter_Logical_View_Engagement_Union_Activity_Date&quot;]},&quot;widgetStyle&quot;:{&quot;backgroundColor&quot;:&quot;#ffffff&quot;,&quot;borderColor&quot;:&quot;#C9C9C9&quot;,&quot;borderEdges&quot;:[&quot;all&quot;],&quot;borderRadius&quot;:20,&quot;borderWidth&quot;:1}}</parameters>
-            <source>SMS_Delivery_Rate_md</source>
+            <parameters>{&quot;metricOption&quot;:{&quot;layout&quot;:{&quot;componentVisibility&quot;:{&quot;details&quot;:false,&quot;title&quot;:true,&quot;value&quot;:true,&quot;comparison&quot;:true,&quot;chart&quot;:true,&quot;insights&quot;:false}},&quot;sdmApiName&quot;:&quot;Marketing_Intelligence_Custom_Semantic_Model_00Da500001AA4BB&quot;},&quot;receiveFilterSource&quot;:{&quot;filterMode&quot;:&quot;include&quot;,&quot;publishers&quot;:[],&quot;widgetIds&quot;:[&quot;list_filter_Flow_Name&quot;,&quot;list_filter_Market_Segment_Name&quot;,&quot;list_filter_Logical_View_Engagement_Union_Activity_Date&quot;]},&quot;widgetStyle&quot;:{&quot;backgroundColor&quot;:&quot;#ffffff&quot;,&quot;borderColor&quot;:&quot;#C9C9C9&quot;,&quot;borderEdges&quot;:[&quot;all&quot;],&quot;borderRadius&quot;:20,&quot;borderWidth&quot;:1}}</parameters>
+            <source>SMS_Delivery_Rate_mtc</source>
         </metricWidgetDefs>
         <type>metric</type>
         <widgetName>metric_SMS_Delivery_Rate</widgetName>
@@ -697,8 +698,8 @@
         <analyticsDashboard>Campaign_Deliverability_Embedded</analyticsDashboard>
         <filterWidgetDefs>
             <initialValues>null</initialValues>
-            <parameters>{&quot;viewType&quot;:&quot;list&quot;,&quot;widgetStyle&quot;:{&quot;backgroundColor&quot;:&quot;#F3F3F3&quot;,&quot;borderEdges&quot;:[],&quot;borderRadius&quot;:8},&quot;receiveFilterSource&quot;:{&quot;filterMode&quot;:&quot;all&quot;,&quot;widgetIds&quot;:[]},&quot;filterOption&quot;:{&quot;objectName&quot;:&quot;Logical_View_Engagement_Union&quot;,&quot;fieldName&quot;:&quot;Activity_Date&quot;,&quot;dataType&quot;:&quot;DateTime&quot;,&quot;selectionType&quot;:&quot;multiple&quot;},&quot;isLabelHidden&quot;:false}</parameters>
-            <source>Marketing_Performance_Semantic_Mod_945</source>
+            <parameters>{&quot;viewType&quot;:&quot;list&quot;,&quot;widgetStyle&quot;:{&quot;backgroundColor&quot;:&quot;#F3F3F3&quot;,&quot;borderEdges&quot;:[],&quot;borderRadius&quot;:8},&quot;receiveFilterSource&quot;:{&quot;filterMode&quot;:&quot;all&quot;,&quot;widgetIds&quot;:[]},&quot;filterOption&quot;:{&quot;fieldName&quot;:&quot;Engagement_Date_Time_clc&quot;,&quot;dataType&quot;:&quot;DateTime&quot;,&quot;selectionType&quot;:&quot;multiple&quot;},&quot;isLabelHidden&quot;:false}</parameters>
+            <source>Marketing_Intelligence_Custom_Semantic_Model_00Da500001AA4BB</source>
         </filterWidgetDefs>
         <label>Date Range</label>
         <type>filter</type>
@@ -716,8 +717,8 @@
         <analyticsDashboard>Campaign_Deliverability_Embedded</analyticsDashboard>
         <filterWidgetDefs>
             <initialValues>null</initialValues>
-            <parameters>{&quot;viewType&quot;:&quot;list&quot;,&quot;widgetStyle&quot;:{&quot;borderEdges&quot;:[],&quot;borderRadius&quot;:8},&quot;receiveFilterSource&quot;:{&quot;filterMode&quot;:&quot;include&quot;,&quot;widgetIds&quot;:[&quot;list_filter_Logical_View_Engagement_Union_Activity_Date&quot;,&quot;list_filter_Flow_Name&quot;,&quot;list_filter_Market_Segment_Name&quot;,&quot;list_filter_Logical_View_Bulk_Message_Union_Message_Purpose&quot;,&quot;list_filter_Email_Domain&quot;]},&quot;filterOption&quot;:{&quot;fieldName&quot;:&quot;Email_Deliverability_Filter&quot;,&quot;dataType&quot;:&quot;Text&quot;,&quot;selectionType&quot;:&quot;multiple&quot;},&quot;isLabelHidden&quot;:false}</parameters>
-            <source>Marketing_Performance_Semantic_Mod_945</source>
+            <parameters>{&quot;viewType&quot;:&quot;list&quot;,&quot;widgetStyle&quot;:{&quot;borderEdges&quot;:[],&quot;borderRadius&quot;:8},&quot;receiveFilterSource&quot;:{&quot;filterMode&quot;:&quot;include&quot;,&quot;widgetIds&quot;:[&quot;list_filter_Logical_View_Engagement_Union_Activity_Date&quot;,&quot;list_filter_Flow_Name&quot;,&quot;list_filter_Market_Segment_Name&quot;,&quot;list_filter_Logical_View_Bulk_Message_Union_Message_Purpose&quot;,&quot;list_filter_Email_Domain&quot;]},&quot;filterOption&quot;:{&quot;fieldName&quot;:&quot;Email_Deliverability_Filter_clc&quot;,&quot;dataType&quot;:&quot;Text&quot;,&quot;selectionType&quot;:&quot;multiple&quot;},&quot;isLabelHidden&quot;:false}</parameters>
+            <source>Marketing_Intelligence_Custom_Semantic_Model_00Da500001AA4BB</source>
         </filterWidgetDefs>
         <label>Delivery Status</label>
         <type>filter</type>
@@ -735,8 +736,8 @@
         <analyticsDashboard>Campaign_Deliverability_Embedded</analyticsDashboard>
         <filterWidgetDefs>
             <initialValues>null</initialValues>
-            <parameters>{&quot;viewType&quot;:&quot;list&quot;,&quot;widgetStyle&quot;:{&quot;backgroundColor&quot;:&quot;#F3F3F3&quot;,&quot;borderEdges&quot;:[],&quot;borderRadius&quot;:8},&quot;receiveFilterSource&quot;:{&quot;filterMode&quot;:&quot;all&quot;,&quot;widgetIds&quot;:[]},&quot;filterOption&quot;:{&quot;objectName&quot;:&quot;Market_Segment&quot;,&quot;fieldName&quot;:&quot;Name&quot;,&quot;dataType&quot;:&quot;Text&quot;,&quot;selectionType&quot;:&quot;multiple&quot;},&quot;isLabelHidden&quot;:false}</parameters>
-            <source>Marketing_Performance_Semantic_Mod_945</source>
+            <parameters>{&quot;viewType&quot;:&quot;list&quot;,&quot;widgetStyle&quot;:{&quot;backgroundColor&quot;:&quot;#F3F3F3&quot;,&quot;borderEdges&quot;:[],&quot;borderRadius&quot;:8},&quot;receiveFilterSource&quot;:{&quot;filterMode&quot;:&quot;all&quot;,&quot;widgetIds&quot;:[]},&quot;filterOption&quot;:{&quot;objectName&quot;:&quot;Market_Segment&quot;,&quot;fieldName&quot;:&quot;Market_Segment_Name&quot;,&quot;dataType&quot;:&quot;Text&quot;,&quot;selectionType&quot;:&quot;multiple&quot;},&quot;isLabelHidden&quot;:false}</parameters>
+            <source>Marketing_Intelligence_Custom_Semantic_Model_00Da500001AA4BB</source>
         </filterWidgetDefs>
         <label>Segments</label>
         <type>filter</type>
@@ -754,8 +755,8 @@
         <analyticsDashboard>Campaign_Deliverability_Embedded</analyticsDashboard>
         <filterWidgetDefs>
             <initialValues>null</initialValues>
-            <parameters>{&quot;viewType&quot;:&quot;list&quot;,&quot;receiveFilterSource&quot;:{&quot;filterMode&quot;:&quot;include&quot;,&quot;widgetIds&quot;:[&quot;list_filter_Logical_View_Engagement_Union_Activity_Date&quot;,&quot;list_filter_Flow_Name&quot;,&quot;list_filter_Market_Segment_Name&quot;,&quot;list_filter_Email_Deliverability_Filter&quot;,&quot;list_filter_Email_Domain&quot;]},&quot;filterOption&quot;:{&quot;objectName&quot;:&quot;Logical_View_Bulk_Message_Union&quot;,&quot;fieldName&quot;:&quot;Message_Purpose&quot;,&quot;dataType&quot;:&quot;Text&quot;,&quot;selectionType&quot;:&quot;multiple&quot;},&quot;isLabelHidden&quot;:false}</parameters>
-            <source>Marketing_Performance_Semantic_Mod_945</source>
+            <parameters>{&quot;viewType&quot;:&quot;list&quot;,&quot;receiveFilterSource&quot;:{&quot;filterMode&quot;:&quot;include&quot;,&quot;widgetIds&quot;:[&quot;list_filter_Logical_View_Engagement_Union_Activity_Date&quot;,&quot;list_filter_Flow_Name&quot;,&quot;list_filter_Market_Segment_Name&quot;,&quot;list_filter_Email_Deliverability_Filter&quot;,&quot;list_filter_Email_Domain&quot;]},&quot;filterOption&quot;:{&quot;fieldName&quot;:&quot;Message_Purpose_clc&quot;,&quot;dataType&quot;:&quot;Text&quot;,&quot;selectionType&quot;:&quot;multiple&quot;},&quot;isLabelHidden&quot;:false}</parameters>
+            <source>Marketing_Intelligence_Custom_Semantic_Model_00Da500001AA4BB</source>
         </filterWidgetDefs>
         <label>Message Type</label>
         <type>filter</type>
@@ -773,8 +774,8 @@
         <analyticsDashboard>Campaign_Deliverability_Embedded</analyticsDashboard>
         <filterWidgetDefs>
             <initialValues>null</initialValues>
-            <parameters>{&quot;viewType&quot;:&quot;list&quot;,&quot;widgetStyle&quot;:{&quot;borderEdges&quot;:[],&quot;borderRadius&quot;:8},&quot;receiveFilterSource&quot;:{&quot;filterMode&quot;:&quot;include&quot;,&quot;widgetIds&quot;:[&quot;list_filter_Logical_View_Engagement_Union_Activity_Date&quot;,&quot;list_filter_Flow_Name&quot;,&quot;list_filter_Market_Segment_Name&quot;,&quot;list_filter_Logical_View_Bulk_Message_Union_Message_Purpose&quot;,&quot;list_filter_Email_Deliverability_Filter&quot;]},&quot;filterOption&quot;:{&quot;fieldName&quot;:&quot;Email_Domain&quot;,&quot;dataType&quot;:&quot;Text&quot;,&quot;selectionType&quot;:&quot;multiple&quot;},&quot;isLabelHidden&quot;:false}</parameters>
-            <source>Marketing_Performance_Semantic_Mod_945</source>
+            <parameters>{&quot;viewType&quot;:&quot;list&quot;,&quot;widgetStyle&quot;:{&quot;borderEdges&quot;:[],&quot;borderRadius&quot;:8},&quot;receiveFilterSource&quot;:{&quot;filterMode&quot;:&quot;include&quot;,&quot;widgetIds&quot;:[&quot;list_filter_Logical_View_Engagement_Union_Activity_Date&quot;,&quot;list_filter_Flow_Name&quot;,&quot;list_filter_Market_Segment_Name&quot;,&quot;list_filter_Logical_View_Bulk_Message_Union_Message_Purpose&quot;,&quot;list_filter_Email_Deliverability_Filter&quot;]},&quot;filterOption&quot;:{&quot;fieldName&quot;:&quot;Email_Domain_clc&quot;,&quot;dataType&quot;:&quot;Text&quot;,&quot;selectionType&quot;:&quot;multiple&quot;},&quot;isLabelHidden&quot;:false}</parameters>
+            <source>Marketing_Intelligence_Custom_Semantic_Model_00Da500001AA4BB</source>
         </filterWidgetDefs>
         <label>Domain</label>
         <type>filter</type>
@@ -799,8 +800,8 @@
     <widgets>
         <analyticsDashboard>Campaign_Deliverability_Embedded</analyticsDashboard>
         <metricWidgetDefs>
-            <parameters>{&quot;metricOption&quot;:{&quot;layout&quot;:{&quot;componentVisibility&quot;:{&quot;details&quot;:false,&quot;title&quot;:true,&quot;value&quot;:true,&quot;comparison&quot;:true,&quot;chart&quot;:false,&quot;insights&quot;:false}},&quot;sdmApiName&quot;:&quot;Marketing_Performance_Semantic_Mod_945&quot;},&quot;receiveFilterSource&quot;:{&quot;filterMode&quot;:&quot;include&quot;,&quot;publishers&quot;:[],&quot;widgetIds&quot;:[&quot;list_filter_Flow_Name&quot;,&quot;list_filter_Logical_View_Engagement_Union_Activity_Date&quot;,&quot;list_filter_Market_Segment_Name&quot;]},&quot;widgetStyle&quot;:{&quot;borderColor&quot;:&quot;#C9C9C9&quot;,&quot;borderEdges&quot;:[&quot;all&quot;],&quot;borderRadius&quot;:20}}</parameters>
-            <source>Email_Bounces_md</source>
+            <parameters>{&quot;metricOption&quot;:{&quot;layout&quot;:{&quot;componentVisibility&quot;:{&quot;details&quot;:false,&quot;title&quot;:true,&quot;value&quot;:true,&quot;comparison&quot;:true,&quot;chart&quot;:false,&quot;insights&quot;:false}},&quot;sdmApiName&quot;:&quot;Marketing_Intelligence_Custom_Semantic_Model_00Da500001AA4BB&quot;},&quot;receiveFilterSource&quot;:{&quot;filterMode&quot;:&quot;include&quot;,&quot;publishers&quot;:[],&quot;widgetIds&quot;:[&quot;list_filter_Flow_Name&quot;,&quot;list_filter_Logical_View_Engagement_Union_Activity_Date&quot;,&quot;list_filter_Market_Segment_Name&quot;]},&quot;widgetStyle&quot;:{&quot;borderColor&quot;:&quot;#C9C9C9&quot;,&quot;borderEdges&quot;:[&quot;all&quot;],&quot;borderRadius&quot;:20}}</parameters>
+            <source>Email_Bounces_mtc</source>
         </metricWidgetDefs>
         <type>metric</type>
         <widgetName>metric_Email_Bounces</widgetName>
@@ -808,8 +809,8 @@
     <widgets>
         <analyticsDashboard>Campaign_Deliverability_Embedded</analyticsDashboard>
         <metricWidgetDefs>
-            <parameters>{&quot;metricOption&quot;:{&quot;layout&quot;:{&quot;componentVisibility&quot;:{&quot;details&quot;:false,&quot;title&quot;:true,&quot;value&quot;:true,&quot;comparison&quot;:true,&quot;chart&quot;:false,&quot;insights&quot;:false}},&quot;sdmApiName&quot;:&quot;Marketing_Performance_Semantic_Mod_945&quot;},&quot;receiveFilterSource&quot;:{&quot;filterMode&quot;:&quot;include&quot;,&quot;publishers&quot;:[],&quot;widgetIds&quot;:[&quot;list_filter_Flow_Name&quot;,&quot;list_filter_Logical_View_Engagement_Union_Activity_Date&quot;,&quot;list_filter_Market_Segment_Name&quot;]},&quot;widgetStyle&quot;:{&quot;borderColor&quot;:&quot;#C9C9C9&quot;,&quot;borderEdges&quot;:[&quot;all&quot;],&quot;borderRadius&quot;:20}}</parameters>
-            <source>Email_Deliveries_md</source>
+            <parameters>{&quot;metricOption&quot;:{&quot;layout&quot;:{&quot;componentVisibility&quot;:{&quot;details&quot;:false,&quot;title&quot;:true,&quot;value&quot;:true,&quot;comparison&quot;:true,&quot;chart&quot;:false,&quot;insights&quot;:false}},&quot;sdmApiName&quot;:&quot;Marketing_Intelligence_Custom_Semantic_Model_00Da500001AA4BB&quot;},&quot;receiveFilterSource&quot;:{&quot;filterMode&quot;:&quot;include&quot;,&quot;publishers&quot;:[],&quot;widgetIds&quot;:[&quot;list_filter_Flow_Name&quot;,&quot;list_filter_Logical_View_Engagement_Union_Activity_Date&quot;,&quot;list_filter_Market_Segment_Name&quot;]},&quot;widgetStyle&quot;:{&quot;borderColor&quot;:&quot;#C9C9C9&quot;,&quot;borderEdges&quot;:[&quot;all&quot;],&quot;borderRadius&quot;:20}}</parameters>
+            <source>Email_Deliveries_mtc</source>
         </metricWidgetDefs>
         <type>metric</type>
         <widgetName>metric_Email_Deliveries</widgetName>
@@ -817,8 +818,8 @@
     <widgets>
         <analyticsDashboard>Campaign_Deliverability_Embedded</analyticsDashboard>
         <metricWidgetDefs>
-            <parameters>{&quot;metricOption&quot;:{&quot;layout&quot;:{&quot;componentVisibility&quot;:{&quot;details&quot;:false,&quot;title&quot;:true,&quot;value&quot;:true,&quot;comparison&quot;:true,&quot;chart&quot;:false,&quot;insights&quot;:false}},&quot;sdmApiName&quot;:&quot;Marketing_Performance_Semantic_Mod_945&quot;},&quot;receiveFilterSource&quot;:{&quot;filterMode&quot;:&quot;include&quot;,&quot;publishers&quot;:[],&quot;widgetIds&quot;:[&quot;list_filter_Flow_Name&quot;,&quot;list_filter_Logical_View_Engagement_Union_Activity_Date&quot;,&quot;list_filter_Market_Segment_Name&quot;]},&quot;widgetStyle&quot;:{&quot;borderColor&quot;:&quot;#C9C9C9&quot;,&quot;borderEdges&quot;:[&quot;all&quot;],&quot;borderRadius&quot;:20}}</parameters>
-            <source>Email_Failed_to_Send_md</source>
+            <parameters>{&quot;metricOption&quot;:{&quot;layout&quot;:{&quot;componentVisibility&quot;:{&quot;details&quot;:false,&quot;title&quot;:true,&quot;value&quot;:true,&quot;comparison&quot;:true,&quot;chart&quot;:false,&quot;insights&quot;:false}},&quot;sdmApiName&quot;:&quot;Marketing_Intelligence_Custom_Semantic_Model_00Da500001AA4BB&quot;},&quot;receiveFilterSource&quot;:{&quot;filterMode&quot;:&quot;include&quot;,&quot;publishers&quot;:[],&quot;widgetIds&quot;:[&quot;list_filter_Flow_Name&quot;,&quot;list_filter_Logical_View_Engagement_Union_Activity_Date&quot;,&quot;list_filter_Market_Segment_Name&quot;]},&quot;widgetStyle&quot;:{&quot;borderColor&quot;:&quot;#C9C9C9&quot;,&quot;borderEdges&quot;:[&quot;all&quot;],&quot;borderRadius&quot;:20}}</parameters>
+            <source>Email_Not_Sent_mtc</source>
         </metricWidgetDefs>
         <type>metric</type>
         <widgetName>metric_Email_Failed_to_Send</widgetName>
@@ -826,8 +827,8 @@
     <widgets>
         <analyticsDashboard>Campaign_Deliverability_Embedded</analyticsDashboard>
         <metricWidgetDefs>
-            <parameters>{&quot;metricOption&quot;:{&quot;layout&quot;:{&quot;componentVisibility&quot;:{&quot;details&quot;:false,&quot;title&quot;:true,&quot;value&quot;:true,&quot;comparison&quot;:true,&quot;chart&quot;:false,&quot;insights&quot;:false}},&quot;sdmApiName&quot;:&quot;Marketing_Performance_Semantic_Mod_945&quot;},&quot;receiveFilterSource&quot;:{&quot;filterMode&quot;:&quot;include&quot;,&quot;publishers&quot;:[],&quot;widgetIds&quot;:[&quot;list_filter_Flow_Name&quot;,&quot;list_filter_Logical_View_Engagement_Union_Activity_Date&quot;,&quot;list_filter_Market_Segment_Name&quot;]},&quot;widgetStyle&quot;:{&quot;borderEdges&quot;:[&quot;all&quot;],&quot;borderRadius&quot;:20}}</parameters>
-            <source>Email_Soft_Bounce_Rate_md</source>
+            <parameters>{&quot;metricOption&quot;:{&quot;layout&quot;:{&quot;componentVisibility&quot;:{&quot;details&quot;:false,&quot;title&quot;:true,&quot;value&quot;:true,&quot;comparison&quot;:true,&quot;chart&quot;:false,&quot;insights&quot;:false}},&quot;sdmApiName&quot;:&quot;Marketing_Intelligence_Custom_Semantic_Model_00Da500001AA4BB&quot;},&quot;receiveFilterSource&quot;:{&quot;filterMode&quot;:&quot;include&quot;,&quot;publishers&quot;:[],&quot;widgetIds&quot;:[&quot;list_filter_Flow_Name&quot;,&quot;list_filter_Logical_View_Engagement_Union_Activity_Date&quot;,&quot;list_filter_Market_Segment_Name&quot;]},&quot;widgetStyle&quot;:{&quot;borderEdges&quot;:[&quot;all&quot;],&quot;borderRadius&quot;:20}}</parameters>
+            <source>Email_Soft_Bounce_Rate_mtc</source>
         </metricWidgetDefs>
         <type>metric</type>
         <widgetName>metric_Email_Soft_Bounce_Rate</widgetName>
@@ -835,8 +836,8 @@
     <widgets>
         <analyticsDashboard>Campaign_Deliverability_Embedded</analyticsDashboard>
         <metricWidgetDefs>
-            <parameters>{&quot;metricOption&quot;:{&quot;layout&quot;:{&quot;componentVisibility&quot;:{&quot;details&quot;:false,&quot;title&quot;:true,&quot;value&quot;:true,&quot;comparison&quot;:true,&quot;chart&quot;:false,&quot;insights&quot;:false}},&quot;sdmApiName&quot;:&quot;Marketing_Performance_Semantic_Mod_945&quot;},&quot;receiveFilterSource&quot;:{&quot;filterMode&quot;:&quot;include&quot;,&quot;publishers&quot;:[],&quot;widgetIds&quot;:[&quot;list_filter_Flow_Name&quot;,&quot;list_filter_Logical_View_Engagement_Union_Activity_Date&quot;,&quot;list_filter_Market_Segment_Name&quot;]},&quot;widgetStyle&quot;:{&quot;borderColor&quot;:&quot;#C9C9C9&quot;,&quot;borderEdges&quot;:[&quot;all&quot;],&quot;borderRadius&quot;:20}}</parameters>
-            <source>Email_Sends_md</source>
+            <parameters>{&quot;metricOption&quot;:{&quot;layout&quot;:{&quot;componentVisibility&quot;:{&quot;details&quot;:false,&quot;title&quot;:true,&quot;value&quot;:true,&quot;comparison&quot;:true,&quot;chart&quot;:false,&quot;insights&quot;:false}},&quot;sdmApiName&quot;:&quot;Marketing_Intelligence_Custom_Semantic_Model_00Da500001AA4BB&quot;},&quot;receiveFilterSource&quot;:{&quot;filterMode&quot;:&quot;include&quot;,&quot;publishers&quot;:[],&quot;widgetIds&quot;:[&quot;list_filter_Flow_Name&quot;,&quot;list_filter_Logical_View_Engagement_Union_Activity_Date&quot;,&quot;list_filter_Market_Segment_Name&quot;]},&quot;widgetStyle&quot;:{&quot;borderColor&quot;:&quot;#C9C9C9&quot;,&quot;borderEdges&quot;:[&quot;all&quot;],&quot;borderRadius&quot;:20}}</parameters>
+            <source>Email_Sends_mtc</source>
         </metricWidgetDefs>
         <type>metric</type>
         <widgetName>metric_Email_Sends</widgetName>
@@ -844,8 +845,8 @@
     <widgets>
         <analyticsDashboard>Campaign_Deliverability_Embedded</analyticsDashboard>
         <metricWidgetDefs>
-            <parameters>{&quot;metricOption&quot;:{&quot;layout&quot;:{&quot;componentVisibility&quot;:{&quot;details&quot;:false,&quot;title&quot;:true,&quot;value&quot;:true,&quot;comparison&quot;:true,&quot;chart&quot;:false,&quot;insights&quot;:false}},&quot;sdmApiName&quot;:&quot;Marketing_Performance_Semantic_Mod_945&quot;},&quot;receiveFilterSource&quot;:{&quot;filterMode&quot;:&quot;include&quot;,&quot;publishers&quot;:[],&quot;widgetIds&quot;:[&quot;list_filter_Flow_Name&quot;,&quot;list_filter_Logical_View_Engagement_Union_Activity_Date&quot;,&quot;list_filter_Market_Segment_Name&quot;]},&quot;widgetStyle&quot;:{&quot;borderEdges&quot;:[&quot;all&quot;],&quot;borderRadius&quot;:20}}</parameters>
-            <source>Email_Hard_Bounce_Rate_md</source>
+            <parameters>{&quot;metricOption&quot;:{&quot;layout&quot;:{&quot;componentVisibility&quot;:{&quot;details&quot;:false,&quot;title&quot;:true,&quot;value&quot;:true,&quot;comparison&quot;:true,&quot;chart&quot;:false,&quot;insights&quot;:false}},&quot;sdmApiName&quot;:&quot;Marketing_Intelligence_Custom_Semantic_Model_00Da500001AA4BB&quot;},&quot;receiveFilterSource&quot;:{&quot;filterMode&quot;:&quot;include&quot;,&quot;publishers&quot;:[],&quot;widgetIds&quot;:[&quot;list_filter_Flow_Name&quot;,&quot;list_filter_Logical_View_Engagement_Union_Activity_Date&quot;,&quot;list_filter_Market_Segment_Name&quot;]},&quot;widgetStyle&quot;:{&quot;borderEdges&quot;:[&quot;all&quot;],&quot;borderRadius&quot;:20}}</parameters>
+            <source>Email_Hard_Bounce_Rate_mtc</source>
         </metricWidgetDefs>
         <type>metric</type>
         <widgetName>metric_Email_Hard_Bounce_Rate</widgetName>
@@ -875,8 +876,8 @@
     <widgets>
         <analyticsDashboard>Campaign_Deliverability_Embedded</analyticsDashboard>
         <metricWidgetDefs>
-            <parameters>{&quot;metricOption&quot;:{&quot;layout&quot;:{&quot;componentVisibility&quot;:{&quot;comparison&quot;:true,&quot;insights&quot;:false,&quot;details&quot;:false,&quot;title&quot;:true,&quot;value&quot;:true,&quot;chart&quot;:false}},&quot;sdmApiName&quot;:&quot;Marketing_Performance_Semantic_Mod_945&quot;},&quot;receiveFilterSource&quot;:{&quot;filterMode&quot;:&quot;include&quot;,&quot;publishers&quot;:[],&quot;widgetIds&quot;:[&quot;list_filter_Flow_Name&quot;,&quot;list_filter_Logical_View_Engagement_Union_Activity_Date&quot;,&quot;list_filter_Market_Segment_Name&quot;]},&quot;widgetStyle&quot;:{&quot;backgroundColor&quot;:&quot;#ffffff&quot;,&quot;borderColor&quot;:&quot;#cccccc&quot;,&quot;borderEdges&quot;:[&quot;all&quot;],&quot;borderRadius&quot;:20,&quot;borderWidth&quot;:1}}</parameters>
-            <source>SMS_Failure_Rate_md</source>
+            <parameters>{&quot;metricOption&quot;:{&quot;layout&quot;:{&quot;componentVisibility&quot;:{&quot;comparison&quot;:true,&quot;insights&quot;:false,&quot;details&quot;:false,&quot;title&quot;:true,&quot;value&quot;:true,&quot;chart&quot;:false}},&quot;sdmApiName&quot;:&quot;Marketing_Intelligence_Custom_Semantic_Model_00Da500001AA4BB&quot;},&quot;receiveFilterSource&quot;:{&quot;filterMode&quot;:&quot;include&quot;,&quot;publishers&quot;:[],&quot;widgetIds&quot;:[&quot;list_filter_Flow_Name&quot;,&quot;list_filter_Logical_View_Engagement_Union_Activity_Date&quot;,&quot;list_filter_Market_Segment_Name&quot;]},&quot;widgetStyle&quot;:{&quot;backgroundColor&quot;:&quot;#ffffff&quot;,&quot;borderColor&quot;:&quot;#cccccc&quot;,&quot;borderEdges&quot;:[&quot;all&quot;],&quot;borderRadius&quot;:20,&quot;borderWidth&quot;:1}}</parameters>
+            <source>SMS_Failure_Rate_mtc</source>
         </metricWidgetDefs>
         <type>metric</type>
         <widgetName>metric_SMS_Failure_Rate</widgetName>
@@ -884,8 +885,8 @@
     <widgets>
         <analyticsDashboard>Campaign_Deliverability_Embedded</analyticsDashboard>
         <metricWidgetDefs>
-            <parameters>{&quot;metricOption&quot;:{&quot;layout&quot;:{&quot;componentVisibility&quot;:{&quot;comparison&quot;:false,&quot;insights&quot;:false,&quot;details&quot;:false,&quot;title&quot;:true,&quot;value&quot;:true,&quot;chart&quot;:false}},&quot;sdmApiName&quot;:&quot;Marketing_Performance_Semantic_Mod_945&quot;},&quot;receiveFilterSource&quot;:{&quot;filterMode&quot;:&quot;include&quot;,&quot;publishers&quot;:[],&quot;widgetIds&quot;:[&quot;list_filter_Flow_Name&quot;,&quot;list_filter_Logical_View_Engagement_Union_Activity_Date&quot;,&quot;list_filter_Market_Segment_Name&quot;]},&quot;widgetStyle&quot;:{&quot;backgroundColor&quot;:&quot;#ffffff&quot;,&quot;borderColor&quot;:&quot;#cccccc&quot;,&quot;borderEdges&quot;:[&quot;all&quot;],&quot;borderRadius&quot;:20,&quot;borderWidth&quot;:1}}</parameters>
-            <source>SMS_Unknown_md</source>
+            <parameters>{&quot;metricOption&quot;:{&quot;layout&quot;:{&quot;componentVisibility&quot;:{&quot;comparison&quot;:false,&quot;insights&quot;:false,&quot;details&quot;:false,&quot;title&quot;:true,&quot;value&quot;:true,&quot;chart&quot;:false}},&quot;sdmApiName&quot;:&quot;Marketing_Intelligence_Custom_Semantic_Model_00Da500001AA4BB&quot;},&quot;receiveFilterSource&quot;:{&quot;filterMode&quot;:&quot;include&quot;,&quot;publishers&quot;:[],&quot;widgetIds&quot;:[&quot;list_filter_Flow_Name&quot;,&quot;list_filter_Logical_View_Engagement_Union_Activity_Date&quot;,&quot;list_filter_Market_Segment_Name&quot;]},&quot;widgetStyle&quot;:{&quot;backgroundColor&quot;:&quot;#ffffff&quot;,&quot;borderColor&quot;:&quot;#cccccc&quot;,&quot;borderEdges&quot;:[&quot;all&quot;],&quot;borderRadius&quot;:20,&quot;borderWidth&quot;:1}}</parameters>
+            <source>SMS_Unknown_mtc</source>
         </metricWidgetDefs>
         <type>metric</type>
         <widgetName>metric_SMS_Unknown</widgetName>
@@ -894,8 +895,8 @@
         <analyticsDashboard>Campaign_Deliverability_Embedded</analyticsDashboard>
         <filterWidgetDefs>
             <initialValues>null</initialValues>
-            <parameters>{&quot;viewType&quot;:&quot;list&quot;,&quot;widgetStyle&quot;:{&quot;borderEdges&quot;:[],&quot;borderRadius&quot;:8},&quot;receiveFilterSource&quot;:{&quot;filterMode&quot;:&quot;include&quot;,&quot;widgetIds&quot;:[&quot;list_filter_Logical_View_Engagement_Union_Activity_Date&quot;,&quot;list_filter_Flow_Name&quot;,&quot;list_filter_Market_Segment_Name&quot;,&quot;s_ls_Filter_SMS_Logical_View_Bulk_Message_Union_Message_Type&quot;]},&quot;filterOption&quot;:{&quot;fieldName&quot;:&quot;SMS_Deliverability_Filter&quot;,&quot;dataType&quot;:&quot;Text&quot;,&quot;selectionType&quot;:&quot;multiple&quot;},&quot;isLabelHidden&quot;:false}</parameters>
-            <source>Marketing_Performance_Semantic_Mod_945</source>
+            <parameters>{&quot;viewType&quot;:&quot;list&quot;,&quot;widgetStyle&quot;:{&quot;borderEdges&quot;:[],&quot;borderRadius&quot;:8},&quot;receiveFilterSource&quot;:{&quot;filterMode&quot;:&quot;include&quot;,&quot;widgetIds&quot;:[&quot;list_filter_Logical_View_Engagement_Union_Activity_Date&quot;,&quot;list_filter_Flow_Name&quot;,&quot;list_filter_Market_Segment_Name&quot;,&quot;s_ls_Filter_SMS_Logical_View_Bulk_Message_Union_Message_Type&quot;]},&quot;filterOption&quot;:{&quot;fieldName&quot;:&quot;SMS_Deliverability_Filter_clc&quot;,&quot;dataType&quot;:&quot;Text&quot;,&quot;selectionType&quot;:&quot;multiple&quot;},&quot;isLabelHidden&quot;:false}</parameters>
+            <source>Marketing_Intelligence_Custom_Semantic_Model_00Da500001AA4BB</source>
         </filterWidgetDefs>
         <label>Delivery Status</label>
         <type>filter</type>
@@ -905,8 +906,8 @@
         <analyticsDashboard>Campaign_Deliverability_Embedded</analyticsDashboard>
         <filterWidgetDefs>
             <initialValues>null</initialValues>
-            <parameters>{&quot;viewType&quot;:&quot;list&quot;,&quot;receiveFilterSource&quot;:{&quot;filterMode&quot;:&quot;include&quot;,&quot;widgetIds&quot;:[&quot;list_filter_Logical_View_Engagement_Union_Activity_Date&quot;,&quot;list_filter_Flow_Name&quot;,&quot;list_filter_Market_Segment_Name&quot;,&quot;s_ls_Filter_SMS_Deliverability_Filter_Delivery_Status&quot;]},&quot;filterOption&quot;:{&quot;objectName&quot;:&quot;Logical_View_Bulk_Message_Union&quot;,&quot;fieldName&quot;:&quot;Message_Purpose&quot;,&quot;dataType&quot;:&quot;Text&quot;,&quot;selectionType&quot;:&quot;multiple&quot;},&quot;isLabelHidden&quot;:false}</parameters>
-            <source>Marketing_Performance_Semantic_Mod_945</source>
+            <parameters>{&quot;viewType&quot;:&quot;list&quot;,&quot;receiveFilterSource&quot;:{&quot;filterMode&quot;:&quot;include&quot;,&quot;widgetIds&quot;:[&quot;list_filter_Logical_View_Engagement_Union_Activity_Date&quot;,&quot;list_filter_Flow_Name&quot;,&quot;list_filter_Market_Segment_Name&quot;,&quot;s_ls_Filter_SMS_Deliverability_Filter_Delivery_Status&quot;]},&quot;filterOption&quot;:{&quot;fieldName&quot;:&quot;Message_Purpose_clc&quot;,&quot;dataType&quot;:&quot;Text&quot;,&quot;selectionType&quot;:&quot;multiple&quot;},&quot;isLabelHidden&quot;:false}</parameters>
+            <source>Marketing_Intelligence_Custom_Semantic_Model_00Da500001AA4BB</source>
         </filterWidgetDefs>
         <label>Message Type</label>
         <type>filter</type>
@@ -924,6 +925,6 @@
         <asset xsi:nil="true"/>
         <assetType>AnalyticsDashboard</assetType>
         <assetUsageType>Created</assetUsageType>
-        <workspace>Marketing_Performance</workspace>
+        <workspace>Marketing_Performance_Intelligence</workspace>
     </workspaceAssetRelationships>
 </AnalyticsDashboard>

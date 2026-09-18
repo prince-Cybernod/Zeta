@@ -3,13 +3,18 @@
   "title" : "LanguageContent",
   "contentBody" : {
     "languages" : [ {
-      "locale" : "en_US",
-      "label" : "English (US)",
+      "locale" : "es",
+      "label" : "Spanish",
       "isActive" : true,
       "isAuthoringOnly" : false
     }, {
-      "locale" : "es",
-      "label" : "Spanish",
+      "locale" : "zh_CN",
+      "label" : "Chinese (Simplified) (CN)",
+      "isActive" : true,
+      "isAuthoringOnly" : false
+    }, {
+      "locale" : "en_US",
+      "label" : "English (US)",
       "isActive" : true,
       "isAuthoringOnly" : false
     } ],

@@ -10,11 +10,45 @@
                 </componentInstanceProperties>
                 <componentInstanceProperties>
                     <name>entityName</name>
+                    <value>Lead</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>filterName</name>
+                    <value>Mogli_SMS__All</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>hideActionBar</name>
+                    <value>true</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>hideSearchBar</name>
+                    <value>false</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>pageSize</name>
+                    <value>5</value>
+                </componentInstanceProperties>
+                <componentName>flexipage:filterListCard</componentName>
+                <identifier>flexipage_filterListCard2</identifier>
+            </componentInstance>
+        </itemInstances>
+        <name>Facet-a530b438-56e2-4bf9-8a44-d0106bcc34f0</name>
+        <type>Facet</type>
+    </flexiPageRegions>
+    <flexiPageRegions>
+        <itemInstances>
+            <componentInstance>
+                <componentInstanceProperties>
+                    <name>enableInlineEdit</name>
+                    <value>true</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>entityName</name>
                     <value>Case</value>
                 </componentInstanceProperties>
                 <componentInstanceProperties>
                     <name>filterName</name>
-                    <value>AllOpenCases</value>
+                    <value>MyOpenCases</value>
                 </componentInstanceProperties>
                 <componentInstanceProperties>
                     <name>hideActionBar</name>
@@ -32,8 +66,8 @@
                 <identifier>flexipage_filterListCard</identifier>
             </componentInstance>
         </itemInstances>
-        <name>top</name>
-        <type>Region</type>
+        <name>Facet-5bea2dfa-89e8-46b4-8f21-66710577944e</name>
+        <type>Facet</type>
     </flexiPageRegions>
     <flexiPageRegions>
         <itemInstances>
@@ -42,26 +76,158 @@
                 <identifier>runtime_sales_activities_todayTaskContainer</identifier>
             </componentInstance>
         </itemInstances>
+        <name>Facet-50fb0622-b404-4e34-a779-9c8dc4a8c5c1</name>
+        <type>Facet</type>
+    </flexiPageRegions>
+    <flexiPageRegions>
+        <itemInstances>
+            <componentInstance>
+                <componentInstanceProperties>
+                    <name>body</name>
+                    <value>Facet-a530b438-56e2-4bf9-8a44-d0106bcc34f0</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>label</name>
+                    <value>Open Leads</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>name</name>
+                    <value>accordionSection1</value>
+                </componentInstanceProperties>
+                <componentName>flexipage:accordionSection</componentName>
+                <identifier>flexipage_accordionSection</identifier>
+            </componentInstance>
+        </itemInstances>
+        <itemInstances>
+            <componentInstance>
+                <componentInstanceProperties>
+                    <name>body</name>
+                    <value>Facet-5bea2dfa-89e8-46b4-8f21-66710577944e</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>label</name>
+                    <value>Open Cases</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>name</name>
+                    <value>accordionSection2</value>
+                </componentInstanceProperties>
+                <componentName>flexipage:accordionSection</componentName>
+                <identifier>flexipage_accordionSection2</identifier>
+            </componentInstance>
+        </itemInstances>
+        <itemInstances>
+            <componentInstance>
+                <componentInstanceProperties>
+                    <name>body</name>
+                    <value>Facet-50fb0622-b404-4e34-a779-9c8dc4a8c5c1</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>label</name>
+                    <value>Open Tasks</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>name</name>
+                    <value>accordionSection--j7xza0z1e6</value>
+                </componentInstanceProperties>
+                <componentName>flexipage:accordionSection</componentName>
+                <identifier>flexipage_accordionSection3</identifier>
+            </componentInstance>
+        </itemInstances>
+        <name>Facet-c96f22ee-bd99-49fe-9800-08285ebca92a</name>
+        <type>Facet</type>
+    </flexiPageRegions>
+    <flexiPageRegions>
+        <itemInstances>
+            <componentInstance>
+                <componentInstanceProperties>
+                    <name>decorate</name>
+                    <value>true</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>richTextValue</name>
+                    <value>&lt;p&gt;&lt;strong style=&quot;color: rgb(147, 97, 171); font-family: tahoma; font-size: 20px;&quot;&gt;Applications This Month&lt;/strong&gt;&lt;/p&gt;</value>
+                </componentInstanceProperties>
+                <componentName>flexipage:richText</componentName>
+                <identifier>flexipage_richText2</identifier>
+            </componentInstance>
+        </itemInstances>
+        <itemInstances>
+            <componentInstance>
+                <componentInstanceProperties>
+                    <name>decorate</name>
+                    <value>true</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>richTextValue</name>
+                    <value>&lt;p&gt;&lt;strong style=&quot;color: rgb(79, 73, 122); font-size: 18px; font-family: tahoma;&quot;&gt;Monthly Application Goal:&lt;/strong&gt;&lt;span style=&quot;color: rgb(79, 73, 122); font-size: 18px; font-family: tahoma;&quot;&gt; 30&lt;/span&gt;&lt;/p&gt;</value>
+                </componentInstanceProperties>
+                <componentName>flexipage:richText</componentName>
+                <identifier>flexipage_richText3</identifier>
+            </componentInstance>
+        </itemInstances>
+        <itemInstances>
+            <componentInstance>
+                <componentInstanceProperties>
+                    <name>dashboardName</name>
+                    <value>oNAblgGyfYmkVCzDEfjQuJNOmVMYGH</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>height</name>
+                    <value>600</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>hideOnError</name>
+                    <value>false</value>
+                </componentInstanceProperties>
+                <componentName>desktopDashboards:embeddedDashboard</componentName>
+                <identifier>desktopDashboards_embeddedDashboard</identifier>
+            </componentInstance>
+        </itemInstances>
+        <itemInstances>
+            <componentInstance>
+                <componentInstanceProperties>
+                    <name>decorate</name>
+                    <value>true</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>richTextValue</name>
+                    <value>&lt;p&gt;&lt;strong style=&quot;color: rgb(147, 97, 171); font-size: 20px; font-family: tahoma;&quot;&gt;Daily Actions&lt;/strong&gt;&lt;/p&gt;</value>
+                </componentInstanceProperties>
+                <componentName>flexipage:richText</componentName>
+                <identifier>flexipage_richText</identifier>
+            </componentInstance>
+        </itemInstances>
+        <itemInstances>
+            <componentInstance>
+                <componentInstanceProperties>
+                    <name>accordionSections</name>
+                    <value>Facet-c96f22ee-bd99-49fe-9800-08285ebca92a</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>allowMultipleSectionsOpen</name>
+                    <value>true</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>defaultSectionName</name>
+                    <value>accordionSection1</value>
+                </componentInstanceProperties>
+                <componentName>flexipage:accordion</componentName>
+                <identifier>flexipage_accordion</identifier>
+            </componentInstance>
+        </itemInstances>
+        <name>top</name>
+        <type>Region</type>
+    </flexiPageRegions>
+    <flexiPageRegions>
         <name>bottomLeft</name>
         <type>Region</type>
     </flexiPageRegions>
     <flexiPageRegions>
-        <itemInstances>
-            <componentInstance>
-                <componentName>home:eventContainer</componentName>
-                <identifier>home_eventContainer</identifier>
-            </componentInstance>
-        </itemInstances>
         <name>bottomRight</name>
         <type>Region</type>
     </flexiPageRegions>
     <flexiPageRegions>
-        <itemInstances>
-            <componentInstance>
-                <componentName>home:recentRecordContainer</componentName>
-                <identifier>home_recentRecordContainer</identifier>
-            </componentInstance>
-        </itemInstances>
         <name>sidebar</name>
         <type>Region</type>
     </flexiPageRegions>

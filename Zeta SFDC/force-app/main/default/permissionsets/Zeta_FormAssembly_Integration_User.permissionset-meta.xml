@@ -262,6 +262,11 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
+        <field>Account.SchoolMint_School_Name__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
         <field>Account.SchoolMint_Student_Id__c</field>
         <readable>true</readable>
     </fieldPermissions>
@@ -913,6 +918,11 @@
     <fieldPermissions>
         <editable>false</editable>
         <field>IndividualApplication.fxApplicant_First_Name__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>User.Bypass_Validations__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <hasActivationRequired>false</hasActivationRequired>

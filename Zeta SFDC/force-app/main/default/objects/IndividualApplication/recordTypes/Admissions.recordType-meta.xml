@@ -272,6 +272,18 @@
             <default>false</default>
         </values>
         <values>
+            <fullName>Call Campaign %E2%80%93 Former Rescinded</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Call Campaign %E2%80%93 Former Waitlisted</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Call Campaign %E2%80%93 Former Withdrawn%2FDeclined</fullName>
+            <default>false</default>
+        </values>
+        <values>
             <fullName>Email %E2%80%93 Contact Us Form</fullName>
             <default>false</default>
         </values>
@@ -280,23 +292,15 @@
             <default>false</default>
         </values>
         <values>
+            <fullName>Enroll Phone Number Call or Voicemail</fullName>
+            <default>false</default>
+        </values>
+        <values>
             <fullName>Event %2F Tour RSVP</fullName>
             <default>false</default>
         </values>
         <values>
             <fullName>External Vendor Lead</fullName>
-            <default>false</default>
-        </values>
-        <values>
-            <fullName>FO%26E Team %E2%80%93 Outreach Collection</fullName>
-            <default>false</default>
-        </values>
-        <values>
-            <fullName>Family Referral %5BPotential%5D</fullName>
-            <default>false</default>
-        </values>
-        <values>
-            <fullName>Google Voice %E2%80%93 Phone Call</fullName>
             <default>false</default>
         </values>
         <values>
@@ -316,6 +320,30 @@
             <default>false</default>
         </values>
         <values>
+            <fullName>Outreach %E2%80%93 CBO Tabling</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Outreach %E2%80%93 Community Event %28We Attend%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Outreach %E2%80%93 Community Event %28We Host%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Outreach %E2%80%93 Hotspot</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Outreach %E2%80%93 Pizza Party</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Outreach %E2%80%93 School%2F After-School Dismissal</fullName>
+            <default>false</default>
+        </values>
+        <values>
             <fullName>Text</fullName>
             <default>false</default>
         </values>
@@ -324,15 +352,15 @@
             <default>false</default>
         </values>
         <values>
-            <fullName>Website %E2%80%93 Flushing Google Form</fullName>
+            <fullName>Webinar RSVP</fullName>
             <default>false</default>
         </values>
         <values>
-            <fullName>Website %E2%80%93 Pop-Up Form</fullName>
+            <fullName>Website %E2%80%93 Lead Interest Form</fullName>
             <default>false</default>
         </values>
         <values>
-            <fullName>Zoom Event Attendance</fullName>
+            <fullName>Website %E2%80%93 Text Me the Application Link Form</fullName>
             <default>false</default>
         </values>
     </picklistValues>
@@ -471,24 +499,13 @@
         </values>
     </picklistValues>
     <picklistValues>
-        <picklist>Sibling_Applying_Gender__c</picklist>
+        <picklist>Responsible_Adult__c</picklist>
         <values>
-            <fullName>F</fullName>
+            <fullName>Guardian_1</fullName>
             <default>false</default>
         </values>
         <values>
-            <fullName>M</fullName>
-            <default>false</default>
-        </values>
-    </picklistValues>
-    <picklistValues>
-        <picklist>Sibling_Attending_Gender__c</picklist>
-        <values>
-            <fullName>F</fullName>
-            <default>false</default>
-        </values>
-        <values>
-            <fullName>M</fullName>
+            <fullName>Guardian_2</fullName>
             <default>false</default>
         </values>
     </picklistValues>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Mogli_SMS__BSUID__c</fullName>
+    <deprecated>false</deprecated>
+    <description>WhatsApp Business Scoped User ID. Used to identify users who have hidden their phone number via WhatsApp usernames.</description>
+    <externalId>false</externalId>
+    <label>BSUID</label>
+    <length>255</length>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

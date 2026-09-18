@@ -18,10 +18,32 @@
       "definition" : "sfdc_cms__dataGraphDataProvider",
       "sfdcExpressionKey" : "$dataGraph"
     } ],
-    "lightning:expressions" : [ ],
+    "lightning:expressions" : [ {
+      "attributes" : {
+        "expressionGroups" : [ {
+          "name" : "group0",
+          "resource" : "{!$dataGraph.ssot__FirstName__c}"
+        } ]
+      },
+      "default" : "",
+      "definition" : "sfdc_cms__multiLevelExpression",
+      "label" : "First_Name",
+      "sfdcExpressionKey" : "First_Name"
+    }, {
+      "attributes" : {
+        "expressionGroups" : [ {
+          "name" : "group0",
+          "resource" : "{!$dataGraph.ssot__LastName__c}"
+        } ]
+      },
+      "default" : "",
+      "definition" : "sfdc_cms__multiLevelExpression",
+      "label" : "Last_Name",
+      "sfdcExpressionKey" : "Last_Name"
+    } ],
     "lightning:padding" : "{!$brand.spacing.none}",
     "messagePurpose" : "promotional",
-    "preheader" : "Where Excellence Meets Heart, From Pre-K through Grade 12",
+    "preheader" : "Zeta students have been having a busy school year!",
     "sfdc_cms:attachments" : [ ],
     "sfdc_cms:block" : {
       "definition" : "sfdc_cms/rootContentBlock",
@@ -157,7 +179,7 @@
                 "lineHeight" : 1.5,
                 "textTransform" : "none"
               },
-              "text" : "Dear &lt;Parent Last Name&gt; Family,<br /><br />Zeta students have been having a busy school year! From the classrooms to the hallways, it has been a season of learning and a season of fun. <br /><br />"
+              "text" : "Dear {!$Expression.First_Name} {!$Expression.Last_Name},<br /><br />Zeta students have been having a busy school year! From the classrooms to the hallways, it has been a season of learning and a season of fun.<br />"
             },
             "definition" : "lightning/paragraph",
             "id" : "bbf0ea99-526d-48e3-960b-d6dbbefe7dd2",
@@ -214,7 +236,7 @@
               "lightning:margin" : "{!$brand.spacing.none}",
               "lightning:padding" : "{!$brand.spacing.none}",
               "lightning:typography" : "{!$brand.typography.paragraph.paragraph1}",
-              "text" : "<strong>At Zeta</strong>, our next generation education model focuses on empowering the whole child. Students are exposed to rigorous academics, Specialties that range from chess to soccer, socio-emotional learning practices and all of that in partnership with families. Through it all, we remain committed to our core belief: <strong>every child deserves an extraordinary education driven by love.</strong><br /><br />At <strong>Zeta Elementary Schools, that starts with building a foundation for everything that comes nex</strong>t. Rigorous academics meet joyful, hands-on learning, while expert-led Specialties in art, music, chess, dance, sports, and more help children discover what they love and what they can do.<br /><br />In <strong>Z Labs, our state-of-the-art innovation centers, students learn by creating</strong>. They think like builders, scientists, and entrepreneurs, developing ideas and learning how to bring them to life. These experiences grow with students, all the way to developing and pitching ideas in high school.<br /><br />And the results speak for themselves:<strong> Zeta students rank among the very best in the state. Our results in Math, Science and ELA consistently meet or exceed New York State and NYC averages. </strong><br /><br />Elementary school is only the beginning.<br /><br />At Zeta Middle School, students build independence and discover more about who they are while taking on increasingly rigorous academics. Experiential journeys bridge classroom learning with real-life lessons. At Zeta High School, the focus expands to <strong>purpose, passion, and power</strong>, with college preparation and opportunities to experience the world beyond school through Z Journeys. Z Houses and small Z Pods (learning groups) create a strong sense of belonging along the way.<br /><br /><br />"
+              "text" : "<strong>At Zeta</strong>, our next generation education model focuses on empowering the whole child. Students are exposed to rigorous academics, Specialties that range from chess to soccer, socio-emotional learning practices and all of that in partnership with families. Through it all, we remain committed to our core belief: <strong>every child deserves an extraordinary education driven by love.</strong><br /><br />At <strong>Zeta Elementary Schools, that starts with building a foundation for everything that comes nex</strong>t. Rigorous academics meet joyful, hands-on learning, while expert-led Specialties in art, music, chess, dance, sports, and more help children discover what they love and what they can do.<br /><br />In <strong>Z Labs, our state-of-the-art innovation centers, students learn by creating</strong>. They think like builders, scientists, and entrepreneurs, developing ideas and learning how to bring them to life. These experiences grow with students, all the way to developing and pitching ideas in high school.<br /><br />And the results speak for themselves:<strong> Zeta students rank among the very best in the state. Our results in Math, Science and ELA consistently meet or exceed New York State and NYC averages.</strong><br />"
             },
             "definition" : "lightning/paragraph",
             "id" : "c185f74c-2ace-41a9-b6f1-193ca60db472",
@@ -250,12 +272,12 @@
                 "altText" : "",
                 "overrideAltText" : false,
                 "source" : {
-                  "mimeType" : "image/jpeg",
-                  "ref" : "MCNQDH54OYDFAJLEJZWQZ3GGFBTQ",
-                  "size" : 28154.0,
+                  "mimeType" : "image/png",
+                  "ref" : "MCPC444BPSMFBQZFEQ7BANAMF4PA",
+                  "size" : 73606.0,
                   "type" : "imageReference"
                 },
-                "url" : "/cms/media/MCNQDH54OYDFAJLEJZWQZ3GGFBTQ?fileName=Zeta+Kids+1.jpg&fileHash=b65a90c2a0050bde9dc083a41a4b6ad3"
+                "url" : "/cms/media/MCPC444BPSMFBQZFEQ7BANAMF4PA?fileName=Zeta+Children+PreK.png&fileHash=1d7be50934fb683fa667e8506b7514a3"
               },
               "lightning:borderRadius" : "{!$brand.borderRadius.square}",
               "lightning:borderWidth" : "{!$brand.borderWeight.none}",
@@ -303,11 +325,11 @@
                 "overrideAltText" : false,
                 "source" : {
                   "mimeType" : "image/jpeg",
-                  "ref" : "MCNQDH54OYDFAJLEJZWQZ3GGFBTQ",
-                  "size" : 28154.0,
+                  "ref" : "MCFOUZSVHUWFEETERI4VW5VLJ3CU",
+                  "size" : 13267.0,
                   "type" : "imageReference"
                 },
-                "url" : "/cms/media/MCNQDH54OYDFAJLEJZWQZ3GGFBTQ?fileName=Zeta+Kids+1.jpg&fileHash=b65a90c2a0050bde9dc083a41a4b6ad3"
+                "url" : "/cms/media/MCFOUZSVHUWFEETERI4VW5VLJ3CU?fileName=Zeta+Children+Blocks.jpg&fileHash=9e12ea30692cdb270e2bdcda4c3e311a"
               },
               "lightning:borderRadius" : "{!$brand.borderRadius.square}",
               "lightning:borderWidth" : "{!$brand.borderWeight.none}",
@@ -355,11 +377,11 @@
                 "overrideAltText" : false,
                 "source" : {
                   "mimeType" : "image/jpeg",
-                  "ref" : "MCNQDH54OYDFAJLEJZWQZ3GGFBTQ",
-                  "size" : 28154.0,
+                  "ref" : "MC6E3X24HU4FDRNJWCHA7GIAO2UU",
+                  "size" : 10929.0,
                   "type" : "imageReference"
                 },
-                "url" : "/cms/media/MCNQDH54OYDFAJLEJZWQZ3GGFBTQ?fileName=Zeta+Kids+1.jpg&fileHash=b65a90c2a0050bde9dc083a41a4b6ad3"
+                "url" : "/cms/media/MC6E3X24HU4FDRNJWCHA7GIAO2UU?fileName=Zeta+Children+Flashlight.jpg&fileHash=f9b4ef550eedcee3ac61e0e496f0f79c"
               },
               "lightning:borderRadius" : "{!$brand.borderRadius.square}",
               "lightning:borderWidth" : "{!$brand.borderWeight.none}",
@@ -406,12 +428,12 @@
                 "altText" : "",
                 "overrideAltText" : false,
                 "source" : {
-                  "mimeType" : "image/jpeg",
-                  "ref" : "MCNQDH54OYDFAJLEJZWQZ3GGFBTQ",
-                  "size" : 28154.0,
+                  "mimeType" : "image/png",
+                  "ref" : "MC7LEOVK4PTNGR3OBLNTZ5SOPGQ4",
+                  "size" : 76548.0,
                   "type" : "imageReference"
                 },
-                "url" : "/cms/media/MCNQDH54OYDFAJLEJZWQZ3GGFBTQ?fileName=Zeta+Kids+1.jpg&fileHash=b65a90c2a0050bde9dc083a41a4b6ad3"
+                "url" : "/cms/media/MC7LEOVK4PTNGR3OBLNTZ5SOPGQ4?fileName=Zeta+Children+Hallway.png&fileHash=269c5ebc6c886cdd3f2c4ffbb37c2f43"
               },
               "lightning:borderRadius" : "{!$brand.borderRadius.square}",
               "lightning:borderWidth" : "{!$brand.borderWeight.none}",
@@ -458,12 +480,12 @@
                 "altText" : "",
                 "overrideAltText" : false,
                 "source" : {
-                  "mimeType" : "image/jpeg",
-                  "ref" : "MCNQDH54OYDFAJLEJZWQZ3GGFBTQ",
-                  "size" : 28154.0,
+                  "mimeType" : "image/png",
+                  "ref" : "MC4C6ATLVB6ZCM7CDEUAC6G2N6KQ",
+                  "size" : 17161.0,
                   "type" : "imageReference"
                 },
-                "url" : "/cms/media/MCNQDH54OYDFAJLEJZWQZ3GGFBTQ?fileName=Zeta+Kids+1.jpg&fileHash=b65a90c2a0050bde9dc083a41a4b6ad3"
+                "url" : "/cms/media/MC4C6ATLVB6ZCM7CDEUAC6G2N6KQ?fileName=Zeta+Students+Learning.png&fileHash=f4ad509a530e5449883d05f4f451532d"
               },
               "lightning:borderRadius" : "{!$brand.borderRadius.square}",
               "lightning:borderWidth" : "{!$brand.borderWeight.none}",
@@ -544,7 +566,7 @@
               "lightning:colorGroup" : {
                 "backgroundColor" : "{!$brand.colorScheme.root}",
                 "borderColor" : "{!$brand.colorScheme.neutral}",
-                "linkColor" : "{!$brand.colorScheme.primaryAccent}",
+                "linkColor" : "#0054A6",
                 "textColor" : "{!$brand.colorScheme.contrast}"
               },
               "lightning:margin" : "{!$brand.spacing.none}",
@@ -557,7 +579,7 @@
                 "lineHeight" : 1.5,
                 "textTransform" : "none"
               },
-              "text" : "<strong>Families who choose Zeta for Elementary School have a school that partners with them all the way through high school.</strong>  Along the way, children will learn within a community that knows them deeply and grows with them.<br /><br />If you would like to learn more about our Pre-K through Grade 12 journey, sign up here for <a href=\"https://zetaschools.org/events-for-prospective-families/\" target=\"_blank\" part=\"link\" rel=\"noopener noreferrer\">an upcoming tour</a>.<br /><br />We look forward to welcoming you soon.<br /><br /><br />Warmly,<br /><strong>The Zeta Enrollment Team</strong><br />Zeta Charter Schools<br /><br /><em>Please reach out if you have any questions about Zeta, our Enrollment Team is here for you every step of the way. ✉︎  enroll&#64;zetaschools.org &#x1f4de;(646) 480-1654</em><br /><br />"
+              "text" : "Elementary school is only the beginning.<br /><br />At Zeta Middle School, students build independence and discover more about who they are while taking on increasingly rigorous academics. Experiential journeys bridge classroom learning with real-life lessons. At Zeta High School, the focus expands to <strong>purpose, passion, and power</strong>, with college preparation and opportunities to experience the world beyond school through Z Journeys. Z Houses and small Z Pods (learning groups) create a strong sense of belonging along the way.<br /><br /><strong>Families who choose Zeta for Elementary School have a school that partners with them all the way through high school.</strong>  Along the way, children will learn within a community that knows them deeply and grows with them.<br /><br />If you would like to learn more about our Pre-K through Grade 12 journey, <a href=\"https://zetaschools.org/events-for-prospective-families/?sftoken&#61;eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE3ODk1NzU0ODQsImV4cCI6MTc4OTU3NTU0NCwiaW5kaXZpZHVhbElkIjoiaW5kaXZpZHVhbF9pZF9hYnNlbnQiLCJ0ZW5hbnRJZCI6ImEzNjAvcHJvZDIxLzZiMTEwNDZhM2VhZTQyMTM4Yjc1MzkyY2YyYTAzZmFlIiwiY29yZVRlbmFudElkIjoiY29yZS9wcm9kLzAwRGE1MDAwMDFBQTRCQkVBMSJ9.nNn0ejs6PONejnVl7eRo5ttdktXAgyQX6o0NiRuqUkg\" target=\"_blank\" part=\"link\" rel=\"noopener noreferrer\"><u>sign up here for an upcoming tour</u></a>.<br /><br />We look forward to welcoming you soon.<br /><br />Warmly,<br /><strong>The Zeta Enrollment Team</strong><br />Zeta Charter Schools<br /><br /><em>Please reach out if you have any questions about Zeta. Our Enrollment Team is here for you every step of the way:<br />✉︎  <a href=\"mailto:enroll&#64;zetaschools.org\" target=\"_blank\" part=\"link\" rel=\"noopener noreferrer\">enroll&#64;zetaschools.org</a><br />&#x1f4de;<a href=\"tel:16464801654\" target=\"_blank\" part=\"link\" rel=\"noopener noreferrer\">(646) 480-1654</a></em><br />"
             },
             "definition" : "lightning/paragraph",
             "id" : "18ab3856-066c-47f3-be32-7e0c1a2d60d8",

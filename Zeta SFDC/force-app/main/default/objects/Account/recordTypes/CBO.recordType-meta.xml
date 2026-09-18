@@ -58,6 +58,10 @@
             <default>false</default>
         </values>
         <values>
+            <fullName>Apartment %2F Housing Complex</fullName>
+            <default>false</default>
+        </values>
+        <values>
             <fullName>Business</fullName>
             <default>false</default>
         </values>
@@ -66,7 +70,11 @@
             <default>false</default>
         </values>
         <values>
-            <fullName>Daycare %2F Pre-k center</fullName>
+            <fullName>Daycare</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Indoor Playground</fullName>
             <default>false</default>
         </values>
         <values>
@@ -74,7 +82,11 @@
             <default>false</default>
         </values>
         <values>
-            <fullName>Medical center</fullName>
+            <fullName>Medical Center</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Museum</fullName>
             <default>false</default>
         </values>
         <values>
@@ -86,11 +98,11 @@
             <default>false</default>
         </values>
         <values>
-            <fullName>Place of worship</fullName>
+            <fullName>Place of Worship</fullName>
             <default>false</default>
         </values>
         <values>
-            <fullName>Play Center</fullName>
+            <fullName>Pre-K Center</fullName>
             <default>false</default>
         </values>
         <values>
@@ -98,7 +110,7 @@
             <default>false</default>
         </values>
         <values>
-            <fullName>Sport center</fullName>
+            <fullName>Sport Center</fullName>
             <default>false</default>
         </values>
     </picklistValues>
@@ -551,6 +563,106 @@
         </values>
         <values>
             <fullName>Warm</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>SY25_26_Partnership_Types__c</picklist>
+        <values>
+            <fullName>Co-Sponsored Event</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Literature Drop</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Promotes us through their channels</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Tabling</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Virtual Event</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Zeta Drive</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>SY26_27_Partnership_Status__c</picklist>
+        <values>
+            <fullName>Archived%2C No Further Partnership Possible</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Not Secured%2C But Likely</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Not Secured%2C But Unlikely</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Not Secured%2C No Further Partnership Possible</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Secured</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>SY26_27_Partnership_Types__c</picklist>
+        <values>
+            <fullName>Co-Sponsored Event</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Literature Drop</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Promotes us through their channels</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Tabling</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Virtual Event</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Zeta Drive</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>SY_25_26_Partnership_Status__c</picklist>
+        <values>
+            <fullName>Archived%2C No Further Partnership Possible</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Not Secured%2C But Likely</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Not Secured%2C But Unlikely</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Not Secured%2C No Further Partnership Possible</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Secured</fullName>
             <default>false</default>
         </values>
     </picklistValues>

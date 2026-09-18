@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>ZVC__Schedule_a_Zoom_Meeting__c</fullName>
+    <defaultValue>false</defaultValue>
+    <deprecated>false</deprecated>
+    <inlineHelpText>Tick this to make this as a Zoom &amp; Calender event. This option will schedule a Zoom meeting and put the meeting link in the description.</inlineHelpText>
+    <label>Schedule a Zoom Meeting</label>
+    <type>Checkbox</type>
+</CustomField>

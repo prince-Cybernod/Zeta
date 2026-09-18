@@ -5,6 +5,7 @@ private class StudentSelectionControllerTest {
   static {
     DATABASE_REPO_MOCK = new DatabaseRepoMock();
     StudentSelectionController.databaseRepo = DATABASE_REPO_MOCK;
+    ZetaApplicationController.databaseRepo = DATABASE_REPO_MOCK;
   }
   @IsTest
   private static void getStudents_withContact_returnsLinkedStudents() {
@@ -712,7 +713,7 @@ private class StudentSelectionControllerTest {
     DATABASE_REPO_MOCK.when(DATABASE_REPO_MOCK.method.queryWithBinds())
       .thenReturn(new List<IndividualApplication>{ app });
 
-    Map<String, Object> result = StudentSelectionController.getGradeBirthYearGuidance(appId);
+    Map<String, Object> result = StudentSelectionController.getGradeBirthYearGuidance(appId, null);
 
     Assert.areEqual('2023', result.get('preKBirthYear'), 'Pre-K birth year from timeline');
     Assert.areEqual(
@@ -731,7 +732,7 @@ private class StudentSelectionControllerTest {
     DATABASE_REPO_MOCK.when(DATABASE_REPO_MOCK.method.queryWithBinds())
       .thenReturn(new List<IndividualApplication>{ new IndividualApplication(Id = appId) });
 
-    Map<String, Object> result = StudentSelectionController.getGradeBirthYearGuidance(appId);
+    Map<String, Object> result = StudentSelectionController.getGradeBirthYearGuidance(appId, null);
 
     Assert.areEqual(null, result.get('preKBirthYear'), 'Pre-K year null when unconfigured');
     Assert.areEqual(
@@ -741,14 +742,76 @@ private class StudentSelectionControllerTest {
     );
   }
   @IsTest
-  private static void getGradeBirthYearGuidance_nullId_returnsEmpty() {
+  private static void getGradeBirthYearGuidance_nullId_usesActiveTimeline() {
+    DATABASE_REPO_MOCK.reset();
+    Id timelineId = SObjectIds.generateFakeId(Schema.ApplicationTimeline.SObjectType);
+
+    // The component may mount before a draft application exists; a null id falls
+    // back to the active timeline instead of the (not-yet-created) application.
+    DATABASE_REPO_MOCK.when(DATABASE_REPO_MOCK.method.query())
+      .thenReturn(new List<ApplicationTimeline>{ new ApplicationTimeline(Id = timelineId) });
+    DATABASE_REPO_MOCK.when(DATABASE_REPO_MOCK.method.queryWithBinds())
+      .thenReturn(
+        new List<ApplicationTimeline>{
+          new ApplicationTimeline(
+            Id = timelineId,
+            Pre_K_Birth_Year__c = '2023',
+            Kindergarten_Birth_Year__c = '2022'
+          )
+        }
+      );
+
+    Map<String, Object> result = StudentSelectionController.getGradeBirthYearGuidance(null, null);
+
+    Assert.areEqual('2023', result.get('preKBirthYear'), 'Pre-K birth year from active timeline');
+    Assert.areEqual(
+      '2022',
+      result.get('kindergartenBirthYear'),
+      'Kindergarten birth year from active timeline'
+    );
+  }
+  @IsTest
+  private static void getGradeBirthYearGuidance_nullId_suppliedTimeline_skipsActiveLookup() {
+    DATABASE_REPO_MOCK.reset();
+    Id timelineId = SObjectIds.generateFakeId(Schema.ApplicationTimeline.SObjectType);
+
+    // No active timeline: guidance must still resolve from the supplied one, so
+    // an overlapping cycle can't be quoted over the one being applied to.
+    DATABASE_REPO_MOCK.when(DATABASE_REPO_MOCK.method.query())
+      .thenReturn(new List<ApplicationTimeline>());
+    DATABASE_REPO_MOCK.when(DATABASE_REPO_MOCK.method.queryWithBinds())
+      .thenReturn(
+        new List<ApplicationTimeline>{
+          new ApplicationTimeline(
+            Id = timelineId,
+            Pre_K_Birth_Year__c = '2024',
+            Kindergarten_Birth_Year__c = '2023'
+          )
+        }
+      );
+
+    Map<String, Object> result = StudentSelectionController.getGradeBirthYearGuidance(
+      null,
+      timelineId
+    );
+
+    Assert.areEqual('2024', result.get('preKBirthYear'), 'Pre-K birth year from supplied timeline');
+    Assert.areEqual(
+      '2023',
+      result.get('kindergartenBirthYear'),
+      'Kindergarten birth year from supplied timeline'
+    );
+  }
+  @IsTest
+  private static void getGradeBirthYearGuidance_nullId_noActiveTimeline_returnsEmpty() {
     DATABASE_REPO_MOCK.reset();
 
-    // The component may mount before a draft application exists; a null id short-
-    // circuits to an empty map (no query, no note).
-    Map<String, Object> result = StudentSelectionController.getGradeBirthYearGuidance(null);
+    DATABASE_REPO_MOCK.when(DATABASE_REPO_MOCK.method.query())
+      .thenReturn(new List<ApplicationTimeline>());
 
-    Assert.isTrue(result.isEmpty(), 'No guidance without an application id');
+    Map<String, Object> result = StudentSelectionController.getGradeBirthYearGuidance(null, null);
+
+    Assert.isTrue(result.isEmpty(), 'No guidance when no timeline is active');
   }
   @IsTest
   private static void getApplicationStudent_withApp_returnsStudentData() {

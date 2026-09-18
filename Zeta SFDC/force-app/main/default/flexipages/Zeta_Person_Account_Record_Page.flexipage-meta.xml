@@ -21,6 +21,9 @@
                         <valueListItems>
                             <value>ChangeRecordType</value>
                         </valueListItems>
+                        <valueListItems>
+                            <value>Share</value>
+                        </valueListItems>
                     </valueList>
                 </componentInstanceProperties>
                 <componentInstanceProperties>
@@ -127,6 +130,26 @@
                 </fieldInstanceProperties>
                 <fieldItem>Record.PersonHasOptedOutOfEmail</fieldItem>
                 <identifier>RecordPersonHasOptedOutOfEmailField</identifier>
+            </fieldInstance>
+        </itemInstances>
+        <itemInstances>
+            <fieldInstance>
+                <fieldInstanceProperties>
+                    <name>uiBehavior</name>
+                    <value>none</value>
+                </fieldInstanceProperties>
+                <fieldItem>Record.Mogli_SMS__Mogli_Number__pc</fieldItem>
+                <identifier>RecordMogli_SMS_Mogli_Number_pcField</identifier>
+            </fieldInstance>
+        </itemInstances>
+        <itemInstances>
+            <fieldInstance>
+                <fieldInstanceProperties>
+                    <name>uiBehavior</name>
+                    <value>none</value>
+                </fieldInstanceProperties>
+                <fieldItem>Record.Mogli_SMS__Mogli_Opt_Out__pc</fieldItem>
+                <identifier>RecordMogli_SMS_Mogli_Opt_Out_pcField</identifier>
             </fieldInstance>
         </itemInstances>
         <name>Facet-2e1b3e3c-4d3a-470d-92d0-68179cce6e91</name>
@@ -1375,20 +1398,6 @@
         <itemInstances>
             <componentInstance>
                 <componentInstanceProperties>
-                    <name>label</name>
-                    <value>Tabs</value>
-                </componentInstanceProperties>
-                <componentInstanceProperties>
-                    <name>tabs</name>
-                    <value>Facet-2403c644-1909-48e0-83a1-841174231ca1</value>
-                </componentInstanceProperties>
-                <componentName>flexipage:tabset</componentName>
-                <identifier>flexipage_tabset2</identifier>
-            </componentInstance>
-        </itemInstances>
-        <itemInstances>
-            <componentInstance>
-                <componentInstanceProperties>
                     <name>attachmentsDisabled</name>
                     <value>false</value>
                 </componentInstanceProperties>
@@ -1400,8 +1409,35 @@
                     <name>customLimitUnit</name>
                     <value>Segments</value>
                 </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>mcvConfigurationRecord</name>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>recordId</name>
+                </componentInstanceProperties>
                 <componentName>Mogli_SMS:TextMessageComponentEmpApi</componentName>
                 <identifier>Mogli_SMS_TextMessageComponentEmpApi</identifier>
+                <visibilityRule>
+                    <criteria>
+                        <leftValue>{!$Permission.CustomPermission.Mogli_SMS__Mogli_Conversation_View_Access}</leftValue>
+                        <operator>EQUAL</operator>
+                        <rightValue>true</rightValue>
+                    </criteria>
+                </visibilityRule>
+            </componentInstance>
+        </itemInstances>
+        <itemInstances>
+            <componentInstance>
+                <componentInstanceProperties>
+                    <name>label</name>
+                    <value>Tabs</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>tabs</name>
+                    <value>Facet-2403c644-1909-48e0-83a1-841174231ca1</value>
+                </componentInstanceProperties>
+                <componentName>flexipage:tabset</componentName>
+                <identifier>flexipage_tabset2</identifier>
             </componentInstance>
         </itemInstances>
         <name>sidebar</name>

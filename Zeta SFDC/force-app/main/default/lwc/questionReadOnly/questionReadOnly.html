@@ -3,9 +3,16 @@
     <span class="slds-form-element__label">{question.label}</span>
     <div class="slds-form-element__control">
       <template lwc:if={isCheckbox}>
-        <lightning-formatted-text value={displayValue}></lightning-formatted-text>
+        <lightning-formatted-text
+          value={displayValue}
+        ></lightning-formatted-text>
       </template>
-      <template lwc:else>
+      <template lwc:if={isResolvedPicklist}>
+        <lightning-formatted-text
+          value={picklistDisplayValue}
+        ></lightning-formatted-text>
+      </template>
+      <template lwc:if={isPlainValue}>
         <lightning-formatted-text value={value}></lightning-formatted-text>
       </template>
     </div>

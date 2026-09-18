@@ -18,10 +18,32 @@
       "definition" : "sfdc_cms__dataGraphDataProvider",
       "sfdcExpressionKey" : "$dataGraph"
     } ],
-    "lightning:expressions" : [ ],
+    "lightning:expressions" : [ {
+      "attributes" : {
+        "expressionGroups" : [ {
+          "name" : "group0",
+          "resource" : "{!$dataGraph.ssot__FirstName__c}"
+        } ]
+      },
+      "default" : "",
+      "definition" : "sfdc_cms__multiLevelExpression",
+      "label" : "First_Name",
+      "sfdcExpressionKey" : "First_Name"
+    }, {
+      "attributes" : {
+        "expressionGroups" : [ {
+          "name" : "group0",
+          "resource" : "{!$dataGraph.ssot__LastName__c}"
+        } ]
+      },
+      "default" : "",
+      "definition" : "sfdc_cms__multiLevelExpression",
+      "label" : "Last_Name",
+      "sfdcExpressionKey" : "Last_Name"
+    } ],
     "lightning:padding" : "{!$brand.spacing.none}",
     "messagePurpose" : "promotional",
-    "preheader" : "Five Questions to Ask When Choosing an Elementary School",
+    "preheader" : "Thank you again for your interest in Zeta Elementary School.",
     "sfdc_cms:attachments" : [ ],
     "sfdc_cms:block" : {
       "definition" : "sfdc_cms/rootContentBlock",
@@ -144,20 +166,13 @@
               "lightning:colorGroup" : {
                 "backgroundColor" : "{!$brand.colorScheme.root}",
                 "borderColor" : "{!$brand.colorScheme.neutral}",
-                "linkColor" : "{!$brand.colorScheme.primaryAccent}",
+                "linkColor" : "#0054A6",
                 "textColor" : "{!$brand.colorScheme.contrast}"
               },
               "lightning:margin" : "{!$brand.spacing.none}",
               "lightning:padding" : "{!$brand.spacing.none}",
-              "lightning:typography" : {
-                "fontFamily" : "{!$brand.baseFontFamily}",
-                "fontSize" : "{!$brand.fontSize.medium}",
-                "fontWeight" : "{!$brand.fontWeight.normal}",
-                "letterSpacing" : "normal",
-                "lineHeight" : 1.5,
-                "textTransform" : "none"
-              },
-              "text" : "Dear &lt;Parent Last Name&gt; Family,<br /><br />Thank you again for your interest in Zeta Elementary School. Choosing an elementary school means thinking about where your child will spend their days, learn to read and write, make friends, discover what they love, and build the foundation for everything that comes next.<br />As you consider your options, we encourage you to ask a few essential questions.<br /><br />&#x1f49c;&#x1faf6;<strong>Will my child be known in a way that builds real confidence?</strong><br />Young children need adults who notice when they need help, recognize what excites them, and celebrate their progress. At Zeta, teachers build close relationships with every student. Children also gather regularly with classmates and teachers to share, listen to one another, build friendships, and learn how to work through challenges together.<br /><br />&#x1fa77;✏️<strong>Will my child build strong academic habits?</strong><br />Elementary school builds the foundation children carry forward. Through joyful, rigorous instruction, students learn to ask questions, explain their thinking, and persevere through challenges. Our results show what a love-driven education makes possible. In 2025-26, 92% of Zeta students passed the state Math exams, with nearly half earning the highest score. In ELA, 86% passed—50 percentage points above their local districts and 36 points above NYC. In Science, 92% passed, up four points and marking Zeta’s strongest result since New York State introduced its more rigorous assessment.<br /><br />&#x1f49c;&#x1f4a1;<strong>Will my child have fun and get hands-on experience?</strong><br />Children are naturally curious. Zeta gives that curiosity somewhere to go. In Z Lab and across their classes, students investigate problems, design solutions, build, test, and try again. They learn that they can use what they know to create something of their own. All while having fun!<br /><br />&#x1fa77;&#x1f3a8; <strong>Will my child have space to explore who they are becoming?</strong><br />Children should have many chances to discover what they enjoy and what they are good at. Specialties such as art, music, chess, dance, soccer, basketball, and Taekwondo are part of the school day and give every child meaningful experiences that can become interests, strengths, and passions.<br /><br />&#x1f49c;&#x1f331; <strong>Will my child grow through meaningful opportunities beyond the classroom?</strong><br />Field trips, performances, competitions, school traditions, Z Clubs, and Z Teams give children new places to practice independence, friendship, teamwork, and courage. Learning becomes something they experience, not simply something they do at a desk.<br /><br /><strong>This is what it means for every child to be known, nurtured, and empowered:</strong> known by adults who understand them, nurtured through an education that develops their whole self, and empowered with the knowledge, confidence, and curiosity to keep discovering what they are capable of. <strong>This is what Zeta Elementary Schools promise. <br /></strong><br />We invite you to come and ask all these questions, and more, in person at a Zeta school. Sign up for an upcoming event or tour to learn more about our love-driven education. <br /><br />Warmly,<br /><strong>The Zeta Enrollment Team</strong><br />Zeta Charter Schools<br /><br /><em>Please reach out if you have any questions about Zeta, our Enrollment Team is here for you every step of the way. ✉︎  enroll&#64;zetaschools.org &#x1f4de;(646) 480-1654</em><br /><br /><br /><br />"
+              "lightning:typography" : "{!$brand.typography.paragraph.paragraph1}",
+              "text" : "<a href=\"tel:646-480-1654\" target=\"_blank\" part=\"link\" rel=\"noopener noreferrer\">(646) 480-1654</a>Dear {!$Expression.First_Name} {!$Expression.Last_Name},<br /><br />Thank you again for your interest in Zeta Elementary School. Choosing an elementary school means thinking about where your child will spend their days, learn to read and write, make friends, discover what they love, and build the foundation for everything that comes next.<br /><br />As you consider your options, we encourage you to ask a few essential questions.<br /><br />&#x1f49c;&#x1faf6;<strong>Will my child be known in a way that builds real confidence?</strong><br />Young children need adults who notice when they need help, recognize what excites them, and celebrate their progress. At Zeta, teachers build close relationships with every student. Children also gather regularly with classmates and teachers to share, listen to one another, build friendships, and learn how to work through challenges together.<br /><br />&#x1fa77;✏️<strong>Will my child build strong academic habits?</strong><br />Elementary school builds the foundation children carry forward. Through joyful, rigorous instruction, students learn to ask questions, explain their thinking, and persevere through challenges. Our results show what a love-driven education makes possible. In 2025-26, 92% of Zeta students passed the state Math exams, with nearly half earning the highest score. In ELA, 86% passed—50 percentage points above their local districts and 36 points above NYC. In Science, 92% passed, up four points and marking Zeta’s strongest result since New York State introduced its more rigorous assessment.<br /><br />&#x1f49c;&#x1f4a1;<strong>Will my child have fun and get hands-on experience?</strong><br />Children are naturally curious. Zeta gives that curiosity somewhere to go. In Z Lab and across their classes, students investigate problems, design solutions, build, test, and try again. They learn that they can use what they know to create something of their own. All while having fun!<br /><br />&#x1fa77;&#x1f3a8; <strong>Will my child have space to explore who they are becoming?</strong><br />Children should have many chances to discover what they enjoy and what they are good at. Specialties such as art, music, chess, dance, soccer, basketball, and Taekwondo are part of the school day and give every child meaningful experiences that can become interests, strengths, and passions.<br /><br />&#x1f49c;&#x1f331; <strong>Will my child grow through meaningful opportunities beyond the classroom?</strong><br />Field trips, performances, competitions, school traditions, Z Clubs, and Z Teams give children new places to practice independence, friendship, teamwork, and courage. Learning becomes something they experience, not simply something they do at a desk.<br /><br /><strong>This is what it means for every child to be known, nurtured, and empowered:</strong> known by adults who understand them, nurtured through an education that develops their whole self, and empowered with the knowledge, confidence, and curiosity to keep discovering what they are capable of. <strong>This is what Zeta Elementary Schools promise.<br /></strong><br />We invite you to come and ask all these questions, and more, in person at a Zeta school. <a href=\"https://zetaschools.org/events-for-prospective-families/?sftoken&#61;eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE3ODk1NzUwMjQsImV4cCI6MTc4OTU3NTA4NCwiaW5kaXZpZHVhbElkIjoiaW5kaXZpZHVhbF9pZF9hYnNlbnQiLCJ0ZW5hbnRJZCI6ImEzNjAvcHJvZDIxLzZiMTEwNDZhM2VhZTQyMTM4Yjc1MzkyY2YyYTAzZmFlIiwiY29yZVRlbmFudElkIjoiY29yZS9wcm9kLzAwRGE1MDAwMDFBQTRCQkVBMSJ9.q0H_weMR1Ssy_5g3b96gIww2eptVqbNuI72b-w2pgjw\" target=\"_blank\" part=\"link\" rel=\"noopener noreferrer noopener noreferrer\"><u>Sign up for an upcoming event or tour</u></a> to learn more about our love-driven education.<br /><br />Warmly,<br /><strong>The Zeta Enrollment Team</strong><br />Zeta Charter Schools<br /><br /><em>Please reach out if you have any questions about Zeta. Our Enrollment Team is here for you every step of the way: <br />✉︎  <a href=\"mailto:enroll&#64;zetaschools.org\" target=\"_blank\" part=\"link\" rel=\"noopener noreferrer\">enroll&#64;zetaschools.org</a><br />&#x1f4de;<a href=\"tel:16464801654\" target=\"_blank\" part=\"link\" rel=\"noopener noreferrer\">(646) 480-1654</a></em><br />"
             },
             "definition" : "lightning/paragraph",
             "id" : "bbf0ea99-526d-48e3-960b-d6dbbefe7dd2",

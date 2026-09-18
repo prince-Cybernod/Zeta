@@ -8,5 +8,20 @@
         <plural>true</plural>
         <value>SObject Field Criteria</value>
     </caseValues>
+    <layouts>
+        <layout>SObject Field Criteria Layout</layout>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+        <sections>
+            <label><!-- Description --></label>
+            <section>Description</section>
+        </sections>
+        <sections>
+            <label><!-- Formula Expression --></label>
+            <section>Formula Expression</section>
+        </sections>
+    </layouts>
     <startsWith>Consonant</startsWith>
 </CustomObjectTranslation>

@@ -26,9 +26,9 @@
                 <label>Community Organization</label>
             </value>
             <value>
-                <fullName>Daycare / Pre-k center</fullName>
+                <fullName>Pre-K Center</fullName>
                 <default>false</default>
-                <label>Daycare / Pre-k center</label>
+                <label>Pre-K Center</label>
             </value>
             <value>
                 <fullName>Library</fullName>
@@ -36,9 +36,9 @@
                 <label>Library</label>
             </value>
             <value>
-                <fullName>Medical center</fullName>
+                <fullName>Medical Center</fullName>
                 <default>false</default>
-                <label>Medical center</label>
+                <label>Medical Center</label>
             </value>
             <value>
                 <fullName>Pediatric Clinic</fullName>
@@ -46,14 +46,14 @@
                 <label>Pediatric Clinic</label>
             </value>
             <value>
-                <fullName>Place of worship</fullName>
+                <fullName>Place of Worship</fullName>
                 <default>false</default>
-                <label>Place of worship</label>
+                <label>Place of Worship</label>
             </value>
             <value>
-                <fullName>Play Center</fullName>
+                <fullName>Indoor Playground</fullName>
                 <default>false</default>
-                <label>Play Center</label>
+                <label>Indoor Playground</label>
             </value>
             <value>
                 <fullName>Shelter</fullName>
@@ -61,9 +61,9 @@
                 <label>Shelter</label>
             </value>
             <value>
-                <fullName>Sport center</fullName>
+                <fullName>Sport Center</fullName>
                 <default>false</default>
-                <label>Sport center</label>
+                <label>Sport Center</label>
             </value>
             <value>
                 <fullName>Other</fullName>
@@ -71,10 +71,37 @@
                 <label>Other</label>
             </value>
             <value>
+                <fullName>Daycare</fullName>
+                <default>false</default>
+                <label>Daycare</label>
+            </value>
+            <value>
+                <fullName>Museum</fullName>
+                <default>false</default>
+                <label>Museum</label>
+            </value>
+            <value>
+                <fullName>Apartment / Housing Complex</fullName>
+                <default>false</default>
+                <label>Apartment / Housing Complex</label>
+            </value>
+            <value>
+                <fullName>Daycare / Pre-k center</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Daycare / Pre-k center</label>
+            </value>
+            <value>
                 <fullName>Other Community Organization</fullName>
                 <default>false</default>
                 <isActive>false</isActive>
                 <label>Other Community Organization</label>
+            </value>
+            <value>
+                <fullName>Play Center</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Play Center</label>
             </value>
         </valueSetDefinition>
     </valueSet>

@@ -8,5 +8,12 @@
         <plural>true</plural>
         <value>Lottery Run Logs</value>
     </caseValues>
+    <layouts>
+        <layout>Lottery Run Log Layout</layout>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+    </layouts>
     <startsWith>Consonant</startsWith>
 </CustomObjectTranslation>

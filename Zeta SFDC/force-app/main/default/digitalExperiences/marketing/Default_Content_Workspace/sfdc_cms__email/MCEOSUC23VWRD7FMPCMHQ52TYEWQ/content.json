@@ -18,10 +18,43 @@
       "definition" : "sfdc_cms__dataGraphDataProvider",
       "sfdcExpressionKey" : "$dataGraph"
     } ],
-    "lightning:expressions" : [ ],
+    "lightning:expressions" : [ {
+      "attributes" : {
+        "expressionGroups" : [ {
+          "name" : "group0",
+          "resource" : "{!$dataGraph.ssot__FirstName__c}"
+        } ]
+      },
+      "default" : "",
+      "definition" : "sfdc_cms__multiLevelExpression",
+      "label" : "First_Name",
+      "sfdcExpressionKey" : "First_Name"
+    }, {
+      "attributes" : {
+        "expressionGroups" : [ {
+          "name" : "group0",
+          "resource" : "{!$dataGraph.ssot__FirstName__c}"
+        } ]
+      },
+      "default" : "",
+      "definition" : "sfdc_cms__multiLevelExpression",
+      "label" : "First_Name_1",
+      "sfdcExpressionKey" : "First_Name_1"
+    }, {
+      "attributes" : {
+        "expressionGroups" : [ {
+          "name" : "group0",
+          "resource" : "{!$dataGraph.ssot__LastName__c}"
+        } ]
+      },
+      "default" : "",
+      "definition" : "sfdc_cms__multiLevelExpression",
+      "label" : "Last_Name",
+      "sfdcExpressionKey" : "Last_Name"
+    } ],
     "lightning:padding" : "{!$brand.spacing.none}",
     "messagePurpose" : "promotional",
-    "preheader" : "Hello from Zeta founder and proud Zeta parent",
+    "preheader" : "Congratulations on applying to Zeta Elementary School!",
     "sfdc_cms:attachments" : [ ],
     "sfdc_cms:block" : {
       "definition" : "sfdc_cms/rootContentBlock",
@@ -102,18 +135,18 @@
         } ]
       }, {
         "attributes" : {
+          "lightning:backgroundImage" : {
+            "position" : "center center",
+            "repeat" : "no-repeat",
+            "size" : "cover"
+          },
           "lightning:borderRadius" : "{!$brand.borderRadius.square}",
           "lightning:borderWidth" : "{!$brand.borderWeight.none}",
           "lightning:colorScheme" : "{!$brand.colorScheme}",
           "lightning:margin" : "{!$brand.spacing.none}",
           "lightning:padding" : "{!$brand.spacing.xSmall}",
           "reverseOrderOnMobile" : false,
-          "stackOnMobile" : true,
-          "lightning:backgroundImage" : {
-            "repeat" : "no-repeat",
-            "position" : "center center",
-            "size" : "cover"
-          }
+          "stackOnMobile" : true
         },
         "definition" : "lightning/section",
         "id" : "1c553eaf-be98-4369-93f3-4ecf6d07253c",
@@ -121,17 +154,17 @@
         "children" : [ {
           "attributes" : {
             "columnWidth" : 12.0,
+            "lightning:backgroundImage" : {
+              "position" : "center center",
+              "repeat" : "no-repeat",
+              "size" : "cover"
+            },
             "lightning:borderRadius" : "{!$brand.borderRadius.square}",
             "lightning:borderWidth" : "{!$brand.borderWeight.none}",
             "lightning:colorScheme" : "{!$brand.colorScheme}",
             "lightning:margin" : "{!$brand.spacing.none}",
             "lightning:padding" : "{!$brand.spacing.xSmall}",
-            "lightning:verticalAlignment" : "top",
-            "lightning:backgroundImage" : {
-              "repeat" : "no-repeat",
-              "position" : "center center",
-              "size" : "cover"
-            }
+            "lightning:verticalAlignment" : "top"
           },
           "definition" : "lightning/column",
           "id" : "3e3753c4-dfc3-4b5e-bf39-670773e4c4eb",
@@ -150,7 +183,7 @@
               "lightning:margin" : "{!$brand.spacing.none}",
               "lightning:padding" : "{!$brand.spacing.none}",
               "lightning:typography" : "{!$brand.typography.paragraph.paragraph1}",
-              "text" : "Dear &lt;NAME&gt;<br />Congratulations on applying to Zeta Elementary School!"
+              "text" : "Dear {!$Expression.First_Name_1} {!$Expression.Last_Name},<br /><br />Congratulations on applying to Zeta Elementary School!"
             },
             "definition" : "lightning/paragraph",
             "id" : "618d12ac-1220-42a4-9ed6-83e330b709d4",
@@ -187,7 +220,24 @@
             "lightning:borderWidth" : "{!$brand.borderWeight.none}",
             "lightning:colorScheme" : "{!$brand.colorScheme}",
             "lightning:margin" : "{!$brand.spacing.none}",
-            "lightning:padding" : "{!$brand.spacing.xSmall}",
+            "lightning:padding" : {
+              "bottom" : {
+                "unit" : "px",
+                "value" : 8.0
+              },
+              "left" : {
+                "unit" : "px",
+                "value" : 12.0
+              },
+              "right" : {
+                "unit" : "px",
+                "value" : 8.0
+              },
+              "top" : {
+                "unit" : "px",
+                "value" : 8.0
+              }
+            },
             "lightning:verticalAlignment" : "top"
           },
           "definition" : "lightning/column",
@@ -304,18 +354,18 @@
         } ]
       }, {
         "attributes" : {
+          "lightning:backgroundImage" : {
+            "position" : "center center",
+            "repeat" : "no-repeat",
+            "size" : "cover"
+          },
           "lightning:borderRadius" : "{!$brand.borderRadius.square}",
           "lightning:borderWidth" : "{!$brand.borderWeight.none}",
           "lightning:colorScheme" : "{!$brand.colorScheme}",
           "lightning:margin" : "{!$brand.spacing.none}",
           "lightning:padding" : "{!$brand.spacing.xSmall}",
           "reverseOrderOnMobile" : false,
-          "stackOnMobile" : true,
-          "lightning:backgroundImage" : {
-            "repeat" : "no-repeat",
-            "position" : "center center",
-            "size" : "cover"
-          }
+          "stackOnMobile" : true
         },
         "definition" : "lightning/section",
         "id" : "c00b2355-d74e-46c1-879c-1cc07daf5b0b",
@@ -323,17 +373,17 @@
         "children" : [ {
           "attributes" : {
             "columnWidth" : 8.0,
+            "lightning:backgroundImage" : {
+              "position" : "center center",
+              "repeat" : "no-repeat",
+              "size" : "cover"
+            },
             "lightning:borderRadius" : "{!$brand.borderRadius.square}",
             "lightning:borderWidth" : "{!$brand.borderWeight.none}",
             "lightning:colorScheme" : "{!$brand.colorScheme}",
             "lightning:margin" : "{!$brand.spacing.none}",
             "lightning:padding" : "{!$brand.spacing.xSmall}",
-            "lightning:verticalAlignment" : "top",
-            "lightning:backgroundImage" : {
-              "repeat" : "no-repeat",
-              "position" : "center center",
-              "size" : "cover"
-            }
+            "lightning:verticalAlignment" : "top"
           },
           "definition" : "lightning/column",
           "id" : "5309e495-7af7-481c-a35e-53868fccddb6",
@@ -361,17 +411,17 @@
         }, {
           "attributes" : {
             "columnWidth" : 4.0,
+            "lightning:backgroundImage" : {
+              "position" : "center center",
+              "repeat" : "no-repeat",
+              "size" : "cover"
+            },
             "lightning:borderRadius" : "{!$brand.borderRadius.square}",
             "lightning:borderWidth" : "{!$brand.borderWeight.none}",
             "lightning:colorScheme" : "{!$brand.colorScheme}",
             "lightning:margin" : "{!$brand.spacing.none}",
             "lightning:padding" : "{!$brand.spacing.xSmall}",
-            "lightning:verticalAlignment" : "top",
-            "lightning:backgroundImage" : {
-              "repeat" : "no-repeat",
-              "position" : "center center",
-              "size" : "cover"
-            }
+            "lightning:verticalAlignment" : "top"
           },
           "definition" : "lightning/column",
           "id" : "92866615-9309-4b00-b222-c272e00639c6",
@@ -457,20 +507,13 @@
               "lightning:colorGroup" : {
                 "backgroundColor" : "{!$brand.colorScheme.root}",
                 "borderColor" : "{!$brand.colorScheme.neutral}",
-                "linkColor" : "{!$brand.colorScheme.primaryAccent}",
+                "linkColor" : "#0054A6",
                 "textColor" : "{!$brand.colorScheme.contrast}"
               },
               "lightning:margin" : "{!$brand.spacing.none}",
               "lightning:padding" : "{!$brand.spacing.none}",
-              "lightning:typography" : {
-                "fontFamily" : "{!$brand.baseFontFamily}",
-                "fontSize" : "{!$brand.fontSize.medium}",
-                "fontWeight" : "{!$brand.fontWeight.normal}",
-                "letterSpacing" : "normal",
-                "lineHeight" : 1.5,
-                "textTransform" : "none"
-              },
-              "text" : "Our earliest plans took shape in a leaky basement, but the ambition was big. From the outset, we sought exceptional educators with deep expertise, enormous passion, and a belief in what children can accomplish. That belief shapes everything you will see at Zeta.  <br /><br />From an idea and a dream, we have grown to serve 4,700&#43; students 10 campuses in the Bronx, Upper Manhattan, and Queens. Rigorous academics are joined by art, music, chess, athletics, technology, and experiences beyond the classroom. Zeta Charter Schools are top-performing, tuition-free public schools that have served New York City families for eight years. Our schools are among the very best in the state, and our results in Math, Science and ELA consistently meet or exceed New York State and NYC averages. <br /><br />Today, I have the privilege of seeing Zeta from two perspectives: as its founder and as a proud Zeta parent.  Even though I know the ins and outs of our schools, I am endlessly fascinated by what my youngest son comes home having learned, tried, questioned, or discovered. I get to watch his world become a little bigger every day.<br /><br />That is what I wanted for my children. It is what I want for yours, too.<br /><a href=\"https://zetaschools.org/events-for-prospective-families/\" target=\"_blank\" part=\"link\" rel=\"noopener noreferrer\">Come visit us at Zeta</a> and experience everything that is possible for your child here. <br /><br /><strong>Warmly,<br />Emily Kim<br />Founder, CEO &amp; Zeta Mom<br />Zeta Charter Schools<br /></strong><br /><em>Please reach out if you have any questions about Zeta, our Enrollment Team is here for you every step of the way. ✉︎  enroll&#64;zetaschools.org &#x1f4de;(646) 480-1654</em><br /><br /><br />"
+              "lightning:typography" : "{!$brand.typography.paragraph.paragraph1}",
+              "text" : "Our earliest plans took shape in a leaky basement, but the ambition was big. From the outset, we sought exceptional educators with deep expertise, enormous passion, and a belief in what children can accomplish. That belief shapes everything you will see at Zeta.  <br /><br />From an idea and a dream, we have grown to serve 4,700&#43; students 10 campuses in the Bronx, Upper Manhattan, and Queens. Rigorous academics are joined by art, music, chess, athletics, technology, and experiences beyond the classroom. Zeta Charter Schools are top-performing, tuition-free public schools that have served New York City families for eight years. Our schools are among the very best in the state, and our results in Math, Science and ELA consistently meet or exceed New York State and NYC averages. <br /><br />Today, I have the privilege of seeing Zeta from two perspectives: as its founder and as a proud Zeta parent.  Even though I know the ins and outs of our schools, I am endlessly fascinated by what my youngest son comes home having learned, tried, questioned, or discovered. I get to watch his world become a little bigger every day.<br /><br />That is what I wanted for my children. It is what I want for yours, too.<br /><a href=\"https://zetaschools.org/events-for-prospective-families/\" target=\"_blank\" part=\"link\" rel=\"noopener noreferrer noopener noreferrer noopener noreferrer noopener noreferrer noopener noreferrer noopener noreferrer noopener noreferrer\"><u>Come visit us at Zeta</u></a> and experience everything that is possible for your child here. <br /><br /><strong>Warmly,<br />Emily Kim<br />Founder, CEO &amp; Zeta Mom<br />Zeta Charter Schools<br /></strong><br /><em>Please reach out if you have any questions about Zeta. Our Enrollment Team is here for you every step of the way:<br /></em>✉︎ <a href=\"mailto:enroll&#64;zetaschools.org\" target=\"_blank\" part=\"link\" rel=\"noopener noreferrer\">enroll&#64;zetaschools.org</a><br />&#x1f4de;<a href=\"tel:16464801654\" target=\"_blank\" part=\"link\" rel=\"noopener noreferrer\">(646) 480-1654</a><br />"
             },
             "definition" : "lightning/paragraph",
             "id" : "bbf0ea99-526d-48e3-960b-d6dbbefe7dd2",

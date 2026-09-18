@@ -75,7 +75,7 @@ const INTERNAL_PAGE_TYPES = new Set([
   'standard__recordPage',
   'standard__app'
 ]);
-const PORTAL_EXIT_URL = '/parents/s/';
+const PORTAL_EXIT_URL = '/s/';
 
 export default class ZetaApplication extends LightningElement {
   @api recordId;

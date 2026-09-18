@@ -8,7 +8,7 @@
     <disableReputationRecordConversations>false</disableReputationRecordConversations>
     <emailFooterLogo>Experiences_Shared_Document_Folder/Zeta_Purple_Email_Logo.png</emailFooterLogo>
     <emailFooterText>Zeta Charter Schools</emailFooterText>
-    <emailSenderAddress>unicorn+zetacharterschools@elevation.solutions</emailSenderAddress>
+    <emailSenderAddress>enroll@connect.zetaschools.org</emailSenderAddress>
     <emailSenderName>Zeta Charter Schools</emailSenderName>
     <embeddedLoginEnabled>false</embeddedLoginEnabled>
     <enableApexCDNCaching>false</enableApexCDNCaching>
@@ -61,9 +61,9 @@
     <networkMemberGroups>
         <permissionSet>Zeta_Lottery_Custom_Object_Access</permissionSet>
         <permissionSet>Zeta_Enrollment_Custom_Object_Access</permissionSet>
-        <profile>admin</profile>
-        <profile>zeta standard user</profile>
-        <profile>zeta parent portal user</profile>
+        <profile>Admin</profile>
+        <profile>Zeta Standard User</profile>
+        <profile>Zeta Parent Portal User</profile>
     </networkMemberGroups>
     <networkPageOverrides>
         <changePasswordPageOverrideSetting>Standard</changePasswordPageOverrideSetting>
@@ -72,7 +72,6 @@
         <loginPageOverrideSetting>Configurable</loginPageOverrideSetting>
         <selfRegProfilePageOverrideSetting>Designer</selfRegProfilePageOverrideSetting>
     </networkPageOverrides>
-    <newSenderAddress>enroll@connect.zetaschools.org</newSenderAddress>
     <picassoSite>Zeta_Charter_Schools1</picassoSite>
     <secondaryEmailSenderEnabled>false</secondaryEmailSenderEnabled>
     <selfRegistration>true</selfRegistration>

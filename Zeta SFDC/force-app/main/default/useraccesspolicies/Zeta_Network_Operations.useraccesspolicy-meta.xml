@@ -2,7 +2,9 @@
 <UserAccessPolicy xmlns="http://soap.sforce.com/2006/04/metadata">
     <booleanFilter>1 AND 2 AND 3</booleanFilter>
     <masterLabel>Zeta - Network Operations</masterLabel>
-    <status>Design</status>
+    <order>7</order>
+    <status>Active</status>
+    <triggerType>CreateAndUpdate</triggerType>
     <userAccessPolicyActions>
         <action>Grant</action>
         <target>Zeta_Network_School_Managers</target>
@@ -16,7 +18,7 @@
     <userAccessPolicyFilters>
         <operation>equals</operation>
         <sortOrder>1</sortOrder>
-        <target>zeta platform user</target>
+        <target>Zeta Platform User</target>
         <type>Profile</type>
     </userAccessPolicyFilters>
     <userAccessPolicyFilters>

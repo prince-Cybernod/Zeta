@@ -33,6 +33,29 @@ function statusRank(statusKey) {
   return rank === undefined ? DEFAULT_STATUS_RANK : rank;
 }
 
+// Statuses the portal renames for parents. Zeta shows Eligible as "Applied" so
+// families don't read an internal review milestone as a decision. Display only:
+// the stored Status is untouched and staff surfaces still show Eligible.
+const PARENT_STATUS_LABELS = {
+  Eligible: 'Applied'
+};
+
+function parentStatusLabel(label) {
+  return PARENT_STATUS_LABELS[label] || label;
+}
+
+// Badge colour follows the same parent-facing mask as the label: an Eligible
+// row renders the Applied badge class so the two are indistinguishable, while
+// statusKey itself still says 'eligible' for sort rank, filtering, and the
+// withdraw menu.
+const PARENT_BADGE_STATUS_KEYS = {
+  eligible: 'applied'
+};
+
+function parentBadgeStatusKey(statusKey) {
+  return PARENT_BADGE_STATUS_KEYS[statusKey] || statusKey;
+}
+
 export default class ApplicationDashboard extends LightningElement {
   @api variant;
   @api pageDevName = 'Application_Details';
@@ -132,8 +155,8 @@ export default class ApplicationDashboard extends LightningElement {
         return {
           ...app,
           statusKey,
-          statusTagClass: `badge-tag badge-tag--${statusKey}`,
-          statusLabel: this._statusLabel(app),
+          statusTagClass: `badge-tag badge-tag--${parentBadgeStatusKey(statusKey)}`,
+          statusLabel: parentStatusLabel(this._statusLabel(app)),
           isDraft: !app.isSubmitted,
           actionLabel: app.isSubmitted || isWithdrawn ? 'View' : 'Resume',
           actionClass:

@@ -1,0 +1,26 @@
+{
+  "type" : "sfdc_cms__email",
+  "title" : "MC | Applicant | ES Email 4",
+  "contentBody" : {
+    "subjectLine" : "Zeta 是一个关于爱的故事",
+    "preheader" : "我们希望您能和我们一样，为加入 Zeta 社区感到兴奋。",
+    "sfdc_cms:block" : {
+      "children" : [ {
+        "id" : "c185f74c-2ace-41a9-b6f1-193ca60db472",
+        "attributes" : {
+          "text" : "爱听起来可能很抽象。<strong>但在 Zeta，它有着坚实的内涵。</strong><br><br><strong>爱是全人教育</strong>：在学术、社交、身体和情感上全面培养儿童。<br><br><strong>爱是安全感</strong>：创造一个让孩子们感到安全、受支持并随时准备好学习的环境。<br><br>"
+        }
+      }, {
+        "id" : "bbf0ea99-526d-48e3-960b-d6dbbefe7dd2",
+        "attributes" : {
+          "text" : "尊敬的 {!$Expression.First_Name} {!$Expression.Last_Name}：<br><br>我们希望您能和我们一样，为加入 Zeta 社区感到兴奋。<br>Zeta 特许学校成立于 2018 年，怀揣着对教育能为纽约市儿童带来无限可能的美好愿景。其核心是一个简单的理念：当您围绕对儿童的爱来建立学校时，您的建校方式就会与众不同。<br>围绕爱建立一所学校意味着什么？<br><br>我们常说Zeta 是一个关于爱的故事。我们是认真的。我们学校的每一个孩子都被深深了解，他们的梦想得到呵护，他们被赋能以成为最好的自己。<br><br>"
+        }
+      }, {
+        "id" : "18ab3856-066c-47f3-be32-7e0c1a2d60d8",
+        "attributes" : {
+          "text" : "<strong>爱是了解每个家庭</strong>：与最了解我们学生的人建立有意义的伙伴关系。<br><br><strong>爱是严谨的学术</strong>：相信每个孩子都有能力追求卓越，挑战他们，并为他们提供实现高标准的支持。<br><br><strong>爱体现在我们的特色课程中</strong>：通过艺术、音乐、国际象棋、舞蹈、体育等活动，为孩子提供发现天赋和热情的机会。<br><br><strong>爱体现在我们的设施中</strong>：设计能够激发好奇心、创造力和热爱学习的空间。<br><br><strong>爱是欢迎城市里的每个孩子</strong>去发掘他们的全部潜能。<br><br>我们迫不及待地想要欢迎您的孩子加入 Zeta！快来参观 Zeta 学校，<a href=\"https://zetaschools.org/events-for-prospective-families/\" target=\"_blank\" part=\"link\" rel=\"noopener noreferrer noopener noreferrer\"><u>注册参加即将举办的活动</u>或参观</a>，以详细了解我们！<br><br>谨上，<br><strong>Zeta 招生团队</strong><br>Zeta 特许学校<br><br><em>如果您对 Zeta 有任何疑问，请随时与我们联系，我们的招生团队将全程为您提供支持。✉ enroll@zetaschools.org \uD83D\uDCDE(646) 480-1654</em><br><br>"
+        }
+      } ]
+    }
+  }
+}

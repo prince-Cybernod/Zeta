@@ -2,9 +2,9 @@
   <div class="section-container">
     <template lwc:if={isCollapsedRender}>
       <div
-        class="summary-card"
-        role="button"
-        tabindex="0"
+        class={summaryCardClass}
+        role={summaryRole}
+        tabindex={summaryTabIndex}
         onclick={handleEditClick}
         onkeydown={handleSummaryKeydown}
       >
@@ -13,9 +13,11 @@
             <p class="summary-label">{section.label}</p>
             <p class="summary-text">{summaryText}</p>
           </div>
-          <button type="button" class="edit-button" onclick={handleEditClick}>
-            Edit
-          </button>
+          <template lwc:if={canEditSummary}>
+            <button type="button" class="edit-button" onclick={handleEditClick}>
+              Edit
+            </button>
+          </template>
         </div>
       </div>
     </template>
@@ -50,7 +52,7 @@
               question={q}
               value={q.currentValue}
               record-id={recordId}
-              read-only={readOnly}
+              read-only={effectiveReadOnly}
             ></c-question-input>
           </div>
         </template>

@@ -4,16 +4,78 @@
         <itemInstances>
             <componentInstance>
                 <componentInstanceProperties>
+                    <name>actionNames</name>
+                    <valueList>
+                        <valueListItems>
+                            <value>FeedItem.TextPost</value>
+                        </valueListItems>
+                        <valueListItems>
+                            <value>FeedItem.ContentPost</value>
+                        </valueListItems>
+                        <valueListItems>
+                            <value>Global.LogACall</value>
+                        </valueListItems>
+                        <valueListItems>
+                            <value>Global.NewLead</value>
+                        </valueListItems>
+                        <valueListItems>
+                            <value>Edit</value>
+                        </valueListItems>
+                        <valueListItems>
+                            <value>Delete</value>
+                        </valueListItems>
+                        <valueListItems>
+                            <value>Clone</value>
+                        </valueListItems>
+                        <valueListItems>
+                            <value>ChangeOwnerOne</value>
+                        </valueListItems>
+                        <valueListItems>
+                            <value>ChangeRecordType</value>
+                        </valueListItems>
+                        <valueListItems>
+                            <value>DeepClone</value>
+                        </valueListItems>
+                        <valueListItems>
+                            <value>ViewCampaignHierarchy</value>
+                        </valueListItems>
+                        <valueListItems>
+                            <value>Share</value>
+                        </valueListItems>
+                        <valueListItems>
+                            <value>Signup</value>
+                        </valueListItems>
+                        <valueListItems>
+                            <value>SendListEmailAction</value>
+                        </valueListItems>
+                        <valueListItems>
+                            <value>PrintableView</value>
+                        </valueListItems>
+                        <valueListItems>
+                            <value>RecordShareHierarchy</value>
+                        </valueListItems>
+                        <valueListItems>
+                            <value>CreateSourceCode</value>
+                        </valueListItems>
+                        <valueListItems>
+                            <value>AssignRecordLabel</value>
+                        </valueListItems>
+                        <valueListItems>
+                            <value>NewSampleManagement</value>
+                        </valueListItems>
+                    </valueList>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
                     <name>collapsed</name>
                     <value>false</value>
                 </componentInstanceProperties>
                 <componentInstanceProperties>
                     <name>enableActionsConfiguration</name>
-                    <value>false</value>
+                    <value>true</value>
                 </componentInstanceProperties>
                 <componentInstanceProperties>
                     <name>enableActionsInNative</name>
-                    <value>false</value>
+                    <value>true</value>
                 </componentInstanceProperties>
                 <componentInstanceProperties>
                     <name>hideChatterActions</name>

@@ -212,6 +212,11 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
+        <field>AcademicTermEnrollment.Default_Gateway__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
         <field>AcademicTermEnrollment.Does_Not_Consent_Media_Release__c</field>
         <readable>true</readable>
     </fieldPermissions>
@@ -453,6 +458,16 @@
     <fieldPermissions>
         <editable>true</editable>
         <field>AcademicTermEnrollment.Media_Photo_Release__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>AcademicTermEnrollment.Mogli_Number_from_Person_Account__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>AcademicTermEnrollment.Mogli_Opt_Out__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>

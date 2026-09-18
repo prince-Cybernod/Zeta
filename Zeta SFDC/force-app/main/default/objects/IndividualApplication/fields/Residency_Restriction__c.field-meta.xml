@@ -8,17 +8,42 @@ Pre-K: Mailing City must be New York
 K–12: Mailing State must be NY
 Used to block eligibility decisions and drive review UI.</description>
     <formula>OR(
-  /* Pre-K rule violation */
-  AND(
-    ISPICKVAL(Grade_Applying_To__c, &quot;PK&quot;),
-    LOWER(Account.PersonMailingCity) &lt;&gt; &quot;new york&quot;
-  ),
 
-  /* K–12 rule violation */
-  AND(
-    NOT(ISPICKVAL(Grade_Applying_To__c, &quot;PK&quot;)),
-    UPPER(Account.PersonMailingState) &lt;&gt; &quot;NY&quot;
-  )
+    /* Pre-K rule violation: address is not within NYC */
+    AND(
+        ISPICKVAL(Grade_Applying_To__c, &quot;PK&quot;),
+
+        NOT(
+            OR(
+                LEFT(Account.PersonMailingPostalCode, 3) = &quot;100&quot;,
+                LEFT(Account.PersonMailingPostalCode, 3) = &quot;101&quot;,
+                LEFT(Account.PersonMailingPostalCode, 3) = &quot;102&quot;,
+
+                LEFT(Account.PersonMailingPostalCode, 3) = &quot;103&quot;,
+
+                LEFT(Account.PersonMailingPostalCode, 3) = &quot;104&quot;,
+
+                LEFT(Account.PersonMailingPostalCode, 3) = &quot;111&quot;,
+
+                LEFT(Account.PersonMailingPostalCode, 3) = &quot;112&quot;,
+
+                LEFT(Account.PersonMailingPostalCode, 3) = &quot;113&quot;,
+
+                LEFT(Account.PersonMailingPostalCode, 3) = &quot;114&quot;,
+
+                LEFT(Account.PersonMailingPostalCode, 3) = &quot;116&quot;,
+
+                LEFT(Account.PersonMailingPostalCode, 5) = &quot;11004&quot;,
+                LEFT(Account.PersonMailingPostalCode, 5) = &quot;11005&quot;
+            )
+        )
+    ),
+
+    /* K-12 rule violation: address is outside New York State */
+    AND(
+        NOT(ISPICKVAL(Grade_Applying_To__c, &quot;PK&quot;)),
+        UPPER(Account.PersonMailingState) &lt;&gt; &quot;NY&quot;
+    )
 )</formula>
     <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
     <inlineHelpText>Automatically flags when residency requirements are not met based on grade applying to.

@@ -1,11 +1,13 @@
 import { LightningElement, api, wire } from 'lwc';
+import { getObjectInfo, getPicklistValues } from 'lightning/uiObjectInfoApi';
 import createSiblingDraftApplication from '@salesforce/apex/SiblingSectionController.createSiblingDraftApplication';
 import getGradeOptions from '@salesforce/apex/StudentSelectionController.getGradeOptions';
+import GENDER_FIELD from '@salesforce/schema/Contact.GenderIdentity';
 
-const GENDER_OPTIONS = [
-  { label: 'Male', value: 'M' },
-  { label: 'Female', value: 'F' }
-];
+// Master record type id — Salesforce's sentinel for "the object has no record
+// types", used as the getPicklistValues fallback when getObjectInfo reports no
+// default.
+const NULL_RECORD_TYPE_ID = '012000000000000AAA';
 
 export default class SiblingNewStudentForm extends LightningElement {
   @api recordId;
@@ -19,8 +21,11 @@ export default class SiblingNewStudentForm extends LightningElement {
     gradeApplyingTo: ''
   };
   gradeOptions = [];
+  genderOptions = [];
   saving = false;
   errorMessage = '';
+
+  _contactRecordTypeId = NULL_RECORD_TYPE_ID;
 
   @wire(getGradeOptions)
   wiredGradeOptions({ data }) {
@@ -29,8 +34,30 @@ export default class SiblingNewStudentForm extends LightningElement {
     }
   }
 
-  get genderOptions() {
-    return GENDER_OPTIONS;
+  // The sibling gender picklist is a person-account field. Those are Contact
+  // fields surfaced on Account, and getPicklistValues resolves them only from
+  // Contact — asking for Account.PersonGenderIdentity errors. Apex still writes
+  // PersonGenderIdentity (and the matching Priority_Item__c.Gender__c); the
+  // value sets match.
+  @wire(getObjectInfo, { objectApiName: 'Contact' })
+  wiredContactInfo({ data }) {
+    if (data) {
+      this._contactRecordTypeId =
+        data.defaultRecordTypeId || NULL_RECORD_TYPE_ID;
+    }
+  }
+
+  @wire(getPicklistValues, {
+    recordTypeId: '$_contactRecordTypeId',
+    fieldApiName: GENDER_FIELD
+  })
+  wiredGender({ data }) {
+    if (data) {
+      this.genderOptions = data.values.map((v) => ({
+        label: v.label,
+        value: v.value
+      }));
+    }
   }
 
   get saveDisabled() {

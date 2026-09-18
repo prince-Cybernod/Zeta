@@ -169,6 +169,7 @@
             </template>
             <c-student-selection
               record-id={resolvedRecordId}
+              timeline-id={timelineId}
               is-locked={studentLocked}
               contact-support-url={contactSupportUrl}
               duplicate-blocked={step1DuplicateBlocked}
@@ -198,6 +199,8 @@
               variant={variant}
               embedded
               insert-slot-after-sort-order="5"
+              read-only-section-dev-names="Application_Info"
+              lock-when-complete-section-dev-names="Guardian_1_Address"
               onsavestatus={handleSaveStatus}
               onanswerchange={handleAnswerChange}
               onvisibilitychange={handleVisibilityChange}

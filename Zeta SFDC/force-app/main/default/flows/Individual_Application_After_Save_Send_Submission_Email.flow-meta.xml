@@ -21,11 +21,15 @@
             <name>senderType</name>
             <value>
                 <inputConfiguratorMode>Custom</inputConfiguratorMode>
-                <stringValue>DefaultWorkflowUser</stringValue>
+                <stringValue>OrgWideEmailAddress</stringValue>
             </value>
         </inputParameters>
         <inputParameters>
             <name>senderAddress</name>
+            <value>
+                <inputConfiguratorMode>Custom</inputConfiguratorMode>
+                <stringValue>enroll@connect.zetaschools.org</stringValue>
+            </value>
         </inputParameters>
         <inputParameters>
             <name>useEmailTemplate</name>
@@ -67,6 +71,88 @@
     <apiVersion>66.0</apiVersion>
     <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
     <decisions>
+        <name>Default_Gateway_Found</name>
+        <label>Default Gateway Found?</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <defaultConnector>
+            <targetReference>Get_Email_Template</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Yes_Gateway_Found</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Get_Default_Gateway.Id</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Send_Initial_SMS_to_Parent</targetReference>
+            </connector>
+            <label>Yes, Gateway Found</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>Mogli_Number_Populated</name>
+        <label>Mogli Number Populated?</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <defaultConnector>
+            <targetReference>Get_Email_Template</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Yes_Mogli_Number</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Get_Parent_Account.Mogli_SMS__Mogli_Number__pc</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>Get_Parent_Account.Mogli_SMS__Mogli_Opt_Out__pc</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Get_Mogli_Template</targetReference>
+            </connector>
+            <label>Yes, Mogli Number</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>Mogli_Template_Found</name>
+        <label>Mogli Template Found?</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <defaultConnector>
+            <targetReference>Get_Email_Template</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Yes_Mogli_Template_Found</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Get_Mogli_Template.Id</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Get_Default_Gateway</targetReference>
+            </connector>
+            <label>Yes, Mogli Template Found</label>
+        </rules>
+    </decisions>
+    <decisions>
         <name>Template_found</name>
         <label>Template found</label>
         <locationX>0</locationX>
@@ -83,9 +169,38 @@
                 </rightValue>
             </conditions>
             <connector>
-                <targetReference>Action_Send_Submission_Email</targetReference>
+                <targetReference>Valid_Email</targetReference>
             </connector>
             <label>Yes, Template Found</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>Valid_Email</name>
+        <label>Valid Email?</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Yes_Valid_Email</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Get_Parent_Account.PersonEmailBouncedDate</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>Get_Parent_Account.PersonHasOptedOutOfEmail</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Action_Send_Submission_Email</targetReference>
+            </connector>
+            <label>Yes, Valid Email</label>
         </rules>
     </decisions>
     <description>Created by: Elevation Solutions
@@ -113,6 +228,85 @@ Sends a confirmation email when an Individual Application is submitted (Applicat
         </value>
     </processMetadataValues>
     <processType>AutoLaunchedFlow</processType>
+    <recordCreates>
+        <name>Send_Initial_SMS_to_Parent</name>
+        <label>Send Initial SMS to Parent</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>Get_Email_Template</targetReference>
+        </connector>
+        <faultConnector>
+            <isGoTo>true</isGoTo>
+            <targetReference>Get_Email_Template</targetReference>
+        </faultConnector>
+        <inputAssignments>
+            <field>Mogli_SMS__Contact__c</field>
+            <value>
+                <elementReference>Get_Parent_Account.PersonContact.Id</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Mogli_SMS__Direction__c</field>
+            <value>
+                <stringValue>Outgoing</stringValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Mogli_SMS__Gateway__c</field>
+            <value>
+                <elementReference>Get_Default_Gateway.Id</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Mogli_SMS__Message__c</field>
+            <value>
+                <elementReference>Get_Mogli_Template.Mogli_SMS__Text__c</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Mogli_SMS__Phone_Number__c</field>
+            <value>
+                <elementReference>Get_Parent_Account.Mogli_SMS__Mogli_Number__pc</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Mogli_SMS__Status__c</field>
+            <value>
+                <stringValue>Queued</stringValue>
+            </value>
+        </inputAssignments>
+        <object>Mogli_SMS__SMS__c</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordCreates>
+    <recordLookups>
+        <name>Get_Default_Gateway</name>
+        <label>Get Default Gateway</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Default_Gateway_Found</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Default__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </filters>
+        <filters>
+            <field>Mogli_SMS__Inactive__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <booleanValue>false</booleanValue>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>Mogli_SMS__Gateway__c</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
     <recordLookups>
         <name>Get_Email_Template</name>
         <label>Get Email Template</label>
@@ -134,11 +328,53 @@ Sends a confirmation email when an Individual Application is submitted (Applicat
         <object>EmailTemplate</object>
         <storeOutputAutomatically>true</storeOutputAutomatically>
     </recordLookups>
+    <recordLookups>
+        <name>Get_Mogli_Template</name>
+        <label>Get Mogli Template</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Mogli_Template_Found</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Mogli_SMS__Name__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Application Submission Confirmation</stringValue>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>Mogli_SMS__SMS_Template__c</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordLookups>
+        <name>Get_Parent_Account</name>
+        <label>Get Parent Account</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Mogli_Number_Populated</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>$Record.Primary_Guardian__r.Id</elementReference>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>Account</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
     <start>
         <locationX>0</locationX>
         <locationY>0</locationY>
         <connector>
-            <targetReference>Get_Email_Template</targetReference>
+            <targetReference>Get_Parent_Account</targetReference>
         </connector>
         <doesRequireRecordChangedToMeetCriteria>true</doesRequireRecordChangedToMeetCriteria>
         <filterFormula>AND(ISPICKVAL({!$Record.Status},&apos;Applied&apos;), 
@@ -148,4 +384,5 @@ NOT({!$Permission.Bypass_Validation}))</filterFormula>
         <triggerType>RecordAfterSave</triggerType>
     </start>
     <status>Active</status>
+    <triggerOrder>1700</triggerOrder>
 </Flow>

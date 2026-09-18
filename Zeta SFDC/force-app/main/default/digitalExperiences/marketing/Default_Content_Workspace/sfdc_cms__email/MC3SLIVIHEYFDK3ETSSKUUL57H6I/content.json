@@ -1,8 +1,13 @@
 {
   "type" : "sfdc_cms__email",
-  "title" : "Test Dynamic Content - ES",
+  "title" : "Test Dynamic Content",
   "contentBody" : {
     "backgroundColor" : "#f3f3f3",
+    "lightning:backgroundImage" : {
+      "position" : "center center",
+      "repeat" : "no-repeat",
+      "size" : "cover"
+    },
     "lightning:brandSource" : {
       "defaultBrandOption" : "sfdcBrand"
     },
@@ -15,25 +20,27 @@
       "definition" : "sfdc_cms__dataGraphDataProvider",
       "sfdcExpressionKey" : "$dataGraph"
     } ],
+    "lightning:expressions" : [ ],
     "lightning:padding" : "{!$brand.spacing.none}",
     "messagePurpose" : "promotional",
+    "sfdc_cms:attachments" : [ ],
     "sfdc_cms:block" : {
       "definition" : "sfdc_cms/rootContentBlock",
       "id" : "01cf9bd3-7259-4293-89c6-99b5eb05ab58",
       "type" : "block",
       "children" : [ {
         "attributes" : {
+          "lightning:backgroundImage" : {
+            "position" : "center center",
+            "repeat" : "no-repeat",
+            "size" : "cover"
+          },
           "lightning:borderRadius" : "{!$brand.borderRadius.square}",
           "lightning:borderWidth" : "{!$brand.borderWeight.none}",
           "lightning:colorScheme" : "{!$brand.colorScheme}",
           "lightning:margin" : "{!$brand.spacing.none}",
           "lightning:padding" : "{!$brand.spacing.xSmall}",
           "stackOnMobile" : true,
-          "lightning:backgroundImage" : {
-            "repeat" : "no-repeat",
-            "position" : "center center",
-            "size" : "cover"
-          },
           "reverseOrderOnMobile" : false
         },
         "definition" : "lightning/section",
@@ -42,17 +49,17 @@
         "children" : [ {
           "attributes" : {
             "columnWidth" : 12.0,
+            "lightning:backgroundImage" : {
+              "position" : "center center",
+              "repeat" : "no-repeat",
+              "size" : "cover"
+            },
             "lightning:borderRadius" : "{!$brand.borderRadius.square}",
             "lightning:borderWidth" : "{!$brand.borderWeight.none}",
             "lightning:colorScheme" : "{!$brand.colorScheme}",
             "lightning:margin" : "{!$brand.spacing.none}",
             "lightning:padding" : "{!$brand.spacing.xSmall}",
-            "lightning:verticalAlignment" : "top",
-            "lightning:backgroundImage" : {
-              "repeat" : "no-repeat",
-              "position" : "center center",
-              "size" : "cover"
-            }
+            "lightning:verticalAlignment" : "top"
           },
           "definition" : "lightning/column",
           "id" : "a28a30cb-94ff-495b-a971-ba978751fd31",
@@ -78,19 +85,70 @@
             "type" : "block"
           } ]
         } ]
+      }, {
+        "attributes" : {
+          "lightning:borderRadius" : "{!$brand.borderRadius.square}",
+          "lightning:borderWidth" : "{!$brand.borderWeight.none}",
+          "lightning:colorScheme" : "{!$brand.colorScheme}",
+          "lightning:margin" : "{!$brand.spacing.none}",
+          "lightning:padding" : "{!$brand.spacing.xSmall}",
+          "reverseOrderOnMobile" : false,
+          "stackOnMobile" : true,
+          "lightning:backgroundImage" : {
+            "repeat" : "no-repeat",
+            "position" : "center center",
+            "size" : "cover"
+          }
+        },
+        "definition" : "lightning/section",
+        "id" : "d2b46d5d-05c8-4d14-b9f8-9be2572ea506",
+        "type" : "block",
+        "children" : [ {
+          "attributes" : {
+            "columnWidth" : 12.0,
+            "lightning:borderRadius" : "{!$brand.borderRadius.square}",
+            "lightning:borderWidth" : "{!$brand.borderWeight.none}",
+            "lightning:colorScheme" : "{!$brand.colorScheme}",
+            "lightning:margin" : "{!$brand.spacing.none}",
+            "lightning:padding" : "{!$brand.spacing.xSmall}",
+            "lightning:verticalAlignment" : "top",
+            "lightning:backgroundImage" : {
+              "repeat" : "no-repeat",
+              "position" : "center center",
+              "size" : "cover"
+            }
+          },
+          "definition" : "lightning/column",
+          "id" : "038397c2-1dbe-4aec-8d07-f0a8cc05dd65",
+          "type" : "block",
+          "children" : [ {
+            "attributes" : {
+              "align" : "left",
+              "lightning:borderRadius" : "{!$brand.borderRadius.square}",
+              "lightning:borderWidth" : "{!$brand.borderWeight.none}",
+              "lightning:colorGroup" : {
+                "backgroundColor" : "{!$brand.colorScheme.root}",
+                "borderColor" : "{!$brand.colorScheme.neutral}",
+                "linkColor" : "{!$brand.colorScheme.primaryAccent}",
+                "textColor" : "{!$brand.colorScheme.contrast}"
+              },
+              "lightning:margin" : "{!$brand.spacing.none}",
+              "lightning:padding" : "{!$brand.spacing.none}",
+              "lightning:typography" : "{!$brand.typography.paragraph.paragraph1}",
+              "text" : "Default Lead Status"
+            },
+            "definition" : "lightning/paragraph",
+            "id" : "02153a0f-4a91-4e1f-b7fb-f8a9562f0aae",
+            "type" : "block"
+          } ]
+        } ]
       } ]
     },
     "sfdc_cms:operations" : [ ],
-    "sfdc_cms:title" : "Test Dynamic Content - ES",
+    "sfdc_cms:title" : "Test Dynamic Content",
+    "sfdc_cms:urlName" : "test-dynamic-content---es",
     "sfdc_cms:variants" : [ ],
-    "subjectLine" : "Test Dynamic Content",
-    "lightning:expressions" : [ ],
-    "lightning:backgroundImage" : {
-      "repeat" : "no-repeat",
-      "position" : "center center",
-      "size" : "cover"
-    },
-    "sfdc_cms:attachments" : [ ]
+    "subjectLine" : "Test Dynamic Content"
   },
   "urlName" : "test-dynamic-content---es"
 }

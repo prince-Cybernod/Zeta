@@ -27,6 +27,29 @@
         </values>
     </picklistValues>
     <picklistValues>
+        <picklist>Mogli_SMS__Type__c</picklist>
+        <values>
+            <fullName>IntelligentRouting</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>LongCode</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>ShortCode</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>TollFree</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Whatsapp</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
         <picklist>Mogli_SMS__Voice_Type__c</picklist>
         <values>
             <fullName>File to Voice</fullName>
