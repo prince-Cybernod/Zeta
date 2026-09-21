@@ -233,6 +233,11 @@ public without sharing class SchoolSelectionController {
     }
 
     if (!toInsert.isEmpty()) {
+      // The wizard skips the ranking step when only one school is chosen, so the
+      // ranking step never gets to rank it.
+      if (toInsert.size() == 1) {
+        toInsert[0].School_Rank__c = 1;
+      }
       databaseRepo.insertSObjects(toInsert);
     }
   }

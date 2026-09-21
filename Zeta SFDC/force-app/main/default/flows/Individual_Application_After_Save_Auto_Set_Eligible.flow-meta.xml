@@ -84,6 +84,13 @@ Automatically sets Individual Application Status to Eligible when there are no r
                 <booleanValue>false</booleanValue>
             </value>
         </filters>
+        <filters>
+            <field>Responsible_Adult__c</field>
+            <operator>NotEqualTo</operator>
+            <value>
+                <stringValue>Guardian_2</stringValue>
+            </value>
+        </filters>
         <object>IndividualApplication</object>
         <recordTriggerType>CreateAndUpdate</recordTriggerType>
         <triggerType>RecordAfterSave</triggerType>

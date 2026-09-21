@@ -24,9 +24,11 @@
 
     <template lwc:if={isExpandedRender}>
       <div class="section-header-row">
-        <h3 class="slds-text-heading_small slds-m-bottom_x-small">
-          {section.label}
-        </h3>
+        <template lwc:if={hasSectionLabel}>
+          <h3 class="slds-text-heading_small slds-m-bottom_x-small">
+            {section.label}
+          </h3>
+        </template>
         <template lwc:if={canCollapse}>
           <button
             type="button"

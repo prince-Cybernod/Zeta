@@ -1,6 +1,6 @@
 import { LightningElement, api, wire } from 'lwc';
 import { getObjectInfo, getPicklistValues } from 'lightning/uiObjectInfoApi';
-import createStudent from '@salesforce/apex/StudentSelectionController.createStudent';
+import createStudentForApplication from '@salesforce/apex/StudentSelectionController.createStudentForApplication';
 import getApplicationStudent from '@salesforce/apex/StudentSelectionController.getApplicationStudent';
 import getGradeBirthYearGuidance from '@salesforce/apex/StudentSelectionController.getGradeBirthYearGuidance';
 import getGradeOptions from '@salesforce/apex/StudentSelectionController.getGradeOptions';
@@ -447,7 +447,8 @@ export default class StudentSelection extends LightningElement {
     try {
       await updateStudentBirthdate({
         studentAccountId: editedId,
-        birthdate: this.editBirthdate
+        birthdate: this.editBirthdate,
+        applicationId: this.recordId
       });
       this.students = this.students.map((s) => {
         return s.id === editedId ? { ...s, birthdate: this.editBirthdate } : s;
@@ -524,12 +525,27 @@ export default class StudentSelection extends LightningElement {
     this.isSaving = true;
     this.createError = '';
     try {
-      const newId = await createStudent({
-        studentJson: JSON.stringify(this.newStudent)
+      const newId = await createStudentForApplication({
+        studentJson: JSON.stringify(this.newStudent),
+        applicationId: this.recordId
       });
 
       const refreshed = await getStudents();
-      this.students = refreshed;
+      // Staff have no parent Contact, so the refresh comes back without the
+      // student they just created. Keep it on the roster the way _loadData
+      // synthesizes the application's student.
+      this.students = refreshed.some((s) => s.id === newId)
+        ? refreshed
+        : [
+            {
+              id: newId,
+              firstName: this.newStudent.firstName,
+              lastName: this.newStudent.lastName,
+              birthdate: this.newStudent.birthdate,
+              hasSubmittedApplication: false
+            },
+            ...refreshed
+          ];
 
       this.selectedStudentId = newId;
       this.selectedGrade = '';

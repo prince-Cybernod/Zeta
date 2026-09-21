@@ -237,9 +237,9 @@ export default class SchoolSelection extends LightningElement {
         this._homeAddress?.postalCode
       );
       const homeLat =
-        homeCentroid?.latitude ?? this._homeAddress?.latitude ?? null;
+        this._homeAddress?.latitude ?? homeCentroid?.latitude ?? null;
       const homeLon =
-        homeCentroid?.longitude ?? this._homeAddress?.longitude ?? null;
+        this._homeAddress?.longitude ?? homeCentroid?.longitude ?? null;
 
       this.schools = await Promise.all(
         this.schools.map(async (s, idx) => {
@@ -250,8 +250,8 @@ export default class SchoolSelection extends LightningElement {
           const dist = this._calculateDistance(
             homeLat,
             homeLon,
-            schoolCentroid?.latitude ?? s.latitude ?? null,
-            schoolCentroid?.longitude ?? s.longitude ?? null
+            s.latitude ?? schoolCentroid?.latitude ?? null,
+            s.longitude ?? schoolCentroid?.longitude ?? null
           );
           return { ...s, distance: dist, _originalIndex: idx };
         })

@@ -219,6 +219,10 @@ public without sharing class InternalApplicationController {
     Preconditions.checkNotNull(studentAccountId, 'Student Account Id is required');
     Preconditions.checkNotNull(timelineId, 'Application Timeline is required');
 
+    if (hasSubmittedApplication(studentAccountId, timelineId)) {
+      throw new AuraHandledException(Label.AppUI_DuplicateApplication);
+    }
+
     Id existingId = findExistingDraft(studentAccountId, timelineId);
     if (existingId != null) {
       return new Map<String, Object>{ 'applicationId' => existingId, 'reused' => true };
@@ -333,6 +337,26 @@ public without sharing class InternalApplicationController {
         )
       }
     );
+  }
+
+  private static Boolean hasSubmittedApplication(Id studentAccountId, Id timelineId) {
+    List<String> excludedStatuses = new List<String>{ 'Cancelled', 'Withdrawn/Declined' };
+    String query =
+      'SELECT Id FROM IndividualApplication' +
+      ' WHERE AccountId = :studentAccountId' +
+      ' AND Application_Timeline__c = :timelineId' +
+      ' AND Status NOT IN :excludedStatuses' +
+      ' AND AppliedDate != NULL' +
+      ' LIMIT 1';
+    List<IndividualApplication> submitted = (List<IndividualApplication>) databaseRepo.queryWithBinds(
+      query,
+      new Map<String, Object>{
+        'studentAccountId' => studentAccountId,
+        'timelineId' => timelineId,
+        'excludedStatuses' => excludedStatuses
+      }
+    );
+    return !submitted.isEmpty();
   }
 
   private static Id findExistingDraft(Id studentAccountId, Id timelineId) {

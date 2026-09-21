@@ -36,9 +36,9 @@ Daily sweep that sets Individual Application Status to Eligible when Priority_It
         <filterLogic>and</filterLogic>
         <filters>
             <field>Status</field>
-            <operator>NotEqualTo</operator>
+            <operator>EqualTo</operator>
             <value>
-                <stringValue>Eligible</stringValue>
+                <stringValue>Draft</stringValue>
             </value>
         </filters>
         <filters>
@@ -66,6 +66,13 @@ Daily sweep that sets Individual Application Status to Eligible when Priority_It
             <field>Student_District_Id__c</field>
             <operator>NotEqualTo</operator>
         </filters>
+        <filters>
+            <field>Responsible_Adult__c</field>
+            <operator>NotEqualTo</operator>
+            <value>
+                <stringValue>Guardian_2</stringValue>
+            </value>
+        </filters>
         <inputAssignments>
             <field>Status</field>
             <value>
@@ -84,7 +91,7 @@ Daily sweep that sets Individual Application Status to Eligible when Priority_It
             <dayOfMonthToRun>0</dayOfMonthToRun>
             <frequency>Daily</frequency>
             <frequencyNumber>0</frequencyNumber>
-            <startDate>2026-08-25</startDate>
+            <startDate>2026-09-19</startDate>
             <startTime>02:00:00.000Z</startTime>
         </schedule>
         <triggerType>Scheduled</triggerType>

@@ -187,6 +187,8 @@ private class ApplicationReviewControllerTest {
       .thenReturn(new List<Priority_Item__c>())
       .thenReturn(new List<IndividualApplication>())
       .thenReturn(new List<User>{ new User() })
+      // The application names no guardian either, so the roster stays empty.
+      .thenReturn(new List<IndividualApplication>())
       .thenReturn(new List<IndividualApplication>{ new IndividualApplication(Id = appId) });
 
     Map<String, Object> bundle = ApplicationReviewController.getReviewBundle(appId);

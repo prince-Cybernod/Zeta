@@ -18,7 +18,7 @@ public without sharing class ParentRegistrationSmsInit extends ParentRegistratio
     List<RegistrationResponse> responses = new List<RegistrationResponse>();
 
     for (RegistrationRequest req : requests) {
-      String email = req.email ?? UserService.getUniqueEmailAddress();
+      String email = req.email;
       try {
         String firstName = req.firstName;
         String lastName = req.lastName;
@@ -53,7 +53,7 @@ public without sharing class ParentRegistrationSmsInit extends ParentRegistratio
               contactId = req.contactId;
             }
 
-            User u = UserService.getUser(email, phone, firstName, lastName, null, contactId);
+            User u = UserService.getUser(email ?? UserService.getUniqueEmailAddress(), phone, firstName, lastName, null, contactId);
             selfRegId = System.UserManagement.initSelfRegistration(Auth.VerificationMethod.SMS, u);
           }
         }

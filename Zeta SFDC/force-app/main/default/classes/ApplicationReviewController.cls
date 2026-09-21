@@ -21,7 +21,7 @@ public without sharing class ApplicationReviewController {
     bundle.put('schools', getRankedSchools(applicationId));
     bundle.put('siblings', getSiblings(applicationId));
     bundle.put('applicationStudent', getApplicationStudent(applicationId));
-    bundle.put('students', getStudents());
+    bundle.put('students', getStudents(applicationId));
     bundle.put('submissionWarnings', getSubmissionWarnings(applicationId));
     return bundle;
   }
@@ -144,8 +144,8 @@ public without sharing class ApplicationReviewController {
 
   // --- Students for guardian -------------------------------------------------
   // Mirror of StudentSelectionController.getStudents.
-  private static List<Map<String, Object>> getStudents() {
-    Id contactId = getLoggedInContactId();
+  private static List<Map<String, Object>> getStudents(Id applicationId) {
+    Id contactId = getLoggedInContactId(applicationId);
     if (contactId == null) {
       return new List<Map<String, Object>>();
     }
@@ -239,7 +239,7 @@ public without sharing class ApplicationReviewController {
     return gradeValue;
   }
 
-  private static Id getLoggedInContactId() {
-    return ApplicationContext.resolveGuardianContactId(databaseRepo, null);
+  private static Id getLoggedInContactId(Id applicationId) {
+    return ApplicationContext.resolveGuardianContactId(databaseRepo, applicationId);
   }
 }

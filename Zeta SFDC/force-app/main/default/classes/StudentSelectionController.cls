@@ -80,11 +80,11 @@ public without sharing class StudentSelectionController {
   }
 
   @AuraEnabled
-  public static void updateStudentBirthdate(Id studentAccountId, Date birthdate) {
+  public static void updateStudentBirthdate(Id studentAccountId, Date birthdate, Id applicationId) {
     Preconditions.checkNotNull(studentAccountId, 'Student Account Id is required');
     Preconditions.checkNotNull(birthdate, 'Birthdate is required');
 
-    Id contactId = getLoggedInContactId();
+    Id contactId = ApplicationContext.resolveGuardianContactId(databaseRepo, applicationId);
     Preconditions.checkNotNull(contactId, 'Logged-in user must have a Contact');
 
     String ownershipQuery =
@@ -123,9 +123,16 @@ public without sharing class StudentSelectionController {
 
   @AuraEnabled
   public static Id createStudent(String studentJson) {
+    return createStudentForApplication(studentJson, null);
+  }
+
+  // Named separately rather than overloading createStudent: @AuraEnabled method
+  // names can't be overloaded.
+  @AuraEnabled
+  public static Id createStudentForApplication(String studentJson, Id applicationId) {
     Preconditions.checkNotBlank(studentJson, 'Student JSON is required');
 
-    Id contactId = getLoggedInContactId();
+    Id contactId = ApplicationContext.resolveGuardianContactId(databaseRepo, applicationId);
     Preconditions.checkNotNull(contactId, 'Logged-in user must have a Contact');
 
     Map<String, Object> input = (Map<String, Object>) JSON.deserializeUntyped(studentJson);

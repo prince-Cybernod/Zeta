@@ -939,6 +939,7 @@ private class StudentSelectionControllerTest {
     DATABASE_REPO_MOCK.reset();
     Id contactId = SObjectIds.generateFakeId(Schema.Contact.SObjectType);
     Id studentAccountId = SObjectIds.generateFakeId(Schema.Account.SObjectType);
+    Id applicationId = SObjectIds.generateFakeId(Schema.IndividualApplication.SObjectType);
 
     DATABASE_REPO_MOCK.when(DATABASE_REPO_MOCK.method.queryWithBinds())
       .thenReturn(new List<User>{ new User(ContactId = contactId) })
@@ -951,7 +952,11 @@ private class StudentSelectionControllerTest {
     DATABASE_REPO_MOCK.when(DATABASE_REPO_MOCK.method.updateSObjects()).thenReturnVoid();
 
     Date newBirthdate = Date.newInstance(2019, 3, 15);
-    StudentSelectionController.updateStudentBirthdate(studentAccountId, newBirthdate);
+    StudentSelectionController.updateStudentBirthdate(
+      studentAccountId,
+      newBirthdate,
+      applicationId
+    );
 
     DATABASE_REPO_MOCK.verify(DATABASE_REPO_MOCK.method.updateSObjects());
     List<Map<String, Object>> updateCalls = DATABASE_REPO_MOCK.getCalls(
@@ -967,6 +972,7 @@ private class StudentSelectionControllerTest {
     DATABASE_REPO_MOCK.reset();
     Id contactId = SObjectIds.generateFakeId(Schema.Contact.SObjectType);
     Id studentAccountId = SObjectIds.generateFakeId(Schema.Account.SObjectType);
+    Id applicationId = SObjectIds.generateFakeId(Schema.IndividualApplication.SObjectType);
 
     DATABASE_REPO_MOCK.when(DATABASE_REPO_MOCK.method.queryWithBinds())
       .thenReturn(new List<User>{ new User(ContactId = contactId) })
@@ -986,7 +992,8 @@ private class StudentSelectionControllerTest {
     try {
       StudentSelectionController.updateStudentBirthdate(
         studentAccountId,
-        Date.newInstance(2019, 3, 15)
+        Date.newInstance(2019, 3, 15),
+        applicationId
       );
       throwing.shouldHaveThrown();
     } catch (Exception e) {
@@ -1000,6 +1007,7 @@ private class StudentSelectionControllerTest {
     DATABASE_REPO_MOCK.reset();
     Id contactId = SObjectIds.generateFakeId(Schema.Contact.SObjectType);
     Id studentAccountId = SObjectIds.generateFakeId(Schema.Account.SObjectType);
+    Id applicationId = SObjectIds.generateFakeId(Schema.IndividualApplication.SObjectType);
 
     DATABASE_REPO_MOCK.when(DATABASE_REPO_MOCK.method.queryWithBinds())
       .thenReturn(new List<User>{ new User(ContactId = contactId) })
@@ -1010,7 +1018,8 @@ private class StudentSelectionControllerTest {
     try {
       StudentSelectionController.updateStudentBirthdate(
         studentAccountId,
-        Date.newInstance(2019, 3, 15)
+        Date.newInstance(2019, 3, 15),
+        applicationId
       );
       throwing.shouldHaveThrown();
     } catch (Exception e) {
@@ -1029,7 +1038,7 @@ private class StudentSelectionControllerTest {
     );
 
     try {
-      StudentSelectionController.updateStudentBirthdate(null, Date.newInstance(2019, 3, 15));
+      StudentSelectionController.updateStudentBirthdate(null, Date.newInstance(2019, 3, 15), null);
       throwing.shouldHaveThrown();
     } catch (Exception e) {
       throwing.threw(e);
@@ -1048,7 +1057,7 @@ private class StudentSelectionControllerTest {
     );
 
     try {
-      StudentSelectionController.updateStudentBirthdate(studentAccountId, null);
+      StudentSelectionController.updateStudentBirthdate(studentAccountId, null, null);
       throwing.shouldHaveThrown();
     } catch (Exception e) {
       throwing.threw(e);
@@ -1060,9 +1069,11 @@ private class StudentSelectionControllerTest {
   private static void updateStudentBirthdate_noContact_throws() {
     DATABASE_REPO_MOCK.reset();
     Id studentAccountId = SObjectIds.generateFakeId(Schema.Account.SObjectType);
+    Id applicationId = SObjectIds.generateFakeId(Schema.IndividualApplication.SObjectType);
 
     DATABASE_REPO_MOCK.when(DATABASE_REPO_MOCK.method.queryWithBinds())
-      .thenReturn(new List<User>{ new User() });
+      .thenReturn(new List<User>{ new User() })
+      .thenReturn(new List<IndividualApplication>());
 
     AssertThrows.Throwing throwing = AssertThrows.with(
       IllegalArgumentException.class,
@@ -1072,7 +1083,8 @@ private class StudentSelectionControllerTest {
     try {
       StudentSelectionController.updateStudentBirthdate(
         studentAccountId,
-        Date.newInstance(2019, 3, 15)
+        Date.newInstance(2019, 3, 15),
+        applicationId
       );
       throwing.shouldHaveThrown();
     } catch (Exception e) {
@@ -1080,5 +1092,67 @@ private class StudentSelectionControllerTest {
     }
 
     throwing.assertHasThrown();
+  }
+  @IsTest
+  private static void updateStudentBirthdate_staffWithApplication_resolvesGuardianThroughApp() {
+    DATABASE_REPO_MOCK.reset();
+    Id applicationId = SObjectIds.generateFakeId(Schema.IndividualApplication.SObjectType);
+    Id guardianAccountId = SObjectIds.generateFakeId(Schema.Account.SObjectType);
+    Id guardianContactId = SObjectIds.generateFakeId(Schema.Contact.SObjectType);
+    Id studentAccountId = SObjectIds.generateFakeId(Schema.Account.SObjectType);
+
+    DATABASE_REPO_MOCK.when(DATABASE_REPO_MOCK.method.queryWithBinds())
+      .thenReturn(new List<User>{ new User(Id = UserInfo.getUserId(), ContactId = null) })
+      .thenReturn(
+        new List<IndividualApplication>{
+          new IndividualApplication(Id = applicationId, Primary_Guardian__c = guardianAccountId)
+        }
+      )
+      .thenReturn(
+        new List<Account>{
+          // PersonContactId is read-only, so set it via JSON deserialization.
+          (Account) JSON.deserialize(
+            '{"PersonContactId":"' + guardianContactId + '"}',
+            Account.class
+          )
+        }
+      )
+      .thenReturn(
+        new List<AccountContactRelation>{
+          new AccountContactRelation(AccountId = studentAccountId, ContactId = guardianContactId)
+        }
+      )
+      .thenReturn(new List<IndividualApplication>());
+    DATABASE_REPO_MOCK.when(DATABASE_REPO_MOCK.method.updateSObjects()).thenReturnVoid();
+
+    Date newBirthdate = Date.newInstance(2019, 3, 15);
+    StudentSelectionController.updateStudentBirthdate(
+      studentAccountId,
+      newBirthdate,
+      applicationId
+    );
+
+    DATABASE_REPO_MOCK.verify(DATABASE_REPO_MOCK.method.updateSObjects());
+    List<Map<String, Object>> updateCalls = DATABASE_REPO_MOCK.getCalls(
+      DATABASE_REPO_MOCK.method.updateSObjects()
+    );
+    List<SObject> updated = (List<SObject>) updateCalls[0].get('sobjects');
+    Account updatedAccount = (Account) updated[0];
+    Assert.areEqual(
+      studentAccountId,
+      updatedAccount.Id,
+      'Staff with no Contact should still reach the student update'
+    );
+    Assert.areEqual(newBirthdate, updatedAccount.PersonBirthdate);
+
+    List<Map<String, Object>> queries = DATABASE_REPO_MOCK.getCalls(
+      DATABASE_REPO_MOCK.method.queryWithBinds()
+    );
+    Map<String, Object> ownershipBinds = (Map<String, Object>) queries[3].get('bindMap');
+    Assert.areEqual(
+      guardianContactId,
+      ownershipBinds.get('contactId'),
+      'The ownership check must run against the guardian named by the application'
+    );
   }
 }

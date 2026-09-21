@@ -130,8 +130,9 @@ private class InternalApplicationControllerTest {
     Id timelineId = SObjectIds.generateFakeId(Schema.ApplicationTimeline.SObjectType);
 
     DATABASE_REPO_MOCK.when(DATABASE_REPO_MOCK.method.queryWithBinds())
-      // findExistingDraft, the address copy, then the student and guardian
-      // person-contact lookups.
+      // The submitted-application guard, findExistingDraft, the address copy,
+      // then the student and guardian person-contact lookups.
+      .thenReturn(new List<IndividualApplication>())
       .thenReturn(new List<IndividualApplication>())
       .thenReturn(new List<Account>())
       .thenReturn(new List<Account>{ new Account() })
@@ -173,6 +174,7 @@ private class InternalApplicationControllerTest {
     Id studentAccountId = SObjectIds.generateFakeId(Schema.Account.SObjectType);
 
     DATABASE_REPO_MOCK.when(DATABASE_REPO_MOCK.method.queryWithBinds())
+      .thenReturn(new List<IndividualApplication>())
       .thenReturn(new List<IndividualApplication>())
       .thenReturn(
         new List<Account>{
@@ -224,6 +226,7 @@ private class InternalApplicationControllerTest {
 
     DATABASE_REPO_MOCK.when(DATABASE_REPO_MOCK.method.queryWithBinds())
       .thenReturn(new List<IndividualApplication>())
+      .thenReturn(new List<IndividualApplication>())
       .thenReturn(
         new List<Account>{
           new Account(Id = guardianAccountId, PersonMailingStreet = '350 5th Avenue'),
@@ -257,6 +260,7 @@ private class InternalApplicationControllerTest {
     Id existingId = SObjectIds.generateFakeId(Schema.IndividualApplication.SObjectType);
 
     DATABASE_REPO_MOCK.when(DATABASE_REPO_MOCK.method.queryWithBinds())
+      .thenReturn(new List<IndividualApplication>())
       .thenReturn(new List<IndividualApplication>{ new IndividualApplication(Id = existingId) });
 
     Map<String, Object> result = InternalApplicationController.startApplication(
@@ -271,6 +275,36 @@ private class InternalApplicationControllerTest {
 
     Assert.areEqual(existingId, result.get('applicationId'), 'Should reuse the open draft');
     Assert.areEqual(true, result.get('reused'));
+  }
+
+  @IsTest
+  private static void startApplication_submittedExists_blocks() {
+    DATABASE_REPO_MOCK.reset();
+    Id submittedId = SObjectIds.generateFakeId(Schema.IndividualApplication.SObjectType);
+
+    DATABASE_REPO_MOCK.when(DATABASE_REPO_MOCK.method.queryWithBinds())
+      .thenReturn(new List<IndividualApplication>{ new IndividualApplication(Id = submittedId) });
+
+    try {
+      InternalApplicationController.startApplication(
+        JSON.serialize(
+          new Map<String, Object>{
+            'guardianAccountId' => SObjectIds.generateFakeId(Schema.Account.SObjectType),
+            'studentAccountId' => SObjectIds.generateFakeId(Schema.Account.SObjectType),
+            'timelineId' => SObjectIds.generateFakeId(Schema.ApplicationTimeline.SObjectType)
+          }
+        )
+      );
+      Assert.fail('Should refuse a student who already has a submitted application');
+    } catch (Exception e) {
+      Assert.isInstanceOfType(
+        e,
+        AuraHandledException.class,
+        'Unexpected exception: ' + e.getTypeName() + ': ' + e.getMessage()
+      );
+    }
+
+    DATABASE_REPO_MOCK.never(DATABASE_REPO_MOCK.method.insertSObjects());
   }
 
   @IsTest

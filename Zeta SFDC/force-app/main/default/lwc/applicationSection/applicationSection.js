@@ -78,6 +78,10 @@ export default class ApplicationSection extends LightningElement {
     return labelPrivacyPolicyText;
   }
 
+  get hasSectionLabel() {
+    return (this.section?.label || '').trim() !== '';
+  }
+
   get gridClass() {
     const cols = this.section?.columns;
     const variant = this.section?.variant;
