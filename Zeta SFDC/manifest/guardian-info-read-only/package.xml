@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Package xmlns="http://soap.sforce.com/2006/04/metadata">
+  <types>
+    <members>Zeta_Application_Access</members>
+    <members>Zeta_Enrollment_Education_Cloud_Access</members>
+    <members>Zeta_Enrollment_Education_Cloud_Access_Read_Only</members>
+    <members>Zeta_Enrollment_Education_Cloud_Limited</members>
+    <members>Zeta_Guardian_Info_Edit</members>
+    <members>Zeta_Lottery_Education_Cloud_Access</members>
+    <members>Zeta_Manage_Schools</members>
+    <name>PermissionSet</name>
+  </types>
+  <types>
+    <members>Zeta_Parent_Portal_User</members>
+    <members>Zeta_System_Admins</members>
+    <name>PermissionSetGroup</name>
+  </types>
+  <version>67.0</version>
+</Package>
