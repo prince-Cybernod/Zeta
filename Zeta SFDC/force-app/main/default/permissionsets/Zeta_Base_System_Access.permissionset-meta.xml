@@ -4,6 +4,10 @@
         <apexClass>FindNearestSchoolInvocable</apexClass>
         <enabled>true</enabled>
     </classAccesses>
+    <classAccesses>
+        <apexClass>LeadSiblingFlagsController</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
     <description>Core system access: Flow User, send email, access to shared reports/dashboards, and CRED + tab access on Accounts, Contacts, relationships (CCR, ACR, AAR), Party Role Relationships, Tasks, and Events. Field access applied as appropriate for this persona.</description>
     <fieldPermissions>
         <editable>false</editable>

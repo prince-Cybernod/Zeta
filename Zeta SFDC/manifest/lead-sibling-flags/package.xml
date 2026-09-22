@@ -1,21 +1,31 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <Package xmlns="http://soap.sforce.com/2006/04/metadata">
+  <!-- Not in Production. New. -->
   <types>
     <members>LeadSiblingFlagsController</members>
     <members>LeadSiblingFlagsControllerTest</members>
     <name>ApexClass</name>
   </types>
-  <types>
-    <members>Lead_Record_Page</members>
-    <name>FlexiPage</name>
-  </types>
+
+  <!-- Not in Production. New. Deploys as one bundle: .js .html .css
+       .js-meta.xml, genie.js and __tests__. -->
   <types>
     <members>leadSiblingFlags</members>
     <name>LightningComponentBundle</name>
   </types>
+
+  <!-- Exists in Production but differs: adds the component to the page. -->
+  <types>
+    <members>Lead_Record_Page</members>
+    <name>FlexiPage</name>
+  </types>
+
+  <!-- Exists in Production but differs: adds Apex class access for
+       LeadSiblingFlagsController. Without it every server call fails. -->
   <types>
     <members>Zeta_Base_System_Access</members>
     <name>PermissionSet</name>
   </types>
+
   <version>67.0</version>
 </Package>
