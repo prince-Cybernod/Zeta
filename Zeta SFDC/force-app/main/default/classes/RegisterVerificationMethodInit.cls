@@ -57,8 +57,6 @@ public without sharing class RegisterVerificationMethodInit {
     }
   }
 
-//  private static final Logger LOGGER = new Logger('RegisterVerificationMethodInit');
-
   @TestVisible
   private static TestScenario scenario;
 
@@ -94,10 +92,11 @@ public without sharing class RegisterVerificationMethodInit {
           }
         }
       } catch (Exception e) {
-//        LOGGER.log(
-//          e,
-//          'Exception when initialising register verification method. Method: ' + i.method
-//        );
+        Logger.error(
+          'Exception when initialising register verification method. Method: ' + i.method,
+          e
+        );
+        Logger.saveLog();
         responses.add(
           new Response(e.getMessage() ?? 'Registration Exception. Please contact support.')
         );

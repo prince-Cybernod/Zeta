@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<AnalyticsVisualization xmlns="http://soap.sforce.com/2006/04/metadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <analyticsWorkspace>Marketing_Performance_Intelligence</analyticsWorkspace>
+    <dataSource>Marketing_Intelligence_Custom_Semantic_Model_00Da500001AA4BB</dataSource>
+    <description>Opt-in By Channel visualization</description>
+    <fields>
+        <adHocCalc>{&quot;expression&quot;:&quot;UPPER([Communication_Channel_Type].[Communication_Channel_Type_Name])&quot;,&quot;description&quot;:&quot;&quot;,&quot;label&quot;:&quot;UPPER([Communication Channel Type].[Communication Channel Type Name])&quot;,&quot;level&quot;:&quot;Row&quot;,&quot;dataType&quot;:&quot;Text&quot;,&quot;displayCategory&quot;:&quot;Discrete&quot;,&quot;filters&quot;:[]}</adHocCalc>
+        <displayCategory>Discrete</displayCategory>
+        <fieldKey>Channel_Type</fieldKey>
+        <label>Channels</label>
+        <role>Dimension</role>
+        <type>Field</type>
+    </fields>
+    <fields>
+        <displayCategory>Continuous</displayCategory>
+        <fieldKey>Opt-Ins</fieldKey>
+        <fieldName>Subscription_OPT_IN_clc</fieldName>
+        <function>Sum</function>
+        <label>Opt-Ins</label>
+        <role>Measure</role>
+        <type>Field</type>
+    </fields>
+    <masterLabel>Opt-Ins by Channel</masterLabel>
+    <templateAssetSourceName>Opt_in_by_Channel</templateAssetSourceName>
+    <templateSource>sfdc_internal__umi</templateSource>
+    <version>66.08</version>
+    <views>
+        <fullName>Opt_in_by_Channel_default</fullName>
+        <isOriginal>true</isOriginal>
+        <masterLabel>default</masterLabel>
+        <version>66.08</version>
+        <viewSpecification>{&quot;filters&quot;:[],&quot;sortOrders&quot;:{&quot;fields&quot;:{},&quot;rows&quot;:[],&quot;columns&quot;:[]}}</viewSpecification>
+    </views>
+    <visualSpecification>eyJsYXlvdXQiOiJWaXpxbCIsImxlZ2VuZHMiOnsiQ2hhbm5lbF9UeXBlIjp7ImlzVmlzaWJsZSI6dHJ1ZSwidGl0bGUiOnsiaXNWaXNpYmxlIjp0cnVlfSwicG9zaXRpb24iOiJSaWdodCJ9fSwicm93cyI6W10sImNvbHVtbnMiOltdLCJtYXJrcyI6eyJwYW5lcyI6eyJ0eXBlIjoiRG9udXQiLCJpc0F1dG9tYXRpYyI6ZmFsc2UsInN0YWNrIjp7ImlzQXV0b21hdGljIjp0cnVlLCJpc1N0YWNrZWQiOmZhbHNlfSwiZW5jb2RpbmdzIjpbeyJmaWVsZEtleSI6IkNoYW5uZWxfVHlwZSIsInR5cGUiOiJDb2xvciJ9LHsiZmllbGRLZXkiOiJPcHQtSW5zIiwidHlwZSI6IkFuZ2xlIn1dfSwiZmllbGRzIjp7fSwiaGVhZGVycyI6eyJ0eXBlIjoiVGV4dCIsImVuY29kaW5ncyI6W10sImlzQXV0b21hdGljIjp0cnVlfX0sInJlZmVyZW5jZUxpbmVzIjp7fSwiZm9yZWNhc3RzIjp7fSwibWVhc3VyZVZhbHVlcyI6W10sInN0eWxlIjp7InRpdGxlIjp7ImlzVmlzaWJsZSI6dHJ1ZX0sImZpZWxkTGFiZWxzIjp7InJvd3MiOnsic2hvd0xhYmVscyI6dHJ1ZSwic2hvd0RpdmlkZXJMaW5lIjpmYWxzZX0sImNvbHVtbnMiOnsic2hvd0xhYmVscyI6dHJ1ZSwic2hvd0RpdmlkZXJMaW5lIjpmYWxzZX19LCJmb250cyI6eyJhY3Rpb25hYmxlSGVhZGVycyI6eyJzaXplIjoxMywiY29sb3IiOiIjMDI1MEQ5In0sImhlYWRlcnMiOnsic2l6ZSI6MTMsImNvbG9yIjoiIzJFMkUyRSJ9LCJmaWVsZExhYmVscyI6eyJzaXplIjoxMywiY29sb3IiOiIjMkUyRTJFIn0sIm1hcmtzIjp7InNpemUiOjEzLCJjb2xvciI6IiMyRTJFMkUifSwibWFya0xhYmVscyI6eyJzaXplIjoxMywiY29sb3IiOiIjMkUyRTJFIn0sImxlZ2VuZExhYmVscyI6eyJzaXplIjoxMywiY29sb3IiOiIjMkUyRTJFIn0sImF4aXNUaWNrTGFiZWxzIjp7InNpemUiOjEzLCJjb2xvciI6IiMyRTJFMkUifX0sInNoYWRpbmciOnsiYmFja2dyb3VuZENvbG9yIjoiI0ZGRkZGRiIsImJhbmRpbmciOnsicm93cyI6eyJjb2xvciI6IiNFNUU1RTUifX19LCJsaW5lcyI6eyJmaWVsZExhYmVsRGl2aWRlckxpbmUiOnsiY29sb3IiOiIjQzlDOUM5In0sInNlcGFyYXRvckxpbmUiOnsiY29sb3IiOiIjQzlDOUM5In0sImF4aXNMaW5lIjp7ImNvbG9yIjoiI0M5QzlDOSJ9LCJ6ZXJvTGluZSI6eyJjb2xvciI6IiNDOUM5QzkifX0sImVuY29kaW5ncyI6eyJmaWVsZHMiOnsiT3B0LUlucyI6eyJkZWZhdWx0cyI6eyJmb3JtYXQiOnsibnVtYmVyRm9ybWF0SW5mbyI6eyJ0eXBlIjoiTnVtYmVyIiwiZGVjaW1hbFBsYWNlcyI6MCwibmVnYXRpdmVWYWx1ZXNGb3JtYXQiOiJBdXRvIiwiZGlzcGxheVVuaXRzIjoiQXV0byIsInByZWZpeCI6IiIsInN1ZmZpeCI6IiIsImluY2x1ZGVUaG91c2FuZFNlcGFyYXRvciI6dHJ1ZX19fX19fSwiZml0IjoiRW50aXJlIiwibWFya3MiOnsicGFuZXMiOnsibGFiZWwiOnsiY2FuT3ZlcmxhcExhYmVscyI6ZmFsc2UsInNob3dNYXJrTGFiZWxzIjpmYWxzZSwibWFya3NUb0xhYmVsIjp7InR5cGUiOiJBbGwifX0sImNvbG9yIjp7ImNvbG9yIjoiIn0sInJhbmdlIjp7InJldmVyc2UiOnRydWV9LCJzaXplIjp7InR5cGUiOiJQZXJjZW50YWdlIiwiaXNBdXRvbWF0aWMiOnRydWUsInZhbHVlIjo4MH0sImlzQXV0b21hdGljU2l6ZSI6dHJ1ZSwiaXNTdGFja2luZ0F4aXNDZW50ZXJlZCI6ZmFsc2V9LCJoZWFkZXJzIjp7ImNvbG9yIjp7ImNvbG9yIjoiIn0sImxhYmVsIjp7ImNhbk92ZXJsYXBMYWJlbHMiOmZhbHNlLCJzaG93TWFya0xhYmVscyI6ZmFsc2UsIm1hcmtzVG9MYWJlbCI6eyJ0eXBlIjoiQWxsIn19LCJpc0F1dG9tYXRpY1NpemUiOnRydWV9LCJmaWVsZHMiOnt9fSwic2hvd0RhdGFQbGFjZWhvbGRlciI6ZmFsc2UsImhlYWRlcnMiOnsiZmllbGRzIjp7fSwicm93cyI6eyJtZXJnZVJlcGVhdGVkQ2VsbHMiOnRydWUsInNob3dJbmRleCI6ZmFsc2UsInNpemluZyI6eyJmaWVsZFdpZHRoIjp7fX19LCJjb2x1bW5zIjp7Im1lcmdlUmVwZWF0ZWRDZWxscyI6dHJ1ZSwic2hvd0luZGV4IjpmYWxzZSwic2l6aW5nIjp7ImZpZWxkSGVpZ2h0Ijp7fX19fSwiYXhpcyI6eyJmaWVsZHMiOnt9fSwicmVmZXJlbmNlTGluZXMiOnt9fX0=</visualSpecification>
+    <workspaceAssetRelationships>
+        <asset xsi:nil="true"/>
+        <assetType>AnalyticsVisualization</assetType>
+        <assetUsageType>Created</assetUsageType>
+        <workspace>Marketing_Performance_Intelligence</workspace>
+    </workspaceAssetRelationships>
+</AnalyticsVisualization>

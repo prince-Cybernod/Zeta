@@ -1,0 +1,168 @@
+{
+  "type" : "sfdc_cms__email",
+  "title" : "MC | Applicant | MS Email 1 w/ Spanish Translation",
+  "contentBody" : {
+    "backgroundColor" : "#FFFFFF",
+    "lightning:backgroundImage" : {
+      "position" : "center center",
+      "repeat" : "no-repeat",
+      "size" : "cover"
+    },
+    "lightning:brandSource" : "MCXD6TZ6XKJRGNBB72AH4B5UPAKA",
+    "lightning:colorScheme" : {
+      "contrast" : "#000000",
+      "neutral" : "#747474",
+      "primaryAccent" : "#0176d3",
+      "primaryAccentContrast" : "#ffffff",
+      "primaryAccentContrastDerived" : "#ffffff",
+      "primaryAccentDerived" : "#004ba1",
+      "root" : "#ffffff"
+    },
+    "lightning:dataProviders" : [ {
+      "attributes" : {
+        "dataGraphApiName" : "Unified_Individual_Full_Graph",
+        "dataspace" : "default"
+      },
+      "definition" : "sfdc_cms__dataGraphDataProvider",
+      "sfdcExpressionKey" : "$dataGraph"
+    } ],
+    "lightning:expressions" : [ {
+      "attributes" : {
+        "expressionGroups" : [ {
+          "name" : "group0",
+          "resource" : "{!$dataGraph.ssot__FirstName__c}"
+        } ]
+      },
+      "default" : "",
+      "definition" : "sfdc_cms__multiLevelExpression",
+      "label" : "First_Name",
+      "sfdcExpressionKey" : "First_Name"
+    }, {
+      "attributes" : {
+        "expressionGroups" : [ {
+          "name" : "group0",
+          "resource" : "{!$dataGraph.ssot__LastName__c}"
+        } ]
+      },
+      "default" : "",
+      "definition" : "sfdc_cms__multiLevelExpression",
+      "label" : "Last_Name",
+      "sfdcExpressionKey" : "Last_Name"
+    }, {
+      "attributes" : {
+        "expressionGroups" : [ {
+          "name" : "group0",
+          "resource" : "{!$dataGraph.ssot__LastName__c}"
+        } ]
+      },
+      "default" : "",
+      "definition" : "sfdc_cms__multiLevelExpression",
+      "label" : "Last_Name_1",
+      "sfdcExpressionKey" : "Last_Name_1"
+    }, {
+      "attributes" : {
+        "expressionGroups" : [ {
+          "name" : "group0",
+          "resource" : "{!$dataGraph.ssot__LastName__c}"
+        } ]
+      },
+      "default" : "",
+      "definition" : "sfdc_cms__multiLevelExpression",
+      "label" : "Last_Name_2",
+      "sfdcExpressionKey" : "Last_Name_2"
+    } ],
+    "lightning:padding" : "{!$brand.spacing.none}",
+    "messagePurpose" : "promotional",
+    "sfdc_cms:attachments" : [ ],
+    "sfdc_cms:block" : {
+      "definition" : "sfdc_cms/rootContentBlock",
+      "id" : "1516c58e-f2fe-4088-98c9-f4638b4da0bc",
+      "type" : "block",
+      "children" : [ {
+        "attributes" : {
+          "content" : {
+            "attributes" : { },
+            "definition" : "@cms/MC7KF37IHKRVHHFCP2JP447Y6DTM",
+            "type" : "block"
+          }
+        },
+        "definition" : "sfdc_cms/reusableContentBlock",
+        "id" : "3cc87add-8c22-4b5a-9831-845e254779eb",
+        "type" : "block"
+      }, {
+        "attributes" : {
+          "lightning:backgroundImage" : {
+            "position" : "center center",
+            "repeat" : "no-repeat",
+            "size" : "cover"
+          },
+          "lightning:borderRadius" : "{!$brand.borderRadius.square}",
+          "lightning:borderWidth" : "{!$brand.borderWeight.none}",
+          "lightning:colorScheme" : "{!$brand.colorScheme}",
+          "lightning:margin" : "{!$brand.spacing.none}",
+          "lightning:padding" : "{!$brand.spacing.xSmall}",
+          "reverseOrderOnMobile" : false,
+          "stackOnMobile" : true
+        },
+        "definition" : "lightning/section",
+        "id" : "511c1327-faaf-4155-9f5a-f3bcb99c98f6",
+        "type" : "block",
+        "children" : [ {
+          "attributes" : {
+            "columnWidth" : 12.0,
+            "lightning:backgroundImage" : {
+              "position" : "center center",
+              "repeat" : "no-repeat",
+              "size" : "cover"
+            },
+            "lightning:borderRadius" : "{!$brand.borderRadius.square}",
+            "lightning:borderWidth" : "{!$brand.borderWeight.none}",
+            "lightning:colorScheme" : "{!$brand.colorScheme}",
+            "lightning:margin" : "{!$brand.spacing.none}",
+            "lightning:padding" : "{!$brand.spacing.xSmall}",
+            "lightning:verticalAlignment" : "top"
+          },
+          "definition" : "lightning/column",
+          "id" : "6815e492-3344-4c46-9fae-829bbdbea14a",
+          "type" : "block",
+          "children" : [ {
+            "attributes" : {
+              "align" : "start",
+              "lightning:borderRadius" : "{!$brand.borderRadius.square}",
+              "lightning:borderWidth" : "{!$brand.borderWeight.none}",
+              "lightning:colorGroup" : {
+                "backgroundColor" : "{!$brand.colorScheme.root}",
+                "borderColor" : "{!$brand.colorScheme.neutral}",
+                "linkColor" : "{!$brand.colorScheme.primaryAccent}",
+                "textColor" : "#000000"
+              },
+              "lightning:margin" : "{!$brand.spacing.none}",
+              "lightning:padding" : "{!$brand.spacing.none}",
+              "lightning:typography" : "{!$brand.typography.paragraph.paragraph1}",
+              "text" : "<span dir=\"ltr\" style=\"display: block;\">Dear {!$Expression.Last_Name_2} Family,<br />Thank you for applying to &lt;Highest Ranked School Application &gt; School!<br /><br />We are so excited that you are considering Zeta for your family, and we look <br />forward to being with you through the next steps of the enrollment process.<br /><br /><font face=\"Arial\"><strong>Log in <a href=\"https://myportal.zetaschools.org/login?ec&#61;302&amp;startURL&#61;%2Fs%2F\" target=\"_blank\" part=\"link\" rel=\"noopener noreferrer noopener noreferrer noopener noreferrer noopener noreferrer noopener noreferrer noopener noreferrer noopener noreferrer\"><u>here</u></a> to view your application.<br /></strong></font><br />Zeta students benefit from:<br /><br /></span><ul dir=\"ltr\" style=\"display: block; padding-inline-start: 2.5rem; margin: 0.5rem 0px; list-style-position: outside; list-style-type: disc;\"><li style=\"display: list-item; margin: 0.35rem 0px;\">A <strong>strong academic foundation</strong> that prepares them for long-term success</li><li style=\"display: list-item; margin: 0.35rem 0px;\">A school culture grounded in<strong> care, belonging, and high expectations</strong></li><li style=\"display: list-item; margin: 0.35rem 0px;\"><strong>Thoughtful partnership with families</strong> every step of the way</li><li style=\"display: list-item; margin: 0.35rem 0px;\">A<strong> tuition-free public charter education</strong> open to all students</li></ul><span dir=\"ltr\" style=\"display: block;\"><br />As Zeta’s Enrollment Team, we will be your main point of contact moving forward. We will share updates, key dates, and opportunities to learn more about our school community, and are always here if you have any questions.<br /><br /><a href=\"https://zetaschools.org/events-for-prospective-families/\" target=\"_blank\" part=\"link\" rel=\"noopener noreferrer noopener noreferrer noopener noreferrer noopener noreferrer noopener noreferrer noopener noreferrer noopener noreferrer\"><strong><u>Come visit us at Zeta</u></strong></a> and experience what could be possible for your student here. <br /><br />Thank you again for your interest in Zeta Middle School. We look forward to continuing this journey with you and your family.<br /><br />Warmly,<br /><strong>The Zeta Enrollment Team</strong><br />Zeta Charter Schools<br /><em><br />Please reach out if you have any questions about Zeta, our Enrollment Team is here for you every step of the way. <br />✉︎  <a href=\"mailto:enroll&#64;zetaschools.org\" target=\"_blank\" part=\"link\" rel=\"noopener noreferrer noopener noreferrer noopener noreferrer noopener noreferrer noopener noreferrer\">enroll&#64;zetaschools.org</a><br />&#x1f4de;<a href=\"tel:16464801654\" target=\"_blank\" part=\"link\" rel=\"noopener noreferrer noopener noreferrer noopener noreferrer noopener noreferrer noopener noreferrer\">(646) 480-1654</a><br /></em></span>"
+            },
+            "definition" : "lightning/paragraph",
+            "id" : "5fdf4cd5-a907-4155-9fdc-eda4a867bbb0",
+            "type" : "block"
+          } ]
+        } ]
+      }, {
+        "attributes" : {
+          "content" : {
+            "attributes" : { },
+            "definition" : "@cms/MCHODN5JQXFJD5NEDIZEK6OROC7I",
+            "type" : "block"
+          }
+        },
+        "definition" : "sfdc_cms/reusableContentBlock",
+        "id" : "ef388809-bacb-42d5-82cf-4cd5461e56ed",
+        "type" : "block"
+      } ]
+    },
+    "sfdc_cms:title" : "MC | Applicant | MS Email 1 w/ Spanish Translation",
+    "sfdc_cms:urlName" : "email-20260923-095108",
+    "subjectLine" : "Welcome to Zeta Charter Schools!",
+    "sfdc_cms:variants" : [ ]
+  },
+  "urlName" : "email-20260923-095108"
+}

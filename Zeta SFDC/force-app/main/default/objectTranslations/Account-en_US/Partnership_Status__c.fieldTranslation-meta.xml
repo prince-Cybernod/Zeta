@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <label><!-- Partnership Status --></label>
+    <name>Partnership_Status__c</name>
+    <picklistValues>
+        <masterLabel>Archived - No Further Partnership Possible</masterLabel>
+        <translation><!-- Archived - No Further Partnership Possible --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Not Secured - Unlikely</masterLabel>
+        <translation><!-- Not Secured - Unlikely --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Not Secured, But Likely</masterLabel>
+        <translation><!-- Not Secured, But Likely --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Secured</masterLabel>
+        <translation><!-- Secured --></translation>
+    </picklistValues>
+</CustomFieldTranslation>

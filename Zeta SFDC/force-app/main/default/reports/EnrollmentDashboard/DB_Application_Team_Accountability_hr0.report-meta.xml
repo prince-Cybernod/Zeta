@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <aggregates>
+        <calculatedFormula>RowCount / AcademicInterest.Lottery_Capacity__c.Total_Available_Seats__c:SUM</calculatedFormula>
+        <datatype>number</datatype>
+        <developerName>FORMULA1</developerName>
+        <isActive>false</isActive>
+        <isCrossBlock>false</isCrossBlock>
+        <masterLabel>Unique App / Open Seat</masterLabel>
+        <scale>2</scale>
+    </aggregates>
+    <columns>
+        <field>AcademicInterest$Name</field>
+    </columns>
+    <description>Individual Application Converting Team Member - used in the Application Dashboard</description>
+    <filter>
+        <criteriaItems>
+            <column>AcademicInterest$IndividualApplication.Application_Timeline__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>2026 - 2027 DEMO</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>AcademicInterest$IndividualApplication.Conversion_Type__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>notEqual</operator>
+            <value></value>
+        </criteriaItems>
+        <language>en_US</language>
+    </filter>
+    <format>Matrix</format>
+    <groupingsAcross>
+        <dateGranularity>Month</dateGranularity>
+        <field>AcademicInterest$IndividualApplication.AppliedDate</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsAcross>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>AcademicInterest$IndividualApplication.Converting_Team_Member__c</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <name>DB: Application - Team Accountability</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>School_Applications_with_Individual_Application_and_Lottery_Capacity__c</reportType>
+    <scope>organization</scope>
+    <showDetails>false</showDetails>
+    <showGrandTotal>true</showGrandTotal>
+    <showSubTotals>true</showSubTotals>
+    <timeFrameFilter>
+        <dateColumn>AcademicInterest$IndividualApplication.AppliedDate</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
+    </timeFrameFilter>
+</Report>

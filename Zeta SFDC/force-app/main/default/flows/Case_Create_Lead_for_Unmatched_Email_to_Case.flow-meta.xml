@@ -27,8 +27,18 @@
             <label>Yes, Duplicate Found</label>
         </rules>
     </decisions>
-    <description>Automatically creates a Lead when an inbound support email can&apos;t be matched to an existing contact or account. Checks for an already-open Lead from the same email address first to avoid duplicates, then creates the Lead and links it back to this Case.</description>
+    <description>Automatically creates a Lead when an inbound support email can&apos;t be matched to an existing contact or account. Checks for an already-open Lead from the same email address first to avoid duplicates, then creates the Lead and links it back to this Case. Runs for Zoom Voicemail</description>
     <environments>Default</environments>
+    <formulas>
+        <description>SuppliedPhone value with the first digit (which will be country code) removed</description>
+        <name>fx_CasePhone_CC_removed</name>
+        <dataType>String</dataType>
+        <expression>IF(
+    LEFT({!$Record.SuppliedPhone}, 1) = &quot;1&quot;,
+    RIGHT({!$Record.SuppliedPhone}, LEN({!$Record.SuppliedPhone}) - 1),
+    {!$Record.SuppliedPhone}
+)</expression>
+    </formulas>
     <interviewLabel>Case | Create Lead for Unmatched Email-to-Case {!$Flow.CurrentDateTime}</interviewLabel>
     <label>Case | Create Lead for Unmatched Email-to-Case</label>
     <processMetadataValues>
@@ -76,6 +86,18 @@
                 <stringValue>Unknown</stringValue>
             </value>
         </inputAssignments>
+        <inputAssignments>
+            <field>MobilePhone</field>
+            <value>
+                <elementReference>fx_CasePhone_CC_removed</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Phone</field>
+            <value>
+                <elementReference>fx_CasePhone_CC_removed</elementReference>
+            </value>
+        </inputAssignments>
         <object>Lead</object>
         <storeOutputAutomatically>true</storeOutputAutomatically>
     </recordCreates>
@@ -88,7 +110,7 @@
         <connector>
             <targetReference>Is_Duplicate_Found</targetReference>
         </connector>
-        <filterLogic>and</filterLogic>
+        <filterLogic>(1 OR 3 OR 4) AND 2</filterLogic>
         <filters>
             <field>Email</field>
             <operator>EqualTo</operator>
@@ -101,6 +123,20 @@
             <operator>EqualTo</operator>
             <value>
                 <booleanValue>true</booleanValue>
+            </value>
+        </filters>
+        <filters>
+            <field>MobilePhone</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>fx_CasePhone_CC_removed</elementReference>
+            </value>
+        </filters>
+        <filters>
+            <field>Phone</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>fx_CasePhone_CC_removed</elementReference>
             </value>
         </filters>
         <getFirstRecordOnly>true</getFirstRecordOnly>
@@ -139,7 +175,7 @@
         <connector>
             <targetReference>Get_Existing_Open_Lead</targetReference>
         </connector>
-        <filterLogic>and</filterLogic>
+        <filterLogic>(1 OR 4) AND 2 AND 3</filterLogic>
         <filters>
             <field>Origin</field>
             <operator>EqualTo</operator>
@@ -159,6 +195,13 @@
             <operator>IsNull</operator>
             <value>
                 <booleanValue>true</booleanValue>
+            </value>
+        </filters>
+        <filters>
+            <field>Origin</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Zoom Voicemail</stringValue>
             </value>
         </filters>
         <object>Case</object>

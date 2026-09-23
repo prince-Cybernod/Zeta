@@ -16,4 +16,16 @@
         </sections>
     </layouts>
     <startsWith>Consonant</startsWith>
+    <validationRules>
+        <errorMessage><!-- All School Applications must have an associated Individual Application. --></errorMessage>
+        <name>Individual_Application_Required</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- A Withdraw/Rescind Reason is required when the Status is set to a withdrawal status. --></errorMessage>
+        <name>Require_Withdraw_Rescind_Reason</name>
+    </validationRules>
+    <webLinks>
+        <label><!-- Send_Email --></label>
+        <name>Send_Email</name>
+    </webLinks>
 </CustomObjectTranslation>

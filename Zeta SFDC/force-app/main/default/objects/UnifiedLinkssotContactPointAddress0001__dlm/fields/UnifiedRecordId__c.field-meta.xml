@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>UnifiedRecordId__c</fullName>
+    <label>Unified Contact Point Address Id</label>
+    <length>60</length>
+    <mktDataModelFieldAttributes>
+        <definitionCreationType>System</definitionCreationType>
+        <isDynamicLookup>false</isDynamicLookup>
+        <labelOverride>Unified Contact Point Address Id</labelOverride>
+        <masterLabel>Unified Contact Point Address Id</masterLabel>
+        <refAttrDeveloperName>UnifiedRecordId</refAttrDeveloperName>
+        <usageTag>None</usageTag>
+    </mktDataModelFieldAttributes>
+    <required>false</required>
+    <type>Text</type>
+</CustomField>

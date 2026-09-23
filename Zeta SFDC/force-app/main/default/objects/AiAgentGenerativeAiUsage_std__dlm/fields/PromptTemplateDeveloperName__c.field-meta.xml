@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>PromptTemplateDeveloperName__c</fullName>
+    <label>Prompt Template Developer Name</label>
+    <length>60</length>
+    <mktDataModelFieldAttributes>
+        <definitionCreationType>Standard</definitionCreationType>
+        <isDynamicLookup>false</isDynamicLookup>
+        <labelOverride>Prompt Template Developer Name</labelOverride>
+        <masterLabel>Prompt Template Developer Name</masterLabel>
+        <refAttrDeveloperName>PromptTemplateDeveloperName</refAttrDeveloperName>
+        <usageTag>None</usageTag>
+    </mktDataModelFieldAttributes>
+    <required>false</required>
+    <type>Text</type>
+</CustomField>

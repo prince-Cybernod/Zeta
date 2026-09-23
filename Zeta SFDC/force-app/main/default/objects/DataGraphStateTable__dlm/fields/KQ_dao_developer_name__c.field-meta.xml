@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>KQ_dao_developer_name__c</fullName>
+    <label>Key Qualifier Dao Developer Name</label>
+    <length>60</length>
+    <mktDataModelFieldAttributes>
+        <definitionCreationType>System</definitionCreationType>
+        <isDynamicLookup>false</isDynamicLookup>
+        <labelOverride>Key Qualifier Dao Developer Name</labelOverride>
+        <masterLabel>Key Qualifier Dao Developer Name</masterLabel>
+        <refAttrDeveloperName>KQ_dao_developer_name</refAttrDeveloperName>
+        <usageTag>KeyQualifier</usageTag>
+    </mktDataModelFieldAttributes>
+    <required>false</required>
+    <type>Text</type>
+</CustomField>

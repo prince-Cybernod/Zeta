@@ -75,34 +75,63 @@ private class FindDistrictInvocableTest {
   }
 
   @IsTest
-  private static void findDistricts_outOfDistrict_throws() {
+  private static void findDistricts_outOfDistrict_returnsNotApplicable() {
     SERVICE_MOCK.reset();
     SERVICE_MOCK.when(SERVICE_MOCK.method.findDistrictForPoint()).thenReturn(null);
 
-    AssertThrows.Throwing throwing = AssertThrows.with(
-      DistrictLookupFailureException.class
+    List<FindDistrictInvocable.Result> results = invoke(
+      new List<FindDistrictInvocable.Request>{ requestFor(LATITUDE, LONGITUDE) }
     );
-    try {
-      invoke(new List<FindDistrictInvocable.Request>{ requestFor(LATITUDE, LONGITUDE) });
-      throwing.shouldHaveThrown();
-    } catch (Exception e) {
-      throwing.threw(e);
-      Assert.isTrue(
-        e.getMessage().contains('No active District'),
-        'exception message should explain the miss, got: ' + e.getMessage()
-      );
-    }
-    throwing.assertHasThrown();
+
+    Assert.areEqual(1, results.size(), 'a miss still yields one result');
+    Assert.areEqual(
+      FindDistrictInvocable.NO_DISTRICT,
+      results[0].district,
+      'out-of-district is a normal result, not a fault'
+    );
   }
 
   @IsTest
-  private static void findDistricts_blankDistrictKey_throws() {
+  private static void findDistricts_blankDistrictKey_returnsNotApplicable() {
     SERVICE_MOCK.reset();
     SERVICE_MOCK.when(SERVICE_MOCK.method.findDistrictForPoint()).thenReturn('');
 
-    AssertThrows.Throwing throwing = AssertThrows.with(
-      DistrictLookupFailureException.class
+    List<FindDistrictInvocable.Result> results = invoke(
+      new List<FindDistrictInvocable.Request>{ requestFor(LATITUDE, LONGITUDE) }
     );
+
+    Assert.areEqual(FindDistrictInvocable.NO_DISTRICT, results[0].district);
+  }
+
+  @IsTest
+  private static void findDistricts_mixedHitAndMiss_keepsPositionalPairing() {
+    SERVICE_MOCK.reset();
+    SERVICE_MOCK.when(SERVICE_MOCK.method.findDistrictForPoint())
+      .thenReturn(DISTRICT_KEY)
+      .thenReturn(null)
+      .thenReturn('CSD-9');
+
+    List<FindDistrictInvocable.Result> results = invoke(
+      new List<FindDistrictInvocable.Request>{
+        requestFor(40.1, -74.1),
+        requestFor(40.2, -74.2),
+        requestFor(40.3, -74.3)
+      }
+    );
+
+    Assert.areEqual(3, results.size(), 'a miss must not drop its result slot');
+    Assert.areEqual(DISTRICT_KEY, results[0].district);
+    Assert.areEqual(FindDistrictInvocable.NO_DISTRICT, results[1].district);
+    Assert.areEqual('CSD-9', results[2].district);
+  }
+
+  @IsTest
+  private static void findDistricts_lookupError_stillThrows() {
+    SERVICE_MOCK.reset();
+    SERVICE_MOCK.when(SERVICE_MOCK.method.findDistrictForPoint())
+      .thenThrow(new QueryException('SOQL blew up'));
+
+    AssertThrows.Throwing throwing = AssertThrows.with(QueryException.class);
     try {
       invoke(new List<FindDistrictInvocable.Request>{ requestFor(LATITUDE, LONGITUDE) });
       throwing.shouldHaveThrown();

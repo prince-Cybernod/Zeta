@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns>
+        <field>AcademicInterest$Name</field>
+    </columns>
+    <columns>
+        <field>AcademicInterest$CreatedDate</field>
+    </columns>
+    <columns>
+        <field>AcademicInterest$IndividualApplication.Grade_Applying_To__c</field>
+    </columns>
+    <columns>
+        <field>AcademicInterest$LearningProgram</field>
+    </columns>
+    <description>Shows all individual applications for the viewing user for the current month.</description>
+    <filter>
+        <criteriaItems>
+            <column>AcademicInterest$IndividualApplication.CreatedBy</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>$USER</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>AcademicInterest$School_Rank__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>1</value>
+        </criteriaItems>
+        <language>en_US</language>
+    </filter>
+    <format>Summary</format>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>AcademicInterest$IndividualApplication.Lead_Source__c</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <name>My Applications This Month</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>School_Applications_with_Individual_Applications_and_Accounts__c</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <showGrandTotal>true</showGrandTotal>
+    <showSubTotals>true</showSubTotals>
+    <timeFrameFilter>
+        <dateColumn>AcademicInterest$CreatedDate</dateColumn>
+        <interval>INTERVAL_THISMONTH</interval>
+    </timeFrameFilter>
+</Report>

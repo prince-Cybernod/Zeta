@@ -18,9 +18,9 @@ public without sharing class RegisterVerificationMethodSmsInit {
     List<RegisterVerificationMethodInit.Request> initRequests =
       new List<RegisterVerificationMethodInit.Request>();
 
-      RegisterVerificationMethodInit.Request req = new RegisterVerificationMethodInit.Request();
-      req.method = 'SMS';
-      initRequests.add(req);
+    RegisterVerificationMethodInit.Request req = new RegisterVerificationMethodInit.Request();
+    req.method = 'SMS';
+    initRequests.add(req);
 
     return RegisterVerificationMethodInit.initRegisterVerificationMethod(initRequests);
   }

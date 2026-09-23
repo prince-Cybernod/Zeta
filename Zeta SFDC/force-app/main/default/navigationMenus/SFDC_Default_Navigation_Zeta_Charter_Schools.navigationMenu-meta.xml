@@ -4,21 +4,21 @@
     <containerType>Network</containerType>
     <label>Default Navigation</label>
     <navigationMenuItem>
-        <label>Apply</label>
+        <label>Events</label>
         <position>1</position>
-        <publiclyAvailable>false</publiclyAvailable>
-        <target>/apply</target>
+        <publiclyAvailable>true</publiclyAvailable>
+        <target>/events</target>
         <type>InternalLink</type>
     </navigationMenuItem>
     <navigationMenuItem>
-        <label>Contact Us</label>
+        <label>Get Help</label>
         <position>2</position>
         <publiclyAvailable>true</publiclyAvailable>
         <target>/contactsupport</target>
         <type>InternalLink</type>
     </navigationMenuItem>
     <navigationMenuItem>
-        <label>Login</label>
+        <label>Login to Portal</label>
         <position>3</position>
         <publiclyAvailable>true</publiclyAvailable>
         <target>Login</target>

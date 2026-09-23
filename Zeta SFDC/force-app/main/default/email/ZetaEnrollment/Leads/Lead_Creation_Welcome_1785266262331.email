@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <meta name="viewport" content="width=device-width, initialscale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <style type="text/css">@media screen and (max-width: 480px) {slot[style] {margin-right: 0 !important;}.columnDiv {margin-right: 0 !important;}}@media screen and (min-width: 480px) {slot[style] {margin-bottom: 0 !important;}.columnDiv {margin-bottom: 0 !important;}}</style>
+  <style type="text/css">@media screen and (max-width: 480px) {.contentbuilderBaseColumnRow .columnCell {display:inline-block;width:100%}}</style>
+  <style type="text/css">.contentpageDefaultEmailTemplatePageTemplate .contentRoot {width: 600px;}@media only screen and (max-width: 480px) {.contentpageDefaultEmailTemplatePageTemplate .contentRoot {width: 320px;}}</style>
+ </head>
+ <body>
+  <table class="contentpageDefaultEmailTemplatePageTemplate" style="background-color: #E9EAEC;" role="presentation" id="contentpage_emailTemplateBodyContent" width="100%" cellpadding="0" cellspacing="0">
+   <tbody>
+    <tr>
+     <td width="100%" align="center">
+      <table class="contentRoot" style="background-color: #FFFFFF;" role="presentation" width="600" cellpadding="0" cellspacing="0">
+       <tbody>
+        <tr>
+         <td style="padding-top: 10px; padding-bottom: 10px; padding-left: 10px; padding-right: 10px;">
+          <table class="contentbuilderBaseColumnRow" style="align-items: flex-start; width: 100%; background-color:;" role="presentation" width="100%" cellpadding="0" cellspacing="0">
+           <tbody>
+            <tr valign="top">
+             <td width="100%" class="columnCell" style="vertical-align: top;display: inline-block; float:left">
+              <table cellpadding="0" cellspacing="0" style="width: 100%; border-collapse: collapse; word-break:break-word;">
+               <tbody>
+                <tr>
+                 <td>
+                  <table style="width: 100%; border-collapse: collapse; word-break: break-word; font-size: 14px" id="contentRegion" role="presentation" cellspacing="0" cellpadding="0" locked="0">
+                   <tbody>
+                    <tr>
+                     <td style="font-family: Arial, Helvetica, sans-serif;"><p><span style="font-size:14px;">Hello {{{Recipient.Guardian_First_Name__c}}},</span></p><p><span style="font-size:14px;">Thank you for your interest in applying to Zeta Charter Schools! We are happy to answer any questions you have as your consider us for your child's education.</span></p><p><span style="font-size:14px;">Thank you,<br /> Zeta Charter Schools</span></p></td>
+                    </tr>
+                   </tbody>
+                  </table></td>
+                </tr>
+                <tr>
+                 <td>
+                  <table style="width:100%; border-collapse: collapse; word-break:break-word;" id="contentRegion" role="presentation" cellspacing="0" cellpadding="0" locked="0">
+                   <tbody>
+                    <tr>
+                     <td align="left"><img src="{[devName:zeta_logo3]}" alt="" width="150" style="width: 100%; display: block; border: none; max-width: 25%; object-fit: contain;" /></td>
+                    </tr>
+                   </tbody>
+                  </table></td>
+                </tr>
+               </tbody>
+              </table></td>
+            </tr>
+           </tbody>
+          </table></td>
+        </tr>
+       </tbody>
+      </table></td>
+    </tr>
+   </tbody>
+  </table>
+ </body>
+</html>

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>rel_1785963418029_end__c</fullName>
+    <deleteConstraint>SetNull</deleteConstraint>
+    <label>School_Application_Primary_Guardian__rel</label>
+    <referenceTo>ssot__AccountContact__dlm</referenceTo>
+    <relationshipLabel>School_Application_Primary_Guardian__rel</relationshipLabel>
+    <relationshipName>rel_1785963418029_end</relationshipName>
+    <required>false</required>
+    <type>Lookup</type>
+</CustomField>

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Parent_Segment_Id__c</fullName>
+    <label>Parent Segment Id</label>
+    <length>60</length>
+    <mktDataModelFieldAttributes>
+        <definitionCreationType>Segment_Membership</definitionCreationType>
+        <isDynamicLookup>false</isDynamicLookup>
+        <labelOverride>Parent Segment Id</labelOverride>
+        <masterLabel>Parent Segment Id</masterLabel>
+        <refAttrDeveloperName>Parent_Segment_Id</refAttrDeveloperName>
+        <usageTag>None</usageTag>
+    </mktDataModelFieldAttributes>
+    <required>false</required>
+    <type>Text</type>
+</CustomField>

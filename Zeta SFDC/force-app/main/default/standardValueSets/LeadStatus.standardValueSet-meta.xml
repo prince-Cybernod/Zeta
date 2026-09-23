@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<StandardValueSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <sorted>false</sorted>
+    <standardValue>
+        <fullName>Open – Not Called</fullName>
+        <default>true</default>
+        <label>Open – Not Called</label>
+        <converted>false</converted>
+    </standardValue>
+    <standardValue>
+        <fullName>Open – Working</fullName>
+        <default>false</default>
+        <label>Open – Working</label>
+        <converted>false</converted>
+    </standardValue>
+    <standardValue>
+        <fullName>Open – Suspected Duplicate</fullName>
+        <default>false</default>
+        <label>Open – Suspected Duplicate</label>
+        <converted>false</converted>
+    </standardValue>
+    <standardValue>
+        <fullName>Closed – Converted</fullName>
+        <default>false</default>
+        <label>Closed – Converted</label>
+        <converted>true</converted>
+    </standardValue>
+    <standardValue>
+        <fullName>Closed – Not Converted, Next Year</fullName>
+        <default>false</default>
+        <label>Closed – Not Converted, Next Year</label>
+        <converted>false</converted>
+    </standardValue>
+    <standardValue>
+        <fullName>Closed – Not Converted, Archived</fullName>
+        <default>false</default>
+        <label>Closed – Not Converted, Archived</label>
+        <converted>false</converted>
+    </standardValue>
+    <standardValue>
+        <fullName>Closed – Duplicate, Archived</fullName>
+        <default>false</default>
+        <label>Closed – Duplicate, Archived</label>
+        <converted>false</converted>
+    </standardValue>
+    <standardValue>
+        <fullName>Disqualified</fullName>
+        <default>false</default>
+        <label>Disqualified</label>
+        <converted>false</converted>
+    </standardValue>
+</StandardValueSet>

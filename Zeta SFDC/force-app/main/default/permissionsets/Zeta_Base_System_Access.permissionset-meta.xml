@@ -127,11 +127,6 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
-        <field>Account.Legacy_SchoolMint_Status__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>false</editable>
         <field>Account.Legacy_SchoolMint_Username__c</field>
         <readable>true</readable>
     </fieldPermissions>
@@ -577,6 +572,11 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
+        <field>Contact.fxPortal_User_Email__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
         <field>ContactContactRelation.EndDate</field>
         <readable>true</readable>
     </fieldPermissions>
@@ -838,6 +838,10 @@
     <userPermissions>
         <enabled>true</enabled>
         <name>EmailSingle</name>
+    </userPermissions>
+    <userPermissions>
+        <enabled>true</enabled>
+        <name>ExportReport</name>
     </userPermissions>
     <userPermissions>
         <enabled>true</enabled>

@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<AnalyticsVisualization xmlns="http://soap.sforce.com/2006/04/metadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <analyticsWorkspace>Marketing_Performance_Intelligence</analyticsWorkspace>
+    <dataSource>Marketing_Intelligence_Custom_Semantic_Model_00Da500001AA4BB</dataSource>
+    <description>Opt In Acquisition Source Trend visualization</description>
+    <fields>
+        <displayCategory>Continuous</displayCategory>
+        <fieldKey>MeasureValues</fieldKey>
+        <role>Measure</role>
+        <type>MeasureValues</type>
+    </fields>
+    <fields>
+        <displayCategory>Continuous</displayCategory>
+        <fieldKey>Last_Modified_Date</fieldKey>
+        <fieldName>Communication_Subscription_Consent_Last_Modified_Date</fieldName>
+        <function>DateTruncDay</function>
+        <label>Date</label>
+        <objectName>Communication_Subscription_Consent</objectName>
+        <role>Dimension</role>
+        <type>Field</type>
+    </fields>
+    <fields>
+        <adHocCalc>{&quot;expression&quot;:&quot;UPPER([Communication_Subscription_Consent].[Communication_Subscription_Consent_Captured_Source_Type])&quot;,&quot;description&quot;:&quot;&quot;,&quot;label&quot;:&quot;Acquisition Source&quot;,&quot;level&quot;:&quot;Row&quot;,&quot;dataType&quot;:&quot;Text&quot;,&quot;displayCategory&quot;:&quot;Discrete&quot;,&quot;filters&quot;:[]}</adHocCalc>
+        <displayCategory>Discrete</displayCategory>
+        <fieldKey>Captured_Source_Type</fieldKey>
+        <label>Acquisition Source</label>
+        <role>Dimension</role>
+        <type>Field</type>
+    </fields>
+    <fields>
+        <displayCategory>Continuous</displayCategory>
+        <fieldKey>Subscription_Opt_In</fieldKey>
+        <fieldName>Subscription_OPT_IN_clc</fieldName>
+        <function>Sum</function>
+        <label>Opt-Ins</label>
+        <role>Measure</role>
+        <type>Field</type>
+    </fields>
+    <masterLabel>Opt-In Trends by Acquisition Source</masterLabel>
+    <templateAssetSourceName>Opt_In_Acquisition_Source_Trend</templateAssetSourceName>
+    <templateSource>sfdc_internal__umi</templateSource>
+    <version>66.08</version>
+    <views>
+        <fullName>Opt_In_Acquisition_Source_Trend_default</fullName>
+        <isOriginal>true</isOriginal>
+        <masterLabel>default</masterLabel>
+        <version>66.08</version>
+        <viewSpecification>{&quot;filters&quot;:[],&quot;sortOrders&quot;:{&quot;fields&quot;:{},&quot;rows&quot;:[],&quot;columns&quot;:[]}}</viewSpecification>
+    </views>
+    <visualSpecification>eyJsYXlvdXQiOiJWaXpxbCIsImxlZ2VuZHMiOnsiQ2FwdHVyZWRfU291cmNlX1R5cGUiOnsiaXNWaXNpYmxlIjp0cnVlLCJ0aXRsZSI6eyJpc1Zpc2libGUiOnRydWV9LCJwb3NpdGlvbiI6IlJpZ2h0In19LCJyb3dzIjpbIk1lYXN1cmVWYWx1ZXMiXSwiY29sdW1ucyI6WyJMYXN0X01vZGlmaWVkX0RhdGUiXSwibWFya3MiOnsicGFuZXMiOnsidHlwZSI6IkxpbmUiLCJpc0F1dG9tYXRpYyI6ZmFsc2UsInN0YWNrIjp7ImlzQXV0b21hdGljIjp0cnVlLCJpc1N0YWNrZWQiOmZhbHNlfSwiZW5jb2RpbmdzIjpbeyJmaWVsZEtleSI6IkNhcHR1cmVkX1NvdXJjZV9UeXBlIiwidHlwZSI6IkNvbG9yIn1dfSwiZmllbGRzIjp7fSwiaGVhZGVycyI6eyJ0eXBlIjoiVGV4dCIsImVuY29kaW5ncyI6W10sImlzQXV0b21hdGljIjp0cnVlfX0sInJlZmVyZW5jZUxpbmVzIjp7fSwiZm9yZWNhc3RzIjp7fSwibWVhc3VyZVZhbHVlcyI6WyJTdWJzY3JpcHRpb25fT3B0X0luIl0sInN0eWxlIjp7InRpdGxlIjp7ImlzVmlzaWJsZSI6dHJ1ZX0sImZpZWxkTGFiZWxzIjp7InJvd3MiOnsic2hvd0xhYmVscyI6dHJ1ZSwic2hvd0RpdmlkZXJMaW5lIjpmYWxzZX0sImNvbHVtbnMiOnsic2hvd0xhYmVscyI6dHJ1ZSwic2hvd0RpdmlkZXJMaW5lIjpmYWxzZX19LCJmb250cyI6eyJhY3Rpb25hYmxlSGVhZGVycyI6eyJzaXplIjoxMywiY29sb3IiOiIjMDI1MEQ5In0sImhlYWRlcnMiOnsic2l6ZSI6MTMsImNvbG9yIjoiIzJFMkUyRSJ9LCJmaWVsZExhYmVscyI6eyJzaXplIjoxMywiY29sb3IiOiIjMkUyRTJFIn0sIm1hcmtzIjp7InNpemUiOjEzLCJjb2xvciI6IiMyRTJFMkUifSwibWFya0xhYmVscyI6eyJzaXplIjoxMywiY29sb3IiOiIjMkUyRTJFIn0sImxlZ2VuZExhYmVscyI6eyJzaXplIjoxMywiY29sb3IiOiIjMkUyRTJFIn0sImF4aXNUaWNrTGFiZWxzIjp7InNpemUiOjEzLCJjb2xvciI6IiMyRTJFMkUifX0sInNoYWRpbmciOnsiYmFja2dyb3VuZENvbG9yIjoiI0ZGRkZGRiIsImJhbmRpbmciOnsicm93cyI6eyJjb2xvciI6IiNFNUU1RTUifX19LCJsaW5lcyI6eyJmaWVsZExhYmVsRGl2aWRlckxpbmUiOnsiY29sb3IiOiIjQzlDOUM5In0sInNlcGFyYXRvckxpbmUiOnsiY29sb3IiOiIjQzlDOUM5In0sImF4aXNMaW5lIjp7ImNvbG9yIjoiI0M5QzlDOSJ9LCJ6ZXJvTGluZSI6eyJjb2xvciI6IiNDOUM5QzkifX0sImVuY29kaW5ncyI6eyJmaWVsZHMiOnsiU3Vic2NyaXB0aW9uX09wdF9JbiI6eyJkZWZhdWx0cyI6eyJmb3JtYXQiOnsibnVtYmVyRm9ybWF0SW5mbyI6eyJ0eXBlIjoiTnVtYmVyU2hvcnQiLCJkZWNpbWFsUGxhY2VzIjowLCJuZWdhdGl2ZVZhbHVlc0Zvcm1hdCI6IkF1dG8iLCJkaXNwbGF5VW5pdHMiOiJOb25lIiwicHJlZml4IjoiIiwic3VmZml4IjoiIiwiaW5jbHVkZVRob3VzYW5kU2VwYXJhdG9yIjp0cnVlfX19fSwiTWVhc3VyZVZhbHVlcyI6eyJkZWZhdWx0cyI6eyJmb3JtYXQiOnsibnVtYmVyRm9ybWF0SW5mbyI6eyJ0eXBlIjoiTnVtYmVyU2hvcnQiLCJkZWNpbWFsUGxhY2VzIjowLCJuZWdhdGl2ZVZhbHVlc0Zvcm1hdCI6IkF1dG8iLCJkaXNwbGF5VW5pdHMiOiJOb25lIiwicHJlZml4IjoiIiwic3VmZml4IjoiIiwiaW5jbHVkZVRob3VzYW5kU2VwYXJhdG9yIjp0cnVlfX19fX19LCJmaXQiOiJTdGFuZGFyZCIsIm1hcmtzIjp7InBhbmVzIjp7ImxhYmVsIjp7ImNhbk92ZXJsYXBMYWJlbHMiOmZhbHNlLCJzaG93TWFya0xhYmVscyI6ZmFsc2UsIm1hcmtzVG9MYWJlbCI6eyJ0eXBlIjoiQWxsIn19LCJjb2xvciI6eyJjb2xvciI6IiJ9LCJyYW5nZSI6eyJyZXZlcnNlIjp0cnVlfSwic2l6ZSI6eyJ0eXBlIjoiUGl4ZWwiLCJpc0F1dG9tYXRpYyI6dHJ1ZSwidmFsdWUiOjN9LCJpc0F1dG9tYXRpY1NpemUiOnRydWUsImlzU3RhY2tpbmdBeGlzQ2VudGVyZWQiOmZhbHNlfSwiaGVhZGVycyI6eyJjb2xvciI6eyJjb2xvciI6IiJ9LCJsYWJlbCI6eyJjYW5PdmVybGFwTGFiZWxzIjpmYWxzZSwic2hvd01hcmtMYWJlbHMiOmZhbHNlLCJtYXJrc1RvTGFiZWwiOnsidHlwZSI6IkFsbCJ9fSwiaXNBdXRvbWF0aWNTaXplIjp0cnVlfSwiZmllbGRzIjp7fX0sInNob3dEYXRhUGxhY2Vob2xkZXIiOmZhbHNlLCJoZWFkZXJzIjp7ImZpZWxkcyI6e30sInJvd3MiOnsibWVyZ2VSZXBlYXRlZENlbGxzIjp0cnVlLCJzaG93SW5kZXgiOmZhbHNlLCJzaXppbmciOnsiZmllbGRXaWR0aCI6e319fSwiY29sdW1ucyI6eyJtZXJnZVJlcGVhdGVkQ2VsbHMiOnRydWUsInNob3dJbmRleCI6ZmFsc2UsInNpemluZyI6eyJmaWVsZEhlaWdodCI6e319fX0sImF4aXMiOnsiZmllbGRzIjp7Ikxhc3RfTW9kaWZpZWRfRGF0ZSI6eyJpc1Zpc2libGUiOnRydWUsInJhbmdlIjp7InR5cGUiOiJBdXRvIiwiaW5jbHVkZVplcm8iOmZhbHNlfSwidGl0bGVUZXh0IjoiIiwic2NhbGUiOnsiZm9ybWF0Ijp7ImRhdGVUZW1wbGF0ZSI6IiJ9fSwidGlja3MiOnsibWFqb3JUaWNrcyI6eyJ0eXBlIjoiQXV0byJ9LCJtaW5vclRpY2tzIjp7InR5cGUiOiJBdXRvIn19LCJpc1plcm9MaW5lVmlzaWJsZSI6dHJ1ZX0sIk1lYXN1cmVWYWx1ZXMiOnsiaXNWaXNpYmxlIjp0cnVlLCJyYW5nZSI6eyJ0eXBlIjoiQXV0byIsImluY2x1ZGVaZXJvIjp0cnVlfSwidGl0bGVUZXh0IjoiICIsInNjYWxlIjp7ImZvcm1hdCI6eyJudW1iZXJGb3JtYXRJbmZvIjp7InR5cGUiOiJOdW1iZXJTaG9ydCIsImRlY2ltYWxQbGFjZXMiOjAsIm5lZ2F0aXZlVmFsdWVzRm9ybWF0IjoiQXV0byIsImRpc3BsYXlVbml0cyI6Ik5vbmUiLCJwcmVmaXgiOiIiLCJzdWZmaXgiOiIiLCJpbmNsdWRlVGhvdXNhbmRTZXBhcmF0b3IiOnRydWV9fX0sInRpY2tzIjp7Im1ham9yVGlja3MiOnsidHlwZSI6IkF1dG8ifSwibWlub3JUaWNrcyI6eyJ0eXBlIjoiQXV0byJ9fSwiaXNaZXJvTGluZVZpc2libGUiOnRydWV9fX0sInJlZmVyZW5jZUxpbmVzIjp7fX19</visualSpecification>
+    <workspaceAssetRelationships>
+        <asset xsi:nil="true"/>
+        <assetType>AnalyticsVisualization</assetType>
+        <assetUsageType>Created</assetUsageType>
+        <workspace>Marketing_Performance_Intelligence</workspace>
+    </workspaceAssetRelationships>
+</AnalyticsVisualization>

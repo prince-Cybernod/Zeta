@@ -5,21 +5,6 @@
         <enabled>true</enabled>
         <externalCredentialPrincipal>Google_Maps_Geocoding-Production</externalCredentialPrincipal>
     </externalCredentialPrincipalAccesses>
-    <fieldPermissions>
-        <editable>true</editable>
-        <field>User.Bypass_Validations__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
     <hasActivationRequired>false</hasActivationRequired>
     <label>Google Maps Geocoding</label>
-    <objectPermissions>
-        <allowCreate>false</allowCreate>
-        <allowDelete>false</allowDelete>
-        <allowEdit>false</allowEdit>
-        <allowRead>true</allowRead>
-        <modifyAllRecords>false</modifyAllRecords>
-        <object>UserExternalCredential</object>
-        <viewAllFields>false</viewAllFields>
-        <viewAllRecords>false</viewAllRecords>
-    </objectPermissions>
 </PermissionSet>

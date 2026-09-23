@@ -102,6 +102,10 @@
                 <behavior>Edit</behavior>
                 <field>Sub_Category__c</field>
             </layoutItems>
+            <layoutItems>
+                <behavior>Readonly</behavior>
+                <field>Response_Past_Due__c</field>
+            </layoutItems>
         </layoutColumns>
         <layoutColumns>
             <layoutItems>

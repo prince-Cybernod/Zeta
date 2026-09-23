@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <description>Sent automatically when an Individual Application is submitted and the Application Status is set to Applied.</description>
+    <encodingKey>UTF-8</encodingKey>
+    <name>Application Submission Confirmation</name>
+    <pageDevName>Application_Submission_Confirmation</pageDevName>
+    <relatedEntityType>IndividualApplication</relatedEntityType>
+    <style>none</style>
+    <subject>Thank you for applying to Zeta!</subject>
+    <textOnly>Dear {{{IndividualApplication.Parent_Guardian_1_First_Name__c}}},
+
+Thank you for applying to Zeta Charter Schools! 
+
+We are so excited that you are considering Zeta for your family. Choosing a school is an important decision, and our Enrollment Team looks forward to supporting you every step of the way.
+
+Log in here &lt; http://myportal.zetaschools.org/ &gt; to view your application.
+
+At Zeta Elementary, we believe the early years of school shape everything that follows. In warm, joyful, and structured classrooms, children build confidence, curiosity, and a lasting love of learning. Our teachers know each student deeply and provide the academic, social, and emotional support they need to thrive.
+
+Zeta students benefit from:
+
+ - A strong academic foundationthat prepares them for long-term success
+ - A school culture rooted in love, belonging, and high expectations
+ - Thoughtful partnership with familiesat every stage
+ - A tuition-free public charter educationopen to all students
+
+Our Enrollment Team will be your main point of contact throughout the enrollment process. We will share important updates, key dates, and opportunities to get to know our community, and we are always here to answer your questions.
+
+We would love towelcome you for a visit &lt; https://zetaschools.org/events-for-prospective-families/ &gt; at the Zeta Elementary School of your choice. 
+
+Thank you again for considering Zeta Elementary. We cannot wait to get to know your family!
+
+Warmly,
+
+The Zeta Enrollment Team
+
+Zeta Charter Schools
+
+Please reach out if youhave any questions about Zeta, our Enrollment Team is here for you every step of the way. ✉︎enroll@zetaschools.org &lt; mailto:enroll@zetaschools.org &gt; 📞(646) 480-1654</textOnly>
+    <type>custom</type>
+    <uiType>SFX</uiType>
+</EmailTemplate>

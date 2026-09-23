@@ -1,0 +1,9 @@
+Hi {!Contact.FirstName},
+
+In order to log in to the Zeta Parent Portal with your email, you must verify your email address: {!Contact.fxPortal_User_Email__c}
+
+To finish changing your email address, go to the following link. This link expires in 72 hours.
+{!EmailVerify.Url}
+
+Thank you!
+Zeta Charter Schools

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>IsMeteredIndicator__c</fullName>
+    <defaultValue>false</defaultValue>
+    <label>Is Metered</label>
+    <mktDataModelFieldAttributes>
+        <definitionCreationType>Standard</definitionCreationType>
+        <isDynamicLookup>false</isDynamicLookup>
+        <labelOverride>Is Metered</labelOverride>
+        <masterLabel>Is Metered</masterLabel>
+        <refAttrDeveloperName>IsMeteredIndicator</refAttrDeveloperName>
+        <usageTag>None</usageTag>
+    </mktDataModelFieldAttributes>
+    <type>Checkbox</type>
+</CustomField>

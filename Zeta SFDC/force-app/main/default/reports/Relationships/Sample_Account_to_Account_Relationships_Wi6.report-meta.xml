@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns>
+        <field>AccountAccountRelation$Account</field>
+    </columns>
+    <columns>
+        <field>AccountAccountRelation$PartyRoleRelation</field>
+    </columns>
+    <columns>
+        <field>AccountAccountRelation$RelatedAccount</field>
+    </columns>
+    <columns>
+        <field>AccountAccountRelation$StartDate</field>
+    </columns>
+    <columns>
+        <field>AccountAccountRelation$EndDate</field>
+    </columns>
+    <description>Use for organization/household to organization/household relationships</description>
+    <format>Tabular</format>
+    <name>Sample: Account to Account Relationships</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>Account_to_Account_Relationships__c</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <showGrandTotal>true</showGrandTotal>
+    <showSubTotals>true</showSubTotals>
+    <timeFrameFilter>
+        <dateColumn>AccountAccountRelation$CreatedDate</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
+    </timeFrameFilter>
+</Report>

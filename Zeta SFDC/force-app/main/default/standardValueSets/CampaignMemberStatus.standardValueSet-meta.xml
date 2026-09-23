@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<StandardValueSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <sorted>true</sorted>
+    <standardValue>
+        <fullName>Approved</fullName>
+        <default>false</default>
+        <label>Approved</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Attended</fullName>
+        <default>false</default>
+        <label>Attended</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Attended, no RSVP</fullName>
+        <default>false</default>
+        <label>Attended, no RSVP</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Attended, RSVPed</fullName>
+        <default>false</default>
+        <label>Attended, RSVPed</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Cancelled RSVP</fullName>
+        <default>false</default>
+        <label>Cancelled RSVP</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Denied</fullName>
+        <default>false</default>
+        <label>Denied</label>
+    </standardValue>
+    <standardValue>
+        <fullName>No show, RSVPed</fullName>
+        <default>false</default>
+        <label>No show, RSVPed</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Pending for Approval</fullName>
+        <default>false</default>
+        <label>Pending for Approval</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Registered</fullName>
+        <default>false</default>
+        <label>Registered</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Responded</fullName>
+        <default>false</default>
+        <label>Responded</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Sent</fullName>
+        <default>false</default>
+        <label>Sent</label>
+    </standardValue>
+</StandardValueSet>

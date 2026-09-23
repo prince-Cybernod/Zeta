@@ -20,4 +20,8 @@
         </sections>
     </layouts>
     <startsWith>Consonant</startsWith>
+    <validationRules>
+        <errorMessage><!-- Populate either Field Definition or Entity Particle, not both. --></errorMessage>
+        <name>FieldDefinitionOrEntityParticle</name>
+    </validationRules>
 </CustomObjectTranslation>

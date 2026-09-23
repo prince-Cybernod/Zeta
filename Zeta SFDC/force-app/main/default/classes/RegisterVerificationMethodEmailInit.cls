@@ -18,11 +18,9 @@ public without sharing class RegisterVerificationMethodEmailInit {
     List<RegisterVerificationMethodInit.Request> initRequests =
       new List<RegisterVerificationMethodInit.Request>();
 
-//    for (Request i : requests) {
-      RegisterVerificationMethodInit.Request req = new RegisterVerificationMethodInit.Request();
-      req.method = 'EMAIL';
-      initRequests.add(req);
-//    }
+    RegisterVerificationMethodInit.Request req = new RegisterVerificationMethodInit.Request();
+    req.method = 'EMAIL';
+    initRequests.add(req);
 
     return RegisterVerificationMethodInit.initRegisterVerificationMethod(initRequests);
   }

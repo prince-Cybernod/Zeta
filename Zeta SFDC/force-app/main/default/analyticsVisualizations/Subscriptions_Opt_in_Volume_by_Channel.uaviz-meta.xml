@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<AnalyticsVisualization xmlns="http://soap.sforce.com/2006/04/metadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <analyticsWorkspace>Marketing_Performance_Intelligence</analyticsWorkspace>
+    <dataSource>Marketing_Intelligence_Custom_Semantic_Model_00Da500001AA4BB</dataSource>
+    <description>Subscriptions Opt-in Volume By Channel visualization</description>
+    <fields>
+        <displayCategory>Discrete</displayCategory>
+        <fieldKey>Opt_Ins</fieldKey>
+        <fieldName>Subscription_OPT_IN_clc</fieldName>
+        <function>Sum</function>
+        <label>Opt-Ins</label>
+        <role>Measure</role>
+        <type>Field</type>
+    </fields>
+    <fields>
+        <adHocCalc>{&quot;expression&quot;:&quot;UPPER([Communication_Channel_Type].[Communication_Channel_Type_Name])\n&quot;,&quot;description&quot;:&quot;&quot;,&quot;label&quot;:&quot;UPPER([Communication Channel Type].[Communication Channel Type Name])\n&quot;,&quot;level&quot;:&quot;Row&quot;,&quot;dataType&quot;:&quot;Text&quot;,&quot;displayCategory&quot;:&quot;Discrete&quot;}</adHocCalc>
+        <displayCategory>Discrete</displayCategory>
+        <fieldKey>Channel_Type</fieldKey>
+        <label>Channels</label>
+        <role>Dimension</role>
+        <type>Field</type>
+    </fields>
+    <fields>
+        <displayCategory>Discrete</displayCategory>
+        <fieldKey>Opt_Outs</fieldKey>
+        <fieldName>Subscription_OPT_OUT_clc</fieldName>
+        <function>Sum</function>
+        <label>Opt-Outs</label>
+        <role>Measure</role>
+        <type>Field</type>
+    </fields>
+    <fields>
+        <displayCategory>Discrete</displayCategory>
+        <fieldKey>Opt_In_Rate</fieldKey>
+        <fieldName>Subscription_OPT_IN_Rate_clc</fieldName>
+        <function>UserAgg</function>
+        <label>Opt-In Rate</label>
+        <role>Measure</role>
+        <type>Field</type>
+    </fields>
+    <fields>
+        <displayCategory>Discrete</displayCategory>
+        <fieldKey>Opt_Out_Rate</fieldKey>
+        <fieldName>Subscription_OPT_OUT_Rate_clc</fieldName>
+        <function>UserAgg</function>
+        <label>Opt-Out Rate</label>
+        <role>Measure</role>
+        <type>Field</type>
+    </fields>
+    <masterLabel>Subscriptions &amp; Opt-in Volume by Channel</masterLabel>
+    <templateAssetSourceName>Subscriptions_Opt_in_Volume_by_Channel</templateAssetSourceName>
+    <templateSource>sfdc_internal__umi</templateSource>
+    <version>66.08</version>
+    <views>
+        <fullName>Subscriptions_Opt_in_Volume_by_Channel_default</fullName>
+        <isOriginal>true</isOriginal>
+        <masterLabel>default</masterLabel>
+        <version>66.08</version>
+        <viewSpecification>{&quot;filters&quot;:[],&quot;sortOrders&quot;:{&quot;fields&quot;:{},&quot;rows&quot;:[],&quot;columns&quot;:[]},&quot;grandTotals&quot;:{&quot;rows&quot;:false,&quot;columns&quot;:false}}</viewSpecification>
+    </views>
+    <visualSpecification>eyJsYXlvdXQiOiJUYWJsZSIsImxlZ2VuZHMiOnt9LCJyb3dzIjpbIkNoYW5uZWxfVHlwZSIsIk9wdF9JbnMiLCJPcHRfT3V0cyIsIk9wdF9Jbl9SYXRlIiwiT3B0X091dF9SYXRlIl0sIm1hcmtzIjp7InBhbmVzIjp7InR5cGUiOiJUZXh0IiwiaXNBdXRvbWF0aWMiOmZhbHNlLCJzdGFjayI6eyJpc0F1dG9tYXRpYyI6dHJ1ZSwiaXNTdGFja2VkIjpmYWxzZX0sImVuY29kaW5ncyI6W119LCJmaWVsZHMiOnsiQ2hhbm5lbF9UeXBlIjp7InR5cGUiOiJUZXh0IiwiaXNBdXRvbWF0aWMiOmZhbHNlLCJzdGFjayI6eyJpc0F1dG9tYXRpYyI6dHJ1ZSwiaXNTdGFja2VkIjpmYWxzZX0sImVuY29kaW5ncyI6W119LCJPcHRfT3V0cyI6eyJ0eXBlIjoiVGV4dCIsImlzQXV0b21hdGljIjp0cnVlLCJzdGFjayI6eyJpc0F1dG9tYXRpYyI6dHJ1ZSwiaXNTdGFja2VkIjpmYWxzZX0sImVuY29kaW5ncyI6W119LCJPcHRfSW5fUmF0ZSI6eyJ0eXBlIjoiVGV4dCIsImlzQXV0b21hdGljIjp0cnVlLCJzdGFjayI6eyJpc0F1dG9tYXRpYyI6dHJ1ZSwiaXNTdGFja2VkIjpmYWxzZX0sImVuY29kaW5ncyI6W119LCJPcHRfT3V0X1JhdGUiOnsidHlwZSI6IlRleHQiLCJpc0F1dG9tYXRpYyI6dHJ1ZSwic3RhY2siOnsiaXNBdXRvbWF0aWMiOnRydWUsImlzU3RhY2tlZCI6ZmFsc2V9LCJlbmNvZGluZ3MiOltdfSwiT3B0X0lucyI6eyJ0eXBlIjoiVGV4dCIsImlzQXV0b21hdGljIjpmYWxzZSwic3RhY2siOnsiaXNBdXRvbWF0aWMiOnRydWUsImlzU3RhY2tlZCI6ZmFsc2V9LCJlbmNvZGluZ3MiOltdfX0sImhlYWRlcnMiOnsidHlwZSI6IlRleHQiLCJlbmNvZGluZ3MiOltdLCJpc0F1dG9tYXRpYyI6dHJ1ZX19LCJzdHlsZSI6eyJ0aXRsZSI6eyJpc1Zpc2libGUiOnRydWV9LCJmaWVsZExhYmVscyI6eyJyb3dzIjp7InNob3dMYWJlbHMiOnRydWUsImJhY2tncm91bmRDb2xvciI6IiNFNUU1RTUiLCJzaG93RGl2aWRlckxpbmUiOmZhbHNlfSwiY29sdW1ucyI6eyJzaG93TGFiZWxzIjp0cnVlLCJiYWNrZ3JvdW5kQ29sb3IiOiIjRTVFNUU1Iiwic2hvd0RpdmlkZXJMaW5lIjpmYWxzZX19LCJmb250cyI6eyJhY3Rpb25hYmxlSGVhZGVycyI6eyJzaXplIjoxMywiY29sb3IiOiIjMDI1MEQ5In0sImhlYWRlcnMiOnsic2l6ZSI6MTMsImNvbG9yIjoiIzJFMkUyRSJ9LCJmaWVsZExhYmVscyI6eyJzaXplIjoxMywiY29sb3IiOiIjMkUyRTJFIn0sIm1hcmtzIjp7InNpemUiOjEzLCJjb2xvciI6IiMyRTJFMkUifSwibWFya0xhYmVscyI6eyJzaXplIjoxMywiY29sb3IiOiIjMkUyRTJFIn0sImxlZ2VuZExhYmVscyI6eyJzaXplIjoxMywiY29sb3IiOiIjMkUyRTJFIn0sImF4aXNUaWNrTGFiZWxzIjp7InNpemUiOjEzLCJjb2xvciI6IiMyRTJFMkUifX0sInNoYWRpbmciOnsiYmFja2dyb3VuZENvbG9yIjoiI0ZGRkZGRiIsImJhbmRpbmciOnsicm93cyI6eyJjb2xvciI6IiNFNUU1RTUifX19LCJsaW5lcyI6eyJmaWVsZExhYmVsRGl2aWRlckxpbmUiOnsiY29sb3IiOiIjQzlDOUM5In0sInNlcGFyYXRvckxpbmUiOnsiY29sb3IiOiIjQzlDOUM5In0sImF4aXNMaW5lIjp7ImNvbG9yIjoiI0M5QzlDOSJ9LCJ6ZXJvTGluZSI6eyJjb2xvciI6IiNDOUM5QzkifX0sImVuY29kaW5ncyI6eyJmaWVsZHMiOnsiT3B0X091dHMiOnsiZGVmYXVsdHMiOnsiZm9ybWF0Ijp7Im51bWJlckZvcm1hdEluZm8iOnsidHlwZSI6Ik51bWJlciIsImRlY2ltYWxQbGFjZXMiOjIsIm5lZ2F0aXZlVmFsdWVzRm9ybWF0IjoiQXV0byIsImRpc3BsYXlVbml0cyI6IkF1dG8iLCJwcmVmaXgiOiIiLCJzdWZmaXgiOiIiLCJpbmNsdWRlVGhvdXNhbmRTZXBhcmF0b3IiOnRydWV9fX19LCJPcHRfSW5fUmF0ZSI6eyJkZWZhdWx0cyI6eyJmb3JtYXQiOnsibnVtYmVyRm9ybWF0SW5mbyI6eyJ0eXBlIjoiUGVyY2VudGFnZSIsImRlY2ltYWxQbGFjZXMiOjIsIm5lZ2F0aXZlVmFsdWVzRm9ybWF0IjoiQXV0byIsImRpc3BsYXlVbml0cyI6IkF1dG8iLCJwcmVmaXgiOiIiLCJzdWZmaXgiOiIiLCJpbmNsdWRlVGhvdXNhbmRTZXBhcmF0b3IiOnRydWV9fX19LCJPcHRfT3V0X1JhdGUiOnsiZGVmYXVsdHMiOnsiZm9ybWF0Ijp7Im51bWJlckZvcm1hdEluZm8iOnsidHlwZSI6IlBlcmNlbnRhZ2UiLCJkZWNpbWFsUGxhY2VzIjoyLCJuZWdhdGl2ZVZhbHVlc0Zvcm1hdCI6IkF1dG8iLCJkaXNwbGF5VW5pdHMiOiJBdXRvIiwicHJlZml4IjoiIiwic3VmZml4IjoiIiwiaW5jbHVkZVRob3VzYW5kU2VwYXJhdG9yIjp0cnVlfX19fSwiT3B0X0lucyI6eyJkZWZhdWx0cyI6eyJmb3JtYXQiOnsibnVtYmVyRm9ybWF0SW5mbyI6eyJ0eXBlIjoiTnVtYmVyIiwiZGVjaW1hbFBsYWNlcyI6MiwibmVnYXRpdmVWYWx1ZXNGb3JtYXQiOiJBdXRvIiwiZGlzcGxheVVuaXRzIjoiQXV0byIsInByZWZpeCI6IiIsInN1ZmZpeCI6IiIsImluY2x1ZGVUaG91c2FuZFNlcGFyYXRvciI6dHJ1ZX19fX19fSwiZml0IjoiUm93SGVhZGVyc1dpZHRoIiwibWFya3MiOnsicGFuZXMiOnsibGFiZWwiOnsiY2FuT3ZlcmxhcExhYmVscyI6ZmFsc2UsInNob3dNYXJrTGFiZWxzIjpmYWxzZSwibWFya3NUb0xhYmVsIjp7InR5cGUiOiJBbGwifX0sImNvbG9yIjp7ImNvbG9yIjoiIn0sInJhbmdlIjp7InJldmVyc2UiOnRydWV9LCJzaXplIjp7InR5cGUiOiJQaXhlbCIsImlzQXV0b21hdGljIjp0cnVlLCJ2YWx1ZSI6MTN9LCJpc0F1dG9tYXRpY1NpemUiOnRydWUsImlzU3RhY2tpbmdBeGlzQ2VudGVyZWQiOmZhbHNlfSwiaGVhZGVycyI6eyJjb2xvciI6eyJjb2xvciI6IiJ9LCJsYWJlbCI6eyJjYW5PdmVybGFwTGFiZWxzIjpmYWxzZSwic2hvd01hcmtMYWJlbHMiOmZhbHNlLCJtYXJrc1RvTGFiZWwiOnsidHlwZSI6IkFsbCJ9fSwiaXNBdXRvbWF0aWNTaXplIjp0cnVlfSwiZmllbGRzIjp7IkNoYW5uZWxfVHlwZSI6eyJsYWJlbCI6eyJjYW5PdmVybGFwTGFiZWxzIjpmYWxzZSwic2hvd01hcmtMYWJlbHMiOmZhbHNlLCJtYXJrc1RvTGFiZWwiOnsidHlwZSI6IkFsbCJ9fSwiY29sb3IiOnsiY29sb3IiOiIifSwicmFuZ2UiOnsicmV2ZXJzZSI6dHJ1ZX0sInNpemUiOnsidHlwZSI6IlBpeGVsIiwiaXNBdXRvbWF0aWMiOnRydWUsInZhbHVlIjoxM30sImlzQXV0b21hdGljU2l6ZSI6dHJ1ZSwiaXNTdGFja2luZ0F4aXNDZW50ZXJlZCI6ZmFsc2V9LCJPcHRfT3V0cyI6eyJsYWJlbCI6eyJjYW5PdmVybGFwTGFiZWxzIjpmYWxzZSwic2hvd01hcmtMYWJlbHMiOmZhbHNlLCJtYXJrc1RvTGFiZWwiOnsidHlwZSI6IkFsbCJ9fSwiY29sb3IiOnsiY29sb3IiOiIifSwicmFuZ2UiOnsicmV2ZXJzZSI6dHJ1ZX0sInNpemUiOnsidHlwZSI6IlBpeGVsIiwiaXNBdXRvbWF0aWMiOnRydWUsInZhbHVlIjoxM30sImlzQXV0b21hdGljU2l6ZSI6dHJ1ZX0sIk9wdF9Jbl9SYXRlIjp7ImxhYmVsIjp7ImNhbk92ZXJsYXBMYWJlbHMiOmZhbHNlLCJzaG93TWFya0xhYmVscyI6ZmFsc2UsIm1hcmtzVG9MYWJlbCI6eyJ0eXBlIjoiQWxsIn19LCJjb2xvciI6eyJjb2xvciI6IiJ9LCJyYW5nZSI6eyJyZXZlcnNlIjp0cnVlfSwic2l6ZSI6eyJ0eXBlIjoiUGl4ZWwiLCJpc0F1dG9tYXRpYyI6dHJ1ZSwidmFsdWUiOjEzfSwiaXNBdXRvbWF0aWNTaXplIjp0cnVlfSwiT3B0X091dF9SYXRlIjp7ImxhYmVsIjp7ImNhbk92ZXJsYXBMYWJlbHMiOmZhbHNlLCJzaG93TWFya0xhYmVscyI6ZmFsc2UsIm1hcmtzVG9MYWJlbCI6eyJ0eXBlIjoiQWxsIn19LCJjb2xvciI6eyJjb2xvciI6IiJ9LCJyYW5nZSI6eyJyZXZlcnNlIjp0cnVlfSwic2l6ZSI6eyJ0eXBlIjoiUGl4ZWwiLCJpc0F1dG9tYXRpYyI6dHJ1ZSwidmFsdWUiOjEzfSwiaXNBdXRvbWF0aWNTaXplIjp0cnVlfSwiT3B0X0lucyI6eyJsYWJlbCI6eyJjYW5PdmVybGFwTGFiZWxzIjpmYWxzZSwic2hvd01hcmtMYWJlbHMiOmZhbHNlLCJtYXJrc1RvTGFiZWwiOnsidHlwZSI6IkFsbCJ9fSwiY29sb3IiOnsiY29sb3IiOiIifSwicmFuZ2UiOnsicmV2ZXJzZSI6dHJ1ZX0sInNpemUiOnsidHlwZSI6IlBpeGVsIiwiaXNBdXRvbWF0aWMiOnRydWUsInZhbHVlIjoxM30sImlzQXV0b21hdGljU2l6ZSI6dHJ1ZSwiaXNTdGFja2luZ0F4aXNDZW50ZXJlZCI6ZmFsc2V9fX0sImhlYWRlcnMiOnsiZmllbGRzIjp7IkNoYW5uZWxfVHlwZSI6eyJpc1Zpc2libGUiOnRydWUsImhpZGRlblZhbHVlcyI6W10sInNob3dNaXNzaW5nVmFsdWVzIjpmYWxzZX0sIk9wdF9PdXRzIjp7ImlzVmlzaWJsZSI6dHJ1ZSwiZGVmYXVsdHMiOnsiZm9ybWF0Ijp7Im51bWJlckZvcm1hdEluZm8iOnsidHlwZSI6Ik51bWJlciIsImRlY2ltYWxQbGFjZXMiOjAsIm5lZ2F0aXZlVmFsdWVzRm9ybWF0IjoiQXV0byIsImRpc3BsYXlVbml0cyI6IkF1dG8iLCJwcmVmaXgiOiIiLCJzdWZmaXgiOiIiLCJpbmNsdWRlVGhvdXNhbmRTZXBhcmF0b3IiOnRydWV9fX0sImhpZGRlblZhbHVlcyI6W10sInNob3dNaXNzaW5nVmFsdWVzIjpmYWxzZX0sIk9wdF9Jbl9SYXRlIjp7ImlzVmlzaWJsZSI6dHJ1ZSwiZGVmYXVsdHMiOnsiZm9ybWF0Ijp7Im51bWJlckZvcm1hdEluZm8iOnsidHlwZSI6IlBlcmNlbnRhZ2UiLCJkZWNpbWFsUGxhY2VzIjowLCJuZWdhdGl2ZVZhbHVlc0Zvcm1hdCI6IkF1dG8iLCJkaXNwbGF5VW5pdHMiOiJBdXRvIiwicHJlZml4IjoiIiwic3VmZml4IjoiIiwiaW5jbHVkZVRob3VzYW5kU2VwYXJhdG9yIjp0cnVlfX19LCJoaWRkZW5WYWx1ZXMiOltdLCJzaG93TWlzc2luZ1ZhbHVlcyI6ZmFsc2V9LCJPcHRfT3V0X1JhdGUiOnsiaXNWaXNpYmxlIjp0cnVlLCJkZWZhdWx0cyI6eyJmb3JtYXQiOnsibnVtYmVyRm9ybWF0SW5mbyI6eyJ0eXBlIjoiUGVyY2VudGFnZSIsImRlY2ltYWxQbGFjZXMiOjAsIm5lZ2F0aXZlVmFsdWVzRm9ybWF0IjoiQXV0byIsImRpc3BsYXlVbml0cyI6IkF1dG8iLCJwcmVmaXgiOiIiLCJzdWZmaXgiOiIiLCJpbmNsdWRlVGhvdXNhbmRTZXBhcmF0b3IiOnRydWV9fX0sImhpZGRlblZhbHVlcyI6W10sInNob3dNaXNzaW5nVmFsdWVzIjpmYWxzZX0sIk9wdF9JbnMiOnsiaXNWaXNpYmxlIjp0cnVlLCJkZWZhdWx0cyI6eyJmb3JtYXQiOnsibnVtYmVyRm9ybWF0SW5mbyI6eyJ0eXBlIjoiTnVtYmVyIiwiZGVjaW1hbFBsYWNlcyI6MCwibmVnYXRpdmVWYWx1ZXNGb3JtYXQiOiJBdXRvIiwiZGlzcGxheVVuaXRzIjoiQXV0byIsInByZWZpeCI6IiIsInN1ZmZpeCI6IiIsImluY2x1ZGVUaG91c2FuZFNlcGFyYXRvciI6dHJ1ZX19fSwiaGlkZGVuVmFsdWVzIjpbXSwic2hvd01pc3NpbmdWYWx1ZXMiOmZhbHNlfX0sInJvd3MiOnsibWVyZ2VSZXBlYXRlZENlbGxzIjpmYWxzZSwic2hvd0luZGV4IjpmYWxzZSwic2l6aW5nIjp7ImZpZWxkV2lkdGgiOnt9fX0sImNvbHVtbnMiOnsibWVyZ2VSZXBlYXRlZENlbGxzIjpmYWxzZSwic2hvd0luZGV4IjpmYWxzZSwic2l6aW5nIjp7ImZpZWxkSGVpZ2h0Ijp7fX19fX19</visualSpecification>
+    <workspaceAssetRelationships>
+        <asset xsi:nil="true"/>
+        <assetType>AnalyticsVisualization</assetType>
+        <assetUsageType>Created</assetUsageType>
+        <workspace>Marketing_Performance_Intelligence</workspace>
+    </workspaceAssetRelationships>
+</AnalyticsVisualization>

@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <aggregates>
+        <calculatedFormula>RowCount / AcademicInterest.Lottery_Capacity__c.Total_Available_Seats__c:SUM</calculatedFormula>
+        <datatype>number</datatype>
+        <developerName>FORMULA1</developerName>
+        <isActive>false</isActive>
+        <isCrossBlock>false</isCrossBlock>
+        <masterLabel>Unique App / Open Seat</masterLabel>
+        <scale>2</scale>
+    </aggregates>
+    <columns>
+        <field>AcademicInterest$Name</field>
+    </columns>
+    <description>Application Enrollment Progress based on the Person Account&apos;s Enrollment Phase of &quot;Waitlist&quot; - used in the Application Dashboard</description>
+    <filter>
+        <criteriaItems>
+            <column>AcademicInterest$IndividualApplication.Application_Timeline__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>2026 - 2027 DEMO</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>AcademicInterest$IndividualApplication.Account.Enrollment_Status__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>Waitlisted</value>
+        </criteriaItems>
+        <language>en_US</language>
+    </filter>
+    <format>Matrix</format>
+    <groupingsAcross>
+        <dateGranularity>Day</dateGranularity>
+        <field>AcademicInterest$IndividualApplication.Account.Enrollment_Status__c</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsAcross>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>AcademicInterest$Lottery_Capacity__c.Grade__c</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>AcademicInterest$LearningProgram</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <name>DB: Application - Enrollment Waitlist</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>School_Applications_with_Individual_Application_and_Lottery_Capacity__c</reportType>
+    <scope>organization</scope>
+    <showDetails>false</showDetails>
+    <showGrandTotal>true</showGrandTotal>
+    <showSubTotals>true</showSubTotals>
+    <timeFrameFilter>
+        <dateColumn>AcademicInterest$IndividualApplication.AppliedDate</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
+    </timeFrameFilter>
+</Report>

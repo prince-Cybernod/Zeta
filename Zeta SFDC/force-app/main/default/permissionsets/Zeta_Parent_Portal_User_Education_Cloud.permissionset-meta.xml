@@ -662,6 +662,11 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
+        <field>Contact.fxPortal_User_Email__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
         <field>DocumentChecklistItem.AccountId</field>
         <readable>true</readable>
     </fieldPermissions>

@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <PermissionSet xmlns="http://soap.sforce.com/2006/04/metadata">
     <description>Grants edit on the Individual Application guardian detail fields. Everyone else has these read-only so guardian details are changed on the guardian record instead. Assign only to people who genuinely need to correct them.</description>
-    <hasActivationRequired>false</hasActivationRequired>
     <fieldPermissions>
         <editable>true</editable>
         <field>IndividualApplication.Guardian_2_Address_Same_As_Primary__c</field>
@@ -87,5 +86,6 @@
         <field>IndividualApplication.Parent_Guardian_2_Zip__c</field>
         <readable>true</readable>
     </fieldPermissions>
+    <hasActivationRequired>false</hasActivationRequired>
     <label>Zeta Guardian Info Edit</label>
 </PermissionSet>

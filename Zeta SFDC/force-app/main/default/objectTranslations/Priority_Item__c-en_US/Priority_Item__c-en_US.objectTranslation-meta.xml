@@ -16,4 +16,8 @@
         </sections>
     </layouts>
     <startsWith>Consonant</startsWith>
+    <validationRules>
+        <errorMessage><!-- Validated By and Validated On must be completed when Review Status is not Pending --></errorMessage>
+        <name>Require_Reviewer_for_Validation</name>
+    </validationRules>
 </CustomObjectTranslation>

@@ -775,7 +775,7 @@
             <name>Matching_User</name>
             <conditionLogic>and</conditionLogic>
             <conditions>
-                <leftValueReference>var_rec_Found_User</leftValueReference>
+                <leftValueReference>var_rec_Found_User.Id</leftValueReference>
                 <operator>IsNull</operator>
                 <rightValue>
                     <booleanValue>false</booleanValue>
@@ -791,7 +791,7 @@
             <conditionLogic>and</conditionLogic>
             <conditions>
                 <leftValueReference>var_col_Found_Accounts</leftValueReference>
-                <operator>IsNull</operator>
+                <operator>IsEmpty</operator>
                 <rightValue>
                     <booleanValue>false</booleanValue>
                 </rightValue>

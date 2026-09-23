@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns>
+        <field>AcademicInterest$Name</field>
+    </columns>
+    <columns>
+        <field>AcademicInterest$IndividualApplication.Grade_Applying_To__c</field>
+    </columns>
+    <columns>
+        <field>AcademicInterest$Lottery_Capacity__c.Grade__c</field>
+    </columns>
+    <columns>
+        <field>AcademicInterest$Lottery_Capacity__c</field>
+    </columns>
+    <description>Used to confirm student age is eligible for the lottery capacity grade applied</description>
+    <filter>
+        <booleanFilter>1 AND 2 AND (3 OR 4)</booleanFilter>
+        <criteriaItems>
+            <column>AcademicInterest$Grade_Applying_For_Match__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>0</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>AcademicInterest$IndividualApplication.Age_Inconsistency_Review_Status__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>notEqual</operator>
+            <value>Exception Made</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>AcademicInterest$IndividualApplication.Application_Timeline__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>2026 - 2027 UAT 2</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>AcademicInterest$IndividualApplication.Application_Timeline__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>2026 - 2027 UAT 1</value>
+        </criteriaItems>
+        <language>en_US</language>
+    </filter>
+    <format>Summary</format>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>AcademicInterest$IndividualApplication.Application_Timeline__c</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>AcademicInterest$Account</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <name>Grade Applied &lt;&gt; Lottery Capacity</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>School_Applications_with_Individual_Application_and_Lottery_Capacity__c</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <showGrandTotal>true</showGrandTotal>
+    <showSubTotals>true</showSubTotals>
+    <timeFrameFilter>
+        <dateColumn>AcademicInterest$CreatedDate</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
+    </timeFrameFilter>
+</Report>

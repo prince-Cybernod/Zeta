@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>SendIndividualDataRequestCompletionDate__c</fullName>
+    <label>SendIndividualDataRequestCompletionDate</label>
+    <mktDataModelFieldAttributes>
+        <definitionCreationType>System</definitionCreationType>
+        <invalidMergeActionType>Drop</invalidMergeActionType>
+        <isDynamicLookup>false</isDynamicLookup>
+        <labelOverride>SendIndividualDataRequestCompletionDate</labelOverride>
+        <masterLabel>SendIndividualDataRequestCompletionDate</masterLabel>
+        <refAttrDeveloperName>SendIndividualDataRequestCompletionDate</refAttrDeveloperName>
+        <usageTag>None</usageTag>
+    </mktDataModelFieldAttributes>
+    <required>false</required>
+    <type>DateTime</type>
+</CustomField>

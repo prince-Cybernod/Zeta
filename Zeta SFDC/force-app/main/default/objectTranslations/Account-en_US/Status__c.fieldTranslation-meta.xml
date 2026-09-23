@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <label><!-- Status --></label>
+    <name>Status__c</name>
+    <picklistValues>
+        <masterLabel>Open</masterLabel>
+        <translation><!-- Open --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Permanently Closed</masterLabel>
+        <translation><!-- Permanently Closed --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Relocated</masterLabel>
+        <translation><!-- Relocated --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Temporarily Closed</masterLabel>
+        <translation><!-- Temporarily Closed --></translation>
+    </picklistValues>
+</CustomFieldTranslation>

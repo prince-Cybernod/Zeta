@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>last_refreshed_on__c</fullName>
+    <label>Last Refreshed On</label>
+    <mktDataModelFieldAttributes>
+        <definitionCreationType>ADG</definitionCreationType>
+        <isDynamicLookup>false</isDynamicLookup>
+        <labelOverride>Last Refreshed On</labelOverride>
+        <masterLabel>Last Refreshed On</masterLabel>
+        <refAttrDeveloperName>last_refreshed_on</refAttrDeveloperName>
+        <usageTag>None</usageTag>
+    </mktDataModelFieldAttributes>
+    <required>false</required>
+    <type>DateTime</type>
+</CustomField>

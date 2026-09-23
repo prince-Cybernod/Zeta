@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <description>Sent automatically when an Individual Application is submitted and the Application Status is set to Applied.</description>
+    <encodingKey>UTF-8</encodingKey>
+    <name>Application Submission Confirmation - Spanish</name>
+    <pageDevName>Application_Submission_Confirmation_Spanish</pageDevName>
+    <relatedEntityType>IndividualApplication</relatedEntityType>
+    <style>none</style>
+    <subject>¡Gracias por postularte a Zeta!</subject>
+    <textOnly>Estimado/a {{{IndividualApplication.Parent_Guardian_1_First_Name__c}}}:
+
+¡Gracias por postularte a Escuelas Chárter Zeta!
+
+Nos entusiasma mucho que estés considerando a Zeta para tu familia. Elegir una escuela es una decisión importante, y nuestro equipo de inscripciones está listo para apoyarte en cada paso del proceso.
+
+Inicia sesión aquí para ver tu solicitud. &lt; https://myportal.zetaschools.org/ &gt; 
+
+En la escuela primaria Zeta, creemos que los primeros años de escuela moldean todo lo demás. En salones cálidos, alegres y estructurados, los niños desarrollan confianza, curiosidad y un amor duradero por el aprendizaje. Nuestros maestros conocen a fondo a cada estudiante y les brindan el apoyo académico, social y emocional que necesitan para prosperar.
+
+Los estudiantes de Zeta se benefician de:
+
+ - Una base académica fuerte que los prepara para el éxito a largo plazo
+ - Una cultura escolar basada enel amor, el sentido de pertenencia y las altas expectativas
+ - Una colaboración cercana y reflexiva con las familias en cada etapa
+ - Una educación pública chárter gratuita abierta a todos los estudiantes
+
+Nuestro equipo de inscripciones será su principal punto de contacto durante todo el proceso de inscripción. Compartiremos actualizaciones importantes, fechas clave y oportunidades para conocer nuestra comunidad; además, siempre estamos aquí para responder a sus preguntas.
+
+Nos encantaría recibirlos para una visita en la escuela primaria Zeta de su preferencia.
+
+Nuevamente, gracias por considerar a la escuela primaria Zeta. ¡Estamos ansiosos por conocer a su familia! 
+
+Atentamente,
+
+El equipo de inscripciones de Zeta
+
+Escuelas Chárter Zeta
+
+Por favor, comunícate si tienes alguna pregunta sobre Zeta; nuestro equipo de inscripciones está aquí para ayudarte en cada paso del camino.
+
+✉enroll@zetaschools.org &lt; mailto:enroll@zetaschools.org &gt; 📞(646) 480-1654</textOnly>
+    <type>custom</type>
+    <uiType>SFX</uiType>
+</EmailTemplate>

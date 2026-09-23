@@ -1,0 +1,11 @@
+<html>
+<head>
+	<title></title>
+</head>
+<body style="height: auto; min-height: auto;">Hi&nbsp;{{{IndividualApplication.Guardian_1_Full_Name__c}}},<br />
+<br />
+Thank you for submitting your application on behalf of your student&nbsp;{{{IndividualApplication.fxApplicant_First_Name__c}}}&nbsp;{{{IndividualApplication.fxApplicant_Last_Name__c}}}. I'm checking in to see if there are any other Zeta schools you plan to apply to for the&nbsp;{{{IndividualApplication.fxSchool_Year_Start_End__c}}} school year? If so, please don't hesitate to reach out.<br />
+<br />
+Thanks,<br />
+{{{Sender.Name}}}&nbsp;</body>
+</html>

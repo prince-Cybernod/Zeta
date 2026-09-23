@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<StandardValueSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <sorted>false</sorted>
+    <standardValue>
+        <fullName>In Progress</fullName>
+        <default>false</default>
+        <label>In Progress</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Completed</fullName>
+        <default>false</default>
+        <label>Completed</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Aborted</fullName>
+        <default>false</default>
+        <label>Aborted</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Planned</fullName>
+        <default>true</default>
+        <label>Planned</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Not Yet Online</fullName>
+        <default>false</default>
+        <label>Not Yet Online</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Tickets Available</fullName>
+        <default>false</default>
+        <label>Tickets Available</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Tickets Sold Out</fullName>
+        <default>false</default>
+        <label>Tickets Sold Out</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Past Event</fullName>
+        <default>false</default>
+        <label>Past Event</label>
+    </standardValue>
+</StandardValueSet>

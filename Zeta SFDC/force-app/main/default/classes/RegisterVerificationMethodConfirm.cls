@@ -65,8 +65,6 @@ public without sharing class RegisterVerificationMethodConfirm {
     }
   }
 
-//  private static final Logger LOGGER = new Logger('RegisterVerificationMethodConfirm');
-
   @TestVisible
   private static TestScenario scenario;
 
@@ -112,10 +110,8 @@ public without sharing class RegisterVerificationMethodConfirm {
           }
         }
       } catch (Exception e) {
-//        LOGGER.log(
-//          e,
-//          'Exception when verifying register verification method. Method: ' + method
-//        );
+        Logger.error('Exception when verifying register verification method. Method: ' + method, e);
+        Logger.saveLog();
         responses.add(
           new Response(e.getMessage() ?? 'Registration Exception. Please contact support.')
         );
@@ -128,10 +124,11 @@ public without sharing class RegisterVerificationMethodConfirm {
         if (res.message == 'Token not valid') {
           responses.add(new Response(res.message));
         } else {
-//          LOGGER.log(
-//            res.message,
-//            'Error when verifying register verification method. Method: ' + method
-//          );
+          Logger.error(
+            'Error when verifying register verification method. Method: ' + method,
+            res.message
+          );
+          Logger.saveLog();
           responses.add(
             new Response(res.message ?? 'Registration Exception. Please contact support.')
           );

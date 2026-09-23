@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <meta name="viewport" content="width=device-width, initialscale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <style type="text/css">@media screen and (max-width: 480px) {slot[style] {margin-right: 0 !important;}.columnDiv {margin-right: 0 !important;}}@media screen and (min-width: 480px) {slot[style] {margin-bottom: 0 !important;}.columnDiv {margin-bottom: 0 !important;}}</style>
+  <style type="text/css">@media screen and (max-width: 480px) {.contentbuilderBaseColumnRow .columnCell {display:inline-block;width:100%}}</style>
+  <style type="text/css">.contentpageDefaultEmailTemplatePageTemplate .contentRoot {width: 600px;}@media only screen and (max-width: 480px) {.contentpageDefaultEmailTemplatePageTemplate .contentRoot {width: 320px;}}</style>
+ </head>
+ <body>
+  <table class="contentpageDefaultEmailTemplatePageTemplate" style="background-color: #E9EAEC;" role="presentation" id="contentpage_emailTemplateBodyContent" width="100%" cellpadding="0" cellspacing="0">
+   <tbody>
+    <tr>
+     <td width="100%" align="center">
+      <table class="contentRoot" style="background-color: #FFFFFF;" role="presentation" width="600" cellpadding="0" cellspacing="0">
+       <tbody>
+        <tr>
+         <td style="padding-top: 10px; padding-bottom: 10px; padding-left: 10px; padding-right: 10px;">
+          <table class="contentbuilderBaseColumnRow" style="align-items: flex-start; width: 100%; background-color:;" role="presentation" width="100%" cellpadding="0" cellspacing="0">
+           <tbody>
+            <tr valign="top">
+             <td width="100%" class="columnCell" style="vertical-align: top;display: inline-block; float:left">
+              <table cellpadding="0" cellspacing="0" style="width: 100%; border-collapse: collapse; word-break:break-word;">
+               <tbody>
+                <tr>
+                 <td>
+                  <table style="width:100%; border-collapse: collapse; word-break:break-word;" id="contentRegion" role="presentation" cellspacing="0" cellpadding="0" locked="0">
+                   <tbody>
+                    <tr>
+                     <td align="Center"><img src="{[devName:Screenshot_20260911_at_13425PM]}" alt="" width="600" style="width: 100%; display: block; border: none; max-width: 100%; object-fit: fill;" /></td>
+                    </tr>
+                   </tbody>
+                  </table></td>
+                </tr>
+                <tr>
+                 <td>
+                  <table style="width: 100%; border-collapse: collapse; word-break: break-word; font-size: 14px" id="contentRegion" role="presentation" cellspacing="0" cellpadding="0" locked="0">
+                   <tbody>
+                    <tr>
+                     <td style="font-family: Arial, Helvetica, sans-serif;"><p><span style="font-family:Arial,Helvetica,sans-serif;"><span style="color:#000000;">尊敬的 {{{IndividualApplication.Parent_Guardian_1_First_Name__c}}}:</span></span></p><p style="line-height:1.38; margin-bottom:16px"><span style="font-family:Arial,Helvetica,sans-serif;"><span style="font-size:11pt; font-variant:normal; white-space:pre-wrap"><span style="color:#000000"><span style="font-style: normal;"><span style="text-decoration: none;">感谢您申请 </span></span></span></span></span><span style="font-size:11pt; font-variant:normal; white-space:pre-wrap"><span style="font-family:Lato,sans-serif"><span style="color:#000000"><span style="font-weight:400"><span style="font-style:normal"><span style="text-decoration:none">Zeta 特许学校!</span></span></span></span></span></span></p><p style="line-height:1.38; margin-top:16px; margin-bottom:16px"><span style="font-family:Arial,Helvetica,sans-serif;"><span style="font-size:11pt; font-variant:normal; white-space:pre-wrap"><span style="color:#000000"><span style="font-weight:400"><span style="font-style:normal"><span style="text-decoration:none">我们非常高兴您为您的家庭考虑 Zeta。选择学校是一个重大的决定，我们的招生团队期待在您的每一步中为您提供支持。</span></span></span></span></span></span><br /><br /><strong><a href="http://myportal.zetaschools.org/"><span style="font-family:Arial,Helvetica,sans-serif;"><span style="font-size:11pt; font-variant:normal; white-space:pre-wrap"><span style="color:#000000"><span style="font-weight:400"><span style="font-style:normal"><span style="text-decoration:none">请在此登录以查看您的申请。</span></span></span></span></span></span></a></strong></p></td>
+                    </tr>
+                   </tbody>
+                  </table></td>
+                </tr>
+                <tr>
+                 <td>
+                  <table style="width: 100%; border-collapse: collapse; word-break: break-word; font-size: 14px" id="contentRegion" role="presentation" cellspacing="0" cellpadding="0" locked="0">
+                   <tbody>
+                    <tr>
+                     <td style="font-family: Arial, Helvetica, sans-serif;"><p style="line-height:1.38; margin-bottom:3px"><span style="line-height:1;"><span style="font-size:11pt; font-variant:normal; white-space:pre-wrap"><span style="font-family:Lato,sans-serif"><span style="color:#000000"><span style="font-weight:400"><span style="font-style:normal"><span style="text-decoration:none">在 Zeta 小学，我们相信学校的早期教育塑造了之后的一切。在温暖、快乐且井然有序的课堂中，孩子们建立起自信、好奇心以及对学习的持久热爱。我们的老师深入了解每一位学生，并提供他们茁壮成长所需的学业、社交和情感支持。</span></span></span></span></span></span></span></p><p style="line-height:1.38; margin-bottom:3px"><span style="line-height:1;"><span style="font-size:11pt; font-variant:normal; white-space:pre-wrap"><span style="font-family:Lato,sans-serif"><span style="color:#000000"><span style="font-weight:400"><span style="font-style:normal"><span style="text-decoration:none">Zeta 的学生受益于：</span></span></span></span></span></span></span></p>
+                      <ul>
+                       <li aria-level="1" style="list-style-type:disc"><span style="line-height:1;"><span style="font-size:11pt; font-variant:normal; white-space:pre-wrap"><span style="font-family:Lato,sans-serif"><span style="color:#000000"><span style="font-weight:400"><span style="font-style:normal"><span style="text-decoration:none">&nbsp;坚实的学业基础，为他们的长期成功做好准备</span></span></span></span></span></span></span></li>
+                       <li aria-level="1" style="list-style-type:disc"><span style="line-height:1;"><span style="font-size:11pt; font-variant:normal; white-space:pre-wrap"><span style="font-family:Lato,sans-serif"><span style="color:#000000"><span style="font-weight:400"><span style="font-style:normal"><span style="text-decoration:none">根植于爱、归属感和高标准的学校文化</span></span></span></span></span></span></span></li>
+                       <li aria-level="1" style="list-style-type:disc"><span style="line-height:1;"><span style="font-size:11pt; font-variant:normal; white-space:pre-wrap"><span style="font-family:Lato,sans-serif"><span style="color:#000000"><span style="font-weight:400"><span style="font-style:normal"><span style="text-decoration:none">在各个阶段与家庭进行密切的合作</span></span></span></span></span></span></span></li>
+                       <li aria-level="1" style="list-style-type:disc"><span style="line-height:1;"><span style="font-size:11pt; font-variant:normal; white-space:pre-wrap"><span style="font-family:Lato,sans-serif"><span style="color:#000000"><span style="font-weight:400"><span style="font-style:normal"><span style="text-decoration:none">面向所有学生开放的免学费公立特许教育</span></span></span></span></span></span></span></li>
+                      </ul> &nbsp; <p style="line-height:1.38; margin-bottom:3px"><span style="line-height:1;"><span style="font-size:11pt; font-variant:normal; white-space:pre-wrap"><span style="font-family:Lato,sans-serif"><span style="color:#000000"><span style="font-weight:400"><span style="font-style:normal"><span style="text-decoration:none">在整个招生过程中，我们的招生团队将是您的主要联系人。我们将分享重要的信息、关键日期以及了解我们学校社区的机会，并且我们随时准备解答您的疑问。</span></span></span></span></span></span></span></p><p style="line-height:1.38; margin-bottom:3px"><span style="line-height:1;"><span style="font-size:11pt; font-variant:normal; white-space:pre-wrap"><span style="font-family:Lato,sans-serif"><span style="color:#000000"><span style="font-weight:400"><span style="font-style:normal"><span style="text-decoration:none">我们诚挚欢迎您来您选择的 Zeta 小学参观。再次感谢您考虑 Zeta 小学。我们迫不及待地想要了解您和您的家庭！</span></span></span></span></span></span></span></p><span style="line-height:1;">&nbsp;</span><p style="line-height:1.38; margin-bottom:3px"><span style="line-height:1;"><span style="font-size:11pt; font-variant:normal; white-space:pre-wrap"><span style="font-family:Lato,sans-serif"><span style="color:#000000"><span style="font-weight:400"><span style="font-style:normal"><span style="text-decoration:none">谨此问候，</span></span></span></span></span></span></span></p><p style="line-height:1.38; margin-bottom:3px"><span style="line-height:1;"><span style="font-size:11pt; font-variant:normal; white-space:pre-wrap"><span style="font-family:Lato,sans-serif"><span style="color:#000000"><span style="font-weight:700"><span style="font-style:normal"><span style="text-decoration:none">Zeta 招生团队</span></span></span></span></span></span></span></p><p style="line-height:1.38; margin-bottom:3px"><span style="line-height:1;"><span style="font-size:11pt; font-variant:normal; white-space:pre-wrap"><span style="font-family:Lato,sans-serif"><span style="color:#000000"><span style="font-weight:400"><span style="font-style:normal"><span style="text-decoration:none">Zeta 特许学校</span></span></span></span></span></span></span></p><span style="line-height:1;"> &nbsp;</span><p style="line-height:1.38; margin-bottom:3px"><span style="line-height:1;"><span style="font-size:11pt; font-variant:normal; white-space:pre-wrap"><span style="font-family:Lato,sans-serif"><span style="color:#000000"><span style="font-weight:400"><span style="font-style:normal"><span style="text-decoration:none">如果您对 Zeta 有任何疑问，请随时联系我们，我们的招生团队将在您的每一步中为您提供支持。<br /> ✉ </span></span></span></span><span style="color:#0563c1"><span style="font-weight:400"><span style="font-style:normal"><span style="text-decoration:none">enroll@zetaschools.org</span></span></span></span><span style="color:#000000"><span style="font-weight:400"><span style="font-style:normal"><span style="text-decoration:none"> 📞(646) 480-1654</span></span></span></span></span></span></span></p></td>
+                    </tr>
+                   </tbody>
+                  </table></td>
+                </tr>
+                <tr>
+                 <td>
+                  <table style="width:100%; border-collapse: collapse; word-break:break-word;" id="contentRegion" role="presentation" cellspacing="0" cellpadding="0" locked="0">
+                   <tbody>
+                    <tr>
+                     <td align="left"><img src="{[devName:Screenshot_20260911_at_13341PM]}" alt="" width="600" style="width: 100%; display: block; border: none; max-width: 100%; object-fit: contain;" /></td>
+                    </tr>
+                   </tbody>
+                  </table></td>
+                </tr>
+               </tbody>
+              </table></td>
+            </tr>
+           </tbody>
+          </table></td>
+        </tr>
+       </tbody>
+      </table></td>
+    </tr>
+   </tbody>
+  </table>
+ </body>
+</html>

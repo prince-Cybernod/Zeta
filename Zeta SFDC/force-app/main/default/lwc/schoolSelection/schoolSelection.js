@@ -18,7 +18,6 @@ import labelSearchSchools from '@salesforce/label/c.AppUI_SearchSchools';
 import labelShowingSchoolsForGrade from '@salesforce/label/c.AppUI_ShowingSchoolsForGrade';
 import labelValidateSelectSchool from '@salesforce/label/c.AppUI_ValidateSelectSchool';
 import labelZetaSchools from '@salesforce/label/c.AppUI_ZetaSchools';
-import ZIP_CENTROIDS from '@salesforce/resourceUrl/zipCentroids';
 
 const ZETA_PURPLE = '#4F497A';
 const ZETA_MAGENTA = '#CF3D96';
@@ -36,61 +35,6 @@ function buildSchoolPinUrl(fillColor) {
   ].join('');
   return `data:image/svg+xml;base64,${btoa(svg)}`;
 }
-
-const _centroidCache = new Map();
-const STATE_ABBR = {
-  alabama: 'al',
-  alaska: 'ak',
-  arizona: 'az',
-  arkansas: 'ar',
-  california: 'ca',
-  colorado: 'co',
-  connecticut: 'ct',
-  delaware: 'de',
-  'district of columbia': 'dc',
-  florida: 'fl',
-  georgia: 'ga',
-  hawaii: 'hi',
-  idaho: 'id',
-  illinois: 'il',
-  indiana: 'in',
-  iowa: 'ia',
-  kansas: 'ks',
-  kentucky: 'ky',
-  louisiana: 'la',
-  maine: 'me',
-  maryland: 'md',
-  massachusetts: 'ma',
-  michigan: 'mi',
-  minnesota: 'mn',
-  mississippi: 'ms',
-  missouri: 'mo',
-  montana: 'mt',
-  nebraska: 'ne',
-  nevada: 'nv',
-  'new hampshire': 'nh',
-  'new jersey': 'nj',
-  'new mexico': 'nm',
-  'new york': 'ny',
-  'north carolina': 'nc',
-  'north dakota': 'nd',
-  ohio: 'oh',
-  oklahoma: 'ok',
-  oregon: 'or',
-  pennsylvania: 'pa',
-  'rhode island': 'ri',
-  'south carolina': 'sc',
-  'south dakota': 'sd',
-  tennessee: 'tn',
-  texas: 'tx',
-  utah: 'ut',
-  vermont: 'vt',
-  virginia: 'va',
-  washington: 'wa',
-  'west virginia': 'wv',
-  wisconsin: 'wi',
-  wyoming: 'wy'
-};
 
 export default class SchoolSelection extends LightningElement {
   @api recordId;
@@ -232,30 +176,18 @@ export default class SchoolSelection extends LightningElement {
       this._homeAddress = eligibleResult.homeAddress || null;
       this._grade = eligibleResult.gradeLabel || eligibleResult.grade || '';
 
-      const homeCentroid = await this._resolveCentroid(
-        this._homeAddress?.state,
-        this._homeAddress?.postalCode
-      );
-      const homeLat =
-        this._homeAddress?.latitude ?? homeCentroid?.latitude ?? null;
-      const homeLon =
-        this._homeAddress?.longitude ?? homeCentroid?.longitude ?? null;
+      const homeLat = this._homeAddress?.latitude ?? null;
+      const homeLon = this._homeAddress?.longitude ?? null;
 
-      this.schools = await Promise.all(
-        this.schools.map(async (s, idx) => {
-          const schoolCentroid = await this._resolveCentroid(
-            s.state,
-            s.postalCode
-          );
-          const dist = this._calculateDistance(
-            homeLat,
-            homeLon,
-            s.latitude ?? schoolCentroid?.latitude ?? null,
-            s.longitude ?? schoolCentroid?.longitude ?? null
-          );
-          return { ...s, distance: dist, _originalIndex: idx };
-        })
-      );
+      this.schools = this.schools.map((s, idx) => {
+        const dist = this._calculateDistance(
+          homeLat,
+          homeLon,
+          s.latitude ?? null,
+          s.longitude ?? null
+        );
+        return { ...s, distance: dist, _originalIndex: idx };
+      });
       this.schools.sort((a, b) => {
         if (a.distance != null && b.distance != null)
           return a.distance - b.distance;
@@ -371,47 +303,6 @@ export default class SchoolSelection extends LightningElement {
     } finally {
       this.isSaving = false;
     }
-  }
-
-  async _resolveCentroid(state, postalCode) {
-    if (!postalCode) return null;
-    const raw = (state || '').trim().toLowerCase();
-    if (!raw) return null;
-    const stateAbbr = raw.length === 2 ? raw : STATE_ABBR[raw] || null;
-    if (!stateAbbr) return null;
-
-    if (!_centroidCache.has(stateAbbr)) {
-      try {
-        const resp = await fetch(`${ZIP_CENTROIDS}/${stateAbbr}.json`);
-        if (!resp.ok) return null;
-        _centroidCache.set(stateAbbr, await resp.json());
-      } catch (e) {
-        return null;
-      }
-    }
-
-    const zip = postalCode.substring(0, 5);
-    const stateData = _centroidCache.get(stateAbbr);
-    const coords = stateData?.[zip] || this._findNearestZip(stateData, zip);
-    return coords ? { latitude: coords[0], longitude: coords[1] } : null;
-  }
-
-  _findNearestZip(stateData, zip) {
-    if (!stateData) return null;
-    const prefix = zip.substring(0, 3);
-    let closest = null;
-    let minDiff = Infinity;
-    const zipNum = parseInt(zip, 10);
-    for (const key of Object.keys(stateData)) {
-      if (key.substring(0, 3) === prefix) {
-        const diff = Math.abs(parseInt(key, 10) - zipNum);
-        if (diff < minDiff) {
-          minDiff = diff;
-          closest = stateData[key];
-        }
-      }
-    }
-    return closest;
   }
 
   _calculateDistance(lat1, lon1, lat2, lon2) {
