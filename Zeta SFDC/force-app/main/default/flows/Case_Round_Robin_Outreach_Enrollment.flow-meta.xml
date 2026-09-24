@@ -91,6 +91,22 @@
         </assignmentItems>
     </assignments>
     <assignments>
+        <name>Increment_Find_Index</name>
+        <label>Increment Find Index</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <assignmentItems>
+            <assignToReference>varFindIndex</assignToReference>
+            <operator>Add</operator>
+            <value>
+                <numberValue>1.0</numberValue>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Loop_Find_Last_Owner</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
         <name>Increment_Index</name>
         <label>Increment Index</label>
         <locationX>0</locationX>
@@ -136,6 +152,22 @@
         </connector>
     </assignments>
     <assignments>
+        <name>Set_Last_Owner_Index</name>
+        <label>Set Last Owner Index</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <assignmentItems>
+            <assignToReference>varLastIndex</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>varFindIndex</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Increment_Find_Index</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
         <name>Set_User_Count</name>
         <label>Set User Count</label>
         <locationX>0</locationX>
@@ -174,6 +206,31 @@
         </rules>
     </decisions>
     <decisions>
+        <name>Has_Last_Assigned_Case</name>
+        <label>Has Last Assigned Case?</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <defaultConnector>
+            <targetReference>Loop_Users</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>No</defaultConnectorLabel>
+        <rules>
+            <name>Yes_Last_Case</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Get_Last_Assigned_Case</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Loop_Find_Last_Owner</targetReference>
+            </connector>
+            <label>Yes</label>
+        </rules>
+    </decisions>
+    <decisions>
         <name>Has_Users</name>
         <label>Has Users?</label>
         <locationX>0</locationX>
@@ -190,7 +247,32 @@
                 </rightValue>
             </conditions>
             <connector>
-                <targetReference>Loop_Users</targetReference>
+                <targetReference>Get_Last_Assigned_Case</targetReference>
+            </connector>
+            <label>Yes</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>Is_Last_Owner</name>
+        <label>Is Last Owner?</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <defaultConnector>
+            <targetReference>Increment_Find_Index</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>No</defaultConnectorLabel>
+        <rules>
+            <name>Yes_Last_Owner</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Loop_Find_Last_Owner.Id</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <elementReference>Get_Last_Assigned_Case.OwnerId</elementReference>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Set_Last_Owner_Index</targetReference>
             </connector>
             <label>Yes</label>
         </rules>
@@ -249,7 +331,7 @@
             <label>Yes</label>
         </rules>
     </decisions>
-    <description>Round robin for every new case (email, voicemail, web, manual) created owned by the Outreach and Enrollment Queue. The team is the queue&apos;s active user members (kept in sync by the Zeta - Outreach &amp; Enrollment user access policy). Position is MOD(CaseNumber, team size) over the members sorted by Id, so several cases created in one transaction still spread across people. Cases whose sender is enroll@zetaschools.org (Zoho Desk auto-acknowledgements) are left in the queue. Only OwnerId is written; on any error the case stays in the queue. The new owner then gets a "Case Assigned" in-app/mobile notification; a notification failure is ignored so the assignment stands.</description>
+    <description>Round robin for every new case (email, voicemail, web, manual) created owned by the Outreach and Enrollment Queue. The team is the queue&apos;s active user members (kept in sync by the Zeta - Outreach &amp; Enrollment user access policy). Strict turns: the new case goes to the member after the owner of the latest case owned by a team member (members sorted by Id, wrapping round; the first member if there is no such case). Manual reassignment of the latest case moves the turn; cases saved in the same instant go to the same person. Cases whose sender is enroll@zetaschools.org (Zoho Desk auto-acknowledgements) are left in the queue. Only OwnerId is written; on any error the case stays in the queue. The new owner then gets a "Case Assigned" in-app/mobile notification; a notification failure is ignored so the assignment stands.</description>
     <environments>Default</environments>
     <formulas>
         <name>fmNotificationBody</name>
@@ -259,11 +341,25 @@
     <formulas>
         <name>fmSlot</name>
         <dataType>Number</dataType>
-        <expression>MOD(VALUE({!$Record.CaseNumber}), {!varUserCount})</expression>
+        <expression>MOD({!varLastIndex} + 1, {!varUserCount})</expression>
         <scale>0</scale>
     </formulas>
     <interviewLabel>Case Round Robin Outreach Enrollment {!$Flow.CurrentDateTime}</interviewLabel>
     <label>Case Round Robin Outreach Enrollment</label>
+    <loops>
+        <name>Loop_Find_Last_Owner</name>
+        <label>Loop Find Last Owner</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <collectionReference>Get_Rotation_Users</collectionReference>
+        <iterationOrder>Asc</iterationOrder>
+        <nextValueConnector>
+            <targetReference>Is_Last_Owner</targetReference>
+        </nextValueConnector>
+        <noMoreValuesConnector>
+            <targetReference>Loop_Users</targetReference>
+        </noMoreValuesConnector>
+    </loops>
     <loops>
         <name>Loop_Queue_Members</name>
         <label>Loop Queue Members</label>
@@ -311,6 +407,36 @@
         </value>
     </processMetadataValues>
     <processType>AutoLaunchedFlow</processType>
+    <recordLookups>
+        <name>Get_Last_Assigned_Case</name>
+        <label>Get Last Assigned Case</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Has_Last_Assigned_Case</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>OwnerId</field>
+            <operator>In</operator>
+            <value>
+                <elementReference>colMemberIds</elementReference>
+            </value>
+        </filters>
+        <filters>
+            <field>Id</field>
+            <operator>NotEqualTo</operator>
+            <value>
+                <elementReference>$Record.Id</elementReference>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>Case</object>
+        <sortField>CaseNumber</sortField>
+        <sortOrder>Desc</sortOrder>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
     <recordLookups>
         <name>Get_Notification_Type</name>
         <label>Get Notification Type</label>
@@ -474,6 +600,17 @@
         <isOutput>false</isOutput>
     </variables>
     <variables>
+        <name>varFindIndex</name>
+        <dataType>Number</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+        <scale>0</scale>
+        <value>
+            <numberValue>0.0</numberValue>
+        </value>
+    </variables>
+    <variables>
         <name>varIndex</name>
         <dataType>Number</dataType>
         <isCollection>false</isCollection>
@@ -482,6 +619,17 @@
         <scale>0</scale>
         <value>
             <numberValue>0.0</numberValue>
+        </value>
+    </variables>
+    <variables>
+        <name>varLastIndex</name>
+        <dataType>Number</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+        <scale>0</scale>
+        <value>
+            <numberValue>-1.0</numberValue>
         </value>
     </variables>
     <variables>
