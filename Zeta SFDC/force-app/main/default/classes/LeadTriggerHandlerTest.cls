@@ -234,6 +234,19 @@ private class LeadTriggerHandlerTest {
   }
 
   @IsTest
+  private static void onAfterInsert_whenOnlyOneQueueableSlotLeft_startsNoJobs() {
+    LeadTriggerHandler.queueableJobsLeftOverride = 1;
+    Id leadId = SObjectIds.generateFakeId(Schema.Lead.SObjectType);
+    Id userId = SObjectIds.generateFakeId(Schema.User.SObjectType);
+    List<SObject> newRecords = new List<SObject>{ new Lead(Id = leadId, OwnerId = userId) };
+
+    HANDLER.onAfterInsert(newRecords);
+
+    SERVICE_MOCK.never(SERVICE_MOCK.method.stampLastLeadAssigned());
+    OPEN_LEAD_COUNT_SERVICE_MOCK.never(OPEN_LEAD_COUNT_SERVICE_MOCK.method.recalculateOpenLeadCount());
+  }
+
+  @IsTest
   private static void onAfterUndelete_whenOwnedByUser_recalculatesOpenLeadCount() {
     OPEN_LEAD_COUNT_SERVICE_MOCK.when(
       OPEN_LEAD_COUNT_SERVICE_MOCK.method.recalculateOpenLeadCount()

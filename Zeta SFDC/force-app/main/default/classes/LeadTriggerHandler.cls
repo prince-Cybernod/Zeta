@@ -89,16 +89,32 @@ public with sharing class LeadTriggerHandler extends NoOpTriggerHandler {
   }
 
   private void stampIfAny(Set<Id> userIds, Datetime assignedAt) {
-    if (!userIds.isEmpty()) {
+    if (!userIds.isEmpty() && hasRoomForBothJobs()) {
       lastLeadAssignedService.stampLastLeadAssigned(userIds, assignedAt);
     }
   }
 
   private void recalculateIfAny(Set<Id> userIds) {
-    if (!userIds.isEmpty()) {
+    if (!userIds.isEmpty() && hasRoomForBothJobs()) {
       openLeadCountService.recalculateOpenLeadCount(userIds);
     }
   }
+
+  /**
+   * Both services start a Queueable. Inside an async transaction (for example Mogli's
+   * SMSIncomingService creating an anonymous Lead) only one job may be started, and the second
+   * throws an uncatchable LimitException that rolls back the caller, losing the incoming text.
+   * So both jobs are skipped unless there is room for both.
+   */
+  private static Boolean hasRoomForBothJobs() {
+    Integer jobsLeft = queueableJobsLeftOverride != null
+      ? queueableJobsLeftOverride
+      : Limits.getLimitQueueableJobs() - Limits.getQueueableJobs();
+    return jobsLeft >= 2;
+  }
+
+  @TestVisible
+  private static Integer queueableJobsLeftOverride;
 
   private static Boolean isUserId(Id ownerId) {
     return ownerId != null && ownerId.getSObjectType() == Schema.User.SObjectType;
