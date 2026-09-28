@@ -21,9 +21,149 @@
                 <elementReference>$Label.Default_App_Timeline</elementReference>
             </value>
         </assignmentItems>
+        <connector>
+            <targetReference>Is_Phone_Needed_From_Mogli_Number</targetReference>
+        </connector>
     </assignments>
-    <description>This Gateway value is used to send SMS to from Lead. Also populate Application Timeline lookup with the default value from the custom label.</description>
+    <assignments>
+        <name>Assign_First_Name_as_Unknown</name>
+        <label>Assign First Name as &apos;Unknown&apos;</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <assignmentItems>
+            <assignToReference>$Record.FirstName</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <stringValue>Unknown</stringValue>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Is_Anonymous_Mogli_Lead</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <name>Assign_Status_Disqualified</name>
+        <label>Assign Status Disqualified</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <assignmentItems>
+            <assignToReference>$Record.Status</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <stringValue>Disqualified</stringValue>
+            </value>
+        </assignmentItems>
+    </assignments>
+    <assignments>
+        <name>Assign_Phone_From_Mogli_Number</name>
+        <label>Assign Phone From Mogli Number</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <assignmentItems>
+            <assignToReference>$Record.Phone</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>fmMogliNumberAsPhone</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Is_First_Name_Blank</targetReference>
+        </connector>
+    </assignments>
+    <decisions>
+        <name>Is_Anonymous_Mogli_Lead</name>
+        <label>Is Anonymous Mogli Lead?</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <defaultConnectorLabel>No</defaultConnectorLabel>
+        <rules>
+            <name>Yes_Anonymous_Mogli_Lead</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.LastName</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Anonymous Lead from Mogli</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Assign_Status_Disqualified</targetReference>
+            </connector>
+            <label>Yes</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>Is_First_Name_Blank</name>
+        <label>Is First Name Blank?</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <defaultConnector>
+            <targetReference>Is_Anonymous_Mogli_Lead</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>No</defaultConnectorLabel>
+        <rules>
+            <name>Yes_First_Name_Blank</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.FirstName</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Assign_First_Name_as_Unknown</targetReference>
+            </connector>
+            <label>Yes</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>Is_Phone_Needed_From_Mogli_Number</name>
+        <label>Is Phone Needed From Mogli Number?</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <defaultConnector>
+            <targetReference>Is_First_Name_Blank</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>No</defaultConnectorLabel>
+        <rules>
+            <name>Yes_No_Phone_Or_Email</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Phone</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Email</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Mogli_SMS__Mogli_Number__c</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Assign_Phone_From_Mogli_Number</targetReference>
+            </connector>
+            <label>Yes</label>
+        </rules>
+    </decisions>
+    <description>This Gateway value is used to send SMS to from Lead. Also populate Application Timeline lookup with the default value from the custom label. When Mogli creates an anonymous Lead (no Phone, no Email) from an incoming text, copy the sender&apos;s Mogli Number into Phone as 10 digits so the Lead passes the Require_Phone_or_Email and Phone_Validation_Rule validation rules. If First Name is blank, set it to &apos;Unknown&apos; (merged from the retired Lead (Before Save) Populate Lead First Name flow). Leads Mogli creates from unknown texters (Last Name &apos;Anonymous Lead from Mogli&apos;) are set to Lead Status &apos;Disqualified&apos;.</description>
     <environments>Default</environments>
+    <formulas>
+        <description>Mogli Number (e.g. +16465550100) as the 10-digit Phone the Lead validation rules expect.</description>
+        <name>fmMogliNumberAsPhone</name>
+        <dataType>String</dataType>
+        <expression>RIGHT(SUBSTITUTE(SUBSTITUTE(SUBSTITUTE(SUBSTITUTE(SUBSTITUTE({!$Record.Mogli_SMS__Mogli_Number__c}, &quot;+&quot;, &quot;&quot;), &quot;-&quot;, &quot;&quot;), &quot; &quot;, &quot;&quot;), &quot;(&quot;, &quot;&quot;), &quot;)&quot;, &quot;&quot;), 10)</expression>
+    </formulas>
     <interviewLabel>Lead Create (Before Save) | Populate Default Gateways {!$Flow.CurrentDateTime}</interviewLabel>
     <label>Lead Create (Before Save) | Populate Default Gateway</label>
     <processMetadataValues>

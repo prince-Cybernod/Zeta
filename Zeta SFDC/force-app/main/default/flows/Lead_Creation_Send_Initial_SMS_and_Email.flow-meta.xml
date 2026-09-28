@@ -132,6 +132,16 @@
         <dataType>String</dataType>
         <expression>&apos;Hi &apos;+{!$Record.Guardian_First_Name__c}+&quot; &quot;+{!$Record.Guardian_Last_Name__c}+&quot;, thank you for your interest in Zeta Charter Schools! We&apos;re thrilled to have you on board as you explore enrollment for your child. Please reach out via this text if you&apos;d like to learn more!&quot;</expression>
     </formulas>
+    <formulas>
+        <name>fxBatchId</name>
+        <dataType>String</dataType>
+        <expression>TEXT(NOW())+{!$Record.Id}</expression>
+    </formulas>
+    <formulas>
+        <name>fxScheduledTime</name>
+        <dataType>DateTime</dataType>
+        <expression>NOW() +( 5/1440)</expression>
+    </formulas>
     <interviewLabel>Lead Creation | Send Initial SMS and Email {!$Flow.CurrentDateTime}</interviewLabel>
     <label>Lead Creation | Send Initial SMS and Email</label>
     <processMetadataValues>
@@ -161,6 +171,12 @@
         <connector>
             <targetReference>Get_Existing_Email_Message</targetReference>
         </connector>
+        <inputAssignments>
+            <field>Mogli_SMS__Batch_Group_ID__c</field>
+            <value>
+                <elementReference>fxBatchId</elementReference>
+            </value>
+        </inputAssignments>
         <inputAssignments>
             <field>Mogli_SMS__Direction__c</field>
             <value>
@@ -192,9 +208,21 @@
             </value>
         </inputAssignments>
         <inputAssignments>
+            <field>Mogli_SMS__Scheduled_Delivery__c</field>
+            <value>
+                <elementReference>fxScheduledTime</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
             <field>Mogli_SMS__Status__c</field>
             <value>
-                <stringValue>Queued</stringValue>
+                <stringValue>Scheduled</stringValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Mogli_SMS__isBatchTransaction__c</field>
+            <value>
+                <booleanValue>true</booleanValue>
             </value>
         </inputAssignments>
         <object>Mogli_SMS__SMS__c</object>
@@ -231,7 +259,7 @@
     <start>
         <locationX>0</locationX>
         <locationY>0</locationY>
-        <filterLogic>(1 OR 2) AND 3 AND 4</filterLogic>
+        <filterLogic>(1 OR 2) AND 3 AND 4 AND 5</filterLogic>
         <filters>
             <field>Mogli_SMS__Mogli_Number__c</field>
             <operator>IsNull</operator>
@@ -258,6 +286,13 @@
             <operator>NotEqualTo</operator>
             <value>
                 <stringValue>Webinar RSVP</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>LastName</field>
+            <operator>NotEqualTo</operator>
+            <value>
+                <stringValue>Anonymous Lead from Mogli</stringValue>
             </value>
         </filters>
         <object>Lead</object>
