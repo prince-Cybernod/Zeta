@@ -3,12 +3,12 @@
     <available>true</available>
     <description>Sent automatically when an Individual Application is submitted and the Application Status is set to Applied.</description>
     <encodingKey>UTF-8</encodingKey>
-    <name>Application Submission Confirmation - Chinese</name>
+    <name>ES Application Submission Confirmation - Chinese</name>
     <pageDevName>Application_Submission_Confirmation_Chinese</pageDevName>
     <relatedEntityType>IndividualApplication</relatedEntityType>
     <style>none</style>
     <subject>感谢您申请 Zeta！</subject>
-    <textOnly>尊敬的 {{{IndividualApplication.Parent_Guardian_1_First_Name__c}}}:
+    <textOnly>尊敬的 {{{IndividualApplication.Parent_Guardian_1_First_Name__c}}} {{{IndividualApplication.Parent_Guardian_1_Last_Name__c}}}:
 
 感谢您申请 Zeta 特许学校!
 

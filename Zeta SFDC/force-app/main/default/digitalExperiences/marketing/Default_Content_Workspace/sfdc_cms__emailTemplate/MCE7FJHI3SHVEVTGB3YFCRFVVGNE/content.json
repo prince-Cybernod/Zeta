@@ -1,0 +1,145 @@
+{
+  "type" : "sfdc_cms__emailTemplate",
+  "title" : "(to be deleted) Email 2: Hello from Zeta founder and proud Zeta parent",
+  "contentBody" : {
+    "backgroundColor" : "#f3f3f3",
+    "lightning:backgroundImage" : {
+      "position" : "center center",
+      "repeat" : "no-repeat",
+      "size" : "cover"
+    },
+    "lightning:brandSource" : "MCXD6TZ6XKJRGNBB72AH4B5UPAKA",
+    "lightning:colorScheme" : "{!$brand.colorScheme}",
+    "lightning:dataProviders" : [ {
+      "attributes" : {
+        "dataGraphApiName" : "Unified_Individual_Full_Graph",
+        "dataspace" : "default"
+      },
+      "definition" : "sfdc_cms__dataGraphDataProvider",
+      "sfdcExpressionKey" : "$dataGraph"
+    } ],
+    "lightning:expressions" : [ {
+      "attributes" : {
+        "expressionGroups" : [ {
+          "name" : "group0",
+          "resource" : "{!$dataGraph.ssot__FirstName__c}"
+        } ]
+      },
+      "default" : "",
+      "definition" : "sfdc_cms__multiLevelExpression",
+      "label" : "First_Name",
+      "sfdcExpressionKey" : "First_Name"
+    } ],
+    "lightning:padding" : "{!$brand.spacing.none}",
+    "messagePurpose" : "promotional",
+    "sfdc_cms:attachments" : [ ],
+    "sfdc_cms:block" : {
+      "definition" : "sfdc_cms/rootContentBlock",
+      "id" : "b92aab23-e834-462b-b2ff-54ef4e872c91",
+      "type" : "block",
+      "children" : [ {
+        "attributes" : {
+          "content" : {
+            "attributes" : { },
+            "definition" : "@cms/MCBZEVXEAJQJB4LFOKG26RUI6GGU",
+            "type" : "block"
+          },
+          "sfdc_cms:schema" : {
+            "readOnly" : true
+          }
+        },
+        "definition" : "sfdc_cms/reusableContentBlock",
+        "id" : "e922dcfd-004c-4839-a84e-ea955e994e16",
+        "type" : "block"
+      }, {
+        "attributes" : {
+          "lightning:backgroundImage" : {
+            "position" : "center center",
+            "repeat" : "no-repeat",
+            "size" : "cover"
+          },
+          "lightning:borderRadius" : "{!$brand.borderRadius.square}",
+          "lightning:borderWidth" : "{!$brand.borderWeight.none}",
+          "lightning:colorScheme" : "{!$brand.colorScheme}",
+          "lightning:margin" : "{!$brand.spacing.none}",
+          "lightning:padding" : "{!$brand.spacing.xSmall}",
+          "reverseOrderOnMobile" : false,
+          "sfdc_cms:schema" : {
+            "readOnly" : true
+          },
+          "stackOnMobile" : true
+        },
+        "definition" : "lightning/section",
+        "id" : "44817e7c-ade5-4503-9f6a-1a2337e2aa0e",
+        "type" : "block",
+        "children" : [ {
+          "attributes" : {
+            "columnWidth" : 12.0,
+            "lightning:backgroundImage" : {
+              "position" : "center center",
+              "repeat" : "no-repeat",
+              "size" : "cover"
+            },
+            "lightning:borderRadius" : "{!$brand.borderRadius.square}",
+            "lightning:borderWidth" : "{!$brand.borderWeight.none}",
+            "lightning:colorScheme" : "{!$brand.colorScheme}",
+            "lightning:margin" : "{!$brand.spacing.none}",
+            "lightning:padding" : "{!$brand.spacing.xSmall}",
+            "lightning:verticalAlignment" : "top",
+            "sfdc_cms:schema" : {
+              "readOnly" : true
+            }
+          },
+          "definition" : "lightning/column",
+          "id" : "ed574ec0-594d-4580-b0a7-117f1b2c7f3b",
+          "type" : "block",
+          "children" : [ {
+            "attributes" : {
+              "align" : "start",
+              "lightning:borderRadius" : "{!$brand.borderRadius.square}",
+              "lightning:borderWidth" : "{!$brand.borderWeight.none}",
+              "lightning:colorGroup" : {
+                "backgroundColor" : "{!$brand.colorScheme.root}",
+                "borderColor" : "{!$brand.colorScheme.neutral}",
+                "linkColor" : "{!$brand.colorScheme.primaryAccent}",
+                "textColor" : "{!$brand.colorScheme.contrast}"
+              },
+              "lightning:margin" : "{!$brand.spacing.none}",
+              "lightning:padding" : "{!$brand.spacing.none}",
+              "lightning:typography" : "{!$brand.typography.paragraph.paragraph1}",
+              "sfdc_cms:schema" : {
+                "readOnly" : true
+              },
+              "text" : "Dear {!$Expression.First_Name},<br /><br />Congratulations on applying to Zeta High School!<br /><br />My name is Emily Kim, and I am the founder and CEO of Zeta Charter Schools, as well as a proud Zeta parent. <br /><br />I cannot wait to welcome your family to our school. Before we meet, I wanted to share how Zeta began and the promise at the heart of our schools.<br /><br />At Zeta, <strong>we know what our students are capable of, and we do not leave their potential to chance.</strong> We surround them with love, challenge them to pursue excellence, and give them increasing ownership of their learning and their future.<br /><br />Our earliest plans took shape in a leaky basement, but the ambition was big. From the outset, we envisioned a complete educational journey—and especially a high school—that would empower students to shape a meaningful future of their own choosing.<br /><br />From an idea and a dream, we have grown to serve 4,700&#43; students 10 campuses in the Bronx, Upper Manhattan, and Queens. <strong>Zeta High is the realization of that founding vision: </strong>a high school that helps students discover their purpose, pursue their passions, and build the power to direct their own lives.<br /><br />Students take advanced and AP courses, with free SAT preparation and one-on-one college advising. Through Z Lab, internships, and Z Journeys, they apply their learning beyond the classroom. They also learn to set goals, manage their time, advocate for themselves, and make thoughtful decisions about what comes next.<br /><br />Independence does not mean navigating high school alone. Every student belongs to a 12-student Z Pod led by a dedicated Z Coach who knows them deeply. Cross-grade Z Houses provide mentorship, friendship, and belonging.<br /><br />Today, I have the privilege of watching that vision come to life. We are not simply preparing students for their next step. We are empowering them to decide where it will lead—and giving them what they need to get there.<br /><br />We would love to welcome you to <a href=\"https://zetaschools.org/events-for-prospective-families/\" target=\"_blank\" part=\"link\" rel=\"noopener noreferrer noopener noreferrer noopener noreferrer noopener noreferrer\"><u>tour Zeta High</u></a> and see everything that will be part of your schooling journey. <br /><br />Warmly,<br /><br />Emily Kim<br />Founder, CEO &amp; Zeta Mom<br />Zeta Charter Schools<br /><br /><em>Please reach out if you have any questions about Zeta, our Enrollment Team is here for you every step of the way. ✉︎  <a href=\"mailto:enroll&#64;zetaschools.org\" target=\"_blank\" part=\"link\" rel=\"noopener noreferrer noopener noreferrer noopener noreferrer noopener noreferrer\"><u>enroll&#64;zetaschools.org</u></a> &#x1f4de;(646) 480-1654</em><br /><br />"
+            },
+            "definition" : "lightning/paragraph",
+            "id" : "128393c4-dcc8-472e-97eb-b9d719d319d3",
+            "type" : "block"
+          } ]
+        } ]
+      }, {
+        "attributes" : {
+          "content" : {
+            "attributes" : { },
+            "definition" : "@cms/MCZCFCDA73I5BVLF5EAKWMO3ZR7I",
+            "type" : "block"
+          },
+          "sfdc_cms:schema" : {
+            "readOnly" : true
+          }
+        },
+        "definition" : "sfdc_cms/reusableContentBlock",
+        "id" : "ed99bbb7-9f83-415a-9686-200b1b8a13b2",
+        "type" : "block"
+      } ]
+    },
+    "sfdc_cms:schema" : {
+      "readOnly" : true
+    },
+    "sfdc_cms:title" : "(to be deleted) Email 2: Hello from Zeta founder and proud Zeta parent",
+    "sfdc_cms:urlName" : "mc-applicant-hs-email-2-hello-from-zeta-founder-and-proud-zeta-parent",
+    "sfdc_cms:variants" : [ ],
+    "subjectLine" : "Hello from Zeta founder and proud Zeta parent"
+  },
+  "urlName" : "mc-applicant-hs-email-2-hello-from-zeta-founder-and-proud-zeta-parent"
+}

@@ -1,0 +1,36 @@
+{
+  "type" : "sfdc_cms__email",
+  "title" : "MC | Applicant | HS Email 3 Five questions to ask when choosing a High School",
+  "contentBody" : {
+    "subjectLine" : "Cinco preguntas que debe hacer al elegir una escuela secundaria ",
+    "preheader" : "Elegir una escuela secundaria es una decisión importante. ",
+    "sfdc_cms:block" : {
+      "children" : [ {
+        "id" : "ed8e19b6-af7e-41f9-99bf-1c438638d100",
+        "attributes" : {
+          "text" : "<strong>¿Me prepararán y desafiarán para estar listo para la universidad?</strong><br>Los estudiantes toman cursos avanzados y de AP diseñados para prepararlos para exigentes trabajos de nivel universitario. La preparación gratuita para el SAT está integrada en el día escolar y cada estudiante recibe asesoría universitaria personalizada para ayudarlo a identificar oportunidades y construir un camino hacia adelante.<br>"
+        }
+      }, {
+        "id" : "4f031ac7-15f4-485d-b7ae-6a67b6486735",
+        "attributes" : {
+          "text" : "Estimado/a {!$Expression.First_Name}&nbsp;{!$Expression.Last_Name_2}:<br><br>Elegir una escuela secundaria es una decisión importante. Mientras considera sus opciones, pregunte qué le ofrecerá cada escuela a su estudiante durante estos años tan importantes. En Zeta High, las respuestas comienzan con <strong>propósito, pasión y poder.<br></strong><br><strong>¿Seré conocido y apoyado?</strong><br>La escuela secundaria trae consigo mayor libertad, pero los estudiantes nunca deberían tener que transitarla solos. Cada estudiante de Zeta High pertenece a un Z Pod de 12 estudiantes dirigido por un Z Coach dedicado que los conoce profundamente. Las Z Houses de todos los grados generan amistad, mentoría y un fuerte sentido de pertenencia.<br>"
+        }
+      }, {
+        "id" : "85c68a80-fdb4-4f3f-a6fa-8e737e37c7b7",
+        "attributes" : {
+          "text" : "<strong>¿Tendré voz en mi escuela?</strong><br>En Zeta High, los estudiantes ayudan a moldear su propia experiencia. Pueden elegir y crear clubes basados en sus intereses. Nuestros estudiantes fundadores incluso seleccionaron la mascota de la escuela: <strong>el lobo</strong>, que representa el valor de liderar de forma independiente y la fuerza que se encuentra en avanzar juntos.<br>"
+        }
+      }, {
+        "id" : "fff0c427-e5ce-46df-8e80-d9297ee3610c",
+        "attributes" : {
+          "text" : "<strong>¿Aplicaré mi aprendizaje en el mundo real?<br></strong>En Z Lab, los estudiantes usan la tecnología y el diseño para desarrollar soluciones, probar sus ideas y crear trabajos significativos. Las pasantías los introducen a posibles carreras, mientras que las Z Journeys amplían su comprensión del mundo más allá del aula."
+        }
+      }, {
+        "id" : "4c858856-f3eb-4022-8734-82a96e971dbf",
+        "attributes" : {
+          "text" : "<strong>¿Me volveré más independiente?</strong><br>Los estudiantes aprenden a establecer metas, administrar su tiempo, defenderse a sí mismos y tomar decisiones reflexivas. Zeta ofrece expectativas claras y una guía afectuosa al tiempo que otorga a los estudiantes una responsabilidad cada vez mayor sobre su educación y su futuro.<br><br>Zeta High es una escuela chárter pública de preparación universitaria y sin pago de matrícula, construida en torno a lo que sabemos que los estudiantes son capaces de lograr. Aquí, los estudiantes son conocidos, desafiados y empoderados para forjar un futuro poderoso a partir de su propia elección.&nbsp;<br><br><a href=\"https://zetaschools.org/events-for-prospective-families/\" target=\"_blank\" part=\"link\" rel=\"noopener noreferrer noopener noreferrer noopener noreferrer noopener noreferrer\"><u>Inscríbase en un próximo evento o recorrido</u></a> para experimentar Zeta High por usted mismo.&nbsp;&nbsp;<br><br>Con afecto,<br><strong>El equipo de inscripciones de Zeta</strong><br>Zeta Charter Schools<br>"
+        }
+      } ]
+    }
+  }
+}

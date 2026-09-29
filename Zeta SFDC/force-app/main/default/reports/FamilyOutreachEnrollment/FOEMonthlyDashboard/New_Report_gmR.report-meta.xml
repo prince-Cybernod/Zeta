@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns>
+        <field>AcademicInterest$Name</field>
+    </columns>
+    <columns>
+        <aggregateTypes>Sum</aggregateTypes>
+        <field>AcademicInterest$School_Rank__c</field>
+    </columns>
+    <columns>
+        <field>AcademicInterest$LearningProgram</field>
+    </columns>
+    <columns>
+        <field>AcademicInterest$Application_Submitted_Date__c</field>
+    </columns>
+    <description>All unique applications for each team member in the current month.</description>
+    <filter>
+        <criteriaItems>
+            <column>AcademicInterest$School_Rank__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>1</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>AcademicInterest$IndividualApplication.Converting_Team_Member__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>notEqual</operator>
+            <value></value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>AcademicInterest$IndividualApplication.Converting_Team_Member__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>notEqual</operator>
+            <value>Mercedes Wentworth-Nice</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>AcademicInterest$IndividualApplication.Converting_Team_Member__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>notEqual</operator>
+            <value>Alessandra Devia</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>AcademicInterest$IndividualApplication.Converting_Team_Member__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>notEqual</operator>
+            <value>Natalia Martin</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>AcademicInterest$IndividualApplication.Converting_Team_Member__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>notEqual</operator>
+            <value>Elevation Solutions</value>
+        </criteriaItems>
+        <language>en_US</language>
+    </filter>
+    <format>Summary</format>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>AcademicInterest$IndividualApplication.Converting_Team_Member__c</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <name>FO&amp;E Team Member Apps</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>School_Applications_with_Individual_Applications_and_Accounts__c</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <showGrandTotal>true</showGrandTotal>
+    <showSubTotals>true</showSubTotals>
+    <timeFrameFilter>
+        <dateColumn>AcademicInterest$CreatedDate</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
+    </timeFrameFilter>
+</Report>

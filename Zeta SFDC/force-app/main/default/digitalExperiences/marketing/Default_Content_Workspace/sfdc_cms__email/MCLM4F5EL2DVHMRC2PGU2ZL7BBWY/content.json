@@ -1,0 +1,157 @@
+{
+  "type" : "sfdc_cms__email",
+  "title" : "MC | Applicant | HS Email 5: Zeta High - ready for college and beyond!",
+  "contentBody" : {
+    "backgroundColor" : "#f3f3f3",
+    "lightning:backgroundImage" : {
+      "position" : "center center",
+      "repeat" : "no-repeat",
+      "size" : "cover"
+    },
+    "lightning:brandSource" : "MCXD6TZ6XKJRGNBB72AH4B5UPAKA",
+    "lightning:colorScheme" : "{!$brand.colorScheme}",
+    "lightning:dataProviders" : [ {
+      "attributes" : {
+        "dataGraphApiName" : "Unified_Individual_Full_Graph",
+        "dataspace" : "default"
+      },
+      "definition" : "sfdc_cms__dataGraphDataProvider",
+      "sfdcExpressionKey" : "$dataGraph"
+    } ],
+    "lightning:expressions" : [ {
+      "attributes" : {
+        "expressionGroups" : [ {
+          "name" : "group0",
+          "resource" : "{!$dataGraph.ssot__FirstName__c}"
+        } ]
+      },
+      "default" : "",
+      "definition" : "sfdc_cms__multiLevelExpression",
+      "label" : "First_Name",
+      "sfdcExpressionKey" : "First_Name"
+    }, {
+      "attributes" : {
+        "expressionGroups" : [ {
+          "name" : "group0",
+          "resource" : "{!$dataGraph.ssot__LastName__c}"
+        } ]
+      },
+      "default" : "",
+      "definition" : "sfdc_cms__multiLevelExpression",
+      "label" : "Last_Name",
+      "sfdcExpressionKey" : "Last_Name"
+    } ],
+    "lightning:padding" : "{!$brand.spacing.none}",
+    "messagePurpose" : "promotional",
+    "preheader" : "At Zeta High, college preparation begins on day one!",
+    "sfdc_cms:attachments" : [ ],
+    "sfdc_cms:block" : {
+      "definition" : "sfdc_cms/rootContentBlock",
+      "id" : "33d627fa-7763-4627-8f07-71c2153def5b",
+      "type" : "block",
+      "children" : [ {
+        "attributes" : {
+          "content" : {
+            "attributes" : { },
+            "definition" : "@cms/MCBZEVXEAJQJB4LFOKG26RUI6GGU",
+            "type" : "block"
+          }
+        },
+        "definition" : "sfdc_cms/reusableContentBlock",
+        "id" : "1b2a4369-254a-4d18-bc3b-2a4abc9eb946",
+        "type" : "block"
+      }, {
+        "attributes" : {
+          "lightning:backgroundImage" : {
+            "position" : "center center",
+            "repeat" : "no-repeat",
+            "size" : "cover"
+          },
+          "lightning:borderRadius" : "{!$brand.borderRadius.square}",
+          "lightning:borderWidth" : "{!$brand.borderWeight.none}",
+          "lightning:colorScheme" : "{!$brand.colorScheme}",
+          "lightning:margin" : "{!$brand.spacing.none}",
+          "lightning:padding" : "{!$brand.spacing.xSmall}",
+          "reverseOrderOnMobile" : false,
+          "stackOnMobile" : true
+        },
+        "definition" : "lightning/section",
+        "id" : "eabc427d-f056-43ae-84c5-0888af55696d",
+        "type" : "block",
+        "children" : [ {
+          "attributes" : {
+            "columnWidth" : 12.0,
+            "lightning:backgroundImage" : {
+              "position" : "center center",
+              "repeat" : "no-repeat",
+              "size" : "cover"
+            },
+            "lightning:borderRadius" : "{!$brand.borderRadius.square}",
+            "lightning:borderWidth" : "{!$brand.borderWeight.none}",
+            "lightning:colorScheme" : "{!$brand.colorScheme}",
+            "lightning:margin" : "{!$brand.spacing.none}",
+            "lightning:padding" : "{!$brand.spacing.xSmall}",
+            "lightning:verticalAlignment" : "top"
+          },
+          "definition" : "lightning/column",
+          "id" : "e0588c53-1b57-48f5-ba7d-93f8ef8c69bd",
+          "type" : "block",
+          "children" : [ {
+            "attributes" : {
+              "align" : "start",
+              "lightning:borderRadius" : "{!$brand.borderRadius.square}",
+              "lightning:borderWidth" : "{!$brand.borderWeight.none}",
+              "lightning:colorGroup" : {
+                "backgroundColor" : "{!$brand.colorScheme.root}",
+                "borderColor" : "{!$brand.colorScheme.neutral}",
+                "linkColor" : "{!$brand.colorScheme.primaryAccent}",
+                "textColor" : "{!$brand.colorScheme.contrast}"
+              },
+              "lightning:margin" : "{!$brand.spacing.none}",
+              "lightning:padding" : "{!$brand.spacing.none}",
+              "lightning:typography" : {
+                "fontFamily" : "{!$brand.fontFamily.tahoma}",
+                "fontSize" : "{!$brand.fontSize.medium}",
+                "fontWeight" : "{!$brand.fontWeight.normal}",
+                "letterSpacing" : "normal",
+                "lineHeight" : 1.5,
+                "textTransform" : "none"
+              },
+              "text" : "Dear {!$Expression.First_Name} {!$Expression.Last_Name},<br /><br />At Zeta High, college preparation begins on day one!<br /><br />Our goal is to help students be ready to succeed, advocate for themselves, and take ownership of their future.<br /><br /><strong>A Strong Academic Foundation </strong><br /><br />Students build a strong academic foundation through rigorous coursework and access to advanced and AP courses. Free SAT preparation is built right into the school day, and students take the SAT at school.<br /><strong><br />Personalized College Advising</strong> <br /><br />Students also receive one-on-one college advising. Advisors get to know each student, help them understand their options, and work alongside them to build a purposeful path toward the future they envision.<br /><br /><strong>Discovering Passions, Building Leadership</strong><br /><br />Through Z Houses, sports, the arts, and student-created clubs, students discover their passions and grow as leaders. They learn what it means to contribute to a community while building the confidence to chart a path all their own. <br /><br />&#x1f3a5; <a href=\"https://www.instagram.com/reels/Db6phPtFIqS/\" target=\"_blank\" part=\"link\" rel=\"noopener noreferrer noopener noreferrer noopener noreferrer noopener noreferrer noopener noreferrer noopener noreferrer\"><strong><u>Students share the excitement of being part of a Z House!</u></strong></a><br /><br /><strong>Growing Into Independence </strong><br /><br />College readiness also means growing into independence. Each student belongs to a close-knit, 12-student Z Pod led by a dedicated Z Coach who knows them well. Through regular coaching, students learn to set goals, manage their time, seek feedback, and speak up for what they need. These are skills that will carry them through college and life with confidence.<br /><br /><strong>Real-World Learning in Z Lab</strong> <br /><br />In Z Lab, students bring their learning to life through design, technology, finance, and entrepreneurship. They move from building to testing to launching their own ideas, creating meaningful work that becomes part of a Z Portfolio for college applications.<br /><br /><strong>Learning Beyond the Classroom</strong> <br /><br />Learning also happens beyond the classroom. Internships introduce students to real professional environments, and Z Journeys open doors to college visits, service opportunities, and new communities. Along the way, students begin to imagine wh<font face=\"Tahoma\">at different futures could look like and what it will take to get there.<br /><br /><strong>Ready for What Comes Next</strong> <br /><br />By graduation, Zeta High students carry more than a strong transcript. They leave with advanced academic preparation, personalized college guidance, real-world experience, and the independence to shape a future of their own choosing.</font><br /><br /><a href=\"https://zetaschools.org/events-for-prospective-families/\" target=\"_blank\" part=\"link\" rel=\"noopener noreferrer noopener noreferrer noopener noreferrer noopener noreferrer noopener noreferrer noopener noreferrer\"><u>Sign up for a tour</u></a> to learn more about our curriculum and approach to college prep. <br /><br />We look forward to welcoming you to Zeta High. <br /><br />Warmly,<br /><strong>The Zeta Enrollment Team</strong><br />Zeta Charter Schools<br />"
+            },
+            "definition" : "lightning/paragraph",
+            "id" : "ee85c784-bdfb-4bfa-906a-1f083850dc99",
+            "type" : "block"
+          } ]
+        } ]
+      }, {
+        "attributes" : {
+          "content" : {
+            "attributes" : { },
+            "definition" : "@cms/MCBPG52FYONBFFBIOPXFJSOM6LUY",
+            "type" : "block"
+          }
+        },
+        "definition" : "sfdc_cms/reusableContentBlock",
+        "id" : "d66867c8-cb73-432c-8ef2-e31550bda3b9",
+        "type" : "block"
+      }, {
+        "attributes" : {
+          "content" : {
+            "attributes" : { },
+            "definition" : "@cms/MCZCFCDA73I5BVLF5EAKWMO3ZR7I",
+            "type" : "block"
+          }
+        },
+        "definition" : "sfdc_cms/reusableContentBlock",
+        "id" : "17088624-ca2c-4120-82f9-1e4c9d120d2e",
+        "type" : "block"
+      } ]
+    },
+    "sfdc_cms:title" : "MC | Applicant | HS Email 5: Zeta High - ready for college and beyond!",
+    "sfdc_cms:urlName" : "mc-applicant-hs-email-5-zeta-high---ready-for-college-and-beyond",
+    "subjectLine" : "Zeta High - ready for college and beyond!",
+    "sfdc_cms:variants" : [ ]
+  },
+  "urlName" : "mc-applicant-hs-email-5-zeta-high---ready-for-college-and-beyond"
+}

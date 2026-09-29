@@ -49,6 +49,12 @@ const EMPLOYEE_GUARDIAN_FIELDS = [
   { employee: 'Employee_Last_Name', guardianSuffix: '_Last_Name' }
 ];
 
+// Options offered only when Has_Second_Guardian is true, the same flag that shows the Guardian 2 section.
+const SECOND_GUARDIAN_GATED_OPTIONS = {
+  Responsible_Adult: 'Guardian_2'
+};
+const HAS_SECOND_GUARDIAN = 'Has_Second_Guardian';
+
 export default class ApplicationFormPage extends LightningElement {
   @api pageDevName = 'Application_Details';
   @api variant;
@@ -214,7 +220,7 @@ export default class ApplicationFormPage extends LightningElement {
     const includeSet = this._includeSet;
     const excludeSet = this._excludeSet;
 
-    return this.formStructure.sections.filter((section) => {
+    const filtered = this.formStructure.sections.filter((section) => {
       if (!section.questions || section.questions.length === 0) {
         return false;
       }
@@ -250,6 +256,31 @@ export default class ApplicationFormPage extends LightningElement {
 
       return true;
     });
+    return filtered.map((section) => this._withGatedOptions(section));
+  }
+
+  _hasSecondGuardian() {
+    return this.answers[HAS_SECOND_GUARDIAN] === true;
+  }
+
+  // Hides a gated option until the gating checkbox answers true.
+  _withGatedOptions(section) {
+    if (!section.questions || this.readOnly || this._hasSecondGuardian()) {
+      return section;
+    }
+    let changed = false;
+    const questions = section.questions.map((question) => {
+      const gatedValue = SECOND_GUARDIAN_GATED_OPTIONS[question.developerName];
+      if (!gatedValue || !question.options) {
+        return question;
+      }
+      changed = true;
+      return {
+        ...question,
+        options: question.options.filter((opt) => opt.value !== gatedValue)
+      };
+    });
+    return changed ? { ...section, questions } : section;
   }
 
   // Rows keep the section object itself by reference so the child's `section`
@@ -561,6 +592,29 @@ export default class ApplicationFormPage extends LightningElement {
     this._handleSameAsPrimaryChange(developerName, value);
     this._handleLivesWithGuardianOneChange(developerName, value);
     this._handleEmployeeGuardianPickerChange(developerName, value);
+    this._handleSecondGuardianChange(developerName, value);
+  }
+
+  /** Clears a Guardian 2 answer when the second guardian is removed, so the required question is re-picked. */
+  _handleSecondGuardianChange(developerName, value) {
+    if (developerName !== HAS_SECOND_GUARDIAN || value === true) {
+      return;
+    }
+    for (const [questionDevName, gatedValue] of Object.entries(
+      SECOND_GUARDIAN_GATED_OPTIONS
+    )) {
+      if (this.answers[questionDevName] !== gatedValue) {
+        continue;
+      }
+      // Remove rather than blank: saveFormAnswers rejects a blank value for a
+      // required question, which would fail the autosave outright.
+      const rest = { ...this.answers };
+      delete rest[questionDevName];
+      this.answers = rest;
+      this.saveStatusMessage = labelUnsavedChanges;
+      this._dispatchSaveStatus('unsaved');
+      this.scheduleAutoSave();
+    }
   }
 
   /**

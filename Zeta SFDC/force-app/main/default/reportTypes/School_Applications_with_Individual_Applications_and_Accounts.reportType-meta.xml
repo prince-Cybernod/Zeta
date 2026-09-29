@@ -291,6 +291,12 @@
             <field>Priority_Original_and_Current_Match__c</field>
             <table>AcademicInterest</table>
         </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>School Applications : School : School : Dashboard School Name</displayNameOverride>
+            <field>LearningProgram.School__c.Dashboard_School_Name__c</field>
+            <table>AcademicInterest</table>
+        </columns>
         <masterLabel>School Applications</masterLabel>
     </sections>
     <sections>

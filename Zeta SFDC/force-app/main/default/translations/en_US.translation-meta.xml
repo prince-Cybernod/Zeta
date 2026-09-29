@@ -1021,12 +1021,44 @@
         <name>Default_App_Timeline</name>
     </customLabels>
     <customLabels>
+        <label><!-- Loading message on the events catalog page --></label>
+        <name>Events_CatalogLoading</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Loading message on the event detail page --></label>
+        <name>Events_DetailLoading</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Loading message on the my-registrations page --></label>
+        <name>Events_MyRegistrationsLoading</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Shown when the event detail page&apos;s id does not resolve --></label>
+        <name>Events_NotFound</name>
+    </customLabels>
+    <customLabels>
         <label><!-- Checkbox label asking whether the student lives with Guardian 1 --></label>
         <name>Lives_With_Guardian_1</name>
     </customLabels>
     <customLabels>
         <label><!-- Namespace --></label>
         <name>Mogli_SMS__Namespace</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Parent Login Invalid Identifier --></label>
+        <name>Parent_Login_Invalid_Identifier</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Parent Login No Passwordless Redirect --></label>
+        <name>Parent_Login_No_Passwordless_Redirect</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Parent Login No Unique User --></label>
+        <name>Parent_Login_No_Unique_User</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Parent Login No Verified 2FA Method --></label>
+        <name>Parent_Login_No_Verified_2FA_Method</name>
     </customLabels>
     <customLabels>
         <label><!-- Parent Portal Base URL --></label>
@@ -18758,6 +18790,10 @@
     </flowDefinitions>
     <flowDefinitions>
         <flows/>
+        <fullName>Case_Round_Robin_Outreach_Enrollment</fullName>
+    </flowDefinitions>
+    <flowDefinitions>
+        <flows/>
         <fullName>Case_Update_Account_when_Contact_Id_Populated</fullName>
     </flowDefinitions>
     <flowDefinitions>
@@ -20391,10 +20427,6 @@
     </flowDefinitions>
     <flowDefinitions>
         <flows/>
-        <fullName>Individual_Application_After_Save_Create_Priority_Items_Integrated</fullName>
-    </flowDefinitions>
-    <flowDefinitions>
-        <flows/>
         <fullName>Individual_Application_After_Save_Send_Submission_Email</fullName>
     </flowDefinitions>
     <flowDefinitions>
@@ -20995,18 +21027,12 @@
         <fullName>Lottery_Capacity_Naming_Convention_Scheduled</fullName>
     </flowDefinitions>
     <flowDefinitions>
-        <flows>
-            <screens>
-                <fields>
-                    <name>errorMessage</name>
-                </fields>
-                <fields>
-                    <name>errorTitle</name>
-                </fields>
-                <name>Unsupported_Object</name>
-            </screens>
-        </flows>
-        <fullName>Mass_Email_Screen_flow_From_a_List_View</fullName>
+        <flows/>
+        <fullName>MC_FY27_Applicant_Campaign_HS_Rolling_Flow</fullName>
+    </flowDefinitions>
+    <flowDefinitions>
+        <flows/>
+        <fullName>MC_FY27_Applicant_Campaign_MS_Rolling_Flow</fullName>
     </flowDefinitions>
     <flowDefinitions>
         <flows/>
@@ -21308,6 +21334,10 @@
     <flowDefinitions>
         <flows/>
         <fullName>Mogli_Person_Account_Populate_Mogli_Number_with_PersonMobilePhone</fullName>
+    </flowDefinitions>
+    <flowDefinitions>
+        <flows/>
+        <fullName>Mogli_SMS_After_Save_Create_Case_from_Enrollment_Text</fullName>
     </flowDefinitions>
     <flowDefinitions>
         <flows/>
@@ -21640,17 +21670,6 @@
     <flowDefinitions>
         <flows/>
         <fullName>Run_Alumni_Profile_Management_Job</fullName>
-    </flowDefinitions>
-    <flowDefinitions>
-        <flows>
-            <textTemplates>
-                <name>ttSMS_OfferRescindedOptimization</name>
-            </textTemplates>
-            <textTemplates>
-                <name>ttSMS_SeatOffered</name>
-            </textTemplates>
-        </flows>
-        <fullName>School_Application_After_Save</fullName>
     </flowDefinitions>
     <flowDefinitions>
         <flows/>
@@ -23063,10 +23082,6 @@
             </textTemplates>
         </flows>
         <fullName>customer_satisfaction</fullName>
-    </flowDefinitions>
-    <flowDefinitions>
-        <flows/>
-        <fullName>elev8_Account_Reformat_Mobile_Number</fullName>
     </flowDefinitions>
     <flowDefinitions>
         <flows/>

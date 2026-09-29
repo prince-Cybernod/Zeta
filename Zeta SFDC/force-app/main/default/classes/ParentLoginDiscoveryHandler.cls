@@ -6,7 +6,7 @@ public inherited sharing class ParentLoginDiscoveryHandler implements Auth.Login
     Map<String, String> requestAttributes
   ) {
     if (identifier == null) {
-      throw new Auth.LoginDiscoveryException('Invalid Identifier');
+      throw new Auth.DiscoveryCustomErrorException(Label.Parent_Login_Invalid_Identifier);
     }
 
     if (identifier.contains('@')) {
@@ -27,10 +27,14 @@ public inherited sharing class ParentLoginDiscoveryHandler implements Auth.Login
         } else if (method?.HasUserVerifiedMobileNumber == true) {
           return discoveryResult(user, Auth.VerificationMethod.SMS, startUrl);
         } else {
-          throw new Auth.LoginDiscoveryException('No verified 2FA method found for user.');
+          throw new Auth.DiscoveryCustomErrorException(
+            Label.Parent_Login_No_Verified_2FA_Method
+          );
         }
       } else {
-        throw new Auth.LoginDiscoveryException('No unique user found. User count=' + users.size());
+        throw new Auth.DiscoveryCustomErrorException(
+          String.format(Label.Parent_Login_No_Unique_User, new List<Object>{ users.size() })
+        );
       }
     }
 
@@ -53,14 +57,18 @@ public inherited sharing class ParentLoginDiscoveryHandler implements Auth.Login
         } else if (method?.HasUserVerifiedEmailAddress == true) {
           return discoveryResult(user, Auth.VerificationMethod.EMAIL, startUrl);
         } else {
-          throw new Auth.LoginDiscoveryException('No verified 2FA method found for user.');
+          throw new Auth.DiscoveryCustomErrorException(
+            Label.Parent_Login_No_Verified_2FA_Method
+          );
         }
       } else {
-        throw new Auth.LoginDiscoveryException('No unique user found. User count=' + users.size());
+        throw new Auth.DiscoveryCustomErrorException(
+          String.format(Label.Parent_Login_No_Unique_User, new List<Object>{ users.size() })
+        );
       }
     }
 
-    throw new Auth.LoginDiscoveryException('Invalid Identifier');
+    throw new Auth.DiscoveryCustomErrorException(Label.Parent_Login_Invalid_Identifier);
   }
 
   private static PageReference discoveryResult(
@@ -77,8 +85,8 @@ public inherited sharing class ParentLoginDiscoveryHandler implements Auth.Login
     if (passwordlessRedirect != null) {
       return passwordlessRedirect;
     } else {
-      throw new Auth.LoginDiscoveryException(
-        'No Passwordless Login redirect URL returned for verification method: ' + method
+      throw new Auth.DiscoveryCustomErrorException(
+        String.format(Label.Parent_Login_No_Passwordless_Redirect, new List<Object>{ method })
       );
     }
   }

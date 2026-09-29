@@ -1,0 +1,145 @@
+{
+  "type" : "sfdc_cms__emailTemplate",
+  "title" : "(to de deleted) HS Email 4: Zeta is a love story",
+  "contentBody" : {
+    "backgroundColor" : "#f3f3f3",
+    "lightning:backgroundImage" : {
+      "position" : "center center",
+      "repeat" : "no-repeat",
+      "size" : "cover"
+    },
+    "lightning:brandSource" : "MCXD6TZ6XKJRGNBB72AH4B5UPAKA",
+    "lightning:colorScheme" : "{!$brand.colorScheme}",
+    "lightning:dataProviders" : [ {
+      "attributes" : {
+        "dataGraphApiName" : "Unified_Individual_Full_Graph",
+        "dataspace" : "default"
+      },
+      "definition" : "sfdc_cms__dataGraphDataProvider",
+      "sfdcExpressionKey" : "$dataGraph"
+    } ],
+    "lightning:expressions" : [ {
+      "attributes" : {
+        "expressionGroups" : [ {
+          "name" : "group0",
+          "resource" : "{!$dataGraph.ssot__FirstName__c}"
+        } ]
+      },
+      "default" : "",
+      "definition" : "sfdc_cms__multiLevelExpression",
+      "label" : "First_Name",
+      "sfdcExpressionKey" : "First_Name"
+    } ],
+    "lightning:padding" : "{!$brand.spacing.none}",
+    "messagePurpose" : "promotional",
+    "sfdc_cms:attachments" : [ ],
+    "sfdc_cms:block" : {
+      "definition" : "sfdc_cms/rootContentBlock",
+      "id" : "80f7500d-d934-40c7-a941-dd1ae2203d76",
+      "type" : "block",
+      "children" : [ {
+        "attributes" : {
+          "content" : {
+            "attributes" : { },
+            "definition" : "@cms/MCBZEVXEAJQJB4LFOKG26RUI6GGU",
+            "type" : "block"
+          },
+          "sfdc_cms:schema" : {
+            "readOnly" : true
+          }
+        },
+        "definition" : "sfdc_cms/reusableContentBlock",
+        "id" : "b137693e-057c-4774-b05a-e5a9ab4d7d78",
+        "type" : "block"
+      }, {
+        "attributes" : {
+          "lightning:backgroundImage" : {
+            "position" : "center center",
+            "repeat" : "no-repeat",
+            "size" : "cover"
+          },
+          "lightning:borderRadius" : "{!$brand.borderRadius.square}",
+          "lightning:borderWidth" : "{!$brand.borderWeight.none}",
+          "lightning:colorScheme" : "{!$brand.colorScheme}",
+          "lightning:margin" : "{!$brand.spacing.none}",
+          "lightning:padding" : "{!$brand.spacing.xSmall}",
+          "reverseOrderOnMobile" : false,
+          "sfdc_cms:schema" : {
+            "readOnly" : true
+          },
+          "stackOnMobile" : true
+        },
+        "definition" : "lightning/section",
+        "id" : "99e756be-e94e-4ee8-baee-19a1a6278ce1",
+        "type" : "block",
+        "children" : [ {
+          "attributes" : {
+            "columnWidth" : 12.0,
+            "lightning:backgroundImage" : {
+              "position" : "center center",
+              "repeat" : "no-repeat",
+              "size" : "cover"
+            },
+            "lightning:borderRadius" : "{!$brand.borderRadius.square}",
+            "lightning:borderWidth" : "{!$brand.borderWeight.none}",
+            "lightning:colorScheme" : "{!$brand.colorScheme}",
+            "lightning:margin" : "{!$brand.spacing.none}",
+            "lightning:padding" : "{!$brand.spacing.xSmall}",
+            "lightning:verticalAlignment" : "top",
+            "sfdc_cms:schema" : {
+              "readOnly" : true
+            }
+          },
+          "definition" : "lightning/column",
+          "id" : "738e5b91-2583-4fe7-8046-b863b5b404fe",
+          "type" : "block",
+          "children" : [ {
+            "attributes" : {
+              "align" : "start",
+              "lightning:borderRadius" : "{!$brand.borderRadius.square}",
+              "lightning:borderWidth" : "{!$brand.borderWeight.none}",
+              "lightning:colorGroup" : {
+                "backgroundColor" : "{!$brand.colorScheme.root}",
+                "borderColor" : "{!$brand.colorScheme.neutral}",
+                "linkColor" : "{!$brand.colorScheme.primaryAccent}",
+                "textColor" : "{!$brand.colorScheme.contrast}"
+              },
+              "lightning:margin" : "{!$brand.spacing.none}",
+              "lightning:padding" : "{!$brand.spacing.none}",
+              "lightning:typography" : "{!$brand.typography.paragraph.paragraph1}",
+              "sfdc_cms:schema" : {
+                "readOnly" : true
+              },
+              "text" : "Dear {!$Expression.First_Name},<br /><br />We hope you are as excited as we are to be part of our Zeta community. <br /><br />Zeta Charter Schools began in 2018 with a dream for what education could make possible for students across New York City. At its heart was a simple idea: <strong>when you build a school around love for students, you build differently. <br /><br />What does it mean to build a school around love?</strong><br /><br />We often say <strong>Zeta is a love story</strong>. And we mean it. Every student in our schools is deeply known, their dreams are nurtured and they are empowered to become who they are capable of becoming.<br /><br />Love can sound abstract. At <strong>Zeta, it means something solid. <br /></strong><br /><strong>Love is whole child education:</strong> developing students academically, socially, physically, and emotionally.<br /><br /><strong>Love is safety:</strong> creating an environment where students feel secure, supported, and ready to take ownership of their academics.<br /> <br /><strong>Love is knowing every family:</strong> building meaningful partnerships with the people who know our students best.<br /><br /><strong>Love is academic rigor:</strong> believing every student is capable of excellence, challenging them, and giving them the support to reach high standards.<br /><br /><strong>Love is in our Specialties:</strong> giving students opportunities to discover talents and passions through art, music, chess, dance, sports, and more.<br /><br /><strong>Love is in our facilities: </strong>designing spaces that inspire curiosity, creativity, and a love of learning.<br /><br /><strong>Love is welcoming every student</strong> in the city to discover their full potential. <br /><br />Come visit Zeta High, <a href=\"https://zetaschools.org/events-for-prospective-families/\" target=\"_blank\" part=\"link\" rel=\"noopener noreferrer noopener noreferrer\"><u>sign up for an upcoming event or tour </u></a>to learn more about us.<br /><br />We cannot wait to welcome your family to Zeta! <br /><br />Warmly,<br /><strong>The Zeta Enrollment Team</strong><br />Zeta Charter Schools<br /><br />Please reach out if you have any questions about Zeta, our Enrollment Team is here for you every step of the way. ✉︎  <a href=\"mailto:%20enroll&#64;zetaschools.org\" target=\"_blank\" part=\"link\" rel=\"noopener noreferrer noopener noreferrer\"><em><u>enroll&#64;zetaschools.org</u></em></a> &#x1f4de;(646) 480-1654<br /><br />"
+            },
+            "definition" : "lightning/paragraph",
+            "id" : "0f7b4f66-0f18-44a3-86e3-3023f71d3adc",
+            "type" : "block"
+          } ]
+        } ]
+      }, {
+        "attributes" : {
+          "content" : {
+            "attributes" : { },
+            "definition" : "@cms/MCZCFCDA73I5BVLF5EAKWMO3ZR7I",
+            "type" : "block"
+          },
+          "sfdc_cms:schema" : {
+            "readOnly" : true
+          }
+        },
+        "definition" : "sfdc_cms/reusableContentBlock",
+        "id" : "c282dc6c-40ba-4358-9068-4155fa2b6af6",
+        "type" : "block"
+      } ]
+    },
+    "sfdc_cms:schema" : {
+      "readOnly" : true
+    },
+    "sfdc_cms:title" : "(to de deleted) HS Email 4: Zeta is a love story",
+    "sfdc_cms:urlName" : "mc-applicant-hs-email-4-zeta-is-a-love-story",
+    "sfdc_cms:variants" : [ ],
+    "subjectLine" : "Zeta is a love story"
+  },
+  "urlName" : "mc-applicant-hs-email-4-zeta-is-a-love-story"
+}

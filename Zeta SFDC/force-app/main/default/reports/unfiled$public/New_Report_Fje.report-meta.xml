@@ -15,7 +15,7 @@
     <description>Shows all individual applications for the viewing user for the current month.</description>
     <filter>
         <criteriaItems>
-            <column>AcademicInterest$IndividualApplication.CreatedBy</column>
+            <column>AcademicInterest$IndividualApplication.Converting_Team_Member__c</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>

@@ -2987,4 +2987,68 @@ Zeta reserves the right to adjust grade placements based on post-admission asses
         <shortDescription>Responsible adult section label</shortDescription>
         <value>Responsible Adult</value>
     </labels>
+    <labels>
+        <fullName>Events_CatalogLoading</fullName>
+        <categories>Events</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Loading message on the events catalog page</shortDescription>
+        <value>Loading events…</value>
+    </labels>
+    <labels>
+        <fullName>Events_DetailLoading</fullName>
+        <categories>Events</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Loading message on the event detail page</shortDescription>
+        <value>Loading event…</value>
+    </labels>
+    <labels>
+        <fullName>Events_MyRegistrationsLoading</fullName>
+        <categories>Events</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Loading message on the my-registrations page</shortDescription>
+        <value>Loading your registrations…</value>
+    </labels>
+    <labels>
+        <fullName>Events_NotFound</fullName>
+        <categories>Events</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Shown when the event detail page&apos;s id does not resolve</shortDescription>
+        <value>We couldn’t find that event.</value>
+    </labels>
+    <labels>
+        <fullName>Parent_Login_Invalid_Identifier</fullName>
+        <categories>Parent Login Discovery</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Parent Login Invalid Identifier</shortDescription>
+        <value>Please enter a valid email address or mobile phone number.</value>
+    </labels>
+    <labels>
+        <fullName>Parent_Login_No_Passwordless_Redirect</fullName>
+        <categories>Parent Login Discovery</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Parent Login No Passwordless Redirect</shortDescription>
+        <value>We are unable to complete your sign-in. Please try again or contact Zeta Charter Schools for support. enroll@zetaschools.org | (646) 480-1654</value>
+    </labels>
+    <labels>
+        <fullName>Parent_Login_No_Unique_User</fullName>
+        <categories>Parent Login Discovery</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Parent Login No Unique User</shortDescription>
+        <value>No account found with that credential. First time user? Click “Sign Up” to make an account.</value>
+    </labels>
+    <labels>
+        <fullName>Parent_Login_No_Verified_2FA_Method</fullName>
+        <categories>Parent Login Discovery</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Parent Login No Verified 2FA Method</shortDescription>
+        <value>We are unable to send a verification code to the information provided. Please try again or contact Zeta Charter Schools for support. enroll@zetaschools.org | (646) 480-1654</value>
+    </labels>
 </CustomLabels>

@@ -171,7 +171,7 @@
           "type" : "block",
           "children" : [ {
             "attributes" : {
-              "align" : "left",
+              "align" : "start",
               "lightning:borderRadius" : "{!$brand.borderRadius.square}",
               "lightning:borderWidth" : "{!$brand.borderWeight.none}",
               "lightning:colorGroup" : {
@@ -182,8 +182,15 @@
               },
               "lightning:margin" : "{!$brand.spacing.none}",
               "lightning:padding" : "{!$brand.spacing.none}",
-              "lightning:typography" : "{!$brand.typography.paragraph.paragraph1}",
-              "text" : "Dear {!$Expression.First_Name_1} {!$Expression.Last_Name},<br /><br />Congratulations on applying to Zeta Elementary School!"
+              "lightning:typography" : {
+                "fontFamily" : "{!$cms.BrandonGrotesque_Medium}",
+                "fontSize" : "{!$brand.fontSize.medium}",
+                "fontWeight" : "{!$brand.fontWeight.normal}",
+                "letterSpacing" : "normal",
+                "lineHeight" : 1.5,
+                "textTransform" : "none"
+              },
+              "text" : "<font face=\"Tahoma\">Dear {!$Expression.First_Name_1} {!$Expression.Last_Name},<br /><br />Congratulations on applying to Zeta Elementary School!</font>"
             },
             "definition" : "lightning/paragraph",
             "id" : "618d12ac-1220-42a4-9ed6-83e330b709d4",
@@ -245,7 +252,7 @@
           "type" : "block",
           "children" : [ {
             "attributes" : {
-              "align" : "left",
+              "align" : "start",
               "lightning:borderRadius" : "{!$brand.borderRadius.square}",
               "lightning:borderWidth" : "{!$brand.borderWeight.none}",
               "lightning:colorGroup" : {
@@ -256,8 +263,15 @@
               },
               "lightning:margin" : "{!$brand.spacing.none}",
               "lightning:padding" : "{!$brand.spacing.none}",
-              "lightning:typography" : "{!$brand.typography.paragraph.paragraph1}",
-              "text" : "My name is Emily Kim, and I am the founder and CEO of Zeta Charter Schools, as well as a proud Zeta parent. I cannot wait to welcome your family to our school. Before we meet, I wanted to share how Zeta began and the promise at the heart of our schools."
+              "lightning:typography" : {
+                "fontFamily" : "{!$cms.BrandonGrotesque_Medium}",
+                "fontSize" : "{!$brand.fontSize.medium}",
+                "fontWeight" : "{!$brand.fontWeight.normal}",
+                "letterSpacing" : "normal",
+                "lineHeight" : 1.5,
+                "textTransform" : "none"
+              },
+              "text" : "<font face=\"Tahoma\">My name is Emily Kim, and I am the founder and CEO of Zeta Charter Schools, as well as a proud Zeta parent. I cannot wait to welcome your family to our school. Before we meet, I wanted to share how Zeta began and the promise at the heart of our schools.</font>"
             },
             "definition" : "lightning/paragraph",
             "id" : "c3f5a7dd-c435-4c43-aa0a-f86c20875a65",
@@ -390,7 +404,7 @@
           "type" : "block",
           "children" : [ {
             "attributes" : {
-              "align" : "left",
+              "align" : "start",
               "lightning:borderRadius" : "{!$brand.borderRadius.square}",
               "lightning:borderWidth" : "{!$brand.borderWeight.none}",
               "lightning:colorGroup" : {
@@ -401,8 +415,15 @@
               },
               "lightning:margin" : "{!$brand.spacing.none}",
               "lightning:padding" : "{!$brand.spacing.none}",
-              "lightning:typography" : "{!$brand.typography.paragraph.paragraph1}",
-              "text" : "I founded Zeta in 2018 with a dream shaped by what my husband and I wanted for our own children: <strong>an extraordinary education driven by love</strong>. As a parent, I saw how much more education could and should do for a child. Children deserve <strong>academic excellence, opportunities to discover their strengths, pursue their interests, build confidence, and develop into capable and kind human beings.</strong>"
+              "lightning:typography" : {
+                "fontFamily" : "{!$cms.BrandonGrotesque_Medium}",
+                "fontSize" : "{!$brand.fontSize.medium}",
+                "fontWeight" : "{!$brand.fontWeight.normal}",
+                "letterSpacing" : "normal",
+                "lineHeight" : 1.5,
+                "textTransform" : "none"
+              },
+              "text" : "<font face=\"Tahoma\">I founded Zeta in 2018 with a dream shaped by what my husband and I wanted for our own children: <strong></strong><strong></strong><strong>an extraordinary education driven by love</strong>. As a parent, I saw how much more education could and should do for a child. Children deserve <strong>academic excellence, opportunities to discover their strengths, pursue their interests, build confidence, and develop into capable and kind human beings.</strong></font><strong></strong><strong></strong><strong></strong>"
             },
             "definition" : "lightning/paragraph",
             "id" : "1ae16195-5277-46f2-a10b-528d7f8af766",
@@ -501,7 +522,7 @@
           "type" : "block",
           "children" : [ {
             "attributes" : {
-              "align" : "left",
+              "align" : "start",
               "lightning:borderRadius" : "{!$brand.borderRadius.square}",
               "lightning:borderWidth" : "{!$brand.borderWeight.none}",
               "lightning:colorGroup" : {
@@ -512,8 +533,15 @@
               },
               "lightning:margin" : "{!$brand.spacing.none}",
               "lightning:padding" : "{!$brand.spacing.none}",
-              "lightning:typography" : "{!$brand.typography.paragraph.paragraph1}",
-              "text" : "Our earliest plans took shape in a leaky basement, but the ambition was big. From the outset, we sought exceptional educators with deep expertise, enormous passion, and a belief in what children can accomplish. That belief shapes everything you will see at Zeta.  <br /><br />From an idea and a dream, we have grown to serve 4,700&#43; students 10 campuses in the Bronx, Upper Manhattan, and Queens. Rigorous academics are joined by art, music, chess, athletics, technology, and experiences beyond the classroom. Zeta Charter Schools are top-performing, tuition-free public schools that have served New York City families for eight years. Our schools are among the very best in the state, and our results in Math, Science and ELA consistently meet or exceed New York State and NYC averages. <br /><br />Today, I have the privilege of seeing Zeta from two perspectives: as its founder and as a proud Zeta parent.  Even though I know the ins and outs of our schools, I am endlessly fascinated by what my youngest son comes home having learned, tried, questioned, or discovered. I get to watch his world become a little bigger every day.<br /><br />That is what I wanted for my children. It is what I want for yours, too.<br /><a href=\"https://zetaschools.org/events-for-prospective-families/\" target=\"_blank\" part=\"link\" rel=\"noopener noreferrer noopener noreferrer noopener noreferrer noopener noreferrer noopener noreferrer noopener noreferrer noopener noreferrer\"><u>Come visit us at Zeta</u></a> and experience everything that is possible for your child here. <br /><br /><strong>Warmly,<br />Emily Kim<br />Founder, CEO &amp; Zeta Mom<br />Zeta Charter Schools<br /></strong><br /><em>Please reach out if you have any questions about Zeta. Our Enrollment Team is here for you every step of the way:<br /></em>✉︎ <a href=\"mailto:enroll&#64;zetaschools.org\" target=\"_blank\" part=\"link\" rel=\"noopener noreferrer\">enroll&#64;zetaschools.org</a><br />&#x1f4de;<a href=\"tel:16464801654\" target=\"_blank\" part=\"link\" rel=\"noopener noreferrer\">(646) 480-1654</a><br />"
+              "lightning:typography" : {
+                "fontFamily" : "{!$cms.BrandonGrotesque_Medium}",
+                "fontSize" : "{!$brand.fontSize.medium}",
+                "fontWeight" : "{!$brand.fontWeight.normal}",
+                "letterSpacing" : "normal",
+                "lineHeight" : 1.5,
+                "textTransform" : "none"
+              },
+              "text" : "<font face=\"Tahoma\">Our earliest plans took shape in a leaky basement, but the ambition was big. From the outset, we sought exceptional educators with deep expertise, enormous passion, and a belief in what children can accomplish. That belief shapes everything you will see at Zeta.  <br /><br />From an idea and a dream, we have grown to serve 4,700&#43; students 10 campuses in the Bronx, Upper Manhattan, and Queens. Rigorous academics are joined by art, music, chess, athletics, technology, and experiences beyond the classroom. Zeta Charter Schools are top-performing, tuition-free public schools that have served New York City families for eight years. Our schools are among the very best in the state, and our results in Math, Science and ELA consistently meet or exceed New York State and NYC averages. <br /><br />Today, I have the privilege of seeing Zeta from two perspectives: as its founder and as a proud Zeta parent.  Even though I know the ins and outs of our schools, I am endlessly fascinated by what my youngest son comes home having learned, tried, questioned, or discovered. I get to watch his world become a little bigger every day.<br /><br />That is what I wanted for my children. It is what I want for yours, too.<br /><a href=\"https://zetaschools.org/events-for-prospective-families/\" target=\"_blank\" part=\"link\" rel=\"noopener noreferrer noopener noreferrer noopener noreferrer noopener noreferrer noopener noreferrer noopener noreferrer noopener noreferrer noopener noreferrer noopener noreferrer noopener noreferrer\"><u>Come visit us at Zeta</u></a> and experience everything that is possible for your child here. <br /><br />Warmly,<br />Emily Kim<br />Founder, CEO &amp; Zeta Mom<br />Zeta Charter Schools<strong><br /></strong><br /><em>Please reach out if you have any questions about Zeta. Our Enrollment Team is here for you every step of the way:<br /></em>✉︎ <a href=\"mailto:enroll&#64;zetaschools.org\" target=\"_blank\" part=\"link\" rel=\"noopener noreferrer noopener noreferrer noopener noreferrer noopener noreferrer\">enroll&#64;zetaschools.org</a><br />&#x1f4de;<a href=\"tel:16464801654\" target=\"_blank\" part=\"link\" rel=\"noopener noreferrer noopener noreferrer noopener noreferrer noopener noreferrer\">(646) 480-1654</a></font><a href=\"tel:16464801654\" target=\"_blank\" part=\"link\" rel=\"noopener noreferrer noopener noreferrer noopener noreferrer noopener noreferrer\"></a><a href=\"tel:16464801654\" target=\"_blank\" part=\"link\" rel=\"noopener noreferrer noopener noreferrer noopener noreferrer noopener noreferrer\"></a><br />"
             },
             "definition" : "lightning/paragraph",
             "id" : "bbf0ea99-526d-48e3-960b-d6dbbefe7dd2",

@@ -346,6 +346,19 @@
         </div>
       </lightning-card>
 
+      <template lwc:if={hasStartError}>
+        <div class="slds-m-bottom_medium">
+          <lightning-card>
+            <div
+              class="slds-p-around_medium slds-text-color_error"
+              role="alert"
+            >
+              {startError}
+            </div>
+          </lightning-card>
+        </div>
+      </template>
+
       <div class="intake-actions">
         <lightning-button
           variant="brand"

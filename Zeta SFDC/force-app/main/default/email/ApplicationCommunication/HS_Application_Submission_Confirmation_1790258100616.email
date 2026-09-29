@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html>
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <meta name="viewport" content="width=device-width, initialscale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <style type="text/css">@media screen and (max-width: 480px) {slot[style] {margin-right: 0 !important;}.columnDiv {margin-right: 0 !important;}}@media screen and (min-width: 480px) {slot[style] {margin-bottom: 0 !important;}.columnDiv {margin-bottom: 0 !important;}}</style>
+  <style type="text/css">@media screen and (max-width: 480px) {.contentbuilderBaseColumnRow .columnCell {display:inline-block;width:100%}}</style>
+  <style type="text/css">.contentpageDefaultEmailTemplatePageTemplate .contentRoot {width: 600px;}@media only screen and (max-width: 480px) {.contentpageDefaultEmailTemplatePageTemplate .contentRoot {width: 320px;}}</style>
+ </head>
+ <body>
+  <table class="contentpageDefaultEmailTemplatePageTemplate" style="background-color: #E9EAEC;" role="presentation" id="contentpage_emailTemplateBodyContent" width="100%" cellpadding="0" cellspacing="0">
+   <tbody>
+    <tr>
+     <td width="100%" align="center">
+      <table class="contentRoot" style="background-color: #FFFFFF;" role="presentation" width="600" cellpadding="0" cellspacing="0">
+       <tbody>
+        <tr>
+         <td style="padding-top: 10px; padding-bottom: 10px; padding-left: 10px; padding-right: 10px;">
+          <table class="contentbuilderBaseColumnRow" style="align-items: flex-start; width: 100%; background-color:;" role="presentation" width="100%" cellpadding="0" cellspacing="0">
+           <tbody>
+            <tr valign="top">
+             <td width="100%" class="columnCell" style="vertical-align: top;display: inline-block; float:left">
+              <table cellpadding="0" cellspacing="0" style="width: 100%; border-collapse: collapse; word-break:break-word;">
+               <tbody>
+                <tr>
+                 <td>
+                  <table style="width:100%; border-collapse: collapse; word-break:break-word;" id="contentRegion" role="presentation" cellspacing="0" cellpadding="0" locked="0">
+                   <tbody>
+                    <tr>
+                     <td align="Center"><img src="{[devName:Screenshot_20260924_at_85605AM]}" alt="" width="600" style="width: 100%; display: block; border: none; max-width: 100%; object-fit: fill;" /></td>
+                    </tr>
+                   </tbody>
+                  </table></td>
+                </tr>
+                <tr>
+                 <td>
+                  <table style="width: 100%; border-collapse: collapse; word-break: break-word; font-size: 14px" id="contentRegion" role="presentation" cellspacing="0" cellpadding="0" locked="0">
+                   <tbody>
+                    <tr>
+                     <td style="font-family: Arial, Helvetica, sans-serif;"><br /><span style="font-size:14px;"><span style="font-family:Tahoma,Arial,Helvetica,sans-serif;">Dear {{{IndividualApplication.Parent_Guardian_1_First_Name__c}}} {{{IndividualApplication.Parent_Guardian_1_Last_Name__c}}},<br /><br /> Thank you for applying to Zeta High School!</span></span></td>
+                    </tr>
+                   </tbody>
+                  </table></td>
+                </tr>
+                <tr>
+                 <td>
+                  <table style="width: 100%; border-collapse: collapse; word-break: break-word; font-size: 14px" id="contentRegion" role="presentation" cellspacing="0" cellpadding="0" locked="0">
+                   <tbody>
+                    <tr>
+                     <td style="font-family: Arial, Helvetica, sans-serif;"><p><span style="font-size:14px;"><span style="font-family:Tahoma,Arial,Helvetica,sans-serif;"><span style="font-variant: normal; white-space: pre-wrap;"><span style="color:#000000"><span style="font-style: normal;"><span style="text-decoration: none;">We are so excited that {{{IndividualApplication.fxApplicant_First_Name__c}}} is considering Zeta High, and we look forward to being with you through the next steps of the process.</span></span></span></span><br /><br /><span style="font-variant: normal; white-space: pre-wrap;"><span style="color:#000000"><span style="font-weight:700"><span style="font-style:normal"><span style="text-decoration:none">Log in </span></span></span></span></span></span></span><a href="http://myportal.zetaschools.org/" style="text-decoration:none"><span style="color:#9b59b6;"><span style="font-variant: normal; white-space: pre-wrap;"><span style="font-weight:700"><span style="font-style:normal"><span style="text-decoration:underline"><span style="text-decoration-skip-ink:none">here</span></span></span></span></span></span></a><span style="font-size:14px;"><span style="font-family:Tahoma,Arial,Helvetica,sans-serif;"><font color="#1155cc">&nbsp;</font><span style="font-variant: normal; white-space: pre-wrap;"><span style="color:#000000"><span style="font-weight:700"><span style="font-style:normal"><span style="text-decoration:none">to view your application.</span></span></span></span></span><br /><br /><span style="font-variant: normal; white-space: pre-wrap;"><span style="color:#000000"><span style="font-weight:400"><span style="font-style:normal"><span style="text-decoration:none">At Zeta High, students discover their purpose, pursue their passions, and build the power to shape their future. Through rigorous academics, personalized guidance, and real-world experiences, students prepare for college and a life of their own choosing.</span></span></span></span></span></span></span></p></td>
+                    </tr>
+                   </tbody>
+                  </table></td>
+                </tr>
+               </tbody>
+              </table></td>
+            </tr>
+           </tbody>
+          </table>
+          <table class="contentbuilderBaseColumnRow" style="align-items: flex-start; width: 100%; background-color:;" role="presentation" width="100%" cellpadding="0" cellspacing="0">
+           <tbody>
+            <tr valign="top">
+             <td width="66.66%" class="columnCell" style="vertical-align: top;display: inline-block; float:left">
+              <div class="columnDiv" style="margin-right: 5px;margin-bottom: 5px;">
+               <table cellpadding="0" cellspacing="0" style="width: 100%; border-collapse: collapse; word-break:break-word;">
+                <tbody>
+                 <tr>
+                  <td>
+                   <table style="width: 100%; border-collapse: collapse; word-break: break-word; font-size: 14px" id="contentRegion" role="presentation" cellspacing="0" cellpadding="0" locked="0">
+                    <tbody>
+                     <tr>
+                      <td style="font-family: Arial, Helvetica, sans-serif;"><p style="line-height:1.38; margin-top:16px; margin-bottom:16px"><span style="font-size:14px;"><span style="font-family:Tahoma,Arial,Helvetica,sans-serif;"><span style="font-variant: normal; white-space: pre-wrap;"><span style="color:#000000"><span style="font-weight:400"><span style="font-style:normal"><span style="text-decoration:none">Zeta High students benefit from:</span></span></span></span></span></span></span></p>
+                       <ul>
+                        <li aria-level="1" style="list-style-type:disc"><span style="font-size:14px;"><span style="font-family:Tahoma,Arial,Helvetica,sans-serif;"><span style="font-variant: normal; white-space: pre-wrap;"><span style="color:#000000"><span style="font-weight:700"><span style="font-style:normal"><span style="text-decoration:none">Advanced and AP courses</span></span></span></span></span><span style="font-variant: normal; white-space: pre-wrap;"><span style="color:#000000"><span style="font-weight:400"><span style="font-style:normal"><span style="text-decoration:none"> that challenge them to reach their highest potential</span></span></span></span></span></span></span></li>
+                        <li aria-level="1" style="list-style-type:disc"><span style="font-size:14px;"><span style="font-family:Tahoma,Arial,Helvetica,sans-serif;"><span style="font-variant: normal; white-space: pre-wrap;"><span style="color:#000000"><span style="font-weight:700"><span style="font-style:normal"><span style="text-decoration:none">Free SAT preparation, SAT School Day, and one-on-one college advising</span></span></span></span></span></span></span></li>
+                        <li aria-level="1" style="list-style-type:disc"><span style="font-size:14px;"><span style="font-family:Tahoma,Arial,Helvetica,sans-serif;"><span style="font-variant: normal; white-space: pre-wrap;"><span style="color:#000000"><span style="font-weight:400"><span style="font-style:normal"><span style="text-decoration:none">A dedicated </span></span></span></span></span><span style="font-variant: normal; white-space: pre-wrap;"><span style="color:#000000"><span style="font-weight:700"><span style="font-style:normal"><span style="text-decoration:none">Z Coach</span></span></span></span></span><span style="font-variant: normal; white-space: pre-wrap;"><span style="color:#000000"><span style="font-weight:400"><span style="font-style:normal"><span style="text-decoration:none"> and close-knit </span></span></span></span></span><span style="font-variant: normal; white-space: pre-wrap;"><span style="color:#000000"><span style="font-weight:700"><span style="font-style:normal"><span style="text-decoration:none">Z House</span></span></span></span></span><span style="font-variant: normal; white-space: pre-wrap;"><span style="color:#000000"><span style="font-weight:400"><span style="font-style:normal"><span style="text-decoration:none"> that provide guidance and belonging</span></span></span></span></span></span></span></li>
+                        <li aria-level="1" style="list-style-type:disc"><span style="font-size:14px;"><span style="font-family:Tahoma,Arial,Helvetica,sans-serif;"><span style="font-variant: normal; white-space: pre-wrap;"><span style="color:#000000"><span style="font-weight:400"><span style="font-style:normal"><span style="text-decoration:none">Hands-on learning through </span></span></span></span></span><span style="font-variant: normal; white-space: pre-wrap;"><span style="color:#000000"><span style="font-weight:700"><span style="font-style:normal"><span style="text-decoration:none">Z Lab, internships, and Z Journeys</span></span></span></span></span></span></span></li>
+                        <li aria-level="1" style="list-style-type:disc"><span style="font-size:14px;"><span style="font-family:Tahoma,Arial,Helvetica,sans-serif;"><span style="font-variant: normal; white-space: pre-wrap;"><span style="color:#000000"><span style="font-weight:400"><span style="font-style:normal"><span style="text-decoration:none">Opportunities to explore their interests through </span></span></span></span></span><span style="font-variant: normal; white-space: pre-wrap;"><span style="color:#000000"><span style="font-weight:700"><span style="font-style:normal"><span style="text-decoration:none">Z </span></span></span></span></span><span style="font-variant: normal; white-space: pre-wrap;"><span style="color:#000000"><span style="font-weight:700"><span style="font-style:normal"><span style="text-decoration:none">Teams, Z Clubs, sports, and the arts</span></span></span></span></span></span></span></li>
+                        <li aria-level="1" style="list-style-type:disc"><span style="font-size:14px;"><span style="font-family:Tahoma,Arial,Helvetica,sans-serif;"><span style="font-variant: normal; white-space: pre-wrap;"><span style="color:#000000"><span style="font-weight:400"><span style="font-style:normal"><span style="text-decoration:none">A </span></span></span></span></span><span style="font-variant: normal; white-space: pre-wrap;"><span style="color:#000000"><span style="font-weight:700"><span style="font-style:normal"><span style="text-decoration:none">tuition-free public charter education</span></span></span></span></span><span style="font-variant: normal; white-space: pre-wrap;"><span style="color:#000000"><span style="font-weight:400"><span style="font-style:normal"><span style="text-decoration:none"> open to all students</span></span></span></span></span></span></span></li>
+                       </ul><p style="line-height:1.38; margin-top:16px; margin-bottom:16px"><span style="font-size:14px;"><span style="font-family:Tahoma,Arial,Helvetica,sans-serif;"><span style="font-variant: normal; white-space: pre-wrap;"><span style="color:#000000"><span style="font-weight:400"><span style="font-style:normal"><span style="text-decoration:none">As Zeta's Enrollment Team, we will be your main point of contact from here on out. We will share important updates, key dates, and opportunities to get to know Zeta High better. We are always here for your questions, big or small.</span></span></span></span></span></span></span></p></td>
+                     </tr>
+                    </tbody>
+                   </table></td>
+                 </tr>
+                </tbody>
+               </table>
+              </div></td>
+             <td width="33.33%" class="columnCell" style="vertical-align: top;display: inline-block; float:left">
+              <div class="columnDiv" style="margin-right: 5px;margin-bottom: 5px;">
+               <table cellpadding="0" cellspacing="0" style="width: 100%; border-collapse: collapse; word-break:break-word;">
+                <tbody>
+                 <tr>
+                  <td>
+                   <table style="font-size:14px; width: 100%; border-collapse: collapse; word-break: break-word;" role="presentation" cellspacing="0" cellpadding="0" id="contentregion" locked="0">
+                    <tbody>
+                     <tr>
+                      <td class="contentbuilder-html" style="padding: 0;"><br /><br /></td>
+                     </tr>
+                    </tbody>
+                   </table></td>
+                 </tr>
+                 <tr>
+                  <td>
+                   <table style="width:100%; border-collapse: collapse; word-break:break-word;" id="contentRegion" role="presentation" cellspacing="0" cellpadding="0" locked="0">
+                    <tbody>
+                     <tr>
+                      <td align="Center"><img src="{[devName:Screenshot_20260924_at_90025AM]}" alt="" width="194" style="width: 100%; display: block; border: none; max-width: 100%; object-fit: fill;" /></td>
+                     </tr>
+                    </tbody>
+                   </table></td>
+                 </tr>
+                 <tr>
+                  <td>
+                   <table style="font-size:14px; width: 100%; border-collapse: collapse; word-break: break-word;" role="presentation" cellspacing="0" cellpadding="0" id="contentregion" locked="0">
+                    <tbody>
+                     <tr>
+                      <td class="contentbuilder-html" style="padding: 0;"><br /><br /></td>
+                     </tr>
+                    </tbody>
+                   </table></td>
+                 </tr>
+                 <tr>
+                  <td>
+                   <table style="width:100%; border-collapse: collapse; word-break:break-word;" id="contentRegion" role="presentation" cellspacing="0" cellpadding="0" locked="0">
+                    <tbody>
+                     <tr>
+                      <td align="Center"><img src="{[devName:Screenshot_20260924_at_90034AM]}" alt="" width="194" style="width: 100%; display: block; border: none; max-width: 100%; object-fit: fill;" /></td>
+                     </tr>
+                    </tbody>
+                   </table></td>
+                 </tr>
+                </tbody>
+               </table>
+              </div></td>
+            </tr>
+           </tbody>
+          </table>
+          <table class="contentbuilderBaseColumnRow" style="align-items: flex-start; width: 100%; background-color:;" role="presentation" width="100%" cellpadding="0" cellspacing="0">
+           <tbody>
+            <tr valign="top">
+             <td width="100%" class="columnCell" style="vertical-align: top;display: inline-block; float:left">
+              <table cellpadding="0" cellspacing="0" style="width: 100%; border-collapse: collapse; word-break:break-word;">
+               <tbody>
+                <tr>
+                 <td>
+                  <table style="width: 100%; border-collapse: collapse; word-break: break-word; font-size: 14px" id="contentRegion" role="presentation" cellspacing="0" cellpadding="0" locked="0">
+                   <tbody>
+                    <tr>
+                     <td style="font-family: Arial, Helvetica, sans-serif;"><p style="line-height:1.38; margin-top:16px; margin-bottom:16px"><span style="font-size:14px;"><span style="font-family:Tahoma,Arial,Helvetica,sans-serif;"><a href="https://zetaschools.org/events-for-prospective-families/" style="text-decoration:none"><span style="font-variant: normal; white-space: pre-wrap;"><span style="color:#1155cc"><span style="font-weight:400"><span style="font-style:normal"><span style="text-decoration:underline"><span style="text-decoration-skip-ink:none">Sign up for a tour</span></span></span></span></span></span></a><span style="font-variant: normal; white-space: pre-wrap;"><span style="color:#000000"><span style="font-weight:400"><span style="font-style:normal"><span style="text-decoration:none"> to experience Zeta High yourself.&nbsp;</span></span></span></span></span></span></span></p><p style="line-height:1.38; margin-top:16px; margin-bottom:16px"><span style="font-size:14px;"><span style="font-family:Tahoma,Arial,Helvetica,sans-serif;"><span style="font-variant: normal; white-space: pre-wrap;"><span style="color:#000000"><span style="font-weight:400"><span style="font-style:normal"><span style="text-decoration:none">🎥 </span></span></span></span></span><a href="https://www.instagram.com/reels/DS5uEsjDBg0/" style="text-decoration:none"><span style="color:#8e44ad;"><span style="font-variant: normal; white-space: pre-wrap;"><span style="font-weight:700"><span style="font-style:normal"><span style="text-decoration:underline"><span style="text-decoration-skip-ink:none">Our students are waiting for you!</span></span></span></span></span></span></a></span></span></p><p style="line-height:1.38; margin-top:16px; margin-bottom:16px"><span style="font-size:14px;"><span style="font-family:Tahoma,Arial,Helvetica,sans-serif;"><span style="font-variant: normal; white-space: pre-wrap;"><span style="color:#000000"><span style="font-weight:400"><span style="font-style:normal"><span style="text-decoration:none">We can't wait to continue this journey with you and your family.&nbsp;</span></span></span></span></span></span></span></p><p style="line-height:1.38; margin-bottom:32px"><span style="font-size:14px;"><span style="font-family:Tahoma,Arial,Helvetica,sans-serif;"><span style="font-variant: normal; white-space: pre-wrap;"><span style="color:#000000"><span style="font-weight:400"><span style="font-style:normal"><span style="text-decoration:none">Warmly,</span></span></span></span></span><br /><span style="font-variant: normal; white-space: pre-wrap;"><span style="color:#000000"><span style="font-weight:700"><span style="font-style:normal"><span style="text-decoration:none">The Zeta Enrollment Team</span></span></span></span></span><br /><span style="font-variant: normal; white-space: pre-wrap;"><span style="color:#000000"><span style="font-weight:400"><span style="font-style:normal"><span style="text-decoration:none">Zeta Charter Schools</span></span></span></span></span></span></span></p></td>
+                    </tr>
+                   </tbody>
+                  </table></td>
+                </tr>
+                <tr>
+                 <td>
+                  <table style="width: 100%; border-collapse: collapse; word-break: break-word; font-size: 14px" id="contentRegion" role="presentation" cellspacing="0" cellpadding="0" locked="0">
+                   <tbody>
+                    <tr>
+                     <td style="font-family: Arial, Helvetica, sans-serif;"><span style="font-size:14px;"><span style="font-family:Tahoma,Arial,Helvetica,sans-serif;"><em>Please reach out if you have any questions about Zeta, our Enrollment Team is here for you every step of the way:</em><br /> ✉️<span style="color:#0054a6;">&nbsp;</span><a href="mailto: enroll@zetaschools.org"><span style="color:#0054a6;">enroll@zetaschools.org</span></a><span style="color:#0054a6;"></span><br /> 📞&nbsp;<a href="tel: (646) 480-1654"><span style="color:#0054a6;">(646) 480-1654</span></a></span></span><br /> &nbsp;</td>
+                    </tr>
+                   </tbody>
+                  </table></td>
+                </tr>
+                <tr>
+                 <td>
+                  <table style="width:100%; border-collapse: collapse; word-break:break-word;" id="contentRegion" role="presentation" cellspacing="0" cellpadding="0" locked="0">
+                   <tbody>
+                    <tr>
+                     <td align="left"><img src="{[devName:Screenshot_20260924_at_85646AM]}" alt="" width="600" style="width: 100%; display: block; border: none; max-width: 100%; object-fit: contain;" /></td>
+                    </tr>
+                   </tbody>
+                  </table></td>
+                </tr>
+               </tbody>
+              </table></td>
+            </tr>
+           </tbody>
+          </table></td>
+        </tr>
+       </tbody>
+      </table></td>
+    </tr>
+   </tbody>
+  </table>
+ </body>
+</html>

@@ -16,7 +16,7 @@
                 </componentInstanceProperties>
                 <componentInstanceProperties>
                     <name>imgPath</name>
-                    <value>{[devName:Screenshot_20260911_at_13425PM]}</value>
+                    <value>{[devName:SaleForceEmail_Assets7]}</value>
                 </componentInstanceProperties>
                 <componentInstanceProperties>
                     <name>marginBottom</name>
@@ -74,13 +74,13 @@
                 </componentInstanceProperties>
                 <componentInstanceProperties>
                     <name>richTextValue</name>
-                    <value>&lt;p&gt;&lt;span style=&quot;font-family:Arial,Helvetica,sans-serif;&quot;&gt;&lt;span style=&quot;color:#000000;&quot;&gt;尊敬的 {{{IndividualApplication.Parent_Guardian_1_First_Name__c}}}:&lt;/span&gt;&lt;/span&gt;&lt;/p&gt;
+                    <value>&lt;p&gt;&lt;span style=&quot;font-family:Arial,Helvetica,sans-serif;&quot;&gt;&lt;span style=&quot;color:#000000;&quot;&gt;尊敬的 &lt;/span&gt;&lt;/span&gt;{{{IndividualApplication.Parent_Guardian_1_First_Name__c}}} {{{IndividualApplication.Parent_Guardian_1_Last_Name__c}}}:&lt;/p&gt;
 
 &lt;p style=&quot;line-height:1.38; margin-bottom:16px&quot;&gt;&lt;span style=&quot;font-family:Arial,Helvetica,sans-serif;&quot;&gt;&lt;span style=&quot;font-size:11pt; font-variant:normal; white-space:pre-wrap&quot;&gt;&lt;span style=&quot;color:#000000&quot;&gt;&lt;span style=&quot;font-style: normal;&quot;&gt;&lt;span style=&quot;text-decoration: none;&quot;&gt;感谢您申请 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&quot;font-size:11pt; font-variant:normal; white-space:pre-wrap&quot;&gt;&lt;span style=&quot;font-family:Lato,sans-serif&quot;&gt;&lt;span style=&quot;color:#000000&quot;&gt;&lt;span style=&quot;font-weight:400&quot;&gt;&lt;span style=&quot;font-style:normal&quot;&gt;&lt;span style=&quot;text-decoration:none&quot;&gt;Zeta 特许学校!&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/p&gt;
 
 &lt;p style=&quot;line-height:1.38; margin-top:16px; margin-bottom:16px&quot;&gt;&lt;span style=&quot;font-family:Arial,Helvetica,sans-serif;&quot;&gt;&lt;span style=&quot;font-size:11pt; font-variant:normal; white-space:pre-wrap&quot;&gt;&lt;span style=&quot;color:#000000&quot;&gt;&lt;span style=&quot;font-weight:400&quot;&gt;&lt;span style=&quot;font-style:normal&quot;&gt;&lt;span style=&quot;text-decoration:none&quot;&gt;我们非常高兴您为您的家庭考虑 Zeta。选择学校是一个重大的决定，我们的招生团队期待在您的每一步中为您提供支持。&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;br /&gt;
 &lt;br /&gt;
-&lt;strong&gt;&lt;a href=&quot;http://myportal.zetaschools.org/&quot;&gt;&lt;span style=&quot;font-family:Arial,Helvetica,sans-serif;&quot;&gt;&lt;span style=&quot;font-size:11pt; font-variant:normal; white-space:pre-wrap&quot;&gt;&lt;span style=&quot;color:#000000&quot;&gt;&lt;span style=&quot;font-weight:400&quot;&gt;&lt;span style=&quot;font-style:normal&quot;&gt;&lt;span style=&quot;text-decoration:none&quot;&gt;请在此登录以查看您的申请。&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;</value>
+&lt;strong&gt;&lt;a href=&quot;http://myportal.zetaschools.org/&quot;&gt;&lt;span style=&quot;color:#8e44ad;&quot;&gt;&lt;span style=&quot;font-family:Arial,Helvetica,sans-serif;&quot;&gt;&lt;span style=&quot;font-size:11pt; font-variant:normal; white-space:pre-wrap&quot;&gt;&lt;span style=&quot;font-weight:400&quot;&gt;&lt;span style=&quot;font-style:normal&quot;&gt;&lt;span style=&quot;text-decoration:none&quot;&gt;请在此登录以查看您的申请。&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;</value>
                 </componentInstanceProperties>
                 <componentName>contentbuilder:richText</componentName>
                 <identifier>contentbuilder_richText</identifier>

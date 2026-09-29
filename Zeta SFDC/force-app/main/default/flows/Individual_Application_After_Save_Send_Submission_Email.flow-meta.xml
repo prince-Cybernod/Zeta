@@ -199,23 +199,71 @@
 Sends a confirmation email when an Individual Application is submitted (Application Status = Applied).</description>
     <environments>Default</environments>
     <formulas>
+        <name>fxBatchId</name>
+        <dataType>String</dataType>
+        <expression>TEXT(NOW())+{!$Record.Id}</expression>
+    </formulas>
+    <formulas>
         <name>fxEmailTemplateName</name>
         <dataType>String</dataType>
-        <expression>CASE(
-    TEXT({!$Record.Primary_Guardian__r.Language_Preference__pc}),
-    &quot;es&quot;, &quot;Application Submission Confirmation - Spanish&quot;,
-    &quot;zh_CN&quot;, &quot;Application Submission Confirmation - Chinese&quot;,
-    &quot;Application Submission Confirmation&quot;
+        <expression>IF(
+    OR(
+        TEXT({!$Record.Grade_Applying_To__c}) = &quot;6&quot;,
+        TEXT({!$Record.Grade_Applying_To__c}) = &quot;7&quot;,
+        TEXT({!$Record.Grade_Applying_To__c}) = &quot;8&quot;
+    ),
+    &quot;MS Application Submission Confirmation&quot;,
+
+    IF(
+        OR(
+            TEXT({!$Record.Grade_Applying_To__c}) = &quot;9&quot;,
+            TEXT({!$Record.Grade_Applying_To__c}) = &quot;10&quot;,
+            TEXT({!$Record.Grade_Applying_To__c}) = &quot;11&quot;,
+            TEXT({!$Record.Grade_Applying_To__c}) = &quot;12&quot;
+        ),
+        &quot;HS Application Submission Confirmation&quot;,
+
+        CASE(
+            TEXT({!$Record.Primary_Guardian__r.Language_Preference__pc}),
+            &quot;es&quot;, &quot;ES Application Submission Confirmation - Spanish&quot;,
+            &quot;zh_CN&quot;, &quot;ES Application Submission Confirmation - Chinese&quot;,
+            &quot;ES Application Submission Confirmation&quot;
+        )
+    )
 )</expression>
+    </formulas>
+    <formulas>
+        <name>fxScheduledTime</name>
+        <dataType>DateTime</dataType>
+        <expression>NOW() +( 5/1440)</expression>
     </formulas>
     <formulas>
         <name>fxSMSTemplate</name>
         <dataType>String</dataType>
-        <expression>CASE(
-    TEXT({!$Record.Primary_Guardian__r.Language_Preference__pc}),
-    &quot;es&quot;, &quot;Application Submission Confirmation - Spanish&quot;,
-    &quot;zh_CN&quot;, &quot;Application Submission Confirmation - Chinese&quot;,
-    &quot;Application Submission Confirmation&quot;
+        <expression>IF(
+    OR(
+        TEXT({!$Record.Grade_Applying_To__c}) = &quot;6&quot;,
+        TEXT({!$Record.Grade_Applying_To__c}) = &quot;7&quot;,
+        TEXT({!$Record.Grade_Applying_To__c}) = &quot;8&quot;
+    ),
+    &quot;MS Application Submission Confirmation - EN&quot;,
+
+    IF(
+        OR(
+            TEXT({!$Record.Grade_Applying_To__c}) = &quot;9&quot;,
+            TEXT({!$Record.Grade_Applying_To__c}) = &quot;10&quot;,
+            TEXT({!$Record.Grade_Applying_To__c}) = &quot;11&quot;,
+            TEXT({!$Record.Grade_Applying_To__c}) = &quot;12&quot;
+        ),
+        &quot;HS Application Submission Confirmation - EN&quot;,
+
+        CASE(
+            TEXT({!$Record.Primary_Guardian__r.Language_Preference__pc}),
+            &quot;es&quot;, &quot;ES Application Submission Confirmation - Spanish&quot;,
+            &quot;zh_CN&quot;, &quot;ES Application Submission Confirmation - Chinese&quot;,
+            &quot;ES Application Submission Confirmation - EN&quot;
+        )
+    )
 )</expression>
     </formulas>
     <interviewLabel>Individual Application (After Save) Send Submission Email {!$Flow.CurrentDateTime}</interviewLabel>
@@ -244,6 +292,12 @@ Sends a confirmation email when an Individual Application is submitted (Applicat
         <label>Send Initial SMS to Parent</label>
         <locationX>0</locationX>
         <locationY>0</locationY>
+        <inputAssignments>
+            <field>Mogli_SMS__Batch_Group_ID__c</field>
+            <value>
+                <elementReference>fxBatchId</elementReference>
+            </value>
+        </inputAssignments>
         <inputAssignments>
             <field>Mogli_SMS__Contact__c</field>
             <value>
@@ -275,9 +329,21 @@ Sends a confirmation email when an Individual Application is submitted (Applicat
             </value>
         </inputAssignments>
         <inputAssignments>
+            <field>Mogli_SMS__Scheduled_Delivery__c</field>
+            <value>
+                <elementReference>fxScheduledTime</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
             <field>Mogli_SMS__Status__c</field>
             <value>
-                <stringValue>Queued</stringValue>
+                <stringValue>Scheduled</stringValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Mogli_SMS__isBatchTransaction__c</field>
+            <value>
+                <booleanValue>true</booleanValue>
             </value>
         </inputAssignments>
         <object>Mogli_SMS__SMS__c</object>

@@ -19,6 +19,19 @@
         <sequence>0</sequence>
     </mktDataTranFields>
     <mktDataTranFields>
+        <fullName>Application_Count_c</fullName>
+        <creationType>Custom</creationType>
+        <datatype>N</datatype>
+        <externalName>Application_Count__c</externalName>
+        <isDataRequired>false</isDataRequired>
+        <length>0</length>
+        <masterLabel>Application Count</masterLabel>
+        <precision>0</precision>
+        <primaryIndexOrder>0</primaryIndexOrder>
+        <scale>0</scale>
+        <sequence>90</sequence>
+    </mktDataTranFields>
+    <mktDataTranFields>
         <fullName>AssistantName</fullName>
         <creationType>Custom</creationType>
         <datatype>S</datatype>
@@ -851,6 +864,19 @@
         <sequence>0</sequence>
     </mktDataTranFields>
     <mktDataTranFields>
+        <fullName>Portal_User_c</fullName>
+        <creationType>Custom</creationType>
+        <datatype>S</datatype>
+        <externalName>Portal_User__c</externalName>
+        <isDataRequired>false</isDataRequired>
+        <length>0</length>
+        <masterLabel>Portal User</masterLabel>
+        <precision>0</precision>
+        <primaryIndexOrder>0</primaryIndexOrder>
+        <scale>0</scale>
+        <sequence>73</sequence>
+    </mktDataTranFields>
+    <mktDataTranFields>
         <fullName>Pronouns</fullName>
         <creationType>Custom</creationType>
         <datatype>S</datatype>
@@ -862,6 +888,19 @@
         <primaryIndexOrder>0</primaryIndexOrder>
         <scale>0</scale>
         <sequence>0</sequence>
+    </mktDataTranFields>
+    <mktDataTranFields>
+        <fullName>Record_Type_Name_c</fullName>
+        <creationType>Custom</creationType>
+        <datatype>S</datatype>
+        <externalName>Record_Type_Name__c</externalName>
+        <isDataRequired>false</isDataRequired>
+        <length>0</length>
+        <masterLabel>Record Type Name</masterLabel>
+        <precision>0</precision>
+        <primaryIndexOrder>0</primaryIndexOrder>
+        <scale>0</scale>
+        <sequence>89</sequence>
     </mktDataTranFields>
     <mktDataTranFields>
         <fullName>ReportsToId</fullName>

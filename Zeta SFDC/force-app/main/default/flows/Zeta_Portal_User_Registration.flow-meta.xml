@@ -84,7 +84,7 @@
         <actionName>ParentRegistrationEmailInit</actionName>
         <actionType>apex</actionType>
         <connector>
-            <targetReference>Enter_Code_Received_via_Email</targetReference>
+            <targetReference>Set_Selected_Method_Email</targetReference>
         </connector>
         <flowTransactionModel>Automatic</flowTransactionModel>
         <inputParameters>
@@ -145,7 +145,7 @@
         <actionName>ParentRegistrationSmsInit</actionName>
         <actionType>apex</actionType>
         <connector>
-            <targetReference>Enter_Code_Received_via_SMS</targetReference>
+            <targetReference>Set_Selected_Method_SMS</targetReference>
         </connector>
         <flowTransactionModel>Automatic</flowTransactionModel>
         <inputParameters>
@@ -541,6 +541,38 @@
         <connector>
             <isGoTo>true</isGoTo>
             <targetReference>Is_the_User_active</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <name>Set_Selected_Method_Email</name>
+        <label>Set Selected Method Email</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <assignmentItems>
+            <assignToReference>varSelectedVerificationMethod</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <stringValue>Email</stringValue>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Enter_Code_Received_via_Email</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <name>Set_Selected_Method_SMS</name>
+        <label>Set Selected Method SMS</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <assignmentItems>
+            <assignToReference>varSelectedVerificationMethod</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <stringValue>SMS</stringValue>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Enter_Code_Received_via_SMS</targetReference>
         </connector>
     </assignments>
     <choices>
@@ -999,6 +1031,49 @@
         </rules>
     </decisions>
     <decisions>
+        <name>Resend_Same_Verification_Method</name>
+        <label>Resend Same Verification Method</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <defaultConnector>
+            <isGoTo>true</isGoTo>
+            <targetReference>Unable_to_create_a_User</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>SMS_Resend</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>varSelectedVerificationMethod</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>SMS</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <isGoTo>true</isGoTo>
+                <targetReference>Send_Verification_SMS_1</targetReference>
+            </connector>
+            <label>SMS Resend</label>
+        </rules>
+        <rules>
+            <name>Email_Resend</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>varSelectedVerificationMethod</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Email</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <isGoTo>true</isGoTo>
+                <targetReference>Send_Verification_Email</targetReference>
+            </connector>
+            <label>Email Resend</label>
+        </rules>
+    </decisions>
+    <decisions>
         <name>User_Auth_Method</name>
         <label>User Auth Method</label>
         <locationX>0</locationX>
@@ -1282,7 +1357,7 @@ Created By: Elevation Solutions</description>
     <formulas>
         <name>fx_PortalLoginURL</name>
         <dataType>String</dataType>
-        <expression>{!$Label.Parent_Portal_Base_URL}+&apos;/login&apos;</expression>
+        <expression>{!$Label.Parent_Portal_Base_URL}+&apos;login&apos;</expression>
     </formulas>
     <formulas>
         <name>fx_redirect_URL_withSelf</name>
@@ -1762,7 +1837,7 @@ Created By: Elevation Solutions</description>
         </connector>
         <fields>
             <name>dt_instructions</name>
-            <fieldText>&lt;p&gt;&lt;span style=&quot;background-color: rgb(255, 255, 255);&quot;&gt;Please complete the information below to create a user in the Zeta Parent Portal.&lt;/span&gt;&lt;/p&gt;</fieldText>
+            <fieldText>&lt;p&gt;&lt;span style=&quot;background-color: rgb(255, 255, 255);&quot;&gt;Please complete the information below to create a user in the Zeta Parent Portal.&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;Already have an account? &lt;a href=&quot;https://myportal.zetaschools.org/login&quot; rel=&quot;noopener noreferrer&quot; target=&quot;_blank&quot; style=&quot;color: rgb(3, 7, 244);&quot;&gt;&lt;strong&gt;Sign in here.&lt;/strong&gt;&lt;/a&gt;&lt;/p&gt;</fieldText>
             <fieldType>DisplayText</fieldType>
             <styleProperties>
                 <verticalAlignment>
@@ -2187,8 +2262,7 @@ Created By: Elevation Solutions</description>
         <allowFinish>true</allowFinish>
         <allowPause>false</allowPause>
         <connector>
-            <isGoTo>true</isGoTo>
-            <targetReference>Select_Verification_Method</targetReference>
+            <targetReference>Resend_Same_Verification_Method</targetReference>
         </connector>
         <fields>
             <name>Copy_1_of_dt_error</name>
@@ -2440,5 +2514,12 @@ Created By: Elevation Solutions</description>
         <isInput>false</isInput>
         <isOutput>false</isOutput>
         <objectType>User</objectType>
+    </variables>
+    <variables>
+        <name>varSelectedVerificationMethod</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
     </variables>
 </Flow>

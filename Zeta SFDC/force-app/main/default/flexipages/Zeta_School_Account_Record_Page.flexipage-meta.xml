@@ -106,6 +106,22 @@
                 <identifier>RecordSchoolMint_School_Name__cField</identifier>
             </fieldInstance>
         </itemInstances>
+        <itemInstances>
+            <fieldInstance>
+                <fieldInstanceProperties>
+                    <name>uiBehavior</name>
+                    <value>none</value>
+                </fieldInstanceProperties>
+                <fieldItem>Record.Dashboard_School_Name__c</fieldItem>
+                <identifier>RecordDashboard_School_Name__cField</identifier>
+            </fieldInstance>
+        </itemInstances>
+        <itemInstances>
+            <fieldInstance>
+                <fieldItem>Record.Market__c</fieldItem>
+                <identifier>RecordMarket__cField</identifier>
+            </fieldInstance>
+        </itemInstances>
         <name>Facet-07e17b64-2f96-473f-b626-c697fce3dc00</name>
         <type>Facet</type>
     </flexiPageRegions>
@@ -611,16 +627,6 @@
         <type>Facet</type>
     </flexiPageRegions>
     <flexiPageRegions>
-        <itemInstances>
-            <componentInstance>
-                <componentInstanceProperties>
-                    <name>displayOption</name>
-                    <value>BOTH</value>
-                </componentInstanceProperties>
-                <componentName>runtime_sales_merge:mergeCandidatesPreviewCard</componentName>
-                <identifier>runtime_sales_merge_mergeCandidatesPreviewCard</identifier>
-            </componentInstance>
-        </itemInstances>
         <itemInstances>
             <componentInstance>
                 <componentInstanceProperties>

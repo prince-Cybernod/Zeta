@@ -38,7 +38,7 @@ Daily sweep that sets Individual Application Status to Eligible when Priority_It
             <field>Status</field>
             <operator>EqualTo</operator>
             <value>
-                <stringValue>Draft</stringValue>
+                <stringValue>Applied</stringValue>
             </value>
         </filters>
         <filters>

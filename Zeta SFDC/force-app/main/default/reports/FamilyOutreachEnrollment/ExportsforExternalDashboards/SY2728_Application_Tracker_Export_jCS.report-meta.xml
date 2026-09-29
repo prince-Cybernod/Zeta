@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns>
+        <field>AcademicInterest$Name</field>
+    </columns>
+    <columns>
+        <field>AcademicInterest$IndividualApplication.Account.FirstName</field>
+    </columns>
+    <columns>
+        <field>AcademicInterest$IndividualApplication.Account.LastName</field>
+    </columns>
+    <columns>
+        <field>AcademicInterest$Application_Submitted_Date__c</field>
+    </columns>
+    <columns>
+        <field>CDF2</field>
+    </columns>
+    <columns>
+        <field>AcademicInterest$LearningProgram</field>
+    </columns>
+    <columns>
+        <field>CDF1</field>
+    </columns>
+    <columns>
+        <aggregateTypes>Sum</aggregateTypes>
+        <field>AcademicInterest$School_Rank__c</field>
+    </columns>
+    <columns>
+        <aggregateTypes>Sum</aggregateTypes>
+        <field>AcademicInterest$In_District_Priority__c</field>
+    </columns>
+    <columns>
+        <aggregateTypes>Sum</aggregateTypes>
+        <field>AcademicInterest$IndividualApplication.Sibling_Applying_Priority__c</field>
+    </columns>
+    <columns>
+        <aggregateTypes>Sum</aggregateTypes>
+        <field>AcademicInterest$IndividualApplication.Sibling_Attending_Priority__c</field>
+    </columns>
+    <columns>
+        <aggregateTypes>Sum</aggregateTypes>
+        <field>AcademicInterest$IndividualApplication.Employee_Priority__c</field>
+    </columns>
+    <columns>
+        <field>AcademicInterest$IndividualApplication.Converting_Team_Member__c</field>
+    </columns>
+    <columns>
+        <field>AcademicInterest$IndividualApplication.Lead_Source__c</field>
+    </columns>
+    <columns>
+        <field>AcademicInterest$IndividualApplication.How_Did_You_Hear_About_Us__c</field>
+    </columns>
+    <columns>
+        <field>AcademicInterest$Status</field>
+    </columns>
+    <columns>
+        <field>AcademicInterest$LearningProgram.School__c.Dashboard_School_Name__c</field>
+    </columns>
+    <customDetailFormulas>
+        <calculatedFormula>CASE(
+  MONTH(DATEVALUE(AcademicInterest.Application_Submitted_Date__c)),
+  1, &quot;Jan&quot;,
+  2, &quot;Feb&quot;,
+  3, &quot;Mar&quot;,
+  4, &quot;Apr&quot;,
+  5, &quot;May&quot;,
+  6, &quot;Jun&quot;,
+  7, &quot;Jul&quot;,
+  8, &quot;Aug&quot;,
+  9, &quot;Sep&quot;,
+  10, &quot;Oct&quot;,
+  11, &quot;Nov&quot;,
+  12, &quot;Dec&quot;,
+  &quot;&quot;
+)</calculatedFormula>
+        <dataType>Text</dataType>
+        <developerName>CDF2</developerName>
+        <label>Month Applied</label>
+        <scale>2</scale>
+    </customDetailFormulas>
+    <customDetailFormulas>
+        <calculatedFormula>TEXT(AcademicInterest.IndividualApplication.Grade_Applying_To__c)</calculatedFormula>
+        <dataType>Text</dataType>
+        <developerName>CDF1</developerName>
+        <label>Grade (Clean)</label>
+        <scale>2</scale>
+    </customDetailFormulas>
+    <filter>
+        <criteriaItems>
+            <column>AcademicInterest$IndividualApplication.Application_Timeline__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>2027-2028 Test Timeline</value>
+        </criteriaItems>
+        <language>en_US</language>
+    </filter>
+    <format>Tabular</format>
+    <name>SY27-28 Application Tracker Export</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>School_Applications_with_Individual_Applications_and_Accounts__c</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <showGrandTotal>true</showGrandTotal>
+    <showSubTotals>true</showSubTotals>
+    <timeFrameFilter>
+        <dateColumn>AcademicInterest$CreatedDate</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
+    </timeFrameFilter>
+</Report>

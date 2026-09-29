@@ -26,13 +26,6 @@
         <creationType>Standard</creationType>
         <filterApplied>false</filterApplied>
         <isSourceFormula>false</isSourceFormula>
-        <sourceField>Lead_Home__dll.Name__c</sourceField>
-        <targetField>ssot__Individual__dlm.ssot__PersonName__c</targetField>
-    </fieldSourceTargetMaps>
-    <fieldSourceTargetMaps>
-        <creationType>Standard</creationType>
-        <filterApplied>false</filterApplied>
-        <isSourceFormula>false</isSourceFormula>
         <sourceField>Lead_Home__dll.ConvertedAccountId__c</sourceField>
         <targetField>ssot__Individual__dlm.ssot__PrimaryAccountId__c</targetField>
     </fieldSourceTargetMaps>
@@ -42,13 +35,6 @@
         <isSourceFormula>false</isSourceFormula>
         <sourceField>Lead_Home__dll.DataSource__c</sourceField>
         <targetField>ssot__Individual__dlm.ssot__DataSourceId__c</targetField>
-    </fieldSourceTargetMaps>
-    <fieldSourceTargetMaps>
-        <creationType>Standard</creationType>
-        <filterApplied>false</filterApplied>
-        <isSourceFormula>false</isSourceFormula>
-        <sourceField>Lead_Home__dll.LastName__c</sourceField>
-        <targetField>ssot__Individual__dlm.ssot__LastName__c</targetField>
     </fieldSourceTargetMaps>
     <fieldSourceTargetMaps>
         <creationType>System</creationType>
@@ -86,19 +72,33 @@
         <targetField>ssot__Individual__dlm.ssot__LastModifiedDate__c</targetField>
     </fieldSourceTargetMaps>
     <fieldSourceTargetMaps>
-        <creationType>Standard</creationType>
-        <filterApplied>false</filterApplied>
-        <isSourceFormula>false</isSourceFormula>
-        <sourceField>Lead_Home__dll.FirstName__c</sourceField>
-        <targetField>ssot__Individual__dlm.ssot__FirstName__c</targetField>
-    </fieldSourceTargetMaps>
-    <fieldSourceTargetMaps>
         <creationType>Custom</creationType>
         <filterApplied>false</filterApplied>
         <filterOperationType>Equal</filterOperationType>
         <isSourceFormula>false</isSourceFormula>
         <sourceField>Lead_Home__dll.Preferred_Contact_Language_c__c</sourceField>
         <targetField>ssot__Individual__dlm.ssot__PrimaryLanguageId__c</targetField>
+    </fieldSourceTargetMaps>
+    <fieldSourceTargetMaps>
+        <creationType>Standard</creationType>
+        <filterApplied>false</filterApplied>
+        <isSourceFormula>false</isSourceFormula>
+        <sourceField>Lead_Home__dll.Guardian_First_Name_c__c</sourceField>
+        <targetField>ssot__Individual__dlm.ssot__FirstName__c</targetField>
+    </fieldSourceTargetMaps>
+    <fieldSourceTargetMaps>
+        <creationType>Standard</creationType>
+        <filterApplied>false</filterApplied>
+        <isSourceFormula>false</isSourceFormula>
+        <sourceField>Lead_Home__dll.Guardian_Last_Name_c__c</sourceField>
+        <targetField>ssot__Individual__dlm.ssot__LastName__c</targetField>
+    </fieldSourceTargetMaps>
+    <fieldSourceTargetMaps>
+        <creationType>Standard</creationType>
+        <filterApplied>false</filterApplied>
+        <isSourceFormula>false</isSourceFormula>
+        <sourceField>Lead_Home__dll.Guardian_Name__c</sourceField>
+        <targetField>ssot__Individual__dlm.ssot__PersonName__c</targetField>
     </fieldSourceTargetMaps>
     <masterLabel>Lead_Home_map_Individual_1762183623921</masterLabel>
     <sourceObjectName>Lead_Home__dll</sourceObjectName>

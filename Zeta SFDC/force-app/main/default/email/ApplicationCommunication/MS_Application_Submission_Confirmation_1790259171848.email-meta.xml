@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <description>Sent automatically when an Individual Application is submitted and the Application Status is set to Applied.</description>
+    <encodingKey>UTF-8</encodingKey>
+    <name>MS Application Submission Confirmation</name>
+    <pageDevName>MS_Application_Submission_Confirmation</pageDevName>
+    <relatedEntityType>IndividualApplication</relatedEntityType>
+    <style>none</style>
+    <subject>Welcome to Zeta Charter Schools!</subject>
+    <textOnly>Dear {{{IndividualApplication.Parent_Guardian_1_First_Name__c}}} {{{IndividualApplication.Parent_Guardian_1_Last_Name__c}}},
+
+Thank you for applying to Zeta Charter Schools!We are so excited that you are considering Zeta for {{{IndividualApplication.fxApplicant_First_Name__c}}}, and we look forward to being with you through the next steps of the process.
+
+Log in here &lt; http://myportal.zetaschools.org/ &gt; to view your application.
+
+At Zeta Middle Schools, we believe these years are where independence takes root. This is where students build confidence, self-discovery, and a drive to challenge themselves. Our classrooms are rigorous, supportive, and personalized—teachers know their students and push them to take ownership of their academics and their day. It is the foundation for our high school, where students take advanced courses and are prepared for college and life. Our middle schoolers are among the top academic achievers in New York State and NYC and consistently score above state averages. 
+
+Zeta students benefit from:
+
+ - A strong academic foundationthat prepares them for long-term success
+ - A school culture grounded in care, belonging, and high expectations
+ - Thoughtful partnership with families every step of the way
+ - A tuition-free public charter education open to all students
+
+As Zeta’s Enrollment Team, we will be your main point of contact moving forward. We will share updates, key dates, and opportunities to learn more about our school community, and are always here if you have any questions.
+
+Come visit us at Zeta &lt; https://zetaschools.org/events-for-prospective-families/ &gt; and experience what could be possible for your student here. 
+
+Thank you again for your interest in Zeta Middle School. We look forward to continuing this journey with you and your family.
+
+Warmly,
+
+The Zeta Enrollment Team
+
+Zeta Charter Schools
+
+Please reach out if you have any questions about Zeta, our enrollment team is here for you every step of the way:
+
+✉️enroll@zetaschools.org &lt; mailto: enroll@zetaschools.org &gt; 
+
+📞 (646) 480-1654 &lt; tel: 646-480-1654 &gt;</textOnly>
+    <type>custom</type>
+    <uiType>SFX</uiType>
+</EmailTemplate>

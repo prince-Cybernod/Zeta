@@ -1,0 +1,26 @@
+{
+  "type" : "sfdc_cms__email",
+  "title" : "MC | Applicant | HS Email 4: Zeta is a love story",
+  "contentBody" : {
+    "subjectLine" : "Zeta es una historia de amor",
+    "preheader" : "Esperamos que usted esté tan emocionado como nosotros de formar parte de nuestra comunidad de Zeta. ",
+    "sfdc_cms:block" : {
+      "children" : [ {
+        "id" : "b92dd6a6-0a71-4203-859c-2356877bdaad",
+        "attributes" : {
+          "text" : "<strong>El amor se encuentra en nuestras Especialidades:</strong> brindar a los estudiantes oportunidades para descubrir talentos y pasiones a través del arte, la música, el ajedrez, la danza, los deportes y más.<br><br><strong>El amor se refleja en nuestras instalaciones: </strong>diseñar espacios que inspiran curiosidad, creatividad y amor por el aprendizaje.<br><br><strong>El amor es empoderar a cada estudiante</strong> de la ciudad para que descubra su máximo potencial.<br>"
+        }
+      }, {
+        "id" : "bab774cd-6486-4222-a3dc-f60f55b63aaa",
+        "attributes" : {
+          "text" : "Estimado/a&nbsp;{!$Expression.First_Name}&nbsp;{!$Expression.Last_Name}:<br><br>Esperamos que usted esté tan emocionado como nosotros de formar parte de nuestra comunidad de Zeta.&nbsp;<br><br>Zeta Charter Schools comenzó en 2018 con el sueño de lo que la educación podría hacer posible para los estudiantes de toda la ciudad de Nueva York. En su núcleo había una idea sencilla: <strong>cuando construyes una escuela en torno al amor por los estudiantes, construyes de manera diferente.&nbsp;</strong><br><br><strong>¿Qué significa construir una escuela basada en el amor?</strong><br><br>A menudo decimos que <strong>Zeta es una historia de amor</strong>. Y lo decimos en serio. Cada estudiante en nuestras escuelas es profundamente conocido, sus sueños son nutridos y son empoderados para convertirse en lo que son capaces de ser.<br><br>El amor puede sonar abstracto. En <strong>Zeta, significa algo sólido.</strong>&nbsp;<br><br><strong>El amor es la educación integral:</strong> formar a los estudiantes académica, social, física y emocionalmente.<br><br><strong>El amor es seguridad:</strong> crear un entorno donde los estudiantes se sientan seguros, respaldados y listos para apropiarse de su rendimiento académico.&nbsp;<br><br><strong>El amor significa conocer a cada familia:</strong> construir asociaciones significativas con las personas que mejor conocen a nuestros estudiantes.<br><br><strong>El amor también es exigencia académica:</strong> creer que cada estudiante es capaz de alcanzar la excelencia, desafiándolo y dándole el apoyo para alcanzar altos estándares.<br><br>"
+        }
+      }, {
+        "id" : "9957ef7b-1081-4dff-82b7-d81c59da9000",
+        "attributes" : {
+          "text" : "Venga a visitar Zeta High: <u><a href=\"https://zetaschools.org/events-for-prospective-families/\" target=\"_blank\" part=\"link\" rel=\"noopener noreferrer\">inscríbase en un próximo evento o recorrido</a></u> para obtener más información sobre nosotros.<br><br>¡Estamos ansiosos por darle la bienvenida a su familia a Zeta!&nbsp;<br><br>Con afecto,<br><strong>El equipo de inscripciones de Zeta</strong><br>Zeta Charter Schools<br>"
+        }
+      } ]
+    }
+  }
+}

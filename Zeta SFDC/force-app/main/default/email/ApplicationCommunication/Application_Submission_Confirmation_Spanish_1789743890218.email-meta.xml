@@ -3,12 +3,12 @@
     <available>true</available>
     <description>Sent automatically when an Individual Application is submitted and the Application Status is set to Applied.</description>
     <encodingKey>UTF-8</encodingKey>
-    <name>Application Submission Confirmation - Spanish</name>
+    <name>ES Application Submission Confirmation - Spanish</name>
     <pageDevName>Application_Submission_Confirmation_Spanish</pageDevName>
     <relatedEntityType>IndividualApplication</relatedEntityType>
     <style>none</style>
     <subject>¡Gracias por postularte a Zeta!</subject>
-    <textOnly>Estimado/a {{{IndividualApplication.Parent_Guardian_1_First_Name__c}}}:
+    <textOnly>Estimado/a {{{IndividualApplication.Parent_Guardian_1_First_Name__c}}} {{{IndividualApplication.Parent_Guardian_1_Last_Name__c}}},
 
 ¡Gracias por postularte a Escuelas Chárter Zeta!
 

@@ -1,7 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Flow xmlns="http://soap.sforce.com/2006/04/metadata">
-    <apiVersion>67.0</apiVersion>
-    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
     <actionCalls>
         <name>Notify_New_Owner</name>
         <label>Notify New Owner</label>
@@ -45,6 +43,8 @@
         </inputParameters>
         <nameSegment>customNotificationAction</nameSegment>
     </actionCalls>
+    <apiVersion>67.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
     <assignments>
         <name>Add_Member_Id</name>
         <label>Add Member Id</label>
@@ -331,12 +331,12 @@
             <label>Yes</label>
         </rules>
     </decisions>
-    <description>Round robin for every new case (email, voicemail, web, manual) created owned by the Outreach and Enrollment Queue. The team is the queue&apos;s active user members (kept in sync by the Zeta - Outreach &amp; Enrollment user access policy). Strict turns: the new case goes to the member after the owner of the latest case owned by a team member (members sorted by Id, wrapping round; the first member if there is no such case). Manual reassignment of the latest case moves the turn; cases saved in the same instant go to the same person. Cases whose sender is enroll@zetaschools.org (Zoho Desk auto-acknowledgements) are left in the queue. Only OwnerId is written; on any error the case stays in the queue. The new owner then gets a "Case Assigned" in-app/mobile notification; a notification failure is ignored so the assignment stands.</description>
+    <description>Round robin for every new case (email, voicemail, web, manual) created owned by the Outreach and Enrollment Queue. The team is the queue&apos;s active user members (kept in sync by the Zeta - Outreach &amp; Enrollment user access policy). Strict turns: the new case goes to the member after the owner of the latest case owned by a team member (members sorted by Id, wrapping round; the first member if there is no such case). Manual reassignment of the latest case moves the turn; cases saved in the same instant go to the same person. Cases whose sender is enroll@zetaschools.org (Zoho Desk auto-acknowledgements) are left in the queue. Only OwnerId is written; on any error the case stays in the queue. The new owner then gets a &quot;Case Assigned&quot; in-app/mobile notification; a notification failure is ignored so the assignment stands.</description>
     <environments>Default</environments>
     <formulas>
         <name>fmNotificationBody</name>
         <dataType>String</dataType>
-        <expression>"Case " &amp; {!$Record.CaseNumber} &amp; ": " &amp; {!$Record.Subject}</expression>
+        <expression>&quot;Case &quot; &amp; {!$Record.CaseNumber} &amp; &quot;: &quot; &amp; {!$Record.Subject}</expression>
     </formulas>
     <formulas>
         <name>fmSlot</name>
@@ -563,8 +563,8 @@
             <targetReference>Get_Outreach_Queue</targetReference>
         </connector>
         <filterFormula>AND(
-  BEGINS({!$Record.OwnerId}, "00G"),
-  LOWER(BLANKVALUE({!$Record.SuppliedEmail}, "")) &lt;&gt; "enroll@zetaschools.org"
+  BEGINS({!$Record.OwnerId}, &quot;00G&quot;),
+  LOWER(BLANKVALUE({!$Record.SuppliedEmail}, &quot;&quot;)) &lt;&gt; &quot;enroll@zetaschools.org&quot;
 )</filterFormula>
         <object>Case</object>
         <recordTriggerType>Create</recordTriggerType>

@@ -180,6 +180,16 @@
         <dataType>String</dataType>
         <expression>TRIM(RIGHT({!$Record.Subject}, LEN({!$Record.Subject}) - FIND(&quot;#&quot;, {!$Record.Subject})))</expression>
     </formulas>
+    <formulas>
+        <name>fxBatchId</name>
+        <dataType>String</dataType>
+        <expression>TEXT(NOW())+{!$Record.Id}</expression>
+    </formulas>
+    <formulas>
+        <name>fxScheduledTime</name>
+        <dataType>DateTime</dataType>
+        <expression>NOW() +( 5/1440)</expression>
+    </formulas>
     <interviewLabel>Task (After Save) Send Mogli SMS {!$Flow.CurrentDateTime}</interviewLabel>
     <label>Task (After Save) Send Mogli SMS</label>
     <processMetadataValues>
@@ -211,9 +221,21 @@
             <targetReference>TextSent</targetReference>
         </connector>
         <inputAssignments>
+            <field>Mogli_SMS__Batch_Group_ID__c</field>
+            <value>
+                <elementReference>fxBatchId</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
             <field>Mogli_SMS__Contact__c</field>
             <value>
                 <elementReference>vContactId</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Mogli_SMS__Direction__c</field>
+            <value>
+                <stringValue>Outgoing</stringValue>
             </value>
         </inputAssignments>
         <inputAssignments>
@@ -241,9 +263,21 @@
             </value>
         </inputAssignments>
         <inputAssignments>
+            <field>Mogli_SMS__Scheduled_Delivery__c</field>
+            <value>
+                <elementReference>fxScheduledTime</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
             <field>Mogli_SMS__Status__c</field>
             <value>
-                <stringValue>Queued</stringValue>
+                <stringValue>Scheduled</stringValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Mogli_SMS__isBatchTransaction__c</field>
+            <value>
+                <booleanValue>true</booleanValue>
             </value>
         </inputAssignments>
         <inputAssignments>

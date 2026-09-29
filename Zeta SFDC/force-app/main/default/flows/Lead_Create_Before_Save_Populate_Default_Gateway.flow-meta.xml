@@ -42,19 +42,6 @@
         </connector>
     </assignments>
     <assignments>
-        <name>Assign_Status_Disqualified</name>
-        <label>Assign Status Disqualified</label>
-        <locationX>0</locationX>
-        <locationY>0</locationY>
-        <assignmentItems>
-            <assignToReference>$Record.Status</assignToReference>
-            <operator>Assign</operator>
-            <value>
-                <stringValue>Disqualified</stringValue>
-            </value>
-        </assignmentItems>
-    </assignments>
-    <assignments>
         <name>Assign_Phone_From_Mogli_Number</name>
         <label>Assign Phone From Mogli Number</label>
         <locationX>0</locationX>
@@ -69,6 +56,19 @@
         <connector>
             <targetReference>Is_First_Name_Blank</targetReference>
         </connector>
+    </assignments>
+    <assignments>
+        <name>Assign_Status_Disqualified</name>
+        <label>Assign Status Disqualified</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <assignmentItems>
+            <assignToReference>$Record.Status</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <stringValue>Disqualified</stringValue>
+            </value>
+        </assignmentItems>
     </assignments>
     <decisions>
         <name>Is_Anonymous_Mogli_Lead</name>

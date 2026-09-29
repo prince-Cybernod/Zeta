@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <description>Sent automatically when an Individual Application is submitted and the Application Status is set to Applied.</description>
+    <encodingKey>UTF-8</encodingKey>
+    <name>MS Application Submission Confirmation - Spanish</name>
+    <pageDevName>MS_Application_Submission_Confirmation_Spanish</pageDevName>
+    <relatedEntityType>IndividualApplication</relatedEntityType>
+    <style>none</style>
+    <subject>Welcome to Zeta Charter Schools!</subject>
+    <textOnly>Estimado/a {{{IndividualApplication.Parent_Guardian_1_First_Name__c}}} {{{IndividualApplication.Parent_Guardian_1_Last_Name__c}}}:
+
+¡Gracias por postularte a Zeta Charter Schools!Nos entusiasma mucho que estés considerando a Zeta para {{{IndividualApplication.fxApplicant_First_Name__c}}}, y esperamos acompañarte en los próximos pasos del proceso.
+
+Inicia sesión aquí &lt; http://myportal.zetaschools.org/ &gt; para ver tu solicitud.
+
+En Zeta Middle Schools, creemos que en estos años es donde la independencia echa raíces. Aquí es donde los estudiantes desarrollan confianza, autodescubrimiento y el impulso para desafiarse a sí mismos. Nuestras clases son rigurosas, de apoyo y personalizadas: los maestros conocen a sus estudiantes y los impulsan a tomar el control de su rendimiento académico y de su día a día. Es la base para nuestra escuela secundaria (high school), donde los estudiantes toman cursos avanzados y se preparan para la universidad y la vida. Nuestros estudiantes de escuela intermedia se encuentran entre los de mayor rendimiento académico en el estado de Nueva York y la Ciudad de Nueva York, y obtienen consistentemente puntuaciones por encima de los promedios del estado.
+
+Los estudiantes de Zeta se benefician de:
+
+ - Unasólida base académicaque los prepara para el éxito a largo plazo
+ - Una cultura escolar basada en el cuidado, la pertenencia y las altas expectativas
+ - Una colaboración reflexiva con las familias en cada paso del camino
+ - Una Educación chárter pública gratuitaabierta a todos los estudiantes
+
+Como equipo de inscripciones de Zeta, seremos su principal punto de contacto de aquí en adelante. Compartiremos actualizaciones, fechas clave y oportunidades para conocer más sobre nuestra comunidad escolar, y siempre estaremos aquí si tienen alguna pregunta.
+
+Visítenos en Zeta &lt; https://zetaschools.org/events-for-prospective-families/ &gt; y experimenten lo que podría ser posible para su estudiante aquí.
+
+Gracias nuevamente por su interés en Zeta Middle School. Esperamos continuar este viaje con usted y su familia.
+
+Atentamente,
+
+El equipo de inscripciones de Zeta
+
+Zeta Charter Schools
+
+Por favor, comunícate si tienes alguna pregunta sobre Zeta; nuestro equipo de inscripciones está aquí para ayudarte en cada paso del camino:
+
+✉️enroll@zetaschools.org &lt; mailto: enroll@zetaschools.org &gt; 
+
+📞 (646) 480-1654 &lt; tel: 646-480-1654 &gt;</textOnly>
+    <type>custom</type>
+    <uiType>SFX</uiType>
+</EmailTemplate>

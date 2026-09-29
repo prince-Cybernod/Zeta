@@ -681,6 +681,21 @@
             <field>Responsible_Adult__c</field>
             <table>IndividualApplication</table>
         </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Mogli_Number__c</field>
+            <table>IndividualApplication</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Mogli_Opt_Out__c</field>
+            <table>IndividualApplication</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Default_Gateway__c</field>
+            <table>IndividualApplication</table>
+        </columns>
         <masterLabel>Individual Applications</masterLabel>
     </sections>
 </ReportType>

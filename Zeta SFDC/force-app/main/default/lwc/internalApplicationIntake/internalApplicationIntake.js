@@ -57,6 +57,7 @@ export default class InternalApplicationIntake extends LightningElement {
   applicationId = null;
   isBusy = false;
   errorMessage = '';
+  startError = '';
 
   _applicationRecordTypeId = NULL_RECORD_TYPE_ID;
   _contactRecordTypeId = NULL_RECORD_TYPE_ID;
@@ -262,6 +263,10 @@ export default class InternalApplicationIntake extends LightningElement {
     return !!this.errorMessage;
   }
 
+  get hasStartError() {
+    return !!this.startError;
+  }
+
   get canStartDisabled() {
     return !(
       this.selectedGuardian &&
@@ -429,6 +434,7 @@ export default class InternalApplicationIntake extends LightningElement {
 
   async handleStart() {
     this.errorMessage = '';
+    this.startError = '';
     this.isBusy = true;
     try {
       const result = await startApplication({
@@ -442,7 +448,7 @@ export default class InternalApplicationIntake extends LightningElement {
       });
       this.applicationId = result.applicationId;
     } catch (err) {
-      this.errorMessage = this._message(err);
+      this.startError = this._message(err);
     } finally {
       this.isBusy = false;
     }
