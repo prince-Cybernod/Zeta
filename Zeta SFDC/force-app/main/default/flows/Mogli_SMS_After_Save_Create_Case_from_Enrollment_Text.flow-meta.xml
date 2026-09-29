@@ -69,8 +69,14 @@
             <label>Yes</label>
         </rules>
     </decisions>
-    <description>When a text arrives on the Zeta Enrollment Team number (+1 646-480-1654), create a Parent Inquiry case in the Outreach and Enrollment Queue so the case round robin assigns it. Texts from a number that already has an open SMS case do not create another case; they set that case back to New so its owner sees the family replied (the only status automation for text cases; the conversation itself stays in Mogli). Origin is SMS, so the unmatched-email lead flow does not create a Lead. Errors are swallowed so the incoming text is always saved.</description>
+    <description>When a text arrives on the Zeta Enrollment Team number (+1 646-480-1654), create a Parent Inquiry case in the Outreach and Enrollment Queue so the case round robin assigns it. Texts from a number that already has an open SMS case do not create another case; they set that case back to New with Response Due Date 48 hours after the text, unless it is already New with a due date (same rule as the Update Case Due Date flow for emails). New cases also get that due date. The conversation itself stays in Mogli. Origin is SMS, so the unmatched-email lead flow does not create a Lead. Errors are swallowed so the incoming text is always saved.</description>
     <environments>Default</environments>
+    <formulas>
+        <description>48 hours after the text arrived, same as the Update Case Due Date flow for emails.</description>
+        <name>fmResponseDueDate</name>
+        <dataType>DateTime</dataType>
+        <expression>{!$Record.CreatedDate} + 2</expression>
+    </formulas>
     <formulas>
         <name>fmSubject</name>
         <dataType>String</dataType>
@@ -139,6 +145,12 @@
             <field>Related_Lead__c</field>
             <value>
                 <elementReference>$Record.Mogli_SMS__Lead__c</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Response_Due_Date__c</field>
+            <value>
+                <elementReference>fmResponseDueDate</elementReference>
             </value>
         </inputAssignments>
         <inputAssignments>
@@ -260,7 +272,7 @@
         <faultConnector>
             <targetReference>Keep_Text_On_Error</targetReference>
         </faultConnector>
-        <filterLogic>and</filterLogic>
+        <filterLogic>1 AND (2 OR 3)</filterLogic>
         <filters>
             <field>Id</field>
             <operator>EqualTo</operator>
@@ -275,6 +287,19 @@
                 <stringValue>New</stringValue>
             </value>
         </filters>
+        <filters>
+            <field>Response_Due_Date__c</field>
+            <operator>IsNull</operator>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </filters>
+        <inputAssignments>
+            <field>Response_Due_Date__c</field>
+            <value>
+                <elementReference>fmResponseDueDate</elementReference>
+            </value>
+        </inputAssignments>
         <inputAssignments>
             <field>Status</field>
             <value>
