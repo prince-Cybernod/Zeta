@@ -305,7 +305,7 @@
     <start>
         <locationX>0</locationX>
         <locationY>0</locationY>
-        <filterLogic>(1 OR 2) AND 3 AND 4 AND 5</filterLogic>
+        <filterLogic>(1 OR 2) AND 3 AND 4 AND 5 AND 6</filterLogic>
         <filters>
             <field>Mogli_SMS__Mogli_Number__c</field>
             <operator>IsNull</operator>
@@ -339,6 +339,13 @@
             <operator>NotEqualTo</operator>
             <value>
                 <stringValue>Anonymous Lead from Mogli</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>Status</field>
+            <operator>NotEqualTo</operator>
+            <value>
+                <stringValue>Disqualified</stringValue>
             </value>
         </filters>
         <object>Lead</object>
