@@ -120,9 +120,34 @@
                 </rightValue>
             </conditions>
             <connector>
-                <targetReference>Send_Initial_SMS_to_Lead</targetReference>
+                <targetReference>Get_Mogli_Template</targetReference>
             </connector>
             <label>Yes, Mogli Number</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>Mogli_Template_Found</name>
+        <label>Mogli Template Found?</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <defaultConnector>
+            <targetReference>Get_Existing_Email_Message</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Yes_Template_Found</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Get_Mogli_Template.Id</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Send_Initial_SMS_to_Lead</targetReference>
+            </connector>
+            <label>Yes, Template Found</label>
         </rules>
     </decisions>
     <description>Created By: Elevation Solutions</description>
@@ -198,7 +223,7 @@
         <inputAssignments>
             <field>Mogli_SMS__Message__c</field>
             <value>
-                <elementReference>fx_message</elementReference>
+                <elementReference>Get_Mogli_Template.Mogli_SMS__Text__c</elementReference>
             </value>
         </inputAssignments>
         <inputAssignments>
@@ -254,6 +279,27 @@
         </filters>
         <getFirstRecordOnly>true</getFirstRecordOnly>
         <object>EmailMessage</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordLookups>
+        <name>Get_Mogli_Template</name>
+        <label>Get Mogli Template</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Mogli_Template_Found</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Mogli_SMS__Name__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Lead Submission Confirmation</stringValue>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>Mogli_SMS__SMS_Template__c</object>
         <storeOutputAutomatically>true</storeOutputAutomatically>
     </recordLookups>
     <start>
