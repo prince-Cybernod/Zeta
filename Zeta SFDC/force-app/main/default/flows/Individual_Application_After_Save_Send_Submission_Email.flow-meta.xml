@@ -93,6 +93,28 @@
         </rules>
     </decisions>
     <decisions>
+        <name>Email_Populated</name>
+        <label>Email Populated?</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Yes_Email_Populated</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Get_Parent_Account.PersonEmail</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Get_Email_Template</targetReference>
+            </connector>
+            <label>Yes, Email Populated</label>
+        </rules>
+    </decisions>
+    <decisions>
         <name>Mogli_Number_Populated</name>
         <label>Mogli Number Populated?</label>
         <locationX>0</locationX>
@@ -212,7 +234,11 @@ Sends a confirmation email when an Individual Application is submitted (Applicat
         TEXT({!$Record.Grade_Applying_To__c}) = &quot;7&quot;,
         TEXT({!$Record.Grade_Applying_To__c}) = &quot;8&quot;
     ),
-    &quot;MS Application Submission Confirmation&quot;,
+    IF(
+        TEXT({!$Record.Primary_Guardian__r.Language_Preference__pc}) = &quot;es&quot;,
+        &quot;MS Application Submission Confirmation - Spanish&quot;,
+        &quot;MS Application Submission Confirmation&quot;
+    ),
 
     IF(
         OR(
@@ -221,7 +247,11 @@ Sends a confirmation email when an Individual Application is submitted (Applicat
             TEXT({!$Record.Grade_Applying_To__c}) = &quot;11&quot;,
             TEXT({!$Record.Grade_Applying_To__c}) = &quot;12&quot;
         ),
-        &quot;HS Application Submission Confirmation&quot;,
+        IF(
+            TEXT({!$Record.Primary_Guardian__r.Language_Preference__pc}) = &quot;es&quot;,
+            &quot;HS Application Submission Confirmation - Spanish&quot;,
+            &quot;HS Application Submission Confirmation&quot;
+        ),
 
         CASE(
             TEXT({!$Record.Primary_Guardian__r.Language_Preference__pc}),
@@ -246,7 +276,11 @@ Sends a confirmation email when an Individual Application is submitted (Applicat
         TEXT({!$Record.Grade_Applying_To__c}) = &quot;7&quot;,
         TEXT({!$Record.Grade_Applying_To__c}) = &quot;8&quot;
     ),
-    &quot;MS Application Submission Confirmation - EN&quot;,
+    IF(
+        TEXT({!$Record.Primary_Guardian__r.Language_Preference__pc}) = &quot;es&quot;,
+        &quot;MS Application Submission Confirmation - Spanish&quot;,
+        &quot;MS Application Submission Confirmation - EN&quot;
+    ),
 
     IF(
         OR(
@@ -255,7 +289,11 @@ Sends a confirmation email when an Individual Application is submitted (Applicat
             TEXT({!$Record.Grade_Applying_To__c}) = &quot;11&quot;,
             TEXT({!$Record.Grade_Applying_To__c}) = &quot;12&quot;
         ),
-        &quot;HS Application Submission Confirmation - EN&quot;,
+        IF(
+            TEXT({!$Record.Primary_Guardian__r.Language_Preference__pc}) = &quot;es&quot;,
+            &quot;HS Application Submission Confirmation - Spanish&quot;,
+            &quot;HS Application Submission Confirmation - EN&quot;
+        ),
 
         CASE(
             TEXT({!$Record.Primary_Guardian__r.Language_Preference__pc}),
@@ -426,7 +464,7 @@ Sends a confirmation email when an Individual Application is submitted (Applicat
         <locationY>0</locationY>
         <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
         <connector>
-            <targetReference>Get_Email_Template</targetReference>
+            <targetReference>Email_Populated</targetReference>
         </connector>
         <filterLogic>and</filterLogic>
         <filters>
