@@ -218,7 +218,9 @@
     </decisions>
     <description>Created by: Elevation Solutions
 
-Sends a confirmation email when an Individual Application is submitted (Application Status = Applied).</description>
+Sends a confirmation email when an Individual Application is submitted (Application Status = Applied).
+
+The start condition also accepts a filled Applied Date. Salesforce cancels the 1-minute SMS path if the record stops meeting the start condition, and the Auto Set Eligible flow changes Applied to Eligible in the same save, so a Status-only condition cancelled every confirmation SMS for auto-eligible applications. Applied Date is set at submission and stays set.</description>
     <environments>Default</environments>
     <formulas>
         <name>fxBatchId</name>
@@ -506,7 +508,7 @@ Sends a confirmation email when an Individual Application is submitted (Applicat
             <targetReference>Get_Parent_Account</targetReference>
         </connector>
         <doesRequireRecordChangedToMeetCriteria>true</doesRequireRecordChangedToMeetCriteria>
-        <filterFormula>AND(ISPICKVAL({!$Record.Status},&apos;Applied&apos;), 
+        <filterFormula>AND(OR(ISPICKVAL({!$Record.Status},&apos;Applied&apos;), NOT(ISBLANK({!$Record.AppliedDate}))),
 NOT({!$Permission.Bypass_Validation}))</filterFormula>
         <object>IndividualApplication</object>
         <recordTriggerType>CreateAndUpdate</recordTriggerType>
