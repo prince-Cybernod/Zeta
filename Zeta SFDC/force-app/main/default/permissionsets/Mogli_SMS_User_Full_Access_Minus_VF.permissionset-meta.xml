@@ -500,6 +500,11 @@ Minus Visual Force Page access</description>
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
+        <field>Mogli_SMS__Form__c.Case__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
         <field>Mogli_SMS__Form__c.Mogli_SMS__Campaign__c</field>
         <readable>true</readable>
     </fieldPermissions>
@@ -1101,6 +1106,11 @@ Minus Visual Force Page access</description>
     <fieldPermissions>
         <editable>true</editable>
         <field>Mogli_SMS__SMS_Template__c.Mogli_SMS__private__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>Mogli_SMS__SMS__c.Case__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>

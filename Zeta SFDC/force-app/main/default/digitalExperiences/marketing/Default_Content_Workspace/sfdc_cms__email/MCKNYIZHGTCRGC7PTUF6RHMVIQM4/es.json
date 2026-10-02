@@ -2,8 +2,8 @@
   "type" : "sfdc_cms__email",
   "title" : "MC | Applicant | HS Email 3 Five questions to ask when choosing a High School",
   "contentBody" : {
-    "subjectLine" : "Cinco preguntas que debe hacer al elegir una escuela secundaria ",
-    "preheader" : "Elegir una escuela secundaria es una decisión importante. ",
+    "subjectLine" : "Cinco preguntas que debe hacer al elegir una escuela secundaria",
+    "preheader" : "Elegir una escuela secundaria es una decisión importante.",
     "sfdc_cms:block" : {
       "children" : [ {
         "id" : "ed8e19b6-af7e-41f9-99bf-1c438638d100",
@@ -13,7 +13,7 @@
       }, {
         "id" : "4f031ac7-15f4-485d-b7ae-6a67b6486735",
         "attributes" : {
-          "text" : "Estimado/a {!$Expression.First_Name}&nbsp;{!$Expression.Last_Name_2}:<br><br>Elegir una escuela secundaria es una decisión importante. Mientras considera sus opciones, pregunte qué le ofrecerá cada escuela a su estudiante durante estos años tan importantes. En Zeta High, las respuestas comienzan con <strong>propósito, pasión y poder.<br></strong><br><strong>¿Seré conocido y apoyado?</strong><br>La escuela secundaria trae consigo mayor libertad, pero los estudiantes nunca deberían tener que transitarla solos. Cada estudiante de Zeta High pertenece a un Z Pod de 12 estudiantes dirigido por un Z Coach dedicado que los conoce profundamente. Las Z Houses de todos los grados generan amistad, mentoría y un fuerte sentido de pertenencia.<br>"
+          "text" : "Dear {!$Expression.First_Name}&nbsp;{!$Expression.Last_Name_2},<br><br>Elegir una escuela secundaria es una decisión importante. Mientras considera sus opciones, pregunte qué le ofrecerá cada escuela a su estudiante durante estos años tan importantes. En Zeta High, las respuestas comienzan con <strong>propósito, pasión y poder.<br></strong><br><strong>¿Seré conocido y apoyado?</strong><br>La escuela secundaria trae consigo mayor libertad, pero los estudiantes nunca deberían tener que transitarla solos. Cada estudiante de Zeta High pertenece a un Z Pod de 12 estudiantes dirigido por un Z Coach dedicado que los conoce profundamente. Las Z Houses de todos los grados generan amistad, mentoría y un fuerte sentido de pertenencia.<br>"
         }
       }, {
         "id" : "85c68a80-fdb4-4f3f-a6fa-8e737e37c7b7",

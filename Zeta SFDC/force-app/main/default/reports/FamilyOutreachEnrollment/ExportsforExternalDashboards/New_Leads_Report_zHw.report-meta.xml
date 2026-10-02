@@ -50,6 +50,13 @@
             <operator>notEqual</operator>
             <value>Anonymous Lead from Mogli</value>
         </criteriaItems>
+        <criteriaItems>
+            <column>STATUS</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>notEqual</operator>
+            <value>Disqualified</value>
+        </criteriaItems>
         <language>en_US</language>
     </filter>
     <format>Tabular</format>
@@ -65,6 +72,8 @@
     <showSubTotals>true</showSubTotals>
     <timeFrameFilter>
         <dateColumn>CREATED_DATE</dateColumn>
+        <endDate>2031-10-01</endDate>
         <interval>INTERVAL_CUSTOM</interval>
+        <startDate>2026-10-01</startDate>
     </timeFrameFilter>
 </Report>

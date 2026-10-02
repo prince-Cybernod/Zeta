@@ -19,6 +19,16 @@
         <field>Case.Response_Due_Date__c</field>
     </columns>
     <description>All Cases</description>
+    <filter>
+        <criteriaItems>
+            <column>OPEN</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>1</value>
+        </criteriaItems>
+        <language>en_US</language>
+    </filter>
     <format>Summary</format>
     <groupingsDown>
         <dateGranularity>Day</dateGranularity>
@@ -27,12 +37,12 @@
     </groupingsDown>
     <groupingsDown>
         <dateGranularity>Day</dateGranularity>
-        <field>OPEN</field>
+        <field>Case.Response_Past_Due__c</field>
         <sortOrder>Asc</sortOrder>
     </groupingsDown>
     <groupingsDown>
         <dateGranularity>Day</dateGranularity>
-        <field>Case.Response_Past_Due__c</field>
+        <field>STATUS</field>
         <sortOrder>Asc</sortOrder>
     </groupingsDown>
     <name>All Open Cases</name>

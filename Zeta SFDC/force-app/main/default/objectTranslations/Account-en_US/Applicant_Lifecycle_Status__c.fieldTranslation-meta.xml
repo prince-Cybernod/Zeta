@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <help><!-- Automatically identifies the applicant lifecycle stage for Student and Guardian accounts based on related applications and active enrollments: Not Started (no applications), In Progress (application started but still in draft), Applicant (application progressed beyond draft), or Post-Application (has an active enrollment) --></help>
+    <label><!-- Applicant Lifecycle Status --></label>
+    <name>Applicant_Lifecycle_Status__c</name>
+</CustomFieldTranslation>

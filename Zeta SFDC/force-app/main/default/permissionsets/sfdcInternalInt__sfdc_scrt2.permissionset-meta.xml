@@ -3,6 +3,21 @@
     <description>Give SCRT2 Integration User necessary access</description>
     <fieldPermissions>
         <editable>true</editable>
+        <field>Case.Default_Gateway__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Case.Mogli_Number__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Case.Mogli_Opt_out__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
         <field>User.Bypass_Validations__c</field>
         <readable>true</readable>
     </fieldPermissions>

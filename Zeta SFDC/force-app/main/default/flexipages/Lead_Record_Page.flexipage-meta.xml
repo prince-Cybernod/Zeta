@@ -79,6 +79,16 @@
                 <identifier>RecordNext_Follow_Up_Due__cField</identifier>
             </fieldInstance>
         </itemInstances>
+        <itemInstances>
+            <fieldInstance>
+                <fieldInstanceProperties>
+                    <name>uiBehavior</name>
+                    <value>none</value>
+                </fieldInstanceProperties>
+                <fieldItem>Record.Cases__c</fieldItem>
+                <identifier>RecordCases__cField</identifier>
+            </fieldInstance>
+        </itemInstances>
         <name>Facet-e1d5ab9d-fb35-42b3-9ebf-5633a4811c3f</name>
         <type>Facet</type>
     </flexiPageRegions>
@@ -956,6 +966,12 @@
                 </componentInstanceProperties>
                 <componentName>force:relatedListContainer</componentName>
                 <identifier>force_relatedListContainer2</identifier>
+            </componentInstance>
+        </itemInstances>
+        <itemInstances>
+            <componentInstance>
+                <componentName>runtime_platform_prefcenter:relatedConsentManagerContainer</componentName>
+                <identifier>runtime_platform_prefcenter_relatedConsentManagerContainer</identifier>
             </componentInstance>
         </itemInstances>
         <mode>Replace</mode>

@@ -4,13 +4,11 @@
 @IsTest(IsParallel=true)
 private class LeadTriggerHandlerTest {
   private static final LeadTriggerHandler HANDLER;
-  private static final LastLeadAssignedServiceMock SERVICE_MOCK;
-  private static final OpenLeadCountServiceMock OPEN_LEAD_COUNT_SERVICE_MOCK;
+  private static final LeadOwnerEventServiceMock SERVICE_MOCK;
 
   static {
-    SERVICE_MOCK = new LastLeadAssignedServiceMock();
-    OPEN_LEAD_COUNT_SERVICE_MOCK = new OpenLeadCountServiceMock();
-    HANDLER = new LeadTriggerHandler(SERVICE_MOCK, OPEN_LEAD_COUNT_SERVICE_MOCK);
+    SERVICE_MOCK = new LeadOwnerEventServiceMock();
+    HANDLER = new LeadTriggerHandler(SERVICE_MOCK);
   }
 
   @IsTest
@@ -21,69 +19,43 @@ private class LeadTriggerHandlerTest {
   }
 
   @IsTest
-  private static void onAfterInsert_whenOwnedByUser_stampsLastLeadAssigned() {
-    SERVICE_MOCK.when(SERVICE_MOCK.method.stampLastLeadAssigned()).thenReturnVoid();
-    OPEN_LEAD_COUNT_SERVICE_MOCK.when(
-      OPEN_LEAD_COUNT_SERVICE_MOCK.method.recalculateOpenLeadCount()
-    ).thenReturnVoid();
+  private static void onAfterInsert_whenOwnedByUser_publishesRecountAndAssignment() {
+    SERVICE_MOCK.when(SERVICE_MOCK.method.publishLeadOwnerEvents()).thenReturnVoid();
     Id leadId = SObjectIds.generateFakeId(Schema.Lead.SObjectType);
     Id userId = SObjectIds.generateFakeId(Schema.User.SObjectType);
     List<SObject> newRecords = new List<SObject>{ new Lead(Id = leadId, OwnerId = userId) };
 
     HANDLER.onAfterInsert(newRecords);
 
-    SERVICE_MOCK.verify(SERVICE_MOCK.method.stampLastLeadAssigned(), 1);
+    SERVICE_MOCK.verify(SERVICE_MOCK.method.publishLeadOwnerEvents(), 1);
     List<Map<String, Object>> calls = SERVICE_MOCK.getCalls(
-      SERVICE_MOCK.method.stampLastLeadAssigned()
+      SERVICE_MOCK.method.publishLeadOwnerEvents()
     );
-    Set<Id> capturedUserIds = (Set<Id>) calls[0].get('userIds');
-    Assert.areEqual(1, capturedUserIds.size(), 'Should have exactly one User id');
-    Assert.isTrue(capturedUserIds.contains(userId), 'Should include the owning User');
+    Set<Id> ownerIdsToRecount = (Set<Id>) calls[0].get('ownerIdsToRecount');
+    Set<Id> newlyAssignedOwnerIds = (Set<Id>) calls[0].get('newlyAssignedOwnerIds');
+    Assert.areEqual(new Set<Id>{ userId }, ownerIdsToRecount, 'Should recount the owning User');
+    Assert.areEqual(
+      new Set<Id>{ userId },
+      newlyAssignedOwnerIds,
+      'Should mark the owning User as newly assigned'
+    );
+    Assert.isNotNull(calls[0].get('assignedAt'), 'Should capture the assignment time');
   }
 
   @IsTest
-  private static void onAfterInsert_whenOwnedByUser_recalculatesOpenLeadCount() {
-    SERVICE_MOCK.when(SERVICE_MOCK.method.stampLastLeadAssigned()).thenReturnVoid();
-    OPEN_LEAD_COUNT_SERVICE_MOCK.when(
-      OPEN_LEAD_COUNT_SERVICE_MOCK.method.recalculateOpenLeadCount()
-    ).thenReturnVoid();
-    Id leadId = SObjectIds.generateFakeId(Schema.Lead.SObjectType);
-    Id userId = SObjectIds.generateFakeId(Schema.User.SObjectType);
-    List<SObject> newRecords = new List<SObject>{ new Lead(Id = leadId, OwnerId = userId) };
-
-    HANDLER.onAfterInsert(newRecords);
-
-    OPEN_LEAD_COUNT_SERVICE_MOCK.verify(
-      OPEN_LEAD_COUNT_SERVICE_MOCK.method.recalculateOpenLeadCount(),
-      1
-    );
-    List<Map<String, Object>> calls = OPEN_LEAD_COUNT_SERVICE_MOCK.getCalls(
-      OPEN_LEAD_COUNT_SERVICE_MOCK.method.recalculateOpenLeadCount()
-    );
-    Set<Id> capturedUserIds = (Set<Id>) calls[0].get('userIds');
-    Assert.areEqual(1, capturedUserIds.size(), 'Should have exactly one User id');
-    Assert.isTrue(capturedUserIds.contains(userId), 'Should include the owning User');
-  }
-
-  @IsTest
-  private static void onAfterInsert_whenOwnedByQueue_doesNotStamp() {
-    SERVICE_MOCK.when(SERVICE_MOCK.method.stampLastLeadAssigned()).thenReturnVoid();
+  private static void onAfterInsert_whenOwnedByQueue_doesNotPublish() {
     Id leadId = SObjectIds.generateFakeId(Schema.Lead.SObjectType);
     Id queueId = SObjectIds.generateFakeId(Schema.Group.SObjectType);
     List<SObject> newRecords = new List<SObject>{ new Lead(Id = leadId, OwnerId = queueId) };
 
     HANDLER.onAfterInsert(newRecords);
 
-    SERVICE_MOCK.never(SERVICE_MOCK.method.stampLastLeadAssigned());
-    OPEN_LEAD_COUNT_SERVICE_MOCK.never(OPEN_LEAD_COUNT_SERVICE_MOCK.method.recalculateOpenLeadCount());
+    SERVICE_MOCK.never(SERVICE_MOCK.method.publishLeadOwnerEvents());
   }
 
   @IsTest
   private static void onAfterInsert_withMultipleLeadsForSameUser_deduplicatesUserIds() {
-    SERVICE_MOCK.when(SERVICE_MOCK.method.stampLastLeadAssigned()).thenReturnVoid();
-    OPEN_LEAD_COUNT_SERVICE_MOCK.when(
-      OPEN_LEAD_COUNT_SERVICE_MOCK.method.recalculateOpenLeadCount()
-    ).thenReturnVoid();
+    SERVICE_MOCK.when(SERVICE_MOCK.method.publishLeadOwnerEvents()).thenReturnVoid();
     Id leadId1 = SObjectIds.generateFakeId(Schema.Lead.SObjectType);
     Id leadId2 = SObjectIds.generateFakeId(Schema.Lead.SObjectType);
     Id userId = SObjectIds.generateFakeId(Schema.User.SObjectType);
@@ -94,20 +66,17 @@ private class LeadTriggerHandlerTest {
 
     HANDLER.onAfterInsert(newRecords);
 
-    SERVICE_MOCK.verify(SERVICE_MOCK.method.stampLastLeadAssigned(), 1);
+    SERVICE_MOCK.verify(SERVICE_MOCK.method.publishLeadOwnerEvents(), 1);
     List<Map<String, Object>> calls = SERVICE_MOCK.getCalls(
-      SERVICE_MOCK.method.stampLastLeadAssigned()
+      SERVICE_MOCK.method.publishLeadOwnerEvents()
     );
-    Set<Id> capturedUserIds = (Set<Id>) calls[0].get('userIds');
-    Assert.areEqual(1, capturedUserIds.size(), 'Should have deduplicated to one User id');
+    Set<Id> ownerIdsToRecount = (Set<Id>) calls[0].get('ownerIdsToRecount');
+    Assert.areEqual(1, ownerIdsToRecount.size(), 'Should have deduplicated to one User id');
   }
 
   @IsTest
-  private static void onAfterUpdate_whenOwnerChangesToUser_stampsLastLeadAssigned() {
-    SERVICE_MOCK.when(SERVICE_MOCK.method.stampLastLeadAssigned()).thenReturnVoid();
-    OPEN_LEAD_COUNT_SERVICE_MOCK.when(
-      OPEN_LEAD_COUNT_SERVICE_MOCK.method.recalculateOpenLeadCount()
-    ).thenReturnVoid();
+  private static void onAfterUpdate_whenOwnerChangesToUser_publishesNewOwnerAsAssigned() {
+    SERVICE_MOCK.when(SERVICE_MOCK.method.publishLeadOwnerEvents()).thenReturnVoid();
     Id leadId = SObjectIds.generateFakeId(Schema.Lead.SObjectType);
     Id oldUserId = SObjectIds.generateFakeId(Schema.User.SObjectType);
     Id newUserId = SObjectIds.generateFakeId(Schema.User.SObjectType);
@@ -118,20 +87,20 @@ private class LeadTriggerHandlerTest {
 
     HANDLER.onAfterUpdate(newRecords, oldMap);
 
-    SERVICE_MOCK.verify(SERVICE_MOCK.method.stampLastLeadAssigned(), 1);
     List<Map<String, Object>> calls = SERVICE_MOCK.getCalls(
-      SERVICE_MOCK.method.stampLastLeadAssigned()
+      SERVICE_MOCK.method.publishLeadOwnerEvents()
     );
-    Set<Id> capturedUserIds = (Set<Id>) calls[0].get('userIds');
-    Assert.isTrue(capturedUserIds.contains(newUserId), 'Should include the new owning User');
+    Set<Id> newlyAssignedOwnerIds = (Set<Id>) calls[0].get('newlyAssignedOwnerIds');
+    Assert.areEqual(
+      new Set<Id>{ newUserId },
+      newlyAssignedOwnerIds,
+      'Should mark only the new owner as newly assigned'
+    );
   }
 
   @IsTest
-  private static void onAfterUpdate_whenOwnerChanges_recalculatesOpenLeadCountForOldAndNewOwners() {
-    SERVICE_MOCK.when(SERVICE_MOCK.method.stampLastLeadAssigned()).thenReturnVoid();
-    OPEN_LEAD_COUNT_SERVICE_MOCK.when(
-      OPEN_LEAD_COUNT_SERVICE_MOCK.method.recalculateOpenLeadCount()
-    ).thenReturnVoid();
+  private static void onAfterUpdate_whenOwnerChanges_recalculatesOldAndNewOwnersButOnlyStampsNew() {
+    SERVICE_MOCK.when(SERVICE_MOCK.method.publishLeadOwnerEvents()).thenReturnVoid();
     Id leadId = SObjectIds.generateFakeId(Schema.Lead.SObjectType);
     Id oldUserId = SObjectIds.generateFakeId(Schema.User.SObjectType);
     Id newUserId = SObjectIds.generateFakeId(Schema.User.SObjectType);
@@ -142,25 +111,24 @@ private class LeadTriggerHandlerTest {
 
     HANDLER.onAfterUpdate(newRecords, oldMap);
 
-    OPEN_LEAD_COUNT_SERVICE_MOCK.verify(
-      OPEN_LEAD_COUNT_SERVICE_MOCK.method.recalculateOpenLeadCount(),
-      1
+    SERVICE_MOCK.verify(SERVICE_MOCK.method.publishLeadOwnerEvents(), 1);
+    List<Map<String, Object>> calls = SERVICE_MOCK.getCalls(
+      SERVICE_MOCK.method.publishLeadOwnerEvents()
     );
-    List<Map<String, Object>> calls = OPEN_LEAD_COUNT_SERVICE_MOCK.getCalls(
-      OPEN_LEAD_COUNT_SERVICE_MOCK.method.recalculateOpenLeadCount()
+    Set<Id> ownerIdsToRecount = (Set<Id>) calls[0].get('ownerIdsToRecount');
+    Set<Id> newlyAssignedOwnerIds = (Set<Id>) calls[0].get('newlyAssignedOwnerIds');
+    Assert.areEqual(2, ownerIdsToRecount.size(), 'Should recount both the old and new owner');
+    Assert.isTrue(ownerIdsToRecount.contains(oldUserId), 'Should include the old owner');
+    Assert.isTrue(ownerIdsToRecount.contains(newUserId), 'Should include the new owner');
+    Assert.isFalse(
+      newlyAssignedOwnerIds.contains(oldUserId),
+      'The old owner should not be marked as newly assigned'
     );
-    Set<Id> capturedUserIds = (Set<Id>) calls[0].get('userIds');
-    Assert.areEqual(2, capturedUserIds.size(), 'Should include both the old and new owner');
-    Assert.isTrue(capturedUserIds.contains(oldUserId), 'Should include the old owner');
-    Assert.isTrue(capturedUserIds.contains(newUserId), 'Should include the new owner');
   }
 
   @IsTest
-  private static void onAfterUpdate_whenOwnerUnchanged_doesNotStamp() {
-    SERVICE_MOCK.when(SERVICE_MOCK.method.stampLastLeadAssigned()).thenReturnVoid();
-    OPEN_LEAD_COUNT_SERVICE_MOCK.when(
-      OPEN_LEAD_COUNT_SERVICE_MOCK.method.recalculateOpenLeadCount()
-    ).thenReturnVoid();
+  private static void onAfterUpdate_whenOwnerUnchanged_recalculatesButDoesNotStamp() {
+    SERVICE_MOCK.when(SERVICE_MOCK.method.publishLeadOwnerEvents()).thenReturnVoid();
     Id leadId = SObjectIds.generateFakeId(Schema.Lead.SObjectType);
     Id userId = SObjectIds.generateFakeId(Schema.User.SObjectType);
     List<SObject> newRecords = new List<SObject>{ new Lead(Id = leadId, OwnerId = userId) };
@@ -170,21 +138,23 @@ private class LeadTriggerHandlerTest {
 
     HANDLER.onAfterUpdate(newRecords, oldMap);
 
-    SERVICE_MOCK.never(SERVICE_MOCK.method.stampLastLeadAssigned());
+    List<Map<String, Object>> calls = SERVICE_MOCK.getCalls(
+      SERVICE_MOCK.method.publishLeadOwnerEvents()
+    );
+    Set<Id> ownerIdsToRecount = (Set<Id>) calls[0].get('ownerIdsToRecount');
+    Set<Id> newlyAssignedOwnerIds = (Set<Id>) calls[0].get('newlyAssignedOwnerIds');
     // The recalculation is idempotent, so the unchanged owner is still
     // included rather than trying to detect that nothing really moved.
-    OPEN_LEAD_COUNT_SERVICE_MOCK.verify(
-      OPEN_LEAD_COUNT_SERVICE_MOCK.method.recalculateOpenLeadCount(),
-      1
+    Assert.areEqual(new Set<Id>{ userId }, ownerIdsToRecount, 'Should still recount the owner');
+    Assert.isTrue(
+      newlyAssignedOwnerIds.isEmpty(),
+      'An unchanged owner should not be marked as newly assigned'
     );
   }
 
   @IsTest
-  private static void onAfterUpdate_whenOwnerChangesFromUserToQueue_doesNotStamp() {
-    SERVICE_MOCK.when(SERVICE_MOCK.method.stampLastLeadAssigned()).thenReturnVoid();
-    OPEN_LEAD_COUNT_SERVICE_MOCK.when(
-      OPEN_LEAD_COUNT_SERVICE_MOCK.method.recalculateOpenLeadCount()
-    ).thenReturnVoid();
+  private static void onAfterUpdate_whenOwnerChangesFromUserToQueue_recalculatesFormerOwnerOnly() {
+    SERVICE_MOCK.when(SERVICE_MOCK.method.publishLeadOwnerEvents()).thenReturnVoid();
     Id leadId = SObjectIds.generateFakeId(Schema.Lead.SObjectType);
     Id userId = SObjectIds.generateFakeId(Schema.User.SObjectType);
     Id queueId = SObjectIds.generateFakeId(Schema.Group.SObjectType);
@@ -195,77 +165,93 @@ private class LeadTriggerHandlerTest {
 
     HANDLER.onAfterUpdate(newRecords, oldMap);
 
-    SERVICE_MOCK.never(SERVICE_MOCK.method.stampLastLeadAssigned());
     // The former owner still lost an open Lead, so their count must be
     // recalculated even though the new owner is a Queue.
-    OPEN_LEAD_COUNT_SERVICE_MOCK.verify(
-      OPEN_LEAD_COUNT_SERVICE_MOCK.method.recalculateOpenLeadCount(),
-      1
+    List<Map<String, Object>> calls = SERVICE_MOCK.getCalls(
+      SERVICE_MOCK.method.publishLeadOwnerEvents()
     );
-    List<Map<String, Object>> calls = OPEN_LEAD_COUNT_SERVICE_MOCK.getCalls(
-      OPEN_LEAD_COUNT_SERVICE_MOCK.method.recalculateOpenLeadCount()
+    Set<Id> ownerIdsToRecount = (Set<Id>) calls[0].get('ownerIdsToRecount');
+    Set<Id> newlyAssignedOwnerIds = (Set<Id>) calls[0].get('newlyAssignedOwnerIds');
+    Assert.areEqual(
+      new Set<Id>{ userId },
+      ownerIdsToRecount,
+      'Should recount only the former owning User'
     );
-    Set<Id> capturedUserIds = (Set<Id>) calls[0].get('userIds');
-    Assert.areEqual(1, capturedUserIds.size(), 'Should include only the former owning User');
-    Assert.isTrue(capturedUserIds.contains(userId), 'Should include the former owner');
+    Assert.isTrue(newlyAssignedOwnerIds.isEmpty(), 'A Queue owner should not be newly assigned');
   }
 
   @IsTest
-  private static void onAfterDelete_whenOwnedByUser_recalculatesOpenLeadCount() {
-    OPEN_LEAD_COUNT_SERVICE_MOCK.when(
-      OPEN_LEAD_COUNT_SERVICE_MOCK.method.recalculateOpenLeadCount()
-    ).thenReturnVoid();
+  private static void onAfterUpdate_whenOwnerChangesFromQueueToUser_recalculatesAndStampsNewOwner() {
+    SERVICE_MOCK.when(SERVICE_MOCK.method.publishLeadOwnerEvents()).thenReturnVoid();
+    Id leadId = SObjectIds.generateFakeId(Schema.Lead.SObjectType);
+    Id userId = SObjectIds.generateFakeId(Schema.User.SObjectType);
+    Id queueId = SObjectIds.generateFakeId(Schema.Group.SObjectType);
+    List<SObject> newRecords = new List<SObject>{ new Lead(Id = leadId, OwnerId = userId) };
+    Map<Id, SObject> oldMap = new Map<Id, SObject>{
+      leadId => new Lead(Id = leadId, OwnerId = queueId)
+    };
+
+    HANDLER.onAfterUpdate(newRecords, oldMap);
+
+    List<Map<String, Object>> calls = SERVICE_MOCK.getCalls(
+      SERVICE_MOCK.method.publishLeadOwnerEvents()
+    );
+    Set<Id> ownerIdsToRecount = (Set<Id>) calls[0].get('ownerIdsToRecount');
+    Set<Id> newlyAssignedOwnerIds = (Set<Id>) calls[0].get('newlyAssignedOwnerIds');
+    Assert.areEqual(new Set<Id>{ userId }, ownerIdsToRecount, 'Should recount the new owner');
+    Assert.areEqual(
+      new Set<Id>{ userId },
+      newlyAssignedOwnerIds,
+      'Should mark the new owner as newly assigned'
+    );
+  }
+
+  @IsTest
+  private static void onAfterDelete_whenOwnedByUser_publishesRecountOnly() {
+    SERVICE_MOCK.when(SERVICE_MOCK.method.publishLeadOwnerEvents()).thenReturnVoid();
     Id leadId = SObjectIds.generateFakeId(Schema.Lead.SObjectType);
     Id userId = SObjectIds.generateFakeId(Schema.User.SObjectType);
     List<SObject> oldRecords = new List<SObject>{ new Lead(Id = leadId, OwnerId = userId) };
 
     HANDLER.onAfterDelete(oldRecords);
 
-    OPEN_LEAD_COUNT_SERVICE_MOCK.verify(
-      OPEN_LEAD_COUNT_SERVICE_MOCK.method.recalculateOpenLeadCount(),
-      1
+    SERVICE_MOCK.verify(SERVICE_MOCK.method.publishLeadOwnerEvents(), 1);
+    List<Map<String, Object>> calls = SERVICE_MOCK.getCalls(
+      SERVICE_MOCK.method.publishLeadOwnerEvents()
     );
-    List<Map<String, Object>> calls = OPEN_LEAD_COUNT_SERVICE_MOCK.getCalls(
-      OPEN_LEAD_COUNT_SERVICE_MOCK.method.recalculateOpenLeadCount()
+    Set<Id> ownerIdsToRecount = (Set<Id>) calls[0].get('ownerIdsToRecount');
+    Set<Id> newlyAssignedOwnerIds = (Set<Id>) calls[0].get('newlyAssignedOwnerIds');
+    Assert.areEqual(
+      new Set<Id>{ userId },
+      ownerIdsToRecount,
+      'Should recount the deleted Lead owner'
     );
-    Set<Id> capturedUserIds = (Set<Id>) calls[0].get('userIds');
-    Assert.areEqual(1, capturedUserIds.size(), 'Should have exactly one User id');
-    Assert.isTrue(capturedUserIds.contains(userId), 'Should include the deleted Lead owner');
+    Assert.isTrue(newlyAssignedOwnerIds.isEmpty(), 'A delete should never mark a new assignment');
   }
 
   @IsTest
-  private static void onAfterInsert_whenOnlyOneQueueableSlotLeft_startsNoJobs() {
-    LeadTriggerHandler.queueableJobsLeftOverride = 1;
-    Id leadId = SObjectIds.generateFakeId(Schema.Lead.SObjectType);
-    Id userId = SObjectIds.generateFakeId(Schema.User.SObjectType);
-    List<SObject> newRecords = new List<SObject>{ new Lead(Id = leadId, OwnerId = userId) };
-
-    HANDLER.onAfterInsert(newRecords);
-
-    SERVICE_MOCK.never(SERVICE_MOCK.method.stampLastLeadAssigned());
-    OPEN_LEAD_COUNT_SERVICE_MOCK.never(OPEN_LEAD_COUNT_SERVICE_MOCK.method.recalculateOpenLeadCount());
-  }
-
-  @IsTest
-  private static void onAfterUndelete_whenOwnedByUser_recalculatesOpenLeadCount() {
-    OPEN_LEAD_COUNT_SERVICE_MOCK.when(
-      OPEN_LEAD_COUNT_SERVICE_MOCK.method.recalculateOpenLeadCount()
-    ).thenReturnVoid();
+  private static void onAfterUndelete_whenOwnedByUser_publishesRecountOnly() {
+    SERVICE_MOCK.when(SERVICE_MOCK.method.publishLeadOwnerEvents()).thenReturnVoid();
     Id leadId = SObjectIds.generateFakeId(Schema.Lead.SObjectType);
     Id userId = SObjectIds.generateFakeId(Schema.User.SObjectType);
     List<SObject> newRecords = new List<SObject>{ new Lead(Id = leadId, OwnerId = userId) };
 
     HANDLER.onAfterUndelete(newRecords);
 
-    OPEN_LEAD_COUNT_SERVICE_MOCK.verify(
-      OPEN_LEAD_COUNT_SERVICE_MOCK.method.recalculateOpenLeadCount(),
-      1
+    SERVICE_MOCK.verify(SERVICE_MOCK.method.publishLeadOwnerEvents(), 1);
+    List<Map<String, Object>> calls = SERVICE_MOCK.getCalls(
+      SERVICE_MOCK.method.publishLeadOwnerEvents()
     );
-    List<Map<String, Object>> calls = OPEN_LEAD_COUNT_SERVICE_MOCK.getCalls(
-      OPEN_LEAD_COUNT_SERVICE_MOCK.method.recalculateOpenLeadCount()
+    Set<Id> ownerIdsToRecount = (Set<Id>) calls[0].get('ownerIdsToRecount');
+    Set<Id> newlyAssignedOwnerIds = (Set<Id>) calls[0].get('newlyAssignedOwnerIds');
+    Assert.areEqual(
+      new Set<Id>{ userId },
+      ownerIdsToRecount,
+      'Should recount the undeleted Lead owner'
     );
-    Set<Id> capturedUserIds = (Set<Id>) calls[0].get('userIds');
-    Assert.areEqual(1, capturedUserIds.size(), 'Should have exactly one User id');
-    Assert.isTrue(capturedUserIds.contains(userId), 'Should include the undeleted Lead owner');
+    Assert.isTrue(
+      newlyAssignedOwnerIds.isEmpty(),
+      'An undelete should never mark a new assignment'
+    );
   }
 }

@@ -2,13 +2,14 @@
 <ListView xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>All_IndividualApplication</fullName>
     <columns>Name</columns>
-    <columns>Account</columns>
+    <columns>fxApplicant_First_Name__c</columns>
+    <columns>fxApplicant_Last_Name__c</columns>
     <columns>Status</columns>
     <columns>Grade_Applying_To__c</columns>
-    <columns>AcademicTerm</columns>
-    <columns>Active_Academic_Term__c</columns>
-    <columns>Academic_Term_Name__c</columns>
-    <columns>CreatedBy</columns>
+    <columns>AppliedDate</columns>
+    <columns>Converting_Team_Member__c</columns>
+    <columns>Application_Timeline__c</columns>
+    <columns>CreatedDate</columns>
     <filterScope>Everything</filterScope>
     <label>All Individual Applications</label>
 </ListView>

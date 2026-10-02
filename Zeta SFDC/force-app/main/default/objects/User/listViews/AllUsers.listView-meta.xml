@@ -11,10 +11,5 @@
     <columns>CORE.PROFILE.NAME</columns>
     <columns>CORE.USERS.EMAIL</columns>
     <filterScope>Everything</filterScope>
-    <filters>
-        <field>CORE.PROFILE.NAME</field>
-        <operation>equals</operation>
-        <value>Zeta Standard User</value>
-    </filters>
     <label>All Users</label>
 </ListView>

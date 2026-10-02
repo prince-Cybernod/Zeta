@@ -1,27 +1,21 @@
 /**
  * {@link TriggerHandler} that handles {@link Lead} DML operations.
  *
- * Stamps User.Last_Lead_Assigned__c when a Lead is owned by a User, either on
- * insert or when OwnerId changes to a User on update. Queue owners are ignored.
- *
- * Also recalculates User.Open_Lead_Count__c for any User who may have gained
- * or lost an open Lead, across insert, update, delete, and undelete.
+ * Publishes a {@link Lead_Owner_Event__e} for every User owner who may need their
+ * User.Open_Lead_Count__c recalculated, across insert, update, delete, and undelete. On insert
+ * and on an OwnerId change to a User, the event also carries the assignment time so the
+ * subscriber can stamp User.Last_Lead_Assigned__c. Queue owners are ignored.
  */
 public with sharing class LeadTriggerHandler extends NoOpTriggerHandler {
-  private final LastLeadAssignedService lastLeadAssignedService;
-  private final OpenLeadCountService openLeadCountService;
+  private final LeadOwnerEventService leadOwnerEventService;
 
   public LeadTriggerHandler() {
-    this(new LastLeadAssignedServiceImpl(), new OpenLeadCountServiceImpl());
+    this(new LeadOwnerEventServiceImpl());
   }
 
   @TestVisible
-  private LeadTriggerHandler(
-    LastLeadAssignedService lastLeadAssignedService,
-    OpenLeadCountService openLeadCountService
-  ) {
-    this.lastLeadAssignedService = lastLeadAssignedService;
-    this.openLeadCountService = openLeadCountService;
+  private LeadTriggerHandler(LeadOwnerEventService leadOwnerEventService) {
+    this.leadOwnerEventService = leadOwnerEventService;
   }
 
   public override SObjectType getSObjectType() {
@@ -38,8 +32,7 @@ public with sharing class LeadTriggerHandler extends NoOpTriggerHandler {
       }
     }
 
-    stampIfAny(userIds, assignedAt);
-    recalculateIfAny(userIds);
+    publishIfAny(userIds, userIds, assignedAt);
   }
 
   public override void onAfterUpdate(List<SObject> sobjects, Map<Id, SObject> oldSObjectsByIds) {
@@ -60,8 +53,7 @@ public with sharing class LeadTriggerHandler extends NoOpTriggerHandler {
       }
     }
 
-    stampIfAny(newlyAssignedUserIds, assignedAt);
-    recalculateIfAny(ownerUserIds);
+    publishIfAny(ownerUserIds, newlyAssignedUserIds, assignedAt);
   }
 
   public override void onAfterDelete(List<SObject> oldSObjects) {
@@ -73,7 +65,7 @@ public with sharing class LeadTriggerHandler extends NoOpTriggerHandler {
       }
     }
 
-    recalculateIfAny(userIds);
+    publishIfAny(userIds, new Set<Id>(), null);
   }
 
   public override void onAfterUndelete(List<SObject> sobjects) {
@@ -85,36 +77,22 @@ public with sharing class LeadTriggerHandler extends NoOpTriggerHandler {
       }
     }
 
-    recalculateIfAny(userIds);
+    publishIfAny(userIds, new Set<Id>(), null);
   }
 
-  private void stampIfAny(Set<Id> userIds, Datetime assignedAt) {
-    if (!userIds.isEmpty() && hasRoomForBothJobs()) {
-      lastLeadAssignedService.stampLastLeadAssigned(userIds, assignedAt);
+  private void publishIfAny(
+    Set<Id> ownerIdsToRecount,
+    Set<Id> newlyAssignedOwnerIds,
+    Datetime assignedAt
+  ) {
+    if (!ownerIdsToRecount.isEmpty()) {
+      leadOwnerEventService.publishLeadOwnerEvents(
+        ownerIdsToRecount,
+        newlyAssignedOwnerIds,
+        assignedAt
+      );
     }
   }
-
-  private void recalculateIfAny(Set<Id> userIds) {
-    if (!userIds.isEmpty() && hasRoomForBothJobs()) {
-      openLeadCountService.recalculateOpenLeadCount(userIds);
-    }
-  }
-
-  /**
-   * Both services start a Queueable. Inside an async transaction (for example Mogli's
-   * SMSIncomingService creating an anonymous Lead) only one job may be started, and the second
-   * throws an uncatchable LimitException that rolls back the caller, losing the incoming text.
-   * So both jobs are skipped unless there is room for both.
-   */
-  private static Boolean hasRoomForBothJobs() {
-    Integer jobsLeft = queueableJobsLeftOverride != null
-      ? queueableJobsLeftOverride
-      : Limits.getLimitQueueableJobs() - Limits.getQueueableJobs();
-    return jobsLeft >= 2;
-  }
-
-  @TestVisible
-  private static Integer queueableJobsLeftOverride;
 
   private static Boolean isUserId(Id ownerId) {
     return ownerId != null && ownerId.getSObjectType() == Schema.User.SObjectType;

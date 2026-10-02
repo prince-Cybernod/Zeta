@@ -3,7 +3,7 @@
     <available>true</available>
     <description>Sent automatically 48h after a draft application is made.</description>
     <encodingKey>UTF-8</encodingKey>
-    <name>Draft Application Reminder</name>
+    <name>Leads - Started Application Did not Complete</name>
     <pageDevName>Draft_Application_Reminder</pageDevName>
     <relatedEntityType>IndividualApplication</relatedEntityType>
     <style>none</style>
@@ -34,7 +34,7 @@ ___________________________
 
 Estimado/a {{{IndividualApplication.Parent_Guardian_1_First_Name__c}}} {{{IndividualApplication.Parent_Guardian_1_Last_Name__c}}}:
 
-Le agradecemos que haya iniciado su recorrido con las Escuelas Chárter Zeta!
+Le agradecemos que haya iniciado su recorrido con Zeta Charter Schools!
 
 Por favor, tómese unos minutos para completar su solicitud hoy &lt; https://myportal.zetaschools.org/login?ec=302&amp;startURL=%252Fs%252F &gt; .Una vez que lo haga, su familia será invitada a unirse a los próximos eventos para obtener más información sobre la educación de próxima generación de Zeta.
 
@@ -48,7 +48,7 @@ Atentamente,
 
 El equipo de admisiones de Zeta
 
-Escuelas Chárter Zeta
+Zeta Charter Schools
 
 ___________________________
 

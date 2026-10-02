@@ -2,7 +2,7 @@
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Mogli_Number__c</fullName>
     <externalId>false</externalId>
-    <formula>Parent_Guardian_1_Phone__c</formula>
+    <formula>Primary_Guardian__r.PersonContact.Mogli_SMS__Mogli_Number__c</formula>
     <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
     <label>Mogli Number</label>
     <required>false</required>

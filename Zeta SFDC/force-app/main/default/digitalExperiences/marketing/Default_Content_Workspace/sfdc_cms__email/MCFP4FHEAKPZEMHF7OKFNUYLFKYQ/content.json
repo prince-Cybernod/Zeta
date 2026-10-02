@@ -393,76 +393,45 @@
             "definition" : "lightning/paragraph",
             "id" : "b6cb0d0a-d88e-4dab-ae4e-7940fbaa5f88",
             "type" : "block"
-          }, {
-            "attributes" : {
-              "align" : "start",
-              "lightning:borderRadius" : {
-                "unit" : "px",
-                "value" : 0.0
-              },
-              "lightning:borderWidth" : {
-                "unit" : "px",
-                "value" : 0.0
-              },
-              "lightning:colorGroup" : {
-                "backgroundColor" : "{!$brand.colorScheme.root}",
-                "borderColor" : "{!$brand.colorScheme.neutral}",
-                "linkColor" : "#0054A6",
-                "textColor" : "{!$brand.colorScheme.contrast}"
-              },
-              "lightning:margin" : {
-                "bottom" : {
-                  "unit" : "px",
-                  "value" : 0.0
-                },
-                "left" : {
-                  "unit" : "px",
-                  "value" : 0.0
-                },
-                "right" : {
-                  "unit" : "px",
-                  "value" : 0.0
-                },
-                "top" : {
-                  "unit" : "px",
-                  "value" : 0.0
-                }
-              },
-              "lightning:padding" : {
-                "bottom" : {
-                  "unit" : "px",
-                  "value" : 0.0
-                },
-                "left" : {
-                  "unit" : "px",
-                  "value" : 0.0
-                },
-                "right" : {
-                  "unit" : "px",
-                  "value" : 0.0
-                },
-                "top" : {
-                  "unit" : "px",
-                  "value" : 0.0
-                }
-              },
-              "lightning:typography" : {
-                "fontFamily" : "{!$cms.BrandonGrotesque_Black}",
-                "fontSize" : {
-                  "unit" : "px",
-                  "value" : 16.0
-                },
-                "fontWeight" : "{!$brand.fontWeight.normal}",
-                "letterSpacing" : "normal",
-                "lineHeight" : 1.5,
-                "textTransform" : "none"
-              },
-              "text" : "&#x1f49c;&#x1f4a1;<font face=\"Tahoma\"><strong>Will my child have fun and get hands-on experience?</strong></font><br />"
-            },
-            "definition" : "lightning/paragraph",
-            "id" : "54b4faf9-280c-4c26-b987-b34cf9293417",
-            "type" : "block"
-          }, {
+          } ]
+        } ]
+      }, {
+        "attributes" : {
+          "lightning:borderRadius" : "{!$brand.borderRadius.square}",
+          "lightning:borderWidth" : "{!$brand.borderWeight.none}",
+          "lightning:colorScheme" : "{!$brand.colorScheme}",
+          "lightning:margin" : "{!$brand.spacing.none}",
+          "lightning:padding" : "{!$brand.spacing.xSmall}",
+          "reverseOrderOnMobile" : false,
+          "stackOnMobile" : true,
+          "lightning:backgroundImage" : {
+            "repeat" : "no-repeat",
+            "position" : "center center",
+            "size" : "cover"
+          }
+        },
+        "definition" : "lightning/section",
+        "id" : "1563b112-486c-411a-b699-daf0c73cf3c6",
+        "type" : "block",
+        "children" : [ {
+          "attributes" : {
+            "columnWidth" : 6.0,
+            "lightning:borderRadius" : "{!$brand.borderRadius.square}",
+            "lightning:borderWidth" : "{!$brand.borderWeight.none}",
+            "lightning:colorScheme" : "{!$brand.colorScheme}",
+            "lightning:margin" : "{!$brand.spacing.none}",
+            "lightning:padding" : "{!$brand.spacing.xSmall}",
+            "lightning:verticalAlignment" : "top",
+            "lightning:backgroundImage" : {
+              "repeat" : "no-repeat",
+              "position" : "center center",
+              "size" : "cover"
+            }
+          },
+          "definition" : "lightning/column",
+          "id" : "95fc1ef6-2325-4c38-ba09-adf416e42b0f",
+          "type" : "block",
+          "children" : [ {
             "attributes" : {
               "align" : "start",
               "lightning:borderRadius" : "{!$brand.borderRadius.square}",
@@ -475,89 +444,105 @@
               },
               "lightning:margin" : "{!$brand.spacing.none}",
               "lightning:padding" : "{!$brand.spacing.none}",
-              "lightning:typography" : {
-                "fontFamily" : "{!$cms.BrandonGrotesque_Medium}",
-                "fontSize" : "{!$brand.fontSize.medium}",
-                "fontWeight" : "{!$brand.fontWeight.normal}",
-                "letterSpacing" : "normal",
-                "lineHeight" : 1.5,
-                "textTransform" : "none"
-              },
-              "text" : "<font face=\"Tahoma\">Children are naturally curious. Zeta gives that curiosity somewhere to go. In Z Lab and across their classes, students investigate problems, design solutions, build, test, and try again. They learn that they can use what they know to create something of their own. All while having fun!</font><br /><br />"
+              "lightning:typography" : "{!$brand.typography.paragraph.paragraph1}",
+              "text" : "<strong>&#x1f49c;&#x1f4a1;Will my child have fun and get hands-on experience?</strong><br /><br />Children are naturally curious. Zeta gives that curiosity somewhere to go. In Z Lab and across their classes, students investigate problems, design solutions, build, test, and try again. They learn that they can use what they know to create something of their own. All while having fun!"
             },
             "definition" : "lightning/paragraph",
-            "id" : "c5722da5-40cd-41ef-bd77-6aee3c02e0b8",
+            "id" : "ec7a32c5-0464-46ce-80cd-315a3877c39b",
             "type" : "block"
-          }, {
+          } ]
+        }, {
+          "attributes" : {
+            "columnWidth" : 6.0,
+            "lightning:borderRadius" : "{!$brand.borderRadius.square}",
+            "lightning:borderWidth" : "{!$brand.borderWeight.none}",
+            "lightning:colorScheme" : "{!$brand.colorScheme}",
+            "lightning:margin" : "{!$brand.spacing.none}",
+            "lightning:padding" : "{!$brand.spacing.xSmall}",
+            "lightning:verticalAlignment" : "top",
+            "lightning:backgroundImage" : {
+              "repeat" : "no-repeat",
+              "position" : "center center",
+              "size" : "cover"
+            }
+          },
+          "definition" : "lightning/column",
+          "id" : "f14caad9-4523-4fe7-909a-3a6c09db2bce",
+          "type" : "block",
+          "children" : [ {
             "attributes" : {
-              "align" : "start",
-              "lightning:borderRadius" : {
-                "unit" : "px",
-                "value" : 0.0
+              "imageFitConfig" : {
+                "width" : {
+                  "unit" : "%",
+                  "value" : 100.0
+                }
               },
-              "lightning:borderWidth" : {
-                "unit" : "px",
-                "value" : 0.0
+              "imageInfo" : {
+                "altText" : "",
+                "overrideAltText" : false,
+                "source" : {
+                  "mimeType" : "image/jpeg",
+                  "ref" : "MCHT6HJCNZCJHKDGIAVL67CGG3YU",
+                  "size" : 2676795.0,
+                  "type" : "imageReference"
+                },
+                "url" : "/cms/media/MCHT6HJCNZCJHKDGIAVL67CGG3YU?fileName=Zeta%2820260528_ME-ES_SpringPhotos%29_1934+%282%29.JPG&fileHash=3a2c52a522739e4834553b2b8185ccd7"
               },
+              "lightning:borderRadius" : "{!$brand.borderRadius.square}",
+              "lightning:borderWidth" : "{!$brand.borderWeight.none}",
               "lightning:colorGroup" : {
                 "backgroundColor" : "{!$brand.colorScheme.root}",
                 "borderColor" : "{!$brand.colorScheme.neutral}",
-                "linkColor" : "#0054A6",
+                "linkColor" : "{!$brand.colorScheme.primaryAccent}",
                 "textColor" : "{!$brand.colorScheme.contrast}"
               },
-              "lightning:margin" : {
-                "bottom" : {
-                  "unit" : "px",
-                  "value" : 0.0
-                },
-                "left" : {
-                  "unit" : "px",
-                  "value" : 0.0
-                },
-                "right" : {
-                  "unit" : "px",
-                  "value" : 0.0
-                },
-                "top" : {
-                  "unit" : "px",
-                  "value" : 0.0
-                }
-              },
-              "lightning:padding" : {
-                "bottom" : {
-                  "unit" : "px",
-                  "value" : 0.0
-                },
-                "left" : {
-                  "unit" : "px",
-                  "value" : 0.0
-                },
-                "right" : {
-                  "unit" : "px",
-                  "value" : 0.0
-                },
-                "top" : {
-                  "unit" : "px",
-                  "value" : 0.0
-                }
-              },
-              "lightning:typography" : {
-                "fontFamily" : "{!$cms.BrandonGrotesque_Black}",
-                "fontSize" : {
-                  "unit" : "px",
-                  "value" : 16.0
-                },
-                "fontWeight" : "{!$brand.fontWeight.normal}",
-                "letterSpacing" : "normal",
-                "lineHeight" : 1.5,
-                "textTransform" : "none"
-              },
-              "text" : "&#x1fa77;&#x1f3a8; <font face=\"Tahoma\"><strong>Will my child have space to explore who they are becoming?</strong></font><br />"
+              "lightning:horizontalAlignment" : "center",
+              "lightning:margin" : "{!$brand.spacing.none}",
+              "lightning:padding" : "{!$brand.spacing.none}",
+              "lightning:typography" : "{!$brand.typography.paragraph.paragraph1}"
             },
-            "definition" : "lightning/paragraph",
-            "id" : "b5d1a48b-1a8b-4fd3-b75c-a9634a2c1d4a",
+            "definition" : "lightning/image",
+            "id" : "27c11c71-0d72-4278-94f8-9cf97589294b",
             "type" : "block"
-          }, {
+          } ]
+        } ]
+      }, {
+        "attributes" : {
+          "lightning:borderRadius" : "{!$brand.borderRadius.square}",
+          "lightning:borderWidth" : "{!$brand.borderWeight.none}",
+          "lightning:colorScheme" : "{!$brand.colorScheme}",
+          "lightning:margin" : "{!$brand.spacing.none}",
+          "lightning:padding" : "{!$brand.spacing.xSmall}",
+          "reverseOrderOnMobile" : false,
+          "stackOnMobile" : true,
+          "lightning:backgroundImage" : {
+            "repeat" : "no-repeat",
+            "position" : "center center",
+            "size" : "cover"
+          }
+        },
+        "definition" : "lightning/section",
+        "id" : "68783100-f0da-49c2-b269-ed95db0d2b5d",
+        "type" : "block",
+        "children" : [ {
+          "attributes" : {
+            "columnWidth" : 12.0,
+            "lightning:borderRadius" : "{!$brand.borderRadius.square}",
+            "lightning:borderWidth" : "{!$brand.borderWeight.none}",
+            "lightning:colorScheme" : "{!$brand.colorScheme}",
+            "lightning:margin" : "{!$brand.spacing.none}",
+            "lightning:padding" : "{!$brand.spacing.xSmall}",
+            "lightning:verticalAlignment" : "top",
+            "lightning:backgroundImage" : {
+              "repeat" : "no-repeat",
+              "position" : "center center",
+              "size" : "cover"
+            }
+          },
+          "definition" : "lightning/column",
+          "id" : "5b394794-21d4-48d4-83d6-ae309d3ce28e",
+          "type" : "block",
+          "children" : [ {
             "attributes" : {
               "align" : "start",
               "lightning:borderRadius" : "{!$brand.borderRadius.square}",
@@ -570,251 +555,11 @@
               },
               "lightning:margin" : "{!$brand.spacing.none}",
               "lightning:padding" : "{!$brand.spacing.none}",
-              "lightning:typography" : {
-                "fontFamily" : "{!$cms.BrandonGrotesque_Medium}",
-                "fontSize" : "{!$brand.fontSize.medium}",
-                "fontWeight" : "{!$brand.fontWeight.normal}",
-                "letterSpacing" : "normal",
-                "lineHeight" : 1.5,
-                "textTransform" : "none"
-              },
-              "text" : "<font face=\"Tahoma\">Children should have many chances to discover what they enjoy and what they are good at. Specialties such as <strong>art, music, chess, dance, soccer, basketball, and Taekwondo are part of the school day</strong> and give every child meaningful experiences that can become interests, strengths, and passions.</font><br /><br />"
+              "lightning:typography" : "{!$brand.typography.paragraph.paragraph1}",
+              "text" : "<strong>&#x1fa77;&#x1f3a8; Will my child have space to explore who they are becoming?</strong><br /><br />Children should have many chances to discover what they enjoy and what they are good at. Specialties such as <strong>art, music, chess, dance, soccer, basketball, and Taekwondo are part of the school day</strong> and give every child meaningful experiences that can become interests, strengths, and passions.<br /><br /><strong>&#x1f49c;&#x1f331; Will my child grow through meaningful opportunities beyond the classroom?</strong><br /><br />Field trips, performances, competitions, school traditions, Z Clubs, and Z Teams give children new places to practice independence, friendship, teamwork, and courage. Learning becomes something they experience, not simply something they do at a desk.<br /><br />This is what it means for every child to be known, nurtured, and empowered: known by adults who understand them, nurtured through an education that develops their whole self, and empowered with the knowledge, confidence, and curiosity to keep discovering what they are capable of.<br /><br /><strong>This is what Zeta Elementary Schools promise.</strong> <br /><br />We invite you to come and ask all these questions, and more, in person at a Zeta school. <a href=\"https://zetaschools.org/events-for-prospective-families/\" target=\"_blank\" part=\"link\" rel=\"noopener noreferrer\"><font color=\"#0000ff\" style=\"\"><u>Sign up for an upcoming event or tour</u></font></a> to learn more about our love-driven education."
             },
             "definition" : "lightning/paragraph",
-            "id" : "b32bdd6a-d776-4d50-a093-d57d2ca42b22",
-            "type" : "block"
-          }, {
-            "attributes" : {
-              "align" : "start",
-              "lightning:borderRadius" : {
-                "unit" : "px",
-                "value" : 0.0
-              },
-              "lightning:borderWidth" : {
-                "unit" : "px",
-                "value" : 0.0
-              },
-              "lightning:colorGroup" : {
-                "backgroundColor" : "{!$brand.colorScheme.root}",
-                "borderColor" : "{!$brand.colorScheme.neutral}",
-                "linkColor" : "#0054A6",
-                "textColor" : "{!$brand.colorScheme.contrast}"
-              },
-              "lightning:margin" : {
-                "bottom" : {
-                  "unit" : "px",
-                  "value" : 0.0
-                },
-                "left" : {
-                  "unit" : "px",
-                  "value" : 0.0
-                },
-                "right" : {
-                  "unit" : "px",
-                  "value" : 0.0
-                },
-                "top" : {
-                  "unit" : "px",
-                  "value" : 0.0
-                }
-              },
-              "lightning:padding" : {
-                "bottom" : {
-                  "unit" : "px",
-                  "value" : 0.0
-                },
-                "left" : {
-                  "unit" : "px",
-                  "value" : 0.0
-                },
-                "right" : {
-                  "unit" : "px",
-                  "value" : 0.0
-                },
-                "top" : {
-                  "unit" : "px",
-                  "value" : 0.0
-                }
-              },
-              "lightning:typography" : {
-                "fontFamily" : "{!$cms.BrandonGrotesque_Black}",
-                "fontSize" : {
-                  "unit" : "px",
-                  "value" : 16.0
-                },
-                "fontWeight" : "{!$brand.fontWeight.normal}",
-                "letterSpacing" : "normal",
-                "lineHeight" : 1.5,
-                "textTransform" : "none"
-              },
-              "text" : "&#x1f49c;&#x1f331;<font face=\"Tahoma\"><strong> Will my child grow through meaningful opportunities beyond the classroom?</strong></font><br />"
-            },
-            "definition" : "lightning/paragraph",
-            "id" : "9224c661-c4f9-4813-a94a-a71cd87ced6c",
-            "type" : "block"
-          }, {
-            "attributes" : {
-              "align" : "start",
-              "lightning:borderRadius" : {
-                "unit" : "px",
-                "value" : 0.0
-              },
-              "lightning:borderWidth" : {
-                "unit" : "px",
-                "value" : 0.0
-              },
-              "lightning:colorGroup" : {
-                "backgroundColor" : "{!$brand.colorScheme.root}",
-                "borderColor" : "{!$brand.colorScheme.neutral}",
-                "linkColor" : "#0054A6",
-                "textColor" : "{!$brand.colorScheme.contrast}"
-              },
-              "lightning:margin" : {
-                "bottom" : {
-                  "unit" : "px",
-                  "value" : 0.0
-                },
-                "left" : {
-                  "unit" : "px",
-                  "value" : 0.0
-                },
-                "right" : {
-                  "unit" : "px",
-                  "value" : 0.0
-                },
-                "top" : {
-                  "unit" : "px",
-                  "value" : 0.0
-                }
-              },
-              "lightning:padding" : {
-                "bottom" : {
-                  "unit" : "px",
-                  "value" : 0.0
-                },
-                "left" : {
-                  "unit" : "px",
-                  "value" : 0.0
-                },
-                "right" : {
-                  "unit" : "px",
-                  "value" : 0.0
-                },
-                "top" : {
-                  "unit" : "px",
-                  "value" : 0.0
-                }
-              },
-              "lightning:typography" : {
-                "fontFamily" : "{!$cms.BrandonGrotesque_Medium}",
-                "fontSize" : {
-                  "unit" : "px",
-                  "value" : 16.0
-                },
-                "fontWeight" : "{!$brand.fontWeight.normal}",
-                "letterSpacing" : "normal",
-                "lineHeight" : 1.5,
-                "textTransform" : "none"
-              },
-              "text" : "<font face=\"Tahoma\">Field trips, performances, competitions, school traditions, Z Clubs, and Z Teams give children new places to practice independence, friendship, teamwork, and courage. Learning becomes something they experience, not simply something they do at a desk.<br /><br /><strong>This is what it means for every child to be known, nurtured, and empowered:</strong> known by adults who understand them, nurtured through an education that develops their whole self, and empowered with the knowledge, confidence, and curiosity to keep discovering what they are capable of.</font> <br /><br />"
-            },
-            "definition" : "lightning/paragraph",
-            "id" : "bd5c7f9c-3cd4-4966-8e56-d021337b65e8",
-            "type" : "block"
-          }, {
-            "attributes" : {
-              "align" : "start",
-              "lightning:borderRadius" : "{!$brand.borderRadius.square}",
-              "lightning:borderWidth" : "{!$brand.borderWeight.none}",
-              "lightning:colorGroup" : {
-                "backgroundColor" : "{!$brand.colorScheme.root}",
-                "borderColor" : "{!$brand.colorScheme.neutral}",
-                "linkColor" : "{!$brand.colorScheme.primaryAccent}",
-                "textColor" : "{!$brand.colorScheme.contrast}"
-              },
-              "lightning:margin" : "{!$brand.spacing.none}",
-              "lightning:padding" : "{!$brand.spacing.none}",
-              "lightning:typography" : {
-                "fontFamily" : "{!$cms.BrandonGrotesque_Black}",
-                "fontSize" : "{!$brand.fontSize.medium}",
-                "fontWeight" : "{!$brand.fontWeight.normal}",
-                "letterSpacing" : "normal",
-                "lineHeight" : 1.5,
-                "textTransform" : "none"
-              },
-              "text" : "<font face=\"Tahoma\"><strong>This is what Zeta Elementary Schools promise.</strong></font><br /><br />"
-            },
-            "definition" : "lightning/paragraph",
-            "id" : "9f34e34b-2768-4b9e-9149-4d17ab16e0fe",
-            "type" : "block"
-          }, {
-            "attributes" : {
-              "align" : "start",
-              "lightning:borderRadius" : {
-                "unit" : "px",
-                "value" : 0.0
-              },
-              "lightning:borderWidth" : {
-                "unit" : "px",
-                "value" : 0.0
-              },
-              "lightning:colorGroup" : {
-                "backgroundColor" : "{!$brand.colorScheme.root}",
-                "borderColor" : "{!$brand.colorScheme.neutral}",
-                "linkColor" : "#0054A6",
-                "textColor" : "{!$brand.colorScheme.contrast}"
-              },
-              "lightning:margin" : {
-                "bottom" : {
-                  "unit" : "px",
-                  "value" : 0.0
-                },
-                "left" : {
-                  "unit" : "px",
-                  "value" : 0.0
-                },
-                "right" : {
-                  "unit" : "px",
-                  "value" : 0.0
-                },
-                "top" : {
-                  "unit" : "px",
-                  "value" : 0.0
-                }
-              },
-              "lightning:padding" : {
-                "bottom" : {
-                  "unit" : "px",
-                  "value" : 0.0
-                },
-                "left" : {
-                  "unit" : "px",
-                  "value" : 0.0
-                },
-                "right" : {
-                  "unit" : "px",
-                  "value" : 0.0
-                },
-                "top" : {
-                  "unit" : "px",
-                  "value" : 0.0
-                }
-              },
-              "lightning:typography" : {
-                "fontFamily" : "{!$cms.BrandonGrotesque_Medium}",
-                "fontSize" : {
-                  "unit" : "px",
-                  "value" : 16.0
-                },
-                "fontWeight" : "{!$brand.fontWeight.normal}",
-                "letterSpacing" : "normal",
-                "lineHeight" : 1.5,
-                "textTransform" : "none"
-              },
-              "text" : "<font data-custom-font=\"{!$cms.BrandonGrotesque_Medium.name}\" face=\"Brandon Grotesque Medium, Arial, sans-serif, sans-serif\">We invite you to come and ask all these questions, and more, in person at a Zeta school. <a href=\"https://zetaschools.org/events-for-prospective-families/?sftoken&#61;eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE3ODk1NzUwMjQsImV4cCI6MTc4OTU3NTA4NCwiaW5kaXZpZHVhbElkIjoiaW5kaXZpZHVhbF9pZF9hYnNlbnQiLCJ0ZW5hbnRJZCI6ImEzNjAvcHJvZDIxLzZiMTEwNDZhM2VhZTQyMTM4Yjc1MzkyY2YyYTAzZmFlIiwiY29yZVRlbmFudElkIjoiY29yZS9wcm9kLzAwRGE1MDAwMDFBQTRCQkVBMSJ9.q0H_weMR1Ssy_5g3b96gIww2eptVqbNuI72b-w2pgjw\" target=\"_blank\" part=\"link\" rel=\"noopener noreferrer noopener noreferrer noopener noreferrer noopener noreferrer noopener noreferrer noopener noreferrer noopener noreferrer noopener noreferrer noopener noreferrer noopener noreferrer\"><u>Sign up for an upcoming event or tour</u></a> to learn more about our love-driven education.</font><br />"
-            },
-            "definition" : "lightning/paragraph",
-            "id" : "2ec0ba12-a198-4365-9a8a-c5d42dde91b8",
+            "id" : "8a150434-2d76-49db-b91c-1026d36eaaf2",
             "type" : "block"
           } ]
         } ]

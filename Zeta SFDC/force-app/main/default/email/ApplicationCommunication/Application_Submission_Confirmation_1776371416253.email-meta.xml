@@ -7,14 +7,14 @@
     <pageDevName>Application_Submission_Confirmation</pageDevName>
     <relatedEntityType>IndividualApplication</relatedEntityType>
     <style>none</style>
-    <subject>Thank you for applying to Zeta!</subject>
+    <subject>Thank you for Applying to Zeta!</subject>
     <textOnly>Dear {{{IndividualApplication.Parent_Guardian_1_First_Name__c}}} {{{IndividualApplication.Parent_Guardian_1_Last_Name__c}}},
 
 Thank you for applying to Zeta Charter Schools! 
 
 We are so excited that you are considering Zeta for your family. Choosing a school is an important decision, and our Enrollment Team looks forward to supporting you every step of the way.
 
-Log in here &lt; http://myportal.zetaschools.org/ &gt; to view your application.
+Log in here &lt; https://myportal.zetaschools.org/s/login/SelfRegister?locale=us &gt; to view your application.
 
 At Zeta Elementary, we believe the early years of school shape everything that follows. In warm, joyful, and structured classrooms, children build confidence, curiosity, and a lasting love of learning. Our teachers know each student deeply and provide the academic, social, and emotional support they need to thrive.
 

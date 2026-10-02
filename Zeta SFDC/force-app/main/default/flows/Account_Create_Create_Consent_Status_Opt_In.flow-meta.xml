@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>67.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <description>This flow will create consent status for a new account created or if the email is updated and the account is not opted out.</description>
+    <environments>Default</environments>
+    <formulas>
+        <name>fxConsentId</name>
+        <dataType>String</dataType>
+        <expression>&apos;$Record.PersonEmail &amp; “#” &amp; Get_Email_Subscription_Type.Id&apos;</expression>
+    </formulas>
+    <interviewLabel>Account | Create | Create Consent Status Opt In {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Account | Create | Create Consent Status Opt In</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordCreates>
+        <name>Create_Contact_Request</name>
+        <label>Create Contact Request</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <inputAssignments>
+            <field>Email__c</field>
+            <value>
+                <elementReference>$Record.PersonEmail</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>PreferredChannel</field>
+            <value>
+                <stringValue>Email</stringValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Status</field>
+            <value>
+                <stringValue>New</stringValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>WhatId</field>
+            <value>
+                <elementReference>$Record.Id</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>WhoId</field>
+            <value>
+                <elementReference>$Record.PersonContactId</elementReference>
+            </value>
+        </inputAssignments>
+        <object>ContactRequest</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordCreates>
+    <start>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>Create_Contact_Request</targetReference>
+        </connector>
+        <filterFormula>AND(
+    {!$Record.IsPersonAccount},
+    NOT(ISBLANK({!$Record.PersonEmail})),
+    NOT({!$Record.PersonHasOptedOutOfEmail}),
+    OR(
+        ISNEW(),
+        ISCHANGED({!$Record.PersonEmail})
+    )
+)</filterFormula>
+        <object>Account</object>
+        <recordTriggerType>CreateAndUpdate</recordTriggerType>
+        <triggerType>RecordAfterSave</triggerType>
+    </start>
+    <status>Active</status>
+</Flow>

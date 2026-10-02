@@ -19,6 +19,19 @@
         <sequence>0</sequence>
     </mktDataTranFields>
     <mktDataTranFields>
+        <fullName>Applicant_Lifecycle_Status_c</fullName>
+        <creationType>Custom</creationType>
+        <datatype>S</datatype>
+        <externalName>Applicant_Lifecycle_Status__c</externalName>
+        <isDataRequired>false</isDataRequired>
+        <length>0</length>
+        <masterLabel>Applicant Lifecycle Status</masterLabel>
+        <precision>0</precision>
+        <primaryIndexOrder>0</primaryIndexOrder>
+        <scale>0</scale>
+        <sequence>93</sequence>
+    </mktDataTranFields>
+    <mktDataTranFields>
         <fullName>Application_Count_c</fullName>
         <creationType>Custom</creationType>
         <datatype>N</datatype>

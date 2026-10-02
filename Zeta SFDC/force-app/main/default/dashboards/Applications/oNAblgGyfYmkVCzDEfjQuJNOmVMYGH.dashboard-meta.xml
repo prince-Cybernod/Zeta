@@ -9,8 +9,33 @@
     <dashboardColorPalette>accessible</dashboardColorPalette>
     <dashboardGridLayout>
         <dashboardGridComponents>
-            <colSpan>7</colSpan>
+            <colSpan>2</colSpan>
             <columnIndex>0</columnIndex>
+            <dashboardComponent>
+                <autoselectColumnsFromReport>false</autoselectColumnsFromReport>
+                <chartSummary>
+                    <aggregate>Sum</aggregate>
+                    <column>FOE_Team_Monthly_Goals__c.Application_Goal__c</column>
+                </chartSummary>
+                <componentType>Metric</componentType>
+                <decimalPrecision>-1</decimalPrecision>
+                <displayUnits>Auto</displayUnits>
+                <groupingSortProperties/>
+                <header>Monthly App Goal</header>
+                <indicatorBreakpoint1>0.0</indicatorBreakpoint1>
+                <indicatorBreakpoint2>100.0</indicatorBreakpoint2>
+                <indicatorHighColor>#9361A8</indicatorHighColor>
+                <indicatorLowColor>#9361A8</indicatorLowColor>
+                <indicatorMiddleColor>#9361A8</indicatorMiddleColor>
+                <report>FamilyOutreachEnrollment/FOEMonthlyDashboard/FOE_Team_Monthly_Goals_Report_dAR</report>
+                <showRange>false</showRange>
+            </dashboardComponent>
+            <rowIndex>0</rowIndex>
+            <rowSpan>6</rowSpan>
+        </dashboardGridComponents>
+        <dashboardGridComponents>
+            <colSpan>6</colSpan>
+            <columnIndex>2</columnIndex>
             <dashboardComponent>
                 <autoselectColumnsFromReport>false</autoselectColumnsFromReport>
                 <chartAxisRange>Auto</chartAxisRange>
@@ -32,6 +57,7 @@
                         <sortOrder>a</sortOrder>
                     </groupingSorts>
                 </groupingSortProperties>
+                <header>Apps This Month</header>
                 <legendPosition>Right</legendPosition>
                 <report>unfiled$public/New_Report_Fje</report>
                 <showPercentage>false</showPercentage>
@@ -53,7 +79,7 @@
     <owner>mercedes.wentworthnice@zetaschools.org</owner>
     <runningUser>mercedes.wentworthnice@zetaschools.org</runningUser>
     <textColor>#000000</textColor>
-    <title>My Applications This Month</title>
+    <title>My Monthly Application Goal and Progress</title>
     <titleColor>#000000</titleColor>
     <titleSize>12</titleSize>
 </Dashboard>

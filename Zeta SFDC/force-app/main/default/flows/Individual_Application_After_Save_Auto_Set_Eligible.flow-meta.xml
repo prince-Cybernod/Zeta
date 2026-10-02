@@ -96,4 +96,5 @@ Automatically sets Individual Application Status to Eligible when there are no r
         <triggerType>RecordAfterSave</triggerType>
     </start>
     <status>Active</status>
+    <triggerOrder>1800</triggerOrder>
 </Flow>

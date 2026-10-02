@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <aggregates>
+        <calculatedFormula>RowCount / 2761</calculatedFormula>
+        <datatype>number</datatype>
+        <developerName>FORMULA1</developerName>
+        <isActive>false</isActive>
+        <isCrossBlock>false</isCrossBlock>
+        <masterLabel>Percent to Goal</masterLabel>
+        <scale>2</scale>
+    </aggregates>
+    <aggregates>
+        <calculatedFormula>RowCount / 1381</calculatedFormula>
+        <datatype>percent</datatype>
+        <developerName>FORMULA2</developerName>
+        <downGroupingContext>GRAND_SUMMARY</downGroupingContext>
+        <isActive>true</isActive>
+        <isCrossBlock>false</isCrossBlock>
+        <masterLabel>pct to goal</masterLabel>
+        <scale>0</scale>
+    </aggregates>
+    <columns>
+        <field>AcademicInterest$Name</field>
+    </columns>
+    <columns>
+        <field>AcademicInterest$IndividualApplication.Account.FirstName</field>
+    </columns>
+    <columns>
+        <field>AcademicInterest$IndividualApplication.Account.LastName</field>
+    </columns>
+    <columns>
+        <field>AcademicInterest$Application_Submitted_Date__c</field>
+    </columns>
+    <columns>
+        <aggregateTypes>Sum</aggregateTypes>
+        <field>AcademicInterest$School_Rank__c</field>
+    </columns>
+    <columns>
+        <aggregateTypes>Sum</aggregateTypes>
+        <field>AcademicInterest$In_District_Priority__c</field>
+    </columns>
+    <columns>
+        <aggregateTypes>Sum</aggregateTypes>
+        <field>AcademicInterest$IndividualApplication.Sibling_Applying_Priority__c</field>
+    </columns>
+    <columns>
+        <aggregateTypes>Sum</aggregateTypes>
+        <field>AcademicInterest$IndividualApplication.Sibling_Attending_Priority__c</field>
+    </columns>
+    <columns>
+        <aggregateTypes>Sum</aggregateTypes>
+        <field>AcademicInterest$IndividualApplication.Employee_Priority__c</field>
+    </columns>
+    <columns>
+        <field>AcademicInterest$Status</field>
+    </columns>
+    <columns>
+        <field>AcademicInterest$LearningProgram.School__c.Dashboard_School_Name__c</field>
+    </columns>
+    <columns>
+        <field>CDF1</field>
+    </columns>
+    <customDetailFormulas>
+        <calculatedFormula>IF(AcademicInterest.IndividualApplication.Converting_Team_Member__c.Name == &quot;&quot;, &quot;Organic&quot;, &quot;Inorganic&quot;)</calculatedFormula>
+        <dataType>Text</dataType>
+        <description>Organic/Inorganic</description>
+        <developerName>CDF1</developerName>
+        <label>App Source</label>
+        <scale>2</scale>
+    </customDetailFormulas>
+    <description>All unique organic applications in the current month.</description>
+    <filter>
+        <criteriaItems>
+            <column>AcademicInterest$IndividualApplication.Application_Timeline__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>2027 - 2028</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>AcademicInterest$School_Rank__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>1</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>AcademicInterest$IndividualApplication.Converting_Team_Member__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value></value>
+        </criteriaItems>
+        <language>en_US</language>
+    </filter>
+    <format>Summary</format>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>AcademicInterest$LearningProgram</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>AcademicInterest$IndividualApplication.How_Did_You_Hear_About_Us__c</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>AcademicInterest$IndividualApplication.Lead_Source__c</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <name>Monthly App Dash | Organic App</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>School_Applications_with_Individual_Applications_and_Accounts__c</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <showGrandTotal>true</showGrandTotal>
+    <showSubTotals>true</showSubTotals>
+    <timeFrameFilter>
+        <dateColumn>AcademicInterest$CreatedDate</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
+    </timeFrameFilter>
+</Report>

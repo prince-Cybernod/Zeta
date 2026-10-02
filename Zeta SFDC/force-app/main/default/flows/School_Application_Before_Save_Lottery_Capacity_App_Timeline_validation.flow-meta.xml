@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>67.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <customErrors>
+        <name>Error</name>
+        <label>Error</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <customErrorMessages>
+            <errorMessage>You must select a Lottery Capacity record that matches both the Application Timeline and Grade Applying For of the Application.</errorMessage>
+            <isFieldError>false</isFieldError>
+        </customErrorMessages>
+    </customErrors>
+    <decisions>
+        <name>Does_the_Lottery_Capacity_s_App_Timeline_match_the_Application</name>
+        <label>Does the Lottery Capacity&apos;s App Timeline match the Application?</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <defaultConnector>
+            <targetReference>Error</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Yes</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Lottery_Capacity__r.Program_Term_Application_Timeline__r.ApplicationTimelineId</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <elementReference>$Record.IndividualApplication.Application_Timeline__c</elementReference>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.IndividualApplication.Grade_Applying_To__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <elementReference>$Record.Lottery_Capacity__r.Grade__c</elementReference>
+                </rightValue>
+            </conditions>
+            <label>Yes</label>
+        </rules>
+    </decisions>
+    <description>When Lottery Capacity is updated on a School App or a new School App is created, confirm the App Timeline ID matches that of the Individual Application
+Created By: Elevation Solutions</description>
+    <environments>Default</environments>
+    <interviewLabel>School Application (Before Save) Lottery Capacity + App Timeline validation {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>School Application (Before Save) Lottery Capacity + App Timeline validation</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <start>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>Does_the_Lottery_Capacity_s_App_Timeline_match_the_Application</targetReference>
+        </connector>
+        <filterFormula>NOT(ISNULL({!$Record.Lottery_Capacity__c})) &amp;&amp;
+(ISNEW() || ISCHANGED({!$Record.Lottery_Capacity__c}))</filterFormula>
+        <object>AcademicInterest</object>
+        <recordTriggerType>CreateAndUpdate</recordTriggerType>
+        <triggerType>RecordBeforeSave</triggerType>
+    </start>
+    <status>Active</status>
+</Flow>

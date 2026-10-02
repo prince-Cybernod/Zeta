@@ -1,5 +1,5 @@
 /**
- * Wrapper for AggregateResult from {@link OpenLeadCountQueueable}.
+ * Wrapper for AggregateResult from {@link OpenLeadCountRecalculator}.
  */
 public with sharing class OpenLeadCountAggregateResult {
   @TestVisible

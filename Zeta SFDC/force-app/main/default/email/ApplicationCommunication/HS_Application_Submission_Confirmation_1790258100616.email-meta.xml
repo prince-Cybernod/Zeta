@@ -7,14 +7,14 @@
     <pageDevName>HS_Application_Submission_Confirmation</pageDevName>
     <relatedEntityType>IndividualApplication</relatedEntityType>
     <style>none</style>
-    <subject>Welcome to Zeta Charter Schools!</subject>
+    <subject>Thank you for Applying to Zeta!</subject>
     <textOnly>Dear {{{IndividualApplication.Parent_Guardian_1_First_Name__c}}} {{{IndividualApplication.Parent_Guardian_1_Last_Name__c}}},
 
 Thank you for applying to Zeta High School!
 
 We are so excited that {{{IndividualApplication.fxApplicant_First_Name__c}}} is considering Zeta High, and we look forward to being with you through the next steps of the process.
 
-Log in here &lt; http://myportal.zetaschools.org/ &gt; to view your application.
+Log in here &lt; https://myportal.zetaschools.org/s/login/SelfRegister &gt; to view your application.
 
 At Zeta High, students discover their purpose, pursue their passions, and build the power to shape their future. Through rigorous academics, personalized guidance, and real-world experiences, students prepare for college and a life of their own choosing.
 

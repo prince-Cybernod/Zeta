@@ -120,6 +120,46 @@
                 <identifier>RecordResponse_Past_Due__cField</identifier>
             </fieldInstance>
         </itemInstances>
+        <itemInstances>
+            <fieldInstance>
+                <fieldInstanceProperties>
+                    <name>uiBehavior</name>
+                    <value>none</value>
+                </fieldInstanceProperties>
+                <fieldItem>Record.Default_Gateway__c</fieldItem>
+                <identifier>RecordDefault_Gateway__cField</identifier>
+            </fieldInstance>
+        </itemInstances>
+        <itemInstances>
+            <fieldInstance>
+                <fieldInstanceProperties>
+                    <name>uiBehavior</name>
+                    <value>none</value>
+                </fieldInstanceProperties>
+                <fieldItem>Record.Mogli_Opt_out__c</fieldItem>
+                <identifier>RecordMogli_Opt_out__cField</identifier>
+            </fieldInstance>
+        </itemInstances>
+        <itemInstances>
+            <fieldInstance>
+                <fieldInstanceProperties>
+                    <name>uiBehavior</name>
+                    <value>none</value>
+                </fieldInstanceProperties>
+                <fieldItem>Record.ContactMobile</fieldItem>
+                <identifier>RecordContactMobileField</identifier>
+            </fieldInstance>
+        </itemInstances>
+        <itemInstances>
+            <fieldInstance>
+                <fieldInstanceProperties>
+                    <name>uiBehavior</name>
+                    <value>none</value>
+                </fieldInstanceProperties>
+                <fieldItem>Record.Mogli_Number__c</fieldItem>
+                <identifier>RecordMogli_Number__cField</identifier>
+            </fieldInstance>
+        </itemInstances>
         <name>Facet-f196ecf2-7afb-420a-97b2-7f41a0c5339d</name>
         <type>Facet</type>
     </flexiPageRegions>
@@ -580,8 +620,26 @@
     <flexiPageRegions>
         <itemInstances>
             <componentInstance>
-                <componentName>Mogli_SMS:TextMessageComponent</componentName>
-                <identifier>Mogli_SMS_TextMessageComponent</identifier>
+                <componentInstanceProperties>
+                    <name>attachmentsDisabled</name>
+                    <value>false</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>canOverrideDefaults</name>
+                    <value>Enabled</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>customLimitUnit</name>
+                    <value>Segments</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>mcvConfigurationRecord</name>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>recordId</name>
+                </componentInstanceProperties>
+                <componentName>Mogli_SMS:TextMessageComponentEmpApi</componentName>
+                <identifier>Mogli_SMS_TextMessageComponentEmpApi</identifier>
             </componentInstance>
         </itemInstances>
         <itemInstances>

@@ -1,140 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Flow xmlns="http://soap.sforce.com/2006/04/metadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
     <actionCalls>
-        <description>Hello from the Zeta CEO &amp; a Zeta Parent</description>
-        <name>Applicant_Rolling_Email_2</name>
-        <label>Applicant | Rolling | Email 2</label>
-        <locationX>0</locationX>
-        <locationY>0</locationY>
-        <actionName>sendEmailMessage</actionName>
-        <actionType>sendEmailMessage</actionType>
-        <connector>
-            <targetReference>X1_Month</targetReference>
-        </connector>
-        <dataTypeMappings>
-            <schemaUri>InputAutomationSchema:contentSchema/marketing--Default_Content_Workspace.sfdc_cms__email--MCKVFLK2FJTZCIVJG3EZ42NVQ6XI</schemaUri>
-            <typeName>ContentSchema</typeName>
-        </dataTypeMappings>
-        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
-        <inputParameters>
-            <name>contentId</name>
-            <value>
-                <stringValue>marketing--Default_Content_Workspace.sfdc_cms__email--MCKVFLK2FJTZCIVJG3EZ42NVQ6XI</stringValue>
-            </value>
-        </inputParameters>
-        <inputParameters>
-            <name>isTemplate</name>
-            <value>
-                <booleanValue>false</booleanValue>
-            </value>
-        </inputParameters>
-        <inputParameters>
-            <name>senderId</name>
-            <value>
-                <stringValue>35acv0000015yxRAAQ</stringValue>
-            </value>
-        </inputParameters>
-        <inputParameters>
-            <name>fromAddress</name>
-        </inputParameters>
-        <inputParameters>
-            <name>fromName</name>
-        </inputParameters>
-        <inputParameters>
-            <name>fromFallbackAddress</name>
-        </inputParameters>
-        <inputParameters>
-            <name>replyToAddress</name>
-        </inputParameters>
-        <inputParameters>
-            <name>replyToName</name>
-        </inputParameters>
-        <inputParameters>
-            <name>replyToFallbackAddress</name>
-        </inputParameters>
-        <inputParameters>
-            <name>useSto</name>
-            <value>
-                <booleanValue>true</booleanValue>
-            </value>
-        </inputParameters>
-        <inputParameters>
-            <name>stoTimeFrame</name>
-            <value>
-                <numberValue>24.0</numberValue>
-            </value>
-        </inputParameters>
-        <inputParameters>
-            <name>clickTracking</name>
-            <value>
-                <booleanValue>true</booleanValue>
-            </value>
-        </inputParameters>
-        <inputParameters>
-            <name>openTracking</name>
-            <value>
-                <booleanValue>true</booleanValue>
-            </value>
-        </inputParameters>
-        <inputParameters>
-            <name>communicationSubscriptionId</name>
-            <value>
-                <stringValue>0Xla50000004btpCAA</stringValue>
-            </value>
-        </inputParameters>
-        <inputParameters>
-            <name>commSubscriptionChannelTypeId</name>
-            <value>
-                <stringValue>0eBa50000003URNEA2</stringValue>
-            </value>
-        </inputParameters>
-        <inputParameters>
-            <name>outreachSourceCodeId</name>
-        </inputParameters>
-        <inputParameters>
-            <name>selectedOfferIds</name>
-        </inputParameters>
-        <inputParameters>
-            <name>ccRecipientAddresses</name>
-        </inputParameters>
-        <inputParameters>
-            <name>isCcEnabled</name>
-            <value>
-                <booleanValue>false</booleanValue>
-            </value>
-        </inputParameters>
-        <inputParameters>
-            <name>isSyntheticCcEnabled</name>
-            <value>
-                <booleanValue>false</booleanValue>
-            </value>
-        </inputParameters>
-        <inputParameters>
-            <name>shouldArchiveEmail</name>
-            <value>
-                <booleanValue>true</booleanValue>
-            </value>
-        </inputParameters>
-        <inputParameters>
-            <name>disableComplianceBcc</name>
-            <value>
-                <booleanValue>false</booleanValue>
-            </value>
-        </inputParameters>
-        <inputParameters>
-            <name>emailContentSaveFolderId</name>
-        </inputParameters>
-        <inputParameters>
-            <name>locale</name>
-            <value>
-                <elementReference>varLanguagePreference</elementReference>
-                <inputConfiguratorMode>Resource</inputConfiguratorMode>
-            </value>
-        </inputParameters>
-        <nameSegment>sendEmailMessage</nameSegment>
-        <offset>0</offset>
-    </actionCalls>
-    <actionCalls>
         <description>Zeta Is a Love Story</description>
         <name>Applicant_Rolling_Email_3</name>
         <label>Applicant | Rolling | Email 3</label>
@@ -691,7 +557,7 @@
             <targetReference>Get_Contact</targetReference>
         </connector>
         <dataGraph>Unified_Individual_Full_Graph</dataGraph>
-        <entryType>Never</entryType>
+        <entryType>AfterCompletion</entryType>
         <object>UnifiedIndividual__dlm</object>
         <publishSegment>true</publishSegment>
         <schedule>
@@ -701,7 +567,7 @@
             <startDate>2026-10-15</startDate>
             <startTime>00:00:00.000Z</startTime>
         </schedule>
-        <segment>1sgcv0000001BhNAAU</segment>
+        <segment>1sgcv0000001DzJAAU</segment>
         <triggerType>Segment</triggerType>
     </start>
     <status>Draft</status>
@@ -726,7 +592,7 @@
         <waitEvents>
             <conditionLogic>and</conditionLogic>
             <connector>
-                <targetReference>Applicant_Rolling_Email_2</targetReference>
+                <targetReference>X1_Month</targetReference>
             </connector>
             <label>el_0</label>
             <offset>7</offset>

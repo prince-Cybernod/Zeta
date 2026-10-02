@@ -18494,6 +18494,10 @@
     </flowDefinitions>
     <flowDefinitions>
         <flows/>
+        <fullName>Account_Create_Create_Consent_Status_Opt_In</fullName>
+    </flowDefinitions>
+    <flowDefinitions>
+        <flows/>
         <fullName>Account_Needs_Geocoding_True</fullName>
     </flowDefinitions>
     <flowDefinitions>
@@ -18807,6 +18811,10 @@
     <flowDefinitions>
         <flows/>
         <fullName>Contact_Contact_Relationship_Auto_Create_Reciprocal</fullName>
+    </flowDefinitions>
+    <flowDefinitions>
+        <flows/>
+        <fullName>Contact_Create_Create_Email_Consent</fullName>
     </flowDefinitions>
     <flowDefinitions>
         <flows>
@@ -20969,6 +20977,10 @@
     </flowDefinitions>
     <flowDefinitions>
         <flows/>
+        <fullName>Lead_Create_Create_Email_Consent</fullName>
+    </flowDefinitions>
+    <flowDefinitions>
+        <flows/>
         <fullName>Lead_Create_Evaluate_Potential_Age_Restriction</fullName>
     </flowDefinitions>
     <flowDefinitions>
@@ -21009,6 +21021,10 @@
     <flowDefinitions>
         <flows/>
         <fullName>Lead_Update_Evaluate_Potential_Age_Restriction</fullName>
+    </flowDefinitions>
+    <flowDefinitions>
+        <flows/>
+        <fullName>Lead_Update_Supplemental_Conversion_Fields</fullName>
     </flowDefinitions>
     <flowDefinitions>
         <flows/>
@@ -21686,6 +21702,14 @@
     <flowDefinitions>
         <flows/>
         <fullName>School_Application_After_Save_Update_Related_ATE_Enrollment_Status_when_Declined</fullName>
+    </flowDefinitions>
+    <flowDefinitions>
+        <flows>
+            <customErrorMessages>
+                <developerName>Error</developerName>
+            </customErrorMessages>
+        </flows>
+        <fullName>School_Application_Before_Save_Lottery_Capacity_App_Timeline_validation</fullName>
     </flowDefinitions>
     <flowDefinitions>
         <flows/>

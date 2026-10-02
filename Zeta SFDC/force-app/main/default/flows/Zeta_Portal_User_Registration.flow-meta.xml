@@ -1087,14 +1087,14 @@
             <name>Email_Auth</name>
             <conditionLogic>and</conditionLogic>
             <conditions>
-                <leftValueReference>Get_Portal_User.HasUserVerifiedEmail</leftValueReference>
+                <leftValueReference>varPortalUser.HasUserVerifiedEmail</leftValueReference>
                 <operator>EqualTo</operator>
                 <rightValue>
                     <booleanValue>true</booleanValue>
                 </rightValue>
             </conditions>
             <conditions>
-                <leftValueReference>Get_Portal_User.HasUserVerifiedPhone</leftValueReference>
+                <leftValueReference>varPortalUser.HasUserVerifiedPhone</leftValueReference>
                 <operator>EqualTo</operator>
                 <rightValue>
                     <booleanValue>false</booleanValue>
@@ -1109,14 +1109,14 @@
             <name>Phone_Auth</name>
             <conditionLogic>and</conditionLogic>
             <conditions>
-                <leftValueReference>Get_Portal_User.HasUserVerifiedEmail</leftValueReference>
+                <leftValueReference>varPortalUser.HasUserVerifiedEmail</leftValueReference>
                 <operator>EqualTo</operator>
                 <rightValue>
                     <booleanValue>false</booleanValue>
                 </rightValue>
             </conditions>
             <conditions>
-                <leftValueReference>Get_Portal_User.HasUserVerifiedPhone</leftValueReference>
+                <leftValueReference>varPortalUser.HasUserVerifiedPhone</leftValueReference>
                 <operator>EqualTo</operator>
                 <rightValue>
                     <booleanValue>true</booleanValue>
@@ -1131,14 +1131,14 @@
             <name>Email_or_Phone</name>
             <conditionLogic>and</conditionLogic>
             <conditions>
-                <leftValueReference>Get_Portal_User.HasUserVerifiedEmail</leftValueReference>
+                <leftValueReference>varPortalUser.HasUserVerifiedEmail</leftValueReference>
                 <operator>EqualTo</operator>
                 <rightValue>
                     <booleanValue>true</booleanValue>
                 </rightValue>
             </conditions>
             <conditions>
-                <leftValueReference>Get_Portal_User.HasUserVerifiedPhone</leftValueReference>
+                <leftValueReference>varPortalUser.HasUserVerifiedPhone</leftValueReference>
                 <operator>EqualTo</operator>
                 <rightValue>
                     <booleanValue>true</booleanValue>

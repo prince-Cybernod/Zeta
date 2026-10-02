@@ -625,6 +625,14 @@
         <sourceFormula>Record_Type_Name__c</sourceFormula>
         <targetField>Contact_Home__dll.Record_Type_Name_c__c</targetField>
     </fieldSourceTargetMaps>
+    <fieldSourceTargetMaps>
+        <creationType>Custom</creationType>
+        <filterApplied>false</filterApplied>
+        <isSourceFormula>false</isSourceFormula>
+        <sourceField>Contact_Home.Applicant_Lifecycle_Status_c__c</sourceField>
+        <sourceFormula>Applicant_Lifecycle_Status__c</sourceFormula>
+        <targetField>Contact_Home__dll.Applicant_Lifecycle_Status_c__c</targetField>
+    </fieldSourceTargetMaps>
     <masterLabel>Contact_Home_map_Contact_Home_1762183346630</masterLabel>
     <sourceObjectName>Contact_Home</sourceObjectName>
     <targetObjectName>Contact_Home__dll</targetObjectName>
