@@ -45,6 +45,62 @@ private class UserService_T {
   }
 
   @IsTest
+  static void getUserUsesGuardianLanguagePreference() {
+    ParentRegistration_TSB tsb = ParentRegistration_TSB.getInstance();
+    update new Account(Id = tsb.getParentAccountId(), Language_Preference__pc = 'zh_CN');
+
+    User result = UserService.getUser(
+      TEST_EMAIL,
+      TEST_PHONE,
+      TEST_FIRST_NAME,
+      TEST_LAST_NAME,
+      TEST_IDENTIFIER,
+      tsb.getContactId()
+    );
+
+    Assert.areEqual(
+      'zh_CN',
+      result.LanguageLocaleKey,
+      'A guardian who already chose a language should get a login in that language'
+    );
+  }
+
+  @IsTest
+  static void getUserWithoutLanguagePreferenceUsesBrowsingLanguage() {
+    ParentRegistration_TSB tsb = ParentRegistration_TSB.getInstance();
+    update new Account(Id = tsb.getParentAccountId(), Language_Preference__pc = null);
+
+    User withContact = UserService.getUser(
+      TEST_EMAIL,
+      TEST_PHONE,
+      TEST_FIRST_NAME,
+      TEST_LAST_NAME,
+      TEST_IDENTIFIER,
+      tsb.getContactId()
+    );
+    User withoutContact = UserService.getUser(
+      TEST_EMAIL,
+      TEST_PHONE,
+      TEST_FIRST_NAME,
+      TEST_LAST_NAME,
+      TEST_IDENTIFIER,
+      null
+    );
+
+    Assert.areEqual(
+      UserInfo.getLanguage(),
+      withContact.LanguageLocaleKey,
+      'Without a saved preference the login should use the language the parent is browsing in'
+    );
+    Assert.areEqual(
+      UserInfo.getLanguage(),
+      withoutContact.LanguageLocaleKey,
+      'Without a contact the login should use the language the parent is browsing in'
+    );
+  }
+
+
+  @IsTest
   static void formatPhoneUsNumberFormatsCorrectly() {
     Assert.areEqual('+64 123456789', UserService.formatPhone('+64 123456789'));
     Assert.areEqual('+1 5551234567', UserService.formatPhone('5551234567'));

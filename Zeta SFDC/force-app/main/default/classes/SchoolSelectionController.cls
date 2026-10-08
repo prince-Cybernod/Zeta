@@ -164,8 +164,8 @@ public without sharing class SchoolSelectionController {
 
   @AuraEnabled
   public static void saveSchoolSelections(Id applicationId, String selectionsJson) {
-    Preconditions.checkNotNull(applicationId, 'Application Id is required');
-    Preconditions.checkNotBlank(selectionsJson, 'Selections JSON is required');
+    Preconditions.checkNotNull(applicationId, System.Label.AppUI_ApplicationIdRequired);
+    Preconditions.checkNotBlank(selectionsJson, System.Label.AppUI_SelectionsJsonRequired);
 
     List<Object> selections = (List<Object>) JSON.deserializeUntyped(selectionsJson);
 
@@ -195,9 +195,7 @@ public without sharing class SchoolSelectionController {
       );
       for (Lottery_Capacity__c cap : capacities) {
         if (cap.Grade__c != applicationGrade) {
-          throw new AuraHandledException(
-            'Selected schools don\'t match your current grade. Please re-select.'
-          );
+          throw new AuraHandledException(System.Label.AppUI_SchoolsDoNotMatchGrade);
         }
       }
     }

@@ -1,4 +1,6 @@
 import { LightningElement, api } from 'lwc';
+import labelNo from '@salesforce/label/c.AppUI_No';
+import labelYes from '@salesforce/label/c.AppUI_Yes';
 
 const PICKLIST_INPUT_TYPES = new Set(['Dropdown', 'MultiCheckbox']);
 const MULTI_VALUE_DELIMITER = ';';
@@ -25,7 +27,7 @@ export default class QuestionReadOnly extends LightningElement {
   }
 
   get displayValue() {
-    return this.displayChecked ? 'Yes' : 'No';
+    return this.displayChecked ? labelYes : labelNo;
   }
 
   get isPicklist() {

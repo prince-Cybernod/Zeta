@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <label><!-- Gender --></label>
+    <name>Gender__c</name>
+    <picklistValues>
+        <masterLabel>Male</masterLabel>
+        <translation>Masculino</translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Female</masterLabel>
+        <translation>Femenino</translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Non-binary</masterLabel>
+        <translation>No binario</translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Prefer not to answer</masterLabel>
+        <translation>Prefiero no responder</translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>F</masterLabel>
+        <translation>F</translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>M</masterLabel>
+        <translation>M</translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Prefer Not to Say</masterLabel>
+        <translation>Prefiero no decirlo</translation>
+    </picklistValues>
+</CustomFieldTranslation>

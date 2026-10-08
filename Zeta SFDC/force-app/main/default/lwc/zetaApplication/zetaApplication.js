@@ -1,58 +1,58 @@
-import { LightningElement, api, wire } from 'lwc';
-import { CurrentPageReference } from 'lightning/navigation';
-import getApplicationFormBundle from '@salesforce/apex/ApplicationQuestionController.getApplicationFormBundle';
-import getReviewBundle from '@salesforce/apex/ApplicationReviewController.getReviewBundle';
-import getEligibleSchools from '@salesforce/apex/SchoolSelectionController.getEligibleSchools';
-import syncEmployeePriority from '@salesforce/apex/SiblingSectionController.syncEmployeePriority';
-import checkDuplicateApplication from '@salesforce/apex/ZetaApplicationController.checkDuplicateApplication';
-import checkDuplicateBeforeCreate from '@salesforce/apex/ZetaApplicationController.checkDuplicateBeforeCreate';
-import checkEnrollmentStatus from '@salesforce/apex/ZetaApplicationController.checkEnrollmentStatus';
-import createApplication from '@salesforce/apex/ZetaApplicationController.createApplication';
-import findDraftApplication from '@salesforce/apex/ZetaApplicationController.findDraftApplication';
-import getTimelineLandingContent from '@salesforce/apex/ZetaApplicationController.getTimelineLandingContent';
-import getWizardState from '@salesforce/apex/ZetaApplicationController.getWizardState';
-import submitApplication from '@salesforce/apex/ZetaApplicationController.submitApplication';
-import updateWizardStep from '@salesforce/apex/ZetaApplicationController.updateWizardStep';
-import labelAllChangesSaved from '@salesforce/label/c.AppUI_AllChangesSaved';
-import labelApplicationsClosed from '@salesforce/label/c.AppUI_ApplicationsClosed';
-import labelApplyingFor from '@salesforce/label/c.AppUI_ApplyingFor';
-import labelAppSubmittedFor from '@salesforce/label/c.AppUI_AppSubmittedFor';
-import labelAriaAppProgress from '@salesforce/label/c.AppUI_AriaAppProgress';
-import labelAriaLoadingApp from '@salesforce/label/c.AppUI_AriaLoadingApp';
-import labelAriaLoadingNextStep from '@salesforce/label/c.AppUI_AriaLoadingNextStep';
-import labelAriaSubmittingApp from '@salesforce/label/c.AppUI_AriaSubmittingApp';
-import labelBack from '@salesforce/label/c.AppUI_Back';
-import labelCancelReturnToReview from '@salesforce/label/c.AppUI_CancelReturnToReview';
-import labelComingSoon from '@salesforce/label/c.AppUI_ComingSoon';
-import labelContinue from '@salesforce/label/c.AppUI_Continue';
-import labelDuplicateApplication from '@salesforce/label/c.AppUI_DuplicateApplication';
-import labelExistingAppDesc from '@salesforce/label/c.AppUI_ExistingAppDesc';
-import labelExistingAppFound from '@salesforce/label/c.AppUI_ExistingAppFound';
-import labelGoBack from '@salesforce/label/c.AppUI_GoBack';
-import labelResume from '@salesforce/label/c.AppUI_Resume';
-import labelReturnHome from '@salesforce/label/c.AppUI_ReturnHome';
-import labelSaveAndExit from '@salesforce/label/c.AppUI_SaveAndExit';
-import labelSaveAndReturnToReview from '@salesforce/label/c.AppUI_SaveAndReturnToReview';
-import labelSaveFailed from '@salesforce/label/c.AppUI_SaveFailed';
-import labelSaveFailedRetry from '@salesforce/label/c.AppUI_SaveFailedRetry';
-import labelSaveSignatureFailed from '@salesforce/label/c.AppUI_SaveSignatureFailed';
-import labelSaving from '@salesforce/label/c.AppUI_Saving';
-import labelStartNew from '@salesforce/label/c.AppUI_StartNew';
-import labelStepChooseSchools from '@salesforce/label/c.AppUI_StepChooseSchools';
-import labelStepConfirmSubmit from '@salesforce/label/c.AppUI_StepConfirmSubmit';
-import labelStepFillApplication from '@salesforce/label/c.AppUI_StepFillApplication';
-import labelStepOf from '@salesforce/label/c.AppUI_StepOf';
-import labelStepRankSchools from '@salesforce/label/c.AppUI_StepRankSchools';
-import labelStepStudentInfo from '@salesforce/label/c.AppUI_StepStudentInfo';
-import labelSubmit from '@salesforce/label/c.AppUI_Submit';
-import labelSubmitAppDesc from '@salesforce/label/c.AppUI_SubmitAppDesc';
-import labelSubmitAppQuestion from '@salesforce/label/c.AppUI_SubmitAppQuestion';
-import labelSubmitFailed from '@salesforce/label/c.AppUI_SubmitFailed';
-import labelSubmittedMessage from '@salesforce/label/c.AppUI_SubmittedMessage';
-import labelSubmittedTitle from '@salesforce/label/c.AppUI_SubmittedTitle';
-import labelSubmitting from '@salesforce/label/c.AppUI_Submitting';
-import labelUnsavedChanges from '@salesforce/label/c.AppUI_UnsavedChanges';
-import labelZetaCharterSchools from '@salesforce/label/c.AppUI_ZetaCharterSchools';
+import { LightningElement, api, wire } from "lwc";
+import { CurrentPageReference } from "lightning/navigation";
+import getApplicationFormBundle from "@salesforce/apex/ApplicationQuestionController.getApplicationFormBundle";
+import getReviewBundle from "@salesforce/apex/ApplicationReviewController.getReviewBundle";
+import getEligibleSchools from "@salesforce/apex/SchoolSelectionController.getEligibleSchools";
+import syncEmployeePriority from "@salesforce/apex/SiblingSectionController.syncEmployeePriority";
+import checkDuplicateApplication from "@salesforce/apex/ZetaApplicationController.checkDuplicateApplication";
+import checkDuplicateBeforeCreate from "@salesforce/apex/ZetaApplicationController.checkDuplicateBeforeCreate";
+import checkEnrollmentStatus from "@salesforce/apex/ZetaApplicationController.checkEnrollmentStatus";
+import createApplication from "@salesforce/apex/ZetaApplicationController.createApplication";
+import findDraftApplication from "@salesforce/apex/ZetaApplicationController.findDraftApplication";
+import getTimelineLandingContent from "@salesforce/apex/ZetaApplicationController.getTimelineLandingContent";
+import getWizardState from "@salesforce/apex/ZetaApplicationController.getWizardState";
+import submitApplication from "@salesforce/apex/ZetaApplicationController.submitApplication";
+import updateWizardStep from "@salesforce/apex/ZetaApplicationController.updateWizardStep";
+import labelAllChangesSaved from "@salesforce/label/c.AppUI_AllChangesSaved";
+import labelApplicationsClosed from "@salesforce/label/c.AppUI_ApplicationsClosed";
+import labelApplyingFor from "@salesforce/label/c.AppUI_ApplyingFor";
+import labelAppSubmittedFor from "@salesforce/label/c.AppUI_AppSubmittedFor";
+import labelAriaAppProgress from "@salesforce/label/c.AppUI_AriaAppProgress";
+import labelAriaLoadingApp from "@salesforce/label/c.AppUI_AriaLoadingApp";
+import labelAriaLoadingNextStep from "@salesforce/label/c.AppUI_AriaLoadingNextStep";
+import labelAriaSubmittingApp from "@salesforce/label/c.AppUI_AriaSubmittingApp";
+import labelBack from "@salesforce/label/c.AppUI_Back";
+import labelCancelReturnToReview from "@salesforce/label/c.AppUI_CancelReturnToReview";
+import labelComingSoon from "@salesforce/label/c.AppUI_ComingSoon";
+import labelContinue from "@salesforce/label/c.AppUI_Continue";
+import labelDuplicateApplication from "@salesforce/label/c.AppUI_DuplicateApplication";
+import labelExistingAppDesc from "@salesforce/label/c.AppUI_ExistingAppDesc";
+import labelExistingAppFound from "@salesforce/label/c.AppUI_ExistingAppFound";
+import labelGoBack from "@salesforce/label/c.AppUI_GoBack";
+import labelResume from "@salesforce/label/c.AppUI_Resume";
+import labelReturnHome from "@salesforce/label/c.AppUI_ReturnHome";
+import labelSaveAndExit from "@salesforce/label/c.AppUI_SaveAndExit";
+import labelSaveAndReturnToReview from "@salesforce/label/c.AppUI_SaveAndReturnToReview";
+import labelSaveFailed from "@salesforce/label/c.AppUI_SaveFailed";
+import labelSaveFailedRetry from "@salesforce/label/c.AppUI_SaveFailedRetry";
+import labelSaveSignatureFailed from "@salesforce/label/c.AppUI_SaveSignatureFailed";
+import labelSaving from "@salesforce/label/c.AppUI_Saving";
+import labelStartNew from "@salesforce/label/c.AppUI_StartNew";
+import labelStepChooseSchools from "@salesforce/label/c.AppUI_StepChooseSchools";
+import labelStepConfirmSubmit from "@salesforce/label/c.AppUI_StepConfirmSubmit";
+import labelStepFillApplication from "@salesforce/label/c.AppUI_StepFillApplication";
+import labelStepOf from "@salesforce/label/c.AppUI_StepOf";
+import labelStepRankSchools from "@salesforce/label/c.AppUI_StepRankSchools";
+import labelStepStudentInfo from "@salesforce/label/c.AppUI_StepStudentInfo";
+import labelSubmit from "@salesforce/label/c.AppUI_Submit";
+import labelSubmitAppDesc from "@salesforce/label/c.AppUI_SubmitAppDesc";
+import labelSubmitAppQuestion from "@salesforce/label/c.AppUI_SubmitAppQuestion";
+import labelSubmitFailed from "@salesforce/label/c.AppUI_SubmitFailed";
+import labelSubmittedMessage from "@salesforce/label/c.AppUI_SubmittedMessage";
+import labelSubmittedTitle from "@salesforce/label/c.AppUI_SubmittedTitle";
+import labelSubmitting from "@salesforce/label/c.AppUI_Submitting";
+import labelUnsavedChanges from "@salesforce/label/c.AppUI_UnsavedChanges";
+import labelZetaCharterSchools from "@salesforce/label/c.AppUI_ZetaCharterSchools";
 
 const TOTAL_STEPS = 5;
 // Section scope for the embedded create-screen address widget. Must mirror
@@ -60,7 +60,7 @@ const TOTAL_STEPS = 5;
 // exactly so the prefetch warms the SAME LDS cache key the embedded form's @wire
 // resolves against.
 const CREATE_SCREEN_ADDRESS_SECTIONS =
-  'Address,Guardian_1_Address,Student_Living_Status';
+  "Address,Guardian_1_Address,Student_Living_Status";
 const STEP_LABELS = [
   labelStepStudentInfo,
   labelStepChooseSchools,
@@ -71,18 +71,28 @@ const STEP_LABELS = [
 // Page reference types only Lightning Experience produces. Aura communities
 // also report standard__namedPage, so these are the unambiguous internal ones.
 const INTERNAL_PAGE_TYPES = new Set([
-  'standard__navItemPage',
-  'standard__recordPage',
-  'standard__app'
+  "standard__navItemPage",
+  "standard__recordPage",
+  "standard__app"
 ]);
-const PORTAL_EXIT_URL = '/s/';
+// The portal lives under the site's base path ('/parents/s/'), derived here
+// from the current URL. Deliberately not @salesforce/community/basePath: that
+// module can only load inside Experience Builder sites, and importing it would
+// make this bundle unconstructable on the internal Lightning pages it also
+// serves (see the note in studentSelection.js).
+const PORTAL_EXIT_FALLBACK_URL = "/parents/s/";
+function portalExitUrl() {
+  const path = window.location.pathname;
+  const marker = path.indexOf("/s/");
+  return marker === -1 ? PORTAL_EXIT_FALLBACK_URL : path.slice(0, marker + 3);
+}
 
 export default class ZetaApplication extends LightningElement {
   @api recordId;
   @api variant;
-  @api pageDevName = 'Application_Details';
+  @api pageDevName = "Application_Details";
   @api timelineId;
-  @api timelineName = '';
+  @api timelineName = "";
   @api forceNew = false;
   @api contactSupportUrl;
 
@@ -94,7 +104,7 @@ export default class ZetaApplication extends LightningElement {
   @api staticHeader = false;
 
   currentStep = 1;
-  saveStatus = 'saved';
+  saveStatus = "saved";
   isLoading = true;
   enrollmentClosed = false;
   landingContent = null;
@@ -102,10 +112,10 @@ export default class ZetaApplication extends LightningElement {
   justSubmitted = false;
   postSubmitMode = false;
   timelineClosed = false;
-  _applicationStatus = '';
+  _applicationStatus = "";
   isSubmitting = false;
-  applicationName = '';
-  submitError = '';
+  applicationName = "";
+  submitError = "";
   siblingAttendingToggle = false;
   // The "Siblings Also Applying" list is always shown — applying siblings are
   // detected server-side, not via a manual checkbox. (No longer driven by the
@@ -129,10 +139,10 @@ export default class ZetaApplication extends LightningElement {
   _step2Complete = false;
   _step2SelectedCount = 0;
   _step3Complete = false;
-  _studentName = '';
+  _studentName = "";
   maxCompletedStep = 0;
   isTransitioning = false;
-  transitionError = '';
+  transitionError = "";
   showSubmitConfirm = false;
   showDraftChoice = false;
   _draftApplicationId = null;
@@ -217,17 +227,17 @@ export default class ZetaApplication extends LightningElement {
     if (prevStep !== null && prevStep !== this.currentStep) {
       requestAnimationFrame(() => {
         this.template.host.scrollIntoView({
-          behavior: 'instant',
-          block: 'start'
+          behavior: "instant",
+          block: "start"
         });
       });
     }
 
     if (this.currentStep === 5 && !wasStep5) {
-      const review = this.template.querySelector('c-confirmation-review');
+      const review = this.template.querySelector("c-confirmation-review");
       if (review) {
         Promise.resolve(review.refresh()).catch((err) => {
-          console.error('Failed to refresh review on step 5 entry:', err);
+          console.error("Failed to refresh review on step 5 entry:", err);
         });
       }
     }
@@ -251,7 +261,7 @@ export default class ZetaApplication extends LightningElement {
             this.landingContent = content;
           }
         } catch (err) {
-          console.error('Failed to load timeline landing content:', err);
+          console.error("Failed to load timeline landing content:", err);
         }
       }
 
@@ -267,7 +277,7 @@ export default class ZetaApplication extends LightningElement {
         this.showDraftChoice = true;
       }
     } catch (err) {
-      console.error('Failed to find draft application:', err);
+      console.error("Failed to find draft application:", err);
     } finally {
       this.isLoading = false;
     }
@@ -280,7 +290,7 @@ export default class ZetaApplication extends LightningElement {
     this.isLoading = true;
     this._resumeWizardState()
       .catch((err) => {
-        console.error('Failed to resume draft:', err);
+        console.error("Failed to resume draft:", err);
         this._resolvedRecordId = undefined;
         this._clearUrlApplicationId();
         this.currentStep = 1;
@@ -313,7 +323,7 @@ export default class ZetaApplication extends LightningElement {
 
       await this._resumeWizardState();
     } catch (err) {
-      console.error('Failed to load wizard state:', err);
+      console.error("Failed to load wizard state:", err);
       this._resolvedRecordId = undefined;
       this._clearUrlApplicationId();
       this.currentStep = 1;
@@ -327,8 +337,8 @@ export default class ZetaApplication extends LightningElement {
       applicationId: this._resolvedRecordId
     });
 
-    this._applicationStatus = state.status || '';
-    const isWithdrawn = this._applicationStatus === 'Withdrawn/Declined';
+    this._applicationStatus = state.status || "";
+    const isWithdrawn = this._applicationStatus === "Withdrawn/Declined";
 
     if (state.studentName) {
       this._studentName = state.studentName;
@@ -346,7 +356,7 @@ export default class ZetaApplication extends LightningElement {
       this.isSubmitted = state.isSubmitted === true;
       this.postSubmitMode = true;
       this.timelineClosed = state.timelineClosed === true;
-      this.applicationName = state.applicationName || '';
+      this.applicationName = state.applicationName || "";
       this.currentStep = TOTAL_STEPS;
       this.maxCompletedStep = TOTAL_STEPS;
       this._step1Committed = true;
@@ -370,11 +380,11 @@ export default class ZetaApplication extends LightningElement {
   // internal keeps the portal behaviour.
   get exitUrl() {
     if (!INTERNAL_PAGE_TYPES.has(this._pageRefType)) {
-      return PORTAL_EXIT_URL;
+      return portalExitUrl();
     }
     return this.resolvedRecordId
       ? `/lightning/r/IndividualApplication/${this.resolvedRecordId}/view`
-      : '/lightning/page/home';
+      : "/lightning/page/home";
   }
 
   get applicationStatus() {
@@ -386,38 +396,38 @@ export default class ZetaApplication extends LightningElement {
       const number = i + 1;
       let status;
       if (this.isSubmitted) {
-        status = 'complete';
+        status = "complete";
       } else if (number < this.currentStep) {
-        status = 'complete';
+        status = "complete";
       } else if (number === this.currentStep) {
-        status = 'active';
+        status = "active";
       } else {
-        status = 'future';
+        status = "future";
       }
       return {
         number,
         label,
         status,
-        isComplete: status === 'complete',
-        isActive: status === 'active',
-        isFuture: status === 'future',
-        stepItemClass: `step-item${number > this.maxCompletedStep && number !== this.currentStep ? ' step-item--future' : ' step-item--clickable'}`,
+        isComplete: status === "complete",
+        isActive: status === "active",
+        isFuture: status === "future",
+        stepItemClass: `step-item${number > this.maxCompletedStep && number !== this.currentStep ? " step-item--future" : " step-item--clickable"}`,
         circleClass: `step-circle step-circle--${status}`,
         labelClass: `step-label step-label--${status}`,
         connectorClass:
           i < TOTAL_STEPS - 1
-            ? `step-connector step-connector--${number < this.currentStep ? 'complete' : number === this.currentStep ? 'active' : 'future'}`
-            : '',
+            ? `step-connector step-connector--${number < this.currentStep ? "complete" : number === this.currentStep ? "active" : "future"}`
+            : "",
         showConnector: i < TOTAL_STEPS - 1,
-        ariaCurrent: status === 'active' ? 'step' : null
+        ariaCurrent: status === "active" ? "step" : null
       };
     });
   }
 
   get stepCounterText() {
     return labelStepOf
-      .replace('{0}', this.currentStep)
-      .replace('{1}', TOTAL_STEPS);
+      .replace("{0}", this.currentStep)
+      .replace("{1}", TOTAL_STEPS);
   }
 
   get _stepReady() {
@@ -467,7 +477,7 @@ export default class ZetaApplication extends LightningElement {
   }
 
   get currentStepLabel() {
-    return STEP_LABELS[this.currentStep - 1] || '';
+    return STEP_LABELS[this.currentStep - 1] || "";
   }
 
   get showBackButton() {
@@ -496,8 +506,8 @@ export default class ZetaApplication extends LightningElement {
 
   get headerClass() {
     return this.staticHeader
-      ? 'zeta-header zeta-header--static'
-      : 'zeta-header';
+      ? "zeta-header zeta-header--static"
+      : "zeta-header";
   }
 
   get saveStatusDotClass() {
@@ -511,7 +521,7 @@ export default class ZetaApplication extends LightningElement {
       unsaved: labelUnsavedChanges,
       failed: labelSaveFailed
     };
-    return tooltips[this.saveStatus] || '';
+    return tooltips[this.saveStatus] || "";
   }
 
   get hasRecordId() {
@@ -527,7 +537,7 @@ export default class ZetaApplication extends LightningElement {
   }
 
   get studentHeaderText() {
-    let text = labelApplyingFor.replace('{0}', this._studentName);
+    let text = labelApplyingFor.replace("{0}", this._studentName);
     if (this.timelineName) {
       text += ` \u2022 ${this.timelineName}`;
     }
@@ -536,13 +546,13 @@ export default class ZetaApplication extends LightningElement {
 
   get submittedDisplayMessage() {
     if (this._studentName) {
-      return labelAppSubmittedFor.replace('{0}', this._studentName);
+      return labelAppSubmittedFor.replace("{0}", this._studentName);
     }
     return this.labels.submittedMessage;
   }
 
   handleReturnHome() {
-    this.dispatchEvent(new CustomEvent('returntodashboard'));
+    this.dispatchEvent(new CustomEvent("returntodashboard"));
   }
 
   handleStepClick(event) {
@@ -571,7 +581,7 @@ export default class ZetaApplication extends LightningElement {
 
   handleControllingReset(event) {
     const { developerName, value } = event.detail;
-    const formPage = this.template.querySelector('c-application-form-page');
+    const formPage = this.template.querySelector("c-application-form-page");
     if (formPage) {
       formPage.updateAnswer(developerName, value);
     }
@@ -595,7 +605,7 @@ export default class ZetaApplication extends LightningElement {
     // Switching to a different student clears any stale duplicate banner so it
     // is re-evaluated below for the newly selected student.
     if (studentChanged) {
-      this.transitionError = '';
+      this.transitionError = "";
       this._step1Duplicate = false;
     }
 
@@ -617,10 +627,10 @@ export default class ZetaApplication extends LightningElement {
         }
         await this._createApplicationFromStep1();
         await Promise.resolve();
-        const el = this.template.querySelector('c-student-selection');
+        const el = this.template.querySelector("c-student-selection");
         if (el) await el.flushAndSave();
       } catch (err) {
-        console.error('Failed to create application early:', err);
+        console.error("Failed to create application early:", err);
       }
     }
   }
@@ -639,7 +649,7 @@ export default class ZetaApplication extends LightningElement {
   }
 
   async handleNext() {
-    this.transitionError = '';
+    this.transitionError = "";
 
     // Hard backstop for duplicate students: never advance past step 1 when the
     // selected student already has a submitted application for this timeline.
@@ -652,7 +662,7 @@ export default class ZetaApplication extends LightningElement {
     }
 
     if (this.currentStep === 5) {
-      const eSignature = this.template.querySelector('c-e-signature');
+      const eSignature = this.template.querySelector("c-e-signature");
       if (eSignature && !eSignature.validate()) {
         return;
       }
@@ -710,7 +720,7 @@ export default class ZetaApplication extends LightningElement {
   async handleConfirmSubmit() {
     this.isSubmitting = true;
     this.showSubmitConfirm = false;
-    const eSignature = this.template.querySelector('c-e-signature');
+    const eSignature = this.template.querySelector("c-e-signature");
     if (eSignature) {
       try {
         await eSignature.flushAndSave();
@@ -726,19 +736,19 @@ export default class ZetaApplication extends LightningElement {
 
   _validateCurrentStep() {
     if (this.currentStep === 1) {
-      const el = this.template.querySelector('c-student-selection');
+      const el = this.template.querySelector("c-student-selection");
       return !el || el.validate();
     }
     if (this.currentStep === 2) {
-      const el = this.template.querySelector('c-school-selection');
+      const el = this.template.querySelector("c-school-selection");
       return !el || el.validate();
     }
     if (this.currentStep === 3) {
-      const el = this.template.querySelector('c-school-ranking');
+      const el = this.template.querySelector("c-school-ranking");
       return !el || el.validate();
     }
     if (this.currentStep === 4) {
-      const el = this.template.querySelector('c-application-form-page');
+      const el = this.template.querySelector("c-application-form-page");
       return !el || el.validateForm();
     }
     return true;
@@ -758,17 +768,17 @@ export default class ZetaApplication extends LightningElement {
         }
         await this._createApplicationFromStep1();
       } else {
-        const el = this.template.querySelector('c-student-selection');
+        const el = this.template.querySelector("c-student-selection");
         if (el) await el.flushAndSave();
       }
     } else if (this.currentStep === 2) {
-      const el = this.template.querySelector('c-school-selection');
+      const el = this.template.querySelector("c-school-selection");
       if (el) await el.flushAndSave();
     } else if (this.currentStep === 3) {
-      const el = this.template.querySelector('c-school-ranking');
+      const el = this.template.querySelector("c-school-ranking");
       if (el) await el.flushAndSave();
     } else if (this.currentStep === 4) {
-      const el = this.template.querySelector('c-application-form-page');
+      const el = this.template.querySelector("c-application-form-page");
       if (el) await el.flushAndSave();
       await this._flushStep4();
     }
@@ -788,10 +798,10 @@ export default class ZetaApplication extends LightningElement {
   }
 
   async handleSaveAndReturnToReview() {
-    this.transitionError = '';
+    this.transitionError = "";
     this.isTransitioning = true;
     try {
-      const el = this.template.querySelector('c-school-ranking');
+      const el = this.template.querySelector("c-school-ranking");
       if (el && el.validate()) {
         await el.flushAndSave();
         this.currentStep = 5;
@@ -814,7 +824,7 @@ export default class ZetaApplication extends LightningElement {
         await this._createApplicationFromStep1();
       } else {
         const studentSelection = this.template.querySelector(
-          'c-student-selection'
+          "c-student-selection"
         );
         if (studentSelection) {
           await studentSelection.flushAndSave();
@@ -823,21 +833,21 @@ export default class ZetaApplication extends LightningElement {
     }
 
     if (this.currentStep === 2) {
-      const schoolSelection = this.template.querySelector('c-school-selection');
+      const schoolSelection = this.template.querySelector("c-school-selection");
       if (schoolSelection) {
         await schoolSelection.flushAndSave();
       }
     }
 
     if (this.currentStep === 3) {
-      const schoolRanking = this.template.querySelector('c-school-ranking');
+      const schoolRanking = this.template.querySelector("c-school-ranking");
       if (schoolRanking) {
         await schoolRanking.flushAndSave();
       }
     }
 
     if (this.currentStep === 4) {
-      const formPage = this.template.querySelector('c-application-form-page');
+      const formPage = this.template.querySelector("c-application-form-page");
       if (formPage) {
         await formPage.flushAndSave();
       }
@@ -851,14 +861,14 @@ export default class ZetaApplication extends LightningElement {
     if (!this.resolvedRecordId) {
       return;
     }
-    const siblingSection = this.template.querySelector('c-sibling-section');
+    const siblingSection = this.template.querySelector("c-sibling-section");
     if (siblingSection) {
       await siblingSection.flushAndSave();
     }
     try {
       await syncEmployeePriority({ applicationId: this.resolvedRecordId });
     } catch (err) {
-      console.error('Failed to sync employee priority:', err);
+      console.error("Failed to sync employee priority:", err);
     }
   }
 
@@ -891,14 +901,14 @@ export default class ZetaApplication extends LightningElement {
       // a cold server round-trip — collapsing the create -> address-load waterfall.
       getApplicationFormBundle({
         recordId: result.applicationId,
-        pageDevName: 'Application_Details',
+        pageDevName: "Application_Details",
         variant: null,
         includeSectionDevNames: CREATE_SCREEN_ADDRESS_SECTIONS
       }).catch(() => {});
       return true;
     } catch (err) {
       console.error(
-        'Failed to create application:',
+        "Failed to create application:",
         err?.body?.message || err?.message || JSON.stringify(err)
       );
       return false;
@@ -907,14 +917,14 @@ export default class ZetaApplication extends LightningElement {
 
   _updateUrlWithApplicationId(applicationId) {
     const url = new URL(window.location.href);
-    url.searchParams.set('applicationId', applicationId);
-    window.history.replaceState(null, '', url.toString());
+    url.searchParams.set("applicationId", applicationId);
+    window.history.replaceState(null, "", url.toString());
   }
 
   _clearUrlApplicationId() {
     const url = new URL(window.location.href);
-    url.searchParams.delete('applicationId');
-    window.history.replaceState(null, '', url.toString());
+    url.searchParams.delete("applicationId");
+    window.history.replaceState(null, "", url.toString());
   }
 
   async _submitApplication() {
@@ -922,7 +932,7 @@ export default class ZetaApplication extends LightningElement {
       return;
     }
     this.isSubmitting = true;
-    this.submitError = '';
+    this.submitError = "";
     try {
       const dupCheck = await checkDuplicateApplication({
         applicationId: this.resolvedRecordId
@@ -936,12 +946,12 @@ export default class ZetaApplication extends LightningElement {
       const result = await submitApplication({
         applicationId: this.resolvedRecordId
       });
-      this.applicationName = result.applicationName || '';
+      this.applicationName = result.applicationName || "";
       this.isSubmitted = true;
       this.justSubmitted = true;
     } catch (err) {
       this.submitError = err.body?.message || err.message || labelSubmitFailed;
-      console.error('Failed to submit application:', err);
+      console.error("Failed to submit application:", err);
     } finally {
       this.isSubmitting = false;
     }
@@ -1006,7 +1016,7 @@ export default class ZetaApplication extends LightningElement {
         step: this.currentStep - 1
       });
     } catch (err) {
-      console.error('Failed to update wizard step:', err);
+      console.error("Failed to update wizard step:", err);
     }
   }
 }

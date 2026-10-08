@@ -1,11 +1,14 @@
 import { LightningElement, api } from 'lwc';
 import getAddressQuestionValues from '@salesforce/apex/ApplicationQuestionController.getAddressQuestionValues';
 import saveAddressQuestion from '@salesforce/apex/ApplicationQuestionController.saveAddressQuestion';
+import labelUnitedStates from '@salesforce/label/c.AppUI_CountryUnitedStates';
 import labelApartment from '@salesforce/label/c.AppUI_FieldApartment';
 import labelCity from '@salesforce/label/c.AppUI_FieldCity';
+import labelCountry from '@salesforce/label/c.AppUI_FieldCountry';
 import labelState from '@salesforce/label/c.AppUI_FieldState';
 import labelStreet from '@salesforce/label/c.AppUI_FieldStreet';
 import labelZipCode from '@salesforce/label/c.AppUI_FieldZipCode';
+import labelSearchAddress from '@salesforce/label/c.AppUI_SearchAddress';
 
 const SLOT_KEYS = [
   'street',
@@ -74,7 +77,7 @@ const US_STATE_OPTIONS = [
   'DC'
 ].map((code) => ({ label: code, value: code }));
 
-const COUNTRY_OPTIONS = [{ label: 'United States', value: 'US' }];
+const COUNTRY_OPTIONS = [{ label: labelUnitedStates, value: 'US' }];
 
 export default class QuestionAddress extends LightningElement {
   @api question;
@@ -169,7 +172,7 @@ export default class QuestionAddress extends LightningElement {
   }
 
   get countryLabel() {
-    return 'Country';
+    return labelCountry;
   }
 
   get apartmentLabel() {
@@ -192,7 +195,7 @@ export default class QuestionAddress extends LightningElement {
   }
 
   get lookupPlaceholder() {
-    return 'Search address';
+    return labelSearchAddress;
   }
 
   get stateOptions() {

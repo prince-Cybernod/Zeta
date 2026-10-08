@@ -1837,7 +1837,7 @@ Created By: Elevation Solutions</description>
         </connector>
         <fields>
             <name>dt_instructions</name>
-            <fieldText>&lt;p&gt;&lt;span style=&quot;background-color: rgb(255, 255, 255);&quot;&gt;Please complete the information below to create a user in the Zeta Parent Portal.&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;Already have an account? &lt;a href=&quot;https://myportal.zetaschools.org/login&quot; rel=&quot;noopener noreferrer&quot; target=&quot;_blank&quot; style=&quot;color: rgb(3, 7, 244);&quot;&gt;&lt;strong&gt;Sign in here.&lt;/strong&gt;&lt;/a&gt;&lt;/p&gt;</fieldText>
+            <fieldText>&lt;p&gt;&lt;span style=&quot;background-color: rgb(255, 255, 255);&quot;&gt;Please complete the information below to create a user in the Zeta Parent Portal.&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;Already have an account? &lt;a href=&quot;{!fx_PortalLoginURL}&quot; rel=&quot;noopener noreferrer&quot; target=&quot;_blank&quot; style=&quot;color: rgb(3, 7, 244);&quot;&gt;&lt;strong&gt;Sign in here.&lt;/strong&gt;&lt;/a&gt;&lt;/p&gt;</fieldText>
             <fieldType>DisplayText</fieldType>
             <styleProperties>
                 <verticalAlignment>
@@ -2052,6 +2052,12 @@ Created By: Elevation Solutions</description>
                     <name>screen_Phone</name>
                     <extensionName>flowruntime:phone</extensionName>
                     <fieldType>ComponentInstance</fieldType>
+                    <inputParameters>
+                        <name>label</name>
+                        <value>
+                            <stringValue>Phone</stringValue>
+                        </value>
+                    </inputParameters>
                     <inputParameters>
                         <name>required</name>
                         <value>

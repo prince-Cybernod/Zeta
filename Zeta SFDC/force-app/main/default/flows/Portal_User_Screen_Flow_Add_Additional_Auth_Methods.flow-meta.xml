@@ -153,7 +153,7 @@ Created by: Elevation Solutions</description>
     <formulas>
         <name>fx_authmeth</name>
         <dataType>String</dataType>
-        <expression>IF({!Email}, &apos;Email&apos;, IF({!SMS}, &apos;text message&apos;, &apos;&apos;))</expression>
+        <expression>IF({!Email}, {!$Label.AppUI_AuthMethodEmail}, IF({!SMS}, {!$Label.AppUI_AuthMethodTextMessage}, &apos;&apos;))</expression>
     </formulas>
     <formulas>
         <name>fx_UserEmailContainsInvalid</name>

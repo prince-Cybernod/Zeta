@@ -3,7 +3,7 @@ public without sharing class ZetaApplicationController {
   private static DatabaseRepo databaseRepo = new SystemModeDatabaseRepo();
   @TestVisible
   private static EventBusRepo eventBusRepo = new EventBusRepoImpl();
-  @AuraEnabled(cacheable=true)
+  @AuraEnabled
   public static Map<String, Object> getWizardState(Id applicationId) {
     Preconditions.checkNotNull(applicationId, 'Application Id is required');
 
@@ -11,7 +11,8 @@ public without sharing class ZetaApplicationController {
       'SELECT Last_Completed_Step__c, Status, Name, AppliedDate, Account.Name,' +
       ' Application_Timeline__r.ApplicationCloseDate,' +
       ' Application_Timeline__r.Landing_Content_en__c,' +
-      ' Application_Timeline__r.Landing_Content_es__c' +
+      ' Application_Timeline__r.Landing_Content_es__c,' +
+      ' Application_Timeline__r.Landing_Content_zh_CN__c' +
       ' FROM IndividualApplication WHERE Id = :applicationId LIMIT 1';
     List<IndividualApplication> apps = (List<IndividualApplication>) databaseRepo.queryWithBinds(
       query,
@@ -42,8 +43,10 @@ public without sharing class ZetaApplicationController {
       result.put(
         'landingContent',
         selectLandingContent(
+          UserInfo.getLanguage(),
           apps[0].Application_Timeline__r.Landing_Content_en__c,
-          apps[0].Application_Timeline__r.Landing_Content_es__c
+          apps[0].Application_Timeline__r.Landing_Content_es__c,
+          apps[0].Application_Timeline__r.Landing_Content_zh_CN__c
         )
       );
     }
@@ -56,7 +59,7 @@ public without sharing class ZetaApplicationController {
       return null;
     }
     String query =
-      'SELECT Landing_Content_en__c, Landing_Content_es__c' +
+      'SELECT Landing_Content_en__c, Landing_Content_es__c, Landing_Content_zh_CN__c' +
       ' FROM ApplicationTimeline WHERE Id = :timelineId LIMIT 1';
     List<ApplicationTimeline> tls = (List<ApplicationTimeline>) databaseRepo.queryWithBinds(
       query,
@@ -65,7 +68,12 @@ public without sharing class ZetaApplicationController {
     if (tls.isEmpty()) {
       return null;
     }
-    return selectLandingContent(tls[0].Landing_Content_en__c, tls[0].Landing_Content_es__c);
+    return selectLandingContent(
+      UserInfo.getLanguage(),
+      tls[0].Landing_Content_en__c,
+      tls[0].Landing_Content_es__c,
+      tls[0].Landing_Content_zh_CN__c
+    );
   }
 
   @AuraEnabled
@@ -87,9 +95,9 @@ public without sharing class ZetaApplicationController {
 
   @AuraEnabled
   public static void saveSignature(Id applicationId, String name, String signatureDate) {
-    Preconditions.checkNotNull(applicationId, 'Application Id is required');
-    Preconditions.checkNotBlank(name, 'Signature name is required');
-    Preconditions.checkNotBlank(signatureDate, 'Signature date is required');
+    Preconditions.checkNotNull(applicationId, System.Label.AppUI_ApplicationIdRequired);
+    Preconditions.checkNotBlank(name, System.Label.AppUI_SignatureNameRequired);
+    Preconditions.checkNotBlank(signatureDate, System.Label.AppUI_SignatureDateRequired);
 
     Map<String, Object> fields = new Map<String, Object>();
     fields.put('Id', applicationId);
@@ -105,7 +113,7 @@ public without sharing class ZetaApplicationController {
 
   @AuraEnabled
   public static Map<String, Object> submitApplication(Id applicationId) {
-    Preconditions.checkNotNull(applicationId, 'Application Id is required');
+    Preconditions.checkNotNull(applicationId, System.Label.AppUI_ApplicationIdRequired);
 
     String validationQuery =
       'SELECT Status, Signature_Name__c, AppliedDate,' +
@@ -118,18 +126,21 @@ public without sharing class ZetaApplicationController {
       validationQuery,
       new Map<String, Object>{ 'applicationId' => applicationId }
     );
-    Preconditions.checkArgument(!apps.isEmpty(), 'Application not found: ' + applicationId);
+    Preconditions.checkArgument(
+      !apps.isEmpty(),
+      String.format(System.Label.AppUI_ApplicationNotFoundWithId, new List<Object>{ applicationId })
+    );
     Preconditions.checkArgument(
       apps[0].AppliedDate == null,
-      'Application has already been submitted'
+      System.Label.AppUI_ApplicationAlreadySubmitted
     );
     Preconditions.checkArgument(
       String.isNotBlank(apps[0].Signature_Name__c),
-      'Application must be signed before submission'
+      System.Label.AppUI_SignBeforeSubmitting
     );
     Preconditions.checkArgument(
       apps[0].Status == 'Draft',
-      'Application must be in Draft status to submit'
+      System.Label.AppUI_SubmitRequiresDraftStatus
     );
     // Safe to run after the AppliedDate precondition above: this application is
     // still unsubmitted, so it can never match the guard's own query.
@@ -231,7 +242,7 @@ public without sharing class ZetaApplicationController {
 
   @AuraEnabled
   public static Map<String, Object> checkDuplicateBeforeCreate(Id studentAccountId, Id timelineId) {
-    Preconditions.checkNotNull(studentAccountId, 'Student Account Id is required');
+    Preconditions.checkNotNull(studentAccountId, System.Label.AppUI_StudentAccountIdRequired);
 
     if (timelineId == null) {
       timelineId = findActiveTimelineId();
@@ -256,7 +267,7 @@ public without sharing class ZetaApplicationController {
 
   @AuraEnabled
   public static Map<String, Object> checkDuplicateApplication(Id applicationId) {
-    Preconditions.checkNotNull(applicationId, 'Application Id is required');
+    Preconditions.checkNotNull(applicationId, System.Label.AppUI_ApplicationIdRequired);
 
     String appQuery =
       'SELECT AccountId, Application_Timeline__c' +
@@ -340,7 +351,12 @@ public without sharing class ZetaApplicationController {
     if (!isOpen) {
       result.put(
         'landingContent',
-        selectLandingContent(tl.Landing_Content_en__c, tl.Landing_Content_es__c)
+        selectLandingContent(
+          UserInfo.getLanguage(),
+          tl.Landing_Content_en__c,
+          tl.Landing_Content_es__c,
+          tl.Landing_Content_zh_CN__c
+        )
       );
     }
     return result;
@@ -520,7 +536,7 @@ public without sharing class ZetaApplicationController {
     // excludes future-dated timelines from that fallback.
     String query =
       'SELECT Id, Name, ApplicationOpenDate, ApplicationCloseDate,' +
-      ' Landing_Content_en__c, Landing_Content_es__c' +
+      ' Landing_Content_en__c, Landing_Content_es__c, Landing_Content_zh_CN__c' +
       ' FROM ApplicationTimeline' +
       ' WHERE ApplicationOpenDate != NULL' +
       ' AND ApplicationOpenDate <= TODAY' +
@@ -542,11 +558,42 @@ public without sharing class ZetaApplicationController {
     return timelines.isEmpty() ? null : timelines[0].Id;
   }
 
-  private static String selectLandingContent(String enContent, String esContent) {
-    String lang = UserInfo.getLanguage();
-    String primary = lang != null && lang.startsWith('es') ? esContent : enContent;
-    String fallback = lang != null && lang.startsWith('es') ? enContent : esContent;
-    return String.isNotBlank(primary) ? primary : fallback;
+  // Switches the logged-in parent's portal language. Only the login changes; the
+  // family's language preference for emails and texts stays as staff set it.
+  @AuraEnabled
+  public static void setPortalLanguage(String language) {
+    Set<String> supported = new Set<String>();
+    Schema.DescribeFieldResult field = Schema.Contact.Language_Preference__c.getDescribe();
+    for (Schema.PicklistEntry entry : field.getPicklistValues()) {
+      if (entry.isActive()) {
+        supported.add(entry.getValue());
+      }
+    }
+    Preconditions.checkArgument(supported.contains(language), 'Unsupported language: ' + language);
+    databaseRepo.updateSObjects(
+      new List<User>{ new User(Id = UserInfo.getUserId(), LanguageLocaleKey = language) }
+    );
+  }
+
+  // Chinese or Spanish users get that language's content; everyone else gets English.
+  // Blank content falls back to English, then to whichever language is filled in.
+  public static String selectLandingContent(
+    String language,
+    String enContent,
+    String esContent,
+    String zhContent
+  ) {
+    String lang = language ?? '';
+    String preferred = lang.startsWith('zh')
+      ? zhContent
+      : (lang.startsWith('es') ? esContent : enContent);
+    if (String.isNotBlank(preferred)) {
+      return preferred;
+    }
+    if (String.isNotBlank(enContent)) {
+      return enContent;
+    }
+    return String.isNotBlank(esContent) ? esContent : zhContent;
   }
 
   private static Id getPersonContactIdForAccount(Id accountId) {

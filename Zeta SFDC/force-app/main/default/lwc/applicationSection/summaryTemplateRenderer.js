@@ -1,3 +1,6 @@
+import labelAptNumber from '@salesforce/label/c.AppUI_AptNumber';
+import labelYes from '@salesforce/label/c.AppUI_Yes';
+
 // Token grammar for Application_Section__mdt.Summary_Template__c.
 //
 // Supported tokens:
@@ -25,7 +28,7 @@ const TERNARY_RE =
   /^([A-Za-z_][A-Za-z0-9_]*)\s*\?\s*"([^"]*)"\s*:\s*"([^"]*)"$/;
 const ADDRESS_RE = /^address:([A-Za-z_][A-Za-z0-9_]*)$/;
 
-export function renderSummary(template, answers) {
+export function renderSummary(template, answers, optionLabels) {
   if (!template) {
     return '';
   }
@@ -40,7 +43,7 @@ export function renderSummary(template, answers) {
     });
     parts.push({
       type: 'token',
-      value: evaluateToken(match[1].trim(), answers || {})
+      value: evaluateToken(match[1].trim(), answers || {}, optionLabels || {})
     });
     lastEnd = match.index + match[0].length;
   }
@@ -78,7 +81,7 @@ export function renderSummary(template, answers) {
     .trim();
 }
 
-function evaluateToken(expr, answers) {
+function evaluateToken(expr, answers, optionLabels) {
   const ternary = expr.match(TERNARY_RE);
   if (ternary) {
     const [, q, yesText, noText] = ternary;
@@ -98,10 +101,18 @@ function evaluateToken(expr, answers) {
     return '';
   }
   if (value === true) {
-    return 'Yes';
+    return labelYes;
   }
   if (typeof value === 'object') {
     return '';
+  }
+  // Show picklist answers by their translated option label, not the stored API value.
+  const labels = optionLabels[expr];
+  if (labels) {
+    return String(value)
+      .split(';')
+      .map((v) => labels[v] ?? v)
+      .join(', ');
   }
   return String(value);
 }
@@ -114,11 +125,11 @@ function formatAddress(addr) {
   if (addr.street) {
     let line = String(addr.street);
     if (addr.subpremise) {
-      line += `, Apt ${addr.subpremise}`;
+      line += `, ${labelAptNumber.replace('{0}', addr.subpremise)}`;
     }
     parts.push(line);
   } else if (addr.subpremise) {
-    parts.push(`Apt ${addr.subpremise}`);
+    parts.push(labelAptNumber.replace('{0}', addr.subpremise));
   }
   if (addr.city) {
     parts.push(String(addr.city));

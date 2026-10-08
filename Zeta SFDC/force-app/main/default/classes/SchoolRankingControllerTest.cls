@@ -267,7 +267,11 @@ private class SchoolRankingControllerTest {
       SchoolRankingController.saveRankings(applicationId, json);
       Assert.fail('Expected exception for withdrawn application');
     } catch (Exception e) {
-      Assert.isNotNull(e.getMessage(), 'Should throw with a message');
+      Assert.areEqual(
+        System.Label.AppUI_CannotRankWithdrawnApplication,
+        e.getMessage(),
+        'A withdrawn application should report that rankings cannot change'
+      );
     }
 
     Assert.areEqual(
@@ -413,9 +417,10 @@ private class SchoolRankingControllerTest {
       SchoolRankingController.withdrawSchoolApplication(aiId, 'Relocation', null);
       Assert.fail('Expected an exception when withdrawing another family\'s school');
     } catch (Exception e) {
-      Assert.isTrue(
-        e.getMessage().contains('your own'),
-        'Ownership failure should say the caller can only withdraw their own: ' + e.getMessage()
+      Assert.areEqual(
+        System.Label.AppUI_WithdrawOwnSchoolsOnly,
+        e.getMessage(),
+        'Ownership failure should say the caller can only withdraw their own'
       );
     }
 
@@ -449,9 +454,10 @@ private class SchoolRankingControllerTest {
       SchoolRankingController.withdrawSchoolApplication(aiId, 'Relocation', null);
       Assert.fail('Expected an exception when re-withdrawing a withdrawn school');
     } catch (Exception e) {
-      Assert.isTrue(
-        e.getMessage().contains('already been withdrawn'),
-        'Idempotency guard should say the school was already withdrawn: ' + e.getMessage()
+      Assert.areEqual(
+        System.Label.AppUI_SchoolAlreadyWithdrawn,
+        e.getMessage(),
+        'Idempotency guard should say the school was already withdrawn'
       );
     }
 
@@ -474,9 +480,10 @@ private class SchoolRankingControllerTest {
       SchoolRankingController.withdrawSchoolApplication(aiId, '', null);
       Assert.fail('Expected an exception for a blank withdrawal reason');
     } catch (Exception e) {
-      Assert.isTrue(
-        e.getMessage().contains('required'),
-        'A blank reason should report that a reason is required: ' + e.getMessage()
+      Assert.areEqual(
+        System.Label.AppUI_WithdrawalReasonRequired,
+        e.getMessage(),
+        'A blank reason should report that a reason is required'
       );
     }
   }

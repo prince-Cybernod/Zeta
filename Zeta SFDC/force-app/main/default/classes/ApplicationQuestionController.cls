@@ -87,7 +87,7 @@ public without sharing class ApplicationQuestionController {
     String variant,
     String includeSectionDevNames
   ) {
-    Preconditions.checkNotBlank(pageDevName, 'Page developer name is required');
+    Preconditions.checkNotBlank(pageDevName, System.Label.AppUI_PageDevNameRequired);
 
     Set<String> sectionScope = parseSectionScope(includeSectionDevNames);
     Boolean isScoped = sectionScope != null && !sectionScope.isEmpty();
@@ -220,7 +220,7 @@ public without sharing class ApplicationQuestionController {
   }
 
   /**
-   * Cache key shape: 'fs<Page><Variant>' (alphanumeric only).
+   * Cache key shape: 'fs<Language><Page><Variant>' (alphanumeric only).
    * Platform cache keys MUST match [a-zA-Z0-9]+ — underscores and punctuation are
    * rejected with "Invalid Key, Key cannot be null or empty and must be alphanumeric".
    * Max length 50 chars total (the "local.<partition>." prefix doesn't count here).
@@ -232,12 +232,14 @@ public without sharing class ApplicationQuestionController {
 
   /**
    * Scope-aware cache key. Shape:
-   *   - full page (no scope): 'fs<Page><Variant>'
-   *   - scoped:               'fs<Page><Variant>s<scopeToken>'
+   *   - full page (no scope): 'fs<Language><Page><Variant>'
+   *   - scoped:               'fs<Language><Page><Variant>s<scopeToken>'
    * The scope token is an order-independent, alphanumeric digest of the scoped
    * section DeveloperNames (sorted, sanitized, then hashed if it would exceed the
    * 50-char limit). This guarantees the address-only (page-1) and full (page-4)
-   * variants never collide in the Org partition.
+   * variants never collide in the Org partition. The cached structure holds labels
+   * resolved in the running user's language, so the language leads the key where
+   * the 50-char cut can never drop it.
    */
   @TestVisible
   private static String buildCacheKey(
@@ -246,7 +248,7 @@ public without sharing class ApplicationQuestionController {
     Set<String> sectionScope
   ) {
     String v = String.isBlank(variant) ? 'X' : variant;
-    String raw = 'fs' + pageDevName + v;
+    String raw = 'fs' + UserInfo.getLanguage() + pageDevName + v;
     if (sectionScope != null && !sectionScope.isEmpty()) {
       raw += 's' + buildScopeToken(sectionScope);
     }
@@ -336,16 +338,19 @@ public without sharing class ApplicationQuestionController {
   }
 
   /**
-   * Clears the Platform Cache entry for a given (pageDevName, variant) pair.
-   * Intended for tests and admin-driven invalidation after deploying new CMDT.
-   * Silent no-op if the partition is unavailable.
+   * Clears every cached form structure in the partition. Entries are kept per
+   * language, so clearing only the caller's key would leave the other languages
+   * stale. Intended for tests and admin-driven invalidation after deploying new
+   * CMDT or translations. Silent no-op if the partition is unavailable.
    */
   @TestVisible
   public static void clearFormStructureCache(String pageDevName, String variant) {
     try {
       Cache.OrgPartition partition = Cache.Org.getPartition(CACHE_PARTITION_NAME);
       if (partition != null) {
-        partition.remove(buildCacheKey(pageDevName, variant));
+        for (String key : partition.getKeys()) {
+          partition.remove(key);
+        }
       }
     } catch (Exception e) {
       System.debug(LoggingLevel.WARN, 'ApplicationCache clear failed: ' + e.getMessage());
@@ -774,8 +779,8 @@ public without sharing class ApplicationQuestionController {
    */
   @AuraEnabled
   public static void saveFormAnswers(Id applicationId, String answersJson) {
-    Preconditions.checkNotNull(applicationId, 'Application Id is required');
-    Preconditions.checkNotBlank(answersJson, 'Answers JSON is required');
+    Preconditions.checkNotNull(applicationId, System.Label.AppUI_ApplicationIdRequired);
+    Preconditions.checkNotBlank(answersJson, System.Label.AppUI_AnswersJsonRequired);
 
     Map<String, Object> answers = (Map<String, Object>) JSON.deserializeUntyped(answersJson);
     if (answers.isEmpty()) {
@@ -803,7 +808,10 @@ public without sharing class ApplicationQuestionController {
         missing.add(LabelResolver.resolve(labelKey));
       }
     }
-    Preconditions.checkArgument(missing.isEmpty(), 'Required: ' + String.join(missing, '; '));
+    Preconditions.checkArgument(
+      missing.isEmpty(),
+      String.format(System.Label.AppUI_RequiredFields, new List<Object>{ String.join(missing, '; ') })
+    );
 
     SObject record = applicationId.getSobjectType().newSObject(applicationId);
     Boolean hasFieldToWrite = false;
@@ -1716,7 +1724,10 @@ public without sharing class ApplicationQuestionController {
       LIMIT 1
     ];
 
-    Preconditions.checkArgument(!pages.isEmpty(), 'Page not found: ' + pageDevName);
+    Preconditions.checkArgument(
+      !pages.isEmpty(),
+      String.format(System.Label.AppUI_PageNotFound, new List<Object>{ pageDevName })
+    );
     AppQuestionPage page = AppQuestionPage.fromCmdt(pages[0]);
     page.label = LabelResolver.resolve(page.label);
     page.description = LabelResolver.resolve(page.description);
@@ -1839,6 +1850,7 @@ public without sharing class ApplicationQuestionController {
     return questionsBySection;
   }
 
+  @TestVisible
   private static List<AppQuestionSection> buildSections(
     List<Application_Section__mdt> sectionRecords,
     Map<String, List<AppQuestionInput>> questionsBySection
@@ -1852,6 +1864,7 @@ public without sharing class ApplicationQuestionController {
       AppQuestionSection section = AppQuestionSection.fromCmdt(s, questions);
       section.label = LabelResolver.resolve(section.label);
       section.description = LabelResolver.resolve(section.description);
+      section.summaryTemplate = LabelResolver.resolve(section.summaryTemplate);
       sections.add(section);
     }
 

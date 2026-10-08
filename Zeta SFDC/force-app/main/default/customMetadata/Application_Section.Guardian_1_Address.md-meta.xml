@@ -24,7 +24,7 @@
     </values>
     <values>
         <field>Display_Label__c</field>
-        <value xsi:type="xsd:string">Guardian 1 Address</value>
+        <value xsi:type="xsd:string">AppS_Guardian1Address_Label</value>
     </values>
     <values>
         <field>Is_Active__c</field>
@@ -40,7 +40,7 @@
     </values>
     <values>
         <field>Summary_Template__c</field>
-        <value xsi:type="xsd:string">{address:Guardian_1_Address_Compound}{Lives_With_Guardian_1 ? &quot; · Student also lives here&quot; : &quot;&quot;}</value>
+        <value xsi:type="xsd:string">AppS_Guardian1Address_Summary</value>
     </values>
     <values>
         <field>Variant__c</field>

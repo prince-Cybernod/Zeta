@@ -40,7 +40,7 @@
     </values>
     <values>
         <field>Summary_Template__c</field>
-        <value xsi:type="xsd:string">{Guardian_2_First_Name} {Guardian_2_Last_Name} · {Guardian_2_Email} · {Guardian_2_Phone} · {Guardian_2_Relationship}{Guardian_2_Address_Same_As_Primary ? &quot; · Same address as Guardian 1&quot; : &quot;&quot;}{address:Guardian_2_Address_Compound}</value>
+        <value xsi:type="xsd:string">AppS_Guardian2_Summary</value>
     </values>
     <values>
         <field>Variant__c</field>

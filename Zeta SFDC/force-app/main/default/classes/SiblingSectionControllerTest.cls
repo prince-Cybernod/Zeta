@@ -857,7 +857,7 @@ private class SiblingSectionControllerTest {
       SiblingSectionController.createSiblingDraftApplication(null, '{}');
       Assert.fail('Should throw for null applicationId');
     } catch (IllegalArgumentException e) {
-      Assert.isTrue(e.getMessage().contains('Application Id is required'));
+      Assert.areEqual(System.Label.AppUI_ApplicationIdRequired, e.getMessage());
     }
   }
 
@@ -869,7 +869,7 @@ private class SiblingSectionControllerTest {
       SiblingSectionController.createSiblingDraftApplication(appId, '');
       Assert.fail('Should throw for blank JSON');
     } catch (IllegalArgumentException e) {
-      Assert.isTrue(e.getMessage().contains('Student JSON'));
+      Assert.areEqual(System.Label.AppUI_StudentJsonRequired, e.getMessage());
     }
   }
 
@@ -1005,7 +1005,7 @@ private class SiblingSectionControllerTest {
       );
       Assert.fail('Should throw when gradeApplyingTo is missing');
     } catch (IllegalArgumentException e) {
-      Assert.isTrue(e.getMessage().contains('Grade Applying To'));
+      Assert.areEqual(System.Label.AppUI_GradeApplyingToRequired, e.getMessage());
     }
   }
 
@@ -1425,7 +1425,7 @@ private class SiblingSectionControllerTest {
       SiblingSectionController.addManualAttendingSibling(null, '{"firstName":"A","lastName":"B"}');
       Assert.fail('Should throw for null applicationId');
     } catch (IllegalArgumentException e) {
-      Assert.isTrue(e.getMessage().contains('Application Id is required'));
+      Assert.areEqual(System.Label.AppUI_ApplicationIdRequired, e.getMessage());
     }
   }
 
@@ -1454,7 +1454,7 @@ private class SiblingSectionControllerTest {
       SiblingSectionController.addManualAttendingSibling(appId, '{"lastName":"B"}');
       Assert.fail('Should throw when firstName is missing');
     } catch (IllegalArgumentException e) {
-      Assert.isTrue(e.getMessage().contains('First name is required'));
+      Assert.areEqual(System.Label.AppUI_FirstNameRequired, e.getMessage());
     }
   }
 
@@ -1468,7 +1468,7 @@ private class SiblingSectionControllerTest {
       SiblingSectionController.addManualAttendingSibling(appId, '{"firstName":"A","lastName":"B"}');
       Assert.fail('Should throw when birthdate is missing');
     } catch (IllegalArgumentException e) {
-      Assert.isTrue(e.getMessage().contains('Date of birth is required'));
+      Assert.areEqual(System.Label.AppUI_DateOfBirthRequired, e.getMessage());
     }
   }
 
@@ -1604,7 +1604,7 @@ private class SiblingSectionControllerTest {
       SiblingSectionController.createPlaceholderApplications(null, '[]');
       Assert.fail('Should throw for null sourceApplicationId');
     } catch (IllegalArgumentException e) {
-      Assert.isTrue(e.getMessage().contains('Application Id is required'));
+      Assert.areEqual(System.Label.AppUI_ApplicationIdRequired, e.getMessage());
     }
   }
 
@@ -1616,7 +1616,7 @@ private class SiblingSectionControllerTest {
       SiblingSectionController.createPlaceholderApplications(appId, '');
       Assert.fail('Should throw for blank selections JSON');
     } catch (IllegalArgumentException e) {
-      Assert.isTrue(e.getMessage().contains('Selections JSON'));
+      Assert.areEqual(System.Label.AppUI_SelectionsJsonRequired, e.getMessage());
     }
   }
 
@@ -1628,7 +1628,7 @@ private class SiblingSectionControllerTest {
       SiblingSectionController.createPlaceholderApplications(appId, '[]');
       Assert.fail('Should throw for empty selections');
     } catch (IllegalArgumentException e) {
-      Assert.isTrue(e.getMessage().contains('At least one selection'));
+      Assert.areEqual(System.Label.AppUI_AtLeastOneSelectionRequired, e.getMessage());
     }
   }
 
@@ -1644,7 +1644,7 @@ private class SiblingSectionControllerTest {
       SiblingSectionController.createPlaceholderApplications(appId, json);
       Assert.fail('Should throw when a selection has no grade');
     } catch (IllegalArgumentException e) {
-      Assert.isTrue(e.getMessage().contains('Grade Applying To is required'));
+      Assert.areEqual(System.Label.AppUI_SiblingGradeRequired, e.getMessage());
     }
   }
 

@@ -1,6 +1,8 @@
 import { LightningElement, api } from 'lwc';
 import labelViewAllTasks from '@salesforce/label/c.Action_Plan_View_All_Tasks';
-import labelCompleted from '@salesforce/label/c.Action_Plan_Completed';
+import labelCompletedCount from '@salesforce/label/c.Action_Plan_Completed_Count';
+import labelErrorLoading from '@salesforce/label/c.Action_Plan_Error_Loading';
+import labelToggleView from '@salesforce/label/c.Action_Plan_Toggle_View';
 
 export default class ActionPlanCard extends LightningElement {
     @api actionPlan;
@@ -9,7 +11,9 @@ export default class ActionPlanCard extends LightningElement {
 
     labels = {
         viewAllTasks: labelViewAllTasks,
-        completed: labelCompleted
+        completed: labelCompletedCount,
+        errorLoading: labelErrorLoading,
+        toggleView: labelToggleView
     };
 
     connectedCallback() {
@@ -45,5 +49,13 @@ export default class ActionPlanCard extends LightningElement {
 
     get hasTasks() {
         return this.totalCount > 0;
+    }
+
+    get progressText() {
+        return this.labels.completed.replace('{0}', this.completedCount).replace('{1}', this.totalCount);
+    }
+
+    get errorText() {
+        return this.labels.errorLoading.replace('{0}', this.error);
     }
 }

@@ -81,11 +81,11 @@ public without sharing class StudentSelectionController {
 
   @AuraEnabled
   public static void updateStudentBirthdate(Id studentAccountId, Date birthdate, Id applicationId) {
-    Preconditions.checkNotNull(studentAccountId, 'Student Account Id is required');
-    Preconditions.checkNotNull(birthdate, 'Birthdate is required');
+    Preconditions.checkNotNull(studentAccountId, System.Label.AppUI_StudentAccountIdRequired);
+    Preconditions.checkNotNull(birthdate, System.Label.AppUI_BirthdateRequired);
 
     Id contactId = ApplicationContext.resolveGuardianContactId(databaseRepo, applicationId);
-    Preconditions.checkNotNull(contactId, 'Logged-in user must have a Contact');
+    Preconditions.checkNotNull(contactId, System.Label.AppUI_LoggedInUserNeedsContact);
 
     String ownershipQuery =
       'SELECT Id FROM AccountContactRelation' +
@@ -97,13 +97,11 @@ public without sharing class StudentSelectionController {
       new Map<String, Object>{ 'studentAccountId' => studentAccountId, 'contactId' => contactId }
     );
     if (rels.isEmpty()) {
-      throw new AuraHandledException('You don\'t have permission to update this student.');
+      throw new AuraHandledException(System.Label.AppUI_NoPermissionToUpdateStudent);
     }
 
     if (hasSubmittedApplication(studentAccountId)) {
-      throw new AuraHandledException(
-        'This student\'s birthday is locked because an application has been submitted. Contact Zeta to update.'
-      );
+      throw new AuraHandledException(System.Label.AppUI_BirthdayLockedAfterSubmission);
     }
 
     Account student = new Account(Id = studentAccountId, PersonBirthdate = birthdate);
@@ -130,10 +128,10 @@ public without sharing class StudentSelectionController {
   // names can't be overloaded.
   @AuraEnabled
   public static Id createStudentForApplication(String studentJson, Id applicationId) {
-    Preconditions.checkNotBlank(studentJson, 'Student JSON is required');
+    Preconditions.checkNotBlank(studentJson, System.Label.AppUI_StudentJsonRequired);
 
     Id contactId = ApplicationContext.resolveGuardianContactId(databaseRepo, applicationId);
-    Preconditions.checkNotNull(contactId, 'Logged-in user must have a Contact');
+    Preconditions.checkNotNull(contactId, System.Label.AppUI_LoggedInUserNeedsContact);
 
     Map<String, Object> input = (Map<String, Object>) JSON.deserializeUntyped(studentJson);
 

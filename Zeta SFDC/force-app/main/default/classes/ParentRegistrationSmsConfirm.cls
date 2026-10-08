@@ -57,13 +57,13 @@ public without sharing class ParentRegistrationSmsConfirm extends ParentRegistra
           } else {
             Logger.error('Error when verifying self-registration via SMS. Contact Id: ' + contactId, res.message);
             Logger.saveLog();
-            responses.add(new ConfirmationResponse('Registration Exception. Please contact support.'));
+            responses.add(new ConfirmationResponse(System.Label.AppUI_RegistrationErrorContactSupport));
           }
         }
       } catch (Exception e) {
         Logger.error('Exception when confirming self-registration via SMS. Contact Id: ' + contactId, e);
         Logger.saveLog();
-        responses.add(new ConfirmationResponse('Registration Exception. Please contact support.'));
+        responses.add(new ConfirmationResponse(System.Label.AppUI_RegistrationErrorContactSupport));
       }
     }
 

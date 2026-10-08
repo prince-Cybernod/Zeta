@@ -21,31 +21,47 @@
         <name>ReEnrollment</name>
     </customApplications>
     <customLabels>
-        <label><!-- Button Complete Form --></label>
+        <label>Completar formulario</label>
         <name>Action_Plan_Button_Complete_Form</name>
     </customLabels>
     <customLabels>
-        <label><!-- Completed --></label>
+        <label>Completada</label>
         <name>Action_Plan_Completed</name>
     </customLabels>
     <customLabels>
-        <label><!-- Due By --></label>
+        <label>{0}/{1} completadas</label>
+        <name>Action_Plan_Completed_Count</name>
+    </customLabels>
+    <customLabels>
+        <label>Fecha límite</label>
         <name>Action_Plan_Due_By</name>
     </customLabels>
     <customLabels>
-        <label><!-- Guardian Tasks Subtitle --></label>
+        <label>Fecha límite: {0}</label>
+        <name>Action_Plan_Due_By_Date</name>
+    </customLabels>
+    <customLabels>
+        <label>Error al cargar los datos del plan de acción: {0}</label>
+        <name>Action_Plan_Error_Loading</name>
+    </customLabels>
+    <customLabels>
+        <label>Por favor, complete lo siguiente</label>
         <name>Action_Plan_Guardian_Tasks_Subtitle</name>
     </customLabels>
     <customLabels>
-        <label><!-- No Tasks Message --></label>
+        <label>No tiene tareas pendientes en este momento</label>
         <name>Action_Plan_No_Tasks</name>
     </customLabels>
     <customLabels>
-        <label><!-- View All Tasks --></label>
+        <label>Mostrar u ocultar tareas</label>
+        <name>Action_Plan_Toggle_View</name>
+    </customLabels>
+    <customLabels>
+        <label>Ver todas las tareas</label>
         <name>Action_Plan_View_All_Tasks</name>
     </customLabels>
     <customLabels>
-        <label><!-- Application details page description --></label>
+        <label>Por favor, complete la siguiente información.</label>
         <name>AppP_ApplicationDetails_Description</name>
     </customLabels>
     <customLabels>
@@ -53,11 +69,11 @@
         <name>AppPdf_Email</name>
     </customLabels>
     <customLabels>
-        <label><!-- PDF student first name label --></label>
+        <label>Nombre</label>
         <name>AppPdf_FirstName</name>
     </customLabels>
     <customLabels>
-        <label><!-- PDF footer text --></label>
+        <label>Zeta Charter Schools — Este documento se generó automáticamente al momento de enviar la solicitud.</label>
         <name>AppPdf_Footer</name>
     </customLabels>
     <customLabels>
@@ -77,7 +93,7 @@
         <name>AppPdf_GuardianInformation</name>
     </customLabels>
     <customLabels>
-        <label><!-- PDF student last name label --></label>
+        <label>Apellido</label>
         <name>AppPdf_LastName</name>
     </customLabels>
     <customLabels>
@@ -85,11 +101,11 @@
         <name>AppPdf_Phone</name>
     </customLabels>
     <customLabels>
-        <label><!-- Rank column header --></label>
+        <label>Posición</label>
         <name>AppPdf_Rank</name>
     </customLabels>
     <customLabels>
-        <label><!-- PDF reference number label --></label>
+        <label>Número de referencia</label>
         <name>AppPdf_ReferenceNumber</name>
     </customLabels>
     <customLabels>
@@ -97,239 +113,287 @@
         <name>AppPdf_Relationship</name>
     </customLabels>
     <customLabels>
-        <label><!-- School name column header --></label>
+        <label>Nombre de la escuela</label>
         <name>AppPdf_SchoolName</name>
     </customLabels>
     <customLabels>
-        <label><!-- PDF submitted on label --></label>
+        <label>Enviada el</label>
         <name>AppPdf_SubmittedOn</name>
     </customLabels>
     <customLabels>
-        <label><!-- App description question label --></label>
+        <label>Dirección del estudiante</label>
+        <name>AppQ_AddressCompound_Label</name>
+    </customLabels>
+    <customLabels>
+        <label>¿Hay algo más que quiera contarnos?</label>
         <name>AppQ_AppDescription_Label</name>
     </customLabels>
     <customLabels>
-        <label><!-- Current school name question label --></label>
+        <label>Nombre de la escuela actual (si corresponde)</label>
         <name>AppQ_CurrentSchoolName_Label</name>
     </customLabels>
     <customLabels>
-        <label><!-- Email consent question label --></label>
+        <label>Sí, deseo recibir correos electrónicos con más información sobre Zeta (recomendado)</label>
         <name>AppQ_EmailConsent_Label</name>
     </customLabels>
     <customLabels>
-        <label><!-- Email opt-out question label --></label>
+        <label>No, no deseo recibir correos electrónicos con más información sobre Zeta</label>
         <name>AppQ_EmailOptOut_Label</name>
     </customLabels>
     <customLabels>
-        <label><!-- Employee first name question label --></label>
+        <label>Nombre del empleado</label>
         <name>AppQ_EmployeeFirstName_Label</name>
     </customLabels>
     <customLabels>
-        <label><!-- Employee last name question label --></label>
+        <label>Apellido del empleado</label>
         <name>AppQ_EmployeeLastName_Label</name>
     </customLabels>
     <customLabels>
-        <label><!-- Employee priority guardian picker label --></label>
+        <label>¿Cuál de los tutores es empleado(a) de Zeta?</label>
         <name>AppQ_EmployeePriorityGuardian_Label</name>
     </customLabels>
     <customLabels>
-        <label><!-- Employee priority question label --></label>
+        <label>¿El solicitante es hijo(a) de un empleado de Zeta?</label>
         <name>AppQ_EmployeePriority_Label</name>
     </customLabels>
     <customLabels>
-        <label><!-- Employee workplace question label --></label>
+        <label>Lugar de trabajo</label>
         <name>AppQ_EmployeeWorkplace_Label</name>
     </customLabels>
     <customLabels>
-        <label><!-- Guardian 1 email question label --></label>
+        <label>Dirección del Tutor 1</label>
+        <name>AppQ_Guardian1AddressCompound_Label</name>
+    </customLabels>
+    <customLabels>
+        <label>Correo electrónico</label>
         <name>AppQ_Guardian1Email_Label</name>
     </customLabels>
     <customLabels>
-        <label><!-- Guardian email placeholder --></label>
+        <label>Ingrese el correo electrónico</label>
         <name>AppQ_Guardian1Email_Placeholder</name>
     </customLabels>
     <customLabels>
-        <label><!-- Guardian first name placeholder --></label>
+        <label>Ingrese el nombre</label>
         <name>AppQ_Guardian1FirstName_Placeholder</name>
     </customLabels>
     <customLabels>
-        <label><!-- Guardian last name placeholder --></label>
+        <label>Ingrese el apellido</label>
         <name>AppQ_Guardian1LastName_Placeholder</name>
     </customLabels>
     <customLabels>
-        <label><!-- Guardian 1 phone question label --></label>
+        <label>Teléfono</label>
         <name>AppQ_Guardian1Phone_Label</name>
     </customLabels>
     <customLabels>
-        <label><!-- Guardian phone placeholder --></label>
+        <label>Ingrese el número de teléfono</label>
         <name>AppQ_Guardian1Phone_Placeholder</name>
     </customLabels>
     <customLabels>
-        <label><!-- Guardian relationship help text --></label>
+        <label>Seleccione su relación con el estudiante</label>
         <name>AppQ_Guardian1Relationship_HelpText</name>
     </customLabels>
     <customLabels>
-        <label><!-- Guardian 2 same address checkbox label --></label>
+        <label>Dirección del Tutor 2</label>
+        <name>AppQ_Guardian2AddressCompound_Label</name>
+    </customLabels>
+    <customLabels>
+        <label>Misma dirección que el tutor principal</label>
         <name>AppQ_Guardian2AddressSame_Label</name>
     </customLabels>
     <customLabels>
-        <label><!-- Guardian 2 city question label --></label>
+        <label>Ciudad</label>
         <name>AppQ_Guardian2City_Label</name>
     </customLabels>
     <customLabels>
-        <label><!-- Guardian 2 email question label --></label>
+        <label>Correo electrónico</label>
         <name>AppQ_Guardian2Email_Label</name>
     </customLabels>
     <customLabels>
-        <label><!-- Guardian 2 email placeholder --></label>
+        <label>Ingrese el correo electrónico</label>
         <name>AppQ_Guardian2Email_Placeholder</name>
     </customLabels>
     <customLabels>
-        <label><!-- Guardian 2 phone question label --></label>
+        <label>Teléfono</label>
         <name>AppQ_Guardian2Phone_Label</name>
     </customLabels>
     <customLabels>
-        <label><!-- Guardian 2 phone placeholder --></label>
+        <label>Ingrese el número de teléfono</label>
         <name>AppQ_Guardian2Phone_Placeholder</name>
     </customLabels>
     <customLabels>
-        <label><!-- Guardian 2 state question label --></label>
+        <label>Estado</label>
         <name>AppQ_Guardian2State_Label</name>
     </customLabels>
     <customLabels>
-        <label><!-- Guardian 2 street question label --></label>
+        <label>Dirección</label>
         <name>AppQ_Guardian2Street_Label</name>
     </customLabels>
     <customLabels>
-        <label><!-- Guardian 2 zip question label --></label>
+        <label>Código postal</label>
         <name>AppQ_Guardian2Zip_Label</name>
     </customLabels>
     <customLabels>
-        <label><!-- Has second guardian question label --></label>
+        <label>¿Desea agregar un segundo tutor?</label>
         <name>AppQ_HasSecondGuardian_Label</name>
     </customLabels>
     <customLabels>
-        <label><!-- How did you hear question label --></label>
+        <label>¿Cómo se enteró de nosotros?</label>
         <name>AppQ_HowDidYouHear_Label</name>
     </customLabels>
     <customLabels>
-        <label><!-- Phone field validation message --></label>
+        <label>El estudiante vive en otra dirección</label>
+        <name>AppQ_LivesWithGuardian1_Label</name>
+    </customLabels>
+    <customLabels>
+        <label>Ingrese un número de teléfono válido de 10 dígitos, por ejemplo, 123-456-7890.</label>
         <name>AppQ_Phone_ValidationMessage</name>
     </customLabels>
     <customLabels>
-        <label><!-- Referral name question label --></label>
+        <label>Por favor, indique el nombre de la persona que le habló de Zeta Schools.</label>
+        <name>AppQ_ReferralName_Help</name>
+    </customLabels>
+    <customLabels>
+        <label>¿Quién le recomendó Zeta?</label>
         <name>AppQ_ReferralName_Label</name>
     </customLabels>
     <customLabels>
-        <label><!-- Relationship to student question label --></label>
+        <label>Relación con el estudiante</label>
         <name>AppQ_RelationshipToStudent_Label</name>
     </customLabels>
     <customLabels>
-        <label><!-- Responsible adult help text --></label>
+        <label>El adulto responsable debe ser el padre, la madre o el tutor con quien vive este estudiante. El adulto responsable será el contacto principal y quien tome las decisiones sobre la información enviada o modificada en esta solicitud.</label>
         <name>AppQ_ResponsibleAdult_HelpText</name>
     </customLabels>
     <customLabels>
-        <label><!-- Responsible adult question label --></label>
+        <label>Adulto responsable</label>
         <name>AppQ_ResponsibleAdult_Label</name>
     </customLabels>
     <customLabels>
-        <label><!-- Sibling also applying question label --></label>
+        <label>¿Tiene un hermano(a) que también solicita admisión?</label>
         <name>AppQ_SiblingApplying_Label</name>
     </customLabels>
     <customLabels>
-        <label><!-- Sibling attending question label --></label>
+        <label>¿Tiene un hermano(a) que asiste a una escuela de Zeta?</label>
         <name>AppQ_SiblingAttending_Label</name>
     </customLabels>
     <customLabels>
-        <label><!-- Text message opt-in question label --></label>
+        <label>Sí, deseo recibir mensajes de texto sobre mi solicitud (recomendado)</label>
         <name>AppQ_TextMessageOptIn_Label</name>
     </customLabels>
     <customLabels>
-        <label><!-- Text message opt-out question label --></label>
+        <label>No, no deseo recibir mensajes de texto sobre mi solicitud</label>
         <name>AppQ_TextMessageOptOut_Label</name>
     </customLabels>
     <customLabels>
-        <label><!-- Verify dropdown help text --></label>
+        <label>Seleccione cómo se enteró de nosotros</label>
         <name>AppQ_VerifyDropdown_Help</name>
     </customLabels>
     <customLabels>
-        <label><!-- Verify textarea placeholder --></label>
+        <label>Describa su situación</label>
         <name>AppQ_VerifyTextArea_Placeholder</name>
     </customLabels>
     <customLabels>
-        <label><!-- Verify text placeholder --></label>
+        <label>Ingrese el nombre del empleado</label>
         <name>AppQ_VerifyText_Placeholder</name>
     </customLabels>
     <customLabels>
-        <label><!-- Additional information section label --></label>
+        <label>Información adicional</label>
         <name>AppS_AdditionalInfo_Label</name>
     </customLabels>
     <customLabels>
-        <label><!-- Application info section label --></label>
+        <label>{How_Did_You_Hear}{Referral_Name ? &quot; · Recomendado por &quot; : &quot;&quot;}{Referral_Name}{App_Description ? &quot; · &quot; : &quot;&quot;}{App_Description}</label>
+        <name>AppS_AdditionalInformation_Summary</name>
+    </customLabels>
+    <customLabels>
+        <label>¿Dónde vive el estudiante? Solo se pide cuando el estudiante no vive con el Tutor 1.</label>
+        <name>AppS_Address_Desc</name>
+    </customLabels>
+    <customLabels>
+        <label>Dirección del estudiante</label>
+        <name>AppS_Address_Label</name>
+    </customLabels>
+    <customLabels>
+        <label>Información de la solicitud</label>
         <name>AppS_ApplicationInfo_Label</name>
     </customLabels>
     <customLabels>
-        <label><!-- Communication preferences section description --></label>
+        <label>{Current_Grade} → {Grade_Applying_To}</label>
+        <name>AppS_ApplicationInfo_Summary</name>
+    </customLabels>
+    <customLabels>
+        <label>Queremos mantenerle al tanto de la solicitud de su hijo(a). Por favor, indique sus preferencias de comunicación a continuación.</label>
         <name>AppS_CommPrefs_Desc</name>
     </customLabels>
     <customLabels>
-        <label><!-- Communication preferences section label --></label>
+        <label>Preferencias de comunicación</label>
         <name>AppS_CommPrefs_Label</name>
     </customLabels>
     <customLabels>
-        <label><!-- Employee details section description --></label>
+        <label>Esta sección aparece cuando se marca la prioridad de empleado</label>
         <name>AppS_EmployeeDetails_Desc</name>
     </customLabels>
     <customLabels>
-        <label><!-- Employee information section label --></label>
+        <label>Información del empleado</label>
         <name>AppS_EmployeeInfo_Label</name>
     </customLabels>
     <customLabels>
-        <label><!-- Employee status section label --></label>
+        <label>Hijos de empleados de Zeta</label>
         <name>AppS_EmployeeStatus_Label</name>
     </customLabels>
     <customLabels>
-        <label><!-- Guardian 1 address section description --></label>
+        <label>Dirección de residencia del Tutor 1. Si su estudiante no vive en esta dirección, seleccione &quot;El estudiante vive en otra dirección&quot; a continuación.</label>
         <name>AppS_Guardian1Address_Desc</name>
     </customLabels>
     <customLabels>
-        <label><!-- Guardian 2 address section label --></label>
+        <label>Dirección del Tutor 1</label>
+        <name>AppS_Guardian1Address_Label</name>
+    </customLabels>
+    <customLabels>
+        <label>{address:Guardian_1_Address_Compound}{Lives_With_Guardian_1 ? &quot; · El estudiante también vive aquí&quot; : &quot;&quot;}</label>
+        <name>AppS_Guardian1Address_Summary</name>
+    </customLabels>
+    <customLabels>
+        <label>{Guardian_2_First_Name} {Guardian_2_Last_Name} · {Guardian_2_Email} · {Guardian_2_Phone} · {Guardian_2_Relationship}{Guardian_2_Address_Same_As_Primary ? &quot; · Misma dirección que el Tutor 1&quot; : &quot;&quot;}{address:Guardian_2_Address_Compound}</label>
+        <name>AppS_Guardian2_Summary</name>
+    </customLabels>
+    <customLabels>
+        <label>Dirección del tutor secundario</label>
         <name>AppS_Guardian2Address_Label</name>
     </customLabels>
     <customLabels>
-        <label><!-- Guardian 2 information section label --></label>
+        <label>Información del Tutor 2</label>
         <name>AppS_Guardian2Info_Label</name>
     </customLabels>
     <customLabels>
-        <label><!-- Guardian 2 section label --></label>
+        <label>Tutor 2</label>
         <name>AppS_Guardian2_Label</name>
     </customLabels>
     <customLabels>
-        <label><!-- Guardian information section label --></label>
+        <label>Información del tutor</label>
         <name>AppS_GuardianInfo_Label</name>
     </customLabels>
     <customLabels>
-        <label><!-- Priority toggles section label --></label>
+        <label>Prioridades</label>
         <name>AppS_PriorityToggles_Label</name>
     </customLabels>
     <customLabels>
-        <label><!-- Responsible adult section label --></label>
+        <label>Adulto responsable</label>
         <name>AppS_ResponsibleAdult_Label</name>
     </customLabels>
     <customLabels>
-        <label><!-- Add a student tile label (first student) --></label>
+        <label>Agregar un estudiante</label>
         <name>AppUI_AddAStudent</name>
     </customLabels>
     <customLabels>
-        <label><!-- Add another student tile label --></label>
+        <label>Agregar otro estudiante</label>
         <name>AppUI_AddAnotherStudent</name>
     </customLabels>
     <customLabels>
-        <label><!-- Button label to add an attending sibling not in the detected list --></label>
+        <label>Agregar un hermano(a) que asiste a una escuela de Zeta y no aparece en la lista</label>
         <name>AppUI_AddAttendingSiblingNotListed</name>
     </customLabels>
     <customLabels>
-        <label><!-- Add a sibling button (shared, simplified label) --></label>
+        <label>Agregar un hermano(a)</label>
         <name>AppUI_AddSibling</name>
     </customLabels>
     <customLabels>
@@ -341,7 +405,11 @@
         <name>AppUI_AddSiblingAttending</name>
     </customLabels>
     <customLabels>
-        <label><!-- Add student button label --></label>
+        <label>No se pudo agregar al hermano(a). Por favor, inténtelo de nuevo.</label>
+        <name>AppUI_AddSiblingFailed</name>
+    </customLabels>
+    <customLabels>
+        <label>Agregar estudiante</label>
         <name>AppUI_AddStudent</name>
     </customLabels>
     <customLabels>
@@ -349,151 +417,271 @@
         <name>AppUI_AgeWarning</name>
     </customLabels>
     <customLabels>
-        <label><!-- All changes saved status --></label>
+        <label>Se guardaron todos los cambios</label>
         <name>AppUI_AllChangesSaved</name>
     </customLabels>
     <customLabels>
-        <label><!-- Already enrolled error message --></label>
+        <label>Este estudiante ya está inscrito(a) en una escuela de Zeta. Para solicitar un traslado, comuníquese con nosotros.</label>
         <name>AppUI_AlreadyEnrolled</name>
     </customLabels>
     <customLabels>
-        <label><!-- Application submitted for student --></label>
+        <label>Se requiere el JSON de las respuestas</label>
+        <name>AppUI_AnswersJsonRequired</name>
+    </customLabels>
+    <customLabels>
+        <label>La solicitud ya fue enviada</label>
+        <name>AppUI_ApplicationAlreadySubmitted</name>
+    </customLabels>
+    <customLabels>
+        <label>Esta solicitud ya fue retirada.</label>
+        <name>AppUI_ApplicationAlreadyWithdrawn</name>
+    </customLabels>
+    <customLabels>
+        <label>Se requiere el ID de la solicitud</label>
+        <name>AppUI_ApplicationIdRequired</name>
+    </customLabels>
+    <customLabels>
+        <label>No se encontró la solicitud: {0}</label>
+        <name>AppUI_ApplicationNotFoundWithId</name>
+    </customLabels>
+    <customLabels>
+        <label>En este momento, las solicitudes están cerradas.</label>
+        <name>AppUI_ApplicationsCurrentlyClosed</name>
+    </customLabels>
+    <customLabels>
+        <label>Solicitud enviada para {0}.</label>
         <name>AppUI_AppSubmittedFor</name>
     </customLabels>
     <customLabels>
-        <label><!-- Application title in header --></label>
+        <label>Solicitud 2026-2027</label>
         <name>AppUI_ApplicationTitle</name>
     </customLabels>
     <customLabels>
-        <label><!-- Applications closed message --></label>
+        <label>El período de inscripción ha cerrado. En este momento ya no se aceptan solicitudes. Si cree que se trata de un error, comuníquese con la oficina de la escuela.</label>
         <name>AppUI_ApplicationsClosed</name>
     </customLabels>
     <customLabels>
-        <label><!-- Applying for student header --></label>
+        <label>Solicitud para: {0}</label>
         <name>AppUI_ApplyingFor</name>
     </customLabels>
     <customLabels>
-        <label><!-- Aria: application progress nav --></label>
+        <label>Apto. {0}</label>
+        <name>AppUI_AptNumber</name>
+    </customLabels>
+    <customLabels>
+        <label>Progreso de la solicitud</label>
         <name>AppUI_AriaAppProgress</name>
     </customLabels>
     <customLabels>
-        <label><!-- Aria: loading application --></label>
+        <label>Cargando la solicitud</label>
         <name>AppUI_AriaLoadingApp</name>
     </customLabels>
     <customLabels>
-        <label><!-- Aria: loading form --></label>
+        <label>Cargando las solicitudes</label>
+        <name>AppUI_AriaLoadingApplications</name>
+    </customLabels>
+    <customLabels>
+        <label>Cargando el formulario</label>
         <name>AppUI_AriaLoadingForm</name>
     </customLabels>
     <customLabels>
-        <label><!-- Aria: loading next step --></label>
+        <label>Cargando el siguiente paso</label>
         <name>AppUI_AriaLoadingNextStep</name>
     </customLabels>
     <customLabels>
-        <label><!-- Aria: loading school rankings --></label>
+        <label>Cargando el orden de preferencia de las escuelas</label>
         <name>AppUI_AriaLoadingRankings</name>
     </customLabels>
     <customLabels>
-        <label><!-- Aria: loading review --></label>
+        <label>Cargando la revisión</label>
         <name>AppUI_AriaLoadingReview</name>
     </customLabels>
     <customLabels>
-        <label><!-- Aria: loading schools --></label>
+        <label>Cargando las escuelas</label>
         <name>AppUI_AriaLoadingSchools</name>
     </customLabels>
     <customLabels>
-        <label><!-- Aria: loading siblings --></label>
+        <label>Cargando los hermanos</label>
         <name>AppUI_AriaLoadingSiblings</name>
     </customLabels>
     <customLabels>
-        <label><!-- Aria: loading students --></label>
+        <label>Cargando los estudiantes</label>
         <name>AppUI_AriaLoadingStudents</name>
     </customLabels>
     <customLabels>
-        <label><!-- Aria: school rankings list --></label>
+        <label>Más acciones</label>
+        <name>AppUI_AriaMoreActions</name>
+    </customLabels>
+    <customLabels>
+        <label>Orden de preferencia de las escuelas</label>
         <name>AppUI_AriaSchoolRankings</name>
     </customLabels>
     <customLabels>
-        <label><!-- Aria: school selections group --></label>
+        <label>Escuelas seleccionadas</label>
         <name>AppUI_AriaSchoolSelections</name>
     </customLabels>
     <customLabels>
-        <label><!-- Aria: select a student radiogroup --></label>
+        <label>Seleccionar el período de solicitud</label>
+        <name>AppUI_AriaSelectApplicationPeriod</name>
+    </customLabels>
+    <customLabels>
+        <label>Seleccione un estudiante</label>
         <name>AppUI_AriaSelectStudent</name>
     </customLabels>
     <customLabels>
-        <label><!-- Aria: submitting application spinner --></label>
+        <label>Enviando la solicitud</label>
         <name>AppUI_AriaSubmittingApp</name>
     </customLabels>
     <customLabels>
-        <label><!-- Aria: updating form spinner --></label>
+        <label>Actualizando el formulario</label>
         <name>AppUI_AriaUpdatingForm</name>
     </customLabels>
     <customLabels>
-        <label><!-- Back button label --></label>
+        <label>Retirar la solicitud para esta escuela</label>
+        <name>AppUI_AriaWithdrawSchoolApplication</name>
+    </customLabels>
+    <customLabels>
+        <label>Debe seleccionar al menos una opción</label>
+        <name>AppUI_AtLeastOneSelectionRequired</name>
+    </customLabels>
+    <customLabels>
+        <label>el correo electrónico</label>
+        <name>AppUI_AuthMethodEmail</name>
+    </customLabels>
+    <customLabels>
+        <label>el mensaje de texto</label>
+        <name>AppUI_AuthMethodTextMessage</name>
+    </customLabels>
+    <customLabels>
+        <label>Atrás</label>
         <name>AppUI_Back</name>
     </customLabels>
     <customLabels>
-        <label><!-- Cancel button label --></label>
+        <label>Regresar a las solicitudes</label>
+        <name>AppUI_BackToApplications</name>
+    </customLabels>
+    <customLabels>
+        <label>La fecha de nacimiento es obligatoria</label>
+        <name>AppUI_BirthdateRequired</name>
+    </customLabels>
+    <customLabels>
+        <label>La fecha de nacimiento de este estudiante no se puede cambiar porque ya se envió una solicitud. Comuníquese con Zeta para actualizarla.</label>
+        <name>AppUI_BirthdayLockedAfterSubmission</name>
+    </customLabels>
+    <customLabels>
+        <label>Cancelar</label>
         <name>AppUI_Cancel</name>
     </customLabels>
     <customLabels>
-        <label><!-- Cancel button label (post-submit ranking edit) --></label>
+        <label>Cancelar</label>
         <name>AppUI_CancelReturnToReview</name>
     </customLabels>
     <customLabels>
-        <label><!-- Choose schools heading --></label>
+        <label>No se puede actualizar el orden de preferencia de una solicitud retirada.</label>
+        <name>AppUI_CannotRankWithdrawnApplication</name>
+    </customLabels>
+    <customLabels>
+        <label>No se pudo encontrar el contacto del tutor</label>
+        <name>AppUI_CannotResolveGuardianContact</name>
+    </customLabels>
+    <customLabels>
+        <label>No se pudo encontrar el tutor principal de esta solicitud</label>
+        <name>AppUI_CannotResolvePrimaryGuardian</name>
+    </customLabels>
+    <customLabels>
+        <label>No se pudo encontrar el período de solicitud para la solicitud del hermano(a)</label>
+        <name>AppUI_CannotResolveSiblingTimeline</name>
+    </customLabels>
+    <customLabels>
+        <label>No se pudo encontrar el período de solicitud de la solicitud original</label>
+        <name>AppUI_CannotResolveSourceTimeline</name>
+    </customLabels>
+    <customLabels>
+        <label>Elija sus escuelas</label>
         <name>AppUI_ChooseSchools</name>
     </customLabels>
     <customLabels>
-        <label><!-- Choose schools description --></label>
+        <label>Seleccione las escuelas de Zeta a las que desea presentar una solicitud. Puede elegir todas las que quiera.</label>
         <name>AppUI_ChooseSchoolsDesc</name>
     </customLabels>
     <customLabels>
-        <label><!-- Clear button label --></label>
+        <label>Borrar</label>
         <name>AppUI_Clear</name>
     </customLabels>
     <customLabels>
-        <label><!-- Coming soon placeholder --></label>
+        <label>Contraer</label>
+        <name>AppUI_Collapse</name>
+    </customLabels>
+    <customLabels>
+        <label>Próximamente</label>
         <name>AppUI_ComingSoon</name>
     </customLabels>
     <customLabels>
-        <label><!-- Opt-out warning modal body --></label>
+        <label>comunicaciones por correo electrónico con más información</label>
+        <name>AppUI_CommPrefsOptOutEmailTopic</name>
+    </customLabels>
+    <customLabels>
+        <label>actualizaciones por mensaje de texto</label>
+        <name>AppUI_CommPrefsOptOutTextTopic</name>
+    </customLabels>
+    <customLabels>
+        <label>Ha elegido no recibir {0} de Zeta Charter Schools. Podría perderse actualizaciones importantes sobre la solicitud y la inscripción de su estudiante.</label>
         <name>AppUI_CommPrefsOptOutWarning</name>
     </customLabels>
     <customLabels>
-        <label><!-- Comm prefs cross-field validation error --></label>
+        <label>Por favor, indique si desea recibir o no cada tipo de comunicación.</label>
         <name>AppUI_CommPrefsValidationError</name>
     </customLabels>
     <customLabels>
-        <label><!-- Contact-us hyperlink text in the already-enrolled message --></label>
+        <label>comuníquese con nosotros</label>
         <name>AppUI_ContactUsLinkText</name>
     </customLabels>
     <customLabels>
-        <label><!-- Continue button label --></label>
+        <label>Continuar</label>
         <name>AppUI_Continue</name>
     </customLabels>
     <customLabels>
-        <label><!-- Create student fallback error --></label>
+        <label>Estados Unidos</label>
+        <name>AppUI_CountryUnitedStates</name>
+    </customLabels>
+    <customLabels>
+        <label>No se pudieron crear las solicitudes. Por favor, inténtelo de nuevo.</label>
+        <name>AppUI_CreateApplicationsFailed</name>
+    </customLabels>
+    <customLabels>
+        <label>No se pudo crear la solicitud del hermano(a).</label>
+        <name>AppUI_CreateSiblingApplicationFailed</name>
+    </customLabels>
+    <customLabels>
+        <label>No se pudo agregar al estudiante. Por favor, inténtelo de nuevo.</label>
         <name>AppUI_CreateStudentFailed</name>
+    </customLabels>
+    <customLabels>
+        <label>La fecha de nacimiento es obligatoria</label>
+        <name>AppUI_DateOfBirthRequired</name>
     </customLabels>
     <customLabels>
         <label><!-- Day label --></label>
         <name>AppUI_Day</name>
     </customLabels>
     <customLabels>
-        <label><!-- Distance less than 0.1 miles --></label>
+        <label>&lt; 0.1 mi</label>
         <name>AppUI_DistanceLessThanPoint1</name>
     </customLabels>
     <customLabels>
-        <label><!-- Distance in miles --></label>
+        <label>{0} mi</label>
         <name>AppUI_DistanceMiles</name>
     </customLabels>
     <customLabels>
-        <label><!-- Duplicate application error message --></label>
+        <label>Ya se envió una solicitud para este estudiante. Solo se permite una solicitud por estudiante por año.</label>
         <name>AppUI_DuplicateApplication</name>
     </customLabels>
     <customLabels>
-        <label><!-- E-signature date label --></label>
+        <label>Ya existe un estudiante con este nombre y fecha de nacimiento en su cuenta. Comuníquese con Zeta si necesita ayuda.</label>
+        <name>AppUI_DuplicateStudent</name>
+    </customLabels>
+    <customLabels>
+        <label>Fecha de la firma</label>
         <name>AppUI_ESignatureDateLabel</name>
     </customLabels>
     <customLabels>
@@ -501,131 +689,169 @@
         <name>AppUI_ESignatureDateRequired</name>
     </customLabels>
     <customLabels>
-        <label><!-- E-signature legal disclaimer --></label>
+        <label>La admisión se determina mediante una lotería. La admisión no se limita por ningún factor, pero se da preferencia en la lotería a:
+- Hermanos de estudiantes aceptados
+- Hijos de empleados de Zeta Charter Schools
+- Residentes del Distrito Escolar Comunitario (CSD)
+
+No hay ningún costo para presentar una solicitud ni para asistir a una escuela de Zeta Charter Schools. Al firmar a continuación, usted autoriza a Zeta Charter Schools y a sus escuelas a usar los expedientes escolares de su hijo(a) para la recopilación y el análisis de datos. En estos estudios nunca se divulga información personal. Dar o no su consentimiento para estudios futuros no afecta las posibilidades de admisión de su hijo(a). Revise cuidadosamente
+antes de enviar y confirme toda su información. Al enviar esta solicitud, usted confirma que toda la información que proporcionó es verdadera según su leal saber y entender, y que entiende que la admisión puede ser revocada si la información proporcionada no es correcta.</label>
         <name>AppUI_ESignatureDisclaimer</name>
     </customLabels>
     <customLabels>
-        <label><!-- E-signature name input label --></label>
+        <label>Nombre legal completo</label>
         <name>AppUI_ESignatureNameLabel</name>
     </customLabels>
     <customLabels>
-        <label><!-- E-signature name input placeholder --></label>
+        <label>Escriba su nombre legal completo</label>
         <name>AppUI_ESignatureNamePlaceholder</name>
     </customLabels>
     <customLabels>
-        <label><!-- E-signature name required error --></label>
+        <label>Por favor, escriba su nombre legal completo.</label>
         <name>AppUI_ESignatureNameRequired</name>
     </customLabels>
     <customLabels>
-        <label><!-- E-signature section title --></label>
+        <label>Firma electrónica</label>
         <name>AppUI_ESignatureTitle</name>
     </customLabels>
     <customLabels>
-        <label><!-- Edit button label --></label>
+        <label>Editar</label>
         <name>AppUI_Edit</name>
     </customLabels>
     <customLabels>
-        <label><!-- Edit birthday button aria-label and tooltip --></label>
+        <label>Editar fecha de nacimiento</label>
         <name>AppUI_EditBirthday</name>
     </customLabels>
     <customLabels>
-        <label><!-- Existing application modal description --></label>
+        <label>Tiene una solicitud en proceso. ¿Desea reanudarla donde la dejó o comenzar una nueva?</label>
         <name>AppUI_ExistingAppDesc</name>
     </customLabels>
     <customLabels>
-        <label><!-- Existing application found modal title --></label>
+        <label>Se encontró una solicitud existente</label>
         <name>AppUI_ExistingAppFound</name>
     </customLabels>
     <customLabels>
-        <label><!-- Address field label --></label>
+        <label>Familia {0}</label>
+        <name>AppUI_FamilyName</name>
+    </customLabels>
+    <customLabels>
+        <label>Dirección</label>
         <name>AppUI_FieldAddress</name>
     </customLabels>
     <customLabels>
-        <label><!-- Label for the apartment / unit input --></label>
+        <label>Apartamento / Unidad (opcional)</label>
         <name>AppUI_FieldApartment</name>
     </customLabels>
     <customLabels>
-        <label><!-- City field label --></label>
+        <label>Ciudad</label>
         <name>AppUI_FieldCity</name>
     </customLabels>
     <customLabels>
-        <label><!-- Current grade field label --></label>
+        <label>País</label>
+        <name>AppUI_FieldCountry</name>
+    </customLabels>
+    <customLabels>
+        <label>Grado actual</label>
         <name>AppUI_FieldCurrentGrade</name>
     </customLabels>
     <customLabels>
-        <label><!-- Date of birth field label --></label>
+        <label>Fecha de nacimiento</label>
         <name>AppUI_FieldDateOfBirth</name>
     </customLabels>
     <customLabels>
-        <label><!-- First name field label --></label>
+        <label>Nombre</label>
         <name>AppUI_FieldFirstName</name>
     </customLabels>
     <customLabels>
-        <label><!-- Gender field label --></label>
+        <label>Género</label>
         <name>AppUI_FieldGender</name>
     </customLabels>
     <customLabels>
-        <label><!-- Grade field label --></label>
+        <label>Grado</label>
         <name>AppUI_FieldGrade</name>
     </customLabels>
     <customLabels>
-        <label><!-- Grade applying to field label --></label>
+        <label>Grado solicitado</label>
         <name>AppUI_FieldGradeApplyingTo</name>
     </customLabels>
     <customLabels>
-        <label><!-- Last name field label --></label>
+        <label>Apellido</label>
         <name>AppUI_FieldLastName</name>
     </customLabels>
     <customLabels>
-        <label><!-- Name field label --></label>
+        <label>Nombre</label>
         <name>AppUI_FieldName</name>
     </customLabels>
     <customLabels>
-        <label><!-- Rank field label --></label>
+        <label>Describa el motivo (obligatorio)</label>
+        <name>AppUI_FieldPleaseDescribeRequired</name>
+    </customLabels>
+    <customLabels>
+        <label>Posición</label>
         <name>AppUI_FieldRank</name>
     </customLabels>
     <customLabels>
-        <label><!-- State field label --></label>
+        <label>Motivo (obligatorio)</label>
+        <name>AppUI_FieldReasonRequired</name>
+    </customLabels>
+    <customLabels>
+        <label>Estado</label>
         <name>AppUI_FieldState</name>
     </customLabels>
     <customLabels>
-        <label><!-- Street field label --></label>
+        <label>Calle</label>
         <name>AppUI_FieldStreet</name>
     </customLabels>
     <customLabels>
-        <label><!-- Zeta school field label --></label>
+        <label>Escuela de Zeta</label>
         <name>AppUI_FieldZetaSchool</name>
     </customLabels>
     <customLabels>
-        <label><!-- Zip code field label --></label>
+        <label>Código postal</label>
         <name>AppUI_FieldZipCode</name>
     </customLabels>
     <customLabels>
-        <label><!-- Filter by school name placeholder --></label>
+        <label>Filtrar por nombre de escuela...</label>
         <name>AppUI_FilterBySchool</name>
     </customLabels>
     <customLabels>
-        <label><!-- Form saved success toast --></label>
+        <label>El nombre es obligatorio</label>
+        <name>AppUI_FirstNameRequired</name>
+    </customLabels>
+    <customLabels>
+        <label>El formulario se guardó correctamente.</label>
         <name>AppUI_FormSavedSuccess</name>
     </customLabels>
     <customLabels>
-        <label><!-- Go back button label --></label>
+        <label>Regresar</label>
         <name>AppUI_GoBack</name>
     </customLabels>
     <customLabels>
-        <label><!-- Grade information heading --></label>
+        <label>El grado solicitado es obligatorio</label>
+        <name>AppUI_GradeApplyingToRequired</name>
+    </customLabels>
+    <customLabels>
+        <label>Información del grado</label>
         <name>AppUI_GradeInfo</name>
     </customLabels>
     <customLabels>
-        <label><!-- Grade progression warning message --></label>
+        <label>sin seleccionar</label>
+        <name>AppUI_GradeNotSelected</name>
+    </customLabels>
+    <customLabels>
+        <label>El grado actual y el grado solicitado que seleccionó no son consecutivos, como es habitual. Aun así, puede continuar.</label>
         <name>AppUI_GradeProgressionWarning</name>
     </customLabels>
     <customLabels>
-        <label><!-- Home map marker title --></label>
+        <label>Grado {0}</label>
+        <name>AppUI_GradeValue</name>
+    </customLabels>
+    <customLabels>
+        <label>Casa</label>
         <name>AppUI_Home</name>
     </customLabels>
     <customLabels>
-        <label><!-- Siblings in your household roster heading --></label>
+        <label>Hermanos en su hogar</label>
         <name>AppUI_HouseholdSiblings</name>
     </customLabels>
     <customLabels>
@@ -633,23 +859,31 @@
         <name>AppUI_HouseholdSiblingsCreateButton</name>
     </customLabels>
     <customLabels>
-        <label><!-- Household siblings roster grade column header --></label>
+        <label>Comenzar la solicitud para el estudiante seleccionado (se debe completar y enviar por separado). ({0})</label>
+        <name>AppUI_HouseholdSiblingsCreateButtonCount</name>
+    </customLabels>
+    <customLabels>
+        <label>Grado solicitado</label>
         <name>AppUI_HouseholdSiblingsGradeColumn</name>
     </customLabels>
     <customLabels>
-        <label><!-- Household siblings roster helper text --></label>
+        <label>Seleccione a los estudiantes para comenzar una solicitud en borrador para cada uno. Luego, cada solicitud en borrador se debe completar y enviar por separado para participar en la lotería. Puede ver todas las solicitudes en borrador y enviadas en su panel principal.</label>
         <name>AppUI_HouseholdSiblingsHelp</name>
     </customLabels>
     <customLabels>
-        <label><!-- Household siblings roster name column header --></label>
+        <label>Nombre</label>
         <name>AppUI_HouseholdSiblingsNameColumn</name>
     </customLabels>
     <customLabels>
-        <label><!-- Household siblings roster select column header (assistive) --></label>
+        <label>Seleccionar a {0}</label>
+        <name>AppUI_HouseholdSiblingsSelectAria</name>
+    </customLabels>
+    <customLabels>
+        <label>Seleccionar</label>
         <name>AppUI_HouseholdSiblingsSelectColumn</name>
     </customLabels>
     <customLabels>
-        <label><!-- Household siblings roster per-row grade-required validation message --></label>
+        <label>Seleccione un grado</label>
         <name>AppUI_HouseholdSiblingsSelectGrade</name>
     </customLabels>
     <customLabels>
@@ -657,11 +891,31 @@
         <name>AppUI_HouseholdSiblingsSkipped</name>
     </customLabels>
     <customLabels>
-        <label><!-- Kindergarten birth year guidance note ({0} = required birth year) --></label>
+        <label>Omitimos a estos estudiantes porque ya tienen una solicitud: {0}</label>
+        <name>AppUI_HouseholdSiblingsSkippedNames</name>
+    </customLabels>
+    <customLabels>
+        <label>Los estudiantes que solicitan admisión a Kínder deben haber nacido en {0}</label>
         <name>AppUI_KindergartenBirthYearNote</name>
     </customLabels>
     <customLabels>
-        <label><!-- Post-lottery informational message --></label>
+        <label>Idioma</label>
+        <name>AppUI_LanguageSwitcher</name>
+    </customLabels>
+    <customLabels>
+        <label>El apellido es obligatorio</label>
+        <name>AppUI_LastNameRequired</name>
+    </customLabels>
+    <customLabels>
+        <label>El usuario que inició sesión debe tener un contacto</label>
+        <name>AppUI_LoggedInUserNeedsContact</name>
+    </customLabels>
+    <customLabels>
+        <label>La lotería de solicitudes de Zeta Charter Schools para todas las escuelas y grados se llevará a cabo el martes 6 de abril de 2027 a las 8:30 a.m. en 401 West 218th Street, New York, NY 10034.
+
+Declaración de no discriminación: Una escuela chárter no discriminará ni limitará la admisión de ningún estudiante por ningún motivo ilegal, incluidos el origen étnico, el origen nacional, la discapacidad, la capacidad intelectual, las medidas de rendimiento o aptitud, la capacidad atlética, la raza, el credo, el género, la religión o la ascendencia. Una escuela no puede exigir que un estudiante o una familia realice ninguna acción (como un examen de admisión, una entrevista, un ensayo, la asistencia a una sesión informativa, etc.) para que un solicitante pueda recibir o presentar una solicitud de admisión a esa escuela.
+
+Zeta se reserva el derecho de ajustar la asignación de grado según una evaluación posterior a la admisión.</label>
         <name>AppUI_LotteryMessage</name>
     </customLabels>
     <customLabels>
@@ -721,19 +975,51 @@
         <name>AppUI_MonthSeptember</name>
     </customLabels>
     <customLabels>
-        <label><!-- New student form heading --></label>
+        <label>Mis solicitudes</label>
+        <name>AppUI_MyApplications</name>
+    </customLabels>
+    <customLabels>
+        <label>Nueva solicitud</label>
+        <name>AppUI_NewApplication</name>
+    </customLabels>
+    <customLabels>
+        <label>Nuevo estudiante</label>
         <name>AppUI_NewStudent</name>
     </customLabels>
     <customLabels>
-        <label><!-- No record ID error --></label>
+        <label>No</label>
+        <name>AppUI_No</name>
+    </customLabels>
+    <customLabels>
+        <label>No se encontraron solicitudes.</label>
+        <name>AppUI_NoApplicationsFound</name>
+    </customLabels>
+    <customLabels>
+        <label>No tiene solicitudes en proceso.</label>
+        <name>AppUI_NoApplicationsInProgress</name>
+    </customLabels>
+    <customLabels>
+        <label>--Ninguno--</label>
+        <name>AppUI_NoneOption</name>
+    </customLabels>
+    <customLabels>
+        <label>No tiene permiso para actualizar la información de este estudiante.</label>
+        <name>AppUI_NoPermissionToUpdateStudent</name>
+    </customLabels>
+    <customLabels>
+        <label>No se proporcionó el ID del registro.</label>
         <name>AppUI_NoRecordId</name>
     </customLabels>
     <customLabels>
-        <label><!-- No schools selected summary --></label>
+        <label>Ninguna escuela seleccionada</label>
         <name>AppUI_NoSchoolsSelected</name>
     </customLabels>
     <customLabels>
-        <label><!-- One school selected summary --></label>
+        <label>Todavía no hay solicitudes enviadas.</label>
+        <name>AppUI_NoSubmittedApplications</name>
+    </customLabels>
+    <customLabels>
+        <label>1 escuela seleccionada</label>
         <name>AppUI_OneSchoolSelected</name>
     </customLabels>
     <customLabels>
@@ -741,92 +1027,144 @@
         <name>AppUI_OptOutWarningTitle</name>
     </customLabels>
     <customLabels>
-        <label><!-- Pre-K birth year guidance note ({0} = required birth year) --></label>
+        <label>Otras solicitudes</label>
+        <name>AppUI_OtherApplications</name>
+    </customLabels>
+    <customLabels>
+        <label>Se requiere el nombre de desarrollador de la página</label>
+        <name>AppUI_PageDevNameRequired</name>
+    </customLabels>
+    <customLabels>
+        <label>No se encontró la página: {0}</label>
+        <name>AppUI_PageNotFound</name>
+    </customLabels>
+    <customLabels>
+        <label>Sin fecha de cierre</label>
+        <name>AppUI_PeriodOpenEnded</name>
+    </customLabels>
+    <customLabels>
+        <label>Los estudiantes que solicitan admisión a Prekínder deben haber nacido en {0}</label>
         <name>AppUI_PreKBirthYearNote</name>
     </customLabels>
     <customLabels>
-        <label><!-- Privacy policy link text --></label>
+        <label>Ver nuestra Política de privacidad</label>
         <name>AppUI_PrivacyPolicyText</name>
     </customLabels>
     <customLabels>
-        <label><!-- Privacy policy URL --></label>
+        <label>https://www.zetaschools.org/privacy-policy</label>
         <name>AppUI_PrivacyPolicyUrl</name>
     </customLabels>
     <customLabels>
-        <label><!-- Ranking info banner text --></label>
+        <label>Su estudiante participará en la lotería de todas las escuelas a las que presentó una solicitud, sin importar el orden de preferencia. Colocar una escuela al principio o al final de la lista no aumentará ni disminuirá las posibilidades de que su estudiante sea aceptado(a) en esa escuela. El orden de preferencia solo se usa para asignar a su estudiante a la escuela de Zeta Charter Schools que usted prefiera, si es aceptado(a) en más de una escuela. Si su estudiante es aceptado(a) en más de una escuela, solo reservaremos un lugar para su estudiante en la escuela que esté más arriba en su lista.</label>
         <name>AppUI_RankInfoBanner</name>
     </customLabels>
     <customLabels>
-        <label><!-- Rank schools heading --></label>
+        <label>Se requiere el JSON del orden de preferencia</label>
+        <name>AppUI_RankingsJsonRequired</name>
+    </customLabels>
+    <customLabels>
+        <label>Ordene sus escuelas por preferencia</label>
         <name>AppUI_RankSchools</name>
     </customLabels>
     <customLabels>
-        <label><!-- Rank schools description --></label>
+        <label>Si presenta solicitudes a más de una escuela de Zeta, ordénelas a continuación según su preferencia. Ponga su primera opción en la posición 1.</label>
         <name>AppUI_RankSchoolsDesc</name>
     </customLabels>
     <customLabels>
-        <label><!-- Drag to reorder hint --></label>
+        <label>Arrastre para cambiar el orden o use los menús desplegables.</label>
         <name>AppUI_RankSchoolsDrag</name>
+    </customLabels>
+    <customLabels>
+        <label>¿Todo listo para presentar una solicitud?</label>
+        <name>AppUI_ReadyToApply</name>
+    </customLabels>
+    <customLabels>
+        <label>Comience la solicitud de su hijo(a) para Zeta Charter Schools.</label>
+        <name>AppUI_ReadyToApplyDesc</name>
+    </customLabels>
+    <customLabels>
+        <label>Error en el registro. Por favor, comuníquese con soporte técnico.</label>
+        <name>AppUI_RegistrationErrorContactSupport</name>
     </customLabels>
     <customLabels>
         <label><!-- Remove button label --></label>
         <name>AppUI_Remove</name>
     </customLabels>
     <customLabels>
-        <label><!-- Residency restriction warning (Pre-K, NYC) --></label>
+        <label>Falta completar: {0}</label>
+        <name>AppUI_RequiredFields</name>
+    </customLabels>
+    <customLabels>
+        <label>La dirección proporcionada está fuera de Nueva York. Para la inscripción se requiere vivir en la ciudad de Nueva York. Aun así, puede enviar la solicitud, pero se revisará la elegibilidad.</label>
         <name>AppUI_ResidencyWarning</name>
     </customLabels>
     <customLabels>
-        <label><!-- Residency restriction warning (K-9, NY State) --></label>
+        <label>La dirección proporcionada está fuera de Nueva York. Para la inscripción se requiere vivir en el estado de Nueva York. Aun así, puede enviar la solicitud, pero se revisará la elegibilidad.</label>
         <name>AppUI_ResidencyWarning_State</name>
     </customLabels>
     <customLabels>
-        <label><!-- Resume button label --></label>
+        <label>Reanudar</label>
         <name>AppUI_Resume</name>
     </customLabels>
     <customLabels>
-        <label><!-- Return home button label --></label>
+        <label>Regresar al inicio</label>
         <name>AppUI_ReturnHome</name>
     </customLabels>
     <customLabels>
-        <label><!-- Save button label --></label>
+        <label>Guardar</label>
         <name>AppUI_Save</name>
     </customLabels>
     <customLabels>
-        <label><!-- Save and exit button label --></label>
+        <label>Guardar y salir</label>
         <name>AppUI_SaveAndExit</name>
     </customLabels>
     <customLabels>
-        <label><!-- Save and return to review button label (post-submit ranking edit) --></label>
+        <label>Guardar y regresar a la revisión</label>
         <name>AppUI_SaveAndReturnToReview</name>
     </customLabels>
     <customLabels>
-        <label><!-- Save failed status --></label>
+        <label>No se pudo guardar</label>
         <name>AppUI_SaveFailed</name>
     </customLabels>
     <customLabels>
-        <label><!-- Save failed retry message --></label>
+        <label>No se pudo guardar. Por favor, inténtelo de nuevo.</label>
         <name>AppUI_SaveFailedRetry</name>
     </customLabels>
     <customLabels>
-        <label><!-- Save rankings fallback error --></label>
+        <label>No se pudo guardar el orden de preferencia de las escuelas.</label>
         <name>AppUI_SaveRankingsFailed</name>
     </customLabels>
     <customLabels>
-        <label><!-- Save school selections fallback error --></label>
+        <label>No se pudieron guardar las escuelas seleccionadas.</label>
         <name>AppUI_SaveSchoolsFailed</name>
     </customLabels>
     <customLabels>
-        <label><!-- Save signature fallback error --></label>
+        <label>No se pudo guardar la firma. Por favor, inténtelo de nuevo.</label>
         <name>AppUI_SaveSignatureFailed</name>
     </customLabels>
     <customLabels>
-        <label><!-- Saving status --></label>
+        <label>Guardando...</label>
         <name>AppUI_Saving</name>
+    </customLabels>
+    <customLabels>
+        <label>La solicitud para esta escuela ya fue retirada.</label>
+        <name>AppUI_SchoolAlreadyWithdrawn</name>
+    </customLabels>
+    <customLabels>
+        <label>Se requiere el ID de la solicitud para la escuela</label>
+        <name>AppUI_SchoolApplicationIdRequired</name>
+    </customLabels>
+    <customLabels>
+        <label>No se encontró la solicitud para la escuela: {0}</label>
+        <name>AppUI_SchoolApplicationNotFound</name>
     </customLabels>
     <customLabels>
         <label><!-- School rankings save success toast --></label>
         <name>AppUI_SchoolRankingsSaved</name>
+    </customLabels>
+    <customLabels>
+        <label>Las escuelas seleccionadas no corresponden al grado seleccionado. Por favor, vuelva a seleccionarlas.</label>
+        <name>AppUI_SchoolsDoNotMatchGrade</name>
     </customLabels>
     <customLabels>
         <label><!-- School selections save success toast --></label>
@@ -837,31 +1175,59 @@
         <name>AppUI_SchoolsRankingEmptyState</name>
     </customLabels>
     <customLabels>
-        <label><!-- Multiple schools selected summary --></label>
+        <label>{0} escuelas seleccionadas</label>
         <name>AppUI_SchoolsSelectedPlural</name>
     </customLabels>
     <customLabels>
-        <label><!-- Search schools input label --></label>
+        <label>Buscar dirección</label>
+        <name>AppUI_SearchAddress</name>
+    </customLabels>
+    <customLabels>
+        <label>Buscar escuelas</label>
         <name>AppUI_SearchSchools</name>
     </customLabels>
     <customLabels>
-        <label><!-- Application details section title --></label>
+        <label>Detalles de la solicitud</label>
         <name>AppUI_SectionApplicationDetails</name>
     </customLabels>
     <customLabels>
-        <label><!-- School rankings section title --></label>
+        <label>Orden de preferencia de las escuelas</label>
         <name>AppUI_SectionSchoolRankings</name>
     </customLabels>
     <customLabels>
-        <label><!-- Siblings section title --></label>
+        <label>Hermanos</label>
         <name>AppUI_SectionSiblings</name>
     </customLabels>
     <customLabels>
-        <label><!-- Select a student heading --></label>
+        <label>Seleccione una opción</label>
+        <name>AppUI_SelectAnOption</name>
+    </customLabels>
+    <customLabels>
+        <label>Seleccione el período para el que desea presentar una solicitud.</label>
+        <name>AppUI_SelectApplicationPeriodDesc</name>
+    </customLabels>
+    <customLabels>
+        <label>Seleccione un motivo</label>
+        <name>AppUI_SelectAReason</name>
+    </customLabels>
+    <customLabels>
+        <label>Seleccione una escuela</label>
+        <name>AppUI_SelectASchool</name>
+    </customLabels>
+    <customLabels>
+        <label>Se requiere el accountId de la selección</label>
+        <name>AppUI_SelectionAccountIdRequired</name>
+    </customLabels>
+    <customLabels>
+        <label>Se requiere el JSON de las selecciones</label>
+        <name>AppUI_SelectionsJsonRequired</name>
+    </customLabels>
+    <customLabels>
+        <label>Seleccione un estudiante</label>
         <name>AppUI_SelectStudent</name>
     </customLabels>
     <customLabels>
-        <label><!-- Select student description --></label>
+        <label>Elija el estudiante para quien presenta la solicitud o agregue un nuevo estudiante. Cada estudiante que solicita admisión necesita una solicitud por separado.</label>
         <name>AppUI_SelectStudentDesc</name>
     </customLabels>
     <customLabels>
@@ -869,87 +1235,139 @@
         <name>AppUI_SelectionsLockedAfterSubmission</name>
     </customLabels>
     <customLabels>
-        <label><!-- Showing schools for grade --></label>
+        <label>Se muestran las escuelas que aceptan solicitudes para {0}</label>
         <name>AppUI_ShowingSchoolsForGrade</name>
     </customLabels>
     <customLabels>
-        <label><!-- Siblings applying subsection title --></label>
+        <label>El grado solicitado es obligatorio para cada hermano(a) que seleccionó</label>
+        <name>AppUI_SiblingGradeRequired</name>
+    </customLabels>
+    <customLabels>
+        <label>Se requiere el JSON del hermano(a)</label>
+        <name>AppUI_SiblingJsonRequired</name>
+    </customLabels>
+    <customLabels>
+        <label>Hermanos que también solicitan admisión</label>
         <name>AppUI_SiblingsApplying</name>
     </customLabels>
     <customLabels>
-        <label><!-- Siblings applying section subtitle/instruction --></label>
+        <label>Seleccione o agregue un hermano(a) si su estudiante tiene un hermano(a) que actualmente está solicitando admisión a una escuela de Zeta Charter Schools. Se debe completar una solicitud por separado para cada estudiante que solicite admisión. Los hermanos deben compartir al menos un padre, madre o tutor para tener derecho a la preferencia de hermanos.</label>
         <name>AppUI_SiblingsApplyingSubtitle</name>
     </customLabels>
     <customLabels>
-        <label><!-- Siblings attending subsection title --></label>
+        <label>Hermanos que asisten a una escuela de Zeta</label>
         <name>AppUI_SiblingsAttending</name>
     </customLabels>
     <customLabels>
-        <label><!-- Siblings attending section subtitle/instruction --></label>
+        <label>Agregue un hermano(a) si su estudiante tiene un hermano(a) que actualmente asiste a una escuela de Zeta Charter Schools. Los hermanos deben compartir al menos un padre, madre o tutor para tener derecho a la preferencia de hermanos.</label>
         <name>AppUI_SiblingsAttendingSubtitle</name>
     </customLabels>
     <customLabels>
-        <label><!-- Start new button label --></label>
+        <label>La fecha de la firma es obligatoria</label>
+        <name>AppUI_SignatureDateRequired</name>
+    </customLabels>
+    <customLabels>
+        <label>El nombre para la firma es obligatorio</label>
+        <name>AppUI_SignatureNameRequired</name>
+    </customLabels>
+    <customLabels>
+        <label>La solicitud debe firmarse antes de enviarla</label>
+        <name>AppUI_SignBeforeSubmitting</name>
+    </customLabels>
+    <customLabels>
+        <label>Comenzar una nueva</label>
         <name>AppUI_StartNew</name>
     </customLabels>
     <customLabels>
-        <label><!-- Step 2 label --></label>
+        <label>Comenzar una nueva solicitud</label>
+        <name>AppUI_StartNewApplication</name>
+    </customLabels>
+    <customLabels>
+        <label>Enviada</label>
+        <name>AppUI_StatusApplied</name>
+    </customLabels>
+    <customLabels>
+        <label>En proceso</label>
+        <name>AppUI_StatusInProgress</name>
+    </customLabels>
+    <customLabels>
+        <label>Elegir escuelas</label>
         <name>AppUI_StepChooseSchools</name>
     </customLabels>
     <customLabels>
-        <label><!-- Step 5 label --></label>
+        <label>Confirmar y enviar</label>
         <name>AppUI_StepConfirmSubmit</name>
     </customLabels>
     <customLabels>
-        <label><!-- Step 4 label --></label>
+        <label>Detalles de la solicitud</label>
         <name>AppUI_StepFillApplication</name>
     </customLabels>
     <customLabels>
-        <label><!-- Step X of Y counter --></label>
+        <label>Paso {0} de {1}</label>
         <name>AppUI_StepOf</name>
     </customLabels>
     <customLabels>
-        <label><!-- Step 3 label --></label>
+        <label>Ordenar escuelas</label>
         <name>AppUI_StepRankSchools</name>
     </customLabels>
     <customLabels>
-        <label><!-- Step 1 label --></label>
+        <label>Información del estudiante</label>
         <name>AppUI_StepStudentInfo</name>
     </customLabels>
     <customLabels>
-        <label><!-- Student information section title --></label>
+        <label>Se requiere el ID de la cuenta del estudiante</label>
+        <name>AppUI_StudentAccountIdRequired</name>
+    </customLabels>
+    <customLabels>
+        <label>Información del estudiante</label>
         <name>AppUI_StudentInfo</name>
     </customLabels>
     <customLabels>
-        <label><!-- Submit button label --></label>
+        <label>Se requiere el JSON del estudiante</label>
+        <name>AppUI_StudentJsonRequired</name>
+    </customLabels>
+    <customLabels>
+        <label>Fecha límite para enviar: {0}</label>
+        <name>AppUI_SubmissionDeadline</name>
+    </customLabels>
+    <customLabels>
+        <label>Enviar</label>
         <name>AppUI_Submit</name>
     </customLabels>
     <customLabels>
-        <label><!-- Submit application modal description --></label>
+        <label>Una vez enviada, su solicitud no se podrá modificar. Por favor, asegúrese de que toda la información sea correcta antes de continuar.</label>
         <name>AppUI_SubmitAppDesc</name>
     </customLabels>
     <customLabels>
-        <label><!-- Submit application modal title --></label>
+        <label>¿Enviar la solicitud?</label>
         <name>AppUI_SubmitAppQuestion</name>
     </customLabels>
     <customLabels>
-        <label><!-- Submit application fallback error --></label>
+        <label>No se pudo enviar la solicitud.</label>
         <name>AppUI_SubmitFailed</name>
     </customLabels>
     <customLabels>
-        <label><!-- Application submitted message --></label>
+        <label>La solicitud debe estar en estado de borrador para poder enviarla</label>
+        <name>AppUI_SubmitRequiresDraftStatus</name>
+    </customLabels>
+    <customLabels>
+        <label>Su solicitud se envió correctamente. En breve recibirá un correo electrónico de confirmación.</label>
         <name>AppUI_SubmittedMessage</name>
     </customLabels>
     <customLabels>
-        <label><!-- Application submitted title --></label>
+        <label>¡Solicitud enviada!</label>
         <name>AppUI_SubmittedTitle</name>
     </customLabels>
     <customLabels>
-        <label><!-- Submitting status label --></label>
+        <label>Enviando...</label>
         <name>AppUI_Submitting</name>
     </customLabels>
     <customLabels>
-        <label><!-- Text message consent modal body --></label>
+        <label>Listo</label>
+        <name>AppUI_Success</name>
+    </customLabels>
+    <customLabels>
+        <label>Al marcar esta casilla, usted acepta recibir mensajes de texto de Zeta Charter Schools relacionados con la solicitud y la posible inscripción de su estudiante. Pueden aplicarse tarifas de mensajes y datos. La frecuencia de los mensajes varía. Los operadores de telefonía no son responsables de los mensajes retrasados o no entregados. Para obtener ayuda, responda HELP o comuníquese con nosotros a través de la pestaña Contáctenos (Contact Us). Para cancelar, responda STOP. &lt;a href=&quot;https://www.zetaschools.org/privacy-policy&quot; target=&quot;_blank&quot; rel=&quot;noopener noreferrer&quot;&gt;Ver los Términos de servicio y la Política de privacidad&lt;/a&gt;.</label>
         <name>AppUI_TextMessageConsentBody</name>
     </customLabels>
     <customLabels>
@@ -957,59 +1375,179 @@
         <name>AppUI_TextMessageConsentTitle</name>
     </customLabels>
     <customLabels>
-        <label><!-- Unsaved changes status --></label>
+        <label>Solicitud {0}</label>
+        <name>AppUI_TimelineApplication</name>
+    </customLabels>
+    <customLabels>
+        <label>No se pudo verificar su cuenta.</label>
+        <name>AppUI_UnableToVerifyAccount</name>
+    </customLabels>
+    <customLabels>
+        <label>(hermano o hermana sin nombre)</label>
+        <name>AppUI_UnnamedSibling</name>
+    </customLabels>
+    <customLabels>
+        <label>Cambios sin guardar</label>
         <name>AppUI_UnsavedChanges</name>
     </customLabels>
     <customLabels>
-        <label><!-- Generic fallback when updating a birthday fails --></label>
+        <label>No se pudo actualizar la fecha de nacimiento. Por favor, inténtelo de nuevo.</label>
         <name>AppUI_UpdateBirthdayFailed</name>
     </customLabels>
     <customLabels>
-        <label><!-- Update rankings button label (post-submit) --></label>
+        <label>Actualizar orden</label>
         <name>AppUI_UpdateRankings</name>
     </customLabels>
     <customLabels>
-        <label><!-- Validation: assign rank to every school --></label>
+        <label>Por favor, asigne una posición a cada escuela.</label>
         <name>AppUI_ValidateAssignRanks</name>
     </customLabels>
     <customLabels>
-        <label><!-- Validation: no schools to rank --></label>
+        <label>No hay escuelas para ordenar. Por favor, regrese y seleccione escuelas.</label>
         <name>AppUI_ValidateNoSchools</name>
     </customLabels>
     <customLabels>
-        <label><!-- Validation: select current grade --></label>
+        <label>Por favor, seleccione el grado actual.</label>
         <name>AppUI_ValidateSelectCurrentGrade</name>
     </customLabels>
     <customLabels>
-        <label><!-- Validation: select grade applying to --></label>
+        <label>Por favor, seleccione el grado solicitado.</label>
         <name>AppUI_ValidateSelectGrade</name>
     </customLabels>
     <customLabels>
-        <label><!-- Validation: select at least one school --></label>
+        <label>Por favor, seleccione al menos una escuela.</label>
         <name>AppUI_ValidateSelectSchool</name>
     </customLabels>
     <customLabels>
-        <label><!-- Validation: select a student --></label>
+        <label>Por favor, seleccione un estudiante para continuar.</label>
         <name>AppUI_ValidateSelectStudent</name>
     </customLabels>
     <customLabels>
-        <label><!-- Validation: unique ranks required --></label>
+        <label>Cada escuela debe tener una posición diferente.</label>
         <name>AppUI_ValidateUniqueRanks</name>
+    </customLabels>
+    <customLabels>
+        <label>Ver</label>
+        <name>AppUI_View</name>
+    </customLabels>
+    <customLabels>
+        <label>¡Bienvenidos, {0}!</label>
+        <name>AppUI_WelcomeFamily</name>
+    </customLabels>
+    <customLabels>
+        <label>¡Bienvenidos!</label>
+        <name>AppUI_WelcomeGreeting</name>
+    </customLabels>
+    <customLabels>
+        <label>Nos complace darle la bienvenida al lugar donde encontrará todo lo necesario para la inscripción de su hijo(a) en Zeta.</label>
+        <name>AppUI_WelcomeMessage</name>
+    </customLabels>
+    <customLabels>
+        <label>¿Para qué período de solicitud?</label>
+        <name>AppUI_WhichApplicationPeriod</name>
+    </customLabels>
+    <customLabels>
+        <label>Retirar</label>
+        <name>AppUI_Withdraw</name>
+    </customLabels>
+    <customLabels>
+        <label>El motivo del retiro es obligatorio</label>
+        <name>AppUI_WithdrawalReasonRequired</name>
+    </customLabels>
+    <customLabels>
+        <label>No se pudo retirar la solicitud.</label>
+        <name>AppUI_WithdrawAppFailed</name>
+    </customLabels>
+    <customLabels>
+        <label>Retirar solicitud</label>
+        <name>AppUI_WithdrawApplication</name>
+    </customLabels>
+    <customLabels>
+        <label>Se requiere el ID de la solicitud.</label>
+        <name>AppUI_WithdrawApplicationIdRequired</name>
+    </customLabels>
+    <customLabels>
+        <label>No se encontró la solicitud.</label>
+        <name>AppUI_WithdrawApplicationNotFound</name>
+    </customLabels>
+    <customLabels>
+        <label>Esta acción no se puede deshacer. Se retirará su solicitud para {0}.</label>
+        <name>AppUI_WithdrawAppModalBody</name>
+    </customLabels>
+    <customLabels>
+        <label>Esta acción no se puede deshacer. Se retirará su solicitud.</label>
+        <name>AppUI_WithdrawAppModalBodyNoTimeline</name>
+    </customLabels>
+    <customLabels>
+        <label>¿Retirar la solicitud?</label>
+        <name>AppUI_WithdrawAppQuestion</name>
+    </customLabels>
+    <customLabels>
+        <label>Por favor, describa el motivo del retiro.</label>
+        <name>AppUI_WithdrawDescribeReason</name>
+    </customLabels>
+    <customLabels>
+        <label>Retirando…</label>
+        <name>AppUI_Withdrawing</name>
+    </customLabels>
+    <customLabels>
+        <label>Retirada</label>
+        <name>AppUI_Withdrawn</name>
+    </customLabels>
+    <customLabels>
+        <label>Solo puede retirar sus propias solicitudes.</label>
+        <name>AppUI_WithdrawOwnApplicationsOnly</name>
+    </customLabels>
+    <customLabels>
+        <label>Solo puede retirar sus propias solicitudes para escuelas.</label>
+        <name>AppUI_WithdrawOwnSchoolsOnly</name>
+    </customLabels>
+    <customLabels>
+        <label>No se pudieron cargar los motivos de retiro.</label>
+        <name>AppUI_WithdrawReasonsLoadFailed</name>
+    </customLabels>
+    <customLabels>
+        <label>¿Retirar la solicitud para esta escuela?</label>
+        <name>AppUI_WithdrawSchoolAppQuestion</name>
+    </customLabels>
+    <customLabels>
+        <label>No se pudo retirar la solicitud para esta escuela.</label>
+        <name>AppUI_WithdrawSchoolFailed</name>
+    </customLabels>
+    <customLabels>
+        <label>Se retirará la solicitud de {0} para {1}. Esta acción no se puede deshacer.</label>
+        <name>AppUI_WithdrawSchoolModalBody</name>
+    </customLabels>
+    <customLabels>
+        <label>Se retirará la solicitud de este estudiante para {0}. Esta acción no se puede deshacer.</label>
+        <name>AppUI_WithdrawSchoolModalBodyNoName</name>
+    </customLabels>
+    <customLabels>
+        <label>Por favor, seleccione el motivo del retiro.</label>
+        <name>AppUI_WithdrawSelectReason</name>
     </customLabels>
     <customLabels>
         <label><!-- Year label --></label>
         <name>AppUI_Year</name>
     </customLabels>
     <customLabels>
-        <label><!-- Zeta Charter Schools brand name --></label>
+        <label>Sí</label>
+        <name>AppUI_Yes</name>
+    </customLabels>
+    <customLabels>
+        <label>Sus solicitudes</label>
+        <name>AppUI_YourApplications</name>
+    </customLabels>
+    <customLabels>
+        <label>Zeta Charter Schools</label>
         <name>AppUI_ZetaCharterSchools</name>
     </customLabels>
     <customLabels>
-        <label><!-- Zeta Schools map markers title --></label>
+        <label>Zeta Schools</label>
         <name>AppUI_ZetaSchools</name>
     </customLabels>
     <customLabels>
-        <label><!-- Zip code validation error --></label>
+        <label>Ingrese un código postal de 5 dígitos</label>
         <name>AppUI_ZipCodeError</name>
     </customLabels>
     <customLabels>
@@ -1045,23 +1583,23 @@
         <name>Mogli_SMS__Namespace</name>
     </customLabels>
     <customLabels>
-        <label><!-- Parent Login Invalid Identifier --></label>
+        <label>Por favor, ingrese un correo electrónico o un número de teléfono celular válido.</label>
         <name>Parent_Login_Invalid_Identifier</name>
     </customLabels>
     <customLabels>
-        <label><!-- Parent Login No Passwordless Redirect --></label>
+        <label>No podemos completar su inicio de sesión. Por favor, inténtelo de nuevo o comuníquese con Zeta Charter Schools para obtener ayuda. enroll@zetaschools.org | (646) 480-1654</label>
         <name>Parent_Login_No_Passwordless_Redirect</name>
     </customLabels>
     <customLabels>
-        <label><!-- Parent Login No Unique User --></label>
+        <label>No se encontró ninguna cuenta con ese correo electrónico o número de teléfono. ¿Es la primera vez que usa el portal? Haga clic en “Sign Up” (Registrarse) para crear una cuenta.</label>
         <name>Parent_Login_No_Unique_User</name>
     </customLabels>
     <customLabels>
-        <label><!-- Parent Login No Verified 2FA Method --></label>
+        <label>No podemos enviar un código de verificación al correo electrónico o número de teléfono que proporcionó. Por favor, inténtelo de nuevo o comuníquese con Zeta Charter Schools para obtener ayuda. enroll@zetaschools.org | (646) 480-1654</label>
         <name>Parent_Login_No_Verified_2FA_Method</name>
     </customLabels>
     <customLabels>
-        <label><!-- Parent Portal Base URL --></label>
+        <label>https://myportal.zetaschools.org/</label>
         <name>Parent_Portal_Base_URL</name>
     </customLabels>
     <customLabels>
@@ -1137,7 +1675,7 @@
         <name>ap_Edit</name>
     </customLabels>
     <customLabels>
-        <label><!-- Error --></label>
+        <label>Error</label>
         <name>ap_Error</name>
     </customLabels>
     <customLabels>
@@ -21367,45 +21905,58 @@
         <flows>
             <screens>
                 <fields>
+                    <fieldText>Ingrese el código que recibió por mensaje de texto.</fieldText>
                     <name>Enter_the_code_you_received_via_SMS</name>
                 </fields>
                 <name>Enter_Code_Received_via_SMS</name>
+                <nextOrFinishButtonLabel>Enviar</nextOrFinishButtonLabel>
             </screens>
             <screens>
                 <fields>
+                    <fieldText>&lt;p&gt;Se envió un correo electrónico a &lt;strong style=&quot;background-color: rgb(255, 255, 255);&quot;&gt;{!Get_logged_in_User.Email}&lt;/strong&gt;&lt;span style=&quot;background-color: rgb(255, 255, 255);&quot;&gt;. Para verificar su correo electrónico y usarlo para iniciar sesión en el Portal para Padres de Zeta, siga el enlace que se incluye en el mensaje.&lt;/span&gt;&lt;/p&gt;</fieldText>
                     <name>dt_nextstepsemail</name>
                 </fields>
                 <name>Next_Steps_Email</name>
+                <nextOrFinishButtonLabel>Aceptar</nextOrFinishButtonLabel>
             </screens>
             <screens>
                 <fields>
+                    <fieldText>&lt;p&gt;&lt;strong style=&quot;background-color: rgb(255, 255, 255);&quot;&gt;Agregar otros métodos de verificación para iniciar sesión&lt;/strong&gt;&lt;/p&gt;&lt;p&gt;En este momento, no tiene un correo electrónico ni un número de teléfono que pueda verificar para iniciar sesión en el Portal para Padres de Zeta.&lt;/p&gt;</fieldText>
                     <name>dt_nomoremethods</name>
                 </fields>
                 <name>No_Additional_Methods</name>
             </screens>
             <screens>
                 <fields>
+                    <fieldText>&lt;p&gt;Agregó correctamente {!fx_authmeth} como nuevo método de verificación. A partir de ahora, podrá usarlo para iniciar sesión en el Portal para Padres de Zeta.&lt;/p&gt;</fieldText>
                     <name>dt_success</name>
                 </fields>
                 <name>Success_Screen</name>
+                <nextOrFinishButtonLabel>Aceptar</nextOrFinishButtonLabel>
             </screens>
             <screens>
                 <fields>
+                    <fieldText>&lt;p&gt;No pudimos verificar {!fx_authmeth} como nuevo método de verificación para su usuario. Para obtener más ayuda, comuníquese con Zeta Charter Schools (enroll@zetaschools.org | (646) 480-1654).&lt;/p&gt;</fieldText>
                     <name>Copy_1_of_dt_success</name>
                 </fields>
                 <name>Unsuccess_Screen</name>
+                <nextOrFinishButtonLabel>Aceptar</nextOrFinishButtonLabel>
             </screens>
             <screens>
                 <fields>
+                    <fieldText>&lt;p&gt;&lt;strong style=&quot;background-color: rgb(255, 255, 255);&quot;&gt;Agregar otros métodos de verificación para iniciar sesión&lt;/strong&gt;&lt;/p&gt;&lt;p&gt;Aún no ha autorizado el correo electrónico &lt;strong&gt;{!Get_logged_in_User.Email}&lt;/strong&gt;. Si desea verificar su correo electrónico para usarlo en futuros inicios de sesión, haga clic en el botón &apos;Enviar código&apos; a continuación.&lt;/p&gt;</fieldText>
                     <name>auth_email</name>
                 </fields>
                 <name>Verify_Email</name>
+                <nextOrFinishButtonLabel>Enviar código</nextOrFinishButtonLabel>
             </screens>
             <screens>
                 <fields>
+                    <fieldText>&lt;p&gt;&lt;strong&gt;Agregar otros métodos de verificación para iniciar sesión&lt;/strong&gt;&lt;/p&gt;&lt;p&gt;Aún no ha autorizado su número de teléfono &lt;strong style=&quot;background-color: rgb(255, 255, 255);&quot;&gt;{!Get_logged_in_User.MobilePhone}&lt;/strong&gt;. Si desea verificar este número de teléfono para usarlo en futuros inicios de sesión, haga clic en el botón &apos;Enviar código&apos; a continuación.&lt;/p&gt;</fieldText>
                     <name>Copy_1_of_auth_email</name>
                 </fields>
                 <name>Verify_SMS</name>
+                <nextOrFinishButtonLabel>Enviar código</nextOrFinishButtonLabel>
             </screens>
         </flows>
         <fullName>Portal_User_Screen_Flow_Add_Additional_Auth_Methods</fullName>
@@ -22771,49 +23322,67 @@
     <flowDefinitions>
         <flows>
             <choices>
+                <choiceText>Correo electrónico</choiceText>
                 <name>chEmail</name>
             </choices>
             <choices>
+                <choiceText>Inglés</choiceText>
                 <name>chEnglish</name>
             </choices>
             <choices>
+                <choiceText>Mensaje de texto</choiceText>
                 <name>chSMS</name>
             </choices>
             <choices>
+                <choiceText>Español</choiceText>
                 <name>chSpanish</name>
             </choices>
             <screens>
+                <backButtonLabel>Atrás</backButtonLabel>
                 <fields>
+                    <fieldText>Ingrese el código que recibió por correo electrónico.</fieldText>
                     <name>Enter_the_code_you_received_via_email</name>
                 </fields>
                 <fields>
+                    <fieldText>&lt;p&gt;Acabamos de enviar un código de verificación a su correo electrónico &lt;strong&gt;{!screen_email2.value}&lt;/strong&gt;.&lt;/p&gt;</fieldText>
                     <name>dt_enter</name>
                 </fields>
                 <fields>
+                    <fieldText>&lt;p&gt;&lt;span style=&quot;background-color: rgb(255, 255, 255);&quot;&gt;Acabamos de enviar otro código de verificación a su correo electrónico &lt;/span&gt;&lt;strong style=&quot;background-color: rgb(255, 255, 255);&quot;&gt;{!screen_email2.value}&lt;/strong&gt;&lt;span style=&quot;background-color: rgb(255, 255, 255);&quot;&gt;.&lt;/span&gt;&lt;/p&gt;</fieldText>
                     <name>dt_secondattempt</name>
                 </fields>
                 <name>Enter_Code_Received_via_Email</name>
+                <nextOrFinishButtonLabel>Enviar</nextOrFinishButtonLabel>
             </screens>
             <screens>
+                <backButtonLabel>Atrás</backButtonLabel>
                 <fields>
+                    <fieldText>&lt;p&gt;Acabamos de enviar un código de verificación a su teléfono &lt;strong style=&quot;background-color: rgb(255, 255, 255);&quot;&gt;{!ConfirmPhone.value}&lt;/strong&gt;.&lt;/p&gt;</fieldText>
                     <name>Copy_1_of_dt_enter</name>
                 </fields>
                 <fields>
+                    <fieldText>&lt;p&gt;&lt;span style=&quot;background-color: rgb(255, 255, 255);&quot;&gt;Acabamos de enviar otro código de verificación a su teléfono &lt;/span&gt;&lt;strong style=&quot;background-color: rgb(255, 255, 255);&quot;&gt;{!ConfirmPhone.value}&lt;/strong&gt;&lt;span style=&quot;background-color: rgb(255, 255, 255);&quot;&gt;.&lt;/span&gt;&lt;/p&gt;</fieldText>
                     <name>Copy_1_of_dt_secondattempt</name>
                 </fields>
                 <fields>
+                    <fieldText>Ingrese el código que recibió por mensaje de texto.</fieldText>
                     <name>Enter_the_code_you_received_via_text_message</name>
                 </fields>
                 <name>Enter_Code_Received_via_SMS</name>
+                <nextOrFinishButtonLabel>Enviar</nextOrFinishButtonLabel>
             </screens>
             <screens>
                 <fields>
                     <inputParameters>
                         <name>label</name>
-                        <value/>
+                        <value>
+                            <stringValue>Confirmar teléfono</stringValue>
+                        </value>
                     </inputParameters>
                     <name>ConfirmPhone</name>
-                    <validationRule/>
+                    <validationRule>
+                        <errorMessage>&lt;p&gt;&lt;span style=&quot;color: rgb(228, 17, 17);&quot;&gt;Los números de teléfono que ingresó no coinciden.&lt;/span&gt;&lt;/p&gt;</errorMessage>
+                    </validationRule>
                 </fields>
                 <fields>
                     <name>Enter_Details_Section1</name>
@@ -22884,24 +23453,36 @@
                     <name>Enter_Details_Section4_Column2</name>
                 </fields>
                 <fields>
+                    <fieldText>Nombre</fieldText>
                     <name>First_Name</name>
                 </fields>
                 <fields>
+                    <fieldText>Apellido</fieldText>
                     <name>Last_Name</name>
                 </fields>
                 <fields>
+                    <fieldText>Idioma de preferencia</fieldText>
                     <name>PreferredLanguage</name>
                 </fields>
                 <fields>
+                    <fieldText>&lt;p&gt;&lt;span style=&quot;background-color: rgb(255, 255, 255);&quot;&gt;Por favor, complete la siguiente información para crear un usuario en el Portal para Padres de Zeta.&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;¿Ya tiene una cuenta? &lt;a href=&quot;{!fx_PortalLoginURL}&quot; rel=&quot;noopener noreferrer&quot; target=&quot;_blank&quot; style=&quot;color: rgb(3, 7, 244);&quot;&gt;&lt;strong&gt;Inicie sesión aquí.&lt;/strong&gt;&lt;/a&gt;&lt;/p&gt;</fieldText>
                     <name>dt_instructions</name>
                 </fields>
                 <fields>
+                    <inputParameters>
+                        <name>label</name>
+                        <value>
+                            <stringValue>Teléfono</stringValue>
+                        </value>
+                    </inputParameters>
                     <inputParameters>
                         <name>required</name>
                         <value/>
                     </inputParameters>
                     <name>screen_Phone</name>
-                    <validationRule/>
+                    <validationRule>
+                        <errorMessage>&lt;p&gt;&lt;span style=&quot;color: rgb(228, 17, 17);&quot;&gt;Por favor, ingrese un número de teléfono válido de 10 dígitos (solo números, sin guiones ni espacios).&lt;/span&gt;&lt;/p&gt;</errorMessage>
+                    </validationRule>
                 </fields>
                 <fields>
                     <inputParameters>
@@ -22909,65 +23490,90 @@
                         <value/>
                     </inputParameters>
                     <name>screen_email1</name>
-                    <validationRule/>
+                    <validationRule>
+                        <errorMessage>&lt;p&gt;Por favor, ingrese un correo electrónico válido.&lt;/p&gt;</errorMessage>
+                    </validationRule>
                 </fields>
                 <fields>
                     <inputParameters>
                         <name>label</name>
-                        <value/>
+                        <value>
+                            <stringValue>Confirmar correo electrónico</stringValue>
+                        </value>
                     </inputParameters>
                     <name>screen_email2</name>
-                    <validationRule/>
+                    <validationRule>
+                        <errorMessage>&lt;p&gt;&lt;span style=&quot;background-color: rgb(255, 255, 255); color: rgb(228, 17, 17);&quot;&gt;Los correos electrónicos que ingresó no coinciden.&lt;/span&gt;&lt;/p&gt;</errorMessage>
+                    </validationRule>
                 </fields>
                 <name>Enter_Details</name>
+                <nextOrFinishButtonLabel>Siguiente</nextOrFinishButtonLabel>
             </screens>
             <screens>
                 <fields>
+                    <fieldText>&lt;p&gt;&lt;span style=&quot;background-color: rgb(255, 255, 255);&quot;&gt;Encontramos un usuario existente del Portal para Padres que coincide con la información que ingresó. Inicie sesión con el correo electrónico asociado a su cuenta existente. Haga clic en &quot;Iniciar sesión&quot; a continuación para ir a la página de inicio de sesión.&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;Para obtener ayuda, comuníquese con Zeta Charter Schools.&lt;/p&gt;&lt;p&gt;&lt;a href=&quot;mailto:enroll@zetaschools.org&quot; rel=&quot;noopener noreferrer&quot; target=&quot;_blank&quot; style=&quot;color: rgb(18, 100, 163);&quot;&gt;enroll@zetaschools.org&lt;/a&gt; | &lt;a href=&quot;tel:6464801654&quot; rel=&quot;noopener noreferrer&quot; target=&quot;_blank&quot; style=&quot;color: rgb(18, 100, 163);&quot;&gt;(646) 480-1654&lt;/a&gt;&lt;/p&gt;</fieldText>
                     <name>dt_PortalUserFound_Email</name>
                 </fields>
                 <name>Existing_Portal_Login_Email</name>
+                <nextOrFinishButtonLabel>Iniciar sesión</nextOrFinishButtonLabel>
             </screens>
             <screens>
                 <fields>
+                    <fieldText>&lt;p&gt;&lt;span style=&quot;background-color: rgb(255, 255, 255);&quot;&gt;Encontramos un usuario existente del Portal para Padres que coincide con la información que ingresó. Inicie sesión con el correo electrónico o el número de teléfono asociado a su cuenta existente. Haga clic en &quot;Iniciar sesión&quot; a continuación para ir a la página de inicio de sesión.&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;Para obtener ayuda, comuníquese con Zeta Charter Schools.&lt;/p&gt;&lt;p&gt;&lt;a href=&quot;mailto:enroll@zetaschools.org&quot; rel=&quot;noopener noreferrer&quot; target=&quot;_blank&quot; style=&quot;color: rgb(18, 100, 163);&quot;&gt;enroll@zetaschools.org&lt;/a&gt; | &lt;a href=&quot;tel:6464801654&quot; rel=&quot;noopener noreferrer&quot; target=&quot;_blank&quot; style=&quot;color: rgb(18, 100, 163);&quot;&gt;(646) 480-1654&lt;/a&gt;&lt;/p&gt;</fieldText>
                     <name>dt_PortalUserFound_Email_or_Phone</name>
                 </fields>
                 <name>Existing_Portal_Login_Email_or_Phone</name>
+                <nextOrFinishButtonLabel>Iniciar sesión</nextOrFinishButtonLabel>
             </screens>
             <screens>
                 <fields>
+                    <fieldText>&lt;p&gt;&lt;span style=&quot;background-color: rgb(255, 255, 255);&quot;&gt;Encontramos un usuario existente del Portal para Padres que coincide con la información que ingresó. Inicie sesión con el número de teléfono asociado a su cuenta existente. Haga clic en &quot;Iniciar sesión&quot; a continuación para ir a la página de inicio de sesión.&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;Para obtener ayuda, comuníquese con Zeta Charter Schools.&lt;/p&gt;&lt;p&gt;&lt;a href=&quot;mailto:enroll@zetaschools.org&quot; rel=&quot;noopener noreferrer&quot; target=&quot;_blank&quot; style=&quot;color: rgb(18, 100, 163);&quot;&gt;enroll@zetaschools.org&lt;/a&gt; | &lt;a href=&quot;tel:6464801654&quot; rel=&quot;noopener noreferrer&quot; target=&quot;_blank&quot; style=&quot;color: rgb(18, 100, 163);&quot;&gt;(646) 480-1654&lt;/a&gt;&lt;/p&gt;</fieldText>
                     <name>dt_PortalUserFound_Phone</name>
                 </fields>
                 <name>Existing_Portal_Login_Phone</name>
+                <nextOrFinishButtonLabel>Iniciar sesión</nextOrFinishButtonLabel>
             </screens>
             <screens>
                 <fields>
+                    <fieldText>&lt;p&gt;El código que ingresó no es válido. Para intentarlo de nuevo con un código nuevo, haga clic en &quot;Intentar de nuevo&quot;.&lt;/p&gt;</fieldText>
                     <name>Copy_1_of_dt_error</name>
                 </fields>
                 <name>Incorrect_Code</name>
+                <nextOrFinishButtonLabel>Intentar de nuevo</nextOrFinishButtonLabel>
             </screens>
             <screens>
                 <fields>
+                    <fieldText>&lt;p&gt;&lt;span style=&quot;background-color: rgb(255, 255, 255);&quot;&gt;Para continuar con la creación de un nuevo usuario del Portal para Padres de Zeta, primero debe cerrar la sesión del usuario del Portal para Padres de Zeta con el que ha iniciado sesión.&lt;/span&gt;&lt;/p&gt;</fieldText>
                     <name>dt_logoutprompt</name>
                 </fields>
                 <name>Log_Out_as_Parent_Portal_User</name>
+                <nextOrFinishButtonLabel>Aceptar</nextOrFinishButtonLabel>
             </screens>
             <screens>
+                <backButtonLabel>Atrás</backButtonLabel>
                 <fields>
+                    <fieldText>Seleccione un método de verificación</fieldText>
                     <name>Select_a_verification_method</name>
                 </fields>
                 <name>Select_Verification_Method</name>
+                <nextOrFinishButtonLabel>Enviar código</nextOrFinishButtonLabel>
             </screens>
             <screens>
                 <fields>
+                    <fieldText>&lt;p&gt;&lt;span style=&quot;font-size: 20px;&quot;&gt;¡Felicidades!&lt;/span&gt;&lt;/p&gt;&lt;p&gt;¡Su usuario del Portal de Zeta se creó correctamente! Por favor, espere un momento mientras iniciamos su sesión.&lt;/p&gt;</fieldText>
                     <name>success_dt</name>
                 </fields>
                 <name>Success</name>
+                <nextOrFinishButtonLabel>Intentar de nuevo</nextOrFinishButtonLabel>
             </screens>
             <screens>
+                <backButtonLabel>Atrás</backButtonLabel>
                 <fields>
+                    <fieldText>&lt;p&gt;&lt;span style=&quot;background-color: rgb(255, 255, 255);&quot;&gt;No pudimos crear un usuario para usted en el Portal para Padres. Lamentamos las molestias. &lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot;background-color: rgb(255, 255, 255);&quot;&gt;Para obtener ayuda, &lt;/span&gt;comuníquese con Zeta Charter Schools.&amp;nbsp;&lt;/p&gt;&lt;p&gt;enroll@zetaschools.org | (646) 480-1654&lt;/p&gt;</fieldText>
                     <name>dt_error</name>
                 </fields>
                 <name>Unable_to_create_a_User</name>
+                <nextOrFinishButtonLabel>Aceptar</nextOrFinishButtonLabel>
             </screens>
         </flows>
         <fullName>Zeta_Portal_User_Registration</fullName>

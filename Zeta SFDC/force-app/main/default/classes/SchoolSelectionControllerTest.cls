@@ -507,7 +507,7 @@ private class SchoolSelectionControllerTest {
       SchoolSelectionController.saveSchoolSelections(null, '[]');
       Assert.fail('Should throw for null applicationId');
     } catch (IllegalArgumentException e) {
-      Assert.isTrue(e.getMessage().contains('Application Id is required'));
+      Assert.areEqual(System.Label.AppUI_ApplicationIdRequired, e.getMessage());
     }
   }
 }

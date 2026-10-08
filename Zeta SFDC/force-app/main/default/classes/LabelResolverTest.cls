@@ -1,13 +1,37 @@
 /**
  * Tests for {@link LabelResolver}.
  */
-@IsTest(IsParallel=true)
+@IsTest
 private class LabelResolverTest {
   @IsTest
   private static void resolve_withKnownLabel_returnsValue() {
     String result = LabelResolver.resolve('AppUI_FieldName');
 
-    Assert.areEqual('Name', result, 'Should resolve known Custom Label to its value');
+    Assert.areEqual(System.Label.AppUI_FieldName, result, 'Should resolve known Custom Label to its value');
+  }
+
+  @IsTest
+  private static void resolve_returnsLabelInRunningUsersLanguage() {
+    User spanishUser = new User(
+      ProfileId = [SELECT Id FROM Profile WHERE Name = 'Standard User'].Id,
+      LastName = 'LabelResolver',
+      Email = 'labelresolver@example.com',
+      Username = 'labelresolver' + Datetime.now().getTime() + '@example.com',
+      Alias = 'lblres',
+      TimeZoneSidKey = 'America/New_York',
+      EmailEncodingKey = 'UTF-8',
+      LanguageLocaleKey = 'es',
+      LocaleSidKey = 'en_US'
+    );
+    insert spanishUser;
+
+    System.runAs(spanishUser) {
+      Assert.areEqual(
+        System.Label.get('', 'AppUI_FieldName', 'es'),
+        LabelResolver.resolve('AppUI_FieldName'),
+        'Should resolve the label in the running user\'s language'
+      );
+    }
   }
 
   @IsTest

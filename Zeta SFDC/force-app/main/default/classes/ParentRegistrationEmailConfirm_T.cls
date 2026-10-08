@@ -43,7 +43,7 @@ private class ParentRegistrationEmailConfirm_T {
     Assert.areEqual(1, responses.size(), 'Should return one response');
     ParentRegistrationCommon.ConfirmationResponse response = responses[0];
     Assert.isNotNull(response.errorMessage, 'Error message should not be null');
-    Assert.areEqual('Registration Exception. Please contact support.', response.errorMessage, 'Error message should match expected');
+    Assert.areEqual(System.Label.AppUI_RegistrationErrorContactSupport, response.errorMessage, 'Error message should match expected');
   }
 
   @IsTest

@@ -89,7 +89,7 @@ public inherited sharing class UserService {
     u.Alias = alias;
     u.CommunityNickname = nickname;
     u.Username = username;
-    u.LanguageLocaleKey = UserInfo.getLocale();
+    u.LanguageLocaleKey = getLanguage(contactId);
     u.LocaleSidKey = UserInfo.getLocale();
     u.EmailEncodingKey = 'UTF-8';
     u.TimeZoneSidKey = 'America/Los_Angeles';
@@ -97,6 +97,18 @@ public inherited sharing class UserService {
     u.ContactId = contactId;
     u.FederationIdentifier = identifier;
     return u;
+  }
+
+  // A guardian who already chose a language keeps it; otherwise the login gets the
+  // language the parent is browsing the site in.
+  private static String getLanguage(Id contactId) {
+    if (contactId != null) {
+      List<Contact> contacts = [SELECT Language_Preference__c FROM Contact WHERE Id = :contactId LIMIT 1];
+      if (!contacts.isEmpty() && String.isNotBlank(contacts[0].Language_Preference__c)) {
+        return contacts[0].Language_Preference__c;
+      }
+    }
+    return UserInfo.getLanguage();
   }
 
 //  public static void setPortalUser(String contactId) {

@@ -17,7 +17,7 @@ public without sharing class ApplicationDashboardController {
     // future-dated timelines from that fallback.
     String tlQuery =
       'SELECT Id, Name, ApplicationOpenDate, ApplicationCloseDate,' +
-      ' Landing_Content_en__c, Landing_Content_es__c' +
+      ' Landing_Content_en__c, Landing_Content_es__c, Landing_Content_zh_CN__c' +
       ' FROM ApplicationTimeline' +
       ' WHERE ApplicationOpenDate != NULL' +
       ' AND ApplicationOpenDate <= TODAY' +
@@ -36,7 +36,12 @@ public without sharing class ApplicationDashboardController {
         tl.ApplicationCloseDate >= today);
 
       if (!isOpen) {
-        landingContent = selectLandingContent(tl.Landing_Content_en__c, tl.Landing_Content_es__c);
+        landingContent = ZetaApplicationController.selectLandingContent(
+          UserInfo.getLanguage(),
+          tl.Landing_Content_en__c,
+          tl.Landing_Content_es__c,
+          tl.Landing_Content_zh_CN__c
+        );
       }
     }
 
@@ -54,13 +59,17 @@ public without sharing class ApplicationDashboardController {
     if (!users.isEmpty()) {
       contactId = users[0].ContactId;
       String lastName = users[0].Contact?.LastName;
-      familyName = String.isNotBlank(lastName) ? lastName + ' Family' : null;
+      familyName = String.isNotBlank(lastName)
+        ? String.format(System.Label.AppUI_FamilyName, new List<Object>{ lastName })
+        : null;
     }
 
     if (contactId != null) {
       List<String> excludedStatuses = new List<String>{ 'Cancelled' };
+      // toLabel() returns the grade's translated picklist label (es/zh_CN);
+      // the dashboard only displays the grade, so no raw-value logic depends on it.
       String query =
-        'SELECT Id, Name, Status, Grade_Applying_To__c, Last_Completed_Step__c,' +
+        'SELECT Id, Name, Status, toLabel(Grade_Applying_To__c), Last_Completed_Step__c,' +
         ' Account.Name, CreatedDate, AppliedDate,' +
         ' Application_Timeline__c, Application_Timeline__r.Name, Application_Timeline__r.ApplicationOpenDate' +
         ' FROM IndividualApplication' +
@@ -100,12 +109,6 @@ public without sharing class ApplicationDashboardController {
     };
   }
 
-  private static String selectLandingContent(String enContent, String esContent) {
-    String lang = UserInfo.getLanguage();
-    String primary = lang != null && lang.startsWith('es') ? esContent : enContent;
-    String fallback = lang != null && lang.startsWith('es') ? enContent : esContent;
-    return String.isNotBlank(primary) ? primary : fallback;
-  }
 
   private static Id getLoggedInContactId() {
     return ApplicationContext.resolveGuardianContactId(databaseRepo, null);
@@ -118,10 +121,10 @@ public without sharing class ApplicationDashboardController {
     String picklistReason
   ) {
     if (applicationId == null) {
-      throw new AuraHandledException('Application ID is required.');
+      throw new AuraHandledException(System.Label.AppUI_WithdrawApplicationIdRequired);
     }
     if (String.isBlank(picklistReason)) {
-      throw new AuraHandledException('Please select a reason for withdrawal.');
+      throw new AuraHandledException(System.Label.AppUI_WithdrawSelectReason);
     }
     // When "Other" is chosen the free-text reason carries the detail; for every
     // other value we mirror the picklist label into Withdrawn_Declined_Reason__c
@@ -129,12 +132,12 @@ public without sharing class ApplicationDashboardController {
     // Withdrawn/Declined) stays satisfied.
     Boolean isOther = picklistReason == 'Other';
     if (isOther && String.isBlank(reason)) {
-      throw new AuraHandledException('Please describe the reason for withdrawal.');
+      throw new AuraHandledException(System.Label.AppUI_WithdrawDescribeReason);
     }
 
     Id contactId = getLoggedInContactId();
     if (contactId == null) {
-      throw new AuraHandledException('Unable to verify your account.');
+      throw new AuraHandledException(System.Label.AppUI_UnableToVerifyAccount);
     }
 
     String query =
@@ -148,18 +151,18 @@ public without sharing class ApplicationDashboardController {
     );
 
     if (apps.isEmpty()) {
-      throw new AuraHandledException('Application not found.');
+      throw new AuraHandledException(System.Label.AppUI_WithdrawApplicationNotFound);
     }
 
     IndividualApplication app = apps[0];
     if (app.SubmittedByContactId != contactId) {
-      throw new AuraHandledException('You can only withdraw your own applications.');
+      throw new AuraHandledException(System.Label.AppUI_WithdrawOwnApplicationsOnly);
     }
 
     // Idempotency guard — every status short of Withdrawn/Declined is still a
     // live application the parent may pull, so only the terminal state is out.
     if (app.Status == 'Withdrawn/Declined') {
-      throw new AuraHandledException('This application has already been withdrawn.');
+      throw new AuraHandledException(System.Label.AppUI_ApplicationAlreadyWithdrawn);
     }
 
     app.Status = 'Withdrawn/Declined';

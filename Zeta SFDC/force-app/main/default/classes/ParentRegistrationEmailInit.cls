@@ -67,7 +67,7 @@ public without sharing class ParentRegistrationEmailInit extends ParentRegistrat
       } catch (Exception e) {
         Logger.error('Exception when initialising self-registration via Email. Email: ' + email, e);
         Logger.saveLog();
-        responses.add(new RegistrationResponse('Registration Exception. Please contact support.'));
+        responses.add(new RegistrationResponse(System.Label.AppUI_RegistrationErrorContactSupport));
       }
     }
 

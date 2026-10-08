@@ -8,7 +8,7 @@
  */
 public with sharing class DuplicateStudentValidationServiceImpl implements DuplicateStudentValidationService {
   @TestVisible
-  private static final String DUPLICATE_STUDENT_MESSAGE = 'A student with this name and date of birth already exists for your account. Contact Zeta if you need help.';
+  private static final String DUPLICATE_STUDENT_MESSAGE = System.Label.AppUI_DuplicateStudent;
 
   private final DatabaseRepo databaseRepo;
 

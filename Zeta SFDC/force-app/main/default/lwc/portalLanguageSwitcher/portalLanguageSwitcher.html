@@ -1,0 +1,19 @@
+<template>
+  <div class={barClass}>
+    <div class="switcher" role="group" aria-label={labelLanguageSwitcher}>
+      <template for:each={options} for:item="option">
+        <button
+          key={option.value}
+          type="button"
+          class={option.className}
+          data-value={option.value}
+          aria-pressed={option.ariaPressed}
+          disabled={isSaving}
+          onclick={handleSelect}
+        >
+          {option.label}
+        </button>
+      </template>
+    </div>
+  </div>
+</template>

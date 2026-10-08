@@ -1,13 +1,14 @@
 import { LightningElement, api } from 'lwc';
 import labelCompleteForm from '@salesforce/label/c.Action_Plan_Button_Complete_Form';
-import labelDueBy from '@salesforce/label/c.Action_Plan_Due_By';
+import labelDueByDate from '@salesforce/label/c.Action_Plan_Due_By_Date';
+import LANG from '@salesforce/i18n/lang';
 
 export default class ActionPlanTaskTable extends LightningElement {
     @api tasks = [];
 
     labels = {
         completeForm: labelCompleteForm,
-        dueBy: labelDueBy
+        dueBy: labelDueByDate
     };
 
     get processedTasks() {
@@ -23,7 +24,12 @@ export default class ActionPlanTaskTable extends LightningElement {
                 if (task.dueDate && !task.isComplete) {
                     const dateParts = task.dueDate.split('-');
                     if (dateParts.length === 3) {
-                        formattedDueDate = `${this.labels.dueBy} ${dateParts[1]}/${dateParts[2]}/${dateParts[0]}`;
+                        const dueDate = new Date(dateParts[0], dateParts[1] - 1, dateParts[2]).toLocaleDateString(LANG, {
+                            month: '2-digit',
+                            day: '2-digit',
+                            year: 'numeric'
+                        });
+                        formattedDueDate = this.labels.dueBy.replace('{0}', dueDate);
                     }
                 }
 

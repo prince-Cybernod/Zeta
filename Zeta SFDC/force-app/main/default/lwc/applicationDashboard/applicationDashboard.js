@@ -1,14 +1,59 @@
-import { LightningElement, api, wire } from 'lwc';
-import { getObjectInfo, getPicklistValues } from 'lightning/uiObjectInfoApi';
-import REASON_FIELD from '@salesforce/schema/IndividualApplication.Withdrawn_Declined_Reason_Picklist__c';
-import getDashboardData from '@salesforce/apex/ApplicationDashboardController.getDashboardData';
-import withdrawApplication from '@salesforce/apex/ApplicationDashboardController.withdrawApplication';
+import { LightningElement, api, wire } from "lwc";
+import { getObjectInfo, getPicklistValues } from "lightning/uiObjectInfoApi";
+import REASON_FIELD from "@salesforce/schema/IndividualApplication.Withdrawn_Declined_Reason_Picklist__c";
+import getDashboardData from "@salesforce/apex/ApplicationDashboardController.getDashboardData";
+import withdrawApplication from "@salesforce/apex/ApplicationDashboardController.withdrawApplication";
+import LANG from "@salesforce/i18n/lang";
+import labelApplicationsCurrentlyClosed from "@salesforce/label/c.AppUI_ApplicationsCurrentlyClosed";
+import labelAriaLoadingApplications from "@salesforce/label/c.AppUI_AriaLoadingApplications";
+import labelAriaMoreActions from "@salesforce/label/c.AppUI_AriaMoreActions";
+import labelAriaSelectApplicationPeriod from "@salesforce/label/c.AppUI_AriaSelectApplicationPeriod";
+import labelBackToApplications from "@salesforce/label/c.AppUI_BackToApplications";
+import labelCancel from "@salesforce/label/c.AppUI_Cancel";
+import labelContinue from "@salesforce/label/c.AppUI_Continue";
+import labelPleaseDescribeRequired from "@salesforce/label/c.AppUI_FieldPleaseDescribeRequired";
+import labelReasonRequired from "@salesforce/label/c.AppUI_FieldReasonRequired";
+import labelGradeNotSelected from "@salesforce/label/c.AppUI_GradeNotSelected";
+import labelGradeValue from "@salesforce/label/c.AppUI_GradeValue";
+import labelMyApplications from "@salesforce/label/c.AppUI_MyApplications";
+import labelNewApplication from "@salesforce/label/c.AppUI_NewApplication";
+import labelNoApplicationsFound from "@salesforce/label/c.AppUI_NoApplicationsFound";
+import labelNoApplicationsInProgress from "@salesforce/label/c.AppUI_NoApplicationsInProgress";
+import labelNoSubmittedApplications from "@salesforce/label/c.AppUI_NoSubmittedApplications";
+import labelOtherApplications from "@salesforce/label/c.AppUI_OtherApplications";
+import labelPeriodOpenEnded from "@salesforce/label/c.AppUI_PeriodOpenEnded";
+import labelReadyToApply from "@salesforce/label/c.AppUI_ReadyToApply";
+import labelReadyToApplyDesc from "@salesforce/label/c.AppUI_ReadyToApplyDesc";
+import labelResume from "@salesforce/label/c.AppUI_Resume";
+import labelSelectApplicationPeriodDesc from "@salesforce/label/c.AppUI_SelectApplicationPeriodDesc";
+import labelSelectAReason from "@salesforce/label/c.AppUI_SelectAReason";
+import labelStartNewApplication from "@salesforce/label/c.AppUI_StartNewApplication";
+import labelStatusApplied from "@salesforce/label/c.AppUI_StatusApplied";
+import labelStatusInProgress from "@salesforce/label/c.AppUI_StatusInProgress";
+import labelSubmissionDeadline from "@salesforce/label/c.AppUI_SubmissionDeadline";
+import labelTimelineApplication from "@salesforce/label/c.AppUI_TimelineApplication";
+import labelView from "@salesforce/label/c.AppUI_View";
+import labelWelcomeFamily from "@salesforce/label/c.AppUI_WelcomeFamily";
+import labelWelcomeGreeting from "@salesforce/label/c.AppUI_WelcomeGreeting";
+import labelWelcomeMessage from "@salesforce/label/c.AppUI_WelcomeMessage";
+import labelWhichApplicationPeriod from "@salesforce/label/c.AppUI_WhichApplicationPeriod";
+import labelWithdraw from "@salesforce/label/c.AppUI_Withdraw";
+import labelWithdrawAppFailed from "@salesforce/label/c.AppUI_WithdrawAppFailed";
+import labelWithdrawApplication from "@salesforce/label/c.AppUI_WithdrawApplication";
+import labelWithdrawAppModalBody from "@salesforce/label/c.AppUI_WithdrawAppModalBody";
+import labelWithdrawAppModalBodyNoTimeline from "@salesforce/label/c.AppUI_WithdrawAppModalBodyNoTimeline";
+import labelWithdrawAppQuestion from "@salesforce/label/c.AppUI_WithdrawAppQuestion";
+import labelWithdrawing from "@salesforce/label/c.AppUI_Withdrawing";
+import labelWithdrawn from "@salesforce/label/c.AppUI_Withdrawn";
+import labelWithdrawReasonsLoadFailed from "@salesforce/label/c.AppUI_WithdrawReasonsLoadFailed";
+import labelYourApplications from "@salesforce/label/c.AppUI_YourApplications";
+import labelZetaCharterSchools from "@salesforce/label/c.AppUI_ZetaCharterSchools";
 
 // Master record type id — Salesforce's sentinel for "the object has no record
 // types", used as the getPicklistValues fallback when getObjectInfo reports no
 // default. IndividualApplication is single-record-type, so the default is the
 // right value set; this keeps the wire valid if that ever changes.
-const NULL_RECORD_TYPE_ID = '012000000000000AAA';
+const NULL_RECORD_TYPE_ID = "012000000000000AAA";
 
 // Top-to-bottom application display order, keyed by the normalized statusKey
 // that also drives the badge a parent sees (see _statusKey) — NOT the raw
@@ -28,7 +73,7 @@ const DEFAULT_STATUS_RANK = 3; // any unlisted statusKey
 const WITHDRAWN_RANK = 99;
 
 function statusRank(statusKey) {
-  if (statusKey === 'withdrawn') return WITHDRAWN_RANK;
+  if (statusKey === "withdrawn") return WITHDRAWN_RANK;
   const rank = STATUS_RANK[statusKey];
   return rank === undefined ? DEFAULT_STATUS_RANK : rank;
 }
@@ -37,7 +82,7 @@ function statusRank(statusKey) {
 // families don't read an internal review milestone as a decision. Display only:
 // the stored Status is untouched and staff surfaces still show Eligible.
 const PARENT_STATUS_LABELS = {
-  Eligible: 'Applied'
+  Eligible: labelStatusApplied
 };
 
 function parentStatusLabel(label) {
@@ -49,7 +94,7 @@ function parentStatusLabel(label) {
 // statusKey itself still says 'eligible' for sort rank, filtering, and the
 // withdraw menu.
 const PARENT_BADGE_STATUS_KEYS = {
-  eligible: 'applied'
+  eligible: "applied"
 };
 
 function parentBadgeStatusKey(statusKey) {
@@ -58,12 +103,12 @@ function parentBadgeStatusKey(statusKey) {
 
 export default class ApplicationDashboard extends LightningElement {
   @api variant;
-  @api pageDevName = 'Application_Details';
+  @api pageDevName = "Application_Details";
 
   // Which applications this placement shows. Set per Experience Builder
   // placement: 'in-progress' on the Dashboard tab, 'submitted' on the
   // Application Status tab, 'all' (default) shows everything.
-  @api view = 'all';
+  @api view = "all";
   // Hide the navy "My Applications" header bar. Turn on for the Dashboard
   // (it sits under the family welcome); leave off for Application Status.
   // (LWC requires boolean @api props default to false, hence the inverted name.)
@@ -72,14 +117,17 @@ export default class ApplicationDashboard extends LightningElement {
   // Show the "Welcome, <Family>!" greeting + intro at the top of the component
   // (Dashboard tab). Off by default.
   @api showWelcome = false;
-  @api welcomeMessage =
-    'We are delighted to welcome you to your one-stop destination for your child’s enrollment at Zeta.';
+  @api welcomeMessage;
+
+  get welcomeMessageText() {
+    return this.welcomeMessage || labelWelcomeMessage;
+  }
 
   isLoading = true;
   isOpen = false;
-  timelineName = '';
+  timelineName = "";
   landingContent = null;
-  familyName = '';
+  familyName = "";
   applications = [];
   timelines = [];
   showTimelinePicker = false;
@@ -87,13 +135,13 @@ export default class ApplicationDashboard extends LightningElement {
   showWizard = false;
   _wizardApplicationId;
   _wizardTimelineId;
-  _wizardTimelineName = '';
+  _wizardTimelineName = "";
   _wizardForceNew = false;
   showWithdrawModal = false;
   _withdrawAppId = null;
-  _withdrawTimelineName = '';
-  _withdrawReason = '';
-  _withdrawPicklistValue = '';
+  _withdrawTimelineName = "";
+  _withdrawReason = "";
+  _withdrawPicklistValue = "";
   withdrawPicklistOptions = [];
   _recordTypeId = NULL_RECORD_TYPE_ID;
   _withdrawError = null;
@@ -108,10 +156,37 @@ export default class ApplicationDashboard extends LightningElement {
   _viewApps = [];
   _displayGroups = [];
 
+  labels = {
+    backToApplications: labelBackToApplications,
+    zetaCharterSchools: labelZetaCharterSchools,
+    myApplications: labelMyApplications,
+    ariaLoadingApplications: labelAriaLoadingApplications,
+    applicationsCurrentlyClosed: labelApplicationsCurrentlyClosed,
+    ariaSelectApplicationPeriod: labelAriaSelectApplicationPeriod,
+    whichApplicationPeriod: labelWhichApplicationPeriod,
+    selectApplicationPeriodDesc: labelSelectApplicationPeriodDesc,
+    cancel: labelCancel,
+    continue: labelContinue,
+    yourApplications: labelYourApplications,
+    newApplication: labelNewApplication,
+    ariaMoreActions: labelAriaMoreActions,
+    withdrawApplication: labelWithdrawApplication,
+    withdrawAppQuestion: labelWithdrawAppQuestion,
+    reasonRequired: labelReasonRequired,
+    selectAReason: labelSelectAReason,
+    pleaseDescribeRequired: labelPleaseDescribeRequired,
+    withdrawing: labelWithdrawing,
+    withdraw: labelWithdraw,
+    readyToApply: labelReadyToApply,
+    readyToApplyDesc: labelReadyToApplyDesc,
+    startNewApplication: labelStartNewApplication,
+    noApplicationsFound: labelNoApplicationsFound
+  };
+
   // Withdrawal reasons come from the field's own picklist via the platform UI
   // API — no Apex needed, and record-type-aware. getObjectInfo first resolves
   // the default record type id that getPicklistValues requires.
-  @wire(getObjectInfo, { objectApiName: 'IndividualApplication' })
+  @wire(getObjectInfo, { objectApiName: "IndividualApplication" })
   wiredObjectInfo({ data }) {
     if (data) {
       this._recordTypeId = data.defaultRecordTypeId || NULL_RECORD_TYPE_ID;
@@ -119,7 +194,7 @@ export default class ApplicationDashboard extends LightningElement {
   }
 
   @wire(getPicklistValues, {
-    recordTypeId: '$_recordTypeId',
+    recordTypeId: "$_recordTypeId",
     fieldApiName: REASON_FIELD
   })
   wiredWithdrawReasons({ data, error }) {
@@ -129,7 +204,7 @@ export default class ApplicationDashboard extends LightningElement {
         value: v.value
       }));
     } else if (error) {
-      this._withdrawError = 'Unable to load withdrawal reasons.';
+      this._withdrawError = labelWithdrawReasonsLoadFailed;
     }
   }
 
@@ -144,29 +219,34 @@ export default class ApplicationDashboard extends LightningElement {
     this.isLoading = true;
     try {
       const data = await getDashboardData();
-      this.timelineName = data.timelineName || '';
+      this.timelineName = data.timelineName || "";
       this.landingContent = data.landingContent || null;
-      this.familyName = data.familyName || '';
+      this.familyName = data.familyName || "";
       const deadlineByTimeline = this._buildDeadlineLookup(data.timelines);
       this.applications = (data.applications || []).map((app) => {
         const statusKey = this._statusKey(app);
-        const isWithdrawn = statusKey === 'withdrawn';
-        const timelineName = app.timelineName || '';
+        const isWithdrawn = statusKey === "withdrawn";
+        const timelineName = app.timelineName || "";
         return {
           ...app,
           statusKey,
           statusTagClass: `badge-tag badge-tag--${parentBadgeStatusKey(statusKey)}`,
           statusLabel: parentStatusLabel(this._statusLabel(app)),
           isDraft: !app.isSubmitted,
-          actionLabel: app.isSubmitted || isWithdrawn ? 'View' : 'Resume',
+          actionLabel: app.isSubmitted || isWithdrawn ? labelView : labelResume,
           actionClass:
-            app.isSubmitted || isWithdrawn ? 'btn btn--view' : 'btn btn--edit',
-          rowClass: isWithdrawn ? 'app-row app-row--withdrawn' : 'app-row',
-          gradeDisplay: app.grade || 'Not selected',
+            app.isSubmitted || isWithdrawn ? "btn btn--view" : "btn btn--edit",
+          rowClass: isWithdrawn ? "app-row app-row--withdrawn" : "app-row",
+          gradeDisplay: labelGradeValue.replace(
+            "{0}",
+            app.grade || labelGradeNotSelected
+          ),
           timelineId: app.timelineId || null,
           timelineOpenDate: app.timelineOpenDate || null,
           timelineName,
-          timelineLabel: timelineName ? `${timelineName} Application` : '',
+          timelineLabel: timelineName
+            ? labelTimelineApplication.replace("{0}", timelineName)
+            : "",
           deadlineDisplay: this._deadlineDisplay(
             app,
             statusKey,
@@ -181,7 +261,7 @@ export default class ApplicationDashboard extends LightningElement {
       this._viewApps = this._computeViewApps();
       this._displayGroups = this._computeDisplayGroups();
     } catch (err) {
-      console.error('Failed to load dashboard:', err);
+      console.error("Failed to load dashboard:", err);
     } finally {
       this.isLoading = false;
     }
@@ -199,10 +279,10 @@ export default class ApplicationDashboard extends LightningElement {
   // timeline; the stable SOQL CreatedDate DESC order breaks any remaining ties.
   _computeViewApps() {
     let list;
-    if (this.view === 'in-progress') {
-      list = this.applications.filter((a) => a.statusKey === 'draft');
-    } else if (this.view === 'submitted') {
-      list = this.applications.filter((a) => a.statusKey !== 'draft');
+    if (this.view === "in-progress") {
+      list = this.applications.filter((a) => a.statusKey === "draft");
+    } else if (this.view === "submitted") {
+      list = this.applications.filter((a) => a.statusKey !== "draft");
     } else {
       list = this.applications;
     }
@@ -216,13 +296,13 @@ export default class ApplicationDashboard extends LightningElement {
         : -Infinity;
       if (da !== db) return db - da;
       // 2. tiebreak when open dates are equal: timeline Name, A->Z
-      const na = a.timelineName || '';
-      const nb = b.timelineName || '';
+      const na = a.timelineName || "";
+      const nb = b.timelineName || "";
       if (na !== nb) return na.localeCompare(nb);
       // 3. final contiguity guard: timeline Id (keeps same-date, same-name
       //    timelines as distinct, deterministically-ordered groups)
-      const ia = a.timelineId || '';
-      const ib = b.timelineId || '';
+      const ia = a.timelineId || "";
+      const ib = b.timelineId || "";
       if (ia !== ib) return ia < ib ? -1 : 1;
       // 4. status rank within the timeline, ascending. Rank off statusKey (the
       //    badge's source of truth) so a row always sorts into the tier its
@@ -241,20 +321,20 @@ export default class ApplicationDashboard extends LightningElement {
   // still two groups.
   _computeDisplayGroups() {
     const apps = this._viewApps;
-    const distinct = new Set(apps.map((a) => a.timelineId || '__none__'));
+    const distinct = new Set(apps.map((a) => a.timelineId || "__none__"));
     if (distinct.size <= 1) {
-      return [{ key: 'all', showHeader: false, headerLabel: '', apps }];
+      return [{ key: "all", showHeader: false, headerLabel: "", apps }];
     }
     const groups = [];
     const byKey = new Map();
     for (const app of apps) {
-      const key = app.timelineId || '__none__';
+      const key = app.timelineId || "__none__";
       let group = byKey.get(key);
       if (!group) {
         group = {
           key,
           showHeader: true,
-          headerLabel: app.timelineName || 'Other Applications',
+          headerLabel: app.timelineName || labelOtherApplications,
           apps: []
         };
         byKey.set(key, group);
@@ -296,8 +376,8 @@ export default class ApplicationDashboard extends LightningElement {
         expanded: !collapsed,
         listId: `app-group-${group.key}`,
         chevronClass: collapsed
-          ? 'group-chevron group-chevron--collapsed'
-          : 'group-chevron',
+          ? "group-chevron group-chevron--collapsed"
+          : "group-chevron",
         apps: group.apps.map((app) => ({
           ...app,
           menuOpen: app.id === this._openMenuAppId
@@ -321,7 +401,7 @@ export default class ApplicationDashboard extends LightningElement {
   }
 
   get isFilteredView() {
-    return this.view === 'in-progress' || this.view === 'submitted';
+    return this.view === "in-progress" || this.view === "submitted";
   }
 
   get showFilteredEmpty() {
@@ -329,15 +409,15 @@ export default class ApplicationDashboard extends LightningElement {
   }
 
   get filteredEmptyText() {
-    return this.view === 'in-progress'
-      ? "You don't have any applications in progress."
-      : 'No submitted applications yet.';
+    return this.view === "in-progress"
+      ? labelNoApplicationsInProgress
+      : labelNoSubmittedApplications;
   }
 
   // On the in-progress (Dashboard) view, the empty state still offers a way to
   // start a new application so parents never have to leave the tab.
   get showFilteredEmptyCta() {
-    return this.view === 'in-progress' && this.showStartNew;
+    return this.view === "in-progress" && this.showStartNew;
   }
 
   get showWelcomeBlock() {
@@ -345,7 +425,9 @@ export default class ApplicationDashboard extends LightningElement {
   }
 
   get welcomeGreeting() {
-    return this.familyName ? `Welcome, ${this.familyName}!` : 'Welcome!';
+    return this.familyName
+      ? labelWelcomeFamily.replace("{0}", this.familyName)
+      : labelWelcomeGreeting;
   }
 
   get showStartNew() {
@@ -382,24 +464,24 @@ export default class ApplicationDashboard extends LightningElement {
     return this.timelines.map((tl) => {
       const isSelected = tl.id === this._pickerTimelineId;
       const openDate = tl.openDate
-        ? new Date(tl.openDate).toLocaleDateString('en-US', {
-            month: 'short',
-            day: 'numeric'
+        ? new Date(tl.openDate + "T00:00:00").toLocaleDateString(LANG, {
+            month: "short",
+            day: "numeric"
           })
-        : '';
+        : "";
       const closeDate = tl.closeDate
-        ? new Date(tl.closeDate).toLocaleDateString('en-US', {
-            month: 'short',
-            day: 'numeric',
-            year: 'numeric'
+        ? new Date(tl.closeDate + "T00:00:00").toLocaleDateString(LANG, {
+            month: "short",
+            day: "numeric",
+            year: "numeric"
           })
-        : 'Open';
+        : labelPeriodOpenEnded;
       return {
         ...tl,
         isSelected,
         dateRange:
-          openDate && closeDate ? `${openDate} \u2013 ${closeDate}` : '',
-        pickerClass: `picker-option${isSelected ? ' picker-option--selected' : ''}`
+          openDate && closeDate ? `${openDate} \u2013 ${closeDate}` : "",
+        pickerClass: `picker-option${isSelected ? " picker-option--selected" : ""}`
       };
     });
   }
@@ -408,21 +490,21 @@ export default class ApplicationDashboard extends LightningElement {
   // an Eligible application has an AppliedDate (so isSubmitted is true), and we
   // want it to surface its own status/badge rather than collapse into 'applied'.
   _statusKey(app) {
-    if (app.status === 'Withdrawn/Declined') return 'withdrawn';
-    if (app.status === 'Eligible') return 'eligible';
-    if (app.isSubmitted) return 'applied';
-    return 'draft';
+    if (app.status === "Withdrawn/Declined") return "withdrawn";
+    if (app.status === "Eligible") return "eligible";
+    if (app.isSubmitted) return "applied";
+    return "draft";
   }
 
   _statusLabel(app) {
-    if (app.status === 'Withdrawn/Declined') return 'Withdrawn';
-    if (app.status === 'Eligible') return 'Eligible';
-    if (app.isSubmitted) return 'Applied';
-    return 'In Progress';
+    if (app.status === "Withdrawn/Declined") return labelWithdrawn;
+    if (app.status === "Eligible") return "Eligible";
+    if (app.isSubmitted) return labelStatusApplied;
+    return labelStatusInProgress;
   }
 
   _isWithdrawable(app) {
-    return app.status !== 'Withdrawn/Declined';
+    return app.status !== "Withdrawn/Declined";
   }
 
   _buildDeadlineLookup(timelines) {
@@ -438,20 +520,23 @@ export default class ApplicationDashboard extends LightningElement {
   // Only in-progress (editable) applications surface a submission deadline,
   // and only when the timeline's close date is available in the payload.
   _deadlineDisplay(app, statusKey, timelineName, lookup) {
-    if (statusKey !== 'draft') return '';
+    if (statusKey !== "draft") return "";
     const closeDate = lookup[timelineName];
-    if (!closeDate) return '';
-    const formatted = new Date(closeDate).toLocaleDateString('en-US', {
-      month: '2-digit',
-      day: '2-digit',
-      year: 'numeric'
-    });
-    return `Submission deadline is ${formatted}`;
+    if (!closeDate) return "";
+    const formatted = new Date(closeDate + "T00:00:00").toLocaleDateString(
+      LANG,
+      {
+        month: "2-digit",
+        day: "2-digit",
+        year: "numeric"
+      }
+    );
+    return labelSubmissionDeadline.replace("{0}", formatted);
   }
 
   // "Other" reveals the free-text field; every other value hides it.
   get showWithdrawReasonText() {
-    return this._withdrawPicklistValue === 'Other';
+    return this._withdrawPicklistValue === "Other";
   }
 
   get withdrawConfirmDisabled() {
@@ -468,10 +553,9 @@ export default class ApplicationDashboard extends LightningElement {
     // Name the Application Timeline (enrollment cycle) being withdrawn from, not
     // the student — the withdraw is launched from a specific application card
     // that already shows the student's name.
-    const timeline = this._withdrawTimelineName
-      ? ` for ${this._withdrawTimelineName}`
-      : '';
-    return `This action cannot be undone. Your application${timeline} will be withdrawn.`;
+    return this._withdrawTimelineName
+      ? labelWithdrawAppModalBody.replace("{0}", this._withdrawTimelineName)
+      : labelWithdrawAppModalBodyNoTimeline;
   }
 
   handleStartNew() {
@@ -505,7 +589,7 @@ export default class ApplicationDashboard extends LightningElement {
     const selectedTl = this.timelines.find((tl) => tl.id === timelineId);
     this._wizardApplicationId = undefined;
     this._wizardTimelineId = timelineId;
-    this._wizardTimelineName = selectedTl ? selectedTl.name : '';
+    this._wizardTimelineName = selectedTl ? selectedTl.name : "";
     this._wizardForceNew = true;
     this.showWizard = true;
   }
@@ -540,9 +624,9 @@ export default class ApplicationDashboard extends LightningElement {
     if (!app) return;
     this._openMenuAppId = null;
     this._withdrawAppId = appId;
-    this._withdrawTimelineName = app.timelineName || '';
-    this._withdrawReason = '';
-    this._withdrawPicklistValue = '';
+    this._withdrawTimelineName = app.timelineName || "";
+    this._withdrawReason = "";
+    this._withdrawPicklistValue = "";
     this._withdrawError = null;
     this._isWithdrawing = false;
     this.showWithdrawModal = true;
@@ -552,7 +636,7 @@ export default class ApplicationDashboard extends LightningElement {
     this._withdrawPicklistValue = event.detail.value;
     // Drop any stale free-text when switching away from "Other".
     if (!this.showWithdrawReasonText) {
-      this._withdrawReason = '';
+      this._withdrawReason = "";
     }
     if (this._withdrawError) {
       this._withdrawError = null;
@@ -580,13 +664,13 @@ export default class ApplicationDashboard extends LightningElement {
       });
       this.showWithdrawModal = false;
       this._withdrawAppId = null;
-      this._withdrawTimelineName = '';
-      this._withdrawReason = '';
-      this._withdrawPicklistValue = '';
+      this._withdrawTimelineName = "";
+      this._withdrawReason = "";
+      this._withdrawPicklistValue = "";
       await this.loadDashboard();
     } catch (err) {
       this._withdrawError =
-        err?.body?.message || err?.message || 'Unable to withdraw application.';
+        err?.body?.message || err?.message || labelWithdrawAppFailed;
     } finally {
       this._isWithdrawing = false;
     }
@@ -596,9 +680,9 @@ export default class ApplicationDashboard extends LightningElement {
     if (this._isWithdrawing) return;
     this.showWithdrawModal = false;
     this._withdrawAppId = null;
-    this._withdrawTimelineName = '';
-    this._withdrawReason = '';
-    this._withdrawPicklistValue = '';
+    this._withdrawTimelineName = "";
+    this._withdrawReason = "";
+    this._withdrawPicklistValue = "";
     this._withdrawError = null;
   }
 }

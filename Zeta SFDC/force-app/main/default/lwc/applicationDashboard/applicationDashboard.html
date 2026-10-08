@@ -8,7 +8,7 @@
             fill="currentColor"
           />
         </svg>
-        Back to Applications
+        {labels.backToApplications}
       </button>
     </div>
     <c-zeta-application
@@ -27,8 +27,8 @@
       <template lwc:if={showHeader}>
         <header class="dashboard-header">
           <div class="header-content">
-            <span class="header-brand">Zeta Charter Schools</span>
-            <span class="header-title">My Applications</span>
+            <span class="header-brand">{labels.zetaCharterSchools}</span>
+            <span class="header-title">{labels.myApplications}</span>
           </div>
         </header>
       </template>
@@ -37,7 +37,7 @@
         <template lwc:if={isLoading}>
           <div class="loading-card">
             <lightning-spinner
-              alternative-text="Loading applications"
+              alternative-text={labels.ariaLoadingApplications}
               size="medium"
             ></lightning-spinner>
           </div>
@@ -47,7 +47,7 @@
           <template lwc:if={showWelcomeBlock}>
             <div class="dash-welcome">
               <h2 class="dash-welcome-title">{welcomeGreeting}</h2>
-              <p class="dash-welcome-text">{welcomeMessage}</p>
+              <p class="dash-welcome-text">{welcomeMessageText}</p>
             </div>
           </template>
 
@@ -72,7 +72,7 @@
                     fill="currentColor"
                   />
                 </svg>
-                <span>Applications are currently closed.</span>
+                <span>{labels.applicationsCurrentlyClosed}</span>
               </div>
             </template>
           </template>
@@ -82,13 +82,11 @@
               <div
                 class="modal-dialog"
                 role="dialog"
-                aria-label="Select application period"
+                aria-label={labels.ariaSelectApplicationPeriod}
                 onclick={handleModalClick}
               >
-                <h3 class="modal-title">Which application period?</h3>
-                <p class="modal-desc">
-                  Select the period you'd like to apply for.
-                </p>
+                <h3 class="modal-title">{labels.whichApplicationPeriod}</h3>
+                <p class="modal-desc">{labels.selectApplicationPeriodDesc}</p>
                 <div class="picker-options">
                   <template for:each={pickerOptions} for:item="tl">
                     <button
@@ -116,14 +114,14 @@
                     class="btn btn--secondary"
                     onclick={handleCloseTimelinePicker}
                   >
-                    Cancel
+                    {labels.cancel}
                   </button>
                   <button
                     class="btn btn--action"
                     disabled={pickerContinueDisabled}
                     onclick={handlePickerContinue}
                   >
-                    Continue
+                    {labels.continue}
                   </button>
                 </div>
               </div>
@@ -132,7 +130,7 @@
 
           <template lwc:if={hasApplications}>
             <div class="toolbar">
-              <h2 class="toolbar-title">Your Applications</h2>
+              <h2 class="toolbar-title">{labels.yourApplications}</h2>
               <template lwc:if={showStartNew}>
                 <button class="btn btn--action" onclick={handleStartNew}>
                   <svg
@@ -146,7 +144,7 @@
                       fill="currentColor"
                     />
                   </svg>
-                  New Application
+                  {labels.newApplication}
                 </button>
               </template>
             </div>
@@ -197,9 +195,7 @@
                               <span class={app.statusTagClass}
                                 >{app.statusLabel}</span
                               >
-                              <span class="meta-text"
-                                >Grade {app.gradeDisplay}</span
-                              >
+                              <span class="meta-text">{app.gradeDisplay}</span>
                             </div>
                             <template lwc:if={app.deadlineDisplay}>
                               <p class="app-card-deadline">
@@ -225,7 +221,7 @@
                                   class="kebab"
                                   data-id={app.id}
                                   onclick={handleKebabClick}
-                                  aria-label="More actions"
+                                  aria-label={labels.ariaMoreActions}
                                   aria-haspopup="menu"
                                   aria-expanded={app.menuOpen}
                                 >
@@ -282,7 +278,7 @@
                                           stroke-linejoin="round"
                                         />
                                       </svg>
-                                      Withdraw application
+                                      {labels.withdrawApplication}
                                     </button>
                                   </div>
                                 </template>
@@ -303,15 +299,15 @@
               <div
                 class="modal-dialog"
                 role="dialog"
-                aria-label="Withdraw application"
+                aria-label={labels.withdrawApplication}
                 onclick={handleModalClick}
               >
-                <h3 class="modal-title">Withdraw Application?</h3>
+                <h3 class="modal-title">{labels.withdrawAppQuestion}</h3>
                 <p class="modal-desc">{withdrawModalBody}</p>
                 <lightning-combobox
                   class="withdraw-combobox"
-                  label="Reason (required)"
-                  placeholder="Select a reason"
+                  label={labels.reasonRequired}
+                  placeholder={labels.selectAReason}
                   options={withdrawPicklistOptions}
                   value={_withdrawPicklistValue}
                   onchange={handleWithdrawPicklistChange}
@@ -320,7 +316,7 @@
                 <template lwc:if={showWithdrawReasonText}>
                   <lightning-textarea
                     class="withdraw-textarea"
-                    label="Please describe (required)"
+                    label={labels.pleaseDescribeRequired}
                     value={_withdrawReason}
                     max-length="500"
                     onchange={handleWithdrawReasonChange}
@@ -338,15 +334,17 @@
                     onclick={handleWithdrawCancel}
                     disabled={_isWithdrawing}
                   >
-                    Cancel
+                    {labels.cancel}
                   </button>
                   <button
                     class="btn btn--danger"
                     onclick={handleWithdrawConfirm}
                     disabled={withdrawConfirmDisabled}
                   >
-                    <template lwc:if={_isWithdrawing}> Withdrawing… </template>
-                    <template lwc:else> Withdraw </template>
+                    <template lwc:if={_isWithdrawing}>
+                      {labels.withdrawing}
+                    </template>
+                    <template lwc:else> {labels.withdraw} </template>
                   </button>
                 </div>
               </div>
@@ -368,10 +366,8 @@
                   />
                 </svg>
               </div>
-              <h2 class="welcome-title">Ready to apply?</h2>
-              <p class="welcome-text">
-                Start your child's application to Zeta Charter Schools.
-              </p>
+              <h2 class="welcome-title">{labels.readyToApply}</h2>
+              <p class="welcome-text">{labels.readyToApplyDesc}</p>
               <button class="btn btn--cta" onclick={handleStartNew}>
                 <svg
                   viewBox="0 0 24 24"
@@ -384,14 +380,14 @@
                     fill="currentColor"
                   />
                 </svg>
-                Start New Application
+                {labels.startNewApplication}
               </button>
             </div>
           </template>
 
           <template lwc:if={showEmptyClosed}>
             <div class="empty-state">
-              <p class="empty-text">No applications found.</p>
+              <p class="empty-text">{labels.noApplicationsFound}</p>
             </div>
           </template>
 
@@ -411,7 +407,7 @@
                       fill="currentColor"
                     />
                   </svg>
-                  Start New Application
+                  {labels.startNewApplication}
                 </button>
               </template>
             </div>

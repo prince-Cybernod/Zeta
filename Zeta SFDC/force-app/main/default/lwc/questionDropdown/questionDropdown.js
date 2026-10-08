@@ -1,4 +1,6 @@
 import { LightningElement, api } from 'lwc';
+import labelNoneOption from '@salesforce/label/c.AppUI_NoneOption';
+import labelSelectAnOption from '@salesforce/label/c.AppUI_SelectAnOption';
 
 export default class QuestionDropdown extends LightningElement {
   @api question;
@@ -13,13 +15,13 @@ export default class QuestionDropdown extends LightningElement {
   get dropdownOptions() {
     const opts = this.question?.options || [];
     if (!this.question?.isRequired) {
-      return [{ label: '--None--', value: '' }, ...opts];
+      return [{ label: labelNoneOption, value: '' }, ...opts];
     }
     return opts;
   }
 
   get placeholderText() {
-    return this.question?.placeholder || 'Select an option';
+    return this.question?.placeholder || labelSelectAnOption;
   }
 
   handleChange(event) {

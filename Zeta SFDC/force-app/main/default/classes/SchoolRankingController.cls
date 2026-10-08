@@ -39,17 +39,20 @@ public without sharing class SchoolRankingController {
 
   @AuraEnabled
   public static void saveRankings(Id applicationId, String rankingsJson) {
-    Preconditions.checkNotNull(applicationId, 'Application Id is required');
-    Preconditions.checkNotBlank(rankingsJson, 'Rankings JSON is required');
+    Preconditions.checkNotNull(applicationId, System.Label.AppUI_ApplicationIdRequired);
+    Preconditions.checkNotBlank(rankingsJson, System.Label.AppUI_RankingsJsonRequired);
 
     List<IndividualApplication> apps = (List<IndividualApplication>) databaseRepo.queryWithBinds(
       'SELECT Status, AppliedDate FROM IndividualApplication WHERE Id = :applicationId LIMIT 1',
       new Map<String, Object>{ 'applicationId' => applicationId }
     );
-    Preconditions.checkArgument(!apps.isEmpty(), 'Application not found: ' + applicationId);
+    Preconditions.checkArgument(
+      !apps.isEmpty(),
+      String.format(System.Label.AppUI_ApplicationNotFoundWithId, new List<Object>{ applicationId })
+    );
     Preconditions.checkArgument(
       apps[0].Status != 'Withdrawn/Declined',
-      'Cannot update rankings for a withdrawn application.'
+      System.Label.AppUI_CannotRankWithdrawnApplication
     );
 
     List<Object> rankings = (List<Object>) JSON.deserializeUntyped(rankingsJson);
@@ -99,8 +102,8 @@ public without sharing class SchoolRankingController {
     String picklistReason,
     String reason
   ) {
-    Preconditions.checkNotNull(academicInterestId, 'School application Id is required');
-    Preconditions.checkNotBlank(picklistReason, 'A withdrawal reason is required');
+    Preconditions.checkNotNull(academicInterestId, System.Label.AppUI_SchoolApplicationIdRequired);
+    Preconditions.checkNotBlank(picklistReason, System.Label.AppUI_WithdrawalReasonRequired);
 
     List<AcademicInterest> interests = (List<AcademicInterest>) databaseRepo.queryWithBinds(
       'SELECT Id, Status, IndividualApplicationId,' +
@@ -110,7 +113,7 @@ public without sharing class SchoolRankingController {
     );
     Preconditions.checkArgument(
       !interests.isEmpty(),
-      'School application not found: ' + academicInterestId
+      String.format(System.Label.AppUI_SchoolApplicationNotFound, new List<Object>{ academicInterestId })
     );
     AcademicInterest ai = interests[0];
 
@@ -118,13 +121,13 @@ public without sharing class SchoolRankingController {
     Id contactId = getLoggedInContactId();
     Preconditions.checkArgument(
       contactId != null && ai.IndividualApplication.SubmittedByContactId == contactId,
-      'You can only withdraw your own school applications.'
+      System.Label.AppUI_WithdrawOwnSchoolsOnly
     );
 
     // Idempotency guard — a withdrawn school can't be withdrawn again.
     Preconditions.checkArgument(
       ai.Status != 'Withdrawn/Declined',
-      'This school application has already been withdrawn.'
+      System.Label.AppUI_SchoolAlreadyWithdrawn
     );
 
     ai.Status = 'Withdrawn/Declined';

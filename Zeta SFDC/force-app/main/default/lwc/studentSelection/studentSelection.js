@@ -8,6 +8,7 @@ import getStudents from '@salesforce/apex/StudentSelectionController.getStudents
 import selectStudent from '@salesforce/apex/StudentSelectionController.selectStudent';
 import updateStudentBirthdate from '@salesforce/apex/StudentSelectionController.updateStudentBirthdate';
 import checkAlreadyEnrolled from '@salesforce/apex/ZetaApplicationController.checkAlreadyEnrolled';
+import LANG from '@salesforce/i18n/lang';
 import labelAddAnotherStudent from '@salesforce/label/c.AppUI_AddAnotherStudent';
 import labelAddAStudent from '@salesforce/label/c.AppUI_AddAStudent';
 import labelAddStudent from '@salesforce/label/c.AppUI_AddStudent';
@@ -169,7 +170,7 @@ export default class StudentSelection extends LightningElement {
         ...s,
         displayName: `${s.firstName || ''} ${s.lastName || ''}`.trim(),
         birthdateFormatted: s.birthdate
-          ? new Date(s.birthdate + 'T00:00:00').toLocaleDateString('en-US', {
+          ? new Date(s.birthdate + 'T00:00:00').toLocaleDateString(LANG, {
               month: 'long',
               day: 'numeric',
               year: 'numeric'

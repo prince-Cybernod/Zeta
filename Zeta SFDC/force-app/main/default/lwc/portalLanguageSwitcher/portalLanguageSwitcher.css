@@ -1,0 +1,87 @@
+.bar {
+  display: flex;
+  justify-content: flex-end;
+}
+
+/* Login pages: float bottom-right like the Weglot widget it replaces. */
+.bar-on-dark {
+  position: fixed;
+  right: 16px;
+  bottom: 16px;
+  z-index: 1000;
+}
+
+/* Logged-in pages: stay in the flow above the header, where sidebar cards
+   can't paint over a floating element. */
+.bar-on-light {
+  padding: 8px 24px 0;
+}
+
+.switcher {
+  display: inline-flex;
+  gap: 8px;
+}
+
+.option {
+  border: 0;
+  border-radius: 8px;
+  padding: 8px 12px;
+  background: transparent;
+  font-size: 0.9rem;
+  line-height: 1.2;
+  cursor: pointer;
+}
+
+/* Login pages sit on the site purple: plain white labels, as in production. */
+.bar-on-dark .option {
+  color: #ffffff;
+}
+
+.bar-on-dark .option:hover {
+  background: rgba(255, 255, 255, 0.15);
+}
+
+/* Logged-in pages are white: give the unselected labels a tint so they stay visible. */
+.bar-on-light .option {
+  color: #4f497a;
+  background: rgba(79, 73, 122, 0.1);
+}
+
+.bar-on-light .option:hover {
+  background: rgba(79, 73, 122, 0.2);
+}
+
+.option:focus-visible {
+  outline: 2px solid #9bd9ec;
+  outline-offset: 1px;
+}
+
+.option:disabled {
+  cursor: wait;
+}
+
+/* Selected language: the portal's accent purple, in both themes. Written as a
+   descendant selector so it outranks the per-theme .bar-on-* .option rules
+   above once LWC adds its scoping attributes to each part. */
+.bar .option.selected,
+.bar .option.selected:hover {
+  background: #8f5fae;
+  color: #ffffff;
+  font-weight: 600;
+}
+
+@media (max-width: 768px) {
+  .bar-on-dark {
+    right: 8px;
+    bottom: 8px;
+  }
+
+  .bar-on-light {
+    padding: 8px 16px 0;
+  }
+
+  .option {
+    padding: 7px 10px;
+    font-size: 0.85rem;
+  }
+}

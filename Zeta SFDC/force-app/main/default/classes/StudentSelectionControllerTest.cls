@@ -282,7 +282,7 @@ private class StudentSelectionControllerTest {
 
     AssertThrows.Throwing throwing = AssertThrows.with(
       IllegalArgumentException.class,
-      'Student JSON is required'
+      System.Label.AppUI_StudentJsonRequired
     );
 
     try {
@@ -300,7 +300,7 @@ private class StudentSelectionControllerTest {
 
     AssertThrows.Throwing throwing = AssertThrows.with(
       IllegalArgumentException.class,
-      'Student JSON is required'
+      System.Label.AppUI_StudentJsonRequired
     );
 
     try {
@@ -325,7 +325,7 @@ private class StudentSelectionControllerTest {
 
     AssertThrows.Throwing throwing = AssertThrows.with(
       IllegalArgumentException.class,
-      'Logged-in user must have a Contact'
+      System.Label.AppUI_LoggedInUserNeedsContact
     );
 
     try {
@@ -1034,7 +1034,7 @@ private class StudentSelectionControllerTest {
 
     AssertThrows.Throwing throwing = AssertThrows.with(
       IllegalArgumentException.class,
-      'Student Account Id is required'
+      System.Label.AppUI_StudentAccountIdRequired
     );
 
     try {
@@ -1053,7 +1053,7 @@ private class StudentSelectionControllerTest {
 
     AssertThrows.Throwing throwing = AssertThrows.with(
       IllegalArgumentException.class,
-      'Birthdate is required'
+      System.Label.AppUI_BirthdateRequired
     );
 
     try {
@@ -1077,7 +1077,7 @@ private class StudentSelectionControllerTest {
 
     AssertThrows.Throwing throwing = AssertThrows.with(
       IllegalArgumentException.class,
-      'Logged-in user must have a Contact'
+      System.Label.AppUI_LoggedInUserNeedsContact
     );
 
     try {

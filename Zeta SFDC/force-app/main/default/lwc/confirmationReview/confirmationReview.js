@@ -1,49 +1,78 @@
-import { LightningElement, api, wire } from 'lwc';
-import { refreshApex } from '@salesforce/apex';
-import { getObjectInfo, getPicklistValues } from 'lightning/uiObjectInfoApi';
-import ACADEMIC_INTEREST_OBJECT from '@salesforce/schema/AcademicInterest';
-import REASON_FIELD from '@salesforce/schema/AcademicInterest.Withdrawn_Declined_Reason_Picklist__c';
-import getReviewBundle from '@salesforce/apex/ApplicationReviewController.getReviewBundle';
-import withdrawSchoolApplication from '@salesforce/apex/SchoolRankingController.withdrawSchoolApplication';
+import { LightningElement, api, wire } from "lwc";
+import { refreshApex } from "@salesforce/apex";
+import { getObjectInfo, getPicklistValues } from "lightning/uiObjectInfoApi";
+import ACADEMIC_INTEREST_OBJECT from "@salesforce/schema/AcademicInterest";
+import REASON_FIELD from "@salesforce/schema/AcademicInterest.Withdrawn_Declined_Reason_Picklist__c";
+import getReviewBundle from "@salesforce/apex/ApplicationReviewController.getReviewBundle";
+import withdrawSchoolApplication from "@salesforce/apex/SchoolRankingController.withdrawSchoolApplication";
+import LANG from "@salesforce/i18n/lang";
 
 // Master record type id — Salesforce's sentinel for "no record types"; the
 // getPicklistValues fallback when getObjectInfo reports no default record type.
-const NULL_RECORD_TYPE_ID = '012000000000000AAA';
-import labelAriaLoadingReview from '@salesforce/label/c.AppUI_AriaLoadingReview';
-import labelEdit from '@salesforce/label/c.AppUI_Edit';
-import labelAddress from '@salesforce/label/c.AppUI_FieldAddress';
-import labelDateOfBirth from '@salesforce/label/c.AppUI_FieldDateOfBirth';
-import labelGender from '@salesforce/label/c.AppUI_FieldGender';
-import labelGrade from '@salesforce/label/c.AppUI_FieldGrade';
-import labelName from '@salesforce/label/c.AppUI_FieldName';
-import labelZetaSchool from '@salesforce/label/c.AppUI_FieldZetaSchool';
-import labelLotteryMessage from '@salesforce/label/c.AppUI_LotteryMessage';
-import labelResidencyWarning from '@salesforce/label/c.AppUI_ResidencyWarning';
-import labelResidencyWarningState from '@salesforce/label/c.AppUI_ResidencyWarning_State';
-import labelApplicationDetails from '@salesforce/label/c.AppUI_SectionApplicationDetails';
-import labelSchoolRankings from '@salesforce/label/c.AppUI_SectionSchoolRankings';
-import labelSiblings from '@salesforce/label/c.AppUI_SectionSiblings';
-import labelSiblingsApplying from '@salesforce/label/c.AppUI_SiblingsApplying';
-import labelSiblingsAttending from '@salesforce/label/c.AppUI_SiblingsAttending';
-import labelStudentInfo from '@salesforce/label/c.AppUI_StudentInfo';
-import labelUpdateRankings from '@salesforce/label/c.AppUI_UpdateRankings';
+const NULL_RECORD_TYPE_ID = "012000000000000AAA";
+import labelAriaLoadingReview from "@salesforce/label/c.AppUI_AriaLoadingReview";
+import labelAriaMoreActions from "@salesforce/label/c.AppUI_AriaMoreActions";
+import labelAriaWithdrawSchoolApplication from "@salesforce/label/c.AppUI_AriaWithdrawSchoolApplication";
+import labelCancel from "@salesforce/label/c.AppUI_Cancel";
+import labelEdit from "@salesforce/label/c.AppUI_Edit";
+import labelAddress from "@salesforce/label/c.AppUI_FieldAddress";
+import labelDateOfBirth from "@salesforce/label/c.AppUI_FieldDateOfBirth";
+import labelGender from "@salesforce/label/c.AppUI_FieldGender";
+import labelGrade from "@salesforce/label/c.AppUI_FieldGrade";
+import labelName from "@salesforce/label/c.AppUI_FieldName";
+import labelPleaseDescribeRequired from "@salesforce/label/c.AppUI_FieldPleaseDescribeRequired";
+import labelReasonRequired from "@salesforce/label/c.AppUI_FieldReasonRequired";
+import labelZetaSchool from "@salesforce/label/c.AppUI_FieldZetaSchool";
+import labelLotteryMessage from "@salesforce/label/c.AppUI_LotteryMessage";
+import labelResidencyWarning from "@salesforce/label/c.AppUI_ResidencyWarning";
+import labelResidencyWarningState from "@salesforce/label/c.AppUI_ResidencyWarning_State";
+import labelApplicationDetails from "@salesforce/label/c.AppUI_SectionApplicationDetails";
+import labelSchoolRankings from "@salesforce/label/c.AppUI_SectionSchoolRankings";
+import labelSiblings from "@salesforce/label/c.AppUI_SectionSiblings";
+import labelSelectAReason from "@salesforce/label/c.AppUI_SelectAReason";
+import labelSiblingsApplying from "@salesforce/label/c.AppUI_SiblingsApplying";
+import labelSiblingsAttending from "@salesforce/label/c.AppUI_SiblingsAttending";
+import labelStudentInfo from "@salesforce/label/c.AppUI_StudentInfo";
+import labelUpdateRankings from "@salesforce/label/c.AppUI_UpdateRankings";
+import labelWithdraw from "@salesforce/label/c.AppUI_Withdraw";
+import labelWithdrawApplication from "@salesforce/label/c.AppUI_WithdrawApplication";
+import labelWithdrawing from "@salesforce/label/c.AppUI_Withdrawing";
+import labelWithdrawn from "@salesforce/label/c.AppUI_Withdrawn";
+import labelWithdrawReasonsLoadFailed from "@salesforce/label/c.AppUI_WithdrawReasonsLoadFailed";
+import labelWithdrawSchoolAppQuestion from "@salesforce/label/c.AppUI_WithdrawSchoolAppQuestion";
+import labelWithdrawSchoolFailed from "@salesforce/label/c.AppUI_WithdrawSchoolFailed";
+import labelWithdrawSchoolModalBody from "@salesforce/label/c.AppUI_WithdrawSchoolModalBody";
+import labelWithdrawSchoolModalBodyNoName from "@salesforce/label/c.AppUI_WithdrawSchoolModalBodyNoName";
+
+// Dates arrive from Apex as YYYY-MM-DD; append T00:00:00 so the Date parses
+// in local time (a bare date-only string parses as UTC and can shift a day),
+// then format per the user's language. Mirrors studentSelection's DOB display.
+function formatDateOfBirth(isoDate) {
+  return isoDate
+    ? new Date(isoDate + "T00:00:00").toLocaleDateString(LANG, {
+        month: "long",
+        day: "numeric",
+        year: "numeric"
+      })
+    : "";
+}
 
 export default class ConfirmationReview extends LightningElement {
   @api recordId;
-  @api pageDevName = 'Application_Details';
+  @api pageDevName = "Application_Details";
   @api variant;
   @api readOnly = false;
   @api postSubmitMode = false;
   @api timelineClosed = false;
-  @api applicationStatus = '';
+  @api applicationStatus = "";
 
   // --- Per-school withdraw ---------------------------------------------------
   _openMenuAiId = null;
   showWithdrawModal = false;
   _withdrawAiId = null;
-  _withdrawSchoolName = '';
-  _withdrawPicklistValue = '';
-  _withdrawReason = '';
+  _withdrawSchoolName = "";
+  _withdrawPicklistValue = "";
+  _withdrawReason = "";
   _withdrawError = null;
   _isWithdrawing = false;
   withdrawPicklistOptions = [];
@@ -61,7 +90,7 @@ export default class ConfirmationReview extends LightningElement {
   }
 
   @wire(getPicklistValues, {
-    recordTypeId: '$_reasonRecordTypeId',
+    recordTypeId: "$_reasonRecordTypeId",
     fieldApiName: REASON_FIELD
   })
   wiredWithdrawReasons({ data, error }) {
@@ -71,7 +100,7 @@ export default class ConfirmationReview extends LightningElement {
         value: v.value
       }));
     } else if (error) {
-      this._withdrawError = 'Unable to load withdrawal reasons.';
+      this._withdrawError = labelWithdrawReasonsLoadFailed;
     }
   }
 
@@ -99,7 +128,7 @@ export default class ConfirmationReview extends LightningElement {
     return (
       this.postSubmitMode &&
       !this.timelineClosed &&
-      this.applicationStatus !== 'Withdrawn/Declined'
+      this.applicationStatus !== "Withdrawn/Declined"
     );
   }
 
@@ -108,10 +137,10 @@ export default class ConfirmationReview extends LightningElement {
   applyingSiblings = [];
   hasResidencyWarning = false;
   residencyRequiresCityOnly = false;
-  _studentName = '';
-  _studentDob = '';
-  _studentGrade = '';
-  _studentAddress = '';
+  _studentName = "";
+  _studentDob = "";
+  _studentGrade = "";
+  _studentAddress = "";
   wiredBundleResult;
   // Guards the one-time, cache-bypassing re-fetch on (re)mount (see wiredBundle).
   _didInitialRefresh = false;
@@ -135,7 +164,18 @@ export default class ConfirmationReview extends LightningElement {
     studentInfo: labelStudentInfo,
     grade: labelGrade,
     address: labelAddress,
-    ariaLoadingReview: labelAriaLoadingReview
+    ariaLoadingReview: labelAriaLoadingReview,
+    ariaMoreActions: labelAriaMoreActions,
+    ariaWithdrawSchoolApplication: labelAriaWithdrawSchoolApplication,
+    cancel: labelCancel,
+    pleaseDescribeRequired: labelPleaseDescribeRequired,
+    reasonRequired: labelReasonRequired,
+    selectAReason: labelSelectAReason,
+    withdraw: labelWithdraw,
+    withdrawApplication: labelWithdrawApplication,
+    withdrawing: labelWithdrawing,
+    withdrawn: labelWithdrawn,
+    withdrawSchoolAppQuestion: labelWithdrawSchoolAppQuestion
   };
 
   get showLotteryMessage() {
@@ -165,14 +205,14 @@ export default class ConfirmationReview extends LightningElement {
     );
   }
 
-  @wire(getReviewBundle, { applicationId: '$recordId' })
+  @wire(getReviewBundle, { applicationId: "$recordId" })
   wiredBundle(result) {
     this.wiredBundleResult = result;
     if (result.data) {
       this._applyBundle(result.data);
     }
     if (result.error) {
-      console.error('Failed to load review bundle:', result.error);
+      console.error("Failed to load review bundle:", result.error);
     }
     // getReviewBundle is cacheable, so the first provision after (re)mount may
     // be a stale LDS snapshot — siblings selected/deselected on step 4 commit
@@ -186,7 +226,7 @@ export default class ConfirmationReview extends LightningElement {
       this._didInitialRefresh = true;
       refreshApex(this.wiredBundleResult)
         .catch((err) => {
-          console.error('Failed to refresh review bundle:', err);
+          console.error("Failed to refresh review bundle:", err);
         })
         .finally(() => {
           this._initialRefreshDone = true;
@@ -231,17 +271,17 @@ export default class ConfirmationReview extends LightningElement {
       );
       if (match) {
         this._studentName =
-          `${match.firstName || ''} ${match.lastName || ''}`.trim();
-        this._studentDob = match.birthdate || '';
-        this._studentAddress = match.address || '';
+          `${match.firstName || ""} ${match.lastName || ""}`.trim();
+        this._studentDob = formatDateOfBirth(match.birthdate);
+        this._studentAddress = match.address || "";
       }
       this._studentGrade =
-        applicationStudent.gradeLabel || applicationStudent.grade || '';
+        applicationStudent.gradeLabel || applicationStudent.grade || "";
     }
 
     this.schools = (schools || []).map((s) => ({
       ...s,
-      rank: s.rank != null ? String(s.rank) : '--'
+      rank: s.rank != null ? String(s.rank) : "--"
     }));
 
     const attending = [];
@@ -249,13 +289,13 @@ export default class ConfirmationReview extends LightningElement {
     for (const item of siblings || []) {
       const row = {
         id: item.Id,
-        firstName: item.First_Name__c || '',
-        lastName: item.Last_Name__c || '',
-        dateOfBirth: item.Date_of_Birth__c || '',
-        gender: item.Gender__c || '',
-        zetaSchool: item.Sibling_s_Zeta_School__c || ''
+        firstName: item.First_Name__c || "",
+        lastName: item.Last_Name__c || "",
+        dateOfBirth: formatDateOfBirth(item.Date_of_Birth__c),
+        gender: item.Gender__c || "",
+        zetaSchool: item.Sibling_s_Zeta_School__c || ""
       };
-      if (item.Priority_Type__c === 'Sibling Attending') {
+      if (item.Priority_Type__c === "Sibling Attending") {
         attending.push(row);
       } else {
         applying.push(row);
@@ -297,23 +337,23 @@ export default class ConfirmationReview extends LightningElement {
     const canWithdrawBase =
       this.postSubmitMode &&
       !this.timelineClosed &&
-      this.applicationStatus !== 'Withdrawn/Declined';
+      this.applicationStatus !== "Withdrawn/Declined";
     return this.schools.map((s) => {
-      const isWithdrawn = s.status === 'Withdrawn/Declined';
+      const isWithdrawn = s.status === "Withdrawn/Declined";
       return {
         ...s,
         isWithdrawn,
         canWithdraw: canWithdrawBase && !isWithdrawn,
         menuOpen: s.academicInterestId === this._openMenuAiId,
         rowClass: isWithdrawn
-          ? 'ranking-row ranking-row--withdrawn'
-          : 'ranking-row'
+          ? "ranking-row ranking-row--withdrawn"
+          : "ranking-row"
       };
     });
   }
 
   get showWithdrawReasonText() {
-    return this._withdrawPicklistValue === 'Other';
+    return this._withdrawPicklistValue === "Other";
   }
 
   get withdrawConfirmDisabled() {
@@ -330,8 +370,15 @@ export default class ConfirmationReview extends LightningElement {
   }
 
   get withdrawModalBody() {
-    const student = this._studentName || 'this student';
-    return `This will withdraw ${student}'s application to ${this._withdrawSchoolName}. This action cannot be undone.`;
+    if (!this._studentName) {
+      return labelWithdrawSchoolModalBodyNoName.replace(
+        "{0}",
+        this._withdrawSchoolName
+      );
+    }
+    return labelWithdrawSchoolModalBody
+      .replace("{0}", this._studentName)
+      .replace("{1}", this._withdrawSchoolName);
   }
 
   get hasAttendingSiblings() {
@@ -352,7 +399,7 @@ export default class ConfirmationReview extends LightningElement {
 
   handleEditStudent() {
     this.dispatchEvent(
-      new CustomEvent('navigatestep', {
+      new CustomEvent("navigatestep", {
         detail: { step: 1 },
         bubbles: true,
         composed: true
@@ -362,7 +409,7 @@ export default class ConfirmationReview extends LightningElement {
 
   handleEditSchools() {
     this.dispatchEvent(
-      new CustomEvent('navigatestep', {
+      new CustomEvent("navigatestep", {
         detail: { step: 3 },
         bubbles: true,
         composed: true
@@ -372,7 +419,7 @@ export default class ConfirmationReview extends LightningElement {
 
   handleEditApplication() {
     this.dispatchEvent(
-      new CustomEvent('navigatestep', {
+      new CustomEvent("navigatestep", {
         detail: { step: 4 },
         bubbles: true,
         composed: true
@@ -382,7 +429,7 @@ export default class ConfirmationReview extends LightningElement {
 
   handleEditSiblings() {
     this.dispatchEvent(
-      new CustomEvent('navigatestep', {
+      new CustomEvent("navigatestep", {
         detail: { step: 4 },
         bubbles: true,
         composed: true
@@ -410,9 +457,9 @@ export default class ConfirmationReview extends LightningElement {
     const aiId = event.currentTarget.dataset.id;
     const school = this.schools.find((s) => s.academicInterestId === aiId);
     this._withdrawAiId = aiId;
-    this._withdrawSchoolName = school ? school.name : '';
-    this._withdrawPicklistValue = '';
-    this._withdrawReason = '';
+    this._withdrawSchoolName = school ? school.name : "";
+    this._withdrawPicklistValue = "";
+    this._withdrawReason = "";
     this._withdrawError = null;
     this._isWithdrawing = false;
     this._openMenuAiId = null;
@@ -422,7 +469,7 @@ export default class ConfirmationReview extends LightningElement {
   handleWithdrawPicklistChange(event) {
     this._withdrawPicklistValue = event.detail.value;
     if (!this.showWithdrawReasonText) {
-      this._withdrawReason = '';
+      this._withdrawReason = "";
     }
     if (this._withdrawError) {
       this._withdrawError = null;
@@ -450,17 +497,15 @@ export default class ConfirmationReview extends LightningElement {
       });
       this.showWithdrawModal = false;
       this._withdrawAiId = null;
-      this._withdrawSchoolName = '';
-      this._withdrawPicklistValue = '';
-      this._withdrawReason = '';
+      this._withdrawSchoolName = "";
+      this._withdrawPicklistValue = "";
+      this._withdrawReason = "";
       // getReviewBundle is cacheable; bypass the cache so the withdrawn school
       // re-renders with its badge and a disabled kebab.
       await this.refresh();
     } catch (err) {
       this._withdrawError =
-        err?.body?.message ||
-        err?.message ||
-        'Unable to withdraw school application.';
+        err?.body?.message || err?.message || labelWithdrawSchoolFailed;
     } finally {
       this._isWithdrawing = false;
     }
@@ -472,9 +517,9 @@ export default class ConfirmationReview extends LightningElement {
     }
     this.showWithdrawModal = false;
     this._withdrawAiId = null;
-    this._withdrawSchoolName = '';
-    this._withdrawPicklistValue = '';
-    this._withdrawReason = '';
+    this._withdrawSchoolName = "";
+    this._withdrawPicklistValue = "";
+    this._withdrawReason = "";
     this._withdrawError = null;
     this._openMenuAiId = null;
   }

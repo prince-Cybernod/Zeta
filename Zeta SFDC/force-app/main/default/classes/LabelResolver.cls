@@ -16,7 +16,7 @@ public class LabelResolver {
       return value;
     }
     try {
-      return System.Label.get('', value, '');
+      return System.Label.get('', value);
     } catch (Exception e) {
       return value;
     }

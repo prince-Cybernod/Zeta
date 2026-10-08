@@ -1,10 +1,14 @@
-import { LightningElement, api } from 'lwc';
-import labelCommPrefsOptOutWarning from '@salesforce/label/c.AppUI_CommPrefsOptOutWarning';
-import labelCommPrefsValidationError from '@salesforce/label/c.AppUI_CommPrefsValidationError';
-import labelPrivacyPolicyText from '@salesforce/label/c.AppUI_PrivacyPolicyText';
-import labelPrivacyPolicyUrl from '@salesforce/label/c.AppUI_PrivacyPolicyUrl';
-import labelTextMessageConsentBody from '@salesforce/label/c.AppUI_TextMessageConsentBody';
-import { renderSummary } from './summaryTemplateRenderer';
+import { LightningElement, api } from "lwc";
+import labelCollapse from "@salesforce/label/c.AppUI_Collapse";
+import labelCommPrefsOptOutEmailTopic from "@salesforce/label/c.AppUI_CommPrefsOptOutEmailTopic";
+import labelCommPrefsOptOutTextTopic from "@salesforce/label/c.AppUI_CommPrefsOptOutTextTopic";
+import labelCommPrefsOptOutWarning from "@salesforce/label/c.AppUI_CommPrefsOptOutWarning";
+import labelCommPrefsValidationError from "@salesforce/label/c.AppUI_CommPrefsValidationError";
+import labelEdit from "@salesforce/label/c.AppUI_Edit";
+import labelPrivacyPolicyText from "@salesforce/label/c.AppUI_PrivacyPolicyText";
+import labelPrivacyPolicyUrl from "@salesforce/label/c.AppUI_PrivacyPolicyUrl";
+import labelTextMessageConsentBody from "@salesforce/label/c.AppUI_TextMessageConsentBody";
+import { renderSummary } from "./summaryTemplateRenderer";
 
 export default class ApplicationSection extends LightningElement {
   @api section;
@@ -26,11 +30,24 @@ export default class ApplicationSection extends LightningElement {
   _userCollapsed = false;
 
   get isCommPrefsSection() {
-    return this.section?.developerName === 'Communication_Preferences';
+    return this.section?.developerName === "Communication_Preferences";
   }
 
   get showCommPrefsError() {
-    return this._commPrefsError;
+    // _commPrefsError only flips during validateForm(), so re-check the live
+    // answers here: the message clears as soon as the user makes both choices
+    // instead of lingering until the next Save/Next click.
+    return this._commPrefsError && !this._commPrefsComplete;
+  }
+
+  get _commPrefsComplete() {
+    const emailChosen =
+      this.answers.Email_Consent === true ||
+      this.answers.Email_Opt_Out === true;
+    const textChosen =
+      this.answers.Text_Message_Opt_In === true ||
+      this.answers.Text_Message_Opt_Out === true;
+    return emailChosen && textChosen;
   }
 
   get commPrefsValidationMessage() {
@@ -43,8 +60,8 @@ export default class ApplicationSection extends LightningElement {
 
   get emailOptOutWarningMessage() {
     return labelCommPrefsOptOutWarning.replace(
-      '{0}',
-      'email communications with more information'
+      "{0}",
+      labelCommPrefsOptOutEmailTopic
     );
   }
 
@@ -55,7 +72,10 @@ export default class ApplicationSection extends LightningElement {
   }
 
   get textOptOutWarningMessage() {
-    return labelCommPrefsOptOutWarning.replace('{0}', 'text message updates');
+    return labelCommPrefsOptOutWarning.replace(
+      "{0}",
+      labelCommPrefsOptOutTextTopic
+    );
   }
 
   get showTextOptInConsent() {
@@ -79,17 +99,17 @@ export default class ApplicationSection extends LightningElement {
   }
 
   get hasSectionLabel() {
-    return (this.section?.label || '').trim() !== '';
+    return (this.section?.label || "").trim() !== "";
   }
 
   get gridClass() {
     const cols = this.section?.columns;
     const variant = this.section?.variant;
     let cls;
-    if (cols === 3) cls = 'question-grid three-column';
-    else if (cols === 2) cls = 'question-grid two-column';
-    else cls = 'question-grid one-column';
-    if (variant === 'toggle-grid') cls += ' toggle-grid';
+    if (cols === 3) cls = "question-grid three-column";
+    else if (cols === 2) cls = "question-grid two-column";
+    else cls = "question-grid one-column";
+    if (variant === "toggle-grid") cls += " toggle-grid";
     return cls;
   }
 
@@ -103,9 +123,9 @@ export default class ApplicationSection extends LightningElement {
       .map((q) => {
         const requestedSpan = Number(q.columnSpan) || 1;
         const span = Math.min(Math.max(requestedSpan, 1), sectionColumns);
-        let itemClass = 'question-item';
-        if (span === 2) itemClass += ' span-2';
-        else if (span >= 3) itemClass += ' span-3';
+        let itemClass = "question-item";
+        if (span === 2) itemClass += " span-2";
+        else if (span >= 3) itemClass += " span-3";
         return {
           ...q,
           // Address inputs need to distinguish "never set" (undefined -> lazy
@@ -113,9 +133,9 @@ export default class ApplicationSection extends LightningElement {
           // blank). Coalescing null to '' would collapse the two, so pass the
           // raw answer through for Address questions only.
           currentValue:
-            q.inputType === 'Address'
+            q.inputType === "Address"
               ? this.answers[q.developerName]
-              : (this.answers[q.developerName] ?? q.defaultValue ?? ''),
+              : (this.answers[q.developerName] ?? q.defaultValue ?? ""),
           itemClass
         };
       });
@@ -138,11 +158,11 @@ export default class ApplicationSection extends LightningElement {
 
   get sectionState() {
     if (!this.section?.collapsible) {
-      return 'always-expanded';
+      return "always-expanded";
     }
     const qs = this._stateQuestions;
     if (qs.length === 0) {
-      return 'untouched';
+      return "untouched";
     }
     const requiredQs = qs.filter((q) => q.isRequired);
     let filledRequired = 0;
@@ -158,7 +178,7 @@ export default class ApplicationSection extends LightningElement {
       }
     }
     if (!anyFilled) {
-      return 'untouched';
+      return "untouched";
     }
     // A section with no required questions has nothing left to complete once it
     // has been touched — treat it as complete. Without this, a collapsible
@@ -167,13 +187,13 @@ export default class ApplicationSection extends LightningElement {
     // to 'incomplete' the moment the parent fills it, silently blocking the
     // wizard's validateForm() with no inline error.
     if (filledRequired === requiredQs.length) {
-      return 'complete';
+      return "complete";
     }
-    return 'incomplete';
+    return "incomplete";
   }
 
   get isLocked() {
-    return this.lockWhenComplete === true && this.sectionState === 'complete';
+    return this.lockWhenComplete === true && this.sectionState === "complete";
   }
 
   get effectiveReadOnly() {
@@ -183,7 +203,7 @@ export default class ApplicationSection extends LightningElement {
   get isCollapsedRender() {
     if (
       this.section?.collapsible !== true ||
-      this.sectionState !== 'complete'
+      this.sectionState !== "complete"
     ) {
       return false;
     }
@@ -199,7 +219,7 @@ export default class ApplicationSection extends LightningElement {
     // and currently expanded.
     return (
       this.section?.collapsible === true &&
-      this.sectionState === 'complete' &&
+      this.sectionState === "complete" &&
       this._userCollapsed === false &&
       !this.effectiveReadOnly
     );
@@ -209,12 +229,20 @@ export default class ApplicationSection extends LightningElement {
     return !this.effectiveReadOnly;
   }
 
+  get collapseButtonLabel() {
+    return labelCollapse;
+  }
+
+  get editButtonLabel() {
+    return labelEdit;
+  }
+
   get summaryCardClass() {
-    return this.canEditSummary ? 'summary-card' : 'summary-card is-static';
+    return this.canEditSummary ? "summary-card" : "summary-card is-static";
   }
 
   get summaryRole() {
-    return this.canEditSummary ? 'button' : undefined;
+    return this.canEditSummary ? "button" : undefined;
   }
 
   get summaryTabIndex() {
@@ -229,12 +257,24 @@ export default class ApplicationSection extends LightningElement {
   get summaryText() {
     const template = this.section?.summaryTemplate;
     if (template) {
-      const rendered = renderSummary(template, this.answers || {});
+      const optionLabels = {};
+      (this.section?.questions || []).forEach((q) => {
+        if (q.options?.length) {
+          optionLabels[q.developerName] = Object.fromEntries(
+            q.options.map((o) => [o.value, o.label])
+          );
+        }
+      });
+      const rendered = renderSummary(
+        template,
+        this.answers || {},
+        optionLabels
+      );
       if (rendered) {
         return rendered;
       }
     }
-    return this.section?.label || '';
+    return this.section?.label || "";
   }
 
   @api
@@ -254,7 +294,7 @@ export default class ApplicationSection extends LightningElement {
     if (!this.canEditSummary) {
       return;
     }
-    if (event.key === 'Enter' || event.key === ' ') {
+    if (event.key === "Enter" || event.key === " ") {
       event.preventDefault();
       this._userCollapsed = false;
     }
@@ -267,7 +307,7 @@ export default class ApplicationSection extends LightningElement {
 
   @api
   reportValidity() {
-    const inputs = this.template.querySelectorAll('c-question-input');
+    const inputs = this.template.querySelectorAll("c-question-input");
     let allValid = true;
     inputs.forEach((input) => {
       if (!input.reportValidity()) {
@@ -276,13 +316,7 @@ export default class ApplicationSection extends LightningElement {
     });
 
     if (this.isCommPrefsSection) {
-      const emailChosen =
-        this.answers.Email_Consent === true ||
-        this.answers.Email_Opt_Out === true;
-      const textChosen =
-        this.answers.Text_Message_Opt_In === true ||
-        this.answers.Text_Message_Opt_Out === true;
-      if (!emailChosen || !textChosen) {
+      if (!this._commPrefsComplete) {
         this._commPrefsError = true;
         allValid = false;
       } else {
@@ -296,16 +330,16 @@ export default class ApplicationSection extends LightningElement {
 
 function isAnswerBlank(value) {
   if (value === null || value === undefined) return true;
-  if (typeof value === 'string') return value === '';
+  if (typeof value === "string") return value === "";
   if (Array.isArray(value)) return value.length === 0;
-  if (typeof value === 'object') {
+  if (typeof value === "object") {
     // Address compound: blank when no street / city / postal code is set.
     // (A default country alone isn't user input — don't count it.)
-    if ('street' in value || 'city' in value || 'postalCode' in value) {
+    if ("street" in value || "city" in value || "postalCode" in value) {
       return !value.street && !value.city && !value.postalCode;
     }
     return !Object.values(value).some(
-      (v) => v !== null && v !== undefined && v !== ''
+      (v) => v !== null && v !== undefined && v !== ""
     );
   }
   return false;

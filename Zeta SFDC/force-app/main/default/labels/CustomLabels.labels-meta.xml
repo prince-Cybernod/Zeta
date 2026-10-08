@@ -17,12 +17,36 @@
         <value>Completed</value>
     </labels>
     <labels>
+        <fullName>Action_Plan_Completed_Count</fullName>
+        <categories>Action Plans UI</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Action plan card progress; {0} = completed tasks, {1} = total tasks</shortDescription>
+        <value>{0}/{1} Completed</value>
+    </labels>
+    <labels>
         <fullName>Action_Plan_Due_By</fullName>
         <categories>Action Plans UI</categories>
         <language>en_US</language>
         <protected>false</protected>
         <shortDescription>Due By</shortDescription>
         <value>Due By</value>
+    </labels>
+    <labels>
+        <fullName>Action_Plan_Due_By_Date</fullName>
+        <categories>Action Plans UI</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Due date line on an open action plan task; {0} = due date</shortDescription>
+        <value>Due By {0}</value>
+    </labels>
+    <labels>
+        <fullName>Action_Plan_Error_Loading</fullName>
+        <categories>Action Plans UI</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Action plan card error when its data fails to load; {0} = error</shortDescription>
+        <value>Error loading action plan data: {0}</value>
     </labels>
     <labels>
         <fullName>Action_Plan_Guardian_Tasks_Subtitle</fullName>
@@ -39,6 +63,14 @@
         <protected>false</protected>
         <shortDescription>No Tasks Message</shortDescription>
         <value>You have no tasks to complete at this time</value>
+    </labels>
+    <labels>
+        <fullName>Action_Plan_Toggle_View</fullName>
+        <categories>Action Plans UI</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Alt text of the icon that shows or hides a student&apos;s task list</shortDescription>
+        <value>Toggle View</value>
     </labels>
     <labels>
         <fullName>Action_Plan_View_All_Tasks</fullName>
@@ -169,6 +201,14 @@
         <value>Submitted on</value>
     </labels>
     <labels>
+        <fullName>AppQ_AddressCompound_Label</fullName>
+        <categories>Application</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Student address question label</shortDescription>
+        <value>Student Address</value>
+    </labels>
+    <labels>
         <fullName>AppQ_AppDescription_Label</fullName>
         <categories>Application</categories>
         <language>en_US</language>
@@ -233,6 +273,14 @@
         <value>Workplace</value>
     </labels>
     <labels>
+        <fullName>AppQ_Guardian1AddressCompound_Label</fullName>
+        <categories>Application</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Guardian 1 address question label</shortDescription>
+        <value>Guardian 1 Address</value>
+    </labels>
+    <labels>
         <fullName>AppQ_Guardian1Email_Label</fullName>
         <categories>Application</categories>
         <language>en_US</language>
@@ -287,6 +335,14 @@
         <protected>false</protected>
         <shortDescription>Guardian relationship help text</shortDescription>
         <value>Select your relationship to the student</value>
+    </labels>
+    <labels>
+        <fullName>AppQ_Guardian2AddressCompound_Label</fullName>
+        <categories>Application</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Guardian 2 address question label</shortDescription>
+        <value>Guardian 2 Address</value>
     </labels>
     <labels>
         <fullName>AppQ_Guardian2AddressSame_Label</fullName>
@@ -377,12 +433,28 @@
         <value>How did you hear about us?</value>
     </labels>
     <labels>
+        <fullName>AppQ_LivesWithGuardian1_Label</fullName>
+        <categories>Application</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Checkbox: student lives at a different address than Guardian 1</shortDescription>
+        <value>Student lives at a different address</value>
+    </labels>
+    <labels>
         <fullName>AppQ_Phone_ValidationMessage</fullName>
         <categories>Application</categories>
         <language>en_US</language>
         <protected>false</protected>
         <shortDescription>Phone field validation message</shortDescription>
         <value>Enter a valid 10-digit phone number, for example 123-456-7890.</value>
+    </labels>
+    <labels>
+        <fullName>AppQ_ReferralName_Help</fullName>
+        <categories>Application</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Help text for the referral name question</shortDescription>
+        <value>Please provide the name of the person who told you about Zeta Schools.</value>
     </labels>
     <labels>
         <fullName>AppQ_ReferralName_Label</fullName>
@@ -465,12 +537,44 @@
         <value>Additional Information</value>
     </labels>
     <labels>
+        <fullName>AppS_AdditionalInformation_Summary</fullName>
+        <categories>Application</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Summary line template; keep {tokens} and quotes unchanged</shortDescription>
+        <value>{How_Did_You_Hear}{Referral_Name ? &quot; · Referred by &quot; : &quot;&quot;}{Referral_Name}{App_Description ? &quot; · &quot; : &quot;&quot;}{App_Description}</value>
+    </labels>
+    <labels>
+        <fullName>AppS_Address_Desc</fullName>
+        <categories>Application</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Student Address section description</shortDescription>
+        <value>Where does the student live? Captured only when the student does not live with Guardian 1.</value>
+    </labels>
+    <labels>
+        <fullName>AppS_Address_Label</fullName>
+        <categories>Application</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Student Address section heading</shortDescription>
+        <value>Student Address</value>
+    </labels>
+    <labels>
         <fullName>AppS_ApplicationInfo_Label</fullName>
         <categories>Application</categories>
         <language>en_US</language>
         <protected>false</protected>
         <shortDescription>Application info section label</shortDescription>
         <value>Application Info</value>
+    </labels>
+    <labels>
+        <fullName>AppS_ApplicationInfo_Summary</fullName>
+        <categories>Application</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Summary line template; keep {tokens} unchanged</shortDescription>
+        <value>{Current_Grade} → {Grade_Applying_To}</value>
     </labels>
     <labels>
         <fullName>AppS_CommPrefs_Desc</fullName>
@@ -503,6 +607,30 @@
         <protected>false</protected>
         <shortDescription>Employee information section label</shortDescription>
         <value>Employee Information</value>
+    </labels>
+    <labels>
+        <fullName>AppS_Guardian1Address_Label</fullName>
+        <categories>Application</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Guardian 1 Address section heading</shortDescription>
+        <value>Guardian 1 Address</value>
+    </labels>
+    <labels>
+        <fullName>AppS_Guardian1Address_Summary</fullName>
+        <categories>Application</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Summary line template; keep {tokens} and quotes unchanged</shortDescription>
+        <value>{address:Guardian_1_Address_Compound}{Lives_With_Guardian_1 ? &quot; · Student also lives here&quot; : &quot;&quot;}</value>
+    </labels>
+    <labels>
+        <fullName>AppS_Guardian2_Summary</fullName>
+        <categories>Application</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Summary line template; keep {tokens} and quotes unchanged</shortDescription>
+        <value>{Guardian_2_First_Name} {Guardian_2_Last_Name} · {Guardian_2_Email} · {Guardian_2_Phone} · {Guardian_2_Relationship}{Guardian_2_Address_Same_As_Primary ? &quot; · Same address as Guardian 1&quot; : &quot;&quot;}{address:Guardian_2_Address_Compound}</value>
     </labels>
     <labels>
         <fullName>AppS_Guardian2Address_Label</fullName>
@@ -585,6 +713,14 @@
         <value>Add Sibling Attending</value>
     </labels>
     <labels>
+        <fullName>AppUI_AddSiblingFailed</fullName>
+        <categories>Application</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Add attending sibling fallback error</shortDescription>
+        <value>Failed to add sibling. Please try again.</value>
+    </labels>
+    <labels>
         <fullName>AppUI_AddStudent</fullName>
         <categories>Application</categories>
         <language>en_US</language>
@@ -615,6 +751,54 @@
         <protected>false</protected>
         <shortDescription>Already enrolled error message</shortDescription>
         <value>This student is already enrolled at a Zeta school. To request a transfer, please contact us.</value>
+    </labels>
+    <labels>
+        <fullName>AppUI_AnswersJsonRequired</fullName>
+        <categories>Application</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Error: form answers missing</shortDescription>
+        <value>Answers JSON is required</value>
+    </labels>
+    <labels>
+        <fullName>AppUI_ApplicationAlreadySubmitted</fullName>
+        <categories>Application</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Error: application already submitted</shortDescription>
+        <value>Application has already been submitted</value>
+    </labels>
+    <labels>
+        <fullName>AppUI_ApplicationAlreadyWithdrawn</fullName>
+        <categories>Application</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Withdraw error: application already withdrawn</shortDescription>
+        <value>This application has already been withdrawn.</value>
+    </labels>
+    <labels>
+        <fullName>AppUI_ApplicationIdRequired</fullName>
+        <categories>Application</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Error: application id missing</shortDescription>
+        <value>Application Id is required</value>
+    </labels>
+    <labels>
+        <fullName>AppUI_ApplicationNotFoundWithId</fullName>
+        <categories>Application</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Error: application not found; {0} = application id</shortDescription>
+        <value>Application not found: {0}</value>
+    </labels>
+    <labels>
+        <fullName>AppUI_ApplicationsCurrentlyClosed</fullName>
+        <categories>Application</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Dashboard banner shown when no application period is open</shortDescription>
+        <value>Applications are currently closed.</value>
     </labels>
     <labels>
         <fullName>AppUI_AppSubmittedFor</fullName>
@@ -649,6 +833,14 @@
         <value>Applying for: {0}</value>
     </labels>
     <labels>
+        <fullName>AppUI_AptNumber</fullName>
+        <categories>Application</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Apartment part of a section summary address; {0} = apartment/unit number</shortDescription>
+        <value>Apt {0}</value>
+    </labels>
+    <labels>
         <fullName>AppUI_AriaAppProgress</fullName>
         <categories>Application</categories>
         <language>en_US</language>
@@ -663,6 +855,14 @@
         <protected>false</protected>
         <shortDescription>Aria: loading application</shortDescription>
         <value>Loading application</value>
+    </labels>
+    <labels>
+        <fullName>AppUI_AriaLoadingApplications</fullName>
+        <categories>Application</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Aria: spinner text while the applications dashboard loads</shortDescription>
+        <value>Loading applications</value>
     </labels>
     <labels>
         <fullName>AppUI_AriaLoadingForm</fullName>
@@ -721,6 +921,14 @@
         <value>Loading students</value>
     </labels>
     <labels>
+        <fullName>AppUI_AriaMoreActions</fullName>
+        <categories>Application</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Aria: more actions menu button on a school row in the application review</shortDescription>
+        <value>More actions</value>
+    </labels>
+    <labels>
         <fullName>AppUI_AriaSchoolRankings</fullName>
         <categories>Application</categories>
         <language>en_US</language>
@@ -735,6 +943,14 @@
         <protected>false</protected>
         <shortDescription>Aria: school selections group</shortDescription>
         <value>School selections</value>
+    </labels>
+    <labels>
+        <fullName>AppUI_AriaSelectApplicationPeriod</fullName>
+        <categories>Application</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Aria: name of the application period picker dialog on the dashboard</shortDescription>
+        <value>Select application period</value>
     </labels>
     <labels>
         <fullName>AppUI_AriaSelectStudent</fullName>
@@ -761,12 +977,68 @@
         <value>Updating form</value>
     </labels>
     <labels>
+        <fullName>AppUI_AriaWithdrawSchoolApplication</fullName>
+        <categories>Application</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Aria: withdraw school application dialog (application review)</shortDescription>
+        <value>Withdraw school application</value>
+    </labels>
+    <labels>
+        <fullName>AppUI_AtLeastOneSelectionRequired</fullName>
+        <categories>Application</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Error: nothing was selected</shortDescription>
+        <value>At least one selection is required</value>
+    </labels>
+    <labels>
+        <fullName>AppUI_AuthMethodEmail</fullName>
+        <categories>Application</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Login method name used inside add-login-method flow messages</shortDescription>
+        <value>Email</value>
+    </labels>
+    <labels>
+        <fullName>AppUI_AuthMethodTextMessage</fullName>
+        <categories>Application</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Login method name used inside add-login-method flow messages</shortDescription>
+        <value>text message</value>
+    </labels>
+    <labels>
         <fullName>AppUI_Back</fullName>
         <categories>Application</categories>
         <language>en_US</language>
         <protected>false</protected>
         <shortDescription>Back button label</shortDescription>
         <value>Back</value>
+    </labels>
+    <labels>
+        <fullName>AppUI_BackToApplications</fullName>
+        <categories>Application</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Button above the application wizard that returns to the dashboard</shortDescription>
+        <value>Back to Applications</value>
+    </labels>
+    <labels>
+        <fullName>AppUI_BirthdateRequired</fullName>
+        <categories>Application</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Error: birthdate missing</shortDescription>
+        <value>Birthdate is required</value>
+    </labels>
+    <labels>
+        <fullName>AppUI_BirthdayLockedAfterSubmission</fullName>
+        <categories>Application</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Error: birthday locked after an application was submitted</shortDescription>
+        <value>This student&apos;s birthday is locked because an application has been submitted. Contact Zeta to update.</value>
     </labels>
     <labels>
         <fullName>AppUI_Cancel</fullName>
@@ -783,6 +1055,46 @@
         <protected>false</protected>
         <shortDescription>Cancel button label (post-submit ranking edit)</shortDescription>
         <value>Cancel</value>
+    </labels>
+    <labels>
+        <fullName>AppUI_CannotRankWithdrawnApplication</fullName>
+        <categories>Application</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Error: rankings locked on a withdrawn application</shortDescription>
+        <value>Cannot update rankings for a withdrawn application.</value>
+    </labels>
+    <labels>
+        <fullName>AppUI_CannotResolveGuardianContact</fullName>
+        <categories>Application</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Error: guardian contact record not found</shortDescription>
+        <value>Could not resolve guardian Contact</value>
+    </labels>
+    <labels>
+        <fullName>AppUI_CannotResolvePrimaryGuardian</fullName>
+        <categories>Application</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Error: application has no primary guardian</shortDescription>
+        <value>Could not resolve Primary Guardian for this application</value>
+    </labels>
+    <labels>
+        <fullName>AppUI_CannotResolveSiblingTimeline</fullName>
+        <categories>Application</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Error: no application timeline for the sibling application</shortDescription>
+        <value>Could not resolve Application Timeline for sibling shell</value>
+    </labels>
+    <labels>
+        <fullName>AppUI_CannotResolveSourceTimeline</fullName>
+        <categories>Application</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Error: no application timeline for the current application</shortDescription>
+        <value>Could not resolve Application Timeline for the source application</value>
     </labels>
     <labels>
         <fullName>AppUI_ChooseSchools</fullName>
@@ -809,12 +1121,36 @@
         <value>Clear</value>
     </labels>
     <labels>
+        <fullName>AppUI_Collapse</fullName>
+        <categories>Application</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Button that collapses a completed application form section</shortDescription>
+        <value>Collapse</value>
+    </labels>
+    <labels>
         <fullName>AppUI_ComingSoon</fullName>
         <categories>Application</categories>
         <language>en_US</language>
         <protected>false</protected>
         <shortDescription>Coming soon placeholder</shortDescription>
         <value>Coming Soon</value>
+    </labels>
+    <labels>
+        <fullName>AppUI_CommPrefsOptOutEmailTopic</fullName>
+        <categories>Application</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Email opt-out topic; fills {0} of AppUI_CommPrefsOptOutWarning</shortDescription>
+        <value>email communications with more information</value>
+    </labels>
+    <labels>
+        <fullName>AppUI_CommPrefsOptOutTextTopic</fullName>
+        <categories>Application</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Text message opt-out topic; fills {0} of AppUI_CommPrefsOptOutWarning</shortDescription>
+        <value>text message updates</value>
     </labels>
     <labels>
         <fullName>AppUI_CommPrefsOptOutWarning</fullName>
@@ -849,12 +1185,44 @@
         <value>Continue</value>
     </labels>
     <labels>
+        <fullName>AppUI_CountryUnitedStates</fullName>
+        <categories>Application</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>United States option in the address question country list</shortDescription>
+        <value>United States</value>
+    </labels>
+    <labels>
+        <fullName>AppUI_CreateApplicationsFailed</fullName>
+        <categories>Application</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Household siblings create applications fallback error</shortDescription>
+        <value>Failed to create applications. Please try again.</value>
+    </labels>
+    <labels>
+        <fullName>AppUI_CreateSiblingApplicationFailed</fullName>
+        <categories>Application</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Add applying sibling form fallback error</shortDescription>
+        <value>Failed to create sibling application.</value>
+    </labels>
+    <labels>
         <fullName>AppUI_CreateStudentFailed</fullName>
         <categories>Application</categories>
         <language>en_US</language>
         <protected>false</protected>
         <shortDescription>Create student fallback error</shortDescription>
         <value>Failed to add student. Please try again.</value>
+    </labels>
+    <labels>
+        <fullName>AppUI_DateOfBirthRequired</fullName>
+        <categories>Application</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Error: date of birth missing</shortDescription>
+        <value>Date of birth is required</value>
     </labels>
     <labels>
         <fullName>AppUI_Day</fullName>
@@ -887,6 +1255,14 @@
         <protected>false</protected>
         <shortDescription>Duplicate application error message</shortDescription>
         <value>An application has already been submitted for this student. Only one application per student per year is allowed.</value>
+    </labels>
+    <labels>
+        <fullName>AppUI_DuplicateStudent</fullName>
+        <categories>Application</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Error: student with same name and birth date already exists</shortDescription>
+        <value>A student with this name and date of birth already exists for your account. Contact Zeta if you need help.</value>
     </labels>
     <labels>
         <fullName>AppUI_ESignatureDateLabel</fullName>
@@ -983,6 +1359,14 @@ before submitting and confirm all of your information. By submitting this applic
         <value>Existing Application Found</value>
     </labels>
     <labels>
+        <fullName>AppUI_FamilyName</fullName>
+        <categories>Application</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Household name on the dashboard greeting; {0} = last name</shortDescription>
+        <value>{0} Family</value>
+    </labels>
+    <labels>
         <fullName>AppUI_FieldAddress</fullName>
         <categories>Application</categories>
         <language>en_US</language>
@@ -1005,6 +1389,14 @@ before submitting and confirm all of your information. By submitting this applic
         <protected>false</protected>
         <shortDescription>City field label</shortDescription>
         <value>City</value>
+    </labels>
+    <labels>
+        <fullName>AppUI_FieldCountry</fullName>
+        <categories>Application</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Label for the country input in the address question</shortDescription>
+        <value>Country</value>
     </labels>
     <labels>
         <fullName>AppUI_FieldCurrentGrade</fullName>
@@ -1071,12 +1463,28 @@ before submitting and confirm all of your information. By submitting this applic
         <value>Name</value>
     </labels>
     <labels>
+        <fullName>AppUI_FieldPleaseDescribeRequired</fullName>
+        <categories>Application</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Withdraw reason text box label shown when Other is chosen</shortDescription>
+        <value>Please describe (required)</value>
+    </labels>
+    <labels>
         <fullName>AppUI_FieldRank</fullName>
         <categories>Application</categories>
         <language>en_US</language>
         <protected>false</protected>
         <shortDescription>Rank field label</shortDescription>
         <value>Rank</value>
+    </labels>
+    <labels>
+        <fullName>AppUI_FieldReasonRequired</fullName>
+        <categories>Application</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Withdraw reason picklist label</shortDescription>
+        <value>Reason (required)</value>
     </labels>
     <labels>
         <fullName>AppUI_FieldState</fullName>
@@ -1119,6 +1527,14 @@ before submitting and confirm all of your information. By submitting this applic
         <value>Filter by school name...</value>
     </labels>
     <labels>
+        <fullName>AppUI_FirstNameRequired</fullName>
+        <categories>Application</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Error: first name missing</shortDescription>
+        <value>First name is required</value>
+    </labels>
+    <labels>
         <fullName>AppUI_FormSavedSuccess</fullName>
         <categories>Application</categories>
         <language>en_US</language>
@@ -1135,6 +1551,14 @@ before submitting and confirm all of your information. By submitting this applic
         <value>Go Back</value>
     </labels>
     <labels>
+        <fullName>AppUI_GradeApplyingToRequired</fullName>
+        <categories>Application</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Error: grade applying to missing</shortDescription>
+        <value>Grade Applying To is required</value>
+    </labels>
+    <labels>
         <fullName>AppUI_GradeInfo</fullName>
         <categories>Application</categories>
         <language>en_US</language>
@@ -1143,12 +1567,28 @@ before submitting and confirm all of your information. By submitting this applic
         <value>Grade Information</value>
     </labels>
     <labels>
+        <fullName>AppUI_GradeNotSelected</fullName>
+        <categories>Application</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Grade shown on a dashboard application card when no grade is chosen</shortDescription>
+        <value>Not selected</value>
+    </labels>
+    <labels>
         <fullName>AppUI_GradeProgressionWarning</fullName>
         <categories>Application</categories>
         <language>en_US</language>
         <protected>false</protected>
         <shortDescription>Grade progression warning message</shortDescription>
         <value>The selected current grade and grade applying to are not a typical consecutive grade progression. You may still proceed.</value>
+    </labels>
+    <labels>
+        <fullName>AppUI_GradeValue</fullName>
+        <categories>Application</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Grade shown on a sibling row; {0} = grade value</shortDescription>
+        <value>Grade {0}</value>
     </labels>
     <labels>
         <fullName>AppUI_Home</fullName>
@@ -1175,6 +1615,14 @@ before submitting and confirm all of your information. By submitting this applic
         <value>Start application for selected student (must complete and submit separately).</value>
     </labels>
     <labels>
+        <fullName>AppUI_HouseholdSiblingsCreateButtonCount</fullName>
+        <categories>Application</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Household siblings roster create button; {0} = number of students checked</shortDescription>
+        <value>Start application for selected student (must complete and submit separately). ({0})</value>
+    </labels>
+    <labels>
         <fullName>AppUI_HouseholdSiblingsGradeColumn</fullName>
         <categories>Application</categories>
         <language>en_US</language>
@@ -1197,6 +1645,14 @@ before submitting and confirm all of your information. By submitting this applic
         <protected>false</protected>
         <shortDescription>Household siblings roster name column header</shortDescription>
         <value>Name</value>
+    </labels>
+    <labels>
+        <fullName>AppUI_HouseholdSiblingsSelectAria</fullName>
+        <categories>Application</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Aria: household sibling row checkbox; {0} = sibling name</shortDescription>
+        <value>Select {0}</value>
     </labels>
     <labels>
         <fullName>AppUI_HouseholdSiblingsSelectColumn</fullName>
@@ -1223,12 +1679,68 @@ before submitting and confirm all of your information. By submitting this applic
         <value>Already applying, so we skipped:</value>
     </labels>
     <labels>
+        <fullName>AppUI_HouseholdSiblingsSkippedNames</fullName>
+        <categories>Application</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Household roster skipped notice; {0} = comma-separated student names</shortDescription>
+        <value>Already applying, so we skipped: {0}</value>
+    </labels>
+    <labels>
         <fullName>AppUI_KindergartenBirthYearNote</fullName>
         <categories>Application</categories>
         <language>en_US</language>
         <protected>false</protected>
         <shortDescription>Kindergarten birth year guidance note ({0} = required birth year)</shortDescription>
         <value>Students applying to Kindergarten must be born in {0}</value>
+    </labels>
+    <labels>
+        <fullName>AppUI_LanguageChinese</fullName>
+        <categories>Application</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Chinese option in the portal language switcher, shown in Chinese</shortDescription>
+        <value>中文 (简体)</value>
+    </labels>
+    <labels>
+        <fullName>AppUI_LanguageEnglish</fullName>
+        <categories>Application</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>English option in the portal language switcher, shown in English</shortDescription>
+        <value>English</value>
+    </labels>
+    <labels>
+        <fullName>AppUI_LanguageSpanish</fullName>
+        <categories>Application</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Spanish option in the portal language switcher, shown in Spanish</shortDescription>
+        <value>Español</value>
+    </labels>
+    <labels>
+        <fullName>AppUI_LanguageSwitcher</fullName>
+        <categories>Application</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Accessible name of the portal language switcher</shortDescription>
+        <value>Language</value>
+    </labels>
+    <labels>
+        <fullName>AppUI_LastNameRequired</fullName>
+        <categories>Application</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Error: last name missing</shortDescription>
+        <value>Last name is required</value>
+    </labels>
+    <labels>
+        <fullName>AppUI_LoggedInUserNeedsContact</fullName>
+        <categories>Application</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Error: signed-in user has no contact record</shortDescription>
+        <value>Logged-in user must have a Contact</value>
     </labels>
     <labels>
         <fullName>AppUI_LotteryMessage</fullName>
@@ -1355,12 +1867,68 @@ Zeta reserves the right to adjust grade placements based on post-admission asses
         <value>September</value>
     </labels>
     <labels>
+        <fullName>AppUI_MyApplications</fullName>
+        <categories>Application</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Title in the header bar of the applications dashboard</shortDescription>
+        <value>My Applications</value>
+    </labels>
+    <labels>
+        <fullName>AppUI_NewApplication</fullName>
+        <categories>Application</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Dashboard toolbar button that starts a new application</shortDescription>
+        <value>New Application</value>
+    </labels>
+    <labels>
         <fullName>AppUI_NewStudent</fullName>
         <categories>Application</categories>
         <language>en_US</language>
         <protected>false</protected>
         <shortDescription>New student form heading</shortDescription>
         <value>New Student</value>
+    </labels>
+    <labels>
+        <fullName>AppUI_No</fullName>
+        <categories>Application</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>No shown for an unchecked checkbox answer on the read-only review</shortDescription>
+        <value>No</value>
+    </labels>
+    <labels>
+        <fullName>AppUI_NoApplicationsFound</fullName>
+        <categories>Application</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Dashboard message when there are no applications and periods are closed</shortDescription>
+        <value>No applications found.</value>
+    </labels>
+    <labels>
+        <fullName>AppUI_NoApplicationsInProgress</fullName>
+        <categories>Application</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Empty message on the dashboard&apos;s in-progress applications view</shortDescription>
+        <value>You don&apos;t have any applications in progress.</value>
+    </labels>
+    <labels>
+        <fullName>AppUI_NoneOption</fullName>
+        <categories>Application</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Blank first option in optional application dropdown questions</shortDescription>
+        <value>--None--</value>
+    </labels>
+    <labels>
+        <fullName>AppUI_NoPermissionToUpdateStudent</fullName>
+        <categories>Application</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Error: parent cannot edit this student</shortDescription>
+        <value>You don&apos;t have permission to update this student.</value>
     </labels>
     <labels>
         <fullName>AppUI_NoRecordId</fullName>
@@ -1379,6 +1947,14 @@ Zeta reserves the right to adjust grade placements based on post-admission asses
         <value>No schools selected</value>
     </labels>
     <labels>
+        <fullName>AppUI_NoSubmittedApplications</fullName>
+        <categories>Application</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Empty message on the dashboard&apos;s submitted applications view</shortDescription>
+        <value>No submitted applications yet.</value>
+    </labels>
+    <labels>
         <fullName>AppUI_OneSchoolSelected</fullName>
         <categories>Application</categories>
         <language>en_US</language>
@@ -1393,6 +1969,38 @@ Zeta reserves the right to adjust grade placements based on post-admission asses
         <protected>false</protected>
         <shortDescription>Opt-out warning modal title</shortDescription>
         <value>Communication Opt-Out</value>
+    </labels>
+    <labels>
+        <fullName>AppUI_OtherApplications</fullName>
+        <categories>Application</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Dashboard group heading for applications with no application period</shortDescription>
+        <value>Other Applications</value>
+    </labels>
+    <labels>
+        <fullName>AppUI_PageDevNameRequired</fullName>
+        <categories>Application</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Error: form page name missing</shortDescription>
+        <value>Page developer name is required</value>
+    </labels>
+    <labels>
+        <fullName>AppUI_PageNotFound</fullName>
+        <categories>Application</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Error: form page not found; {0} = page name</shortDescription>
+        <value>Page not found: {0}</value>
+    </labels>
+    <labels>
+        <fullName>AppUI_PeriodOpenEnded</fullName>
+        <categories>Application</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Period picker: shown instead of a close date when a period has no end date</shortDescription>
+        <value>Open</value>
     </labels>
     <labels>
         <fullName>AppUI_PreKBirthYearNote</fullName>
@@ -1427,6 +2035,14 @@ Zeta reserves the right to adjust grade placements based on post-admission asses
         <value>Your student will be entered in the lottery for all schools you’ve applied to, regardless of ranking. Ranking a school at the top or bottom of the list will not increase or decrease your chances of acceptance into that school. Ranking is used only to assign your student to your preferred Zeta Charter School if he or she is accepted to more than one school. If your student is accepted at more than one school, we will only reserve a seat for your student at the school with the higher ranking.</value>
     </labels>
     <labels>
+        <fullName>AppUI_RankingsJsonRequired</fullName>
+        <categories>Application</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Error: school rankings missing</shortDescription>
+        <value>Rankings JSON is required</value>
+    </labels>
+    <labels>
         <fullName>AppUI_RankSchools</fullName>
         <categories>Application</categories>
         <language>en_US</language>
@@ -1451,12 +2067,44 @@ Zeta reserves the right to adjust grade placements based on post-admission asses
         <value>Drag to reorder or use the dropdowns.</value>
     </labels>
     <labels>
+        <fullName>AppUI_ReadyToApply</fullName>
+        <categories>Application</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Heading on the dashboard when the family has no applications yet</shortDescription>
+        <value>Ready to apply?</value>
+    </labels>
+    <labels>
+        <fullName>AppUI_ReadyToApplyDesc</fullName>
+        <categories>Application</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Text under the Ready to apply? heading on the dashboard</shortDescription>
+        <value>Start your child&apos;s application to Zeta Charter Schools.</value>
+    </labels>
+    <labels>
+        <fullName>AppUI_RegistrationErrorContactSupport</fullName>
+        <categories>Application</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Sign-up error returned when registration fails</shortDescription>
+        <value>Registration Exception. Please contact support.</value>
+    </labels>
+    <labels>
         <fullName>AppUI_Remove</fullName>
         <categories>Application</categories>
         <language>en_US</language>
         <protected>false</protected>
         <shortDescription>Remove button label</shortDescription>
         <value>Remove</value>
+    </labels>
+    <labels>
+        <fullName>AppUI_RequiredFields</fullName>
+        <categories>Application</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Error listing required questions left blank; {0} = question names</shortDescription>
+        <value>Required: {0}</value>
     </labels>
     <labels>
         <fullName>AppUI_ResidencyWarning</fullName>
@@ -1563,12 +2211,44 @@ Zeta reserves the right to adjust grade placements based on post-admission asses
         <value>Saving...</value>
     </labels>
     <labels>
+        <fullName>AppUI_SchoolAlreadyWithdrawn</fullName>
+        <categories>Application</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Error: school choice already withdrawn</shortDescription>
+        <value>This school application has already been withdrawn.</value>
+    </labels>
+    <labels>
+        <fullName>AppUI_SchoolApplicationIdRequired</fullName>
+        <categories>Application</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Error: school application id missing</shortDescription>
+        <value>School application Id is required</value>
+    </labels>
+    <labels>
+        <fullName>AppUI_SchoolApplicationNotFound</fullName>
+        <categories>Application</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Error: school application not found; {0} = record id</shortDescription>
+        <value>School application not found: {0}</value>
+    </labels>
+    <labels>
         <fullName>AppUI_SchoolRankingsSaved</fullName>
         <categories>Application</categories>
         <language>en_US</language>
         <protected>false</protected>
         <shortDescription>School rankings save success toast</shortDescription>
         <value>School rankings saved.</value>
+    </labels>
+    <labels>
+        <fullName>AppUI_SchoolsDoNotMatchGrade</fullName>
+        <categories>Application</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Error: chosen schools do not offer the selected grade</shortDescription>
+        <value>Selected schools don&apos;t match your current grade. Please re-select.</value>
     </labels>
     <labels>
         <fullName>AppUI_SchoolSelectionsSaved</fullName>
@@ -1593,6 +2273,14 @@ Zeta reserves the right to adjust grade placements based on post-admission asses
         <protected>false</protected>
         <shortDescription>Multiple schools selected summary</shortDescription>
         <value>{0} schools selected</value>
+    </labels>
+    <labels>
+        <fullName>AppUI_SearchAddress</fullName>
+        <categories>Application</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Placeholder for the address lookup box in the address question</shortDescription>
+        <value>Search address</value>
     </labels>
     <labels>
         <fullName>AppUI_SearchSchools</fullName>
@@ -1627,6 +2315,54 @@ Zeta reserves the right to adjust grade placements based on post-admission asses
         <value>Siblings</value>
     </labels>
     <labels>
+        <fullName>AppUI_SelectAnOption</fullName>
+        <categories>Application</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Default placeholder for application dropdown questions</shortDescription>
+        <value>Select an option</value>
+    </labels>
+    <labels>
+        <fullName>AppUI_SelectApplicationPeriodDesc</fullName>
+        <categories>Application</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Instructions in the application period picker dialog on the dashboard</shortDescription>
+        <value>Select the period you&apos;d like to apply for.</value>
+    </labels>
+    <labels>
+        <fullName>AppUI_SelectAReason</fullName>
+        <categories>Application</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Withdraw reason picklist placeholder</shortDescription>
+        <value>Select a reason</value>
+    </labels>
+    <labels>
+        <fullName>AppUI_SelectASchool</fullName>
+        <categories>Application</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Zeta school picklist placeholder in the add attending sibling form</shortDescription>
+        <value>Select a school</value>
+    </labels>
+    <labels>
+        <fullName>AppUI_SelectionAccountIdRequired</fullName>
+        <categories>Application</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Error: selected student id missing</shortDescription>
+        <value>Selection accountId is required</value>
+    </labels>
+    <labels>
+        <fullName>AppUI_SelectionsJsonRequired</fullName>
+        <categories>Application</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Error: selections missing</shortDescription>
+        <value>Selections JSON is required</value>
+    </labels>
+    <labels>
         <fullName>AppUI_SelectStudent</fullName>
         <categories>Application</categories>
         <language>en_US</language>
@@ -1657,6 +2393,22 @@ Zeta reserves the right to adjust grade placements based on post-admission asses
         <protected>false</protected>
         <shortDescription>Showing schools for grade</shortDescription>
         <value>Showing schools accepting applications for {0}</value>
+    </labels>
+    <labels>
+        <fullName>AppUI_SiblingGradeRequired</fullName>
+        <categories>Application</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Error: a selected sibling has no grade applying to</shortDescription>
+        <value>Grade Applying To is required for each selected sibling</value>
+    </labels>
+    <labels>
+        <fullName>AppUI_SiblingJsonRequired</fullName>
+        <categories>Application</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Error: sibling details missing</shortDescription>
+        <value>Sibling JSON is required</value>
     </labels>
     <labels>
         <fullName>AppUI_SiblingsApplying</fullName>
@@ -1691,12 +2443,60 @@ Zeta reserves the right to adjust grade placements based on post-admission asses
         <value>Add a sibling if your student has a sibling who currently attends a Zeta Charter school. Siblings must share at least one parent or guardian in order to qualify for the sibling preference.</value>
     </labels>
     <labels>
+        <fullName>AppUI_SignatureDateRequired</fullName>
+        <categories>Application</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Error: signature date missing</shortDescription>
+        <value>Signature date is required</value>
+    </labels>
+    <labels>
+        <fullName>AppUI_SignatureNameRequired</fullName>
+        <categories>Application</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Error: signature name missing</shortDescription>
+        <value>Signature name is required</value>
+    </labels>
+    <labels>
+        <fullName>AppUI_SignBeforeSubmitting</fullName>
+        <categories>Application</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Error: application must be signed before submitting</shortDescription>
+        <value>Application must be signed before submission</value>
+    </labels>
+    <labels>
         <fullName>AppUI_StartNew</fullName>
         <categories>Application</categories>
         <language>en_US</language>
         <protected>false</protected>
         <shortDescription>Start new button label</shortDescription>
         <value>Start New</value>
+    </labels>
+    <labels>
+        <fullName>AppUI_StartNewApplication</fullName>
+        <categories>Application</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Dashboard empty-state button that starts a new application</shortDescription>
+        <value>Start New Application</value>
+    </labels>
+    <labels>
+        <fullName>AppUI_StatusApplied</fullName>
+        <categories>Application</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Status badge on a submitted (or Eligible) dashboard application card</shortDescription>
+        <value>Applied</value>
+    </labels>
+    <labels>
+        <fullName>AppUI_StatusInProgress</fullName>
+        <categories>Application</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Status badge on a draft dashboard application card</shortDescription>
+        <value>In Progress</value>
     </labels>
     <labels>
         <fullName>AppUI_StepChooseSchools</fullName>
@@ -1747,12 +2547,36 @@ Zeta reserves the right to adjust grade placements based on post-admission asses
         <value>Student Information</value>
     </labels>
     <labels>
+        <fullName>AppUI_StudentAccountIdRequired</fullName>
+        <categories>Application</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Error: student id missing</shortDescription>
+        <value>Student Account Id is required</value>
+    </labels>
+    <labels>
         <fullName>AppUI_StudentInfo</fullName>
         <categories>Application</categories>
         <language>en_US</language>
         <protected>false</protected>
         <shortDescription>Student information section title</shortDescription>
         <value>Student Information</value>
+    </labels>
+    <labels>
+        <fullName>AppUI_StudentJsonRequired</fullName>
+        <categories>Application</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Error: student details missing</shortDescription>
+        <value>Student JSON is required</value>
+    </labels>
+    <labels>
+        <fullName>AppUI_SubmissionDeadline</fullName>
+        <categories>Application</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Deadline line on a draft dashboard application card; {0} = date</shortDescription>
+        <value>Submission deadline is {0}</value>
     </labels>
     <labels>
         <fullName>AppUI_Submit</fullName>
@@ -1787,6 +2611,14 @@ Zeta reserves the right to adjust grade placements based on post-admission asses
         <value>Failed to submit application.</value>
     </labels>
     <labels>
+        <fullName>AppUI_SubmitRequiresDraftStatus</fullName>
+        <categories>Application</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Error: only draft applications can be submitted</shortDescription>
+        <value>Application must be in Draft status to submit</value>
+    </labels>
+    <labels>
         <fullName>AppUI_SubmittedMessage</fullName>
         <categories>Application</categories>
         <language>en_US</language>
@@ -1811,6 +2643,14 @@ Zeta reserves the right to adjust grade placements based on post-admission asses
         <value>Submitting...</value>
     </labels>
     <labels>
+        <fullName>AppUI_Success</fullName>
+        <categories>Application</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Toast title after the application form saves successfully</shortDescription>
+        <value>Success</value>
+    </labels>
+    <labels>
         <fullName>AppUI_TextMessageConsentBody</fullName>
         <categories>Application</categories>
         <language>en_US</language>
@@ -1825,6 +2665,30 @@ Zeta reserves the right to adjust grade placements based on post-admission asses
         <protected>false</protected>
         <shortDescription>Text message consent modal title</shortDescription>
         <value>Text Message Consent</value>
+    </labels>
+    <labels>
+        <fullName>AppUI_TimelineApplication</fullName>
+        <categories>Application</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Dashboard card title; {0} = application period (timeline) name</shortDescription>
+        <value>{0} Application</value>
+    </labels>
+    <labels>
+        <fullName>AppUI_UnableToVerifyAccount</fullName>
+        <categories>Application</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Withdraw error: signed-in parent could not be identified</shortDescription>
+        <value>Unable to verify your account.</value>
+    </labels>
+    <labels>
+        <fullName>AppUI_UnnamedSibling</fullName>
+        <categories>Application</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Fallback name for a sibling with no first or last name</shortDescription>
+        <value>(unnamed sibling)</value>
     </labels>
     <labels>
         <fullName>AppUI_UnsavedChanges</fullName>
@@ -1907,12 +2771,228 @@ Zeta reserves the right to adjust grade placements based on post-admission asses
         <value>Each school must have a unique rank.</value>
     </labels>
     <labels>
+        <fullName>AppUI_View</fullName>
+        <categories>Application</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Button that opens a submitted or withdrawn application on the dashboard</shortDescription>
+        <value>View</value>
+    </labels>
+    <labels>
+        <fullName>AppUI_WelcomeFamily</fullName>
+        <categories>Application</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Dashboard greeting; {0} = family name, e.g. Smith Family</shortDescription>
+        <value>Welcome, {0}!</value>
+    </labels>
+    <labels>
+        <fullName>AppUI_WelcomeGreeting</fullName>
+        <categories>Application</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Dashboard greeting when the family name is not known</shortDescription>
+        <value>Welcome!</value>
+    </labels>
+    <labels>
+        <fullName>AppUI_WelcomeMessage</fullName>
+        <categories>Application</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Default intro text under the dashboard welcome greeting</shortDescription>
+        <value>We are delighted to welcome you to your one-stop destination for your child’s enrollment at Zeta.</value>
+    </labels>
+    <labels>
+        <fullName>AppUI_WhichApplicationPeriod</fullName>
+        <categories>Application</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Title of the application period picker dialog on the dashboard</shortDescription>
+        <value>Which application period?</value>
+    </labels>
+    <labels>
+        <fullName>AppUI_Withdraw</fullName>
+        <categories>Application</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Withdraw confirm button label</shortDescription>
+        <value>Withdraw</value>
+    </labels>
+    <labels>
+        <fullName>AppUI_WithdrawalReasonRequired</fullName>
+        <categories>Application</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Error: withdrawal reason missing (school)</shortDescription>
+        <value>A withdrawal reason is required</value>
+    </labels>
+    <labels>
+        <fullName>AppUI_WithdrawAppFailed</fullName>
+        <categories>Application</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Error in the dashboard withdraw dialog when the withdrawal fails</shortDescription>
+        <value>Unable to withdraw application.</value>
+    </labels>
+    <labels>
+        <fullName>AppUI_WithdrawApplication</fullName>
+        <categories>Application</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Menu item that opens the withdraw dialog for one school (application review)</shortDescription>
+        <value>Withdraw application</value>
+    </labels>
+    <labels>
+        <fullName>AppUI_WithdrawApplicationIdRequired</fullName>
+        <categories>Application</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Withdraw error: application id missing</shortDescription>
+        <value>Application ID is required.</value>
+    </labels>
+    <labels>
+        <fullName>AppUI_WithdrawApplicationNotFound</fullName>
+        <categories>Application</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Withdraw error: application not found</shortDescription>
+        <value>Application not found.</value>
+    </labels>
+    <labels>
+        <fullName>AppUI_WithdrawAppModalBody</fullName>
+        <categories>Application</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Dashboard withdraw dialog text; {0} = application period name</shortDescription>
+        <value>This action cannot be undone. Your application for {0} will be withdrawn.</value>
+    </labels>
+    <labels>
+        <fullName>AppUI_WithdrawAppModalBodyNoTimeline</fullName>
+        <categories>Application</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Dashboard withdraw dialog text when the application period is unknown</shortDescription>
+        <value>This action cannot be undone. Your application will be withdrawn.</value>
+    </labels>
+    <labels>
+        <fullName>AppUI_WithdrawAppQuestion</fullName>
+        <categories>Application</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Title of the dashboard withdraw application dialog</shortDescription>
+        <value>Withdraw Application?</value>
+    </labels>
+    <labels>
+        <fullName>AppUI_WithdrawDescribeReason</fullName>
+        <categories>Application</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Withdraw error: Other chosen without a description</shortDescription>
+        <value>Please describe the reason for withdrawal.</value>
+    </labels>
+    <labels>
+        <fullName>AppUI_Withdrawing</fullName>
+        <categories>Application</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Withdraw button label while the withdrawal is in progress</shortDescription>
+        <value>Withdrawing…</value>
+    </labels>
+    <labels>
+        <fullName>AppUI_Withdrawn</fullName>
+        <categories>Application</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Badge on a school row the family has withdrawn from (application review)</shortDescription>
+        <value>Withdrawn</value>
+    </labels>
+    <labels>
+        <fullName>AppUI_WithdrawOwnApplicationsOnly</fullName>
+        <categories>Application</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Withdraw error: parent tried to withdraw another family&apos;s application</shortDescription>
+        <value>You can only withdraw your own applications.</value>
+    </labels>
+    <labels>
+        <fullName>AppUI_WithdrawOwnSchoolsOnly</fullName>
+        <categories>Application</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Error: parent tried to withdraw another family&apos;s school choice</shortDescription>
+        <value>You can only withdraw your own school applications.</value>
+    </labels>
+    <labels>
+        <fullName>AppUI_WithdrawReasonsLoadFailed</fullName>
+        <categories>Application</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Error when the withdrawal reason options fail to load</shortDescription>
+        <value>Unable to load withdrawal reasons.</value>
+    </labels>
+    <labels>
+        <fullName>AppUI_WithdrawSchoolAppQuestion</fullName>
+        <categories>Application</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Withdraw school application dialog title</shortDescription>
+        <value>Withdraw School Application?</value>
+    </labels>
+    <labels>
+        <fullName>AppUI_WithdrawSchoolFailed</fullName>
+        <categories>Application</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Withdraw school application fallback error</shortDescription>
+        <value>Unable to withdraw school application.</value>
+    </labels>
+    <labels>
+        <fullName>AppUI_WithdrawSchoolModalBody</fullName>
+        <categories>Application</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Withdraw school dialog text; {0} = student name, {1} = school name</shortDescription>
+        <value>This will withdraw {0}&apos;s application to {1}. This action cannot be undone.</value>
+    </labels>
+    <labels>
+        <fullName>AppUI_WithdrawSchoolModalBodyNoName</fullName>
+        <categories>Application</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Withdraw school dialog text when no student name; {0} = school name</shortDescription>
+        <value>This will withdraw this student&apos;s application to {0}. This action cannot be undone.</value>
+    </labels>
+    <labels>
+        <fullName>AppUI_WithdrawSelectReason</fullName>
+        <categories>Application</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Withdraw error: no reason chosen</shortDescription>
+        <value>Please select a reason for withdrawal.</value>
+    </labels>
+    <labels>
         <fullName>AppUI_Year</fullName>
         <categories>Application</categories>
         <language>en_US</language>
         <protected>false</protected>
         <shortDescription>Year label</shortDescription>
         <value>Year</value>
+    </labels>
+    <labels>
+        <fullName>AppUI_Yes</fullName>
+        <categories>Application</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Yes shown for a checked checkbox answer on review and section summaries</shortDescription>
+        <value>Yes</value>
+    </labels>
+    <labels>
+        <fullName>AppUI_YourApplications</fullName>
+        <categories>Application</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Heading above the application list on the dashboard</shortDescription>
+        <value>Your Applications</value>
     </labels>
     <labels>
         <fullName>AppUI_ZetaCharterSchools</fullName>

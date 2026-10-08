@@ -3,6 +3,7 @@
  */
 import LightningAlert from 'lightning/alert';
 import { ShowToastEvent } from 'lightning/platformShowToastEvent';
+import labelError from '@salesforce/label/c.ap_Error';
 import { ErrorMessages } from './errorMessages';
 import { ErrorParsers } from './errorParsers';
 
@@ -42,7 +43,7 @@ class ErrorHandler {
   /**
    * Title that will be used on all UI-based notifications about errors.
    */
-  static notificationTitle = 'Error';
+  static notificationTitle = labelError;
 
   static parsers = [
     ErrorParsers.STRING_ERROR,

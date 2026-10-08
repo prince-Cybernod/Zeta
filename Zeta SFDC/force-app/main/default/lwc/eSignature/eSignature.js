@@ -1,5 +1,6 @@
 import { LightningElement, api } from 'lwc';
 import saveSignature from '@salesforce/apex/ZetaApplicationController.saveSignature';
+import LANG from '@salesforce/i18n/lang';
 import labelClear from '@salesforce/label/c.AppUI_Clear';
 import labelDateLabel from '@salesforce/label/c.AppUI_ESignatureDateLabel';
 import labelDisclaimer from '@salesforce/label/c.AppUI_ESignatureDisclaimer';
@@ -28,7 +29,7 @@ export default class ESignature extends LightningElement {
   }
 
   get formattedDate() {
-    return new Date().toLocaleDateString('en-US', {
+    return new Date().toLocaleDateString(LANG, {
       month: 'long',
       day: 'numeric',
       year: 'numeric'

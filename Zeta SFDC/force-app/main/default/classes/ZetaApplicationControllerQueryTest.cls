@@ -73,7 +73,7 @@ private class ZetaApplicationControllerQueryTest {
     DATABASE_REPO_MOCK.reset();
     AssertThrows.Throwing throwing = AssertThrows.with(
       IllegalArgumentException.class,
-      'Student Account Id is required'
+      System.Label.AppUI_StudentAccountIdRequired
     );
     try {
       ZetaApplicationController.checkDuplicateBeforeCreate(null, null);
@@ -147,7 +147,7 @@ private class ZetaApplicationControllerQueryTest {
     DATABASE_REPO_MOCK.reset();
     AssertThrows.Throwing throwing = AssertThrows.with(
       IllegalArgumentException.class,
-      'Application Id is required'
+      System.Label.AppUI_ApplicationIdRequired
     );
     try {
       ZetaApplicationController.checkDuplicateApplication(null);

@@ -15,7 +15,7 @@
           </div>
           <template lwc:if={canEditSummary}>
             <button type="button" class="edit-button" onclick={handleEditClick}>
-              Edit
+              {editButtonLabel}
             </button>
           </template>
         </div>
@@ -35,7 +35,7 @@
             class="collapse-button"
             onclick={handleCollapseClick}
           >
-            Collapse
+            {collapseButtonLabel}
           </button>
         </template>
       </div>

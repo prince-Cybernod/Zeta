@@ -699,19 +699,19 @@ public without sharing class SiblingSectionController {
    */
   @AuraEnabled
   public static Id addManualAttendingSibling(Id applicationId, String addAttendingJson) {
-    Preconditions.checkNotNull(applicationId, 'Application Id is required');
-    Preconditions.checkNotBlank(addAttendingJson, 'Sibling JSON is required');
+    Preconditions.checkNotNull(applicationId, System.Label.AppUI_ApplicationIdRequired);
+    Preconditions.checkNotBlank(addAttendingJson, System.Label.AppUI_SiblingJsonRequired);
 
     Map<String, Object> input = (Map<String, Object>) JSON.deserializeUntyped(addAttendingJson);
     String firstName = (String) input.get('firstName');
     String lastName = (String) input.get('lastName');
     String birthdate = (String) input.get('birthdate');
     String zetaSchool = (String) input.get('zetaSchool');
-    Preconditions.checkNotBlank(firstName, 'First name is required');
-    Preconditions.checkNotBlank(lastName, 'Last name is required');
+    Preconditions.checkNotBlank(firstName, System.Label.AppUI_FirstNameRequired);
+    Preconditions.checkNotBlank(lastName, System.Label.AppUI_LastNameRequired);
     // The Student record type requires PersonBirthdate (same validation rule as the
     // applying add-form), so DOB is mandatory here too.
-    Preconditions.checkNotBlank(birthdate, 'Date of birth is required');
+    Preconditions.checkNotBlank(birthdate, System.Label.AppUI_DateOfBirthRequired);
 
     // Resolve guardian's accountId from the application.
     String appQuery =
@@ -723,7 +723,7 @@ public without sharing class SiblingSectionController {
     );
     Preconditions.checkArgument(
       !apps.isEmpty() && apps[0].Primary_Guardian__c != null,
-      'Could not resolve Primary Guardian for this application'
+      System.Label.AppUI_CannotResolvePrimaryGuardian
     );
     Id guardianAccountId = apps[0].Primary_Guardian__c;
 
@@ -734,7 +734,7 @@ public without sharing class SiblingSectionController {
     );
     Preconditions.checkArgument(
       !guardianAccts.isEmpty() && guardianAccts[0].PersonContactId != null,
-      'Could not resolve guardian Contact'
+      System.Label.AppUI_CannotResolveGuardianContact
     );
     Id guardianContactId = guardianAccts[0].PersonContactId;
 
@@ -823,12 +823,12 @@ public without sharing class SiblingSectionController {
     Id applicationId,
     String studentJson
   ) {
-    Preconditions.checkNotNull(applicationId, 'Application Id is required');
-    Preconditions.checkNotBlank(studentJson, 'Student JSON is required');
+    Preconditions.checkNotNull(applicationId, System.Label.AppUI_ApplicationIdRequired);
+    Preconditions.checkNotBlank(studentJson, System.Label.AppUI_StudentJsonRequired);
 
     Map<String, Object> input = (Map<String, Object>) JSON.deserializeUntyped(studentJson);
     String gradeApplyingTo = (String) input.get('gradeApplyingTo');
-    Preconditions.checkNotBlank(gradeApplyingTo, 'Grade Applying To is required');
+    Preconditions.checkNotBlank(gradeApplyingTo, System.Label.AppUI_GradeApplyingToRequired);
 
     // 1) Create the Student Account + AccountContactRelation. The student-
     //    create payload only needs the basics — the inline form collects the
@@ -855,7 +855,7 @@ public without sharing class SiblingSectionController {
     );
     Preconditions.checkArgument(
       !parents.isEmpty() && parents[0].Application_Timeline__c != null,
-      'Could not resolve Application Timeline for sibling shell'
+      System.Label.AppUI_CannotResolveSiblingTimeline
     );
     IndividualApplication parent = parents[0];
 
@@ -947,11 +947,11 @@ public without sharing class SiblingSectionController {
     Id sourceApplicationId,
     String selectionsJson
   ) {
-    Preconditions.checkNotNull(sourceApplicationId, 'Application Id is required');
-    Preconditions.checkNotBlank(selectionsJson, 'Selections JSON is required');
+    Preconditions.checkNotNull(sourceApplicationId, System.Label.AppUI_ApplicationIdRequired);
+    Preconditions.checkNotBlank(selectionsJson, System.Label.AppUI_SelectionsJsonRequired);
 
     List<Object> rawList = (List<Object>) JSON.deserializeUntyped(selectionsJson);
-    Preconditions.checkArgument(!rawList.isEmpty(), 'At least one selection is required');
+    Preconditions.checkArgument(!rawList.isEmpty(), System.Label.AppUI_AtLeastOneSelectionRequired);
 
     // Parse selections → accountId => gradeApplyingTo (last write wins on a dup accountId).
     Map<Id, String> gradeByAccountId = new Map<Id, String>();
@@ -959,10 +959,10 @@ public without sharing class SiblingSectionController {
       Map<String, Object> sel = (Map<String, Object>) raw;
       Id accountId = (Id) sel.get('accountId');
       String gradeApplyingTo = (String) sel.get('gradeApplyingTo');
-      Preconditions.checkNotNull(accountId, 'Selection accountId is required');
+      Preconditions.checkNotNull(accountId, System.Label.AppUI_SelectionAccountIdRequired);
       Preconditions.checkNotBlank(
         gradeApplyingTo,
-        'Grade Applying To is required for each selected sibling'
+        System.Label.AppUI_SiblingGradeRequired
       );
       gradeByAccountId.put(accountId, gradeApplyingTo);
     }
@@ -978,7 +978,7 @@ public without sharing class SiblingSectionController {
     );
     Preconditions.checkArgument(
       !parents.isEmpty() && parents[0].Application_Timeline__c != null,
-      'Could not resolve Application Timeline for the source application'
+      System.Label.AppUI_CannotResolveSourceTimeline
     );
     IndividualApplication parent = parents[0];
 

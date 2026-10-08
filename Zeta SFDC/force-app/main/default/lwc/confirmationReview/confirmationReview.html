@@ -86,7 +86,7 @@
               <div class="rank-badge">{school.rank}</div>
               <p class="school-name">{school.name}</p>
               <template lwc:if={school.isWithdrawn}>
-                <span class="school-withdrawn-badge">Withdrawn</span>
+                <span class="school-withdrawn-badge">{labels.withdrawn}</span>
               </template>
               <template lwc:if={school.canWithdraw}>
                 <div class="menu-host">
@@ -94,7 +94,7 @@
                     class="kebab"
                     data-id={school.academicInterestId}
                     onclick={handleKebabClick}
-                    aria-label="More actions"
+                    aria-label={labels.ariaMoreActions}
                     aria-haspopup="menu"
                     aria-expanded={school.menuOpen}
                   >
@@ -136,7 +136,7 @@
                             stroke-linejoin="round"
                           />
                         </svg>
-                        Withdraw application
+                        {labels.withdrawApplication}
                       </button>
                     </div>
                   </template>
@@ -272,15 +272,15 @@
         <div
           class="modal-dialog"
           role="dialog"
-          aria-label="Withdraw school application"
+          aria-label={labels.ariaWithdrawSchoolApplication}
           onclick={handleModalClick}
         >
-          <h3 class="modal-title">Withdraw School Application?</h3>
+          <h3 class="modal-title">{labels.withdrawSchoolAppQuestion}</h3>
           <p class="modal-desc">{withdrawModalBody}</p>
           <lightning-combobox
             class="withdraw-combobox"
-            label="Reason (required)"
-            placeholder="Select a reason"
+            label={labels.reasonRequired}
+            placeholder={labels.selectAReason}
             options={withdrawPicklistOptions}
             value={_withdrawPicklistValue}
             onchange={handleWithdrawPicklistChange}
@@ -289,7 +289,7 @@
           <template lwc:if={showWithdrawReasonText}>
             <lightning-textarea
               class="withdraw-textarea"
-              label="Please describe (required)"
+              label={labels.pleaseDescribeRequired}
               value={_withdrawReason}
               max-length="500"
               onchange={handleWithdrawReasonChange}
@@ -305,15 +305,15 @@
               onclick={handleWithdrawCancel}
               disabled={_isWithdrawing}
             >
-              Cancel
+              {labels.cancel}
             </button>
             <button
               class="btn btn--danger"
               onclick={handleWithdrawConfirm}
               disabled={withdrawConfirmDisabled}
             >
-              <template lwc:if={_isWithdrawing}> Withdrawing… </template>
-              <template lwc:else> Withdraw </template>
+              <template lwc:if={_isWithdrawing}> {labels.withdrawing} </template>
+              <template lwc:else> {labels.withdraw} </template>
             </button>
           </div>
         </div>

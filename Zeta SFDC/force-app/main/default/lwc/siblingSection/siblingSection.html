@@ -101,7 +101,7 @@
             <div class="slds-grid slds-gutters slds-wrap">
               <div class="slds-col slds-size_1-of-2 slds-p-bottom_x-small">
                 <lightning-input
-                  label="First Name"
+                  label={labels.firstName}
                   value={attendingDraft.firstName}
                   data-field="firstName"
                   onchange={handleAttendingDraftChange}
@@ -110,7 +110,7 @@
               </div>
               <div class="slds-col slds-size_1-of-2 slds-p-bottom_x-small">
                 <lightning-input
-                  label="Last Name"
+                  label={labels.lastName}
                   value={attendingDraft.lastName}
                   data-field="lastName"
                   onchange={handleAttendingDraftChange}
@@ -120,7 +120,7 @@
               <div class="slds-col slds-size_1-of-2 slds-p-bottom_x-small">
                 <lightning-input
                   type="date"
-                  label="Date of Birth"
+                  label={labels.dateOfBirth}
                   value={attendingDraft.birthdate}
                   data-field="birthdate"
                   onchange={handleAttendingDraftChange}
@@ -129,11 +129,11 @@
               </div>
               <div class="slds-col slds-size_1-of-1 slds-p-bottom_x-small">
                 <lightning-combobox
-                  label="Zeta School"
+                  label={labels.zetaSchool}
                   value={attendingDraft.zetaSchool}
                   options={schoolOptions}
                   onchange={handleSchoolChange}
-                  placeholder="Select a school"
+                  placeholder={labels.selectASchool}
                 ></lightning-combobox>
               </div>
               <template lwc:if={attendingAddError}>
@@ -146,13 +146,13 @@
               <div class="slds-col slds-size_1-of-1 slds-p-bottom_x-small">
                 <lightning-button
                   variant="brand"
-                  label="Save"
+                  label={labels.save}
                   onclick={handleAttendingAddSave}
                   disabled={attendingAddSaveDisabled}
                 ></lightning-button>
                 <lightning-button
                   variant="neutral"
-                  label="Cancel"
+                  label={labels.cancel}
                   onclick={handleAttendingAddCancel}
                   class="slds-m-left_x-small"
                 ></lightning-button>

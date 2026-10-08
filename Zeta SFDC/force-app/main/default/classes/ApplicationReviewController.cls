@@ -73,7 +73,7 @@ public without sharing class ApplicationReviewController {
   private static List<Map<String, Object>> getSiblings(Id applicationId) {
     String query =
       'SELECT Id, Priority_Type__c, First_Name__c, Last_Name__c,' +
-      ' Date_of_Birth__c, Gender__c, Sibling_s_Zeta_School__c' +
+      ' Date_of_Birth__c, toLabel(Gender__c), Sibling_s_Zeta_School__c' +
       ' FROM Priority_Item__c' +
       ' WHERE Related_Application__c = :applicationId' +
       ' AND Priority_Type__c IN :siblingTypes' +

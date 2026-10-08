@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- ApplicationSubmittedEventHandler enqueues one queueable per distinct application
+     in the trigger batch; a transaction allows at most 50 System.enqueueJob calls.
+     Capping the batch keeps a deadline-rush burst of submissions from failing the
+     whole batch's PDF generation. -->
+<PlatformEventSubscriberConfig xmlns="http://soap.sforce.com/2006/04/metadata">
+    <platformEventConsumer>ApplicationSubmittedEventTrigger</platformEventConsumer>
+    <batchSize>50</batchSize>
+    <masterLabel>Application Submitted Event Trigger Config</masterLabel>
+</PlatformEventSubscriberConfig>

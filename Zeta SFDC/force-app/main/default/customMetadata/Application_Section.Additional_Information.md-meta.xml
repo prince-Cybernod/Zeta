@@ -40,7 +40,7 @@
     </values>
     <values>
         <field>Summary_Template__c</field>
-        <value xsi:type="xsd:string">{How_Did_You_Hear}{Referral_Name ? &quot; · Referred by &quot; : &quot;&quot;}{Referral_Name}{App_Description ? &quot; · &quot; : &quot;&quot;}{App_Description}</value>
+        <value xsi:type="xsd:string">AppS_AdditionalInformation_Summary</value>
     </values>
     <values>
         <field>Variant__c</field>

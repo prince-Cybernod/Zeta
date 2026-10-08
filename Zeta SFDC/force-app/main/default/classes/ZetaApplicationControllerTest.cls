@@ -316,7 +316,7 @@ private class ZetaApplicationControllerTest {
 
     AssertThrows.Throwing throwing = AssertThrows.with(
       IllegalArgumentException.class,
-      'Signature name is required'
+      System.Label.AppUI_SignatureNameRequired
     );
 
     try {
@@ -337,7 +337,7 @@ private class ZetaApplicationControllerTest {
 
     AssertThrows.Throwing throwing = AssertThrows.with(
       IllegalArgumentException.class,
-      'Signature date is required'
+      System.Label.AppUI_SignatureDateRequired
     );
 
     try {
@@ -413,7 +413,7 @@ private class ZetaApplicationControllerTest {
 
     AssertThrows.Throwing throwing = AssertThrows.with(
       IllegalArgumentException.class,
-      'Application must be signed before submission'
+      System.Label.AppUI_SignBeforeSubmitting
     );
 
     try {
@@ -442,7 +442,7 @@ private class ZetaApplicationControllerTest {
 
     AssertThrows.Throwing throwing = AssertThrows.with(
       IllegalArgumentException.class,
-      'Application must be in Draft status to submit'
+      System.Label.AppUI_SubmitRequiresDraftStatus
     );
 
     try {
@@ -466,7 +466,7 @@ private class ZetaApplicationControllerTest {
 
     AssertThrows.Throwing throwing = AssertThrows.with(
       IllegalArgumentException.class,
-      'Application not found: ' + appId
+      String.format(System.Label.AppUI_ApplicationNotFoundWithId, new List<Object>{ appId })
     );
 
     try {
@@ -956,6 +956,85 @@ private class ZetaApplicationControllerTest {
     String result = ZetaApplicationController.getTimelineLandingContent(timelineId);
 
     Assert.areEqual('<p>Solo en espanol</p>', result);
+  }
+
+  // --- setPortalLanguage ---
+
+  @IsTest
+  static void setPortalLanguage_supportedLanguage_updatesCurrentUser() {
+    DATABASE_REPO_MOCK.reset();
+    DATABASE_REPO_MOCK.when(DATABASE_REPO_MOCK.method.updateSObjects()).thenReturnVoid();
+
+    ZetaApplicationController.setPortalLanguage('es');
+
+    List<Map<String, Object>> calls = DATABASE_REPO_MOCK.getCalls(
+      DATABASE_REPO_MOCK.method.updateSObjects()
+    );
+    User updated = (User) ((List<SObject>) calls[0].get('sobjects'))[0];
+    Assert.areEqual(UserInfo.getUserId(), updated.Id, 'Only the running user is updated');
+    Assert.areEqual('es', updated.LanguageLocaleKey);
+  }
+
+  @IsTest
+  static void setPortalLanguage_unsupportedLanguage_throws() {
+    DATABASE_REPO_MOCK.reset();
+
+    AssertThrows.Throwing throwing = AssertThrows.with(
+      IllegalArgumentException.class,
+      'Unsupported language: fr'
+    );
+
+    try {
+      ZetaApplicationController.setPortalLanguage('fr');
+      throwing.shouldHaveThrown();
+    } catch (Exception e) {
+      throwing.threw(e);
+    }
+
+    throwing.assertHasThrown();
+  }
+
+  @IsTest
+  static void selectLandingContent_picksContentForUserLanguage() {
+    Assert.areEqual(
+      'ZH',
+      ZetaApplicationController.selectLandingContent('zh_CN', 'EN', 'ES', 'ZH'),
+      'Chinese users get the Chinese content'
+    );
+    Assert.areEqual(
+      'ES',
+      ZetaApplicationController.selectLandingContent('es', 'EN', 'ES', 'ZH'),
+      'Spanish users get the Spanish content'
+    );
+    Assert.areEqual(
+      'EN',
+      ZetaApplicationController.selectLandingContent('en_US', 'EN', 'ES', 'ZH'),
+      'Everyone else gets the English content'
+    );
+  }
+
+  @IsTest
+  static void selectLandingContent_blankChoice_fallsBackToEnglishThenAnyFilled() {
+    Assert.areEqual(
+      'EN',
+      ZetaApplicationController.selectLandingContent('zh_CN', 'EN', 'ES', ''),
+      'Blank Chinese content falls back to English'
+    );
+    Assert.areEqual(
+      'EN',
+      ZetaApplicationController.selectLandingContent('es', 'EN', null, 'ZH'),
+      'Blank Spanish content falls back to English'
+    );
+    Assert.areEqual(
+      'ES',
+      ZetaApplicationController.selectLandingContent('zh_CN', null, 'ES', null),
+      'Without English content, whichever language is filled is used'
+    );
+    Assert.areEqual(
+      'ZH',
+      ZetaApplicationController.selectLandingContent('en_US', null, null, 'ZH'),
+      'Without English content, whichever language is filled is used'
+    );
   }
 
   @IsTest

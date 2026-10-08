@@ -32,7 +32,9 @@ private class ApplicationDashboardControllerTest {
       new IndividualApplication(
         Id = appId,
         Status = 'Draft',
-        Grade_Applying_To__c = 'K',
+        // The controller selects toLabel(Grade_Applying_To__c), so the queried
+        // field holds the translated picklist label, not the API value.
+        Grade_Applying_To__c = 'Kindergarten',
         Last_Completed_Step__c = 2,
         AccountId = accountId
       )
@@ -63,7 +65,7 @@ private class ApplicationDashboardControllerTest {
     List<Map<String, Object>> appList = (List<Map<String, Object>>) result.get('applications');
     Assert.areEqual(1, appList.size(), 'Should return one application');
     Assert.areEqual('Draft', appList[0].get('status'));
-    Assert.areEqual('K', appList[0].get('grade'));
+    Assert.areEqual('Kindergarten', appList[0].get('grade'));
     Assert.areEqual(2, appList[0].get('lastStep'));
 
     List<Map<String, Object>> tlList = (List<Map<String, Object>>) result.get('timelines');
@@ -159,7 +161,8 @@ private class ApplicationDashboardControllerTest {
         ApplicationOpenDate = Date.today().addDays(-60),
         ApplicationCloseDate = Date.today().addDays(-1),
         Landing_Content_en__c = 'Applications are now closed.',
-        Landing_Content_es__c = 'Las solicitudes estan cerradas.'
+        Landing_Content_es__c = 'Las solicitudes estan cerradas.',
+        Landing_Content_zh_CN__c = '申请已截止。'
       )
     };
 
@@ -207,6 +210,35 @@ private class ApplicationDashboardControllerTest {
 
     List<Map<String, Object>> appList = (List<Map<String, Object>>) result.get('applications');
     Assert.isTrue(appList.isEmpty(), 'Should have no applications');
+  }
+
+  @IsTest
+  private static void getDashboardData_contactLastName_returnsFamilyNameFromLabel() {
+    DATABASE_REPO_MOCK.reset();
+
+    Id contactId = SObjectIds.generateFakeId(Schema.Contact.SObjectType);
+    List<User> users = new List<User>{
+      new User(
+        Id = UserInfo.getUserId(),
+        ContactId = contactId,
+        Contact = new Contact(Id = contactId, LastName = 'Rivera')
+      )
+    };
+
+    DATABASE_REPO_MOCK.when(DATABASE_REPO_MOCK.method.query())
+      .thenReturn(new List<ApplicationTimeline>())
+      .thenReturn(new List<ApplicationTimeline>());
+    DATABASE_REPO_MOCK.when(DATABASE_REPO_MOCK.method.queryWithBinds())
+      .thenReturn(users)
+      .thenReturn(new List<IndividualApplication>());
+
+    Map<String, Object> result = ApplicationDashboardController.getDashboardData();
+
+    Assert.areEqual(
+      String.format(System.Label.AppUI_FamilyName, new List<Object>{ 'Rivera' }),
+      result.get('familyName'),
+      'The household greeting should come from the AppUI_FamilyName label'
+    );
   }
 
   @IsTest

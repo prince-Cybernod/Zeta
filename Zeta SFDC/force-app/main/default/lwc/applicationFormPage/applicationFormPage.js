@@ -1,37 +1,39 @@
-import { LightningElement, api, wire } from 'lwc';
-import { ShowToastEvent } from 'lightning/platformShowToastEvent';
-import { refreshApex } from '@salesforce/apex';
-import applyCompanionCopyFrom from '@salesforce/apex/ApplicationQuestionController.applyCompanionCopyFrom';
-import applyCompanionWriteback from '@salesforce/apex/ApplicationQuestionController.applyCompanionWriteback';
-import clearAddressQuestion from '@salesforce/apex/ApplicationQuestionController.clearAddressQuestion';
-import getApplicationFormBundle from '@salesforce/apex/ApplicationQuestionController.getApplicationFormBundle';
-import saveFormAnswers from '@salesforce/apex/ApplicationQuestionController.saveFormAnswers';
-import labelAllChangesSaved from '@salesforce/label/c.AppUI_AllChangesSaved';
-import labelAriaLoadingForm from '@salesforce/label/c.AppUI_AriaLoadingForm';
-import labelAriaUpdatingForm from '@salesforce/label/c.AppUI_AriaUpdatingForm';
-import labelFormSavedSuccess from '@salesforce/label/c.AppUI_FormSavedSuccess';
-import labelNoRecordId from '@salesforce/label/c.AppUI_NoRecordId';
-import labelResidencyWarning from '@salesforce/label/c.AppUI_ResidencyWarning';
-import labelResidencyWarningState from '@salesforce/label/c.AppUI_ResidencyWarning_State';
-import labelSave from '@salesforce/label/c.AppUI_Save';
-import labelSaveFailed from '@salesforce/label/c.AppUI_SaveFailed';
-import labelSaving from '@salesforce/label/c.AppUI_Saving';
-import labelUnsavedChanges from '@salesforce/label/c.AppUI_UnsavedChanges';
+import { LightningElement, api, wire } from "lwc";
+import { ShowToastEvent } from "lightning/platformShowToastEvent";
+import { refreshApex } from "@salesforce/apex";
+import applyCompanionCopyFrom from "@salesforce/apex/ApplicationQuestionController.applyCompanionCopyFrom";
+import applyCompanionWriteback from "@salesforce/apex/ApplicationQuestionController.applyCompanionWriteback";
+import clearAddressQuestion from "@salesforce/apex/ApplicationQuestionController.clearAddressQuestion";
+import getApplicationFormBundle from "@salesforce/apex/ApplicationQuestionController.getApplicationFormBundle";
+import saveFormAnswers from "@salesforce/apex/ApplicationQuestionController.saveFormAnswers";
+import labelError from "@salesforce/label/c.ap_Error";
+import labelAllChangesSaved from "@salesforce/label/c.AppUI_AllChangesSaved";
+import labelAriaLoadingForm from "@salesforce/label/c.AppUI_AriaLoadingForm";
+import labelAriaUpdatingForm from "@salesforce/label/c.AppUI_AriaUpdatingForm";
+import labelFormSavedSuccess from "@salesforce/label/c.AppUI_FormSavedSuccess";
+import labelNoRecordId from "@salesforce/label/c.AppUI_NoRecordId";
+import labelResidencyWarning from "@salesforce/label/c.AppUI_ResidencyWarning";
+import labelResidencyWarningState from "@salesforce/label/c.AppUI_ResidencyWarning_State";
+import labelSave from "@salesforce/label/c.AppUI_Save";
+import labelSaveFailed from "@salesforce/label/c.AppUI_SaveFailed";
+import labelSaving from "@salesforce/label/c.AppUI_Saving";
+import labelSuccess from "@salesforce/label/c.AppUI_Success";
+import labelUnsavedChanges from "@salesforce/label/c.AppUI_UnsavedChanges";
 import {
   CriteriaEvalError,
   evaluateCriteria,
   extractReferencedFields
-} from 'c/criteriaEvaluator';
-import { ErrorHandler } from 'c/errorHandler';
+} from "c/criteriaEvaluator";
+import { ErrorHandler } from "c/errorHandler";
 
 const AUTO_SAVE_DELAY = 2000;
 const VISIBILITY_DELAY = 50;
 
 const COMM_PREFS_PAIRS = {
-  Email_Consent: 'Email_Opt_Out',
-  Email_Opt_Out: 'Email_Consent',
-  Text_Message_Opt_In: 'Text_Message_Opt_Out',
-  Text_Message_Opt_Out: 'Text_Message_Opt_In'
+  Email_Consent: "Email_Opt_Out",
+  Email_Opt_Out: "Email_Consent",
+  Text_Message_Opt_In: "Text_Message_Opt_Out",
+  Text_Message_Opt_Out: "Text_Message_Opt_In"
 };
 
 // Map Employee_Priority_Guardian picklist value -> source guardian question
@@ -39,24 +41,24 @@ const COMM_PREFS_PAIRS = {
 // Employee Information section, the Employee First/Last Name fields prefill
 // from the corresponding guardian's already-captured answers.
 // Blank leaves the fields untouched.
-const EMPLOYEE_GUARDIAN_PICKER = 'Employee_Priority_Guardian';
+const EMPLOYEE_GUARDIAN_PICKER = "Employee_Priority_Guardian";
 const EMPLOYEE_GUARDIAN_SOURCES = {
-  Primary: 'Guardian_1',
-  Secondary: 'Guardian_2'
+  Primary: "Guardian_1",
+  Secondary: "Guardian_2"
 };
 const EMPLOYEE_GUARDIAN_FIELDS = [
-  { employee: 'Employee_First_Name', guardianSuffix: '_First_Name' },
-  { employee: 'Employee_Last_Name', guardianSuffix: '_Last_Name' }
+  { employee: "Employee_First_Name", guardianSuffix: "_First_Name" },
+  { employee: "Employee_Last_Name", guardianSuffix: "_Last_Name" }
 ];
 
 // Options offered only when Has_Second_Guardian is true, the same flag that shows the Guardian 2 section.
 const SECOND_GUARDIAN_GATED_OPTIONS = {
-  Responsible_Adult: 'Guardian_2'
+  Responsible_Adult: "Guardian_2"
 };
-const HAS_SECOND_GUARDIAN = 'Has_Second_Guardian';
+const HAS_SECOND_GUARDIAN = "Has_Second_Guardian";
 
 export default class ApplicationFormPage extends LightningElement {
-  @api pageDevName = 'Application_Details';
+  @api pageDevName = "Application_Details";
   @api variant;
   @api recordId;
   @api readOnly = false;
@@ -70,15 +72,15 @@ export default class ApplicationFormPage extends LightningElement {
   // ONLY the address sections (include) while step 4 renders everything EXCEPT
   // those sections (exclude). Purely a client-side render filter over the one
   // shared, page-scoped bundle — single source of truth is preserved.
-  @api includeSectionDevNames = '';
-  @api excludeSectionDevNames = '';
+  @api includeSectionDevNames = "";
+  @api excludeSectionDevNames = "";
   // Comma-separated sections to render non-editable while the rest of the page
   // stays editable. Their answers still travel in the page's save payload.
-  @api readOnlySectionDevNames = '';
+  @api readOnlySectionDevNames = "";
   // Comma-separated sections captured on an earlier step: once their answers are
   // complete they render as a locked summary. While still incomplete they stay
   // editable, so a required question is never both locked and unanswerable.
-  @api lockWhenCompleteSectionDevNames = '';
+  @api lockWhenCompleteSectionDevNames = "";
 
   formStructure;
   answers = {};
@@ -87,7 +89,7 @@ export default class ApplicationFormPage extends LightningElement {
   isLoading = true;
   isSaving = false;
   isVisibilityEvaluating = false;
-  saveStatusMessage = '';
+  saveStatusMessage = "";
   error;
   wiredBundleResult;
   _visibilityResolved = false;
@@ -107,16 +109,16 @@ export default class ApplicationFormPage extends LightningElement {
 
   _handleBeforeUnload = (event) => {
     if (this.saveStatusMessage === labelUnsavedChanges) {
-      event.returnValue = '';
+      event.returnValue = "";
     }
   };
 
   connectedCallback() {
-    window.addEventListener('beforeunload', this._handleBeforeUnload);
+    window.addEventListener("beforeunload", this._handleBeforeUnload);
   }
 
   disconnectedCallback() {
-    window.removeEventListener('beforeunload', this._handleBeforeUnload);
+    window.removeEventListener("beforeunload", this._handleBeforeUnload);
     clearTimeout(this._autoSaveTimerId);
     clearTimeout(this._visibilityTimerId);
     clearTimeout(this._clearAddressTimerId);
@@ -130,6 +132,10 @@ export default class ApplicationFormPage extends LightningElement {
     return labelAriaUpdatingForm;
   }
 
+  get errorAssistiveText() {
+    return labelError;
+  }
+
   get hasFormData() {
     return !this.isLoading && !this.error && this.formStructure;
   }
@@ -139,7 +145,7 @@ export default class ApplicationFormPage extends LightningElement {
   }
 
   get containerClass() {
-    return 'form-card' + (this.embedded ? ' form-embedded' : '');
+    return "form-card" + (this.embedded ? " form-embedded" : "");
   }
 
   get showSaveButton() {
@@ -202,11 +208,11 @@ export default class ApplicationFormPage extends LightningElement {
   }
 
   _parseSectionList(raw) {
-    if (!raw || typeof raw !== 'string') {
+    if (!raw || typeof raw !== "string") {
       return null;
     }
     const names = raw
-      .split(',')
+      .split(",")
       .map((s) => s.trim())
       .filter(Boolean);
     return names.length ? new Set(names) : null;
@@ -321,10 +327,10 @@ export default class ApplicationFormPage extends LightningElement {
   }
 
   @wire(getApplicationFormBundle, {
-    recordId: '$wireRecordId',
-    pageDevName: '$pageDevName',
-    variant: '$wireVariant',
-    includeSectionDevNames: '$wireIncludeSections'
+    recordId: "$wireRecordId",
+    pageDevName: "$pageDevName",
+    variant: "$wireVariant",
+    includeSectionDevNames: "$wireIncludeSections"
   })
   wiredGetApplicationFormBundle(result) {
     this.wiredBundleResult = result;
@@ -334,7 +340,7 @@ export default class ApplicationFormPage extends LightningElement {
       this.error = undefined;
       this._applyBundle(data);
     } else if (error) {
-      this.error = ErrorHandler.parse(error).messages.join(', ');
+      this.error = ErrorHandler.parse(error).messages.join(", ");
       this.formStructure = undefined;
       this.isLoading = false;
     }
@@ -379,15 +385,15 @@ export default class ApplicationFormPage extends LightningElement {
             // boolean so the strict `=== true` checks in companion-writeback
             // and visibility evaluation behave correctly.
             defaults[question.developerName] =
-              question.inputType === 'Checkbox'
-                ? String(question.defaultValue).toLowerCase() === 'true'
+              question.inputType === "Checkbox"
+                ? String(question.defaultValue).toLowerCase() === "true"
                 : question.defaultValue;
           }
         }
       }
 
       const guardianDefaults =
-        this.pageDevName === 'Application_Details' && bundle.guardianDefaults
+        this.pageDevName === "Application_Details" && bundle.guardianDefaults
           ? { ...bundle.guardianDefaults }
           : {};
 
@@ -396,9 +402,9 @@ export default class ApplicationFormPage extends LightningElement {
       // pre-checked when the parent is a self-reported Zeta employee) must be
       // coerced to a real boolean for the same strict `=== true` checks.
       for (const key of Object.keys(guardianDefaults)) {
-        if (questionInputTypes[key] === 'Checkbox') {
+        if (questionInputTypes[key] === "Checkbox") {
           guardianDefaults[key] =
-            String(guardianDefaults[key]).toLowerCase() === 'true';
+            String(guardianDefaults[key]).toLowerCase() === "true";
         }
       }
 
@@ -422,7 +428,7 @@ export default class ApplicationFormPage extends LightningElement {
           prefilledEmployeeGuardian
         )) {
           const current = this.answers[entry.field];
-          if (current === undefined || current === null || current === '') {
+          if (current === undefined || current === null || current === "") {
             this.answers[entry.field] = entry.value;
           }
         }
@@ -459,7 +465,7 @@ export default class ApplicationFormPage extends LightningElement {
       if (formula) {
         rules.push({
           devName: section.developerName,
-          kind: 'section',
+          kind: "section",
           formula
         });
       }
@@ -468,7 +474,7 @@ export default class ApplicationFormPage extends LightningElement {
         if (qFormula) {
           rules.push({
             devName: question.developerName,
-            kind: 'question',
+            kind: "question",
             formula: qFormula
           });
         }
@@ -543,7 +549,7 @@ export default class ApplicationFormPage extends LightningElement {
   _dispatchExistingAnswers(existing) {
     for (const [developerName, value] of Object.entries(existing)) {
       this.dispatchEvent(
-        new CustomEvent('answerchange', {
+        new CustomEvent("answerchange", {
           detail: { developerName, value },
           bubbles: true,
           composed: true
@@ -554,7 +560,7 @@ export default class ApplicationFormPage extends LightningElement {
 
   _dispatchSaveStatus(status) {
     this.dispatchEvent(
-      new CustomEvent('savestatus', {
+      new CustomEvent("savestatus", {
         detail: { status },
         bubbles: true,
         composed: true
@@ -564,7 +570,7 @@ export default class ApplicationFormPage extends LightningElement {
 
   _dispatchVisibilityChange() {
     this.dispatchEvent(
-      new CustomEvent('visibilitychange', {
+      new CustomEvent("visibilitychange", {
         detail: { visibilityMap: { ...this._visibilityMap } },
         bubbles: true,
         composed: true
@@ -576,9 +582,9 @@ export default class ApplicationFormPage extends LightningElement {
     const { developerName, value } = event.detail;
     this.answers = { ...this.answers, [developerName]: value };
     this.saveStatusMessage = labelUnsavedChanges;
-    this._dispatchSaveStatus('unsaved');
+    this._dispatchSaveStatus("unsaved");
     this.dispatchEvent(
-      new CustomEvent('answerchange', {
+      new CustomEvent("answerchange", {
         detail: { developerName, value },
         bubbles: true,
         composed: true
@@ -612,7 +618,7 @@ export default class ApplicationFormPage extends LightningElement {
       delete rest[questionDevName];
       this.answers = rest;
       this.saveStatusMessage = labelUnsavedChanges;
-      this._dispatchSaveStatus('unsaved');
+      this._dispatchSaveStatus("unsaved");
       this.scheduleAutoSave();
     }
   }
@@ -660,7 +666,7 @@ export default class ApplicationFormPage extends LightningElement {
       if (
         sourceValue !== undefined &&
         sourceValue !== null &&
-        sourceValue !== ''
+        sourceValue !== ""
       ) {
         entries.push({ field: mapping.employee, value: sourceValue });
       }
@@ -688,7 +694,7 @@ export default class ApplicationFormPage extends LightningElement {
     for (const section of this.formStructure.sections) {
       if (!section.questions) continue;
       for (const q of section.questions) {
-        if (q.inputType === 'Address' && q.companionQuestionDevName) {
+        if (q.inputType === "Address" && q.companionQuestionDevName) {
           return q;
         }
       }
@@ -711,8 +717,17 @@ export default class ApplicationFormPage extends LightningElement {
     // OFF — without the clear, the student record keeps the guardian's
     // address from the previous writeback and `questionAddress` re-seeds it.
     const studentQDevName = addressQ.companionQuestionDevName;
-    if (developerName === 'Lives_With_Guardian_1' && value === false) {
-      this.updateAnswer(studentQDevName, null);
+    if (developerName === "Lives_With_Guardian_1" && value === false) {
+      // Remove rather than null: saveFormAnswers rejects a blank value for the
+      // required Address_Compound question, which would fail the autosave
+      // outright (and keep failing until the key leaves the answer map). The
+      // server-side fields are nulled by clearAddressQuestion below.
+      const rest = { ...this.answers };
+      delete rest[studentQDevName];
+      this.answers = rest;
+      this.saveStatusMessage = labelUnsavedChanges;
+      this._dispatchSaveStatus("unsaved");
+      this.scheduleAutoSave();
       clearTimeout(this._clearAddressTimerId);
       this._clearAddressTimerId = setTimeout(() => {
         clearAddressQuestion({
@@ -720,23 +735,23 @@ export default class ApplicationFormPage extends LightningElement {
           questionDeveloperName: studentQDevName
         }).catch((err) => {
           // eslint-disable-next-line no-console
-          console.error('Clear address question failed:', err);
+          console.error("Clear address question failed:", err);
         });
       }, 800);
       return;
     }
     const livesWith = this.answers.Lives_With_Guardian_1 === true;
     const isCheckboxFlip =
-      developerName === 'Lives_With_Guardian_1' && value === true;
+      developerName === "Lives_With_Guardian_1" && value === true;
     const isAddressEdit = developerName === addressQ.developerName && livesWith;
     if (!isCheckboxFlip && !isAddressEdit) {
       return;
     }
     const payload =
-      isAddressEdit && value && typeof value === 'object'
+      isAddressEdit && value && typeof value === "object"
         ? value
         : this.answers[addressQ.developerName];
-    if (!payload || typeof payload !== 'object') {
+    if (!payload || typeof payload !== "object") {
       return;
     }
     // Defer slightly so the address save (debounced in questionAddress) lands first.
@@ -747,7 +762,7 @@ export default class ApplicationFormPage extends LightningElement {
         companionQuestionDevName: addressQ.companionQuestionDevName
       }).catch((err) => {
         // eslint-disable-next-line no-console
-        console.error('Companion writeback failed:', err);
+        console.error("Companion writeback failed:", err);
       });
     }, 800);
   }
@@ -762,7 +777,7 @@ export default class ApplicationFormPage extends LightningElement {
     // _handleLivesWithGuardianOneChange.)
     if (
       !checkboxQ ||
-      checkboxQ.inputType !== 'Checkbox' ||
+      checkboxQ.inputType !== "Checkbox" ||
       !checkboxQ.companionQuestionDevName
     ) {
       return;
@@ -781,7 +796,7 @@ export default class ApplicationFormPage extends LightningElement {
       targetQuestionDevName: targetQ.developerName
     }).catch((err) => {
       // eslint-disable-next-line no-console
-      console.error('Companion copy-from failed:', err);
+      console.error("Companion copy-from failed:", err);
     });
   }
 
@@ -793,7 +808,7 @@ export default class ApplicationFormPage extends LightningElement {
       let addressInSection = null;
       for (const q of section.questions) {
         if (q.developerName === checkboxQ.developerName) hasCheckbox = true;
-        if (q.inputType === 'Address') addressInSection = q;
+        if (q.inputType === "Address") addressInSection = q;
       }
       if (hasCheckbox && addressInSection) {
         return addressInSection;
@@ -831,7 +846,7 @@ export default class ApplicationFormPage extends LightningElement {
 
     this.isSaving = true;
     this.saveStatusMessage = labelSaving;
-    this._dispatchSaveStatus('saving');
+    this._dispatchSaveStatus("saving");
 
     try {
       await saveFormAnswers({
@@ -839,22 +854,22 @@ export default class ApplicationFormPage extends LightningElement {
         answersJson: JSON.stringify(this.answers)
       });
       this.saveStatusMessage = labelAllChangesSaved;
-      this._dispatchSaveStatus('saved');
+      this._dispatchSaveStatus("saved");
       if (this.wiredBundleResult) {
         // Best-effort refresh — don't fail the save if cache invalidation breaks.
         refreshApex(this.wiredBundleResult).catch((err) => {
           // eslint-disable-next-line no-console
           console.warn(
-            '[applicationFormPage] refreshApex after autosave failed',
+            "[applicationFormPage] refreshApex after autosave failed",
             err
           );
         });
       }
     } catch (err) {
       this.saveStatusMessage = labelSaveFailed;
-      this._dispatchSaveStatus('failed');
+      this._dispatchSaveStatus("failed");
       // eslint-disable-next-line no-console
-      console.error('Auto-save failed:', err);
+      console.error("Auto-save failed:", err);
     } finally {
       this.isSaving = false;
     }
@@ -926,7 +941,7 @@ export default class ApplicationFormPage extends LightningElement {
   updateAnswer(developerName, value) {
     this.answers = { ...this.answers, [developerName]: value };
     this.saveStatusMessage = labelUnsavedChanges;
-    this._dispatchSaveStatus('unsaved');
+    this._dispatchSaveStatus("unsaved");
     this.scheduleAutoSave();
     if (this._controllingFields.has(developerName)) {
       this.scheduleVisibilityCheck();
@@ -935,23 +950,23 @@ export default class ApplicationFormPage extends LightningElement {
 
   @api
   validateForm() {
-    const sections = this.template.querySelectorAll('c-application-section');
+    const sections = this.template.querySelectorAll("c-application-section");
     let allValid = true;
     let firstIncomplete = null;
 
     sections.forEach((section) => {
       let state = null;
-      if (typeof section.getSectionState === 'function') {
+      if (typeof section.getSectionState === "function") {
         state = section.getSectionState();
       }
-      if (state === 'incomplete' || state === 'untouched') {
-        if (typeof section.forceExpand === 'function') {
+      if (state === "incomplete" || state === "untouched") {
+        if (typeof section.forceExpand === "function") {
           section.forceExpand();
         }
-        if (state === 'incomplete' && !firstIncomplete) {
+        if (state === "incomplete" && !firstIncomplete) {
           firstIncomplete = section;
         }
-        if (state === 'incomplete') {
+        if (state === "incomplete") {
           allValid = false;
         }
       }
@@ -964,7 +979,7 @@ export default class ApplicationFormPage extends LightningElement {
       // Defer to next paint so the force-expanded section is in the DOM.
       // eslint-disable-next-line no-undef
       requestAnimationFrame(() => {
-        firstIncomplete.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        firstIncomplete.scrollIntoView({ behavior: "smooth", block: "start" });
       });
     }
 
@@ -976,9 +991,9 @@ export default class ApplicationFormPage extends LightningElement {
       if (this.showToast) {
         this.dispatchEvent(
           new ShowToastEvent({
-            title: 'Error',
+            title: labelError,
             message: labelNoRecordId,
-            variant: 'error'
+            variant: "error"
           })
         );
       }
@@ -994,7 +1009,7 @@ export default class ApplicationFormPage extends LightningElement {
 
     this.isSaving = true;
     this.saveStatusMessage = labelSaving;
-    this._dispatchSaveStatus('saving');
+    this._dispatchSaveStatus("saving");
 
     try {
       await saveFormAnswers({
@@ -1003,14 +1018,14 @@ export default class ApplicationFormPage extends LightningElement {
       });
 
       this.saveStatusMessage = labelAllChangesSaved;
-      this._dispatchSaveStatus('saved');
+      this._dispatchSaveStatus("saved");
 
       if (this.wiredBundleResult) {
         await refreshApex(this.wiredBundleResult);
       }
 
       this.dispatchEvent(
-        new CustomEvent('formsubmit', {
+        new CustomEvent("formsubmit", {
           detail: {
             recordId: this.recordId,
             answers: { ...this.answers }
@@ -1021,15 +1036,15 @@ export default class ApplicationFormPage extends LightningElement {
       if (this.showToast) {
         this.dispatchEvent(
           new ShowToastEvent({
-            title: 'Success',
+            title: labelSuccess,
             message: labelFormSavedSuccess,
-            variant: 'success'
+            variant: "success"
           })
         );
       }
     } catch (err) {
       this.saveStatusMessage = labelSaveFailed;
-      this._dispatchSaveStatus('failed');
+      this._dispatchSaveStatus("failed");
       if (this.showToast) {
         ErrorHandler.toast(this, err);
       }

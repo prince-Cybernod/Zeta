@@ -1,30 +1,42 @@
-import { LightningElement, api, wire } from 'lwc';
-import { getObjectInfo, getPicklistValues } from 'lightning/uiObjectInfoApi';
-import PRIORITY_ITEM_OBJECT from '@salesforce/schema/Priority_Item__c';
-import ZETA_SCHOOL_FIELD from '@salesforce/schema/Priority_Item__c.Zeta_School__c';
-import addManualAttendingSibling from '@salesforce/apex/SiblingSectionController.addManualAttendingSibling';
-import createPlaceholderApplications from '@salesforce/apex/SiblingSectionController.createPlaceholderApplications';
-import getApplyingSiblingCandidates from '@salesforce/apex/SiblingSectionController.getApplyingSiblingCandidates';
-import getAttendingSiblingCandidates from '@salesforce/apex/SiblingSectionController.getAttendingSiblingCandidates';
-import getHouseholdSiblingCandidates from '@salesforce/apex/SiblingSectionController.getHouseholdSiblingCandidates';
-import setApplyingSiblingSelected from '@salesforce/apex/SiblingSectionController.setApplyingSiblingSelected';
-import setAttendingSiblingSelected from '@salesforce/apex/SiblingSectionController.setAttendingSiblingSelected';
-import getGradeOptions from '@salesforce/apex/StudentSelectionController.getGradeOptions';
-import labelAddAttendingNotListed from '@salesforce/label/c.AppUI_AddAttendingSiblingNotListed';
-import labelAddSibling from '@salesforce/label/c.AppUI_AddSibling';
-import labelAriaLoadingSiblings from '@salesforce/label/c.AppUI_AriaLoadingSiblings';
-import labelHouseholdSiblings from '@salesforce/label/c.AppUI_HouseholdSiblings';
-import labelHouseholdSiblingsCreateButton from '@salesforce/label/c.AppUI_HouseholdSiblingsCreateButton';
-import labelHouseholdSiblingsGradeColumn from '@salesforce/label/c.AppUI_HouseholdSiblingsGradeColumn';
-import labelHouseholdSiblingsHelp from '@salesforce/label/c.AppUI_HouseholdSiblingsHelp';
-import labelHouseholdSiblingsNameColumn from '@salesforce/label/c.AppUI_HouseholdSiblingsNameColumn';
-import labelHouseholdSiblingsSelectColumn from '@salesforce/label/c.AppUI_HouseholdSiblingsSelectColumn';
-import labelHouseholdSiblingsSelectGrade from '@salesforce/label/c.AppUI_HouseholdSiblingsSelectGrade';
-import labelHouseholdSiblingsSkipped from '@salesforce/label/c.AppUI_HouseholdSiblingsSkipped';
-import labelSiblingsApplying from '@salesforce/label/c.AppUI_SiblingsApplying';
-import labelSiblingsApplyingSubtitle from '@salesforce/label/c.AppUI_SiblingsApplyingSubtitle';
-import labelSiblingsAttending from '@salesforce/label/c.AppUI_SiblingsAttending';
-import labelSiblingsAttendingSubtitle from '@salesforce/label/c.AppUI_SiblingsAttendingSubtitle';
+import { LightningElement, api, wire } from "lwc";
+import { getObjectInfo, getPicklistValues } from "lightning/uiObjectInfoApi";
+import PRIORITY_ITEM_OBJECT from "@salesforce/schema/Priority_Item__c";
+import ZETA_SCHOOL_FIELD from "@salesforce/schema/Priority_Item__c.Zeta_School__c";
+import addManualAttendingSibling from "@salesforce/apex/SiblingSectionController.addManualAttendingSibling";
+import createPlaceholderApplications from "@salesforce/apex/SiblingSectionController.createPlaceholderApplications";
+import getApplyingSiblingCandidates from "@salesforce/apex/SiblingSectionController.getApplyingSiblingCandidates";
+import getAttendingSiblingCandidates from "@salesforce/apex/SiblingSectionController.getAttendingSiblingCandidates";
+import getHouseholdSiblingCandidates from "@salesforce/apex/SiblingSectionController.getHouseholdSiblingCandidates";
+import setApplyingSiblingSelected from "@salesforce/apex/SiblingSectionController.setApplyingSiblingSelected";
+import setAttendingSiblingSelected from "@salesforce/apex/SiblingSectionController.setAttendingSiblingSelected";
+import getGradeOptions from "@salesforce/apex/StudentSelectionController.getGradeOptions";
+import labelAddAttendingNotListed from "@salesforce/label/c.AppUI_AddAttendingSiblingNotListed";
+import labelAddSibling from "@salesforce/label/c.AppUI_AddSibling";
+import labelAddSiblingFailed from "@salesforce/label/c.AppUI_AddSiblingFailed";
+import labelAriaLoadingSiblings from "@salesforce/label/c.AppUI_AriaLoadingSiblings";
+import labelCancel from "@salesforce/label/c.AppUI_Cancel";
+import labelCreateApplicationsFailed from "@salesforce/label/c.AppUI_CreateApplicationsFailed";
+import labelDateOfBirth from "@salesforce/label/c.AppUI_FieldDateOfBirth";
+import labelFirstName from "@salesforce/label/c.AppUI_FieldFirstName";
+import labelLastName from "@salesforce/label/c.AppUI_FieldLastName";
+import labelZetaSchool from "@salesforce/label/c.AppUI_FieldZetaSchool";
+import labelGradeValue from "@salesforce/label/c.AppUI_GradeValue";
+import labelHouseholdSiblings from "@salesforce/label/c.AppUI_HouseholdSiblings";
+import labelHouseholdSiblingsCreateButtonCount from "@salesforce/label/c.AppUI_HouseholdSiblingsCreateButtonCount";
+import labelHouseholdSiblingsGradeColumn from "@salesforce/label/c.AppUI_HouseholdSiblingsGradeColumn";
+import labelHouseholdSiblingsHelp from "@salesforce/label/c.AppUI_HouseholdSiblingsHelp";
+import labelHouseholdSiblingsNameColumn from "@salesforce/label/c.AppUI_HouseholdSiblingsNameColumn";
+import labelHouseholdSiblingsSelectAria from "@salesforce/label/c.AppUI_HouseholdSiblingsSelectAria";
+import labelHouseholdSiblingsSelectColumn from "@salesforce/label/c.AppUI_HouseholdSiblingsSelectColumn";
+import labelHouseholdSiblingsSelectGrade from "@salesforce/label/c.AppUI_HouseholdSiblingsSelectGrade";
+import labelHouseholdSiblingsSkippedNames from "@salesforce/label/c.AppUI_HouseholdSiblingsSkippedNames";
+import labelSave from "@salesforce/label/c.AppUI_Save";
+import labelSelectASchool from "@salesforce/label/c.AppUI_SelectASchool";
+import labelSiblingsApplying from "@salesforce/label/c.AppUI_SiblingsApplying";
+import labelSiblingsApplyingSubtitle from "@salesforce/label/c.AppUI_SiblingsApplyingSubtitle";
+import labelSiblingsAttending from "@salesforce/label/c.AppUI_SiblingsAttending";
+import labelSiblingsAttendingSubtitle from "@salesforce/label/c.AppUI_SiblingsAttendingSubtitle";
+import labelUnnamedSibling from "@salesforce/label/c.AppUI_UnnamedSibling";
 
 export default class SiblingSection extends LightningElement {
   @api recordId;
@@ -56,7 +68,7 @@ export default class SiblingSection extends LightningElement {
   //                            gradeError, selectAriaLabel }
   householdCandidates = [];
   householdSubmitting = false;
-  householdError = '';
+  householdError = "";
   householdSkippedNames = [];
   gradeOptions = [];
   schoolOptions = [];
@@ -64,12 +76,12 @@ export default class SiblingSection extends LightningElement {
   // "Add attending not listed" inline form state
   attendingAddFormVisible = false;
   attendingDraft = {
-    firstName: '',
-    lastName: '',
-    birthdate: '',
-    zetaSchool: ''
+    firstName: "",
+    lastName: "",
+    birthdate: "",
+    zetaSchool: ""
   };
-  attendingAddError = '';
+  attendingAddError = "";
   attendingAddSaving = false;
 
   isLoading = true;
@@ -87,15 +99,32 @@ export default class SiblingSection extends LightningElement {
     householdSiblingsNameColumn: labelHouseholdSiblingsNameColumn,
     householdSiblingsGradeColumn: labelHouseholdSiblingsGradeColumn,
     householdSiblingsSelectColumn: labelHouseholdSiblingsSelectColumn,
-    householdSiblingsCreateButton: labelHouseholdSiblingsCreateButton,
+    householdSiblingsSelectAria: labelHouseholdSiblingsSelectAria,
+    householdSiblingsCreateButtonCount: labelHouseholdSiblingsCreateButtonCount,
     householdSiblingsSelectGrade: labelHouseholdSiblingsSelectGrade,
-    householdSiblingsSkipped: labelHouseholdSiblingsSkipped
+    householdSiblingsSkippedNames: labelHouseholdSiblingsSkippedNames,
+    gradeValue: labelGradeValue,
+    unnamedSibling: labelUnnamedSibling,
+    firstName: labelFirstName,
+    lastName: labelLastName,
+    dateOfBirth: labelDateOfBirth,
+    zetaSchool: labelZetaSchool,
+    selectASchool: labelSelectASchool,
+    save: labelSave,
+    cancel: labelCancel,
+    createApplicationsFailed: labelCreateApplicationsFailed,
+    addSiblingFailed: labelAddSiblingFailed
   };
 
   @wire(getGradeOptions)
   wiredGradeOptions({ data }) {
     if (data) {
-      this.gradeOptions = data.map((o) => ({ label: o.label, value: o.value }));
+      // These options only feed the per-row "Grade applying to" picker, which
+      // never includes the no-prior-schooling sentinel ('N/A'); that value
+      // only makes sense as a CURRENT grade.
+      this.gradeOptions = data
+        .filter((o) => o.value !== "N/A")
+        .map((o) => ({ label: o.label, value: o.value }));
     }
   }
 
@@ -107,13 +136,13 @@ export default class SiblingSection extends LightningElement {
   priorityItemInfo;
 
   @wire(getPicklistValues, {
-    recordTypeId: '$priorityItemInfo.data.defaultRecordTypeId',
+    recordTypeId: "$priorityItemInfo.data.defaultRecordTypeId",
     fieldApiName: ZETA_SCHOOL_FIELD
   })
   wiredSchoolOptions({ data }) {
     if (data) {
       this.schoolOptions = data.values
-        .filter((v) => v.value !== 'N/A' && v.value !== 'Waitlisted')
+        .filter((v) => v.value !== "N/A" && v.value !== "Waitlisted")
         .map((v) => ({ label: v.label, value: v.value }));
     }
   }
@@ -205,7 +234,7 @@ export default class SiblingSection extends LightningElement {
         this._buildHouseholdRow(c)
       );
     } catch (err) {
-      console.error('Failed to load siblings:', err);
+      console.error("Failed to load siblings:", err);
     } finally {
       this.isLoading = false;
     }
@@ -214,17 +243,17 @@ export default class SiblingSection extends LightningElement {
   _buildAttendingRow(c) {
     const selected = c.selected === true;
     const parts = [];
-    if (c.grade) parts.push(`Grade ${c.grade}`);
+    if (c.grade) parts.push(this.labels.gradeValue.replace("{0}", c.grade));
     if (c.school) parts.push(c.school);
     return {
       accountId: c.accountId,
       name: this._buildName(c.firstName, c.lastName),
-      detail: parts.join(' · '),
+      detail: parts.join(" · "),
       selected,
       rowClass: selected
-        ? 'candidate-row candidate-row--selected slds-p-vertical_xx-small'
-        : 'candidate-row slds-p-vertical_xx-small',
-      ariaChecked: selected ? 'true' : 'false',
+        ? "candidate-row candidate-row--selected slds-p-vertical_xx-small"
+        : "candidate-row slds-p-vertical_xx-small",
+      ariaChecked: selected ? "true" : "false",
       // carry originals for the Apex call
       firstName: c.firstName,
       lastName: c.lastName,
@@ -238,12 +267,14 @@ export default class SiblingSection extends LightningElement {
       applicationId: c.applicationId,
       accountId: c.accountId,
       name: this._buildName(c.firstName, c.lastName),
-      detail: c.gradeApplyingTo ? `Grade ${c.gradeApplyingTo}` : '',
+      detail: c.gradeApplyingTo
+        ? this.labels.gradeValue.replace("{0}", c.gradeApplyingTo)
+        : "",
       selected,
       rowClass: selected
-        ? 'candidate-row candidate-row--selected slds-p-vertical_xx-small'
-        : 'candidate-row slds-p-vertical_xx-small',
-      ariaChecked: selected ? 'true' : 'false',
+        ? "candidate-row candidate-row--selected slds-p-vertical_xx-small"
+        : "candidate-row slds-p-vertical_xx-small",
+      ariaChecked: selected ? "true" : "false",
       firstName: c.firstName,
       lastName: c.lastName,
       gradeApplyingTo: c.gradeApplyingTo
@@ -256,15 +287,18 @@ export default class SiblingSection extends LightningElement {
       accountId: c.accountId,
       displayLabel,
       checked: false,
-      gradeApplyingTo: '',
+      gradeApplyingTo: "",
       gradeError: false,
-      selectAriaLabel: `${this.labels.householdSiblingsSelectColumn} ${displayLabel}`
+      selectAriaLabel: this.labels.householdSiblingsSelectAria.replace(
+        "{0}",
+        displayLabel
+      )
     };
   }
 
   _buildName(firstName, lastName) {
-    const name = [firstName, lastName].filter(Boolean).join(' ').trim();
-    return name || '(unnamed sibling)';
+    const name = [firstName, lastName].filter(Boolean).join(" ").trim();
+    return name || this.labels.unnamedSibling;
   }
 
   // --- Attending section: row selection ---
@@ -275,7 +309,7 @@ export default class SiblingSection extends LightningElement {
   }
 
   handleAttendingKeydown(event) {
-    if (event.key === ' ' || event.key === 'Enter') {
+    if (event.key === " " || event.key === "Enter") {
       event.preventDefault();
       const accountId = event.currentTarget.dataset.id;
       this._toggleAttendingRow(accountId);
@@ -294,9 +328,9 @@ export default class SiblingSection extends LightningElement {
     // Optimistic update
     const updated = { ...current, selected: newSelected };
     updated.rowClass = newSelected
-      ? 'candidate-row candidate-row--selected slds-p-vertical_xx-small'
-      : 'candidate-row slds-p-vertical_xx-small';
-    updated.ariaChecked = newSelected ? 'true' : 'false';
+      ? "candidate-row candidate-row--selected slds-p-vertical_xx-small"
+      : "candidate-row slds-p-vertical_xx-small";
+    updated.ariaChecked = newSelected ? "true" : "false";
     this.attendingCandidates = [
       ...this.attendingCandidates.slice(0, idx),
       updated,
@@ -315,13 +349,13 @@ export default class SiblingSection extends LightningElement {
         selected: newSelected
       });
     } catch (err) {
-      console.error('Failed to update attending sibling selection:', err);
+      console.error("Failed to update attending sibling selection:", err);
       // Rollback optimistic update
       const rolledBack = { ...updated, selected: current.selected };
       rolledBack.rowClass = current.selected
-        ? 'candidate-row candidate-row--selected slds-p-vertical_xx-small'
-        : 'candidate-row slds-p-vertical_xx-small';
-      rolledBack.ariaChecked = current.selected ? 'true' : 'false';
+        ? "candidate-row candidate-row--selected slds-p-vertical_xx-small"
+        : "candidate-row slds-p-vertical_xx-small";
+      rolledBack.ariaChecked = current.selected ? "true" : "false";
       this.attendingCandidates = [
         ...this.attendingCandidates.slice(0, idx),
         rolledBack,
@@ -338,7 +372,7 @@ export default class SiblingSection extends LightningElement {
   }
 
   handleApplyingKeydown(event) {
-    if (event.key === ' ' || event.key === 'Enter') {
+    if (event.key === " " || event.key === "Enter") {
       event.preventDefault();
       const applicationId = event.currentTarget.dataset.id;
       this._toggleApplyingRow(applicationId);
@@ -357,9 +391,9 @@ export default class SiblingSection extends LightningElement {
     // Optimistic update
     const updated = { ...current, selected: newSelected };
     updated.rowClass = newSelected
-      ? 'candidate-row candidate-row--selected slds-p-vertical_xx-small'
-      : 'candidate-row slds-p-vertical_xx-small';
-    updated.ariaChecked = newSelected ? 'true' : 'false';
+      ? "candidate-row candidate-row--selected slds-p-vertical_xx-small"
+      : "candidate-row slds-p-vertical_xx-small";
+    updated.ariaChecked = newSelected ? "true" : "false";
     this.applyingCandidates = [
       ...this.applyingCandidates.slice(0, idx),
       updated,
@@ -378,13 +412,13 @@ export default class SiblingSection extends LightningElement {
         selected: newSelected
       });
     } catch (err) {
-      console.error('Failed to update applying sibling selection:', err);
+      console.error("Failed to update applying sibling selection:", err);
       // Rollback optimistic update
       const rolledBack = { ...updated, selected: current.selected };
       rolledBack.rowClass = current.selected
-        ? 'candidate-row candidate-row--selected slds-p-vertical_xx-small'
-        : 'candidate-row slds-p-vertical_xx-small';
-      rolledBack.ariaChecked = current.selected ? 'true' : 'false';
+        ? "candidate-row candidate-row--selected slds-p-vertical_xx-small"
+        : "candidate-row slds-p-vertical_xx-small";
+      rolledBack.ariaChecked = current.selected ? "true" : "false";
       this.applyingCandidates = [
         ...this.applyingCandidates.slice(0, idx),
         rolledBack,
@@ -426,7 +460,10 @@ export default class SiblingSection extends LightningElement {
   }
 
   get householdSubmitLabel() {
-    return `${this.labels.householdSiblingsCreateButton} (${this.checkedHouseholdRows.length})`;
+    return this.labels.householdSiblingsCreateButtonCount.replace(
+      "{0}",
+      this.checkedHouseholdRows.length
+    );
   }
 
   get householdSubmitDisabled() {
@@ -438,7 +475,10 @@ export default class SiblingSection extends LightningElement {
   }
 
   get skippedNoticeText() {
-    return `${this.labels.householdSiblingsSkipped} ${this.householdSkippedNames.join(', ')}`;
+    return this.labels.householdSiblingsSkippedNames.replace(
+      "{0}",
+      this.householdSkippedNames.join(", ")
+    );
   }
 
   handleHouseholdCheckboxChange(event) {
@@ -478,7 +518,7 @@ export default class SiblingSection extends LightningElement {
     }
 
     this.householdSubmitting = true;
-    this.householdError = '';
+    this.householdError = "";
     this.householdSkippedNames = [];
 
     try {
@@ -506,8 +546,8 @@ export default class SiblingSection extends LightningElement {
       this.householdError =
         err?.body?.message ||
         err?.message ||
-        'Failed to create applications. Please try again.';
-      console.error('Failed to create placeholder applications:', err);
+        this.labels.createApplicationsFailed;
+      console.error("Failed to create placeholder applications:", err);
     } finally {
       this.householdSubmitting = false;
     }
@@ -517,18 +557,18 @@ export default class SiblingSection extends LightningElement {
 
   handleShowAttendingAddForm() {
     this.attendingDraft = {
-      firstName: '',
-      lastName: '',
-      birthdate: '',
-      zetaSchool: ''
+      firstName: "",
+      lastName: "",
+      birthdate: "",
+      zetaSchool: ""
     };
-    this.attendingAddError = '';
+    this.attendingAddError = "";
     this.attendingAddFormVisible = true;
   }
 
   handleAttendingAddCancel() {
     this.attendingAddFormVisible = false;
-    this.attendingAddError = '';
+    this.attendingAddError = "";
   }
 
   handleAttendingDraftChange(event) {
@@ -550,7 +590,7 @@ export default class SiblingSection extends LightningElement {
     if (this.attendingAddSaveDisabled) return;
 
     this.attendingAddSaving = true;
-    this.attendingAddError = '';
+    this.attendingAddError = "";
 
     try {
       await addManualAttendingSibling({
@@ -565,10 +605,8 @@ export default class SiblingSection extends LightningElement {
       await this._loadSiblings();
     } catch (err) {
       this.attendingAddError =
-        err?.body?.message ||
-        err?.message ||
-        'Failed to add sibling. Please try again.';
-      console.error('Failed to add attending sibling:', err);
+        err?.body?.message || err?.message || this.labels.addSiblingFailed;
+      console.error("Failed to add attending sibling:", err);
     } finally {
       this.attendingAddSaving = false;
     }

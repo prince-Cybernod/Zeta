@@ -148,7 +148,7 @@ private class ApplicationQuestionControllerTest {
   private static void getFormStructure_withInvalidPage_throwsException() {
     AssertThrows.Throwing throwing = AssertThrows.with(
       IllegalArgumentException.class,
-      'Page not found: NonExistent_Page'
+      String.format(System.Label.AppUI_PageNotFound, new List<Object>{ 'NonExistent_Page' })
     );
 
     try {
@@ -219,7 +219,7 @@ private class ApplicationQuestionControllerTest {
   private static void saveFormAnswers_withNullApplicationId_throwsException() {
     AssertThrows.Throwing throwing = AssertThrows.with(
       IllegalArgumentException.class,
-      'Application Id is required'
+      System.Label.AppUI_ApplicationIdRequired
     );
 
     try {
@@ -236,7 +236,7 @@ private class ApplicationQuestionControllerTest {
   private static void saveFormAnswers_withNullAnswersJson_throwsException() {
     AssertThrows.Throwing throwing = AssertThrows.with(
       IllegalArgumentException.class,
-      'Answers JSON is required'
+      System.Label.AppUI_AnswersJsonRequired
     );
 
     try {
@@ -264,7 +264,10 @@ private class ApplicationQuestionControllerTest {
       IndividualApplication.SObjectType.getDescribe().getKeyPrefix() + '000000000000AAA';
     AssertThrows.Throwing throwing = AssertThrows.with(
       IllegalArgumentException.class,
-      'Required: Email'
+      String.format(
+        System.Label.AppUI_RequiredFields,
+        new List<Object>{ System.Label.AppQ_Guardian2Email_Label }
+      )
     );
 
     try {
@@ -284,7 +287,10 @@ private class ApplicationQuestionControllerTest {
       IndividualApplication.SObjectType.getDescribe().getKeyPrefix() + '000000000000AAA';
     AssertThrows.Throwing throwing = AssertThrows.with(
       IllegalArgumentException.class,
-      'Required: Email'
+      String.format(
+        System.Label.AppUI_RequiredFields,
+        new List<Object>{ System.Label.AppQ_Guardian2Email_Label }
+      )
     );
 
     try {
@@ -791,9 +797,10 @@ private class ApplicationQuestionControllerTest {
         'guardianDefaults must be empty for non-Application_Details pages'
       );
     } catch (IllegalArgumentException e) {
-      Assert.isTrue(
-        e.getMessage().contains('Page not found'),
-        'Expected page-not-found short-circuit, got: ' + e.getMessage()
+      Assert.areEqual(
+        String.format(System.Label.AppUI_PageNotFound, new List<Object>{ 'Other_Page' }),
+        e.getMessage(),
+        'Expected page-not-found short-circuit'
       );
     }
   }
@@ -927,7 +934,7 @@ private class ApplicationQuestionControllerTest {
   private static void getApplicationFormBundle_withBlankPageDevName_throws() {
     AssertThrows.Throwing throwing = AssertThrows.with(
       IllegalArgumentException.class,
-      'Page developer name is required'
+      System.Label.AppUI_PageDevNameRequired
     );
 
     try {
@@ -2449,6 +2456,49 @@ private class ApplicationQuestionControllerTest {
     String token = ApplicationQuestionController.buildScopeToken(bigScope);
     Assert.isTrue(token.length() <= 16, 'Long scopes must hash to a bounded token');
     Assert.isTrue(Pattern.matches('[a-zA-Z0-9]+', token), 'Scope token must be alphanumeric');
+  }
+
+  @IsTest
+  private static void buildCacheKey_startsWithRunningUserLanguage() {
+    // Cached structures hold labels already resolved in one language, so users with
+    // different languages must never share a key.
+    String language = UserInfo.getLanguage().replaceAll('[^a-zA-Z0-9]', '');
+    String key = ApplicationQuestionController.buildCacheKey(
+      PAGE_DEV_NAME,
+      'Elementary',
+      new Set<String>{ 'Address', 'Guardian_1_Address' }
+    );
+
+    Assert.isTrue(
+      key.startsWith('fs' + language),
+      'The language must lead the key so the 50-char cut can never drop it: ' + key
+    );
+    Assert.isTrue(key.length() <= 50, 'Cache keys must stay within the platform 50-char limit');
+  }
+
+  @IsTest
+  private static void buildSections_resolvesSummaryTemplateLabel() {
+    List<Application_Section__mdt> sectionRecords = (List<Application_Section__mdt>) JSON.deserialize(
+      '[{"DeveloperName":"Label_Template","Summary_Template__c":"AppUI_FieldName"},' +
+      '{"DeveloperName":"Raw_Template","Summary_Template__c":"{First_Name} {Last_Name}"}]',
+      List<Application_Section__mdt>.class
+    );
+
+    List<AppQuestionSection> sections = ApplicationQuestionController.buildSections(
+      sectionRecords,
+      new Map<String, List<AppQuestionInput>>()
+    );
+
+    Assert.areEqual(
+      System.Label.AppUI_FieldName,
+      sections[0].summaryTemplate,
+      'A Custom Label name in Summary_Template__c should resolve to the label text'
+    );
+    Assert.areEqual(
+      '{First_Name} {Last_Name}',
+      sections[1].summaryTemplate,
+      'Raw template text should pass through unchanged'
+    );
   }
 
   @IsTest

@@ -15,7 +15,7 @@
             <property datasource="all,in-progress,submitted" default="all" description="Which applications to show. 'in-progress' = open/editable only (use on the Dashboard tab). 'submitted' = Applied/Eligible/Withdrawn (use on the Application Status tab). 'all' = everything." label="Applications Shown" name="view" type="String" />
             <property default="false" description="Hide the navy 'My Applications' header bar. Turn ON for the Dashboard tab (it sits under the family welcome); leave OFF for the Application Status tab." label="Hide header" name="hideHeader" type="Boolean" />
             <property default="false" description="Show the 'Welcome, &lt;Family&gt;!' greeting and intro at the top. Turn ON for the Dashboard tab." label="Show welcome greeting" name="showWelcome" type="Boolean" />
-            <property default="We are delighted to welcome you to your one-stop destination for your child’s enrollment at Zeta." description="Intro text shown under the welcome greeting." label="Welcome message" name="welcomeMessage" type="String" />
+            <property description="Intro text shown under the welcome greeting. Leave blank to show the translated default." label="Welcome message" name="welcomeMessage" type="String" />
         </targetConfig>
     </targetConfigs>
 </LightningComponentBundle>

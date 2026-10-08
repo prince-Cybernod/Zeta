@@ -62,7 +62,7 @@ public without sharing class ParentRegistrationSmsInit extends ParentRegistratio
       } catch (Exception e) {
         Logger.error('Exception when initialising self-registration via SMS. Contact Id: ' + req.contactId, e);
         Logger.saveLog();
-        responses.add(new RegistrationResponse('Registration Exception. Please contact support.'));
+        responses.add(new RegistrationResponse(System.Label.AppUI_RegistrationErrorContactSupport));
       }
     }
 

@@ -10,7 +10,7 @@
                 <div class="header-grid slds-m-bottom_medium">
                     <div class="view-all-section slds-grid slds-grid_vertical-align-center" onclick={handleToggleExpand}>
                         <span class="view-all-text slds-m-right_xx-small">{labels.viewAllTasks}</span>
-                        <lightning-icon icon-name={viewAllIcon} size="x-small" alternative-text="Toggle View" class="view-all-icon"></lightning-icon>
+                        <lightning-icon icon-name={viewAllIcon} size="x-small" alternative-text={labels.toggleView} class="view-all-icon"></lightning-icon>
                     </div>
 
                     <div class="progress-container">
@@ -18,7 +18,7 @@
                     </div>
 
                     <div class="progress-text">
-                        {completedCount}/{totalCount} {labels.completed}
+                        {progressText}
                     </div>
                 </div>
 
@@ -27,7 +27,7 @@
                 </template>
             </template>
             <template lwc:elseif={error}>
-                <p>Error loading action plan data: {error}</p>
+                <p>{errorText}</p>
             </template>
         </div>
     </template>

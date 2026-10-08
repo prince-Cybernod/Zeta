@@ -61,7 +61,7 @@ private class ParentRegistrationSmsConfirm_T {
 
     Assert.areEqual(1, responses.size(), 'Should return one response');
     ParentRegistrationCommon.ConfirmationResponse response = responses[0];
-    Assert.areEqual('Registration Exception. Please contact support.', response.errorMessage, 'Error message should match the expected message');
+    Assert.areEqual(System.Label.AppUI_RegistrationErrorContactSupport, response.errorMessage, 'Error message should match the expected message');
   }
 
 }
