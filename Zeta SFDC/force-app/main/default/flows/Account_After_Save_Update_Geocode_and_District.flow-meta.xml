@@ -225,6 +225,28 @@
         </rules>
     </decisions>
     <decisions>
+        <name>Address_Complete</name>
+        <label>Address Complete?</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Yes_Address_Complete</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>fxAddressComplete</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Geocode</targetReference>
+            </connector>
+            <label>Yes, Address Complete</label>
+        </rules>
+    </decisions>
+    <decisions>
         <name>CBO_Account</name>
         <label>CBO Account</label>
         <locationX>0</locationX>
@@ -301,8 +323,28 @@
     )
 )</expression>
     </formulas>
+    <formulas>
+        <name>fxAddressComplete</name>
+        <dataType>Boolean</dataType>
+        <expression>OR(
+    AND(
+        {!$Record.IsPersonAccount},
+        NOT(ISBLANK({!$Record.PersonMailingStreet})),
+        NOT(ISBLANK({!$Record.PersonMailingCity})),
+        NOT(ISBLANK({!$Record.PersonMailingState})),
+        NOT(ISBLANK({!$Record.PersonMailingPostalCode}))
+    ),
+    AND(
+        NOT({!$Record.IsPersonAccount}),
+        NOT(ISBLANK({!$Record.BillingStreet})),
+        NOT(ISBLANK({!$Record.BillingCity})),
+        NOT(ISBLANK({!$Record.BillingState})),
+        NOT(ISBLANK({!$Record.BillingPostalCode}))
+    )
+)</expression>
+    </formulas>
     <interviewLabel>Account (After Save) Update Geocode and District {!$Flow.CurrentDateTime}</interviewLabel>
-    <label>Account (After Save) Update Geocode and District</label>
+    <label>Account (After Save) Update Geocode and District (Update)</label>
     <processMetadataValues>
         <name>BuilderType</name>
         <value>
@@ -362,13 +404,110 @@
     <start>
         <locationX>0</locationX>
         <locationY>0</locationY>
-        <doesRequireRecordChangedToMeetCriteria>true</doesRequireRecordChangedToMeetCriteria>
-        <filterFormula>{!$Record.Needs_Geocoding__c} = true</filterFormula>
+        <filterLogic>1 OR 2 OR 3 OR 4 OR 5 OR 6 OR 7 OR 8 OR 9 OR 10 OR 11 OR 12 OR (13 AND 14)</filterLogic>
+        <filters>
+            <field>PersonMailingStreet</field>
+            <operator>IsChanged</operator>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </filters>
+        <filters>
+            <field>PersonMailingCity</field>
+            <operator>IsChanged</operator>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </filters>
+        <filters>
+            <field>PersonMailingPostalCode</field>
+            <operator>IsChanged</operator>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </filters>
+        <filters>
+            <field>PersonMailingState</field>
+            <operator>IsChanged</operator>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </filters>
+        <filters>
+            <field>BillingStreet</field>
+            <operator>IsChanged</operator>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </filters>
+        <filters>
+            <field>BillingCity</field>
+            <operator>IsChanged</operator>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </filters>
+        <filters>
+            <field>BillingState</field>
+            <operator>IsChanged</operator>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </filters>
+        <filters>
+            <field>BillingPostalCode</field>
+            <operator>IsChanged</operator>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </filters>
+        <filters>
+            <field>ShippingStreet</field>
+            <operator>IsChanged</operator>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </filters>
+        <filters>
+            <field>ShippingCity</field>
+            <operator>IsChanged</operator>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </filters>
+        <filters>
+            <field>ShippingState</field>
+            <operator>IsChanged</operator>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </filters>
+        <filters>
+            <field>ShippingPostalCode</field>
+            <operator>IsChanged</operator>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </filters>
+        <filters>
+            <field>Needs_Geocoding__c</field>
+            <operator>IsChanged</operator>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </filters>
+        <filters>
+            <field>Needs_Geocoding__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </filters>
         <object>Account</object>
         <recordTriggerType>Update</recordTriggerType>
         <scheduledPaths>
             <connector>
-                <targetReference>Geocode</targetReference>
+                <targetReference>Address_Complete</targetReference>
             </connector>
             <pathType>AsyncAfterCommit</pathType>
         </scheduledPaths>

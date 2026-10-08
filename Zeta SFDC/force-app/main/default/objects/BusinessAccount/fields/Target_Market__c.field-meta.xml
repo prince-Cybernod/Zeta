@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Target_Market__c</fullName>
+    <label>Target Market</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>MultiselectPicklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Inwood</fullName>
+                <default>false</default>
+                <label>Inwood</label>
+            </value>
+            <value>
+                <fullName>Tremont Park</fullName>
+                <default>false</default>
+                <label>Tremont Park</label>
+            </value>
+            <value>
+                <fullName>Mount Eden</fullName>
+                <default>false</default>
+                <label>Mount Eden</label>
+            </value>
+            <value>
+                <fullName>South Bronx</fullName>
+                <default>false</default>
+                <label>South Bronx</label>
+            </value>
+            <value>
+                <fullName>Jamaica</fullName>
+                <default>false</default>
+                <label>Jamaica</label>
+            </value>
+            <value>
+                <fullName>Elmhurst</fullName>
+                <default>false</default>
+                <label>Elmhurst</label>
+            </value>
+            <value>
+                <fullName>Flushing</fullName>
+                <default>false</default>
+                <label>Flushing</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+    <visibleLines>4</visibleLines>
+</CustomField>

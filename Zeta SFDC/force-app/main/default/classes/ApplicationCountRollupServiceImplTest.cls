@@ -23,6 +23,18 @@ private class ApplicationCountRollupServiceImplTest {
     return countsById;
   }
 
+  private static Map<Id, Decimal> getUpdatedPostDraftCounts() {
+    List<Map<String, Object>> updateCalls = MOCK_REPO.getCalls(MOCK_REPO.method.updateSObjects());
+    Assert.areEqual(1, updateCalls.size(), 'Should update records once');
+
+    Map<Id, Decimal> countsById = new Map<Id, Decimal>();
+    for (SObject record : (List<SObject>) updateCalls[0].get('sobjects')) {
+      Account account = (Account) record;
+      countsById.put(account.Id, account.Post_Draft_Application_Count__c);
+    }
+    return countsById;
+  }
+
   @IsTest
   private static void processAggregateResults_withStudentApplications_calculatesCorrectCount() {
     Id studentId = SObjectIds.generateFakeId(Schema.Account.SObjectType);
@@ -139,6 +151,93 @@ private class ApplicationCountRollupServiceImplTest {
   }
 
   @IsTest
+  private static void processAggregateResults_draftApplication_notCountedInPostDraft() {
+    Id studentId = SObjectIds.generateFakeId(Schema.Account.SObjectType);
+
+    MOCK_REPO.when(MOCK_REPO.method.updateSObjects()).thenReturnVoid();
+
+    SERVICE.processAggregateResults(
+      new Set<Id>{ studentId },
+      new List<ApplicationCountAggregateResult>{
+        new ApplicationCountAggregateResult(studentId, 1, 'Draft')
+      }
+    );
+
+    Assert.areEqual(
+      1,
+      getUpdatedCounts().get(studentId),
+      'Draft row still counts toward the total'
+    );
+    Assert.areEqual(
+      0,
+      getUpdatedPostDraftCounts().get(studentId),
+      'Draft row should not count toward the post-draft total'
+    );
+  }
+
+  @IsTest
+  private static void processAggregateResults_submittedApplication_countedInPostDraft() {
+    Id studentId = SObjectIds.generateFakeId(Schema.Account.SObjectType);
+
+    MOCK_REPO.when(MOCK_REPO.method.updateSObjects()).thenReturnVoid();
+
+    SERVICE.processAggregateResults(
+      new Set<Id>{ studentId },
+      new List<ApplicationCountAggregateResult>{
+        new ApplicationCountAggregateResult(studentId, 1, 'Submitted')
+      }
+    );
+
+    Assert.areEqual(1, getUpdatedCounts().get(studentId), 'Submitted row counts toward the total');
+    Assert.areEqual(
+      1,
+      getUpdatedPostDraftCounts().get(studentId),
+      'Submitted row should count toward the post-draft total'
+    );
+  }
+
+  @IsTest
+  private static void processAggregateResults_mixedStatuses_sumsPostDraftOnly() {
+    Id studentId = SObjectIds.generateFakeId(Schema.Account.SObjectType);
+
+    MOCK_REPO.when(MOCK_REPO.method.updateSObjects()).thenReturnVoid();
+
+    SERVICE.processAggregateResults(
+      new Set<Id>{ studentId },
+      new List<ApplicationCountAggregateResult>{
+        new ApplicationCountAggregateResult(studentId, 1, 'Draft'),
+        new ApplicationCountAggregateResult(studentId, 1, 'Submitted')
+      }
+    );
+
+    Assert.areEqual(2, getUpdatedCounts().get(studentId), 'Total should include both rows');
+    Assert.areEqual(
+      1,
+      getUpdatedPostDraftCounts().get(studentId),
+      'Post-draft total should exclude the Draft row'
+    );
+  }
+
+  @IsTest
+  private static void processAggregateResults_nullStatus_countsInBothTotals() {
+    Id studentId = SObjectIds.generateFakeId(Schema.Account.SObjectType);
+
+    MOCK_REPO.when(MOCK_REPO.method.updateSObjects()).thenReturnVoid();
+
+    SERVICE.processAggregateResults(
+      new Set<Id>{ studentId },
+      new List<ApplicationCountAggregateResult>{ new ApplicationCountAggregateResult(studentId, 4) }
+    );
+
+    Assert.areEqual(4, getUpdatedCounts().get(studentId), 'Total should include the row');
+    Assert.areEqual(
+      4,
+      getUpdatedPostDraftCounts().get(studentId),
+      'A null status (unfiltered aggregate) should count toward the post-draft total too'
+    );
+  }
+
+  @IsTest
   private static void recalculate_withEmptySet_doesNotQuery() {
     SERVICE.recalculate(new Set<Id>());
 
@@ -193,9 +292,9 @@ private class ApplicationCountRollupServiceImplTest {
     ) {
       Boolean isFound = false;
       for (String query : queried) {
-        isFound = isFound || query.contains('GROUP BY ' + field);
+        isFound = isFound || query.contains('GROUP BY ' + field + ', Status');
       }
-      Assert.isTrue(isFound, 'Should group by ' + field);
+      Assert.isTrue(isFound, 'Should group by ' + field + ' and Status');
     }
   }
 

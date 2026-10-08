@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Geocoding_Status__c</fullName>
+    <description>Current state of the address-geocoding lifecycle for this Account.</description>
+    <label>Geocoding Status</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>true</trackHistory>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>pending</fullName>
+                <default>true</default>
+                <label>pending</label>
+            </value>
+            <value>
+                <fullName>geocoded</fullName>
+                <default>false</default>
+                <label>geocoded</label>
+            </value>
+            <value>
+                <fullName>out_of_district</fullName>
+                <default>false</default>
+                <label>out_of_district</label>
+            </value>
+            <value>
+                <fullName>manual_override</fullName>
+                <default>false</default>
+                <label>manual_override</label>
+            </value>
+            <value>
+                <fullName>failed</fullName>
+                <default>false</default>
+                <label>failed</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

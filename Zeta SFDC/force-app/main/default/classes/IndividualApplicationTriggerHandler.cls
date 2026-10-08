@@ -2,14 +2,19 @@
  * {@link TriggerHandler} that handles {@link IndividualApplication} DML operations.
  *
  * Kicks off priority-group recalculation on relevant field changes and keeps
- * {@link Account.Application_Count__c} in step with the applications an Account
- * is attached to. District assignment is driven from Flow via
- * {@link FindDistrictInvocable} — the trigger no longer enqueues anything.
+ * {@link Account.Application_Count__c} and
+ * {@link Account.Post_Draft_Application_Count__c} in step with the
+ * applications an Account is attached to. District assignment is driven from
+ * Flow via {@link FindDistrictInvocable} — the trigger no longer enqueues
+ * anything.
  */
 public with sharing class IndividualApplicationTriggerHandler extends NoOpTriggerHandler {
+  private static final String STATUS_DRAFT = 'Draft';
+
   /**
    * The lookups that tie an application to an Account: the student and both
-   * guardians. Every one of them feeds Application_Count__c.
+   * guardians. Every one of them feeds both Application_Count__c and
+   * Post_Draft_Application_Count__c.
    */
   private static final List<SObjectField> ACCOUNT_LOOKUPS = new List<SObjectField>{
     Schema.IndividualApplication.AccountId,
@@ -101,7 +106,9 @@ public with sharing class IndividualApplicationTriggerHandler extends NoOpTrigge
   /**
    * Collects the Accounts whose count is affected by an update. A repointed
    * lookup leaves the Account it pointed at stale, so both the old and the new
-   * value are collected.
+   * value are collected. A lookup-unchanged update still recalculates when the
+   * Status flips across Draft, the only Status change that moves
+   * Post_Draft_Application_Count__c.
    */
   private static Set<Id> collectAccountIdsForRollup(
     List<IndividualApplication> newRecords,
@@ -109,19 +116,30 @@ public with sharing class IndividualApplicationTriggerHandler extends NoOpTrigge
   ) {
     Set<Id> accountIds = new Set<Id>();
     for (IndividualApplication individualApplication : newRecords) {
-      SObject oldApplication = oldSObjectsByIds.get(individualApplication.Id);
+      IndividualApplication oldApplication = (IndividualApplication) oldSObjectsByIds.get(
+        individualApplication.Id
+      );
 
       SObjectFieldDiffResponse lookupDiff = SObjectFieldDiffer.getFieldDiff(
         individualApplication,
         oldApplication,
         ACCOUNT_LOOKUPS
       );
-      if (lookupDiff.isDifferent()) {
+      if (lookupDiff.isDifferent() || isDraftTransition(oldApplication, individualApplication)) {
         accountIds.addAll(
           collectAccountIds(new List<SObject>{ individualApplication, oldApplication })
         );
       }
     }
     return accountIds;
+  }
+
+  private static Boolean isDraftTransition(
+    IndividualApplication oldApplication,
+    IndividualApplication newApplication
+  ) {
+    Boolean wasDraft = oldApplication.Status == STATUS_DRAFT;
+    Boolean isDraft = newApplication.Status == STATUS_DRAFT;
+    return wasDraft != isDraft;
   }
 }

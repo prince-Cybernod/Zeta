@@ -569,6 +569,38 @@
         <sourceFormula>BccAddress</sourceFormula>
         <targetField>MessagingEventsEmailV2_00Da5000_4A6331F0__dll.BccAddress__c</targetField>
     </fieldSourceTargetMaps>
+    <fieldSourceTargetMaps>
+        <creationType>Custom</creationType>
+        <filterApplied>false</filterApplied>
+        <isSourceFormula>false</isSourceFormula>
+        <sourceField>MessagingEventsEmailV2_00Da5000_4A6331F0.AgentforceSessionId__c</sourceField>
+        <sourceFormula>AgentforceSessionId</sourceFormula>
+        <targetField>MessagingEventsEmailV2_00Da5000_4A6331F0__dll.AgentforceSessionId__c</targetField>
+    </fieldSourceTargetMaps>
+    <fieldSourceTargetMaps>
+        <creationType>Custom</creationType>
+        <filterApplied>false</filterApplied>
+        <isSourceFormula>false</isSourceFormula>
+        <sourceField>MessagingEventsEmailV2_00Da5000_4A6331F0.ContentImpressionRegion__c</sourceField>
+        <sourceFormula>ContentImpressionRegion</sourceFormula>
+        <targetField>MessagingEventsEmailV2_00Da5000_4A6331F0__dll.ContentImpressionRegion__c</targetField>
+    </fieldSourceTargetMaps>
+    <fieldSourceTargetMaps>
+        <creationType>Custom</creationType>
+        <filterApplied>false</filterApplied>
+        <isSourceFormula>false</isSourceFormula>
+        <sourceField>MessagingEventsEmailV2_00Da5000_4A6331F0.KeyQualifier__c</sourceField>
+        <sourceFormula>KeyQualifier</sourceFormula>
+        <targetField>MessagingEventsEmailV2_00Da5000_4A6331F0__dll.KeyQualifier__c</targetField>
+    </fieldSourceTargetMaps>
+    <fieldSourceTargetMaps>
+        <creationType>Custom</creationType>
+        <filterApplied>false</filterApplied>
+        <isSourceFormula>false</isSourceFormula>
+        <sourceField>MessagingEventsEmailV2_00Da5000_4A6331F0.SendTimeAttributes__c</sourceField>
+        <sourceFormula>SendTimeAttributes</sourceFormula>
+        <targetField>MessagingEventsEmailV2_00Da5000_4A6331F0__dll.SendTimeAttributes__c</targetField>
+    </fieldSourceTargetMaps>
     <masterLabel>MessagingEventsEmailV2_00Da5000_4A6331F0_map_MessagingEventsEmailV2_00Da5000_4A6331F0_1762184606306</masterLabel>
     <sourceObjectName>MessagingEventsEmailV2_00Da5000_4A6331F0</sourceObjectName>
     <targetObjectName>MessagingEventsEmailV2_00Da5000_4A6331F0__dll</targetObjectName>

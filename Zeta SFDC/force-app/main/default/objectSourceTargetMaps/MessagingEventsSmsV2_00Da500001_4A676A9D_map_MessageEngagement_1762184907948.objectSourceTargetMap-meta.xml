@@ -249,6 +249,38 @@
         <sourceField>MessagingEventsSmsV2_00Da500001_4A676A9D__dll.MessageType__c</sourceField>
         <targetField>ssot__MessageEngagement__dlm.ssot__SMSCommunicationClass__c</targetField>
     </fieldSourceTargetMaps>
+    <fieldSourceTargetMaps>
+        <creationType>Custom</creationType>
+        <filterApplied>false</filterApplied>
+        <filterOperationType>Equal</filterOperationType>
+        <isSourceFormula>false</isSourceFormula>
+        <sourceField>MessagingEventsSmsV2_00Da500001_4A676A9D__dll.SendTimeAttributes__c</sourceField>
+        <targetField>ssot__MessageEngagement__dlm.SendTimeAttributes__c</targetField>
+    </fieldSourceTargetMaps>
+    <fieldSourceTargetMaps>
+        <creationType>Custom</creationType>
+        <filterApplied>false</filterApplied>
+        <filterOperationType>Equal</filterOperationType>
+        <isSourceFormula>false</isSourceFormula>
+        <sourceField>MessagingEventsSmsV2_00Da500001_4A676A9D__dll.IsBotClick__c</sourceField>
+        <targetField>ssot__MessageEngagement__dlm.IsBotClick__c</targetField>
+    </fieldSourceTargetMaps>
+    <fieldSourceTargetMaps>
+        <creationType>Custom</creationType>
+        <filterApplied>false</filterApplied>
+        <filterOperationType>Equal</filterOperationType>
+        <isSourceFormula>false</isSourceFormula>
+        <sourceField>MessagingEventsSmsV2_00Da500001_4A676A9D__dll.ContentImpressionRegion__c</sourceField>
+        <targetField>ssot__MessageEngagement__dlm.ContentImpressionRegion__c</targetField>
+    </fieldSourceTargetMaps>
+    <fieldSourceTargetMaps>
+        <creationType>Custom</creationType>
+        <filterApplied>false</filterApplied>
+        <filterOperationType>Equal</filterOperationType>
+        <isSourceFormula>false</isSourceFormula>
+        <sourceField>MessagingEventsSmsV2_00Da500001_4A676A9D__dll.AgentforceSessionId__c</sourceField>
+        <targetField>ssot__MessageEngagement__dlm.AiAgentSessionId__c</targetField>
+    </fieldSourceTargetMaps>
     <masterLabel>MessagingEventsSmsV2_00Da500001_4A676A9D_map_MessageEngagement_1762184907948</masterLabel>
     <sourceObjectName>MessagingEventsSmsV2_00Da500001_4A676A9D__dll</sourceObjectName>
     <targetObjectName>ssot__MessageEngagement__dlm</targetObjectName>

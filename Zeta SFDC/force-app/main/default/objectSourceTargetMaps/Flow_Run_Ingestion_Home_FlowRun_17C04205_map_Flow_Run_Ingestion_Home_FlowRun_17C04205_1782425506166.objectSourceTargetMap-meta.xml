@@ -153,6 +153,22 @@
         <sourceFormula>DataSpaceId</sourceFormula>
         <targetField>Flow_Run_Ingestion_Home_FlowRun_17C04205__dll.DataSpaceId__c</targetField>
     </fieldSourceTargetMaps>
+    <fieldSourceTargetMaps>
+        <creationType>Custom</creationType>
+        <filterApplied>false</filterApplied>
+        <isSourceFormula>false</isSourceFormula>
+        <sourceField>Flow_Run_Ingestion_Home_FlowRun_17C04205.RelatedRecordObject__c</sourceField>
+        <sourceFormula>RelatedRecordObject</sourceFormula>
+        <targetField>Flow_Run_Ingestion_Home_FlowRun_17C04205__dll.RelatedRecordObject__c</targetField>
+    </fieldSourceTargetMaps>
+    <fieldSourceTargetMaps>
+        <creationType>Custom</creationType>
+        <filterApplied>false</filterApplied>
+        <isSourceFormula>false</isSourceFormula>
+        <sourceField>Flow_Run_Ingestion_Home_FlowRun_17C04205.RelatedRecordId__c</sourceField>
+        <sourceFormula>RelatedRecordId</sourceFormula>
+        <targetField>Flow_Run_Ingestion_Home_FlowRun_17C04205__dll.RelatedRecordId__c</targetField>
+    </fieldSourceTargetMaps>
     <masterLabel>Flow_Run_Ingestion_Home_FlowRun_17C04205_map_Flow_Run_Ingestion_Home_FlowRun_17C04205_1782425506166</masterLabel>
     <sourceObjectName>Flow_Run_Ingestion_Home_FlowRun_17C04205</sourceObjectName>
     <targetObjectName>Flow_Run_Ingestion_Home_FlowRun_17C04205__dll</targetObjectName>

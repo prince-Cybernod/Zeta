@@ -32,6 +32,19 @@
         <sequence>0</sequence>
     </mktDataTranFields>
     <mktDataTranFields>
+        <fullName>AgentforceSessionId</fullName>
+        <creationType>Custom</creationType>
+        <datatype>S</datatype>
+        <externalName>AgentforceSessionId</externalName>
+        <isDataRequired>false</isDataRequired>
+        <length>0</length>
+        <masterLabel>AgentforceSessionId</masterLabel>
+        <precision>0</precision>
+        <primaryIndexOrder>0</primaryIndexOrder>
+        <scale>0</scale>
+        <sequence>0</sequence>
+    </mktDataTranFields>
+    <mktDataTranFields>
         <fullName>Application</fullName>
         <creationType>Custom</creationType>
         <datatype>S</datatype>
@@ -260,6 +273,19 @@
         <isDataRequired>false</isDataRequired>
         <length>0</length>
         <masterLabel>ContentId</masterLabel>
+        <precision>0</precision>
+        <primaryIndexOrder>0</primaryIndexOrder>
+        <scale>0</scale>
+        <sequence>0</sequence>
+    </mktDataTranFields>
+    <mktDataTranFields>
+        <fullName>ContentImpressionRegion</fullName>
+        <creationType>Custom</creationType>
+        <datatype>S</datatype>
+        <externalName>ContentImpressionRegion</externalName>
+        <isDataRequired>false</isDataRequired>
+        <length>0</length>
+        <masterLabel>ContentImpressionRegion</masterLabel>
         <precision>0</precision>
         <primaryIndexOrder>0</primaryIndexOrder>
         <scale>0</scale>
@@ -552,6 +578,19 @@
         <sequence>0</sequence>
     </mktDataTranFields>
     <mktDataTranFields>
+        <fullName>KeyQualifier</fullName>
+        <creationType>Custom</creationType>
+        <datatype>S</datatype>
+        <externalName>KeyQualifier</externalName>
+        <isDataRequired>false</isDataRequired>
+        <length>0</length>
+        <masterLabel>KeyQualifier</masterLabel>
+        <precision>0</precision>
+        <primaryIndexOrder>0</primaryIndexOrder>
+        <scale>0</scale>
+        <sequence>0</sequence>
+    </mktDataTranFields>
+    <mktDataTranFields>
         <fullName>LinkName</fullName>
         <creationType>Custom</creationType>
         <datatype>S</datatype>
@@ -806,6 +845,19 @@
         <isDataRequired>false</isDataRequired>
         <length>0</length>
         <masterLabel>SendStatus</masterLabel>
+        <precision>0</precision>
+        <primaryIndexOrder>0</primaryIndexOrder>
+        <scale>0</scale>
+        <sequence>0</sequence>
+    </mktDataTranFields>
+    <mktDataTranFields>
+        <fullName>SendTimeAttributes</fullName>
+        <creationType>Custom</creationType>
+        <datatype>S</datatype>
+        <externalName>SendTimeAttributes</externalName>
+        <isDataRequired>false</isDataRequired>
+        <length>0</length>
+        <masterLabel>SendTimeAttributes</masterLabel>
         <precision>0</precision>
         <primaryIndexOrder>0</primaryIndexOrder>
         <scale>0</scale>

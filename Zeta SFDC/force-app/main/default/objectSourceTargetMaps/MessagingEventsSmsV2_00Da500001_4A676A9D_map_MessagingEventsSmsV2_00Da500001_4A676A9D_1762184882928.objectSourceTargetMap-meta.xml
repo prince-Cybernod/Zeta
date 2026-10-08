@@ -361,6 +361,38 @@
         <sourceFormula>MessageType</sourceFormula>
         <targetField>MessagingEventsSmsV2_00Da500001_4A676A9D__dll.MessageType__c</targetField>
     </fieldSourceTargetMaps>
+    <fieldSourceTargetMaps>
+        <creationType>Custom</creationType>
+        <filterApplied>false</filterApplied>
+        <isSourceFormula>false</isSourceFormula>
+        <sourceField>MessagingEventsSmsV2_00Da500001_4A676A9D.IsBotClick__c</sourceField>
+        <sourceFormula>IsBotClick</sourceFormula>
+        <targetField>MessagingEventsSmsV2_00Da500001_4A676A9D__dll.IsBotClick__c</targetField>
+    </fieldSourceTargetMaps>
+    <fieldSourceTargetMaps>
+        <creationType>Custom</creationType>
+        <filterApplied>false</filterApplied>
+        <isSourceFormula>false</isSourceFormula>
+        <sourceField>MessagingEventsSmsV2_00Da500001_4A676A9D.AgentforceSessionId__c</sourceField>
+        <sourceFormula>AgentforceSessionId</sourceFormula>
+        <targetField>MessagingEventsSmsV2_00Da500001_4A676A9D__dll.AgentforceSessionId__c</targetField>
+    </fieldSourceTargetMaps>
+    <fieldSourceTargetMaps>
+        <creationType>Custom</creationType>
+        <filterApplied>false</filterApplied>
+        <isSourceFormula>false</isSourceFormula>
+        <sourceField>MessagingEventsSmsV2_00Da500001_4A676A9D.SendTimeAttributes__c</sourceField>
+        <sourceFormula>SendTimeAttributes</sourceFormula>
+        <targetField>MessagingEventsSmsV2_00Da500001_4A676A9D__dll.SendTimeAttributes__c</targetField>
+    </fieldSourceTargetMaps>
+    <fieldSourceTargetMaps>
+        <creationType>Custom</creationType>
+        <filterApplied>false</filterApplied>
+        <isSourceFormula>false</isSourceFormula>
+        <sourceField>MessagingEventsSmsV2_00Da500001_4A676A9D.ContentImpressionRegion__c</sourceField>
+        <sourceFormula>ContentImpressionRegion</sourceFormula>
+        <targetField>MessagingEventsSmsV2_00Da500001_4A676A9D__dll.ContentImpressionRegion__c</targetField>
+    </fieldSourceTargetMaps>
     <masterLabel>MessagingEventsSmsV2_00Da500001_4A676A9D_map_MessagingEventsSmsV2_00Da500001_4A676A9D_1762184882928</masterLabel>
     <sourceObjectName>MessagingEventsSmsV2_00Da500001_4A676A9D</sourceObjectName>
     <targetObjectName>MessagingEventsSmsV2_00Da500001_4A676A9D__dll</targetObjectName>

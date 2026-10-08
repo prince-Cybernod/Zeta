@@ -39,6 +39,21 @@
             <sequence>0</sequence>
         </externalDataTranFields>
         <externalDataTranFields>
+            <fullName>AgentforceSessionId</fullName>
+            <creationType>Custom</creationType>
+            <datatype>S</datatype>
+            <externalName>AgentforceSessionId</externalName>
+            <isCurrencyIsoCode>false</isCurrencyIsoCode>
+            <isDataRequired>false</isDataRequired>
+            <length>0</length>
+            <masterLabel>AgentforceSessionId</masterLabel>
+            <mktDataTranField>MessagingEventsEmailV2_00Da5000_4A6331F0.AgentforceSessionId__c</mktDataTranField>
+            <precision>0</precision>
+            <primaryIndexOrder>0</primaryIndexOrder>
+            <scale>0</scale>
+            <sequence>0</sequence>
+        </externalDataTranFields>
+        <externalDataTranFields>
             <fullName>Application</fullName>
             <creationType>Custom</creationType>
             <datatype>S</datatype>
@@ -303,6 +318,21 @@
             <length>0</length>
             <masterLabel>ContentId</masterLabel>
             <mktDataTranField>MessagingEventsEmailV2_00Da5000_4A6331F0.ContentId__c</mktDataTranField>
+            <precision>0</precision>
+            <primaryIndexOrder>0</primaryIndexOrder>
+            <scale>0</scale>
+            <sequence>0</sequence>
+        </externalDataTranFields>
+        <externalDataTranFields>
+            <fullName>ContentImpressionRegion</fullName>
+            <creationType>Custom</creationType>
+            <datatype>S</datatype>
+            <externalName>ContentImpressionRegion</externalName>
+            <isCurrencyIsoCode>false</isCurrencyIsoCode>
+            <isDataRequired>false</isDataRequired>
+            <length>0</length>
+            <masterLabel>ContentImpressionRegion</masterLabel>
+            <mktDataTranField>MessagingEventsEmailV2_00Da5000_4A6331F0.ContentImpressionRegion__c</mktDataTranField>
             <precision>0</precision>
             <primaryIndexOrder>0</primaryIndexOrder>
             <scale>0</scale>
@@ -639,6 +669,21 @@
             <sequence>0</sequence>
         </externalDataTranFields>
         <externalDataTranFields>
+            <fullName>KeyQualifier</fullName>
+            <creationType>Custom</creationType>
+            <datatype>S</datatype>
+            <externalName>KeyQualifier</externalName>
+            <isCurrencyIsoCode>false</isCurrencyIsoCode>
+            <isDataRequired>false</isDataRequired>
+            <length>0</length>
+            <masterLabel>KeyQualifier</masterLabel>
+            <mktDataTranField>MessagingEventsEmailV2_00Da5000_4A6331F0.KeyQualifier__c</mktDataTranField>
+            <precision>0</precision>
+            <primaryIndexOrder>0</primaryIndexOrder>
+            <scale>0</scale>
+            <sequence>0</sequence>
+        </externalDataTranFields>
+        <externalDataTranFields>
             <fullName>LinkName</fullName>
             <creationType>Custom</creationType>
             <datatype>S</datatype>
@@ -933,6 +978,21 @@
             <length>0</length>
             <masterLabel>SendStatus</masterLabel>
             <mktDataTranField>MessagingEventsEmailV2_00Da5000_4A6331F0.SendStatus__c</mktDataTranField>
+            <precision>0</precision>
+            <primaryIndexOrder>0</primaryIndexOrder>
+            <scale>0</scale>
+            <sequence>0</sequence>
+        </externalDataTranFields>
+        <externalDataTranFields>
+            <fullName>SendTimeAttributes</fullName>
+            <creationType>Custom</creationType>
+            <datatype>S</datatype>
+            <externalName>SendTimeAttributes</externalName>
+            <isCurrencyIsoCode>false</isCurrencyIsoCode>
+            <isDataRequired>false</isDataRequired>
+            <length>0</length>
+            <masterLabel>SendTimeAttributes</masterLabel>
+            <mktDataTranField>MessagingEventsEmailV2_00Da5000_4A6331F0.SendTimeAttributes__c</mktDataTranField>
             <precision>0</precision>
             <primaryIndexOrder>0</primaryIndexOrder>
             <scale>0</scale>

@@ -24,10 +24,11 @@ private class ApplicationCountAggregateResultTest {
     Assert.isNotNull(result);
     Assert.isNull(result.accountId);
     Assert.areEqual(0, result.count);
+    Assert.isNull(result.status);
   }
 
   @IsTest
-  private static void visibleConstructor_assignsValues() {
+  private static void visibleConstructor_withTwoArgs_defaultsStatusToNull() {
     Id accountId = SObjectIds.generateFakeId(Schema.Account.SObjectType);
     Decimal count = 3;
 
@@ -36,6 +37,24 @@ private class ApplicationCountAggregateResultTest {
     Assert.isNotNull(result);
     Assert.areEqual(accountId, result.accountId);
     Assert.areEqual(count, result.count);
+    Assert.isNull(result.status);
+  }
+
+  @IsTest
+  private static void visibleConstructor_withThreeArgs_assignsStatus() {
+    Id accountId = SObjectIds.generateFakeId(Schema.Account.SObjectType);
+    Decimal count = 3;
+
+    ApplicationCountAggregateResult result = new ApplicationCountAggregateResult(
+      accountId,
+      count,
+      'Draft'
+    );
+
+    Assert.isNotNull(result);
+    Assert.areEqual(accountId, result.accountId);
+    Assert.areEqual(count, result.count);
+    Assert.areEqual('Draft', result.status);
   }
 
   @IsTest
@@ -47,5 +66,6 @@ private class ApplicationCountAggregateResultTest {
     Assert.areEqual(1, results.size());
     Assert.isNull(results[0].accountId);
     Assert.areEqual(0, results[0].count);
+    Assert.isNull(results[0].status);
   }
 }

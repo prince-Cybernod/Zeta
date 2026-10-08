@@ -62,10 +62,18 @@ Created By: Elevation Solutions</description>
         <object>User</object>
         <recordTriggerType>Create</recordTriggerType>
         <scheduledPaths>
+            <pathType>AsyncAfterCommit</pathType>
+        </scheduledPaths>
+        <scheduledPaths>
+            <name>Delay_3_Minutes</name>
             <connector>
                 <targetReference>Update_Contact_with_this_User_Id</targetReference>
             </connector>
-            <pathType>AsyncAfterCommit</pathType>
+            <label>Delay 3 Minutes</label>
+            <offsetNumber>3</offsetNumber>
+            <offsetUnit>Minutes</offsetUnit>
+            <recordField>CreatedDate</recordField>
+            <timeSource>RecordField</timeSource>
         </scheduledPaths>
         <triggerType>RecordAfterSave</triggerType>
     </start>

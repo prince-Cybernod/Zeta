@@ -85,6 +85,19 @@
         <sequence>0</sequence>
     </mktDataTranFields>
     <mktDataTranFields>
+        <fullName>DefaultApplication</fullName>
+        <creationType>Custom</creationType>
+        <datatype>S</datatype>
+        <externalName>DefaultApplication</externalName>
+        <isDataRequired>false</isDataRequired>
+        <length>0</length>
+        <masterLabel>DefaultApplication</masterLabel>
+        <precision>0</precision>
+        <primaryIndexOrder>0</primaryIndexOrder>
+        <scale>0</scale>
+        <sequence>39</sequence>
+    </mktDataTranFields>
+    <mktDataTranFields>
         <fullName>DefaultResponse</fullName>
         <creationType>Custom</creationType>
         <datatype>S</datatype>
@@ -304,6 +317,19 @@
         <primaryIndexOrder>0</primaryIndexOrder>
         <scale>0</scale>
         <sequence>0</sequence>
+    </mktDataTranFields>
+    <mktDataTranFields>
+        <fullName>LastMilePlatform</fullName>
+        <creationType>Custom</creationType>
+        <datatype>S</datatype>
+        <externalName>LastMilePlatform</externalName>
+        <isDataRequired>false</isDataRequired>
+        <length>0</length>
+        <masterLabel>LastMilePlatform</masterLabel>
+        <precision>0</precision>
+        <primaryIndexOrder>0</primaryIndexOrder>
+        <scale>0</scale>
+        <sequence>38</sequence>
     </mktDataTranFields>
     <mktDataTranFields>
         <fullName>LastModifiedById</fullName>

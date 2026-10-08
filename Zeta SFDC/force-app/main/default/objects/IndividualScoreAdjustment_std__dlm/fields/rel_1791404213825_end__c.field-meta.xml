@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>rel_1791404213825_end__c</fullName>
+    <deleteConstraint>SetNull</deleteConstraint>
+    <label>IndividualScoreAdjustment_std_Source_rel</label>
+    <referenceTo>ssot__Individual__dlm</referenceTo>
+    <relationshipLabel>IndividualScoreAdjustment_std_Source_rel</relationshipLabel>
+    <relationshipName>rel_1791404213825_end</relationshipName>
+    <required>false</required>
+    <type>Lookup</type>
+</CustomField>

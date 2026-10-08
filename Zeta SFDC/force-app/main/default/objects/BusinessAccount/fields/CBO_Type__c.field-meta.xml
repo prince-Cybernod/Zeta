@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>CBO_Type__c</fullName>
+    <label>CBO Type</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>MultiselectPicklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>After School Program</fullName>
+                <default>false</default>
+                <label>After School Program</label>
+            </value>
+            <value>
+                <fullName>Business</fullName>
+                <default>false</default>
+                <label>Business</label>
+            </value>
+            <value>
+                <fullName>Community Organization</fullName>
+                <default>false</default>
+                <label>Community Organization</label>
+            </value>
+            <value>
+                <fullName>Pre-K Center</fullName>
+                <default>false</default>
+                <label>Pre-K Center</label>
+            </value>
+            <value>
+                <fullName>Library</fullName>
+                <default>false</default>
+                <label>Library</label>
+            </value>
+            <value>
+                <fullName>Medical Center</fullName>
+                <default>false</default>
+                <label>Medical Center</label>
+            </value>
+            <value>
+                <fullName>Pediatric Clinic</fullName>
+                <default>false</default>
+                <label>Pediatric Clinic</label>
+            </value>
+            <value>
+                <fullName>Place of Worship</fullName>
+                <default>false</default>
+                <label>Place of Worship</label>
+            </value>
+            <value>
+                <fullName>Indoor Playground</fullName>
+                <default>false</default>
+                <label>Indoor Playground</label>
+            </value>
+            <value>
+                <fullName>Shelter</fullName>
+                <default>false</default>
+                <label>Shelter</label>
+            </value>
+            <value>
+                <fullName>Sport Center</fullName>
+                <default>false</default>
+                <label>Sport Center</label>
+            </value>
+            <value>
+                <fullName>Other</fullName>
+                <default>false</default>
+                <label>Other</label>
+            </value>
+            <value>
+                <fullName>Daycare</fullName>
+                <default>false</default>
+                <label>Daycare</label>
+            </value>
+            <value>
+                <fullName>Museum</fullName>
+                <default>false</default>
+                <label>Museum</label>
+            </value>
+            <value>
+                <fullName>Apartment / Housing Complex</fullName>
+                <default>false</default>
+                <label>Apartment / Housing Complex</label>
+            </value>
+            <value>
+                <fullName>Daycare / Pre-k center</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Daycare / Pre-k center</label>
+            </value>
+            <value>
+                <fullName>Other Community Organization</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Other Community Organization</label>
+            </value>
+            <value>
+                <fullName>Play Center</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Play Center</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+    <visibleLines>4</visibleLines>
+</CustomField>

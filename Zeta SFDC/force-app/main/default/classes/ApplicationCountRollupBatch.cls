@@ -1,5 +1,6 @@
 /**
- * Recalculates {@link Account.Application_Count__c} across every applicant
+ * Recalculates {@link Account.Application_Count__c} and
+ * {@link Account.Post_Draft_Application_Count__c} across every applicant
  * Account, for the initial backfill and for repairing drift after a bulk load.
  *
  * Run with scripts/data/migrations/backfill-application-count.apex.

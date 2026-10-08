@@ -325,6 +325,78 @@ private class IndividualApplicationTriggerHandlerTest {
   }
 
   @IsTest
+  private static void onAfterUpdate_whenStatusChangesDraftToSubmitted_callsRollupService() {
+    SERVICE_MOCK.when(SERVICE_MOCK.method.recalculateForApplications()).thenReturnVoid();
+    ROLLUP_MOCK.when(ROLLUP_MOCK.method.recalculate()).thenReturnVoid();
+    Id applicationId = SObjectIds.generateFakeId(Schema.IndividualApplication.SObjectType);
+    Id studentId = fakeAccountId();
+
+    HANDLER.onAfterUpdate(
+      new List<SObject>{
+        new IndividualApplication(Id = applicationId, AccountId = studentId, Status = 'Submitted')
+      },
+      new Map<Id, SObject>{
+        applicationId => new IndividualApplication(
+          Id = applicationId,
+          AccountId = studentId,
+          Status = 'Draft'
+        )
+      }
+    );
+
+    ROLLUP_MOCK.verify(ROLLUP_MOCK.method.recalculate(), 1);
+    Assert.isTrue(capturedRollupIds().contains(studentId), 'Should refresh the student');
+  }
+
+  @IsTest
+  private static void onAfterUpdate_whenStatusChangesSubmittedToDraft_callsRollupService() {
+    SERVICE_MOCK.when(SERVICE_MOCK.method.recalculateForApplications()).thenReturnVoid();
+    ROLLUP_MOCK.when(ROLLUP_MOCK.method.recalculate()).thenReturnVoid();
+    Id applicationId = SObjectIds.generateFakeId(Schema.IndividualApplication.SObjectType);
+    Id studentId = fakeAccountId();
+
+    HANDLER.onAfterUpdate(
+      new List<SObject>{
+        new IndividualApplication(Id = applicationId, AccountId = studentId, Status = 'Draft')
+      },
+      new Map<Id, SObject>{
+        applicationId => new IndividualApplication(
+          Id = applicationId,
+          AccountId = studentId,
+          Status = 'Submitted'
+        )
+      }
+    );
+
+    ROLLUP_MOCK.verify(ROLLUP_MOCK.method.recalculate(), 1);
+    Assert.isTrue(capturedRollupIds().contains(studentId), 'Should refresh the student');
+  }
+
+  @IsTest
+  private static void onAfterUpdate_whenStatusChangesBetweenNonDraftValues_doesNotCallRollupService() {
+    SERVICE_MOCK.when(SERVICE_MOCK.method.recalculateForApplications()).thenReturnVoid();
+    ROLLUP_MOCK.when(ROLLUP_MOCK.method.recalculate()).thenReturnVoid();
+    Id applicationId = SObjectIds.generateFakeId(Schema.IndividualApplication.SObjectType);
+    Id studentId = fakeAccountId();
+
+    HANDLER.onAfterUpdate(
+      new List<SObject>{
+        new IndividualApplication(Id = applicationId, AccountId = studentId, Status = 'Eligible')
+      },
+      new Map<Id, SObject>{
+        applicationId => new IndividualApplication(
+          Id = applicationId,
+          AccountId = studentId,
+          Status = 'Submitted'
+        )
+      }
+    );
+
+    // Neither status is Draft, so Post_Draft_Application_Count__c cannot move
+    ROLLUP_MOCK.verify(ROLLUP_MOCK.method.recalculate(), 0);
+  }
+
+  @IsTest
   private static void defaultConstructor_createsInstance() {
     IndividualApplicationTriggerHandler handler = new IndividualApplicationTriggerHandler();
 

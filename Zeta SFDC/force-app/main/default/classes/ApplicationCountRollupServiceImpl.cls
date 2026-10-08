@@ -5,6 +5,8 @@
  * rules must be bypassed to ensure data integrity across all records.
  */
 public without sharing class ApplicationCountRollupServiceImpl implements ApplicationCountRollupService {
+  private static final String STATUS_DRAFT = 'Draft';
+
   private final DatabaseRepo databaseRepo;
 
   public ApplicationCountRollupServiceImpl() {
@@ -32,13 +34,14 @@ public without sharing class ApplicationCountRollupServiceImpl implements Applic
       String query =
         'SELECT ' +
         field +
-        ' acctId, COUNT(Id) cnt ' +
+        ' acctId, Status st, COUNT(Id) cnt ' +
         'FROM IndividualApplication ' +
         'WHERE ' +
         field +
         ' IN :accountIds ' +
         'GROUP BY ' +
-        field;
+        field +
+        ', Status';
 
       List<AggregateResult> results = databaseRepo.queryWithBinds(
         query,
@@ -56,12 +59,16 @@ public without sharing class ApplicationCountRollupServiceImpl implements Applic
     List<ApplicationCountAggregateResult> wrappedResults
   ) {
     Map<Id, Decimal> countsByAccountId = new Map<Id, Decimal>();
+    Map<Id, Decimal> postDraftCountsByAccountId = new Map<Id, Decimal>();
     for (Id accountId : accountIds) {
       countsByAccountId.put(accountId, 0);
+      postDraftCountsByAccountId.put(accountId, 0);
     }
 
     // Accumulated, not overwritten: a guardian named on an application as both
-    // primary and secondary contributes from two of the three queries.
+    // primary and secondary contributes from two of the three queries. Every
+    // row counts toward the total regardless of Status; only rows whose
+    // Status isn't Draft also count toward the post-draft total.
     for (ApplicationCountAggregateResult result : wrappedResults) {
       if (!countsByAccountId.containsKey(result.accountId)) {
         continue;
@@ -70,12 +77,22 @@ public without sharing class ApplicationCountRollupServiceImpl implements Applic
         result.accountId,
         countsByAccountId.get(result.accountId) + result.count
       );
+      if (result.status != STATUS_DRAFT) {
+        postDraftCountsByAccountId.put(
+          result.accountId,
+          postDraftCountsByAccountId.get(result.accountId) + result.count
+        );
+      }
     }
 
     List<Account> accountsToUpdate = new List<Account>();
     for (Id accountId : countsByAccountId.keySet()) {
       accountsToUpdate.add(
-        new Account(Id = accountId, Application_Count__c = countsByAccountId.get(accountId))
+        new Account(
+          Id = accountId,
+          Application_Count__c = countsByAccountId.get(accountId),
+          Post_Draft_Application_Count__c = postDraftCountsByAccountId.get(accountId)
+        )
       );
     }
 

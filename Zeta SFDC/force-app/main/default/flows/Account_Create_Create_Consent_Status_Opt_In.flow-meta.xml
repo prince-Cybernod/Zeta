@@ -71,20 +71,29 @@
     <start>
         <locationX>0</locationX>
         <locationY>0</locationY>
-        <connector>
-            <targetReference>Create_Contact_Request</targetReference>
-        </connector>
-        <filterFormula>AND(
-    {!$Record.IsPersonAccount},
-    NOT(ISBLANK({!$Record.PersonEmail})),
-    NOT({!$Record.PersonHasOptedOutOfEmail}),
-    OR(
-        ISNEW(),
-        ISCHANGED({!$Record.PersonEmail})
-    )
-)</filterFormula>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>PersonHasOptedOutOfEmail</field>
+            <operator>EqualTo</operator>
+            <value>
+                <booleanValue>false</booleanValue>
+            </value>
+        </filters>
+        <filters>
+            <field>PersonEmail</field>
+            <operator>IsNull</operator>
+            <value>
+                <booleanValue>false</booleanValue>
+            </value>
+        </filters>
         <object>Account</object>
-        <recordTriggerType>CreateAndUpdate</recordTriggerType>
+        <recordTriggerType>Create</recordTriggerType>
+        <scheduledPaths>
+            <connector>
+                <targetReference>Create_Contact_Request</targetReference>
+            </connector>
+            <pathType>AsyncAfterCommit</pathType>
+        </scheduledPaths>
         <triggerType>RecordAfterSave</triggerType>
     </start>
     <status>Active</status>

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Application_Count__c</fullName>
+    <defaultValue>0</defaultValue>
+    <description>Calculated via apex. Used with the Applicant Lifecycle Status formula for segmentation.</description>
+    <externalId>false</externalId>
+    <inlineHelpText>Counts all Individual Application records associated with this Account, regardless of Application Status. For Guardian Accounts, counts applications where the Account is listed as either the Primary Guardian or Secondary Guardian. For Student Accounts, counts applications where the Account is the Student on the Individual Application. Used for segmentation.</inlineHelpText>
+    <label>Application Count</label>
+    <precision>18</precision>
+    <required>false</required>
+    <scale>0</scale>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>Number</type>
+    <unique>false</unique>
+</CustomField>

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<FieldSrcTrgtRelationship xmlns="http://soap.sforce.com/2006/04/metadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <definitionCreationType>Standard</definitionCreationType>
+    <lookupFieldName>ssot__FlowRun__dlm.rel_1791404456527_end__c</lookupFieldName>
+    <masterLabel>ssot_FlowRun_ssot_FlowVersionOccurrenceId_map_ssot_FlowVersionOccurrence_ssot_Id_1791404456527</masterLabel>
+    <owner>DataCloud</owner>
+    <relationshipCardinality>ManyToOne</relationshipCardinality>
+    <sourceFieldName>ssot__FlowRun__dlm.ssot__FlowVersionOccurrenceId__c</sourceFieldName>
+    <targetEntity xsi:nil="true"/>
+    <targetFieldName>ssot__FlowVersionOccurrence__dlm.ssot__Id__c</targetFieldName>
+</FieldSrcTrgtRelationship>

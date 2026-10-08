@@ -362,6 +362,36 @@
             <sequence>0</sequence>
         </externalDataTranFields>
         <externalDataTranFields>
+            <fullName>RelatedRecordId</fullName>
+            <creationType>Custom</creationType>
+            <datatype>S</datatype>
+            <externalName>RelatedRecordId</externalName>
+            <isCurrencyIsoCode>false</isCurrencyIsoCode>
+            <isDataRequired>false</isDataRequired>
+            <length>0</length>
+            <masterLabel>RelatedRecordId</masterLabel>
+            <mktDataTranField>Flow_Run_Ingestion_Home_FlowRun_17C04205.RelatedRecordId__c</mktDataTranField>
+            <precision>0</precision>
+            <primaryIndexOrder>0</primaryIndexOrder>
+            <scale>0</scale>
+            <sequence>0</sequence>
+        </externalDataTranFields>
+        <externalDataTranFields>
+            <fullName>RelatedRecordObject</fullName>
+            <creationType>Custom</creationType>
+            <datatype>S</datatype>
+            <externalName>RelatedRecordObject</externalName>
+            <isCurrencyIsoCode>false</isCurrencyIsoCode>
+            <isDataRequired>false</isDataRequired>
+            <length>0</length>
+            <masterLabel>RelatedRecordObject</masterLabel>
+            <mktDataTranField>Flow_Run_Ingestion_Home_FlowRun_17C04205.RelatedRecordObject__c</mktDataTranField>
+            <precision>0</precision>
+            <primaryIndexOrder>0</primaryIndexOrder>
+            <scale>0</scale>
+            <sequence>0</sequence>
+        </externalDataTranFields>
+        <externalDataTranFields>
             <fullName>ScheduledDateTime</fullName>
             <creationType>Custom</creationType>
             <datatype>F</datatype>

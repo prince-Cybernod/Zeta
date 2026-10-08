@@ -9,6 +9,21 @@
         <availabilityStatus>In_Use</availabilityStatus>
         <creationType>Custom</creationType>
         <externalDataTranFields>
+            <fullName>AgentforceSessionId</fullName>
+            <creationType>Custom</creationType>
+            <datatype>S</datatype>
+            <externalName>AgentforceSessionId</externalName>
+            <isCurrencyIsoCode>false</isCurrencyIsoCode>
+            <isDataRequired>false</isDataRequired>
+            <length>0</length>
+            <masterLabel>AgentforceSessionId</masterLabel>
+            <mktDataTranField>MessagingEventsSmsV2_00Da500001_4A676A9D.AgentforceSessionId__c</mktDataTranField>
+            <precision>0</precision>
+            <primaryIndexOrder>0</primaryIndexOrder>
+            <scale>0</scale>
+            <sequence>0</sequence>
+        </externalDataTranFields>
+        <externalDataTranFields>
             <fullName>Application</fullName>
             <creationType>Custom</creationType>
             <datatype>S</datatype>
@@ -93,6 +108,21 @@
             <length>0</length>
             <masterLabel>ContactPointPhoneNumber</masterLabel>
             <mktDataTranField>MessagingEventsSmsV2_00Da500001_4A676A9D.ContactPointPhoneNumber__c</mktDataTranField>
+            <precision>0</precision>
+            <primaryIndexOrder>0</primaryIndexOrder>
+            <scale>0</scale>
+            <sequence>0</sequence>
+        </externalDataTranFields>
+        <externalDataTranFields>
+            <fullName>ContentImpressionRegion</fullName>
+            <creationType>Custom</creationType>
+            <datatype>S</datatype>
+            <externalName>ContentImpressionRegion</externalName>
+            <isCurrencyIsoCode>false</isCurrencyIsoCode>
+            <isDataRequired>false</isDataRequired>
+            <length>0</length>
+            <masterLabel>ContentImpressionRegion</masterLabel>
+            <mktDataTranField>MessagingEventsSmsV2_00Da500001_4A676A9D.ContentImpressionRegion__c</mktDataTranField>
             <precision>0</precision>
             <primaryIndexOrder>0</primaryIndexOrder>
             <scale>0</scale>
@@ -258,6 +288,21 @@
             <length>0</length>
             <masterLabel>IndividualID</masterLabel>
             <mktDataTranField>MessagingEventsSmsV2_00Da500001_4A676A9D.IndividualID__c</mktDataTranField>
+            <precision>0</precision>
+            <primaryIndexOrder>0</primaryIndexOrder>
+            <scale>0</scale>
+            <sequence>0</sequence>
+        </externalDataTranFields>
+        <externalDataTranFields>
+            <fullName>IsBotClick</fullName>
+            <creationType>Custom</creationType>
+            <datatype>B</datatype>
+            <externalName>IsBotClick</externalName>
+            <isCurrencyIsoCode>false</isCurrencyIsoCode>
+            <isDataRequired>false</isDataRequired>
+            <length>0</length>
+            <masterLabel>IsBotClick</masterLabel>
+            <mktDataTranField>MessagingEventsSmsV2_00Da500001_4A676A9D.IsBotClick__c</mktDataTranField>
             <precision>0</precision>
             <primaryIndexOrder>0</primaryIndexOrder>
             <scale>0</scale>
@@ -543,6 +588,21 @@
             <length>0</length>
             <masterLabel>SendStatus</masterLabel>
             <mktDataTranField>MessagingEventsSmsV2_00Da500001_4A676A9D.SendStatus__c</mktDataTranField>
+            <precision>0</precision>
+            <primaryIndexOrder>0</primaryIndexOrder>
+            <scale>0</scale>
+            <sequence>0</sequence>
+        </externalDataTranFields>
+        <externalDataTranFields>
+            <fullName>SendTimeAttributes</fullName>
+            <creationType>Custom</creationType>
+            <datatype>S</datatype>
+            <externalName>SendTimeAttributes</externalName>
+            <isCurrencyIsoCode>false</isCurrencyIsoCode>
+            <isDataRequired>false</isDataRequired>
+            <length>0</length>
+            <masterLabel>SendTimeAttributes</masterLabel>
+            <mktDataTranField>MessagingEventsSmsV2_00Da500001_4A676A9D.SendTimeAttributes__c</mktDataTranField>
             <precision>0</precision>
             <primaryIndexOrder>0</primaryIndexOrder>
             <scale>0</scale>
