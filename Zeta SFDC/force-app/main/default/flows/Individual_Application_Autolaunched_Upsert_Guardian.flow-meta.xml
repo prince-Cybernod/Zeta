@@ -55,6 +55,32 @@
         </rules>
     </decisions>
     <decisions>
+        <description>Keeps the guardian already linked to the application (e.g. picked by staff on the internal intake screen) instead of searching for one, since a guardian with no email cannot be matched and would be duplicated.</description>
+        <name>Decision_Primary_Guardian_Already_Linked</name>
+        <label>Decision | Primary Guardian | Already Linked?</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <defaultConnector>
+            <targetReference>Get_Guardian_1_Match_Guardian</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Not Linked</defaultConnectorLabel>
+        <rules>
+            <name>Yes_Primary_Guardian_Linked</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Get_Individual_Application.Primary_Guardian__c</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Secondary_Guardian_Information_on_Application</targetReference>
+            </connector>
+            <label>Yes, Already Linked</label>
+        </rules>
+    </decisions>
+    <decisions>
         <description>Checks if there is a secondary guardian</description>
         <name>Secondary_Guardian_Information_on_Application</name>
         <label>Secondary Guardian Information on Application?</label>
@@ -84,8 +110,9 @@
             <label>Yes, Secondary Guardian Details</label>
         </rules>
     </decisions>
-    <description>Criteria added for SchoolMint_Guardian_Id__pc not null 
-Created by: Elevation Solutions</description>
+    <description>Criteria added for SchoolMint_Guardian_Id__pc not null
+Created by: Elevation Solutions
+Oct 2026: Added &quot;Primary Guardian Already Linked?&quot; check at the start. If the application already has a Primary Guardian (e.g. from the staff intake screen), it is kept and the Guardian 1 search is skipped, so guardians without an email are not duplicated.</description>
     <environments>Default</environments>
     <formulas>
         <description>Returns the submitted email, or a guaranteed non-matching string when blank.</description>
@@ -387,7 +414,7 @@ Match by SchoolMint ID OR fallback logic</description>
         <locationY>0</locationY>
         <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
         <connector>
-            <targetReference>Get_Guardian_1_Match_Guardian</targetReference>
+            <targetReference>Decision_Primary_Guardian_Already_Linked</targetReference>
         </connector>
         <filterLogic>and</filterLogic>
         <filters>
