@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>67.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <description>When a new &quot;Outreach – Sign Up Sheet&quot; lead names an active staff member in Entered By (FormAssembly sign-up sheet), make that staff member the owner. Runs after the Lead assignment rule, so it overrides the Outreach and Enrollment Queue for these leads only.</description>
+    <environments>Default</environments>
+    <interviewLabel>Lead (After Save) Set Owner From Entered By {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Lead (After Save) Set Owner From Entered By</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordUpdates>
+        <description>Assigns the lead to the staff member who entered it.</description>
+        <name>Update_Lead_Owner_to_Entered_By</name>
+        <label>Update Lead Owner to Entered By</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <inputAssignments>
+            <field>OwnerId</field>
+            <value>
+                <elementReference>$Record.Entered_By__c</elementReference>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <start>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>Update_Lead_Owner_to_Entered_By</targetReference>
+        </connector>
+        <filterFormula>AND(
+ISPICKVAL({!$Record.Lead_Source__c}, &quot;Outreach – Sign Up Sheet&quot;),
+NOT(ISBLANK({!$Record.Entered_By__c})),
+{!$Record.Entered_By__r.IsActive}
+)</filterFormula>
+        <object>Lead</object>
+        <recordTriggerType>Create</recordTriggerType>
+        <triggerType>RecordAfterSave</triggerType>
+    </start>
+    <status>Active</status>
+</Flow>
