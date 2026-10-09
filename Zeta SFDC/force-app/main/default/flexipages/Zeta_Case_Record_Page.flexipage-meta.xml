@@ -136,28 +136,8 @@
                     <name>uiBehavior</name>
                     <value>none</value>
                 </fieldInstanceProperties>
-                <fieldItem>Record.Mogli_Opt_out__c</fieldItem>
-                <identifier>RecordMogli_Opt_out__cField</identifier>
-            </fieldInstance>
-        </itemInstances>
-        <itemInstances>
-            <fieldInstance>
-                <fieldInstanceProperties>
-                    <name>uiBehavior</name>
-                    <value>none</value>
-                </fieldInstanceProperties>
-                <fieldItem>Record.ContactMobile</fieldItem>
-                <identifier>RecordContactMobileField</identifier>
-            </fieldInstance>
-        </itemInstances>
-        <itemInstances>
-            <fieldInstance>
-                <fieldInstanceProperties>
-                    <name>uiBehavior</name>
-                    <value>none</value>
-                </fieldInstanceProperties>
-                <fieldItem>Record.Mogli_Number__c</fieldItem>
-                <identifier>RecordMogli_Number__cField</identifier>
+                <fieldItem>Record.Related_Lead__c</fieldItem>
+                <identifier>RecordRelated_Lead__cField</identifier>
             </fieldInstance>
         </itemInstances>
         <name>Facet-f196ecf2-7afb-420a-97b2-7f41a0c5339d</name>
@@ -190,8 +170,8 @@
                     <name>uiBehavior</name>
                     <value>none</value>
                 </fieldInstanceProperties>
-                <fieldItem>Record.AccountId</fieldItem>
-                <identifier>RecordAccountIdField</identifier>
+                <fieldItem>Record.ContactMobile</fieldItem>
+                <identifier>RecordContactMobileField</identifier>
             </fieldInstance>
         </itemInstances>
         <itemInstances>
@@ -200,8 +180,28 @@
                     <name>uiBehavior</name>
                     <value>none</value>
                 </fieldInstanceProperties>
-                <fieldItem>Record.Related_Lead__c</fieldItem>
-                <identifier>RecordRelated_Lead__cField</identifier>
+                <fieldItem>Record.Mogli_Number__c</fieldItem>
+                <identifier>RecordMogli_Number__cField</identifier>
+            </fieldInstance>
+        </itemInstances>
+        <itemInstances>
+            <fieldInstance>
+                <fieldInstanceProperties>
+                    <name>uiBehavior</name>
+                    <value>none</value>
+                </fieldInstanceProperties>
+                <fieldItem>Record.Mogli_Opt_out__c</fieldItem>
+                <identifier>RecordMogli_Opt_out__cField</identifier>
+            </fieldInstance>
+        </itemInstances>
+        <itemInstances>
+            <fieldInstance>
+                <fieldInstanceProperties>
+                    <name>uiBehavior</name>
+                    <value>none</value>
+                </fieldInstanceProperties>
+                <fieldItem>Record.AccountId</fieldItem>
+                <identifier>RecordAccountIdField</identifier>
             </fieldInstance>
         </itemInstances>
         <name>Facet-e51b9339-5f60-4a09-a99f-6202f076a33d</name>
