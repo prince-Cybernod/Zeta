@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Entered_By__c</fullName>
+    <deleteConstraint>SetNull</deleteConstraint>
+    <description>Staff member who filled in the outreach sign-up sheet (FormAssembly &quot;Who is filling this in?&quot;). New &quot;Outreach – Sign Up Sheet&quot; leads are assigned to this user by the flow Lead (After Save) Set Owner From Entered By.</description>
+    <inlineHelpText>Staff member who entered this lead on the outreach sign-up sheet.</inlineHelpText>
+    <label>Entered By</label>
+    <referenceTo>User</referenceTo>
+    <relationshipName>Leads_Entered</relationshipName>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <type>Lookup</type>
+</CustomField>
