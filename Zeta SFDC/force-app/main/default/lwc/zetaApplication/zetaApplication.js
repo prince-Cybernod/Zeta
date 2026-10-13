@@ -365,11 +365,15 @@ export default class ZetaApplication extends LightningElement {
     return this._resolvedRecordId || this.recordId;
   }
 
+  get isInternalPage() {
+    return INTERNAL_PAGE_TYPES.has(this._pageRefType);
+  }
+
   // Staff reach the wizard from a Lightning tab or record page, where the
   // portal URL is a dead end. Anything we can't positively identify as
   // internal keeps the portal behaviour.
   get exitUrl() {
-    if (!INTERNAL_PAGE_TYPES.has(this._pageRefType)) {
+    if (!this.isInternalPage) {
       return PORTAL_EXIT_URL;
     }
     return this.resolvedRecordId

@@ -404,6 +404,7 @@ private class ZetaApplicationControllerTest {
   @IsTest
   static void submitApplication_notSigned_throws() {
     DATABASE_REPO_MOCK.reset();
+    ZetaApplicationController.runningUserType = 'PowerCustomerSuccess';
 
     Id appId = SObjectIds.generateFakeId(Schema.IndividualApplication.SObjectType);
 
