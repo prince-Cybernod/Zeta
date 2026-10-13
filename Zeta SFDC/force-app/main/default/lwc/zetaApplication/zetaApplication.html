@@ -226,7 +226,10 @@
               onnavigatestep={handleNavigateStep}
             ></c-confirmation-review>
             <template lwc:if={showStandardFooter}>
-              <c-e-signature record-id={resolvedRecordId}></c-e-signature>
+              <c-e-signature
+                record-id={resolvedRecordId}
+                optional={isInternalPage}
+              ></c-e-signature>
             </template>
             <template lwc:if={submitError}>
               <div class="submit-error" role="alert">{submitError}</div>

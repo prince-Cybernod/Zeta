@@ -3,6 +3,8 @@ public without sharing class ZetaApplicationController {
   private static DatabaseRepo databaseRepo = new SystemModeDatabaseRepo();
   @TestVisible
   private static EventBusRepo eventBusRepo = new EventBusRepoImpl();
+  @TestVisible
+  private static String runningUserType = UserInfo.getUserType();
   @AuraEnabled(cacheable=true)
   public static Map<String, Object> getWizardState(Id applicationId) {
     Preconditions.checkNotNull(applicationId, 'Application Id is required');
@@ -123,8 +125,9 @@ public without sharing class ZetaApplicationController {
       apps[0].AppliedDate == null,
       'Application has already been submitted'
     );
+    // Only portal users must sign; staff may submit unsigned.
     Preconditions.checkArgument(
-      String.isNotBlank(apps[0].Signature_Name__c),
+      String.isNotBlank(apps[0].Signature_Name__c) || runningUserType == 'Standard',
       'Application must be signed before submission'
     );
     Preconditions.checkArgument(
