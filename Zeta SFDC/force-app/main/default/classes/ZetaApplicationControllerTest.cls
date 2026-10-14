@@ -399,6 +399,8 @@ private class ZetaApplicationControllerTest {
       offsetMs < 60000L,
       'AppliedDate must be stamped within 60s of submission moment; offsetMs=' + offsetMs
     );
+    Assert.areEqual(UserInfo.getUserId(), (Id) updated[0].get('Converting_Team_Member__c'));
+    Assert.areEqual('Team-Assisted Conversion', (String) updated[0].get('Conversion_Type__c'));
   }
 
   @IsTest
