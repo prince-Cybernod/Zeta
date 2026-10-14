@@ -113,7 +113,8 @@ public without sharing class ZetaApplicationController {
       'SELECT Status, Signature_Name__c, AppliedDate,' +
       ' AccountId, Application_Timeline__c,' +
       ' Employee_Priority__c, Employee_Priority_Guardian__c,' +
-      ' Primary_Guardian__c, Secondary_Guardian__c' +
+      ' Primary_Guardian__c, Secondary_Guardian__c,' +
+      ' Converting_Team_Member__c' +
       ' FROM IndividualApplication' +
       ' WHERE Id = :applicationId LIMIT 1';
     List<IndividualApplication> apps = (List<IndividualApplication>) databaseRepo.queryWithBinds(
@@ -145,6 +146,11 @@ public without sharing class ZetaApplicationController {
     fields.put('Status', 'Applied');
     fields.put('AppliedDate', Datetime.now());
     fields.put('Last_Completed_Step__c', 5);
+    // Staff who submit get credit unless someone is already credited.
+    if (runningUserType == 'Standard' && apps[0].Converting_Team_Member__c == null) {
+      fields.put('Converting_Team_Member__c', UserInfo.getUserId());
+      fields.put('Conversion_Type__c', 'Team-Assisted Conversion');
+    }
 
     IndividualApplication app = (IndividualApplication) JSON.deserialize(
       JSON.serialize(fields),
