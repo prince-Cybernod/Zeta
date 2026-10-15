@@ -260,6 +260,7 @@ private class ApplicationQuestionControllerTest {
   private static void saveFormAnswers_blankRequiredAnswer_throwsException() {
     // Guardian_2_Email is configured as Is_Required__c = true. The required-check
     // runs before DML, so no real IndividualApplication record is needed.
+    ApplicationQuestionController.runningUserType = 'PowerCustomerSuccess';
     Id fakeAppId =
       IndividualApplication.SObjectType.getDescribe().getKeyPrefix() + '000000000000AAA';
     AssertThrows.Throwing throwing = AssertThrows.with(
@@ -280,6 +281,7 @@ private class ApplicationQuestionControllerTest {
   @IsTest
   private static void saveFormAnswers_nullRequiredAnswer_throwsException() {
     // JSON null is treated as blank by the required-check.
+    ApplicationQuestionController.runningUserType = 'PowerCustomerSuccess';
     Id fakeAppId =
       IndividualApplication.SObjectType.getDescribe().getKeyPrefix() + '000000000000AAA';
     AssertThrows.Throwing throwing = AssertThrows.with(
@@ -301,6 +303,7 @@ private class ApplicationQuestionControllerTest {
   private static void saveFormAnswers_multipleBlankRequired_listsAllMissing() {
     // Two required questions blank → message accumulates both. Also exercises
     // Display_Label__c resolution (proves the SOQL extension picks it up).
+    ApplicationQuestionController.runningUserType = 'PowerCustomerSuccess';
     Id fakeAppId =
       IndividualApplication.SObjectType.getDescribe().getKeyPrefix() + '000000000000AAA';
 
@@ -314,6 +317,40 @@ private class ApplicationQuestionControllerTest {
       Assert.isTrue(
         e.getMessage().containsIgnoreCase('Email') && e.getMessage().containsIgnoreCase('Phone'),
         'Message should name both missing required fields: ' + e.getMessage()
+      );
+    }
+  }
+
+  @IsTest
+  private static void guardian2Email_staffUser_notRequired() {
+    ApplicationQuestionController.runningUserType = 'Standard';
+    AppQuestionSection staffSection = findSection(
+      ApplicationQuestionController.getFormStructure(PAGE_DEV_NAME, null, null).sections,
+      'Guardian_2'
+    );
+    Assert.isFalse(findQuestion(staffSection.questions, 'Guardian_2_Email').isRequired);
+
+    ApplicationQuestionController.runningUserType = 'PowerCustomerSuccess';
+    AppQuestionSection portalSection = findSection(
+      ApplicationQuestionController.getFormStructure(PAGE_DEV_NAME, null, null).sections,
+      'Guardian_2'
+    );
+    Assert.isTrue(findQuestion(portalSection.questions, 'Guardian_2_Email').isRequired);
+
+    // Staff saves skip the email check; the phone is still required.
+    ApplicationQuestionController.runningUserType = 'Standard';
+    Id fakeAppId =
+      IndividualApplication.SObjectType.getDescribe().getKeyPrefix() + '000000000000AAA';
+    try {
+      ApplicationQuestionController.saveFormAnswers(
+        fakeAppId,
+        '{"Guardian_2_Email":"","Guardian_2_Phone":""}'
+      );
+      Assert.fail('Expected IllegalArgumentException for the blank phone');
+    } catch (IllegalArgumentException e) {
+      Assert.isFalse(
+        e.getMessage().containsIgnoreCase('Email'),
+        'Email should not be required for staff: ' + e.getMessage()
       );
     }
   }
