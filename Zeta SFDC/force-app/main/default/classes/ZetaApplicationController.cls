@@ -141,6 +141,19 @@ public without sharing class ZetaApplicationController {
       throw new AuraHandledException(Label.AppUI_DuplicateApplication);
     }
 
+    String aiQuery =
+      'SELECT Id, School_Rank__c FROM AcademicInterest' +
+      ' WHERE IndividualApplicationId = :applicationId AND Status = :draftStatus';
+    List<AcademicInterest> draftInterests = (List<AcademicInterest>) databaseRepo.queryWithBinds(
+      aiQuery,
+      new Map<String, Object>{ 'applicationId' => applicationId, 'draftStatus' => 'Draft' }
+    );
+    for (AcademicInterest ai : draftInterests) {
+      if (draftInterests.size() > 1 && ai.School_Rank__c == null) {
+        throw new AuraHandledException(Label.AppUI_ValidateAssignRanks);
+      }
+    }
+
     Map<String, Object> fields = new Map<String, Object>();
     fields.put('Id', applicationId);
     fields.put('Status', 'Applied');
@@ -179,13 +192,6 @@ public without sharing class ZetaApplicationController {
       }
     }
 
-    String aiQuery =
-      'SELECT Id, School_Rank__c FROM AcademicInterest' +
-      ' WHERE IndividualApplicationId = :applicationId AND Status = :draftStatus';
-    List<AcademicInterest> draftInterests = (List<AcademicInterest>) databaseRepo.queryWithBinds(
-      aiQuery,
-      new Map<String, Object>{ 'applicationId' => applicationId, 'draftStatus' => 'Draft' }
-    );
     if (!draftInterests.isEmpty()) {
       // A lone draft school can reach submission unranked; the ranking step owns two or more.
       Boolean rankLoneSchool =
