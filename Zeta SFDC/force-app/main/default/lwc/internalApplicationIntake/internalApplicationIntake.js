@@ -456,8 +456,15 @@ export default class InternalApplicationIntake extends LightningElement {
 
   // The wizard's Return Home button dispatches this. In the parent portal the
   // dashboard hosts the wizard and handles it; here the intake screen is home.
+  // Everything but the timeline resets so the next family starts fresh.
   handleReturnToIntake() {
     this.applicationId = null;
+    this.guardianMode = 'existing';
+    this.guardianSearchTerm = '';
+    this.guardianResults = [];
+    this.selectedGuardian = null;
+    this.newGuardian = {};
+    this.students = [];
     this.selectedStudentId = null;
     this.addingStudent = false;
     this.newStudent = {};
