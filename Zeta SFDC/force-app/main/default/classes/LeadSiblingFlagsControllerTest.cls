@@ -176,9 +176,9 @@ private class LeadSiblingFlagsControllerTest {
       )
     };
     AcademicTerm term = new AcademicTerm(
-      Name = 'Current term',
-      StartDate = Date.today().addDays(-1),
-      EndDate = Date.today().addDays(30)
+      Name = 'Past term',
+      StartDate = Date.today().addDays(-60),
+      EndDate = Date.today().addDays(-30)
     );
     insert term;
     enrolled = [
@@ -210,7 +210,7 @@ private class LeadSiblingFlagsControllerTest {
     Assert.areEqual(
       new Set<Id>{ enrolled.Id },
       new Map<Id, Account>((List<Account>) result.get('enrolled')).keySet(),
-      'An active enrollment takes precedence over an application, including secondary guardians.'
+      'An enrollment on any term takes precedence over an application, including secondary guardians.'
     );
   }
 

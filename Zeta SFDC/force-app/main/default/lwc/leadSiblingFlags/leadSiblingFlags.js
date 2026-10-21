@@ -41,11 +41,11 @@ const GROUPS = [
     key: "applicants",
     icon: "standard:account",
     title: "Possible Siblings or Duplicate Applicants",
-    help: "These leads may have applied siblings or duplicates. Check for duplicates before converting a lead to an applicant."
+    help: "The following applicants may be duplicates or siblings of your lead. Carefully check for duplicates before converting a lead to an applicant."
   },
   {
     key: "enrolled",
-    icon: "standard:contact",
+    icon: "standard:entitlement",
     title: "Possible Siblings or Duplicate Enrolled",
     help: "These leads may have enrolled siblings or duplicates. Check for duplicates before converting a lead to an applicant."
   }

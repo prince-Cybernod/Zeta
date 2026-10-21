@@ -298,7 +298,7 @@ public with sharing class LeadSiblingFlagsController {
         (
           SELECT Id, EnrollmentStatus
           FROM AcademicTermEnrollments
-          WHERE Active__c = TRUE
+          WHERE EnrollmentStatus NOT IN ('Declined/Withdrawn', 'Rescinded')
           ORDER BY CreatedDate DESC
           LIMIT 1
         )
