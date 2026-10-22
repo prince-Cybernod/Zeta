@@ -336,10 +336,11 @@ dialog::backdrop {
 }
 
 /* Floats like a platform toast, but stays in our DOM so the action can open the
-   modal in place. Frosted-glass treatment with a slow shine sweep. */
+   modal in place. Frosted-glass treatment with a slow shine sweep. Sits just
+   under the app's tab bar, which ends 90px from the top. */
 .sibling-toast {
   position: fixed;
-  top: 9rem;
+  top: 6rem;
   left: 50%;
   z-index: 9001;
   width: max-content;
@@ -458,12 +459,7 @@ dialog::backdrop {
 
 @media (max-width: 48em) {
   .sibling-toast {
-    top: 8rem;
     width: calc(100vw - 1rem);
-  }
-
-  .genie-stage {
-    top: 8rem;
   }
 }
 
@@ -732,7 +728,7 @@ dialog::backdrop {
    on each other whatever containing block a Lightning ancestor establishes. */
 .genie-stage {
   position: fixed;
-  top: 9rem;
+  top: 6rem;
   left: 50%;
   z-index: 9002;
   width: var(--genie-w, 0);
