@@ -68,8 +68,16 @@ export function measureToast(toast) {
   const height = toast.offsetHeight;
   if (!width || !height || !rect.width) return undefined;
   const scale = rect.width / width;
-  const copy = inset(rect, toast.querySelector(".slds-notify__content"), scale);
-  const glyph = inset(rect, toast.querySelector("lightning-icon"), scale);
+  const copy = inset(
+    rect,
+    toast.querySelector(".toast-copy, .slds-notify__content"),
+    scale
+  );
+  const glyph = inset(
+    rect,
+    toast.querySelector(".toast-glyph, lightning-icon"),
+    scale
+  );
   if (!copy || !glyph) return undefined;
   return {
     width,

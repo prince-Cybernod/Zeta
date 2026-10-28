@@ -1,735 +1,617 @@
-.hero-banner {
-  min-height: 6rem;
-  overflow: hidden;
-  padding: 1.125rem 1.25rem;
-  border: 1px solid #d8dde6;
-  border-left: 0.25rem solid #1b96ff;
-  border-radius: 0.75rem;
-  background: linear-gradient(125deg, #fff 0%, #f5f9ff 58%, #f3f1ff 100%);
-  background-size: 180% 180%;
-  box-shadow: 0 0.125rem 0.5rem rgb(24 24 24 / 8%);
-  animation:
-    hero-enter 360ms ease-out both,
-    hero-gradient 8s ease-in-out 360ms infinite;
+/*
+ * Liquid Glass over colour. Glass only reads as glass when there is something
+ * behind it, and a record page is mostly white, so the glass here floats over
+ * colour it brings with it: the popup opens over a soft colour wallpaper, the
+ * banner's pane sits over colour fields, the toast's clear edges carry a tint.
+ * The glass catches light on thick rims and wherever the pointer is, and flexes
+ * when pressed. The records stay on solid, clearly separated cards - accent bar,
+ * tinted header band, bold column headings - so they read as easily as before.
+ * The popup genies out of this banner and back into it, the toast genies into
+ * it, and the toast keeps the gentle pump and shine of the version in Production.
+ */
+:host {
+  --ink: #1d1d1f;
+  --ink-secondary: #4f4f55;
+  --ink-tertiary: #6e6e73;
+  --surface: #fff;
+  --fill: rgb(120 120 128 / 12%);
+  --card-edge: #d8dde6;
+  --card-rule: #e8eaf0;
+  --shadow-card: 0 1px 2px rgb(0 0 0 / 5%), 0 8px 20px -12px rgb(0 0 0 / 22%);
+  /* Light entering the glass along the top-left rim and leaving bottom-right,
+     plus the bright band of the glass's own thickness just inside the edge. */
+  --glass-rim:
+    inset 0 1.5px 0 rgb(255 255 255 / 95%),
+    inset 1.5px 0 0 rgb(255 255 255 / 60%),
+    inset -1px -1px 0 rgb(255 255 255 / 40%),
+    inset 0 0 0 0.5px rgb(255 255 255 / 55%),
+    inset 0 0 18px rgb(255 255 255 / 35%);
+  --glass-sheen: linear-gradient(
+    135deg,
+    rgb(255 255 255 / 55%) 0%,
+    rgb(255 255 255 / 0%) 32%,
+    rgb(255 255 255 / 0%) 68%,
+    rgb(255 255 255 / 25%) 100%
+  );
+  --glass-shadow:
+    0 0 0 0.5px rgb(0 0 0 / 10%), 0 2px 6px rgb(0 0 0 / 8%),
+    0 18px 40px -16px rgb(0 0 0 / 35%);
+  /* The org's theme colours, so the panel matches the page's buttons and links. */
+  --brand: var(
+    --slds-g-color-accent-container-1,
+    var(--lwc-brandAccessible, #0071e3)
+  );
+  /* The same colour as the page's own links. */
+  --brand-ink: var(--slds-s-link-color, var(--lwc-colorTextLink, #0066cc));
+  --brand-soft: color-mix(in srgb, var(--brand) 10%, transparent);
+  --brand-selected: color-mix(in srgb, var(--brand) 8%, transparent);
+  --brand-selected-hover: color-mix(in srgb, var(--brand) 12%, transparent);
+  /* Salesforce's own colour for each kind of record - the colour of its icon on
+     Lead and Account pages - so the panel matches them. Enrolled keeps the
+     previous design's purple so it stands apart from applicants. */
+  --lead-colour: #06a59a;
+  --applicant-colour: #5867e8;
+  --enrolled-colour: #9050e9;
+  --radius-card: 0.875rem;
+  --radius-sheet: 1.75rem;
+  /* Close and dismiss wait for animationend, so these must always be valid:
+     cubic-bezier stand-ins first, real springs where linear() is supported. */
+  --spring: cubic-bezier(0.25, 1, 0.5, 1);
+  --spring-bouncy: cubic-bezier(0.34, 1.4, 0.64, 1);
 }
 
-.hero-icon {
-  filter: drop-shadow(0 0.25rem 0.35rem rgb(27 150 255 / 20%));
-  animation: hero-icon-float 3s ease-in-out infinite;
+@supports (animation-timing-function: linear(0, 1)) {
+  :host {
+    /* Critically damped: damping 1, response 0.35s. */
+    --spring: linear(
+      0,
+      0.075,
+      0.227,
+      0.39,
+      0.536,
+      0.656,
+      0.75,
+      0.821,
+      0.873,
+      0.911,
+      0.938,
+      0.957,
+      0.971,
+      0.98,
+      0.986,
+      0.991,
+      0.994,
+      0.996,
+      0.997,
+      0.998,
+      1
+    );
+    /* Under-damped for pops and presses: damping 0.6, response 0.45s. */
+    --spring-bouncy: linear(
+      0,
+      0.053,
+      0.181,
+      0.346,
+      0.519,
+      0.68,
+      0.817,
+      0.926,
+      1.005,
+      1.056,
+      1.084,
+      1.094,
+      1.092,
+      1.081,
+      1.066,
+      1.05,
+      1.034,
+      1.02,
+      1.009,
+      1.001,
+      0.996,
+      0.993,
+      0.991,
+      0.991,
+      1
+    );
+  }
+}
+
+/* Pointer light. Declared on each piece of glass so it follows that piece's own
+   --glare-x/--glare-y (set by trackGlare); --glare turns it on under a hover.
+   Each piece resets --glare, so glass inside hovered glass stays unlit. */
+.toast-card,
+.hero-banner,
+.glass-button {
+  --glare: 0;
+  --glass-glare: radial-gradient(
+    14rem circle at var(--glare-x, 25%) var(--glare-y, -40%),
+    rgb(255 255 255 / calc(var(--glare, 0) * 70%)),
+    transparent 60%
+  );
+}
+
+/* Shared pieces */
+
+/* App-icon tile in tinted glass, with a lens highlight at the top. */
+.app-glyph {
+  position: relative;
+  display: inline-grid;
+  flex: none;
+  place-items: center;
+  overflow: hidden;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 0.75rem;
+  background:
+    radial-gradient(
+      120% 80% at 30% 0%,
+      rgb(255 255 255 / 50%),
+      transparent 55%
+    ),
+    linear-gradient(
+      180deg,
+      color-mix(in srgb, var(--brand) 70%, white),
+      var(--brand)
+    );
+  box-shadow:
+    inset 0 1.5px 0 rgb(255 255 255 / 60%),
+    inset -1px -1px 0 rgb(255 255 255 / 25%),
+    0 1px 2px rgb(0 0 0 / 12%),
+    0 8px 18px -8px color-mix(in srgb, var(--brand) 75%, transparent);
+  --slds-c-icon-color-background: transparent;
+  --slds-c-icon-color-foreground: #fff;
+  transition: transform 500ms var(--spring-bouncy);
+}
+
+/* One sweep of light across the glass. */
+.app-glyph::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    105deg,
+    transparent 30%,
+    rgb(255 255 255 / 70%) 48%,
+    transparent 64%
+  );
+  transform: translateX(-130%);
+  pointer-events: none;
+}
+
+.hero-glyph,
+.toast-glyph {
+  animation: sibling-icon-pop 600ms var(--spring-bouncy) 120ms backwards;
+}
+
+/* The figure inside each glass tile floats gently, while the tile itself stays
+   free to tilt toward the pointer. */
+.app-glyph lightning-icon {
+  display: inline-flex;
+  animation: sibling-float 3.2s ease-in-out 1s infinite;
+}
+
+.hero-glyph::after,
+.toast-glyph::after {
+  animation: sibling-glint 900ms ease-in-out 520ms;
+}
+
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.375rem;
+  margin: 0.5rem 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+/* Small glass capsules; each rises in a beat after the one before. */
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.375rem;
+  padding: 0 0.625rem 0 0.5rem;
+  border-radius: 999px;
+  background: rgb(255 255 255 / 55%);
+  box-shadow:
+    inset 0 1px 0 rgb(255 255 255 / 95%),
+    inset -1px -1px 0 rgb(255 255 255 / 35%),
+    0 0 0 0.5px rgb(0 0 0 / 8%),
+    0 2px 6px -2px rgb(0 0 0 / 12%);
+  color: var(--ink);
+  font-size: 0.75rem;
+  font-weight: 500;
+  line-height: 1.5rem;
+  font-variant-numeric: tabular-nums;
+  animation: sibling-rise 500ms var(--spring) backwards;
+  animation-delay: var(--chip-delay, 0ms);
+}
+
+.chip:nth-child(2) {
+  animation-delay: calc(var(--chip-delay, 0ms) + 60ms);
+}
+
+.chip:nth-child(3) {
+  animation-delay: calc(var(--chip-delay, 0ms) + 120ms);
+}
+
+.chip::before {
+  content: "";
+  width: 0.5rem;
+  height: 0.5rem;
+  border-radius: 50%;
+  background: var(--chip-colour, var(--lead-colour));
+  box-shadow: 0 0 6px var(--chip-colour, var(--lead-colour));
+}
+
+.chip[data-group="applicants"] {
+  --chip-colour: var(--applicant-colour);
+}
+
+.chip[data-group="enrolled"] {
+  --chip-colour: var(--enrolled-colour);
+}
+
+/* Glass buttons: clear for secondary actions, tinted for the main one. */
+.glass-button {
+  position: relative;
+  isolation: isolate;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.375rem;
+  min-height: 2.5rem;
+  padding: 0 1.375rem;
+  border: 0;
+  border-radius: 999px;
+  background: var(--glass-glare), var(--glass-sheen), rgb(255 255 255 / 34%);
+  -webkit-backdrop-filter: blur(10px) saturate(190%) brightness(1.06);
+  backdrop-filter: blur(10px) saturate(190%) brightness(1.06);
+  box-shadow:
+    var(--glass-rim),
+    0 0 0 0.5px rgb(0 0 0 / 12%),
+    0 6px 16px -6px rgb(0 0 0 / 28%);
+  color: var(--ink);
+  font-family: inherit;
+  font-size: 0.875rem;
+  font-weight: 600;
+  line-height: 1;
+  letter-spacing: -0.005em;
+  cursor: pointer;
+  transition:
+    transform 500ms var(--spring-bouncy),
+    opacity 200ms ease;
+}
+
+/* Tinted glass, a shade deeper than the theme so white text stays readable. */
+.glass-button_prominent {
+  background:
+    var(--glass-glare),
+    linear-gradient(180deg, rgb(255 255 255 / 26%), transparent 55%),
+    color-mix(
+      in srgb,
+      color-mix(in srgb, var(--brand) 88%, black) 92%,
+      transparent
+    );
+  box-shadow:
+    inset 0 1.5px 0 rgb(255 255 255 / 50%),
+    inset -1px -1px 0 rgb(255 255 255 / 18%),
+    inset 0 0 12px rgb(255 255 255 / 16%),
+    0 0 0 0.5px color-mix(in srgb, var(--brand) 60%, black),
+    0 8px 20px -8px color-mix(in srgb, var(--brand) 80%, transparent);
+  color: #fff;
+}
+
+.glass-button:disabled {
+  cursor: default;
+  opacity: 0.45;
+}
+
+.glass-button:focus {
+  outline: none;
+}
+
+.glass-button:focus-visible {
+  outline: 2px solid var(--brand);
+  outline-offset: 2px;
+}
+
+/* Banner: a pane of frosted glass over soft colour fields. */
+.hero-banner {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: center;
+  column-gap: 0.75rem;
+  min-height: 3.5rem;
+  padding: 0.875rem 0.625rem 0.875rem 1.125rem;
+  border-radius: 1.375rem;
+  background: linear-gradient(135deg, #e9eef8, #f5effb);
+  box-shadow: var(--glass-shadow);
+  color: var(--ink);
+}
+
+.hero-banner.has-matches {
+  align-items: start;
+  padding-top: 1.125rem;
+  padding-bottom: 1.125rem;
+}
+
+.hero-banner.has-matches::before {
+  content: "";
+  position: absolute;
+  inset: -20%;
+  z-index: -3;
+  background:
+    radial-gradient(
+      40% 52% at 20% 26%,
+      color-mix(in srgb, var(--brand) 40%, transparent),
+      transparent 78%
+    ),
+    radial-gradient(38% 50% at 82% 22%, rgb(0 122 255 / 30%), transparent 78%),
+    radial-gradient(40% 48% at 72% 84%, rgb(52 199 89 / 26%), transparent 78%),
+    radial-gradient(38% 48% at 26% 86%, rgb(255 149 0 / 26%), transparent 78%);
+  filter: blur(22px);
+  pointer-events: none;
+}
+
+/* The frosted glass over the colour fields. */
+.hero-banner::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+  border-radius: inherit;
+  background: rgb(255 255 255 / 45%);
+  -webkit-backdrop-filter: blur(24px) saturate(125%);
+  backdrop-filter: blur(24px) saturate(125%);
+  pointer-events: none;
+}
+
+/* Rim light, sheen and pointer light across the whole pane. */
+.glass-sheen {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  border-radius: inherit;
+  background: var(--glass-glare), var(--glass-sheen);
+  box-shadow: inset 0 1px 0 rgb(255 255 255 / 70%);
+  pointer-events: none;
+}
+
+.hero-content {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.875rem;
+  animation: sibling-fade-in 200ms ease both;
 }
 
 .hero-copy {
-  padding-right: 2rem;
+  min-width: 0;
+  --chip-delay: 180ms;
 }
 
 .banner-title {
-  font-size: 1rem;
+  margin: 0;
+  color: var(--ink);
   font-weight: 600;
-  line-height: 1.35;
-  color: #181818;
+  line-height: 1.3;
+  letter-spacing: -0.011em;
+  text-wrap: pretty;
 }
 
 .hero-action {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.25rem;
-  margin-top: 0.25rem;
-  padding: 0.25rem 0.65rem;
-  border-radius: 2rem;
-  background: rgb(1 118 211 / 8%);
-  color: #4d4a91;
-  font-weight: 700;
-  transition:
-    background 160ms ease,
-    box-shadow 160ms ease,
-    transform 160ms ease;
+  min-height: 2rem;
+  margin-top: 0.875rem;
+  padding: 0 0.875rem;
+  font-size: 0.8125rem;
 }
 
-.hero-action:hover,
-.hero-action:focus {
-  background: rgb(1 118 211 / 14%);
-  box-shadow: 0 0.125rem 0.35rem rgb(1 118 211 / 14%);
-  text-decoration: none;
-  transform: translateY(-0.0625rem);
-}
-
+/* The arrow nudges forward about once a second, faster still while the button
+   is pointed at or focused. */
 .hero-action-icon {
-  animation: hero-arrow-nudge 2.4s ease-in-out infinite;
-  transition: transform 160ms ease;
+  display: inline-flex;
+  --slds-c-icon-color-foreground-default: #fff;
+  animation: sibling-arrow-nudge 1.2s ease-in-out infinite;
 }
 
-.hero-action:hover .hero-action-icon,
 .hero-action:focus .hero-action-icon {
   animation-duration: 700ms;
 }
 
-@keyframes hero-enter {
-  from {
-    opacity: 0;
-    transform: translateY(0.375rem);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-@keyframes hero-icon-float {
-  0%,
-  100% {
-    transform: translateY(0);
-  }
-  50% {
-    transform: translateY(-0.1875rem);
-  }
-}
-
-@keyframes hero-gradient {
-  0%,
-  100% {
-    background-position: 0% 50%;
-  }
-  50% {
-    background-position: 100% 50%;
-  }
-}
-
-@keyframes hero-arrow-nudge {
-  0%,
-  75%,
-  100% {
-    transform: translateX(0);
-  }
-  88% {
-    transform: translateX(0.1875rem);
-  }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .hero-banner,
-  .hero-icon,
-  .hero-action-icon,
-  .modal-hero,
-  .modal-title-icon,
-  .modal-progress,
-  .record-section,
-  .record-section-icon-pulse {
-    animation: none;
-  }
-
-  .hero-action,
-  .hero-action-icon,
-  .record-section,
-  .record-section-toggle,
-  .record-section-icon {
-    transition: none;
-  }
-}
-
-dialog {
-  width: 92vw;
-  max-width: 90rem;
-  max-height: 90vh;
-  padding: 0;
-  border: 0;
-  border-radius: 0.75rem;
-}
-
-dialog.siblings-dialog {
-  overflow: hidden;
-  box-shadow: 0 1rem 3rem rgb(24 24 24 / 22%);
-  transform-origin: center center;
-  will-change: transform, opacity;
-  animation: dialog-genie-in 560ms linear backwards;
-}
-
-dialog::backdrop {
-  background: rgb(0 0 0 / 50%);
-}
-
-.modal-hero {
-  padding: 1.125rem 1.5rem;
-  border-bottom: 1px solid #d8dde6;
-  background: linear-gradient(125deg, #fff 0%, #f5f9ff 58%, #f3f1ff 100%);
-  background-size: 180% 180%;
-  animation: hero-gradient 8s ease-in-out infinite;
-}
-
-.modal-title {
+.hero-empty {
   display: flex;
   align-items: center;
-  justify-content: center;
-  gap: 0.75rem;
+  gap: 0.5rem;
+  margin: 0;
+  color: var(--ink-secondary);
+  font-size: 0.8125rem;
+  line-height: 1.4;
 }
 
-.modal-title-icon {
-  filter: drop-shadow(0 0.25rem 0.35rem rgb(27 150 255 / 20%));
-  animation: hero-icon-float 3.2s ease-in-out infinite;
-}
-
-.modal-heading {
-  color: #181818;
-  font-weight: 600;
-}
-
-.modal-heading:focus {
-  outline: none;
-}
-
-.modal-heading:focus-visible {
-  border-radius: 0.25rem;
-  outline: 2px solid #0b5cab;
-  outline-offset: 0.25rem;
-}
-
-.modal-body {
-  max-height: 65vh;
-  overflow: auto;
-  background: linear-gradient(180deg, #fbfdff 0%, #fff 45%);
-}
-
-.modal-progress {
-  margin-bottom: 1rem;
-  padding: 0.75rem 1.25rem 0.5rem;
-  border: 1px solid #e5e5ef;
-  border-radius: 0.75rem;
-  background: rgb(255 255 255 / 88%);
-  box-shadow: 0 0.125rem 0.4rem rgb(24 24 24 / 6%);
-  animation: section-enter 360ms ease-out both;
-}
-
-.record-section {
-  overflow: hidden;
-  border: 1px solid #d8dde6;
-  border-left: 0.25rem solid #1b96ff;
-  border-radius: 0.75rem;
-  box-shadow: 0 0.125rem 0.45rem rgb(24 24 24 / 7%);
-  animation: section-enter 420ms ease-out both;
-  transition:
-    box-shadow 160ms ease,
-    transform 160ms ease;
-}
-
-.record-section[data-group="applicants"] {
-  border-left-color: #5867e8;
-}
-
-.record-section[data-group="enrolled"] {
-  border-left-color: #9050e9;
-}
-
-.record-section:hover {
-  box-shadow: 0 0.35rem 0.9rem rgb(24 24 24 / 10%);
-  transform: translateY(-0.0625rem);
-}
-
-.record-section-header {
-  background: linear-gradient(90deg, #f7f9fc, #f4f2ff);
-}
-
-.section-help {
-  color: #625c7a;
-}
-
-.current-lead-badge {
-  background-color: #fff3bf;
-  color: #665218;
-}
-
-.record-section-toggle {
-  transition: background 160ms ease;
-}
-
-.record-section-toggle:hover,
-.record-section-toggle:focus-visible {
-  background: rgb(1 118 211 / 7%);
-}
-
-.record-section-icon {
-  filter: drop-shadow(0 0.125rem 0.2rem rgb(24 24 24 / 12%));
-  transition: transform 160ms ease;
-}
-
-.record-section-icon-pulse {
+.hero-empty-icon {
   display: inline-flex;
-  animation: section-icon-pulse 2.3s ease-in-out infinite;
+  --slds-c-icon-color-foreground-default: #248a3d;
+  animation: sibling-icon-pop 600ms var(--spring-bouncy) backwards;
 }
 
-.record-section[data-group="applicants"] .record-section-icon-pulse {
-  animation-delay: 0.3s;
+.hero-error {
+  margin: 0;
+  color: #c4121c;
+  font-size: 0.8125rem;
+  line-height: 1.4;
 }
 
-.record-section[data-group="enrolled"] .record-section-icon-pulse {
-  animation-delay: 0.6s;
-}
+/* Toast */
 
-.record-section-toggle:hover .record-section-icon,
-.record-section-toggle:focus-visible .record-section-icon {
-  transform: scale(1.06);
-}
-
-.record-table {
-  width: 100%;
-  min-width: 60rem;
-  table-layout: fixed;
-}
-
-.name-column {
-  width: 26%;
-}
-
-.phone-column {
-  width: 16%;
-}
-
-.email-column {
-  width: 30%;
-}
-
-.guardian-column,
-.status-column {
-  width: 14%;
-}
-
-.record-table th,
-.record-table td {
-  white-space: normal;
-  overflow-wrap: anywhere;
-}
-
-.lead-selection {
-  display: inline-block;
-  margin-right: 0.5rem;
-  vertical-align: middle;
-}
-
-.record-table thead {
-  background: #f7f9fc;
-}
-
-.modal-footer {
-  border-top: 1px solid #d8dde6;
-  background: linear-gradient(90deg, #fff, #f5f8ff);
-}
-
-@keyframes section-enter {
-  from {
-    opacity: 0;
-    transform: translateY(0.4rem);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-@keyframes section-icon-pulse {
-  0%,
-  100% {
-    filter: drop-shadow(0 0.125rem 0.25rem rgb(27 150 255 / 18%));
-    transform: scale(1);
-  }
-  50% {
-    filter: drop-shadow(0 0.35rem 0.8rem rgb(88 103 232 / 52%));
-    transform: scale(1.09);
-  }
-}
-
-/* Floats like a platform toast, but stays in our DOM so the action can open the
-   modal in place. Frosted-glass treatment with a slow shine sweep. */
+/* A glass notification. It floats like a platform toast but stays in our DOM
+   so its action can open the popup in place, at the same spot as the version
+   live in Production. */
 .sibling-toast {
   position: fixed;
   top: 9rem;
   left: 50%;
   z-index: 9001;
   width: max-content;
-  max-width: calc(100vw - 2rem);
+  max-width: min(30rem, calc(100vw - 2rem));
   transform: translateX(-50%);
+  /* Lands, then keeps the gentle pump of the version in Production. */
   animation:
-    toast-enter 420ms cubic-bezier(0.22, 1, 0.36, 1),
-    toast-pump 3.6s ease-in-out 420ms infinite;
+    sibling-toast-in 600ms var(--spring-bouncy) both,
+    sibling-toast-pump 3.6s ease-in-out 600ms infinite;
 }
 
-.sibling-toast .slds-notify_toast {
+/* Fallback when the genie cannot be staged: shrink into the banner instead. */
+.sibling-toast.is-minimising {
+  pointer-events: none;
+  animation: sibling-toast-out 360ms var(--spring) forwards;
+}
+
+.toast-card {
   position: relative;
   isolation: isolate;
-  overflow: hidden;
-  padding: 0.85rem 1rem;
-  border: 1px solid rgb(255 255 255 / 72%);
-  border-radius: 1.25rem;
-  background: linear-gradient(
-    135deg,
-    rgb(255 255 255 / 74%) 0%,
-    rgb(243 241 255 / 62%) 55%,
-    rgb(232 238 255 / 58%) 100%
-  );
-  backdrop-filter: blur(22px) saturate(185%);
-  -webkit-backdrop-filter: blur(22px) saturate(185%);
-  box-shadow:
-    inset 0 1px 0 0 rgb(255 255 255 / 85%),
-    inset 0 -1px 0 0 rgb(255 255 255 / 35%),
-    0 10px 28px -8px rgb(88 103 232 / 42%),
-    0 2px 6px rgb(24 24 24 / 10%);
-  color: #181818;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.875rem 2.875rem 0.875rem 0.875rem;
+  border-radius: 1.5rem;
+  box-shadow: var(--glass-shadow);
+  color: var(--ink);
 }
 
-/* The travelling highlight. Sits above the glass, below the text. */
-.sibling-toast .slds-notify_toast::after {
+/* The clear body: the page shows through, softened and richer in colour, with
+   a blue and a violet cast at the ends where the glass is thickest. */
+.toast-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -3;
+  border-radius: inherit;
+  background:
+    var(--glass-sheen),
+    radial-gradient(55% 140% at 0% 50%, rgb(0 122 255 / 26%), transparent 70%),
+    radial-gradient(
+      55% 140% at 100% 50%,
+      rgb(175 82 222 / 24%),
+      transparent 70%
+    ),
+    rgb(255 255 255 / 16%);
+  -webkit-backdrop-filter: blur(6px) saturate(200%) brightness(1.06);
+  backdrop-filter: blur(6px) saturate(200%) brightness(1.06);
+  box-shadow: var(--glass-rim);
+}
+
+/* A frosted centre under the words, inset so the thick edge stays clear. It
+   materialises - gathering its blur as it fades in, as the toast lands. */
+.toast-card::after {
+  content: "";
+  position: absolute;
+  inset: 0.375rem;
+  z-index: -2;
+  border-radius: 1.125rem;
+  background: var(--glass-glare), rgb(255 255 255 / 56%);
+  -webkit-backdrop-filter: blur(18px) saturate(180%);
+  backdrop-filter: blur(18px) saturate(180%);
+  box-shadow:
+    inset 0 1px 0 rgb(255 255 255 / 70%),
+    0 0 0 0.5px rgb(255 255 255 / 45%);
+  animation: sibling-materialise 600ms var(--spring) both;
+}
+
+/* A band of light sweeping across the glass every few seconds, as in the
+   version in Production. It sits between the glass layers and the words. */
+.toast-shine {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  overflow: hidden;
+  border-radius: inherit;
+  pointer-events: none;
+}
+
+.toast-shine::before {
   content: "";
   position: absolute;
   inset: -20%;
-  z-index: 1;
-  pointer-events: none;
   background: linear-gradient(
     105deg,
     transparent 38%,
-    rgb(255 255 255 / 72%) 50%,
+    rgb(255 255 255 / 65%) 50%,
     transparent 62%
   );
   transform: translateX(-130%);
-  animation: toast-shine 2.6s ease-in-out 600ms infinite;
+  animation: sibling-toast-shine 2.6s ease-in-out 600ms infinite;
 }
 
-.sibling-toast .slds-notify__content,
-.sibling-toast .slds-notify__close,
-.sibling-toast lightning-icon {
-  position: relative;
-  z-index: 2;
-}
-
-.sibling-toast .slds-notify__close {
-  position: absolute;
-  top: 0.4rem;
-  right: 0.4rem;
-  z-index: 3;
-}
-
-.sibling-toast .slds-notify__content {
-  padding-right: 1.5rem;
-}
-
-.sibling-toast .slds-notify__content h2 {
-  color: #181818;
-  font-weight: 700;
-}
-
-.sibling-toast .toast-action {
-  color: rgb(72 86 214);
-  font-weight: 600;
-  text-decoration: underline;
-}
-
-.sibling-toast .toast-action:hover,
-.sibling-toast .toast-action:focus {
-  color: rgb(52 66 194);
-  text-decoration: none;
-}
-
-@keyframes toast-enter {
-  from {
-    opacity: 0;
-    transform: translateX(-50%) translateY(-0.75rem) scale(0.96);
-  }
-  to {
-    opacity: 1;
-    transform: translateX(-50%) translateY(0) scale(1);
-  }
-}
-
-@keyframes toast-pump {
-  0%,
-  100% {
-    transform: translateX(-50%) scale(1);
-  }
-  50% {
-    transform: translateX(-50%) scale(1.022);
-  }
-}
-
-@keyframes toast-shine {
-  0%,
-  35% {
-    transform: translateX(-130%);
-  }
-  100% {
-    transform: translateX(130%);
-  }
-}
-
-@media (max-width: 48em) {
-  .sibling-toast {
-    top: 8rem;
-    width: calc(100vw - 1rem);
-  }
-
-  .genie-stage {
-    top: 8rem;
-  }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .sibling-toast,
-  .sibling-toast .slds-notify_toast::after {
-    animation: none;
-  }
-}
-
-/* Genie: the toast squeezes and drops away, macOS minimise style. */
-.sibling-toast.is-minimising {
-  pointer-events: none;
-  transform-origin: 50% 0%;
-  transform-style: preserve-3d;
-  backface-visibility: hidden;
-  will-change: transform, clip-path, opacity;
-  animation: toast-genie 700ms linear forwards;
-}
-
-/* Real genie: clip-path bends the outline into a curved funnel while the content
-   squeezes through it. A transform alone stays affine - straight lines stay
-   straight - so the curved neck has to come from the clip. Every step keeps the
-   same 12 vertices in the same order; that is what makes polygon interpolation
-   smooth rather than a jump. */
-@keyframes toast-genie {
-  0% {
-    opacity: 1;
-    transform: translateX(-50%) perspective(620px) translate(0, 0)
-      rotateX(-0deg) scaleX(1) scaleY(1);
-    clip-path: polygon(
-      0% 0%,
-      100% 0%,
-      100% 20%,
-      100% 40%,
-      100% 60%,
-      100% 80%,
-      91.92% 100%,
-      8.08% 100%,
-      0% 80%,
-      0% 60%,
-      0% 40%,
-      0% 20%
-    );
-  }
-  12% {
-    opacity: 1;
-    transform: translateX(-50%) perspective(620px)
-      translate(
-        calc(var(--toast-dx, 0px) * 0.0007),
-        calc(var(--toast-dy, 8rem) * 0.0286)
-      )
-      rotateX(-0.67deg) scaleX(0.997) scaleY(1.01);
-    clip-path: polygon(
-      0% 0%,
-      100% 0%,
-      100% 20%,
-      100% 40%,
-      100% 60%,
-      100% 80%,
-      90.93% 100%,
-      9.07% 100%,
-      0% 80%,
-      0% 60%,
-      0% 40%,
-      0% 20%
-    );
-  }
-  24% {
-    opacity: 1;
-    transform: translateX(-50%) perspective(620px)
-      translate(
-        calc(var(--toast-dx, 0px) * 0.0074),
-        calc(var(--toast-dy, 8rem) * 0.0913)
-      )
-      rotateX(-2.98deg) scaleX(0.981) scaleY(1.043);
-    clip-path: polygon(
-      0% 0%,
-      100% 0%,
-      100% 20%,
-      100% 40%,
-      100% 60%,
-      100% 80%,
-      87.56% 100%,
-      12.44% 100%,
-      0% 80%,
-      0% 60%,
-      0% 40%,
-      0% 20%
-    );
-  }
-  37% {
-    opacity: 1;
-    transform: translateX(-50%) perspective(620px)
-      translate(
-        calc(var(--toast-dx, 0px) * 0.0327),
-        calc(var(--toast-dy, 8rem) * 0.1887)
-      )
-      rotateX(-7.55deg) scaleX(0.938) scaleY(1.103);
-    clip-path: polygon(
-      0.08% 0%,
-      99.92% 0%,
-      99.92% 20%,
-      99.92% 40%,
-      99.92% 60%,
-      93.79% 80%,
-      80.86% 100%,
-      19.14% 100%,
-      6.21% 80%,
-      0.08% 60%,
-      0.08% 40%,
-      0.08% 20%
-    );
-  }
-  50% {
-    opacity: 1;
-    transform: translateX(-50%) perspective(620px)
-      translate(
-        calc(var(--toast-dx, 0px) * 0.0921),
-        calc(var(--toast-dy, 8rem) * 0.3127)
-      )
-      rotateX(-14.42deg) scaleX(0.86) scaleY(1.166);
-    clip-path: polygon(
-      0.55% 0%,
-      99.45% 0%,
-      99.45% 20%,
-      99.45% 40%,
-      96.66% 60%,
-      83.72% 80%,
-      70.79% 100%,
-      29.21% 100%,
-      16.28% 80%,
-      3.34% 60%,
-      0.55% 40%,
-      0.55% 20%
-    );
-  }
-  63% {
-    opacity: 1;
-    transform: translateX(-50%) perspective(620px)
-      translate(
-        calc(var(--toast-dx, 0px) * 0.204),
-        calc(var(--toast-dy, 8rem) * 0.4608)
-      )
-      rotateX(-23.7deg) scaleX(0.74) scaleY(1.174);
-    clip-path: polygon(
-      2.46% 0%,
-      97.54% 0%,
-      97.54% 20%,
-      95.99% 40%,
-      83.06% 60%,
-      70.13% 80%,
-      57.19% 100%,
-      42.81% 100%,
-      29.87% 80%,
-      16.94% 60%,
-      4.01% 40%,
-      2.46% 20%
-    );
-  }
-  76% {
-    opacity: 1;
-    transform: translateX(-50%) perspective(620px)
-      translate(
-        calc(var(--toast-dx, 0px) * 0.389),
-        calc(var(--toast-dy, 8rem) * 0.6311)
-      )
-      rotateX(-35.48deg) scaleX(0.57) scaleY(1.025);
-    clip-path: polygon(
-      8.26% 0%,
-      91.74% 0%,
-      91.68% 20%,
-      78.74% 40%,
-      65.81% 60%,
-      52.88% 80%,
-      51.5% 100%,
-      48.5% 100%,
-      47.12% 80%,
-      34.19% 60%,
-      21.26% 40%,
-      8.32% 20%
-    );
-  }
-  88% {
-    opacity: 1;
-    transform: translateX(-50%) perspective(620px)
-      translate(
-        calc(var(--toast-dx, 0px) * 0.6442),
-        calc(var(--toast-dy, 8rem) * 0.8071)
-      )
-      rotateX(-48.62deg) scaleX(0.362) scaleY(0.669);
-    clip-path: polygon(
-      21.27% 0%,
-      78.73% 0%,
-      72.42% 20%,
-      59.48% 40%,
-      51.5% 60%,
-      51.5% 80%,
-      51.5% 100%,
-      48.5% 100%,
-      48.5% 80%,
-      48.5% 60%,
-      40.52% 40%,
-      27.58% 20%
-    );
-  }
-  100% {
-    opacity: 0;
-    transform: translateX(-50%) perspective(620px)
-      translate(calc(var(--toast-dx, 0px) * 1), calc(var(--toast-dy, 8rem) * 1))
-      rotateX(-64deg) scaleX(0.1) scaleY(0.14);
-    clip-path: polygon(
-      48.5% 0%,
-      51.5% 0%,
-      51.5% 20%,
-      51.5% 40%,
-      51.5% 60%,
-      51.5% 80%,
-      51.5% 100%,
-      48.5% 100%,
-      48.5% 80%,
-      48.5% 60%,
-      48.5% 40%,
-      48.5% 20%
-    );
-  }
-}
-
-/* The slice stage took over: it is pixel-aligned over the toast and painted
-   above it, so the live toast only has to get out of the way. The clip-path
-   collapse above stays on as the fallback for when the stage cannot be built,
-   and both run for the same 700ms, so animationend lands at the same moment
-   either way. */
-.sibling-toast.is-minimising.has-genie {
-  will-change: opacity;
-  animation: toast-handoff 700ms linear forwards;
-}
-
-/* Only the fallback clips. A 22px backdrop-filter re-sampled under an animating
-   clip-path is costly everywhere and a known problem area in WebKit, so the
-   glass is swapped for its opaque equivalent for the duration. */
-.sibling-toast.is-minimising:not(.has-genie) .slds-notify_toast {
-  background: linear-gradient(135deg, #fdfdff 0%, #f7f5fd 55%, #eff3fd 100%);
-  backdrop-filter: blur(0px) saturate(100%);
-  -webkit-backdrop-filter: blur(0px) saturate(100%);
-}
-
-/* The shine sweep is infinite, so it never fires animationend, but it would
-   keep repainting the panel for the whole dismissal. */
-.sibling-toast.is-minimising .slds-notify_toast::after {
+/* The sweep stops once the toast is on its way into the banner. */
+.sibling-toast.is-minimising .toast-shine::before {
   animation: none;
 }
 
-@keyframes toast-handoff {
-  0%,
-  100% {
-    opacity: 0;
-  }
+.toast-glyph {
+  width: 2.25rem;
+  height: 2.25rem;
+  border-radius: 0.625rem;
 }
 
-/* The genie stage: the toast redrawn as a stack of thin horizontal slices, each
-   clipped to its own band of the panel and carrying its own translate and scale
-   at six shared stops. The side walls curve because each slice narrows by a
-   different amount, not because anything is being cropped. Placed with the same
-   rules as .sibling-toast rather than from viewport coordinates, so the two land
-   on each other whatever containing block a Lightning ancestor establishes. */
+.toast-copy {
+  min-width: 0;
+}
+
+/* Text on glass: darker and a little heavier than usual. */
+.toast-heading {
+  margin: 0;
+  color: var(--ink);
+  font-size: 0.9375rem;
+  font-weight: 600;
+  line-height: 1.3;
+  letter-spacing: -0.01em;
+}
+
+.toast-body {
+  margin: 0.125rem 0 0;
+  color: var(--ink-secondary);
+  font-size: 0.8125rem;
+  line-height: 1.4;
+}
+
+/* LWC trims the space before an inline element, so the gap is put back here. */
+.toast-action {
+  margin-left: 0.25em;
+  color: var(--brand-ink);
+  font-weight: 600;
+  /* Wraps as one unit, in the live toast and in its genie copy alike. */
+  white-space: nowrap;
+}
+
+.toast-action:focus {
+  box-shadow: none;
+}
+
+.toast-action:focus-visible {
+  border-radius: 0.25rem;
+  outline: 2px solid var(--brand);
+  outline-offset: 2px;
+}
+
+.toast-close {
+  position: absolute;
+  top: 50%;
+  right: 0.75rem;
+  transform: translateY(-50%);
+}
+
+/* Genie: the toast restaged as thin slices that funnel into the banner, the
+   way macOS minimises a window into the Dock. */
+.sibling-toast.is-minimising.has-genie {
+  will-change: opacity;
+  animation: sibling-toast-handoff 700ms linear forwards;
+}
+
+/* Placed with the same rules as .sibling-toast so the two land on each other
+   whatever containing block a Lightning ancestor establishes. */
 .genie-stage {
   position: fixed;
   top: 9rem;
@@ -739,26 +621,20 @@ dialog::backdrop {
   height: var(--genie-h, 0);
   transform: translateX(-50%);
   pointer-events: none;
-  animation: genie-fade 700ms linear forwards;
+  animation: sibling-genie-fade 700ms linear forwards;
 }
 
-/* One clipped window onto one band. contain: strict keeps the copies from
-   costing a full layout each; where it is unsupported the declaration is
-   dropped and overflow still does the clipping. */
 .genie-strip {
   position: absolute;
   left: 0;
   width: 100%;
   overflow: hidden;
   contain: strict;
-  transform-origin: 50% 50%;
-  animation: genie-strip 700ms linear both;
+  animation: sibling-genie-strip 700ms linear both;
 }
 
-/* Opaque stand-in for the frosted panel: a backdrop-filter per slice would be
-   dozens of backdrop reads a frame, and translucent slices would darken where
-   they overlap. The gradient is the glass as it composites over the Lightning
-   record-page background. */
+/* Stand-in for the glass toast: a backdrop blur per slice would be dozens of
+   backdrop reads a frame, so the slices carry a pale tinted glass instead. */
 .genie-face {
   position: absolute;
   top: var(--face-y, 0);
@@ -766,22 +642,39 @@ dialog::backdrop {
   box-sizing: border-box;
   width: 100%;
   height: var(--genie-h, 0);
-  border: 1px solid #fdfdff;
-  border-radius: 1.25rem;
-  background: linear-gradient(135deg, #fdfdff 0%, #f7f5fd 55%, #eff3fd 100%);
-  color: #181818;
+  border-radius: 1.5rem;
+  background:
+    var(--glass-sheen),
+    radial-gradient(55% 140% at 0% 50%, rgb(0 122 255 / 14%), transparent 70%),
+    radial-gradient(
+      55% 140% at 100% 50%,
+      rgb(175 82 222 / 13%),
+      transparent 70%
+    ),
+    linear-gradient(135deg, rgb(255 255 255 / 94%), rgb(244 245 250 / 88%));
+  box-shadow:
+    var(--glass-rim),
+    inset 0 0 0 0.5px rgb(0 0 0 / 8%);
+  color: var(--ink);
 }
 
-/* Both boxes are measured off the live toast, so the handoff cannot shift the
-   text even if SLDS changes its icon or content metrics. */
 .genie-glyph {
   position: absolute;
   top: var(--glyph-y, 0);
   left: var(--glyph-x, 0);
-  width: var(--glyph-w, 1rem);
-  height: var(--glyph-h, 1rem);
-  border-radius: 50%;
-  background: #706e6b;
+  width: var(--glyph-w, 2.25rem);
+  height: var(--glyph-h, 2.25rem);
+  border-radius: 0.625rem;
+}
+
+/* A plain person mark standing in for the lead icon during the handoff. */
+.genie-glyph::before {
+  content: "";
+  width: 56%;
+  height: 56%;
+  background:
+    radial-gradient(circle at 50% 30%, #fff 0 22%, transparent 23%),
+    radial-gradient(ellipse 48% 34% at 50% 100%, #fff 0 98%, transparent 100%);
 }
 
 .genie-copy {
@@ -791,22 +684,724 @@ dialog::backdrop {
   width: var(--copy-w, auto);
 }
 
-.genie-copy h2 {
-  color: #181818;
-  font-weight: 700;
+/* Popup */
+
+/* A clear glass sheet. It is anchored near the top so moving between steps
+   changes only where it ends, and it scrolls, so its title and buttons float
+   over the records as they pass underneath. */
+dialog.siblings-dialog {
+  width: min(92vw, 78rem);
+  max-width: none;
+  max-height: 90vh;
+  margin: 5vh auto auto;
+  padding: 0;
+  overflow-x: hidden;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  border: 0;
+  border-radius: var(--radius-sheet);
+  background: rgb(255 255 255 / 26%);
+  box-shadow:
+    inset 0 1.5px 0 rgb(255 255 255 / 95%),
+    inset 1.5px 0 0 rgb(255 255 255 / 60%),
+    inset -1px -1px 0 rgb(255 255 255 / 35%),
+    inset 0 0 40px rgb(255 255 255 / 32%),
+    0 0 0 0.5px rgb(0 0 0 / 14%),
+    0 40px 100px -30px rgb(0 0 0 / 50%);
+  color: var(--ink);
+  animation: sibling-genie-open 560ms linear backwards;
 }
 
-.genie-copy p {
+/* Minimise back into the banner it came out of. */
+.siblings-dialog.is-minimising {
+  pointer-events: none;
+  animation: sibling-genie-close 620ms linear forwards;
+}
+
+/* The wallpaper the glass sheet floats over: soft colour fields laid over the
+   blurred, slightly dimmed page. Literal colours, because ::backdrop does not
+   reliably inherit custom properties. */
+dialog.siblings-dialog::backdrop {
+  background:
+    radial-gradient(46% 56% at 16% 20%, rgb(175 82 222 / 26%), transparent 76%),
+    radial-gradient(44% 54% at 84% 16%, rgb(0 122 255 / 27%), transparent 76%),
+    radial-gradient(48% 56% at 80% 86%, rgb(52 199 89 / 20%), transparent 78%),
+    radial-gradient(46% 54% at 18% 84%, rgb(255 149 0 / 21%), transparent 78%),
+    rgb(30 30 45 / 16%);
+  -webkit-backdrop-filter: blur(24px) saturate(130%);
+  backdrop-filter: blur(24px) saturate(130%);
+  animation: sibling-fade-in 400ms ease both;
+}
+
+dialog.siblings-dialog.is-minimising::backdrop {
+  animation: sibling-fade-out 620ms ease forwards;
+}
+
+/* No bars: the title and the buttons float, and a soft blur that fades out
+   toward the content marks where the records slide underneath them. */
+.modal-hero,
+.modal-footer {
+  position: sticky;
+  z-index: 2;
+  isolation: isolate;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+}
+
+.modal-hero::before,
+.modal-footer::before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  -webkit-backdrop-filter: blur(14px) saturate(180%);
+  backdrop-filter: blur(14px) saturate(180%);
+  pointer-events: none;
+}
+
+.modal-hero {
+  top: 0;
+  padding: 1.375rem 1.75rem 1.25rem;
+  text-align: left;
+}
+
+.modal-hero::before {
+  inset: 0 0 -1.25rem;
+  background: linear-gradient(
+    180deg,
+    rgb(255 255 255 / 58%),
+    rgb(255 255 255 / 0%)
+  );
+  -webkit-mask-image: linear-gradient(180deg, #000 55%, transparent);
+  mask-image: linear-gradient(180deg, #000 55%, transparent);
+}
+
+.modal-footer {
+  bottom: 0;
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.625rem;
+  padding: 1rem 1.75rem 1.25rem;
+}
+
+.modal-footer::before {
+  inset: -1.5rem 0 0;
+  background: linear-gradient(
+    0deg,
+    rgb(255 255 255 / 58%),
+    rgb(255 255 255 / 0%)
+  );
+  -webkit-mask-image: linear-gradient(0deg, #000 55%, transparent);
+  mask-image: linear-gradient(0deg, #000 55%, transparent);
+}
+
+.modal-title {
+  display: flex;
+  align-items: center;
+  gap: 0.875rem;
+}
+
+.modal-glyph {
+  width: 2.75rem;
+  height: 2.75rem;
+  border-radius: 0.8125rem;
+  animation: sibling-icon-pop 600ms var(--spring-bouncy) 420ms backwards;
+}
+
+.modal-glyph::after {
+  animation: sibling-glint 900ms ease-in-out 800ms;
+}
+
+.modal-title-copy {
+  min-width: 0;
+  --chip-delay: 460ms;
+}
+
+.modal-heading {
   margin: 0;
+  color: var(--ink);
+  font-size: 1.375rem;
+  font-weight: 700;
+  line-height: 1.15;
+  letter-spacing: -0.022em;
 }
 
-.genie-link {
-  color: rgb(72 86 214);
+.modal-heading:focus {
+  outline: none;
+}
+
+.modal-heading:focus-visible {
+  border-radius: 0.25rem;
+  outline: 2px solid var(--brand);
+  outline-offset: 0.25rem;
+}
+
+.modal-body {
+  overflow: visible;
+  padding: 0.5rem 1.75rem 0.75rem;
+  background: transparent;
+}
+
+.modal-progress {
+  margin-bottom: 1rem;
+  padding: 0.875rem 1.5rem;
+  border: 1px solid var(--card-edge);
+  border-radius: var(--radius-card);
+  background: var(--surface);
+  box-shadow: var(--shadow-card);
+}
+
+.callout {
+  margin: 0 0 1rem;
+  padding: 0.75rem 1rem;
+  border-radius: var(--radius-card);
+  font-size: 0.875rem;
+  line-height: 1.45;
+}
+
+.callout_error {
+  background: #fff0f0;
+  box-shadow: inset 0 0 0 1px rgb(255 59 48 / 35%);
+  color: #a1121b;
+}
+
+.callout_warning {
+  background: #fff6e5;
+  box-shadow: inset 0 0 0 1px rgb(255 149 0 / 40%);
+  color: #7a4a00;
+}
+
+/* Record groups: solid cards that stand clearly apart - an accent bar in the
+   group's colour, a tinted header band, and a rule under it - as in the
+   version in Production. */
+
+.record-section {
+  --section-colour: var(--lead-colour);
+  margin-bottom: 1rem;
+  overflow: hidden;
+  border: 1px solid var(--card-edge);
+  border-left: 0.25rem solid var(--section-colour);
+  border-radius: var(--radius-card);
+  background: var(--surface);
+  box-shadow: var(--shadow-card);
+}
+
+.record-section[data-group="applicants"] {
+  --section-colour: var(--applicant-colour);
+}
+
+.record-section[data-group="enrolled"] {
+  --section-colour: var(--enrolled-colour);
+}
+
+.record-section-header {
+  background: linear-gradient(
+    90deg,
+    color-mix(in srgb, var(--section-colour) 10%, white),
+    #fafbfd 70%
+  );
+}
+
+.record-section-heading {
+  margin: 0;
+  font-size: inherit;
+}
+
+.record-section-toggle {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  width: 100%;
+  padding: 0.875rem 1.125rem;
+  border-radius: 0;
+  color: var(--ink);
+  text-align: left;
+  transition: background-color 200ms ease;
+}
+
+.record-section-toggle:focus {
+  box-shadow: none;
+}
+
+.record-section-toggle:focus-visible {
+  outline: 2px solid var(--brand);
+  outline-offset: -2px;
+}
+
+/* Icons pop in one after another as the sheet arrives. */
+.record-section-chip {
+  position: relative;
+  display: inline-flex;
+  flex: none;
+  animation: sibling-icon-pop 600ms var(--spring-bouncy) backwards;
+  animation-delay: calc(380ms + var(--stagger, 0ms));
+  transition: transform 500ms var(--spring-bouncy);
+}
+
+/* Each icon has a personality - leads wave, applicants hop, enrolled children
+   beat like a heart - on a 4s loop that runs down the three in turn, with a
+   ripple in the group's colour spreading out behind it. */
+.record-section-icon {
+  display: inline-flex;
+  --slds-c-icon-radius-border: 0.4375rem;
+  --slds-c-icon-color-background: var(--section-colour);
+  animation: sibling-icon-wave 4s ease-in-out 1.2s infinite;
+}
+
+.record-section-chip::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border: 2px solid var(--section-colour);
+  border-radius: 0.5rem;
+  opacity: 0;
+  pointer-events: none;
+  animation: sibling-ripple 4s ease-out 1.2s infinite;
+}
+
+.record-section[data-group="applicants"] .record-section-chip {
+  --stagger: 70ms;
+}
+
+.record-section[data-group="enrolled"] .record-section-chip {
+  --stagger: 140ms;
+}
+
+.record-section[data-group="applicants"] .record-section-icon {
+  animation-name: sibling-icon-hop;
+  animation-delay: 2.5s;
+}
+
+.record-section[data-group="enrolled"] .record-section-icon {
+  animation-name: sibling-icon-beat;
+  animation-delay: 3.8s;
+}
+
+.record-section[data-group="applicants"] .record-section-chip::after {
+  animation-delay: 2.5s;
+}
+
+.record-section[data-group="enrolled"] .record-section-chip::after {
+  animation-delay: 3.8s;
+}
+
+.record-section-title {
+  min-width: 0;
+  font-size: 0.9375rem;
+  font-weight: 700;
+  line-height: 1.3;
+  letter-spacing: -0.01em;
+}
+
+.record-section-count {
+  min-width: 1.75rem;
+  padding: 0 0.5rem;
+  border-radius: 0.375rem;
+  background: rgb(120 120 128 / 14%);
+  color: var(--ink);
+  font-size: 0.8125rem;
   font-weight: 600;
-  text-decoration: underline;
+  line-height: 1.5rem;
+  text-align: center;
+  font-variant-numeric: tabular-nums;
 }
 
-@keyframes genie-fade {
+/* Disclosure chevron on the trailing edge, turning on a spring. */
+.record-section-chevron {
+  display: inline-flex;
+  flex: none;
+  margin-left: auto;
+  --slds-c-icon-color-foreground-default: #6e6e73;
+  transition: transform 400ms var(--spring);
+}
+
+.record-section-toggle[aria-expanded="true"] .record-section-chevron {
+  transform: rotate(90deg);
+}
+
+/* Unfolds downward, out of the header that opened it. */
+.record-section-body {
+  border-top: 1px solid var(--card-rule);
+  animation: sibling-unfold 360ms var(--spring) both;
+}
+
+.section-help {
+  margin: 0;
+  padding: 0.875rem 1.125rem 0.25rem;
+  color: var(--ink-secondary);
+  font-size: 0.875rem;
+  font-style: italic;
+  line-height: 1.5;
+  text-wrap: pretty;
+}
+
+.section-note {
+  margin: 0.625rem 1.125rem 0;
+  padding: 0.625rem 0.875rem;
+  border-radius: 0.625rem;
+  background: var(--brand-soft);
+  color: var(--ink);
+  font-size: 0.875rem;
+  line-height: 1.45;
+}
+
+.section-empty {
+  margin: 0;
+  padding: 0.5rem 1.125rem 1rem;
+  color: var(--ink-tertiary);
+  font-size: 0.875rem;
+}
+
+.table-scroll {
+  margin-top: 0.875rem;
+}
+
+/* Tables */
+
+.data-table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  color: var(--ink);
+  font-size: 0.875rem;
+}
+
+.data-table th,
+.data-table td {
+  padding: 0.75rem 0.875rem;
+  vertical-align: middle;
+  white-space: normal;
+  overflow-wrap: anywhere;
+}
+
+.data-table tr > :first-child {
+  padding-left: 1.125rem;
+}
+
+.data-table tr > :last-child {
+  padding-right: 1.125rem;
+}
+
+/* Column headings: plain words in bold on a light band, easy to scan. */
+.data-table thead th {
+  padding-top: 0.625rem;
+  padding-bottom: 0.625rem;
+  border-top: 1px solid var(--card-rule);
+  border-bottom: 1px solid var(--card-rule);
+  background: #f6f7fa;
+  color: #3e3e44;
+  font-size: 0.8125rem;
+  font-weight: 700;
+  letter-spacing: 0;
+  text-transform: none;
+}
+
+.data-table tbody th,
+.data-table tbody td {
+  border-top: 1px solid var(--card-rule);
+  background: var(--surface);
+  font-weight: 400;
+  transition: background-color 200ms ease;
+}
+
+.data-table tbody tr:first-child > * {
+  border-top: 0;
+}
+
+.data-table a,
+.confirm-card a {
+  color: var(--brand-ink);
+  font-weight: 600;
+}
+
+.data-table tbody tr.is-selected > *,
+.data-table tbody tr > td.is-chosen {
+  background: var(--brand-selected);
+}
+
+.data-table .cell-phone {
+  white-space: nowrap;
+  font-variant-numeric: tabular-nums;
+}
+
+.record-table {
+  min-width: 60rem;
+  table-layout: fixed;
+}
+
+.name-column {
+  width: 25%;
+}
+
+.phone-column {
+  width: 15%;
+}
+
+.email-column {
+  width: 26%;
+}
+
+.guardian-column {
+  width: 16%;
+}
+
+.status-column {
+  width: 18%;
+}
+
+.row-name {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.25rem 0.5rem;
+}
+
+.lead-selection {
+  display: inline-flex;
+}
+
+.current-lead-badge,
+.status-pill {
+  display: inline-flex;
+  align-items: center;
+  padding: 0 0.625rem;
+  border-radius: 0.5rem;
+  font-size: 0.8125rem;
+  font-weight: 500;
+  line-height: 1.625rem;
+  letter-spacing: 0;
+  text-transform: none;
+  white-space: nowrap;
+}
+
+.current-lead-badge {
+  background: rgb(255 204 0 / 26%);
+  color: #6b4f00;
+  font-weight: 600;
+}
+
+/* Status as an outlined tag, as in the version in Production. */
+.status-pill {
+  border: 1px solid #c9ccd4;
+  background: var(--surface);
+  color: var(--ink);
+}
+
+.record-section[data-group="applicants"] .status-pill,
+.record-section[data-group="enrolled"] .status-pill {
+  border-color: color-mix(in srgb, var(--section-colour) 40%, white);
+  background: color-mix(in srgb, var(--section-colour) 6%, white);
+  color: color-mix(in srgb, var(--section-colour) 70%, black);
+}
+
+/* Compare and confirm */
+
+.step-intro {
+  margin: 0.25rem 0 0.75rem;
+  padding: 0.625rem 0.875rem;
+  border-radius: 0.625rem;
+  background: rgb(255 255 255 / 72%);
+  color: var(--ink);
+  font-size: 0.875rem;
+  line-height: 1.5;
+}
+
+.table-card {
+  border: 1px solid var(--card-edge);
+  border-radius: var(--radius-card);
+  background: var(--surface);
+  box-shadow: var(--shadow-card);
+}
+
+.compare-table thead th {
+  vertical-align: top;
+}
+
+.compare-table thead .row-name {
+  font-size: 0.875rem;
+}
+
+.compare-table tbody th {
+  color: var(--ink-secondary);
+  font-weight: 600;
+}
+
+.keep-choice {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 0.5rem;
+  color: var(--ink-secondary);
+  font-size: 0.8125rem;
+  font-weight: 500;
+}
+
+.keep-label {
+  cursor: pointer;
+}
+
+.choice {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.is-chosen .choice-value {
+  font-weight: 600;
+}
+
+.confirm-card {
+  padding: 1.25rem 1.5rem;
+  border: 1px solid var(--card-edge);
+  border-radius: var(--radius-card);
+  background: var(--surface);
+  box-shadow: var(--shadow-card);
+  font-size: 0.875rem;
+  line-height: 1.5;
+}
+
+.confirm-title {
+  margin: 0 0 0.375rem;
+  color: var(--ink);
+  font-size: 1.0625rem;
+  font-weight: 700;
+  letter-spacing: -0.012em;
+}
+
+.confirm-subtle {
+  margin-top: 0.75rem;
+  color: var(--ink-secondary);
+}
+
+.confirm-list {
+  margin: 0.5rem 0 0;
+  padding: 0.625rem 0.875rem;
+  border-radius: 0.625rem;
+  background: rgb(255 59 48 / 8%);
+  list-style: none;
+}
+
+.confirm-list li + li {
+  margin-top: 0.25rem;
+}
+
+/* Same trimmed-space fix as the toast link. */
+.confirm-card p > a {
+  margin: 0 0.25em;
+}
+
+.confirm-check {
+  display: block;
+  margin-top: 1rem;
+}
+
+/* Motion */
+
+@keyframes sibling-fade-in {
+  from {
+    opacity: 0;
+  }
+}
+
+@keyframes sibling-fade-out {
+  to {
+    opacity: 0;
+  }
+}
+
+@keyframes sibling-rise {
+  from {
+    opacity: 0;
+    transform: translateY(0.25rem) scale(0.96);
+  }
+}
+
+@keyframes sibling-icon-pop {
+  from {
+    opacity: 0;
+    transform: scale(0.4) rotate(-14deg);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes sibling-glint {
+  from {
+    transform: translateX(-130%);
+  }
+  to {
+    transform: translateX(130%);
+  }
+}
+
+/* Glass arrives by gathering its blur as it fades in. */
+@keyframes sibling-materialise {
+  from {
+    opacity: 0;
+    -webkit-backdrop-filter: blur(0) saturate(100%);
+    backdrop-filter: blur(0) saturate(100%);
+  }
+}
+
+/* Drops in from under the tab bar with a little give as it lands. */
+@keyframes sibling-toast-in {
+  from {
+    opacity: 0;
+    transform: translateX(-50%) translateY(-0.75rem) scale(0.94);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0) scale(1);
+  }
+}
+
+/* A gentle breath in and out - the same pump as the version in Production. */
+@keyframes sibling-toast-pump {
+  0%,
+  100% {
+    transform: translateX(-50%) scale(1);
+  }
+  50% {
+    transform: translateX(-50%) scale(1.022);
+  }
+}
+
+@keyframes sibling-toast-shine {
+  0%,
+  35% {
+    transform: translateX(-130%);
+  }
+  100% {
+    transform: translateX(130%);
+  }
+}
+
+@keyframes sibling-toast-out {
+  0% {
+    opacity: 1;
+    transform: translateX(-50%) translate(0, 0) scale(1);
+  }
+  45% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    transform: translateX(-50%)
+      translate(var(--toast-dx, 0px), var(--toast-dy, 4rem)) scale(0.3);
+  }
+}
+
+@keyframes sibling-toast-handoff {
+  0%,
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes sibling-genie-fade {
   0%,
   82% {
     opacity: 1;
@@ -816,12 +1411,9 @@ dialog::backdrop {
   }
 }
 
-/* Six stops of precomputed geometry per slice, held at rest for the first 9% so
-   the handoff from the live toast happens while the two are identical. No
-   stagger: the shape comes from each slice's own geometry, and a stagger would
-   tear the bands apart. Every var() carries a fallback, so a missing property
-   degrades to the rest pose instead of dropping the transform outright. */
-@keyframes genie-strip {
+/* Six stops of precomputed geometry per slice, held at rest for the first 9%
+   so the handoff from the live toast happens while the two are identical. */
+@keyframes sibling-genie-strip {
   0%,
   9% {
     transform: translate(0, 0) scale(1, 1);
@@ -852,21 +1444,16 @@ dialog::backdrop {
   }
 }
 
-/* Maximise lives on dialog.siblings-dialog above; this is only the reverse. */
-.siblings-dialog.is-minimising {
-  animation: dialog-genie-out 620ms linear forwards;
-  pointer-events: none;
-}
-
-@keyframes dialog-genie-in {
+/* The popup genie. clip-path bends the outline into a funnel while the sheet
+   squeezes through it toward the banner (aimDialog measures --dialog-dx/dy).
+   Every step keeps the same 12 vertices in the same order, which is what makes
+   the polygon interpolate smoothly; the resting shape is the full rectangle. */
+@keyframes sibling-genie-open {
   0% {
     opacity: 0;
     transform: perspective(620px)
-      translate(
-        calc(var(--dialog-dx, 0px) * 1),
-        calc(var(--dialog-dy, 8rem) * 1)
-      )
-      rotateX(-64deg) scaleX(0.1) scaleY(0.14);
+      translate(var(--dialog-dx, 0px), var(--dialog-dy, 8rem)) rotateX(-64deg)
+      scaleX(0.1) scaleY(0.14);
     clip-path: polygon(
       48.5% 0%,
       51.5% 0%,
@@ -906,7 +1493,6 @@ dialog::backdrop {
     );
   }
   24% {
-    opacity: 1;
     transform: perspective(620px)
       translate(
         calc(var(--dialog-dx, 0px) * 0.3055),
@@ -929,7 +1515,6 @@ dialog::backdrop {
     );
   }
   37% {
-    opacity: 1;
     transform: perspective(620px)
       translate(
         calc(var(--dialog-dx, 0px) * 0.1359),
@@ -952,7 +1537,6 @@ dialog::backdrop {
     );
   }
   50% {
-    opacity: 1;
     transform: perspective(620px)
       translate(
         calc(var(--dialog-dx, 0px) * 0.0501),
@@ -975,7 +1559,6 @@ dialog::backdrop {
     );
   }
   63% {
-    opacity: 1;
     transform: perspective(620px)
       translate(
         calc(var(--dialog-dx, 0px) * 0.0136),
@@ -998,7 +1581,6 @@ dialog::backdrop {
     );
   }
   76% {
-    opacity: 1;
     transform: perspective(620px)
       translate(
         calc(var(--dialog-dx, 0px) * 0.0021),
@@ -1021,7 +1603,6 @@ dialog::backdrop {
     );
   }
   88% {
-    opacity: 1;
     transform: perspective(620px)
       translate(
         calc(var(--dialog-dx, 0px) * 0.0001),
@@ -1035,8 +1616,8 @@ dialog::backdrop {
       100% 40%,
       100% 60%,
       100% 80%,
-      91.61% 100%,
-      8.39% 100%,
+      95.8% 100%,
+      4.2% 100%,
       0% 80%,
       0% 60%,
       0% 40%,
@@ -1054,8 +1635,8 @@ dialog::backdrop {
       100% 40%,
       100% 60%,
       100% 80%,
-      91.92% 100%,
-      8.08% 100%,
+      100% 100%,
+      0% 100%,
       0% 80%,
       0% 60%,
       0% 40%,
@@ -1064,7 +1645,7 @@ dialog::backdrop {
   }
 }
 
-@keyframes dialog-genie-out {
+@keyframes sibling-genie-close {
   0% {
     opacity: 1;
     transform: perspective(620px) translate(0, 0) rotateX(-0deg) scaleX(1)
@@ -1076,8 +1657,8 @@ dialog::backdrop {
       100% 40%,
       100% 60%,
       100% 80%,
-      91.92% 100%,
-      8.08% 100%,
+      100% 100%,
+      0% 100%,
       0% 80%,
       0% 60%,
       0% 40%,
@@ -1085,7 +1666,6 @@ dialog::backdrop {
     );
   }
   12% {
-    opacity: 1;
     transform: perspective(620px)
       translate(
         calc(var(--dialog-dx, 0px) * 0.0007),
@@ -1099,8 +1679,8 @@ dialog::backdrop {
       100% 40%,
       100% 60%,
       100% 80%,
-      90.93% 100%,
-      9.07% 100%,
+      93.5% 100%,
+      6.5% 100%,
       0% 80%,
       0% 60%,
       0% 40%,
@@ -1108,7 +1688,6 @@ dialog::backdrop {
     );
   }
   24% {
-    opacity: 1;
     transform: perspective(620px)
       translate(
         calc(var(--dialog-dx, 0px) * 0.0074),
@@ -1131,7 +1710,6 @@ dialog::backdrop {
     );
   }
   37% {
-    opacity: 1;
     transform: perspective(620px)
       translate(
         calc(var(--dialog-dx, 0px) * 0.0327),
@@ -1154,7 +1732,6 @@ dialog::backdrop {
     );
   }
   50% {
-    opacity: 1;
     transform: perspective(620px)
       translate(
         calc(var(--dialog-dx, 0px) * 0.0921),
@@ -1177,7 +1754,6 @@ dialog::backdrop {
     );
   }
   63% {
-    opacity: 1;
     transform: perspective(620px)
       translate(
         calc(var(--dialog-dx, 0px) * 0.204),
@@ -1200,7 +1776,6 @@ dialog::backdrop {
     );
   }
   76% {
-    opacity: 1;
     transform: perspective(620px)
       translate(
         calc(var(--dialog-dx, 0px) * 0.389),
@@ -1248,11 +1823,8 @@ dialog::backdrop {
   100% {
     opacity: 0;
     transform: perspective(620px)
-      translate(
-        calc(var(--dialog-dx, 0px) * 1),
-        calc(var(--dialog-dy, 8rem) * 1)
-      )
-      rotateX(-64deg) scaleX(0.1) scaleY(0.14);
+      translate(var(--dialog-dx, 0px), var(--dialog-dy, 8rem)) rotateX(-64deg)
+      scaleX(0.1) scaleY(0.14);
     clip-path: polygon(
       48.5% 0%,
       51.5% 0%,
@@ -1270,14 +1842,321 @@ dialog::backdrop {
   }
 }
 
-/* These drive close/dismiss via animationend, so they must still run - just instantly. */
+@keyframes sibling-unfold {
+  from {
+    opacity: 0;
+    transform: translateY(-0.375rem);
+  }
+}
+
+@keyframes sibling-float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-2px);
+  }
+}
+
+/* The icon personalities: each rests for most of its 4s loop, then acts. */
+@keyframes sibling-icon-wave {
+  0%,
+  62%,
+  100% {
+    transform: rotate(0);
+  }
+  68% {
+    transform: rotate(-12deg);
+  }
+  74% {
+    transform: rotate(9deg);
+  }
+  80% {
+    transform: rotate(-5deg);
+  }
+  86% {
+    transform: rotate(0);
+  }
+}
+
+@keyframes sibling-icon-hop {
+  0%,
+  62%,
+  100% {
+    transform: translateY(0) scale(1, 1);
+  }
+  66% {
+    transform: translateY(0) scale(1.12, 0.86);
+  }
+  74% {
+    transform: translateY(-5px) scale(0.92, 1.1);
+  }
+  82% {
+    transform: translateY(0) scale(1.06, 0.94);
+  }
+  88% {
+    transform: translateY(0) scale(1, 1);
+  }
+}
+
+@keyframes sibling-icon-beat {
+  0%,
+  62%,
+  100% {
+    transform: scale(1);
+  }
+  67% {
+    transform: scale(1.14);
+  }
+  72% {
+    transform: scale(1);
+  }
+  77% {
+    transform: scale(1.09);
+  }
+  84% {
+    transform: scale(1);
+  }
+}
+
+@keyframes sibling-ripple {
+  0%,
+  60% {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  64% {
+    opacity: 0.6;
+  }
+  100% {
+    opacity: 0;
+    transform: scale(2.2);
+  }
+}
+
+@keyframes sibling-arrow-nudge {
+  0%,
+  75%,
+  100% {
+    transform: translateX(0);
+  }
+  88% {
+    transform: translateX(0.1875rem);
+  }
+}
+
+/* Hover only where a real pointer exists; a tap must not leave a stuck state. */
+@media (hover: hover) and (pointer: fine) {
+  /* The glass catches the light where the pointer is. */
+  .toast-card:hover,
+  .hero-banner:hover,
+  .glass-button:not(:disabled):hover {
+    --glare: 1;
+  }
+
+  .glass-button_prominent:not(:disabled):hover {
+    background:
+      var(--glass-glare),
+      linear-gradient(180deg, rgb(255 255 255 / 26%), transparent 55%),
+      color-mix(in srgb, var(--brand) 78%, black);
+  }
+
+  .hero-action:hover .hero-action-icon {
+    animation-duration: 700ms;
+  }
+
+  /* The icons tilt toward the pointer and catch the light again. */
+  .hero-banner:hover .hero-glyph,
+  .toast-card:hover .toast-glyph,
+  .record-section-toggle:hover .record-section-chip {
+    transform: rotate(-6deg) scale(1.08);
+  }
+
+  .hero-banner:hover .hero-glyph::after,
+  .toast-card:hover .toast-glyph::after {
+    transform: translateX(130%);
+    transition: transform 800ms ease-in-out;
+  }
+
+  .record-section-toggle:hover {
+    background-color: rgb(120 120 128 / 7%);
+  }
+
+  .data-table tbody tr:hover > * {
+    background-color: #f9fafc;
+  }
+
+  .data-table tbody tr.is-selected:hover > *,
+  .data-table tbody tr:hover > td.is-chosen {
+    background-color: var(--brand-selected-hover);
+  }
+
+  .toast-action:hover,
+  .data-table a:hover,
+  .confirm-card a:hover {
+    text-decoration: underline;
+  }
+}
+
+/* Feedback lands on the press itself: glass flexes outward under the finger. */
+.glass-button:not(:disabled):active {
+  transform: scale(1.05);
+  transition-duration: 300ms;
+}
+
+.record-section-toggle:active {
+  background-color: var(--fill);
+  transition-duration: 0ms;
+}
+
+/* Phones get a bottom sheet. */
+@media (max-width: 48em) {
+  .sibling-toast {
+    top: 8rem;
+    width: calc(100vw - 1rem);
+    max-width: none;
+  }
+
+  .genie-stage {
+    top: 8rem;
+  }
+
+  dialog.siblings-dialog {
+    width: 100vw;
+    max-height: 92vh;
+    margin: auto auto 0;
+    border-radius: var(--radius-sheet) var(--radius-sheet) 0 0;
+  }
+
+  .modal-hero,
+  .modal-body,
+  .modal-footer {
+    padding-right: 1rem;
+    padding-left: 1rem;
+  }
+}
+
+/* Reduced motion: cross-fades instead of genies, pops, slides, the pump and
+   the shine (the toast genie is not staged at all then). The toast and popup
+   close on animationend, so they still animate - as fades. */
 @media (prefers-reduced-motion: reduce) {
   .sibling-toast,
-  .sibling-toast.is-minimising,
-  .genie-stage,
-  .genie-strip,
   dialog.siblings-dialog,
-  .siblings-dialog.is-minimising {
-    animation-duration: 1ms;
+  .record-section-body,
+  .chip {
+    animation: sibling-fade-in 200ms ease both;
+  }
+
+  .sibling-toast.is-minimising,
+  dialog.siblings-dialog.is-minimising {
+    animation: sibling-fade-out 200ms ease forwards;
+  }
+
+  .toast-shine::before,
+  .app-glyph,
+  .app-glyph::after,
+  .app-glyph lightning-icon,
+  .record-section-icon,
+  .record-section-chip,
+  .record-section-chip::after,
+  .hero-empty-icon,
+  .hero-action-icon {
+    animation: none;
+  }
+
+  .app-glyph,
+  .record-section-chip,
+  .glass-button,
+  .record-section-chevron {
+    transition: none;
+  }
+
+  .glass-button:not(:disabled):active,
+  .hero-banner:hover .hero-glyph,
+  .toast-card:hover .toast-glyph,
+  .record-section-toggle:hover .record-section-chip {
+    transform: none;
+  }
+}
+
+/* Reduced transparency or increased contrast: solid surfaces, no blur, no colour fields. */
+@media (prefers-reduced-transparency: reduce), (prefers-contrast: more) {
+  .toast-card::before,
+  .toast-card::after,
+  .hero-banner::after,
+  .modal-hero::before,
+  .modal-footer::before,
+  .chip,
+  .glass-button {
+    background: var(--surface);
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
+  }
+
+  .glass-button_prominent {
+    background: var(--brand);
+  }
+
+  dialog.siblings-dialog {
+    background: #f2f2f7;
+  }
+
+  .hero-banner::before,
+  .glass-sheen,
+  .toast-shine {
+    display: none;
+  }
+}
+
+/* Reduced transparency also clears the blur behind the popup. */
+@media (prefers-reduced-transparency: reduce) {
+  dialog.siblings-dialog::backdrop {
+    background: rgb(0 0 0 / 40%);
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
+  }
+}
+
+/* Increased contrast also adds defined edges and darker text. */
+@media (prefers-contrast: more) {
+  :host {
+    --ink-secondary: #3a3a3c;
+    --ink-tertiary: #48484a;
+    --card-edge: #8e8e93;
+    --card-rule: #b8b8bd;
+  }
+
+  .toast-card,
+  .hero-banner,
+  .chip,
+  .glass-button {
+    box-shadow: 0 0 0 1px #8e8e93;
+  }
+}
+
+/* Forced colours drop every shadow, so the edges come back as real borders. */
+@media (forced-colors: active) {
+  .toast-card,
+  .hero-banner,
+  .callout,
+  .chip,
+  .current-lead-badge,
+  .record-section-count,
+  .glass-button,
+  dialog.siblings-dialog {
+    border: 1px solid CanvasText;
+  }
+
+  .hero-banner::before,
+  .hero-banner::after,
+  .glass-sheen,
+  .toast-shine,
+  .toast-card::before,
+  .toast-card::after,
+  .app-glyph::after,
+  .modal-hero::before,
+  .modal-footer::before {
+    display: none;
   }
 }

@@ -15,6 +15,8 @@ import {
   GENIE_BODY,
   GENIE_ACTION
 } from "./genie";
+import newDesign from "./leadSiblingFlags.html";
+import previousDesign from "./previousDesign.html";
 import getMatches from "@salesforce/apex/LeadSiblingFlagsController.getMatches";
 import getLeadComparison from "@salesforce/apex/LeadSiblingFlagsController.getLeadComparison";
 import mergeLeads from "@salesforce/apex/LeadSiblingFlagsController.mergeLeads";
@@ -30,22 +32,28 @@ const FIELDS = [
   ["Status", "Lead Status"]
 ];
 
+/** The pieces of Liquid Glass that catch the light under the pointer. */
+const GLASS = ".toast-card, .hero-banner, .glass-button";
+
 const GROUPS = [
   {
     key: "leads",
     icon: "standard:lead",
+    noun: ["other lead", "other leads"],
     title: "Possible Siblings or Duplicate Leads",
     help: "These leads share the same contact information. When reaching out, you must log outreach attempts across all related leads to avoid duplicate reach out."
   },
   {
     key: "applicants",
     icon: "standard:account",
+    noun: ["applicant", "applicants"],
     title: "Possible Siblings or Duplicate Applicants",
     help: "The following applicants may be duplicates or siblings of your lead. Carefully check for duplicates before converting a lead to an applicant."
   },
   {
     key: "enrolled",
     icon: "standard:entitlement",
+    noun: ["enrolled student", "enrolled students"],
     title: "Possible Siblings or Duplicate Enrolled",
     help: "These leads may have enrolled siblings or duplicates. Check for duplicates before converting a lead to an applicant."
   }
@@ -76,6 +84,9 @@ export default class LeadSiblingFlags extends NavigationMixin(
   toastClosing = false;
   genie;
   closingModal = false;
+
+  /** The "Use new design" box on the Lightning page; unticked shows the previous design. */
+  @api useNewDesign = false;
 
   @api
   get recordId() {
@@ -121,11 +132,20 @@ export default class LeadSiblingFlags extends NavigationMixin(
     this.busy = false;
     unregisterRefreshHandler(this.refreshRegistration);
   }
+  render() {
+    return this.useNewDesign ? newDesign : previousDesign;
+  }
   renderedCallback() {
     this.measureOrigin();
     if (!this.isOpen) return;
-    if (!this.refs.dialog.open) this.refs.dialog.showModal();
+    if (!this.refs.dialog.open) {
+      this.refs.dialog.showModal();
+      // The new popup sits near the top rather than centred, so it aims from its own box.
+      if (this.useNewDesign) this.aimDialog(this.refs.dialog);
+    }
     if (this.lastStep !== this.step) {
+      // The new popup scrolls itself, so each step starts at its top.
+      if (this.useNewDesign) this.refs.dialog.scrollTop = 0;
       this.refs.heading.focus();
       this.lastStep = this.step;
     }
@@ -136,6 +156,18 @@ export default class LeadSiblingFlags extends NavigationMixin(
   }
   get showResults() {
     return this.hasMatches || this.matches?.limited;
+  }
+  /** One chip per group with matches, for the banner and the popup header. */
+  get summaryChips() {
+    return GROUPS.filter(({ key }) => this.matches?.[key]?.length).map(
+      ({ key, noun }) => {
+        const count = this.matches[key].length;
+        return { key, label: `${count} ${noun[count === 1 ? 0 : 1]}` };
+      }
+    );
+  }
+  get bannerClass() {
+    return this.showResults ? "hero-banner has-matches" : "hero-banner";
   }
   /** Points the minimise/maximise animations at the banner the component occupies. */
   measureOrigin() {
@@ -163,6 +195,36 @@ export default class LeadSiblingFlags extends NavigationMixin(
     }
     root.style.setProperty("--dialog-dx", `${x - window.innerWidth / 2}px`);
     root.style.setProperty("--dialog-dy", `${y - window.innerHeight / 2}px`);
+  }
+  /** Points the popup's genie at the banner it opens out of and closes into. */
+  aimDialog(dialog) {
+    const banner = this.template
+      .querySelector(".hero-banner")
+      .getBoundingClientRect();
+    // Measure the resting box, not the first frame of the genie.
+    dialog.style.animation = "none";
+    const box = dialog.getBoundingClientRect();
+    dialog.style.animation = "";
+    if (!banner.width || !box.width) return;
+    const clamp = (value, max) => Math.min(Math.max(value, 0), max);
+    const x = clamp(banner.left + banner.width / 2, window.innerWidth);
+    const y = clamp(banner.top + banner.height / 2, window.innerHeight);
+    dialog.style.setProperty(
+      "--dialog-dx",
+      `${x - (box.left + box.width / 2)}px`
+    );
+    dialog.style.setProperty(
+      "--dialog-dy",
+      `${y - (box.top + box.height / 2)}px`
+    );
+  }
+  /** Liquid Glass catches the light wherever the pointer is. */
+  trackGlare(event) {
+    const glass = event.target.closest(GLASS);
+    if (!glass) return;
+    const box = glass.getBoundingClientRect();
+    glass.style.setProperty("--glare-x", `${event.clientX - box.left}px`);
+    glass.style.setProperty("--glare-y", `${event.clientY - box.top}px`);
   }
 
   get showToast() {
@@ -245,7 +307,8 @@ export default class LeadSiblingFlags extends NavigationMixin(
         id: record.Id,
         value: record[name] || "—",
         label: `${record.Name}: ${record[name] || "Blank"}`,
-        selected: this.fieldSources[name] === record.Id
+        selected: this.fieldSources[name] === record.Id,
+        cellClass: this.fieldSources[name] === record.Id ? "is-chosen" : ""
       }))
     }));
   }
@@ -299,6 +362,9 @@ export default class LeadSiblingFlags extends NavigationMixin(
   closeModal(event) {
     event?.preventDefault();
     if (this.busy) return;
+    // The new popup's height changes between steps, so aim again before closing.
+    if (this.useNewDesign && !this.closingModal)
+      this.aimDialog(this.refs.dialog);
     this.closingModal = true;
   }
   hideModal() {
@@ -308,7 +374,14 @@ export default class LeadSiblingFlags extends NavigationMixin(
     this.isOpen = false;
     this.closingModal = false;
   }
-  dialogAnimationEnd() {
+  dialogAnimationEnd(event) {
+    // The new popup finishes closing only on its own closing animation, not on
+    // one ending inside it or on its backdrop's fade.
+    if (
+      this.useNewDesign &&
+      (event.target !== event.currentTarget || event.pseudoElement)
+    )
+      return;
     if (!this.closingModal) return;
     this.hideModal();
     this.template.querySelector('[data-action="view"]')?.focus();
@@ -448,6 +521,7 @@ export default class LeadSiblingFlags extends NavigationMixin(
           name: record.Name,
           isCurrent: record.Id === this.matches?.currentLead?.Id,
           selected: this.selectedIds.includes(record.Id),
+          rowClass: this.selectedIds.includes(record.Id) ? "is-selected" : "",
           selectionDisabled:
             record.Id === this.matches?.currentLead?.Id ||
             (!this.selectedIds.includes(record.Id) &&

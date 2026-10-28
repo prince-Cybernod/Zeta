@@ -6,6 +6,7 @@ import mergeLeads from "@salesforce/apex/LeadSiblingFlagsController.mergeLeads";
 import { refreshApex } from "@salesforce/apex";
 import { notifyRecordUpdateAvailable } from "lightning/uiRecordApi";
 import Toast from "lightning/toast";
+import { measureToast } from "../genie";
 
 jest.mock("@salesforce/apex", () => ({ refreshApex: jest.fn() }), {
   virtual: true
@@ -85,8 +86,11 @@ const household = {
     }
   ]
 };
-const flush = async () => {
-  for (let i = 0; i < 8; i++) await Promise.resolve();
+// Gives pending promises eight turns to settle.
+const flush = () => {
+  let settled = Promise.resolve();
+  for (let i = 0; i < 8; i++) settled = settled.then();
+  return settled;
 };
 const find = (element, selector) => element.shadowRoot.querySelector(selector);
 const endAnimation = async (element, selector) => {
@@ -106,11 +110,12 @@ const change = async (element, selector, checked = true) => {
   await flush();
 };
 
-async function mount(data = household, open = true) {
+async function mount(data = household, open = true, useNewDesign = true) {
   const element = createElement("c-lead-sibling-flags", {
     is: LeadSiblingFlags
   });
   element.recordId = "current";
+  element.useNewDesign = useNewDesign;
   document.body.appendChild(element);
   getMatches.emit(data);
   await flush();
@@ -206,7 +211,7 @@ it("renders the modal as a matching animated workspace", async () => {
   expect(find(element, ".modal-progress")).not.toBeNull();
   expect(sections).toHaveLength(3);
   expect(
-    element.shadowRoot.querySelectorAll(".record-section-icon-pulse")
+    element.shadowRoot.querySelectorAll(".record-section-chip")
   ).toHaveLength(3);
   expect(find(element, ".modal-footer")).not.toBeNull();
 });
@@ -233,44 +238,49 @@ it("collapses and reopens one record group independently", async () => {
   expect(sections[0].querySelector("[data-section-body]")).not.toBeNull();
 });
 
-it("selects only Leads and requires confirmation before merging selected field values", async () => {
-  const element = await mount();
-  expect(element.shadowRoot.querySelectorAll("[data-select]")).toHaveLength(2);
-  expect(find(element, '[data-action="compare"]').disabled).toBe(true);
-  await change(element, '[data-select="sibling"]');
-  await click(element, "compare");
-  expect(getLeadComparison).toHaveBeenCalledWith({
-    leadId: "current",
-    selectedIds: ["current", "sibling"]
-  });
-  expect(element.shadowRoot.activeElement).toBe(
-    find(element, "dialog header h2")
-  );
-  await change(element, '[data-field="Phone"][data-record="sibling"]');
-  await click(element, "confirm");
-  expect(find(element, '[data-action="merge"]').disabled).toBe(true);
-  expect(mergeLeads).not.toHaveBeenCalled();
-  await change(element, "[data-confirm]");
-  await click(element, "merge");
-  expect(mergeLeads).toHaveBeenCalledWith(
-    expect.objectContaining({
-      fieldSources: expect.objectContaining({ Phone: "sibling" }),
-      versions: {
-        current: comparison[0].LastModifiedDate,
-        sibling: comparison[1].LastModifiedDate
-      }
-    })
-  );
-  expect(find(element, "dialog")).toBeNull();
-  expect(notifyRecordUpdateAvailable).toHaveBeenCalledWith([
-    { recordId: "current" }
-  ]);
-  expect(refreshApex).toHaveBeenCalled();
-  expect(Toast.show).toHaveBeenCalledWith(
-    expect.objectContaining({ variant: "success" }),
-    expect.any(Object)
-  );
-});
+it.each([true, false])(
+  "selects only Leads and requires confirmation before merging selected field values (new design: %s)",
+  async (useNewDesign) => {
+    const element = await mount(household, true, useNewDesign);
+    expect(element.shadowRoot.querySelectorAll("[data-select]")).toHaveLength(
+      2
+    );
+    expect(find(element, '[data-action="compare"]').disabled).toBe(true);
+    await change(element, '[data-select="sibling"]');
+    await click(element, "compare");
+    expect(getLeadComparison).toHaveBeenCalledWith({
+      leadId: "current",
+      selectedIds: ["current", "sibling"]
+    });
+    expect(element.shadowRoot.activeElement).toBe(
+      find(element, "dialog header h2")
+    );
+    await change(element, '[data-field="Phone"][data-record="sibling"]');
+    await click(element, "confirm");
+    expect(find(element, '[data-action="merge"]').disabled).toBe(true);
+    expect(mergeLeads).not.toHaveBeenCalled();
+    await change(element, "[data-confirm]");
+    await click(element, "merge");
+    expect(mergeLeads).toHaveBeenCalledWith(
+      expect.objectContaining({
+        fieldSources: expect.objectContaining({ Phone: "sibling" }),
+        versions: {
+          current: comparison[0].LastModifiedDate,
+          sibling: comparison[1].LastModifiedDate
+        }
+      })
+    );
+    expect(find(element, "dialog")).toBeNull();
+    expect(notifyRecordUpdateAvailable).toHaveBeenCalledWith([
+      { recordId: "current" }
+    ]);
+    expect(refreshApex).toHaveBeenCalled();
+    expect(Toast.show).toHaveBeenCalledWith(
+      expect.objectContaining({ variant: "success" }),
+      expect.any(Object)
+    );
+  }
+);
 
 it("limits selection to three including the current Lead", async () => {
   const element = await mount({
@@ -309,17 +319,7 @@ it("blocks Escape and repeated submission while merging, then navigates to anoth
       })
   );
   const element = await mount();
-  await change(element, '[data-select="sibling"]');
-  await click(element, "compare");
-  const primary = [
-    ...element.shadowRoot.querySelectorAll('[data-record="sibling"]')
-  ].find((input) => input.name === "primaryLead");
-  primary.dispatchEvent(
-    new CustomEvent("change", { detail: { checked: true } })
-  );
-  await flush();
-  await click(element, "confirm");
-  await change(element, "[data-confirm]");
+  await confirm(element, "sibling");
   await click(element, "merge");
   await click(element, "merge");
   const escape = new CustomEvent("cancel", { cancelable: true });
@@ -380,9 +380,10 @@ it("closes the old household on navigation and ignores a pending comparison", as
   expect(find(element, "lightning-spinner")).not.toBeNull();
 });
 
-it("does not claim duplicates for only the current Lead", async () => {
+it("stays silent and claims no duplicates for only the current Lead", async () => {
   const element = await mount(empty, false);
   expect(find(element, '[data-action="view"]')).toBeNull();
+  expect(find(element, ".sibling-toast")).toBeNull();
   expect(element.shadowRoot.textContent).toContain(
     "No possible siblings or duplicates found"
   );
@@ -534,11 +535,6 @@ it("shows its own toast when matches exist and opens the modal in place", async 
   expect(mockNavigate).not.toHaveBeenCalled();
 });
 
-it("stays silent when no siblings or duplicates exist", async () => {
-  const element = await mount(empty, false);
-  expect(find(element, ".sibling-toast")).toBeNull();
-});
-
 it("keeps the toast dismissed once closed", async () => {
   const element = await mount(household, false);
   find(element, '[data-action="toast-close"]').click();
@@ -546,4 +542,107 @@ it("keeps the toast dismissed once closed", async () => {
   await endAnimation(element, ".sibling-toast");
   expect(find(element, ".sibling-toast")).toBeNull();
   expect(find(element, "dialog")).toBeNull();
+});
+
+it("summarises each kind of match as a chip on the banner", async () => {
+  const element = await mount(household, false);
+  const chips = [
+    ...element.shadowRoot.querySelectorAll(".hero-banner .chip")
+  ].map((chip) => chip.textContent.trim());
+  expect(chips).toEqual(["1 other lead", "1 applicant"]);
+});
+
+it("closes only when the popup's own animation ends", async () => {
+  const element = await mount();
+  await click(element, "close");
+  await endAnimation(element, "[data-section-body]");
+  const backdropFade = new CustomEvent("animationend");
+  Object.defineProperty(backdropFade, "pseudoElement", {
+    value: "::backdrop"
+  });
+  find(element, "dialog").dispatchEvent(backdropFade);
+  await flush();
+  expect(find(element, "dialog")).not.toBeNull();
+  await endAnimation(element, "dialog");
+  expect(find(element, "dialog")).toBeNull();
+});
+
+it.each([
+  [true, "200px", "100px"],
+  [false, "", ""]
+])(
+  "aims the popup's genie at the banner only in the new design (new design: %s)",
+  async (useNewDesign, dx, dy) => {
+    const element = await mount(household, false, useNewDesign);
+    jest
+      .spyOn(find(element, ".hero-banner"), "getBoundingClientRect")
+      .mockReturnValue({ left: 600, top: 300, width: 200, height: 100 });
+    const dialogBox = jest
+      .spyOn(HTMLDialogElement.prototype, "getBoundingClientRect")
+      .mockReturnValue({ left: 100, top: 50, width: 800, height: 400 });
+    try {
+      await click(element, "view");
+      const style = find(element, "dialog").style;
+      expect(style.getPropertyValue("--dialog-dx")).toBe(dx);
+      expect(style.getPropertyValue("--dialog-dy")).toBe(dy);
+    } finally {
+      dialogBox.mockRestore();
+    }
+  }
+);
+
+it("lets the glass catch the light under the pointer", async () => {
+  const element = await mount(household, false);
+  const banner = find(element, ".hero-banner");
+  jest
+    .spyOn(banner, "getBoundingClientRect")
+    .mockReturnValue({ left: 100, top: 50, width: 400, height: 120 });
+  find(element, ".banner-title").dispatchEvent(
+    new MouseEvent("pointermove", { bubbles: true, clientX: 160, clientY: 80 })
+  );
+  expect(banner.style.getPropertyValue("--glare-x")).toBe("60px");
+  expect(banner.style.getPropertyValue("--glare-y")).toBe("30px");
+});
+
+it.each([
+  [true, ".toast-copy", ".toast-glyph"],
+  [false, ".slds-notify__content", "lightning-icon"]
+])(
+  "measures the toast's copy and icon for the genie (new design: %s)",
+  async (useNewDesign, copy, glyph) => {
+    const element = await mount(household, false, useNewDesign);
+    const toast = find(element, ".sibling-toast");
+    const at = (node, left, top, width, height) =>
+      jest
+        .spyOn(node, "getBoundingClientRect")
+        .mockReturnValue({ left, top, width, height });
+    at(toast, 100, 100, 400, 80);
+    at(toast.querySelector(copy), 160, 112, 300, 50);
+    at(toast.querySelector(glyph), 112, 122, 36, 36);
+    Object.defineProperties(toast, {
+      offsetWidth: { value: 400 },
+      offsetHeight: { value: 80 }
+    });
+    expect(measureToast(toast)).toEqual({
+      width: 400,
+      height: 80,
+      top: 100,
+      centreX: 300,
+      copy: { left: 60, top: 12, width: 300, height: 50 },
+      glyph: { left: 12, top: 22, width: 36, height: 36 }
+    });
+  }
+);
+
+it("shows the previous design while Use new design is unticked", async () => {
+  const element = await mount(household, false, false);
+  expect(find(element, ".slds-notify_toast").textContent).toContain(
+    "Possible siblings or duplicates"
+  );
+  expect(find(element, ".glass-sheen")).toBeNull();
+  await click(element, "view");
+  const icons = [...element.shadowRoot.querySelectorAll("lightning-icon")];
+  expect(icons.some((icon) => icon.iconName === "utility:chevrondown")).toBe(
+    true
+  );
 });

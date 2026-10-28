@@ -8,6 +8,13 @@
     <targets><target>lightning__RecordPage</target></targets>
     <targetConfigs>
         <targetConfig targets="lightning__RecordPage">
+            <property
+        name="useNewDesign"
+        type="Boolean"
+        default="false"
+        label="Use new design"
+        description="Ticked: everyone on this page sees the new design. Unticked: the previous design."
+      />
             <objects><object>Lead</object></objects>
             <supportedFormFactors>
                 <supportedFormFactor type="Large" />
