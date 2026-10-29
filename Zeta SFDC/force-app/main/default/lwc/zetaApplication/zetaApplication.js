@@ -55,6 +55,9 @@ import labelUnsavedChanges from '@salesforce/label/c.AppUI_UnsavedChanges';
 import labelZetaCharterSchools from '@salesforce/label/c.AppUI_ZetaCharterSchools';
 
 const TOTAL_STEPS = 5;
+// How long to wait for the Head Markup cookie bridge before falling back to the
+// URL, so a site without the bridge never holds up the start.
+const UTM_BRIDGE_TIMEOUT_MS = 300;
 // Section scope for the embedded create-screen address widget. Must mirror
 // studentSelection.html's <c-application-form-page include-section-dev-names="...">
 // exactly so the prefetch warms the SAME LDS cache key the embedded form's @wire
@@ -113,6 +116,8 @@ export default class ZetaApplication extends LightningElement {
   siblingApplyingToggle = true;
   _resolvedRecordId;
   _pageRefType;
+  _utmSource;
+  _bridgeUtmPromise = null;
   _createPromise = null;
   _step1Complete = false;
   _step1StudentAccountId;
@@ -175,9 +180,52 @@ export default class ZetaApplication extends LightningElement {
       this._resolvedRecordId = pageRef.state.applicationId;
       this._loadWizardState();
     }
+    if (pageRef?.state?.utm_source) {
+      this._utmSource = pageRef.state.utm_source;
+    }
+  }
+
+  // Lightning Web Security hides cookies written by the site's tag manager from
+  // this component, so the UtmCookieBridge01 script in the site's Head Markup
+  // reads the cookie and answers on document.
+  _requestBridgeUtmSource() {
+    return new Promise((resolve) => {
+      let timer;
+      let onValue;
+      let settled = false;
+      const finish = (value) => {
+        if (settled) {
+          return;
+        }
+        settled = true;
+        clearTimeout(timer);
+        document.removeEventListener('utmbridge:value', onValue);
+        resolve(
+          typeof value === 'string' && value.trim() ? value.trim() : null
+        );
+      };
+      onValue = (event) => finish(event?.detail?.utmSource);
+      document.addEventListener('utmbridge:value', onValue);
+      // eslint-disable-next-line @lwc/lwc/no-async-operation
+      timer = setTimeout(() => finish(null), UTM_BRIDGE_TIMEOUT_MS);
+      document.dispatchEvent(new CustomEvent('utmbridge:request'));
+    });
+  }
+
+  async _resolveUtmSource() {
+    const fromCookie = this._bridgeUtmPromise
+      ? await this._bridgeUtmPromise
+      : null;
+    return (
+      fromCookie ||
+      this._utmSource ||
+      new URLSearchParams(window.location.search).get('utm_source') ||
+      null
+    );
   }
 
   connectedCallback() {
+    this._bridgeUtmPromise = this._requestBridgeUtmSource();
     if (this.recordId) {
       this._resolvedRecordId = this.recordId;
       this._loadWizardState();
@@ -405,7 +453,7 @@ export default class ZetaApplication extends LightningElement {
         isComplete: status === 'complete',
         isActive: status === 'active',
         isFuture: status === 'future',
-        stepItemClass: `step-item${number > this.maxCompletedStep && number !== this.currentStep ? ' step-item--future' : ' step-item--clickable'}`,
+        stepItemClass: `step-item${number < this.currentStep ? ' step-item--clickable' : number > this.currentStep ? ' step-item--future' : ''}`,
         circleClass: `step-circle step-circle--${status}`,
         labelClass: `step-label step-label--${status}`,
         connectorClass:
@@ -554,10 +602,9 @@ export default class ZetaApplication extends LightningElement {
       return;
     }
     const step = Number(event.currentTarget.dataset.step);
-    if (
-      step >= 1 &&
-      (step <= this.currentStep || step <= this.maxCompletedStep)
-    ) {
+    // The step bar only goes back; moving forward goes through Continue so each
+    // step's checks (like ranking every school) run.
+    if (step >= 1 && step < this.currentStep) {
       this._prefetchStepData(step);
       this.currentStep = step;
     }
@@ -884,7 +931,8 @@ export default class ZetaApplication extends LightningElement {
         studentAccountId: this._step1StudentAccountId,
         grade: this._step1Grade,
         currentGrade: this._step1CurrentGrade,
-        timelineId: this.timelineId || null
+        timelineId: this.timelineId || null,
+        utmSource: await this._resolveUtmSource()
       });
       this._resolvedRecordId = result.applicationId;
       this._updateUrlWithApplicationId(result.applicationId);

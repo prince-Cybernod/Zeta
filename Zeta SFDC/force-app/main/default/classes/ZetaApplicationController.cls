@@ -429,7 +429,8 @@ public without sharing class ZetaApplicationController {
     Id studentAccountId,
     String grade,
     String currentGrade,
-    Id timelineId
+    Id timelineId,
+    String utmSource
   ) {
     Preconditions.checkNotNull(studentAccountId, 'Student Account Id is required');
     // Grade is optional at creation: the draft is created as soon as a student
@@ -465,6 +466,7 @@ public without sharing class ZetaApplicationController {
       }
     );
     if (!existing.isEmpty()) {
+      stampUtmSource(new Set<Id>{ guardianAccountId, studentAccountId }, utmSource);
       return new Map<String, Object>{ 'applicationId' => existing[0].Id };
     }
 
@@ -491,7 +493,41 @@ public without sharing class ZetaApplicationController {
     );
     databaseRepo.insertSObjects(new List<IndividualApplication>{ app });
 
+    stampUtmSource(new Set<Id>{ guardianAccountId, studentAccountId }, utmSource);
     return new Map<String, Object>{ 'applicationId' => app.Id };
+  }
+
+  private static void stampUtmSource(Set<Id> personAccountIds, String utmSource) {
+    String trimmedUtmSource = utmSource == null ? null : utmSource.trim();
+    if (String.isBlank(trimmedUtmSource)) {
+      return;
+    }
+
+    Set<Id> accountIds = new Set<Id>();
+    for (Id accountId : personAccountIds) {
+      if (accountId != null) {
+        accountIds.add(accountId);
+      }
+    }
+    if (accountIds.isEmpty()) {
+      return;
+    }
+
+    String query = 'SELECT Id, IsPersonAccount, UTM_Source__pc FROM Account WHERE Id IN :accountIds';
+    List<Account> accounts = (List<Account>) databaseRepo.queryWithBinds(
+      query,
+      new Map<String, Object>{ 'accountIds' => accountIds }
+    );
+
+    List<Account> toUpdate = new List<Account>();
+    for (Account acc : accounts) {
+      if (acc.IsPersonAccount == true && String.isBlank(acc.UTM_Source__pc)) {
+        toUpdate.add(new Account(Id = acc.Id, UTM_Source__pc = trimmedUtmSource));
+      }
+    }
+    if (!toUpdate.isEmpty()) {
+      databaseRepo.updateSObjects(toUpdate);
+    }
   }
 
   private static Boolean hasSubmittedApplication(Id studentAccountId, Id timelineId) {

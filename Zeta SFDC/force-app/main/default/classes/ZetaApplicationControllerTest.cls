@@ -991,7 +991,8 @@ private class ZetaApplicationControllerTest {
       studentAccountId,
       'K',
       null,
-      timelineId
+      timelineId,
+      null
     );
 
     Assert.isTrue(result.containsKey('applicationId'));
@@ -1038,12 +1039,243 @@ private class ZetaApplicationControllerTest {
       studentAccountId,
       'K',
       null,
-      timelineId
+      timelineId,
+      null
     );
 
     Assert.areEqual(existingAppId, result.get('applicationId'));
     // No verify-zero on insertSObjects — returning the existing Id proves the
     // early-return branch was taken (insert path would have re-generated a different Id),
     // and the mock requires a queued response before `verify(method, 0)` is valid.
+  }
+
+  // --- createApplication: UTM source stamping ---
+
+  @IsTest
+  static void createApplication_utmSourceProvided_stampsBothBlankAccounts() {
+    DATABASE_REPO_MOCK.reset();
+
+    Id studentAccountId = SObjectIds.generateFakeId(Schema.Account.SObjectType);
+    Id timelineId = SObjectIds.generateFakeId(Schema.ApplicationTimeline.SObjectType);
+    Id userContactId = SObjectIds.generateFakeId(Schema.Contact.SObjectType);
+    Id userAccountId = SObjectIds.generateFakeId(Schema.Account.SObjectType);
+
+    DATABASE_REPO_MOCK.when(DATABASE_REPO_MOCK.method.queryWithBinds())
+      .thenReturn(new List<User>{ new User(Id = UserInfo.getUserId(), ContactId = userContactId) });
+    DATABASE_REPO_MOCK.when(DATABASE_REPO_MOCK.method.queryWithBinds())
+      .thenReturn(new List<Contact>{ new Contact(Id = userContactId, AccountId = userAccountId) });
+    DATABASE_REPO_MOCK.when(DATABASE_REPO_MOCK.method.queryWithBinds())
+      .thenReturn(new List<Account>());
+    DATABASE_REPO_MOCK.when(DATABASE_REPO_MOCK.method.queryWithBinds())
+      .thenReturn(new List<IndividualApplication>());
+    DATABASE_REPO_MOCK.when(DATABASE_REPO_MOCK.method.queryWithBinds())
+      .thenReturn(
+        new List<Account>{
+          (Account) JSON.deserialize(
+            '{"Id":"' + userAccountId + '","IsPersonAccount":true,"UTM_Source__pc":null}',
+            Account.class
+          ),
+          (Account) JSON.deserialize(
+            '{"Id":"' + studentAccountId + '","IsPersonAccount":true,"UTM_Source__pc":null}',
+            Account.class
+          )
+        }
+      );
+
+    DATABASE_REPO_MOCK.when(DATABASE_REPO_MOCK.method.insertSObjects()).thenReturnVoid();
+    DATABASE_REPO_MOCK.when(DATABASE_REPO_MOCK.method.updateSObjects()).thenReturnVoid();
+
+    ZetaApplicationController.createApplication(studentAccountId, 'K', null, timelineId, '  gtm  ');
+
+    DATABASE_REPO_MOCK.verify(DATABASE_REPO_MOCK.method.updateSObjects());
+    List<Map<String, Object>> calls = DATABASE_REPO_MOCK.getCalls(
+      DATABASE_REPO_MOCK.method.updateSObjects()
+    );
+    List<SObject> updated = (List<SObject>) calls[0].get('sobjects');
+    Assert.areEqual(2, updated.size(), 'Both guardian and student Accounts should be stamped');
+    for (SObject s : updated) {
+      Assert.areEqual('gtm', (String) s.get('UTM_Source__pc'), 'Value must be trimmed');
+    }
+  }
+
+  @IsTest
+  static void createApplication_utmSourceProvided_existingValueNotOverwritten() {
+    DATABASE_REPO_MOCK.reset();
+
+    Id studentAccountId = SObjectIds.generateFakeId(Schema.Account.SObjectType);
+    Id timelineId = SObjectIds.generateFakeId(Schema.ApplicationTimeline.SObjectType);
+    Id userContactId = SObjectIds.generateFakeId(Schema.Contact.SObjectType);
+    Id userAccountId = SObjectIds.generateFakeId(Schema.Account.SObjectType);
+
+    DATABASE_REPO_MOCK.when(DATABASE_REPO_MOCK.method.queryWithBinds())
+      .thenReturn(new List<User>{ new User(Id = UserInfo.getUserId(), ContactId = userContactId) });
+    DATABASE_REPO_MOCK.when(DATABASE_REPO_MOCK.method.queryWithBinds())
+      .thenReturn(new List<Contact>{ new Contact(Id = userContactId, AccountId = userAccountId) });
+    DATABASE_REPO_MOCK.when(DATABASE_REPO_MOCK.method.queryWithBinds())
+      .thenReturn(new List<Account>());
+    DATABASE_REPO_MOCK.when(DATABASE_REPO_MOCK.method.queryWithBinds())
+      .thenReturn(new List<IndividualApplication>());
+    DATABASE_REPO_MOCK.when(DATABASE_REPO_MOCK.method.queryWithBinds())
+      .thenReturn(
+        new List<Account>{
+          (Account) JSON.deserialize(
+            '{"Id":"' + userAccountId + '","IsPersonAccount":true,"UTM_Source__pc":"facebook"}',
+            Account.class
+          ),
+          (Account) JSON.deserialize(
+            '{"Id":"' + studentAccountId + '","IsPersonAccount":true,"UTM_Source__pc":null}',
+            Account.class
+          )
+        }
+      );
+
+    DATABASE_REPO_MOCK.when(DATABASE_REPO_MOCK.method.insertSObjects()).thenReturnVoid();
+    DATABASE_REPO_MOCK.when(DATABASE_REPO_MOCK.method.updateSObjects()).thenReturnVoid();
+
+    ZetaApplicationController.createApplication(studentAccountId, 'K', null, timelineId, 'google');
+
+    DATABASE_REPO_MOCK.verify(DATABASE_REPO_MOCK.method.updateSObjects());
+    List<Map<String, Object>> calls = DATABASE_REPO_MOCK.getCalls(
+      DATABASE_REPO_MOCK.method.updateSObjects()
+    );
+    List<SObject> updated = (List<SObject>) calls[0].get('sobjects');
+    Assert.areEqual(1, updated.size(), 'Only the blank Account should be updated');
+    Assert.areEqual(studentAccountId, (Id) updated[0].get('Id'));
+  }
+
+  @IsTest
+  static void createApplication_blankOrNullUtmSource_noStampQueryOrUpdate() {
+    Id studentAccountId = SObjectIds.generateFakeId(Schema.Account.SObjectType);
+    Id timelineId = SObjectIds.generateFakeId(Schema.ApplicationTimeline.SObjectType);
+    Id userContactId = SObjectIds.generateFakeId(Schema.Contact.SObjectType);
+    Id userAccountId = SObjectIds.generateFakeId(Schema.Account.SObjectType);
+
+    for (String utmSource : new List<String>{ null, '   ' }) {
+      DATABASE_REPO_MOCK.reset();
+
+      DATABASE_REPO_MOCK.when(DATABASE_REPO_MOCK.method.queryWithBinds())
+        .thenReturn(
+          new List<User>{ new User(Id = UserInfo.getUserId(), ContactId = userContactId) }
+        );
+      DATABASE_REPO_MOCK.when(DATABASE_REPO_MOCK.method.queryWithBinds())
+        .thenReturn(
+          new List<Contact>{ new Contact(Id = userContactId, AccountId = userAccountId) }
+        );
+      DATABASE_REPO_MOCK.when(DATABASE_REPO_MOCK.method.queryWithBinds())
+        .thenReturn(new List<Account>());
+      DATABASE_REPO_MOCK.when(DATABASE_REPO_MOCK.method.queryWithBinds())
+        .thenReturn(new List<IndividualApplication>());
+
+      DATABASE_REPO_MOCK.when(DATABASE_REPO_MOCK.method.insertSObjects()).thenReturnVoid();
+      DATABASE_REPO_MOCK.when(DATABASE_REPO_MOCK.method.updateSObjects()).thenReturnVoid();
+
+      ZetaApplicationController.createApplication(
+        studentAccountId,
+        'K',
+        null,
+        timelineId,
+        utmSource
+      );
+
+      List<Map<String, Object>> queryCalls = DATABASE_REPO_MOCK.getCalls(
+        DATABASE_REPO_MOCK.method.queryWithBinds()
+      );
+      Assert.areEqual(
+        4,
+        queryCalls.size(),
+        'A blank/null utmSource must not trigger the stamp query: ' + utmSource
+      );
+      DATABASE_REPO_MOCK.verify(DATABASE_REPO_MOCK.method.updateSObjects(), 0);
+    }
+  }
+
+  @IsTest
+  static void createApplication_utmSourceProvided_nonPersonAccountSkipped() {
+    DATABASE_REPO_MOCK.reset();
+
+    Id studentAccountId = SObjectIds.generateFakeId(Schema.Account.SObjectType);
+    Id timelineId = SObjectIds.generateFakeId(Schema.ApplicationTimeline.SObjectType);
+    Id userContactId = SObjectIds.generateFakeId(Schema.Contact.SObjectType);
+    Id userAccountId = SObjectIds.generateFakeId(Schema.Account.SObjectType);
+
+    DATABASE_REPO_MOCK.when(DATABASE_REPO_MOCK.method.queryWithBinds())
+      .thenReturn(new List<User>{ new User(Id = UserInfo.getUserId(), ContactId = userContactId) });
+    DATABASE_REPO_MOCK.when(DATABASE_REPO_MOCK.method.queryWithBinds())
+      .thenReturn(new List<Contact>{ new Contact(Id = userContactId, AccountId = userAccountId) });
+    DATABASE_REPO_MOCK.when(DATABASE_REPO_MOCK.method.queryWithBinds())
+      .thenReturn(new List<Account>());
+    DATABASE_REPO_MOCK.when(DATABASE_REPO_MOCK.method.queryWithBinds())
+      .thenReturn(new List<IndividualApplication>());
+    DATABASE_REPO_MOCK.when(DATABASE_REPO_MOCK.method.queryWithBinds())
+      .thenReturn(
+        new List<Account>{
+          (Account) JSON.deserialize(
+            '{"Id":"' + userAccountId + '","IsPersonAccount":false,"UTM_Source__pc":null}',
+            Account.class
+          ),
+          (Account) JSON.deserialize(
+            '{"Id":"' + studentAccountId + '","IsPersonAccount":true,"UTM_Source__pc":null}',
+            Account.class
+          )
+        }
+      );
+
+    DATABASE_REPO_MOCK.when(DATABASE_REPO_MOCK.method.insertSObjects()).thenReturnVoid();
+    DATABASE_REPO_MOCK.when(DATABASE_REPO_MOCK.method.updateSObjects()).thenReturnVoid();
+
+    ZetaApplicationController.createApplication(studentAccountId, 'K', null, timelineId, 'google');
+
+    DATABASE_REPO_MOCK.verify(DATABASE_REPO_MOCK.method.updateSObjects());
+    List<Map<String, Object>> calls = DATABASE_REPO_MOCK.getCalls(
+      DATABASE_REPO_MOCK.method.updateSObjects()
+    );
+    List<SObject> updated = (List<SObject>) calls[0].get('sobjects');
+    Assert.areEqual(1, updated.size(), 'Only the person Account should be updated');
+    Assert.areEqual(studentAccountId, (Id) updated[0].get('Id'));
+  }
+
+  @IsTest
+  static void createApplication_activeDraftExists_utmSourceProvided_stillStamps() {
+    DATABASE_REPO_MOCK.reset();
+
+    Id studentAccountId = SObjectIds.generateFakeId(Schema.Account.SObjectType);
+    Id timelineId = SObjectIds.generateFakeId(Schema.ApplicationTimeline.SObjectType);
+    Id userContactId = SObjectIds.generateFakeId(Schema.Contact.SObjectType);
+    Id userAccountId = SObjectIds.generateFakeId(Schema.Account.SObjectType);
+    Id existingAppId = SObjectIds.generateFakeId(Schema.IndividualApplication.SObjectType);
+
+    DATABASE_REPO_MOCK.when(DATABASE_REPO_MOCK.method.queryWithBinds())
+      .thenReturn(new List<User>{ new User(Id = UserInfo.getUserId(), ContactId = userContactId) });
+    DATABASE_REPO_MOCK.when(DATABASE_REPO_MOCK.method.queryWithBinds())
+      .thenReturn(new List<Contact>{ new Contact(Id = userContactId, AccountId = userAccountId) });
+    DATABASE_REPO_MOCK.when(DATABASE_REPO_MOCK.method.queryWithBinds())
+      .thenReturn(new List<Account>());
+    DATABASE_REPO_MOCK.when(DATABASE_REPO_MOCK.method.queryWithBinds())
+      .thenReturn(new List<IndividualApplication>{ new IndividualApplication(Id = existingAppId) });
+    DATABASE_REPO_MOCK.when(DATABASE_REPO_MOCK.method.queryWithBinds())
+      .thenReturn(
+        new List<Account>{
+          (Account) JSON.deserialize(
+            '{"Id":"' + userAccountId + '","IsPersonAccount":true,"UTM_Source__pc":null}',
+            Account.class
+          ),
+          (Account) JSON.deserialize(
+            '{"Id":"' + studentAccountId + '","IsPersonAccount":true,"UTM_Source__pc":null}',
+            Account.class
+          )
+        }
+      );
+    DATABASE_REPO_MOCK.when(DATABASE_REPO_MOCK.method.updateSObjects()).thenReturnVoid();
+
+    Map<String, Object> result = ZetaApplicationController.createApplication(
+      studentAccountId,
+      'K',
+      null,
+      timelineId,
+      'google'
+    );
+
+    Assert.areEqual(existingAppId, result.get('applicationId'));
+    DATABASE_REPO_MOCK.verify(DATABASE_REPO_MOCK.method.updateSObjects());
   }
 }
