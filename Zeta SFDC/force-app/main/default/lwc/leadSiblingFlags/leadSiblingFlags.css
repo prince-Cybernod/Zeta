@@ -448,10 +448,11 @@
 
 /* A glass notification. It floats like a platform toast but stays in our DOM
    so its action can open the popup in place, at the same spot as the version
-   live in Production. */
+   live in Production: just under the app's tab bar, which ends 90px from the
+   top. */
 .sibling-toast {
   position: fixed;
-  top: 9rem;
+  top: 6rem;
   left: 50%;
   z-index: 9001;
   width: max-content;
@@ -614,7 +615,7 @@
    whatever containing block a Lightning ancestor establishes. */
 .genie-stage {
   position: fixed;
-  top: 9rem;
+  top: 6rem;
   left: 50%;
   z-index: 9002;
   width: var(--genie-w, 0);
@@ -2013,13 +2014,8 @@ dialog.siblings-dialog.is-minimising::backdrop {
 /* Phones get a bottom sheet. */
 @media (max-width: 48em) {
   .sibling-toast {
-    top: 8rem;
     width: calc(100vw - 1rem);
     max-width: none;
-  }
-
-  .genie-stage {
-    top: 8rem;
   }
 
   dialog.siblings-dialog {
