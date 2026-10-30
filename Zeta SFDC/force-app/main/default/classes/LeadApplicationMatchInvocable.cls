@@ -202,8 +202,8 @@ public without sharing class LeadApplicationMatchInvocable {
       }
 
       // Update IndividualApplication fields
-      if (String.isNotBlank(matchedLead.LeadSource)) {
-        app.Lead_Source__c = matchedLead.LeadSource;
+      if (String.isNotBlank(matchedLead.Lead_Source__c)) {
+        app.Lead_Source__c = matchedLead.Lead_Source__c;
       }
       Id campaignId = leadToCampaign.get(matchedLead.Id);
       if (campaignId != null) {
@@ -331,7 +331,7 @@ public without sharing class LeadApplicationMatchInvocable {
 
     return [
       SELECT Id, FirstName, LastName, Date_of_Birth__c, Email, Phone,
-        Preferred_Contact_Language__c, LeadSource, CreatedDate, OwnerId,
+        Preferred_Contact_Language__c, Lead_Source__c, CreatedDate, OwnerId,
         Guardian_First_Name__c, Guardian_Last_Name__c
       FROM Lead
       WHERE Id IN :leadIds AND IsConverted = FALSE

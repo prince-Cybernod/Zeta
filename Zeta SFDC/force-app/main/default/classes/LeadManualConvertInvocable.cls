@@ -67,7 +67,7 @@ public without sharing class LeadManualConvertInvocable {
 
     List<Lead> leads = [
       SELECT Id, FirstName, LastName, Date_of_Birth__c, Email, Phone, 
-             Preferred_Contact_Language__c, LeadSource, CreatedDate, OwnerId,
+             Preferred_Contact_Language__c, Lead_Source__c, CreatedDate, OwnerId,
              Guardian_First_Name__c, Guardian_Last_Name__c
       FROM Lead
       WHERE Id IN :leadIds
@@ -165,7 +165,7 @@ public without sharing class LeadManualConvertInvocable {
         Status = 'Draft',
         Category = appCategory,
         SubmittedByContactId = guardianAcc.PersonContactId,
-        Lead_Source__c = l.LeadSource,
+        Lead_Source__c = l.Lead_Source__c,
         Campaign__c = leadToCampaign.get(l.Id),
         Conversion_Type__c = 'Team-Assisted Conversion',
         Lead_First_Contact_Date__c = l.CreatedDate,
