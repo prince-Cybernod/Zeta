@@ -566,6 +566,16 @@
                 <identifier>RecordSIS_ID__cField</identifier>
             </fieldInstance>
         </itemInstances>
+        <itemInstances>
+            <fieldInstance>
+                <fieldInstanceProperties>
+                    <name>uiBehavior</name>
+                    <value>none</value>
+                </fieldInstanceProperties>
+                <fieldItem>Record.Created_for_Testing__c</fieldItem>
+                <identifier>RecordCreated_for_Testing_cField</identifier>
+            </fieldInstance>
+        </itemInstances>
         <name>Facet-153d2567-86b3-4bb2-abc4-cd351d344f3c</name>
         <type>Facet</type>
     </flexiPageRegions>
@@ -1301,6 +1311,57 @@
     <flexiPageRegions>
         <itemInstances>
             <componentInstance>
+                <componentName>runtime_platform_prefcenter:relatedConsentManagerContainer</componentName>
+                <identifier>runtime_platform_prefcenter_relatedConsentManagerContainer2</identifier>
+            </componentInstance>
+        </itemInstances>
+        <itemInstances>
+            <componentInstance>
+                <componentInstanceProperties>
+                    <name>timelineConfigurations</name>
+                    <valueList>
+                        <valueListItems>
+                            <value>{&quot;type&quot;:&quot;LogicalIrRelationship&quot;,&quot;version&quot;:0,&quot;parent&quot;:&quot;Account&quot;,&quot;name&quot;:&quot;Marketing Insights&quot;,&quot;dataSpace&quot;:&quot;default&quot;,&quot;unifiedObject&quot;:&quot;UnifiedIndividual__dlm&quot;,&quot;matchOnField&quot;:&quot;PersonContactId&quot;,&quot;engagements&quot;:[{&quot;name&quot;:&quot;ssot__WebsiteEngagement__dlm&quot;,&quot;relationship&quot;:&quot;Individual_Id_map_WebsiteEngagement_IndividualId_N_1_1645552384434&quot;,&quot;icon&quot;:&quot;standard:news&quot;,&quot;title&quot;:&quot;ssot__EngagementChannelActionId__c&quot;,&quot;subtitle&quot;:&quot;ssot__WebpageType__c&quot;,&quot;timestamp&quot;:&quot;ssot__EngagementDateTm__c&quot;,&quot;fields&quot;:[&quot;ssot__PageURL__c&quot;,&quot;ssot__ReferrerURL__c&quot;,&quot;ssot__EngagementTypeId__c&quot;,&quot;ssot__SessionId__c&quot;],&quot;filters&quot;:[],&quot;label&quot;:&quot;Website Engagement&quot;},{&quot;name&quot;:&quot;ssot__EmailEngagement__dlm&quot;,&quot;relationship&quot;:&quot;EmailEngagement_IndividualId_map_Individual_Id_N_1&quot;,&quot;icon&quot;:&quot;standard:email&quot;,&quot;title&quot;:&quot;ssot__EngagementChannelActionId__c&quot;,&quot;subtitle&quot;:&quot;ssot__SubjectLineTxt__c&quot;,&quot;timestamp&quot;:&quot;ssot__EngagementDateTm__c&quot;,&quot;fields&quot;:[&quot;ssot__EmailRecipientSendStatus__c&quot;,&quot;ssot__LinkURL__c&quot;,&quot;ssot__EmailBounceType__c&quot;,&quot;ssot__BounceReasonText__c&quot;,&quot;ssot__UnsubscribeSourceText__c&quot;],&quot;filters&quot;:[],&quot;label&quot;:&quot;Email Engagement&quot;}]}</value>
+                            <visibilityRule>
+                                <booleanFilter>1 OR 2</booleanFilter>
+                                <criteria>
+                                    <leftValue>{!$Client.formFactor}</leftValue>
+                                    <operator>EQUAL</operator>
+                                    <rightValue>Large</rightValue>
+                                </criteria>
+                                <criteria>
+                                    <leftValue>{!$Client.formFactor}</leftValue>
+                                    <operator>NE</operator>
+                                    <rightValue>Large</rightValue>
+                                </criteria>
+                            </visibilityRule>
+                        </valueListItems>
+                    </valueList>
+                </componentInstanceProperties>
+                <componentName>platform_engagement_timeline:timeline</componentName>
+                <identifier>platform_engagement_timeline_timeline</identifier>
+            </componentInstance>
+        </itemInstances>
+        <itemInstances>
+            <componentInstance>
+                <componentInstanceProperties>
+                    <name>height</name>
+                    <value>880</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>showTitle</name>
+                    <value>true</value>
+                </componentInstanceProperties>
+                <componentName>runtime_marketing_unifiedmarketing:unifiedEngagementHistoryDashboard</componentName>
+                <identifier>runtime_marketing_unifiedmarketing_unifiedEngagementHistoryDashboard</identifier>
+            </componentInstance>
+        </itemInstances>
+        <name>Facet-80696d04-2b45-4b1e-b203-468e35625720</name>
+        <type>Facet</type>
+    </flexiPageRegions>
+    <flexiPageRegions>
+        <itemInstances>
+            <componentInstance>
                 <componentInstanceProperties>
                     <name>active</name>
                     <value>true</value>
@@ -1347,6 +1408,20 @@
                 </componentInstanceProperties>
                 <componentName>flexipage:tab</componentName>
                 <identifier>flexipage_tab3</identifier>
+            </componentInstance>
+        </itemInstances>
+        <itemInstances>
+            <componentInstance>
+                <componentInstanceProperties>
+                    <name>body</name>
+                    <value>Facet-80696d04-2b45-4b1e-b203-468e35625720</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>title</name>
+                    <value>Marketing Activity</value>
+                </componentInstanceProperties>
+                <componentName>flexipage:tab</componentName>
+                <identifier>flexipage_tab5</identifier>
             </componentInstance>
         </itemInstances>
         <name>Facet-34726921-28df-4dd5-826b-bca23b4472e3</name>

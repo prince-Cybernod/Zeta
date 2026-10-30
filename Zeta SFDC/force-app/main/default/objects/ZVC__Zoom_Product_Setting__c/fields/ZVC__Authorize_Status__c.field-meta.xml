@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>ZVC__Authorize_Status__c</fullName>
+    <deprecated>false</deprecated>
+    <label>Authorize Status</label>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>No Authorized</fullName>
+                <default>false</default>
+                <label>No Authorized</label>
+            </value>
+            <value>
+                <fullName>Authorized</fullName>
+                <default>false</default>
+                <label>Authorized</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

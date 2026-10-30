@@ -15,6 +15,24 @@
         </dashboardFilterOptions>
         <name>Individual Application: Applied Date</name>
     </dashboardFilters>
+    <dashboardFilters>
+        <dashboardFilterOptions>
+            <operator>notContain</operator>
+            <values>Queens</values>
+        </dashboardFilterOptions>
+        <dashboardFilterOptions>
+            <operator>contains</operator>
+            <values>Queens</values>
+        </dashboardFilterOptions>
+        <name>Market</name>
+    </dashboardFilters>
+    <dashboardFilters>
+        <dashboardFilterOptions>
+            <operator>equals</operator>
+            <values>K,1,2,3,4,5</values>
+        </dashboardFilterOptions>
+        <name>Grade Band</name>
+    </dashboardFilters>
     <dashboardGridLayout>
         <dashboardGridComponents>
             <colSpan>4</colSpan>
@@ -23,7 +41,7 @@
                 <autoselectColumnsFromReport>true</autoselectColumnsFromReport>
                 <componentType>RichText</componentType>
                 <dashboardComponentContents>
-                    <richTextContent>[{\&amp;quot;attributes\&amp;quot;:{\&amp;quot;size\&amp;quot;:\&amp;quot;28px\&amp;quot;,\&amp;quot;color\&amp;quot;:\&amp;quot;#4f497a\&amp;quot;,\&amp;quot;bold\&amp;quot;:true},\&amp;quot;insert\&amp;quot;:\&amp;quot;All Applications\&amp;quot;},{\&amp;quot;attributes\&amp;quot;:{\&amp;quot;align\&amp;quot;:\&amp;quot;center\&amp;quot;},\&amp;quot;insert\&amp;quot;:\&amp;quot;\\n\&amp;quot;}]</richTextContent>
+                    <richTextContent>[{\&amp;quot;attributes\&amp;quot;:{\&amp;quot;size\&amp;quot;:\&amp;quot;20px\&amp;quot;,\&amp;quot;color\&amp;quot;:\&amp;quot;#4f497a\&amp;quot;,\&amp;quot;bold\&amp;quot;:true},\&amp;quot;insert\&amp;quot;:\&amp;quot;All Applications\&amp;quot;},{\&amp;quot;attributes\&amp;quot;:{\&amp;quot;align\&amp;quot;:\&amp;quot;center\&amp;quot;},\&amp;quot;insert\&amp;quot;:\&amp;quot;\\n\&amp;quot;}]</richTextContent>
                 </dashboardComponentContents>
                 <groupingSortProperties/>
             </dashboardComponent>
@@ -37,7 +55,7 @@
                 <autoselectColumnsFromReport>true</autoselectColumnsFromReport>
                 <componentType>RichText</componentType>
                 <dashboardComponentContents>
-                    <richTextContent>[{\&amp;quot;attributes\&amp;quot;:{\&amp;quot;size\&amp;quot;:\&amp;quot;32px\&amp;quot;,\&amp;quot;color\&amp;quot;:\&amp;quot;#9361a8\&amp;quot;,\&amp;quot;bold\&amp;quot;:true},\&amp;quot;insert\&amp;quot;:\&amp;quot;Team (Inorganic) Applications\&amp;quot;},{\&amp;quot;attributes\&amp;quot;:{\&amp;quot;align\&amp;quot;:\&amp;quot;center\&amp;quot;},\&amp;quot;insert\&amp;quot;:\&amp;quot;\\n\&amp;quot;}]</richTextContent>
+                    <richTextContent>[{\&amp;quot;attributes\&amp;quot;:{\&amp;quot;size\&amp;quot;:\&amp;quot;20px\&amp;quot;,\&amp;quot;color\&amp;quot;:\&amp;quot;#9361a8\&amp;quot;,\&amp;quot;bold\&amp;quot;:true},\&amp;quot;insert\&amp;quot;:\&amp;quot;Team (Inorganic) Applications\&amp;quot;},{\&amp;quot;attributes\&amp;quot;:{\&amp;quot;align\&amp;quot;:\&amp;quot;center\&amp;quot;},\&amp;quot;insert\&amp;quot;:\&amp;quot;\\n\&amp;quot;}]</richTextContent>
                 </dashboardComponentContents>
                 <groupingSortProperties/>
             </dashboardComponent>
@@ -51,7 +69,7 @@
                 <autoselectColumnsFromReport>true</autoselectColumnsFromReport>
                 <componentType>RichText</componentType>
                 <dashboardComponentContents>
-                    <richTextContent>[{\&amp;quot;attributes\&amp;quot;:{\&amp;quot;size\&amp;quot;:\&amp;quot;32px\&amp;quot;,\&amp;quot;color\&amp;quot;:\&amp;quot;#00a4c7\&amp;quot;,\&amp;quot;bold\&amp;quot;:true},\&amp;quot;insert\&amp;quot;:\&amp;quot;Direct (Organic) Applications\&amp;quot;},{\&amp;quot;attributes\&amp;quot;:{\&amp;quot;align\&amp;quot;:\&amp;quot;center\&amp;quot;},\&amp;quot;insert\&amp;quot;:\&amp;quot;\\n\&amp;quot;}]</richTextContent>
+                    <richTextContent>[{\&amp;quot;attributes\&amp;quot;:{\&amp;quot;size\&amp;quot;:\&amp;quot;20px\&amp;quot;,\&amp;quot;color\&amp;quot;:\&amp;quot;#00a4c7\&amp;quot;,\&amp;quot;bold\&amp;quot;:true},\&amp;quot;insert\&amp;quot;:\&amp;quot;Direct (Organic) Applications\&amp;quot;},{\&amp;quot;attributes\&amp;quot;:{\&amp;quot;align\&amp;quot;:\&amp;quot;center\&amp;quot;},\&amp;quot;insert\&amp;quot;:\&amp;quot;\\n\&amp;quot;}]</richTextContent>
                 </dashboardComponentContents>
                 <groupingSortProperties/>
             </dashboardComponent>
@@ -85,6 +103,12 @@
                 <dashboardFilterColumns>
                     <column>AcademicInterest$IndividualApplication.AppliedDate</column>
                 </dashboardFilterColumns>
+                <dashboardFilterColumns>
+                    <column>AcademicInterest$LearningProgram</column>
+                </dashboardFilterColumns>
+                <dashboardFilterColumns>
+                    <column>AcademicInterest$IndividualApplication.Grade_Applying_To__c</column>
+                </dashboardFilterColumns>
                 <decimalPrecision>-1</decimalPrecision>
                 <displayUnits>Auto</displayUnits>
                 <groupingSortProperties/>
@@ -111,6 +135,12 @@
                 <componentType>Metric</componentType>
                 <dashboardFilterColumns>
                     <column>AcademicInterest$IndividualApplication.AppliedDate</column>
+                </dashboardFilterColumns>
+                <dashboardFilterColumns>
+                    <column>AcademicInterest$LearningProgram</column>
+                </dashboardFilterColumns>
+                <dashboardFilterColumns>
+                    <column>AcademicInterest$IndividualApplication.Grade_Applying_To__c</column>
                 </dashboardFilterColumns>
                 <decimalPrecision>-1</decimalPrecision>
                 <displayUnits>Auto</displayUnits>
@@ -154,6 +184,12 @@
                 <dashboardFilterColumns>
                     <column>AcademicInterest$IndividualApplication.AppliedDate</column>
                 </dashboardFilterColumns>
+                <dashboardFilterColumns>
+                    <column>AcademicInterest$LearningProgram</column>
+                </dashboardFilterColumns>
+                <dashboardFilterColumns>
+                    <column>AcademicInterest$IndividualApplication.Grade_Applying_To__c</column>
+                </dashboardFilterColumns>
                 <decimalPrecision>-1</decimalPrecision>
                 <displayUnits>Auto</displayUnits>
                 <groupingSortProperties/>
@@ -180,6 +216,12 @@
                 <componentType>Metric</componentType>
                 <dashboardFilterColumns>
                     <column>AcademicInterest$IndividualApplication.AppliedDate</column>
+                </dashboardFilterColumns>
+                <dashboardFilterColumns>
+                    <column>AcademicInterest$LearningProgram</column>
+                </dashboardFilterColumns>
+                <dashboardFilterColumns>
+                    <column>AcademicInterest$IndividualApplication.Grade_Applying_To__c</column>
                 </dashboardFilterColumns>
                 <decimalPrecision>-1</decimalPrecision>
                 <displayUnits>Auto</displayUnits>
@@ -222,6 +264,12 @@
                 <dashboardFilterColumns>
                     <column>AcademicInterest$IndividualApplication.AppliedDate</column>
                 </dashboardFilterColumns>
+                <dashboardFilterColumns>
+                    <column>AcademicInterest$LearningProgram</column>
+                </dashboardFilterColumns>
+                <dashboardFilterColumns>
+                    <column>AcademicInterest$IndividualApplication.Grade_Applying_To__c</column>
+                </dashboardFilterColumns>
                 <decimalPrecision>-1</decimalPrecision>
                 <displayUnits>Auto</displayUnits>
                 <groupingSortProperties/>
@@ -248,6 +296,12 @@
                 <componentType>Metric</componentType>
                 <dashboardFilterColumns>
                     <column>AcademicInterest$IndividualApplication.AppliedDate</column>
+                </dashboardFilterColumns>
+                <dashboardFilterColumns>
+                    <column>AcademicInterest$LearningProgram</column>
+                </dashboardFilterColumns>
+                <dashboardFilterColumns>
+                    <column>AcademicInterest$IndividualApplication.Grade_Applying_To__c</column>
                 </dashboardFilterColumns>
                 <decimalPrecision>-1</decimalPrecision>
                 <displayUnits>Auto</displayUnits>
@@ -295,6 +349,12 @@
                 <componentType>ColumnStacked</componentType>
                 <dashboardFilterColumns>
                     <column>AcademicInterest$IndividualApplication.AppliedDate</column>
+                </dashboardFilterColumns>
+                <dashboardFilterColumns>
+                    <column>AcademicInterest$LearningProgram</column>
+                </dashboardFilterColumns>
+                <dashboardFilterColumns>
+                    <column>AcademicInterest$IndividualApplication.Grade_Applying_To__c</column>
                 </dashboardFilterColumns>
                 <decimalPrecision>-1</decimalPrecision>
                 <displayUnits>Auto</displayUnits>
@@ -359,6 +419,12 @@
                 <dashboardFilterColumns>
                     <column>AcademicInterest$IndividualApplication.AppliedDate</column>
                 </dashboardFilterColumns>
+                <dashboardFilterColumns>
+                    <column>AcademicInterest$LearningProgram</column>
+                </dashboardFilterColumns>
+                <dashboardFilterColumns>
+                    <column>AcademicInterest$IndividualApplication.Grade_Applying_To__c</column>
+                </dashboardFilterColumns>
                 <decimalPrecision>-1</decimalPrecision>
                 <displayUnits>Auto</displayUnits>
                 <drillEnabled>false</drillEnabled>
@@ -369,6 +435,7 @@
                 <groupingSortProperties>
                     <groupingSorts>
                         <groupingLevel>g1</groupingLevel>
+                        <sortColumn>RowCount</sortColumn>
                         <sortOrder>a</sortOrder>
                     </groupingSorts>
                 </groupingSortProperties>
@@ -398,6 +465,12 @@
                 <dashboardFilterColumns>
                     <column>AcademicInterest$IndividualApplication.AppliedDate</column>
                 </dashboardFilterColumns>
+                <dashboardFilterColumns>
+                    <column>AcademicInterest$LearningProgram</column>
+                </dashboardFilterColumns>
+                <dashboardFilterColumns>
+                    <column>AcademicInterest$IndividualApplication.Grade_Applying_To__c</column>
+                </dashboardFilterColumns>
                 <decimalPrecision>-1</decimalPrecision>
                 <displayUnits>Auto</displayUnits>
                 <drillEnabled>false</drillEnabled>
@@ -408,6 +481,7 @@
                 <groupingSortProperties>
                     <groupingSorts>
                         <groupingLevel>g1</groupingLevel>
+                        <sortColumn>RowCount</sortColumn>
                         <sortOrder>a</sortOrder>
                     </groupingSorts>
                 </groupingSortProperties>
@@ -455,6 +529,12 @@
                 <dashboardFilterColumns>
                     <column>AcademicInterest$IndividualApplication.AppliedDate</column>
                 </dashboardFilterColumns>
+                <dashboardFilterColumns>
+                    <column>AcademicInterest$LearningProgram</column>
+                </dashboardFilterColumns>
+                <dashboardFilterColumns>
+                    <column>AcademicInterest$IndividualApplication.Grade_Applying_To__c</column>
+                </dashboardFilterColumns>
                 <decimalPrecision>-1</decimalPrecision>
                 <displayUnits>Auto</displayUnits>
                 <drillEnabled>false</drillEnabled>
@@ -493,6 +573,12 @@
                 <componentType>Column</componentType>
                 <dashboardFilterColumns>
                     <column>AcademicInterest$IndividualApplication.AppliedDate</column>
+                </dashboardFilterColumns>
+                <dashboardFilterColumns>
+                    <column>AcademicInterest$LearningProgram</column>
+                </dashboardFilterColumns>
+                <dashboardFilterColumns>
+                    <column>AcademicInterest$IndividualApplication.Grade_Applying_To__c</column>
                 </dashboardFilterColumns>
                 <decimalPrecision>-1</decimalPrecision>
                 <displayUnits>Auto</displayUnits>

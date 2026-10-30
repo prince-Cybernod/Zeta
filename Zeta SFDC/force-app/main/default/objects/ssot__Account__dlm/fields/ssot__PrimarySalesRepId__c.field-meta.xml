@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>ssot__PrimarySalesRepId__c</fullName>
+    <deprecated>false</deprecated>
+    <label>Primary Sales Rep</label>
+    <length>36</length>
+    <mktDataModelFieldAttributes>
+        <definitionCreationType>Standard</definitionCreationType>
+        <isDynamicLookup>false</isDynamicLookup>
+        <labelOverride>Primary Sales Rep</labelOverride>
+        <masterLabel>Primary Sales Rep</masterLabel>
+        <refAttrDeveloperName>PrimarySalesRepId</refAttrDeveloperName>
+        <usageTag>None</usageTag>
+    </mktDataModelFieldAttributes>
+    <required>true</required>
+    <type>Text</type>
+</CustomField>

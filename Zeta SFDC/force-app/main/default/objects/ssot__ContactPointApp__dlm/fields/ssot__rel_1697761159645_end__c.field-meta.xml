@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>ssot__rel_1697761159645_end__c</fullName>
+    <deleteConstraint>SetNull</deleteConstraint>
+    <deprecated>false</deprecated>
+    <label>ContactPointApp_DeviceId_map_Device__rel</label>
+    <referenceTo>ssot__Device__dlm</referenceTo>
+    <relationshipLabel>ContactPointApp_DeviceId_map_Device__rel</relationshipLabel>
+    <relationshipName>rel_1697761159645_end</relationshipName>
+    <required>false</required>
+    <type>Lookup</type>
+</CustomField>

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>ssot__GeoCodeAccuracy__c</fullName>
+    <deprecated>false</deprecated>
+    <label>Geo Code Accuracy</label>
+    <mktDataModelFieldAttributes>
+        <definitionCreationType>Standard</definitionCreationType>
+        <isDynamicLookup>false</isDynamicLookup>
+        <labelOverride>Geo Code Accuracy</labelOverride>
+        <masterLabel>Geo Code Accuracy</masterLabel>
+        <refAttrDeveloperName>GeoCodeAccuracy</refAttrDeveloperName>
+        <usageTag>None</usageTag>
+    </mktDataModelFieldAttributes>
+    <precision>18</precision>
+    <required>false</required>
+    <scale>6</scale>
+    <type>Number</type>
+</CustomField>

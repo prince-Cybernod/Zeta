@@ -91,7 +91,7 @@
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>true</editable>
+        <editable>false</editable>
         <field>Account.Created_for_Testing__c</field>
         <readable>true</readable>
     </fieldPermissions>
@@ -811,7 +811,7 @@
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>true</editable>
+        <editable>false</editable>
         <field>IndividualApplication.AcademicTerm</field>
         <readable>true</readable>
     </fieldPermissions>
@@ -836,18 +836,23 @@
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>true</editable>
+        <editable>false</editable>
         <field>IndividualApplication.ApplicantEmail</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>true</editable>
+        <editable>false</editable>
         <field>IndividualApplication.ApplicantPhone</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
         <field>IndividualApplication.ContactId</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>IndividualApplication.Created_for_Testing__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -866,12 +871,12 @@
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>true</editable>
+        <editable>false</editable>
         <field>IndividualApplication.DecisionReleaseDate</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>true</editable>
+        <editable>false</editable>
         <field>IndividualApplication.DueDate</field>
         <readable>true</readable>
     </fieldPermissions>
@@ -906,7 +911,7 @@
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>true</editable>
+        <editable>false</editable>
         <field>IndividualApplication.LearningProgram</field>
         <readable>true</readable>
     </fieldPermissions>

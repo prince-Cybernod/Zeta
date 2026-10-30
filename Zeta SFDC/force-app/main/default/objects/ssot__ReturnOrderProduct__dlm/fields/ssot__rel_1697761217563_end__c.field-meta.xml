@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>ssot__rel_1697761217563_end__c</fullName>
+    <deleteConstraint>SetNull</deleteConstraint>
+    <deprecated>false</deprecated>
+    <label>ReturnOrderProduct_ReturnOrderId_map_rel</label>
+    <referenceTo>ssot__ReturnOrder__dlm</referenceTo>
+    <relationshipLabel>ReturnOrderProduct_ReturnOrderId_map_rel</relationshipLabel>
+    <relationshipName>rel_1697761217563_end</relationshipName>
+    <required>false</required>
+    <type>Lookup</type>
+</CustomField>

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>ssot__AutoPaymentAmountCurrency__c</fullName>
+    <deprecated>false</deprecated>
+    <label>Auto Payment Amount Currency</label>
+    <length>36</length>
+    <mktDataModelFieldAttributes>
+        <definitionCreationType>Standard</definitionCreationType>
+        <isDynamicLookup>false</isDynamicLookup>
+        <labelOverride>Auto Payment Amount Currency</labelOverride>
+        <masterLabel>Auto Payment Amount Currency</masterLabel>
+        <refAttrDeveloperName>AutoPaymentAmountCurrency</refAttrDeveloperName>
+        <usageTag>None</usageTag>
+    </mktDataModelFieldAttributes>
+    <required>false</required>
+    <type>Text</type>
+</CustomField>

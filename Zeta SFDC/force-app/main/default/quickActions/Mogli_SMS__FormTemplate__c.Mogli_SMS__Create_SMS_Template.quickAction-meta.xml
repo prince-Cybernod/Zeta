@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<QuickAction xmlns="http://soap.sforce.com/2006/04/metadata">
+    <description>Creates SMS Template for the Form Template.</description>
+    <fieldOverrides>
+        <field>Mogli_SMS__Name__c</field>
+        <formula>Mogli_SMS__FormTemplate__c.Name</formula>
+    </fieldOverrides>
+    <label>Create SMS Template</label>
+    <optionsCreateFeedItem>true</optionsCreateFeedItem>
+    <quickActionLayout>
+        <layoutSectionStyle>TwoColumnsLeftToRight</layoutSectionStyle>
+        <quickActionLayoutColumns>
+            <quickActionLayoutItems>
+                <emptySpace>false</emptySpace>
+                <field>Mogli_SMS__Name__c</field>
+                <uiBehavior>Required</uiBehavior>
+            </quickActionLayoutItems>
+        </quickActionLayoutColumns>
+        <quickActionLayoutColumns/>
+    </quickActionLayout>
+    <targetObject>Mogli_SMS__SMS_Template__c</targetObject>
+    <targetParentField>Mogli_SMS__FormTemplate__c</targetParentField>
+    <type>Create</type>
+</QuickAction>

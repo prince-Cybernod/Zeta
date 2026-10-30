@@ -423,7 +423,7 @@
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>true</editable>
+        <editable>false</editable>
         <field>IndividualApplication.AcademicTerm</field>
         <readable>true</readable>
     </fieldPermissions>
@@ -458,12 +458,12 @@
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>true</editable>
+        <editable>false</editable>
         <field>IndividualApplication.ApplicantEmail</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>true</editable>
+        <editable>false</editable>
         <field>IndividualApplication.ApplicantPhone</field>
         <readable>true</readable>
     </fieldPermissions>
@@ -504,11 +504,6 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
-        <field>IndividualApplication.Created_for_Testing__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
         <field>IndividualApplication.Created_through_Manual_Lead_Conversion__c</field>
         <readable>true</readable>
     </fieldPermissions>
@@ -543,7 +538,7 @@
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>true</editable>
+        <editable>false</editable>
         <field>IndividualApplication.DecisionReleaseDate</field>
         <readable>true</readable>
     </fieldPermissions>
@@ -553,7 +548,7 @@
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>true</editable>
+        <editable>false</editable>
         <field>IndividualApplication.DueDate</field>
         <readable>true</readable>
     </fieldPermissions>
@@ -678,7 +673,7 @@
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>true</editable>
+        <editable>false</editable>
         <field>IndividualApplication.LearningProgram</field>
         <readable>true</readable>
     </fieldPermissions>

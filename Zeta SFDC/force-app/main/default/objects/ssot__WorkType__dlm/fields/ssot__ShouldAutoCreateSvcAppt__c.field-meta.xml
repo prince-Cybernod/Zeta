@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>ssot__ShouldAutoCreateSvcAppt__c</fullName>
+    <deprecated>false</deprecated>
+    <label>Should Auto Create Svc Appt</label>
+    <length>6</length>
+    <mktDataModelFieldAttributes>
+        <definitionCreationType>Standard</definitionCreationType>
+        <isDynamicLookup>false</isDynamicLookup>
+        <masterLabel>Should Auto Create Svc Appt</masterLabel>
+        <refAttrDeveloperName>ShouldAutoCreateSvcAppt</refAttrDeveloperName>
+        <usageTag>None</usageTag>
+    </mktDataModelFieldAttributes>
+    <required>false</required>
+    <type>Text</type>
+</CustomField>

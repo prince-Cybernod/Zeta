@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>ssot__rel_1716722190416_end__c</fullName>
+    <deleteConstraint>SetNull</deleteConstraint>
+    <deprecated>false</deprecated>
+    <label>ClinicalEncounter_PatientId_map_Pati_rel</label>
+    <referenceTo>ssot__Patient__dlm</referenceTo>
+    <relationshipLabel>ClinicalEncounter_PatientId_map_Pati_rel</relationshipLabel>
+    <relationshipName>rel_1716722190416_end</relationshipName>
+    <required>false</required>
+    <type>Lookup</type>
+</CustomField>

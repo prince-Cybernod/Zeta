@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>ssot__rel_1702009485923_end__c</fullName>
+    <deleteConstraint>SetNull</deleteConstraint>
+    <deprecated>false</deprecated>
+    <label>WebsiteWebStore_WebStoreId_map_WebSt_rel</label>
+    <referenceTo>ssot__WebStore__dlm</referenceTo>
+    <relationshipLabel>WebsiteWebStore_WebStoreId_map_WebSt_rel</relationshipLabel>
+    <relationshipName>rel_1702009485923_end</relationshipName>
+    <required>false</required>
+    <type>Lookup</type>
+</CustomField>

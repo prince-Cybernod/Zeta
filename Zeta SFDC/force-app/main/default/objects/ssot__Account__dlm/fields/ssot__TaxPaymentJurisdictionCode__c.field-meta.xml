@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>ssot__TaxPaymentJurisdictionCode__c</fullName>
+    <deprecated>false</deprecated>
+    <label>Tax Payment Jurisdiction Code</label>
+    <length>255</length>
+    <mktDataModelFieldAttributes>
+        <definitionCreationType>Standard</definitionCreationType>
+        <isDynamicLookup>false</isDynamicLookup>
+        <labelOverride>Tax Payment Jurisdiction Code</labelOverride>
+        <masterLabel>Tax Payment Jurisdiction Code</masterLabel>
+        <refAttrDeveloperName>TaxPaymentJurisdictionCode</refAttrDeveloperName>
+        <usageTag>None</usageTag>
+    </mktDataModelFieldAttributes>
+    <required>false</required>
+    <type>Text</type>
+</CustomField>

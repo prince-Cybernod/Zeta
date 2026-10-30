@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>ssot__rel_1747383593342_end__c</fullName>
+    <deleteConstraint>SetNull</deleteConstraint>
+    <deprecated>false</deprecated>
+    <label>GroundTravelEnergyUse_DistanceUnitId_rel</label>
+    <referenceTo>ssot__UnitOfMeasure__dlm</referenceTo>
+    <relationshipLabel>GroundTravelEnergyUse_DistanceUnitId_rel</relationshipLabel>
+    <relationshipName>rel_1747383593342_end</relationshipName>
+    <required>false</required>
+    <type>Lookup</type>
+</CustomField>

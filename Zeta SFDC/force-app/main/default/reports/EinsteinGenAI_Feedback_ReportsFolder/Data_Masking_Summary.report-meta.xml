@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns>
+        <field>GenAIContentCategory__dlm.detectorType__c</field>
+    </columns>
+    <columns>
+        <field>GenAIContentCategory__dlm.value__c</field>
+    </columns>
+    <filter>
+        <criteriaItems>
+            <column>GenAIContentCategory__dlm.detectorType__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>notEqual</operator>
+            <value></value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>GenAIContentCategory__dlm.detectorType__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>PII</value>
+        </criteriaItems>
+        <language>en_US</language>
+    </filter>
+    <format>Summary</format>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>GenAIContentCategory__dlm.category__c</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <isSmartTotalDisabled>false</isSmartTotalDisabled>
+    <name>Data Masking Summary</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>CustomEntityCustomEntity$GenAIContentQuality__dlm$GenAIContentCategory__dlm</reportType>
+    <showDetails>true</showDetails>
+    <showGrandTotal>true</showGrandTotal>
+    <showSubTotals>true</showSubTotals>
+    <timeFrameFilter>
+        <dateColumn>GenAIContentQuality__dlm.timestamp__c</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
+    </timeFrameFilter>
+</Report>

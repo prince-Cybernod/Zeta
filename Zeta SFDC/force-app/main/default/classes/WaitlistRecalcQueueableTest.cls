@@ -231,7 +231,8 @@ private class WaitlistRecalcQueueableTest {
         }
       )
       .thenReturn(waitlistedRecords)
-      .thenReturn(new List<AcademicInterest>{ preOffer1, preOffer2 });
+      .thenReturn(new List<AcademicInterest>{ preOffer1, preOffer2 })
+      .thenReturn(new List<AcademicInterest>());
     DATABASE_REPO_MOCK.when(DATABASE_REPO_MOCK.method.updateSObjects())
       .thenReturnVoid()
       .thenReturnVoid();
@@ -343,7 +344,8 @@ private class WaitlistRecalcQueueableTest {
         }
       )
       .thenReturn(waitlistedRecords)
-      .thenReturn(new List<AcademicInterest>{ preOffer1 });
+      .thenReturn(new List<AcademicInterest>{ preOffer1 })
+      .thenReturn(new List<AcademicInterest>());
     DATABASE_REPO_MOCK.when(DATABASE_REPO_MOCK.method.updateSObjects())
       .thenReturnVoid()
       .thenReturnVoid();
@@ -414,7 +416,8 @@ private class WaitlistRecalcQueueableTest {
         }
       )
       .thenReturn(waitlistedRecords)
-      .thenReturn(new List<AcademicInterest>{ preOffer1, preOffer2 });
+      .thenReturn(new List<AcademicInterest>{ preOffer1, preOffer2 })
+      .thenReturn(new List<AcademicInterest>());
     DATABASE_REPO_MOCK.when(DATABASE_REPO_MOCK.method.updateSObjects())
       .thenReturnVoid()
       .thenReturnVoid();
@@ -583,7 +586,8 @@ private class WaitlistRecalcQueueableTest {
         }
       )
       .thenReturn(waitlistedRecords)
-      .thenReturn(new List<AcademicInterest>{ preOffer });
+      .thenReturn(new List<AcademicInterest>{ preOffer })
+      .thenReturn(new List<AcademicInterest>());
     DATABASE_REPO_MOCK.when(DATABASE_REPO_MOCK.method.updateSObjects())
       .thenReturnVoid()
       .thenReturnVoid();
@@ -655,7 +659,8 @@ private class WaitlistRecalcQueueableTest {
         }
       )
       .thenReturn(waitlistedRecords)
-      .thenReturn(new List<AcademicInterest>{ newPreOffer, existingSeatOffered });
+      .thenReturn(new List<AcademicInterest>{ newPreOffer, existingSeatOffered })
+      .thenReturn(new List<AcademicInterest>());
     DATABASE_REPO_MOCK.when(DATABASE_REPO_MOCK.method.updateSObjects())
       .thenReturnVoid()
       .thenReturnVoid();
@@ -729,7 +734,8 @@ private class WaitlistRecalcQueueableTest {
         }
       )
       .thenReturn(waitlistedRecords)
-      .thenReturn(new List<AcademicInterest>{ preOffer });
+      .thenReturn(new List<AcademicInterest>{ preOffer })
+      .thenReturn(new List<AcademicInterest>());
     DATABASE_REPO_MOCK.when(DATABASE_REPO_MOCK.method.updateSObjects())
       .thenReturnVoid()
       .thenReturnVoid();
@@ -775,5 +781,204 @@ private class WaitlistRecalcQueueableTest {
     DATABASE_REPO_MOCK.verify(DATABASE_REPO_MOCK.method.updateSObjects(), 3);
     OPTIMIZER_SERVICE_MOCK.never(OPTIMIZER_SERVICE_MOCK.method.optimizeOffers());
     DATABASE_REPO_MOCK.verify(DATABASE_REPO_MOCK.method.queryWithBinds(), 2);
+  }
+
+  // The parent relationship fields the SObject constructor can't set are built
+  // via JSON.deserialize (same convention as SchoolApplicationDecisionControllerTest).
+  private static AcademicInterest buildOffer(
+    Id aiId,
+    Id appId,
+    String status,
+    Decimal rank,
+    Id currentSchoolOfferId
+  ) {
+    return (AcademicInterest) JSON.deserialize(
+      '{"Id":"' +
+        aiId +
+        '","Status":"' +
+        status +
+        '","School_Rank__c":' +
+        (rank == null ? 'null' : String.valueOf(rank)) +
+        ',"IndividualApplicationId":"' +
+        appId +
+        '","IndividualApplication":{"Id":"' +
+        appId +
+        '","Current_School_Offer__c":' +
+        (currentSchoolOfferId == null ? 'null' : '"' + currentSchoolOfferId + '"') +
+        '}}',
+      AcademicInterest.class
+    );
+  }
+
+  // Promotes one waitlisted row on appId, then answers the post-save offer
+  // lookup with offersAfterSave. Returns every IndividualApplication written.
+  private static List<IndividualApplication> promoteAndCollectApplicationUpdates(
+    Id appId,
+    List<AcademicInterest> offersAfterSave
+  ) {
+    resetAllMocks();
+    Id capacityId = SObjectIds.generateFakeId(Schema.Lottery_Capacity__c.SObjectType);
+    AcademicInterest waitlisted = new AcademicInterest(
+      Id = SObjectIds.generateFakeId(Schema.AcademicInterest.SObjectType),
+      Lottery_Capacity__c = capacityId,
+      Status = WaitlistConstants.STATUS_WAITLISTED,
+      Waitlist_Position__c = 1,
+      IndividualApplicationId = appId,
+      School_Rank__c = 1,
+      Current_Priority_Group__c = 1
+    );
+    AcademicInterest preOffer = new AcademicInterest(
+      Id = SObjectIds.generateFakeId(Schema.AcademicInterest.SObjectType),
+      Status = LotteryConstants.STATUS_PRE_OFFER,
+      IndividualApplicationId = appId,
+      Lottery_Capacity__c = capacityId,
+      School_Rank__c = 1,
+      Current_Priority_Group__c = 1
+    );
+
+    DATABASE_REPO_MOCK.when(DATABASE_REPO_MOCK.method.queryWithBinds())
+      .thenReturn(
+        new List<Lottery_Capacity__c>{
+          (Lottery_Capacity__c) ReadOnlySObject.create(
+            new Lottery_Capacity__c(Id = capacityId),
+            new Map<String, Object>{ 'Remaining_Available_Seats__c' => 1 }
+          )
+        }
+      )
+      .thenReturn(new List<AcademicInterest>{ waitlisted })
+      .thenReturn(new List<AcademicInterest>{ preOffer })
+      .thenReturn(offersAfterSave);
+    DATABASE_REPO_MOCK.when(DATABASE_REPO_MOCK.method.updateSObjects())
+      .thenReturnVoid()
+      .thenReturnVoid()
+      .thenReturnVoid()
+      .thenReturnVoid();
+    RECALC_SERVICE_MOCK.when(RECALC_SERVICE_MOCK.method.recalculatePositionsByCapacity())
+      .thenReturn(new List<AcademicInterest>{ waitlisted });
+    RECALC_SERVICE_MOCK.when(RECALC_SERVICE_MOCK.method.getRecordsToPromote())
+      .thenReturn(new List<AcademicInterest>{ waitlisted });
+    OPTIMIZER_SERVICE_MOCK.when(OPTIMIZER_SERVICE_MOCK.method.optimizeOffers())
+      .thenReturn(new List<AcademicInterest>());
+    WITHDRAWAL_SERVICE_MOCK.when(WITHDRAWAL_SERVICE_MOCK.method.withdrawLowerRankedApplications())
+      .thenReturn(new List<AcademicInterest>());
+    ROLLUP_SERVICE_MOCK.when(ROLLUP_SERVICE_MOCK.method.recalculate()).thenReturnVoid();
+
+    buildQueueable(new Set<Id>{ capacityId }).execute(null);
+
+    // execute() swallows exceptions and reports them on the capacity, so a
+    // run that failed partway would otherwise look like "nothing to update".
+    List<IndividualApplication> written = new List<IndividualApplication>();
+    Lottery_Capacity__c lastCapacityWrite = null;
+    for (
+      Map<String, Object> call : DATABASE_REPO_MOCK.getCalls(
+        DATABASE_REPO_MOCK.method.updateSObjects()
+      )
+    ) {
+      for (SObject sObj : (List<SObject>) call.get('sobjects')) {
+        if (sObj.getSObjectType() == IndividualApplication.SObjectType) {
+          written.add((IndividualApplication) sObj);
+        } else if (sObj.getSObjectType() == Lottery_Capacity__c.SObjectType) {
+          lastCapacityWrite = (Lottery_Capacity__c) sObj;
+        }
+      }
+    }
+    Assert.isNotNull(lastCapacityWrite, 'Expected the capacity to be written');
+    Assert.areEqual(
+      'Completed',
+      lastCapacityWrite.Last_Recalculation_Status__c,
+      'The recalculation must finish: ' + lastCapacityWrite.Last_Recalculation_Error__c
+    );
+    return written;
+  }
+
+  // An unranked offer only wins when no ranked one is left.
+  @IsTest
+  private static void execute_promotedApplicationWithPriorOffer_movesPointerToBestOffer() {
+    Id appId = SObjectIds.generateFakeId(Schema.IndividualApplication.SObjectType);
+    Id priorId = SObjectIds.generateFakeId(Schema.AcademicInterest.SObjectType);
+    Id bestId = SObjectIds.generateFakeId(Schema.AcademicInterest.SObjectType);
+
+    List<IndividualApplication> written = promoteAndCollectApplicationUpdates(
+      appId,
+      new List<AcademicInterest>{
+        buildOffer(priorId, appId, LotteryConstants.STATUS_SEAT_OFFERED, 3, priorId),
+        buildOffer(
+          SObjectIds.generateFakeId(Schema.AcademicInterest.SObjectType),
+          appId,
+          LotteryConstants.STATUS_SEAT_OFFERED,
+          null,
+          priorId
+        ),
+        buildOffer(bestId, appId, LotteryConstants.STATUS_RESCINDED_OPTIMIZATION, 2, priorId)
+      }
+    );
+
+    Assert.areEqual(1, written.size(), 'Expected exactly one application update');
+    Assert.areEqual(appId, written[0].Id);
+    Assert.areEqual(bestId, written[0].Current_School_Offer__c);
+    Assert.isFalse(
+      written[0].isSet('Offer_Expiration_Date__c'),
+      'The respond-by date must be left alone'
+    );
+  }
+
+  @IsTest
+  private static void execute_promotedApplicationEqualRank_prefersSeatOfferedOverRescinded() {
+    Id appId = SObjectIds.generateFakeId(Schema.IndividualApplication.SObjectType);
+    Id rescindedId = SObjectIds.generateFakeId(Schema.AcademicInterest.SObjectType);
+    Id offeredId = SObjectIds.generateFakeId(Schema.AcademicInterest.SObjectType);
+
+    List<IndividualApplication> written = promoteAndCollectApplicationUpdates(
+      appId,
+      new List<AcademicInterest>{
+        buildOffer(rescindedId, appId, LotteryConstants.STATUS_RESCINDED_OPTIMIZATION, 2, null),
+        buildOffer(offeredId, appId, LotteryConstants.STATUS_SEAT_OFFERED, 2, null)
+      }
+    );
+
+    Assert.areEqual(1, written.size(), 'Expected exactly one application update');
+    Assert.areEqual(offeredId, written[0].Current_School_Offer__c);
+  }
+
+  @IsTest
+  private static void execute_promotedApplicationNeverOffered_setsPointerWithoutDate() {
+    Id appId = SObjectIds.generateFakeId(Schema.IndividualApplication.SObjectType);
+    Id offerId = SObjectIds.generateFakeId(Schema.AcademicInterest.SObjectType);
+
+    List<IndividualApplication> written = promoteAndCollectApplicationUpdates(
+      appId,
+      new List<AcademicInterest>{
+        buildOffer(offerId, appId, LotteryConstants.STATUS_SEAT_OFFERED, 1, null)
+      }
+    );
+
+    Assert.areEqual(1, written.size(), 'Expected exactly one application update');
+    Assert.areEqual(offerId, written[0].Current_School_Offer__c);
+    Assert.isFalse(
+      written[0].isSet('Offer_Expiration_Date__c'),
+      'A never-offered application must not get a respond-by date'
+    );
+  }
+
+  @IsTest
+  private static void execute_promotedApplicationPointerAlreadyBest_writesNoApplication() {
+    Id appId = SObjectIds.generateFakeId(Schema.IndividualApplication.SObjectType);
+    Id bestId = SObjectIds.generateFakeId(Schema.AcademicInterest.SObjectType);
+
+    List<IndividualApplication> written = promoteAndCollectApplicationUpdates(
+      appId,
+      new List<AcademicInterest>{
+        buildOffer(bestId, appId, LotteryConstants.STATUS_SEAT_OFFERED, 1, bestId),
+        buildOffer(
+          SObjectIds.generateFakeId(Schema.AcademicInterest.SObjectType),
+          appId,
+          LotteryConstants.STATUS_RESCINDED_OPTIMIZATION,
+          2,
+          bestId
+        )
+      }
+    );
+
+    Assert.areEqual(0, written.size(), 'A correct pointer must not be rewritten');
   }
 }

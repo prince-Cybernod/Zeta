@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>ZVC__List_View</fullName>
+    <columns>NAME</columns>
+    <columns>ZVC__Topic__c</columns>
+    <columns>ZVC__Webinar_Id__c</columns>
+    <columns>ZVC__Actual_Start_Time__c</columns>
+    <columns>ZVC__Actual_End_Time__c</columns>
+    <columns>OWNER.ALIAS</columns>
+    <columns>ZVC__Join_Url__c</columns>
+    <filterScope>Mine</filterScope>
+    <label>List View</label>
+</ListView>

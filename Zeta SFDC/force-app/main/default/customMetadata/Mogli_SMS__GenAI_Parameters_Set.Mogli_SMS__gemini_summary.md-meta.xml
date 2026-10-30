@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomMetadata xmlns="http://soap.sforce.com/2006/04/metadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <label>Gemini Summary</label>
+    <protected>false</protected>
+    <values>
+        <field>Mogli_SMS__Anthropic_Version__c</field>
+        <value xsi:nil="true"/>
+    </values>
+    <values>
+        <field>Mogli_SMS__Credential_FullName__c</field>
+        <value xsi:type="xsd:string">gemini_summary</value>
+    </values>
+    <values>
+        <field>Mogli_SMS__Credential_Id__c</field>
+        <value xsi:nil="true"/>
+    </values>
+    <values>
+        <field>Mogli_SMS__Credential_Type__c</field>
+        <value xsi:type="xsd:string">Mogli Provided</value>
+    </values>
+    <values>
+        <field>Mogli_SMS__Description__c</field>
+        <value xsi:type="xsd:string">This provides the parameters for the Mogli AI - Conversation Summary feature using Google Gemini.</value>
+    </values>
+    <values>
+        <field>Mogli_SMS__Frequency_Penalty__c</field>
+        <value xsi:type="xsd:double">0.0</value>
+    </values>
+    <values>
+        <field>Mogli_SMS__Gen_AI_Provider__c</field>
+        <value xsi:type="xsd:string">Google Gemini</value>
+    </values>
+    <values>
+        <field>Mogli_SMS__HARM_CATEGORY_DANGEROUS_CONTENT__c</field>
+        <value xsi:type="xsd:string">BLOCK_MEDIUM_AND_ABOVE</value>
+    </values>
+    <values>
+        <field>Mogli_SMS__HARM_CATEGORY_HARASSMENT__c</field>
+        <value xsi:type="xsd:string">BLOCK_MEDIUM_AND_ABOVE</value>
+    </values>
+    <values>
+        <field>Mogli_SMS__HARM_CATEGORY_HATE_SPEECH__c</field>
+        <value xsi:type="xsd:string">BLOCK_MEDIUM_AND_ABOVE</value>
+    </values>
+    <values>
+        <field>Mogli_SMS__HARM_CATEGORY_SEXUALLY_EXPLICIT__c</field>
+        <value xsi:type="xsd:string">BLOCK_MEDIUM_AND_ABOVE</value>
+    </values>
+    <values>
+        <field>Mogli_SMS__Log_Experiment__c</field>
+        <value xsi:type="xsd:boolean">true</value>
+    </values>
+    <values>
+        <field>Mogli_SMS__Manual_Mode__c</field>
+        <value xsi:type="xsd:boolean">true</value>
+    </values>
+    <values>
+        <field>Mogli_SMS__Max_Tokens__c</field>
+        <value xsi:type="xsd:double">1024.0</value>
+    </values>
+    <values>
+        <field>Mogli_SMS__Model__c</field>
+        <value xsi:type="xsd:string">gemini-2.0-flash</value>
+    </values>
+    <values>
+        <field>Mogli_SMS__N__c</field>
+        <value xsi:type="xsd:double">1.0</value>
+    </values>
+    <values>
+        <field>Mogli_SMS__Presence_Penalty__c</field>
+        <value xsi:type="xsd:double">0.0</value>
+    </values>
+    <values>
+        <field>Mogli_SMS__Response_Schema__c</field>
+        <value xsi:nil="true"/>
+    </values>
+    <values>
+        <field>Mogli_SMS__System_Prompt__c</field>
+        <value xsi:type="xsd:string">You are a helpful assistant with experience in helping customers. Given the following exchange between user (who is a cusomer) and the assistant (who is a service representative). Please summarize the following support interaction in 2-3 bullet points for the purpose of follow-up by a new Representative.
+Return with two headings: Background Information and Current Issues. Capture important details to help the advisor support the student with financial aid and continued enrollment in college. Format the result in HTML, without the &lt;HTML&gt; tags
+Do not include comments or anything before the ```html markers</value>
+    </values>
+    <values>
+        <field>Mogli_SMS__Temperature__c</field>
+        <value xsi:type="xsd:double">1.0</value>
+    </values>
+    <values>
+        <field>Mogli_SMS__Tool_Choice__c</field>
+        <value xsi:nil="true"/>
+    </values>
+    <values>
+        <field>Mogli_SMS__Tool_Result_Key__c</field>
+        <value xsi:nil="true"/>
+    </values>
+    <values>
+        <field>Mogli_SMS__Tools_Schema__c</field>
+        <value xsi:nil="true"/>
+    </values>
+    <values>
+        <field>Mogli_SMS__Top_K__c</field>
+        <value xsi:nil="true"/>
+    </values>
+    <values>
+        <field>Mogli_SMS__Top_P__c</field>
+        <value xsi:type="xsd:double">1.0</value>
+    </values>
+    <values>
+        <field>Mogli_SMS__User_Goal__c</field>
+        <value xsi:type="xsd:string">ConversationSummary</value>
+    </values>
+</CustomMetadata>

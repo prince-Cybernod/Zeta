@@ -1,0 +1,240 @@
+<!--
+Action Plans v4
+David Schach 2022
+https://appexchange.salesforce.com/appxListingDetail?listingId=a0N4V00000Gg6NVUAZ
+
+Copyright (c) 2022, salesforce.com, inc.
+All rights reserved.
+SPDX-License-Identifier: BSD-3-Clause
+For full license text, see the LICENSE file in the repo root or https://opensource.org/licenses/BSD-3-Clause
+-->
+<apex:component id="lightninglookupcomponent" controller="ActionPlansSectionHeaderController">
+	<apex:attribute name="sObj" type="sObject" description="The record the field belongs to." required="true" />
+	<apex:attribute name="field" type="String" description="The lookup field to put the Id into" required="true" />
+	<apex:attribute name="displayfield" type="String" description="The field to display as the record (Name for Account, CaseNumber for Case, etc.)" default="Name" />
+	<apex:attribute name="recordname" type="String" description="The value of the record name to display when editing a populated field" />
+	<apex:attribute name="sObjType" type="String" description="The sObject type." assignTo="{!objectName}" required="true" />
+	<apex:attribute name="where" type="String" description="WHERE clause for SOQL (if desired) - must start with OR or AND" required="false" default="" />
+	<apex:attribute name="required" type="Boolean" description="Is this field required?" default="false" required="false" />
+	<apex:attribute name="fieldClass" type="String" description="CSS class for the input field" required="false" />
+	<apex:attribute name="fieldStyle" type="String" description="CSS style for the input field" required="false" />
+	<apex:attribute name="for" type="String" description="Unique identifier for this component instance" required="true" />
+
+	<apex:variable var="customObject" value="{!$ObjectType[sObjType].custom}" />
+	<style>
+		#{!for}sldsscopediv .slds-listbox__option-icon .slds-icon {
+			width: 1rem;
+			height: 1rem;
+		}
+		#{!for}sldsscopediv .slds-listbox__option-icon .slds-icon_x-small {
+			width: 0.75rem;
+			height: 0.75rem;
+		}
+		#{!for}sldsscopediv .slds-dropdown {
+			position: absolute;
+			z-index: 9001;
+			background: white;
+			border: 1px solid #dddbda;
+			border-radius: 0.25rem;
+			box-shadow: 0 2px 3px 0 rgba(0, 0, 0, 0.16);
+			max-height: 15rem;
+			overflow-y: auto;
+		}
+		#{!for}sldsscopediv .slds-listbox__item {
+			cursor: pointer;
+		}
+		#{!for}sldsscopediv .slds-listbox__option:hover {
+			background-color: #f3f2f2;
+		}
+		#{!for}sldsscopediv .slds-combobox_container {
+			position: relative;
+		}
+	</style>
+	<script>
+		//j$('[id$=error-message]').hide();
+		function checkEscape(key, e) {
+			if (e.keyCode === 27) {
+				// escape key maps to keycode `27`
+				clearLookup(key);
+			}
+		}
+		function clearLookup(key) {
+			j$('#searchDropdown{!for}').hide();
+			j$('#' + key.attr('aria-activedescendant')).hide();
+			j$(key).val('').text('');
+		}
+	</script>
+
+	<div class="slds-scope lightningLookupContainer" id="{!for}sldsscopediv">
+		<div class="slds-combobox_container" id="searchInputContainer">
+			<div class="slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click slds-is-open" aria-expanded="true" aria-haspopup="listbox" role="combobox">
+				<div class="slds-combobox__form-element slds-input-has-icon slds-input-has-icon_right" role="none">
+					<div class="{!IF(required==true,'requiredInput','')}">
+						<div class="{!IF(required==true,'requiredBlock','')}">
+							<input
+								id="searchInput{!for}"
+								class="slds-input slds-combobox__input {!fieldClass}"
+								style="{!fieldStyle}"
+								type="text"
+								autocomplete="off"
+        onkeyup="LightningLookupScripts{!for}.searchRecords(j$(this), '{!sObjType}', '{!customObject}');checkEscape(j$(this), event);"
+								aria-autocomplete="list"
+								role="combobox"
+								aria-expanded="true"
+        aria-controls="searchDropdown{!for}"
+								placeholder="{!$Label.ap_Search}"
+        aria-activedescendant="searchDropdown{!for}"
+								required="{!IF(required == true, 'true', '')}"
+								value="{!recordname}" />
+						</div>
+						<!-- <div class="slds-form-element__help" id="error-message" >Required</div> -->
+					</div>
+				</div>
+    <div id="searchDropdown{!for}" class="slds-dropdown slds-dropdown_length-with-icon-5 slds-dropdown_fluid" role="listbox" style="display: none">
+					<ul class="slds-listbox slds-listbox_vertical searchResultsList" role="presentation"></ul>
+				</div>
+			</div>
+		</div>
+	</div>
+	<script>
+		var boolRequired = '{!required}';
+  function checkinput() {
+			if (boolRequired == 'true') {
+				j$('#{!for}sldsscopediv [id$=searchInput]').prop('required', true);
+			}
+			j$('[id$=searchInput_lkwgt]').hide();
+		}
+	  var LightningLookupScripts{!for} = {
+			//Function To Get Record's Details on Record Click
+	  recInfo: function (recId, sObjType, recordName) {
+	   // Prefer direct component-scoped id to get the bound apex:inputHidden
+	   var recInfoIdInputEl = document.getElementById('{!$Component.hiddenInput}');
+	   var recInfoIdInput = null;
+	   if (recInfoIdInputEl) {
+	     recInfoIdInput = j$(recInfoIdInputEl);
+	   } else {
+	     // Fallback: locate hidden input as a sibling of the scoped div
+	     var compScope = j$('#{!for}sldsscopediv');
+	     if (compScope.length > 0) {
+	       var fallbackHidden = compScope.parent().find('[id$=hiddenInput]').first();
+	       if (fallbackHidden.length > 0) {
+	         recInfoIdInput = fallbackHidden;
+	       }
+	     }
+	   }
+	   if (!recInfoIdInput) {
+	     console.error('APLightningLookup: hidden input not found for component {!for}');
+	     return;
+	   }
+			recInfoIdInput.val(recId);
+			j$('#searchDropdown{!for}').fadeOut();
+
+			// Use the passed recordName instead of making a server call
+			var record = {};
+			record.Id = recId;
+			record['{!JSENCODE(displayField)}'] = recordName;
+			
+			console.log(record);
+			j$('#searchInput{!for}').val(record['{!JSENCODE(displayField)}']);
+			// Ensure the hidden input is updated and change event fired
+			recInfoIdInput.val(recId);
+			
+			// Trigger change event to sync with server-side model
+			recInfoIdInput.trigger('change');
+			},
+			searchRecords: function  (key, sObjType, cObject) {
+
+				var sObjTypeLower = sObjType.toLowerCase();
+
+				j$('#' + key.attr('aria-activedescendant')).show();
+				//Grabbing The Input Field Value
+				var searchKey = key.val();
+				if (searchKey == '') {
+					j$('#' + key.attr('aria-activedescendant')).hide();
+				}
+				var searchList = "";
+				//Creating List Elements Based on Query Results
+				var searchIcon = '{!URLFOR($Asset.SLDS, "assets/icons/utility-sprite/svg/symbols.svg#search")}';
+				searchList += '<li role="presentation" class="slds-listbox__item">' +
+					'<div aria-selected="true" id="option0" class="slds-media slds-listbox__option slds-listbox__option_entity slds-listbox__option_term slds-has-focus" role="option">' +
+					'<span class="slds-media__figure slds-listbox__option-icon">' +
+					'<span class="slds-icon_container slds-icon-utility-search" title="{!$Label.ap_Search}:">' +
+					'<svg class="slds-icon slds-icon_x-small slds-icon-text-default" aria-hidden="true"><use xlink:href="' + searchIcon + '"></use></svg>' +
+					'<span class="slds-assistive-text">{!$Label.ap_Search}:</span></span></span>' +
+					'<span class="slds-media__body"><span class="slds-listbox__option-text slds-listbox__option-text_entity">' + searchKey + '</span></span></div > ' +
+					'</li>';
+ 			//Querying For Records In Objects Name Matching The Input in The Text Field
+				var displayFieldVal = '{!JSENCODE(displayField)}';
+				var selectClause = (displayFieldVal === 'Id') ? 'SELECT Id' : 'SELECT Id, ' + displayFieldVal;
+				// For Id field, use equals operator (LIKE is invalid for Id fields)
+				// Only search by Id if the searchKey looks like a valid Salesforce Id (15 or 18 chars, alphanumeric)
+				var whereClause;
+				if (displayFieldVal === 'Id') {
+					// Id fields cannot use LIKE - use equals and require valid Id format
+					var isValidIdFormat = /^[a-zA-Z0-9]{15,18}$/.test(searchKey);
+					if (!isValidIdFormat) {
+						// Don't query if searchKey doesn't look like an Id
+						j$('#searchDropdown{!for} .searchResultsList').html(
+							'<li role="presentation" class="slds-listbox__item">' +
+							'<div class="slds-media slds-listbox__option slds-listbox__option_entity slds-listbox__option_term" role="option">' +
+							'<span class="slds-media__body"><span class="slds-listbox__option-text slds-listbox__option-text_entity">Enter a valid record Id (15 or 18 characters)</span></span></div></li>'
+						);
+						return;
+					}
+					whereClause = "Id = '" + searchKey + "'";
+				} else {
+					whereClause = displayFieldVal + " LIKE '%" + searchKey + "%'";
+				}
+				var queryText = selectClause + " FROM " + sObjType + " WHERE " + whereClause + " {!JSENCODE(where)} ORDER BY " + displayFieldVal + " ASC LIMIT 8";
+				console.log('APLightningLookup query: ' + queryText);
+				var records = [];
+
+				Visualforce.remoting.Manager.invokeAction(
+					'{!$RemoteAction.ActionPlansSectionHeaderController.queryRecords}',
+					queryText,
+					function (result, event) {
+						if (event.status) {
+							records = result;
+							if (records.length > 0) {
+								console.log(records);
+								var iconTag = "{!ObjectIconInfo['iconTag']}";
+								var objectIcon = "{!ObjectIconInfo['iconURL']}";
+								var iconStyle = "{!ObjectIconInfo['iconStyle']}";
+
+								for (var i = 0; i < records.length; i++) {
+									// li elements of each list option
+									if (cObject == 'true' && iconTag != 'record') {
+										objectIcon = '{!URLFOR($Asset.SLDS, "assets/icons/custom-sprite/svg/symbols.svg#' + iconTag + '")}';
+									} else {
+										objectIcon = '{!URLFOR($Asset.SLDS, "assets/icons/standard-sprite/svg/symbols.svg#' + iconTag + '")}';
+									}
+
+									searchList += '<li role="presentation" class="slds-listbox__item" onclick="LightningLookupScripts{!for}.recInfo(\'' + records[i].Id + '\', \'' + sObjType.toLowerCase() + '\', \'' + records[i]["{!JSENCODE(displayField)}"] + '\'); return false;">';
+									searchList += '<div id="' + records[i].Id + '" class="slds-media slds-listbox__option slds-listbox__option_entity slds-listbox__option_has-meta" role="option">';
+									searchList += '<span class="slds-media__figure slds-listbox__option-icon">';
+									searchList += '<span class="slds-icon_container ' + iconStyle + '">';
+									searchList += '<svg aria-hidden="true" class="slds-icon slds-icon_small"><use xlink:href="' + objectIcon + '"></use></svg>';
+									searchList += '</span></span>';
+									searchList += '<span class="slds-media__body"><span class="slds-listbox__option-text slds-listbox__option-text_entity">' + records[i]["{!JSENCODE(displayField)}"] + '</span></span>';
+									searchList += '</div></li>';
+								}
+							} else {
+								searchList += '<li role="presentation" class="slds-listbox__item">' +
+									'<div aria-selected="true" id="norecords" class="slds-media slds-listbox__option slds-listbox__option_entity slds-listbox__option_term" role="option">' +
+									'<span class="slds-media__body"><span class="slds-listbox__option-text slds-listbox__option-text_entity">{!$Label.ap_NoRecords}</span></span></div></li>';
+							}
+							//Appending all the created result List Elements to the UL tag
+							j$('#searchDropdown{!for} .searchResultsList').html(searchList);
+
+						} else {
+							alert(event.message);
+						}
+					},
+					{ escape: false }
+				);
+			}
+		}
+		checkinput();
+	</script>
+	<apex:inputHidden value="{!sObj[field]}" id="hiddenInput" />
+</apex:component>

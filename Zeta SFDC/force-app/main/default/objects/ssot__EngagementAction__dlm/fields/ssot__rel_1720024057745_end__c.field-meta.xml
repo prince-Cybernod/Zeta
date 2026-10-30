@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>ssot__rel_1720024057745_end__c</fullName>
+    <deleteConstraint>SetNull</deleteConstraint>
+    <deprecated>false</deprecated>
+    <label>EngagementAction_DeviceLocaleId_map__rel</label>
+    <referenceTo>ssot__Locale__dlm</referenceTo>
+    <relationshipLabel>EngagementAction_DeviceLocaleId_map__rel</relationshipLabel>
+    <relationshipName>rel_1720024057745_end</relationshipName>
+    <required>false</required>
+    <type>Lookup</type>
+</CustomField>

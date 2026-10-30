@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>ssot__rel_1744957614349_end__c</fullName>
+    <deleteConstraint>SetNull</deleteConstraint>
+    <deprecated>false</deprecated>
+    <label>ResearchStudy_ProtocolDocumentId_map_rel</label>
+    <referenceTo>ssot__ContentDocument__dlm</referenceTo>
+    <relationshipLabel>ResearchStudy_ProtocolDocumentId_map_rel</relationshipLabel>
+    <relationshipName>rel_1744957614349_end</relationshipName>
+    <required>false</required>
+    <type>Lookup</type>
+</CustomField>

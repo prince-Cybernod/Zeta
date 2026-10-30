@@ -62,7 +62,7 @@
         <locationX>0</locationX>
         <locationY>0</locationY>
         <defaultConnector>
-            <targetReference>Email_populated</targetReference>
+            <targetReference>Email_populated_and_no_bounced_emails_prior</targetReference>
         </defaultConnector>
         <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
         <rules>
@@ -79,8 +79,8 @@
         </rules>
     </decisions>
     <decisions>
-        <name>Email_populated</name>
-        <label>Email populated?</label>
+        <name>Email_populated_and_no_bounced_emails_prior</name>
+        <label>Email populated and no bounced emails prior?</label>
         <locationX>0</locationX>
         <locationY>0</locationY>
         <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
@@ -89,6 +89,13 @@
             <conditionLogic>and</conditionLogic>
             <conditions>
                 <leftValueReference>$Record.Email</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.EmailBouncedDate</leftValueReference>
                 <operator>IsNull</operator>
                 <rightValue>
                     <booleanValue>false</booleanValue>
@@ -208,13 +215,6 @@
                     <stringValue>Website – Lead Interest Form</stringValue>
                 </rightValue>
             </conditions>
-            <conditions>
-                <leftValueReference>$Record.Lead_Source__c</leftValueReference>
-                <operator>EqualTo</operator>
-                <rightValue>
-                    <stringValue>Outreach – Sign Up Sheet</stringValue>
-                </rightValue>
-            </conditions>
             <connector>
                 <targetReference>Get_Existing_Email_Message</targetReference>
             </connector>
@@ -280,13 +280,6 @@
                 <operator>EqualTo</operator>
                 <rightValue>
                     <stringValue>Website – Lead Interest Form</stringValue>
-                </rightValue>
-            </conditions>
-            <conditions>
-                <leftValueReference>$Record.Lead_Source__c</leftValueReference>
-                <operator>EqualTo</operator>
-                <rightValue>
-                    <stringValue>Outreach – Sign Up Sheet</stringValue>
                 </rightValue>
             </conditions>
             <conditions>
@@ -524,7 +517,7 @@
         </scheduledPaths>
         <triggerType>RecordAfterSave</triggerType>
     </start>
-    <status>Active</status>
+    <status>Obsolete</status>
     <variables>
         <name>currentItem_Filter_SMS_by_Exact_Message</name>
         <dataType>SObject</dataType>

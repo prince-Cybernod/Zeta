@@ -1741,6 +1741,11 @@
             <field>IndividualApplication.Primary_Guardian__c.Zeta_School_Name__c</field>
             <table>AcademicInterest</table>
         </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>IndividualApplication.Primary_Guardian__c.PersonContact.Language_Preference__c</field>
+            <table>AcademicInterest</table>
+        </columns>
         <masterLabel>Primary Guardian Account</masterLabel>
     </sections>
     <sections>

@@ -11,7 +11,8 @@ public without sharing class SchoolRankingController {
     String query =
       'SELECT Id, LearningProgramId,' +
       ' LearningProgram.School__c, LearningProgram.School__r.Name,' +
-      ' LearningProgram.School__r.Zeta_School_Name__c, School_Rank__c, Status' +
+      ' LearningProgram.School__r.Zeta_School_Name__c, School_Rank__c, Status,' +
+      ' Offer_Expiration_Date__c' +
       ' FROM AcademicInterest' +
       ' WHERE IndividualApplicationId = :applicationId' +
       ' ORDER BY School_Rank__c ASC NULLS LAST';
@@ -32,6 +33,7 @@ public without sharing class SchoolRankingController {
       );
       schoolData.put('rank', ai.School_Rank__c);
       schoolData.put('status', ai.Status);
+      schoolData.put('offerExpirationDate', ai.Offer_Expiration_Date__c);
       schools.add(schoolData);
     }
     return schools;

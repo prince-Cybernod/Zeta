@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>ssot__rel_1697761158080_end__c</fullName>
+    <deleteConstraint>SetNull</deleteConstraint>
+    <deprecated>false</deprecated>
+    <label>ContactPointAddress_Id_map_Account_B_rel</label>
+    <referenceTo>ssot__ContactPointAddress__dlm</referenceTo>
+    <relationshipLabel>ContactPointAddress_Id_map_Account_B_rel</relationshipLabel>
+    <relationshipName>rel_1697761158080_end</relationshipName>
+    <required>false</required>
+    <type>Lookup</type>
+</CustomField>

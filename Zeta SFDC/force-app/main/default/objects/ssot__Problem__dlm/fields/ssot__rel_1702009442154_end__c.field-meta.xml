@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>ssot__rel_1702009442154_end__c</fullName>
+    <deleteConstraint>SetNull</deleteConstraint>
+    <deprecated>false</deprecated>
+    <label>Problem_ParentProblemId_map_Problem__rel</label>
+    <referenceTo>ssot__Problem__dlm</referenceTo>
+    <relationshipLabel>Problem_ParentProblemId_map_Problem__rel</relationshipLabel>
+    <relationshipName>rel_1702009442154_end</relationshipName>
+    <required>false</required>
+    <type>Lookup</type>
+</CustomField>

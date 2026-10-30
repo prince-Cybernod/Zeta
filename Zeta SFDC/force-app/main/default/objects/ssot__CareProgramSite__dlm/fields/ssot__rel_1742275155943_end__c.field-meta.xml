@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>ssot__rel_1742275155943_end__c</fullName>
+    <deleteConstraint>SetNull</deleteConstraint>
+    <deprecated>false</deprecated>
+    <label>CareProgramSite_SponsorRepresentativ_rel</label>
+    <referenceTo>ssot__AccountContact__dlm</referenceTo>
+    <relationshipLabel>CareProgramSite_SponsorRepresentativ_rel</relationshipLabel>
+    <relationshipName>rel_1742275155943_end</relationshipName>
+    <required>false</required>
+    <type>Lookup</type>
+</CustomField>

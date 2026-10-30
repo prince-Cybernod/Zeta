@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>ssot__rel_1729227456268_end__c</fullName>
+    <deleteConstraint>SetNull</deleteConstraint>
+    <deprecated>false</deprecated>
+    <label>LoyaltyLedgerTraceability_CreditLoya_rel</label>
+    <referenceTo>ssot__LoyaltyLedger__dlm</referenceTo>
+    <relationshipLabel>LoyaltyLedgerTraceability_CreditLoya_rel</relationshipLabel>
+    <relationshipName>rel_1729227456268_end</relationshipName>
+    <required>false</required>
+    <type>Lookup</type>
+</CustomField>

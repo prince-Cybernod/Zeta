@@ -8,5 +8,16 @@
         <plural>true</plural>
         <value>Log Statuses</value>
     </caseValues>
+    <layouts>
+        <layout>Log Status Layout</layout>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+    </layouts>
     <startsWith>Consonant</startsWith>
+    <validationRules>
+        <errorMessage><!-- Is Resolved cannot be set to true unless Is Closed is true --></errorMessage>
+        <name>Only_closed_can_be_resolved</name>
+    </validationRules>
 </CustomObjectTranslation>

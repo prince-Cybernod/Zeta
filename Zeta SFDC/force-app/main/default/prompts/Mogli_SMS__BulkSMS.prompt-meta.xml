@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Prompt xmlns="http://soap.sforce.com/2006/04/metadata">
+    <masterLabel>Bulk SMS</masterLabel>
+    <promptVersions>
+        <body>&lt;p&gt;A bulk message is defined as a message sent to more than one person simultaneously. It can be a manually-entered message or an SMS Template. Quickly get the word out on a last-minute change, send out an important survey to thousands, or send a personalized SMS Template with the click of a button. All right here.&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;&lt;b&gt;Recipient Selector&lt;/b&gt;&lt;/p&gt;&lt;p&gt;On the left-handed side of the page, you&apos;ll notice our feature-rich Recipient Selector. You&apos;ll have the option of attaching a Campaign, or manually selecting Contacts, Leads, Opportunities, or any other records of custom objects that we&apos;ve configured for you. As long as the records you select all have Mogli Numbers populated, you&apos;ll be good to go. Once your desired recipients are selected, click &lt;b&gt;Add&lt;/b&gt;.&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;&lt;b&gt;SMS Recipients&lt;/b&gt;&lt;/p&gt;&lt;p&gt;On the right-handed side of the page, you&apos;ll see the SMS Recipients field, which contains records of the recipients you&apos;ve added. You&apos;ll notice a recipient counter just beneath so that you&apos;re aware of how many folks you&apos;re sending to.&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;&lt;b&gt;SMS Message&lt;/b&gt;&lt;/p&gt;&lt;p&gt;You&apos;ll have the option of selecting an SMS Template in the drop-down menu, which can either be the start of an automated survey or conversation, or a single statement. Alternatively, you may manually type a message in the text field and include a merge field from the Merge Field drop-down menu. You might even add an emoji for fun. 🤓&lt;/p&gt;&lt;p&gt;You&apos;ll also notice a character counter beneath your text field. This helps to keep you aware of how many segments your message may be broken into. Each carrier has different thresholds of segmentation, but it&apos;s advisable to stick to the 160-character mark to avoid too much segmentation. Keep in mind that you&apos;ll be charged for each segment of longer messages.&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;&lt;b&gt;SMS Send Configuration&lt;/b&gt;&lt;/p&gt;&lt;p&gt;The Send From: drop-down menu is where you&apos;ll select the Gateway from which to send your messages. If you&apos;re sending to more than 150 recipients, you&apos;ll be encouraged to utilize Intelligent Routing (a Gateway specifically configured to handle larger bulk sends). If your send is smaller than 150 recipients, feel free to select any Gateway. If &apos;Default&apos; is available in the drop-down, your messages will be sent over a variety of Gateways. For example: If your recipients have a value in the Default Gateway field on their record, they&apos;ll receive the message over that Gateway. If there is no value in the Default Gateway field on their record, they&apos;ll receive the message from the global Default Gateway (as configured in Application Settings). This helps to keep consistency for your recipients, and they really appreciate that!&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;Optionally, you may choose to schedule your message. If so, select the date and time you wish to send the message.&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;Once everything looks as it should, click &lt;b&gt;Send&lt;/b&gt;. Then, click the SMS tab to take a look at your send. Keep in mind that it may take a few minutes to appear there, depending on the size of your send.&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;&lt;i&gt;Questions on Intelligent Routing? Reach out to our team for more info.&lt;/i&gt;&lt;/p&gt;</body>
+        <customApplication>Mogli_SMS__Mogli_SMS_Lightning</customApplication>
+        <delayDays>5</delayDays>
+        <description>Everything about the Bulk SMS screen.</description>
+        <displayType>DockedComposer</displayType>
+        <endDate>2020-12-31</endDate>
+        <header>Bulk SMS 101</header>
+        <isPublished>true</isPublished>
+        <masterLabel>Bulk SMS</masterLabel>
+        <publishedDate>2026-04-22</publishedDate>
+        <shouldDisplayActionButton>false</shouldDisplayActionButton>
+        <shouldIgnoreGlobalDelay>true</shouldIgnoreGlobalDelay>
+        <startDate>2020-02-11</startDate>
+        <targetPageKey1>Mogli_SMS__SendSMS</targetPageKey1>
+        <targetPageType>standard__navItemPage</targetPageType>
+        <timesToDisplay>2</timesToDisplay>
+        <title>All you need to know about Bulk SMS</title>
+        <userAccess>Everyone</userAccess>
+        <userProfileAccess>Everyone</userProfileAccess>
+        <versionNumber>1</versionNumber>
+    </promptVersions>
+</Prompt>

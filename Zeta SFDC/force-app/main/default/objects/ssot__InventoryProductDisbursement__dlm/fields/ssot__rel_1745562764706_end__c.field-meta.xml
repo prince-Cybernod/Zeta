@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>ssot__rel_1745562764706_end__c</fullName>
+    <deleteConstraint>SetNull</deleteConstraint>
+    <deprecated>false</deprecated>
+    <label>InventoryProductDisbursement_Disburs_rel</label>
+    <referenceTo>ssot__Account__dlm</referenceTo>
+    <relationshipLabel>InventoryProductDisbursement_Disburs_rel</relationshipLabel>
+    <relationshipName>rel_1745562764706_end</relationshipName>
+    <required>false</required>
+    <type>Lookup</type>
+</CustomField>

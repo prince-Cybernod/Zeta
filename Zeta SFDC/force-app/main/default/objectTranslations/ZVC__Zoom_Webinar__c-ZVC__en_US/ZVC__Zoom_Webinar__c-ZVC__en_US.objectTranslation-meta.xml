@@ -8,5 +8,17 @@
         <plural>true</plural>
         <value>Zoom Webinars</value>
     </caseValues>
+    <quickActions>
+        <label><!-- Edit Zoom Webinar Passcode --></label>
+        <name>ZVC__Edit_Zoom_Webinar_Passcode</name>
+    </quickActions>
+    <quickActions>
+        <label><!-- Start Zoom Webinar --></label>
+        <name>ZVC__Start_Zoom_Webinar</name>
+    </quickActions>
+    <quickActions>
+        <label><!-- Sync Webinar From Zoom.us --></label>
+        <name>ZVC__Sync_Webinar_From_Zoom_us</name>
+    </quickActions>
     <startsWith>Consonant</startsWith>
 </CustomObjectTranslation>

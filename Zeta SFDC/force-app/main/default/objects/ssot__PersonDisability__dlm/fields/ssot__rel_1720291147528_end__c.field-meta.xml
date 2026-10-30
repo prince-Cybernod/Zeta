@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>ssot__rel_1720291147528_end__c</fullName>
+    <deleteConstraint>SetNull</deleteConstraint>
+    <deprecated>false</deprecated>
+    <label>PersonDisability_IndividualId_map_In_rel</label>
+    <referenceTo>ssot__Individual__dlm</referenceTo>
+    <relationshipLabel>PersonDisability_IndividualId_map_In_rel</relationshipLabel>
+    <relationshipName>rel_1720291147528_end</relationshipName>
+    <required>false</required>
+    <type>Lookup</type>
+</CustomField>

@@ -26,6 +26,21 @@ public with sharing class AcademicInterestTriggerHandler extends NoOpTriggerHand
     return bypassAfterTrigger;
   }
 
+  private ContactApplicationRollupService contactApplicationRollupService = new ContactApplicationRollupServiceImpl();
+  private DatabaseRepo databaseRepo = new SystemModeDatabaseRepo();
+
+  @TestVisible
+  private void setContactApplicationRollupService(
+    ContactApplicationRollupService contactApplicationRollupService
+  ) {
+    this.contactApplicationRollupService = contactApplicationRollupService;
+  }
+
+  @TestVisible
+  private void setDatabaseRepo(DatabaseRepo databaseRepo) {
+    this.databaseRepo = databaseRepo;
+  }
+
   private final LotteryCapacityRollupService rollupService;
   private final CurrentPriorityCalcService priorityGroupService;
   private final DynamicSiblingPriorityService siblingPriorityService;
@@ -113,6 +128,10 @@ public with sharing class AcademicInterestTriggerHandler extends NoOpTriggerHand
     if (!applicationIds.isEmpty()) {
       preOfferCountRollupService.recalculate(applicationIds);
     }
+
+    recalculateContactApplicationRollupsForApplications(
+      collectApplicationIdsFromAcademicInterests((List<AcademicInterest>) sobjects)
+    );
   }
 
   public override void onAfterUpdate(List<SObject> sobjects, Map<Id, SObject> oldSObjectsByIds) {
@@ -121,6 +140,9 @@ public with sharing class AcademicInterestTriggerHandler extends NoOpTriggerHand
     }
 
     List<AcademicInterest> newRecords = (List<AcademicInterest>) sobjects;
+    recalculateContactApplicationRollupsForApplications(
+      collectApplicationIdsNeedingContactRollup(newRecords, oldSObjectsByIds)
+    );
 
     // Register records being processed to prevent self-reference in cascade updates
     PreOfferCountRollupServiceImpl.registerProcessingRecords(oldSObjectsByIds.keySet());
@@ -182,6 +204,20 @@ public with sharing class AcademicInterestTriggerHandler extends NoOpTriggerHand
     if (!applicationIds.isEmpty()) {
       preOfferCountRollupService.recalculate(applicationIds);
     }
+
+    recalculateContactApplicationRollupsForApplications(
+      collectApplicationIdsFromAcademicInterests((List<AcademicInterest>) oldSObjects)
+    );
+  }
+
+  public override void onAfterUndelete(List<SObject> sobjects) {
+    if (bypassAfterTrigger) {
+      return;
+    }
+
+    recalculateContactApplicationRollupsForApplications(
+      collectApplicationIdsFromAcademicInterests((List<AcademicInterest>) sobjects)
+    );
   }
 
   private static Set<Id> collectCapacityIds(List<AcademicInterest> records) {
@@ -381,5 +417,76 @@ public with sharing class AcademicInterestTriggerHandler extends NoOpTriggerHand
     if (!events.isEmpty()) {
       eventBusRepo.publish(events);
     }
+  }
+
+  private void recalculateContactApplicationRollupsForApplications(Set<Id> applicationIds) {
+    if (applicationIds.isEmpty()) {
+      return;
+    }
+
+    List<IndividualApplication> applications = databaseRepo.queryWithBinds(
+      'SELECT AccountId, Primary_Guardian__c FROM IndividualApplication WHERE Id IN :applicationIds',
+      new Map<String, Object>{ 'applicationIds' => applicationIds }
+    );
+
+    Set<Id> personAccountIds = new Set<Id>();
+    for (IndividualApplication application : applications) {
+      if (application.AccountId != null) {
+        personAccountIds.add(application.AccountId);
+      }
+      if (application.Primary_Guardian__c != null) {
+        personAccountIds.add(application.Primary_Guardian__c);
+      }
+    }
+
+    if (!personAccountIds.isEmpty()) {
+      contactApplicationRollupService.recalculate(personAccountIds);
+    }
+  }
+
+  private static Set<Id> collectApplicationIdsFromAcademicInterests(
+    List<AcademicInterest> records
+  ) {
+    Set<Id> applicationIds = new Set<Id>();
+    for (AcademicInterest academicInterest : records) {
+      if (String.isNotBlank(academicInterest.IndividualApplicationId)) {
+        applicationIds.add(academicInterest.IndividualApplicationId);
+      }
+    }
+    return applicationIds;
+  }
+
+  private static Set<Id> collectApplicationIdsNeedingContactRollup(
+    List<AcademicInterest> newRecords,
+    Map<Id, SObject> oldSObjectsByIds
+  ) {
+    Set<Id> applicationIds = new Set<Id>();
+    List<SObjectField> watchedFields = new List<SObjectField>{
+      Schema.AcademicInterest.IndividualApplicationId,
+      Schema.AcademicInterest.LearningProgramId
+    };
+    if (ContactApplicationRollupServiceImpl.hasStatusFilter()) {
+      watchedFields.add(Schema.AcademicInterest.Status);
+    }
+
+    for (AcademicInterest academicInterest : newRecords) {
+      AcademicInterest oldAcademicInterest = (AcademicInterest) oldSObjectsByIds.get(
+        academicInterest.Id
+      );
+      SObjectFieldDiffResponse contactRollupDiff = SObjectFieldDiffer.getFieldDiff(
+        academicInterest,
+        oldAcademicInterest,
+        watchedFields
+      );
+      if (contactRollupDiff.isDifferent()) {
+        if (String.isNotBlank(academicInterest.IndividualApplicationId)) {
+          applicationIds.add(academicInterest.IndividualApplicationId);
+        }
+        if (String.isNotBlank(oldAcademicInterest.IndividualApplicationId)) {
+          applicationIds.add(oldAcademicInterest.IndividualApplicationId);
+        }
+      }
+    }
+    return applicationIds;
   }
 }

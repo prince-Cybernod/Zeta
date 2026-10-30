@@ -491,6 +491,33 @@
   color: var(--zeta-gray-500);
 }
 
+.badge-tag--offer {
+  background: #dcebfb;
+  color: #1558b0;
+}
+
+.badge-tag--accepted {
+  background: #d8f3ec;
+  color: #0f7a63;
+}
+
+.badge-tag--waitlisted {
+  background: #fdf3d0;
+  color: #8a6d00;
+}
+
+.badge-tag--rescinded {
+  background: #e7e7ec;
+  color: #6b6b76;
+}
+
+.accepted-school-name {
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: var(--zeta-gray-500);
+  margin-left: 0.4375rem;
+}
+
 .app-row--withdrawn {
   opacity: 0.85;
 }
@@ -643,6 +670,16 @@
   margin: 0 auto;
 }
 
+.dashboard-shell .dashboard-back-bar {
+  background: none;
+  max-width: none;
+  margin: 0;
+}
+
+.dashboard-back-bar + .dashboard-content {
+  padding-top: 0;
+}
+
 .btn {
   font-family: Lato, sans-serif;
   cursor: pointer;
@@ -780,7 +817,8 @@
 /* Card action buttons. Defined after the base .btn rules so they win on
    equal specificity. Orange outline is reserved for the edit affordance. */
 .btn--edit,
-.btn--view {
+.btn--view,
+.btn--offer {
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -805,6 +843,16 @@
 
 .btn--edit:hover {
   background: #fff6ef;
+}
+
+.btn--offer {
+  background: var(--zeta-navy);
+  color: #fff;
+  border: none;
+}
+
+.btn--offer:hover {
+  background: var(--zeta-navy-dark);
 }
 
 .btn--view {
@@ -841,6 +889,10 @@
 }
 
 @media (width <= 600px) {
+  .dashboard-shell .dashboard-back-bar {
+    padding: 0.5rem 1rem;
+  }
+
   .dashboard-content {
     padding: 1.5rem 1rem;
   }
@@ -876,7 +928,8 @@
   }
 
   .row-tail .btn--edit,
-  .row-tail .btn--view {
+  .row-tail .btn--view,
+  .row-tail .btn--offer {
     flex: 1;
   }
 

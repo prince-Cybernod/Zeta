@@ -197,6 +197,16 @@
                 <identifier>RecordDefault_Gateway__cField</identifier>
             </fieldInstance>
         </itemInstances>
+        <itemInstances>
+            <fieldInstance>
+                <fieldInstanceProperties>
+                    <name>uiBehavior</name>
+                    <value>none</value>
+                </fieldInstanceProperties>
+                <fieldItem>Record.Date_Tour_Attended__c</fieldItem>
+                <identifier>RecordDate_Tour_Attended__cField</identifier>
+            </fieldInstance>
+        </itemInstances>
         <name>Facet-26cfc815-670e-48f4-b46c-bbb8c228e4fd</name>
         <type>Facet</type>
     </flexiPageRegions>
@@ -1050,6 +1060,16 @@
                 <identifier>RecordCategoryField</identifier>
             </fieldInstance>
         </itemInstances>
+        <itemInstances>
+            <fieldInstance>
+                <fieldInstanceProperties>
+                    <name>uiBehavior</name>
+                    <value>none</value>
+                </fieldInstanceProperties>
+                <fieldItem>Record.Created_for_Testing__c</fieldItem>
+                <identifier>RecordCreated_for_Testing_cField</identifier>
+            </fieldInstance>
+        </itemInstances>
         <name>Facet-3bfa421a-8550-44ac-a69b-8be099d68781</name>
         <type>Facet</type>
     </flexiPageRegions>
@@ -1302,6 +1322,16 @@
             </componentInstance>
         </itemInstances>
         <name>Facet-7ec9f97d-a167-4456-b12c-39146d98ef1b</name>
+        <type>Facet</type>
+    </flexiPageRegions>
+    <flexiPageRegions>
+        <itemInstances>
+            <componentInstance>
+                <componentName>schoolChoicesDetail</componentName>
+                <identifier>c_schoolChoicesDetail</identifier>
+            </componentInstance>
+        </itemInstances>
+        <name>Facet-dc7c4499-ffd2-4d4c-8696-c5677c13e24c</name>
         <type>Facet</type>
     </flexiPageRegions>
     <flexiPageRegions>
@@ -1697,6 +1727,20 @@
                 </componentInstanceProperties>
                 <componentName>flexipage:tab</componentName>
                 <identifier>flexipage_tab</identifier>
+            </componentInstance>
+        </itemInstances>
+        <itemInstances>
+            <componentInstance>
+                <componentInstanceProperties>
+                    <name>body</name>
+                    <value>Facet-dc7c4499-ffd2-4d4c-8696-c5677c13e24c</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>title</name>
+                    <value>School Choices</value>
+                </componentInstanceProperties>
+                <componentName>flexipage:tab</componentName>
+                <identifier>flexipage_tab_schoolChoices</identifier>
             </componentInstance>
         </itemInstances>
         <itemInstances>

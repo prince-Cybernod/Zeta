@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>ssot__rel_1752800626151_end__c</fullName>
+    <deleteConstraint>SetNull</deleteConstraint>
+    <deprecated>false</deprecated>
+    <label>PresentationClickStreamEntry_Product_rel</label>
+    <referenceTo>ssot__Product__dlm</referenceTo>
+    <relationshipLabel>PresentationClickStreamEntry_Product_rel</relationshipLabel>
+    <relationshipName>rel_1752800626151_end</relationshipName>
+    <required>false</required>
+    <type>Lookup</type>
+</CustomField>

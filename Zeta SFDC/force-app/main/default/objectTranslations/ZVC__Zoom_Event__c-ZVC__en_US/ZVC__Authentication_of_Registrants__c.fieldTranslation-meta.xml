@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <label><!-- Authentication of Registrants --></label>
+    <name>ZVC__Authentication_of_Registrants__c</name>
+    <picklistValues>
+        <masterLabel>Non-Zoom users (Fast join without upfront authentication)</masterLabel>
+        <translation><!-- Non-Zoom users (Fast join without upfront authentication) --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Zoom account holders (Authenticate via Zoom.us)</masterLabel>
+        <translation><!-- Zoom account holders (Authenticate via Zoom.us) --></translation>
+    </picklistValues>
+</CustomFieldTranslation>

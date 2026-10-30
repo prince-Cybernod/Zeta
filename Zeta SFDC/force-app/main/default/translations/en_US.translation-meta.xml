@@ -1,6 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Translations xmlns="http://soap.sforce.com/2006/04/metadata">
     <customApplications>
+        <label><!-- Action Plans --></label>
+        <name>Action_Plans</name>
+    </customApplications>
+    <customApplications>
+        <label><!-- Action Plans --></label>
+        <name>Action_Plans_Lightning</name>
+    </customApplications>
+    <customApplications>
         <label><!-- Application Submission --></label>
         <name>Application_Submission</name>
     </customApplications>
@@ -13,12 +21,44 @@
         <name>Learning_Home</name>
     </customApplications>
     <customApplications>
+        <label><!-- Nebula Logger --></label>
+        <name>LoggerConsole</name>
+    </customApplications>
+    <customApplications>
+        <label><!-- MogliSMS --></label>
+        <name>Mogli_SMS__MogliSMS</name>
+    </customApplications>
+    <customApplications>
+        <label><!-- MogliSMS Lightning --></label>
+        <name>Mogli_SMS__Mogli_SMS_Lightning</name>
+    </customApplications>
+    <customApplications>
+        <label><!-- Lightning --></label>
+        <name>Mogli_SMS__Sales</name>
+    </customApplications>
+    <customApplications>
         <label><!-- Outreach &amp; Enrollment --></label>
         <name>Outreach_Enrollment</name>
     </customApplications>
     <customApplications>
         <label><!-- ReEnrollment --></label>
         <name>ReEnrollment</name>
+    </customApplications>
+    <customApplications>
+        <label><!-- Zoom Admin for Lightning --></label>
+        <name>ZVC__Zoom_Admin_for_Lightning</name>
+    </customApplications>
+    <customApplications>
+        <label><!-- OmniStudio --></label>
+        <name>omnistudio__Vlocity_Digital_Studio</name>
+    </customApplications>
+    <customApplications>
+        <label><!-- FormAssembly Classic --></label>
+        <name>tfa__FormAssembly</name>
+    </customApplications>
+    <customApplications>
+        <label><!-- FormAssembly Lightning --></label>
+        <name>tfa__FormAssembly_Lightning</name>
     </customApplications>
     <customLabels>
         <label><!-- Button Complete Form --></label>
@@ -317,6 +357,30 @@
         <name>AppS_ResponsibleAdult_Label</name>
     </customLabels>
     <customLabels>
+        <label><!-- Confirmation screen body after accepting an offer --></label>
+        <name>AppUI_AcceptConfirmationBody</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Confirmation screen title after accepting an offer --></label>
+        <name>AppUI_AcceptConfirmationTitle</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Accept action on the primary current offer --></label>
+        <name>AppUI_AcceptSeat</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Accept action on a lower-ranked offer --></label>
+        <name>AppUI_AcceptThisSchool</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Accept-offer confirmation modal body --></label>
+        <name>AppUI_AcceptWarningBody</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Accept-offer confirmation modal title --></label>
+        <name>AppUI_AcceptWarningTitle</name>
+    </customLabels>
+    <customLabels>
         <label><!-- Add a student tile label (first student) --></label>
         <name>AppUI_AddAStudent</name>
     </customLabels>
@@ -477,8 +541,40 @@
         <name>AppUI_CreateStudentFailed</name>
     </customLabels>
     <customLabels>
+        <label><!-- School-choices detail section heading --></label>
+        <name>AppUI_CurrentOffer</name>
+    </customLabels>
+    <customLabels>
         <label><!-- Day label --></label>
         <name>AppUI_Day</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Decline comment required when the reason is Other --></label>
+        <name>AppUI_DeclineCommentRequired</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Decline form comments field label --></label>
+        <name>AppUI_DeclineCommentsLabel</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Confirmation screen body after declining an offer --></label>
+        <name>AppUI_DeclineConfirmationBody</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Confirmation screen title after declining an offer --></label>
+        <name>AppUI_DeclineConfirmationTitle</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Decline form picklist prompt --></label>
+        <name>AppUI_DeclineReasonPrompt</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Decline action on the primary current offer --></label>
+        <name>AppUI_DeclineSeat</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Free-text detail field label (Other reason) --></label>
+        <name>AppUI_DetailsFieldLabel</name>
     </customLabels>
     <customLabels>
         <label><!-- Distance less than 0.1 miles --></label>
@@ -487,6 +583,10 @@
     <customLabels>
         <label><!-- Distance in miles --></label>
         <name>AppUI_DistanceMiles</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Done button label (Update Rankings inline panel) --></label>
+        <name>AppUI_Done</name>
     </customLabels>
     <customLabels>
         <label><!-- Duplicate application error message --></label>
@@ -661,8 +761,16 @@
         <name>AppUI_KindergartenBirthYearNote</name>
     </customLabels>
     <customLabels>
+        <label><!-- Generic loading status --></label>
+        <name>AppUI_Loading</name>
+    </customLabels>
+    <customLabels>
         <label><!-- Post-lottery informational message --></label>
         <name>AppUI_LotteryMessage</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- School-choices detail section heading --></label>
+        <name>AppUI_LowerRankedOffers</name>
     </customLabels>
     <customLabels>
         <label><!-- Mailing address heading --></label>
@@ -721,6 +829,10 @@
         <name>AppUI_MonthSeptember</name>
     </customLabels>
     <customLabels>
+        <label><!-- Overflow menu button aria-label --></label>
+        <name>AppUI_MoreActions</name>
+    </customLabels>
+    <customLabels>
         <label><!-- New student form heading --></label>
         <name>AppUI_NewStudent</name>
     </customLabels>
@@ -769,6 +881,10 @@
         <name>AppUI_RankSchoolsDrag</name>
     </customLabels>
     <customLabels>
+        <label><!-- Withdraw reason picklist label --></label>
+        <name>AppUI_ReasonFieldLabel</name>
+    </customLabels>
+    <customLabels>
         <label><!-- Remove button label --></label>
         <name>AppUI_Remove</name>
     </customLabels>
@@ -779,6 +895,14 @@
     <customLabels>
         <label><!-- Residency restriction warning (K-9, NY State) --></label>
         <name>AppUI_ResidencyWarning_State</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Prefix before the respond-by date on a current offer --></label>
+        <name>AppUI_RespondByPrefix</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Dashboard action button for an application with a live offer --></label>
+        <name>AppUI_RespondToOffer</name>
     </customLabels>
     <customLabels>
         <label><!-- Resume button label --></label>
@@ -843,6 +967,10 @@
     <customLabels>
         <label><!-- Search schools input label --></label>
         <name>AppUI_SearchSchools</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- School-choices detail section heading --></label>
+        <name>AppUI_SeatAcceptedSection</name>
     </customLabels>
     <customLabels>
         <label><!-- Application details section title --></label>
@@ -995,6 +1123,22 @@
     <customLabels>
         <label><!-- Validation: unique ranks required --></label>
         <name>AppUI_ValidateUniqueRanks</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- School-choices detail section heading --></label>
+        <name>AppUI_WaitlistedSection</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Withdraw confirm button label --></label>
+        <name>AppUI_Withdraw</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Waitlisted row overflow menu item --></label>
+        <name>AppUI_WithdrawApplicationMenuItem</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Withdraw modal title --></label>
+        <name>AppUI_WithdrawConfirmTitle</name>
     </customLabels>
     <customLabels>
         <label><!-- Year label --></label>
@@ -18348,6 +18492,18 @@
         <label><!-- wizItemLabelMissingError --></label>
         <name>omnistudio__wizItemLabelMissingError</name>
     </customLabels>
+    <customPageWebLinks>
+        <label><!-- FormAssembly Configuration --></label>
+        <name>tfa__FormAssembly_Configuration</name>
+    </customPageWebLinks>
+    <customTabs>
+        <label><!-- Action Plans Home --></label>
+        <name>Action_Plans_Home</name>
+    </customTabs>
+    <customTabs>
+        <label><!-- Import Action Plan Template --></label>
+        <name>Action_Plans_Template_Import</name>
+    </customTabs>
     <customTabs>
         <label><!-- Application Question Prototype --></label>
         <name>Application_Question_Prototype</name>
@@ -18361,6 +18517,58 @@
         <name>Learning_Application_Details_Page</name>
     </customTabs>
     <customTabs>
+        <label><!-- Log Batch Purge --></label>
+        <name>LogBatchPurge</name>
+    </customTabs>
+    <customTabs>
+        <label><!-- Log Entry Event Stream --></label>
+        <name>LogEntryEventStream</name>
+    </customTabs>
+    <customTabs>
+        <label><!-- Logger Settings --></label>
+        <name>LoggerSettings</name>
+    </customTabs>
+    <customTabs>
+        <label><!-- Bulk SMS Lightning --></label>
+        <name>Mogli_SMS__Bulk_SMS_Lightning</name>
+    </customTabs>
+    <customTabs>
+        <label><!-- In Person Form --></label>
+        <name>Mogli_SMS__In_Person_Form</name>
+    </customTabs>
+    <customTabs>
+        <label><!-- MogliSMS Notification Settings --></label>
+        <name>Mogli_SMS__MogliSMS_Notification_Settings</name>
+    </customTabs>
+    <customTabs>
+        <label><!-- Mogli Hub --></label>
+        <name>Mogli_SMS__Mogli_Hub</name>
+    </customTabs>
+    <customTabs>
+        <label><!-- Mogli Inbox --></label>
+        <name>Mogli_SMS__Mogli_Inbox</name>
+    </customTabs>
+    <customTabs>
+        <label><!-- Mogli Settings --></label>
+        <name>Mogli_SMS__Mogli_Settings</name>
+    </customTabs>
+    <customTabs>
+        <label><!-- Notification Settings --></label>
+        <name>Mogli_SMS__Notification_Settings</name>
+    </customTabs>
+    <customTabs>
+        <label><!-- Notification Settings Page --></label>
+        <name>Mogli_SMS__Notification_Settings_Page</name>
+    </customTabs>
+    <customTabs>
+        <label><!-- Bulk SMS --></label>
+        <name>Mogli_SMS__SendSMS</name>
+    </customTabs>
+    <customTabs>
+        <label><!-- Setup MogliSMS --></label>
+        <name>Mogli_SMS__Setup_MogliSMS</name>
+    </customTabs>
+    <customTabs>
         <label><!-- Run Lottery --></label>
         <name>Run_Lottery</name>
     </customTabs>
@@ -18371,6 +18579,102 @@
     <customTabs>
         <label><!-- Vlocity Flex Card Home --></label>
         <name>Vlocity_Flex_Card_Home</name>
+    </customTabs>
+    <customTabs>
+        <label><!-- External Zoom Meeting --></label>
+        <name>ZVC__External_Zoom_Meeting</name>
+    </customTabs>
+    <customTabs>
+        <label><!-- Unlinked Zoom Call Logs --></label>
+        <name>ZVC__Unlinked_Zoom_Call_Logs</name>
+    </customTabs>
+    <customTabs>
+        <label><!-- Zoom Settings --></label>
+        <name>ZVC__Zoom_Settings</name>
+    </customTabs>
+    <customTabs>
+        <label><!-- Zoom User Config --></label>
+        <name>ZVC__Zoom_User_Config</name>
+    </customTabs>
+    <customTabs>
+        <label><!-- Zoom for Lightning --></label>
+        <name>ZVC__Zoom_for_Lightning</name>
+    </customTabs>
+    <customTabs>
+        <label><!-- OmniStudio DataPacks --></label>
+        <name>omnistudio__DataPacks</name>
+    </customTabs>
+    <customTabs>
+        <label><!-- Omnistudio Data Mappers --></label>
+        <name>omnistudio__DataRaptor</name>
+    </customTabs>
+    <customTabs>
+        <label><!-- Document Template Designer --></label>
+        <name>omnistudio__DocumentTemplate</name>
+    </customTabs>
+    <customTabs>
+        <label><!-- OmniStudio FlexCards --></label>
+        <name>omnistudio__FlexCards</name>
+    </customTabs>
+    <customTabs>
+        <label><!-- OmniStudio Integration Procedures --></label>
+        <name>omnistudio__IntegrationProcedureHome</name>
+    </customTabs>
+    <customTabs>
+        <label><!-- Document Generation 2.0 Notification --></label>
+        <name>omnistudio__LegalBannerSetup</name>
+    </customTabs>
+    <customTabs>
+        <label><!-- Omnistudio OmniScripts --></label>
+        <name>omnistudio__OmniScriptHome</name>
+    </customTabs>
+    <customTabs>
+        <label><!-- OmniScript Workbench --></label>
+        <name>omnistudio__OmniScriptWorkbench</name>
+    </customTabs>
+    <customTabs>
+        <label><!-- OmniStudio DocuSign Setup --></label>
+        <name>omnistudio__VlocityDocuSignSetup</name>
+    </customTabs>
+    <customTabs>
+        <label><!-- About FormAssembly.com --></label>
+        <name>tfa__AboutFormAssemblycom</name>
+    </customTabs>
+    <customTabs>
+        <label><!-- About --></label>
+        <name>tfa__About_FormAssembly</name>
+    </customTabs>
+    <customTabs>
+        <label><!-- Web Forms --></label>
+        <name>tfa__FormAssembly</name>
+    </customTabs>
+    <customTabs>
+        <label><!-- FormAssembly Home --></label>
+        <name>tfa__FormAssembly_Home</name>
+    </customTabs>
+    <customTabs>
+        <label><!-- Getting Started --></label>
+        <name>tfa__Getting_Started</name>
+    </customTabs>
+    <customTabs>
+        <label><!-- Manage Web Forms --></label>
+        <name>tfa__ManageWebForms</name>
+    </customTabs>
+    <customTabs>
+        <label><!-- Setup --></label>
+        <name>tfa__Setup</name>
+    </customTabs>
+    <customTabs>
+        <label><!-- Support --></label>
+        <name>tfa__Support</name>
+    </customTabs>
+    <customTabs>
+        <label><!-- View Responses --></label>
+        <name>tfa__ViewResponses</name>
+    </customTabs>
+    <customTabs>
+        <label><!-- Your Account --></label>
+        <name>tfa__YourAccount</name>
     </customTabs>
     <flowDefinitions>
         <flows/>
@@ -18791,6 +19095,10 @@
     <flowDefinitions>
         <flows/>
         <fullName>Campaign_Record_Triggered_Set_Campaign_Name</fullName>
+    </flowDefinitions>
+    <flowDefinitions>
+        <flows/>
+        <fullName>Case_After_Save_Update_Case_Owner_to_Lead_Owner</fullName>
     </flowDefinitions>
     <flowDefinitions>
         <flows/>
@@ -20961,7 +21269,19 @@
     </flowDefinitions>
     <flowDefinitions>
         <flows/>
+        <fullName>Lead_After_Save_Lead_Assignment_RTF</fullName>
+    </flowDefinitions>
+    <flowDefinitions>
+        <flows/>
         <fullName>Lead_After_Save_Outcome_Updates</fullName>
+    </flowDefinitions>
+    <flowDefinitions>
+        <flows/>
+        <fullName>Lead_After_Save_Phone_Number_Added_to_Lead</fullName>
+    </flowDefinitions>
+    <flowDefinitions>
+        <flows/>
+        <fullName>Lead_After_Save_Set_Owner_From_Entered_By</fullName>
     </flowDefinitions>
     <flowDefinitions>
         <flows/>
@@ -20970,6 +21290,10 @@
     <flowDefinitions>
         <flows/>
         <fullName>Lead_After_Save_Update_Geocode_and_District_Update</fullName>
+    </flowDefinitions>
+    <flowDefinitions>
+        <flows/>
+        <fullName>Lead_Autolaunched_Evaluate_Lead_Owner_Assignment</fullName>
     </flowDefinitions>
     <flowDefinitions>
         <flows/>
@@ -21362,6 +21686,158 @@
     <flowDefinitions>
         <flows/>
         <fullName>Mogli_SMS_After_Save_Create_Case_from_Enrollment_Text</fullName>
+    </flowDefinitions>
+    <flowDefinitions>
+        <flows/>
+        <fullName>Mogli_SMS__Execute_GenAI_action_for_SMS_Collection</fullName>
+    </flowDefinitions>
+    <flowDefinitions>
+        <flows>
+            <screens>
+                <fields>
+                    <name>ErrorMessage</name>
+                </fields>
+                <fields>
+                    <name>SuccessMessage</name>
+                </fields>
+                <name>Result_Screen</name>
+            </screens>
+        </flows>
+        <fullName>Mogli_SMS__Mogli_API_Authorization</fullName>
+    </flowDefinitions>
+    <flowDefinitions>
+        <flows/>
+        <fullName>Mogli_SMS__Mogli_Contact_Populate_Mogli_Number</fullName>
+    </flowDefinitions>
+    <flowDefinitions>
+        <flows/>
+        <fullName>Mogli_SMS__Mogli_Lead_Populate_Mogli_Number</fullName>
+    </flowDefinitions>
+    <flowDefinitions>
+        <flows/>
+        <fullName>Mogli_SMS__SMS_Processor</fullName>
+    </flowDefinitions>
+    <flowDefinitions>
+        <flows/>
+        <fullName>Mogli_SMS__SMS_Retriever_and_Processor_Wrapper</fullName>
+    </flowDefinitions>
+    <flowDefinitions>
+        <flows>
+            <screens>
+                <fields>
+                    <name>Complete_Text</name>
+                </fields>
+                <fields>
+                    <name>Final_step_prompt_0</name>
+                </fields>
+                <name>End_Flow</name>
+            </screens>
+            <screens>
+                <fields>
+                    <name>Complete_Text_0</name>
+                </fields>
+                <fields>
+                    <name>Final_step_prompt_0_0</name>
+                </fields>
+                <name>End_Flow_Failure</name>
+            </screens>
+            <screens>
+                <fields>
+                    <name>Complete_Text_0_0</name>
+                </fields>
+                <fields>
+                    <name>Final_step_prompt_nosave</name>
+                </fields>
+                <name>End_Flow_No_save</name>
+            </screens>
+            <screens>
+                <fields>
+                    <name>Instructions</name>
+                </fields>
+                <fields>
+                    <name>Key_Outputs</name>
+                </fields>
+                <fields>
+                    <inputParameters>
+                        <name>width</name>
+                        <value/>
+                    </inputParameters>
+                    <name>Key_Outputs_Column1</name>
+                </fields>
+                <fields>
+                    <inputParameters>
+                        <name>width</name>
+                        <value/>
+                    </inputParameters>
+                    <name>Key_Outputs_Column2</name>
+                </fields>
+                <fields>
+                    <name>Log_Summary_in_new_record</name>
+                </fields>
+                <fields>
+                    <name>Max_of_last_Messages</name>
+                    <validationRule/>
+                </fields>
+                <fields>
+                    <name>Prompt_to_Use</name>
+                </fields>
+                <fields>
+                    <name>Prompt_to_click_next</name>
+                </fields>
+                <fields>
+                    <name>Set_Summary_Window_Section1</name>
+                </fields>
+                <fields>
+                    <inputParameters>
+                        <name>width</name>
+                        <value/>
+                    </inputParameters>
+                    <name>Set_Summary_Window_Section1_Column1</name>
+                </fields>
+                <fields>
+                    <inputParameters>
+                        <name>width</name>
+                        <value/>
+                    </inputParameters>
+                    <name>Set_Summary_Window_Section1_Column2</name>
+                </fields>
+                <fields>
+                    <name>Summary_Window_End</name>
+                </fields>
+                <fields>
+                    <name>Summary_Window_Start</name>
+                </fields>
+                <fields>
+                    <name>Update_current_record_fields</name>
+                </fields>
+                <name>Set_Summary_Window</name>
+            </screens>
+            <screens>
+                <fields>
+                    <name>Final_step_prompt</name>
+                </fields>
+                <fields>
+                    <name>ManualEdit</name>
+                </fields>
+                <fields>
+                    <name>SummaryReadout</name>
+                </fields>
+                <name>Show_Summary</name>
+            </screens>
+        </flows>
+        <fullName>Mogli_SMS__Screen_GenAI_Convo_Summarization</fullName>
+    </flowDefinitions>
+    <flowDefinitions>
+        <flows/>
+        <fullName>Mogli_SMS__Update_Webhook</fullName>
+    </flowDefinitions>
+    <flowDefinitions>
+        <flows/>
+        <fullName>Mogli_SMS__helper_Send_SMS_for_Record</fullName>
+    </flowDefinitions>
+    <flowDefinitions>
+        <flows/>
+        <fullName>OptimizationActionDispatcher</fullName>
     </flowDefinitions>
     <flowDefinitions>
         <flows/>
@@ -21850,6 +22326,10 @@
     </flowDefinitions>
     <flowDefinitions>
         <flows/>
+        <fullName>Task_2_min_delay_update_WhoId</fullName>
+    </flowDefinitions>
+    <flowDefinitions>
+        <flows/>
         <fullName>Task_After_Save_Create_Document_Checklist_Items_for_Registration</fullName>
     </flowDefinitions>
     <flowDefinitions>
@@ -22002,6 +22482,10 @@
     <flowDefinitions>
         <flows/>
         <fullName>UpdateActnPlnStsOfTsk</fullName>
+    </flowDefinitions>
+    <flowDefinitions>
+        <flows/>
+        <fullName>UpdateCampaignPlan</fullName>
     </flowDefinitions>
     <flowDefinitions>
         <flows/>
@@ -22982,6 +23466,10 @@
     </flowDefinitions>
     <flowDefinitions>
         <flows/>
+        <fullName>Zoom_Call_Log_After_Save_Case_Creation_if_no_matching_Lead</fullName>
+    </flowDefinitions>
+    <flowDefinitions>
+        <flows/>
         <fullName>Zoom_Webinar_Link_Update_Lead_Fields</fullName>
     </flowDefinitions>
     <flowDefinitions>
@@ -23082,6 +23570,20 @@
     </flowDefinitions>
     <flowDefinitions>
         <flows>
+            <screens>
+                <fields>
+                    <name>header1</name>
+                </fields>
+                <fields>
+                    <name>memberList1</name>
+                </fields>
+                <name>Campaign_Member_List</name>
+            </screens>
+        </flows>
+        <fullName>cmm__Campaign_Member_Management_Quick_Entry</fullName>
+    </flowDefinitions>
+    <flowDefinitions>
+        <flows>
             <choices>
                 <name>S_4cece88f_16d2_4ed0_877a_36a1547ac47b</name>
             </choices>
@@ -23155,6 +23657,10 @@
         </flows>
         <fullName>net_promoter_score</fullName>
     </flowDefinitions>
+    <flowDefinitions>
+        <flows/>
+        <fullName>tfa__Send_Notification</fullName>
+    </flowDefinitions>
     <quickActions>
         <label><!-- Guest Community Case --></label>
         <name>GuestCommunityCase</name>
@@ -23211,4 +23717,1235 @@
         <label><!-- SendEmail --></label>
         <name>SendEmail</name>
     </quickActions>
+    <reportTypes>
+        <description><!-- Account to Account Relationships --></description>
+        <label><!-- Account to Account Relationships --></label>
+        <name>Account_to_Account_Relationships</name>
+        <sections>
+            <columns>
+                <label><!-- Account --></label>
+                <name>Account</name>
+            </columns>
+            <columns>
+                <label><!-- Account Account Relationship : Party Role Relationship : Related Role Name --></label>
+                <name>Account Account Relationship : Party Role Relationship : Related Role Name</name>
+            </columns>
+            <columns>
+                <label><!-- Account Account Relationship : Party Role Relationship : Role Name --></label>
+                <name>Account Account Relationship : Party Role Relationship : Role Name</name>
+            </columns>
+            <columns>
+                <label><!-- Account Account Relationship ID --></label>
+                <name>Account Account Relationship ID</name>
+            </columns>
+            <columns>
+                <label><!-- Account Relationship Id --></label>
+                <name>Account Relationship Id</name>
+            </columns>
+            <columns>
+                <label><!-- Active --></label>
+                <name>Active</name>
+            </columns>
+            <columns>
+                <label><!-- Created By --></label>
+                <name>Created By</name>
+            </columns>
+            <columns>
+                <label><!-- Created Date --></label>
+                <name>Created Date</name>
+            </columns>
+            <columns>
+                <label><!-- End Date --></label>
+                <name>End Date</name>
+            </columns>
+            <columns>
+                <label><!-- Hierarchy Type --></label>
+                <name>Hierarchy Type</name>
+            </columns>
+            <columns>
+                <label><!-- Last Modified By --></label>
+                <name>Last Modified By</name>
+            </columns>
+            <columns>
+                <label><!-- Last Modified Date --></label>
+                <name>Last Modified Date</name>
+            </columns>
+            <columns>
+                <label><!-- Party Role Relationship --></label>
+                <name>Party Role Relationship</name>
+            </columns>
+            <columns>
+                <label><!-- Related Account --></label>
+                <name>Related Account</name>
+            </columns>
+            <columns>
+                <label><!-- Related Inverse Record --></label>
+                <name>Related Inverse Record</name>
+            </columns>
+            <label><!-- Account Account Relationships --></label>
+            <name>Account Account Relationships</name>
+        </sections>
+        <sections>
+            <columns>
+                <label><!-- Account Account Relationship : Account : Account ID --></label>
+                <name>Account Account Relationship : Account : Account ID</name>
+            </columns>
+            <columns>
+                <label><!-- Account Account Relationship : Account : Account Number --></label>
+                <name>Account Account Relationship : Account : Account Number</name>
+            </columns>
+            <columns>
+                <label><!-- Account Account Relationship : Account : Account Owner --></label>
+                <name>Account Account Relationship : Account : Account Owner</name>
+            </columns>
+            <columns>
+                <label><!-- Account Account Relationship : Account : Account Record Type --></label>
+                <name>Account Account Relationship : Account : Account Record Type</name>
+            </columns>
+            <columns>
+                <label><!-- Account Account Relationship : Account : Account Site --></label>
+                <name>Account Account Relationship : Account : Account Site</name>
+            </columns>
+            <columns>
+                <label><!-- Account Account Relationship : Account : Account Source --></label>
+                <name>Account Account Relationship : Account : Account Source</name>
+            </columns>
+            <columns>
+                <label><!-- Account Account Relationship : Account : Annual Revenue --></label>
+                <name>Account Account Relationship : Account : Annual Revenue</name>
+            </columns>
+            <columns>
+                <label><!-- Account Account Relationship : Account : Billing Address --></label>
+                <name>Account Account Relationship : Account : Billing Address</name>
+            </columns>
+            <columns>
+                <label><!-- Account Account Relationship : Account : Billing City --></label>
+                <name>Account Account Relationship : Account : Billing City</name>
+            </columns>
+            <columns>
+                <label><!-- Account Account Relationship : Account : Billing Country --></label>
+                <name>Account Account Relationship : Account : Billing Country</name>
+            </columns>
+            <columns>
+                <label><!-- Account Account Relationship : Account : Billing State/Province --></label>
+                <name>Account Account Relationship : Account : Billing State/Province</name>
+            </columns>
+            <columns>
+                <label><!-- Account Account Relationship : Account : Billing Street --></label>
+                <name>Account Account Relationship : Account : Billing Street</name>
+            </columns>
+            <columns>
+                <label><!-- Account Account Relationship : Account : Billing Zip/Postal Code --></label>
+                <name>Account Account Relationship : Account : Billing Zip/Postal Code</name>
+            </columns>
+            <columns>
+                <label><!-- Account Account Relationship : Account : Created By --></label>
+                <name>Account Account Relationship : Account : Created By</name>
+            </columns>
+            <columns>
+                <label><!-- Account Account Relationship : Account : Created Date --></label>
+                <name>Account Account Relationship : Account : Created Date</name>
+            </columns>
+            <columns>
+                <label><!-- Account Account Relationship : Account : Description --></label>
+                <name>Account Account Relationship : Account : Description</name>
+            </columns>
+            <columns>
+                <label><!-- Account Account Relationship : Account : Employees --></label>
+                <name>Account Account Relationship : Account : Employees</name>
+            </columns>
+            <columns>
+                <label><!-- Account Account Relationship : Account : Fax --></label>
+                <name>Account Account Relationship : Account : Fax</name>
+            </columns>
+            <columns>
+                <label><!-- Account Account Relationship : Account : Industry --></label>
+                <name>Account Account Relationship : Account : Industry</name>
+            </columns>
+            <columns>
+                <label><!-- Account Account Relationship : Account : Last Activity --></label>
+                <name>Account Account Relationship : Account : Last Activity</name>
+            </columns>
+            <columns>
+                <label><!-- Account Account Relationship : Account : Last Modified By --></label>
+                <name>Account Account Relationship : Account : Last Modified By</name>
+            </columns>
+            <columns>
+                <label><!-- Account Account Relationship : Account : Last Modified Date --></label>
+                <name>Account Account Relationship : Account : Last Modified Date</name>
+            </columns>
+            <columns>
+                <label><!-- Account Account Relationship : Account : Ownership --></label>
+                <name>Account Account Relationship : Account : Ownership</name>
+            </columns>
+            <columns>
+                <label><!-- Account Account Relationship : Account : Parent Account --></label>
+                <name>Account Account Relationship : Account : Parent Account</name>
+            </columns>
+            <columns>
+                <label><!-- Account Account Relationship : Account : Phone --></label>
+                <name>Account Account Relationship : Account : Phone</name>
+            </columns>
+            <columns>
+                <label><!-- Account Account Relationship : Account : Rating --></label>
+                <name>Account Account Relationship : Account : Rating</name>
+            </columns>
+            <columns>
+                <label><!-- Account Account Relationship : Account : Shipping Address --></label>
+                <name>Account Account Relationship : Account : Shipping Address</name>
+            </columns>
+            <columns>
+                <label><!-- Account Account Relationship : Account : Shipping City --></label>
+                <name>Account Account Relationship : Account : Shipping City</name>
+            </columns>
+            <columns>
+                <label><!-- Account Account Relationship : Account : Shipping Country --></label>
+                <name>Account Account Relationship : Account : Shipping Country</name>
+            </columns>
+            <columns>
+                <label><!-- Account Account Relationship : Account : Shipping State/Province --></label>
+                <name>Account Account Relationship : Account : Shipping State/Province</name>
+            </columns>
+            <columns>
+                <label><!-- Account Account Relationship : Account : Shipping Street --></label>
+                <name>Account Account Relationship : Account : Shipping Street</name>
+            </columns>
+            <columns>
+                <label><!-- Account Account Relationship : Account : Shipping Zip/Postal Code --></label>
+                <name>Account Account Relationship : Account : Shipping Zip/Postal Code</name>
+            </columns>
+            <columns>
+                <label><!-- Account Account Relationship : Account : Ticker Symbol --></label>
+                <name>Account Account Relationship : Account : Ticker Symbol</name>
+            </columns>
+            <columns>
+                <label><!-- Account Account Relationship : Account : Type --></label>
+                <name>Account Account Relationship : Account : Type</name>
+            </columns>
+            <columns>
+                <label><!-- Account Account Relationship : Account : Website --></label>
+                <name>Account Account Relationship : Account : Website</name>
+            </columns>
+            <label><!-- Primary Account --></label>
+            <name>Primary Account</name>
+        </sections>
+        <sections>
+            <columns>
+                <label><!-- Account Account Relationship : Related Account : Account ID --></label>
+                <name>Account Account Relationship : Related Account : Account ID</name>
+            </columns>
+            <columns>
+                <label><!-- Account Account Relationship : Related Account : Account Number --></label>
+                <name>Account Account Relationship : Related Account : Account Number</name>
+            </columns>
+            <columns>
+                <label><!-- Account Account Relationship : Related Account : Account Owner --></label>
+                <name>Account Account Relationship : Related Account : Account Owner</name>
+            </columns>
+            <columns>
+                <label><!-- Account Account Relationship : Related Account : Account Record Type --></label>
+                <name>Account Account Relationship : Related Account : Account Record Type</name>
+            </columns>
+            <columns>
+                <label><!-- Account Account Relationship : Related Account : Account Site --></label>
+                <name>Account Account Relationship : Related Account : Account Site</name>
+            </columns>
+            <columns>
+                <label><!-- Account Account Relationship : Related Account : Account Source --></label>
+                <name>Account Account Relationship : Related Account : Account Source</name>
+            </columns>
+            <columns>
+                <label><!-- Account Account Relationship : Related Account : Annual Revenue --></label>
+                <name>Account Account Relationship : Related Account : Annual Revenue</name>
+            </columns>
+            <columns>
+                <label><!-- Account Account Relationship : Related Account : Billing Address --></label>
+                <name>Account Account Relationship : Related Account : Billing Address</name>
+            </columns>
+            <columns>
+                <label><!-- Account Account Relationship : Related Account : Billing City --></label>
+                <name>Account Account Relationship : Related Account : Billing City</name>
+            </columns>
+            <columns>
+                <label><!-- Account Account Relationship : Related Account : Billing Country --></label>
+                <name>Account Account Relationship : Related Account : Billing Country</name>
+            </columns>
+            <columns>
+                <label><!-- Account Account Relationship : Related Account : Billing State/Province --></label>
+                <name>Account Account Relationship : Related Account : Billing State/Province</name>
+            </columns>
+            <columns>
+                <label><!-- Account Account Relationship : Related Account : Billing Street --></label>
+                <name>Account Account Relationship : Related Account : Billing Street</name>
+            </columns>
+            <columns>
+                <label><!-- Account Account Relationship : Related Account : Billing Zip/Postal Code --></label>
+                <name>Account Account Relationship : Related Account : Billing Zip/Postal Code</name>
+            </columns>
+            <columns>
+                <label><!-- Account Account Relationship : Related Account : Created By --></label>
+                <name>Account Account Relationship : Related Account : Created By</name>
+            </columns>
+            <columns>
+                <label><!-- Account Account Relationship : Related Account : Created Date --></label>
+                <name>Account Account Relationship : Related Account : Created Date</name>
+            </columns>
+            <columns>
+                <label><!-- Account Account Relationship : Related Account : Description --></label>
+                <name>Account Account Relationship : Related Account : Description</name>
+            </columns>
+            <columns>
+                <label><!-- Account Account Relationship : Related Account : Employees --></label>
+                <name>Account Account Relationship : Related Account : Employees</name>
+            </columns>
+            <columns>
+                <label><!-- Account Account Relationship : Related Account : Fax --></label>
+                <name>Account Account Relationship : Related Account : Fax</name>
+            </columns>
+            <columns>
+                <label><!-- Account Account Relationship : Related Account : Industry --></label>
+                <name>Account Account Relationship : Related Account : Industry</name>
+            </columns>
+            <columns>
+                <label><!-- Account Account Relationship : Related Account : Last Activity --></label>
+                <name>Account Account Relationship : Related Account : Last Activity</name>
+            </columns>
+            <columns>
+                <label><!-- Account Account Relationship : Related Account : Last Modified By --></label>
+                <name>Account Account Relationship : Related Account : Last Modified By</name>
+            </columns>
+            <columns>
+                <label><!-- Account Account Relationship : Related Account : Last Modified Date --></label>
+                <name>Account Account Relationship : Related Account : Last Modified Date</name>
+            </columns>
+            <columns>
+                <label><!-- Account Account Relationship : Related Account : Ownership --></label>
+                <name>Account Account Relationship : Related Account : Ownership</name>
+            </columns>
+            <columns>
+                <label><!-- Account Account Relationship : Related Account : Parent Account --></label>
+                <name>Account Account Relationship : Related Account : Parent Account</name>
+            </columns>
+            <columns>
+                <label><!-- Account Account Relationship : Related Account : Phone --></label>
+                <name>Account Account Relationship : Related Account : Phone</name>
+            </columns>
+            <columns>
+                <label><!-- Account Account Relationship : Related Account : Rating --></label>
+                <name>Account Account Relationship : Related Account : Rating</name>
+            </columns>
+            <columns>
+                <label><!-- Account Account Relationship : Related Account : Shipping Address --></label>
+                <name>Account Account Relationship : Related Account : Shipping Address</name>
+            </columns>
+            <columns>
+                <label><!-- Account Account Relationship : Related Account : Shipping City --></label>
+                <name>Account Account Relationship : Related Account : Shipping City</name>
+            </columns>
+            <columns>
+                <label><!-- Account Account Relationship : Related Account : Shipping Country --></label>
+                <name>Account Account Relationship : Related Account : Shipping Country</name>
+            </columns>
+            <columns>
+                <label><!-- Account Account Relationship : Related Account : Shipping State/Province --></label>
+                <name>Account Account Relationship : Related Account : Shipping State/Province</name>
+            </columns>
+            <columns>
+                <label><!-- Account Account Relationship : Related Account : Shipping Street --></label>
+                <name>Account Account Relationship : Related Account : Shipping Street</name>
+            </columns>
+            <columns>
+                <label><!-- Account Account Relationship : Related Account : Shipping Zip/Postal Code --></label>
+                <name>Account Account Relationship : Related Account : Shipping Zip/Postal Code</name>
+            </columns>
+            <columns>
+                <label><!-- Account Account Relationship : Related Account : Ticker Symbol --></label>
+                <name>Account Account Relationship : Related Account : Ticker Symbol</name>
+            </columns>
+            <columns>
+                <label><!-- Account Account Relationship : Related Account : Type --></label>
+                <name>Account Account Relationship : Related Account : Type</name>
+            </columns>
+            <columns>
+                <label><!-- Account Account Relationship : Related Account : Website --></label>
+                <name>Account Account Relationship : Related Account : Website</name>
+            </columns>
+            <label><!-- Related Account --></label>
+            <name>Related Account</name>
+        </sections>
+    </reportTypes>
+    <reportTypes>
+        <description><!-- Account to Contact Relationships --></description>
+        <label><!-- Account to Contact Relationships --></label>
+        <name>Account_to_Contact_Relationships</name>
+        <sections>
+            <columns>
+                <label><!-- Account ID --></label>
+                <name>Account ID</name>
+            </columns>
+            <columns>
+                <label><!-- Account Name --></label>
+                <name>Account Name</name>
+            </columns>
+            <columns>
+                <label><!-- Account Name --></label>
+                <name>Account Name</name>
+            </columns>
+            <columns>
+                <label><!-- Account Number --></label>
+                <name>Account Number</name>
+            </columns>
+            <columns>
+                <label><!-- Account Owner --></label>
+                <name>Account Owner</name>
+            </columns>
+            <columns>
+                <label><!-- Account Record Type --></label>
+                <name>Account Record Type</name>
+            </columns>
+            <columns>
+                <label><!-- Account Site --></label>
+                <name>Account Site</name>
+            </columns>
+            <columns>
+                <label><!-- Account Source --></label>
+                <name>Account Source</name>
+            </columns>
+            <columns>
+                <label><!-- Annual Revenue --></label>
+                <name>Annual Revenue</name>
+            </columns>
+            <columns>
+                <label><!-- Billing Address --></label>
+                <name>Billing Address</name>
+            </columns>
+            <columns>
+                <label><!-- Billing City --></label>
+                <name>Billing City</name>
+            </columns>
+            <columns>
+                <label><!-- Billing Country --></label>
+                <name>Billing Country</name>
+            </columns>
+            <columns>
+                <label><!-- Billing Geocode Accuracy --></label>
+                <name>Billing Geocode Accuracy</name>
+            </columns>
+            <columns>
+                <label><!-- Billing Latitude --></label>
+                <name>Billing Latitude</name>
+            </columns>
+            <columns>
+                <label><!-- Billing Longitude --></label>
+                <name>Billing Longitude</name>
+            </columns>
+            <columns>
+                <label><!-- Billing State/Province --></label>
+                <name>Billing State/Province</name>
+            </columns>
+            <columns>
+                <label><!-- Billing Street --></label>
+                <name>Billing Street</name>
+            </columns>
+            <columns>
+                <label><!-- Billing Zip/Postal Code --></label>
+                <name>Billing Zip/Postal Code</name>
+            </columns>
+            <columns>
+                <label><!-- Created By --></label>
+                <name>Created By</name>
+            </columns>
+            <columns>
+                <label><!-- Created Date --></label>
+                <name>Created Date</name>
+            </columns>
+            <columns>
+                <label><!-- Data.com Key --></label>
+                <name>Data.com Key</name>
+            </columns>
+            <columns>
+                <label><!-- Description --></label>
+                <name>Description</name>
+            </columns>
+            <columns>
+                <label><!-- Employees --></label>
+                <name>Employees</name>
+            </columns>
+            <columns>
+                <label><!-- Fax --></label>
+                <name>Fax</name>
+            </columns>
+            <columns>
+                <label><!-- First Name --></label>
+                <name>First Name</name>
+            </columns>
+            <columns>
+                <label><!-- Industry --></label>
+                <name>Industry</name>
+            </columns>
+            <columns>
+                <label><!-- Last Activity --></label>
+                <name>Last Activity</name>
+            </columns>
+            <columns>
+                <label><!-- Last Modified By --></label>
+                <name>Last Modified By</name>
+            </columns>
+            <columns>
+                <label><!-- Last Modified Date --></label>
+                <name>Last Modified Date</name>
+            </columns>
+            <columns>
+                <label><!-- Last Name --></label>
+                <name>Last Name</name>
+            </columns>
+            <columns>
+                <label><!-- Ownership --></label>
+                <name>Ownership</name>
+            </columns>
+            <columns>
+                <label><!-- Parent Account --></label>
+                <name>Parent Account</name>
+            </columns>
+            <columns>
+                <label><!-- Person Account --></label>
+                <name>Person Account</name>
+            </columns>
+            <columns>
+                <label><!-- Phone --></label>
+                <name>Phone</name>
+            </columns>
+            <columns>
+                <label><!-- Rating --></label>
+                <name>Rating</name>
+            </columns>
+            <columns>
+                <label><!-- SIC Code --></label>
+                <name>SIC Code</name>
+            </columns>
+            <columns>
+                <label><!-- SIC Description --></label>
+                <name>SIC Description</name>
+            </columns>
+            <columns>
+                <label><!-- Salutation --></label>
+                <name>Salutation</name>
+            </columns>
+            <columns>
+                <label><!-- Shipping Address --></label>
+                <name>Shipping Address</name>
+            </columns>
+            <columns>
+                <label><!-- Shipping City --></label>
+                <name>Shipping City</name>
+            </columns>
+            <columns>
+                <label><!-- Shipping Country --></label>
+                <name>Shipping Country</name>
+            </columns>
+            <columns>
+                <label><!-- Shipping Geocode Accuracy --></label>
+                <name>Shipping Geocode Accuracy</name>
+            </columns>
+            <columns>
+                <label><!-- Shipping Latitude --></label>
+                <name>Shipping Latitude</name>
+            </columns>
+            <columns>
+                <label><!-- Shipping Longitude --></label>
+                <name>Shipping Longitude</name>
+            </columns>
+            <columns>
+                <label><!-- Shipping State/Province --></label>
+                <name>Shipping State/Province</name>
+            </columns>
+            <columns>
+                <label><!-- Shipping Street --></label>
+                <name>Shipping Street</name>
+            </columns>
+            <columns>
+                <label><!-- Shipping Zip/Postal Code --></label>
+                <name>Shipping Zip/Postal Code</name>
+            </columns>
+            <columns>
+                <label><!-- Ticker Symbol --></label>
+                <name>Ticker Symbol</name>
+            </columns>
+            <columns>
+                <label><!-- Type --></label>
+                <name>Type</name>
+            </columns>
+            <columns>
+                <label><!-- Website --></label>
+                <name>Website</name>
+            </columns>
+            <label><!-- Accounts --></label>
+            <name>Accounts</name>
+        </sections>
+        <sections>
+            <columns>
+                <label><!-- Account Contact Relationship ID --></label>
+                <name>Account Contact Relationship ID</name>
+            </columns>
+            <columns>
+                <label><!-- Active --></label>
+                <name>Active</name>
+            </columns>
+            <columns>
+                <label><!-- Assistant --></label>
+                <name>Assistant</name>
+            </columns>
+            <columns>
+                <label><!-- Asst. Phone --></label>
+                <name>Asst. Phone</name>
+            </columns>
+            <columns>
+                <label><!-- Birthdate --></label>
+                <name>Birthdate</name>
+            </columns>
+            <columns>
+                <label><!-- Buyer Attributes --></label>
+                <name>Buyer Attributes</name>
+            </columns>
+            <columns>
+                <label><!-- Contact ID --></label>
+                <name>Contact ID</name>
+            </columns>
+            <columns>
+                <label><!-- Contact Owner --></label>
+                <name>Contact Owner</name>
+            </columns>
+            <columns>
+                <label><!-- Created By --></label>
+                <name>Created By</name>
+            </columns>
+            <columns>
+                <label><!-- Created Date --></label>
+                <name>Created Date</name>
+            </columns>
+            <columns>
+                <label><!-- Creation Source --></label>
+                <name>Creation Source</name>
+            </columns>
+            <columns>
+                <label><!-- Data Rollup Categories --></label>
+                <name>Data Rollup Categories</name>
+            </columns>
+            <columns>
+                <label><!-- Data.com Key --></label>
+                <name>Data.com Key</name>
+            </columns>
+            <columns>
+                <label><!-- Department --></label>
+                <name>Department</name>
+            </columns>
+            <columns>
+                <label><!-- Department Group --></label>
+                <name>Department Group</name>
+            </columns>
+            <columns>
+                <label><!-- Description --></label>
+                <name>Description</name>
+            </columns>
+            <columns>
+                <label><!-- Direct --></label>
+                <name>Direct</name>
+            </columns>
+            <columns>
+                <label><!-- Do Not Call --></label>
+                <name>Do Not Call</name>
+            </columns>
+            <columns>
+                <label><!-- Email --></label>
+                <name>Email</name>
+            </columns>
+            <columns>
+                <label><!-- Email Bounced Date --></label>
+                <name>Email Bounced Date</name>
+            </columns>
+            <columns>
+                <label><!-- Email Bounced Reason --></label>
+                <name>Email Bounced Reason</name>
+            </columns>
+            <columns>
+                <label><!-- Email Opt Out --></label>
+                <name>Email Opt Out</name>
+            </columns>
+            <columns>
+                <label><!-- End Date --></label>
+                <name>End Date</name>
+            </columns>
+            <columns>
+                <label><!-- Fax --></label>
+                <name>Fax</name>
+            </columns>
+            <columns>
+                <label><!-- Fax Opt Out --></label>
+                <name>Fax Opt Out</name>
+            </columns>
+            <columns>
+                <label><!-- First Name --></label>
+                <name>First Name</name>
+            </columns>
+            <columns>
+                <label><!-- Full Name --></label>
+                <name>Full Name</name>
+            </columns>
+            <columns>
+                <label><!-- Gender Identity --></label>
+                <name>Gender Identity</name>
+            </columns>
+            <columns>
+                <label><!-- Home Phone --></label>
+                <name>Home Phone</name>
+            </columns>
+            <columns>
+                <label><!-- Included In Group --></label>
+                <name>Included In Group</name>
+            </columns>
+            <columns>
+                <label><!-- Individual --></label>
+                <name>Individual</name>
+            </columns>
+            <columns>
+                <label><!-- Is Email Bounced --></label>
+                <name>Is Email Bounced</name>
+            </columns>
+            <columns>
+                <label><!-- Is Person Account --></label>
+                <name>Is Person Account</name>
+            </columns>
+            <columns>
+                <label><!-- Last Activity --></label>
+                <name>Last Activity</name>
+            </columns>
+            <columns>
+                <label><!-- Last Modified By --></label>
+                <name>Last Modified By</name>
+            </columns>
+            <columns>
+                <label><!-- Last Modified Date --></label>
+                <name>Last Modified Date</name>
+            </columns>
+            <columns>
+                <label><!-- Last Name --></label>
+                <name>Last Name</name>
+            </columns>
+            <columns>
+                <label><!-- Last Stay-in-Touch Request Date --></label>
+                <name>Last Stay-in-Touch Request Date</name>
+            </columns>
+            <columns>
+                <label><!-- Last Stay-in-Touch Save Date --></label>
+                <name>Last Stay-in-Touch Save Date</name>
+            </columns>
+            <columns>
+                <label><!-- Lead Source --></label>
+                <name>Lead Source</name>
+            </columns>
+            <columns>
+                <label><!-- Mailing Address --></label>
+                <name>Mailing Address</name>
+            </columns>
+            <columns>
+                <label><!-- Mailing City --></label>
+                <name>Mailing City</name>
+            </columns>
+            <columns>
+                <label><!-- Mailing Country --></label>
+                <name>Mailing Country</name>
+            </columns>
+            <columns>
+                <label><!-- Mailing Geocode Accuracy --></label>
+                <name>Mailing Geocode Accuracy</name>
+            </columns>
+            <columns>
+                <label><!-- Mailing Latitude --></label>
+                <name>Mailing Latitude</name>
+            </columns>
+            <columns>
+                <label><!-- Mailing Longitude --></label>
+                <name>Mailing Longitude</name>
+            </columns>
+            <columns>
+                <label><!-- Mailing State/Province --></label>
+                <name>Mailing State/Province</name>
+            </columns>
+            <columns>
+                <label><!-- Mailing Street --></label>
+                <name>Mailing Street</name>
+            </columns>
+            <columns>
+                <label><!-- Mailing Zip/Postal Code --></label>
+                <name>Mailing Zip/Postal Code</name>
+            </columns>
+            <columns>
+                <label><!-- Mobile --></label>
+                <name>Mobile</name>
+            </columns>
+            <columns>
+                <label><!-- Other Address --></label>
+                <name>Other Address</name>
+            </columns>
+            <columns>
+                <label><!-- Other City --></label>
+                <name>Other City</name>
+            </columns>
+            <columns>
+                <label><!-- Other Country --></label>
+                <name>Other Country</name>
+            </columns>
+            <columns>
+                <label><!-- Other Geocode Accuracy --></label>
+                <name>Other Geocode Accuracy</name>
+            </columns>
+            <columns>
+                <label><!-- Other Latitude --></label>
+                <name>Other Latitude</name>
+            </columns>
+            <columns>
+                <label><!-- Other Longitude --></label>
+                <name>Other Longitude</name>
+            </columns>
+            <columns>
+                <label><!-- Other Phone --></label>
+                <name>Other Phone</name>
+            </columns>
+            <columns>
+                <label><!-- Other State/Province --></label>
+                <name>Other State/Province</name>
+            </columns>
+            <columns>
+                <label><!-- Other Street --></label>
+                <name>Other Street</name>
+            </columns>
+            <columns>
+                <label><!-- Other Zip/Postal Code --></label>
+                <name>Other Zip/Postal Code</name>
+            </columns>
+            <columns>
+                <label><!-- Phone --></label>
+                <name>Phone</name>
+            </columns>
+            <columns>
+                <label><!-- Primary Group --></label>
+                <name>Primary Group</name>
+            </columns>
+            <columns>
+                <label><!-- Primary Member --></label>
+                <name>Primary Member</name>
+            </columns>
+            <columns>
+                <label><!-- Pronouns --></label>
+                <name>Pronouns</name>
+            </columns>
+            <columns>
+                <label><!-- Reports To --></label>
+                <name>Reports To</name>
+            </columns>
+            <columns>
+                <label><!-- Roles --></label>
+                <name>Roles</name>
+            </columns>
+            <columns>
+                <label><!-- Salutation --></label>
+                <name>Salutation</name>
+            </columns>
+            <columns>
+                <label><!-- Seniority Level --></label>
+                <name>Seniority Level</name>
+            </columns>
+            <columns>
+                <label><!-- Start Date --></label>
+                <name>Start Date</name>
+            </columns>
+            <columns>
+                <label><!-- Title --></label>
+                <name>Title</name>
+            </columns>
+            <label><!-- Contact Relationships --></label>
+            <name>Contact Relationships</name>
+        </sections>
+    </reportTypes>
+    <reportTypes>
+        <description><!-- Accounts with Individual and School Applications --></description>
+        <label><!-- Accounts with Individual and School Applications --></label>
+        <name>Accounts_with_Individual_Applications</name>
+        <sections>
+            <label><!-- Accounts --></label>
+            <name>Accounts</name>
+        </sections>
+        <sections>
+            <label><!-- Individual Applications --></label>
+            <name>Individual Applications</name>
+        </sections>
+        <sections>
+            <label><!-- School Applications --></label>
+            <name>School Applications</name>
+        </sections>
+    </reportTypes>
+    <reportTypes>
+        <description><!-- Contact to Account Relationships --></description>
+        <label><!-- Contact to Account Relationships --></label>
+        <name>Contact_to_Account_Relationships</name>
+        <sections>
+            <label><!-- Account Relationships --></label>
+            <name>Account Relationships</name>
+        </sections>
+        <sections>
+            <label><!-- Contacts --></label>
+            <name>Contacts</name>
+        </sections>
+    </reportTypes>
+    <reportTypes>
+        <description><!-- Contact to Contact Relationships --></description>
+        <label><!-- Contact to Contact Relationships --></label>
+        <name>Contact_to_Contact_Relationships</name>
+        <sections>
+            <label><!-- Contact Contact Relationships --></label>
+            <name>Contact Contact Relationships</name>
+        </sections>
+    </reportTypes>
+    <reportTypes>
+        <description><!-- GenAIGatewayRequest with GenAIGeneration --></description>
+        <label><!-- GenAIGatewayRequest with GenAIGeneration --></label>
+        <name>GenAIGatewayRequest_with_GenAIGeneration</name>
+        <sections>
+            <label><!-- GenAIGatewayRequest (Data Cloud) --></label>
+            <name>GenAIGatewayRequest (Data Cloud)</name>
+        </sections>
+        <sections>
+            <label><!-- GenAIGatewayResponse (Data Cloud) --></label>
+            <name>GenAIGatewayResponse (Data Cloud)</name>
+        </sections>
+        <sections>
+            <label><!-- GenAIGeneration (Data Cloud) --></label>
+            <name>GenAIGeneration (Data Cloud)</name>
+        </sections>
+    </reportTypes>
+    <reportTypes>
+        <description><!-- GenAIGatewayResponse with GenAIContentCategory --></description>
+        <label><!-- GenAIGatewayResponse with GenAIContentCategory --></label>
+        <name>GenAIGatewayResponse_with_GenAIContentCategory</name>
+        <sections>
+            <label><!-- GenAIContentCategory (Data Cloud) --></label>
+            <name>GenAIContentCategory (Data Cloud)</name>
+        </sections>
+        <sections>
+            <label><!-- GenAIContentQuality (Data Cloud) --></label>
+            <name>GenAIContentQuality (Data Cloud)</name>
+        </sections>
+        <sections>
+            <label><!-- GenAIGatewayResponse (Data Cloud) --></label>
+            <name>GenAIGatewayResponse (Data Cloud)</name>
+        </sections>
+        <sections>
+            <label><!-- GenAIGeneration (Data Cloud) --></label>
+            <name>GenAIGeneration (Data Cloud)</name>
+        </sections>
+    </reportTypes>
+    <reportTypes>
+        <description><!-- Individual Applications --></description>
+        <label><!-- Individual Applications --></label>
+        <name>Individual_Applications</name>
+        <sections>
+            <label><!-- Individual Applications --></label>
+            <name>Individual Applications</name>
+        </sections>
+    </reportTypes>
+    <reportTypes>
+        <description><!-- Individual Applications with School Applications --></description>
+        <label><!-- Individual Applications with School Applications --></label>
+        <name>Individual_Applications_with_School_Applications</name>
+        <sections>
+            <label><!-- Individual Applications --></label>
+            <name>Individual Applications</name>
+        </sections>
+        <sections>
+            <label><!-- School Applications --></label>
+            <name>School Applications</name>
+        </sections>
+    </reportTypes>
+    <reportTypes>
+        <description><!-- Partner Fund Requests and Partner Fund Claims --></description>
+        <label><!-- Partner Fund Requests and Partner Fund Claims --></label>
+        <name>MDF_Claim_Request_Crt</name>
+        <sections>
+            <label><!-- Partner Fund Claims --></label>
+            <name>Partner Fund Claims</name>
+        </sections>
+        <sections>
+            <label><!-- Partner Fund Requests --></label>
+            <name>Partner Fund Requests</name>
+        </sections>
+    </reportTypes>
+    <reportTypes>
+        <description><!-- Forms &amp; Question Responses --></description>
+        <label><!-- Forms &amp; Question Responses --></label>
+        <name>Mogli_SMS__Forms_Responses</name>
+    </reportTypes>
+    <reportTypes>
+        <description><!-- Gateways with SMS --></description>
+        <label><!-- Gateways with SMS --></label>
+        <name>Mogli_SMS__Gateways_with_SMS</name>
+    </reportTypes>
+    <reportTypes>
+        <description><!-- Mogli AI Evals --></description>
+        <label><!-- Mogli AI Evals --></label>
+        <name>Mogli_SMS__Mogli_AI_Evals</name>
+        <sections>
+            <columns>
+                <label><!-- Mogli AI Parameter Set --></label>
+                <name>Mogli AI Parameter Set</name>
+            </columns>
+            <name>GenAI Evals</name>
+        </sections>
+        <sections>
+            <columns>
+                <label><!-- Created By : Time Zone --></label>
+                <name>Created By : Time Zone</name>
+            </columns>
+            <columns>
+                <label><!-- Created By : Title --></label>
+                <name>Created By : Title</name>
+            </columns>
+            <columns>
+                <label><!-- Created By : Username --></label>
+                <name>Created By : Username</name>
+            </columns>
+            <columns>
+                <label><!-- Created By: Profile --></label>
+                <name>Created By: Profile</name>
+            </columns>
+            <name>User (Created By)</name>
+        </sections>
+    </reportTypes>
+    <reportTypes>
+        <description><!-- Mogli URLs with Engagement Info --></description>
+        <label><!-- Mogli URLs with Engagement Info --></label>
+        <name>Mogli_SMS__Mogli_URLs_with_Engagement_Info</name>
+    </reportTypes>
+    <reportTypes>
+        <description><!-- Opportunities with Historical Trending --></description>
+        <label><!-- Opportunities with Historical Trending --></label>
+        <name>Opportunities_with_Historical_Trending</name>
+        <sections>
+            <label><!-- Opportunities --></label>
+            <name>Opportunities</name>
+        </sections>
+        <sections>
+            <label><!-- Opportunity (Historical) --></label>
+            <name>Opportunity (Historical)</name>
+        </sections>
+    </reportTypes>
+    <reportTypes>
+        <description><!-- Party Relationship Groups --></description>
+        <label><!-- Party Relationship Groups --></label>
+        <name>Party_Relationship_Groups</name>
+        <sections>
+            <label><!-- Party Relationship Groups --></label>
+            <name>Party Relationship Groups</name>
+        </sections>
+    </reportTypes>
+    <reportTypes>
+        <description><!-- Priority Items with Individual Applications --></description>
+        <label><!-- Priority Items with Individual Applications --></label>
+        <name>Priority_Items_with_Individual_Applications</name>
+        <sections>
+            <label><!-- Individual Application --></label>
+            <name>Individual Application</name>
+        </sections>
+        <sections>
+            <label><!-- Priority Items --></label>
+            <name>Priority Items</name>
+        </sections>
+    </reportTypes>
+    <reportTypes>
+        <description><!-- School Applications with Individual Application and Lottery Capacity --></description>
+        <label><!-- School Applications with Individual Application and Lottery Capacity --></label>
+        <name>School_Applications_with_Individual_Application_and_Lottery_Capacity</name>
+        <sections>
+            <label><!-- Individual Application --></label>
+            <name>Individual Application</name>
+        </sections>
+        <sections>
+            <label><!-- Lottery Capacity --></label>
+            <name>Lottery Capacity</name>
+        </sections>
+        <sections>
+            <label><!-- PTAT --></label>
+            <name>PTAT</name>
+        </sections>
+        <sections>
+            <label><!-- Primary Guardian Account --></label>
+            <name>Primary Guardian Account</name>
+        </sections>
+        <sections>
+            <label><!-- School Applications --></label>
+            <name>School Applications</name>
+        </sections>
+        <sections>
+            <label><!-- Secondary Guardian Account --></label>
+            <name>Secondary Guardian Account</name>
+        </sections>
+        <sections>
+            <label><!-- Student Account --></label>
+            <name>Student Account</name>
+        </sections>
+    </reportTypes>
+    <reportTypes>
+        <description><!-- School Applications with Individual Applications and Accounts --></description>
+        <label><!-- School Applications with Individual Applications and Accounts --></label>
+        <name>School_Applications_with_Individual_Applications_and_Accounts</name>
+        <sections>
+            <label><!-- Individual Application --></label>
+            <name>Individual Application</name>
+        </sections>
+        <sections>
+            <label><!-- Primary Guardian Account --></label>
+            <name>Primary Guardian Account</name>
+        </sections>
+        <sections>
+            <columns>
+                <label><!-- School Applications : School : School : Dashboard School Name --></label>
+                <name>School Applications : School : School : Dashboard School Name</name>
+            </columns>
+            <label><!-- School Applications --></label>
+            <name>School Applications</name>
+        </sections>
+        <sections>
+            <label><!-- Secondary Guardian Account --></label>
+            <name>Secondary Guardian Account</name>
+        </sections>
+        <sections>
+            <label><!-- Student Account --></label>
+            <name>Student Account</name>
+        </sections>
+    </reportTypes>
+    <reportTypes>
+        <description><!-- Orchestration Run Logs Spring &apos;24 --></description>
+        <label><!-- Orchestration Run Logs Spring &apos;24 --></label>
+        <name>flow_orchestration_log_ootb_crt_two_four_eight</name>
+        <sections>
+            <label><!-- Orchestration Run Log --></label>
+            <name>Orchestration Run Log</name>
+        </sections>
+    </reportTypes>
+    <reportTypes>
+        <description><!-- Orchestration Runs Spring &apos;24 --></description>
+        <label><!-- Orchestration Runs Spring &apos;24 --></label>
+        <name>flow_orchestration_run_ootb_crt_two_four_eight</name>
+        <sections>
+            <label><!-- Orchestration Runs --></label>
+            <name>Orchestration Runs</name>
+        </sections>
+    </reportTypes>
+    <reportTypes>
+        <description><!-- Orchestration Stage Runs Spring &apos;24 --></description>
+        <label><!-- Orchestration Stage Runs Spring &apos;24 --></label>
+        <name>flow_orchestration_stage_run_ootb_crt_two_four_eight</name>
+        <sections>
+            <label><!-- Orchestration Stage Runs --></label>
+            <name>Orchestration Stage Runs</name>
+        </sections>
+    </reportTypes>
+    <reportTypes>
+        <description><!-- Orchestration Step Runs Spring &apos;24 --></description>
+        <label><!-- Orchestration Step Runs Spring &apos;24 --></label>
+        <name>flow_orchestration_step_run_ootb_crt_two_four_eight</name>
+        <sections>
+            <label><!-- Orchestration Step Runs --></label>
+            <name>Orchestration Step Runs</name>
+        </sections>
+    </reportTypes>
+    <reportTypes>
+        <description><!-- Orchestration Work Items Spring &apos;24 --></description>
+        <label><!-- Orchestration Work Items Spring &apos;24 --></label>
+        <name>flow_orchestration_work_item_ootb_crt_two_four_eight</name>
+        <sections>
+            <columns>
+                <label><!-- Orchestration Step Run: Label --></label>
+                <name>Orchestration Step Run: Label</name>
+            </columns>
+            <columns>
+                <label><!-- Orchestration Step Run: Name --></label>
+                <name>Orchestration Step Run: Name</name>
+            </columns>
+            <columns>
+                <label><!-- Orchestration Step Run: Status --></label>
+                <name>Orchestration Step Run: Status</name>
+            </columns>
+            <label><!-- Orchestration Step Runs --></label>
+            <name>Orchestration Step Runs</name>
+        </sections>
+        <sections>
+            <columns>
+                <label><!-- Assigned Group or Queue --></label>
+                <name>Assigned Group or Queue</name>
+            </columns>
+            <columns>
+                <label><!-- Assigned User --></label>
+                <name>Assigned User</name>
+            </columns>
+            <label><!-- Orchestration Work Items --></label>
+            <name>Orchestration Work Items</name>
+        </sections>
+    </reportTypes>
+    <reportTypes>
+        <description><!-- Partner Fund Requests --></description>
+        <label><!-- Partner Fund Requests --></label>
+        <name>prm_partner_fund_request_crt</name>
+        <sections>
+            <label><!-- Partner Fund Requests --></label>
+            <name>Partner Fund Requests</name>
+        </sections>
+    </reportTypes>
+    <reportTypes>
+        <description><!-- Partner Marketing Budgets --></description>
+        <label><!-- Partner Marketing Budgets --></label>
+        <name>prm_partner_marketing_budget_crt</name>
+        <sections>
+            <label><!-- Partner Marketing Budgets --></label>
+            <name>Partner Marketing Budgets</name>
+        </sections>
+    </reportTypes>
+    <reportTypes>
+        <description><!-- Login History for Experience Cloud Site Users --></description>
+        <label><!-- Login History for Experience Cloud Site Users --></label>
+        <name>prm_total_portal_login_crt</name>
+        <sections>
+            <label><!-- Login History --></label>
+            <name>Login History</name>
+        </sections>
+        <sections>
+            <label><!-- Network Members --></label>
+            <name>Network Members</name>
+        </sections>
+        <sections>
+            <label><!-- Networks --></label>
+            <name>Networks</name>
+        </sections>
+    </reportTypes>
+    <reportTypes>
+        <description><!-- User Details --></description>
+        <label><!-- User Details --></label>
+        <name>prm_unique_portal_crt</name>
+        <sections>
+            <label><!-- Users --></label>
+            <name>Users</name>
+        </sections>
+    </reportTypes>
+    <reportTypes>
+        <description><!-- Screen Flows --></description>
+        <label><!-- Screen Flows --></label>
+        <name>screen_flows_prebuilt_crt</name>
+        <sections>
+            <label><!-- Flow Interview Log Entries --></label>
+            <name>Flow Interview Log Entries</name>
+        </sections>
+        <sections>
+            <label><!-- Flow Interview Logs --></label>
+            <name>Flow Interview Logs</name>
+        </sections>
+    </reportTypes>
 </Translations>

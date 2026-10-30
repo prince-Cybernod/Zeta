@@ -1,0 +1,293 @@
+<template>
+  <template lwc:if={isLoading}>
+    <div class="loading" role="status" aria-busy="true">{labels.loading}</div>
+  </template>
+  <template lwc:elseif={loadError}>
+    <div class="load-error" role="alert">{loadError}</div>
+  </template>
+  <template lwc:else>
+    <template lwc:if={showAcceptConfirmation}>
+      <div class="confirmation">
+        <h2 class="slds-m-bottom_small">{labels.acceptConfirmationTitle}</h2>
+        <p class="slds-m-bottom_medium">{labels.acceptConfirmationBody}</p>
+      </div>
+    </template>
+    <template lwc:elseif={showDeclineConfirmation}>
+      <div class="confirmation">
+        <h2 class="slds-m-bottom_small">{labels.declineConfirmationTitle}</h2>
+        <p class="slds-m-bottom_medium">{labels.declineConfirmationBody}</p>
+      </div>
+    </template>
+    <template lwc:elseif={showUpdateRankings}>
+      <c-school-ranking
+        lwc:ref="ranking"
+        record-id={effectiveAppId}
+      ></c-school-ranking>
+      <div class="modal-actions">
+        <button class="btn btn--primary" onclick={handleDoneRanking}>
+          {labels.done}
+        </button>
+      </div>
+    </template>
+    <template lwc:else>
+      <template lwc:if={hasOpenChoices}>
+        <div class="detail-header">
+          <a
+            href="#"
+            class="update-rankings-link"
+            onclick={handleOpenUpdateRankings}
+          >
+            {labels.updateRankings}
+          </a>
+        </div>
+      </template>
+
+      <template lwc:if={_actionError}>
+        <div class="action-error" role="alert">{_actionError}</div>
+      </template>
+
+      <template lwc:if={hasAcceptedRows}>
+        <section class="section">
+          <h2 class="section-title">{labels.seatAccepted}</h2>
+          <template for:each={acceptedRows} for:item="school">
+            <div
+              key={school.academicInterestId}
+              class="school-row school-row--plain"
+            >
+              <span class="school-rank">{school.rank}</span>
+              <span class="school-name">{school.name}</span>
+              <span class={school.statusClass}>{school.status}</span>
+            </div>
+          </template>
+        </section>
+      </template>
+
+      <template lwc:if={hasCurrentOffer}>
+        <section class="section">
+          <h2 class="section-title">{labels.currentOffer}</h2>
+          <template for:each={currentOfferRows} for:item="school">
+            <div
+              key={school.academicInterestId}
+              class="school-row school-row--primary"
+            >
+              <span class="school-rank">{school.rank}</span>
+              <span class="school-name">{school.name}</span>
+              <template lwc:if={school.respondBy}>
+                <span class="respond-by"
+                  >{labels.respondByPrefix} {school.respondBy}</span
+                >
+              </template>
+              <div class="row-actions">
+                <button
+                  class="btn btn--primary"
+                  data-id={school.academicInterestId}
+                  onclick={handleAcceptClick}
+                >
+                  {labels.acceptSeat}
+                </button>
+                <button
+                  class="btn btn--secondary"
+                  data-id={school.academicInterestId}
+                  onclick={handleDeclineClick}
+                >
+                  {labels.declineSeat}
+                </button>
+              </div>
+            </div>
+          </template>
+        </section>
+      </template>
+
+      <template lwc:if={hasLowerRankedOffers}>
+        <section class="section">
+          <h2 class="section-title">{labels.lowerRankedOffers}</h2>
+          <template for:each={lowerRankedOfferRows} for:item="school">
+            <div key={school.academicInterestId} class="school-row">
+              <span class="school-rank">{school.rank}</span>
+              <span class="school-name">{school.name}</span>
+              <div class="row-actions">
+                <button
+                  class="btn btn--secondary"
+                  data-id={school.academicInterestId}
+                  onclick={handleAcceptClick}
+                >
+                  {labels.acceptThisSchool}
+                </button>
+                <button
+                  class="btn btn--secondary"
+                  data-id={school.academicInterestId}
+                  onclick={handleDeclineClick}
+                >
+                  {labels.declineSeat}
+                </button>
+              </div>
+            </div>
+          </template>
+        </section>
+      </template>
+
+      <template lwc:if={hasWaitlisted}>
+        <section class="section">
+          <h2 class="section-title">{labels.waitlisted}</h2>
+          <template for:each={waitlistedRows} for:item="school">
+            <div key={school.academicInterestId} class="school-row">
+              <span class="school-rank">{school.rank}</span>
+              <span class="school-name">{school.name}</span>
+              <span class="badge-tag badge-tag--waitlisted"
+                >{school.status}</span
+              >
+              <template lwc:if={isPortalTarget}>
+                <div class="menu-host">
+                  <button
+                    class="kebab"
+                    data-id={school.academicInterestId}
+                    onclick={handleKebabClick}
+                    aria-label={labels.moreActions}
+                    aria-haspopup="menu"
+                    aria-expanded={school.menuOpen}
+                  >
+                    &#8943;
+                  </button>
+                  <template lwc:if={school.menuOpen}>
+                    <div
+                      class="menu-backdrop"
+                      onclick={handleMenuBackdropClick}
+                    ></div>
+                    <div class="menu" role="menu">
+                      <button
+                        class="menu-item menu-item--danger"
+                        role="menuitem"
+                        data-id={school.academicInterestId}
+                        onclick={handleWithdrawClick}
+                      >
+                        {labels.withdrawApplicationMenuItem}
+                      </button>
+                    </div>
+                  </template>
+                </div>
+              </template>
+            </div>
+          </template>
+        </section>
+      </template>
+
+      <template lwc:if={hasOtherRows}>
+        <section class="section">
+          <template for:each={otherRows} for:item="school">
+            <div
+              key={school.academicInterestId}
+              class="school-row school-row--plain"
+            >
+              <span class="school-rank">{school.rank}</span>
+              <span class="school-name">{school.name}</span>
+              <span class={school.statusClass}>{school.status}</span>
+            </div>
+          </template>
+        </section>
+      </template>
+    </template>
+
+    <template lwc:if={showAcceptWarning}>
+      <div class="modal-backdrop" onclick={handleAcceptCancel}>
+        <div
+          class="modal"
+          onclick={handleModalClick}
+          role="dialog"
+          aria-label={labels.acceptWarningTitle}
+        >
+          <h3 class="modal-title">{labels.acceptWarningTitle}</h3>
+          <p class="modal-desc">{acceptWarningBody}</p>
+          <div class="modal-actions">
+            <button class="btn btn--secondary" onclick={handleAcceptCancel}>
+              {labels.cancel}
+            </button>
+            <button
+              class="btn btn--primary"
+              disabled={_isActing}
+              onclick={handleAcceptConfirm}
+            >
+              {labels.acceptSeat}
+            </button>
+          </div>
+        </div>
+      </div>
+    </template>
+
+    <template lwc:if={showDeclineForm}>
+      <div class="modal-backdrop" onclick={handleDeclineCancel}>
+        <div
+          class="modal"
+          onclick={handleModalClick}
+          role="dialog"
+          aria-label={declineReasonPrompt}
+        >
+          <h3 class="modal-title">{declineReasonPrompt}</h3>
+          <lightning-combobox
+            label={declineReasonPrompt}
+            variant="label-hidden"
+            value={_declinePicklistValue}
+            options={withdrawPicklistOptions}
+            onchange={handleDeclinePicklistChange}
+          ></lightning-combobox>
+          <lightning-textarea
+            label={labels.declineCommentsLabel}
+            value={_declineReason}
+            max-length="255"
+            required={showDeclineReasonText}
+            onchange={handleDeclineReasonChange}
+          ></lightning-textarea>
+          <div class="modal-actions">
+            <button class="btn btn--secondary" onclick={handleDeclineCancel}>
+              {labels.cancel}
+            </button>
+            <button
+              class="btn btn--primary"
+              disabled={declineConfirmDisabled}
+              onclick={handleDeclineConfirm}
+            >
+              {labels.declineSeat}
+            </button>
+          </div>
+        </div>
+      </div>
+    </template>
+
+    <template lwc:if={showWithdrawModal}>
+      <div class="modal-backdrop" onclick={handleWithdrawCancel}>
+        <div
+          class="modal"
+          onclick={handleModalClick}
+          role="dialog"
+          aria-label={labels.withdrawConfirmTitle}
+        >
+          <h3 class="modal-title">{labels.withdrawConfirmTitle}</h3>
+          <lightning-combobox
+            label={labels.reasonFieldLabel}
+            value={_withdrawPicklistValue}
+            options={withdrawPicklistOptions}
+            onchange={handleWithdrawPicklistChange}
+          ></lightning-combobox>
+          <template lwc:if={showWithdrawReasonText}>
+            <lightning-textarea
+              label={labels.detailsFieldLabel}
+              value={_withdrawReason}
+              onchange={handleWithdrawReasonChange}
+            ></lightning-textarea>
+          </template>
+          <div class="modal-actions">
+            <button class="btn btn--secondary" onclick={handleWithdrawCancel}>
+              {labels.cancel}
+            </button>
+            <button
+              class="btn btn--primary"
+              disabled={withdrawConfirmDisabled}
+              onclick={handleWithdrawConfirm}
+            >
+              {labels.withdraw}
+            </button>
+          </div>
+        </div>
+      </div>
+    </template>
+  </template>
+</template>

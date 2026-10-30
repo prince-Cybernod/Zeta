@@ -1,0 +1,11 @@
+Hi {!Contact.Name}, <br/><br/>
+
+You are invited to a Zoom webinar. <br/>
+When: {!Webinar.Start_Time__c} <br/>
+Topic: {!Webinar.Topic__c} <br/>
+
+You can join the webinar though this url: {!Webinar.Join_Url__c} <br/>
+
+Thanks, <br/>
+
+{!Webinar.CreatedBy}

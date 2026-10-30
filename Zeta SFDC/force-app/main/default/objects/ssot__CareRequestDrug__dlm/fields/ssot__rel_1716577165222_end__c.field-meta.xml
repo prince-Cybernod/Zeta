@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>ssot__rel_1716577165222_end__c</fullName>
+    <deleteConstraint>SetNull</deleteConstraint>
+    <deprecated>false</deprecated>
+    <label>CareRequestDrug_CareRequestId_map_Ca_rel</label>
+    <referenceTo>ssot__CareRequest__dlm</referenceTo>
+    <relationshipLabel>CareRequestDrug_CareRequestId_map_Ca_rel</relationshipLabel>
+    <relationshipName>rel_1716577165222_end</relationshipName>
+    <required>false</required>
+    <type>Lookup</type>
+</CustomField>

@@ -32,6 +32,187 @@ private class AcademicInterestTriggerHandlerTest {
   }
 
   @IsTest
+  private static void onAfterInsert_queriesApplicationAndCallsContactRollupService() {
+    DatabaseRepoMock databaseRepoMock = new DatabaseRepoMock();
+    ContactApplicationRollupServiceMock contactRollupMock = new ContactApplicationRollupServiceMock();
+    HANDLER.setDatabaseRepo(databaseRepoMock);
+    HANDLER.setContactApplicationRollupService(contactRollupMock);
+    RANK_VALIDATION_SERVICE_MOCK.when(RANK_VALIDATION_SERVICE_MOCK.method.validateUniqueRanks())
+      .thenReturnVoid();
+    Id applicationId = SObjectIds.generateFakeId(Schema.IndividualApplication.SObjectType);
+    Id studentId = SObjectIds.generateFakeId(Schema.Account.SObjectType);
+    databaseRepoMock.when(databaseRepoMock.method.queryWithBinds())
+      .thenReturn(
+        new List<IndividualApplication>{
+          new IndividualApplication(Id = applicationId, AccountId = studentId)
+        }
+      );
+    contactRollupMock.when(contactRollupMock.method.recalculate()).thenReturnVoid();
+
+    HANDLER.onAfterInsert(
+      new List<SObject>{
+        new AcademicInterest(
+          Id = SObjectIds.generateFakeId(Schema.AcademicInterest.SObjectType),
+          IndividualApplicationId = applicationId
+        )
+      }
+    );
+
+    databaseRepoMock.verify(databaseRepoMock.method.queryWithBinds(), 1);
+    contactRollupMock.verify(contactRollupMock.method.recalculate(), 1);
+    Set<Id> capturedIds = (Set<Id>) contactRollupMock.getCalls(
+        contactRollupMock.method.recalculate()
+      )[0]
+      .get('personAccountIds');
+    Assert.isTrue(capturedIds.contains(studentId), 'Should include the student');
+  }
+
+  @IsTest
+  private static void onAfterDelete_queriesApplicationAndCallsContactRollupService() {
+    DatabaseRepoMock databaseRepoMock = new DatabaseRepoMock();
+    ContactApplicationRollupServiceMock contactRollupMock = new ContactApplicationRollupServiceMock();
+    HANDLER.setDatabaseRepo(databaseRepoMock);
+    HANDLER.setContactApplicationRollupService(contactRollupMock);
+    Id applicationId = SObjectIds.generateFakeId(Schema.IndividualApplication.SObjectType);
+    Id studentId = SObjectIds.generateFakeId(Schema.Account.SObjectType);
+    databaseRepoMock.when(databaseRepoMock.method.queryWithBinds())
+      .thenReturn(
+        new List<IndividualApplication>{
+          new IndividualApplication(Id = applicationId, AccountId = studentId)
+        }
+      );
+    contactRollupMock.when(contactRollupMock.method.recalculate()).thenReturnVoid();
+
+    HANDLER.onAfterDelete(
+      new List<SObject>{
+        new AcademicInterest(
+          Id = SObjectIds.generateFakeId(Schema.AcademicInterest.SObjectType),
+          IndividualApplicationId = applicationId
+        )
+      }
+    );
+
+    databaseRepoMock.verify(databaseRepoMock.method.queryWithBinds(), 1);
+    contactRollupMock.verify(contactRollupMock.method.recalculate(), 1);
+    Set<Id> capturedIds = (Set<Id>) contactRollupMock.getCalls(
+        contactRollupMock.method.recalculate()
+      )[0]
+      .get('personAccountIds');
+    Assert.isTrue(capturedIds.contains(studentId), 'Should include the student');
+  }
+
+  @IsTest
+  private static void onAfterUndelete_queriesApplicationAndCallsContactRollupService() {
+    DatabaseRepoMock databaseRepoMock = new DatabaseRepoMock();
+    ContactApplicationRollupServiceMock contactRollupMock = new ContactApplicationRollupServiceMock();
+    HANDLER.setDatabaseRepo(databaseRepoMock);
+    HANDLER.setContactApplicationRollupService(contactRollupMock);
+    Id applicationId = SObjectIds.generateFakeId(Schema.IndividualApplication.SObjectType);
+    Id studentId = SObjectIds.generateFakeId(Schema.Account.SObjectType);
+    databaseRepoMock.when(databaseRepoMock.method.queryWithBinds())
+      .thenReturn(
+        new List<IndividualApplication>{
+          new IndividualApplication(Id = applicationId, AccountId = studentId)
+        }
+      );
+    contactRollupMock.when(contactRollupMock.method.recalculate()).thenReturnVoid();
+
+    HANDLER.onAfterUndelete(
+      new List<SObject>{
+        new AcademicInterest(
+          Id = SObjectIds.generateFakeId(Schema.AcademicInterest.SObjectType),
+          IndividualApplicationId = applicationId
+        )
+      }
+    );
+
+    databaseRepoMock.verify(databaseRepoMock.method.queryWithBinds(), 1);
+    contactRollupMock.verify(contactRollupMock.method.recalculate(), 1);
+    Set<Id> capturedIds = (Set<Id>) contactRollupMock.getCalls(
+        contactRollupMock.method.recalculate()
+      )[0]
+      .get('personAccountIds');
+    Assert.isTrue(capturedIds.contains(studentId), 'Should include the student');
+  }
+
+  @IsTest
+  private static void onAfterUpdate_whenIndividualApplicationIdOrLearningProgramIdChanges_callsContactRollupService() {
+    DatabaseRepoMock databaseRepoMock = new DatabaseRepoMock();
+    ContactApplicationRollupServiceMock contactRollupMock = new ContactApplicationRollupServiceMock();
+    HANDLER.setDatabaseRepo(databaseRepoMock);
+    HANDLER.setContactApplicationRollupService(contactRollupMock);
+    RANK_VALIDATION_SERVICE_MOCK.when(RANK_VALIDATION_SERVICE_MOCK.method.validateUniqueRanks())
+      .thenReturnVoid();
+    WAITLIST_HISTORY_SERVICE_MOCK.when(WAITLIST_HISTORY_SERVICE_MOCK.method.createHistoryRecords())
+      .thenReturnVoid();
+    Id academicInterestId = SObjectIds.generateFakeId(Schema.AcademicInterest.SObjectType);
+    Id oldApplicationId = SObjectIds.generateFakeId(Schema.IndividualApplication.SObjectType);
+    Id newApplicationId = SObjectIds.generateFakeId(Schema.IndividualApplication.SObjectType);
+    Id oldStudentId = SObjectIds.generateFakeId(Schema.Account.SObjectType);
+    Id newStudentId = SObjectIds.generateFakeId(Schema.Account.SObjectType);
+    databaseRepoMock.when(databaseRepoMock.method.queryWithBinds())
+      .thenReturn(
+        new List<IndividualApplication>{
+          new IndividualApplication(Id = oldApplicationId, AccountId = oldStudentId),
+          new IndividualApplication(Id = newApplicationId, AccountId = newStudentId)
+        }
+      );
+    contactRollupMock.when(contactRollupMock.method.recalculate()).thenReturnVoid();
+    List<SObject> newRecords = new List<SObject>{
+      new AcademicInterest(Id = academicInterestId, IndividualApplicationId = newApplicationId)
+    };
+    Map<Id, SObject> oldMap = new Map<Id, SObject>{
+      academicInterestId => new AcademicInterest(
+        Id = academicInterestId,
+        IndividualApplicationId = oldApplicationId
+      )
+    };
+
+    HANDLER.onAfterUpdate(newRecords, oldMap);
+
+    contactRollupMock.verify(contactRollupMock.method.recalculate(), 1);
+    Set<Id> capturedIds = (Set<Id>) contactRollupMock.getCalls(
+        contactRollupMock.method.recalculate()
+      )[0]
+      .get('personAccountIds');
+    Assert.isTrue(capturedIds.contains(oldStudentId), 'Should refresh the old application');
+    Assert.isTrue(capturedIds.contains(newStudentId), 'Should refresh the new application');
+  }
+
+  @IsTest
+  private static void onAfterUpdate_whenNoWatchedFieldChanges_doesNotCallContactRollupService() {
+    DatabaseRepoMock databaseRepoMock = new DatabaseRepoMock();
+    ContactApplicationRollupServiceMock contactRollupMock = new ContactApplicationRollupServiceMock();
+    HANDLER.setDatabaseRepo(databaseRepoMock);
+    HANDLER.setContactApplicationRollupService(contactRollupMock);
+    RANK_VALIDATION_SERVICE_MOCK.when(RANK_VALIDATION_SERVICE_MOCK.method.validateUniqueRanks())
+      .thenReturnVoid();
+    WAITLIST_HISTORY_SERVICE_MOCK.when(WAITLIST_HISTORY_SERVICE_MOCK.method.createHistoryRecords())
+      .thenReturnVoid();
+    Id academicInterestId = SObjectIds.generateFakeId(Schema.AcademicInterest.SObjectType);
+    Id applicationId = SObjectIds.generateFakeId(Schema.IndividualApplication.SObjectType);
+    List<SObject> newRecords = new List<SObject>{
+      new AcademicInterest(
+        Id = academicInterestId,
+        IndividualApplicationId = applicationId,
+        School_Rank__c = 2
+      )
+    };
+    Map<Id, SObject> oldMap = new Map<Id, SObject>{
+      academicInterestId => new AcademicInterest(
+        Id = academicInterestId,
+        IndividualApplicationId = applicationId,
+        School_Rank__c = 1
+      )
+    };
+
+    HANDLER.onAfterUpdate(newRecords, oldMap);
+
+    contactRollupMock.never(contactRollupMock.method.recalculate());
+    databaseRepoMock.never(databaseRepoMock.method.queryWithBinds());
+  }
+
+  @IsTest
   private static void getSObjectType_returnsAcademicInterest() {
     SObjectType result = HANDLER.getSObjectType();
 

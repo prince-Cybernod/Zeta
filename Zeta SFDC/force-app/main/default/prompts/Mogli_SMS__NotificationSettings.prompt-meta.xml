@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Prompt xmlns="http://soap.sforce.com/2006/04/metadata">
+    <masterLabel>Notification Settings</masterLabel>
+    <promptVersions>
+        <body>Users who&apos;ve set up their notification settings using the utility bar component (bottom left) will see them here.</body>
+        <customApplication>Mogli_SMS__Mogli_SMS_Lightning</customApplication>
+        <delayDays>1</delayDays>
+        <description>What the tab does and where to configure notification settings.</description>
+        <dismissButtonLabel>Got it.</dismissButtonLabel>
+        <displayPosition>TopCenter</displayPosition>
+        <displayType>FloatingPanel</displayType>
+        <endDate>2020-02-28</endDate>
+        <isPublished>true</isPublished>
+        <masterLabel>Notification Settings</masterLabel>
+        <publishedDate>2026-04-22</publishedDate>
+        <shouldDisplayActionButton>false</shouldDisplayActionButton>
+        <shouldIgnoreGlobalDelay>true</shouldIgnoreGlobalDelay>
+        <startDate>2020-02-10</startDate>
+        <targetPageKey1>Mogli_SMS__Notification_Settings__c</targetPageKey1>
+        <targetPageKey2>list</targetPageKey2>
+        <targetPageType>standard__objectPage</targetPageType>
+        <timesToDisplay>1</timesToDisplay>
+        <title>Where Notification Preferences Live</title>
+        <userAccess>Everyone</userAccess>
+        <userProfileAccess>Everyone</userProfileAccess>
+        <versionNumber>1</versionNumber>
+    </promptVersions>
+</Prompt>

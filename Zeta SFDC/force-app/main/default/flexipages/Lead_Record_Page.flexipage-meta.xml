@@ -141,7 +141,7 @@
             <fieldInstance>
                 <fieldInstanceProperties>
                     <name>uiBehavior</name>
-                    <value>required</value>
+                    <value>none</value>
                 </fieldInstanceProperties>
                 <fieldItem>Record.Guardian_Last_Name__c</fieldItem>
                 <identifier>RecordGuardian_Last_Name_cField</identifier>
@@ -665,7 +665,7 @@
             <fieldInstance>
                 <fieldInstanceProperties>
                     <name>uiBehavior</name>
-                    <value>required</value>
+                    <value>none</value>
                 </fieldInstanceProperties>
                 <fieldItem>Record.Lead_Campaign__c</fieldItem>
                 <identifier>RecordLead_Campaign_cField</identifier>
@@ -757,6 +757,16 @@
                 </fieldInstanceProperties>
                 <fieldItem>Record.CreatedById</fieldItem>
                 <identifier>RecordCreatedByIdField</identifier>
+            </fieldInstance>
+        </itemInstances>
+        <itemInstances>
+            <fieldInstance>
+                <fieldInstanceProperties>
+                    <name>uiBehavior</name>
+                    <value>none</value>
+                </fieldInstanceProperties>
+                <fieldItem>Record.Created_for_Testing__c</fieldItem>
+                <identifier>RecordCreated_for_Testing_cField</identifier>
             </fieldInstance>
         </itemInstances>
         <name>Facet-2d524bbe-776e-4cd0-acff-ff1af5941551</name>
@@ -1151,6 +1161,10 @@
     <flexiPageRegions>
         <itemInstances>
             <componentInstance>
+                <componentInstanceProperties>
+                    <name>useNewDesign</name>
+                    <value>true</value>
+                </componentInstanceProperties>
                 <componentName>leadSiblingFlags</componentName>
                 <identifier>c_leadSiblingFlags</identifier>
             </componentInstance>

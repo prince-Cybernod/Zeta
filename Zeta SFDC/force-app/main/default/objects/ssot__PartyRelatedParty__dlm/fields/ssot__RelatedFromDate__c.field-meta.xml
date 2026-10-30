@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>ssot__RelatedFromDate__c</fullName>
+    <deprecated>false</deprecated>
+    <label>Related From Date</label>
+    <mktDataModelFieldAttributes>
+        <definitionCreationType>Standard</definitionCreationType>
+        <isDynamicLookup>false</isDynamicLookup>
+        <masterLabel>Related From Date</masterLabel>
+        <refAttrDeveloperName>RelatedFromDate</refAttrDeveloperName>
+        <usageTag>None</usageTag>
+    </mktDataModelFieldAttributes>
+    <required>true</required>
+    <type>Date</type>
+</CustomField>

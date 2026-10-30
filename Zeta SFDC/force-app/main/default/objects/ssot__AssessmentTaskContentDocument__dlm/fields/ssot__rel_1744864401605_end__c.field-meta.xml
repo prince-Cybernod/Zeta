@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>ssot__rel_1744864401605_end__c</fullName>
+    <deleteConstraint>SetNull</deleteConstraint>
+    <deprecated>false</deprecated>
+    <label>AssessmentTaskContentDocument_Conten_rel</label>
+    <referenceTo>ssot__PartyBusinessLicense__dlm</referenceTo>
+    <relationshipLabel>AssessmentTaskContentDocument_Conten_rel</relationshipLabel>
+    <relationshipName>rel_1744864401605_end</relationshipName>
+    <required>false</required>
+    <type>Lookup</type>
+</CustomField>

@@ -192,6 +192,11 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
+        <field>AcademicTermEnrollment.DEPRECATED_Race_Answers__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
         <field>AcademicTermEnrollment.Date_moved_to_ATS_Phase__c</field>
         <readable>true</readable>
     </fieldPermissions>
@@ -548,11 +553,6 @@
     <fieldPermissions>
         <editable>true</editable>
         <field>AcademicTermEnrollment.Proof_of_NYS_Residency_3__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
-        <field>AcademicTermEnrollment.Race_Answers__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>

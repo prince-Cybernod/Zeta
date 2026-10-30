@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>ssot__TelemetryLogAttributeText__c</fullName>
+    <deprecated>false</deprecated>
+    <label>Telemetry Log Attribute</label>
+    <length>255</length>
+    <mktDataModelFieldAttributes>
+        <definitionCreationType>Standard</definitionCreationType>
+        <isDynamicLookup>false</isDynamicLookup>
+        <masterLabel>Telemetry Log Attribute</masterLabel>
+        <refAttrDeveloperName>TelemetryLogAttributeText</refAttrDeveloperName>
+        <usageTag>None</usageTag>
+    </mktDataModelFieldAttributes>
+    <required>true</required>
+    <type>Text</type>
+</CustomField>

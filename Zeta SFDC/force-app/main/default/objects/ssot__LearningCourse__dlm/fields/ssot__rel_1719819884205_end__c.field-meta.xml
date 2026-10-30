@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>ssot__rel_1719819884205_end__c</fullName>
+    <deleteConstraint>SetNull</deleteConstraint>
+    <deprecated>false</deprecated>
+    <label>LearningCourse_LearningId_map_Learni_rel</label>
+    <referenceTo>ssot__Learning__dlm</referenceTo>
+    <relationshipLabel>LearningCourse_LearningId_map_Learni_rel</relationshipLabel>
+    <relationshipName>rel_1719819884205_end</relationshipName>
+    <required>false</required>
+    <type>Lookup</type>
+</CustomField>

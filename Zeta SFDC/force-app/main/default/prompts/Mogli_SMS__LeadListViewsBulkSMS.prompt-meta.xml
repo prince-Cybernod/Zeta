@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Prompt xmlns="http://soap.sforce.com/2006/04/metadata">
+    <masterLabel>Lead List Views - Bulk SMS</masterLabel>
+    <promptVersions>
+        <body>Select a list view, choose your intended recipients, click the drop-down carrot, and select Send SMS Lightning</body>
+        <customApplication>Mogli_SMS__Mogli_SMS_Lightning</customApplication>
+        <delayDays>1</delayDays>
+        <description>How to send Bulk SMS from a Lead list view</description>
+        <dismissButtonLabel>Great!</dismissButtonLabel>
+        <displayPosition>TopCenter</displayPosition>
+        <displayType>FloatingPanel</displayType>
+        <endDate>2020-12-31</endDate>
+        <isPublished>true</isPublished>
+        <masterLabel>Lead List Views - Bulk SMS</masterLabel>
+        <publishedDate>2026-04-22</publishedDate>
+        <shouldDisplayActionButton>false</shouldDisplayActionButton>
+        <shouldIgnoreGlobalDelay>false</shouldIgnoreGlobalDelay>
+        <startDate>2020-02-11</startDate>
+        <targetPageKey1>Lead</targetPageKey1>
+        <targetPageKey2>list</targetPageKey2>
+        <targetPageType>standard__objectPage</targetPageType>
+        <timesToDisplay>1</timesToDisplay>
+        <title>Send Bulk SMS with List Views!</title>
+        <userAccess>Everyone</userAccess>
+        <userProfileAccess>Everyone</userProfileAccess>
+        <versionNumber>1</versionNumber>
+    </promptVersions>
+</Prompt>

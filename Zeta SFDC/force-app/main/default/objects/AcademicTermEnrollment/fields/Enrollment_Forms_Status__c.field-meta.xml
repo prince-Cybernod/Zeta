@@ -63,7 +63,7 @@ OR(
 TEXT(Ethnicity_Answer__c)=&quot;H&quot;,
 TEXT(Ethnicity_Answer__c)=&quot;N&quot;
 ),
-TEXT(Race_Answers__c) &lt;&gt; &quot;N/A, returning student&quot;,
+TEXT(DEPRECATED_Race_Answers__c) &lt;&gt; &quot;N/A, returning student&quot;,
 TEXT(Media_Photo_Release__c)=&quot;V&quot;
 ),
 &quot;Complete&quot;,
@@ -95,7 +95,7 @@ TEXT(Computer_Tablet_Use_Consent_Form__c)&lt;&gt;&quot;N&quot;,
 TEXT(Laptop_Tablet_Agreement__c)&lt;&gt;&quot;N&quot;,
 TEXT(TELA_Fee_Form__c)&lt;&gt;&quot;N&quot;,
 TEXT(Ethnic_Identification_Form__c)&lt;&gt;&quot;N&quot;,
-TEXT(Race_Answers__c) &lt;&gt; &quot;N/A, returning student&quot;,
+TEXT(DEPRECATED_Race_Answers__c) &lt;&gt; &quot;N/A, returning student&quot;,
 OR(
 TEXT(Ethnicity_Answer__c)=&quot;H&quot;,
 TEXT(Ethnicity_Answer__c)=&quot;N&quot;

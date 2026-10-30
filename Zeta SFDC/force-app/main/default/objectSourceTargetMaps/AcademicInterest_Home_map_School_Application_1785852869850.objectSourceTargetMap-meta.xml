@@ -97,6 +97,14 @@
         <sourceField>AcademicInterest_Home__dll.Primary_Guardian_Contact_Id_c__c</sourceField>
         <targetField>School_Application__dlm.Primary_Guardian_Contact_Id__c</targetField>
     </fieldSourceTargetMaps>
+    <fieldSourceTargetMaps>
+        <creationType>Custom</creationType>
+        <filterApplied>false</filterApplied>
+        <filterOperationType>Equal</filterOperationType>
+        <isSourceFormula>false</isSourceFormula>
+        <sourceField>AcademicInterest_Home__dll.IndividualApplicationId__c</sourceField>
+        <targetField>School_Application__dlm.Application__c</targetField>
+    </fieldSourceTargetMaps>
     <masterLabel>AcademicInterest_Home_map_School_Application_1785852869850</masterLabel>
     <sourceObjectName>AcademicInterest_Home__dll</sourceObjectName>
     <targetObjectName>School_Application__dlm</targetObjectName>

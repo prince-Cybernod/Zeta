@@ -7,7 +7,7 @@
         <field>CREATED_DATE</field>
     </columns>
     <columns>
-        <field>CREATED</field>
+        <field>OWNER</field>
     </columns>
     <columns>
         <field>Lead.Guardian_First_Name__c</field>
@@ -41,6 +41,9 @@
     </columns>
     <columns>
         <field>Lead.Preferred_Contact_Language__c</field>
+    </columns>
+    <columns>
+        <field>LEAD_ID</field>
     </columns>
     <filter>
         <criteriaItems>

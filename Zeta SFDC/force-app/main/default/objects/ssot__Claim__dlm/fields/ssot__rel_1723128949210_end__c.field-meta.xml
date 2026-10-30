@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>ssot__rel_1723128949210_end__c</fullName>
+    <deleteConstraint>SetNull</deleteConstraint>
+    <deprecated>false</deprecated>
+    <label>Claim_InsurancePolicyId_map_MemberPl_rel</label>
+    <referenceTo>ssot__MemberPlan__dlm</referenceTo>
+    <relationshipLabel>Claim_InsurancePolicyId_map_MemberPl_rel</relationshipLabel>
+    <relationshipName>rel_1723128949210_end</relationshipName>
+    <required>false</required>
+    <type>Lookup</type>
+</CustomField>

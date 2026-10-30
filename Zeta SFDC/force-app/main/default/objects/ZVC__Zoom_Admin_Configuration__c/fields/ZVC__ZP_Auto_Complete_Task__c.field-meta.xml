@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>ZVC__ZP_Auto_Complete_Task__c</fullName>
+    <defaultValue>false</defaultValue>
+    <deprecated>false</deprecated>
+    <description>Always mark Tasks as &quot;Completed&quot; once the call ends, regardless of when the Notes was saved and stores additional metadata to indicate status of notes save.</description>
+    <label>ZP Auto Complete Task</label>
+    <trackTrending>false</trackTrending>
+    <type>Checkbox</type>
+</CustomField>

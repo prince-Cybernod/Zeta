@@ -2,6 +2,11 @@
 <PermissionSet xmlns="http://soap.sforce.com/2006/04/metadata">
     <description>Grants Lottery-related access: Admin-level CRED on lottery education cloud objects. For users who run and manage the lottery.</description>
     <fieldPermissions>
+        <editable>false</editable>
+        <field>AcademicInterest.Created_for_Testing__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
         <editable>true</editable>
         <field>AcademicInterest.Declined_Withdrawn_Reason__c</field>
         <readable>true</readable>
@@ -172,8 +177,18 @@
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
+        <editable>false</editable>
+        <field>AcademicTermEnrollment.Created_for_Testing__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
         <editable>true</editable>
         <field>AcademicTermEnrollment.DBN_of_New_School__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>AcademicTermEnrollment.DEPRECATED_Race_Answers__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -563,11 +578,6 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
-        <field>AcademicTermEnrollment.Race_Answers__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
         <field>AcademicTermEnrollment.Race_Codes_On_ATS__c</field>
         <readable>true</readable>
     </fieldPermissions>
@@ -739,6 +749,11 @@
     <fieldPermissions>
         <editable>true</editable>
         <field>IndividualApplication.App_Info_Source_Staff_Internal__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>IndividualApplication.Created_for_Testing__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>

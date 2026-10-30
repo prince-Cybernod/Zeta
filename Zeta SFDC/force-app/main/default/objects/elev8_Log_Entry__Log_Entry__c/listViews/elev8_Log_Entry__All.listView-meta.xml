@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>elev8_Log_Entry__All</fullName>
+    <columns>NAME</columns>
+    <columns>elev8_Log_Entry__Source__c</columns>
+    <columns>elev8_Log_Entry__Severity__c</columns>
+    <columns>elev8_Log_Entry__Subject__c</columns>
+    <columns>CREATED_DATE</columns>
+    <filterScope>Everything</filterScope>
+    <label>All</label>
+</ListView>

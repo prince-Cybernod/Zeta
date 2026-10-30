@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>ssot__rel_1732261010800_end__c</fullName>
+    <deleteConstraint>SetNull</deleteConstraint>
+    <deprecated>false</deprecated>
+    <label>ShoppingWishlistItemEngagement_Shopp_rel</label>
+    <referenceTo>ssot__ShoppingWishlistEngagement__dlm</referenceTo>
+    <relationshipLabel>ShoppingWishlistItemEngagement_Shopp_rel</relationshipLabel>
+    <relationshipName>rel_1732261010800_end</relationshipName>
+    <required>false</required>
+    <type>Lookup</type>
+</CustomField>

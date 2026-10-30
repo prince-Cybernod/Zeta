@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <label><!-- Email Bounce Status --></label>
+    <name>Email_Bounce_Status__c</name>
+    <picklistValues>
+        <masterLabel>Bounced</masterLabel>
+        <translation><!-- Bounced --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Delivered</masterLabel>
+        <translation><!-- Delivered --></translation>
+    </picklistValues>
+</CustomFieldTranslation>

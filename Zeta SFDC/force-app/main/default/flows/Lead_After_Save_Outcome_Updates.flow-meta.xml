@@ -367,6 +367,23 @@
         </connector>
     </assignments>
     <assignments>
+        <name>Open_Working</name>
+        <label>Open -- Working</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <assignmentItems>
+            <assignToReference>var_rec_Lead.Status</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <stringValue>Open – Working</stringValue>
+            </value>
+        </assignmentItems>
+        <connector>
+            <isGoTo>true</isGoTo>
+            <targetReference>Update_Lead</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
         <name>Open_Working_Status_Priority</name>
         <label>&apos;Open – Working&apos; Status + Priority</label>
         <locationX>0</locationX>
@@ -416,6 +433,45 @@
         </rules>
     </decisions>
     <decisions>
+        <name>Is_contact_complete</name>
+        <label>Is contact complete?</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <defaultConnector>
+            <targetReference>Open_Working</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Wrong_Number_or_3x_calls</name>
+            <conditionLogic>1 OR (2 AND 3)</conditionLogic>
+            <conditions>
+                <leftValueReference>var_txt_Outcome</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Unreachable – Wrong phone number / OOO</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>var_txt_Outcome</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Unreachable – No answer</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Outreach_Attempt_Count__c</leftValueReference>
+                <operator>GreaterThanOrEqualTo</operator>
+                <rightValue>
+                    <numberValue>3.0</numberValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Email_Bounce_Status</targetReference>
+            </connector>
+            <label>Wrong Number or 3x calls</label>
+        </rules>
+    </decisions>
+    <decisions>
         <name>Outcome</name>
         <label>Outcome</label>
         <locationX>0</locationX>
@@ -450,11 +506,11 @@
                 <leftValueReference>var_txt_Outcome</leftValueReference>
                 <operator>EqualTo</operator>
                 <rightValue>
-                    <stringValue>Unreachable - no answer</stringValue>
+                    <stringValue>Unreachable – No answer</stringValue>
                 </rightValue>
             </conditions>
             <connector>
-                <targetReference>Email_Bounce_Status</targetReference>
+                <targetReference>Is_contact_complete</targetReference>
             </connector>
             <label>Unreachable</label>
         </rules>
@@ -630,6 +686,13 @@
                 <operator>EqualTo</operator>
                 <rightValue>
                     <stringValue>Duplicate – Active duplicate lead</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>var_txt_Outcome</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Applied w/o team call</stringValue>
                 </rightValue>
             </conditions>
             <connector>
@@ -854,7 +917,7 @@ IF(ISCHANGED({!$Record.Outreach_1_Outcome__c}), TEXT({!$Record.Outreach_1_Outcom
         <recordTriggerType>Update</recordTriggerType>
         <triggerType>RecordAfterSave</triggerType>
     </start>
-    <status>Draft</status>
+    <status>Active</status>
     <variables>
         <name>var_rec_Lead</name>
         <dataType>SObject</dataType>

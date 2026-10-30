@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>ZVC__ZS_Create_new_Lead__c</fullName>
+    <defaultValue>false</defaultValue>
+    <deprecated>false</deprecated>
+    <description>Automatically create new Leads for Scheduler attendees when no Contact/Lead matches by email.</description>
+    <inlineHelpText>Automatically create new Leads for Scheduler attendees when no Contact/Lead matches by email.</inlineHelpText>
+    <label>ZS Create new Lead</label>
+    <trackTrending>false</trackTrending>
+    <type>Checkbox</type>
+</CustomField>

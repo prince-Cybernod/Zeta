@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomMetadata xmlns="http://soap.sforce.com/2006/04/metadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <label>MogliSMSSettings</label>
+    <protected>false</protected>
+    <values>
+        <field>Mogli_SMS__Active_Form_Instance_Status__c</field>
+        <value xsi:type="xsd:string">Active</value>
+    </values>
+    <values>
+        <field>Mogli_SMS__AttachmentTrigger__c</field>
+        <value xsi:type="xsd:boolean">true</value>
+    </values>
+    <values>
+        <field>Mogli_SMS__Complete_Form_Instance_Status__c</field>
+        <value xsi:type="xsd:string">Complete</value>
+    </values>
+    <values>
+        <field>Mogli_SMS__ContactMergeFields__c</field>
+        <value xsi:type="xsd:string">Name, Title, LeadSource</value>
+    </values>
+    <values>
+        <field>Mogli_SMS__ContactTrigger__c</field>
+        <value xsi:type="xsd:boolean">true</value>
+    </values>
+    <values>
+        <field>Mogli_SMS__Create_Anonymous_Leads__c</field>
+        <value xsi:type="xsd:boolean">true</value>
+    </values>
+    <values>
+        <field>Mogli_SMS__CustomSMSServiceHandler__c</field>
+        <value xsi:nil="true"/>
+    </values>
+    <values>
+        <field>Mogli_SMS__CustomWebServiceHandler__c</field>
+        <value xsi:nil="true"/>
+    </values>
+    <values>
+        <field>Mogli_SMS__Debug__c</field>
+        <value xsi:type="xsd:boolean">true</value>
+    </values>
+    <values>
+        <field>Mogli_SMS__FormTrigger__c</field>
+        <value xsi:type="xsd:boolean">true</value>
+    </values>
+    <values>
+        <field>Mogli_SMS__Gateway__c</field>
+        <value xsi:type="xsd:string">TWILIO</value>
+    </values>
+    <values>
+        <field>Mogli_SMS__LeadMergeFields__c</field>
+        <value xsi:type="xsd:string">Name, Title, LeadSource</value>
+    </values>
+    <values>
+        <field>Mogli_SMS__LeadTrigger__c</field>
+        <value xsi:type="xsd:boolean">true</value>
+    </values>
+    <values>
+        <field>Mogli_SMS__PossibleAnswerDelimiter__c</field>
+        <value xsi:type="xsd:string">:::</value>
+    </values>
+    <values>
+        <field>Mogli_SMS__SMSTrigger__c</field>
+        <value xsi:type="xsd:boolean">true</value>
+    </values>
+    <values>
+        <field>Mogli_SMS__TelerivetAPIKey__c</field>
+        <value xsi:nil="true"/>
+    </values>
+    <values>
+        <field>Mogli_SMS__TelerivetPhoneId__c</field>
+        <value xsi:nil="true"/>
+    </values>
+    <values>
+        <field>Mogli_SMS__TelerivetProjectID__c</field>
+        <value xsi:nil="true"/>
+    </values>
+    <values>
+        <field>Mogli_SMS__TelerivetSecret__c</field>
+        <value xsi:nil="true"/>
+    </values>
+    <values>
+        <field>Mogli_SMS__TwilioAccountSid__c</field>
+        <value xsi:nil="true"/>
+    </values>
+    <values>
+        <field>Mogli_SMS__TwilioAuthToken__c</field>
+        <value xsi:nil="true"/>
+    </values>
+    <values>
+        <field>Mogli_SMS__TwilioPhone__c</field>
+        <value xsi:nil="true"/>
+    </values>
+</CustomMetadata>

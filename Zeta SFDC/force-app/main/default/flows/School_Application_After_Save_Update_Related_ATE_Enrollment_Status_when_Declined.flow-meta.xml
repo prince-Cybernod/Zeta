@@ -110,6 +110,13 @@
                 <elementReference>$Record.IndividualApplicationId</elementReference>
             </value>
         </filters>
+        <filters>
+            <field>School_Application__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>$Record.Id</elementReference>
+            </value>
+        </filters>
         <inputAssignments>
             <field>EnrollmentStatus</field>
             <value>

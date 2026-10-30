@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>ssot__rel_1716723539036_end__c</fullName>
+    <deleteConstraint>SetNull</deleteConstraint>
+    <deprecated>false</deprecated>
+    <label>PatientImmunization_DiagnosticSummar_rel</label>
+    <referenceTo>ssot__DiagnosticSummary__dlm</referenceTo>
+    <relationshipLabel>PatientImmunization_DiagnosticSummar_rel</relationshipLabel>
+    <relationshipName>rel_1716723539036_end</relationshipName>
+    <required>false</required>
+    <type>Lookup</type>
+</CustomField>

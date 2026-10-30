@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>ssot__rel_1697761157362_end__c</fullName>
+    <deleteConstraint>SetNull</deleteConstraint>
+    <deprecated>false</deprecated>
+    <label>CommunicationSubscription_DataUsePur_rel</label>
+    <referenceTo>ssot__DataUsePurpose__dlm</referenceTo>
+    <relationshipLabel>CommunicationSubscription_DataUsePur_rel</relationshipLabel>
+    <relationshipName>rel_1697761157362_end</relationshipName>
+    <required>false</required>
+    <type>Lookup</type>
+</CustomField>

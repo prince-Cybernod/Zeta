@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>62.0</apiVersion>
+    <description>Auto-launched flow to create an Mogli SMS outbound message to the target record/target number.</description>
+    <label>helper - Send SMS to Number or Record</label>
+    <processType>AutoLaunchedFlow</processType>
+</Flow>

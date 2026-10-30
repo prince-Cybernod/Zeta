@@ -8,5 +8,60 @@
         <plural>true</plural>
         <value>Log Entries</value>
     </caseValues>
+    <fieldSets>
+        <label><!-- Related List Defaults --></label>
+        <name>Related_List_Defaults</name>
+    </fieldSets>
+    <layouts>
+        <layout>Log Entry Layout</layout>
+        <sections>
+            <label><!-- Apex Class Information --></label>
+            <section>Apex Class Information</section>
+        </sections>
+        <sections>
+            <label><!-- Browser Information --></label>
+            <section>Browser Information</section>
+        </sections>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+        <sections>
+            <label><!-- Database Result --></label>
+            <section>Database Result</section>
+        </sections>
+        <sections>
+            <label><!-- Exception Information --></label>
+            <section>Exception Information</section>
+        </sections>
+        <sections>
+            <label><!-- Flow Information --></label>
+            <section>Flow Information</section>
+        </sections>
+        <sections>
+            <label><!-- HTTP Request --></label>
+            <section>HTTP Request</section>
+        </sections>
+        <sections>
+            <label><!-- HTTP Response --></label>
+            <section>HTTP Response</section>
+        </sections>
+        <sections>
+            <label><!-- Lightning Component Information --></label>
+            <section>Lightning Component Information</section>
+        </sections>
+        <sections>
+            <label><!-- Limits --></label>
+            <section>Limits</section>
+        </sections>
+        <sections>
+            <label><!-- Message Information --></label>
+            <section>Message Information</section>
+        </sections>
+        <sections>
+            <label><!-- Related Record --></label>
+            <section>Related Record</section>
+        </sections>
+    </layouts>
     <startsWith>Consonant</startsWith>
 </CustomObjectTranslation>

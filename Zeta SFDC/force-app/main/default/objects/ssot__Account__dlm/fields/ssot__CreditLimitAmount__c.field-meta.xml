@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>ssot__CreditLimitAmount__c</fullName>
+    <deprecated>false</deprecated>
+    <label>Credit Limit</label>
+    <mktDataModelFieldAttributes>
+        <definitionCreationType>Standard</definitionCreationType>
+        <isDynamicLookup>false</isDynamicLookup>
+        <labelOverride>Credit Limit</labelOverride>
+        <masterLabel>Credit Limit</masterLabel>
+        <refAttrDeveloperName>CreditLimitAmount</refAttrDeveloperName>
+        <usageTag>None</usageTag>
+    </mktDataModelFieldAttributes>
+    <precision>18</precision>
+    <required>false</required>
+    <scale>4</scale>
+    <type>Number</type>
+</CustomField>

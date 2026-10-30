@@ -177,6 +177,14 @@
         <value>Anything else you&apos;d like us to know?</value>
     </labels>
     <labels>
+        <fullName>AppQ_CurrentSchoolName_Label</fullName>
+        <categories>Application</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Current school name question label</shortDescription>
+        <value>Current School Name (if applicable)</value>
+    </labels>
+    <labels>
         <fullName>AppQ_EmailConsent_Label</fullName>
         <categories>Application</categories>
         <language>en_US</language>
@@ -401,6 +409,22 @@
         <value>Relationship to Student</value>
     </labels>
     <labels>
+        <fullName>AppQ_ResponsibleAdult_HelpText</fullName>
+        <categories>Application</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Responsible adult help text</shortDescription>
+        <value>The Responsible Adult must be this student&apos;s parent or guardian with whom the student resides. The Responsible Adult will be the main contact and primary decision-maker for information submitted or edited on this application.</value>
+    </labels>
+    <labels>
+        <fullName>AppQ_ResponsibleAdult_Label</fullName>
+        <categories>Application</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Responsible adult question label</shortDescription>
+        <value>Responsible Adult</value>
+    </labels>
+    <labels>
         <fullName>AppQ_SiblingApplying_Label</fullName>
         <categories>Application</categories>
         <language>en_US</language>
@@ -505,6 +529,22 @@
         <value>Employee Information</value>
     </labels>
     <labels>
+        <fullName>AppS_EmployeeStatus_Label</fullName>
+        <categories>Application</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Employee status section label</shortDescription>
+        <value>Children of Zeta Employees</value>
+    </labels>
+    <labels>
+        <fullName>AppS_Guardian1Address_Desc</fullName>
+        <categories>Application</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Guardian 1 address section description</shortDescription>
+        <value>Home address for Guardian 1. If your student does not reside at this address, select &quot;Student lives at a different address&quot; below.</value>
+    </labels>
+    <labels>
         <fullName>AppS_Guardian2Address_Label</fullName>
         <categories>Application</categories>
         <language>en_US</language>
@@ -521,6 +561,14 @@
         <value>Guardian 2 Information</value>
     </labels>
     <labels>
+        <fullName>AppS_Guardian2_Label</fullName>
+        <categories>Application</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Guardian 2 section label</shortDescription>
+        <value>Guardian 2</value>
+    </labels>
+    <labels>
         <fullName>AppS_GuardianInfo_Label</fullName>
         <categories>Application</categories>
         <language>en_US</language>
@@ -535,6 +583,62 @@
         <protected>false</protected>
         <shortDescription>Priority toggles section label</shortDescription>
         <value>Priorities</value>
+    </labels>
+    <labels>
+        <fullName>AppS_ResponsibleAdult_Label</fullName>
+        <categories>Application</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Responsible adult section label</shortDescription>
+        <value>Responsible Adult</value>
+    </labels>
+    <labels>
+        <fullName>AppUI_AcceptConfirmationBody</fullName>
+        <categories>Application</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Confirmation screen body after accepting an offer</shortDescription>
+        <value>You&apos;ve accepted this school. We&apos;ll see you soon!</value>
+    </labels>
+    <labels>
+        <fullName>AppUI_AcceptConfirmationTitle</fullName>
+        <categories>Application</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Confirmation screen title after accepting an offer</shortDescription>
+        <value>Seat accepted</value>
+    </labels>
+    <labels>
+        <fullName>AppUI_AcceptSeat</fullName>
+        <categories>Application</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Accept action on the primary current offer</shortDescription>
+        <value>Accept Seat</value>
+    </labels>
+    <labels>
+        <fullName>AppUI_AcceptThisSchool</fullName>
+        <categories>Application</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Accept action on a lower-ranked offer</shortDescription>
+        <value>Accept This School</value>
+    </labels>
+    <labels>
+        <fullName>AppUI_AcceptWarningBody</fullName>
+        <categories>Application</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Accept-offer confirmation modal body</shortDescription>
+        <value>Accepting the seat at {0} will decline {1}&apos;s other offers and withdraw any lower-ranked choices. Higher-ranked waitlists stay open. This can&apos;t be undone.</value>
+    </labels>
+    <labels>
+        <fullName>AppUI_AcceptWarningTitle</fullName>
+        <categories>Application</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Accept-offer confirmation modal title</shortDescription>
+        <value>Accept this offer?</value>
     </labels>
     <labels>
         <fullName>AppUI_AddAStudent</fullName>
@@ -857,12 +961,76 @@
         <value>Failed to add student. Please try again.</value>
     </labels>
     <labels>
+        <fullName>AppUI_CurrentOffer</fullName>
+        <categories>Application</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>School-choices detail section heading</shortDescription>
+        <value>Current Offer</value>
+    </labels>
+    <labels>
         <fullName>AppUI_Day</fullName>
         <categories>Application</categories>
         <language>en_US</language>
         <protected>false</protected>
         <shortDescription>Day label</shortDescription>
         <value>Day</value>
+    </labels>
+    <labels>
+        <fullName>AppUI_DeclineCommentRequired</fullName>
+        <categories>Application</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Decline comment required when the reason is Other</shortDescription>
+        <value>Please describe the reason for declining.</value>
+    </labels>
+    <labels>
+        <fullName>AppUI_DeclineCommentsLabel</fullName>
+        <categories>Application</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Decline form comments field label</shortDescription>
+        <value>Comments</value>
+    </labels>
+    <labels>
+        <fullName>AppUI_DeclineConfirmationBody</fullName>
+        <categories>Application</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Confirmation screen body after declining an offer</shortDescription>
+        <value>Thanks for letting us know.</value>
+    </labels>
+    <labels>
+        <fullName>AppUI_DeclineConfirmationTitle</fullName>
+        <categories>Application</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Confirmation screen title after declining an offer</shortDescription>
+        <value>Offer declined</value>
+    </labels>
+    <labels>
+        <fullName>AppUI_DeclineReasonPrompt</fullName>
+        <categories>Application</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Decline form picklist prompt</shortDescription>
+        <value>Why are you declining the offer from {0}?</value>
+    </labels>
+    <labels>
+        <fullName>AppUI_DeclineSeat</fullName>
+        <categories>Application</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Decline action on the primary current offer</shortDescription>
+        <value>Decline Seat</value>
+    </labels>
+    <labels>
+        <fullName>AppUI_DetailsFieldLabel</fullName>
+        <categories>Application</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Free-text detail field label (Other reason)</shortDescription>
+        <value>Details</value>
     </labels>
     <labels>
         <fullName>AppUI_DistanceLessThanPoint1</fullName>
@@ -879,6 +1047,14 @@
         <protected>false</protected>
         <shortDescription>Distance in miles</shortDescription>
         <value>{0} mi</value>
+    </labels>
+    <labels>
+        <fullName>AppUI_Done</fullName>
+        <categories>Application</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Done button label (Update Rankings inline panel)</shortDescription>
+        <value>Done</value>
     </labels>
     <labels>
         <fullName>AppUI_DuplicateApplication</fullName>
@@ -1231,6 +1407,14 @@ before submitting and confirm all of your information. By submitting this applic
         <value>Students applying to Kindergarten must be born in {0}</value>
     </labels>
     <labels>
+        <fullName>AppUI_Loading</fullName>
+        <categories>Application</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Generic loading status</shortDescription>
+        <value>Loading…</value>
+    </labels>
+    <labels>
         <fullName>AppUI_LotteryMessage</fullName>
         <categories>Application</categories>
         <language>en_US</language>
@@ -1241,6 +1425,14 @@ before submitting and confirm all of your information. By submitting this applic
 Non-Discrimination Statement: A charter school shall not discriminate against or limit the admission of any student on any unlawful basis, including on the basis of ethnicity, national origin, disability, intellectual ability, measures of achievement or aptitude, athletic ability, race, creed, gender, religion, or ancestry. A school may not require any action by a student or family (such as an admissions test, interview, essay, attendance at an information session, etc.) in order for an applicant to either receive or submit an application for admission to that school.
 
 Zeta reserves the right to adjust grade placements based on post-admission assessment.</value>
+    </labels>
+    <labels>
+        <fullName>AppUI_LowerRankedOffers</fullName>
+        <categories>Application</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>School-choices detail section heading</shortDescription>
+        <value>Lower Ranked Offers</value>
     </labels>
     <labels>
         <fullName>AppUI_MailingAddress</fullName>
@@ -1355,6 +1547,14 @@ Zeta reserves the right to adjust grade placements based on post-admission asses
         <value>September</value>
     </labels>
     <labels>
+        <fullName>AppUI_MoreActions</fullName>
+        <categories>Application</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Overflow menu button aria-label</shortDescription>
+        <value>More actions</value>
+    </labels>
+    <labels>
         <fullName>AppUI_NewStudent</fullName>
         <categories>Application</categories>
         <language>en_US</language>
@@ -1451,6 +1651,14 @@ Zeta reserves the right to adjust grade placements based on post-admission asses
         <value>Drag to reorder or use the dropdowns.</value>
     </labels>
     <labels>
+        <fullName>AppUI_ReasonFieldLabel</fullName>
+        <categories>Application</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Withdraw reason picklist label</shortDescription>
+        <value>Reason</value>
+    </labels>
+    <labels>
         <fullName>AppUI_Remove</fullName>
         <categories>Application</categories>
         <language>en_US</language>
@@ -1473,6 +1681,22 @@ Zeta reserves the right to adjust grade placements based on post-admission asses
         <protected>false</protected>
         <shortDescription>Residency restriction warning (K-9, NY State)</shortDescription>
         <value>The address provided is outside of New York. Residency within New York State is required for enrollment. You may still submit, but eligibility will be reviewed.</value>
+    </labels>
+    <labels>
+        <fullName>AppUI_RespondByPrefix</fullName>
+        <categories>Application</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Prefix before the respond-by date on a current offer</shortDescription>
+        <value>Respond by</value>
+    </labels>
+    <labels>
+        <fullName>AppUI_RespondToOffer</fullName>
+        <categories>Application</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Dashboard action button for an application with a live offer</shortDescription>
+        <value>Respond to Offer</value>
     </labels>
     <labels>
         <fullName>AppUI_Resume</fullName>
@@ -1601,6 +1825,14 @@ Zeta reserves the right to adjust grade placements based on post-admission asses
         <protected>false</protected>
         <shortDescription>Search schools input label</shortDescription>
         <value>Search schools</value>
+    </labels>
+    <labels>
+        <fullName>AppUI_SeatAcceptedSection</fullName>
+        <categories>Application</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>School-choices detail section heading</shortDescription>
+        <value>Seat Accepted</value>
     </labels>
     <labels>
         <fullName>AppUI_SectionApplicationDetails</fullName>
@@ -1907,6 +2139,38 @@ Zeta reserves the right to adjust grade placements based on post-admission asses
         <value>Each school must have a unique rank.</value>
     </labels>
     <labels>
+        <fullName>AppUI_WaitlistedSection</fullName>
+        <categories>Application</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>School-choices detail section heading</shortDescription>
+        <value>Waitlisted</value>
+    </labels>
+    <labels>
+        <fullName>AppUI_Withdraw</fullName>
+        <categories>Application</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Withdraw confirm button label</shortDescription>
+        <value>Withdraw</value>
+    </labels>
+    <labels>
+        <fullName>AppUI_WithdrawApplicationMenuItem</fullName>
+        <categories>Application</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Waitlisted row overflow menu item</shortDescription>
+        <value>Withdraw application</value>
+    </labels>
+    <labels>
+        <fullName>AppUI_WithdrawConfirmTitle</fullName>
+        <categories>Application</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Withdraw modal title</shortDescription>
+        <value>Withdraw School Application?</value>
+    </labels>
+    <labels>
         <fullName>AppUI_Year</fullName>
         <categories>Application</categories>
         <language>en_US</language>
@@ -1939,12 +2203,90 @@ Zeta reserves the right to adjust grade placements based on post-admission asses
         <value>Enter a 5-digit zip code</value>
     </labels>
     <labels>
+        <fullName>CRM_List_View_Base_URL</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>CRM List View Base URL</shortDescription>
+        <value>https://zetacharterschools--full.sandbox.lightning.force.com/lightning/o/</value>
+    </labels>
+    <labels>
+        <fullName>Default_App_Timeline</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Default App Timeline</shortDescription>
+        <value>0ykcv00000003PJAAY</value>
+    </labels>
+    <labels>
+        <fullName>Events_CatalogLoading</fullName>
+        <categories>Events</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Loading message on the events catalog page</shortDescription>
+        <value>Loading events…</value>
+    </labels>
+    <labels>
+        <fullName>Events_DetailLoading</fullName>
+        <categories>Events</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Loading message on the event detail page</shortDescription>
+        <value>Loading event…</value>
+    </labels>
+    <labels>
+        <fullName>Events_MyRegistrationsLoading</fullName>
+        <categories>Events</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Loading message on the my-registrations page</shortDescription>
+        <value>Loading your registrations…</value>
+    </labels>
+    <labels>
+        <fullName>Events_NotFound</fullName>
+        <categories>Events</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Shown when the event detail page&apos;s id does not resolve</shortDescription>
+        <value>We couldn’t find that event.</value>
+    </labels>
+    <labels>
         <fullName>Lives_With_Guardian_1</fullName>
         <categories>Application</categories>
         <language>en_US</language>
         <protected>false</protected>
         <shortDescription>Checkbox label asking whether the student lives with Guardian 1</shortDescription>
         <value>Lives with guardian 1</value>
+    </labels>
+    <labels>
+        <fullName>Parent_Login_Invalid_Identifier</fullName>
+        <categories>Parent Login Discovery</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Parent Login Invalid Identifier</shortDescription>
+        <value>Please enter a valid email address or mobile phone number.</value>
+    </labels>
+    <labels>
+        <fullName>Parent_Login_No_Passwordless_Redirect</fullName>
+        <categories>Parent Login Discovery</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Parent Login No Passwordless Redirect</shortDescription>
+        <value>We are unable to complete your sign-in. Please try again or contact Zeta Charter Schools for support. enroll@zetaschools.org | (646) 480-1654</value>
+    </labels>
+    <labels>
+        <fullName>Parent_Login_No_Unique_User</fullName>
+        <categories>Parent Login Discovery</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Parent Login No Unique User</shortDescription>
+        <value>No account found with that credential. First time user? Click “Sign Up” to make an account.</value>
+    </labels>
+    <labels>
+        <fullName>Parent_Login_No_Verified_2FA_Method</fullName>
+        <categories>Parent Login Discovery</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Parent Login No Verified 2FA Method</shortDescription>
+        <value>We are unable to send a verification code to the information provided. Please try again or contact Zeta Charter Schools for support. enroll@zetaschools.org | (646) 480-1654</value>
     </labels>
     <labels>
         <fullName>Parent_Portal_Base_URL</fullName>
@@ -2917,139 +3259,5 @@ Zeta reserves the right to adjust grade placements based on post-admission asses
         <protected>true</protected>
         <shortDescription>Value Label</shortDescription>
         <value>Value</value>
-    </labels>
-    <labels>
-        <fullName>CRM_List_View_Base_URL</fullName>
-        <language>en_US</language>
-        <protected>false</protected>
-        <shortDescription>CRM List View Base URL</shortDescription>
-        <value>https://zetacharterschools--full.sandbox.lightning.force.com/lightning/o/</value>
-    </labels>
-    <labels>
-        <fullName>Default_App_Timeline</fullName>
-        <language>en_US</language>
-        <protected>false</protected>
-        <shortDescription>Default App Timeline</shortDescription>
-        <value>0ykcv000000039BAAQ</value>
-    </labels>
-    <labels>
-        <fullName>AppQ_CurrentSchoolName_Label</fullName>
-        <categories>Application</categories>
-        <language>en_US</language>
-        <protected>false</protected>
-        <shortDescription>Current school name question label</shortDescription>
-        <value>Current School Name (if applicable)</value>
-    </labels>
-    <labels>
-        <fullName>AppQ_ResponsibleAdult_HelpText</fullName>
-        <categories>Application</categories>
-        <language>en_US</language>
-        <protected>false</protected>
-        <shortDescription>Responsible adult help text</shortDescription>
-        <value>The Responsible Adult must be this student&apos;s parent or guardian with whom the student resides. The Responsible Adult will be the main contact and primary decision-maker for information submitted or edited on this application.</value>
-    </labels>
-    <labels>
-        <fullName>AppQ_ResponsibleAdult_Label</fullName>
-        <categories>Application</categories>
-        <language>en_US</language>
-        <protected>false</protected>
-        <shortDescription>Responsible adult question label</shortDescription>
-        <value>Responsible Adult</value>
-    </labels>
-    <labels>
-        <fullName>AppS_Guardian1Address_Desc</fullName>
-        <categories>Application</categories>
-        <language>en_US</language>
-        <protected>false</protected>
-        <shortDescription>Guardian 1 address section description</shortDescription>
-        <value>Home address for Guardian 1. If your student does not reside at this address, select &quot;Student lives at a different address&quot; below.</value>
-    </labels>
-    <labels>
-        <fullName>AppS_EmployeeStatus_Label</fullName>
-        <categories>Application</categories>
-        <language>en_US</language>
-        <protected>false</protected>
-        <shortDescription>Employee status section label</shortDescription>
-        <value>Children of Zeta Employees</value>
-    </labels>
-    <labels>
-        <fullName>AppS_Guardian2_Label</fullName>
-        <categories>Application</categories>
-        <language>en_US</language>
-        <protected>false</protected>
-        <shortDescription>Guardian 2 section label</shortDescription>
-        <value>Guardian 2</value>
-    </labels>
-    <labels>
-        <fullName>AppS_ResponsibleAdult_Label</fullName>
-        <categories>Application</categories>
-        <language>en_US</language>
-        <protected>false</protected>
-        <shortDescription>Responsible adult section label</shortDescription>
-        <value>Responsible Adult</value>
-    </labels>
-    <labels>
-        <fullName>Events_CatalogLoading</fullName>
-        <categories>Events</categories>
-        <language>en_US</language>
-        <protected>false</protected>
-        <shortDescription>Loading message on the events catalog page</shortDescription>
-        <value>Loading events…</value>
-    </labels>
-    <labels>
-        <fullName>Events_DetailLoading</fullName>
-        <categories>Events</categories>
-        <language>en_US</language>
-        <protected>false</protected>
-        <shortDescription>Loading message on the event detail page</shortDescription>
-        <value>Loading event…</value>
-    </labels>
-    <labels>
-        <fullName>Events_MyRegistrationsLoading</fullName>
-        <categories>Events</categories>
-        <language>en_US</language>
-        <protected>false</protected>
-        <shortDescription>Loading message on the my-registrations page</shortDescription>
-        <value>Loading your registrations…</value>
-    </labels>
-    <labels>
-        <fullName>Events_NotFound</fullName>
-        <categories>Events</categories>
-        <language>en_US</language>
-        <protected>false</protected>
-        <shortDescription>Shown when the event detail page&apos;s id does not resolve</shortDescription>
-        <value>We couldn’t find that event.</value>
-    </labels>
-    <labels>
-        <fullName>Parent_Login_Invalid_Identifier</fullName>
-        <categories>Parent Login Discovery</categories>
-        <language>en_US</language>
-        <protected>false</protected>
-        <shortDescription>Parent Login Invalid Identifier</shortDescription>
-        <value>Please enter a valid email address or mobile phone number.</value>
-    </labels>
-    <labels>
-        <fullName>Parent_Login_No_Passwordless_Redirect</fullName>
-        <categories>Parent Login Discovery</categories>
-        <language>en_US</language>
-        <protected>false</protected>
-        <shortDescription>Parent Login No Passwordless Redirect</shortDescription>
-        <value>We are unable to complete your sign-in. Please try again or contact Zeta Charter Schools for support. enroll@zetaschools.org | (646) 480-1654</value>
-    </labels>
-    <labels>
-        <fullName>Parent_Login_No_Unique_User</fullName>
-        <categories>Parent Login Discovery</categories>
-        <language>en_US</language>
-        <protected>false</protected>
-        <shortDescription>Parent Login No Unique User</shortDescription>
-        <value>No account found with that credential. First time user? Click “Sign Up” to make an account.</value>
-    </labels>
-    <labels>
-        <fullName>Parent_Login_No_Verified_2FA_Method</fullName>
-        <categories>Parent Login Discovery</categories>
-        <language>en_US</language>
-        <protected>false</protected>
-        <shortDescription>Parent Login No Verified 2FA Method</shortDescription>
-        <value>We are unable to send a verification code to the information provided. Please try again or contact Zeta Charter Schools for support. enroll@zetaschools.org | (646) 480-1654</value>
     </labels>
 </CustomLabels>

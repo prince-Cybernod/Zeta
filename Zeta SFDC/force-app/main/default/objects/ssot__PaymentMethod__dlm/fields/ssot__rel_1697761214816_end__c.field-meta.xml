@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>ssot__rel_1697761214816_end__c</fullName>
+    <deleteConstraint>SetNull</deleteConstraint>
+    <deprecated>false</deprecated>
+    <label>PaymentMethod_CashTenderId_map_CashT_rel</label>
+    <referenceTo>ssot__CashTender__dlm</referenceTo>
+    <relationshipLabel>PaymentMethod_CashTenderId_map_CashT_rel</relationshipLabel>
+    <relationshipName>rel_1697761214816_end</relationshipName>
+    <required>false</required>
+    <type>Lookup</type>
+</CustomField>

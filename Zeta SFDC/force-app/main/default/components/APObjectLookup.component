@@ -1,0 +1,258 @@
+<!--
+Action Plans v4
+David Schach 2022
+https://appexchange.salesforce.com/appxListingDetail?listingId=a0N4V00000Gg6NVUAZ
+
+Copyright (c) 2022, salesforce.com, inc.
+All rights reserved.
+SPDX-License-Identifier: BSD-3-Clause
+For full license text, see the LICENSE file in the repo root or https://opensource.org/licenses/BSD-3-Clause
+-->
+<apex:component id="objectlookupcomponent" controller="ActionPlansSectionHeaderController">
+    <apex:attribute name="sObj" type="sObject" description="The record the field belongs to." required="true" />
+    <apex:attribute name="field" type="String" description="The field to put the API name into" required="true" />
+    <apex:attribute name="recordname" type="String" description="The current value of the object name to display" />
+    <apex:attribute name="for" type="String" description="Unique ID of the input field" required="false" default="" />
+    <apex:attribute name="required" type="Boolean" description="Is this field required?" default="false" required="false" />
+    <apex:attribute name="fieldClass" type="String" description="CSS class for the input field" required="false" />
+    <apex:attribute name="fieldStyle" type="String" description="CSS style for the input field" required="false" default="width:300px;" />
+    <apex:attribute name="placeholder" type="String" description="Placeholder text for the search input" default="Search for an object" required="false" />
+
+    <script>
+        function clearObjectLookup(key) {
+            j$('[id$=SrchDrpDwn{!for}]').hide();
+            j$('#' + key.attr('aria-activedescendant')).hide();
+            j$(key).val('').text('');
+        }
+    </script>
+
+    <div class="slds-scope" id="{!for}sldsscopediv">
+        <div class="slds-combobox_container" id="searchInputContainer">
+            <div class="slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click slds-is-open" aria-expanded="true" aria-haspopup="listbox" role="combobox">
+                <div class="slds-combobox__form-element slds-input-has-icon slds-input-has-icon_right" role="none">
+                    <div class="{!IF(required==true,'requiredInput','')}">
+                        <div class="{!IF(required==true,'requiredBlock','')}">
+                            <input
+                                id="searchInput"
+                                styleclass="slds-input slds-combobox__input {!fieldClass}"
+                                style="{!fieldStyle}"
+                                type="text"
+                                autocomplete="off"
+                                onkeyup="ObjectLookupScripts{!for}.handleKeyUp(j$(this), event);"
+                                aria-autocomplete="list"
+                                role="combobox"
+                                aria-expanded="true"
+                                aria-controls="SrchDrpDwn{!for}"
+                                placeholder="{!placeholder}"
+                                aria-activedescendant="SrchDrpDwn{!for}"
+                                required="{!IF(required == true, 'true', '')}"
+                                value="{!recordname}" />
+                            <span class="slds-icon_container slds-icon-utility-search slds-input__icon slds-input__icon_right">
+                                <svg class="slds-icon slds-icon_x-small slds-icon-text-default" aria-hidden="true">
+                                    <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/apexpages/slds/latest/assets/icons/utility-sprite/svg/symbols.svg#search"></use>
+                                </svg>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                <div id="SrchDrpDwn{!for}" class="slds-dropdown slds-dropdown_length-with-icon-7 slds-dropdown_fluid" role="listbox" style="display: none">
+                    <ul class="slds-listbox slds-listbox_vertical" role="presentation" id="searchResultsUL{!for}"></ul>
+                </div>
+            </div>
+        </div>
+<!--        <div class="slds-form-element__help" id="helpText{!for}">-->
+<!--            Search for an object by name or API name-->
+<!--        </div>-->
+    </div>
+    <script>
+        var boolRequired = '{!required}';
+        function checkinput() {
+            if (boolRequired == 'true') {
+                j$('#{!for}sldsscopediv [id$=searchInput]').prop('required', true);
+            }
+        }
+        
+        var ObjectLookupScripts{!for} = {
+            // Timeout variable to store the setTimeout reference
+            searchTimeout: null,
+            
+            // Function to handle keyup events
+            handleKeyUp: function(key, event) {
+                // Check for escape key
+                if (event.keyCode === 27) {
+                    clearObjectLookup(key);
+                    return;
+                }
+                
+                // Clear any existing timeout
+                if (this.searchTimeout) {
+                    clearTimeout(this.searchTimeout);
+                }
+                
+                // Set a new timeout to call searchObjects after a delay
+                var self = this;
+                this.searchTimeout = setTimeout(function() {
+                    self.searchObjects(key);
+                }, 500); // 500ms delay
+            },
+            
+            // Function to handle object selection
+            selectObject: function(apiName, label) {
+                console.log('APObjectLookup.selectObject called with apiName:', apiName, 'label:', label);
+                
+                // Update the input field with the label
+                var searchInput = j$('#{!for}sldsscopediv [id$=searchInput]');
+                searchInput.val(label);
+                console.log('Updated search input with label:', label);
+                
+                // Update the hidden input with the API name - try multiple approaches
+                var hiddenInput = document.getElementById('{!$Component.hiddenInput}');
+                if (hiddenInput) {
+                    console.log('Found hidden input by component ID');
+                    j$(hiddenInput).val(apiName);
+                    console.log('Updated hidden input value to:', apiName);
+                } else {
+                    console.log('Could not find hidden input by component ID, trying alternative selectors');
+                    // Try alternative selectors
+                    var hiddenInputs = j$('#{!for}sldsscopediv [id$=hiddenInput]');
+                    if (hiddenInputs.length > 0) {
+                        hiddenInputs.val(apiName);
+                        console.log('Updated hidden input using sldsscopediv selector, value:', apiName);
+                    } else {
+                        // Last resort - find any hidden input near this component
+                        var nearbyHidden = searchInput.closest('div').find('[id$=hiddenInput]');
+                        if (nearbyHidden.length > 0) {
+                            nearbyHidden.val(apiName);
+                            console.log('Updated nearby hidden input, value:', apiName);
+                        } else {
+                            console.error('Could not find any hidden input to update');
+                        }
+                    }
+                }
+                
+                // Store the API name in a data attribute on the search input as a backup
+                searchInput.attr('data-api-name', apiName);
+                console.log('Stored API name in data attribute:', apiName);
+                
+                // Hide the dropdown
+                j$('[id$=SrchDrpDwn{!for}]').fadeOut();
+                
+                // Trigger the parentchange event with both label and API name
+                searchInput.trigger("parentchange", [label, apiName]);
+                console.log('Triggered parentchange event with label and apiName');
+                
+                // Trigger field updates if needed
+                if (typeof updateFieldsForTargetObjectJS === 'function') {
+                    console.log('Calling updateFieldsForTargetObjectJS');
+                    updateFieldsForTargetObjectJS();
+                }
+                
+                // Trigger where clause validation if needed
+                if (typeof validateWhereClauseAsync === 'function' && j$('[id$=whereClause]').val()) {
+                    console.log('Calling validateWhereClauseAsync');
+                    validateWhereClauseAsync();
+                }
+            },
+            
+            // Function to search for objects
+            searchObjects: function(key) {
+                j$('#' + key.attr('aria-activedescendant')).show();
+                
+                // Get the search term
+                var searchTerm = key.val();
+                if (searchTerm == '') {
+                    j$('#' + key.attr('aria-activedescendant')).hide();
+                    return;
+                }
+                
+                // Create the initial search list with the search term
+                var searchList = "";
+                var searchIcon = '{!URLFOR($Asset.SLDS, "assets/icons/utility-sprite/svg/symbols.svg#search")}';
+                searchList += '<li role="presentation" class="slds-listbox__item">' +
+                    '<div aria-selected="true" id="option0" class="slds-media slds-listbox__option slds-listbox__option_entity slds-listbox__option_term slds-has-focus" role="option">' +
+                    '<span class="slds-media__figure slds-listbox__option-icon">' +
+                    '<span class="slds-icon_container slds-icon-utility-search" title="Search:">' +
+                    '<svg class="slds-icon slds-icon_x-small slds-icon-text-default" aria-hidden="true"><use xlink:href="' + searchIcon + '"></use></svg>' +
+                    '<span class="slds-assistive-text">Search:</span></span></span>' +
+                    '<span class="slds-media__body"><span class="slds-listbox__option-text slds-listbox__option-text_entity">' + searchTerm + '</span></span></div > ' +
+                    '</li>';
+                
+                // Call the remote action to search for objects
+                Visualforce.remoting.Manager.invokeAction(
+                    '{!$RemoteAction.ActionPlansSectionHeaderController.searchObjects}',
+                    searchTerm,
+                    function(result, event) {
+                        if (event.status) {
+                            if (Object.keys(result).length > 0) {
+                                // Standard object icon
+                                var standardIcon = '{!URLFOR($Asset.SLDS, "assets/icons/standard-sprite/svg/symbols.svg#custom_object")}';
+                                // Custom object icon
+                                var customIcon = '{!URLFOR($Asset.SLDS, "assets/icons/custom-sprite/svg/symbols.svg#custom1")}';
+                                
+                                // Sort the results by label
+                                var sortedResults = [];
+                                for (var apiName in result) {
+                                    sortedResults.push({
+                                        apiName: apiName,
+                                        label: result[apiName]
+                                    });
+                                }
+                                
+                                sortedResults.sort(function(a, b) {
+                                    return a.label.localeCompare(b.label);
+                                });
+                                
+                                // Add each object to the search list
+                                for (var i = 0; i < sortedResults.length; i++) {
+                                    var apiName = sortedResults[i].apiName;
+                                    var label = sortedResults[i].label;
+                                    var isCustom = apiName.endsWith('__c');
+                                    var objectIcon = isCustom ? customIcon : standardIcon;
+                                    var iconStyle = isCustom ? 'slds-icon-custom-custom1' : 'slds-icon-standard-custom-object';
+                                    
+                                    searchList += '<li onclick="ObjectLookupScripts{!for}.selectObject(\'' + apiName + '\', \'' + label + '\');" class="slds-lookup__item">';
+                                    searchList += '<a id="' + apiName + '" href="#" role="option"><svg aria-hidden="true" class="slds-icon ' + iconStyle + ' slds-icon_small">'
+                                        + '<use xlink:href="' + objectIcon + '"></use></svg>' + label + ' <span class="slds-text-body_small slds-text-color_weak">(' + apiName + ')</span></a>';
+                                    searchList += '</li>';
+                                }
+                            } else {
+                                searchList += '<li role="presentation" class="slds-listbox__item">' +
+                                    '<div aria-selected="true" id="norecords" class="slds-media slds-listbox__option slds-listbox__option_entity slds-listbox__option_term" role="option">' +
+                                    '<span class="slds-media__body"><span class="slds-listbox__option-text slds-listbox__option-text_entity">No matching objects found</span></span></div></li>';
+                            }
+                            
+                            // Update the search results
+                            j$('[id$=searchResultsUL{!for}]').html(searchList);
+                        } else {
+                            console.error('Error searching objects: ' + event.message);
+                        }
+                    },
+                    { escape: true }
+                );
+            }
+        }
+        
+        // Initialize the component
+        j$(document).ready(function() {
+            checkinput();
+            
+            // If we have a value but no display name, try to get the label
+            var apiName = j$('[id$=hiddenInput]').val();
+            var displayName = j$('#{!for}sldsscopediv [id$=searchInput]').val();
+            
+            if (apiName && !displayName) {
+                Visualforce.remoting.Manager.invokeAction(
+                    '{!$RemoteAction.ActionPlansSectionHeaderController.getObjectLabel}',
+                    apiName,
+                    function(result, event) {
+                        if (event.status && result) {
+                            j$('#{!for}sldsscopediv [id$=searchInput]').val(result);
+                        }
+                    },
+                    { escape: true }
+                );
+            }
+        });
+    </script>
+    <apex:inputhidden value="{!sObj[field]}" id="hiddenInput" />
+</apex:component>

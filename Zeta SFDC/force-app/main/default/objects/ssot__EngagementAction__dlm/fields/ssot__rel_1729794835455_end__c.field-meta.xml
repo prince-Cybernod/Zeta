@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>ssot__rel_1729794835455_end__c</fullName>
+    <deleteConstraint>SetNull</deleteConstraint>
+    <deprecated>false</deprecated>
+    <label>EngagementAction_PersonalizationCont_rel</label>
+    <referenceTo>ssot__PersonalizationLog__dlm</referenceTo>
+    <relationshipLabel>EngagementAction_PersonalizationCont_rel</relationshipLabel>
+    <relationshipName>rel_1729794835455_end</relationshipName>
+    <required>false</required>
+    <type>Lookup</type>
+</CustomField>

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>ZVC__ZM_Multiple_Instance_Support__c</fullName>
+    <defaultValue>false</defaultValue>
+    <deprecated>false</deprecated>
+    <description>Everytime meeting ended, we will create a new Zoom Meeting and Event record for each meeting instance</description>
+    <label>ZM Multiple Instance Support</label>
+    <trackTrending>false</trackTrending>
+    <type>Checkbox</type>
+</CustomField>

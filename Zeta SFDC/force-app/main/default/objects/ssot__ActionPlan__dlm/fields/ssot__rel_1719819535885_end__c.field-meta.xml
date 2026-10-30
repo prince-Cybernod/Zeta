@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>ssot__rel_1719819535885_end__c</fullName>
+    <deleteConstraint>SetNull</deleteConstraint>
+    <deprecated>false</deprecated>
+    <label>ActionPlan_RecurringScheduleId_map_R_rel</label>
+    <referenceTo>ssot__RecurrenceSchedule__dlm</referenceTo>
+    <relationshipLabel>ActionPlan_RecurringScheduleId_map_R_rel</relationshipLabel>
+    <relationshipName>rel_1719819535885_end</relationshipName>
+    <required>false</required>
+    <type>Lookup</type>
+</CustomField>

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Prompt xmlns="http://soap.sforce.com/2006/04/metadata">
+    <masterLabel>The SMS Tab</masterLabel>
+    <promptVersions>
+        <body>&lt;p&gt;&lt;span style=&quot;color: rgb(0, 0, 0);&quot;&gt;Navigate to the SMS tab any time you want to locate the details of a specific text message. &lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot;color: rgb(0, 0, 0);&quot;&gt;You&apos;ll notice List Views for All, Incoming, Outgoing, and Scheduled. Create new List Views of your own by clicking the gear icon drop-down and selecting New. You&apos;ll be able to filter based on Gateway, Status, Created Date, Message, and more.&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot;color: rgb(0, 0, 0);&quot;&gt;Clicking on an SMS Number will take you to the details of that specific text message. &lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;&lt;b style=&quot;color: rgb(0, 0, 0);&quot;&gt;TIP&lt;/b&gt;&lt;span style=&quot;color: rgb(0, 0, 0);&quot;&gt;: If you scheduled a message, you&apos;ll notice it has a Status of Scheduled. Made a mistake in scheduling? Simply click on the SMS Number, modify your Scheduled Date and save the record. Your message will now be delivered at the modified time.&lt;/span&gt;&lt;/p&gt;</body>
+        <customApplication>Mogli_SMS__Mogli_SMS_Lightning</customApplication>
+        <delayDays>2</delayDays>
+        <description>What the SMS tab contains</description>
+        <displayType>DockedComposer</displayType>
+        <endDate>2020-12-31</endDate>
+        <header>The SMS Tab</header>
+        <isPublished>true</isPublished>
+        <masterLabel>The SMS Tab</masterLabel>
+        <publishedDate>2026-04-22</publishedDate>
+        <shouldDisplayActionButton>false</shouldDisplayActionButton>
+        <shouldIgnoreGlobalDelay>false</shouldIgnoreGlobalDelay>
+        <startDate>2020-02-07</startDate>
+        <targetPageKey1>Mogli_SMS__SMS__c</targetPageKey1>
+        <targetPageKey2>list</targetPageKey2>
+        <targetPageType>standard__objectPage</targetPageType>
+        <timesToDisplay>2</timesToDisplay>
+        <title>Find any text with ease...</title>
+        <userAccess>Everyone</userAccess>
+        <userProfileAccess>Everyone</userProfileAccess>
+        <versionNumber>1</versionNumber>
+    </promptVersions>
+</Prompt>

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>ssot__rel_1709303335323_end__c</fullName>
+    <deleteConstraint>SetNull</deleteConstraint>
+    <deprecated>false</deprecated>
+    <label>ServiceAppointment_ServiceTerritoryI_rel</label>
+    <referenceTo>ssot__ServiceTerritory__dlm</referenceTo>
+    <relationshipLabel>ServiceAppointment_ServiceTerritoryI_rel</relationshipLabel>
+    <relationshipName>rel_1709303335323_end</relationshipName>
+    <required>false</required>
+    <type>Lookup</type>
+</CustomField>

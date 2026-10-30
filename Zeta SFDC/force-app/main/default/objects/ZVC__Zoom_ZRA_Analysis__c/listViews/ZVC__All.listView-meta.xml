@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>ZVC__All</fullName>
+    <columns>NAME</columns>
+    <columns>ZVC__Conversation_Title__c</columns>
+    <columns>ZVC__Conversation_Start_Time__c</columns>
+    <columns>ZVC__Duration_sec__c</columns>
+    <filterScope>Everything</filterScope>
+    <label>All</label>
+</ListView>

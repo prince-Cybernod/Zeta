@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>ssot__rel_1731040577014_end__c</fullName>
+    <deleteConstraint>SetNull</deleteConstraint>
+    <deprecated>false</deprecated>
+    <label>RegulationClause_RegulationId_map_Re_rel</label>
+    <referenceTo>ssot__Regulation__dlm</referenceTo>
+    <relationshipLabel>RegulationClause_RegulationId_map_Re_rel</relationshipLabel>
+    <relationshipName>rel_1731040577014_end</relationshipName>
+    <required>false</required>
+    <type>Lookup</type>
+</CustomField>

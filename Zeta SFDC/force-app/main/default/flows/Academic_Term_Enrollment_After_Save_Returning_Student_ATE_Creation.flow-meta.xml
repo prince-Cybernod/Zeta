@@ -117,6 +117,12 @@ Created by: Elevation Solutions</description>
             </value>
         </inputAssignments>
         <inputAssignments>
+            <field>DEPRECATED_Race_Answers__c</field>
+            <value>
+                <stringValue>N/A, returning student</stringValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
             <field>Does_Not_Consent_Media_Release__c</field>
             <value>
                 <elementReference>$Record.Does_Not_Consent_Media_Release__c</elementReference>
@@ -250,12 +256,6 @@ Created by: Elevation Solutions</description>
         </inputAssignments>
         <inputAssignments>
             <field>Proof_of_NYS_Residency_3__c</field>
-            <value>
-                <stringValue>N/A, returning student</stringValue>
-            </value>
-        </inputAssignments>
-        <inputAssignments>
-            <field>Race_Answers__c</field>
             <value>
                 <stringValue>N/A, returning student</stringValue>
             </value>

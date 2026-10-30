@@ -1,0 +1,12 @@
+Hi {!Contact.Name}, <br>
+<br>
+You are invited to a Zoom webinar. <br>
+When: {!Webinar.Start_Time__c}<br>
+Topic: {!Webinar.Topic__c} <br>
+<br>
+Register in advance for this webinar:<br>
+{!Webinar.Register_url__c}<br>
+<br>
+After registering, you will receive a confirmation email containing information about joining the webinar.<br>
+Thanks,<br>
+{!Webinar.CreatedBy}

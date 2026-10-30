@@ -6,11 +6,18 @@ private class IndividualApplicationTriggerHandlerTest {
   private static final IndividualApplicationTriggerHandler HANDLER;
   private static final CurrentPriorityCalcServiceMock SERVICE_MOCK;
   private static final ApplicationCountRollupServiceMock ROLLUP_MOCK;
+  private static final ContactApplicationRollupServiceMock CONTACT_ROLLUP_MOCK;
 
   static {
     SERVICE_MOCK = new CurrentPriorityCalcServiceMock();
     ROLLUP_MOCK = new ApplicationCountRollupServiceMock();
-    HANDLER = new IndividualApplicationTriggerHandler(SERVICE_MOCK, ROLLUP_MOCK);
+    CONTACT_ROLLUP_MOCK = new ContactApplicationRollupServiceMock();
+    HANDLER = new IndividualApplicationTriggerHandler(
+      SERVICE_MOCK,
+      ROLLUP_MOCK,
+      CONTACT_ROLLUP_MOCK
+    );
+    CONTACT_ROLLUP_MOCK.when(CONTACT_ROLLUP_MOCK.method.recalculate()).thenReturnVoid();
   }
 
   private static IndividualApplication buildApplication(
@@ -401,5 +408,126 @@ private class IndividualApplicationTriggerHandlerTest {
     IndividualApplicationTriggerHandler handler = new IndividualApplicationTriggerHandler();
 
     Assert.areEqual(Schema.IndividualApplication.SObjectType, handler.getSObjectType());
+  }
+
+  @IsTest
+  private static void onAfterInsert_callsContactRollupServiceWithAccountAndPrimaryGuardianIds() {
+    ROLLUP_MOCK.when(ROLLUP_MOCK.method.recalculate()).thenReturnVoid();
+    Id studentId = fakeAccountId();
+    Id primaryGuardianId = fakeAccountId();
+    Id secondaryGuardianId = fakeAccountId();
+
+    HANDLER.onAfterInsert(
+      new List<SObject>{
+        buildApplication(
+          SObjectIds.generateFakeId(Schema.IndividualApplication.SObjectType),
+          studentId,
+          primaryGuardianId,
+          secondaryGuardianId
+        )
+      }
+    );
+
+    CONTACT_ROLLUP_MOCK.verify(CONTACT_ROLLUP_MOCK.method.recalculate(), 1);
+    Set<Id> capturedIds = (Set<Id>) CONTACT_ROLLUP_MOCK.getCalls(
+        CONTACT_ROLLUP_MOCK.method.recalculate()
+      )[0]
+      .get('personAccountIds');
+    Assert.areEqual(2, capturedIds.size(), 'Should only include the student and primary guardian');
+    Assert.isTrue(capturedIds.contains(studentId), 'Should include the student');
+    Assert.isTrue(capturedIds.contains(primaryGuardianId), 'Should include the primary guardian');
+    Assert.isFalse(
+      capturedIds.contains(secondaryGuardianId),
+      'Should not include the secondary guardian'
+    );
+  }
+
+  @IsTest
+  private static void onAfterDelete_callsContactRollupServiceWithAccountAndPrimaryGuardianIds() {
+    ROLLUP_MOCK.when(ROLLUP_MOCK.method.recalculate()).thenReturnVoid();
+    Id studentId = fakeAccountId();
+    Id primaryGuardianId = fakeAccountId();
+
+    HANDLER.onAfterDelete(
+      new List<SObject>{
+        buildApplication(
+          SObjectIds.generateFakeId(Schema.IndividualApplication.SObjectType),
+          studentId,
+          primaryGuardianId,
+          null
+        )
+      }
+    );
+
+    CONTACT_ROLLUP_MOCK.verify(CONTACT_ROLLUP_MOCK.method.recalculate(), 1);
+    Set<Id> capturedIds = (Set<Id>) CONTACT_ROLLUP_MOCK.getCalls(
+        CONTACT_ROLLUP_MOCK.method.recalculate()
+      )[0]
+      .get('personAccountIds');
+    Assert.isTrue(capturedIds.contains(studentId), 'Should include the student');
+    Assert.isTrue(capturedIds.contains(primaryGuardianId), 'Should include the primary guardian');
+  }
+
+  @IsTest
+  private static void onAfterUndelete_callsContactRollupServiceWithAccountAndPrimaryGuardianIds() {
+    ROLLUP_MOCK.when(ROLLUP_MOCK.method.recalculate()).thenReturnVoid();
+    Id studentId = fakeAccountId();
+
+    HANDLER.onAfterUndelete(
+      new List<SObject>{
+        buildApplication(
+          SObjectIds.generateFakeId(Schema.IndividualApplication.SObjectType),
+          studentId,
+          null,
+          null
+        )
+      }
+    );
+
+    CONTACT_ROLLUP_MOCK.verify(CONTACT_ROLLUP_MOCK.method.recalculate(), 1);
+    Set<Id> capturedIds = (Set<Id>) CONTACT_ROLLUP_MOCK.getCalls(
+        CONTACT_ROLLUP_MOCK.method.recalculate()
+      )[0]
+      .get('personAccountIds');
+    Assert.isTrue(capturedIds.contains(studentId), 'Should include the student');
+  }
+
+  @IsTest
+  private static void onAfterUpdate_whenWatchedFieldChanges_callsContactRollupServiceWithOldAndNewIds() {
+    SERVICE_MOCK.when(SERVICE_MOCK.method.recalculateForApplications()).thenReturnVoid();
+    ROLLUP_MOCK.when(ROLLUP_MOCK.method.recalculate()).thenReturnVoid();
+    Id applicationId = SObjectIds.generateFakeId(Schema.IndividualApplication.SObjectType);
+    Id oldStudentId = fakeAccountId();
+    Id newStudentId = fakeAccountId();
+
+    HANDLER.onAfterUpdate(
+      new List<SObject>{ buildApplication(applicationId, newStudentId, null, null) },
+      new Map<Id, SObject>{
+        applicationId => buildApplication(applicationId, oldStudentId, null, null)
+      }
+    );
+
+    CONTACT_ROLLUP_MOCK.verify(CONTACT_ROLLUP_MOCK.method.recalculate(), 1);
+    Set<Id> capturedIds = (Set<Id>) CONTACT_ROLLUP_MOCK.getCalls(
+        CONTACT_ROLLUP_MOCK.method.recalculate()
+      )[0]
+      .get('personAccountIds');
+    Assert.isTrue(capturedIds.contains(oldStudentId), 'Should refresh the student left behind');
+    Assert.isTrue(capturedIds.contains(newStudentId), 'Should refresh the newly linked student');
+  }
+
+  @IsTest
+  private static void onAfterUpdate_whenNoWatchedFieldChanges_doesNotCallContactRollupService() {
+    Id applicationId = SObjectIds.generateFakeId(Schema.IndividualApplication.SObjectType);
+    Id studentId = fakeAccountId();
+
+    HANDLER.onAfterUpdate(
+      new List<SObject>{ buildApplication(applicationId, studentId, null, null) },
+      new Map<Id, SObject>{
+        applicationId => buildApplication(applicationId, studentId, null, null)
+      }
+    );
+
+    CONTACT_ROLLUP_MOCK.verify(CONTACT_ROLLUP_MOCK.method.recalculate(), 0);
   }
 }

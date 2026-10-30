@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <label><!-- Disposition --></label>
+    <name>ZVC__Disposition__c</name>
+    <picklistValues>
+        <masterLabel>Bad Number</masterLabel>
+        <translation><!-- Bad Number --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Contacted</masterLabel>
+        <translation><!-- Contacted --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Left a Voicemail</masterLabel>
+        <translation><!-- Left a Voicemail --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>No Answer</masterLabel>
+        <translation><!-- No Answer --></translation>
+    </picklistValues>
+</CustomFieldTranslation>

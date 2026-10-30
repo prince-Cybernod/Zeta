@@ -1,5 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <quickActions>
+        <label><!-- Send SMS --></label>
+        <name>Mogli_SMS__Send_SMS_Action</name>
+    </quickActions>
+    <quickActions>
+        <label><!-- Add To Webinar --></label>
+        <name>ZVC__Add_To_Webinar</name>
+    </quickActions>
     <webLinks>
         <label><!-- Create_Action_Plan --></label>
         <name>Create_Action_Plan</name>

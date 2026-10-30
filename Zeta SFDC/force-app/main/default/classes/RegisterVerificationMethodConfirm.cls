@@ -98,15 +98,13 @@ public without sharing class RegisterVerificationMethodConfirm {
             throw new NullPointerException();
           }
           when else {
-            Auth.VerificationMethod verificationMethod = RegisterVerificationMethodInit.toVerificationMethod(
-              method
-            );
-            String redirectUrl = System.UserManagement.verifyRegisterVerificationMethod(
+            Auth.VerificationMethod verificationMethod =
+                RegisterVerificationMethodInit.toVerificationMethod(method);
+            String errorMessage = System.UserManagement.verifyRegisterVerificationMethod(
               code,
               verificationMethod
             );
-            responses.add(new Response(true, redirectUrl));
-            continue;
+            res = new Auth.VerificationResult(null, String.isBlank(errorMessage), errorMessage);
           }
         }
       } catch (Exception e) {
@@ -125,8 +123,10 @@ public without sharing class RegisterVerificationMethodConfirm {
           responses.add(new Response(res.message));
         } else {
           Logger.error(
-            'Error when verifying register verification method. Method: ' + method,
-            res.message
+            'Error when verifying register verification method. Method: '
+                + method
+                + '. Error: '
+                + res.message
           );
           Logger.saveLog();
           responses.add(

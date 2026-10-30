@@ -281,6 +281,22 @@
         <sourceField>MarketingIntelligenceEngagement__dll.InternalOrganization__c</sourceField>
         <targetField>ssot__EmailEngagement__dlm.ssot__InternalOrganizationId__c</targetField>
     </fieldSourceTargetMaps>
+    <fieldSourceTargetMaps>
+        <creationType>Custom</creationType>
+        <filterApplied>false</filterApplied>
+        <filterOperationType>Equal</filterOperationType>
+        <isSourceFormula>false</isSourceFormula>
+        <sourceField>MarketingIntelligenceEngagement__dll.Text__c</sourceField>
+        <targetField>ssot__EmailEngagement__dlm.ConversationId__c</targetField>
+    </fieldSourceTargetMaps>
+    <fieldSourceTargetMaps>
+        <creationType>Custom</creationType>
+        <filterApplied>false</filterApplied>
+        <filterOperationType>Equal</filterOperationType>
+        <isSourceFormula>false</isSourceFormula>
+        <sourceField>MarketingIntelligenceEngagement__dll.Text__c</sourceField>
+        <targetField>ssot__EmailEngagement__dlm.AiAgentSessionId__c</targetField>
+    </fieldSourceTargetMaps>
     <masterLabel>MarketingIntelligenceEngagement_map_EmailEngagement_1789745798073</masterLabel>
     <sourceObjectName>MarketingIntelligenceEngagement__dll</sourceObjectName>
     <targetObjectName>ssot__EmailEngagement__dlm</targetObjectName>

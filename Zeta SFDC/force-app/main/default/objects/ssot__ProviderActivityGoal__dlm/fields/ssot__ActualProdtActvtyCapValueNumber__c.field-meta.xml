@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>ssot__ActualProdtActvtyCapValueNumber__c</fullName>
+    <deprecated>false</deprecated>
+    <label>Actual Prodt Level Activity Capped Value</label>
+    <mktDataModelFieldAttributes>
+        <definitionCreationType>Standard</definitionCreationType>
+        <isDynamicLookup>false</isDynamicLookup>
+        <masterLabel>Actual Prodt Level Activity Capped Value</masterLabel>
+        <refAttrDeveloperName>ActualProdtActvtyCapValueNumber</refAttrDeveloperName>
+        <usageTag>None</usageTag>
+    </mktDataModelFieldAttributes>
+    <precision>18</precision>
+    <required>false</required>
+    <scale>3</scale>
+    <type>Number</type>
+</CustomField>

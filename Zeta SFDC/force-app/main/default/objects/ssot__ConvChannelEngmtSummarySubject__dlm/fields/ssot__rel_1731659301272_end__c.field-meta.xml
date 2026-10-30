@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>ssot__rel_1731659301272_end__c</fullName>
+    <deleteConstraint>SetNull</deleteConstraint>
+    <deprecated>false</deprecated>
+    <label>ConvChannelEngmtSummarySubject_Subje_rel</label>
+    <referenceTo>ssot__Subject__dlm</referenceTo>
+    <relationshipLabel>ConvChannelEngmtSummarySubject_Subje_rel</relationshipLabel>
+    <relationshipName>rel_1731659301272_end</relationshipName>
+    <required>false</required>
+    <type>Lookup</type>
+</CustomField>

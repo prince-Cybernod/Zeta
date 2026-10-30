@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>ssot__rel_1697761194168_end__c</fullName>
+    <deleteConstraint>SetNull</deleteConstraint>
+    <deprecated>false</deprecated>
+    <label>ProductCatalog_Id_map_ProductCategor_rel</label>
+    <referenceTo>ssot__ProductCatalog__dlm</referenceTo>
+    <relationshipLabel>ProductCatalog_Id_map_ProductCategor_rel</relationshipLabel>
+    <relationshipName>rel_1697761194168_end</relationshipName>
+    <required>false</required>
+    <type>Lookup</type>
+</CustomField>

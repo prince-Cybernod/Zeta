@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SOQL Module Test</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        h1 {
+            color: #0070d2;
+        }
+        .test-section {
+            margin-bottom: 20px;
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        .test-section h2 {
+            margin-top: 0;
+        }
+        .result {
+            margin-top: 10px;
+            padding: 10px;
+            background-color: #f8f8f8;
+            border-radius: 4px;
+            white-space: pre-wrap;
+        }
+        .success {
+            color: green;
+        }
+        .error {
+            color: red;
+        }
+        button {
+            background-color: #0070d2;
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #005fb2;
+        }
+        input {
+            padding: 8px;
+            margin-right: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body>
+    <h1>SOQL Module Test</h1>
+    
+    <div class="test-section">
+        <h2>Import Test</h2>
+        <p>Testing if the module can be imported correctly.</p>
+        <button id="testImport">Run Test</button>
+        <div id="importResult" class="result"></div>
+    </div>
+    
+    <div class="test-section">
+        <h2>Parse Test</h2>
+        <p>Testing the parse function with a simple SOQL query.</p>
+        <button id="testParse">Run Test</button>
+        <div id="parseResult" class="result"></div>
+    </div>
+    
+    <div class="test-section">
+        <h2>Extract Fields Test</h2>
+        <p>Testing the extractFieldsFromWhereClause function.</p>
+        <button id="testExtract">Run Test</button>
+        <div id="extractResult" class="result"></div>
+    </div>
+    
+    <div class="test-section">
+        <h2>Greet Function Test</h2>
+        <p>Testing the greet function from the module.</p>
+        <input type="text" id="nameInput" placeholder="Enter your name">
+        <button id="testGreet">Greet</button>
+        <div id="greetResult" class="result"></div>
+    </div>
+    
+    <script type="module">
+        // Import from the module
+        import { parse, debug, extractFieldsFromWhereClause, convertFieldNotation, utils } from './soql-module.js';
+        import { greet } from './test-module.js';
+        
+        // Make functions available to the global scope for the buttons
+        window.testModuleFunctions = {
+            parse,
+            debug,
+            extractFieldsFromWhereClause,
+            convertFieldNotation,
+            utils,
+            greet
+        };
+        
+        // Test import
+        document.getElementById('testImport').addEventListener('click', () => {
+            const resultDiv = document.getElementById('importResult');
+            
+            try {
+                resultDiv.innerHTML = 'Import successful!\n\n' +
+                    'Available functions:\n' +
+                    '- parse\n' +
+                    '- debug\n' +
+                    '- extractFieldsFromWhereClause\n' +
+                    '- convertFieldNotation\n' +
+                    '- utils\n' +
+                    '- greet';
+                resultDiv.className = 'result success';
+            } catch (error) {
+                resultDiv.innerHTML = 'Import failed: ' + error.message;
+                resultDiv.className = 'result error';
+            }
+        });
+        
+        // Test parse
+        document.getElementById('testParse').addEventListener('click', () => {
+            const resultDiv = document.getElementById('parseResult');
+            
+            try {
+                const query = "SELECT Id, Name FROM Account WHERE Name = 'Test' AND Rating = 'Hot'";
+                const result = parse(query);
+                
+                if (result && result.where) {
+                    resultDiv.innerHTML = 'Parse successful!\n\n' +
+                        'Query: ' + query + '\n\n' +
+                        'Result: ' + JSON.stringify(result, null, 2);
+                    resultDiv.className = 'result success';
+                } else {
+                    resultDiv.innerHTML = 'Parse failed: No WHERE clause found in result';
+                    resultDiv.className = 'result error';
+                }
+            } catch (error) {
+                resultDiv.innerHTML = 'Parse failed: ' + error.message;
+                resultDiv.className = 'result error';
+            }
+        });
+        
+        // Test extract fields
+        document.getElementById('testExtract').addEventListener('click', () => {
+            const resultDiv = document.getElementById('extractResult');
+            
+            try {
+                const query = "SELECT Id FROM Account WHERE Name = 'Test' AND Rating = 'Hot'";
+                const result = parse(query);
+                
+                if (result && result.where) {
+                    const fields = extractFieldsFromWhereClause(result.where);
+                    
+                    resultDiv.innerHTML = 'Field extraction successful!\n\n' +
+                        'Query: ' + query + '\n\n' +
+                        'Extracted fields: ' + JSON.stringify(fields, null, 2);
+                    resultDiv.className = 'result success';
+                } else {
+                    resultDiv.innerHTML = 'Field extraction failed: No WHERE clause found in result';
+                    resultDiv.className = 'result error';
+                }
+            } catch (error) {
+                resultDiv.innerHTML = 'Field extraction failed: ' + error.message;
+                resultDiv.className = 'result error';
+            }
+        });
+        
+        // Test greet
+        document.getElementById('testGreet').addEventListener('click', () => {
+            const resultDiv = document.getElementById('greetResult');
+            const nameInput = document.getElementById('nameInput');
+            
+            try {
+                const name = nameInput.value || 'Guest';
+                const result = greet(name);
+                
+                resultDiv.innerHTML = result;
+                resultDiv.className = 'result success';
+            } catch (error) {
+                resultDiv.innerHTML = 'Greet function failed: ' + error.message;
+                resultDiv.className = 'result error';
+            }
+        });
+    </script>
+</body>
+</html>

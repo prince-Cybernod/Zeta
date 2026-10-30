@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>ssot__rel_1697761193436_end__c</fullName>
+    <deleteConstraint>SetNull</deleteConstraint>
+    <deprecated>false</deprecated>
+    <label>ProductBrowseEngagement_Id_map_Engag_rel</label>
+    <referenceTo>ssot__ProductBrowseEngagement__dlm</referenceTo>
+    <relationshipLabel>ProductBrowseEngagement_Id_map_Engag_rel</relationshipLabel>
+    <relationshipName>rel_1697761193436_end</relationshipName>
+    <required>false</required>
+    <type>Lookup</type>
+</CustomField>

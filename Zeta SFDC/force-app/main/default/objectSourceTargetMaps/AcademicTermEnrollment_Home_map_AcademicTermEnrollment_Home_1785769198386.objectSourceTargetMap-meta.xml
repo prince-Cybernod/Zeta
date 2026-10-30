@@ -52,9 +52,8 @@
     <fieldSourceTargetMaps>
         <creationType>Custom</creationType>
         <filterApplied>false</filterApplied>
-        <isSourceFormula>false</isSourceFormula>
-        <sourceField>AcademicTermEnrollment_Home.Mogli_Number_from_Person_Acccount_c__c</sourceField>
-        <sourceFormula>Mogli_Number_from_Person_Acccount__c</sourceFormula>
+        <isSourceFormula>true</isSourceFormula>
+        <sourceField xsi:nil="true"/>
         <targetField>AcademicTermEnrollment_Home__dll.Mogli_Number_from_Person_Acccount_c__c</targetField>
     </fieldSourceTargetMaps>
     <fieldSourceTargetMaps>

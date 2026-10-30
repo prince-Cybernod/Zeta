@@ -11,6 +11,11 @@
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
+        <editable>false</editable>
+        <field>IndividualApplication.Created_for_Testing__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
         <editable>true</editable>
         <field>IndividualApplication.Legacy_SchoolMint_Lead_Source__c</field>
         <readable>true</readable>

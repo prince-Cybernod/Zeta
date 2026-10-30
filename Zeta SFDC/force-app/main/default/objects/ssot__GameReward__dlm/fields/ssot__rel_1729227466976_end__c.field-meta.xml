@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>ssot__rel_1729227466976_end__c</fullName>
+    <deleteConstraint>SetNull</deleteConstraint>
+    <deprecated>false</deprecated>
+    <label>GameReward_GameDefinitionId_map_Game_rel</label>
+    <referenceTo>ssot__GameDefinition__dlm</referenceTo>
+    <relationshipLabel>GameReward_GameDefinitionId_map_Game_rel</relationshipLabel>
+    <relationshipName>rel_1729227466976_end</relationshipName>
+    <required>false</required>
+    <type>Lookup</type>
+</CustomField>

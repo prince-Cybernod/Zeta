@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <label><!-- Type --></label>
+    <name>ZVC__Type__c</name>
+    <picklistValues>
+        <masterLabel>Hybrid (event)</masterLabel>
+        <translation><!-- Hybrid (event) --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>In-Person (event)</masterLabel>
+        <translation><!-- In-Person (event) --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Standalone</masterLabel>
+        <translation><!-- Standalone --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Virtual (event)</masterLabel>
+        <translation><!-- Virtual (event) --></translation>
+    </picklistValues>
+</CustomFieldTranslation>

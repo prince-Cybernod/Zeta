@@ -446,6 +446,11 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
+        <field>Contact.Created_for_Testing__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
         <field>Contact.DeceasedDate</field>
         <readable>true</readable>
     </fieldPermissions>
@@ -602,6 +607,11 @@
     <fieldPermissions>
         <editable>false</editable>
         <field>Contact.fxContactID18__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Contact.fxCurrent_Grade__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>

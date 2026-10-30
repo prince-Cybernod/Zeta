@@ -94,11 +94,11 @@
             <value>2027 - 2028</value>
         </criteriaItems>
         <criteriaItems>
-            <column>AcademicInterest$Status</column>
+            <column>AcademicInterest$IndividualApplication.Status</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
-            <operator>notEqual</operator>
-            <value>Draft</value>
+            <operator>equals</operator>
+            <value>Applied,Eligible</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>

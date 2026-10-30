@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <mktDataModelAttributes>
+        <creationType>Standard</creationType>
+        <dataModelTaxonomy>Salesforce_SFDCReferenceModel_0_93</dataModelTaxonomy>
+        <dataSpaceName>default</dataSpaceName>
+        <description>A component of a Sales Order that identifies a product or service that will be sold to the customer</description>
+        <isEnabled>false</isEnabled>
+        <isSegmentable>false</isSegmentable>
+        <isSqlDmo>false</isSqlDmo>
+        <isUsedForMetrics>false</isUsedForMetrics>
+        <masterLabel>Sales Order Product</masterLabel>
+        <objectCategory>Salesforce_SFDCReferenceModel_0_93.Unassigned</objectCategory>
+        <referenceEntityGroup>Sales Order</referenceEntityGroup>
+        <referenceEntityName>SalesOrderProduct</referenceEntityName>
+        <referenceEntitySubjectArea>Sales Order</referenceEntitySubjectArea>
+    </mktDataModelAttributes>
+</CustomObject>

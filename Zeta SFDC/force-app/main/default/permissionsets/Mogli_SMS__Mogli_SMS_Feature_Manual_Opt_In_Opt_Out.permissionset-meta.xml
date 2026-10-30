@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PermissionSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <classAccesses>
+        <apexClass>Mogli_SMS__EmojiSelectorController</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <description>Grants access to manual opt-in/opt-out on the Mogli Conversation View.</description>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>Mogli_SMS__LatestSMSInfo__c.Mogli_SMS__Opt_In_Date_Time__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>Mogli_SMS__LatestSMSInfo__c.Mogli_SMS__Opt_In_Method__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>Mogli_SMS__LatestSMSInfo__c.Mogli_SMS__Opt_In__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>Mogli_SMS__LatestSMSInfo__c.Mogli_SMS__Opt_Out_Date_Time__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>Mogli_SMS__LatestSMSInfo__c.Mogli_SMS__Opt_Out_Method__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>Mogli_SMS__LatestSMSInfo__c.Mogli_SMS__Opt_Out__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <hasActivationRequired>false</hasActivationRequired>
+    <label>Mogli SMS Feature: Manual Opt-In/Opt-Out</label>
+</PermissionSet>

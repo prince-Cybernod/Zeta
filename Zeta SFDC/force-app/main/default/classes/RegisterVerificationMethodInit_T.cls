@@ -41,6 +41,25 @@ private class RegisterVerificationMethodInit_T {
   }
 
   @IsTest
+  static void testInitRegisterVerificationMethod_Error() {
+    RegisterVerificationMethodInit.Request req = new RegisterVerificationMethodInit.Request();
+    req.method = 'EMAIL';
+
+    RegisterVerificationMethodInit.scenario = RegisterVerificationMethodInit.TestScenario.ERROR;
+
+    Test.startTest();
+    List<RegisterVerificationMethodInit.Response> responses =
+      RegisterVerificationMethodInit.initRegisterVerificationMethod(
+        new List<RegisterVerificationMethodInit.Request>{ req }
+      );
+    Test.stopTest();
+
+    System.assertEquals(1, responses.size(), 'Should return one response');
+    System.assertEquals(false, responses[0].success, 'Should not be successful');
+    System.assertNotEquals(null, responses[0].errorMessage, 'Error message should not be null');
+  }
+
+  @IsTest
   static void testInitRegisterVerificationMethod_Default() {
     RegisterVerificationMethodInit.Request req = new RegisterVerificationMethodInit.Request();
     req.method = 'EMAIL';
@@ -53,6 +72,8 @@ private class RegisterVerificationMethodInit_T {
     Test.stopTest();
 
     System.assertEquals(1, responses.size(), 'Should return one response');
+    System.assertEquals(false, responses[0].success, 'Should not be successful outside network');
+    System.assertNotEquals(null, responses[0].errorMessage, 'Error message should not be null');
   }
 
   @IsTest

@@ -82,5 +82,7 @@ private class RegisterVerificationMethodConfirm_T {
     Test.stopTest();
 
     System.assertEquals(1, responses.size(), 'Should return one response');
+    System.assertEquals(false, responses[0].success, 'Should not be successful outside network');
+    System.assertNotEquals(null, responses[0].errorMessage, 'Error message should not be null');
   }
 }

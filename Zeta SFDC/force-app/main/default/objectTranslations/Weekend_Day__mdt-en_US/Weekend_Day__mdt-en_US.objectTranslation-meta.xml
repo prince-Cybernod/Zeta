@@ -9,4 +9,8 @@
         <value>Weekend Days</value>
     </caseValues>
     <startsWith>Consonant</startsWith>
+    <validationRules>
+        <errorMessage><!-- A task can only be moved away from a weekend a maximum of 6 days. --></errorMessage>
+        <name>Days_moved_must_be_less_than_7</name>
+    </validationRules>
 </CustomObjectTranslation>

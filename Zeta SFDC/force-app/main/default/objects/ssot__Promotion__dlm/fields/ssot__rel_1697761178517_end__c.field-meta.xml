@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>ssot__rel_1697761178517_end__c</fullName>
+    <deleteConstraint>SetNull</deleteConstraint>
+    <deprecated>false</deprecated>
+    <label>Lead_Id_map_Promotion_LeadId_N_1_164_rel</label>
+    <referenceTo>ssot__Lead__dlm</referenceTo>
+    <relationshipLabel>Lead_Id_map_Promotion_LeadId_N_1_164_rel</relationshipLabel>
+    <relationshipName>rel_1697761178517_end</relationshipName>
+    <required>false</required>
+    <type>Lookup</type>
+</CustomField>

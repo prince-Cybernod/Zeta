@@ -22,20 +22,43 @@ public with sharing class IndividualApplicationTriggerHandler extends NoOpTrigge
     Schema.IndividualApplication.Secondary_Guardian__c
   };
 
+  /**
+   * The lookups that feed the Contact application rollups: the student and
+   * the primary guardian only (the secondary guardian is out of scope).
+   */
+  private static final List<SObjectField> PERSON_LOOKUPS = new List<SObjectField>{
+    Schema.IndividualApplication.AccountId,
+    Schema.IndividualApplication.Primary_Guardian__c
+  };
+
+  private static final List<SObjectField> CONTACT_ROLLUP_WATCHED_FIELDS = new List<SObjectField>{
+    Schema.IndividualApplication.AccountId,
+    Schema.IndividualApplication.Primary_Guardian__c,
+    Schema.IndividualApplication.Application_Timeline__c,
+    Schema.IndividualApplication.Lead_Source__c
+  };
+
   private final CurrentPriorityCalcService priorityGroupService;
   private final ApplicationCountRollupService applicationCountRollupService;
+  private final ContactApplicationRollupService contactApplicationRollupService;
 
   public IndividualApplicationTriggerHandler() {
-    this(new CurrentPriorityCalcServiceImpl(), new ApplicationCountRollupServiceImpl());
+    this(
+      new CurrentPriorityCalcServiceImpl(),
+      new ApplicationCountRollupServiceImpl(),
+      new ContactApplicationRollupServiceImpl()
+    );
   }
 
   @TestVisible
   private IndividualApplicationTriggerHandler(
     CurrentPriorityCalcService priorityGroupService,
-    ApplicationCountRollupService applicationCountRollupService
+    ApplicationCountRollupService applicationCountRollupService,
+    ContactApplicationRollupService contactApplicationRollupService
   ) {
     this.priorityGroupService = priorityGroupService;
     this.applicationCountRollupService = applicationCountRollupService;
+    this.contactApplicationRollupService = contactApplicationRollupService;
   }
 
   public override SObjectType getSObjectType() {
@@ -44,6 +67,7 @@ public with sharing class IndividualApplicationTriggerHandler extends NoOpTrigge
 
   public override void onAfterInsert(List<SObject> sobjects) {
     recalculateApplicationCounts(collectAccountIds(sobjects));
+    recalculateContactApplicationRollups(collectPersonIds(sobjects));
   }
 
   public override void onAfterUpdate(List<SObject> sobjects, Map<Id, SObject> oldSObjectsByIds) {
@@ -71,19 +95,30 @@ public with sharing class IndividualApplicationTriggerHandler extends NoOpTrigge
     recalculateApplicationCounts(
       collectAccountIdsForRollup((List<IndividualApplication>) sobjects, oldSObjectsByIds)
     );
+    recalculateContactApplicationRollups(
+      collectPersonIdsForContactRollup((List<IndividualApplication>) sobjects, oldSObjectsByIds)
+    );
   }
 
   public override void onAfterDelete(List<SObject> oldSObjects) {
     recalculateApplicationCounts(collectAccountIds(oldSObjects));
+    recalculateContactApplicationRollups(collectPersonIds(oldSObjects));
   }
 
   public override void onAfterUndelete(List<SObject> sobjects) {
     recalculateApplicationCounts(collectAccountIds(sobjects));
+    recalculateContactApplicationRollups(collectPersonIds(sobjects));
   }
 
   private void recalculateApplicationCounts(Set<Id> accountIds) {
     if (!accountIds.isEmpty()) {
       applicationCountRollupService.recalculate(accountIds);
+    }
+  }
+
+  private void recalculateContactApplicationRollups(Set<Id> personAccountIds) {
+    if (!personAccountIds.isEmpty()) {
+      contactApplicationRollupService.recalculate(personAccountIds);
     }
   }
 
@@ -101,6 +136,46 @@ public with sharing class IndividualApplicationTriggerHandler extends NoOpTrigge
       }
     }
     return accountIds;
+  }
+
+  private static Set<Id> collectPersonIds(List<SObject> records) {
+    Set<Id> personIds = new Set<Id>();
+    for (SObject record : records) {
+      if (record == null) {
+        continue;
+      }
+      for (SObjectField field : PERSON_LOOKUPS) {
+        Id personId = (Id) record.get(field);
+        if (personId != null) {
+          personIds.add(personId);
+        }
+      }
+    }
+    return personIds;
+  }
+
+  private static Set<Id> collectPersonIdsForContactRollup(
+    List<IndividualApplication> newRecords,
+    Map<Id, SObject> oldSObjectsByIds
+  ) {
+    Set<Id> personIds = new Set<Id>();
+    for (IndividualApplication individualApplication : newRecords) {
+      IndividualApplication oldApplication = (IndividualApplication) oldSObjectsByIds.get(
+        individualApplication.Id
+      );
+
+      SObjectFieldDiffResponse watchedDiff = SObjectFieldDiffer.getFieldDiff(
+        individualApplication,
+        oldApplication,
+        CONTACT_ROLLUP_WATCHED_FIELDS
+      );
+      if (watchedDiff.isDifferent()) {
+        personIds.addAll(
+          collectPersonIds(new List<SObject>{ individualApplication, oldApplication })
+        );
+      }
+    }
+    return personIds;
   }
 
   /**

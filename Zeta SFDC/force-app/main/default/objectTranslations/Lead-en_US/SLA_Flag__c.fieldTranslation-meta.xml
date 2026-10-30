@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <help>
+        <!-- Indicates that the constituent is due for their next outreach attempt. This field becomes true when the record is open and one of the following applies:
+No first outreach has been recorded within 24 hours of record creation.
+No second outreach has been recorded within 48 hours of the first outreach.
+No third outreach has been recorded within 7 days of the second outreach. -->
+    </help>
+    <label><!-- SLA Flag --></label>
+    <name>SLA_Flag__c</name>
+</CustomFieldTranslation>

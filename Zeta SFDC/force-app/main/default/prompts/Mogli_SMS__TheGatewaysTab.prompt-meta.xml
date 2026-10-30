@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Prompt xmlns="http://soap.sforce.com/2006/04/metadata">
+    <masterLabel>The Gateways Tab</masterLabel>
+    <promptVersions>
+        <body>&lt;p&gt;Mogli defines a Gateway as an outbound phone number.  Gateways are the phone numbers you&apos;ll be using to send/receive texts.  By selecting the All list view, you&apos;ll be able to see all of the Gateways we&apos;ve configured to date in your org.  &lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;By selecting a particular Gateway name, you&apos;ll have access to edit the name of your Gateway.  Depending on how your Gateways are parsed amongst your users, a Gateway Name may be the name of a person, department, or business vertical.  The Gateway Name is what will appear in the drop-down menus in Conversation View and in Bulk SMS.&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;&lt;b&gt;IMPORTANT&lt;/b&gt;:  Please refrain from modifying any Gateway-related fields other than Gateway Name.  Doing so will impact connectivity to our messaging partner.&lt;/p&gt;</body>
+        <customApplication>Mogli_SMS__Mogli_SMS_Lightning</customApplication>
+        <delayDays>3</delayDays>
+        <description>About how we define a Gateway, changing the Gateway Name, and fields to leave as-is.</description>
+        <displayType>DockedComposer</displayType>
+        <endDate>2020-12-31</endDate>
+        <header>The Gateways Tab</header>
+        <isPublished>true</isPublished>
+        <masterLabel>The Gateways Tab</masterLabel>
+        <publishedDate>2026-04-22</publishedDate>
+        <shouldDisplayActionButton>false</shouldDisplayActionButton>
+        <shouldIgnoreGlobalDelay>true</shouldIgnoreGlobalDelay>
+        <startDate>2020-02-11</startDate>
+        <targetPageKey1>Mogli_SMS__Gateway__c</targetPageKey1>
+        <targetPageKey2>list</targetPageKey2>
+        <targetPageType>standard__objectPage</targetPageType>
+        <timesToDisplay>2</timesToDisplay>
+        <title>Your Outbound Phone Numbers</title>
+        <userAccess>Everyone</userAccess>
+        <userProfileAccess>Everyone</userProfileAccess>
+        <versionNumber>1</versionNumber>
+    </promptVersions>
+</Prompt>

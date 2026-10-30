@@ -5,6 +5,7 @@ public without sharing class RegisterVerificationMethodInit {
   @TestVisible
   public enum TestScenario {
     SUCCESS,
+    ERROR,
     THROW_EXCEPTION
   }
 
@@ -74,10 +75,16 @@ public without sharing class RegisterVerificationMethodInit {
     List<Response> responses = new List<Response>();
 
     for (Request i : requests) {
+      String errorMessage;
+      String redirectUrl;
+
       try {
         switch on scenario {
           when SUCCESS {
-            responses.add(new Response(true, '/s/test-verify'));
+            redirectUrl = '/s/test-verify';
+          }
+          when ERROR {
+            errorMessage = 'Error initialising verification method';
           }
           when THROW_EXCEPTION {
             throw new NullPointerException();
@@ -85,10 +92,9 @@ public without sharing class RegisterVerificationMethodInit {
           when else {
             Auth.VerificationMethod verificationMethod = toVerificationMethod(i.method);
 
-            String redirectUrl = System.UserManagement.initRegisterVerificationMethod(
+            errorMessage = System.UserManagement.initRegisterVerificationMethod(
               verificationMethod
             );
-            responses.add(new Response(true, redirectUrl));
           }
         }
       } catch (Exception e) {
@@ -100,6 +106,20 @@ public without sharing class RegisterVerificationMethodInit {
         responses.add(
           new Response(e.getMessage() ?? 'Registration Exception. Please contact support.')
         );
+        continue;
+      }
+
+      if (String.isBlank(errorMessage)) {
+        responses.add(new Response(true, redirectUrl));
+      } else {
+        Logger.error(
+          'Error when initialising register verification method. Method: '
+              + i.method
+              + '. Error: '
+              + errorMessage
+        );
+        Logger.saveLog();
+        responses.add(new Response(errorMessage));
       }
     }
 

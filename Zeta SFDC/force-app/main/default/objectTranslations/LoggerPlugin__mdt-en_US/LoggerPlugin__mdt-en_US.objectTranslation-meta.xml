@@ -8,5 +8,32 @@
         <plural>true</plural>
         <value>Logger Plugins</value>
     </caseValues>
+    <layouts>
+        <layout>Logger Plugin Layout</layout>
+        <sections>
+            <label><!-- Batch Purger Configurations --></label>
+            <section>Batch Purger Configurations</section>
+        </sections>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+        <sections>
+            <label><!-- Description --></label>
+            <section>Description</section>
+        </sections>
+        <sections>
+            <label><!-- Release Details --></label>
+            <section>Release Details</section>
+        </sections>
+        <sections>
+            <label><!-- SObject Handler Configurations --></label>
+            <section>SObject Handler Configurations</section>
+        </sections>
+    </layouts>
     <startsWith>Consonant</startsWith>
+    <validationRules>
+        <errorMessage><!-- Plugins are not supported for this SObject Handler --></errorMessage>
+        <name>Plugins_are_not_supported</name>
+    </validationRules>
 </CustomObjectTranslation>

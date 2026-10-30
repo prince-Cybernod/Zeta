@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <encodingKey>UTF-8</encodingKey>
+    <name>Zoom Webinar Invitation</name>
+    <style>none</style>
+    <subject>Zoom Webinar Invitation</subject>
+    <textOnly>Hi {!Contact.Name},
+
+You are invited to a Zoom webinar.
+When: {!Webinar.Start_Time__c}
+Topic: {!Webinar.Topic__c}
+
+Register in advance for this webinar:
+{!Webinar.Register_url__c}
+
+After registering, you will receive a confirmation email containing information about joining the webinar.
+Thanks,
+{!Webinar.CreatedBy}</textOnly>
+    <type>custom</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

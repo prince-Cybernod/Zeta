@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>ZVC__Approval_Type__c</fullName>
+    <deprecated>false</deprecated>
+    <label>Approval Type</label>
+    <required>true</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Automatically Approval</fullName>
+                <default>false</default>
+                <label>Automatically Approval</label>
+            </value>
+            <value>
+                <fullName>Manually Approval</fullName>
+                <default>false</default>
+                <label>Manually Approval</label>
+            </value>
+            <value>
+                <fullName>No Registration Required</fullName>
+                <default>false</default>
+                <label>No Registration Required</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

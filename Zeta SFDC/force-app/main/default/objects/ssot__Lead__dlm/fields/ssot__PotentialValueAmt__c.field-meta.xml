@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>ssot__PotentialValueAmt__c</fullName>
+    <deprecated>false</deprecated>
+    <label>Potential Value</label>
+    <mktDataModelFieldAttributes>
+        <definitionCreationType>Standard</definitionCreationType>
+        <isDynamicLookup>false</isDynamicLookup>
+        <labelOverride>Potential Value</labelOverride>
+        <masterLabel>Potential Value</masterLabel>
+        <refAttrDeveloperName>PotentialValueAmt</refAttrDeveloperName>
+        <usageTag>None</usageTag>
+    </mktDataModelFieldAttributes>
+    <precision>18</precision>
+    <required>false</required>
+    <scale>4</scale>
+    <type>Currency</type>
+</CustomField>

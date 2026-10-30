@@ -8,5 +8,48 @@
         <plural>true</plural>
         <value>Logs</value>
     </caseValues>
+    <layouts>
+        <layout>Log Layout</layout>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+        <sections>
+            <label><!-- Experience Cloud Site Details --></label>
+            <section>Experience Cloud Site Details</section>
+        </sections>
+        <sections>
+            <label><!-- Log Management --></label>
+            <section>Log Management</section>
+        </sections>
+        <sections>
+            <label><!-- Organization Details --></label>
+            <section>Organization Details</section>
+        </sections>
+        <sections>
+            <label><!-- Session Details --></label>
+            <section>Session Details</section>
+        </sections>
+        <sections>
+            <label><!-- User Details --></label>
+            <section>User Details</section>
+        </sections>
+    </layouts>
+    <quickActions>
+        <label><!-- Manage --></label>
+        <name>Manage</name>
+    </quickActions>
+    <quickActions>
+        <label><!-- Open Viewer --></label>
+        <name>OpenViewer</name>
+    </quickActions>
+    <sharingReasons>
+        <label><!-- Log Created By User --></label>
+        <name>LoggedByUser</name>
+    </sharingReasons>
     <startsWith>Consonant</startsWith>
+    <webLinks>
+        <label><!-- MassDelete --></label>
+        <name>MassDelete</name>
+    </webLinks>
 </CustomObjectTranslation>

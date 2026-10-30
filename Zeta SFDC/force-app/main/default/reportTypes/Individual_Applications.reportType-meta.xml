@@ -696,6 +696,11 @@
             <field>Default_Gateway__c</field>
             <table>IndividualApplication</table>
         </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Date_Tour_Attended__c</field>
+            <table>IndividualApplication</table>
+        </columns>
         <masterLabel>Individual Applications</masterLabel>
     </sections>
 </ReportType>

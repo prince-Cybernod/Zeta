@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PermissionSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <classAccesses>
+        <apexClass>ZVC__JWT</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>ZVC__JsonResponse</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>ZVC__LaunchCoBrowseController</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <customMetadataTypeAccesses>
+        <enabled>true</enabled>
+        <name>ZVC__Co_Browse_Config__mdt</name>
+    </customMetadataTypeAccesses>
+    <customSettingAccesses>
+        <enabled>true</enabled>
+        <name>ZVC__Zoom_Admin_Configuration__c</name>
+    </customSettingAccesses>
+    <hasActivationRequired>false</hasActivationRequired>
+    <label>Zoom CoBrowse User</label>
+</PermissionSet>

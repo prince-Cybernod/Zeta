@@ -305,6 +305,68 @@ public with sharing class WaitlistRecalcQueueable implements Queueable {
         AcademicInterestTriggerHandler.disableBypass();
       }
     }
+
+    repointCurrentOffers(promotedApplicationIds);
+  }
+
+  /**
+   * Points each promoted application's Current_School_Offer__c at its
+   * best-ranked (lowest School_Rank__c) live offer once the optimizer and
+   * withdrawals have settled. An unranked offer only wins when no ranked one is
+   * left, and on equal rank Seat Offered beats a rescinded offer. The respond-by
+   * date is deliberately not written.
+   */
+  private void repointCurrentOffers(Set<Id> applicationIds) {
+    List<AcademicInterest> offers = (List<AcademicInterest>) databaseRepo.queryWithBinds(
+      'SELECT Id, Status, IndividualApplicationId, School_Rank__c, ' +
+        'IndividualApplication.Current_School_Offer__c ' +
+        'FROM AcademicInterest ' +
+        'WHERE IndividualApplicationId IN :applicationIds AND Status IN :statuses ' +
+        'ORDER BY School_Rank__c ASC NULLS LAST, CreatedDate ASC',
+      new Map<String, Object>{
+        'applicationIds' => applicationIds,
+        'statuses' => new Set<String>{
+          LotteryConstants.STATUS_SEAT_OFFERED,
+          LotteryConstants.STATUS_RESCINDED_OPTIMIZATION
+        }
+      }
+    );
+
+    Map<Id, AcademicInterest> bestByApplication = new Map<Id, AcademicInterest>();
+    for (AcademicInterest offer : offers) {
+      AcademicInterest best = bestByApplication.get(offer.IndividualApplicationId);
+      if (outranks(offer, bestByApplication.get(offer.IndividualApplicationId))) {
+        bestByApplication.put(offer.IndividualApplicationId, offer);
+      }
+    }
+
+    List<IndividualApplication> applicationsToUpdate = new List<IndividualApplication>();
+    for (AcademicInterest best : bestByApplication.values()) {
+      if (best.IndividualApplication.Current_School_Offer__c != best.Id) {
+        applicationsToUpdate.add(
+          new IndividualApplication(
+            Id = best.IndividualApplicationId,
+            Current_School_Offer__c = best.Id
+          )
+        );
+      }
+    }
+    if (!applicationsToUpdate.isEmpty()) {
+      databaseRepo.updateSObjects(applicationsToUpdate);
+    }
+  }
+
+  private static Boolean outranks(AcademicInterest candidate, AcademicInterest best) {
+    if (best == null) {
+      return true;
+    }
+    if (candidate.School_Rank__c == best.School_Rank__c) {
+      return candidate.Status == LotteryConstants.STATUS_SEAT_OFFERED &&
+        best.Status != LotteryConstants.STATUS_SEAT_OFFERED;
+    }
+    return candidate.School_Rank__c != null &&
+      (best.School_Rank__c == null ||
+      candidate.School_Rank__c < best.School_Rank__c);
   }
 
   /**

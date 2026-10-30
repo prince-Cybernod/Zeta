@@ -432,8 +432,18 @@
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
+        <editable>false</editable>
+        <field>AcademicTermEnrollment.Created_for_Testing__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
         <editable>true</editable>
         <field>AcademicTermEnrollment.DBN_of_New_School__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>AcademicTermEnrollment.DEPRECATED_Race_Answers__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -954,11 +964,6 @@
     <fieldPermissions>
         <editable>true</editable>
         <field>AcademicTermEnrollment.Proof_of_NYS_Residency_3__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
-        <field>AcademicTermEnrollment.Race_Answers__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>

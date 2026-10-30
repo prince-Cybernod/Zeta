@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>ZVC__Avoid_CampaignMember_Trigger__c</fullName>
+    <defaultValue>false</defaultValue>
+    <deprecated>false</deprecated>
+    <description>This field is deprecated, please use the other field
+        “Avoid_CampaignMember_Trigger_Active__c” to enable/disable the campaign member trigger.</description>
+    <fieldManageability>DeveloperControlled</fieldManageability>
+    <label>Avoid CampaignMember Trigger(Deprecated)</label>
+    <type>Checkbox</type>
+</CustomField>

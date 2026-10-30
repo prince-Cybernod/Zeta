@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>ZVC__Conversation_Title__c</fullName>
+    <deprecated>false</deprecated>
+    <description>Format: [Type][Direction]&lt;Subject&gt; - &lt;StartTime&gt;. It should show up as the main field for the object</description>
+    <label>Conversation Title</label>
+    <required>true</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>TextArea</type>
+</CustomField>

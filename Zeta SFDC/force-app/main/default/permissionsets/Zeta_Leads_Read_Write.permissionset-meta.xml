@@ -277,6 +277,11 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
+        <field>Lead.Created_for_Testing__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
         <field>Lead.Description</field>
         <readable>true</readable>
     </fieldPermissions>
@@ -481,7 +486,7 @@
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>true</editable>
+        <editable>false</editable>
         <field>Lead.PartnerAccountId</field>
         <readable>true</readable>
     </fieldPermissions>

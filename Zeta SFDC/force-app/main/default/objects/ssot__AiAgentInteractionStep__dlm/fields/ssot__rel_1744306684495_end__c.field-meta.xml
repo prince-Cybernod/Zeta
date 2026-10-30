@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>ssot__rel_1744306684495_end__c</fullName>
+    <deleteConstraint>SetNull</deleteConstraint>
+    <deprecated>false</deprecated>
+    <label>AiAgentInteractionStep_TelemetryTrac_rel</label>
+    <referenceTo>ssot__TelemetryTraceSpan__dlm</referenceTo>
+    <relationshipLabel>AiAgentInteractionStep_TelemetryTrac_rel</relationshipLabel>
+    <relationshipName>rel_1744306684495_end</relationshipName>
+    <required>false</required>
+    <type>Lookup</type>
+</CustomField>

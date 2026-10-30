@@ -540,7 +540,7 @@
         <locationY>0</locationY>
         <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
         <connector>
-            <targetReference>Pause_7</targetReference>
+            <targetReference>X1_Month</targetReference>
         </connector>
         <filterLogic>and</filterLogic>
         <filters>
@@ -558,7 +558,7 @@
         <locationX>0</locationX>
         <locationY>0</locationY>
         <connector>
-            <targetReference>Get_Contact</targetReference>
+            <targetReference>Pause_7</targetReference>
         </connector>
         <dataGraph>Unified_Individual_Full_Graph</dataGraph>
         <entryType>AfterCompletion</entryType>
@@ -574,7 +574,7 @@
         <segment>1sgcv0000001DuTAAU</segment>
         <triggerType>Segment</triggerType>
     </start>
-    <status>Draft</status>
+    <status>Active</status>
     <timeZoneSidKey>America/New_York</timeZoneSidKey>
     <variables>
         <name>varLanguagePreference</name>
@@ -596,7 +596,7 @@
         <waitEvents>
             <conditionLogic>and</conditionLogic>
             <connector>
-                <targetReference>X1_Month</targetReference>
+                <targetReference>Get_Contact</targetReference>
             </connector>
             <label>el_0</label>
             <offset>7</offset>

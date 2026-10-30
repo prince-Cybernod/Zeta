@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>ssot__rel_1720283025040_end__c</fullName>
+    <deleteConstraint>SetNull</deleteConstraint>
+    <deprecated>false</deprecated>
+    <label>AssetServiceAction_ExpectedLifespanU_rel</label>
+    <referenceTo>ssot__UnitOfMeasure__dlm</referenceTo>
+    <relationshipLabel>AssetServiceAction_ExpectedLifespanU_rel</relationshipLabel>
+    <relationshipName>rel_1720283025040_end</relationshipName>
+    <required>false</required>
+    <type>Lookup</type>
+</CustomField>

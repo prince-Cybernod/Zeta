@@ -8,5 +8,16 @@
         <plural>true</plural>
         <value>Log Entry Data Mask Rules</value>
     </caseValues>
+    <layouts>
+        <layout>Log Entry Data Mask Rule Layout</layout>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+        <sections>
+            <label><!-- Rule Details --></label>
+            <section>Rule Details</section>
+        </sections>
+    </layouts>
     <startsWith>Consonant</startsWith>
 </CustomObjectTranslation>

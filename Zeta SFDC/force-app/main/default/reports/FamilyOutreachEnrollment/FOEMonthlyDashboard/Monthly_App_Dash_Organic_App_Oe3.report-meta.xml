@@ -91,6 +91,13 @@
             <operator>equals</operator>
             <value></value>
         </criteriaItems>
+        <criteriaItems>
+            <column>AcademicInterest$IndividualApplication.Status</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>Applied,Eligible</value>
+        </criteriaItems>
         <language>en_US</language>
     </filter>
     <format>Summary</format>

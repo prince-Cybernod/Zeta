@@ -1,8 +1,9 @@
 import { LightningElement, api, wire } from 'lwc';
 import { getObjectInfo, getPicklistValues } from 'lightning/uiObjectInfoApi';
-import REASON_FIELD from '@salesforce/schema/IndividualApplication.Withdrawn_Declined_Reason_Picklist__c';
 import getDashboardData from '@salesforce/apex/ApplicationDashboardController.getDashboardData';
 import withdrawApplication from '@salesforce/apex/ApplicationDashboardController.withdrawApplication';
+import labelRespondToOffer from '@salesforce/label/c.AppUI_RespondToOffer';
+import REASON_FIELD from '@salesforce/schema/IndividualApplication.Withdrawn_Declined_Reason_Picklist__c';
 
 // Master record type id — Salesforce's sentinel for "the object has no record
 // types", used as the getPicklistValues fallback when getObjectInfo reports no
@@ -20,6 +21,10 @@ const NULL_RECORD_TYPE_ID = '012000000000000AAA';
 // band so it never jumps above the ranked tiers, and withdrawn sinks to the
 // bottom.
 const STATUS_RANK = {
+  offer: -3,
+  rescinded: -2,
+  waitlisted: -1,
+  accepted: -0.5,
   draft: 0,
   applied: 1,
   eligible: 2
@@ -56,6 +61,32 @@ function parentBadgeStatusKey(statusKey) {
   return PARENT_BADGE_STATUS_KEYS[statusKey] || statusKey;
 }
 
+// Pill 0 is always the one status pill a card shows. A second Seat Accepted
+// pill is appended only when a current offer and an already-accepted seat
+// coexist on the same application; every other statusKey renders exactly
+// one pill.
+function pillsFor(app, statusKey, statusLabel) {
+  const pills = [
+    {
+      key: 'primary',
+      nameKey: 'primary-name',
+      cssClass: `badge-tag badge-tag--${parentBadgeStatusKey(statusKey)}`,
+      label: parentStatusLabel(statusLabel),
+      schoolName: statusKey === 'accepted' ? app.acceptedSchoolName : null
+    }
+  ];
+  if (statusKey === 'offer' && app.hasAcceptedSeat) {
+    pills.push({
+      key: 'accepted',
+      nameKey: 'accepted-name',
+      cssClass: 'badge-tag badge-tag--accepted',
+      label: 'Seat Accepted',
+      schoolName: app.acceptedSchoolName
+    });
+  }
+  return pills;
+}
+
 export default class ApplicationDashboard extends LightningElement {
   @api variant;
   @api pageDevName = 'Application_Details';
@@ -85,6 +116,9 @@ export default class ApplicationDashboard extends LightningElement {
   showTimelinePicker = false;
   _pickerTimelineId = null;
   showWizard = false;
+  showDecision = false;
+  _scrollToDecision = false;
+  _decisionApplicationId;
   _wizardApplicationId;
   _wizardTimelineId;
   _wizardTimelineName = '';
@@ -137,6 +171,19 @@ export default class ApplicationDashboard extends LightningElement {
     await this.loadDashboard();
   }
 
+  renderedCallback() {
+    if (!this._scrollToDecision) return;
+    this._scrollToDecision = false;
+    // Anchor on the host: the site header is sticky, so scrollIntoView on an
+    // inner element is a no-op once the page is scrolled.
+    requestAnimationFrame(() => {
+      this.template.host.scrollIntoView({
+        behavior: 'instant',
+        block: 'start'
+      });
+    });
+  }
+
   // Fetch + shape the dashboard data. Extracted so the refresh paths (returning
   // from the wizard, after a withdraw) can re-run it without invoking the
   // lifecycle hook by hand.
@@ -151,16 +198,23 @@ export default class ApplicationDashboard extends LightningElement {
       this.applications = (data.applications || []).map((app) => {
         const statusKey = this._statusKey(app);
         const isWithdrawn = statusKey === 'withdrawn';
+        const isOffer = statusKey === 'offer';
         const timelineName = app.timelineName || '';
         return {
           ...app,
           statusKey,
-          statusTagClass: `badge-tag badge-tag--${parentBadgeStatusKey(statusKey)}`,
-          statusLabel: parentStatusLabel(this._statusLabel(app)),
+          pills: pillsFor(app, statusKey, this._statusLabel(app)),
           isDraft: !app.isSubmitted,
-          actionLabel: app.isSubmitted || isWithdrawn ? 'View' : 'Resume',
-          actionClass:
-            app.isSubmitted || isWithdrawn ? 'btn btn--view' : 'btn btn--edit',
+          actionLabel: isOffer
+            ? labelRespondToOffer
+            : app.isSubmitted || isWithdrawn
+              ? 'View'
+              : 'Resume',
+          actionClass: isOffer
+            ? 'btn btn--offer'
+            : app.isSubmitted || isWithdrawn
+              ? 'btn btn--view'
+              : 'btn btn--edit',
           rowClass: isWithdrawn ? 'app-row app-row--withdrawn' : 'app-row',
           gradeDisplay: app.grade || 'Not selected',
           timelineId: app.timelineId || null,
@@ -407,8 +461,17 @@ export default class ApplicationDashboard extends LightningElement {
   // Eligible is checked before the generic isSubmitted -> 'applied' fallback:
   // an Eligible application has an AppliedDate (so isSubmitted is true), and we
   // want it to surface its own status/badge rather than collapse into 'applied'.
+  //
+  // IndividualApplication.Status never moves when a school choice gets an
+  // offer, is accepted, rescinded, or waitlisted, so the server-computed
+  // app.schoolDecisionStatus (the winning AcademicInterest row by priority)
+  // is checked first; it is null/undefined for every application without one.
   _statusKey(app) {
     if (app.status === 'Withdrawn/Declined') return 'withdrawn';
+    if (app.schoolDecisionStatus === 'Seat Offered') return 'offer';
+    if (app.schoolDecisionStatus === 'Seat Accepted') return 'accepted';
+    if (app.schoolDecisionStatus === 'Rescinded') return 'rescinded';
+    if (app.schoolDecisionStatus === 'Waitlisted') return 'waitlisted';
     if (app.status === 'Eligible') return 'eligible';
     if (app.isSubmitted) return 'applied';
     return 'draft';
@@ -416,9 +479,24 @@ export default class ApplicationDashboard extends LightningElement {
 
   _statusLabel(app) {
     if (app.status === 'Withdrawn/Declined') return 'Withdrawn';
+    if (app.schoolDecisionStatus === 'Seat Offered') return 'Seat Offered';
+    if (app.schoolDecisionStatus === 'Seat Accepted') return 'Seat Accepted';
+    if (app.schoolDecisionStatus === 'Rescinded') return 'Rescinded';
+    if (app.schoolDecisionStatus === 'Waitlisted') return 'Waitlisted';
     if (app.status === 'Eligible') return 'Eligible';
     if (app.isSubmitted) return 'Applied';
     return 'In Progress';
+  }
+
+  // Statuses whose "View"/"Respond to Offer" action opens the new decision
+  // screen instead of the application wizard.
+  _isDecisionStatus(statusKey) {
+    return (
+      statusKey === 'offer' ||
+      statusKey === 'accepted' ||
+      statusKey === 'waitlisted' ||
+      statusKey === 'rescinded'
+    );
   }
 
   _isWithdrawable(app) {
@@ -511,7 +589,15 @@ export default class ApplicationDashboard extends LightningElement {
   }
 
   handleOpenApplication(event) {
-    this._wizardApplicationId = event.currentTarget.dataset.id;
+    const appId = event.currentTarget.dataset.id;
+    const app = this.applications.find((a) => a.id === appId);
+    if (app && this._isDecisionStatus(app.statusKey)) {
+      this._decisionApplicationId = appId;
+      this.showDecision = true;
+      this._scrollToDecision = true;
+      return;
+    }
+    this._wizardApplicationId = appId;
     this._wizardForceNew = false;
     this._wizardTimelineId = undefined;
     this._wizardTimelineName = this.timelineName;
@@ -520,6 +606,8 @@ export default class ApplicationDashboard extends LightningElement {
 
   handleBackToDashboard() {
     this.showWizard = false;
+    this.showDecision = false;
+    this._decisionApplicationId = undefined;
     this._wizardForceNew = false;
     this.loadDashboard();
   }

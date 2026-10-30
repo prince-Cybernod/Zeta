@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Zoom_Phone_Number__c</fullName>
+    <description>Phone Number assigned in Zoom Phone to this particular User</description>
+    <externalId>false</externalId>
+    <inlineHelpText>Phone Number assigned in Zoom Phone to this particular User</inlineHelpText>
+    <label>Zoom Phone Number</label>
+    <length>13</length>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

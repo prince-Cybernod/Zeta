@@ -11,9 +11,9 @@
     <columns>LEAD.CREATED_DATE</columns>
     <filterScope>Everything</filterScope>
     <filters>
-        <field>LEAD.CONVERTED</field>
+        <field>Is_Open_Status__c</field>
         <operation>equals</operation>
-        <value>1</value>
+        <value>0</value>
     </filters>
     <label>All Closed Leads</label>
 </ListView>

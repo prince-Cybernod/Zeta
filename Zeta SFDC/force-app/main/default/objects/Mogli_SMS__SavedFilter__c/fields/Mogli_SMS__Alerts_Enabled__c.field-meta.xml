@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Mogli_SMS__Alerts_Enabled__c</fullName>
+    <defaultValue>false</defaultValue>
+    <deprecated>false</deprecated>
+    <description>When true, the Hub plays a chime and shows a toast notification for inbound messages matching this saved filter.</description>
+    <inlineHelpText>Enable an audible chime and in-app toast for messages matching this saved filter.</inlineHelpText>
+    <label>Alerts Enabled</label>
+    <trackTrending>false</trackTrending>
+    <type>Checkbox</type>
+</CustomField>
