@@ -48,9 +48,6 @@
         <label>Is Duplicate Found?</label>
         <locationX>0</locationX>
         <locationY>0</locationY>
-        <defaultConnector>
-            <targetReference>Create_Lead</targetReference>
-        </defaultConnector>
         <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
         <rules>
             <name>Yes_Duplicate_Found</name>
@@ -98,7 +95,7 @@
             <label>Yes, Task Found + WhoId is Contact</label>
         </rules>
     </decisions>
-    <description>Automatically creates a Lead when an inbound support email can&apos;t be matched to an existing contact or account. Checks for an already-open Lead from the same email address first to avoid duplicates, then creates the Lead and links it back to this Case. Runs for Zoom Voicemail. null checks added for Phone #s in the &apos;Get Existing Lead&apos; node</description>
+    <description>When an inbound support email can&apos;t be matched to an existing contact or account, links this Case to an already-open Lead with the same email address or phone. If no open Lead is found, no Lead is created (emails from staff and automated senders were creating &apos;Unknown&apos; Leads). Runs for Zoom Voicemail. null checks added for Phone #s in the &apos;Get Existing Lead&apos; node</description>
     <environments>Default</environments>
     <formulas>
         <description>SuppliedPhone value with the first digit (which will be country code) removed</description>
@@ -109,12 +106,6 @@
     RIGHT({!$Record.SuppliedPhone}, LEN({!$Record.SuppliedPhone}) - 1),
     {!$Record.SuppliedPhone}
 )</expression>
-    </formulas>
-    <formulas>
-        <description>If Case Origin = &apos;Zoom Voicemail&apos;, Source = &apos;Enroll Phone Number Call or Voicemail&apos; ELSE &apos;Email – Direct&apos;</description>
-        <name>fx_LeadSource</name>
-        <dataType>String</dataType>
-        <expression>IF(ISPICKVAL({!$Record.Origin}, &apos;Zoom Voicemail&apos;), &apos;Enroll Phone Number Call or Voicemail&apos;, &apos;Email – Direct&apos;)</expression>
     </formulas>
     <formulas>
         <name>fx_WhoID_IsContact</name>
@@ -142,53 +133,6 @@
         </value>
     </processMetadataValues>
     <processType>AutoLaunchedFlow</processType>
-    <recordCreates>
-        <name>Create_Lead</name>
-        <label>Create Lead</label>
-        <locationX>0</locationX>
-        <locationY>0</locationY>
-        <connector>
-            <targetReference>Update_Case_Lead_New_Lead</targetReference>
-        </connector>
-        <inputAssignments>
-            <field>Email</field>
-            <value>
-                <elementReference>$Record.SuppliedEmail</elementReference>
-            </value>
-        </inputAssignments>
-        <inputAssignments>
-            <field>Guardian_Last_Name__c</field>
-            <value>
-                <elementReference>$Record.SuppliedName</elementReference>
-            </value>
-        </inputAssignments>
-        <inputAssignments>
-            <field>LastName</field>
-            <value>
-                <stringValue>Unknown</stringValue>
-            </value>
-        </inputAssignments>
-        <inputAssignments>
-            <field>Lead_Source__c</field>
-            <value>
-                <elementReference>fx_LeadSource</elementReference>
-            </value>
-        </inputAssignments>
-        <inputAssignments>
-            <field>MobilePhone</field>
-            <value>
-                <elementReference>fx_CasePhone_CC_removed</elementReference>
-            </value>
-        </inputAssignments>
-        <inputAssignments>
-            <field>Phone</field>
-            <value>
-                <elementReference>fx_CasePhone_CC_removed</elementReference>
-            </value>
-        </inputAssignments>
-        <object>Lead</object>
-        <storeOutputAutomatically>true</storeOutputAutomatically>
-    </recordCreates>
     <recordLookups>
         <name>Get_Existing_Open_Lead</name>
         <label>Get Existing Open Lead</label>
@@ -313,19 +257,6 @@
         </inputAssignments>
         <inputReference>$Record</inputReference>
     </recordUpdates>
-    <recordUpdates>
-        <name>Update_Case_Lead_New_Lead</name>
-        <label>Update Case Lead - New Lead</label>
-        <locationX>0</locationX>
-        <locationY>0</locationY>
-        <inputAssignments>
-            <field>Related_Lead__c</field>
-            <value>
-                <elementReference>Create_Lead.Id</elementReference>
-            </value>
-        </inputAssignments>
-        <inputReference>$Record</inputReference>
-    </recordUpdates>
     <start>
         <locationX>0</locationX>
         <locationY>0</locationY>
@@ -373,7 +304,7 @@
         </scheduledPaths>
         <triggerType>RecordAfterSave</triggerType>
     </start>
-    <status>Obsolete</status>
+    <status>Active</status>
     <variables>
         <name>ContactId</name>
         <dataType>String</dataType>
