@@ -13,7 +13,7 @@
             <operator>Assign</operator>
         </assignmentItems>
         <connector>
-            <targetReference>Is_New_Form_Assembly_Case_Without_Parent</targetReference>
+            <targetReference>Is_New_Form_Assembly_Case</targetReference>
         </connector>
     </assignments>
     <assignments>
@@ -58,6 +58,23 @@
         </connector>
     </assignments>
     <assignments>
+        <description>FormAssembly creates the case as its integration user, so without this it stays with that user and round robin never sees it.</description>
+        <name>Put_Case_In_Outreach_Queue</name>
+        <label>Put Case In Outreach Queue</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <assignmentItems>
+            <assignToReference>$Record.OwnerId</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>Get_Outreach_Queue.Id</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Is_New_Form_Assembly_Case_Without_Parent</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
         <description>Sets the Case School lookup to the matched Account Id.</description>
         <name>Set_School_Lookup_Match_Found</name>
         <label>Set School Lookup (Match Found)</label>
@@ -71,7 +88,7 @@
             </value>
         </assignmentItems>
         <connector>
-            <targetReference>Is_New_Form_Assembly_Case_Without_Parent</targetReference>
+            <targetReference>Is_New_Form_Assembly_Case</targetReference>
         </connector>
     </assignments>
     <decisions>
@@ -104,7 +121,7 @@
         <locationX>0</locationX>
         <locationY>0</locationY>
         <defaultConnector>
-            <targetReference>Is_New_Form_Assembly_Case_Without_Parent</targetReference>
+            <targetReference>Is_New_Form_Assembly_Case</targetReference>
         </defaultConnector>
         <defaultConnectorLabel>No Match</defaultConnectorLabel>
         <rules>
@@ -121,6 +138,39 @@
                 <targetReference>Set_School_Lookup_Match_Found</targetReference>
             </connector>
             <label>Yes - Match Found</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <description>New Contact Us cases from FormAssembly go to the Outreach and Enrollment queue so round robin assigns them.</description>
+        <name>Is_New_Form_Assembly_Case</name>
+        <label>Is New Form Assembly Case?</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <defaultConnector>
+            <targetReference>Is_New_Form_Assembly_Case_Without_Parent</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>No</defaultConnectorLabel>
+        <rules>
+            <name>Yes_New_Form_Assembly_Case</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record__Prior.Id</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Origin</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Form Assembly</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Get_Outreach_Queue</targetReference>
+            </connector>
+            <label>Yes</label>
         </rules>
     </decisions>
     <decisions>
@@ -190,9 +240,36 @@
             <label>Blank</label>
         </rules>
     </decisions>
+    <decisions>
+        <name>Outreach_Queue_Found</name>
+        <label>Outreach Queue Found?</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <defaultConnector>
+            <targetReference>Is_New_Form_Assembly_Case_Without_Parent</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>No</defaultConnectorLabel>
+        <rules>
+            <name>Yes_Queue_Found</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Get_Outreach_Queue</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Put_Case_In_Outreach_Queue</targetReference>
+            </connector>
+            <label>Yes</label>
+        </rules>
+    </decisions>
     <description>On Case create/update, map school_inquiry__c (picklist) to School (lookup) by matching Account.Name to picklist text. Clears lookup if blank or no match.
 
 Oct 2026: also links new Contact Us cases from FormAssembly (Origin = Form Assembly) to the parent: matches the case email to exactly one active parent portal login and fills Contact and Account. Kept in this flow so Case has a single before-save flow.
+
+Nov 2026 (SFR-179): new Form Assembly cases are put in the Outreach and Enrollment queue, so Case Round Robin Outreach Enrollment assigns them.
 
 Flow Designer: Elevation Solutions</description>
     <environments>Default</environments>
@@ -249,6 +326,34 @@ Flow Designer: Elevation Solutions</description>
         </filters>
         <getFirstRecordOnly>true</getFirstRecordOnly>
         <object>Account</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordLookups>
+        <name>Get_Outreach_Queue</name>
+        <label>Get Outreach Queue</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Outreach_Queue_Found</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>DeveloperName</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Outreach_and_Enrollment_Queue</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>Type</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Queue</stringValue>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>Group</object>
         <storeOutputAutomatically>true</storeOutputAutomatically>
     </recordLookups>
     <recordLookups>
