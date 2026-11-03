@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Package xmlns="http://soap.sforce.com/2006/04/metadata">
+  <types>
+    <members>LeadTriggerHandler</members>
+    <members>LeadTriggerHandlerTest</members>
+    <name>ApexClass</name>
+  </types>
+  <types>
+    <members>Lead.Next_Follow_Up_Due__c</members>
+    <name>CustomField</name>
+  </types>
+  <types>
+    <members>Lead_Record_Page</members>
+    <name>FlexiPage</name>
+  </types>
+  <types>
+    <members>Lead-Lead Layout</members>
+    <name>Layout</name>
+  </types>
+  <types>
+    <members>Lead.All_Open_Leads</members>
+    <members>Lead.Copy_of_All_Open_Leads</members>
+    <members>Lead.Copy_of_My_Open_Leads</members>
+    <members>Lead.Outreach_and_Enrollment_Queue_Lead</members>
+    <name>ListView</name>
+  </types>
+  <types>
+    <members>Zeta_Campaigns_Read_Only</members>
+    <members>Zeta_Campaigns_Read_Write</members>
+    <members>Zeta_Leads_Read_Only</members>
+    <members>Zeta_Leads_Read_Write</members>
+    <name>PermissionSet</name>
+  </types>
+  <types>
+    <members>FamilyOutreachEnrollment/TeamAuditsAccountability/Open_leads_SLA_Violation_by_Owner_EYN</members>
+    <name>Report</name>
+  </types>
+  <types>
+    <members>BusinessHours</members>
+    <name>Settings</name>
+  </types>
+  <version>67.0</version>
+</Package>
