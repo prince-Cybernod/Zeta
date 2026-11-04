@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Last_Tour_Attended__c</fullName>
+    <description>Event Date of the latest School Tours campaign this person was marked "Attended, RSVPed" or "Attended, no RSVP" on. Set by the flow Campaign Member | Set Last Tour Attended and read by Individual Application "Date Attended Tour".</description>
+    <inlineHelpText>Date of the latest school tour this person attended. Filled in automatically from tour campaign attendance.</inlineHelpText>
+    <label>Last Tour Attended</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>Date</type>
+</CustomField>

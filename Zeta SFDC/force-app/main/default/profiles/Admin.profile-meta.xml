@@ -2968,6 +2968,11 @@
     </customSettingAccesses>
     <fieldPermissions>
         <editable>true</editable>
+        <field>Account.Last_Tour_Attended__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
         <field>APTask__c.ActivityDate__c</field>
         <readable>true</readable>
     </fieldPermissions>
@@ -13482,7 +13487,7 @@
         <readable>false</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>true</editable>
+        <editable>false</editable>
         <field>IndividualApplication.Date_Tour_Attended__c</field>
         <readable>true</readable>
     </fieldPermissions>
@@ -14719,6 +14724,11 @@
     <fieldPermissions>
         <editable>true</editable>
         <field>Lead.Jigsaw</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>Lead.Last_Tour_Attended__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>

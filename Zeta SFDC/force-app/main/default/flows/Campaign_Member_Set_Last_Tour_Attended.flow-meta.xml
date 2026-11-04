@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>67.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <decisions>
+        <name>Contact_or_Lead</name>
+        <label>Contact or Lead?</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <defaultConnector>
+            <targetReference>Update_Lead</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Lead</defaultConnectorLabel>
+        <rules>
+            <name>Contact</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.ContactId</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Update_Account</targetReference>
+            </connector>
+            <label>Contact</label>
+        </rules>
+    </decisions>
+    <description>When someone on a School Tours campaign is marked "Attended, RSVPed" or "Attended, no RSVP", saves the campaign Event Date as Last Tour Attended on their account, or on the lead if they are still a lead, unless a later tour is already saved. Lead field mapping carries the lead date to the student on conversion. Individual Application "Date Attended Tour" shows it.</description>
+    <environments>Default</environments>
+    <interviewLabel>Campaign Member | Set Last Tour Attended {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Campaign Member | Set Last Tour Attended</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordUpdates>
+        <name>Update_Account</name>
+        <label>Update Account</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <filterLogic>1 AND (2 OR 3)</filterLogic>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>$Record.Contact.AccountId</elementReference>
+            </value>
+        </filters>
+        <filters>
+            <field>Last_Tour_Attended__c</field>
+            <operator>IsNull</operator>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </filters>
+        <filters>
+            <field>Last_Tour_Attended__c</field>
+            <operator>LessThan</operator>
+            <value>
+                <elementReference>$Record.Campaign.Event_Date__c</elementReference>
+            </value>
+        </filters>
+        <inputAssignments>
+            <field>Last_Tour_Attended__c</field>
+            <value>
+                <elementReference>$Record.Campaign.Event_Date__c</elementReference>
+            </value>
+        </inputAssignments>
+        <object>Account</object>
+    </recordUpdates>
+    <recordUpdates>
+        <name>Update_Lead</name>
+        <label>Update Lead</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <filterLogic>1 AND 2 AND (3 OR 4)</filterLogic>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>$Record.LeadId</elementReference>
+            </value>
+        </filters>
+        <filters>
+            <field>IsConverted</field>
+            <operator>EqualTo</operator>
+            <value>
+                <booleanValue>false</booleanValue>
+            </value>
+        </filters>
+        <filters>
+            <field>Last_Tour_Attended__c</field>
+            <operator>IsNull</operator>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </filters>
+        <filters>
+            <field>Last_Tour_Attended__c</field>
+            <operator>LessThan</operator>
+            <value>
+                <elementReference>$Record.Campaign.Event_Date__c</elementReference>
+            </value>
+        </filters>
+        <inputAssignments>
+            <field>Last_Tour_Attended__c</field>
+            <value>
+                <elementReference>$Record.Campaign.Event_Date__c</elementReference>
+            </value>
+        </inputAssignments>
+        <object>Lead</object>
+    </recordUpdates>
+    <start>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>Contact_or_Lead</targetReference>
+        </connector>
+        <doesRequireRecordChangedToMeetCriteria>true</doesRequireRecordChangedToMeetCriteria>
+        <filterFormula>AND(
+    OR(ISPICKVAL({!$Record.Status}, &apos;Attended, RSVPed&apos;), ISPICKVAL({!$Record.Status}, &apos;Attended, no RSVP&apos;)),
+    ISPICKVAL({!$Record.Campaign.Type}, &apos;School Tours&apos;),
+    NOT(ISBLANK({!$Record.Campaign.Event_Date__c}))
+)</filterFormula>
+        <object>CampaignMember</object>
+        <recordTriggerType>CreateAndUpdate</recordTriggerType>
+        <triggerType>RecordAfterSave</triggerType>
+    </start>
+    <status>Active</status>
+</Flow>
