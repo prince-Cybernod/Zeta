@@ -159,6 +159,7 @@ public without sharing class ActionPlanController_TSB {
           PersonMailingCountry = 'USA',
           PersonBirthdate = Date.today().addYears(-10)
         );
+        insertGuardianStudentRoles();
         insert studentAccount;
 
         Contact studentContact = [SELECT Id FROM Contact WHERE AccountId = :studentAccount.Id];
@@ -220,6 +221,19 @@ public without sharing class ActionPlanController_TSB {
         inst = build();
       }
       return inst;
+    }
+
+    // The "Account (After Save) Auto-Create Guardian/Student CCR" flow finds these roles by Name; tests can't see the org's copies.
+    private void insertGuardianStudentRoles() {
+      if ([SELECT COUNT() FROM PartyRoleRelation WHERE Name = 'Guardian-Student-CCR'] > 0) {
+        return;
+      }
+      PartyRoleRelation guardianStudent = new PartyRoleRelation(Name = 'Guardian-Student-CCR', RoleName = 'Guardian', RelatedRoleName = 'Student', RelationshipObjectName = 'Contact_Contact_Relationship');
+      PartyRoleRelation studentGuardian = new PartyRoleRelation(Name = 'Student-Guardian-CCR', RoleName = 'Student', RelatedRoleName = 'Guardian', RelationshipObjectName = 'Contact_Contact_Relationship');
+      insert new List<PartyRoleRelation>{ guardianStudent, studentGuardian };
+      guardianStudent.RelatedInverseRecordId = studentGuardian.Id;
+      studentGuardian.RelatedInverseRecordId = guardianStudent.Id;
+      update new List<PartyRoleRelation>{ guardianStudent, studentGuardian };
     }
   }
 

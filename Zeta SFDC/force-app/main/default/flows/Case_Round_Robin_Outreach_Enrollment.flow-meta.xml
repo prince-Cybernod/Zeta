@@ -564,6 +564,7 @@
         </connector>
         <filterFormula>AND(
   BEGINS({!$Record.OwnerId}, &quot;00G&quot;),
+  NOT({!$Record.IsClosed}),
   LOWER(BLANKVALUE({!$Record.SuppliedEmail}, &quot;&quot;)) &lt;&gt; &quot;enroll@zetaschools.org&quot;
 )</filterFormula>
         <object>Case</object>

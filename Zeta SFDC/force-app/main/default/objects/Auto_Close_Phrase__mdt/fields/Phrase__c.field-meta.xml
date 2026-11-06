@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Phrase__c</fullName>
+    <description>Text the email subject must start or end with (see Match). Upper or lower case doesn&apos;t matter.</description>
+    <externalId>false</externalId>
+    <fieldManageability>DeveloperControlled</fieldManageability>
+    <inlineHelpText>The text the email subject must start or end with (see Match), for example &quot;Refund Confirmation:&quot;. Upper or lower case doesn&apos;t matter.</inlineHelpText>
+    <label>Phrase</label>
+    <length>255</length>
+    <required>true</required>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>
