@@ -51,9 +51,16 @@
         <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
         <rules>
             <name>Yes_Duplicate_Found</name>
-            <conditionLogic>and</conditionLogic>
+            <conditionLogic>or</conditionLogic>
             <conditions>
                 <leftValueReference>Get_Existing_Open_Lead</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>Get_Existing_Closed_Lead</leftValueReference>
                 <operator>IsNull</operator>
                 <rightValue>
                     <booleanValue>false</booleanValue>
@@ -95,7 +102,7 @@
             <label>Yes, Task Found + WhoId is Contact</label>
         </rules>
     </decisions>
-    <description>When an inbound support email can&apos;t be matched to an existing contact or account, links this Case to an already-open Lead with the same email address or phone. If no open Lead is found, no Lead is created (emails from staff and automated senders were creating &apos;Unknown&apos; Leads). Runs for Zoom Voicemail. null checks added for Phone #s in the &apos;Get Existing Lead&apos; node</description>
+    <description>When an inbound support email can&apos;t be matched to an existing contact or account, links this Case to an open Lead with the same email address or phone; if there is none, to the newest closed Lead with the same email address (SFR-179). If no Lead is found, no Lead is created (emails from staff and automated senders were creating &apos;Unknown&apos; Leads). Runs for Zoom Voicemail. null checks added for Phone #s in the &apos;Get Existing Lead&apos; node</description>
     <environments>Default</environments>
     <formulas>
         <description>SuppliedPhone value with the first digit (which will be country code) removed</description>
@@ -106,6 +113,12 @@
     RIGHT({!$Record.SuppliedPhone}, LEN({!$Record.SuppliedPhone}) - 1),
     {!$Record.SuppliedPhone}
 )</expression>
+    </formulas>
+    <formulas>
+        <description>The open Lead if one was found, else the closed one</description>
+        <name>fx_LeadId</name>
+        <dataType>String</dataType>
+        <expression>BLANKVALUE({!Get_Existing_Open_Lead.Id}, {!Get_Existing_Closed_Lead.Id})</expression>
     </formulas>
     <formulas>
         <name>fx_WhoID_IsContact</name>
@@ -134,13 +147,50 @@
     </processMetadataValues>
     <processType>AutoLaunchedFlow</processType>
     <recordLookups>
+        <name>Get_Existing_Closed_Lead</name>
+        <label>Get Existing Closed Lead</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Is_Duplicate_Found</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Email</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>$Record.SuppliedEmail</elementReference>
+            </value>
+        </filters>
+        <filters>
+            <field>Is_Open_Status__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <booleanValue>false</booleanValue>
+            </value>
+        </filters>
+        <filters>
+            <field>Email</field>
+            <operator>IsNull</operator>
+            <value>
+                <booleanValue>false</booleanValue>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>Lead</object>
+        <sortField>CreatedDate</sortField>
+        <sortOrder>Desc</sortOrder>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordLookups>
         <name>Get_Existing_Open_Lead</name>
         <label>Get Existing Open Lead</label>
         <locationX>0</locationX>
         <locationY>0</locationY>
         <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
         <connector>
-            <targetReference>Is_Duplicate_Found</targetReference>
+            <targetReference>Get_Existing_Closed_Lead</targetReference>
         </connector>
         <filterLogic>((1 AND 5) OR (3 AND 6) OR (4 AND 7)) AND 2</filterLogic>
         <filters>
@@ -252,7 +302,7 @@
         <inputAssignments>
             <field>Related_Lead__c</field>
             <value>
-                <elementReference>Get_Existing_Open_Lead.Id</elementReference>
+                <elementReference>fx_LeadId</elementReference>
             </value>
         </inputAssignments>
         <inputReference>$Record</inputReference>
