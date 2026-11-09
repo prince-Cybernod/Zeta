@@ -144,8 +144,8 @@ public with sharing class LeadTriggerHandler extends NoOpTriggerHandler {
   }
 
   /**
-   * New Lead: next working day, same time. Attempt 1: 2 days (at least the next working day).
-   * Attempt 2: 7 days. A day off moves to the next opening. Blank when closed or after Attempt 3.
+   * Due at the end of a working day. New Lead: the next working day. Attempt 1: 2 days later.
+   * Attempt 2: 7 days later. A day off moves to the next working day. Blank when closed or after Attempt 3.
    */
   private static void setNextFollowUpDue(Lead lead, Datetime createdAt) {
     Boolean isClosed = lead.Status != null && !lead.Status.containsIgnoreCase('open');
@@ -154,44 +154,31 @@ public with sharing class LeadTriggerHandler extends NoOpTriggerHandler {
       return;
     }
 
-    if (lead.Outreach_Attempt_1__c == null && lead.Outreach_Attempt_2__c == null) {
-      lead.Next_Follow_Up_Due__c = nextWorkingDay(createdAt);
-      return;
+    Datetime dueDay;
+    if (lead.Outreach_Attempt_2__c != null) {
+      dueDay = lead.Outreach_Attempt_2__c.addDays(7);
+    } else if (lead.Outreach_Attempt_1__c != null) {
+      dueDay = lead.Outreach_Attempt_1__c.addDays(2);
+    } else {
+      dueDay = createdAt.addDays(1);
     }
-
-    Boolean afterAttempt2 = lead.Outreach_Attempt_2__c != null;
-    Datetime attempt = afterAttempt2 ? lead.Outreach_Attempt_2__c : lead.Outreach_Attempt_1__c;
-    Datetime due = attempt.addDays(afterAttempt2 ? 7 : 2);
-    if (!isWorkingDay(due)) {
-      due = BusinessHours.nextStartDate(enrollmentHours.Id, due);
-    }
-    if (!afterAttempt2) {
-      Datetime nextDay = nextWorkingDay(attempt);
-      if (nextDay != null && nextDay > due) {
-        due = nextDay;
-      }
-    }
-    lead.Next_Follow_Up_Due__c = due;
+    lead.Next_Follow_Up_Due__c = endOfWorkingDay(dueDay);
   }
 
-  private static Datetime nextWorkingDay(Datetime start) {
-    Datetime day = start;
-    for (Integer i = 0; i < 366; i++) {
-      day = day.addDays(1);
-      if (isWorkingDay(day)) {
-        return day;
-      }
-    }
-    return null;
+  // Closing time of the first working day on or after the given day
+  private static Datetime endOfWorkingDay(Datetime day) {
+    Datetime opens = BusinessHours.nextStartDate(enrollmentHours.Id, startOfDay(day));
+    Datetime nextOpens = BusinessHours.nextStartDate(enrollmentHours.Id, startOfDay(opens.addDays(1)));
+    Long openMillis = BusinessHours.diff(enrollmentHours.Id, opens, nextOpens);
+    return opens.addSeconds((Integer) (openMillis / 1000));
   }
 
-  private static Boolean isWorkingDay(Datetime moment) {
+  private static Datetime startOfDay(Datetime moment) {
     String tz = enrollmentHours.TimeZoneSidKey;
     Integer secondsIntoDay =
       Integer.valueOf(moment.format('H', tz)) * 3600 +
       Integer.valueOf(moment.format('m', tz)) * 60 +
       Integer.valueOf(moment.format('s', tz));
-    Datetime opens = BusinessHours.nextStartDate(enrollmentHours.Id, moment.addSeconds(-secondsIntoDay));
-    return opens != null && opens.format('yyyy-MM-dd', tz) == moment.format('yyyy-MM-dd', tz);
+    return moment.addSeconds(-secondsIntoDay);
   }
 }

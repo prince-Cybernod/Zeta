@@ -266,27 +266,40 @@ private class LeadTriggerHandlerTest {
       Outreach_Attempt_1__c = ATTEMPT_1,
       Outreach_Attempt_2__c = ATTEMPT_2
     );
+    Lead saturdayAttempt1 = new Lead(Outreach_Attempt_1__c = SATURDAY);
 
     Lead keptCreatedDate = (Lead) JSON.deserialize(
       '{"CreatedDate":"2027-07-17T00:00:00.000+0000"}',
       Lead.class
     );
 
-    HANDLER.onBeforeInsert(new List<SObject>{ newLead, importedLead, keptCreatedDate });
+    HANDLER.onBeforeInsert(
+      new List<SObject>{ newLead, importedLead, saturdayAttempt1, keptCreatedDate }
+    );
 
     Assert.isTrue(
       newLead.Next_Follow_Up_Due__c > System.now(),
       'A new Lead should be due after now'
     );
     Assert.areEqual(
-      Datetime.newInstanceGmt(2027, 7, 20, 0, 0, 0),
-      keptCreatedDate.Next_Follow_Up_Due__c,
-      'Created Friday 8 pm should be due the next working day at the same time, Monday 8 pm'
+      '17:00',
+      newLead.Next_Follow_Up_Due__c.format('HH:mm', 'America/New_York'),
+      'Every due date should be at 5 pm'
     );
     Assert.areEqual(
-      Datetime.newInstanceGmt(2027, 7, 23, 15, 0, 0),
+      Datetime.newInstanceGmt(2027, 7, 19, 21, 0, 0),
+      keptCreatedDate.Next_Follow_Up_Due__c,
+      'Created Friday 8 pm should be due the next working day at 5 pm, Monday 5 pm'
+    );
+    Assert.areEqual(
+      Datetime.newInstanceGmt(2027, 7, 23, 21, 0, 0),
       importedLead.Next_Follow_Up_Due__c,
-      'Attempt 2 on Friday 11 am + 7 calendar days should be the next Friday 11 am'
+      'Attempt 2 on Friday 11 am + 7 calendar days should be due the next Friday at 5 pm'
+    );
+    Assert.areEqual(
+      Datetime.newInstanceGmt(2027, 7, 19, 21, 0, 0),
+      saturdayAttempt1.Next_Follow_Up_Due__c,
+      'Attempt 1 on Saturday lands on Monday, so it should be due Monday at 5 pm, a full working day'
     );
   }
 
@@ -341,14 +354,14 @@ private class LeadTriggerHandlerTest {
     );
 
     Assert.areEqual(
-      Datetime.newInstanceGmt(2027, 7, 19, 15, 0, 0),
+      Datetime.newInstanceGmt(2027, 7, 19, 21, 0, 0),
       addedAttempt1.Next_Follow_Up_Due__c,
-      'Attempt 1 on Friday 11 am lands on Sunday, so it should keep a full working day: Monday 11 am'
+      'Attempt 1 on Friday 11 am lands on Sunday, so it should move to Monday at 5 pm'
     );
     Assert.areEqual(
-      Datetime.newInstanceGmt(2027, 7, 26, 13, 0, 0),
+      Datetime.newInstanceGmt(2027, 7, 26, 21, 0, 0),
       saturdayAttempt2.Next_Follow_Up_Due__c,
-      'Attempt 2 on Saturday lands on a Saturday, so it should move to Monday 9 am'
+      'Attempt 2 on Saturday lands on a Saturday, so it should move to Monday at 5 pm'
     );
     Assert.isNull(
       addedAttempt3.Next_Follow_Up_Due__c,
