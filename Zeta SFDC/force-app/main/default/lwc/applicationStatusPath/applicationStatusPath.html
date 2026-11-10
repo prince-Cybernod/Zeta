@@ -1,0 +1,16 @@
+<template>
+  <!-- Status row: every status, with the current one lit up in its color -->
+  <div lwc:if={status} class="path-card">
+    <ul class="path" aria-label="Application Status">
+      <template for:each={statuses} for:item="status">
+        <li
+          key={status.value}
+          class={status.className}
+          aria-current={status.ariaCurrent}
+        >
+          {status.value}
+        </li>
+      </template>
+    </ul>
+  </div>
+</template>

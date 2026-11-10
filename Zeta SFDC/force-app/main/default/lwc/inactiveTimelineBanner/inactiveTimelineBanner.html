@@ -1,0 +1,14 @@
+<template>
+  <!-- Inactive timeline banner: only when the application's timeline is inactive -->
+  <div lwc:if={isInactive} class="banner" role="alert">
+    <lightning-icon
+      icon-name="utility:warning"
+      alternative-text="Warning"
+      size="x-small"
+      variant="inverse"
+    ></lightning-icon>
+    <p class="banner-text">
+      Inactive Application Timeline: <strong>{timelineName}</strong>
+    </p>
+  </div>
+</template>
