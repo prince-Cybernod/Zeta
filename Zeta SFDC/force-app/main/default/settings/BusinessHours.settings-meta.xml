@@ -2,6 +2,22 @@
 <BusinessHoursSettings xmlns="http://soap.sforce.com/2006/04/metadata">
     <businessHours>
         <active>true</active>
+        <default>false</default>
+        <fridayEndTime>17:00:00.000Z</fridayEndTime>
+        <fridayStartTime>09:00:00.000Z</fridayStartTime>
+        <mondayEndTime>17:00:00.000Z</mondayEndTime>
+        <mondayStartTime>09:00:00.000Z</mondayStartTime>
+        <name>Enrollment Hours</name>
+        <thursdayEndTime>17:00:00.000Z</thursdayEndTime>
+        <thursdayStartTime>09:00:00.000Z</thursdayStartTime>
+        <timeZoneId>America/New_York</timeZoneId>
+        <tuesdayEndTime>17:00:00.000Z</tuesdayEndTime>
+        <tuesdayStartTime>09:00:00.000Z</tuesdayStartTime>
+        <wednesdayEndTime>17:00:00.000Z</wednesdayEndTime>
+        <wednesdayStartTime>09:00:00.000Z</wednesdayStartTime>
+    </businessHours>
+    <businessHours>
+        <active>true</active>
         <default>true</default>
         <fridayEndTime>00:00:00.000Z</fridayEndTime>
         <fridayStartTime>00:00:00.000Z</fridayStartTime>
@@ -20,4 +36,179 @@
         <wednesdayEndTime>00:00:00.000Z</wednesdayEndTime>
         <wednesdayStartTime>00:00:00.000Z</wednesdayStartTime>
     </businessHours>
+    <holidays>
+        <activityDate>2026-12-25</activityDate>
+        <businessHours>Enrollment Hours</businessHours>
+        <description>Zeta network office closure day</description>
+        <isRecurring>false</isRecurring>
+        <name>Christmas Day 2026-12-25</name>
+    </holidays>
+    <holidays>
+        <activityDate>2026-12-24</activityDate>
+        <businessHours>Enrollment Hours</businessHours>
+        <description>Zeta network office closure day</description>
+        <isRecurring>false</isRecurring>
+        <name>Christmas Eve 2026-12-24</name>
+    </holidays>
+    <holidays>
+        <activityDate>2027-12-24</activityDate>
+        <businessHours>Enrollment Hours</businessHours>
+        <description>Zeta network office closure day</description>
+        <isRecurring>false</isRecurring>
+        <name>Christmas Eve 2027-12-24</name>
+    </holidays>
+    <holidays>
+        <activityDate>2026-11-27</activityDate>
+        <businessHours>Enrollment Hours</businessHours>
+        <description>Zeta network office closure day</description>
+        <isRecurring>false</isRecurring>
+        <name>Day After Thanksgiving 2026-11-27</name>
+    </holidays>
+    <holidays>
+        <activityDate>2027-11-26</activityDate>
+        <businessHours>Enrollment Hours</businessHours>
+        <description>Zeta network office closure day</description>
+        <isRecurring>false</isRecurring>
+        <name>Day After Thanksgiving 2027-11-26</name>
+    </holidays>
+    <holidays>
+        <activityDate>2026-07-03</activityDate>
+        <businessHours>Enrollment Hours</businessHours>
+        <description>Zeta network office closure day</description>
+        <isRecurring>false</isRecurring>
+        <name>Independence Day (observed) 2026-07-03</name>
+    </holidays>
+    <holidays>
+        <activityDate>2027-07-05</activityDate>
+        <businessHours>Enrollment Hours</businessHours>
+        <description>Zeta network office closure day</description>
+        <isRecurring>false</isRecurring>
+        <name>Independence Day (observed) 2027-07-05</name>
+    </holidays>
+    <holidays>
+        <activityDate>2026-10-12</activityDate>
+        <businessHours>Enrollment Hours</businessHours>
+        <description>Zeta network office closure day</description>
+        <isRecurring>false</isRecurring>
+        <name>Indigenous Peoples&apos; Day 2026-10-12</name>
+    </holidays>
+    <holidays>
+        <activityDate>2027-10-11</activityDate>
+        <businessHours>Enrollment Hours</businessHours>
+        <description>Zeta network office closure day</description>
+        <isRecurring>false</isRecurring>
+        <name>Indigenous Peoples&apos; Day 2027-10-11</name>
+    </holidays>
+    <holidays>
+        <activityDate>2027-06-18</activityDate>
+        <businessHours>Enrollment Hours</businessHours>
+        <description>Zeta network office closure day</description>
+        <isRecurring>false</isRecurring>
+        <name>Juneteenth (observed) 2027-06-18</name>
+    </holidays>
+    <holidays>
+        <activityDate>2026-06-19</activityDate>
+        <businessHours>Enrollment Hours</businessHours>
+        <description>Zeta network office closure day</description>
+        <isRecurring>false</isRecurring>
+        <name>Juneteenth 2026-06-19</name>
+    </holidays>
+    <holidays>
+        <activityDate>2026-09-07</activityDate>
+        <businessHours>Enrollment Hours</businessHours>
+        <description>Zeta network office closure day</description>
+        <isRecurring>false</isRecurring>
+        <name>Labor Day 2026-09-07</name>
+    </holidays>
+    <holidays>
+        <activityDate>2027-09-06</activityDate>
+        <businessHours>Enrollment Hours</businessHours>
+        <description>Zeta network office closure day</description>
+        <isRecurring>false</isRecurring>
+        <name>Labor Day 2027-09-06</name>
+    </holidays>
+    <holidays>
+        <activityDate>2026-01-19</activityDate>
+        <businessHours>Enrollment Hours</businessHours>
+        <description>Zeta network office closure day</description>
+        <isRecurring>false</isRecurring>
+        <name>Martin Luther King Jr. Day 2026-01-19</name>
+    </holidays>
+    <holidays>
+        <activityDate>2027-01-18</activityDate>
+        <businessHours>Enrollment Hours</businessHours>
+        <description>Zeta network office closure day</description>
+        <isRecurring>false</isRecurring>
+        <name>Martin Luther King Jr. Day 2027-01-18</name>
+    </holidays>
+    <holidays>
+        <activityDate>2026-05-25</activityDate>
+        <businessHours>Enrollment Hours</businessHours>
+        <description>Zeta network office closure day</description>
+        <isRecurring>false</isRecurring>
+        <name>Memorial Day 2026-05-25</name>
+    </holidays>
+    <holidays>
+        <activityDate>2027-05-31</activityDate>
+        <businessHours>Enrollment Hours</businessHours>
+        <description>Zeta network office closure day</description>
+        <isRecurring>false</isRecurring>
+        <name>Memorial Day 2027-05-31</name>
+    </holidays>
+    <holidays>
+        <activityDate>2026-01-01</activityDate>
+        <businessHours>Enrollment Hours</businessHours>
+        <description>Zeta network office closure day</description>
+        <isRecurring>false</isRecurring>
+        <name>New Year&apos;s Day 2026-01-01</name>
+    </holidays>
+    <holidays>
+        <activityDate>2027-01-01</activityDate>
+        <businessHours>Enrollment Hours</businessHours>
+        <description>Zeta network office closure day</description>
+        <isRecurring>false</isRecurring>
+        <name>New Year&apos;s Day 2027-01-01</name>
+    </holidays>
+    <holidays>
+        <activityDate>2026-12-31</activityDate>
+        <businessHours>Enrollment Hours</businessHours>
+        <description>Zeta network office closure day</description>
+        <isRecurring>false</isRecurring>
+        <name>New Year&apos;s Eve 2026-12-31</name>
+    </holidays>
+    <holidays>
+        <activityDate>2027-12-31</activityDate>
+        <businessHours>Enrollment Hours</businessHours>
+        <description>Zeta network office closure day</description>
+        <isRecurring>false</isRecurring>
+        <name>New Year&apos;s Eve 2027-12-31</name>
+    </holidays>
+    <holidays>
+        <activityDate>2026-02-16</activityDate>
+        <businessHours>Enrollment Hours</businessHours>
+        <description>Zeta network office closure day</description>
+        <isRecurring>false</isRecurring>
+        <name>Presidents&apos; Day 2026-02-16</name>
+    </holidays>
+    <holidays>
+        <activityDate>2027-02-15</activityDate>
+        <businessHours>Enrollment Hours</businessHours>
+        <description>Zeta network office closure day</description>
+        <isRecurring>false</isRecurring>
+        <name>Presidents&apos; Day 2027-02-15</name>
+    </holidays>
+    <holidays>
+        <activityDate>2026-11-26</activityDate>
+        <businessHours>Enrollment Hours</businessHours>
+        <description>Zeta network office closure day</description>
+        <isRecurring>false</isRecurring>
+        <name>Thanksgiving 2026-11-26</name>
+    </holidays>
+    <holidays>
+        <activityDate>2027-11-25</activityDate>
+        <businessHours>Enrollment Hours</businessHours>
+        <description>Zeta network office closure day</description>
+        <isRecurring>false</isRecurring>
+        <name>Thanksgiving 2027-11-25</name>
+    </holidays>
 </BusinessHoursSettings>
