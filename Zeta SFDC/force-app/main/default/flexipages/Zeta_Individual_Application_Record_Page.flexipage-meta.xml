@@ -3,23 +3,8 @@
     <flexiPageRegions>
         <itemInstances>
             <componentInstance>
-                <componentInstanceProperties>
-                    <name>decorate</name>
-                    <value>true</value>
-                </componentInstanceProperties>
-                <componentInstanceProperties>
-                    <name>richTextValue</name>
-                    <value>&lt;p style=&quot;text-align: center;&quot;&gt;🚨&lt;strong style=&quot;color: rgb(255, 0, 0);&quot;&gt; THIS IS AN APPLICATION FROM A PRIOR CYCLE (NOT SY7-28) &lt;/strong&gt;&lt;span style=&quot;color: rgb(68, 68, 68);&quot;&gt;🚨&lt;/span&gt;&lt;/p&gt;</value>
-                </componentInstanceProperties>
-                <componentName>flexipage:richText</componentName>
-                <identifier>flexipage_richText2</identifier>
-                <visibilityRule>
-                    <criteria>
-                        <leftValue>{!Record.Timeline_is_Active__c}</leftValue>
-                        <operator>EQUAL</operator>
-                        <rightValue>false</rightValue>
-                    </criteria>
-                </visibilityRule>
+                <componentName>inactiveTimelineBanner</componentName>
+                <identifier>c_inactiveTimelineBanner</identifier>
             </componentInstance>
         </itemInstances>
         <itemInstances>
@@ -72,16 +57,8 @@
         </itemInstances>
         <itemInstances>
             <componentInstance>
-                <componentInstanceProperties>
-                    <name>hideUpdateButton</name>
-                    <value>false</value>
-                </componentInstanceProperties>
-                <componentInstanceProperties>
-                    <name>variant</name>
-                    <value>linear</value>
-                </componentInstanceProperties>
-                <componentName>runtime_sales_pathassistant:pathAssistant</componentName>
-                <identifier>runtime_sales_pathassistant_pathAssistant</identifier>
+                <componentName>applicationStatusPath</componentName>
+                <identifier>c_applicationStatusPath</identifier>
             </componentInstance>
         </itemInstances>
         <name>header</name>

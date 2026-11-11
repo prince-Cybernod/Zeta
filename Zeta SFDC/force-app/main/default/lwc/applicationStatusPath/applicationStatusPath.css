@@ -1,0 +1,95 @@
+/* Matches the page: a white card like the others (rounded, no shadow) with flat status pills. */
+:host {
+  display: block;
+}
+
+.path-card {
+  margin-bottom: 0.75rem;
+  padding: 0.75rem 1rem;
+  border-radius: 1.25rem;
+  background: #ffffff;
+}
+
+/* An even grid: every status box is the same width, and when there are more statuses than
+   fit on one line (School Application has 11), the extra ones wrap into tidy columns instead
+   of stretching. 9.75rem fits the longest status that can't wrap (Withdrawn/Declined) in bold. */
+.path {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 9.75rem), 1fr));
+  gap: 0.5rem;
+}
+
+/* The other statuses step back: flat grey fill, no border (so they don't look like the
+   page's buttons), regular weight. A hint of tracking keeps small text legible. */
+.step {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 2rem;
+  padding: 0.25rem 0.5rem;
+  border-radius: 999px;
+  background: #f3f3f3;
+  color: #5c5a57;
+  font-size: 0.8125rem;
+  font-weight: 500;
+  letter-spacing: 0.01em;
+  line-height: 1.25;
+  text-align: center;
+  /* A short color fade when the status changes, so the change is noticed. */
+  transition:
+    background-color 180ms ease-out,
+    color 180ms ease-out;
+}
+
+/* The current status: the one thing that stands out - solid color, bold. */
+.step.current {
+  color: #ffffff;
+  font-weight: 700;
+}
+
+.step.current.yellow {
+  background: #fcc419;
+  color: #3b2f00;
+}
+
+.step.current.blue {
+  background: #0176d3;
+}
+
+.step.current.green {
+  background: #2e844a;
+}
+
+.step.current.red {
+  background: #ba0517;
+}
+
+@media (prefers-contrast: more) {
+  .path-card {
+    outline: 1px solid #706e6b;
+  }
+
+  .step {
+    background: #ffffff;
+    color: #181818;
+    outline: 1px solid #5c5a57;
+  }
+
+  .step.current {
+    outline: 2px solid #000000;
+  }
+}
+
+/* Windows high-contrast mode: system colors, current status in the highlight color. */
+@media (forced-colors: active) {
+  .step {
+    border: 1px solid CanvasText;
+  }
+
+  .step.current {
+    forced-color-adjust: none;
+    background: Highlight;
+    color: HighlightText;
+    border-color: Highlight;
+  }
+}

@@ -1,0 +1,34 @@
+/* Matches the page: flat solid red with the same rounded corners as the page's cards. */
+:host {
+  display: block;
+}
+
+.banner {
+  --slds-c-icon-color-foreground-default: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  margin-bottom: 0.75rem;
+  padding: 0.625rem 1rem;
+  border-radius: 1.25rem;
+  background: #ba0517;
+  color: #ffffff;
+}
+
+.banner-text {
+  font-size: 0.875rem;
+  font-weight: 600;
+  line-height: 1.4;
+}
+
+.banner-text strong {
+  font-weight: 700;
+}
+
+@media (prefers-contrast: more) {
+  .banner {
+    background: #8e030f;
+    outline: 2px solid #000000;
+  }
+}
