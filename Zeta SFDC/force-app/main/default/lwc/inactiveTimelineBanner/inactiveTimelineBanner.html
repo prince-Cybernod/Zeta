@@ -8,7 +8,9 @@
       variant="inverse"
     ></lightning-icon>
     <p class="banner-text">
-      Inactive Application Timeline: <strong>{timelineName}</strong>
+      Inactive Application Timeline<template lwc:if={timelineName}
+        >: <strong>{timelineName}</strong></template
+      >
     </p>
   </div>
 </template>

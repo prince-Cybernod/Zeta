@@ -2,25 +2,30 @@ import { createElement } from 'lwc';
 import InactiveTimelineBanner from 'c/inactiveTimelineBanner';
 import { getRecord } from 'lightning/uiRecordApi';
 
-function timeline(name, active) {
+function timeline(name) {
   if (name === undefined) {
     return null;
   }
-  return {
-    apiName: 'ApplicationTimeline',
-    fields: { Name: { value: name }, Active__c: { value: active } }
-  };
+  return { apiName: 'ApplicationTimeline', fields: { Name: { value: name } } };
 }
 
-const individualApplication = (name, active) => ({
+// canSeeTimeline = false leaves the timeline out, as Salesforce does for someone who can't see it.
+const individualApplication = (name, active, canSeeTimeline = true) => ({
   apiName: 'IndividualApplication',
-  fields: { Application_Timeline__r: { value: timeline(name, active) } }
+  fields: {
+    Timeline_is_Active__c: { value: active },
+    ...(canSeeTimeline
+      ? { Application_Timeline__r: { value: timeline(name) } }
+      : {})
+  }
 });
 
-const schoolApplication = (name, active) => ({
+const schoolApplication = (name, active, canSeeTimeline) => ({
   apiName: 'AcademicInterest',
   fields: {
-    IndividualApplication: { value: individualApplication(name, active) }
+    IndividualApplication: {
+      value: individualApplication(name, active, canSeeTimeline)
+    }
   }
 });
 
@@ -73,9 +78,25 @@ describe('c-inactive-timeline-banner', () => {
     expect(banner(element)).toBeNull();
   });
 
-  it('hides the banner when the application has no timeline', async () => {
+  it.each([
+    ['IndividualApplication', individualApplication],
+    ['AcademicInterest', schoolApplication]
+  ])(
+    "shows the red banner without the name on the %s page for someone who can't see the timeline",
+    async (objectApiName, build) => {
+      const element = render(objectApiName);
+      getRecord.emit(build('SY 2025-2026', false, false));
+      await Promise.resolve();
+
+      expect(banner(element).textContent.trim()).toBe(
+        'Inactive Application Timeline'
+      );
+    }
+  );
+
+  it('hides the banner when Timeline is Active is blank', async () => {
     const element = render('IndividualApplication');
-    getRecord.emit(individualApplication());
+    getRecord.emit(individualApplication('SY 2025-2026', null));
     await Promise.resolve();
 
     expect(banner(element)).toBeNull();
@@ -87,14 +108,14 @@ describe('c-inactive-timeline-banner', () => {
       'IndividualApplication',
       [
         'IndividualApplication.Application_Timeline__r.Name',
-        'IndividualApplication.Application_Timeline__r.Active__c'
+        'IndividualApplication.Timeline_is_Active__c'
       ]
     ],
     [
       'AcademicInterest',
       [
         'AcademicInterest.IndividualApplication.Application_Timeline__r.Name',
-        'AcademicInterest.IndividualApplication.Application_Timeline__r.Active__c'
+        'AcademicInterest.IndividualApplication.Timeline_is_Active__c'
       ]
     ]
   ])(
