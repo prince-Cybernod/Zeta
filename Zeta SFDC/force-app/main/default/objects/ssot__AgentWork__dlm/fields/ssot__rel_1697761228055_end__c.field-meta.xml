@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>ssot__rel_1697761228055_end__c</fullName>
+    <deleteConstraint>SetNull</deleteConstraint>
+    <deprecated>false</deprecated>
+    <label>AgentWork_UserGroupId_map_UserGroup__rel</label>
+    <referenceTo>ssot__UserGroup__dlm</referenceTo>
+    <relationshipLabel>AgentWork_UserGroupId_map_UserGroup__rel</relationshipLabel>
+    <relationshipName>rel_1697761228055_end</relationshipName>
+    <required>false</required>
+    <type>Lookup</type>
+</CustomField>

@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<AnalyticsVisualization xmlns="http://soap.sforce.com/2006/04/metadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <analyticsWorkspace>Marketing_Performance_Intelligence</analyticsWorkspace>
+    <dataSource>Marketing_Intelligence_Custom_Semantic_Model_00Da500001AA4BB</dataSource>
+    <description>Subscription Growth visualization</description>
+    <fields>
+        <displayCategory>Continuous</displayCategory>
+        <fieldKey>Last_Modified_Date</fieldKey>
+        <fieldName>Communication_Subscription_Consent_Last_Modified_Date</fieldName>
+        <function>DateTruncMonth</function>
+        <label>Month</label>
+        <objectName>Communication_Subscription_Consent</objectName>
+        <role>Dimension</role>
+        <type>Field</type>
+    </fields>
+    <fields>
+        <computeUsing>{&quot;type&quot;:&quot;TableAcross&quot;}</computeUsing>
+        <displayCategory>Continuous</displayCategory>
+        <fieldKey>Subscription_Growth</fieldKey>
+        <fieldName>Subscription_Growth_clc</fieldName>
+        <function>UserAgg</function>
+        <label>Net Opt-Ins</label>
+        <quickTableCalc>{&quot;type&quot;:&quot;RunningSum&quot;}</quickTableCalc>
+        <role>Measure</role>
+        <type>Field</type>
+    </fields>
+    <masterLabel>Net Opt-In Growth</masterLabel>
+    <templateAssetSourceName>Opt_In_Growth</templateAssetSourceName>
+    <templateSource>sfdc_internal__umi</templateSource>
+    <version>66.08</version>
+    <views>
+        <fullName>Opt_In_Growth_default</fullName>
+        <isOriginal>true</isOriginal>
+        <masterLabel>default</masterLabel>
+        <version>66.08</version>
+        <viewSpecification>{&quot;filters&quot;:[],&quot;sortOrders&quot;:{&quot;fields&quot;:{},&quot;rows&quot;:[],&quot;columns&quot;:[]}}</viewSpecification>
+    </views>
+    <visualSpecification>eyJsYXlvdXQiOiJWaXpxbCIsImxlZ2VuZHMiOnt9LCJyb3dzIjpbIlN1YnNjcmlwdGlvbl9Hcm93dGgiXSwiY29sdW1ucyI6WyJMYXN0X01vZGlmaWVkX0RhdGUiXSwibWFya3MiOnsicGFuZXMiOnsidHlwZSI6IkxpbmUiLCJpc0F1dG9tYXRpYyI6ZmFsc2UsInN0YWNrIjp7ImlzQXV0b21hdGljIjp0cnVlLCJpc1N0YWNrZWQiOmZhbHNlfSwiZW5jb2RpbmdzIjpbXX0sImZpZWxkcyI6e30sImhlYWRlcnMiOnsidHlwZSI6IlRleHQiLCJlbmNvZGluZ3MiOltdLCJpc0F1dG9tYXRpYyI6dHJ1ZX19LCJyZWZlcmVuY2VMaW5lcyI6e30sImZvcmVjYXN0cyI6e30sIm1lYXN1cmVWYWx1ZXMiOltdLCJzdHlsZSI6eyJ0aXRsZSI6eyJpc1Zpc2libGUiOnRydWV9LCJmaWVsZExhYmVscyI6eyJyb3dzIjp7InNob3dMYWJlbHMiOnRydWUsInNob3dEaXZpZGVyTGluZSI6ZmFsc2V9LCJjb2x1bW5zIjp7InNob3dMYWJlbHMiOnRydWUsInNob3dEaXZpZGVyTGluZSI6ZmFsc2V9fSwiZm9udHMiOnsiYWN0aW9uYWJsZUhlYWRlcnMiOnsic2l6ZSI6MTMsImNvbG9yIjoiIzAyNTBEOSJ9LCJoZWFkZXJzIjp7InNpemUiOjEzLCJjb2xvciI6IiMyRTJFMkUifSwiZmllbGRMYWJlbHMiOnsic2l6ZSI6MTMsImNvbG9yIjoiIzJFMkUyRSJ9LCJtYXJrcyI6eyJzaXplIjoxMywiY29sb3IiOiIjMkUyRTJFIn0sIm1hcmtMYWJlbHMiOnsic2l6ZSI6MTMsImNvbG9yIjoiIzJFMkUyRSJ9LCJsZWdlbmRMYWJlbHMiOnsic2l6ZSI6MTMsImNvbG9yIjoiIzJFMkUyRSJ9LCJheGlzVGlja0xhYmVscyI6eyJzaXplIjoxMywiY29sb3IiOiIjMkUyRTJFIn19LCJzaGFkaW5nIjp7ImJhY2tncm91bmRDb2xvciI6IiNGRkZGRkYiLCJiYW5kaW5nIjp7InJvd3MiOnsiY29sb3IiOiIjRTVFNUU1In19fSwibGluZXMiOnsiZmllbGRMYWJlbERpdmlkZXJMaW5lIjp7ImNvbG9yIjoiI0M5QzlDOSJ9LCJzZXBhcmF0b3JMaW5lIjp7ImNvbG9yIjoiI0M5QzlDOSJ9LCJheGlzTGluZSI6eyJjb2xvciI6IiNDOUM5QzkifSwiemVyb0xpbmUiOnsiY29sb3IiOiIjQzlDOUM5In19LCJlbmNvZGluZ3MiOnsiZmllbGRzIjp7IlN1YnNjcmlwdGlvbl9Hcm93dGgiOnsiZGVmYXVsdHMiOnsiZm9ybWF0Ijp7Im51bWJlckZvcm1hdEluZm8iOnsidHlwZSI6Ik51bWJlciIsImRlY2ltYWxQbGFjZXMiOjAsIm5lZ2F0aXZlVmFsdWVzRm9ybWF0IjoiQXV0byIsImRpc3BsYXlVbml0cyI6IkF1dG8iLCJwcmVmaXgiOiIiLCJzdWZmaXgiOiIiLCJpbmNsdWRlVGhvdXNhbmRTZXBhcmF0b3IiOnRydWV9fX19fX0sImZpdCI6IlN0YW5kYXJkIiwibWFya3MiOnsicGFuZXMiOnsibGFiZWwiOnsiY2FuT3ZlcmxhcExhYmVscyI6ZmFsc2UsInNob3dNYXJrTGFiZWxzIjpmYWxzZSwibWFya3NUb0xhYmVsIjp7InR5cGUiOiJBbGwifX0sImNvbG9yIjp7ImNvbG9yIjoiIn0sInJhbmdlIjp7InJldmVyc2UiOnRydWV9LCJzaXplIjp7InR5cGUiOiJQaXhlbCIsImlzQXV0b21hdGljIjp0cnVlLCJ2YWx1ZSI6M30sImlzQXV0b21hdGljU2l6ZSI6dHJ1ZSwiaXNTdGFja2luZ0F4aXNDZW50ZXJlZCI6ZmFsc2V9LCJoZWFkZXJzIjp7ImNvbG9yIjp7ImNvbG9yIjoiIn0sImxhYmVsIjp7ImNhbk92ZXJsYXBMYWJlbHMiOmZhbHNlLCJzaG93TWFya0xhYmVscyI6ZmFsc2UsIm1hcmtzVG9MYWJlbCI6eyJ0eXBlIjoiQWxsIn19LCJpc0F1dG9tYXRpY1NpemUiOnRydWV9LCJmaWVsZHMiOnt9fSwic2hvd0RhdGFQbGFjZWhvbGRlciI6ZmFsc2UsImhlYWRlcnMiOnsiZmllbGRzIjp7fSwicm93cyI6eyJtZXJnZVJlcGVhdGVkQ2VsbHMiOnRydWUsInNob3dJbmRleCI6ZmFsc2UsInNpemluZyI6eyJmaWVsZFdpZHRoIjp7fX19LCJjb2x1bW5zIjp7Im1lcmdlUmVwZWF0ZWRDZWxscyI6dHJ1ZSwic2hvd0luZGV4IjpmYWxzZSwic2l6aW5nIjp7ImZpZWxkSGVpZ2h0Ijp7fX19fSwiYXhpcyI6eyJmaWVsZHMiOnsiTGFzdF9Nb2RpZmllZF9EYXRlIjp7ImlzVmlzaWJsZSI6dHJ1ZSwicmFuZ2UiOnsidHlwZSI6IkF1dG8iLCJpbmNsdWRlWmVybyI6ZmFsc2V9LCJ0aXRsZVRleHQiOiIgIiwic2NhbGUiOnsiZm9ybWF0Ijp7ImRhdGVUZW1wbGF0ZSI6IiJ9fSwidGlja3MiOnsibWFqb3JUaWNrcyI6eyJ0eXBlIjoiQXV0byJ9LCJtaW5vclRpY2tzIjp7InR5cGUiOiJBdXRvIn19LCJpc1plcm9MaW5lVmlzaWJsZSI6dHJ1ZX0sIlN1YnNjcmlwdGlvbl9Hcm93dGgiOnsiaXNWaXNpYmxlIjp0cnVlLCJyYW5nZSI6eyJ0eXBlIjoiQXV0byIsImluY2x1ZGVaZXJvIjp0cnVlfSwidGl0bGVUZXh0IjoiICIsInNjYWxlIjp7ImZvcm1hdCI6eyJudW1iZXJGb3JtYXRJbmZvIjp7InR5cGUiOiJOdW1iZXJTaG9ydCIsImRlY2ltYWxQbGFjZXMiOjAsIm5lZ2F0aXZlVmFsdWVzRm9ybWF0IjoiQXV0byIsImRpc3BsYXlVbml0cyI6IkF1dG8iLCJwcmVmaXgiOiIiLCJzdWZmaXgiOiIiLCJpbmNsdWRlVGhvdXNhbmRTZXBhcmF0b3IiOnRydWV9fX0sInRpY2tzIjp7Im1ham9yVGlja3MiOnsidHlwZSI6IkF1dG8ifSwibWlub3JUaWNrcyI6eyJ0eXBlIjoiQXV0byJ9fSwiaXNaZXJvTGluZVZpc2libGUiOnRydWV9fX0sInJlZmVyZW5jZUxpbmVzIjp7fX19</visualSpecification>
+    <workspaceAssetRelationships>
+        <asset xsi:nil="true"/>
+        <assetType>AnalyticsVisualization</assetType>
+        <assetUsageType>Created</assetUsageType>
+        <workspace>Marketing_Performance_Intelligence</workspace>
+    </workspaceAssetRelationships>
+</AnalyticsVisualization>

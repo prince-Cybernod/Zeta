@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>ZVC__ZP_Log_Cancelled_Calls__c</fullName>
+    <defaultValue>false</defaultValue>
+    <deprecated>false</deprecated>
+    <description>Enable to log cancelled calls and automatically open the Notes page when a call ends. Disable to skip logging and skip opening of Notes page after cancellations.</description>
+    <label>ZP Log Cancelled Calls</label>
+    <trackTrending>false</trackTrending>
+    <type>Checkbox</type>
+</CustomField>

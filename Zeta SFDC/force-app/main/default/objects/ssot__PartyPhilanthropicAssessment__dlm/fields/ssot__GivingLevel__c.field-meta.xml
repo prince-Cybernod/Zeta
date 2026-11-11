@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>ssot__GivingLevel__c</fullName>
+    <deprecated>false</deprecated>
+    <label>Giving Level</label>
+    <length>15</length>
+    <mktDataModelFieldAttributes>
+        <definitionCreationType>Standard</definitionCreationType>
+        <isDynamicLookup>false</isDynamicLookup>
+        <masterLabel>Giving Level</masterLabel>
+        <refAttrDeveloperName>GivingLevel</refAttrDeveloperName>
+        <usageTag>None</usageTag>
+    </mktDataModelFieldAttributes>
+    <required>false</required>
+    <type>Text</type>
+</CustomField>

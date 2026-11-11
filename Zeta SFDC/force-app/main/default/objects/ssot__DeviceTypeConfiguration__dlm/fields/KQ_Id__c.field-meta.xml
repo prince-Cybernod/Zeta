@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>KQ_Id__c</fullName>
+    <label>Key Qualifier Device Type Configuration</label>
+    <length>60</length>
+    <mktDataModelFieldAttributes>
+        <definitionCreationType>System</definitionCreationType>
+        <isDynamicLookup>false</isDynamicLookup>
+        <labelOverride>Key Qualifier Device Type Configuration Id</labelOverride>
+        <masterLabel>Key Qualifier Device Type Configuration</masterLabel>
+        <refAttrDeveloperName>KQ_Id</refAttrDeveloperName>
+        <usageTag>KeyQualifier</usageTag>
+    </mktDataModelFieldAttributes>
+    <required>false</required>
+    <type>Text</type>
+</CustomField>

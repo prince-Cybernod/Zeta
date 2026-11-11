@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns>
+        <field>AcademicInterest$Name</field>
+    </columns>
+    <columns>
+        <field>AcademicInterest$LearningProgram</field>
+    </columns>
+    <columns>
+        <aggregateTypes>Sum</aggregateTypes>
+        <field>AcademicInterest$Email_Attempts__c</field>
+    </columns>
+    <columns>
+        <aggregateTypes>Sum</aggregateTypes>
+        <field>AcademicInterest$Call_Attempts__c</field>
+    </columns>
+    <description>Displays all School Applications with Status = Seat Offered and a valid, non-expired Offer Expiration Date. Used by the Family Outreach &amp; Enrollment Team to track outreach attempts, monitor follow-up cadence, and ensure timely communication before offers</description>
+    <filter>
+        <criteriaItems>
+            <column>AcademicInterest$Status</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>Seat Offered</value>
+        </criteriaItems>
+        <language>en_US</language>
+    </filter>
+    <format>Summary</format>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>AcademicInterest$fxStudent_Name__c</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>AcademicInterest$IndividualApplication.Grade_Applying_To__c</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <name>Active Seat Offers – Outreach Follow-Up</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>School_Applications_with_Individual_Application_and_Lottery_Capacity__c</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <showGrandTotal>true</showGrandTotal>
+    <showSubTotals>true</showSubTotals>
+    <timeFrameFilter>
+        <dateColumn>AcademicInterest$CreatedDate</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
+    </timeFrameFilter>
+</Report>

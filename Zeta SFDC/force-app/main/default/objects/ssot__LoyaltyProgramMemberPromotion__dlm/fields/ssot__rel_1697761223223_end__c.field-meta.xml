@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>ssot__rel_1697761223223_end__c</fullName>
+    <deleteConstraint>SetNull</deleteConstraint>
+    <deprecated>false</deprecated>
+    <label>LoyaltyProgramMemberPromotion_Loyalt_rel</label>
+    <referenceTo>ssot__LoyaltyProgramMember__dlm</referenceTo>
+    <relationshipLabel>LoyaltyProgramMemberPromotion_Loyalt_rel</relationshipLabel>
+    <relationshipName>rel_1697761223223_end</relationshipName>
+    <required>false</required>
+    <type>Lookup</type>
+</CustomField>

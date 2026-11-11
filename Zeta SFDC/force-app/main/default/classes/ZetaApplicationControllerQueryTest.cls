@@ -398,7 +398,8 @@ private class ZetaApplicationControllerQueryTest {
       studentAccId,
       'K',
       '1st',
-      timelineId
+      timelineId,
+      null
     );
     Assert.isTrue(result.containsKey('applicationId'));
     DATABASE_REPO_MOCK.verify(DATABASE_REPO_MOCK.method.insertSObjects());
@@ -435,7 +436,8 @@ private class ZetaApplicationControllerQueryTest {
       studentAccId,
       'K',
       null,
-      timelineId
+      timelineId,
+      null
     );
     Assert.areEqual(existingAppId, result.get('applicationId'));
   }
@@ -462,6 +464,7 @@ private class ZetaApplicationControllerQueryTest {
       studentAccId,
       'K',
       null,
+      null,
       null
     );
     Assert.isTrue(result.containsKey('applicationId'));
@@ -480,7 +483,7 @@ private class ZetaApplicationControllerQueryTest {
       'Logged-in user must have a Contact'
     );
     try {
-      ZetaApplicationController.createApplication(studentAccId, 'K', null, timelineId);
+      ZetaApplicationController.createApplication(studentAccId, 'K', null, timelineId, null);
       throwing.shouldHaveThrown();
     } catch (Exception e) {
       throwing.threw(e);
@@ -496,7 +499,7 @@ private class ZetaApplicationControllerQueryTest {
       'Student Account Id is required'
     );
     try {
-      ZetaApplicationController.createApplication(null, 'K', null, null);
+      ZetaApplicationController.createApplication(null, 'K', null, null, null);
       throwing.shouldHaveThrown();
     } catch (Exception e) {
       throwing.threw(e);
@@ -541,7 +544,8 @@ private class ZetaApplicationControllerQueryTest {
       studentAccId,
       null,
       null,
-      timelineId
+      timelineId,
+      null
     );
 
     Assert.isTrue(result.containsKey('applicationId'));
@@ -578,7 +582,7 @@ private class ZetaApplicationControllerQueryTest {
       'No active application timeline found'
     );
     try {
-      ZetaApplicationController.createApplication(studentAccId, 'K', null, null);
+      ZetaApplicationController.createApplication(studentAccId, 'K', null, null, null);
       throwing.shouldHaveThrown();
     } catch (Exception e) {
       throwing.threw(e);

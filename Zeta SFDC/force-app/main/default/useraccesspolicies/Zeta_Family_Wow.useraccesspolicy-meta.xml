@@ -2,7 +2,9 @@
 <UserAccessPolicy xmlns="http://soap.sforce.com/2006/04/metadata">
     <booleanFilter>1 AND 2 AND 3</booleanFilter>
     <masterLabel>Zeta - Family Wow</masterLabel>
-    <status>Design</status>
+    <order>6</order>
+    <status>Active</status>
+    <triggerType>CreateAndUpdate</triggerType>
     <userAccessPolicyActions>
         <action>Grant</action>
         <target>Zeta_Network_Family_Wow</target>

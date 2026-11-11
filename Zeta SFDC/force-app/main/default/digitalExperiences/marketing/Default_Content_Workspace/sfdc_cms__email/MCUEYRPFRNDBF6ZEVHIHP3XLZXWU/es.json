@@ -1,0 +1,26 @@
+{
+  "type" : "sfdc_cms__email",
+  "title" : "MC | Applicant | ES Email 6",
+  "contentBody" : {
+    "subjectLine" : "En Zeta, más oportunidades hoy para abrir más posibilidades mañana",
+    "preheader" : "Estos últimos meses nuestros estudiantes han estado muy ocupados, tanto con las clases como con sus Z Clubs y Z Teams.",
+    "sfdc_cms:block" : {
+      "children" : [ {
+        "id" : "618d12ac-1220-42a4-9ed6-83e330b709d4",
+        "attributes" : {
+          "text" : "Estimado/a {!$Expression.First_Name_1} {!$Expression.Last_Name}:<br><br>Estos últimos meses nuestros estudiantes han estado muy ocupados, tanto con las clases como con sus Z Clubs y Z Teams. Los pasillos estuvieron llenos de charlas sobre los marcadores de fútbol y las jugadas de ajedrez, mientras las pequeñas bailarinas practicaban sus piruetas. <br><br><strong>Zeta sostiene la firme creencia de que más oportunidades hoy conducen a más posibilidades mañana.</strong> Cuando un niño toma una pieza de ajedrez por primera vez, pisa una cancha de fútbol o crea algo de lo que se siente orgulloso, también descubre nuevas fortalezas en sí mismo. <br><br>"
+        }
+      }, {
+        "id" : "c3f5a7dd-c435-4c43-aa0a-f86c20875a65",
+        "attributes" : {
+          "text" : "En Zeta, los estudiantes tienen todas las oportunidades para beneficiarse de este tipo de experiencias. Cada escuela Zeta ofrece una amplia variedad de especialidades, que pueden incluir ajedrez, arte, música, danza, fútbol, baloncesto, Taekwondo y más. Las especialidades están integradas en la jornada escolar porque estos momentos son una parte importante de la educación integral del niño.<br><br>"
+        }
+      }, {
+        "id" : "bbf0ea99-526d-48e3-960b-d6dbbefe7dd2",
+        "attributes" : {
+          "text" : "La amplitud también es intencional: los niños necesitan oportunidades para probar diferentes disciplinas antes de descubrir dónde radican sus intereses y fortalezas.  <br><br>Y aprenden de personas que dominan su oficio. Las clases especializadas están a cargo de expertos con amplia experiencia y conocimientos en cada área, para que los estudiantes desarrollen habilidades reales y valiosas que les servirán en el futuro. <br><br><a href=\"https://www.instagram.com/reels/DYA6PfMAECu/\" target=\"_blank\" part=\"link\" rel=\"noopener noreferrer\">¡Mira a nuestros estudiantes superar sus exámenes de cinturón de Taekwondo!</a><br><br>A medida que los intereses se profundizan, los estudiantes pueden unirse a Z Clubs y Z Teams, con oportunidades para entrenar, actuar y competir contra otras escuelas Zeta y equipos externos. Las especialidades fomentan el trabajo en equipo, ayudan a los estudiantes a comprender las reglas y la resiliencia, y desarrollan la confianza. Estos son rasgos que les serán de gran utilidad en otras áreas de la escuela y de la vida. <br><br>Eso es excelencia con corazón: brindar a cada niño más formas de descubrir lo que ama y las herramientas para sobresalir en ello.<br><br>Si deseas obtener más información sobre nuestros programas de especialidades, inscríbete aquí para <a href=\"https://zetaschools.org/events-for-prospective-families/\" target=\"_blank\" part=\"link\" rel=\"noopener noreferrer\">una visita próxima</a>.<br><br>¡Esperamos darte la bienvenida pronto! <br><br><br>Con afecto,<br><strong>El equipo de inscripciones de Zeta</strong><br><strong>Escuelas Chárter Zeta</strong><br><br><em>Por favor, comunícate si tienes alguna pregunta sobre Zeta; nuestro equipo de inscripciones está aquí para ayudarte en cada paso del camino. ✉ enroll@zetaschools.org \uD83D\uDCDE(646) 480-1654</em><br><br><br>"
+        }
+      } ]
+    }
+  }
+}

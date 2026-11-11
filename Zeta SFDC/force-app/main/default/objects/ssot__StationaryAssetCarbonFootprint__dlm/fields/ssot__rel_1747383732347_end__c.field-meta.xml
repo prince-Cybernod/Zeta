@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>ssot__rel_1747383732347_end__c</fullName>
+    <deleteConstraint>SetNull</deleteConstraint>
+    <deprecated>false</deprecated>
+    <label>StationaryAssetCarbonFootprint_Stnry_rel</label>
+    <referenceTo>ssot__StationaryAssetEnvSource__dlm</referenceTo>
+    <relationshipLabel>StationaryAssetCarbonFootprint_Stnry_rel</relationshipLabel>
+    <relationshipName>rel_1747383732347_end</relationshipName>
+    <required>false</required>
+    <type>Lookup</type>
+</CustomField>

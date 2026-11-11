@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>IsBudgetShared__c</fullName>
+    <defaultValue>false</defaultValue>
+    <label>Is Budget Shared</label>
+    <mktDataModelFieldAttributes>
+        <definitionCreationType>Standard</definitionCreationType>
+        <isDynamicLookup>false</isDynamicLookup>
+        <labelOverride>Is Budget Shared</labelOverride>
+        <masterLabel>Is Budget Shared</masterLabel>
+        <refAttrDeveloperName>IsBudgetShared</refAttrDeveloperName>
+        <usageTag>None</usageTag>
+    </mktDataModelFieldAttributes>
+    <type>Checkbox</type>
+</CustomField>

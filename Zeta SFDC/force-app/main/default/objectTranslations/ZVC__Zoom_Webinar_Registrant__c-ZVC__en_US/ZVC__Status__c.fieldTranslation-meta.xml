@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <label><!-- Status --></label>
+    <name>ZVC__Status__c</name>
+    <picklistValues>
+        <masterLabel>Approved</masterLabel>
+        <translation><!-- Approved --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Denied</masterLabel>
+        <translation><!-- Denied --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Invited</masterLabel>
+        <translation><!-- Invited --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Pending for Approval</masterLabel>
+        <translation><!-- Pending for Approval --></translation>
+    </picklistValues>
+</CustomFieldTranslation>

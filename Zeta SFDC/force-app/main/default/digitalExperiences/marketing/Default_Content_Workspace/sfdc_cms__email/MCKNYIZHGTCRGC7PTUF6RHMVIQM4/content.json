@@ -1,0 +1,586 @@
+{
+  "type" : "sfdc_cms__email",
+  "title" : "MC | Applicant | HS Email 3 Five questions to ask when choosing a High School",
+  "contentBody" : {
+    "backgroundColor" : "#f3f3f3",
+    "lightning:backgroundImage" : {
+      "position" : "center center",
+      "repeat" : "no-repeat",
+      "size" : "cover"
+    },
+    "lightning:brandSource" : "MCXD6TZ6XKJRGNBB72AH4B5UPAKA",
+    "lightning:colorScheme" : "{!$brand.colorScheme}",
+    "lightning:dataProviders" : [ {
+      "attributes" : {
+        "dataGraphApiName" : "Unified_Individual_Full_Graph",
+        "dataspace" : "default"
+      },
+      "definition" : "sfdc_cms__dataGraphDataProvider",
+      "sfdcExpressionKey" : "$dataGraph"
+    } ],
+    "lightning:expressions" : [ {
+      "attributes" : {
+        "expressionGroups" : [ {
+          "name" : "group0",
+          "resource" : "{!$dataGraph.ssot__FirstName__c}"
+        } ]
+      },
+      "default" : "",
+      "definition" : "sfdc_cms__multiLevelExpression",
+      "label" : "First_Name",
+      "sfdcExpressionKey" : "First_Name"
+    }, {
+      "attributes" : {
+        "expressionGroups" : [ {
+          "name" : "group0",
+          "resource" : "{!$dataGraph.ssot__LastName__c}"
+        } ]
+      },
+      "default" : "",
+      "definition" : "sfdc_cms__multiLevelExpression",
+      "label" : "Last_Name",
+      "sfdcExpressionKey" : "Last_Name"
+    }, {
+      "attributes" : {
+        "expressionGroups" : [ {
+          "name" : "group0",
+          "resource" : "{!$dataGraph.ssot__LastName__c}"
+        } ]
+      },
+      "default" : "",
+      "definition" : "sfdc_cms__multiLevelExpression",
+      "label" : "Last_Name_1",
+      "sfdcExpressionKey" : "Last_Name_1"
+    }, {
+      "attributes" : {
+        "expressionGroups" : [ {
+          "name" : "group0",
+          "resource" : "{!$dataGraph.ssot__LastName__c}"
+        } ]
+      },
+      "default" : "",
+      "definition" : "sfdc_cms__multiLevelExpression",
+      "label" : "Last_Name_2",
+      "sfdcExpressionKey" : "Last_Name_2"
+    } ],
+    "lightning:padding" : "{!$brand.spacing.none}",
+    "messagePurpose" : "promotional",
+    "preheader" : "Choosing a high school is a major decision. ",
+    "sfdc_cms:attachments" : [ ],
+    "sfdc_cms:block" : {
+      "definition" : "sfdc_cms/rootContentBlock",
+      "id" : "31b86b82-b62e-4da7-819e-aca2d632404a",
+      "type" : "block",
+      "children" : [ {
+        "attributes" : {
+          "content" : {
+            "attributes" : { },
+            "definition" : "@cms/MCBZEVXEAJQJB4LFOKG26RUI6GGU",
+            "type" : "block"
+          }
+        },
+        "definition" : "sfdc_cms/reusableContentBlock",
+        "id" : "c94d69db-95d2-4579-927e-eee4edf4b437",
+        "type" : "block"
+      }, {
+        "attributes" : {
+          "lightning:backgroundImage" : {
+            "position" : "center center",
+            "repeat" : "no-repeat",
+            "size" : "cover"
+          },
+          "lightning:borderRadius" : "{!$brand.borderRadius.square}",
+          "lightning:borderWidth" : "{!$brand.borderWeight.none}",
+          "lightning:colorScheme" : "{!$brand.colorScheme}",
+          "lightning:margin" : "{!$brand.spacing.none}",
+          "lightning:padding" : "{!$brand.spacing.xSmall}",
+          "reverseOrderOnMobile" : false,
+          "stackOnMobile" : true
+        },
+        "definition" : "lightning/section",
+        "id" : "26a2e9ae-3383-4415-9b0e-405cbd9a51a0",
+        "type" : "block",
+        "children" : [ {
+          "attributes" : {
+            "columnWidth" : 12.0,
+            "lightning:backgroundImage" : {
+              "position" : "center center",
+              "repeat" : "no-repeat",
+              "size" : "cover"
+            },
+            "lightning:borderRadius" : "{!$brand.borderRadius.square}",
+            "lightning:borderWidth" : "{!$brand.borderWeight.none}",
+            "lightning:colorScheme" : "{!$brand.colorScheme}",
+            "lightning:margin" : "{!$brand.spacing.none}",
+            "lightning:padding" : "{!$brand.spacing.xSmall}",
+            "lightning:verticalAlignment" : "top"
+          },
+          "definition" : "lightning/column",
+          "id" : "bb971ee3-064b-485b-b7aa-9fed374c99c2",
+          "type" : "block",
+          "children" : [ {
+            "attributes" : {
+              "align" : "start",
+              "lightning:borderRadius" : {
+                "unit" : "px",
+                "value" : 0.0
+              },
+              "lightning:borderWidth" : {
+                "unit" : "px",
+                "value" : 0.0
+              },
+              "lightning:colorGroup" : {
+                "backgroundColor" : "{!$brand.colorScheme.root}",
+                "borderColor" : "{!$brand.colorScheme.neutral}",
+                "linkColor" : "{!$brand.colorScheme.primaryAccent}",
+                "textColor" : "{!$brand.colorScheme.contrast}"
+              },
+              "lightning:margin" : {
+                "bottom" : {
+                  "unit" : "px",
+                  "value" : 0.0
+                },
+                "left" : {
+                  "unit" : "px",
+                  "value" : 0.0
+                },
+                "right" : {
+                  "unit" : "px",
+                  "value" : 0.0
+                },
+                "top" : {
+                  "unit" : "px",
+                  "value" : 0.0
+                }
+              },
+              "lightning:padding" : {
+                "bottom" : {
+                  "unit" : "px",
+                  "value" : 0.0
+                },
+                "left" : {
+                  "unit" : "px",
+                  "value" : 0.0
+                },
+                "right" : {
+                  "unit" : "px",
+                  "value" : 0.0
+                },
+                "top" : {
+                  "unit" : "px",
+                  "value" : 0.0
+                }
+              },
+              "lightning:typography" : {
+                "fontFamily" : "{!$brand.fontFamily.tahoma}",
+                "fontSize" : {
+                  "unit" : "px",
+                  "value" : 16.0
+                },
+                "fontWeight" : "{!$brand.fontWeight.normal}",
+                "letterSpacing" : "normal",
+                "lineHeight" : 1.5,
+                "textTransform" : "none"
+              },
+              "text" : "Dear {!$Expression.First_Name} {!$Expression.Last_Name_2},<br /><br />Choosing a high school is a major decision. As you consider your options, ask what each school will offer your student during these important years. At Zeta High, the answers begin with <strong>purpose, passion, and power.<br /></strong><br /><strong>Will I be known and supported?</strong><br />High school brings greater freedom, but students should never have to navigate it alone. Every Zeta High student belongs to a 12-student Z Pod led by a dedicated Z Coach who knows them deeply. Cross-grade Z Houses create friendship, mentorship, and a strong sense of belonging.<br />"
+            },
+            "definition" : "lightning/paragraph",
+            "id" : "4f031ac7-15f4-485d-b7ae-6a67b6486735",
+            "type" : "block"
+          } ]
+        } ]
+      }, {
+        "attributes" : {
+          "lightning:backgroundImage" : {
+            "position" : "center center",
+            "repeat" : "no-repeat",
+            "size" : "cover"
+          },
+          "lightning:borderRadius" : "{!$brand.borderRadius.square}",
+          "lightning:borderWidth" : "{!$brand.borderWeight.none}",
+          "lightning:colorScheme" : "{!$brand.colorScheme}",
+          "lightning:margin" : "{!$brand.spacing.none}",
+          "lightning:padding" : "{!$brand.spacing.xSmall}",
+          "reverseOrderOnMobile" : false,
+          "stackOnMobile" : true
+        },
+        "definition" : "lightning/section",
+        "id" : "20ef56d1-36f0-47fb-8568-b8484acca782",
+        "type" : "block",
+        "children" : [ {
+          "attributes" : {
+            "columnWidth" : 6.0,
+            "lightning:backgroundImage" : {
+              "position" : "center center",
+              "repeat" : "no-repeat",
+              "size" : "cover"
+            },
+            "lightning:borderRadius" : "{!$brand.borderRadius.square}",
+            "lightning:borderWidth" : "{!$brand.borderWeight.none}",
+            "lightning:colorScheme" : "{!$brand.colorScheme}",
+            "lightning:margin" : "{!$brand.spacing.none}",
+            "lightning:padding" : "{!$brand.spacing.xSmall}",
+            "lightning:verticalAlignment" : "top"
+          },
+          "definition" : "lightning/column",
+          "id" : "14c33ca0-20ca-466a-a756-dac6e3cea65c",
+          "type" : "block",
+          "children" : [ {
+            "attributes" : {
+              "align" : "start",
+              "lightning:borderRadius" : "{!$brand.borderRadius.square}",
+              "lightning:borderWidth" : "{!$brand.borderWeight.none}",
+              "lightning:colorGroup" : {
+                "backgroundColor" : "{!$brand.colorScheme.root}",
+                "borderColor" : "{!$brand.colorScheme.neutral}",
+                "linkColor" : "{!$brand.colorScheme.primaryAccent}",
+                "textColor" : "{!$brand.colorScheme.contrast}"
+              },
+              "lightning:margin" : "{!$brand.spacing.none}",
+              "lightning:padding" : "{!$brand.spacing.none}",
+              "lightning:typography" : {
+                "fontFamily" : "{!$brand.fontFamily.tahoma}",
+                "fontSize" : "{!$brand.fontSize.medium}",
+                "fontWeight" : "{!$brand.fontWeight.normal}",
+                "letterSpacing" : "normal",
+                "lineHeight" : 1.5,
+                "textTransform" : "none"
+              },
+              "text" : "<strong>Will I be challenged and prepared for college?</strong><br />Students take advanced and AP courses designed to prepare them for demanding college-level work. Free SAT preparation is built into the school day, and every student receives one-on-one college advising to help them identify opportunities and build a path forward.<br />"
+            },
+            "definition" : "lightning/paragraph",
+            "id" : "ed8e19b6-af7e-41f9-99bf-1c438638d100",
+            "type" : "block"
+          } ]
+        }, {
+          "attributes" : {
+            "columnWidth" : 6.0,
+            "lightning:backgroundImage" : {
+              "position" : "center center",
+              "repeat" : "no-repeat",
+              "size" : "cover"
+            },
+            "lightning:borderRadius" : "{!$brand.borderRadius.square}",
+            "lightning:borderWidth" : "{!$brand.borderWeight.none}",
+            "lightning:colorScheme" : "{!$brand.colorScheme}",
+            "lightning:margin" : "{!$brand.spacing.none}",
+            "lightning:padding" : "{!$brand.spacing.xSmall}",
+            "lightning:verticalAlignment" : "top"
+          },
+          "definition" : "lightning/column",
+          "id" : "3ad38a70-51de-4943-bcad-da5b93e3337e",
+          "type" : "block",
+          "children" : [ {
+            "attributes" : {
+              "imageFitConfig" : {
+                "width" : {
+                  "unit" : "%",
+                  "value" : 100.0
+                }
+              },
+              "imageInfo" : {
+                "altText" : "",
+                "overrideAltText" : false,
+                "source" : {
+                  "mimeType" : "image/jpeg",
+                  "ref" : "MCZFKHH22O2NHRPNJU3FDF4V4F7Q",
+                  "size" : 1.3024695E7,
+                  "type" : "imageReference"
+                },
+                "url" : "/cms/media/MCZFKHH22O2NHRPNJU3FDF4V4F7Q?fileName=HS+Month+1.jpg&fileHash=6e5c40c5d6a3ecb3e03e80591b030226"
+              },
+              "lightning:borderRadius" : "{!$brand.borderRadius.square}",
+              "lightning:borderWidth" : "{!$brand.borderWeight.none}",
+              "lightning:colorGroup" : {
+                "backgroundColor" : "{!$brand.colorScheme.root}",
+                "borderColor" : "{!$brand.colorScheme.neutral}",
+                "linkColor" : "{!$brand.colorScheme.primaryAccent}",
+                "textColor" : "{!$brand.colorScheme.contrast}"
+              },
+              "lightning:horizontalAlignment" : "center",
+              "lightning:margin" : "{!$brand.spacing.none}",
+              "lightning:padding" : "{!$brand.spacing.none}",
+              "lightning:typography" : "{!$brand.typography.paragraph.paragraph1}"
+            },
+            "definition" : "lightning/image",
+            "id" : "7d4c240a-1607-4498-8b0e-9dcbc6b779cc",
+            "type" : "block"
+          } ]
+        } ]
+      }, {
+        "attributes" : {
+          "lightning:backgroundImage" : {
+            "position" : "center center",
+            "repeat" : "no-repeat",
+            "size" : "cover"
+          },
+          "lightning:borderRadius" : "{!$brand.borderRadius.square}",
+          "lightning:borderWidth" : "{!$brand.borderWeight.none}",
+          "lightning:colorScheme" : "{!$brand.colorScheme}",
+          "lightning:margin" : "{!$brand.spacing.none}",
+          "lightning:padding" : "{!$brand.spacing.xSmall}",
+          "reverseOrderOnMobile" : false,
+          "stackOnMobile" : true
+        },
+        "definition" : "lightning/section",
+        "id" : "2097f40d-3f96-4492-bfdb-d40ca3bee719",
+        "type" : "block",
+        "children" : [ {
+          "attributes" : {
+            "columnWidth" : 12.0,
+            "lightning:backgroundImage" : {
+              "position" : "center center",
+              "repeat" : "no-repeat",
+              "size" : "cover"
+            },
+            "lightning:borderRadius" : "{!$brand.borderRadius.square}",
+            "lightning:borderWidth" : "{!$brand.borderWeight.none}",
+            "lightning:colorScheme" : "{!$brand.colorScheme}",
+            "lightning:margin" : "{!$brand.spacing.none}",
+            "lightning:padding" : "{!$brand.spacing.xSmall}",
+            "lightning:verticalAlignment" : "top"
+          },
+          "definition" : "lightning/column",
+          "id" : "f650b378-9df3-4ee4-8674-89ded9162850",
+          "type" : "block",
+          "children" : [ {
+            "attributes" : {
+              "align" : "start",
+              "lightning:borderRadius" : "{!$brand.borderRadius.square}",
+              "lightning:borderWidth" : "{!$brand.borderWeight.none}",
+              "lightning:colorGroup" : {
+                "backgroundColor" : "{!$brand.colorScheme.root}",
+                "borderColor" : "{!$brand.colorScheme.neutral}",
+                "linkColor" : "{!$brand.colorScheme.primaryAccent}",
+                "textColor" : "{!$brand.colorScheme.contrast}"
+              },
+              "lightning:margin" : "{!$brand.spacing.none}",
+              "lightning:padding" : "{!$brand.spacing.none}",
+              "lightning:typography" : {
+                "fontFamily" : "{!$brand.fontFamily.tahoma}",
+                "fontSize" : "{!$brand.fontSize.medium}",
+                "fontWeight" : "{!$brand.fontWeight.normal}",
+                "letterSpacing" : "normal",
+                "lineHeight" : 1.5,
+                "textTransform" : "none"
+              },
+              "text" : "<strong>Will I apply my learning to the real world?<br /></strong>In Z Lab, students use technology and design to develop solutions, test their ideas, and create meaningful work. Internships introduce them to possible careers, while Z Journeys expand their understanding of the world beyond the classroom."
+            },
+            "definition" : "lightning/paragraph",
+            "id" : "fff0c427-e5ce-46df-8e80-d9297ee3610c",
+            "type" : "block"
+          } ]
+        } ]
+      }, {
+        "attributes" : {
+          "lightning:backgroundImage" : {
+            "position" : "center center",
+            "repeat" : "no-repeat",
+            "size" : "cover"
+          },
+          "lightning:borderRadius" : "{!$brand.borderRadius.square}",
+          "lightning:borderWidth" : "{!$brand.borderWeight.none}",
+          "lightning:colorScheme" : "{!$brand.colorScheme}",
+          "lightning:margin" : "{!$brand.spacing.none}",
+          "lightning:padding" : "{!$brand.spacing.xSmall}",
+          "reverseOrderOnMobile" : false,
+          "stackOnMobile" : true
+        },
+        "definition" : "lightning/section",
+        "id" : "d274e192-f3cd-4ab9-ac79-01d04310d9cc",
+        "type" : "block",
+        "children" : [ {
+          "attributes" : {
+            "columnWidth" : 6.0,
+            "lightning:backgroundImage" : {
+              "position" : "center center",
+              "repeat" : "no-repeat",
+              "size" : "cover"
+            },
+            "lightning:borderRadius" : "{!$brand.borderRadius.square}",
+            "lightning:borderWidth" : "{!$brand.borderWeight.none}",
+            "lightning:colorScheme" : "{!$brand.colorScheme}",
+            "lightning:margin" : "{!$brand.spacing.none}",
+            "lightning:padding" : "{!$brand.spacing.xSmall}",
+            "lightning:verticalAlignment" : "top"
+          },
+          "definition" : "lightning/column",
+          "id" : "9c80a69a-4262-4d68-9150-b13e082334e9",
+          "type" : "block",
+          "children" : [ {
+            "attributes" : {
+              "align" : "start",
+              "lightning:borderRadius" : "{!$brand.borderRadius.square}",
+              "lightning:borderWidth" : "{!$brand.borderWeight.none}",
+              "lightning:colorGroup" : {
+                "backgroundColor" : "{!$brand.colorScheme.root}",
+                "borderColor" : "{!$brand.colorScheme.neutral}",
+                "linkColor" : "{!$brand.colorScheme.primaryAccent}",
+                "textColor" : "{!$brand.colorScheme.contrast}"
+              },
+              "lightning:margin" : "{!$brand.spacing.none}",
+              "lightning:padding" : "{!$brand.spacing.none}",
+              "lightning:typography" : {
+                "fontFamily" : "{!$brand.fontFamily.tahoma}",
+                "fontSize" : "{!$brand.fontSize.medium}",
+                "fontWeight" : "{!$brand.fontWeight.normal}",
+                "letterSpacing" : "normal",
+                "lineHeight" : 1.5,
+                "textTransform" : "none"
+              },
+              "text" : "<strong>Will I have a voice in my school?</strong><br />At Zeta High, students help shape their own experience. They can choose and create clubs based on their interests. Our founding students even selected the school mascot: <strong>the wolf</strong>, representing the courage to lead independently and the strength found in moving forward together.<br />"
+            },
+            "definition" : "lightning/paragraph",
+            "id" : "85c68a80-fdb4-4f3f-a6fa-8e737e37c7b7",
+            "type" : "block"
+          } ]
+        }, {
+          "attributes" : {
+            "columnWidth" : 6.0,
+            "lightning:backgroundImage" : {
+              "position" : "center center",
+              "repeat" : "no-repeat",
+              "size" : "cover"
+            },
+            "lightning:borderRadius" : "{!$brand.borderRadius.square}",
+            "lightning:borderWidth" : "{!$brand.borderWeight.none}",
+            "lightning:colorScheme" : "{!$brand.colorScheme}",
+            "lightning:margin" : "{!$brand.spacing.none}",
+            "lightning:padding" : "{!$brand.spacing.xSmall}",
+            "lightning:verticalAlignment" : "top"
+          },
+          "definition" : "lightning/column",
+          "id" : "ccacfe90-e867-4cc7-8701-fc46d09b85b6",
+          "type" : "block",
+          "children" : [ {
+            "attributes" : {
+              "imageFitConfig" : {
+                "width" : {
+                  "unit" : "%",
+                  "value" : 100.0
+                }
+              },
+              "imageInfo" : {
+                "altText" : "",
+                "overrideAltText" : false,
+                "source" : {
+                  "mimeType" : "image/png",
+                  "ref" : "MCNENP4JLGAFBRXBUZX2ILBAFB4U",
+                  "size" : 2559935.0,
+                  "type" : "imageReference"
+                },
+                "url" : "/cms/media/MCNENP4JLGAFBRXBUZX2ILBAFB4U?fileName=Screenshot+2026-09-25+at+6.40.14%E2%80%AFPM.png&fileHash=76bc4b916108ccd66ea636a902785058"
+              },
+              "lightning:borderRadius" : "{!$brand.borderRadius.square}",
+              "lightning:borderWidth" : "{!$brand.borderWeight.none}",
+              "lightning:colorGroup" : {
+                "backgroundColor" : "{!$brand.colorScheme.root}",
+                "borderColor" : "{!$brand.colorScheme.neutral}",
+                "linkColor" : "{!$brand.colorScheme.primaryAccent}",
+                "textColor" : "{!$brand.colorScheme.contrast}"
+              },
+              "lightning:horizontalAlignment" : "center",
+              "lightning:margin" : "{!$brand.spacing.none}",
+              "lightning:padding" : "{!$brand.spacing.none}",
+              "lightning:typography" : "{!$brand.typography.paragraph.paragraph1}"
+            },
+            "definition" : "lightning/image",
+            "id" : "d470473d-77db-4d87-900b-c163357a661a",
+            "type" : "block"
+          } ]
+        } ]
+      }, {
+        "attributes" : {
+          "lightning:backgroundImage" : {
+            "position" : "center center",
+            "repeat" : "no-repeat",
+            "size" : "cover"
+          },
+          "lightning:borderRadius" : "{!$brand.borderRadius.square}",
+          "lightning:borderWidth" : "{!$brand.borderWeight.none}",
+          "lightning:colorScheme" : "{!$brand.colorScheme}",
+          "lightning:margin" : "{!$brand.spacing.none}",
+          "lightning:padding" : "{!$brand.spacing.xSmall}",
+          "reverseOrderOnMobile" : false,
+          "stackOnMobile" : true
+        },
+        "definition" : "lightning/section",
+        "id" : "e26698d7-1678-4c46-b904-4a6f823af3e7",
+        "type" : "block",
+        "children" : [ {
+          "attributes" : {
+            "columnWidth" : 12.0,
+            "lightning:backgroundImage" : {
+              "position" : "center center",
+              "repeat" : "no-repeat",
+              "size" : "cover"
+            },
+            "lightning:borderRadius" : "{!$brand.borderRadius.square}",
+            "lightning:borderWidth" : "{!$brand.borderWeight.none}",
+            "lightning:colorScheme" : "{!$brand.colorScheme}",
+            "lightning:margin" : "{!$brand.spacing.none}",
+            "lightning:padding" : "{!$brand.spacing.xSmall}",
+            "lightning:verticalAlignment" : "top"
+          },
+          "definition" : "lightning/column",
+          "id" : "6b8d1f17-72e9-4b88-a01a-464a3facfc0b",
+          "type" : "block",
+          "children" : [ {
+            "attributes" : {
+              "align" : "start",
+              "lightning:borderRadius" : "{!$brand.borderRadius.square}",
+              "lightning:borderWidth" : "{!$brand.borderWeight.none}",
+              "lightning:colorGroup" : {
+                "backgroundColor" : "{!$brand.colorScheme.root}",
+                "borderColor" : "{!$brand.colorScheme.neutral}",
+                "linkColor" : "{!$brand.colorScheme.primaryAccent}",
+                "textColor" : "{!$brand.colorScheme.contrast}"
+              },
+              "lightning:margin" : "{!$brand.spacing.none}",
+              "lightning:padding" : "{!$brand.spacing.none}",
+              "lightning:typography" : {
+                "fontFamily" : "{!$brand.fontFamily.tahoma}",
+                "fontSize" : "{!$brand.fontSize.medium}",
+                "fontWeight" : "{!$brand.fontWeight.normal}",
+                "letterSpacing" : "normal",
+                "lineHeight" : 1.5,
+                "textTransform" : "none"
+              },
+              "text" : "<strong>Will I become more independent?</strong><br />Students learn to set goals, manage their time, advocate for themselves, and make thoughtful decisions. Zeta provides clear expectations and caring guidance while giving students increasing responsibility for their education and their future.<br /><br />Zeta High is a tuition-free, college-preparatory public charter school built around what we know students are capable of achieving. Here, students are known, challenged, and empowered to shape a powerful future of their own choosing. <br /><br /><a href=\"https://zetaschools.org/events-for-prospective-families/\" target=\"_blank\" part=\"link\" rel=\"noopener noreferrer noopener noreferrer noopener noreferrer noopener noreferrer\"><u>Sign up for an upcoming event or tour</u></a> to experience Zeta High for yourself.  <br /><br />Warmly,<br /><strong>The Zeta Enrollment Team</strong><br />Zeta Charter Schools<br />"
+            },
+            "definition" : "lightning/paragraph",
+            "id" : "4c858856-f3eb-4022-8734-82a96e971dbf",
+            "type" : "block"
+          } ]
+        } ]
+      }, {
+        "attributes" : {
+          "content" : {
+            "attributes" : { },
+            "definition" : "@cms/MCBPG52FYONBFFBIOPXFJSOM6LUY",
+            "type" : "block"
+          }
+        },
+        "definition" : "sfdc_cms/reusableContentBlock",
+        "id" : "441bcf63-1acc-4c05-ada8-8ef2e846aced",
+        "type" : "block"
+      }, {
+        "attributes" : {
+          "content" : {
+            "attributes" : { },
+            "definition" : "@cms/MCZCFCDA73I5BVLF5EAKWMO3ZR7I",
+            "type" : "block"
+          }
+        },
+        "definition" : "sfdc_cms/reusableContentBlock",
+        "id" : "0ac3bdaa-5b5d-48eb-8c25-bfd2a028bdff",
+        "type" : "block"
+      } ]
+    },
+    "sfdc_cms:title" : "MC | Applicant | HS Email 3 Five questions to ask when choosing a High School",
+    "sfdc_cms:urlName" : "mc-applicant-hs-email-3-five-questions-to-ask-when-choosing-a-high-school",
+    "subjectLine" : "Five questions to ask when choosing a High School ",
+    "sfdc_cms:variants" : [ ]
+  },
+  "urlName" : "mc-applicant-hs-email-3-five-questions-to-ask-when-choosing-a-high-school"
+}

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Package xmlns="http://soap.sforce.com/2006/04/metadata">
+  <types>
+    <members>Zeta_Individual_Application_Record_Page</members>
+    <members>Zeta_School_Application_Record_Page</members>
+    <name>FlexiPage</name>
+  </types>
+  <types>
+    <members>applicationStatusPath</members>
+    <members>inactiveTimelineBanner</members>
+    <name>LightningComponentBundle</name>
+  </types>
+  <version>67.0</version>
+</Package>

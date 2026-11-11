@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns>
+        <field>ContactContactRelation$Name</field>
+    </columns>
+    <columns>
+        <field>ContactContactRelation$Contact</field>
+    </columns>
+    <columns>
+        <field>ContactContactRelation$PartyRoleRelation</field>
+    </columns>
+    <columns>
+        <field>ContactContactRelation$RelatedContact</field>
+    </columns>
+    <columns>
+        <field>ContactContactRelation$StartDate</field>
+    </columns>
+    <columns>
+        <field>ContactContactRelation$EndDate</field>
+    </columns>
+    <description>Use for Contact to Contact relationships</description>
+    <format>Tabular</format>
+    <name>Sample: Contact to Contact Relationships</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>Contact_to_Contact_Relationships__c</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <showGrandTotal>true</showGrandTotal>
+    <showSubTotals>true</showSubTotals>
+    <timeFrameFilter>
+        <dateColumn>ContactContactRelation$CreatedDate</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
+    </timeFrameFilter>
+</Report>

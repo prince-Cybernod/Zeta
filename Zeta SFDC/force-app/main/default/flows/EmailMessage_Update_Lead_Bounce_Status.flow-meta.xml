@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>67.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <assignments>
+        <name>Add_Lead_Id</name>
+        <label>Add Lead Id</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <assignmentItems>
+            <assignToReference>col_LeadIds</assignToReference>
+            <operator>Add</operator>
+            <value>
+                <elementReference>Loop_Lead_Relations.RelationId</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Loop_Lead_Relations</targetReference>
+        </connector>
+    </assignments>
+    <decisions>
+        <name>Has_Lead_Recipients</name>
+        <label>Has Lead Recipients</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <defaultConnector>
+            <targetReference>Loop_Lead_Relations</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>No_Recipients</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Get_Lead_Email_Relations</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <label>No Recipients</label>
+        </rules>
+    </decisions>
+    <environments>Default</environments>
+    <formulas>
+        <name>fx_BounceStatusValue</name>
+        <dataType>String</dataType>
+        <expression>IF({!$Record.IsBounced}, &quot;Bounced&quot;, &quot;Delivered&quot;)</expression>
+    </formulas>
+    <interviewLabel>EmailMessage | Update Lead Bounce Status {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>EmailMessage | Update Lead Bounce Status</label>
+    <loops>
+        <name>Loop_Lead_Relations</name>
+        <label>Loop Lead Relations</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <collectionReference>Get_Lead_Email_Relations</collectionReference>
+        <iterationOrder>Asc</iterationOrder>
+        <nextValueConnector>
+            <targetReference>Add_Lead_Id</targetReference>
+        </nextValueConnector>
+        <noMoreValuesConnector>
+            <targetReference>Update_Lead_Bounce_Status</targetReference>
+        </noMoreValuesConnector>
+    </loops>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordLookups>
+        <name>Get_Lead_Email_Relations</name>
+        <label>Get Lead Email Relations</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Has_Lead_Recipients</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>EmailMessageId</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>$Record.Id</elementReference>
+            </value>
+        </filters>
+        <filters>
+            <field>RelationType</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>ToAddress</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>RelationObjectType</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Lead</stringValue>
+            </value>
+        </filters>
+        <getFirstRecordOnly>false</getFirstRecordOnly>
+        <object>EmailMessageRelation</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordUpdates>
+        <name>Update_Lead_Bounce_Status</name>
+        <label>Update Lead Bounce Status</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Id</field>
+            <operator>In</operator>
+            <value>
+                <elementReference>col_LeadIds</elementReference>
+            </value>
+        </filters>
+        <inputAssignments>
+            <field>Email_Bounce_Status__c</field>
+            <value>
+                <elementReference>fx_BounceStatusValue</elementReference>
+            </value>
+        </inputAssignments>
+        <object>Lead</object>
+    </recordUpdates>
+    <start>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>Get_Lead_Email_Relations</targetReference>
+        </connector>
+        <filterFormula>NOT({!$Record.Incoming}) &amp;&amp;
+(
+  ( ISBLANK({!$Record__Prior.Id}) &amp;&amp; ISPICKVAL({!$Record.Status}, &quot;Sent&quot;) &amp;&amp; NOT({!$Record.IsBounced}) )
+  ||
+  ( {!$Record.IsBounced} &amp;&amp; NOT({!$Record__Prior.IsBounced}) )
+)</filterFormula>
+        <object>EmailMessage</object>
+        <recordTriggerType>CreateAndUpdate</recordTriggerType>
+        <triggerType>RecordAfterSave</triggerType>
+    </start>
+    <status>Active</status>
+    <variables>
+        <name>col_LeadIds</name>
+        <dataType>String</dataType>
+        <isCollection>true</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+    </variables>
+</Flow>

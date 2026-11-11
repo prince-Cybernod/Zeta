@@ -444,7 +444,7 @@ public without sharing class SiblingSectionController {
 
     // Resolve the logged-in guardian's Contact — the same source the Step 1 roster
     // (StudentSelectionController.getStudents) uses.
-    Id contactId = getLoggedInContactId();
+    Id contactId = getLoggedInContactId(applicationId);
     if (contactId == null) {
       return new List<Map<String, Object>>();
     }
@@ -542,12 +542,11 @@ public without sharing class SiblingSectionController {
   }
 
   /**
-   * Logged-in community user's Contact Id (mirrors
-   * StudentSelectionController.getLoggedInContactId). Used by the household-roster
-   * discovery so it sees the same students the Step 1 roster does.
+   * The Contact standing in for the family. Used by the household-roster discovery
+   * so it sees the same students the Step 1 roster does.
    */
-  private static Id getLoggedInContactId() {
-    return ApplicationContext.resolveGuardianContactId(databaseRepo, null);
+  private static Id getLoggedInContactId(Id applicationId) {
+    return ApplicationContext.resolveGuardianContactId(databaseRepo, applicationId);
   }
 
   /**
@@ -840,7 +839,10 @@ public without sharing class SiblingSectionController {
       'birthdate' => input.get('birthdate'),
       'gender' => input.get('gender')
     };
-    Id newAccountId = StudentSelectionController.createStudent(JSON.serialize(createStudentInput));
+    Id newAccountId = StudentSelectionController.createStudentForApplication(
+      JSON.serialize(createStudentInput),
+      applicationId
+    );
 
     // 2) Look up this application's Primary Guardian + Application Timeline so
     //    the sibling shell ends up in the same household / cycle.

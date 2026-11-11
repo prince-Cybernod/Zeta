@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <label><!-- Conversation Source --></label>
+    <name>ZVC__Conversation_Source__c</name>
+    <picklistValues>
+        <masterLabel>Google Meet</masterLabel>
+        <translation><!-- Google Meet --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>In-Person meeting</masterLabel>
+        <translation><!-- In-Person meeting --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Microsoft Teams</masterLabel>
+        <translation><!-- Microsoft Teams --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Others</masterLabel>
+        <translation><!-- Others --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Third Party Zoom</masterLabel>
+        <translation><!-- Third Party Zoom --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Zoom Contact Center</masterLabel>
+        <translation><!-- Zoom Contact Center --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Zoom Meeting</masterLabel>
+        <translation><!-- Zoom Meeting --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Zoom Phone</masterLabel>
+        <translation><!-- Zoom Phone --></translation>
+    </picklistValues>
+</CustomFieldTranslation>

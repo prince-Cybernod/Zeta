@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>ssot__ConversationReasonCategoryId__c</fullName>
+    <deprecated>false</deprecated>
+    <label>Conversation Reason Category</label>
+    <length>15</length>
+    <mktDataModelFieldAttributes>
+        <definitionCreationType>Standard</definitionCreationType>
+        <isDynamicLookup>false</isDynamicLookup>
+        <masterLabel>Conversation Reason Category</masterLabel>
+        <refAttrDeveloperName>ConversationReasonCategoryId</refAttrDeveloperName>
+        <usageTag>None</usageTag>
+    </mktDataModelFieldAttributes>
+    <required>true</required>
+    <type>Text</type>
+</CustomField>

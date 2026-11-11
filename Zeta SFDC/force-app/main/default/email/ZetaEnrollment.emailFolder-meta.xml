@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplateFolder xmlns="http://soap.sforce.com/2006/04/metadata">
+    <folderShares>
+        <accessLevel>Manage</accessLevel>
+        <sharedTo>Zeta_Network_Outreach_Enrollment</sharedTo>
+        <sharedToType>Group</sharedToType>
+    </folderShares>
+    <folderShares>
+        <accessLevel>View</accessLevel>
+        <sharedTo>Zeta_Outreach_Enrollment</sharedTo>
+        <sharedToType>Group</sharedToType>
+    </folderShares>
+    <name>Zeta Enrollment</name>
+</EmailTemplateFolder>

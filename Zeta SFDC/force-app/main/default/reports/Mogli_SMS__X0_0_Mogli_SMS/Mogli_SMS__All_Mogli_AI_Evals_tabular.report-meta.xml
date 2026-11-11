@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns>
+        <field>Mogli_SMS__GenAI_Eval__c$Name</field>
+    </columns>
+    <columns>
+        <field>Mogli_SMS__GenAI_Eval__c$Mogli_SMS__UseCase__c</field>
+    </columns>
+    <columns>
+        <field>Mogli_SMS__GenAI_Eval__c$CreatedDate</field>
+    </columns>
+    <columns>
+        <field>Mogli_SMS__GenAI_Eval__c$CreatedBy</field>
+    </columns>
+    <columns>
+        <field>Mogli_SMS__GenAI_Eval__c$Mogli_SMS__MogliGenAIParameterSet__c</field>
+    </columns>
+    <columns>
+        <field>Mogli_SMS__GenAI_Eval__c$Mogli_SMS__RecordId__c</field>
+    </columns>
+    <columns>
+        <field>Mogli_SMS__GenAI_Eval__c$Mogli_SMS__PromptSent__c</field>
+    </columns>
+    <columns>
+        <field>Mogli_SMS__GenAI_Eval__c$Mogli_SMS__ModelResponse__c</field>
+    </columns>
+    <description>Basic report for all Mogli AI Evals - tracking usage of Mogli AI features by users in your current org.</description>
+    <format>Tabular</format>
+    <name>All Mogli AI Evals (tabular)</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>Mogli_SMS__Mogli_AI_Evals__c</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <showGrandTotal>true</showGrandTotal>
+    <showSubTotals>true</showSubTotals>
+    <sortColumn>Mogli_SMS__GenAI_Eval__c$CreatedDate</sortColumn>
+    <sortOrder>Desc</sortOrder>
+    <timeFrameFilter>
+        <dateColumn>Mogli_SMS__GenAI_Eval__c$CreatedDate</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
+    </timeFrameFilter>
+</Report>

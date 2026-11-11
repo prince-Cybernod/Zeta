@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>ssot__ActualPtcpEnrollmentCount__c</fullName>
+    <deprecated>false</deprecated>
+    <label>Actual Participant Enrollment Count</label>
+    <mktDataModelFieldAttributes>
+        <definitionCreationType>Standard</definitionCreationType>
+        <isDynamicLookup>false</isDynamicLookup>
+        <masterLabel>Actual Participant Enrollment Count</masterLabel>
+        <refAttrDeveloperName>ActualPtcpEnrollmentCount</refAttrDeveloperName>
+        <usageTag>None</usageTag>
+    </mktDataModelFieldAttributes>
+    <precision>18</precision>
+    <required>false</required>
+    <scale>0</scale>
+    <type>Number</type>
+</CustomField>

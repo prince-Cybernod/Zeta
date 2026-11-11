@@ -137,6 +137,14 @@
         <sourceFormula>UsageType</sourceFormula>
         <targetField>EngagementChannelType_Home__dll.UsageType__c</targetField>
     </fieldSourceTargetMaps>
+    <fieldSourceTargetMaps>
+        <creationType>Custom</creationType>
+        <filterApplied>false</filterApplied>
+        <isSourceFormula>false</isSourceFormula>
+        <sourceField>EngagementChannelType_Home.ChannelTypeCode__c</sourceField>
+        <sourceFormula>ChannelTypeCode</sourceFormula>
+        <targetField>EngagementChannelType_Home__dll.ChannelTypeCode__c</targetField>
+    </fieldSourceTargetMaps>
     <masterLabel>EngagementChannelType_Home_map_EngagementChannelType_Home_1762184413871</masterLabel>
     <sourceObjectName>EngagementChannelType_Home</sourceObjectName>
     <targetObjectName>EngagementChannelType_Home__dll</targetObjectName>

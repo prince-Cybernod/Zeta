@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <help><!-- Select the option that best represents the family’s current engagement or outreach status --></help>
+    <label><!-- Family Status --></label>
+    <name>Family_Status__c</name>
+    <picklistValues>
+        <masterLabel>Applied</masterLabel>
+        <translation><!-- Applied --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Contacted Manually</masterLabel>
+        <translation><!-- Contacted Manually --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Contacted via SchoolMint</masterLabel>
+        <translation><!-- Contacted via SchoolMint --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Needs Follow Up</masterLabel>
+        <translation><!-- Needs Follow Up --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>New Family</masterLabel>
+        <translation><!-- New Family --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Not Interested</masterLabel>
+        <translation><!-- Not Interested --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Unable to Contact</masterLabel>
+        <translation><!-- Unable to Contact --></translation>
+    </picklistValues>
+</CustomFieldTranslation>

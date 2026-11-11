@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>GenAiGatewayModelName__c</fullName>
+    <label>Generative AI Gateway Model Name</label>
+    <length>60</length>
+    <mktDataModelFieldAttributes>
+        <definitionCreationType>Standard</definitionCreationType>
+        <isDynamicLookup>false</isDynamicLookup>
+        <labelOverride>Generative AI Gateway Model Name</labelOverride>
+        <masterLabel>Generative AI Gateway Model Name</masterLabel>
+        <refAttrDeveloperName>GenAiGatewayModelName</refAttrDeveloperName>
+        <usageTag>None</usageTag>
+    </mktDataModelFieldAttributes>
+    <required>false</required>
+    <type>Text</type>
+</CustomField>

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PermissionSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <classAccesses>
+        <apexClass>Mogli_SMS__EventConfirmationResource</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>Mogli_SMS__LinkEngagementResource</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>Mogli_SMS__MessagingWebService</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>Mogli_SMS__MogliGatewaysResource</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>Mogli_SMS__MogliSMSCallbackResource</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>Mogli_SMS__MogliSMSWebService</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>Mogli_SMS__MogliUrlResource</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>Mogli_SMS__MogliWebService</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <description>Minimum access for the Connected App integration user to run Mogli SMS REST services (incoming messages, status callbacks, Mogli URL, Scheduler, M4MC). Assign with the Mogli SMS User: System Admin permission set. Needs a full Salesforce license.</description>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>Mogli_SMS__Gateway__c.Mogli_SMS__Mogli_API_Id__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <hasActivationRequired>false</hasActivationRequired>
+    <label>Mogli SMS User: Connected App</label>
+</PermissionSet>

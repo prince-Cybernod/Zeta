@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <aggregates>
+        <calculatedFormula>RowCount / AcademicInterest.Lottery_Capacity__c.Total_Available_Seats__c:SUM</calculatedFormula>
+        <datatype>number</datatype>
+        <developerName>FORMULA1</developerName>
+        <isActive>true</isActive>
+        <isCrossBlock>false</isCrossBlock>
+        <masterLabel>Unique App / Open Seat</masterLabel>
+        <scale>2</scale>
+    </aggregates>
+    <columns>
+        <field>AcademicInterest$Name</field>
+    </columns>
+    <columns>
+        <aggregateTypes>Sum</aggregateTypes>
+        <field>AcademicInterest$Lottery_Capacity__c.Number_of_Sections__c</field>
+    </columns>
+    <columns>
+        <aggregateTypes>Sum</aggregateTypes>
+        <field>AcademicInterest$Lottery_Capacity__c.Projected_Open_Seats__c</field>
+    </columns>
+    <columns>
+        <aggregateTypes>Sum</aggregateTypes>
+        <field>AcademicInterest$Lottery_Capacity__c.Total_Available_Seats__c</field>
+    </columns>
+    <columns>
+        <field>AcademicInterest$IndividualApplication.Lead_Source__c</field>
+    </columns>
+    <columns>
+        <aggregateTypes>Sum</aggregateTypes>
+        <field>CDF1</field>
+    </columns>
+    <customDetailFormulas>
+        <calculatedFormula>AcademicInterest.Lottery_Capacity__c.Projected_Open_Seats__c-AcademicInterest.Lottery_Capacity__c.Remaining_Available_Seats__c</calculatedFormula>
+        <dataType>Double</dataType>
+        <developerName>CDF1</developerName>
+        <label>Estimated # Open Seats Filled</label>
+        <scale>0</scale>
+    </customDetailFormulas>
+    <description>Totals for the School Application enrollments - used in the Application Dashboard</description>
+    <filter>
+        <criteriaItems>
+            <column>AcademicInterest$IndividualApplication.Application_Timeline__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>2026 - 2027 DEMO</value>
+        </criteriaItems>
+        <language>en_US</language>
+    </filter>
+    <format>Summary</format>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>AcademicInterest$Lottery_Capacity__c.Grade__c</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>AcademicInterest$LearningProgram</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <name>DB: Unique Application Totals</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>School_Applications_with_Individual_Application_and_Lottery_Capacity__c</reportType>
+    <scope>organization</scope>
+    <showDetails>false</showDetails>
+    <showGrandTotal>true</showGrandTotal>
+    <showSubTotals>true</showSubTotals>
+    <timeFrameFilter>
+        <dateColumn>AcademicInterest$CreatedDate</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
+    </timeFrameFilter>
+</Report>

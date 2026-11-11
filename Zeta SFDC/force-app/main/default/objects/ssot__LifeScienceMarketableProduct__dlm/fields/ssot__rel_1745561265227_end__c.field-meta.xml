@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>ssot__rel_1745561265227_end__c</fullName>
+    <deleteConstraint>SetNull</deleteConstraint>
+    <deprecated>false</deprecated>
+    <label>LifeScienceMarketableProduct_ParentP_rel</label>
+    <referenceTo>ssot__LifeScienceMarketableProduct__dlm</referenceTo>
+    <relationshipLabel>LifeScienceMarketableProduct_ParentP_rel</relationshipLabel>
+    <relationshipName>rel_1745561265227_end</relationshipName>
+    <required>false</required>
+    <type>Lookup</type>
+</CustomField>

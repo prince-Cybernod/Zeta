@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>ssot__EarlyApplnDecisionRelDate__c</fullName>
+    <deprecated>false</deprecated>
+    <label>Early Application Decision Release Date</label>
+    <mktDataModelFieldAttributes>
+        <definitionCreationType>Standard</definitionCreationType>
+        <isDynamicLookup>false</isDynamicLookup>
+        <masterLabel>Early Application Decision Release Date</masterLabel>
+        <refAttrDeveloperName>EarlyApplnDecisionRelDate</refAttrDeveloperName>
+        <usageTag>None</usageTag>
+    </mktDataModelFieldAttributes>
+    <required>false</required>
+    <type>Date</type>
+</CustomField>

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns>
+        <field>CUST_NAME</field>
+    </columns>
+    <columns>
+        <field>CUST_CREATED_DATE</field>
+    </columns>
+    <columns>
+        <field>CUST_CREATED_NAME</field>
+    </columns>
+    <columns>
+        <field>Mogli_SMS__GenAI_Eval__c.Mogli_SMS__RecordId__c</field>
+    </columns>
+    <columns>
+        <field>Mogli_SMS__GenAI_Eval__c.Mogli_SMS__Model__c</field>
+    </columns>
+    <columns>
+        <field>Mogli_SMS__GenAI_Eval__c.Mogli_SMS__ModelResponse__c</field>
+    </columns>
+    <format>Tabular</format>
+    <name>GenAI Usage</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>CustomEntity$Mogli_SMS__GenAI_Eval__c</reportType>
+    <scope>user</scope>
+    <showDetails>true</showDetails>
+    <showGrandTotal>true</showGrandTotal>
+    <showSubTotals>true</showSubTotals>
+    <timeFrameFilter>
+        <dateColumn>Mogli_SMS__GenAI_Eval__c.Mogli_SMS__SMSMessageEndDate__c</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
+    </timeFrameFilter>
+</Report>

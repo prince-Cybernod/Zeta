@@ -53,12 +53,19 @@
         <locationX>0</locationX>
         <locationY>0</locationY>
         <doesRequireRecordChangedToMeetCriteria>true</doesRequireRecordChangedToMeetCriteria>
-        <filterLogic>and</filterLogic>
+        <filterLogic>or</filterLogic>
         <filters>
             <field>Status</field>
             <operator>EqualTo</operator>
             <value>
                 <stringValue>Applied</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>Status</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Eligible</stringValue>
             </value>
         </filters>
         <object>IndividualApplication</object>

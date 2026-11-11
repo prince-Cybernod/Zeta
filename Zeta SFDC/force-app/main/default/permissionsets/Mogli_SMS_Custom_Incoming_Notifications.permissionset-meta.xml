@@ -20,6 +20,11 @@
         <field>Mogli_SMS__ApplicationSettings__c.Org_Base_URL__c</field>
         <readable>true</readable>
     </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>User.Bypass_Validations__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
     <hasActivationRequired>false</hasActivationRequired>
     <label>Mogli SMS: Custom Incoming Notifications</label>
 </PermissionSet>

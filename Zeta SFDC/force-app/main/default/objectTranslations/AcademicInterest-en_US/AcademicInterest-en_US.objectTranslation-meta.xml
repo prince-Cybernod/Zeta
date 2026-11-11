@@ -8,6 +8,13 @@
         <plural>true</plural>
         <value>School Applications</value>
     </caseValues>
+    <layouts>
+        <layout>Zeta School Application Page Layout</layout>
+        <sections>
+            <label><!-- Application Details --></label>
+            <section>Application Details</section>
+        </sections>
+    </layouts>
     <startsWith>Consonant</startsWith>
     <validationRules>
         <errorMessage><!-- All School Applications must have an associated Individual Application. --></errorMessage>
@@ -17,4 +24,8 @@
         <errorMessage><!-- A Withdraw/Rescind Reason is required when the Status is set to a withdrawal status. --></errorMessage>
         <name>Require_Withdraw_Rescind_Reason</name>
     </validationRules>
+    <webLinks>
+        <label><!-- Send_Email --></label>
+        <name>Send_Email</name>
+    </webLinks>
 </CustomObjectTranslation>

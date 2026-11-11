@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>AiGatewayResponseId__c</fullName>
+    <label>Ai Gateway Response Id</label>
+    <length>60</length>
+    <mktDataModelFieldAttributes>
+        <definitionCreationType>Standard</definitionCreationType>
+        <isDynamicLookup>false</isDynamicLookup>
+        <labelOverride>Ai Gateway Response Id</labelOverride>
+        <masterLabel>Ai Gateway Response Id</masterLabel>
+        <refAttrDeveloperName>AiGatewayResponseId</refAttrDeveloperName>
+        <usageTag>None</usageTag>
+    </mktDataModelFieldAttributes>
+    <required>false</required>
+    <type>Text</type>
+</CustomField>

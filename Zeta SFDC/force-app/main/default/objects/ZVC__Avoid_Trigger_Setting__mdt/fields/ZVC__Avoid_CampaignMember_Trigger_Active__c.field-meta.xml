@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>ZVC__Avoid_CampaignMember_Trigger_Active__c</fullName>
+    <defaultValue>false</defaultValue>
+    <deprecated>false</deprecated>
+    <description>If this is enabled then it should disable the trigger logic for campaign member completely.</description>
+    <fieldManageability>SubscriberControlled</fieldManageability>
+    <label>Avoid CampaignMember Trigger</label>
+    <type>Checkbox</type>
+</CustomField>

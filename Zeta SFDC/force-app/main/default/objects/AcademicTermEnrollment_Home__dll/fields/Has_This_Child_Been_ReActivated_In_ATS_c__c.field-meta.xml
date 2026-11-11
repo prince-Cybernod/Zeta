@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Has_This_Child_Been_ReActivated_In_ATS_c__c</fullName>
+    <defaultValue>false</defaultValue>
+    <label>Has this child been re-activated in ATS?</label>
+    <mktDataLakeFieldAttributes>
+        <definitionCreationType>Custom</definitionCreationType>
+        <externalName>Has_This_Child_Been_ReActivated_In_ATS_c</externalName>
+        <isEventDate>false</isEventDate>
+        <isInternalOrganization>false</isInternalOrganization>
+        <isRecordModified>false</isRecordModified>
+        <usageTag>NONE</usageTag>
+    </mktDataLakeFieldAttributes>
+    <type>Checkbox</type>
+</CustomField>

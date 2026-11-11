@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>ssot__DecisionReleaseDate__c</fullName>
+    <deprecated>false</deprecated>
+    <label>Decision Release Date</label>
+    <length>255</length>
+    <mktDataModelFieldAttributes>
+        <definitionCreationType>Standard</definitionCreationType>
+        <isDynamicLookup>false</isDynamicLookup>
+        <masterLabel>Decision Release Date</masterLabel>
+        <refAttrDeveloperName>DecisionReleaseDate</refAttrDeveloperName>
+        <usageTag>None</usageTag>
+    </mktDataModelFieldAttributes>
+    <required>false</required>
+    <type>Text</type>
+</CustomField>

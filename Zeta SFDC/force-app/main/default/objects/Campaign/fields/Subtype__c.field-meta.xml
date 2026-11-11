@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Subtype__c</fullName>
+    <label>Subtype</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Advertisement</fullName>
+                <default>false</default>
+                <label>Advertisement</label>
+            </value>
+            <value>
+                <fullName>Email</fullName>
+                <default>false</default>
+                <label>Email</label>
+            </value>
+            <value>
+                <fullName>Telemarketing</fullName>
+                <default>false</default>
+                <label>Telemarketing</label>
+            </value>
+            <value>
+                <fullName>Banner Ads</fullName>
+                <default>false</default>
+                <label>Banner Ads</label>
+            </value>
+            <value>
+                <fullName>Seminar / Conference</fullName>
+                <default>false</default>
+                <label>Seminar / Conference</label>
+            </value>
+            <value>
+                <fullName>Public Relations</fullName>
+                <default>false</default>
+                <label>Public Relations</label>
+            </value>
+            <value>
+                <fullName>Partners</fullName>
+                <default>false</default>
+                <label>Partners</label>
+            </value>
+            <value>
+                <fullName>Referral Program</fullName>
+                <default>false</default>
+                <label>Referral Program</label>
+            </value>
+            <value>
+                <fullName>Other</fullName>
+                <default>false</default>
+                <label>Other</label>
+            </value>
+            <value>
+                <fullName>Event</fullName>
+                <default>false</default>
+                <label>Event</label>
+            </value>
+            <value>
+                <fullName>Information Session</fullName>
+                <default>false</default>
+                <label>Information Session</label>
+            </value>
+            <value>
+                <fullName>Meet Your Principal</fullName>
+                <default>false</default>
+                <label>Meet Your Principal</label>
+            </value>
+            <value>
+                <fullName>Tour</fullName>
+                <default>false</default>
+                <label>Tour</label>
+            </value>
+            <value>
+                <fullName>Webinar</fullName>
+                <default>false</default>
+                <label>Webinar</label>
+            </value>
+            <value>
+                <fullName>Welcome Event</fullName>
+                <default>false</default>
+                <label>Welcome Event</label>
+            </value>
+            <value>
+                <fullName>Zoom Webinar</fullName>
+                <default>false</default>
+                <label>Zoom Webinar</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

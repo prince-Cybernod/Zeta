@@ -6,6 +6,19 @@
     <dataSourceObject>MessagingEventsSmsV2_00Da500001_4A676A9D_dll</dataSourceObject>
     <masterLabel>MessagingEventsSmsV2_00Da500001AA4BB-Sms</masterLabel>
     <mktDataTranFields>
+        <fullName>AgentforceSessionId</fullName>
+        <creationType>Custom</creationType>
+        <datatype>S</datatype>
+        <externalName>AgentforceSessionId</externalName>
+        <isDataRequired>false</isDataRequired>
+        <length>0</length>
+        <masterLabel>AgentforceSessionId</masterLabel>
+        <precision>0</precision>
+        <primaryIndexOrder>0</primaryIndexOrder>
+        <scale>0</scale>
+        <sequence>0</sequence>
+    </mktDataTranFields>
+    <mktDataTranFields>
         <fullName>Application</fullName>
         <creationType>Custom</creationType>
         <datatype>S</datatype>
@@ -78,6 +91,19 @@
         <isDataRequired>false</isDataRequired>
         <length>0</length>
         <masterLabel>ContactPointPhoneNumber</masterLabel>
+        <precision>0</precision>
+        <primaryIndexOrder>0</primaryIndexOrder>
+        <scale>0</scale>
+        <sequence>0</sequence>
+    </mktDataTranFields>
+    <mktDataTranFields>
+        <fullName>ContentImpressionRegion</fullName>
+        <creationType>Custom</creationType>
+        <datatype>S</datatype>
+        <externalName>ContentImpressionRegion</externalName>
+        <isDataRequired>false</isDataRequired>
+        <length>0</length>
+        <masterLabel>ContentImpressionRegion</masterLabel>
         <precision>0</precision>
         <primaryIndexOrder>0</primaryIndexOrder>
         <scale>0</scale>
@@ -221,6 +247,19 @@
         <isDataRequired>false</isDataRequired>
         <length>0</length>
         <masterLabel>IndividualID</masterLabel>
+        <precision>0</precision>
+        <primaryIndexOrder>0</primaryIndexOrder>
+        <scale>0</scale>
+        <sequence>0</sequence>
+    </mktDataTranFields>
+    <mktDataTranFields>
+        <fullName>IsBotClick</fullName>
+        <creationType>Custom</creationType>
+        <datatype>B</datatype>
+        <externalName>IsBotClick</externalName>
+        <isDataRequired>false</isDataRequired>
+        <length>0</length>
+        <masterLabel>IsBotClick</masterLabel>
         <precision>0</precision>
         <primaryIndexOrder>0</primaryIndexOrder>
         <scale>0</scale>
@@ -468,6 +507,19 @@
         <isDataRequired>false</isDataRequired>
         <length>0</length>
         <masterLabel>SendStatus</masterLabel>
+        <precision>0</precision>
+        <primaryIndexOrder>0</primaryIndexOrder>
+        <scale>0</scale>
+        <sequence>0</sequence>
+    </mktDataTranFields>
+    <mktDataTranFields>
+        <fullName>SendTimeAttributes</fullName>
+        <creationType>Custom</creationType>
+        <datatype>S</datatype>
+        <externalName>SendTimeAttributes</externalName>
+        <isDataRequired>false</isDataRequired>
+        <length>0</length>
+        <masterLabel>SendTimeAttributes</masterLabel>
         <precision>0</precision>
         <primaryIndexOrder>0</primaryIndexOrder>
         <scale>0</scale>

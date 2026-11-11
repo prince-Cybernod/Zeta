@@ -137,6 +137,22 @@
         <sourceField>Flow_Run_Ingestion_Home_FlowRun_17C04205__dll.PrimaryRecordId__c</sourceField>
         <targetField>ssot__FlowRun__dlm.ssot__PrimaryRecordId__c</targetField>
     </fieldSourceTargetMaps>
+    <fieldSourceTargetMaps>
+        <creationType>Custom</creationType>
+        <filterApplied>false</filterApplied>
+        <filterOperationType>Equal</filterOperationType>
+        <isSourceFormula>false</isSourceFormula>
+        <sourceField>Flow_Run_Ingestion_Home_FlowRun_17C04205__dll.RelatedRecordObject__c</sourceField>
+        <targetField>ssot__FlowRun__dlm.RelatedRecordObject__c</targetField>
+    </fieldSourceTargetMaps>
+    <fieldSourceTargetMaps>
+        <creationType>Custom</creationType>
+        <filterApplied>false</filterApplied>
+        <filterOperationType>Equal</filterOperationType>
+        <isSourceFormula>false</isSourceFormula>
+        <sourceField>Flow_Run_Ingestion_Home_FlowRun_17C04205__dll.RelatedRecordId__c</sourceField>
+        <targetField>ssot__FlowRun__dlm.RelatedRecordId__c</targetField>
+    </fieldSourceTargetMaps>
     <masterLabel>Flow_Run_Ingestion_Home_FlowRun_17C04205_map_FlowRun_1782425565230</masterLabel>
     <sourceObjectName>Flow_Run_Ingestion_Home_FlowRun_17C04205__dll</sourceObjectName>
     <targetObjectName>ssot__FlowRun__dlm</targetObjectName>

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>ssot__rel_1716723210161_end__c</fullName>
+    <deleteConstraint>SetNull</deleteConstraint>
+    <deprecated>false</deprecated>
+    <label>ClinicalServiceRequest_PatientHealth_rel</label>
+    <referenceTo>ssot__PatientHealthCondition__dlm</referenceTo>
+    <relationshipLabel>ClinicalServiceRequest_PatientHealth_rel</relationshipLabel>
+    <relationshipName>rel_1716723210161_end</relationshipName>
+    <required>false</required>
+    <type>Lookup</type>
+</CustomField>

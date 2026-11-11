@@ -1,0 +1,14 @@
+Hi {!Event.Who},<br/><br/>
+
+{!Event.CreatedBy} is inviting you to join a Zoom meeting. <br/>
+
+Topic: {!Event.Subject}<br/>
+
+From: {!Event.StartDateTime}  To: {!Event.EndDateTime}<br/>
+
+Meeting Password: meetingPasscode<br/>
+Join from PC, Mac, iOS or Android: <a href="joinUrl">joinUrl</a> <br/><br/>
+
+
+Thanks,<br/>
+{!Event.CreatedBy}

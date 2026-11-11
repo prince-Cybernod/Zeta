@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>KQ_MarketSegmentId__c</fullName>
+    <label>Key Qualifier Market Segment</label>
+    <length>60</length>
+    <mktDataModelFieldAttributes>
+        <definitionCreationType>System</definitionCreationType>
+        <isDynamicLookup>false</isDynamicLookup>
+        <labelOverride>Key Qualifier Market Segment</labelOverride>
+        <masterLabel>Key Qualifier Market Segment</masterLabel>
+        <refAttrDeveloperName>KQ_MarketSegmentId</refAttrDeveloperName>
+        <usageTag>KeyQualifier</usageTag>
+    </mktDataModelFieldAttributes>
+    <required>false</required>
+    <type>Text</type>
+</CustomField>

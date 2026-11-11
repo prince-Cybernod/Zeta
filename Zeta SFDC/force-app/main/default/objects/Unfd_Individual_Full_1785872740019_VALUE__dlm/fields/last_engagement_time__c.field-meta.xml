@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>last_engagement_time__c</fullName>
+    <label>Last Engagement Time</label>
+    <mktDataModelFieldAttributes>
+        <definitionCreationType>ADG</definitionCreationType>
+        <isDynamicLookup>false</isDynamicLookup>
+        <labelOverride>Last Engagement Time</labelOverride>
+        <masterLabel>Last Engagement Time</masterLabel>
+        <refAttrDeveloperName>last_engagement_time</refAttrDeveloperName>
+        <usageTag>None</usageTag>
+    </mktDataModelFieldAttributes>
+    <required>false</required>
+    <type>DateTime</type>
+</CustomField>

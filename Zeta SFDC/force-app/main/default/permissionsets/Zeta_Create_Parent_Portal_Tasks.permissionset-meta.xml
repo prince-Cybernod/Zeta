@@ -5,6 +5,11 @@
         <name>Zeta_Create_Parent_Portal_Tasks</name>
     </customPermissions>
     <description>Grants the Create Parent Portal Tasks custom permission for users allowed to create Parent Portal Task records from the mass task creation flow.</description>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>User.Bypass_Validations__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
     <hasActivationRequired>false</hasActivationRequired>
     <label>Zeta Create Parent Portal Tasks</label>
 </PermissionSet>

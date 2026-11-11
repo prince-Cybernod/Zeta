@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>join_key__c</fullName>
+    <label>Join Key</label>
+    <length>60</length>
+    <mktDataModelFieldAttributes>
+        <definitionCreationType>ADG</definitionCreationType>
+        <isDynamicLookup>false</isDynamicLookup>
+        <labelOverride>Join Key</labelOverride>
+        <masterLabel>Join Key</masterLabel>
+        <refAttrDeveloperName>join_key</refAttrDeveloperName>
+        <usageTag>None</usageTag>
+    </mktDataModelFieldAttributes>
+    <required>false</required>
+    <type>Text</type>
+</CustomField>

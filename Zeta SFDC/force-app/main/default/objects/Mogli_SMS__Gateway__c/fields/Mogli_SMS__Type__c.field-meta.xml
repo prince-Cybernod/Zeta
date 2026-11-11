@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Mogli_SMS__Type__c</fullName>
+    <deprecated>false</deprecated>
+    <label>Type</label>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>LongCode</fullName>
+                <default>false</default>
+                <label>Long Code</label>
+            </value>
+            <value>
+                <fullName>TollFree</fullName>
+                <default>false</default>
+                <label>Toll Free</label>
+            </value>
+            <value>
+                <fullName>Whatsapp</fullName>
+                <default>false</default>
+                <label>Whatsapp</label>
+            </value>
+            <value>
+                <fullName>IntelligentRouting</fullName>
+                <default>false</default>
+                <label>Intelligent Routing</label>
+            </value>
+            <value>
+                <fullName>ShortCode</fullName>
+                <default>false</default>
+                <label>Short Code</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

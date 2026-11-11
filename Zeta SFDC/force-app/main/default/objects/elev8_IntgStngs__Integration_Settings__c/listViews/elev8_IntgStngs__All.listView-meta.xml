@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>elev8_IntgStngs__All</fullName>
+    <columns>NAME</columns>
+    <columns>elev8_IntgStngs__External_Id__c</columns>
+    <columns>elev8_IntgStngs__Integration__c</columns>
+    <columns>elev8_IntgStngs__Route_Id__c</columns>
+    <columns>elev8_IntgStngs__Enabled__c</columns>
+    <columns>elev8_IntgStngs__Last_Run__c</columns>
+    <columns>elev8_IntgStngs__Records_Processed__c</columns>
+    <columns>elev8_IntgStngs__Records_Failed__c</columns>
+    <filterScope>Everything</filterScope>
+    <label>All</label>
+</ListView>

@@ -161,6 +161,22 @@
         <sourceField>AcademicTermEnrollment_Home__dll.School_Name_c__c</sourceField>
         <targetField>ssot__AcademicTermEnrollment__dlm.School_Name__c</targetField>
     </fieldSourceTargetMaps>
+    <fieldSourceTargetMaps>
+        <creationType>Custom</creationType>
+        <filterApplied>false</filterApplied>
+        <filterOperationType>Equal</filterOperationType>
+        <isSourceFormula>false</isSourceFormula>
+        <sourceField>AcademicTermEnrollment_Home__dll.Academic_Term_Name_c__c</sourceField>
+        <targetField>ssot__AcademicTermEnrollment__dlm.Academic_Term_Name__c</targetField>
+    </fieldSourceTargetMaps>
+    <fieldSourceTargetMaps>
+        <creationType>Custom</creationType>
+        <filterApplied>false</filterApplied>
+        <filterOperationType>Equal</filterOperationType>
+        <isSourceFormula>false</isSourceFormula>
+        <sourceField>AcademicTermEnrollment_Home__dll.Active_c__c</sourceField>
+        <targetField>ssot__AcademicTermEnrollment__dlm.Active__c</targetField>
+    </fieldSourceTargetMaps>
     <masterLabel>AcademicTermEnrollment_Home_map_AcademicTermEnrollment_1785851605359</masterLabel>
     <sourceObjectName>AcademicTermEnrollment_Home__dll</sourceObjectName>
     <targetObjectName>ssot__AcademicTermEnrollment__dlm</targetObjectName>

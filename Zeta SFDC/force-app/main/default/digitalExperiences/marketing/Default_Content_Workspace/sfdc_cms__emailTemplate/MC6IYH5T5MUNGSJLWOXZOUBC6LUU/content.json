@@ -1,0 +1,145 @@
+{
+  "type" : "sfdc_cms__emailTemplate",
+  "title" : "(to be deleted) HS Email 3 Five questions to ask when choosing a High School",
+  "contentBody" : {
+    "backgroundColor" : "#f3f3f3",
+    "lightning:backgroundImage" : {
+      "position" : "center center",
+      "repeat" : "no-repeat",
+      "size" : "cover"
+    },
+    "lightning:brandSource" : "MCXD6TZ6XKJRGNBB72AH4B5UPAKA",
+    "lightning:colorScheme" : "{!$brand.colorScheme}",
+    "lightning:dataProviders" : [ {
+      "attributes" : {
+        "dataGraphApiName" : "Unified_Individual_Full_Graph",
+        "dataspace" : "default"
+      },
+      "definition" : "sfdc_cms__dataGraphDataProvider",
+      "sfdcExpressionKey" : "$dataGraph"
+    } ],
+    "lightning:expressions" : [ {
+      "attributes" : {
+        "expressionGroups" : [ {
+          "name" : "group0",
+          "resource" : "{!$dataGraph.ssot__FirstName__c}"
+        } ]
+      },
+      "default" : "",
+      "definition" : "sfdc_cms__multiLevelExpression",
+      "label" : "First_Name",
+      "sfdcExpressionKey" : "First_Name"
+    } ],
+    "lightning:padding" : "{!$brand.spacing.none}",
+    "messagePurpose" : "promotional",
+    "sfdc_cms:attachments" : [ ],
+    "sfdc_cms:block" : {
+      "definition" : "sfdc_cms/rootContentBlock",
+      "id" : "caef9936-fcb0-4b12-9a61-1a006ba69889",
+      "type" : "block",
+      "children" : [ {
+        "attributes" : {
+          "content" : {
+            "attributes" : { },
+            "definition" : "@cms/MCBZEVXEAJQJB4LFOKG26RUI6GGU",
+            "type" : "block"
+          },
+          "sfdc_cms:schema" : {
+            "readOnly" : true
+          }
+        },
+        "definition" : "sfdc_cms/reusableContentBlock",
+        "id" : "7f37e057-580a-439d-8035-522be3d464d0",
+        "type" : "block"
+      }, {
+        "attributes" : {
+          "lightning:backgroundImage" : {
+            "position" : "center center",
+            "repeat" : "no-repeat",
+            "size" : "cover"
+          },
+          "lightning:borderRadius" : "{!$brand.borderRadius.square}",
+          "lightning:borderWidth" : "{!$brand.borderWeight.none}",
+          "lightning:colorScheme" : "{!$brand.colorScheme}",
+          "lightning:margin" : "{!$brand.spacing.none}",
+          "lightning:padding" : "{!$brand.spacing.xSmall}",
+          "reverseOrderOnMobile" : false,
+          "sfdc_cms:schema" : {
+            "readOnly" : true
+          },
+          "stackOnMobile" : true
+        },
+        "definition" : "lightning/section",
+        "id" : "3394ab2f-8477-4e4e-b9b7-9ea749331bb1",
+        "type" : "block",
+        "children" : [ {
+          "attributes" : {
+            "columnWidth" : 12.0,
+            "lightning:backgroundImage" : {
+              "position" : "center center",
+              "repeat" : "no-repeat",
+              "size" : "cover"
+            },
+            "lightning:borderRadius" : "{!$brand.borderRadius.square}",
+            "lightning:borderWidth" : "{!$brand.borderWeight.none}",
+            "lightning:colorScheme" : "{!$brand.colorScheme}",
+            "lightning:margin" : "{!$brand.spacing.none}",
+            "lightning:padding" : "{!$brand.spacing.xSmall}",
+            "lightning:verticalAlignment" : "top",
+            "sfdc_cms:schema" : {
+              "readOnly" : true
+            }
+          },
+          "definition" : "lightning/column",
+          "id" : "cca0d889-0dde-4656-a06d-dd47f83b4642",
+          "type" : "block",
+          "children" : [ {
+            "attributes" : {
+              "align" : "start",
+              "lightning:borderRadius" : "{!$brand.borderRadius.square}",
+              "lightning:borderWidth" : "{!$brand.borderWeight.none}",
+              "lightning:colorGroup" : {
+                "backgroundColor" : "{!$brand.colorScheme.root}",
+                "borderColor" : "{!$brand.colorScheme.neutral}",
+                "linkColor" : "{!$brand.colorScheme.primaryAccent}",
+                "textColor" : "{!$brand.colorScheme.contrast}"
+              },
+              "lightning:margin" : "{!$brand.spacing.none}",
+              "lightning:padding" : "{!$brand.spacing.none}",
+              "lightning:typography" : "{!$brand.typography.paragraph.paragraph1}",
+              "sfdc_cms:schema" : {
+                "readOnly" : true
+              },
+              "text" : "Dear {!$Expression.First_Name},<br /><br />Choosing a high school is a major decision. As you consider your options, ask what each school will offer your student during these important years. At Zeta High, the answers begin with <strong>purpose, passion, and power.</strong><br /><br /><strong>Will I be known and supported?</strong><br />High school brings greater freedom, but students should never have to navigate it alone. Every Zeta High student belongs to a 12-student Z Pod led by a dedicated Z Coach who knows them deeply. Cross-grade Z Houses create friendship, mentorship, and a strong sense of belonging.<br /><br /><strong>Will I be challenged and prepared for college?</strong><br />Students take advanced and AP courses designed to prepare them for demanding college-level work. Free SAT preparation is built into the school day, and every student receives one-on-one college advising to help them identify opportunities and build a path forward.<br /><br /><strong>Will I apply my learning to the real world?</strong><br />In Z Lab, students use technology and design to develop solutions, test their ideas, and create meaningful work. Internships introduce them to possible careers, while Z Journeys expand their understanding of the world beyond the classroom.<br /><br /><strong>Will I have a voice in my school?</strong><br />At Zeta High, students help shape their own experience. They can choose and create clubs based on their interests. Our founding students even selected the school mascot: the wolf, representing the courage to lead independently and the strength found in moving forward together.<br /><br /><strong>Will I become more independent?</strong><br />Students learn to set goals, manage their time, advocate for themselves, and make thoughtful decisions. Zeta provides clear expectations and caring guidance while giving students increasing responsibility for their education and their future.<br /><br />Zeta High is a tuition-free, college-preparatory public charter school built around what we know students are capable of achieving. Here, students are known, challenged, and empowered to shape a powerful future of their own choosing. <br /><br /><a href=\"https://zetaschools.org/events-for-prospective-families/\" target=\"_blank\" part=\"link\" rel=\"noopener noreferrer noopener noreferrer noopener noreferrer\"><u>Sign up for an upcoming event or tour</u></a> to experience Zeta High for yourself.  <br /><br /><br />Warmly,<br /><strong>The Zeta Enrollment Team</strong><br />Zeta Charter Schools<br /><br /><em>Please reach out if you have any questions about Zeta, our Enrollment Team is here for you every step of the way. ✉︎ <a href=\"mailto:enroll&#64;zetaschools.org\" target=\"_blank\" part=\"link\" rel=\"noopener noreferrer noopener noreferrer noopener noreferrer\"><u>enroll&#64;zetaschools.org</u></a> &#x1f4de;(646) 480-1654</em>"
+            },
+            "definition" : "lightning/paragraph",
+            "id" : "d12cdaaf-47eb-4d13-bbfc-a715d6bb654e",
+            "type" : "block"
+          } ]
+        } ]
+      }, {
+        "attributes" : {
+          "content" : {
+            "attributes" : { },
+            "definition" : "@cms/MCZCFCDA73I5BVLF5EAKWMO3ZR7I",
+            "type" : "block"
+          },
+          "sfdc_cms:schema" : {
+            "readOnly" : true
+          }
+        },
+        "definition" : "sfdc_cms/reusableContentBlock",
+        "id" : "f4acbdc7-7421-4c25-a970-1918edd26b93",
+        "type" : "block"
+      } ]
+    },
+    "sfdc_cms:schema" : {
+      "readOnly" : true
+    },
+    "sfdc_cms:title" : "(to be deleted) HS Email 3 Five questions to ask when choosing a High School",
+    "sfdc_cms:urlName" : "mc-applicant-hs-email-3-five-questions-to-ask-when-choosing-a-high-school",
+    "sfdc_cms:variants" : [ ],
+    "subjectLine" : "Five questions to ask when choosing a High School "
+  },
+  "urlName" : "mc-applicant-hs-email-3-five-questions-to-ask-when-choosing-a-high-school"
+}

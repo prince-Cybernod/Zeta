@@ -1,0 +1,31 @@
+{
+  "type" : "sfdc_cms__email",
+  "title" : "MC | Applicant | ES Email 2",
+  "contentBody" : {
+    "subjectLine" : "Saludos de la fundadora de Zeta y orgullosa madre de Zeta",
+    "preheader" : "¡Felicitaciones por postularte a la escuela intermedia Zeta!",
+    "sfdc_cms:block" : {
+      "children" : [ {
+        "id" : "618d12ac-1220-42a4-9ed6-83e330b709d4",
+        "attributes" : {
+          "text" : "Estimado/a {!$Expression.First_Name_1} {!$Expression.Last_Name}:<br><br>¡Felicitaciones por postularte a la escuela intermedia Zeta!"
+        }
+      }, {
+        "id" : "c3f5a7dd-c435-4c43-aa0a-f86c20875a65",
+        "attributes" : {
+          "text" : "Mi nombre es Emily Kim y soy la fundadora y directora ejecutiva de las Escuelas Chárter Zeta, además de una orgullosa madre de Zeta. Estoy ansiosa por darle la bienvenida a su familia a nuestra escuela. Antes de conocernos, quería compartir cómo comenzó Zeta y cuál es la promesa en el corazón de nuestras escuelas."
+        }
+      }, {
+        "id" : "bbf0ea99-526d-48e3-960b-d6dbbefe7dd2",
+        "attributes" : {
+          "text" : "Nuestros primeros planes tomaron forma en un sótano con goteras, pero la ambición era grande. Desde el principio, buscamos educadores excepcionales con profunda experiencia, enorme pasión y la convicción de lo que los niños pueden lograr. Esa convicción da forma a todo lo que verás en Zeta.  <br><br>A partir de una idea y un sueño, hemos crecido para servir a más de 4700 estudiantes en 10 campus en el Bronx, Upper Manhattan y Queens. A los rigurosos programas académicos se suman el arte, la música, el ajedrez, los deportes, la tecnología y experiencias más allá del aula. Las Escuelas Chárter Zeta son escuelas públicas gratuitas de alto rendimiento que han servido a las familias de la ciudad de Nueva York durante ocho años. Nuestras escuelas se encuentran entre las mejores del estado, y nuestros resultados en Matemáticas, Ciencias y Artes del Lenguaje en Inglés (ELA) cumplen o superan constantemente los promedios del estado de Nueva York y de la Ciudad de Nueva York. <br><br>Hoy tengo el privilegio de ver a Zeta desde dos perspectivas: como su fundadora y como una orgullosa madre de Zeta. Aunque conozco en profundidad el funcionamiento de nuestras escuelas, me sigue fascinando todo lo que mi hijo menor aprende, intenta, cuestiona o descubre y luego comparte al llegar a casa. Tengo la oportunidad de ver cómo su mundo se hace un poquito más grande cada día.<br><br>Eso es lo que quería para mis hijos. Es lo que quiero para los tuyos también.<br><a href=\"https://zetaschools.org/events-for-prospective-families/\" target=\"_blank\" part=\"link\" rel=\"noopener noreferrer noopener noreferrer noopener noreferrer noopener noreferrer noopener noreferrer\">Ven a visitarnos a Zeta</a> y experimenta todo lo que es posible para tu hijo aquí. <br><br><strong>Atentamente,<br>Emily Kim<br>Fundadora, Directora Ejecutiva y Mamá de Zeta, Escuelas Chárter Zeta<br><br></strong><br><em>Por favor, comunícate si tienes alguna pregunta sobre Zeta; nuestro equipo de inscripciones está aquí para ayudarte en cada paso del camino. ✉ enroll@zetaschools.org \uD83D\uDCDE(646) 480-1654</em><br><br><br>"
+        }
+      }, {
+        "id" : "1ae16195-5277-46f2-a10b-528d7f8af766",
+        "attributes" : {
+          "text" : "Fundé Zeta en 2018 con un sueño inspirado en lo que mi esposo y yo queríamos para nuestros propios hijos: <strong>una educación extraordinaria impulsada por el amor</strong>. Como madre, vi cuánto más podía y debía hacer la educación por un niño. Los niños merecen <strong>excelencia académica, oportunidades para descubrir sus fortalezas, perseguir sus intereses, desarrollar confianza y convertirse en seres humanos capaces y amables.</strong>"
+        }
+      } ]
+    }
+  }
+}

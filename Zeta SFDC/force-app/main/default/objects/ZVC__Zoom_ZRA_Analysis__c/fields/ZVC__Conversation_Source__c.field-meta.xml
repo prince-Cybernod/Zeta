@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>ZVC__Conversation_Source__c</fullName>
+    <deprecated>false</deprecated>
+    <label>Conversation Source</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Zoom Meeting</fullName>
+                <default>false</default>
+                <label>Zoom Meeting</label>
+            </value>
+            <value>
+                <fullName>Zoom Phone</fullName>
+                <default>false</default>
+                <label>Zoom Phone</label>
+            </value>
+            <value>
+                <fullName>Zoom Contact Center</fullName>
+                <default>false</default>
+                <label>Zoom Contact Center</label>
+            </value>
+            <value>
+                <fullName>Google Meet</fullName>
+                <default>false</default>
+                <label>Google Meet</label>
+            </value>
+            <value>
+                <fullName>Microsoft Teams</fullName>
+                <default>false</default>
+                <label>Microsoft Teams</label>
+            </value>
+            <value>
+                <fullName>In-Person meeting</fullName>
+                <default>false</default>
+                <label>In-Person meeting</label>
+            </value>
+            <value>
+                <fullName>Third Party Zoom</fullName>
+                <default>false</default>
+                <label>Third Party Zoom</label>
+            </value>
+            <value>
+                <fullName>Others</fullName>
+                <default>false</default>
+                <label>Others</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

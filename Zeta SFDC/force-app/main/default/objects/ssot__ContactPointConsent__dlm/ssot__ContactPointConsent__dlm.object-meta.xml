@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <mktDataModelAttributes>
+        <creationType>Standard</creationType>
+        <dataModelTaxonomy>Salesforce_SFDCReferenceModel_0_93</dataModelTaxonomy>
+        <dataSpaceName>default</dataSpaceName>
+        <description>Where, when, how, for how long, and for what purpose consent has been granted by a party for a specific contact point. Also includes when/whether the party has double opted-in</description>
+        <isEnabled>false</isEnabled>
+        <isSegmentable>false</isSegmentable>
+        <isSqlDmo>false</isSqlDmo>
+        <isUsedForMetrics>false</isUsedForMetrics>
+        <masterLabel>Contact Point Consent</masterLabel>
+        <objectCategory>Salesforce_SFDCReferenceModel_0_93.Unassigned</objectCategory>
+        <referenceEntityGroup>Contact Consent</referenceEntityGroup>
+        <referenceEntityName>ContactPointConsent</referenceEntityName>
+        <referenceEntitySubjectArea>Privacy</referenceEntitySubjectArea>
+    </mktDataModelAttributes>
+</CustomObject>

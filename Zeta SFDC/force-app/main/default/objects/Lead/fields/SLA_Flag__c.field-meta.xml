@@ -27,10 +27,11 @@
     )
 )</formula>
     <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
-    <inlineHelpText>ndicates that the constituent is due for their next outreach attempt. This field becomes true when the record is open and one of the following applies:
+    <inlineHelpText>Indicates that the constituent is due for their next outreach attempt. This field becomes true when the record is open and one of the following applies:
 No first outreach has been recorded within 24 hours of record creation.
 No second outreach has been recorded within 48 hours of the first outreach.
 No third outreach has been recorded within 7 days of the second outreach.</inlineHelpText>
     <label>SLA Flag</label>
+    <trackHistory>false</trackHistory>
     <type>Checkbox</type>
 </CustomField>

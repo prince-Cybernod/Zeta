@@ -29,8 +29,17 @@ private class SchoolRankingControllerTest {
     Id ai2 = SObjectIds.generateFakeId(Schema.AcademicInterest.SObjectType);
     Id ai3 = SObjectIds.generateFakeId(Schema.AcademicInterest.SObjectType);
 
+    Date expiration = Date.today().addDays(14);
     List<AcademicInterest> interests = new List<AcademicInterest>{
-      new AcademicInterest(Id = ai1, School_Rank__c = 1),
+      // Offer_Expiration_Date__c is a formula, so it can only be set via JSON.
+      (AcademicInterest) JSON.deserialize(
+        '{"Id":"' +
+          ai1 +
+          '","School_Rank__c":1,"Offer_Expiration_Date__c":"' +
+          String.valueOf(expiration) +
+          '"}',
+        AcademicInterest.class
+      ),
       new AcademicInterest(Id = ai2, School_Rank__c = 2),
       new AcademicInterest(Id = ai3, School_Rank__c = 3)
     };
@@ -46,6 +55,11 @@ private class SchoolRankingControllerTest {
     );
     Assert.areEqual(ai1, (Id) result[0].get('academicInterestId'));
     Assert.areEqual(1, (Decimal) result[0].get('rank'));
+    Assert.areEqual(
+      expiration,
+      (Date) result[0].get('offerExpirationDate'),
+      'Should surface the respond-by date for the decision screen'
+    );
   }
 
   @IsTest

@@ -394,6 +394,112 @@ private class SchoolSelectionControllerTest {
   }
 
   @IsTest
+  private static void saveSchoolSelections_singleSchool_ranksFirst() {
+    DATABASE_REPO_MOCK.reset();
+    Id appId = SObjectIds.generateFakeId(Schema.IndividualApplication.SObjectType);
+    Id schoolId = SObjectIds.generateFakeId(Schema.Account.SObjectType);
+    Id learningProgramId = SObjectIds.generateFakeId(Schema.LearningProgram.SObjectType);
+    Id capId = SObjectIds.generateFakeId(Schema.Lottery_Capacity__c.SObjectType);
+    Id academicTermId = SObjectIds.generateFakeId(Schema.AcademicTerm.SObjectType);
+
+    String selectionsJson = JSON.serialize(
+      new List<Map<String, Object>>{
+        new Map<String, Object>{
+          'schoolAccountId' => schoolId,
+          'learningProgramId' => learningProgramId,
+          'lotteryCapacityId' => capId,
+          'academicTermId' => academicTermId
+        }
+      }
+    );
+
+    DATABASE_REPO_MOCK.when(DATABASE_REPO_MOCK.method.queryWithBinds())
+      .thenReturn(
+        new List<IndividualApplication>{
+          new IndividualApplication(Id = appId, Grade_Applying_To__c = 'K')
+        }
+      )
+      .thenReturn(
+        new List<Lottery_Capacity__c>{ new Lottery_Capacity__c(Id = capId, Grade__c = 'K') }
+      )
+      .thenReturn(new List<AcademicInterest>());
+    DATABASE_REPO_MOCK.when(DATABASE_REPO_MOCK.method.insertSObjects()).thenReturnVoid();
+
+    SchoolSelectionController.saveSchoolSelections(appId, selectionsJson);
+
+    List<Map<String, Object>> inserts = DATABASE_REPO_MOCK.getCalls(
+      DATABASE_REPO_MOCK.method.insertSObjects()
+    );
+    List<SObject> inserted = (List<SObject>) inserts[0].get('sobjects');
+    Assert.areEqual(1, inserted.size(), 'One selection should insert one AcademicInterest');
+    Assert.areEqual(
+      1,
+      ((AcademicInterest) inserted[0]).School_Rank__c,
+      'A lone chosen school must be ranked first'
+    );
+  }
+
+  @IsTest
+  private static void saveSchoolSelections_twoSchools_leavesRanksNull() {
+    DATABASE_REPO_MOCK.reset();
+    Id appId = SObjectIds.generateFakeId(Schema.IndividualApplication.SObjectType);
+    Id firstSchoolId = SObjectIds.generateFakeId(Schema.Account.SObjectType);
+    Id secondSchoolId = SObjectIds.generateFakeId(Schema.Account.SObjectType);
+    Id learningProgramId = SObjectIds.generateFakeId(Schema.LearningProgram.SObjectType);
+    Id firstCapId = SObjectIds.generateFakeId(Schema.Lottery_Capacity__c.SObjectType);
+    Id secondCapId = SObjectIds.generateFakeId(Schema.Lottery_Capacity__c.SObjectType);
+    Id academicTermId = SObjectIds.generateFakeId(Schema.AcademicTerm.SObjectType);
+
+    String selectionsJson = JSON.serialize(
+      new List<Map<String, Object>>{
+        new Map<String, Object>{
+          'schoolAccountId' => firstSchoolId,
+          'learningProgramId' => learningProgramId,
+          'lotteryCapacityId' => firstCapId,
+          'academicTermId' => academicTermId
+        },
+        new Map<String, Object>{
+          'schoolAccountId' => secondSchoolId,
+          'learningProgramId' => learningProgramId,
+          'lotteryCapacityId' => secondCapId,
+          'academicTermId' => academicTermId
+        }
+      }
+    );
+
+    DATABASE_REPO_MOCK.when(DATABASE_REPO_MOCK.method.queryWithBinds())
+      .thenReturn(
+        new List<IndividualApplication>{
+          new IndividualApplication(Id = appId, Grade_Applying_To__c = 'K')
+        }
+      )
+      .thenReturn(
+        new List<Lottery_Capacity__c>{
+          new Lottery_Capacity__c(Id = firstCapId, Grade__c = 'K'),
+          new Lottery_Capacity__c(Id = secondCapId, Grade__c = 'K')
+        }
+      )
+      .thenReturn(new List<AcademicInterest>());
+    DATABASE_REPO_MOCK.when(DATABASE_REPO_MOCK.method.insertSObjects()).thenReturnVoid();
+
+    SchoolSelectionController.saveSchoolSelections(appId, selectionsJson);
+
+    List<Map<String, Object>> inserts = DATABASE_REPO_MOCK.getCalls(
+      DATABASE_REPO_MOCK.method.insertSObjects()
+    );
+    List<SObject> inserted = (List<SObject>) inserts[0].get('sobjects');
+    Assert.areEqual(2, inserted.size(), 'Two selections should insert two AcademicInterests');
+    Assert.isNull(
+      ((AcademicInterest) inserted[0]).School_Rank__c,
+      'The ranking step owns ranks when more than one school is chosen'
+    );
+    Assert.isNull(
+      ((AcademicInterest) inserted[1]).School_Rank__c,
+      'The ranking step owns ranks when more than one school is chosen'
+    );
+  }
+
+  @IsTest
   private static void saveSchoolSelections_nullId_throws() {
     DATABASE_REPO_MOCK.reset();
 

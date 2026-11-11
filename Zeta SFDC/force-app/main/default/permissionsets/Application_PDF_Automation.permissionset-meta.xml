@@ -5,6 +5,11 @@
         <enabled>true</enabled>
     </classAccesses>
     <description>Grants Automated Process user access to PDF generation classes.</description>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>User.Bypass_Validations__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
     <hasActivationRequired>false</hasActivationRequired>
     <label>Application PDF Automation</label>
 </PermissionSet>

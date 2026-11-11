@@ -8,5 +8,16 @@
         <plural>true</plural>
         <value>Log Entry Tags</value>
     </caseValues>
+    <layouts>
+        <layout>Log Entry Tag Layout</layout>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+        <sections>
+            <label><!-- Log Entry Details --></label>
+            <section>Log Entry Details</section>
+        </sections>
+    </layouts>
     <startsWith>Consonant</startsWith>
 </CustomObjectTranslation>

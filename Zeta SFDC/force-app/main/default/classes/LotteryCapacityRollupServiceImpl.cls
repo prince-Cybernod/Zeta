@@ -103,6 +103,9 @@ public without sharing class LotteryCapacityRollupServiceImpl implements Lottery
       Integer waitlistedCount = statusCounts.get('Waitlisted') != null
         ? statusCounts.get('Waitlisted')
         : 0;
+      Integer appliedCount = statusCounts.get('Applied') != null
+        ? statusCounts.get('Applied')
+        : 0;
 
       capacitiesToUpdate.add(
         new Lottery_Capacity__c(
@@ -110,7 +113,7 @@ public without sharing class LotteryCapacityRollupServiceImpl implements Lottery
           Seats_Offered__c = preOfferCount + seatOfferedCount,
           Seats_Accepted__c = seatAcceptedCount,
           Count_of_Pre_Offer_School_Applications__c = preOfferCount,
-          Total_Applied_Applications__c = submittedCount + eligibleCount + waitlistedCount
+          Total_Applied_Applications__c = submittedCount + eligibleCount + waitlistedCount + appliedCount
         )
       );
     }

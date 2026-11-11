@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>ssot__rel_1716725809271_end__c</fullName>
+    <deleteConstraint>SetNull</deleteConstraint>
+    <deprecated>false</deprecated>
+    <label>DiagnosticSummary_CareObservationId__rel</label>
+    <referenceTo>ssot__CareObservation__dlm</referenceTo>
+    <relationshipLabel>DiagnosticSummary_CareObservationId__rel</relationshipLabel>
+    <relationshipName>rel_1716725809271_end</relationshipName>
+    <required>false</required>
+    <type>Lookup</type>
+</CustomField>

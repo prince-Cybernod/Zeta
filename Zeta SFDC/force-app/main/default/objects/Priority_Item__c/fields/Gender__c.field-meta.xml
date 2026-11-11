@@ -12,36 +12,42 @@
         <valueSetDefinition>
             <sorted>false</sorted>
             <value>
-                <fullName>M</fullName>
+                <fullName>Male</fullName>
                 <default>false</default>
-                <label>M</label>
-            </value>
-            <value>
-                <fullName>F</fullName>
-                <default>false</default>
-                <label>F</label>
-            </value>
-            <value>
-                <fullName>Non-Binary</fullName>
-                <default>false</default>
-                <label>Non-Binary</label>
-            </value>
-            <value>
-                <fullName>Prefer Not to Say</fullName>
-                <default>false</default>
-                <label>Prefer Not to Say</label>
+                <label>Male</label>
             </value>
             <value>
                 <fullName>Female</fullName>
                 <default>false</default>
-                <isActive>false</isActive>
                 <label>Female</label>
             </value>
             <value>
-                <fullName>Male</fullName>
+                <fullName>Nonbinary</fullName>
+                <default>false</default>
+                <label>Non-binary</label>
+            </value>
+            <value>
+                <fullName>Prefer not to answer</fullName>
+                <default>false</default>
+                <label>Prefer not to answer</label>
+            </value>
+            <value>
+                <fullName>F</fullName>
                 <default>false</default>
                 <isActive>false</isActive>
-                <label>Male</label>
+                <label>F</label>
+            </value>
+            <value>
+                <fullName>M</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>M</label>
+            </value>
+            <value>
+                <fullName>Prefer Not to Say</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Prefer Not to Say</label>
             </value>
         </valueSetDefinition>
     </valueSet>

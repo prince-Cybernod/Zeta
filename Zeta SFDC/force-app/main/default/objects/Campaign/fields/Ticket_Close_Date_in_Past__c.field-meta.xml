@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Ticket_Close_Date_in_Past__c</fullName>
+    <formula>Ticket_Close_Date__c &lt;= TODAY()</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>Ticket Close Date in Past</label>
+    <trackHistory>false</trackHistory>
+    <type>Checkbox</type>
+</CustomField>

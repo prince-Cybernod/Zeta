@@ -46,6 +46,11 @@
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
+        <editable>true</editable>
+        <field>AcademicInterest.Legacy_SchoolMint_Status__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
         <editable>false</editable>
         <field>AcademicInterest.Primary_Guardian_Contact_Id__c</field>
         <readable>true</readable>
@@ -93,6 +98,11 @@
     <fieldPermissions>
         <editable>true</editable>
         <field>AcademicTermEnrollment.ATS_Deadline__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>AcademicTermEnrollment.Academic_Term_Name__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -182,6 +192,11 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
+        <field>AcademicTermEnrollment.DEPRECATED_Race_Answers__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
         <field>AcademicTermEnrollment.Date_moved_to_ATS_Phase__c</field>
         <readable>true</readable>
     </fieldPermissions>
@@ -198,6 +213,11 @@
     <fieldPermissions>
         <editable>false</editable>
         <field>AcademicTermEnrollment.Days_Until_Registration_Deadline__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>AcademicTermEnrollment.Default_Gateway__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -446,6 +466,16 @@
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
+        <editable>false</editable>
+        <field>AcademicTermEnrollment.Mogli_Number_from_Person_Account__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>AcademicTermEnrollment.Mogli_Opt_Out__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
         <editable>true</editable>
         <field>AcademicTermEnrollment.On_Student_Information_System__c</field>
         <readable>true</readable>
@@ -506,6 +536,11 @@
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
+        <editable>false</editable>
+        <field>AcademicTermEnrollment.Primary_Guardian__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
         <editable>true</editable>
         <field>AcademicTermEnrollment.Proof_of_NYS_Residency_1__c</field>
         <readable>true</readable>
@@ -518,11 +553,6 @@
     <fieldPermissions>
         <editable>true</editable>
         <field>AcademicTermEnrollment.Proof_of_NYS_Residency_3__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
-        <field>AcademicTermEnrollment.Race_Answers__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -622,7 +652,32 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
+        <field>Contact.Applicant_Lifecycle_Status__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Contact.Application_Count__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
         <field>Contact.Portal_User__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Contact.Record_Type_Name__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>Contact.Zoho_Guardian_Id__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Contact.fxPortal_User_Email__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -647,7 +702,17 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
+        <field>IndividualApplication.Academic_Term_Name__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
         <field>IndividualApplication.Academic_Term__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>IndividualApplication.Active_Academic_Term__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -701,6 +766,11 @@
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
+        <editable>true</editable>
+        <field>IndividualApplication.Legacy_SchoolMint_Lead_Source__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
         <editable>false</editable>
         <field>IndividualApplication.Offer_Expiration_Date__c</field>
         <readable>true</readable>
@@ -708,6 +778,16 @@
     <fieldPermissions>
         <editable>false</editable>
         <field>IndividualApplication.Primary_Guardian_Contact_Id__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>IndividualApplication.SchoolMint_Converting_Team_Member__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>IndividualApplication.SchoolMint_Created_by_Email__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>

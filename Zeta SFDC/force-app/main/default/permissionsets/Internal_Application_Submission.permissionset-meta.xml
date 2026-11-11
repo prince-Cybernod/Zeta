@@ -5,6 +5,11 @@
         <enabled>true</enabled>
     </classAccesses>
     <description>Grants visibility to the Submit Application tab.</description>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>User.Bypass_Validations__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
     <hasActivationRequired>false</hasActivationRequired>
     <label>Internal Application Submission</label>
     <tabSettings>

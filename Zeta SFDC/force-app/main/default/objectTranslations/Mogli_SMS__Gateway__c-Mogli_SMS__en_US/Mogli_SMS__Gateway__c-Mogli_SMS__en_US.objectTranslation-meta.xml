@@ -8,9 +8,17 @@
         <plural>true</plural>
         <value>Gateways</value>
     </caseValues>
+    <quickActions>
+        <label><!-- Update Gateway Webhook --></label>
+        <name>Mogli_SMS__Update_Gateway_Webhook</name>
+    </quickActions>
     <recordTypes>
         <label><!-- Custom --></label>
         <name>Mogli_SMS__Custom</name>
+    </recordTypes>
+    <recordTypes>
+        <label><!-- Mogli Gateway --></label>
+        <name>Mogli_SMS__Mogli_Gateway</name>
     </recordTypes>
     <recordTypes>
         <label><!-- Telerivet --></label>

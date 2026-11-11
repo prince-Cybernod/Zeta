@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>ssot__ScheduledActvtyWeightedValNumber__c</fullName>
+    <deprecated>false</deprecated>
+    <label>Scheduled Activity Weighted Value</label>
+    <mktDataModelFieldAttributes>
+        <definitionCreationType>Standard</definitionCreationType>
+        <isDynamicLookup>false</isDynamicLookup>
+        <masterLabel>Scheduled Activity Weighted Value</masterLabel>
+        <refAttrDeveloperName>ScheduledActvtyWeightedValNumber</refAttrDeveloperName>
+        <usageTag>None</usageTag>
+    </mktDataModelFieldAttributes>
+    <precision>18</precision>
+    <required>false</required>
+    <scale>3</scale>
+    <type>Number</type>
+</CustomField>

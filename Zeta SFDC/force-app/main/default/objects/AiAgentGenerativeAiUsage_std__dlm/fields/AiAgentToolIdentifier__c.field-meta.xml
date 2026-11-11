@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>AiAgentToolIdentifier__c</fullName>
+    <label>AI Agent Tool Identifier</label>
+    <length>60</length>
+    <mktDataModelFieldAttributes>
+        <definitionCreationType>Standard</definitionCreationType>
+        <isDynamicLookup>false</isDynamicLookup>
+        <labelOverride>AI Agent Tool Identifier</labelOverride>
+        <masterLabel>AI Agent Tool Identifier</masterLabel>
+        <refAttrDeveloperName>AiAgentToolIdentifier</refAttrDeveloperName>
+        <usageTag>None</usageTag>
+    </mktDataModelFieldAttributes>
+    <required>false</required>
+    <type>Text</type>
+</CustomField>

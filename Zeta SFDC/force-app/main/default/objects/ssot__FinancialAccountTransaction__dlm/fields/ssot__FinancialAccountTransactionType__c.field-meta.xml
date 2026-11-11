@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>ssot__FinancialAccountTransactionType__c</fullName>
+    <deprecated>false</deprecated>
+    <label>Financial Account Transaction Type</label>
+    <length>15</length>
+    <mktDataModelFieldAttributes>
+        <definitionCreationType>Standard</definitionCreationType>
+        <isDynamicLookup>false</isDynamicLookup>
+        <masterLabel>Financial Account Transaction Type</masterLabel>
+        <refAttrDeveloperName>FinancialAccountTransactionType</refAttrDeveloperName>
+        <usageTag>None</usageTag>
+    </mktDataModelFieldAttributes>
+    <required>false</required>
+    <type>Text</type>
+</CustomField>

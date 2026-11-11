@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>ssot__Co2EmissionFactorUnit__c</fullName>
+    <deprecated>false</deprecated>
+    <label>CO2 Emissions Factor Unit</label>
+    <length>15</length>
+    <mktDataModelFieldAttributes>
+        <definitionCreationType>Standard</definitionCreationType>
+        <isDynamicLookup>false</isDynamicLookup>
+        <masterLabel>CO2 Emissions Factor Unit</masterLabel>
+        <refAttrDeveloperName>Co2EmissionFactorUnit</refAttrDeveloperName>
+        <usageTag>None</usageTag>
+    </mktDataModelFieldAttributes>
+    <required>false</required>
+    <type>Text</type>
+</CustomField>

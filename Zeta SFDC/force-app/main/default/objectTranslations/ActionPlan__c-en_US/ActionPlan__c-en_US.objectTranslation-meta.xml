@@ -12,6 +12,21 @@
         <label><!-- Related Objects --></label>
         <name>Related_Objects</name>
     </fieldSets>
+    <layouts>
+        <layout>Action Plan Layout</layout>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+        <sections>
+            <label><!-- Related Records --></label>
+            <section>Related Records</section>
+        </sections>
+        <sections>
+            <label><!-- Tasks --></label>
+            <section>Tasks</section>
+        </sections>
+    </layouts>
     <startsWith>Vowel</startsWith>
     <validationRules>
         <errorMessage><!-- Cannot change Template value once it is set --></errorMessage>

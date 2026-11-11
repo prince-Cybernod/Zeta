@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>ssot__rel_1716670512060_end__c</fullName>
+    <deleteConstraint>SetNull</deleteConstraint>
+    <deprecated>false</deprecated>
+    <label>FundingOpportunity_ProgramId_map_Pro_rel</label>
+    <referenceTo>ssot__Program__dlm</referenceTo>
+    <relationshipLabel>FundingOpportunity_ProgramId_map_Pro_rel</relationshipLabel>
+    <relationshipName>rel_1716670512060_end</relationshipName>
+    <required>false</required>
+    <type>Lookup</type>
+</CustomField>

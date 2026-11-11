@@ -162,6 +162,32 @@
         <sequence>0</sequence>
     </mktDataTranFields>
     <mktDataTranFields>
+        <fullName>RelatedRecordId</fullName>
+        <creationType>Custom</creationType>
+        <datatype>S</datatype>
+        <externalName>RelatedRecordId</externalName>
+        <isDataRequired>false</isDataRequired>
+        <length>0</length>
+        <masterLabel>RelatedRecordId</masterLabel>
+        <precision>0</precision>
+        <primaryIndexOrder>0</primaryIndexOrder>
+        <scale>0</scale>
+        <sequence>0</sequence>
+    </mktDataTranFields>
+    <mktDataTranFields>
+        <fullName>RelatedRecordObject</fullName>
+        <creationType>Custom</creationType>
+        <datatype>S</datatype>
+        <externalName>RelatedRecordObject</externalName>
+        <isDataRequired>false</isDataRequired>
+        <length>0</length>
+        <masterLabel>RelatedRecordObject</masterLabel>
+        <precision>0</precision>
+        <primaryIndexOrder>0</primaryIndexOrder>
+        <scale>0</scale>
+        <sequence>0</sequence>
+    </mktDataTranFields>
+    <mktDataTranFields>
         <fullName>ScheduledDateTime</fullName>
         <creationType>Custom</creationType>
         <datatype>F</datatype>

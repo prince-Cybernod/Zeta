@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <mktDataModelAttributes>
+        <creationType>Standard</creationType>
+        <dataModelTaxonomy>Salesforce_SFDCReferenceModel_0_93</dataModelTaxonomy>
+        <dataSpaceName>default</dataSpaceName>
+        <description>What the user is asked for permission to do with their data. Examples include Data Collection (of events), Tracking (of web and email activity), and Sharing data with 3rd parties.</description>
+        <isEnabled>false</isEnabled>
+        <isSegmentable>false</isSegmentable>
+        <isSqlDmo>false</isSqlDmo>
+        <isUsedForMetrics>false</isUsedForMetrics>
+        <masterLabel>Consent Action</masterLabel>
+        <objectCategory>Salesforce_SFDCReferenceModel_0_93.Unassigned</objectCategory>
+        <referenceEntityGroup>Contact Consent Setup</referenceEntityGroup>
+        <referenceEntityName>ConsentAction</referenceEntityName>
+        <referenceEntitySubjectArea>Privacy</referenceEntitySubjectArea>
+    </mktDataModelAttributes>
+</CustomObject>

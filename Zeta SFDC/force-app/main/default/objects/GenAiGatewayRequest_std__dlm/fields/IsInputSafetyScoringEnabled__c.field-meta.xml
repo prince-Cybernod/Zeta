@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>IsInputSafetyScoringEnabled__c</fullName>
+    <label>Is Input Safety Scoring Enabled</label>
+    <length>60</length>
+    <mktDataModelFieldAttributes>
+        <definitionCreationType>Standard</definitionCreationType>
+        <isDynamicLookup>false</isDynamicLookup>
+        <labelOverride>Is Input Safety Scoring Enabled</labelOverride>
+        <masterLabel>Is Input Safety Scoring Enabled</masterLabel>
+        <refAttrDeveloperName>IsInputSafetyScoringEnabled</refAttrDeveloperName>
+        <usageTag>None</usageTag>
+    </mktDataModelFieldAttributes>
+    <required>false</required>
+    <type>Text</type>
+</CustomField>

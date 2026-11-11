@@ -8,6 +8,10 @@
         <plural>true</plural>
         <value>Mogli Form Templates</value>
     </caseValues>
+    <quickActions>
+        <label><!-- Create SMS Template --></label>
+        <name>Mogli_SMS__Create_SMS_Template</name>
+    </quickActions>
     <startsWith>Consonant</startsWith>
     <validationRules>
         <errorMessage><!-- Active Templates must have a first question --></errorMessage>

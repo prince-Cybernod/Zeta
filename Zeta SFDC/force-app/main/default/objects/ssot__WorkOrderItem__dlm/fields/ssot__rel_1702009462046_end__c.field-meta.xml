@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>ssot__rel_1702009462046_end__c</fullName>
+    <deleteConstraint>SetNull</deleteConstraint>
+    <deprecated>false</deprecated>
+    <label>WorkOrderItem_LocationId_map_Locatio_rel</label>
+    <referenceTo>ssot__Location__dlm</referenceTo>
+    <relationshipLabel>WorkOrderItem_LocationId_map_Locatio_rel</relationshipLabel>
+    <relationshipName>rel_1702009462046_end</relationshipName>
+    <required>false</required>
+    <type>Lookup</type>
+</CustomField>

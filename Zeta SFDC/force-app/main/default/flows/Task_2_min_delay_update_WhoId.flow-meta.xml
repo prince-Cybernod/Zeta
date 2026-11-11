@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>68.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <decisions>
+        <name>Contact_Found</name>
+        <label>Contact Found?</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Yes</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Get_Account_with_this_Phone</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Update_WhoId_on_Task</targetReference>
+            </connector>
+            <label>Yes</label>
+        </rules>
+    </decisions>
+    <description>If a Task is created with a Zoom Call Log, look for a Contact with the Caller&apos;s Phone #. If found, populate in WhoId on Task</description>
+    <environments>Default</environments>
+    <formulas>
+        <description>strips +1 from ZVC__Zoom_Call_Log__r.ZVC__Caller_Phone_Number__c</description>
+        <name>fx_Phone_SF_Format</name>
+        <dataType>String</dataType>
+        <expression>IF(LEFT({!Get_Zoom_Call_Log.ZVC__Caller_Phone_Number__c}, 2) = &quot;+1&quot;, RIGHT({!Get_Zoom_Call_Log.ZVC__Caller_Phone_Number__c}, LEN({!Get_Zoom_Call_Log.ZVC__Caller_Phone_Number__c}) - 2), {!Get_Zoom_Call_Log.ZVC__Caller_Phone_Number__c})</expression>
+    </formulas>
+    <interviewLabel>Task (2 min delay) update WhoId {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Task (2 min delay) update WhoId</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordLookups>
+        <name>Get_Account_with_this_Phone</name>
+        <label>Get Account with this Phone #</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Contact_Found</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>fxPerson_Mobile_Phone_Formatting_Removed__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>fx_Phone_SF_Format</elementReference>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>Account</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordLookups>
+        <name>Get_Zoom_Call_Log</name>
+        <label>Get Zoom Call Log</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Get_Account_with_this_Phone</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>ZVC__Task_Id__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>$Record.Id</elementReference>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>ZVC__Zoom_Call_Log__c</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordUpdates>
+        <name>Update_WhoId_on_Task</name>
+        <label>Update WhoId on Task</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <inputAssignments>
+            <field>WhoId</field>
+            <value>
+                <elementReference>Get_Account_with_this_Phone.PersonContactId</elementReference>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <start>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>ZVC__Zoom_Call_Log__c</field>
+            <operator>IsNull</operator>
+            <value>
+                <booleanValue>false</booleanValue>
+            </value>
+        </filters>
+        <filters>
+            <field>WhoId</field>
+            <operator>IsNull</operator>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </filters>
+        <object>Task</object>
+        <recordTriggerType>Create</recordTriggerType>
+        <scheduledPaths>
+            <name>X2_min_delay</name>
+            <connector>
+                <targetReference>Get_Zoom_Call_Log</targetReference>
+            </connector>
+            <label>2 min delay</label>
+            <offsetNumber>2</offsetNumber>
+            <offsetUnit>Minutes</offsetUnit>
+            <timeSource>RecordTriggerEvent</timeSource>
+        </scheduledPaths>
+        <triggerType>RecordAfterSave</triggerType>
+    </start>
+    <status>Active</status>
+</Flow>

@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<AnalyticsVisualization xmlns="http://soap.sforce.com/2006/04/metadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <analyticsWorkspace>Marketing_Performance_Intelligence</analyticsWorkspace>
+    <dataSource>Marketing_Intelligence_Custom_Semantic_Model_00Da500001AA4BB</dataSource>
+    <description>New Opt-In vs Opt-Out visualization</description>
+    <fields>
+        <displayCategory>Continuous</displayCategory>
+        <fieldKey>MeasureValues</fieldKey>
+        <role>Measure</role>
+        <type>MeasureValues</type>
+    </fields>
+    <fields>
+        <displayCategory>Discrete</displayCategory>
+        <fieldKey>MeasureNames</fieldKey>
+        <role>Dimension</role>
+        <type>MeasureNames</type>
+    </fields>
+    <fields>
+        <adHocCalc>{&quot;expression&quot;:&quot;[Subscription_OPT_OUT_clc]*-1&quot;,&quot;description&quot;:&quot;&quot;,&quot;label&quot;:&quot;Number of Opt-Outs per day&quot;,&quot;level&quot;:&quot;Row&quot;,&quot;dataType&quot;:&quot;Number&quot;,&quot;displayCategory&quot;:&quot;Continuous&quot;,&quot;decimalPlace&quot;:0,&quot;aggregationType&quot;:&quot;Sum&quot;,&quot;shouldTreatNullsAsZeros&quot;:false,&quot;sentiment&quot;:&quot;SentimentTypeUpIsGood&quot;}</adHocCalc>
+        <displayCategory>Continuous</displayCategory>
+        <fieldKey>Opt_Out_Count</fieldKey>
+        <function>Sum</function>
+        <label>Number of Opt-Outs per day</label>
+        <role>Measure</role>
+        <type>Field</type>
+    </fields>
+    <fields>
+        <displayCategory>Continuous</displayCategory>
+        <fieldKey>Last_Modified_Date</fieldKey>
+        <fieldName>Communication_Subscription_Consent_Last_Modified_Date</fieldName>
+        <function>DateTruncDay</function>
+        <label>Date</label>
+        <objectName>Communication_Subscription_Consent</objectName>
+        <role>Dimension</role>
+        <type>Field</type>
+    </fields>
+    <fields>
+        <displayCategory>Continuous</displayCategory>
+        <fieldKey>Subscription_Opt_In</fieldKey>
+        <fieldName>Subscription_OPT_IN_clc</fieldName>
+        <function>Sum</function>
+        <label>Number of Opt-Ins per day</label>
+        <role>Measure</role>
+        <type>Field</type>
+    </fields>
+    <masterLabel>New Opt-Ins vs. Opt-Outs</masterLabel>
+    <templateAssetSourceName>Opt_In_Opt_Out_vs_Date</templateAssetSourceName>
+    <templateSource>sfdc_internal__umi</templateSource>
+    <version>66.08</version>
+    <views>
+        <fullName>Opt_In_Opt_Out_vs_Date_default</fullName>
+        <isOriginal>true</isOriginal>
+        <masterLabel>default</masterLabel>
+        <version>66.08</version>
+        <viewSpecification>{&quot;filters&quot;:[],&quot;sortOrders&quot;:{&quot;fields&quot;:{},&quot;rows&quot;:[],&quot;columns&quot;:[]}}</viewSpecification>
+    </views>
+    <visualSpecification>eyJsYXlvdXQiOiJWaXpxbCIsImxlZ2VuZHMiOnsiTWVhc3VyZU5hbWVzIjp7ImlzVmlzaWJsZSI6ZmFsc2UsInRpdGxlIjp7ImlzVmlzaWJsZSI6dHJ1ZX0sInBvc2l0aW9uIjoiUmlnaHQifX0sInJvd3MiOlsiTWVhc3VyZVZhbHVlcyJdLCJjb2x1bW5zIjpbIkxhc3RfTW9kaWZpZWRfRGF0ZSJdLCJtYXJrcyI6eyJwYW5lcyI6eyJ0eXBlIjoiQmFyIiwiaXNBdXRvbWF0aWMiOmZhbHNlLCJzdGFjayI6eyJpc0F1dG9tYXRpYyI6dHJ1ZSwiaXNTdGFja2VkIjp0cnVlfSwiZW5jb2RpbmdzIjpbeyJmaWVsZEtleSI6Ik1lYXN1cmVOYW1lcyIsInR5cGUiOiJDb2xvciJ9XX0sImZpZWxkcyI6e30sImhlYWRlcnMiOnsidHlwZSI6IlRleHQiLCJlbmNvZGluZ3MiOltdLCJpc0F1dG9tYXRpYyI6dHJ1ZX19LCJyZWZlcmVuY2VMaW5lcyI6e30sImZvcmVjYXN0cyI6e30sIm1lYXN1cmVWYWx1ZXMiOlsiT3B0X091dF9Db3VudCIsIlN1YnNjcmlwdGlvbl9PcHRfSW4iXSwic3R5bGUiOnsidGl0bGUiOnsiaXNWaXNpYmxlIjp0cnVlfSwiZmllbGRMYWJlbHMiOnsicm93cyI6eyJzaG93TGFiZWxzIjp0cnVlLCJzaG93RGl2aWRlckxpbmUiOmZhbHNlfSwiY29sdW1ucyI6eyJzaG93TGFiZWxzIjp0cnVlLCJzaG93RGl2aWRlckxpbmUiOmZhbHNlfX0sImZvbnRzIjp7ImFjdGlvbmFibGVIZWFkZXJzIjp7InNpemUiOjEzLCJjb2xvciI6IiMwMjUwRDkifSwiaGVhZGVycyI6eyJzaXplIjoxMywiY29sb3IiOiIjMkUyRTJFIn0sImZpZWxkTGFiZWxzIjp7InNpemUiOjEzLCJjb2xvciI6IiMyRTJFMkUifSwibWFya3MiOnsic2l6ZSI6MTMsImNvbG9yIjoiIzJFMkUyRSJ9LCJtYXJrTGFiZWxzIjp7InNpemUiOjEzLCJjb2xvciI6IiMyRTJFMkUifSwibGVnZW5kTGFiZWxzIjp7InNpemUiOjEzLCJjb2xvciI6IiMyRTJFMkUifSwiYXhpc1RpY2tMYWJlbHMiOnsic2l6ZSI6MTMsImNvbG9yIjoiIzJFMkUyRSJ9fSwic2hhZGluZyI6eyJiYWNrZ3JvdW5kQ29sb3IiOiIjRkZGRkZGIiwiYmFuZGluZyI6eyJyb3dzIjp7ImNvbG9yIjoiI0U1RTVFNSJ9fX0sImxpbmVzIjp7ImZpZWxkTGFiZWxEaXZpZGVyTGluZSI6eyJjb2xvciI6IiNDOUM5QzkifSwic2VwYXJhdG9yTGluZSI6eyJjb2xvciI6IiNDOUM5QzkifSwiYXhpc0xpbmUiOnsiY29sb3IiOiIjQzlDOUM5In0sInplcm9MaW5lIjp7ImNvbG9yIjoiI0M5QzlDOSJ9fSwiZW5jb2RpbmdzIjp7ImZpZWxkcyI6eyJPcHRfT3V0X0NvdW50Ijp7ImRlZmF1bHRzIjp7ImZvcm1hdCI6eyJudW1iZXJGb3JtYXRJbmZvIjp7InR5cGUiOiJOdW1iZXIiLCJkZWNpbWFsUGxhY2VzIjowLCJuZWdhdGl2ZVZhbHVlc0Zvcm1hdCI6IkF1dG8iLCJkaXNwbGF5VW5pdHMiOiJBdXRvIiwicHJlZml4IjoiIiwic3VmZml4IjoiIiwiaW5jbHVkZVRob3VzYW5kU2VwYXJhdG9yIjp0cnVlfX19fSwiU3Vic2NyaXB0aW9uX09wdF9JbiI6eyJkZWZhdWx0cyI6eyJmb3JtYXQiOnsibnVtYmVyRm9ybWF0SW5mbyI6eyJ0eXBlIjoiTnVtYmVyIiwiZGVjaW1hbFBsYWNlcyI6MCwibmVnYXRpdmVWYWx1ZXNGb3JtYXQiOiJBdXRvIiwiZGlzcGxheVVuaXRzIjoiQXV0byIsInByZWZpeCI6IiIsInN1ZmZpeCI6IiIsImluY2x1ZGVUaG91c2FuZFNlcGFyYXRvciI6dHJ1ZX19fX0sIk1lYXN1cmVWYWx1ZXMiOnsiZGVmYXVsdHMiOnsiZm9ybWF0Ijp7Im51bWJlckZvcm1hdEluZm8iOnsidHlwZSI6Ik51bWJlciIsImRlY2ltYWxQbGFjZXMiOjAsIm5lZ2F0aXZlVmFsdWVzRm9ybWF0IjoiQXV0byIsImRpc3BsYXlVbml0cyI6IkF1dG8iLCJwcmVmaXgiOiIiLCJzdWZmaXgiOiIiLCJpbmNsdWRlVGhvdXNhbmRTZXBhcmF0b3IiOnRydWV9fX19LCJNZWFzdXJlTmFtZXMiOnsiZGVmYXVsdHMiOnsiZm9ybWF0Ijp7fX0sImNvbG9ycyI6eyJ0eXBlIjoiRGlzY3JldGUiLCJwYWxldHRlIjp7InR5cGUiOiJDdXN0b20iLCJjb2xvcnMiOltdfSwiY3VzdG9tQ29sb3JzIjpbeyJ2YWx1ZSI6IlN1YnNjcmlwdGlvbl9PcHRfSW4iLCJjb2xvciI6IiM0OTkyRkUifSx7InZhbHVlIjoiT3B0X091dF9Db3VudCIsImNvbG9yIjoiI0ZFQjhBQiJ9XX19fX0sImZpdCI6IkVudGlyZSIsIm1hcmtzIjp7InBhbmVzIjp7ImxhYmVsIjp7ImNhbk92ZXJsYXBMYWJlbHMiOmZhbHNlLCJzaG93TWFya0xhYmVscyI6ZmFsc2UsIm1hcmtzVG9MYWJlbCI6eyJ0eXBlIjoiQWxsIn19LCJjb2xvciI6eyJjb2xvciI6IiJ9LCJyYW5nZSI6eyJyZXZlcnNlIjp0cnVlfSwic2l6ZSI6eyJ0eXBlIjoiUGVyY2VudGFnZSIsImlzQXV0b21hdGljIjpmYWxzZSwidmFsdWUiOjJ9LCJpc0F1dG9tYXRpY1NpemUiOmZhbHNlLCJpc1N0YWNraW5nQXhpc0NlbnRlcmVkIjpmYWxzZX0sImhlYWRlcnMiOnsiY29sb3IiOnsiY29sb3IiOiIifSwibGFiZWwiOnsiY2FuT3ZlcmxhcExhYmVscyI6ZmFsc2UsInNob3dNYXJrTGFiZWxzIjpmYWxzZSwibWFya3NUb0xhYmVsIjp7InR5cGUiOiJBbGwifX0sImlzQXV0b21hdGljU2l6ZSI6dHJ1ZX0sImZpZWxkcyI6e319LCJzaG93RGF0YVBsYWNlaG9sZGVyIjpmYWxzZSwiaGVhZGVycyI6eyJmaWVsZHMiOnt9LCJyb3dzIjp7Im1lcmdlUmVwZWF0ZWRDZWxscyI6dHJ1ZSwic2hvd0luZGV4IjpmYWxzZSwic2l6aW5nIjp7ImZpZWxkV2lkdGgiOnt9fX0sImNvbHVtbnMiOnsibWVyZ2VSZXBlYXRlZENlbGxzIjp0cnVlLCJzaG93SW5kZXgiOmZhbHNlLCJzaXppbmciOnsiZmllbGRIZWlnaHQiOnt9fX19LCJheGlzIjp7ImZpZWxkcyI6eyJMYXN0X01vZGlmaWVkX0RhdGUiOnsiaXNWaXNpYmxlIjp0cnVlLCJyYW5nZSI6eyJ0eXBlIjoiQXV0byIsImluY2x1ZGVaZXJvIjpmYWxzZX0sInRpdGxlVGV4dCI6IiAiLCJzY2FsZSI6eyJmb3JtYXQiOnsiZGF0ZVRlbXBsYXRlIjoiIn19LCJ0aWNrcyI6eyJtYWpvclRpY2tzIjp7InR5cGUiOiJBdXRvIn0sIm1pbm9yVGlja3MiOnsidHlwZSI6IkF1dG8ifX0sImlzWmVyb0xpbmVWaXNpYmxlIjp0cnVlfSwiTWVhc3VyZVZhbHVlcyI6eyJpc1Zpc2libGUiOnRydWUsInJhbmdlIjp7InR5cGUiOiJBdXRvIiwiaW5jbHVkZVplcm8iOnRydWV9LCJ0aXRsZVRleHQiOiIgIiwic2NhbGUiOnsiZm9ybWF0Ijp7Im51bWJlckZvcm1hdEluZm8iOnsidHlwZSI6Ik51bWJlciIsImRlY2ltYWxQbGFjZXMiOjAsIm5lZ2F0aXZlVmFsdWVzRm9ybWF0IjoiQXV0byIsImRpc3BsYXlVbml0cyI6Ik5vbmUiLCJwcmVmaXgiOiIiLCJzdWZmaXgiOiIiLCJpbmNsdWRlVGhvdXNhbmRTZXBhcmF0b3IiOnRydWV9fX0sInRpY2tzIjp7Im1ham9yVGlja3MiOnsidHlwZSI6IkF1dG8ifSwibWlub3JUaWNrcyI6eyJ0eXBlIjoiQXV0byJ9fSwiaXNaZXJvTGluZVZpc2libGUiOnRydWV9fX0sInJlZmVyZW5jZUxpbmVzIjp7fX19</visualSpecification>
+    <workspaceAssetRelationships>
+        <asset xsi:nil="true"/>
+        <assetType>AnalyticsVisualization</assetType>
+        <assetUsageType>Created</assetUsageType>
+        <workspace>Marketing_Performance_Intelligence</workspace>
+    </workspaceAssetRelationships>
+</AnalyticsVisualization>

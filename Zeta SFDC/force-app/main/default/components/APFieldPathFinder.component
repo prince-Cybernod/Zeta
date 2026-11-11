@@ -1,0 +1,760 @@
+<!--
+Action Plans v4
+David Schach 2022
+https://appexchange.salesforce.com/appxListingDetail?listingId=a0N4V00000Gg6NVUAZ
+
+Copyright (c) 2022, salesforce.com, inc.
+All rights reserved.
+SPDX-License-Identifier: BSD-3-Clause
+For full license text, see the LICENSE file in the repo root or https://opensource.org/licenses/BSD-3-Clause
+-->
+<apex:component id="fieldpathfindercomponent" controller="ActionPlansFieldPathFinderController">
+    <apex:attribute name="objectName" type="String" description="The API name of the object to find fields for" required="true" />
+    <apex:attribute name="fieldType" type="String" description="The type of field to find (user or date)" required="true" />
+    <apex:attribute name="for" type="String" description="Unique ID for the component" required="true" />
+    <apex:attribute name="required" type="Boolean" description="Is this field required?" default="false" required="false" />
+    <apex:attribute name="fieldClass" type="String" description="CSS class for the input field" required="false" />
+    <apex:attribute name="fieldStyle" type="String" description="CSS style for the input field" required="false" default="width:100%;" />
+    <apex:attribute name="placeholder" type="String" description="Placeholder text for the input field" required="false" default="Search for fields" />
+    <apex:attribute name="disabled" type="Boolean" description="Is the field disabled?" default="false" required="false" />
+    <apex:attribute name="selectedValue" type="String" description="The currently selected field path" required="false" />
+    <apex:attribute name="selectedLabel" type="String" description="The display label for the selected field path" required="false" />
+
+    <script>
+        function checkEscape(key, e) {
+            if (e.keyCode === 27) {
+                // escape key maps to keycode `27`
+                clearFieldPathSearch(key);
+            }
+        }
+
+        function clearFieldPathSearch(key) {
+            j$('#searchResults{!for}').hide();
+            j$(key).val('').text('');
+        }
+        
+        // Debounce function to limit how often a function can be called
+        function debounce(func, wait) {
+            var timeout;
+            return function() {
+                var context = this, args = arguments;
+                clearTimeout(timeout);
+                timeout = setTimeout(function() {
+                    func.apply(context, args);
+                }, wait);
+            };
+        }
+    </script>
+
+    <script>
+        // Initialize the component when the page loads
+        j$(document).ready(function() {
+            // Initialize field options for this component
+            FieldPathFinderScripts{!for}.initialize('{!fieldType}');
+
+            // Format the selected value if it exists
+            var selectedValue = '{!selectedValue}';
+            if (selectedValue && selectedValue !== '') {
+                var formattedValue = FieldPathFinderScripts{!for}.formatFieldPathForDisplay(selectedValue);
+                j$('#searchInput{!for}').val(formattedValue);
+            }
+
+            // Apply debounce to the search input
+            var debouncedSearch = debounce(function(e) {
+                FieldPathFinderScripts{!for}.searchFields(j$(this), '{!objectName}', '{!fieldType}');
+            }, 300); // 300ms debounce time
+            
+            j$('#searchInput{!for}').off('keyup').on('keyup', function(e) {
+                // Still check for escape key immediately
+                checkEscape(j$(this), e);
+                
+                // For other keys, use the debounced search
+                if (e.keyCode !== 27) {
+                    debouncedSearch.call(this, e);
+                }
+            });
+
+            // Listen for changes to the target object
+            j$('[id$=targetObject]').on('change', function() {
+                // Clear the cache when the target object changes
+                cachedFields{!for} = {};
+                // Initialize field options for the new target object
+                FieldPathFinderScripts{!for}.initialize('{!fieldType}');
+            });
+        });
+    </script>
+
+    <div class="slds-form-element">
+        <div class="slds-form-element__control">
+            <div class="slds-combobox_container">
+                <div class="slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click slds-is-open" aria-expanded="true" aria-haspopup="listbox" role="combobox">
+                    <div class="slds-combobox__form-element slds-input-has-icon slds-input-has-icon_right" role="none">
+                        <div class="{!IF(required==true,'requiredInput','')}">
+                            <div class="{!IF(required==true,'requiredBlock','')}">
+                                <input type="text" 
+                                    id="searchInput{!for}" 
+                                    class="slds-input slds-combobox__input {!fieldClass}" 
+                                    style="{!fieldStyle}"
+                                    placeholder="{!placeholder}" 
+                                    aria-controls="searchResults{!for}" 
+                                    aria-autocomplete="list" 
+                                    autocomplete="off"
+                                    onkeyup="FieldPathFinderScripts{!for}.searchFields(j$(this), '{!objectName}', '{!fieldType}');checkEscape(j$(this), event);" 
+                                    onfocus="j$('#searchResults{!for}').show();"
+                                    onblur="setTimeout(function() { j$('#searchResults{!for}').hide(); }, 300);"
+                                    data-search-type="{!fieldType}"
+                                    value="{!selectedLabel}"
+                                    required="{!IF(required == true, 'true', '')}"
+                                />
+                                <span class="slds-icon_container slds-icon-utility-search slds-input__icon slds-input__icon_right">
+                                    <svg class="slds-icon slds-icon_x-small slds-icon-text-default" aria-hidden="true">
+                                        <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/apexpages/slds/latest/assets/icons/utility-sprite/svg/symbols.svg#search"></use>
+                                    </svg>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="searchResults{!for}" class="slds-dropdown slds-dropdown_length-with-icon-7 slds-dropdown_fluid" role="listbox" style="display: none;">
+                        <ul class="slds-listbox slds-listbox_vertical" role="presentation" id="searchResultsUL{!for}">
+                            <!-- Results will be populated by JavaScript -->
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="slds-form-element__help" id="searchHelp{!for}">
+            {!IF(ISBLANK(objectName), 
+                'Add target object to see fields', 
+                IF(fieldType == 'user', 
+                    'Search for a User or a User lookup field (up to 5 levels deep)',
+                    'Search for a date field (up to 5 levels deep)'))}
+        </div>
+    </div>
+
+    <div id="fieldValidation{!for}" class="slds-m-top_xx-small"></div>
+
+    <!-- Hidden field to store the selected value -->
+    <apex:inputHidden value="{!selectedValue}" id="selectedFieldPath" />
+
+    <script>
+        // Cache for field options
+        var cachedFields{!for} = {};
+
+        var FieldPathFinderScripts{!for} = {
+            // Initialize the component and pre-load field options
+            initialize: function(fieldType) {
+                var objectName = j$('[id$=targetObject]').val();
+
+                // If we already have cached fields for this object and field type, no need to reload
+                var cacheKey = objectName + '_' + fieldType;
+                if (cachedFields{!for}[cacheKey]) {
+                    return;
+                }
+
+                if (objectName) {
+                    // Call the appropriate remote method based on field type
+                    // Use the new methods that return both field name and relationship name
+                    var remoteMethod = fieldType === 'user' ?
+                        '{!$RemoteAction.ActionPlansFieldPathFinderController.getUserLookupFieldsWithRelationshipsRemote}' :
+                        '{!$RemoteAction.ActionPlansFieldPathFinderController.getDateFieldsWithRelationshipsRemote}';
+
+                    Visualforce.remoting.Manager.invokeAction(
+                        remoteMethod,
+                        objectName,
+                        function(result, event) {
+                            if (event.status) {
+                                // Cache the results
+                                cachedFields{!for}[cacheKey] = result;
+                                console.log('Cached fields for ' + cacheKey + ': ', result);
+                            }
+                        },
+                        {escape: true}
+                    );
+                }
+            },
+
+            searchFields: function(inputElement, objectName, fieldType) {
+                var searchTerm = inputElement.val().toLowerCase();
+
+                if (!searchTerm) {
+                    j$('#searchResults{!for}').hide();
+                    return;
+                }
+
+                // Show the results container
+                j$('#searchResults{!for}').show();
+
+                // Get the current value of the objectName from the page
+                objectName = j$('[id$=targetObject]').val();
+
+                // Check if we have cached fields for this object and field type
+                var cacheKey = objectName + '_' + fieldType;
+                if (cachedFields{!for}[cacheKey]) {
+                    // Use cached fields
+                    this.displaySearchResults(searchTerm, cachedFields{!for}[cacheKey], fieldType);
+                } else if (objectName) {
+                    // If not cached but we have an object name, fetch and cache them
+                    // Use the new methods that return both field name and relationship name
+                    var remoteMethod = fieldType === 'user' ?
+                        '{!$RemoteAction.ActionPlansFieldPathFinderController.getUserLookupFieldsWithRelationshipsRemote}' :
+                        '{!$RemoteAction.ActionPlansFieldPathFinderController.getDateFieldsWithRelationshipsRemote}';
+
+                    var self = this;
+                    Visualforce.remoting.Manager.invokeAction(
+                        remoteMethod,
+                        objectName,
+                        function(result, event) {
+                            if (event.status) {
+                                // Cache the results
+                                cachedFields{!for}[cacheKey] = result;
+                                // Display search results
+                                self.displaySearchResults(searchTerm, result, fieldType);
+                            }
+                        },
+                        {escape: true}
+                    );
+                } else {
+                    // If no object name, just show a message
+                    var resultsContainer = j$('#searchResultsUL{!for}');
+                    resultsContainer.empty();
+                    resultsContainer.append(
+                        '<li role="presentation" class="slds-listbox__item">' +
+                        '<div class="slds-media slds-listbox__option slds-listbox__option_entity" role="option">' +
+                        '<span class="slds-media__body">' +
+                        '<span class="slds-listbox__option-text">Add target object to see fields</span>' +
+                        '</span>' +
+                        '</div>' +
+                        '</li>'
+                    );
+                }
+            },
+
+            displaySearchResults: function(searchTerm, fields, fieldType) {
+                var resultsContainer = j$('#searchResultsUL{!for}');
+                resultsContainer.empty();
+                var matchFound = false;
+                
+                // Maximum number of results to display
+                var MAX_RESULTS = 1000;
+                
+                // Add option for standard User lookup if searching for users
+                if (fieldType === 'user' && 'user'.indexOf(searchTerm.toLowerCase()) !== -1) {
+                    resultsContainer.append(
+                        '<li role="presentation" class="slds-listbox__item">' +
+                        '<div class="slds-media slds-listbox__option slds-listbox__option_entity slds-listbox__option_has-meta" role="option" onclick="FieldPathFinderScripts{!JSENCODE(for)}.selectOption(\'USER\', \'User\', \'user\')">' +
+                        '<span class="slds-media__body">' +
+                        '<span class="slds-listbox__option-text slds-listbox__option-text_entity" style="font-size: 1.1em; font-weight: bold;">User</span>' +
+                        '<span class="slds-listbox__option-meta slds-listbox__option-meta_entity">Standard User lookup</span>' +
+                        '</span>' +
+                        '</div>' +
+                        '</li>'
+                    );
+                    matchFound = true;
+                }
+
+                // Create an array to hold matching fields with their depth
+                var matchingFields = [];
+                
+                // Convert search term to lowercase once for efficiency
+                var searchTermLower = searchTerm.toLowerCase();
+                
+                // Early exit if search term is empty
+                if (!searchTermLower) {
+                    resultsContainer.append(
+                        '<li role="presentation" class="slds-listbox__item">' +
+                        '<div class="slds-media slds-listbox__option slds-listbox__option_entity" role="option">' +
+                        '<span class="slds-media__body">' +
+                        '<span class="slds-listbox__option-text">Enter search term</span>' +
+                        '</span>' +
+                        '</div>' +
+                        '</li>'
+                    );
+                    return;
+                }
+
+                // Filter and collect matching fields - optimized algorithm
+                for (var field in fields) {
+                    // Stop processing if we already have enough matches
+                    if (matchingFields.length >= MAX_RESULTS * 2) {
+                        break; // We'll sort and take the top MAX_RESULTS later
+                    }
+                    var fieldDetails = fields[field];
+                    var label = fieldDetails.label || '';
+                    var fieldName = fieldDetails.fieldName || '';
+                    var relationshipName = fieldDetails.relationshipName || '';
+                    
+                    // Calculate depth (number of dots in the field path) - used for sorting
+                    var depth = (field.match(/\./g) || []).length;
+                    
+                    // Quick check if search term is in the field name (most common case)
+                    // This avoids unnecessary string operations for non-matching fields
+                    if (field.toLowerCase().indexOf(searchTermLower) !== -1) {
+                        matchFound = true;
+                        matchingFields.push({
+                            field: field,
+                            fieldDetails: fieldDetails,
+                            label: label,
+                            displayField: this.formatFieldPathForDisplay(field, fieldDetails),
+                            depth: depth,
+                            score: 100 - depth // Higher score for shallower fields
+                        });
+                        continue; // Skip further checks for this field
+                    }
+                    
+                    // Check other properties only if the field name didn't match
+                    var labelLower = label.toLowerCase();
+                    if (labelLower.indexOf(searchTermLower) !== -1) {
+                        matchFound = true;
+                        matchingFields.push({
+                            field: field,
+                            fieldDetails: fieldDetails,
+                            label: label,
+                            displayField: this.formatFieldPathForDisplay(field, fieldDetails),
+                            depth: depth,
+                            score: 80 - depth // Good but not as good as field name match
+                        });
+                        continue;
+                    }
+                    
+                    // Check relationship name and field name as last resort
+                    if ((relationshipName && relationshipName.toLowerCase().indexOf(searchTermLower) !== -1) ||
+                        (fieldName && fieldName.toLowerCase().indexOf(searchTermLower) !== -1)) {
+                        matchFound = true;
+                        matchingFields.push({
+                            field: field,
+                            fieldDetails: fieldDetails,
+                            label: label,
+                            displayField: this.formatFieldPathForDisplay(field, fieldDetails),
+                            depth: depth,
+                            score: 60 - depth // Lower priority match
+                        });
+                    }
+                }
+
+                // Sort by score (descending) and then by depth (ascending)
+                matchingFields.sort(function(a, b) {
+                    if (a.score !== b.score) {
+                        return b.score - a.score; // Higher score first
+                    }
+                    return a.depth - b.depth; // Then by depth (shallow first)
+                });
+                
+                // Limit to MAX_RESULTS
+                matchingFields = matchingFields.slice(0, MAX_RESULTS);
+
+                // Create HTML for results - build all at once for better performance
+                var resultsHtml = '';
+                
+                // Add sorted fields to the results container
+                for (var i = 0; i < matchingFields.length; i++) {
+                    var item = matchingFields[i];
+                    // Store the field details as a JSON string in a data attribute
+                    // Use a more robust approach to prevent syntax errors with special characters
+                    var fieldDetailsJson = '';
+                    try {
+                        // First create a simplified version of the object with only essential properties
+                        // This helps avoid circular references and non-serializable properties
+                        var simplifiedDetails = {
+                            fieldName: item.fieldDetails.fieldName || '',
+                            label: item.fieldDetails.label || '',
+                            isReference: !!item.fieldDetails.isReference,
+                            relationshipName: item.fieldDetails.relationshipName || ''
+                        };
+                        
+                        // Stringify the simplified object
+                        var jsonString = JSON.stringify(simplifiedDetails);
+                        
+                        // Then encode it for safe use in HTML attributes
+                        // This is more robust than manual escaping
+                        fieldDetailsJson = encodeURIComponent(jsonString);
+                        
+                        // Log for debugging
+                        console.log('Encoded field details:', fieldDetailsJson);
+                    } catch (e) {
+                        console.error('Error preparing field details:', e);
+                        fieldDetailsJson = encodeURIComponent('{}'); // Use empty object as fallback
+                    }
+                    
+                    // Create the onclick handler with proper escaping for the Visualforce merge field
+                    // Use encodeURIComponent for field and label as well for consistency
+                    var onclickHandler = 'FieldPathFinderScripts' + '{!JSENCODE(for)}' + '.selectOption(' + 
+                        '\'' + encodeURIComponent(item.field) + '\', ' + 
+                        '\'' + encodeURIComponent(item.label) + '\', ' + 
+                        '\'' + fieldType + '\', ' + 
+                        '\'' + fieldDetailsJson + '\'' + 
+                        ')';
+                    
+                    resultsHtml += 
+                        '<li role="presentation" class="slds-listbox__item">' +
+                        '<div class="slds-media slds-listbox__option slds-listbox__option_entity slds-listbox__option_has-meta" role="option" ' +
+                        'onclick="' + onclickHandler + '">' +
+                        '<span class="slds-media__body">' +
+                        '<span class="slds-listbox__option-text slds-listbox__option-text_entity" style="font-size: 1.1em; font-weight: bold;">' + item.displayField + '</span>' +
+                        '<span class="slds-listbox__option-meta slds-listbox__option-meta_entity">' + item.label + '</span>' +
+                        '</span>' +
+                        '</div>' +
+                        '</li>';
+                }
+                
+                // If we have results, append them all at once (more efficient than multiple appends)
+                if (resultsHtml) {
+                    resultsContainer.html(resultsHtml);
+                    
+                    // If we hit the limit, add a message
+                    if (matchingFields.length === MAX_RESULTS) {
+                        resultsContainer.append(
+                            '<li role="presentation" class="slds-listbox__item">' +
+                            '<div class="slds-media slds-listbox__option slds-listbox__option_entity" role="option">' +
+                            '<span class="slds-media__body">' +
+                            '<span class="slds-listbox__option-text slds-text-color_weak">Showing top ' + MAX_RESULTS + ' results. Refine your search for more specific matches.</span>' +
+                            '</span>' +
+                            '</div>' +
+                            '</li>'
+                        );
+                    }
+                }
+                // If no matches found
+                else if (!matchFound) {
+                    // If the search term looks like a field path (contains dots or is substantial),
+                    // offer server-side validation
+                    if (searchTermLower.length >= 3 && (searchTermLower.indexOf('.') !== -1 || searchTermLower.length >= 5)) {
+                        resultsContainer.html(
+                            '<li role="presentation" class="slds-listbox__item">' +
+                            '<div class="slds-media slds-listbox__option slds-listbox__option_entity" role="option">' +
+                            '<span class="slds-media__body">' +
+                            '<span class="slds-listbox__option-text">No matching fields found in cache</span>' +
+                            '</span>' +
+                            '</div>' +
+                            '</li>' +
+                            '<li role="presentation" class="slds-listbox__item">' +
+                            '<div class="slds-media slds-listbox__option slds-listbox__option_entity slds-listbox__option_has-meta" role="option" ' +
+                            'onclick="FieldPathFinderScripts' + '{!JSENCODE(for)}' + '.validateAndSelectCustomPath(\'' + 
+                            encodeURIComponent(searchTerm) + '\', \'' + fieldType + '\')" style="cursor: pointer;">' +
+                            '<span class="slds-media__body">' +
+                            '<span class="slds-listbox__option-text slds-listbox__option-text_entity" style="font-size: 1.1em; color: #0070d2;">Use "' + searchTerm + '"</span>' +
+                            '<span class="slds-listbox__option-meta slds-listbox__option-meta_entity">Validate this field path on server</span>' +
+                            '</span>' +
+                            '</div>' +
+                            '</li>'
+                        );
+                    } else {
+                        resultsContainer.html(
+                            '<li role="presentation" class="slds-listbox__item">' +
+                            '<div class="slds-media slds-listbox__option slds-listbox__option_entity" role="option">' +
+                            '<span class="slds-media__body">' +
+                            '<span class="slds-listbox__option-text">No matching fields found</span>' +
+                            '</span>' +
+                            '</div>' +
+                            '</li>'
+                        );
+                    }
+                }
+            },
+
+            selectOption: function(value, label, fieldType, fieldDetailsJson) {
+                // Decode the URL-encoded parameters
+                try {
+                    // Decode the value and label
+                    value = decodeURIComponent(value);
+                    label = decodeURIComponent(label);
+                    
+                    console.log('Decoded value:', value);
+                    console.log('Decoded label:', label);
+                } catch (e) {
+                    console.error('Error decoding value or label:', e);
+                    // Continue with the original values if decoding fails
+                }
+                
+                // Parse the field details if provided
+                var fieldDetails = null;
+                if (fieldDetailsJson) {
+                    try {
+                        // Decode the URL-encoded JSON string
+                        var decodedJson = decodeURIComponent(fieldDetailsJson);
+                        console.log('Decoded JSON string:', decodedJson);
+                        
+                        // Parse the JSON
+                        fieldDetails = JSON.parse(decodedJson);
+                        
+                        // Log for debugging
+                        console.log('Successfully parsed field details:', fieldDetails);
+                    } catch (e) {
+                        console.error('Error parsing field details:', e);
+                        console.error('Field details JSON string:', fieldDetailsJson);
+                        console.error('Error message:', e.message);
+                        
+                        // Try a fallback approach if decoding fails
+                        try {
+                            // Maybe it's using the old escaping method
+                            var unescapedJson = fieldDetailsJson
+                                .replace(/\\"/g, '"')    // Unescape double quotes
+                                .replace(/\\'/g, "'")    // Unescape single quotes
+                                .replace(/\\\\/g, '\\'); // Unescape backslashes
+                            
+                            fieldDetails = JSON.parse(unescapedJson);
+                            console.log('Fallback parsing successful:', fieldDetails);
+                        } catch (fallbackError) {
+                            console.error('Fallback parsing also failed:', fallbackError);
+                        }
+                    }
+                }
+                
+                // Process the field path to ensure relationship fields have Id suffix
+                var processedValue = this.processFieldPathForStorage(value, fieldDetails);
+                console.log('Processed value for storage:', processedValue);
+
+                // Format the field path for display
+                var displayValue = this.formatFieldPathForDisplay(value, fieldDetails);
+
+                // Set the input value to the formatted field path
+                j$('#searchInput{!for}').val(displayValue);
+
+                // Store the processed field path in the hidden field
+                j$('[id$=selectedFieldPath]').val(processedValue);
+
+                // Hide the results container
+                j$('#searchResults{!for}').hide();
+
+                // Validate the field
+                this.validateFieldSelection(processedValue, fieldType);
+
+                // Trigger a custom event that the parent page can listen for
+                // Include the field details in the event data
+                j$('#searchInput{!for}').trigger('fieldpathselected', [processedValue, displayValue, fieldType, fieldDetails]);
+            },
+
+            // Format a field path for display using relationship names for reference fields when available
+            // For intermediate parts use relationship names; for the leaf use the field API name when known
+            formatFieldPathForDisplay: function(fieldPath, fieldDetails) {
+                if (!fieldPath || fieldPath === 'USER') {
+                    return fieldPath;
+                }
+
+                // Split the field path into parts
+                var parts = fieldPath.split('.');
+                var formattedParts = [];
+
+                // If we have field details and this is a single-part path, prefer the field API name
+                if (fieldDetails && parts.length === 1) {
+                    // If we know the field API name, use it; otherwise fall back to original
+                    return (fieldDetails.fieldName && fieldDetails.fieldName !== '') ? fieldDetails.fieldName : parts[0];
+                }
+
+                // Format each part
+                for (var i = 0; i < parts.length; i++) {
+                    var part = parts[i];
+                    var isLastPart = (i === parts.length - 1);
+
+                    if (isLastPart) {
+                        // For the leaf, if fieldDetails present, use its fieldName
+                        if (fieldDetails && fieldDetails.fieldName) {
+                            formattedParts.push(fieldDetails.fieldName);
+                        } else if (part && part.endsWith('__r')) {
+                            // Fallback: show __c for custom leafs if only relationship provided
+                            formattedParts.push(part.substring(0, part.length - 3) + '__c');
+                        } else if (part === 'Owner') {
+                            formattedParts.push('OwnerId');
+                        } else {
+                            formattedParts.push(part);
+                        }
+                        continue;
+                    }
+
+                    // For non-last parts, try to get field details from cache for relationship name
+                    var objectName = j$('[id$=targetObject]').val();
+                    var fieldType = j$('#searchInput{!for}').data('search-type');
+                    var cacheKey = objectName + '_' + fieldType;
+
+                    var pathSoFar = parts.slice(0, i + 1).join('.');
+
+                    if (cachedFields{!for}[cacheKey] && cachedFields{!for}[cacheKey][pathSoFar]) {
+                        var fieldInfo = cachedFields{!for}[cacheKey][pathSoFar];
+                        if (fieldInfo.isReference && fieldInfo.relationshipName) {
+                            formattedParts.push(fieldInfo.relationshipName);
+                            continue;
+                        }
+                    }
+
+                    // Fallback: keep original segment
+                    formattedParts.push(part);
+                }
+
+                return formattedParts.join('.');
+            },
+
+            // Get the field label from the Schema describe info
+            getFieldLabel: function(fieldName) {
+                // Get the current object name and field type
+                var objectName = j$('[id$=targetObject]').val();
+                var fieldType = j$('#searchInput{!for}').data('search-type');
+
+                if (!objectName || !fieldType) {
+                    return null;
+                }
+
+                // Try to use the cached field labels if available
+                var cacheKey = objectName + '_' + fieldType;
+
+                if (cachedFields{!for}[cacheKey]) {
+                    // Check if we have a label for this field
+                    for (var field in cachedFields{!for}[cacheKey]) {
+                        // Extract the last part of the field path
+                        var lastPart = field.split('.').pop();
+
+                        // If the last part matches our field name (ignoring case)
+                        // No need to check for "id" suffix as we now use properly cased field names from the backend
+                        if (lastPart.toLowerCase() === fieldName.toLowerCase()) {
+
+                            // Return the field label
+                            return cachedFields{!for}[cacheKey][field].split(' → ').pop();
+                        }
+                    }
+                }
+
+                return null;
+            },
+
+            // Process a field path for storage. Use relationship names for intermediate parts;
+            // ensure the leaf is the field API name (…Id/…__c) not the relationship (…/…__r).
+            processFieldPathForStorage: function(fieldPath, fieldDetails) {
+                if (!fieldPath || fieldPath === 'USER') {
+                    return fieldPath;
+                }
+                
+                var parts = fieldPath.split('.');
+                var processedParts = [];
+                
+                for (var i = 0; i < parts.length; i++) {
+                    var part = parts[i];
+                    var isLastPart = (i === parts.length - 1);
+                    
+                    if (!isLastPart) {
+                        // Intermediate: prefer relationship tokens, stripping Id when appropriate
+                        if (part === 'OwnerId') {
+                            processedParts.push('OwnerId');
+                        } else if (part === 'CreatedById') {
+                            processedParts.push('CreatedBy');
+                        } else if (part === 'LastModifiedById') {
+                            processedParts.push('LastModifiedBy');
+                        } else if (part.endsWith('Id') && !part.endsWith('__c')) {
+                            processedParts.push(part.substring(0, part.length - 2));
+                        } else if (part.endsWith('__c') && part.indexOf('__r') === -1) {
+                            processedParts.push(part.replace('__c', '__r'));
+                        } else {
+                            processedParts.push(part);
+                        }
+                    } else {
+                        // Leaf: force API field name
+                        if (fieldDetails && fieldDetails.fieldName) {
+                            processedParts.push(fieldDetails.fieldName);
+                        } else if (part === 'Owner') {
+                            processedParts.push('OwnerId');
+                        } else if (part.endsWith('__r')) {
+                            processedParts.push(part.substring(0, part.length - 3) + '__c');
+                        } else {
+                            processedParts.push(part);
+                        }
+                    }
+                }
+                
+                return processedParts.join('.');
+            },
+            
+            validateAndSelectCustomPath: function(encodedFieldPath, fieldType) {
+                try {
+                    var fieldPath = decodeURIComponent(encodedFieldPath);
+                    var objectName = j$('[id$=targetObject]').val();
+                    
+                    if (!objectName) {
+                        j$('#fieldValidation{!for}').html('<div class="slds-text-color_error">✗ Target object is required</div>');
+                        return;
+                    }
+
+                    // Show validation in progress
+                    j$('#fieldValidation{!for}').html('<div class="slds-text-color_weak">Validating field path on server...</div>');
+                    j$('#searchResults{!for}').hide();
+
+                    // Call server-side validation
+                    var self = this;
+                    Visualforce.remoting.Manager.invokeAction(
+                        '{!$RemoteAction.ActionPlansFieldPathFinderController.validateFieldPathRemote}',
+                        objectName,
+                        fieldPath,
+                        function(result, event) {
+                            if (event.status) {
+                                if (result.success) {
+                                    // Field is valid - select it
+                                    var displayValue = self.formatFieldPathForDisplay(fieldPath);
+                                    var processedValue = self.processFieldPathForStorage(fieldPath);
+                                    
+                                    // Set the input value
+                                    j$('#searchInput{!for}').val(displayValue);
+                                    
+                                    // Store the processed field path
+                                    j$('[id$=selectedFieldPath]').val(processedValue);
+                                    
+                                    // Show success validation
+                                    j$('#fieldValidation{!for}').html('<div class="slds-text-color_success">✓ Valid field: ' + result.fieldLabel + '</div>');
+                                    
+                                    // Trigger the selection event
+                                    j$('#searchInput{!for}').trigger('fieldpathselected', [processedValue, displayValue, fieldType]);
+                                } else {
+                                    // Field is invalid
+                                    j$('#fieldValidation{!for}').html('<div class="slds-text-color_error">✗ ' + result.message + '</div>');
+                                }
+                            } else {
+                                j$('#fieldValidation{!for}').html('<div class="slds-text-color_error">✗ Error validating field path</div>');
+                            }
+                        },
+                        {escape: true}
+                    );
+                    
+                } catch (e) {
+                    console.error('Error in validateAndSelectCustomPath:', e);
+                    j$('#fieldValidation{!for}').html('<div class="slds-text-color_error">✗ Error processing field path</div>');
+                }
+            },
+
+            validateFieldSelection: function(fieldName, fieldType) {
+                var objectName = j$('[id$=targetObject]').val();
+
+                if (!fieldName) {
+                    return;
+                }
+
+                var validationElement = j$('#fieldValidation{!for}');
+
+                if (!objectName) {
+                    // If no object name but we have a field name, it might be a standard user
+                    if (fieldName === 'USER' && fieldType === 'user') {
+                        validationElement.html('<div class="slds-text-color_success">✓ Standard User lookup</div>');
+                        return;
+                    }
+
+                    validationElement.html('<div class="slds-text-color_error">✗ Target object is required to validate field path</div>');
+                    return;
+                }
+
+                validationElement.html('<div class="slds-text-color_weak">Validating field...</div>');
+
+                Visualforce.remoting.Manager.invokeAction(
+                    '{!$RemoteAction.ActionPlansFieldPathFinderController.validateFieldPathRemote}',
+                    objectName,
+                    fieldName,
+                    function(result, event) {
+                        if (event.status) {
+                            if (result.success) {
+                                validationElement.html('<div class="slds-text-color_success">✓ Valid field: ' + result.fieldLabel + '</div>');
+                            } else {
+                                validationElement.html('<div class="slds-text-color_error">✗ ' + result.message + '</div>');
+                            }
+                        } else {
+                            validationElement.html('<div class="slds-text-color_error">✗ Error validating field</div>');
+                        }
+                    },
+                    {escape: true}
+                );
+            }
+        };
+    </script>
+</apex:component>

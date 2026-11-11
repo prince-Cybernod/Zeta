@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>ssot__rel_1734838269843_end__c</fullName>
+    <deleteConstraint>SetNull</deleteConstraint>
+    <deprecated>false</deprecated>
+    <label>CarePlanActivity_DailyDoseUnitofMeas_rel</label>
+    <referenceTo>ssot__UnitOfMeasure__dlm</referenceTo>
+    <relationshipLabel>CarePlanActivity_DailyDoseUnitofMeas_rel</relationshipLabel>
+    <relationshipName>rel_1734838269843_end</relationshipName>
+    <required>false</required>
+    <type>Lookup</type>
+</CustomField>

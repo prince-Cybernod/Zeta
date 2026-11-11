@@ -321,6 +321,22 @@
         <sourceFormula>SessionHandlerId</sourceFormula>
         <targetField>MessagingChannel_Home__dll.SessionHandlerId__c</targetField>
     </fieldSourceTargetMaps>
+    <fieldSourceTargetMaps>
+        <creationType>Custom</creationType>
+        <filterApplied>false</filterApplied>
+        <isSourceFormula>false</isSourceFormula>
+        <sourceField>MessagingChannel_Home.LastMilePlatform__c</sourceField>
+        <sourceFormula>LastMilePlatform</sourceFormula>
+        <targetField>MessagingChannel_Home__dll.LastMilePlatform__c</targetField>
+    </fieldSourceTargetMaps>
+    <fieldSourceTargetMaps>
+        <creationType>Custom</creationType>
+        <filterApplied>false</filterApplied>
+        <isSourceFormula>false</isSourceFormula>
+        <sourceField>MessagingChannel_Home.DefaultApplication__c</sourceField>
+        <sourceFormula>DefaultApplication</sourceFormula>
+        <targetField>MessagingChannel_Home__dll.DefaultApplication__c</targetField>
+    </fieldSourceTargetMaps>
     <masterLabel>MessagingChannel_Home_map_MessagingChannel_Home_1762184413917</masterLabel>
     <sourceObjectName>MessagingChannel_Home</sourceObjectName>
     <targetObjectName>MessagingChannel_Home__dll</targetObjectName>

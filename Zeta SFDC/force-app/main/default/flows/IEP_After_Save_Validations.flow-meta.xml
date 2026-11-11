@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>65.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <customErrors>
+        <description>Adds a flow error preventing save when another Active IEP exists.</description>
+        <name>Error_Another_Active_IEP_Exists</name>
+        <label>Error: Another Active IEP Exists</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <customErrorMessages>
+            <errorMessage>{!Subflow_Active_IEP_Check.varErrorMessage}</errorMessage>
+            <isFieldError>false</isFieldError>
+        </customErrorMessages>
+    </customErrors>
+    <decisions>
+        <description>Evaluates the output from the subflow to determine whether to throw an error.</description>
+        <name>Decision_Other_Active_IEP_Exists</name>
+        <label>Decision: Other Active IEP Exists?</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <defaultConnectorLabel>Allow Save</defaultConnectorLabel>
+        <rules>
+            <name>Block_Save</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Subflow_Active_IEP_Check.varHasOtherActiveIEP</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Error_Another_Active_IEP_Exists</targetReference>
+            </connector>
+            <label>Block Save</label>
+        </rules>
+    </decisions>
+    <description>Master validation flow for the IEP object. Runs after save and executes all modular validation subflows. 
+
+Currently calls the Active IEP Check subflow to ensure a student cannot have more than one Active IEP. Blocks the transaction using Add Error when a validation rule fails. Designed as the single orchestration layer for all future IEP validations.
+
+Flow Designer: Elevation Solutions</description>
+    <environments>Default</environments>
+    <interviewLabel>IEP (After Save) | Validations {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>IEP (After Save) | Validations</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <start>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>Subflow_Active_IEP_Check</targetReference>
+        </connector>
+        <object>Individualized_Education_Program__c</object>
+        <recordTriggerType>CreateAndUpdate</recordTriggerType>
+        <triggerType>RecordAfterSave</triggerType>
+    </start>
+    <status>Active</status>
+    <subflows>
+        <description>Runs the Subflow to validate if an Active IEP already exists.</description>
+        <name>Subflow_Active_IEP_Check</name>
+        <label>Subflow: Active IEP Check</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>Decision_Other_Active_IEP_Exists</targetReference>
+        </connector>
+        <flowName>IEP_Subflow_Validation_Active_IEP_Check</flowName>
+        <inputAssignments>
+            <name>recordId</name>
+            <value>
+                <elementReference>$Record.Id</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <name>varIsActive</name>
+            <value>
+                <elementReference>$Record.Active__c</elementReference>
+            </value>
+        </inputAssignments>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </subflows>
+</Flow>

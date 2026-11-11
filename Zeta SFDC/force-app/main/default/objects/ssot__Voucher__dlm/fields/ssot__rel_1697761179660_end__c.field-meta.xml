@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>ssot__rel_1697761179660_end__c</fullName>
+    <deleteConstraint>SetNull</deleteConstraint>
+    <deprecated>false</deprecated>
+    <label>LoyaltyJournalSubtype_Id_map_Voucher_rel</label>
+    <referenceTo>ssot__LoyaltyJournalSubtype__dlm</referenceTo>
+    <relationshipLabel>LoyaltyJournalSubtype_Id_map_Voucher_rel</relationshipLabel>
+    <relationshipName>rel_1697761179660_end</relationshipName>
+    <required>false</required>
+    <type>Lookup</type>
+</CustomField>

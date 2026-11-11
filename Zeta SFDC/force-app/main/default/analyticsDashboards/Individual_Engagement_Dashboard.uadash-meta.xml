@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <AnalyticsDashboard xmlns="http://soap.sforce.com/2006/04/metadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-    <analyticsWorkspace>Marketing_Performance</analyticsWorkspace>
+    <analyticsWorkspace>Marketing_Performance_Intelligence</analyticsWorkspace>
+    <customConfig>null</customConfig>
     <description>Unified Engagement History Dashboard for an Individual</description>
     <layouts>
         <analyticsDashboard>Individual_Engagement_Dashboard</analyticsDashboard>
@@ -88,8 +89,8 @@
     <masterLabel>Individual Engagement Dashboard</masterLabel>
     <style>{&quot;widgetStyle&quot;:{&quot;backgroundColor&quot;:&quot;#ffffff&quot;,&quot;borderEdges&quot;:[],&quot;borderColor&quot;:&quot;#181818&quot;,&quot;borderWidth&quot;:1,&quot;borderRadius&quot;:0}}</style>
     <templateAssetSourceName>Individual_Engagement_Dashboard</templateAssetSourceName>
-    <templateSource>sfdc_internal__uma</templateSource>
-    <version>66.0</version>
+    <templateSource>sfdc_internal__umi</templateSource>
+    <version>66.08</version>
     <widgets>
         <analyticsDashboard>Individual_Engagement_Dashboard</analyticsDashboard>
         <type>visualization</type>
@@ -120,8 +121,8 @@
         <analyticsDashboard>Individual_Engagement_Dashboard</analyticsDashboard>
         <filterWidgetDefs>
             <initialValues>null</initialValues>
-            <parameters>{&quot;viewType&quot;:&quot;list&quot;,&quot;widgetStyle&quot;:{&quot;backgroundColor&quot;:&quot;#F3F3F3&quot;,&quot;borderEdges&quot;:[],&quot;borderColor&quot;:&quot;#cccccc&quot;,&quot;borderWidth&quot;:1,&quot;borderRadius&quot;:0},&quot;receiveFilterSource&quot;:{&quot;filterMode&quot;:&quot;all&quot;,&quot;widgetIds&quot;:[]},&quot;filterOption&quot;:{&quot;objectName&quot;:&quot;Campaign&quot;,&quot;fieldName&quot;:&quot;Name&quot;,&quot;dataType&quot;:&quot;Text&quot;,&quot;selectionType&quot;:&quot;multiple&quot;},&quot;isLabelHidden&quot;:false}</parameters>
-            <source>Marketing_Performance_Semantic_Mod_945</source>
+            <parameters>{&quot;viewType&quot;:&quot;list&quot;,&quot;widgetStyle&quot;:{&quot;backgroundColor&quot;:&quot;#F3F3F3&quot;,&quot;borderEdges&quot;:[],&quot;borderColor&quot;:&quot;#cccccc&quot;,&quot;borderWidth&quot;:1,&quot;borderRadius&quot;:0},&quot;receiveFilterSource&quot;:{&quot;filterMode&quot;:&quot;all&quot;,&quot;widgetIds&quot;:[]},&quot;filterOption&quot;:{&quot;objectName&quot;:&quot;Campaign&quot;,&quot;fieldName&quot;:&quot;Campaign_Name&quot;,&quot;dataType&quot;:&quot;Text&quot;,&quot;selectionType&quot;:&quot;multiple&quot;},&quot;isLabelHidden&quot;:false}</parameters>
+            <source>Marketing_Intelligence_Custom_Semantic_Model_00Da500001AA4BB</source>
         </filterWidgetDefs>
         <label>Campaign</label>
         <type>filter</type>
@@ -139,8 +140,8 @@
         <analyticsDashboard>Individual_Engagement_Dashboard</analyticsDashboard>
         <filterWidgetDefs>
             <initialValues>null</initialValues>
-            <parameters>{&quot;viewType&quot;:&quot;list&quot;,&quot;widgetStyle&quot;:{&quot;backgroundColor&quot;:&quot;#F3F3F3&quot;,&quot;borderEdges&quot;:[],&quot;borderColor&quot;:&quot;#cccccc&quot;,&quot;borderWidth&quot;:1,&quot;borderRadius&quot;:0},&quot;receiveFilterSource&quot;:{&quot;filterMode&quot;:&quot;all&quot;,&quot;widgetIds&quot;:[]},&quot;filterOption&quot;:{&quot;objectName&quot;:&quot;Logical_View_Engagement_Union&quot;,&quot;fieldName&quot;:&quot;Activity_Date&quot;,&quot;dataType&quot;:&quot;DateTime&quot;,&quot;selectionType&quot;:&quot;multiple&quot;},&quot;isLabelHidden&quot;:false}</parameters>
-            <source>Marketing_Performance_Semantic_Mod_945</source>
+            <parameters>{&quot;viewType&quot;:&quot;list&quot;,&quot;widgetStyle&quot;:{&quot;backgroundColor&quot;:&quot;#F3F3F3&quot;,&quot;borderEdges&quot;:[],&quot;borderColor&quot;:&quot;#cccccc&quot;,&quot;borderWidth&quot;:1,&quot;borderRadius&quot;:0},&quot;receiveFilterSource&quot;:{&quot;filterMode&quot;:&quot;all&quot;,&quot;widgetIds&quot;:[]},&quot;filterOption&quot;:{&quot;fieldName&quot;:&quot;Engagement_Date_Time_clc&quot;,&quot;dataType&quot;:&quot;DateTime&quot;,&quot;selectionType&quot;:&quot;multiple&quot;},&quot;isLabelHidden&quot;:false}</parameters>
+            <source>Marketing_Intelligence_Custom_Semantic_Model_00Da500001AA4BB</source>
         </filterWidgetDefs>
         <label>Date Range</label>
         <type>filter</type>
@@ -158,8 +159,8 @@
         <analyticsDashboard>Individual_Engagement_Dashboard</analyticsDashboard>
         <filterWidgetDefs>
             <initialValues>null</initialValues>
-            <parameters>{&quot;viewType&quot;:&quot;list&quot;,&quot;widgetStyle&quot;:{&quot;backgroundColor&quot;:&quot;#F3F3F3&quot;,&quot;borderEdges&quot;:[],&quot;borderColor&quot;:&quot;#cccccc&quot;,&quot;borderWidth&quot;:1,&quot;borderRadius&quot;:0},&quot;receiveFilterSource&quot;:{&quot;filterMode&quot;:&quot;all&quot;,&quot;widgetIds&quot;:[]},&quot;filterOption&quot;:{&quot;fieldName&quot;:&quot;Content_Type&quot;,&quot;dataType&quot;:&quot;Text&quot;,&quot;selectionType&quot;:&quot;multiple&quot;},&quot;isLabelHidden&quot;:false}</parameters>
-            <source>Marketing_Performance_Semantic_Mod_945</source>
+            <parameters>{&quot;viewType&quot;:&quot;list&quot;,&quot;widgetStyle&quot;:{&quot;backgroundColor&quot;:&quot;#F3F3F3&quot;,&quot;borderEdges&quot;:[],&quot;borderColor&quot;:&quot;#cccccc&quot;,&quot;borderWidth&quot;:1,&quot;borderRadius&quot;:0},&quot;receiveFilterSource&quot;:{&quot;filterMode&quot;:&quot;all&quot;,&quot;widgetIds&quot;:[]},&quot;filterOption&quot;:{&quot;fieldName&quot;:&quot;Content_Type_clc&quot;,&quot;dataType&quot;:&quot;Text&quot;,&quot;selectionType&quot;:&quot;multiple&quot;},&quot;isLabelHidden&quot;:false}</parameters>
+            <source>Marketing_Intelligence_Custom_Semantic_Model_00Da500001AA4BB</source>
         </filterWidgetDefs>
         <label>Content Type</label>
         <type>filter</type>
@@ -187,6 +188,6 @@
         <asset xsi:nil="true"/>
         <assetType>AnalyticsDashboard</assetType>
         <assetUsageType>Created</assetUsageType>
-        <workspace>Marketing_Performance</workspace>
+        <workspace>Marketing_Performance_Intelligence</workspace>
     </workspaceAssetRelationships>
 </AnalyticsDashboard>

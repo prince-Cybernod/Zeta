@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Closest_School__c</fullName>
+    <deleteConstraint>SetNull</deleteConstraint>
+    <description>School Account nearest this Account&apos;s billing address, stamped from the Find Nearest School action.</description>
+    <label>Closest School</label>
+    <lookupFilter>
+        <active>true</active>
+        <errorMessage>Closest School must be an Account with the School record type.</errorMessage>
+        <filterItems>
+            <field>Account.RecordType.DeveloperName</field>
+            <operation>equals</operation>
+            <value>School</value>
+        </filterItems>
+        <isOptional>false</isOptional>
+    </lookupFilter>
+    <referenceTo>Account</referenceTo>
+    <relationshipLabel>Accounts (Closest School)</relationshipLabel>
+    <relationshipName>Closest_School_Accounts</relationshipName>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>Lookup</type>
+</CustomField>

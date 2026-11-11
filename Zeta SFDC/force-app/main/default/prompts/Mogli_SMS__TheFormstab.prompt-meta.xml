@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Prompt xmlns="http://soap.sforce.com/2006/04/metadata">
+    <masterLabel>The Forms tab</masterLabel>
+    <promptVersions>
+        <body>&lt;p&gt;&lt;span style=&quot;color: rgb(0, 0, 0);&quot;&gt;Here&apos;s where the data from your automated conversations and surveys (Form Templates) live. Nothing here yet?  Don&apos;t worry.  It&apos;s likely because you may not have created any Form Templates just yet. &lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot;color: rgb(0, 0, 0);&quot;&gt;Click the gear icon drop-down and click &lt;/span&gt;&lt;b style=&quot;color: rgb(0, 0, 0);&quot;&gt;Select Fields to Display&lt;/b&gt;&lt;span style=&quot;color: rgb(0, 0, 0);&quot;&gt; to pull in the pertinent fields. We recommend pulling in Created Date, Form Template, Contact, Lead, Opportunity, Phone Number, and Status. &lt;/span&gt;&lt;b style=&quot;color: rgb(0, 0, 0);&quot;&gt;Save&lt;/b&gt;&lt;span style=&quot;color: rgb(0, 0, 0);&quot;&gt;.&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot;color: rgb(0, 0, 0);&quot;&gt;Click on a &lt;/span&gt;&lt;b style=&quot;color: rgb(0, 0, 0);&quot;&gt;Form Number &lt;/b&gt;&lt;span style=&quot;color: rgb(0, 0, 0);&quot;&gt;for the good stuff.&lt;/span&gt;&lt;/p&gt;</body>
+        <customApplication>Mogli_SMS__Mogli_SMS_Lightning</customApplication>
+        <delayDays>1</delayDays>
+        <description>What the Forms tab does, and the fields to pull in.</description>
+        <displayType>DockedComposer</displayType>
+        <endDate>2020-12-31</endDate>
+        <header>Records of Automated Conversations</header>
+        <isPublished>true</isPublished>
+        <masterLabel>The Forms tab</masterLabel>
+        <publishedDate>2026-04-22</publishedDate>
+        <shouldDisplayActionButton>false</shouldDisplayActionButton>
+        <shouldIgnoreGlobalDelay>true</shouldIgnoreGlobalDelay>
+        <startDate>2020-02-07</startDate>
+        <targetPageKey1>Mogli_SMS__Form__c</targetPageKey1>
+        <targetPageKey2>list</targetPageKey2>
+        <targetPageType>standard__objectPage</targetPageType>
+        <timesToDisplay>2</timesToDisplay>
+        <title>Measure your impact here.</title>
+        <userAccess>Everyone</userAccess>
+        <userProfileAccess>Everyone</userProfileAccess>
+        <versionNumber>1</versionNumber>
+    </promptVersions>
+</Prompt>

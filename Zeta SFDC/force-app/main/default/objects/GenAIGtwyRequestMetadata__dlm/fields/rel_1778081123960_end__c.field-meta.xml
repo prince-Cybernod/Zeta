@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>rel_1778081123960_end__c</fullName>
+    <deleteConstraint>SetNull</deleteConstraint>
+    <label>GenAIGtwyRequestMetadata_parent_map__rel</label>
+    <referenceTo>GenAIGatewayRequest__dlm</referenceTo>
+    <relationshipLabel>GenAIGtwyRequestMetadata_parent_map__rel</relationshipLabel>
+    <relationshipName>rel_1778081123960_end</relationshipName>
+    <required>false</required>
+    <type>Lookup</type>
+</CustomField>

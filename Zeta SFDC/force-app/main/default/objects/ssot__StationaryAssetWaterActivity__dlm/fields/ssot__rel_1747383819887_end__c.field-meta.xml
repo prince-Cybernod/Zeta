@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>ssot__rel_1747383819887_end__c</fullName>
+    <deleteConstraint>SetNull</deleteConstraint>
+    <deprecated>false</deprecated>
+    <label>StationaryAssetWaterActivity_StnryAs_rel</label>
+    <referenceTo>ssot__StnryAssetWaterFootprint__dlm</referenceTo>
+    <relationshipLabel>StationaryAssetWaterActivity_StnryAs_rel</relationshipLabel>
+    <relationshipName>rel_1747383819887_end</relationshipName>
+    <required>false</required>
+    <type>Lookup</type>
+</CustomField>

@@ -12,11 +12,11 @@ IF(
         ISBLANK(Account.PersonContact.Birthdate),
         ISBLANK(
             Application_Timeline__r.Academic_Term__r.Dec_31_Age_Cutoff_Date__c
-        )
+        ),
+        ISPICKVAL(Grade_Applying_To__c, &apos;&apos;),
+        TEXT(Grade_Applying_To__c) = &quot;N/A&quot;
     ),
-
     TRUE,
-
     IF(
         OR(
             TEXT(Grade_Applying_To__c) = &quot;PK&quot;,
@@ -28,39 +28,35 @@ IF(
                 VALUE(BLANKVALUE(TEXT(Grade_Applying_To__c), &quot;0&quot;)) &lt;= 12
             )
         ),
-
         OR(
             /* Too young */
             ADDMONTHS(
                 Account.PersonContact.Birthdate,
-                CASE(
-                    TEXT(Grade_Applying_To__c),
-                    &quot;PK&quot;, 48,
-                    &quot;K&quot;, 60,
-                    &quot;TK&quot;, 60,
-                    (
-                        VALUE(BLANKVALUE(TEXT(Grade_Applying_To__c), &quot;0&quot;)) + 5
-                    ) * 12
-                )
+                IF(TEXT(Grade_Applying_To__c) = &quot;PK&quot;, 48,
+                IF(TEXT(Grade_Applying_To__c) = &quot;K&quot;, 60,
+                IF(TEXT(Grade_Applying_To__c) = &quot;TK&quot;, 60,
+                IF(
+                    ISNUMBER(TEXT(Grade_Applying_To__c)),
+                    (VALUE(TEXT(Grade_Applying_To__c)) + 5) * 12,
+                    0
+                ))))
             ) &gt;
             Application_Timeline__r.Academic_Term__r.Dec_31_Age_Cutoff_Date__c,
 
             /* Too old */
             ADDMONTHS(
                 Account.PersonContact.Birthdate,
-                CASE(
-                    TEXT(Grade_Applying_To__c),
-                    &quot;PK&quot;, 60,
-                    &quot;K&quot;, 72,
-                    &quot;TK&quot;, 72,
-                    (
-                        VALUE(BLANKVALUE(TEXT(Grade_Applying_To__c), &quot;0&quot;)) + 7
-                    ) * 12
-                )
+                IF(TEXT(Grade_Applying_To__c) = &quot;PK&quot;, 60,
+                IF(TEXT(Grade_Applying_To__c) = &quot;K&quot;, 72,
+                IF(TEXT(Grade_Applying_To__c) = &quot;TK&quot;, 72,
+                IF(
+                    ISNUMBER(TEXT(Grade_Applying_To__c)),
+                    (VALUE(TEXT(Grade_Applying_To__c)) + 7) * 12,
+                    0
+                ))))
             ) &lt;=
             Application_Timeline__r.Academic_Term__r.Dec_31_Age_Cutoff_Date__c
         ),
-
         /* Unsupported grade */
         FALSE
     )

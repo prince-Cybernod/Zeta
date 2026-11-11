@@ -107,7 +107,6 @@
                     name="email"
                     type="email"
                     label="Email"
-                    required
                     onchange={handleNewGuardianChange}
                     onblur={handleDuplicateCheck}
                   ></lightning-input>
@@ -275,7 +274,6 @@
                       class="new-student-field"
                       name="gender"
                       label="Gender"
-                      required
                       placeholder="Select an option"
                       value={newStudent.gender}
                       options={genderOptions}
@@ -346,6 +344,19 @@
           </div>
         </div>
       </lightning-card>
+
+      <template lwc:if={hasStartError}>
+        <div class="slds-m-bottom_medium">
+          <lightning-card>
+            <div
+              class="slds-p-around_medium slds-text-color_error"
+              role="alert"
+            >
+              {startError}
+            </div>
+          </lightning-card>
+        </div>
+      </template>
 
       <div class="intake-actions">
         <lightning-button

@@ -4,8 +4,8 @@
     <deprecated>false</deprecated>
     <description>Copy of the question text that was asked at the time of the question (in case the question template changes)</description>
     <inlineHelpText>Copy of the question text that was asked at the time of the question (in case the question template changes)</inlineHelpText>
-    <label>Question Text</label>
-    <required>true</required>
+    <label>Question Text (short)</label>
+    <required>false</required>
     <trackTrending>false</trackTrending>
     <type>TextArea</type>
 </CustomField>

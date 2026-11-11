@@ -6,6 +6,19 @@
     <dataSourceObject>EngagementChannelType_Home</dataSourceObject>
     <masterLabel>EngagementChannelType_Home</masterLabel>
     <mktDataTranFields>
+        <fullName>ChannelTypeCode</fullName>
+        <creationType>Custom</creationType>
+        <datatype>S</datatype>
+        <externalName>ChannelTypeCode</externalName>
+        <isDataRequired>false</isDataRequired>
+        <length>0</length>
+        <masterLabel>ChannelTypeCode</masterLabel>
+        <precision>0</precision>
+        <primaryIndexOrder>0</primaryIndexOrder>
+        <scale>0</scale>
+        <sequence>15</sequence>
+    </mktDataTranFields>
+    <mktDataTranFields>
         <fullName>ContactPointType</fullName>
         <creationType>Custom</creationType>
         <datatype>S</datatype>

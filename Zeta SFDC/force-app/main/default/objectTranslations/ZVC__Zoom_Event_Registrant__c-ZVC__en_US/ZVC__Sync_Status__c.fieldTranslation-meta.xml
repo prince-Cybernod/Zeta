@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <label><!-- Sync Status --></label>
+    <name>ZVC__Sync_Status__c</name>
+    <picklistValues>
+        <masterLabel>Sync Failed</masterLabel>
+        <translation><!-- Sync Failed --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Synced from Zoom</masterLabel>
+        <translation><!-- Synced from Zoom --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Synced to Zoom</masterLabel>
+        <translation><!-- Synced to Zoom --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>To be Synced</masterLabel>
+        <translation><!-- To be Synced --></translation>
+    </picklistValues>
+</CustomFieldTranslation>

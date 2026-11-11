@@ -52,9 +52,8 @@
     <fieldSourceTargetMaps>
         <creationType>Custom</creationType>
         <filterApplied>false</filterApplied>
-        <isSourceFormula>false</isSourceFormula>
-        <sourceField>AcademicTermEnrollment_Home.Mogli_Number_from_Person_Acccount_c__c</sourceField>
-        <sourceFormula>Mogli_Number_from_Person_Acccount__c</sourceFormula>
+        <isSourceFormula>true</isSourceFormula>
+        <sourceField xsi:nil="true"/>
         <targetField>AcademicTermEnrollment_Home__dll.Mogli_Number_from_Person_Acccount_c__c</targetField>
     </fieldSourceTargetMaps>
     <fieldSourceTargetMaps>
@@ -1736,6 +1735,14 @@
         <sourceField>AcademicTermEnrollment_Home.School_Name_c__c</sourceField>
         <sourceFormula>School_Name__c</sourceFormula>
         <targetField>AcademicTermEnrollment_Home__dll.School_Name_c__c</targetField>
+    </fieldSourceTargetMaps>
+    <fieldSourceTargetMaps>
+        <creationType>Custom</creationType>
+        <filterApplied>false</filterApplied>
+        <isSourceFormula>false</isSourceFormula>
+        <sourceField>AcademicTermEnrollment_Home.Academic_Term_Name_c__c</sourceField>
+        <sourceFormula>Academic_Term_Name__c</sourceFormula>
+        <targetField>AcademicTermEnrollment_Home__dll.Academic_Term_Name_c__c</targetField>
     </fieldSourceTargetMaps>
     <masterLabel>AcademicTermEnrollment_Home_map_AcademicTermEnrollment_Home_1785769198386</masterLabel>
     <sourceObjectName>AcademicTermEnrollment_Home</sourceObjectName>

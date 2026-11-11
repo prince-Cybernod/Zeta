@@ -80,11 +80,11 @@ public without sharing class StudentSelectionController {
   }
 
   @AuraEnabled
-  public static void updateStudentBirthdate(Id studentAccountId, Date birthdate) {
+  public static void updateStudentBirthdate(Id studentAccountId, Date birthdate, Id applicationId) {
     Preconditions.checkNotNull(studentAccountId, 'Student Account Id is required');
     Preconditions.checkNotNull(birthdate, 'Birthdate is required');
 
-    Id contactId = getLoggedInContactId();
+    Id contactId = ApplicationContext.resolveGuardianContactId(databaseRepo, applicationId);
     Preconditions.checkNotNull(contactId, 'Logged-in user must have a Contact');
 
     String ownershipQuery =
@@ -123,9 +123,16 @@ public without sharing class StudentSelectionController {
 
   @AuraEnabled
   public static Id createStudent(String studentJson) {
+    return createStudentForApplication(studentJson, null);
+  }
+
+  // Named separately rather than overloading createStudent: @AuraEnabled method
+  // names can't be overloaded.
+  @AuraEnabled
+  public static Id createStudentForApplication(String studentJson, Id applicationId) {
     Preconditions.checkNotBlank(studentJson, 'Student JSON is required');
 
-    Id contactId = getLoggedInContactId();
+    Id contactId = ApplicationContext.resolveGuardianContactId(databaseRepo, applicationId);
     Preconditions.checkNotNull(contactId, 'Logged-in user must have a Contact');
 
     Map<String, Object> input = (Map<String, Object>) JSON.deserializeUntyped(studentJson);
@@ -328,12 +335,30 @@ public without sharing class StudentSelectionController {
   // born in {year}"). Returned as a Map so the LWC can render each grade's note
   // from a single cached call.
   @AuraEnabled(cacheable=true)
-  public static Map<String, Object> getGradeBirthYearGuidance(Id applicationId) {
+  public static Map<String, Object> getGradeBirthYearGuidance(Id applicationId, Id timelineId) {
     // Birth-year guidance for the Pre-K / Kindergarten note is configured per
     // enrollment cycle on the application's Application Timeline. A blank value
     // (cycle not configured yet) returns null, and the LWC simply omits the note.
     Map<String, Object> result = new Map<String, Object>();
     if (applicationId == null) {
+      // The wizard can target a cycle other than the newest open one, so a
+      // caller-supplied timeline wins over the active-timeline fallback.
+      Id cycleId = timelineId == null
+        ? ZetaApplicationController.findActiveTimelineId()
+        : timelineId;
+      if (cycleId == null) {
+        return result;
+      }
+      List<ApplicationTimeline> timelines = (List<ApplicationTimeline>) databaseRepo.queryWithBinds(
+        'SELECT Pre_K_Birth_Year__c, Kindergarten_Birth_Year__c FROM ApplicationTimeline' +
+        ' WHERE Id = :cycleId LIMIT 1',
+        new Map<String, Object>{ 'cycleId' => cycleId }
+      );
+      if (timelines.isEmpty()) {
+        return result;
+      }
+      result.put('preKBirthYear', timelines[0].Pre_K_Birth_Year__c);
+      result.put('kindergartenBirthYear', timelines[0].Kindergarten_Birth_Year__c);
       return result;
     }
     List<IndividualApplication> apps = (List<IndividualApplication>) databaseRepo.queryWithBinds(

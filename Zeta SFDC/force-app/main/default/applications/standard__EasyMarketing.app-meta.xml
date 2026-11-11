@@ -1,5 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomApplication xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionOverrides>
+        <actionName>View</actionName>
+        <comment>Action override created by Lightning App Builder during activation.</comment>
+        <content>Account_Record_Page2</content>
+        <formFactor>Large</formFactor>
+        <skipRecordTypeSelect>false</skipRecordTypeSelect>
+        <type>Flexipage</type>
+        <pageOrSobjectType>Account</pageOrSobjectType>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <comment>Action override created by Lightning App Builder during activation.</comment>
+        <content>Account_Record_Page2</content>
+        <formFactor>Small</formFactor>
+        <skipRecordTypeSelect>false</skipRecordTypeSelect>
+        <type>Flexipage</type>
+        <pageOrSobjectType>Account</pageOrSobjectType>
+    </actionOverrides>
     <formFactors>Small</formFactors>
     <formFactors>Large</formFactors>
     <isNavAutoTempTabsDisabled>false</isNavAutoTempTabsDisabled>
@@ -12,6 +30,7 @@
     <tabs>standard-Campaign</tabs>
     <tabs>standard-Lead</tabs>
     <tabs>standard-Account</tabs>
+    <tabs>standard-MarketSegment</tabs>
     <tabs>standard-FlowRecord</tabs>
     <tabs>standard-CmsContent</tabs>
     <tabs>standard-WaveHomeLightning</tabs>
@@ -20,5 +39,8 @@
     <tabs>standard-Consent</tabs>
     <tabs>standard-ConsumptionCards</tabs>
     <tabs>standard-ActionableList</tabs>
+    <tabs>standard-ContentStudio</tabs>
+    <tabs>standard-MarketingSites</tabs>
+    <tabs>standard-CmsCommonAssets</tabs>
     <uiType>Lightning</uiType>
 </CustomApplication>

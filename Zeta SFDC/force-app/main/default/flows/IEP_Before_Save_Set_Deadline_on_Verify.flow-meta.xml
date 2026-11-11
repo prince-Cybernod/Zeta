@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>65.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <assignments>
+        <description>Sets Date of IEP Process Deadline to $Flow.CurrentDate + 7 when IEP Verification Status is updated to “Verified and uploaded (all pages included)” and the deadline is currently blank.</description>
+        <name>Assign_IEP_Deadline_Today_7</name>
+        <label>Assign | IEP Deadline = Today + 7</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <assignmentItems>
+            <assignToReference>$Record.Date_of_IEP_Process_Deadline__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>fxDeadlineIn7Days</elementReference>
+            </value>
+        </assignmentItems>
+    </assignments>
+    <description>Sets Date of IEP Process Deadline to today + 7 when IEP Verification Status is updated to “Verified and uploaded (all pages included)”. Runs only when updated to meet conditions.
+
+Flow Designer: Elevation Solutions</description>
+    <environments>Default</environments>
+    <formulas>
+        <description>Returns today + 7 for stamping Date of IEP Process Deadline when verification is set to Verified.</description>
+        <name>fxDeadlineIn7Days</name>
+        <dataType>Date</dataType>
+        <expression>$Flow.CurrentDate + 7</expression>
+    </formulas>
+    <interviewLabel>IEP (Before Save) Stamp Deadline on Verify {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>IEP (Before Save) Set Deadline on Verify</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <start>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>Assign_IEP_Deadline_Today_7</targetReference>
+        </connector>
+        <doesRequireRecordChangedToMeetCriteria>true</doesRequireRecordChangedToMeetCriteria>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>IEP_Verification_Status__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Verified and uploaded (all pages included)</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>Date_of_IEP_Process_Deadline__c</field>
+            <operator>IsNull</operator>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </filters>
+        <object>Individualized_Education_Program__c</object>
+        <recordTriggerType>CreateAndUpdate</recordTriggerType>
+        <triggerType>RecordBeforeSave</triggerType>
+    </start>
+    <status>Active</status>
+</Flow>

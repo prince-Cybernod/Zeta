@@ -1,0 +1,26 @@
+{
+  "type" : "sfdc_cms__email",
+  "title" : "MC | Applicant | ES Email 6",
+  "contentBody" : {
+    "subjectLine" : "在 Zeta，今天拥有更多机会，明天成就无限可能",
+    "preheader" : "在过去的几个月里，我们的学生们一直非常忙碌，不仅要上课，还要参加 Z 俱乐部和 Z 团队的活动。",
+    "sfdc_cms:block" : {
+      "children" : [ {
+        "id" : "618d12ac-1220-42a4-9ed6-83e330b709d4",
+        "attributes" : {
+          "text" : "尊敬的 {!$Expression.First_Name_1} {!$Expression.Last_Name}：<br><br>在过去的几个月里，我们的学生们一直非常忙碌，不仅要上课，还要参加 Z 俱乐部和 Z 团队的活动。走廊里到处都是关于足球比分和国际象棋走法的讨论声，小芭蕾舞演员们也一直在练习旋转。<br><br><strong>Zeta 坚信，今天的更多机会将成就明天的无限可能。</strong>当一个孩子第一次拿起国际象棋棋子、踏上足球场，或者创造出让他们引以为豪的东西时，他们也在自己身上发现了新的优势。<br><br>"
+        }
+      }, {
+        "id" : "c3f5a7dd-c435-4c43-aa0a-f86c20875a65",
+        "attributes" : {
+          "text" : "在 Zeta，学生们拥有充分的机会从这些经历中受益。每所 Zeta 学校都提供各种各样的特色课程，可能包括国际象棋、艺术、音乐、舞蹈、足球、篮球、跆拳道等。特色课程被纳入学校的日常安排中，因为这些时刻是全面培养儿童的重要组成部分。<br><br>"
+        }
+      }, {
+        "id" : "bbf0ea99-526d-48e3-960b-d6dbbefe7dd2",
+        "attributes" : {
+          "text" : "这种广泛丰富的课程也是有意为之的：孩子们需要在发现自己的兴趣和优势所在之前，有机会尝试不同的学科。<br><br>而且他们是向精通其道的专业人士学习。特色课程由经过精心挑选、在相关领域拥有丰富经验和深厚造诣的专家授课，因此学生随着时间的推移能够培养出真正具有竞争力的技能。<br><br><a href=\"https://www.instagram.com/reels/DYA6PfMAECu/\" target=\"_blank\" part=\"link\" rel=\"noopener noreferrer\">观看我们的学生如何通过跆拳道晋级考试！</a><br><br>随着兴趣的加深，学生可以加入 Z 俱乐部和 Z 团队，并有机会接受训练、进行表演，以及与其他 Zeta 学校和外部队伍同台竞技。特色课程培养团队合作精神，帮助学生理解规则和韧性，并建立自信。这些品质将使他们在学校和生活的其他领域受益匪浅。<br><br>这就是充满爱心的卓越教育：为每个孩子提供更多途径去发现他们所爱的事物，以及擅长这些事物的工具。<br><br>如果您想详细了解我们的特色课程项目，请在此注册参加<a href=\"https://zetaschools.org/events-for-prospective-families/\" target=\"_blank\" part=\"link\" rel=\"noopener noreferrer\">即将举办的校园参观</a>。<br><br>我们期待着不久能迎来您的光临！<br><br><br>谨上，<br><strong>Zeta 招生团队</strong><br><strong>Zeta 特许学校</strong><br><br><em>如果您对 Zeta 有任何疑问，请随时与我们联系，我们的招生团队将全程为您提供支持。✉ enroll@zetaschools.org \uD83D\uDCDE(646) 480-1654</em><br><br><br>"
+        }
+      } ]
+    }
+  }
+}

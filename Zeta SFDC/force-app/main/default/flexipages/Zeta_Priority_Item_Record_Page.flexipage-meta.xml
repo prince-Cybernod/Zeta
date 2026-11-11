@@ -205,14 +205,34 @@
                     <name>uiBehavior</name>
                     <value>none</value>
                 </fieldInstanceProperties>
-                <fieldItem>Record.Workplace__c</fieldItem>
-                <identifier>RecordWorkplace__cField</identifier>
+                <fieldItem>Record.First_Name__c</fieldItem>
+                <identifier>RecordFirst_Name_cField</identifier>
+            </fieldInstance>
+        </itemInstances>
+        <itemInstances>
+            <fieldInstance>
+                <fieldInstanceProperties>
+                    <name>uiBehavior</name>
+                    <value>none</value>
+                </fieldInstanceProperties>
+                <fieldItem>Record.Last_Name__c</fieldItem>
+                <identifier>RecordLast_Name_cField</identifier>
             </fieldInstance>
         </itemInstances>
         <name>Facet-676011ac-6564-43ff-a478-b5196be1b81e</name>
         <type>Facet</type>
     </flexiPageRegions>
     <flexiPageRegions>
+        <itemInstances>
+            <fieldInstance>
+                <fieldInstanceProperties>
+                    <name>uiBehavior</name>
+                    <value>none</value>
+                </fieldInstanceProperties>
+                <fieldItem>Record.Workplace__c</fieldItem>
+                <identifier>RecordWorkplace__cField</identifier>
+            </fieldInstance>
+        </itemInstances>
         <itemInstances>
             <fieldInstance>
                 <fieldInstanceProperties>

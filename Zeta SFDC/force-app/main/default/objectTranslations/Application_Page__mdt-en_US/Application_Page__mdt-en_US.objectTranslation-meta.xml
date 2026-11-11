@@ -8,5 +8,20 @@
         <plural>true</plural>
         <value>Application Pages</value>
     </caseValues>
+    <layouts>
+        <layout>Application Page Layout</layout>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+        <sections>
+            <label><!-- Description --></label>
+            <section>Description</section>
+        </sections>
+        <sections>
+            <label><!-- Rendering --></label>
+            <section>Rendering</section>
+        </sections>
+    </layouts>
     <startsWith>Consonant</startsWith>
 </CustomObjectTranslation>

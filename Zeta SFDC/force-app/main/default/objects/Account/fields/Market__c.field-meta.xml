@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Market__c</fullName>
+    <description>High-level market grouping (Bronx, Manhattan, Queens)</description>
+    <label>Market</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Bronx</fullName>
+                <default>false</default>
+                <label>Bronx</label>
+            </value>
+            <value>
+                <fullName>Manhattan</fullName>
+                <default>false</default>
+                <label>Manhattan</label>
+            </value>
+            <value>
+                <fullName>Queens</fullName>
+                <default>false</default>
+                <label>Queens</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

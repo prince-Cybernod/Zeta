@@ -1,0 +1,225 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionCalls>
+        <name>District</name>
+        <label>District</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <actionName>FindDistrictInvocable</actionName>
+        <actionType>apex</actionType>
+        <connector>
+            <targetReference>Active_District</targetReference>
+        </connector>
+        <faultConnector>
+            <isGoTo>true</isGoTo>
+            <targetReference>Active_District</targetReference>
+        </faultConnector>
+        <flowTransactionModel>Automatic</flowTransactionModel>
+        <inputParameters>
+            <name>latitude</name>
+            <value>
+                <elementReference>Geocode.latitude</elementReference>
+                <inputConfiguratorMode>Resource</inputConfiguratorMode>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>longitude</name>
+            <value>
+                <elementReference>Geocode.longitude</elementReference>
+                <inputConfiguratorMode>Resource</inputConfiguratorMode>
+            </value>
+        </inputParameters>
+        <nameSegment>FindDistrictInvocable</nameSegment>
+        <offset>0</offset>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </actionCalls>
+    <actionCalls>
+        <name>Geocode</name>
+        <label>Geocode</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <actionName>GeocodeAddressInvocable</actionName>
+        <actionType>apex</actionType>
+        <connector>
+            <targetReference>District</targetReference>
+        </connector>
+        <flowTransactionModel>Automatic</flowTransactionModel>
+        <inputParameters>
+            <name>address</name>
+            <value>
+                <elementReference>fxAddress</elementReference>
+                <inputConfiguratorMode>Resource</inputConfiguratorMode>
+            </value>
+        </inputParameters>
+        <nameSegment>GeocodeAddressInvocable</nameSegment>
+        <offset>0</offset>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </actionCalls>
+    <apiVersion>67.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <assignments>
+        <name>Assign_vDistrict</name>
+        <label>Assign vDistrict</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <assignmentItems>
+            <assignToReference>vDistrict</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>District.district</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Update_Triggering_Lead</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <name>Assign_vDistrict_to_NULL</name>
+        <label>Assign vDistrict to NULL</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <assignmentItems>
+            <assignToReference>vDistrict</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <stringValue>N/A</stringValue>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Update_Triggering_Lead</targetReference>
+        </connector>
+    </assignments>
+    <decisions>
+        <name>Active_District</name>
+        <label>Active District?</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <defaultConnector>
+            <targetReference>Assign_vDistrict</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>No_Active_District</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Flow.FaultMessage</leftValueReference>
+                <operator>Contains</operator>
+                <rightValue>
+                    <stringValue>No active District</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Assign_vDistrict_to_NULL</targetReference>
+            </connector>
+            <label>No Active District</label>
+        </rules>
+    </decisions>
+    <environments>Default</environments>
+    <formulas>
+        <name>fxAddress</name>
+        <dataType>String</dataType>
+        <expression>TRIM(
+    BLANKVALUE({!$Record.Street}, &apos;&apos;) &amp;
+    IF(NOT(ISBLANK({!$Record.Street})), &apos;, &apos;, &apos;&apos;) &amp;
+    BLANKVALUE({!$Record.City}, &apos;&apos;) &amp;
+    IF(NOT(ISBLANK({!$Record.City})), &apos;, &apos;, &apos;&apos;) &amp;
+    BLANKVALUE({!$Record.State}, &apos;&apos;) &amp;
+    IF(NOT(ISBLANK({!$Record.PostalCode})), &apos; &apos;, &apos;&apos;) &amp;
+    BLANKVALUE({!$Record.PostalCode}, &apos;&apos;) &amp;
+    IF(NOT(ISBLANK({!$Record.Country})), &apos;, &apos;, &apos;&apos;) &amp;
+    BLANKVALUE({!$Record.Country}, &apos;&apos;)
+)</expression>
+    </formulas>
+    <interviewLabel>Lead (After Save) Update Geocode and District (Update) {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Lead (After Save) Update Geocode and District (Update)</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordUpdates>
+        <name>Update_Triggering_Lead</name>
+        <label>Update Triggering Lead</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <inputAssignments>
+            <field>District_Id__c</field>
+            <value>
+                <elementReference>vDistrict</elementReference>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <start>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <filterLogic>(1 OR 2 OR 3 OR 4) AND 5</filterLogic>
+        <filters>
+            <field>Street</field>
+            <operator>IsChanged</operator>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </filters>
+        <filters>
+            <field>City</field>
+            <operator>IsChanged</operator>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </filters>
+        <filters>
+            <field>State</field>
+            <operator>IsChanged</operator>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </filters>
+        <filters>
+            <field>PostalCode</field>
+            <operator>IsChanged</operator>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </filters>
+        <filters>
+            <field>PostalCode</field>
+            <operator>IsNull</operator>
+            <value>
+                <booleanValue>false</booleanValue>
+            </value>
+        </filters>
+        <object>Lead</object>
+        <recordTriggerType>Update</recordTriggerType>
+        <scheduledPaths>
+            <connector>
+                <targetReference>Geocode</targetReference>
+            </connector>
+            <pathType>AsyncAfterCommit</pathType>
+        </scheduledPaths>
+        <triggerType>RecordAfterSave</triggerType>
+    </start>
+    <status>Active</status>
+    <triggerOrder>500</triggerOrder>
+    <variables>
+        <name>vDistrict</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+    </variables>
+</Flow>

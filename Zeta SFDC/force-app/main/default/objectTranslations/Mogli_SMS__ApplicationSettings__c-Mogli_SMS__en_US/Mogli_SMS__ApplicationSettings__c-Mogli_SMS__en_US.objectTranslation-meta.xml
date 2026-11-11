@@ -8,6 +8,10 @@
         <plural>true</plural>
         <value>Application Settings</value>
     </caseValues>
+    <quickActions>
+        <label><!-- Authorize Mogli API --></label>
+        <name>Mogli_SMS__Authorize_Mogli_API</name>
+    </quickActions>
     <startsWith>Consonant</startsWith>
     <validationRules>
         <errorMessage><!-- Cannot deactivate: An active Global Default Gateway is required. Please set a new default first. --></errorMessage>

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomTab xmlns="http://soap.sforce.com/2006/04/metadata">
+    <frameHeight>600</frameHeight>
+    <hasSidebar>false</hasSidebar>
+    <label>Support</label>
+    <motif>Custom86: Red Cross</motif>
+    <url>https://{!IF(ISBLANK($Setup.tfa__FormAssemblyConfiguration__c.tfa__FormAssembly_Instance__c),&quot;app.formassembly.com&quot;,$Setup.tfa__FormAssemblyConfiguration__c.tfa__FormAssembly_Instance__c)}/connector_salesforce/single_sign_on/?sid={!API.Session_ID}&amp;server={!API.Partner_Server_URL_540}&amp;redirect=pages%2Fsupport&amp;company={!User.CompanyName}&amp;username={!User.Username}&amp;email={!User.Email}&amp;address={!User.Address}&amp;ssl=1</url>
+    <urlEncodingKey>UTF-8</urlEncodingKey>
+</CustomTab>

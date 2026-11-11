@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>68.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <description>When a Phone # is added to a Lead, evaluate the Lead for Owner assignment.</description>
+    <environments>Default</environments>
+    <interviewLabel>Lead (After Save) Phone Number Added to Lead {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Lead (After Save) Phone Number Added to Lead</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <start>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>Assign_Lead_Owner</targetReference>
+        </connector>
+        <filterFormula>AND(
+  NOT(ISBLANK({!$Record.Phone})),
+  ISBLANK({!$Record__Prior.Phone})
+)</filterFormula>
+        <object>Lead</object>
+        <recordTriggerType>Update</recordTriggerType>
+        <triggerType>RecordAfterSave</triggerType>
+    </start>
+    <status>Active</status>
+    <subflows>
+        <description>Now that this Lead has a Phone #, assign it to someone who can own Leads</description>
+        <name>Assign_Lead_Owner</name>
+        <label>Assign Lead Owner</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <flowName>Lead_Autolaunched_Evaluate_Lead_Owner_Assignment</flowName>
+        <inputAssignments>
+            <name>input_Lead_rec</name>
+            <value>
+                <elementReference>$Record</elementReference>
+            </value>
+        </inputAssignments>
+    </subflows>
+</Flow>

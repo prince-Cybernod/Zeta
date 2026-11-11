@@ -5,6 +5,14 @@
             <componentInstance>
                 <componentInstanceProperties>
                     <name>actionNames</name>
+                    <valueList>
+                        <valueListItems>
+                            <value>Edit</value>
+                        </valueListItems>
+                        <valueListItems>
+                            <value>Delete</value>
+                        </valueListItems>
+                    </valueList>
                 </componentInstanceProperties>
                 <componentInstanceProperties>
                     <name>collapsed</name>
@@ -20,7 +28,7 @@
                 </componentInstanceProperties>
                 <componentInstanceProperties>
                     <name>hideChatterActions</name>
-                    <value>true</value>
+                    <value>false</value>
                 </componentInstanceProperties>
                 <componentInstanceProperties>
                     <name>hideSlackAction</name>
@@ -32,16 +40,6 @@
                 </componentInstanceProperties>
                 <componentName>force:highlightsPanel</componentName>
                 <identifier>force_highlightsPanel</identifier>
-            </componentInstance>
-        </itemInstances>
-        <itemInstances>
-            <componentInstance>
-                <componentInstanceProperties>
-                    <name>hideHeader</name>
-                    <value>false</value>
-                </componentInstanceProperties>
-                <componentName>force:relatedListQuickLinksContainer</componentName>
-                <identifier>force_relatedListQuickLinksContainer</identifier>
             </componentInstance>
         </itemInstances>
         <itemInstances>
@@ -96,10 +94,40 @@
             <fieldInstance>
                 <fieldInstanceProperties>
                     <name>uiBehavior</name>
+                    <value>readonly</value>
+                </fieldInstanceProperties>
+                <fieldItem>Record.CreatedDate</fieldItem>
+                <identifier>RecordCreatedDateField</identifier>
+            </fieldInstance>
+        </itemInstances>
+        <itemInstances>
+            <fieldInstance>
+                <fieldInstanceProperties>
+                    <name>uiBehavior</name>
                     <value>none</value>
                 </fieldInstanceProperties>
-                <fieldItem>Record.ContactEmail</fieldItem>
-                <identifier>RecordContactEmailField</identifier>
+                <fieldItem>Record.Response_Due_Date__c</fieldItem>
+                <identifier>RecordResponse_Due_Date__cField</identifier>
+            </fieldInstance>
+        </itemInstances>
+        <itemInstances>
+            <fieldInstance>
+                <fieldInstanceProperties>
+                    <name>uiBehavior</name>
+                    <value>none</value>
+                </fieldInstanceProperties>
+                <fieldItem>Record.Default_Gateway__c</fieldItem>
+                <identifier>RecordDefault_Gateway__cField</identifier>
+            </fieldInstance>
+        </itemInstances>
+        <itemInstances>
+            <fieldInstance>
+                <fieldInstanceProperties>
+                    <name>uiBehavior</name>
+                    <value>none</value>
+                </fieldInstanceProperties>
+                <fieldItem>Record.Related_Lead__c</fieldItem>
+                <identifier>RecordRelated_Lead__cField</identifier>
             </fieldInstance>
         </itemInstances>
         <name>Facet-f196ecf2-7afb-420a-97b2-7f41a0c5339d</name>
@@ -122,8 +150,8 @@
                     <name>uiBehavior</name>
                     <value>none</value>
                 </fieldInstanceProperties>
-                <fieldItem>Record.AccountId</fieldItem>
-                <identifier>RecordAccountIdField</identifier>
+                <fieldItem>Record.ContactEmail</fieldItem>
+                <identifier>RecordContactEmailField</identifier>
             </fieldInstance>
         </itemInstances>
         <itemInstances>
@@ -132,8 +160,38 @@
                     <name>uiBehavior</name>
                     <value>none</value>
                 </fieldInstanceProperties>
-                <fieldItem>Record.SuppliedEmail</fieldItem>
-                <identifier>RecordSuppliedEmailField</identifier>
+                <fieldItem>Record.ContactMobile</fieldItem>
+                <identifier>RecordContactMobileField</identifier>
+            </fieldInstance>
+        </itemInstances>
+        <itemInstances>
+            <fieldInstance>
+                <fieldInstanceProperties>
+                    <name>uiBehavior</name>
+                    <value>none</value>
+                </fieldInstanceProperties>
+                <fieldItem>Record.Mogli_Number__c</fieldItem>
+                <identifier>RecordMogli_Number__cField</identifier>
+            </fieldInstance>
+        </itemInstances>
+        <itemInstances>
+            <fieldInstance>
+                <fieldInstanceProperties>
+                    <name>uiBehavior</name>
+                    <value>none</value>
+                </fieldInstanceProperties>
+                <fieldItem>Record.Mogli_Opt_out__c</fieldItem>
+                <identifier>RecordMogli_Opt_out__cField</identifier>
+            </fieldInstance>
+        </itemInstances>
+        <itemInstances>
+            <fieldInstance>
+                <fieldInstanceProperties>
+                    <name>uiBehavior</name>
+                    <value>none</value>
+                </fieldInstanceProperties>
+                <fieldItem>Record.AccountId</fieldItem>
+                <identifier>RecordAccountIdField</identifier>
             </fieldInstance>
         </itemInstances>
         <name>Facet-e51b9339-5f60-4a09-a99f-6202f076a33d</name>
@@ -166,6 +224,62 @@
     <flexiPageRegions>
         <itemInstances>
             <fieldInstance>
+                <fieldItem>Record.Zoom_Call_Log__r.ZVC__Callee_Phone_Number__c</fieldItem>
+                <identifier>RecordZoom_Call_Log_rZVC_Callee_Phone_Number_cField</identifier>
+            </fieldInstance>
+        </itemInstances>
+        <itemInstances>
+            <fieldInstance>
+                <fieldItem>Record.Zoom_Call_Log__r.ZVC__Caller_Phone_Number__c</fieldItem>
+                <identifier>RecordZoom_Call_Log_rZVC_Caller_Phone_Number_cField</identifier>
+            </fieldInstance>
+        </itemInstances>
+        <name>Facet-6ef201ae-382f-414e-aed5-ee98bd8180d2</name>
+        <type>Facet</type>
+    </flexiPageRegions>
+    <flexiPageRegions>
+        <itemInstances>
+            <fieldInstance>
+                <fieldItem>Record.Zoom_Call_Log__r.Call_To_User__c</fieldItem>
+                <identifier>RecordZoom_Call_Log_rCall_To_User_cField</identifier>
+            </fieldInstance>
+        </itemInstances>
+        <itemInstances>
+            <fieldInstance>
+                <fieldItem>Record.Zoom_Call_Log__r.ZVC__Voice_Mail__c</fieldItem>
+                <identifier>RecordZoom_Call_Log_rZVC_Voice_Mail_cField</identifier>
+            </fieldInstance>
+        </itemInstances>
+        <name>Facet-af233fe7-f5ba-4d27-a906-d7633317d5af</name>
+        <type>Facet</type>
+    </flexiPageRegions>
+    <flexiPageRegions>
+        <itemInstances>
+            <componentInstance>
+                <componentInstanceProperties>
+                    <name>body</name>
+                    <value>Facet-6ef201ae-382f-414e-aed5-ee98bd8180d2</value>
+                </componentInstanceProperties>
+                <componentName>flexipage:column</componentName>
+                <identifier>flexipage_column6</identifier>
+            </componentInstance>
+        </itemInstances>
+        <itemInstances>
+            <componentInstance>
+                <componentInstanceProperties>
+                    <name>body</name>
+                    <value>Facet-af233fe7-f5ba-4d27-a906-d7633317d5af</value>
+                </componentInstanceProperties>
+                <componentName>flexipage:column</componentName>
+                <identifier>flexipage_column7</identifier>
+            </componentInstance>
+        </itemInstances>
+        <name>Facet-6b7c0889-cc9d-4310-b523-016faddd7385</name>
+        <type>Facet</type>
+    </flexiPageRegions>
+    <flexiPageRegions>
+        <itemInstances>
+            <fieldInstance>
                 <fieldInstanceProperties>
                     <name>uiBehavior</name>
                     <value>none</value>
@@ -182,16 +296,6 @@
                 </fieldInstanceProperties>
                 <fieldItem>Record.Description</fieldItem>
                 <identifier>RecordDescriptionField</identifier>
-            </fieldInstance>
-        </itemInstances>
-        <itemInstances>
-            <fieldInstance>
-                <fieldInstanceProperties>
-                    <name>uiBehavior</name>
-                    <value>none</value>
-                </fieldInstanceProperties>
-                <fieldItem>Record.Comments</fieldItem>
-                <identifier>RecordCommentsField</identifier>
             </fieldInstance>
         </itemInstances>
         <name>Facet-942e4327-f5f1-4716-b37a-4773e32e648b</name>
@@ -220,16 +324,6 @@
                 </fieldInstanceProperties>
                 <fieldItem>Record.Origin</fieldItem>
                 <identifier>RecordOriginField</identifier>
-            </fieldInstance>
-        </itemInstances>
-        <itemInstances>
-            <fieldInstance>
-                <fieldInstanceProperties>
-                    <name>uiBehavior</name>
-                    <value>none</value>
-                </fieldInstanceProperties>
-                <fieldItem>Record.Priority</fieldItem>
-                <identifier>RecordPriorityField</identifier>
             </fieldInstance>
         </itemInstances>
         <itemInstances>
@@ -274,26 +368,6 @@
                 </fieldInstanceProperties>
                 <fieldItem>Record.Type</fieldItem>
                 <identifier>RecordTypeField</identifier>
-            </fieldInstance>
-        </itemInstances>
-        <itemInstances>
-            <fieldInstance>
-                <fieldInstanceProperties>
-                    <name>uiBehavior</name>
-                    <value>none</value>
-                </fieldInstanceProperties>
-                <fieldItem>Record.Due_Date__c</fieldItem>
-                <identifier>RecordDue_Date__cField</identifier>
-            </fieldInstance>
-        </itemInstances>
-        <itemInstances>
-            <fieldInstance>
-                <fieldInstanceProperties>
-                    <name>uiBehavior</name>
-                    <value>none</value>
-                </fieldInstanceProperties>
-                <fieldItem>Record.Response_Due_Date__c</fieldItem>
-                <identifier>RecordResponse_Due_Date__cField</identifier>
             </fieldInstance>
         </itemInstances>
         <name>Facet-6ad78dc3-1e6e-4eb4-9375-0cb0d81e4ea9</name>
@@ -398,6 +472,31 @@
             <componentInstance>
                 <componentInstanceProperties>
                     <name>columns</name>
+                    <value>Facet-6b7c0889-cc9d-4310-b523-016faddd7385</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>horizontalAlignment</name>
+                    <value>false</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>label</name>
+                    <value>Zoom Call Details</value>
+                </componentInstanceProperties>
+                <componentName>flexipage:fieldSection</componentName>
+                <identifier>flexipage_fieldSection4</identifier>
+                <visibilityRule>
+                    <criteria>
+                        <leftValue>{!Record.Origin}</leftValue>
+                        <operator>EQUAL</operator>
+                        <rightValue>Zoom Voicemail</rightValue>
+                    </criteria>
+                </visibilityRule>
+            </componentInstance>
+        </itemInstances>
+        <itemInstances>
+            <componentInstance>
+                <componentInstanceProperties>
+                    <name>columns</name>
                     <value>Facet-3bb7db34-e1e6-4aed-99cc-2071c0b6ba87</value>
                 </componentInstanceProperties>
                 <componentInstanceProperties>
@@ -460,32 +559,6 @@
                 </componentInstanceProperties>
                 <componentInstanceProperties>
                     <name>relatedListApiName</name>
-                    <value>AttachedContentNotes</value>
-                </componentInstanceProperties>
-                <componentInstanceProperties>
-                    <name>relatedListComponentOverride</name>
-                    <value>NONE</value>
-                </componentInstanceProperties>
-                <componentInstanceProperties>
-                    <name>rowsToDisplay</name>
-                    <value>10</value>
-                </componentInstanceProperties>
-                <componentInstanceProperties>
-                    <name>showActionBar</name>
-                    <value>true</value>
-                </componentInstanceProperties>
-                <componentName>force:relatedListSingleContainer</componentName>
-                <identifier>force_relatedListSingleContainer2</identifier>
-            </componentInstance>
-        </itemInstances>
-        <itemInstances>
-            <componentInstance>
-                <componentInstanceProperties>
-                    <name>parentFieldApiName</name>
-                    <value>Case.Id</value>
-                </componentInstanceProperties>
-                <componentInstanceProperties>
-                    <name>relatedListApiName</name>
                     <value>AttachedContentDocuments</value>
                 </componentInstanceProperties>
                 <componentInstanceProperties>
@@ -504,12 +577,42 @@
                 <identifier>force_relatedListSingleContainer</identifier>
             </componentInstance>
         </itemInstances>
+        <itemInstances>
+            <componentInstance>
+                <componentInstanceProperties>
+                    <name>parentFieldApiName</name>
+                    <value>Case.Id</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>relatedListApiName</name>
+                    <value>Histories</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>relatedListComponentOverride</name>
+                    <value>NONE</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>rowsToDisplay</name>
+                    <value>10</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>showActionBar</name>
+                    <value>true</value>
+                </componentInstanceProperties>
+                <componentName>force:relatedListSingleContainer</componentName>
+                <identifier>force_relatedListSingleContainer2</identifier>
+            </componentInstance>
+        </itemInstances>
         <name>Facet-f893e32e-d7de-4d78-a182-bb6d21880379</name>
         <type>Facet</type>
     </flexiPageRegions>
     <flexiPageRegions>
         <itemInstances>
             <componentInstance>
+                <componentInstanceProperties>
+                    <name>active</name>
+                    <value>false</value>
+                </componentInstanceProperties>
                 <componentInstanceProperties>
                     <name>body</name>
                     <value>Facet-33dcf540-1bac-47d9-9845-75fc6847d311</value>
@@ -548,7 +651,7 @@
                 </componentInstanceProperties>
                 <componentInstanceProperties>
                     <name>title</name>
-                    <value>Notes and Files</value>
+                    <value>Files</value>
                 </componentInstanceProperties>
                 <componentName>flexipage:tab</componentName>
                 <identifier>flexipage_tab3</identifier>
@@ -612,6 +715,30 @@
         <type>Facet</type>
     </flexiPageRegions>
     <flexiPageRegions>
+        <itemInstances>
+            <componentInstance>
+                <componentInstanceProperties>
+                    <name>attachmentsDisabled</name>
+                    <value>false</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>canOverrideDefaults</name>
+                    <value>Enabled</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>customLimitUnit</name>
+                    <value>Segments</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>mcvConfigurationRecord</name>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>recordId</name>
+                </componentInstanceProperties>
+                <componentName>Mogli_SMS:TextMessageComponentEmpApi</componentName>
+                <identifier>Mogli_SMS_TextMessageComponentEmpApi</identifier>
+            </componentInstance>
+        </itemInstances>
         <itemInstances>
             <componentInstance>
                 <componentInstanceProperties>

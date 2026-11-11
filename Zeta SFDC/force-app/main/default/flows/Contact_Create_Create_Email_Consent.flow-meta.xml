@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionCalls>
+        <name>Create_Email_Consent</name>
+        <label>Create Email Consent</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <actionName>createConsent</actionName>
+        <actionType>createConsent</actionType>
+        <connector>
+            <targetReference>Update_Contact_Request</targetReference>
+        </connector>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
+        <inputParameters>
+            <name>consentRequest</name>
+            <value>
+                <apexValue>{&quot;recordList&quot;:[{&quot;engagementChannelTypeId&quot;:&quot;0eFa50000006uVlEAI&quot;,&quot;commSubscriptionId&quot;:&quot;0Xla50000004btpCAA&quot;,&quot;commSubscriptionChannelTypeId&quot;:&quot;0eBa50000003URNEA2&quot;,&quot;contactPointValue&quot;:&quot;{!$Input.Email__c}&quot;,&quot;consentStatus&quot;:&quot;OptIn&quot;,&quot;senderCode&quot;:&quot;&quot;,&quot;flowName&quot;:&quot;Contact_Create_Create_Email_Consent&quot;,&quot;assetName&quot;:&quot;Automation&quot;,&quot;flowTriggerType&quot;:&quot;IndivRelatedRecord&quot;,&quot;flowDataSpaceApiName&quot;:&quot;default&quot;}]}</apexValue>
+            </value>
+        </inputParameters>
+        <nameSegment>createConsent</nameSegment>
+        <offset>0</offset>
+    </actionCalls>
+    <apiVersion>67.0</apiVersion>
+    <areMetricsLoggedToDataCloud>true</areMetricsLoggedToDataCloud>
+    <dataSpace>default</dataSpace>
+    <description>Creates email consent for new contact</description>
+    <environments>Default</environments>
+    <interviewLabel>Contact | Create | Create Email Consent {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Contact | Create | Create Email Consent</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordUpdates>
+        <name>Update_Contact_Request</name>
+        <label>Update Contact Request</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>$Input.Id</elementReference>
+            </value>
+        </filters>
+        <inputAssignments>
+            <field>Status</field>
+            <value>
+                <stringValue>Complete</stringValue>
+            </value>
+        </inputAssignments>
+        <object>ContactRequest</object>
+    </recordUpdates>
+    <start>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>Create_Email_Consent</targetReference>
+        </connector>
+        <dataGraph>Unified_Individual_Full_Graph</dataGraph>
+        <individualObjectRelatedField>WhoId</individualObjectRelatedField>
+        <object>ContactRequest</object>
+        <recordTriggerType>Create</recordTriggerType>
+        <triggerType>IndivRelatedRecord</triggerType>
+    </start>
+    <status>Active</status>
+</Flow>

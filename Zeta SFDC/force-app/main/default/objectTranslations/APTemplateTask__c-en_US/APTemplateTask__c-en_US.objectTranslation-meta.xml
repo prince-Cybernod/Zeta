@@ -8,6 +8,13 @@
         <plural>true</plural>
         <value>Action Plan Template Tasks</value>
     </caseValues>
+    <layouts>
+        <layout>ActionPlanTemplate Task Layout</layout>
+        <sections>
+            <label><!-- Task Details --></label>
+            <section>Task Details</section>
+        </sections>
+    </layouts>
     <startsWith>Vowel</startsWith>
     <validationRules>
         <errorMessage><!-- You must enter a non-negative value --></errorMessage>

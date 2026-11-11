@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Mogli_SMS__Global_Audio_Muted__c</fullName>
+    <defaultValue>false</defaultValue>
+    <deprecated>false</deprecated>
+    <description>When true, the Hub suppresses audible chimes for saved-filter alerts while still showing in-app visual notifications.</description>
+    <inlineHelpText>Mute all Hub alert chimes. Visual toast notifications continue to appear.</inlineHelpText>
+    <label>Global Audio Muted</label>
+    <trackTrending>false</trackTrending>
+    <type>Checkbox</type>
+</CustomField>

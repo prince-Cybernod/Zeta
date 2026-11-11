@@ -1,0 +1,64 @@
+<!--
+Action Plans v4
+David Schach 2022
+https://appexchange.salesforce.com/appxListingDetail?listingId=a0N4V00000Gg6NVUAZ
+
+Copyright (c) 2022, salesforce.com, inc.
+All rights reserved.
+SPDX-License-Identifier: BSD-3-Clause
+For full license text, see the LICENSE file in the repo root or https://opensource.org/licenses/BSD-3-Clause
+-->
+<apex:component controller="ActionPlansSectionHeaderController">
+	<apex:attribute name="sObjType" type="String" assignTo="{!objectName}" description="Object Name for the header object" required="true" />
+	<apex:attribute name="title" type="String" required="false" default="Record" description="Header title text" />
+	<apex:attribute name="subtitle" type="String" required="false" description="Header subtitle text" />
+	<apex:attribute name="printURL" type="String" required="false" default="" description="printURL URL for classic header" />
+	<apex:attribute name="showPrintLink" type="String" required="false" default="false" description="Do we show the link to print?" />
+
+	<apex:variable var="lex" value="{!$User.UIThemeDisplayed == 'Theme4d' || $User.UIThemeDisplayed == 'Theme4u'}" />
+
+	<apex:outputPanel rendered="{!!lex}" layout="none">
+		<apex:sectionHeader subtitle="{!title}" title="{!subtitle}" printUrl="{!if(showPrintLink == 'true', printURL, '')}" />
+	</apex:outputPanel>
+
+	<apex:outputPanel rendered="{!lex}" layout="none">
+		<apex:slds />
+		<div class="slds-scope">
+			<div class="slds-page-header">
+				<div class="slds-page-header__row">
+					<div class="slds-page-header__col-title">
+						<div class="slds-media">
+							<div class="slds-media__figure">
+								<span class="slds-icon_container {!ObjectIconInfo['iconStyle']}" title="{!$ObjectType[sObjType].label}">
+									<apex:image url="{!ObjectIconInfo['iconURL']}" styleClass="slds-icon slds-page-header__icon" html-aria-hidden="true" />
+									<span class="slds-assistive-text">{!$ObjectType[sObjType].label}</span>
+								</span>
+							</div>
+							<div class="slds-media__body">
+								<div class="slds-page-header__name">
+									<div class="slds-page-header__name-title">
+										<h1>
+											<span class="slds-page-header__title slds-truncate" title="{!title}">
+												<apex:outputText value="{!title}" />
+											</span>
+										</h1>
+									</div>
+								</div>
+								<p class="slds-page-header__name-meta">
+									<apex:outputText value="{!subtitle}" />
+								</p>
+							</div>
+						</div>
+					</div>
+					<div class="slds-page-header__col-actions">
+						<div class="slds-page-header__controls">
+							<div class="slds-page-header__control">
+								<apex:componentBody />
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</apex:outputPanel>
+</apex:component>

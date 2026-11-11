@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>ssot__rel_1723128945210_end__c</fullName>
+    <deleteConstraint>SetNull</deleteConstraint>
+    <deprecated>false</deprecated>
+    <label>GeneratedOperationPlan_RelatedRefere_rel</label>
+    <referenceTo>ssot__Opportunity__dlm</referenceTo>
+    <relationshipLabel>GeneratedOperationPlan_RelatedRefere_rel</relationshipLabel>
+    <relationshipName>rel_1723128945210_end</relationshipName>
+    <required>false</required>
+    <type>Lookup</type>
+</CustomField>

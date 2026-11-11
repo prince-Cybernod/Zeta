@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomMetadata xmlns="http://soap.sforce.com/2006/04/metadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <label>Avoid Trigger for Data Migration</label>
+    <protected>false</protected>
+    <values>
+        <field>ZVC__Avoid_CampaignMember_Trigger_Active__c</field>
+        <value xsi:type="xsd:boolean">false</value>
+    </values>
+    <values>
+        <field>ZVC__Avoid_CampaignMember_Trigger__c</field>
+        <value xsi:type="xsd:boolean">false</value>
+    </values>
+    <values>
+        <field>ZVC__Avoid_Event_Trigger__c</field>
+        <value xsi:type="xsd:boolean">false</value>
+    </values>
+    <values>
+        <field>ZVC__Avoid_Meeting_Trigger__c</field>
+        <value xsi:type="xsd:boolean">false</value>
+    </values>
+    <values>
+        <field>ZVC__Avoid_Webinar_Tigger__c</field>
+        <value xsi:type="xsd:boolean">false</value>
+    </values>
+    <values>
+        <field>ZVC__Enable_Zoom_Event_Recording_Sync__c</field>
+        <value xsi:type="xsd:boolean">false</value>
+    </values>
+    <values>
+        <field>ZVC__Name__c</field>
+        <value xsi:type="xsd:string">Avoid Trigger for Data Migration</value>
+    </values>
+</CustomMetadata>

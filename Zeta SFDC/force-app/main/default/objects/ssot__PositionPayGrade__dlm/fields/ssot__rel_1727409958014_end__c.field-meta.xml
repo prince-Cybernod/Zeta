@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>ssot__rel_1727409958014_end__c</fullName>
+    <deleteConstraint>SetNull</deleteConstraint>
+    <deprecated>false</deprecated>
+    <label>PositionPayGrade_PositionId_map_Posi_rel</label>
+    <referenceTo>ssot__Position__dlm</referenceTo>
+    <relationshipLabel>PositionPayGrade_PositionId_map_Posi_rel</relationshipLabel>
+    <relationshipName>rel_1727409958014_end</relationshipName>
+    <required>false</required>
+    <type>Lookup</type>
+</CustomField>

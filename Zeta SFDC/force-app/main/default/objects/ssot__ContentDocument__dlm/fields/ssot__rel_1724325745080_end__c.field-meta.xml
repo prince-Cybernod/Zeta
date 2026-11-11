@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>ssot__rel_1724325745080_end__c</fullName>
+    <deleteConstraint>SetNull</deleteConstraint>
+    <deprecated>false</deprecated>
+    <label>ContentDocument_LatestPublishedVersi_rel</label>
+    <referenceTo>ssot__ContentDocumentVersion__dlm</referenceTo>
+    <relationshipLabel>ContentDocument_LatestPublishedVersi_rel</relationshipLabel>
+    <relationshipName>rel_1724325745080_end</relationshipName>
+    <required>false</required>
+    <type>Lookup</type>
+</CustomField>

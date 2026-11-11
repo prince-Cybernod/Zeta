@@ -9,6 +9,11 @@ public without sharing class ApplicationQuestionController {
   @TestVisible
   private static DatabaseRepo databaseRepo = new SystemModeDatabaseRepo();
 
+  @TestVisible
+  private static String runningUserType = UserInfo.getUserType();
+
+  private static final String STAFF_OPTIONAL_QUESTION = 'Guardian_2_Email';
+
   // Platform Cache partition for CMDT-derived form structures.
   // Defined in force-app/main/default/cachePartitions/ApplicationCache.cachePartition-meta.xml.
   // Long TTL is safe because the cached object depends only on Application_Section__mdt
@@ -42,7 +47,7 @@ public without sharing class ApplicationQuestionController {
     Id recordId
   ) {
     Preconditions.checkNotBlank(pageDevName, 'Page developer name is required');
-    return loadCachedFormStructure(pageDevName, variant);
+    return forRunningUser(loadCachedFormStructure(pageDevName, variant));
   }
 
   /**
@@ -92,10 +97,8 @@ public without sharing class ApplicationQuestionController {
     Set<String> sectionScope = parseSectionScope(includeSectionDevNames);
     Boolean isScoped = sectionScope != null && !sectionScope.isEmpty();
 
-    AppQuestionFormStructure structure = loadCachedFormStructure(
-      pageDevName,
-      variant,
-      sectionScope
+    AppQuestionFormStructure structure = forRunningUser(
+      loadCachedFormStructure(pageDevName, variant, sectionScope)
     );
 
     AppFormBundle bundle = new AppFormBundle();
@@ -145,6 +148,29 @@ public without sharing class ApplicationQuestionController {
       }
     }
     return scope.isEmpty() ? null : scope;
+  }
+
+  private static Boolean isStaffOptional(String questionDevName) {
+    return runningUserType == 'Standard' && questionDevName == STAFF_OPTIONAL_QUESTION;
+  }
+
+  private static AppQuestionFormStructure forRunningUser(AppQuestionFormStructure structure) {
+    if (runningUserType != 'Standard' || structure == null || structure.sections == null) {
+      return structure;
+    }
+    // The cached structure is shared with portal users, so staff get their own copy.
+    AppQuestionFormStructure copy = (AppQuestionFormStructure) JSON.deserialize(
+      JSON.serialize(structure),
+      AppQuestionFormStructure.class
+    );
+    for (AppQuestionSection section : copy.sections) {
+      for (AppQuestionInput question : section.questions) {
+        if (isStaffOptional(question.developerName)) {
+          question.isRequired = false;
+        }
+      }
+    }
+    return copy;
   }
 
   private static Map<String, Boolean> defaultSubmissionWarnings() {
@@ -787,7 +813,7 @@ public without sharing class ApplicationQuestionController {
 
     List<String> missing = new List<String>();
     for (Application_Question__mdt question : questions) {
-      if (question.Is_Required__c != true) {
+      if (question.Is_Required__c != true || isStaffOptional(question.DeveloperName)) {
         continue;
       }
       Object answerValue = answers.get(question.DeveloperName);

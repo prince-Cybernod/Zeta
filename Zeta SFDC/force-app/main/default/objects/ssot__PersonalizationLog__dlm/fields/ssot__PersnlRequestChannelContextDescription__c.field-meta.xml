@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>ssot__PersnlRequestChannelContextDescription__c</fullName>
+    <deprecated>false</deprecated>
+    <label>Personalization Request Channel Context</label>
+    <length>255</length>
+    <mktDataModelFieldAttributes>
+        <definitionCreationType>Standard</definitionCreationType>
+        <isDynamicLookup>false</isDynamicLookup>
+        <masterLabel>Personalization Request Channel Context</masterLabel>
+        <refAttrDeveloperName>PersnlRequestChannelContextDescription</refAttrDeveloperName>
+        <usageTag>None</usageTag>
+    </mktDataModelFieldAttributes>
+    <required>false</required>
+    <type>Text</type>
+</CustomField>

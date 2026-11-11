@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>67.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <assignments>
+        <name>Assign_Campaign_Status</name>
+        <label>Assign Campaign Status</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <assignmentItems>
+            <assignToReference>Get_Parent_Campaign.Status</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <stringValue>Tickets Sold Out</stringValue>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Update_Campaign_Status</targetReference>
+        </connector>
+    </assignments>
+    <decisions>
+        <name>Event_Sold_Out</name>
+        <label>Event Sold Out?</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Yes_Sold_Out</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>fxSoldOut</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>Get_Parent_Campaign.Status</leftValueReference>
+                <operator>NotEqualTo</operator>
+                <rightValue>
+                    <stringValue>Past Event</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Assign_Campaign_Status</targetReference>
+            </connector>
+            <label>Yes, Sold Out</label>
+        </rules>
+    </decisions>
+    <environments>Default</environments>
+    <formulas>
+        <name>fxSoldOut</name>
+        <dataType>Boolean</dataType>
+        <expression>{!Get_Parent_Campaign.Total_Tickets_Sold__c}&gt;={!Get_Parent_Campaign.Event_Capacity__c}</expression>
+    </formulas>
+    <interviewLabel>Campaign Member | Campaign Sold Out {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Campaign Member | Campaign Sold Out</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordLookups>
+        <name>Get_Parent_Campaign</name>
+        <label>Get Parent Campaign</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Event_Sold_Out</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>$Record.CampaignId</elementReference>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>Campaign</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordUpdates>
+        <name>Update_Campaign_Status</name>
+        <label>Update Campaign Status</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <inputReference>Get_Parent_Campaign</inputReference>
+    </recordUpdates>
+    <start>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Quantity_of_Tickets__c</field>
+            <operator>IsNull</operator>
+            <value>
+                <booleanValue>false</booleanValue>
+            </value>
+        </filters>
+        <object>CampaignMember</object>
+        <recordTriggerType>Create</recordTriggerType>
+        <scheduledPaths>
+            <name>X1_Min_Wait</name>
+            <connector>
+                <targetReference>Get_Parent_Campaign</targetReference>
+            </connector>
+            <label>1 Min Wait</label>
+            <offsetNumber>1</offsetNumber>
+            <offsetUnit>Minutes</offsetUnit>
+            <timeSource>RecordTriggerEvent</timeSource>
+        </scheduledPaths>
+        <triggerType>RecordAfterSave</triggerType>
+    </start>
+    <status>Active</status>
+</Flow>

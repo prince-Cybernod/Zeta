@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>67.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <description>When a Lead is created or updated to have a changed Lead_Campaign__c value, call a subflow to create a new Campaign Member record relating the Lead to this Campaign, AND delete Campaign Member records related to other Campaigns (if any exist).</description>
+    <environments>Default</environments>
+    <interviewLabel>Lead Create or Update {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Lead (After Save) Create Campaign Member for Lead</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <start>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>Create_Campaign_Member_for_Lead</targetReference>
+        </connector>
+        <filterFormula>OR(
+AND(ISNEW(),NOT(ISBLANK({!$Record.Lead_Campaign__c}))),
+AND(NOT(ISBLANK({!$Record.Lead_Campaign__c})),ISCHANGED({!$Record.Lead_Campaign__c}))
+)</filterFormula>
+        <object>Lead</object>
+        <recordTriggerType>CreateAndUpdate</recordTriggerType>
+        <triggerType>RecordAfterSave</triggerType>
+    </start>
+    <status>Active</status>
+    <subflows>
+        <name>Create_Campaign_Member_for_Lead</name>
+        <label>Create Campaign Member for Lead</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <flowName>Subflow_Create_Campaign_Member_for_Lead</flowName>
+        <inputAssignments>
+            <name>input_LeadID</name>
+            <value>
+                <elementReference>$Record.Id</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <name>input_NewCampaignID</name>
+            <value>
+                <elementReference>$Record.Lead_Campaign__c</elementReference>
+            </value>
+        </inputAssignments>
+    </subflows>
+</Flow>

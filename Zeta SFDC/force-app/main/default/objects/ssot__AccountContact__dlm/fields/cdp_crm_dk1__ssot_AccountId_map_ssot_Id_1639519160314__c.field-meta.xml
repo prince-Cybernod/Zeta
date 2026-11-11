@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>cdp_crm_dk1__ssot_AccountId_map_ssot_Id_1639519160314__c</fullName>
+    <deleteConstraint>SetNull</deleteConstraint>
+    <deprecated>false</deprecated>
+    <label>ssot_AccountId_map_ssot_Id_1639519160314</label>
+    <referenceTo>ssot__Account__dlm</referenceTo>
+    <relationshipLabel>ssot_AccountId_map_ssot_Id_1639519160314</relationshipLabel>
+    <relationshipName>ssot_AccountId_map_ssot_Id_1639519160314</relationshipName>
+    <required>false</required>
+    <type>Lookup</type>
+</CustomField>

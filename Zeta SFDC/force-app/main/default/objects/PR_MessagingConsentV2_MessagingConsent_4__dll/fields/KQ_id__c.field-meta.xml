@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>KQ_id__c</fullName>
+    <label>KQ_id</label>
+    <length>60</length>
+    <mktDataLakeFieldAttributes>
+        <definitionCreationType>System</definitionCreationType>
+        <externalName>KQ_id</externalName>
+        <isEventDate>false</isEventDate>
+        <isInternalOrganization>false</isInternalOrganization>
+        <isRecordModified>false</isRecordModified>
+        <usageTag>KEY_QUALIFIER</usageTag>
+    </mktDataLakeFieldAttributes>
+    <required>false</required>
+    <type>Text</type>
+</CustomField>

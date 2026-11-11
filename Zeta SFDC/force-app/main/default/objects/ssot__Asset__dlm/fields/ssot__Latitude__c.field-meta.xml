@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>ssot__Latitude__c</fullName>
+    <deprecated>false</deprecated>
+    <label>Latitude</label>
+    <mktDataModelFieldAttributes>
+        <definitionCreationType>Standard</definitionCreationType>
+        <isDynamicLookup>false</isDynamicLookup>
+        <masterLabel>Latitude</masterLabel>
+        <refAttrDeveloperName>Latitude</refAttrDeveloperName>
+        <usageTag>None</usageTag>
+    </mktDataModelFieldAttributes>
+    <precision>8</precision>
+    <required>false</required>
+    <scale>4</scale>
+    <type>Number</type>
+</CustomField>

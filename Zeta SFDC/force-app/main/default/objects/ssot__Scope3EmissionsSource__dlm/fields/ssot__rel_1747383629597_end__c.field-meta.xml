@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>ssot__rel_1747383629597_end__c</fullName>
+    <deleteConstraint>SetNull</deleteConstraint>
+    <deprecated>false</deprecated>
+    <label>Scope3EmissionsSource_GroundTravelEm_rel</label>
+    <referenceTo>ssot__GroundTravelEmissionFactor__dlm</referenceTo>
+    <relationshipLabel>Scope3EmissionsSource_GroundTravelEm_rel</relationshipLabel>
+    <relationshipName>rel_1747383629597_end</relationshipName>
+    <required>false</required>
+    <type>Lookup</type>
+</CustomField>

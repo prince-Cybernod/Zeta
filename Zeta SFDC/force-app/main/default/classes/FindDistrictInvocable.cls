@@ -6,11 +6,20 @@
  * Read-only — no DML, no enqueue. Bulk-safe: the service's SOQL is constant
  * regardless of input size, so callers can pass a List and pay the same cost.
  *
- * Failure handling: missing input (null lat or null lng) or a point that falls
- * outside every active District throws {@link DistrictLookupFailureException}.
- * This surfaces in Flow as a fault path the admin can route however they like.
+ * Failure handling: missing input (null lat or null lng) throws
+ * {@link DistrictLookupFailureException}, and errors raised by the lookup
+ * itself propagate — both reach Flow as a fault. A point that simply falls
+ * outside every active District is not a failure: it returns
+ * {@link #NO_DISTRICT} on the success path, so no fault-path error
+ * notification fires for what is a routine outcome.
  */
 public with sharing class FindDistrictInvocable {
+  /**
+   * District key returned when the point falls outside every active District.
+   * Stored as-is in the District Id text fields the callers stamp.
+   */
+  public static final String NO_DISTRICT = 'N/A';
+
   private final DistrictLookupService districtLookupService;
 
   public FindDistrictInvocable() {
@@ -24,7 +33,7 @@ public with sharing class FindDistrictInvocable {
 
   @InvocableMethod(
     Label='Find District'
-    Description='Resolves a latitude / longitude to the matching District key via point-in-polygon lookup. Throws on null input or out-of-district so a Flow fault path can handle it.'
+    Description='Resolves a latitude / longitude to the matching District key via point-in-polygon lookup. Returns "N/A" when the point is outside every active District; throws on null input or a lookup error so a Flow fault path can handle those.'
     Category='District'
   )
   public static List<Result> findDistricts(List<Request> requests) {
@@ -54,17 +63,9 @@ public with sharing class FindDistrictInvocable {
     }
 
     String district = districtLookupService.findDistrictForPoint(latitude, longitude);
-    if (String.isBlank(district)) {
-      throw new DistrictLookupFailureException(
-        String.format(
-          'No active District contains point ({0}, {1})',
-          new List<Object>{ latitude, longitude }
-        )
-      );
-    }
 
     Result result = new Result();
-    result.district = district;
+    result.district = String.isBlank(district) ? NO_DISTRICT : district;
     return result;
   }
 
@@ -87,7 +88,7 @@ public with sharing class FindDistrictInvocable {
   public class Result {
     @InvocableVariable(
       Label='District'
-      Description='District_Id__c key (e.g. "CSD-7") of the District whose rings contain the point. Populated only on success.'
+      Description='District_Id__c key (e.g. "CSD-7") of the District whose rings contain the point, or "N/A" when the point is outside every active District.'
     )
     public String district;
   }

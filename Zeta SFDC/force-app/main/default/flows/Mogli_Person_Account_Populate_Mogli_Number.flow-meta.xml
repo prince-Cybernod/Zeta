@@ -49,9 +49,6 @@ IF(REGEX(TRIM({!$Record.PersonMobilePhone}),&quot;[\\s\\S\\w\\W]*[a-zA-Z@#$%^&am
     <start>
         <locationX>425</locationX>
         <locationY>48</locationY>
-        <connector>
-            <targetReference>Update_Mogli_Number</targetReference>
-        </connector>
         <filterFormula>OR(
     AND(
         NOT(ISBLANK({!$Record.PersonMobilePhone})),
@@ -63,9 +60,15 @@ IF(REGEX(TRIM({!$Record.PersonMobilePhone}),&quot;[\\s\\S\\w\\W]*[a-zA-Z@#$%^&am
 )</filterFormula>
         <object>Account</object>
         <recordTriggerType>CreateAndUpdate</recordTriggerType>
+        <scheduledPaths>
+            <connector>
+                <targetReference>Update_Mogli_Number</targetReference>
+            </connector>
+            <pathType>AsyncAfterCommit</pathType>
+        </scheduledPaths>
         <triggerType>RecordAfterSave</triggerType>
     </start>
-    <status>Active</status>
+    <status>InvalidDraft</status>
     <variables>
         <name>vMogliNumber</name>
         <dataType>String</dataType>

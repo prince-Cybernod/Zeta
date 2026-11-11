@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>ssot__rel_1731659053869_end__c</fullName>
+    <deleteConstraint>SetNull</deleteConstraint>
+    <deprecated>false</deprecated>
+    <label>PaymentRequestLine_PaymentRequestId__rel</label>
+    <referenceTo>ssot__PaymentRequest__dlm</referenceTo>
+    <relationshipLabel>PaymentRequestLine_PaymentRequestId__rel</relationshipLabel>
+    <relationshipName>rel_1731659053869_end</relationshipName>
+    <required>false</required>
+    <type>Lookup</type>
+</CustomField>

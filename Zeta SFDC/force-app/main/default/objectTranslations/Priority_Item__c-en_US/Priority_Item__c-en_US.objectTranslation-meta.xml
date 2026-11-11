@@ -8,6 +8,13 @@
         <plural>true</plural>
         <value>Priority Items</value>
     </caseValues>
+    <layouts>
+        <layout>Priority Item Layout</layout>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+    </layouts>
     <startsWith>Consonant</startsWith>
     <validationRules>
         <errorMessage><!-- Validated By and Validated On must be completed when Review Status is not Pending --></errorMessage>

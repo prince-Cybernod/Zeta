@@ -1235,7 +1235,7 @@ IF({!fx_SelectedDocTypeName}=&apos;TELA Fee Form&apos;, TEXT({!var_rec_AcademicT
                     <fieldType>ObjectProvided</fieldType>
                     <inputsOnNextNavToAssocScrn>UseStoredValues</inputsOnNextNavToAssocScrn>
                     <isRequired>false</isRequired>
-                    <objectFieldReference>var_rec_AcademicTermEnrollment.Race_Answers__c</objectFieldReference>
+                    <objectFieldReference>var_rec_AcademicTermEnrollment.DEPRECATED_Race_Answers__c</objectFieldReference>
                     <styleProperties>
                         <verticalAlignment>
                             <stringValue>top</stringValue>

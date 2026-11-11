@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Prompt xmlns="http://soap.sforce.com/2006/04/metadata">
+    <masterLabel>Application Settings Fields</masterLabel>
+    <promptVersions>
+        <body>&lt;p&gt;In Application Settings, you&apos;ll have the option of configuring some key Mogli features.  We&apos;ll start at the top and describe the purpose of each field:&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;&lt;b&gt;Application Settings Name&lt;/b&gt;:  Default - &lt;i&gt;please do not modify this value&lt;/i&gt;&lt;/p&gt;&lt;p&gt;&lt;b&gt;Active Form Instance Name&lt;/b&gt;:  The Status of a Form (record of an automated conversation or survey) that hasn&apos;t been completed - &lt;i style=&quot;color: rgb(62, 62, 60);&quot;&gt;please do not modify this value&lt;/i&gt;&lt;/p&gt;&lt;p&gt;&lt;b&gt;Complete Form Instance Name:&lt;/b&gt;  The Status of a Form that has been completed - &lt;i style=&quot;color: rgb(62, 62, 60);&quot;&gt;please do not modify this value&lt;/i&gt;&lt;/p&gt;&lt;p&gt;&lt;b&gt;Contact Merge Fields&lt;/b&gt;:  Input the API-formatted names of any Standard or Custom Contact merge fields you&apos;d like to use in Conversation View, SMS Templates, or Bulk SMS.  Separate each value with a comma and space.  We&apos;ve provided the standard fields of &lt;i&gt;FirstName, LastName&lt;/i&gt; to get you started.  Custom fields would appear like this&lt;i&gt;:  Favorite_Color__c, Pizza_Topping__c&lt;/i&gt;&lt;/p&gt;&lt;p&gt;&lt;b&gt;Lead Merge Fields:  &lt;/b&gt;&lt;span style=&quot;color: rgb(62, 62, 60);&quot;&gt;Input the API-formatted names of any Standard or Custom Lead merge fields you&apos;d like to use in Conversation View, SMS Templates, or Bulk SMS. Separate each value with a comma and space.&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;b style=&quot;color: rgb(62, 62, 60);&quot;&gt;Default Gateway Mode:&lt;/b&gt;&lt;span style=&quot;color: rgb(62, 62, 60);&quot;&gt;  Selecting the &apos;Default Gateway&apos; picklist value allows all Mogli users to have access to every Gateway we&apos;ve configured.  These Gateways will appear in the drop-down menu in Conversation View and Bulk SMS.  Selecting the &apos;User&apos;s Assigned Phone Number&apos; picklist value allows you to customize which Gateways users will have access to in Conversation View and Bulk SMS.  If the latter is selected, you&apos;ll need to go to the Gateways tab&apos;s related list to assign every Mogli user to at least one Gateway.  Mogli users may be assigned to many Gateways.  &apos;Default Gateway&apos; can be reassigned at any time without removing any previously-created preferences in the Gateway related list.&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;b&gt;Create Anonymous Leads:&lt;/b&gt;  Checking this box ensures that when an incoming text message is received over one of your Gateways, and Mogli cannot find an existing Contact or Lead associated with their Mogli Number, a Lead record will be created for them with the name of &lt;i&gt;Anonymous Lead from Mogli.&lt;/i&gt;  On that record will live a Conversation View so that a user can ask for specific information to populate the record or convert them to a Contact.  Unchecking this box will not create a Lead record, and instead, the incoming text message will live in the SMS tab.  A user would then have to manually create an SMS record to respond or create a Contact or Lead record for the recipient with their Mogli Number to continue the conversation.&lt;/p&gt;&lt;p&gt;&lt;b&gt;Debug&lt;/b&gt;:  For use by our development team &lt;span style=&quot;color: rgb(62, 62, 60);&quot;&gt;- &lt;/span&gt;&lt;i style=&quot;color: rgb(62, 62, 60);&quot;&gt;please do not modify this value&lt;/i&gt;&lt;/p&gt;&lt;p&gt;&lt;b&gt;Default Gateway:  &lt;/b&gt;The global Default Gateway.  This is the Gateway that text messages will be sent over when a user selects &apos;Default&apos; in a drop-down menu on Conversation View or Bulk SMS, but there is no value on the recipient&apos;s Default Gateway field on their record.  This may be changed at any time, so long as it&apos;s populated.&lt;/p&gt;&lt;p&gt;&lt;b&gt;Possible Answer Delimiter:&lt;/b&gt;  The value which indicates a series of possible answers when building out a Form Template &lt;span style=&quot;color: rgb(62, 62, 60);&quot;&gt;- &lt;/span&gt;&lt;i style=&quot;color: rgb(62, 62, 60);&quot;&gt;please do not modify this value&lt;/i&gt;&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;&lt;b style=&quot;color: rgb(62, 62, 60);&quot;&gt;Triggers &lt;/b&gt;&lt;span style=&quot;color: rgb(62, 62, 60);&quot;&gt;- please contact our team for specific information on each trigger.&lt;/span&gt;&lt;/p&gt;</body>
+        <customApplication>Mogli_SMS__Mogli_SMS_Lightning</customApplication>
+        <delayDays>5</delayDays>
+        <description>All about each Appl. Setting field</description>
+        <displayType>DockedComposer</displayType>
+        <endDate>2020-12-31</endDate>
+        <header>Application Settings</header>
+        <isPublished>true</isPublished>
+        <masterLabel>Application Settings Fields</masterLabel>
+        <publishedDate>2026-04-22</publishedDate>
+        <shouldDisplayActionButton>false</shouldDisplayActionButton>
+        <shouldIgnoreGlobalDelay>true</shouldIgnoreGlobalDelay>
+        <startDate>2020-02-11</startDate>
+        <targetPageKey1>Mogli_SMS__ApplicationSettings__c</targetPageKey1>
+        <targetPageKey2>view</targetPageKey2>
+        <targetPageType>standard__recordPage</targetPageType>
+        <timesToDisplay>2</timesToDisplay>
+        <title>Oftentimes for Admins only...</title>
+        <uiFormulaRule>
+            <criteria>
+                <leftValue>{!$Permission.StandardPermission.ViewAllData}</leftValue>
+                <operator>EQUAL</operator>
+                <rightValue>TRUE</rightValue>
+            </criteria>
+        </uiFormulaRule>
+        <userAccess>SpecificPermissions</userAccess>
+        <userProfileAccess>Everyone</userProfileAccess>
+        <versionNumber>1</versionNumber>
+    </promptVersions>
+</Prompt>

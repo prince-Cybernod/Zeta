@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Prompt xmlns="http://soap.sforce.com/2006/04/metadata">
+    <masterLabel>SMS Templates</masterLabel>
+    <promptVersions>
+        <body>&lt;p&gt;Everyone likes a time-saver.  Enter the SMS Template.&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;With SMS Templates, you can create one-off templated messages with Contact or Lead merge fields for text messages, such as:&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;&lt;i&gt;Hi {{FirstName}}, it&apos;s your counselor, {{Counselor_Name__c}}. Feel free to text me here at any time with questions.&lt;/i&gt;&lt;/li&gt;&lt;li&gt;&lt;i&gt;Hi, it&apos;s Jen - your advisor. It looks like we&apos;re missing a few documents to complete your application. Please text me back at your convenience so that we can finish your application.&lt;/i&gt;&lt;/li&gt;&lt;li&gt;&lt;i&gt;The next event is being held on {{DateTime_Field__c}}. Don&apos;t miss it! Contact Rob for more information.&lt;/i&gt;&lt;/li&gt;&lt;/ul&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;&lt;b&gt;To create a basic SMS Template&lt;/b&gt;:&lt;/p&gt;&lt;ol&gt;&lt;li&gt;Select &lt;b&gt;New&lt;/b&gt;&lt;/li&gt;&lt;li&gt;Name your SMS Template, such as: &lt;i&gt;Counselor Introduction&lt;/i&gt;&lt;/li&gt;&lt;li&gt;Type your message into the Text field&lt;/li&gt;&lt;li&gt;&lt;b&gt;Save&lt;/b&gt;&lt;/li&gt;&lt;/ol&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;NOTE:  When utilizing Contact or Lead merge fields, be sure that they&apos;re configured in Application Settings&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;In addition, &lt;b&gt;SMS Templates may also be the start of an automated conversation or survey &lt;/b&gt;(Form Template):&lt;/p&gt;&lt;ol&gt;&lt;li&gt;After creating your Form Template and setting its Status to Active, copy the exact message text of your First Question.&lt;/li&gt;&lt;li&gt;Navigate to the SMS Templates tab and select &lt;b&gt;New&lt;/b&gt;&lt;/li&gt;&lt;li&gt;Name your SMS Template, such as: &lt;i&gt;Student Survey&lt;/i&gt;&lt;/li&gt;&lt;li&gt;Paste the message text into the Text field&lt;/li&gt;&lt;li&gt;Select the accompanying Form Template in the Form Template lookup&lt;/li&gt;&lt;li&gt;&lt;b&gt;Save&lt;/b&gt;&lt;/li&gt;&lt;/ol&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;Your newly-created SMS Templates will now be available via the drop-downs in Conversation View and in Bulk SMS. Simply select the SMS Template, and your message will appear in the text field.&lt;/p&gt;</body>
+        <customApplication>Mogli_SMS__Mogli_SMS_Lightning</customApplication>
+        <delayDays>6</delayDays>
+        <description>How to create for one-off messages and with Form Templates</description>
+        <displayType>DockedComposer</displayType>
+        <endDate>2020-12-31</endDate>
+        <header>SMS Templates 101</header>
+        <isPublished>true</isPublished>
+        <masterLabel>SMS Templates</masterLabel>
+        <publishedDate>2026-04-22</publishedDate>
+        <shouldDisplayActionButton>false</shouldDisplayActionButton>
+        <shouldIgnoreGlobalDelay>true</shouldIgnoreGlobalDelay>
+        <startDate>2020-02-11</startDate>
+        <targetPageKey1>Mogli_SMS__SMS_Template__c</targetPageKey1>
+        <targetPageKey2>list</targetPageKey2>
+        <targetPageType>standard__objectPage</targetPageType>
+        <timesToDisplay>2</timesToDisplay>
+        <title>Your soon-to-be favorite shortcut!</title>
+        <userAccess>Everyone</userAccess>
+        <userProfileAccess>Everyone</userProfileAccess>
+        <versionNumber>1</versionNumber>
+    </promptVersions>
+</Prompt>

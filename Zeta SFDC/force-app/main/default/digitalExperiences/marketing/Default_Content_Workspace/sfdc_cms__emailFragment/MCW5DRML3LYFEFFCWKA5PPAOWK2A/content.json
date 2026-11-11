@@ -1,0 +1,109 @@
+{
+  "type" : "sfdc_cms__emailFragment",
+  "title" : "MC | Applicant | ES Header",
+  "contentBody" : {
+    "backgroundColor" : "#f3f3f3",
+    "lightning:brandSource" : {
+      "defaultBrandOption" : "sfdcBrand"
+    },
+    "lightning:colorScheme" : "{!$brand.colorScheme}",
+    "lightning:dataProviders" : [ {
+      "attributes" : {
+        "dataGraphApiName" : "Unified_Individual_Full_Graph",
+        "dataspace" : "default"
+      },
+      "definition" : "sfdc_cms__dataGraphDataProvider",
+      "sfdcExpressionKey" : "$dataGraph"
+    } ],
+    "lightning:padding" : "{!$brand.spacing.none}",
+    "sfdc_cms:block" : {
+      "definition" : "sfdc_cms/rootContentBlock",
+      "id" : "05849543-fc04-4e9f-bc83-feab34b220a9",
+      "type" : "block",
+      "children" : [ {
+        "attributes" : {
+          "lightning:borderRadius" : "{!$brand.borderRadius.square}",
+          "lightning:borderWidth" : "{!$brand.borderWeight.none}",
+          "lightning:colorScheme" : "{!$brand.colorScheme}",
+          "lightning:margin" : "{!$brand.spacing.none}",
+          "lightning:padding" : "{!$brand.spacing.xSmall}",
+          "stackOnMobile" : true,
+          "reverseOrderOnMobile" : false,
+          "lightning:backgroundImage" : {
+            "repeat" : "no-repeat",
+            "position" : "center center",
+            "size" : "cover"
+          }
+        },
+        "definition" : "lightning/section",
+        "id" : "25113ea3-715b-487a-80a7-798908e62d93",
+        "type" : "block",
+        "children" : [ {
+          "attributes" : {
+            "columnWidth" : 12.0,
+            "lightning:borderRadius" : "{!$brand.borderRadius.square}",
+            "lightning:borderWidth" : "{!$brand.borderWeight.none}",
+            "lightning:colorScheme" : "{!$brand.colorScheme}",
+            "lightning:margin" : "{!$brand.spacing.none}",
+            "lightning:padding" : "{!$brand.spacing.xSmall}",
+            "lightning:verticalAlignment" : "top",
+            "lightning:backgroundImage" : {
+              "repeat" : "no-repeat",
+              "position" : "center center",
+              "size" : "cover"
+            }
+          },
+          "definition" : "lightning/column",
+          "id" : "d571092b-6335-42b8-b38d-351f2e1f9328",
+          "type" : "block",
+          "children" : [ {
+            "attributes" : {
+              "imageFitConfig" : {
+                "width" : {
+                  "unit" : "%",
+                  "value" : 100.0
+                }
+              },
+              "imageInfo" : {
+                "altText" : "",
+                "overrideAltText" : false,
+                "source" : {
+                  "mimeType" : "image/jpeg",
+                  "ref" : "MCQAFJGQGSVFCDFFCRTDCVT27ODU",
+                  "size" : 35365.0,
+                  "type" : "imageReference"
+                },
+                "url" : "/cms/media/MCQAFJGQGSVFCDFFCRTDCVT27ODU?fileName=SaleForceEmail+Assets7.jpg&fileHash=dd48c1718306e8020e6b2e903aa9cf50"
+              },
+              "lightning:borderRadius" : "{!$brand.borderRadius.square}",
+              "lightning:borderWidth" : "{!$brand.borderWeight.none}",
+              "lightning:colorGroup" : {
+                "backgroundColor" : "{!$brand.colorScheme.root}",
+                "borderColor" : "{!$brand.colorScheme.neutral}",
+                "linkColor" : "{!$brand.colorScheme.primaryAccent}",
+                "textColor" : "{!$brand.colorScheme.contrast}"
+              },
+              "lightning:horizontalAlignment" : "center",
+              "lightning:margin" : "{!$brand.spacing.none}",
+              "lightning:padding" : "{!$brand.spacing.none}",
+              "lightning:typography" : "{!$brand.typography.paragraph.paragraph1}"
+            },
+            "definition" : "lightning/image",
+            "id" : "e208ef51-3bad-46ba-8d4f-d322cd9f9dda",
+            "type" : "block"
+          } ]
+        } ]
+      } ]
+    },
+    "sfdc_cms:title" : "MC | Applicant | ES Header",
+    "lightning:expressions" : [ ],
+    "lightning:backgroundImage" : {
+      "repeat" : "no-repeat",
+      "position" : "center center",
+      "size" : "cover"
+    },
+    "sfdc_cms:attachments" : [ ],
+    "sfdc_cms:variants" : [ ]
+  },
+  "urlName" : "mc-applicant-es-header"
+}

@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomApplication xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionOverrides>
+        <actionName>View</actionName>
+        <comment>Action override created by Lightning App Builder during activation.</comment>
+        <content>Mogli_SMS__Contact_Record_Detail_Lightning</content>
+        <formFactor>Large</formFactor>
+        <skipRecordTypeSelect>false</skipRecordTypeSelect>
+        <type>Flexipage</type>
+        <pageOrSobjectType>Contact</pageOrSobjectType>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <comment>Action override created by Lightning App Builder during activation.</comment>
+        <content>Mogli_SMS__Lead_Record_Detail_Lightning</content>
+        <formFactor>Large</formFactor>
+        <skipRecordTypeSelect>false</skipRecordTypeSelect>
+        <type>Flexipage</type>
+        <pageOrSobjectType>Lead</pageOrSobjectType>
+    </actionOverrides>
+    <brand>
+        <headerColor>#C41230</headerColor>
+        <logo>Mogli_SMS__Mogli_Logo_RED</logo>
+        <logoVersion>1</logoVersion>
+        <shouldOverrideOrgTheme>false</shouldOverrideOrgTheme>
+    </brand>
+    <description>Send 1:1 or Bulk SMS to Leads and Contacts.  Create Survey and automatically respond with intelligent responses.</description>
+    <formFactors>Small</formFactors>
+    <formFactors>Large</formFactors>
+    <isNavAutoTempTabsDisabled>false</isNavAutoTempTabsDisabled>
+    <isNavPersonalizationDisabled>false</isNavPersonalizationDisabled>
+    <isNavTabPersistenceDisabled>false</isNavTabPersistenceDisabled>
+    <isOmniPinnedViewEnabled>false</isOmniPinnedViewEnabled>
+    <label>MogliSMS Lightning</label>
+    <navType>Standard</navType>
+    <setupExperience>all</setupExperience>
+    <tabs>standard-home</tabs>
+    <tabs>Mogli_SMS__Mogli_Hub</tabs>
+    <tabs>Mogli_SMS__Mogli_Inbox</tabs>
+    <tabs>standard-Account</tabs>
+    <tabs>standard-Dashboard</tabs>
+    <tabs>standard-report</tabs>
+    <tabs>standard-Lead</tabs>
+    <tabs>standard-Contact</tabs>
+    <tabs>standard-Campaign</tabs>
+    <tabs>Mogli_SMS__SMS__c</tabs>
+    <tabs>Mogli_SMS__Bulk_SMS_Lightning</tabs>
+    <tabs>Mogli_SMS__Form__c</tabs>
+    <tabs>Mogli_SMS__SMS_Template__c</tabs>
+    <tabs>Mogli_SMS__FormTemplate__c</tabs>
+    <tabs>Mogli_SMS__Mogli_Settings</tabs>
+    <tabs>Mogli_SMS__Gateway__c</tabs>
+    <tabs>Mogli_SMS__Notification_Settings__c</tabs>
+    <tabs>Mogli_SMS__GenAI_Eval__c</tabs>
+    <uiType>Lightning</uiType>
+    <utilityBar>Mogli_SMS__Mogli_SMS_Lightning_Test_UtilityBar</utilityBar>
+</CustomApplication>

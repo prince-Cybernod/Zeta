@@ -10,6 +10,7 @@ import labelTitle from '@salesforce/label/c.AppUI_ESignatureTitle';
 
 export default class ESignature extends LightningElement {
   @api recordId;
+  @api optional = false;
 
   signatureName = '';
   validationError = '';
@@ -51,6 +52,10 @@ export default class ESignature extends LightningElement {
     return this.signatureName.trim() !== '';
   }
 
+  get isRequired() {
+    return !this.optional;
+  }
+
   handleNameChange(event) {
     this.signatureName = event.target.value;
     this.validationError = '';
@@ -65,7 +70,7 @@ export default class ESignature extends LightningElement {
   validate() {
     this.validationError = '';
 
-    if (!this.signatureName.trim()) {
+    if (this.isRequired && !this.signatureName.trim()) {
       this.validationError = labelNameRequired;
       return false;
     }

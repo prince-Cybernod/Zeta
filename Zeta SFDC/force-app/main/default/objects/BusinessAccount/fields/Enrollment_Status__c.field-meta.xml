@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Enrollment_Status__c</fullName>
+    <defaultValue>&quot;Pre-Enrollment&quot;</defaultValue>
+    <description>Used for IEP Status Formula/Flow and case routing logic.</description>
+    <label>Enrollment Status</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>true</trackHistory>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetName>Enrollment_Status</valueSetName>
+    </valueSet>
+</CustomField>

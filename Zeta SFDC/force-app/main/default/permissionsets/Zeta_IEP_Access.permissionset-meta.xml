@@ -306,6 +306,11 @@
         <field>Individualized_Education_Program__c.Uploaded_IEP__c</field>
         <readable>true</readable>
     </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>User.Bypass_Validations__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
     <hasActivationRequired>false</hasActivationRequired>
     <label>Zeta IEP Access</label>
     <objectPermissions>

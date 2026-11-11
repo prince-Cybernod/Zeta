@@ -1,0 +1,203 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>65.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <assignments>
+        <description>Sets varHasOtherActiveIEP to TRUE and populates varErrorMessage when another Active IEP is found.</description>
+        <name>Assignment_Set_Active_IEP_Error_Outputs</name>
+        <label>Assignment: Set Active IEP Error Outputs</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <assignmentItems>
+            <assignToReference>varHasOtherActiveIEP</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>varErrorMessage</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>fxErrorMessage_ActiveIEP</elementReference>
+            </value>
+        </assignmentItems>
+    </assignments>
+    <decisions>
+        <description>Checks if a different Active IEP already exists for this student.</description>
+        <name>Decision_Existing_Active_IEP_Found</name>
+        <label>Decision: Existing Active IEP Found?</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <defaultConnectorLabel>Not Found</defaultConnectorLabel>
+        <rules>
+            <name>Found</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Get_Existing_Active_IEP</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Assignment_Set_Active_IEP_Error_Outputs</targetReference>
+            </connector>
+            <label>Found</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <description>Determines whether the validation should run based on IsActive input.</description>
+        <name>Decision_Run_Active_IEP_Check</name>
+        <label>Decision: Run Active IEP Check?</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <defaultConnectorLabel>Skip</defaultConnectorLabel>
+        <rules>
+            <name>Run</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>varIsActive</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Get_Current_IEP</targetReference>
+            </connector>
+            <label>Run</label>
+        </rules>
+    </decisions>
+    <description>Subflow used by the master IEP Before-Save validation flow. Checks for another Active IEP for the same student and returns flags/error message to the parent flow.
+
+Flow Designer: Elevation Solutions</description>
+    <environments>Default</environments>
+    <formulas>
+        <name>fxErrorMessage_ActiveIEP</name>
+        <dataType>String</dataType>
+        <expression>&quot;This student already has another Active IEP (&quot; &amp; {!Get_Existing_Active_IEP.Name} &amp; &quot;). Only one Active IEP can be Active at a time. Please mark the other IEP as Inactive before activating this one.&quot;</expression>
+    </formulas>
+    <interviewLabel>IEP (Subflow) Validation: Active IEP Check {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>IEP (Subflow) Validation: Active IEP Check</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordLookups>
+        <description>Gets the IEP record for this recordId so we can read Student__c when checking for other active IEPs.</description>
+        <name>Get_Current_IEP</name>
+        <label>Get Current IEP</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Get_Existing_Active_IEP</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>recordId</elementReference>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>Individualized_Education_Program__c</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordLookups>
+        <description>Finds another Active IEP for the same Student, excluding the current record.</description>
+        <name>Get_Existing_Active_IEP</name>
+        <label>Get Existing Active IEP</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Decision_Existing_Active_IEP_Found</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Student__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>Get_Current_IEP.Student__c</elementReference>
+            </value>
+        </filters>
+        <filters>
+            <field>Active__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </filters>
+        <filters>
+            <field>Id</field>
+            <operator>NotEqualTo</operator>
+            <value>
+                <elementReference>recordId</elementReference>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>Individualized_Education_Program__c</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <start>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>Decision_Run_Active_IEP_Check</targetReference>
+        </connector>
+    </start>
+    <status>Active</status>
+    <variables>
+        <description>Id of the IEP record passed in from the master Before-Save IEP flow.</description>
+        <name>recordId</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>true</isInput>
+        <isOutput>false</isOutput>
+    </variables>
+    <variables>
+        <description>Holds the validation error message when another Active IEP is found.</description>
+        <name>varErrorMessage</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>true</isOutput>
+    </variables>
+    <variables>
+        <description>Returns TRUE when another Active IEP exists for this student (excluding the current record).</description>
+        <name>varHasOtherActiveIEP</name>
+        <dataType>Boolean</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>true</isOutput>
+        <value>
+            <booleanValue>false</booleanValue>
+        </value>
+    </variables>
+    <variables>
+        <description>Boolean indicating whether the IEP’s Active__c value is true.</description>
+        <name>varIsActive</name>
+        <dataType>Boolean</dataType>
+        <isCollection>false</isCollection>
+        <isInput>true</isInput>
+        <isOutput>false</isOutput>
+    </variables>
+</Flow>

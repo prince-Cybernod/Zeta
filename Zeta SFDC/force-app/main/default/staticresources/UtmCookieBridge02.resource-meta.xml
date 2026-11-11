@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<StaticResource xmlns="http://soap.sforce.com/2006/04/metadata">
+    <cacheControl>Public</cacheControl>
+    <contentType>application/javascript</contentType>
+    <description>Reads the utm_first and utm_last cookies outside Lightning Web Security and answers zetaApplication&apos;s utmbridge:request event with &quot;first | last&quot;. Loaded from the parent portal&apos;s Head Markup.</description>
+</StaticResource>

@@ -8,5 +8,12 @@
         <plural>true</plural>
         <value>Waitlist Movement Histories</value>
     </caseValues>
+    <layouts>
+        <layout>Waitlist Movement History Layout</layout>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+    </layouts>
     <startsWith>Consonant</startsWith>
 </CustomObjectTranslation>

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>json_blob__c</fullName>
+    <label>Json Blob</label>
+    <length>60</length>
+    <mktDataModelFieldAttributes>
+        <definitionCreationType>ADG</definitionCreationType>
+        <isDynamicLookup>false</isDynamicLookup>
+        <labelOverride>Json Blob</labelOverride>
+        <masterLabel>Json Blob</masterLabel>
+        <refAttrDeveloperName>json_blob</refAttrDeveloperName>
+        <usageTag>None</usageTag>
+    </mktDataModelFieldAttributes>
+    <required>false</required>
+    <type>Text</type>
+</CustomField>

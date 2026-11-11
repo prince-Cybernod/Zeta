@@ -1,0 +1,1410 @@
+<!--
+Action Plans v4
+David Schach 2022
+https://appexchange.salesforce.com/appxListingDetail?listingId=a0N4V00000Gg6NVUAZ
+
+Action Plans v3
+Force.com Labs 2011
+http://appexchange.salesforce.com/listingDetail?listingId=a0N30000003HcINEA0
+
+Copyright (c) 2022, salesforce.com, inc.
+All rights reserved.
+SPDX-License-Identifier: BSD-3-Clause
+For full license text, see the LICENSE file in the repo root or https://opensource.org/licenses/BSD-3-Clause
+-->
+<apex:page id="thePage"
+	tabStyle="ActionPlanTemplate__c"
+	standardController="ActionPlanTemplate__c"
+	extensions="ActionPlanTemplateCreationController"
+	lightningStylesheets="true"
+	docType="html-5.0"
+	contentType="text/html"
+	applyBodyTag="false"
+	action="{!onLoad}">
+	<html xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" lang="en">
+	<head>
+		<title>
+			<apex:outputText value="{!$ObjectType.ActionPlanTemplate__c.label} - {!$Label.ap_New}" rendered="{!ActionPlanTemplate__c.Id == null}"
+			/> <apex:outputText value="{!ActionPlanTemplate__c.Name} - {!$Label.ap_Edit}" rendered="{!ActionPlanTemplate__c.Id != null}" />
+		</title>
+		<meta charset="utf-8" />
+		<meta http-equiv="x-ua-compatible" content="ie=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+		<apex:includeScript value="{!URLFOR($Resource.ActionPlan_Resources, 'js/jquery.min.js')}" />
+		<apex:includeScript value="{!URLFOR($Resource.ActionPlan_Resources, 'js/ActionPlans_Scripts.js')}" />
+		<script type="module">
+			// Import the necessary functions from the soql-module.js
+			import { parseQuery } from '{!URLFOR($Resource.ActionPlan_Resources, "js/soql-parser.js")}';
+			// Make the imported functions available to the global scope for use in other scripts
+			window.soqlModule = {
+				parse: parseQuery,
+			};
+		</script>
+
+		<script>
+			var j$ = jQuery.noConflict();
+			j$(document).ready(function() {
+				onLoad();
+			});
+
+			function onLoad() {
+				checkSkipWeekend(j$('[id$=skipWeekendCheckbox]').attr('id'), j$('[id$=skipDayPicklist]').attr('id'));
+				checkAllDependent('{!$Label.ap_ItselfDependencyError}', '{!$Label.ap_Errors_Cyclic_Dependency_Found}');
+				showErrors();
+				j$('.helpOrb').css({ width: '12px', height: '12px' });
+				j$('td [Id*=taskTable]').css('vertical-align', 'middle');
+				//checkReminderPicklists();
+				initializeDueDatePanels();
+				initializeFieldPathFinders();
+			}
+
+			// Initialize all field path finders
+			function initializeFieldPathFinders() {
+				console.log('Initializing field path finders');
+				var targetObject = j$('[id$=targetObject]').val();
+
+				// Update help text and enable/disable field path finders based on target object
+				j$('[id^=searchInput]').each(function() {
+					var inputId = j$(this).attr('id');
+					var idLower = inputId ? inputId.toLowerCase() : '';
+					if (inputId && (idLower.indexOf('userfield') !== -1 || idLower.indexOf('datefield') !== -1)) {
+						var helpTextId = 'searchHelp' + inputId.replace('searchInput', '');
+
+						if (targetObject) {
+							// Enable the input
+							j$(this).prop('disabled', false);
+
+							// Update help text
+							if (idLower.indexOf('userfield') !== -1) {
+								j$('#' + helpTextId).text('Search for a User or a User lookup field (up to 5 levels deep)');
+							} else {
+								j$('#' + helpTextId).text('Search for a date field on the target object');
+							}
+						} else {
+							// Disable the input
+							j$(this).prop('disabled', true);
+
+							// Update help text
+							j$('#' + helpTextId).text('Add target object to see fields');
+						}
+					}
+				});
+			}
+
+			// Initialize due date panels based on selected values
+			function initializeDueDatePanels() {
+				j$('[id$=dueDateType]').each(function() {
+					var position = j$(this).attr('id').match(/\d+/);
+					if (position) {
+						handleDueDateTypeChange(this, position[0]);
+					}
+				});
+			}
+
+			// Handle due date type change
+			function handleDueDateTypeChange(selectElement, position) {
+				var selectedValue = j$(selectElement).val();
+				var targetObject = j$('[id$=targetObject]').val();
+
+				// Hide all panels first
+				j$('.dateSearchPanel-' + position).hide();
+				j$('.staticDatePanel-' + position).hide();
+				j$('.dayOffsetPanel-' + position).hide();
+
+				// Show the appropriate panel based on selection
+				if (selectedValue === 'DateField') {
+					j$('.dateSearchPanel-' + position).show();
+					j$('.dayOffsetPanel-' + position).show();
+
+					// Set placeholder for the date field search
+					var placeholder = 'Search for a date field';
+
+					j$('#searchInputdateField' + position).attr('placeholder', placeholder);
+
+					// If target object is not set, show a message
+					if (!targetObject) {
+						// The help text will already be set by initializeFieldPathFinders()
+						console.log('Target object not set, date field path finder will be disabled');
+					}
+				} else if (selectedValue === 'StaticDate') {
+					j$('.staticDatePanel-' + position).show();
+				} else {
+					// For all other due date types (AssignedDate, DependentDueDate)
+					j$('.dayOffsetPanel-' + position).show();
+				}
+
+				// Only clear the field value if not selecting DateField
+				if (selectedValue !== 'DateField') {
+					// Clear the search input and hidden field only when changing away from DateField
+					j$('#searchInputdateField' + position).val('');
+					j$('.dueDateRelatedField-' + position).find('input').val('');
+				} else {
+					// When selecting DateField, only clear the search input if it doesn't already have a value
+					// This preserves the field path during initialization
+					if (!j$('#searchInputdateField' + position).val()) {
+						j$('#searchInputdateField' + position).val('');
+					}
+				}
+			}
+
+			// Function to update fields when target object changes
+			function updateFieldsForTargetObject() {
+				var objectName = j$('[id$=targetObject]').val();
+				if (objectName) {
+					updateFieldsForTargetObjectJS();
+				}
+			}
+		</script>
+		<style>
+        input.errorBorder {
+            border: 2px solid #cc0000;
+        }
+		</style>
+		<apex:variable value="{!$User.UIThemeDisplayed == 'Theme4d' || $User.UIThemeDisplayed == 'Theme4u'}" var="lex" />
+		<apex:slds rendered="{!lex}" />
+	</head>
+
+	<body>
+	<c:APSectionHeader sObjType="ActionPlanTemplate__c" subtitle="{!$ObjectType.ActionPlanTemplate__c.label}" title="{!subtitle}" />
+
+	<apex:pageMessages id="pageMessages" />
+
+	<apex:form id="templateForm" html-novalidate="novalidate">
+		<apex:actionFunction name="validateWhereClauseJS"
+			action="{!validateWhereClause}"
+			rerender="validationResults,pageMessages,whereClauseDisplay"
+			status="validationStatus">
+		</apex:actionFunction>
+
+		<apex:actionFunction name="updateFieldsForTargetObjectJS"
+			action="{!updateFieldsForTargetObject}"
+			rerender="userLookupPanel,dueDatePanel"
+			status="fieldUpdateStatus"
+			oncomplete="initializeFieldPathFinders();">
+		</apex:actionFunction>
+
+		<apex:actionStatus id="fieldUpdateStatus">
+			<apex:facet name="start">
+				<div class="slds-scope">
+					<div class="slds-spinner_container slds-is-fixed" style="position: fixed">
+						<div role="status" class="slds-spinner slds-spinner_medium slds-spinner_brand">
+							<span class="slds-assistive-text">Loading</span>
+							<div class="slds-spinner__dot-a"></div>
+							<div class="slds-spinner__dot-b"></div>
+						</div>
+					</div>
+				</div>
+			</apex:facet>
+		</apex:actionStatus>
+
+		<input type="hidden" id="whereClauseRecordCount" value="0" />
+
+		<apex:pageBlock id="editBlock" mode="edit">
+			<apex:pageBlockButtons id="buttons">
+				<apex:commandButton id="save" action="{!checkCycleDependent}" value="{!$Label.ap_Save}" reRender="" />
+				<apex:commandButton id="saveandnew" action="{!saveAndNew}" value="{!$Label.ap_SaveAndNew}" reRender="" />
+				<apex:actionRegion >
+					<apex:commandButton id="cancel" action="{!cancelTemplate}" value="{!$Label.ap_Cancel}" html-formnovalidate="novalidate"
+					                    immediate="true" />
+				</apex:actionRegion>
+			</apex:pageBlockButtons>
+
+			<!-- Information Section -->
+				<apex:pageBlockSection id="informationSection" columns="1" collapsible="false">
+				<apex:pageBlockSectionItem >
+					<apex:outputLabel value="{!$ObjectType.ActionPlanTemplate__c.fields.Name.label}" />
+					<apex:inputField required="true" id="name" value="{!ActionPlanTemplate__c.Name}" style="width: 300px" />
+				</apex:pageBlockSectionItem>
+
+				<apex:pageBlockSectionItem >
+					<apex:outputLabel value="{!$ObjectType.ActionPlanTemplate__c.fields.Description__c.label}" />
+					<apex:inputField id="description" value="{!ActionPlanTemplate__c.Description__c}" style="width: 300px" />
+				</apex:pageBlockSectionItem>
+
+				<apex:pageBlockSectionItem >
+					<apex:outputLabel value="{!$ObjectType.ActionPlanTemplate__c.fields.Type__c.label}" />
+					<apex:inputField id="type" value="{!ActionPlanTemplate__c.Type__c}" style="width: 300px" />
+				</apex:pageBlockSectionItem>
+
+
+				<apex:pageBlockSectionItem >
+					<apex:outputLabel value="{!$ObjectType.ActionPlanTemplate__c.fields.Fallback_Queue__c.label}" />
+					<apex:outputPanel styleClass="requiredInput" layout="block">
+						<apex:outputPanel styleClass="requiredBlock" layout="block" />
+						<apex:selectList value="{!ActionPlanTemplate__c.Fallback_Queue__c}"
+							styleclass="slds-select"
+							required="true"
+							size="1"
+							id="fallbackQueue"
+							style="width: 300px"
+							disabled="{!!$ObjectType.ActionPlanTemplate__c.updateable}">
+							<apex:selectOptions value="{!TaskQueueOptions}" />
+						</apex:selectList>
+					</apex:outputPanel>
+				</apex:pageBlockSectionItem>
+
+			</apex:pageBlockSection>
+			<!-- End Information Section -->
+
+			<!-- Tasks Section -->
+			<apex:pageBlockSection columns="2" collapsible="false" id="taskDetails">
+				<apex:inputField value="{!ActionPlanTemplate__c.SkipWeekends__c}"
+					id="skipWeekendCheckbox"
+					onclick="checkSkipWeekend('{!$Component.skipWeekendCheckbox}','{!$Component.taskDetails.skipDayPicklist}');" />
+				<apex:inputField id="archived" value="{!ActionPlanTemplate__c.Archived__c}" />
+
+				<apex:inputField id="skipDayPicklist" styleclass="slds-select" value="{!ActionPlanTemplate__c.SkipDay__c}" />
+
+				<apex:pageBlockSectionItem rendered="{!taskHasRecordType}">
+					<apex:outputLabel >{!$ObjectType.Task.Label}&nbsp;Record Type&nbsp;</apex:outputLabel>
+					<apex:actionRegion >
+						<apex:selectList value="{!ActionPlanTemplate__c.TaskRecordTypeID__c}"
+							styleclass="slds-select"
+							required="{!taskHasRecordType}"
+							size="1"
+							disabled="{!!$ObjectType.ActionPlanTemplate__c.updateable}">
+							<apex:actionSupport event="onchange" reRender="taskSection" />
+							<apex:selectOptions value="{!TaskRTPicklistValues}" />
+						</apex:selectList>
+					</apex:actionRegion>
+				</apex:pageBlockSectionItem>
+				<apex:outputPanel rendered="{!!taskHasRecordType}" />
+			</apex:pageBlockSection>
+
+			<apex:pageBlockSection id="dynamicQuerySection" title="Dynamic Record Selection" columns="1" collapsible="false">
+				<apex:pageBlockSectionItem >
+					<apex:outputLabel value="{!$ObjectType.ActionPlanTemplate__c.fields.Target_Object_API_Name__c.label}" />
+					<apex:outputPanel >
+						<!-- Hidden input to maintain compatibility with existing JavaScript -->
+						<apex:inputHidden id="targetObject" value="{!ActionPlanTemplate__c.Target_Object_API_Name__c}" />
+
+						<!-- APObjectLookup component -->
+						<c:APObjectLookup sObj="{!ActionPlanTemplate__c}"
+							field="Target_Object_API_Name__c"
+							recordname="{!ActionPlanTemplate__c.Target_Object_API_Name__c}"
+							for="targetObjectLookup"
+							required="false"
+							fieldStyle="width: 300px"
+							placeholder="Search for an object" />
+						<img class="helpOrb" title="{!$ObjectType.ActionPlanTemplate__c.fields.Target_Object_API_Name__c.inlineHelpText}"
+						     src="/s.gif" />
+
+						<!-- Script to update hidden field and trigger necessary functions -->
+						<script>
+							j$(document).ready(function() {
+								// When the APObjectLookup value changes, update the hidden field and trigger necessary functions
+								j$('#targetObjectLookupsldsscopediv [id$=searchInput]').on('parentchange', function(event, label, directApiName) {
+									console.log('parentchange event triggered with label:', label, 'directApiName:', directApiName);
+
+									// If we have a direct API name from the event, use it
+									var apiName = directApiName;
+
+									if (!apiName) {
+										console.log('No direct API name provided, trying to find it from hidden inputs');
+
+										// Get all hidden inputs to debug
+										console.log('All hidden inputs:', j$('input[type="hidden"]').length);
+										j$('input[type="hidden"]').each(function() {
+											console.log('Hidden input id:', j$(this).attr('id'), 'value:', j$(this).val());
+										});
+
+										// Try multiple selector approaches to find the hidden input
+										var hiddenInput = j$('#targetObjectLookupsldsscopediv [id$=hiddenInput]');
+										console.log('Hidden input using #targetObjectLookupsldsscopediv selector:', hiddenInput.length, 'value:', hiddenInput.val());
+
+										// Get the value directly from the component's hidden input
+										apiName = hiddenInput.val();
+										if (!apiName) {
+											// Try alternative selectors if the first one didn't work
+											apiName = j$('[id$=targetObjectLookup] [id$=hiddenInput]').val();
+											console.log('Hidden input using [id$=targetObjectLookup] selector:', apiName);
+
+											if (!apiName) {
+												// Try to get from data attribute on the search input
+												var searchInput = j$('#targetObjectLookupsldsscopediv [id$=searchInput]');
+												apiName = searchInput.attr('data-api-name');
+												console.log('API name from data attribute:', apiName);
+
+												if (!apiName) {
+													// Last resort - try to find by proximity to the search input
+													var closestHidden = searchInput.closest('form').find('[id$=hiddenInput]').first();
+													apiName = closestHidden.val();
+													console.log('Hidden input using closest form approach:', apiName);
+												}
+											}
+										}
+									}
+
+									// If we still don't have an API name but have a label, try to use the label as a last resort
+									if (!apiName && label) {
+										console.log('No API name found, using label as last resort:', label);
+										// This is not ideal but better than nothing
+										apiName = label;
+									}
+
+									if (apiName) {
+										// Update our compatibility hidden field
+										j$('[id$=targetObject]').val(apiName);
+										console.log('Updated targetObject value:', j$('[id$=targetObject]').val());
+
+										// Force the value into the field directly as well
+										var targetObjectField = document.querySelector('[id$=targetObject]');
+										if (targetObjectField) {
+											targetObjectField.value = apiName;
+											console.log('Directly set targetObject value:', targetObjectField.value);
+										}
+
+										// Store in localStorage as a backup
+										try {
+											localStorage.setItem('lastSelectedObjectApiName', apiName);
+											console.log('Stored API name in localStorage:', apiName);
+										} catch (e) {
+											console.log('Could not store in localStorage:', e);
+										}
+									} else {
+										console.error('Could not find API name after all attempts');
+									}
+
+ 								// Trigger the necessary functions
+ 								try {
+ 									// First update fields to ensure they're properly initialized
+ 									console.log('Calling updateFieldsForTargetObjectJS');
+ 									updateFieldsForTargetObjectJS();
+
+ 									// Refresh field path finders so help text clears when an object is selected
+ 									try {
+ 										initializeFieldPathFinders();
+ 									} catch (innerErr) {
+ 										console.warn('initializeFieldPathFinders not available:', innerErr);
+ 									}
+
+ 									// Then validate the WHERE clause if it exists
+ 									if (j$('[id$=whereClause]').val()) {
+ 										console.log('Calling validateWhereClauseAsync');
+ 										setTimeout(function() {
+ 											validateWhereClauseAsync();
+ 										}, 500); // Slight delay to ensure fields are updated first
+ 									}
+ 								} catch (e) {
+ 									console.error('Error triggering functions:', e);
+ 								}
+ 							});
+							});
+						</script>
+					</apex:outputPanel>
+				</apex:pageBlockSectionItem>
+
+				<apex:pageBlockSectionItem >
+					<apex:outputLabel value="{!$ObjectType.ActionPlanTemplate__c.fields.Where_Clause__c.label}" />
+					<apex:outputPanel id="whereClauseDisplay">
+						<apex:inputField id="whereClause" value="{!ActionPlanTemplate__c.Where_Clause__c}" style="width: 500px; height: 80px"
+						                 onkeyup="clearTimeout(window.whereClauseTimeout); window.whereClauseTimeout = setTimeout(validateWhereClauseAsync, 800);"
+						                 onblur="validateWhereClauseAsync();" />
+						<img class="helpOrb" title="{!$ObjectType.ActionPlanTemplate__c.fields.Where_Clause__c.inlineHelpText}" src="/s.gif" />
+
+						<div id="validationStatusContainer" class="slds-m-top_small" style="display: none;">
+							<div class="slds-is-relative">
+								<div class="slds-text-body_small">Validating where clause...</div>
+							</div>
+						</div>
+						<div id="validationResultsContainer" class="slds-m-top_small">
+							<div id="whereClauseSuccess" class="slds-box slds-theme_success" style="display: none;">
+								<strong><span id="recordCountText">0</span> records</strong> will be returned
+							</div>
+							<div id="whereClauseError" class="slds-box slds-theme_error" style="display: none;">
+								<span id="errorMessageText"></span>
+							</div>
+						</div>
+
+						<apex:actionStatus id="validationStatus">
+							<apex:facet name="start">
+								<div style="position: relative; display: inline-block; margin: 0px 10px;">
+									<img src="/img/loading.gif" style="vertical-align: middle;" />
+								</div>
+							</apex:facet>
+						</apex:actionStatus>
+						<div id="validationResults"></div>
+
+						<script>
+							function validateWhereClauseAsync() {
+								var whereClause = j$('[id$=whereClause]').val();
+
+								// Try multiple approaches to get the object name
+								var objectName = j$('[id$=targetObject]').val();
+								console.log('validateWhereClauseAsync called, whereClause:', whereClause);
+								console.log('validateWhereClauseAsync initial objectName from targetObject field:', objectName);
+
+								// Debug all form elements to find the target object field
+								console.log('All form elements:');
+								j$('form').find('input, select, textarea').each(function() {
+									var id = j$(this).attr('id');
+									if (id && (id.indexOf('target') !== -1 || id.indexOf('Target') !== -1 || id.indexOf('Object') !== -1)) {
+										console.log('Potential target field - id:', id, 'value:', j$(this).val());
+									}
+								});
+
+								// If objectName is empty, try to get it from the APObjectLookup component
+								if (!objectName) {
+									// Try to get from the hidden input in the APObjectLookup component
+									var hiddenInput = j$('#targetObjectLookupsldsscopediv [id$=hiddenInput]');
+									if (hiddenInput.length > 0) {
+										objectName = hiddenInput.val();
+										console.log('Got objectName from hidden input:', objectName);
+									}
+
+									// If still empty, try to get from the search input data attribute
+									if (!objectName) {
+										var searchInput = j$('#targetObjectLookupsldsscopediv [id$=searchInput]');
+										if (searchInput.length > 0) {
+											objectName = searchInput.attr('data-api-name');
+											console.log('Got objectName from search input data attribute:', objectName);
+
+											// If still empty, try to get from the search input display value
+											if (!objectName && searchInput.val()) {
+												// We have a display value but no API name, log it for debugging
+												console.log('Search input has display value but no API name:', searchInput.val());
+											}
+										}
+									}
+
+									// If still empty, try to get from localStorage
+									if (!objectName) {
+										try {
+											objectName = localStorage.getItem('lastSelectedObjectApiName');
+											console.log('Got objectName from localStorage:', objectName);
+										} catch (e) {
+											console.log('Could not get from localStorage:', e);
+										}
+									}
+
+									// If we found an objectName, update the hidden field
+									if (objectName) {
+										j$('[id$=targetObject]').val(objectName);
+										console.log('Updated targetObject field with value:', objectName);
+
+										// Also update the data attribute on the search input
+										var searchInput = j$('#targetObjectLookupsldsscopediv [id$=searchInput]');
+										if (searchInput.length > 0) {
+											searchInput.attr('data-api-name', objectName);
+											console.log('Updated search input data attribute with value:', objectName);
+										}
+									}
+								}
+
+								// Check if we have a search input with a value but no API name
+								var searchInput = j$('#targetObjectLookupsldsscopediv [id$=searchInput]');
+								if (searchInput.length > 0 && searchInput.val() && !objectName) {
+									console.log('Search input has value but no API name was found:', searchInput.val());
+									// This indicates the user has entered something but the API name wasn't properly set
+								}
+
+								if (!whereClause) {
+									console.log('No where clause provided, hiding messages and clearing trigger fields');
+									j$('#whereClauseSuccess').hide();
+									j$('#whereClauseError').hide();
+									
+									// Clear trigger fields when where clause is removed
+									j$('[id$=triggerFields]').val('');
+									console.log('Cleared Trigger_Fields__c because where clause is empty');
+									
+									return;
+								}
+
+								// Final check for object name
+								if (!objectName) {
+									// Last resort - check if there's a visible display value in the search input
+									var searchInput = j$('#targetObjectLookupsldsscopediv [id$=searchInput]');
+									if (searchInput.length > 0 && searchInput.val()) {
+										// The user has entered something in the search input, but we couldn't get the API name
+										// This is a special case - we'll show a different error message
+										console.log('Search input has a value but no API name could be found:', searchInput.val());
+										j$('#errorMessageText').html('Object lookup is not properly selected. Please try selecting the object again from the dropdown.');
+										j$('#whereClauseError').show();
+										j$('#whereClauseSuccess').hide();
+
+										// Add a special class to highlight the object lookup field
+										searchInput.addClass('errorBorder');
+
+										// Add a click handler to clear the error when the user clicks on the field
+										searchInput.one('click', function() {
+											j$(this).removeClass('errorBorder');
+											// Clear the dropdown to force the user to select again
+											j$(this).val('');
+											j$('[id$=targetObject]').val('');
+											// Hide the error message
+											j$('#whereClauseError').hide();
+										});
+
+										return;
+									}
+
+									// No object name and no search input value
+									console.log('No object name found after all attempts, showing error');
+									j$('#errorMessageText').text('Target Object API Name is required');
+									j$('#whereClauseError').show();
+									j$('#whereClauseSuccess').hide();
+									return;
+								}
+
+								j$('#validationStatusContainer').show();
+								j$('#whereClauseSuccess').hide();
+								j$('#whereClauseError').hide();
+
+								console.log('Validating WHERE clause: ' + whereClause + ' for object: ' + objectName);
+
+								try {
+									// Parse the WHERE clause using soql-parser-cjs.js
+									var cleanWhereClause = whereClause.trim();
+									if (cleanWhereClause.toLowerCase().startsWith('where')) {
+										cleanWhereClause = cleanWhereClause.substring(5).trim();
+									}
+
+									// Create a dummy SOQL query to parse
+									var dummyQuery = 'SELECT Id FROM ' + objectName + ' WHERE ' + cleanWhereClause;
+
+									// Parse the query
+									var parsedQuery;
+									try {
+										// Check if soqlModule object exists
+										if (typeof window.soqlModule !== 'undefined' && window.soqlModule && typeof window.soqlModule.parse === 'function') {
+											// Use the debug function if available for better error reporting
+											if (typeof window.soqlModule.debug === 'function') {
+												parsedQuery = window.soqlModule.debug(dummyQuery);
+												console.log('Parsed query using debug:', parsedQuery);
+											} else {
+												parsedQuery = window.soqlModule.parse(dummyQuery);
+												console.log('Parsed query:', parsedQuery);
+											}
+
+											// Check if there was an error during parsing
+											if (parsedQuery.error) {
+												throw new Error(parsedQuery.error);
+											}
+										} else {
+											console.warn('soql-module.js not loaded or soqlModule.parse not available. Using fallback implementation.');
+											// Create a simple object with a where property to allow the rest of the function to work
+											parsedQuery = {
+												where: {
+													// Simple extraction of field names from the WHERE clause
+													// This is a basic fallback that won't handle all cases but will work for simple WHERE clauses
+													field: cleanWhereClause.split(/\s+/)[0]
+												}
+											};
+										}
+									} catch (parseError) {
+										console.error('Error parsing WHERE clause:', parseError);
+										j$('#validationStatusContainer').hide();
+										j$('#errorMessageText').html('Invalid WHERE clause: ' + parseError.message);
+										j$('#whereClauseError').show();
+										return;
+									}
+
+									// Extract fields from the WHERE clause
+									var extractedFields = [];
+									if (parsedQuery && parsedQuery.where) {
+										extractFieldsFromWhereClause(parsedQuery.where, extractedFields);
+									}
+
+									// Convert fields from relationship notation to SObject notation
+									var convertedFields = [];
+									for (var i = 0; i < extractedFields.length; i++) {
+										var field = extractedFields[i];
+										var convertedField = convertFieldNotation(field);
+										if (convertedField) {
+											convertedFields.push(convertedField);
+										}
+									}
+
+									// Remove duplicates
+									var uniqueFields = [];
+									for (var i = 0; i < convertedFields.length; i++) {
+										if (uniqueFields.indexOf(convertedFields[i]) === -1) {
+											uniqueFields.push(convertedFields[i]);
+										}
+									}
+
+									// Join fields with commas
+									var fieldsString = uniqueFields.join(', ');
+									console.log('Extracted fields:', fieldsString);
+
+									// Log the extracted fields for debugging
+									console.log('Extracted fields before server call:', fieldsString);
+
+									// If we couldn't extract any fields but have a WHERE clause, try a simple fallback
+									if (!fieldsString && cleanWhereClause) {
+										console.log('No fields extracted, trying simple fallback');
+										// Simple fallback: split by operators and take the first part as a field
+										var parts = cleanWhereClause.split(/\s+(=|!=|<>|>|<|>=|<=|LIKE|IN|NOT IN)\s+/);
+										if (parts.length > 0) {
+											fieldsString = parts[0].trim();
+											console.log('Fallback extracted field:', fieldsString);
+										}
+									}
+
+									// Call the server to validate the WHERE clause
+									try {
+										Visualforce.remoting.Manager.invokeAction(
+											'{!$RemoteAction.ActionPlanTemplateCreationController.validateWhereClauseRemote}',
+											whereClause,
+											objectName,
+											fieldsString, // Pass the extracted fields to the server
+											function(result, event) {
+												j$('#validationStatusContainer').hide();
+
+												if (event.status) {
+													console.log('Validation result:', result);
+
+													if (result.success) {
+														j$('#recordCountText').text(result.count);
+														j$('#whereClauseSuccess').show();
+														j$('#whereClauseError').hide();
+
+														// Store for later submission
+														j$('#whereClauseRecordCount').val(result.count);
+
+														// Update the Trigger_Fields__c field with converted fields from server
+														if (result.convertedFields) {
+															j$('[id$=triggerFields]').val(result.convertedFields);
+															console.log('Updated Trigger_Fields__c with converted fields:', result.convertedFields);
+														} else if (fieldsString) {
+															j$('[id$=triggerFields]').val(fieldsString);
+															console.log('No converted fields returned from server, using extracted fields:', fieldsString);
+														}
+													} else {
+														j$('#errorMessageText').html(result.message);
+														j$('#whereClauseError').show();
+														j$('#whereClauseSuccess').hide();
+													}
+												} else {
+													console.error('Remote call failed:', event);
+													j$('#errorMessageText').html('Error validating WHERE clause: ' + event.message);
+													j$('#whereClauseError').show();
+													j$('#whereClauseSuccess').hide();
+												}
+											},
+											{ escape: true }
+										);
+									} catch (remoteCallError) {
+										console.error('Error making remote call:', remoteCallError);
+										j$('#validationStatusContainer').hide();
+										j$('#errorMessageText').html('Error validating WHERE clause: ' + remoteCallError.message);
+										j$('#whereClauseError').show();
+									}
+								} catch (error) {
+									console.error('Error in validateWhereClauseAsync:', error);
+									j$('#validationStatusContainer').hide();
+									j$('#errorMessageText').html('Error processing WHERE clause: ' + error.message);
+									j$('#whereClauseError').show();
+								}
+							}
+
+							// Helper function to extract fields from WHERE clause
+							function extractFieldsFromWhereClause(whereClause, fields) {
+								if (!whereClause) return;
+
+								// Handle conditions
+								if (whereClause.field) {
+									// For the fallback case, the field might be a simple string from the WHERE clause
+									// Try to extract field names more intelligently
+									if (typeof window.soqlModule === 'undefined' || !window.soqlModule) {
+										// This is our fallback case - try to extract field names from the raw WHERE clause
+										var rawClause = j$('[id$=whereClause]').val().trim();
+										if (rawClause.toLowerCase().startsWith('where')) {
+											rawClause = rawClause.substring(5).trim();
+										}
+
+										// Simple regex to extract potential field names
+										// This won't handle all cases but should work for common WHERE clauses
+										var fieldRegex = /([a-zA-Z0-9_\.]+)\s*(=|!=|<>|>|<|>=|<=|LIKE|IN|NOT IN)/g;
+										var match;
+										while ((match = fieldRegex.exec(rawClause)) !== null) {
+											fields.push(match[1].trim());
+										}
+
+										// If we couldn't extract any fields with regex, fall back to the simple approach
+										if (fields.length === 0 && whereClause.field) {
+											fields.push(whereClause.field);
+										}
+
+										return;
+									} else {
+										// Normal case with soql parser
+										fields.push(whereClause.field);
+										return;
+									}
+								}
+
+								// Handle left side
+								if (whereClause.left) {
+									if (whereClause.left.field) {
+										fields.push(whereClause.left.field);
+									} else if (typeof whereClause.left === 'object') {
+										extractFieldsFromWhereClause(whereClause.left, fields);
+									}
+								}
+
+								// Handle right side
+								if (whereClause.right) {
+									if (whereClause.right.field) {
+										fields.push(whereClause.right.field);
+									} else if (typeof whereClause.right === 'object') {
+										extractFieldsFromWhereClause(whereClause.right, fields);
+									}
+								}
+
+								// Handle conditions array (for complex WHERE clauses)
+								if (whereClause.conditions && Array.isArray(whereClause.conditions)) {
+									for (var i = 0; i < whereClause.conditions.length; i++) {
+										var condition = whereClause.conditions[i];
+										if (condition.field) {
+											fields.push(condition.field);
+										} else if (typeof condition === 'object') {
+											extractFieldsFromWhereClause(condition, fields);
+										}
+									}
+								}
+							}
+
+							// Helper function to convert field notation
+							function convertFieldNotation(fieldName) {
+								if (!fieldName) return '';
+
+								// Clean the field name (remove parentheses)
+								var cleanedField = fieldName.trim();
+								while (cleanedField.startsWith('(')) {
+									cleanedField = cleanedField.substring(1).trim();
+								}
+								while (cleanedField.endsWith(')')) {
+									cleanedField = cleanedField.substring(0, cleanedField.length - 1).trim();
+								}
+
+								// Convert relationship notation to SObject notation
+								if (cleanedField.includes('__r.')) {
+									return cleanedField.replace('__r.', '__c.');
+								}
+
+								return cleanedField;
+							}
+
+							// Initialize - validate if values already exist
+							j$(document).ready(function() {
+								console.log('Document ready - initializing WHERE clause validation');
+
+								// Check for existing values
+								var whereClause = j$('[id$=whereClause]').val();
+								var objectName = j$('[id$=targetObject]').val();
+								console.log('Initial values - whereClause:', whereClause, 'objectName:', objectName);
+
+								// If we don't have an objectName, try to get it from localStorage
+								if (!objectName) {
+									try {
+										var storedObjectName = localStorage.getItem('lastSelectedObjectApiName');
+										if (storedObjectName) {
+											console.log('Found stored objectName in localStorage:', storedObjectName);
+
+											// Update the hidden field
+											j$('[id$=targetObject]').val(storedObjectName);
+											console.log('Updated targetObject field with stored value:', storedObjectName);
+
+											// Update the data attribute on the search input
+											var searchInput = j$('#targetObjectLookupsldsscopediv [id$=searchInput]');
+											if (searchInput.length > 0) {
+												searchInput.attr('data-api-name', storedObjectName);
+												console.log('Updated search input data attribute with stored value:', storedObjectName);
+
+												// If the search input doesn't have a display value, try to get the label
+												if (!searchInput.val()) {
+													console.log('Search input has no display value, will try to get label for:', storedObjectName);
+													// This will trigger a server call to get the label for the API name
+													// The APObjectLookup component has similar code that will run
+												}
+											}
+
+											// Update objectName for the validation check
+											objectName = storedObjectName;
+										}
+									} catch (e) {
+										console.log('Error getting stored objectName from localStorage:', e);
+									}
+								}
+
+								// Validate if we have both whereClause and objectName
+								if (whereClause && objectName) {
+									console.log('Both whereClause and objectName exist, validating...');
+									setTimeout(validateWhereClauseAsync, 500);
+								} else {
+									console.log('Missing whereClause or objectName, skipping validation');
+								}
+							});
+						</script>
+					</apex:outputPanel>
+				</apex:pageBlockSectionItem>
+
+				<apex:pageBlockSectionItem >
+					<apex:outputLabel value="{!$ObjectType.ActionPlanTemplate__c.fields.Trigger_Fields__c.label}" />
+					<apex:outputPanel id="triggerFieldsDisplay">
+						<apex:inputField id="triggerFields" value="{!ActionPlanTemplate__c.Trigger_Fields__c}" style="width: 500px; height: 80px" />
+						<img class="helpOrb" title="{!$ObjectType.ActionPlanTemplate__c.fields.Trigger_Fields__c.inlineHelpText}" src="/s.gif" />
+					</apex:outputPanel>
+				</apex:pageBlockSectionItem>
+
+			</apex:pageBlockSection>
+
+			<apex:pageBlockSection id="taskSection" title="{!$ObjectType.Task.labelPlural}" columns="1" collapsible="false">
+				<apex:outputPanel id="taskList" styleClass="slds-scope" layout="inline">
+					<apex:pageBlockTable value="{!TemplateWrappers}" var="wrapTask" id="taskTable" rules="none"
+					                     style="table-layout: auto; width: 100%">
+						<!--  Tasks delete actions  -->
+						<apex:column style="vertical-align: middle" headerValue="" id="columnOne"
+						             rendered="{!TemplateWrappers.size > 1 && $ObjectType.APTemplateTask__c.deletable}">
+							<apex:commandLink action="{!removeTemplateTask}"
+								id="deleteLink"
+								immediate="{!wrapTask.isLast}"
+								onclick="if (confirmTaskDeletion('{!$Component.taskTable.dependent}', '{!$Label.ap_Confirm_Tasks_Deletion}')) return false;"
+								oncomplete="showErrors();onLoad();"
+								rendered="{!(wrapTask.task.Id != null && $ObjectType.APTemplateTask__c.deletable) || wrapTask.task.Id == null}"
+								rerender="taskList, pageMessages"
+								status="taskStatus">
+								<apex:image url="{!URLFOR($Resource.ActionPlan_Resources, 'ActionPlans_cross.gif')}" alt="{!$Label.ap_Remove}"
+								            title="{!$Label.ap_Remove}" />
+								<apex:param name="remove" value="{!wrapTask.position}" />
+							</apex:commandLink>
+						</apex:column>
+
+						<!--  Tasks subject  -->
+						<apex:column headerValue="{!$ObjectType.APTemplateTask__c.fields.Subject__c.label}" style="padding-right: 10px">
+							<apex:inputField id="subject" required="true" value="{!wrapTask.task.Subject__c}" style="width: 100%" />
+						</apex:column>
+
+						<!--  Tasks depending status  -->
+						<apex:column headerValue="{!$ObjectType.APTemplateTask__c.fields.TController__c.label}" rendered="{!TemplateWrappers.size > 1}"
+						             styleClass="controlingT">
+							<apex:selectList id="dependent"
+								value="{!wrapTask.task.Dependent__c}"
+								multiselect="false"
+								size="1"
+								style="min-width: 85px"
+								onchange="checkDependent('{!$Component.taskTable.dependent}','{!$Label.ap_ItselfDependencyError}','{!$Label.ap_Errors_Cyclic_Dependency_Found}');"
+								styleClass="selectDepending">
+								<apex:selectOptions value="{!TemplateSubjectItems}" />
+							</apex:selectList>
+							<apex:inputHidden value="{!wrapTask.task.TaskIndex__c}" id="theHiddenInput" />
+						</apex:column>
+
+						<!-- Days After column hidden as it's now part of the due date panel -->
+						<!-- <apex:column >
+							<apex:facet name="header">
+								<span>
+									{!$ObjectType.APTemplateTask__c.fields.DaysFromStart__c.label}
+									<img class="helpOrb" title="{!$ObjectType.APTemplateTask__c.fields.DaysFromStart__c.inlineHelpText}" src="/s.gif" />
+								</span>
+							</apex:facet>
+							<apex:inputField value="{!wrapTask.task.DaysFromStart__c}" required="true" id="daysInput" style="width: 50%" />
+						</apex:column> -->
+
+						<apex:column id="userLookup">
+							<apex:facet name="header">
+										<span
+										>{!$ObjectType.APTemplateTask__c.fields.User__c.label}
+											<img class="helpOrb" title="{!$ObjectType.APTemplateTask__c.fields.User__c.inlineHelpText}" src="/s.gif" />
+										</span>
+							</apex:facet>
+							<apex:outputPanel layout="block" id="userLookupPanel" style="z-index: 9999">
+								<div class="slds-form-element">
+									<div class="slds-form-element__control">
+										<div class="slds-select_container" style="margin-bottom: 5px;">
+											<select id="userLookupType{!wrapTask.position}" class="slds-select"
+											        onchange="handleUserLookupTypeChange(this, '{!wrapTask.position}');">
+												<option value="USER">Standard User</option>
+												<option value="FIELD">User Field Path</option>
+											</select>
+										</div>
+									</div>
+								</div>
+
+								<!-- Field Path Finder (initially hidden) -->
+								<div id="userFieldPathPanel{!wrapTask.position}" style="display: none;">
+									<c:APFieldPathFinder objectName="{!actionPlanTemplate.Target_Object_API_Name__c}"
+										fieldType="user"
+										for="userField{!wrapTask.position}"
+										required="false"
+										fieldStyle="width:100%;"
+										placeholder="Search for User lookup field"
+										disabled="{!ISBLANK(actionPlanTemplate.Target_Object_API_Name__c)}"
+										selectedValue="{!wrapTask.task.UserRelatedField__c}"
+									/>
+								</div>
+
+								<!-- Standard user lookup -->
+								<apex:outputPanel id="standardUserLookup">
+									<div id="standardUserPanel{!wrapTask.position}">
+										<apex:inputField value="{!wrapTask.task.User__c}" rendered="{!!lex}" styleClass="userLookupField" />
+										<c:APLightningLookup field="User__c"
+											sObj="{!wrapTask.task}"
+											sObjType="User"
+											required="false"
+											where="AND IsActive = true AND ProfileId != null"
+											rendered="{!lex}"
+											recordname="{!wrapTask.task.User__r.Name}"
+											fieldStyle="width:100%;"
+											for="userLookup{!wrapTask.position}" />
+									</div>
+								</apex:outputPanel>
+
+								<!-- Hidden fields for user assignment -->
+								<!-- Use standard HTML inputs with unique IDs based on position -->
+												<apex:outputPanel layout="none">
+													<div id="userHidden{!wrapTask.position}">
+									<input type="hidden" id="userTypeField{!wrapTask.position}" name="userTypeField{!wrapTask.position}"
+									       value="{!wrapTask.task.UserType__c}" />
+									<apex:inputHidden value="{!wrapTask.task.UserType__c}" id="userTypeField" />
+
+									<input type="hidden" id="userRelatedField{!wrapTask.position}" name="userRelatedField{!wrapTask.position}"
+									       value="{!wrapTask.task.UserRelatedField__c}" />
+									<apex:inputHidden value="{!wrapTask.task.UserRelatedField__c}" id="userRelatedField" />
+
+									<input type="hidden" id="userField{!wrapTask.position}" name="userField{!wrapTask.position}"
+											       value="{!wrapTask.task.User__c}" />
+											</div>
+								</apex:outputPanel>
+
+								<script>
+
+									function handleUserLookupTypeChange(selectElement, position) {
+										var selectedValue = j$(selectElement).val();
+										var targetObject = j$('[id$=targetObject]').val();
+
+										// Hide both panels first
+										j$('#userFieldPathPanel' + position).hide();
+										j$('#standardUserPanel' + position).hide();
+
+										// Set the UserType__c field
+										j$('#userTypeField' + position).val(selectedValue);
+										// Update the specific apex:inputHidden field for this row
+												j$('#userHidden' + position + ' [id$=userTypeField]').val(selectedValue);
+
+										// Show the appropriate panel based on selection
+										if (selectedValue === 'FIELD') {
+											j$('#userFieldPathPanel' + position).show();
+
+											// If target object is not set, show a message
+											if (!targetObject) {
+												// The help text will already be set by initializeFieldPathFinders()
+												console.log('Target object not set, field path finder will be disabled');
+											}
+
+											// Set the task's User__c field to null to prevent conflicts
+											var userLookup = j$('[id$=userLookup' + position + ']').closest('.lookupInput');
+											if (userLookup.length > 0) {
+															userLookup.find('input').val('');
+															// Also clear the hidden input within the Lightning lookup component
+															var compScope = j$('[id$=userLookup' + position + 'sldsscopediv]');
+															if (compScope.length > 0) {
+																var hiddenInput = compScope.parent().find('[id$=hiddenInput]').first();
+																if (hiddenInput.length > 0) {
+																	hiddenInput.val('');
+																}
+															}
+											}
+										} else {
+											j$('#standardUserPanel' + position).show();
+
+											// Clear the UserRelatedField__c field
+											j$('#userRelatedField' + position).val('');
+											// Update the specific apex:inputHidden field for this row
+												j$('#userHidden' + position + ' [id$=userRelatedField]').val('');
+										}
+									}
+
+									// Initialize the panels based on existing data
+									j$(document).ready(function() {
+										// Check if we have a field path value
+										var userRelatedField = j$('#userRelatedField{!wrapTask.position}').val();
+										var userValue = '{!JSENCODE(wrapTask.task.User__c)}';
+
+										console.log('Task {!wrapTask.position} - UserRelatedField value:', userRelatedField);
+										console.log('Task {!wrapTask.position} - User__c value:', userValue);
+
+										// If we have a field path value or the User__c field starts with FIELD:, select the FIELD option
+										if (userRelatedField || (userValue && userValue.indexOf('FIELD:') === 0)) {
+											j$('#userLookupType{!wrapTask.position}').val('FIELD');
+											console.log('Setting user lookup type to FIELD based on existing data');
+
+											// If we have a User__c value that starts with FIELD: but no UserRelatedField value,
+											// extract the field path and set it in the UserRelatedField__c field
+											if (!userRelatedField && userValue && userValue.indexOf('FIELD:') === 0) {
+												var extractedFieldPath = userValue.substring(6); // 'FIELD:'.length() = 6
+												j$('#userRelatedField{!wrapTask.position}').val(extractedFieldPath);
+												// Update the specific apex:inputHidden field for this row
+												j$('#userHidden{!wrapTask.position} [id$=userRelatedField]').val(extractedFieldPath);
+												console.log('Extracted field path from User__c and set UserRelatedField__c to:', extractedFieldPath);
+											}
+										}
+
+										// Initialize the panels
+										j$('#userLookupType{!wrapTask.position}').each(function() {
+											handleUserLookupTypeChange(this, '{!wrapTask.position}');
+										});
+
+										// Listen for field path selection events
+										j$('#searchInputuserField{!wrapTask.position}').on('fieldpathselected', function(event, value, label, fieldType) {
+											var position = '{!wrapTask.position}';
+
+											// Set the UserRelatedField__c field
+											j$('#userRelatedField' + position).val(value);
+											// Update the specific apex:inputHidden field for this row
+												j$('#userHidden' + position + ' [id$=userRelatedField]').val(value);
+											console.log('Set UserRelatedField__c field for task ' + position + ' to ' + value);
+
+											// Clear the User__c field when using field paths to avoid validation errors
+											// The UserRelatedField__c field will store the actual field path
+
+											// Try multiple approaches to find the User__c input field
+											var userInput = null;
+
+											// Approach 1: Try to find the input in the Lightning lookup component
+											var lookupInput = j$('[id$=userLookup' + position + ']').closest('.lookupInput').find('input');
+											if (lookupInput.length > 0) {
+												userInput = lookupInput;
+												console.log('Found User__c input using Lightning lookup approach');
+											}
+
+											// Approach 2: Try to find the direct inputField
+											if (!userInput || userInput.length === 0) {
+												var directInput = j$('[id$=userLookupPanel' + position + ']').find('input[id$=User__c]');
+												if (directInput.length > 0) {
+													userInput = directInput;
+													console.log('Found User__c input using direct input approach');
+												}
+											}
+
+											// Approach 3: Try to find the hidden input in the APLightningLookup component
+												if (!userInput || userInput.length === 0) {
+													var compScope = j$('[id$=userLookup' + position + 'sldsscopediv]');
+													if (compScope.length > 0) {
+														var hiddenInput = compScope.parent().find('[id$=hiddenInput]').first();
+														if (hiddenInput.length > 0) {
+															userInput = hiddenInput;
+															console.log('Found User__c input using hidden input approach (sibling of sldsscopediv)');
+														}
+													}
+												}
+
+											// Approach 4: Try to find any input related to User__c
+											if (!userInput || userInput.length === 0) {
+												var anyUserInput = j$('input[name*=User__c]');
+												if (anyUserInput.length > 0) {
+													userInput = anyUserInput;
+													console.log('Found User__c input using any input approach');
+												}
+											}
+
+											// Clear the User__c field to avoid validation errors with field paths
+											if (userInput && userInput.length > 0) {
+												userInput.val('');
+												console.log('Cleared User__c field for task ' + position + ' when using field path');
+
+												// Force a change event to ensure the value is recognized
+												userInput.trigger('change');
+											} else {
+												console.error('Could not find User__c field for task ' + position);
+											}
+										});
+									});
+ 							</script>
+							</apex:outputPanel>
+						</apex:column>
+
+						<!-- Fallback Assigned To (persisted to APTemplateTask__c) -->
+						<apex:column id="fallbackUserLookup">
+							<apex:facet name="header">
+								<span>Fallback Assigned To</span>
+							</apex:facet>
+							<apex:outputPanel layout="block" id="fallbackUserLookupPanel" style="z-index: 9999">
+								<div class="slds-form-element">
+									<div class="slds-form-element__control">
+										<div class="slds-select_container" style="margin-bottom: 5px;">
+											<select id="fallbackUserLookupType{!wrapTask.position}" class="slds-select"
+											        onchange="handleFallbackTypeChange(this, '{!wrapTask.position}');">
+												<option value="USER">Standard User</option>
+												<option value="FIELD">User Field Path</option>
+											</select>
+										</div>
+									</div>
+								</div>
+
+								<!-- Field Path Finder -->
+								<div id="fallbackUserFieldPathPanel{!wrapTask.position}" style="display: none;">
+									<c:APFieldPathFinder objectName="{!actionPlanTemplate.Target_Object_API_Name__c}"
+											fieldType="user"
+											for="fallbackUserField{!wrapTask.position}"
+											required="false"
+											fieldStyle="width:100%;"
+											placeholder="Search for User lookup field"
+											disabled="{!ISBLANK(actionPlanTemplate.Target_Object_API_Name__c)}"
+											selectedValue="{!wrapTask.task.FallbackUserRelatedField__c}"
+										/>
+								</div>
+
+								<!-- Standard user lookup bound to FallbackUser__c -->
+								<apex:outputPanel >
+									<div id="fallbackStandardUserPanel{!wrapTask.position}">
+										<apex:inputField value="{!wrapTask.task.FallbackUser__c}" rendered="{!!lex}" styleClass="userLookupField" />
+										<c:APLightningLookup field="FallbackUser__c"
+											sObj="{!wrapTask.task}"
+											sObjType="User"
+											required="false"
+											where="AND IsActive = true AND ProfileId != null"
+											rendered="{!lex}"
+											recordname="{!wrapTask.task.FallbackUser__r.Name}"
+											fieldStyle="width:100%;"
+											for="fallbackUserLookup{!wrapTask.position}" />
+									</div>
+								</apex:outputPanel>
+
+								<!-- Hidden fields bound to persist type and field path -->
+								<apex:outputPanel layout="none">
+									<div id="fallbackUserHidden{!wrapTask.position}">
+										<input type="hidden" id="fallbackUserTypeField{!wrapTask.position}" name="fallbackUserTypeField{!wrapTask.position}"
+										       value="{!wrapTask.task.FallbackUserType__c}" />
+										<apex:inputHidden value="{!wrapTask.task.FallbackUserType__c}" id="fallbackUserTypeField" />
+										<input type="hidden" id="fallbackUserRelatedField{!wrapTask.position}" name="fallbackUserRelatedField{!wrapTask.position}"
+										       value="{!wrapTask.task.FallbackUserRelatedField__c}" />
+										<apex:inputHidden value="{!wrapTask.task.FallbackUserRelatedField__c}" id="fallbackUserRelatedField" />
+									</div>
+								</apex:outputPanel>
+
+								<script>
+									function handleFallbackTypeChange(selectElement, position) {
+										var selectedValue = j$(selectElement).val();
+										var targetObject = j$('[id$=targetObject]').val();
+
+										// Hide both panels first
+										j$('#fallbackUserFieldPathPanel' + position).hide();
+										j$('#fallbackStandardUserPanel' + position).hide();
+
+										// Persist the type to hidden + apex:inputHidden
+										j$('#fallbackUserTypeField' + position).val(selectedValue);
+										j$('#fallbackUserHidden' + position + ' [id$=fallbackUserTypeField]').val(selectedValue);
+
+										if (selectedValue === 'FIELD') {
+											j$('#fallbackUserFieldPathPanel' + position).show();
+											// Clear lookup value bound to FallbackUser__c
+											var scope = j$('#fallbackUserLookup' + position + 'sldsscopediv');
+											if (scope.length > 0) {
+												var hiddenInput = scope.parent().find('[id$=hiddenInput]').first();
+												if (hiddenInput.length > 0) {
+													hiddenInput.val('');
+													hiddenInput.trigger('change');
+												}
+											}
+										} else {
+											j$('#fallbackStandardUserPanel' + position).show();
+											// Clear field path
+											j$('#fallbackUserRelatedField' + position).val('');
+											j$('#fallbackUserHidden' + position + ' [id$=fallbackUserRelatedField]').val('');
+										}
+									}
+
+									j$(document).ready(function() {
+										// Initialize selection from existing values
+										var typeVal = '{!JSENCODE(wrapTask.task.FallbackUserType__c)}';
+										var fieldPathVal = '{!JSENCODE(wrapTask.task.FallbackUserRelatedField__c)}';
+										if (fieldPathVal && (!typeVal || typeVal !== 'FIELD')) {
+											j$('#fallbackUserLookupType{!wrapTask.position}').val('FIELD');
+										} else if (typeVal) {
+											j$('#fallbackUserLookupType{!wrapTask.position}').val(typeVal);
+										}
+										j$('#fallbackUserLookupType{!wrapTask.position}').each(function() {
+											handleFallbackTypeChange(this, '{!wrapTask.position}');
+										});
+
+										// Wire field path selection to persist value
+										j$('#searchInputfallbackUserField{!wrapTask.position}').on('fieldpathselected', function(event, value, label, fieldType) {
+											j$('#fallbackUserRelatedField{!wrapTask.position}').val(value);
+											j$('#fallbackUserHidden{!wrapTask.position} [id$=fallbackUserRelatedField]').val(value);
+										});
+									});
+								</script>
+							</apex:outputPanel>
+						</apex:column>
+
+						<apex:column headerValue="{!$ObjectType.Task.fields.Type.label}" rendered="{!$ObjectType.Task.fields.Type.accessible}">
+							<apex:selectList value="{!wrapTask.task.Type__c}" size="1" styleclass="slds-input slds-select">
+								<apex:selectOptions value="{!TaskTypes}" />
+							</apex:selectList>
+						</apex:column>
+
+						<apex:column headerValue="{!$ObjectType.APTemplateTask__c.fields.Priority__c.label}">
+							<apex:selectList required="true" value="{!wrapTask.task.Priority__c}" size="1" styleclass="slds-input slds-select">
+								<apex:selectOptions value="{!TaskPriorities}" />
+							</apex:selectList>
+						</apex:column>
+
+						<apex:column style="vertical-align: middle">
+							<apex:facet name="header">
+								{!$ObjectType.APTemplateTask__c.fields.SendEmail__c.label}
+								<br />
+								<a id="all" onclick="javascript:checkEmail(1);" class="all-none">{!$Label.ap_All}</a> |
+								<a id="none" onclick="javascript:checkEmail(0);" class="all-none">{!$Label.ap_None}</a>
+							</apex:facet>
+							<apex:inputField id="sendEmailCheckbox" value="{!wrapTask.task.SendEmail__c}" style="vertical-align: middle" />
+						</apex:column>
+
+						<!-- Due Date Column -->
+						<apex:column id="dueDateCol">
+							<apex:facet name="header">
+										<span>Due Date
+											<img class="helpOrb" title="Select how the due date for this task will be calculated" src="/s.gif" />
+										</span>
+							</apex:facet>
+							<apex:outputPanel layout="block" id="dueDatePanel" style="z-index: 9999">
+								<!-- Due Date Type Selection -->
+								<div class="slds-form-element">
+									<div class="slds-form-element__control">
+										<div class="slds-select_container" style="margin-bottom: 5px;">
+											<apex:selectList value="{!wrapTask.task.DueDateType__c}" size="1" styleClass="slds-select" id="dueDateType"
+											                 onchange="handleDueDateTypeChange(this, '{!wrapTask.position}');">
+												<apex:selectOptions value="{!dueDateTypeOptions}" />
+											</apex:selectList>
+										</div>
+									</div>
+								</div>
+
+								<!-- Date field search panel -->
+								<apex:outputPanel id="dateSearchPanel" layout="block"
+								                  styleClass="slds-m-top_x-small dateSearchPanel dateSearchPanel-{!wrapTask.position}"
+								                  style="display: {!IF(wrapTask.task.DueDateType__c == 'DateField', 'block', 'none')};">
+									<c:APFieldPathFinder objectName="{!actionPlanTemplate.Target_Object_API_Name__c}"
+										fieldType="date"
+										for="dateField{!wrapTask.position}"
+										required="false"
+										fieldStyle="width:100%;"
+										placeholder="Search for a date field"
+										disabled="{!ISBLANK(actionPlanTemplate.Target_Object_API_Name__c)}"
+										selectedValue="{!wrapTask.task.DueDateRelatedField__c}"
+									/>
+
+									<script>
+										// Listen for field path selection events
+										j$(document).ready(function() {
+											j$('#searchInputdateField{!wrapTask.position}').on('fieldpathselected', function(event, value, label, fieldType) {
+												// Store the field path in the hidden field for this specific task
+												j$('.dueDateRelatedField-{!wrapTask.position}').find('input').val(value);
+											});
+										});
+									</script>
+								</apex:outputPanel>
+
+								<!-- Static date -->
+								<apex:outputPanel id="staticDatePanel" layout="block" styleClass="slds-m-top_x-small staticDatePanel-{!wrapTask.position}"
+								                  style="display: {!IF(wrapTask.task.DueDateType__c == 'StaticDate', 'block', 'none')};">
+									<div class="slds-form-element">
+										<div class="slds-form-element__control">
+											<apex:inputField value="{!wrapTask.task.StaticDueDate__c}" styleClass="slds-input" />
+										</div>
+									</div>
+								</apex:outputPanel>
+
+								<!-- Day offset panel (for all types except StaticDate) -->
+								<apex:outputPanel id="dayOffsetPanel" layout="block" styleClass="slds-m-top_x-small dayOffsetPanel-{!wrapTask.position}"
+								                  style="display: {!IF(wrapTask.task.DueDateType__c != 'StaticDate', 'block', 'none')};">
+									<div class="slds-form-element">
+										<div class="slds-form-element__label">
+											<span>Add or subtract days</span>
+											<img class="helpOrb"
+											     title="Enter a positive number to add days or a negative number to subtract days from the due date"
+											     src="/s.gif" />
+										</div>
+										<div class="slds-form-element__control">
+											<apex:inputField value="{!wrapTask.task.DaysFromStart__c}" styleClass="slds-input" style="width: 100px" />
+										</div>
+									</div>
+								</apex:outputPanel>
+
+								<!-- Store the field path in a hidden field -->
+								<apex:outputPanel styleClass="dueDateRelatedField-{!wrapTask.position}">
+									<apex:inputHidden value="{!wrapTask.task.DueDateRelatedField__c}" id="dueDateRelatedField" />
+								</apex:outputPanel>
+							</apex:outputPanel>
+						</apex:column>
+
+						<apex:column rendered="{!canDisplayReminder}" style="vertical-align: middle" id="reminderCol">
+							<apex:facet name="header">
+								{!$ObjectType.APTemplateTask__c.fields.Reminder__c.label}
+								<br />
+								<a id="reminderAll" onclick="javascript:checkReminder(1);" class="all-none">{!$Label.ap_All}</a> |
+								<a id="reminderNone" onclick="javascript:checkReminder(0);" class="all-none">{!$Label.ap_None}</a>
+							</apex:facet>
+							<apex:outputPanel styleClass="reminderColumn" id="reminderCell" style="vertical-align: middle">
+								<apex:inputCheckbox id="reminder"
+									value="{!wrapTask.task.Reminder__c}"
+									style="float: left; display: inline-block; vertical-align: middle"
+									onclick="javascript:enableDisableReminderPicklist(this, '{!$Component.reminderPickList}');" />
+								<apex:selectList id="reminderPickList" size="1" value="{!wrapTask.task.Minutes_Reminder__c}" style="float: left"
+								                 disabled="{!!wrapTask.task.Reminder__c}">
+									<apex:selectOptions value="{!hoursOption}" />
+								</apex:selectList>
+							</apex:outputPanel>
+						</apex:column>
+
+						<apex:column headerValue="{!$ObjectType.APTemplateTask__c.fields.Comments__c.label}" id="commentCol">
+							<apex:inputField id="commentPanel" style="width: 250px; display: none" value="{!wrapTask.task.Comments__c}" />
+							<div style="clear: left">
+								(&nbsp;
+								<a
+									id="{!wrapTask.position}commentLink"
+									onclick="toggleComments('{!$Component.commentPanel}', '{!$Component.actionLinks}', '{!$Label.ap_Add}', '{!$Label.ap_Edit}','{!$Label.ap_Close}');"
+									style="text-decoration: underline; clear: left">
+									<apex:outputPanel id="actionLinks">
+										<apex:outputText rendered="{!wrapTask.task.Comments__c != null}">{!$Label.ap_Edit}</apex:outputText>
+										<apex:outputText rendered="{!wrapTask.task.Comments__c == null}">{!$Label.ap_Add}</apex:outputText>
+									</apex:outputPanel>
+								</a
+								>&nbsp;)
+							</div>
+						</apex:column>
+					</apex:pageBlockTable>
+				</apex:outputPanel>
+
+				<apex:panelGrid columns="2">
+					<apex:commandLink action="{!addTemplateTask}"
+						id="addLink"
+						immediate="false"
+						onclick=""
+						oncomplete="checkReminderPicklists();"
+						rendered="{!$ObjectType.APTemplateTask__c.createable}"
+						rerender="taskList, pageMessages"
+						status="taskStatus"
+						style="font-weight: bold">
+						<apex:outputText value="{!$Label.ap_AddNewTask}" />
+					</apex:commandLink>
+					<apex:actionStatus id="taskStatus">
+						<apex:facet name="start">
+							<div class="slds-scope">
+								<div class="slds-spinner_container slds-is-fixed" style="position: fixed">
+									<div role="status" class="slds-spinner slds-spinner_medium slds-spinner_brand">
+										<span class="slds-assistive-text">Loading</span>
+										<div class="slds-spinner__dot-a"></div>
+										<div class="slds-spinner__dot-b"></div>
+									</div>
+								</div>
+							</div>
+						</apex:facet>
+						<apex:facet name="stop">
+							<apex:outputText value="{!$Label.ap_Error}: {!ErrorMsg}" styleClass="errorMessage" rendered="{!(ErrorMsg != null)}" />
+						</apex:facet>
+					</apex:actionStatus>
+				</apex:panelGrid>
+			</apex:pageBlockSection>
+
+			<!-- End Tasks Section -->
+			<div id="error" style="text-align: center">
+				<span class="pbError">{!$Label.ap_Errors_Review_Errors}</span>
+			</div>
+		</apex:pageBlock>
+	</apex:form>
+	</body>
+	</html>
+</apex:page>

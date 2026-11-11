@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>ssot__rel_1705642060989_end__c</fullName>
+    <deleteConstraint>SetNull</deleteConstraint>
+    <deprecated>false</deprecated>
+    <label>ActivityParticipant_ActivityId_map_A_rel</label>
+    <referenceTo>ssot__Activity__dlm</referenceTo>
+    <relationshipLabel>ActivityParticipant_ActivityId_map_A_rel</relationshipLabel>
+    <relationshipName>rel_1705642060989_end</relationshipName>
+    <required>false</required>
+    <type>Lookup</type>
+</CustomField>

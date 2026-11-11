@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>ssot__ManufacturerWarrantyStartDate__c</fullName>
+    <deprecated>false</deprecated>
+    <label>Manufacturer Warranty Start Date</label>
+    <mktDataModelFieldAttributes>
+        <definitionCreationType>Standard</definitionCreationType>
+        <isDynamicLookup>false</isDynamicLookup>
+        <masterLabel>Manufacturer Warranty Start Date</masterLabel>
+        <refAttrDeveloperName>ManufacturerWarrantyStartDate</refAttrDeveloperName>
+        <usageTag>None</usageTag>
+    </mktDataModelFieldAttributes>
+    <required>false</required>
+    <type>DateTime</type>
+</CustomField>

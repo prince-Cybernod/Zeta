@@ -8,6 +8,25 @@
         <plural>true</plural>
         <value>Application Questions</value>
     </caseValues>
+    <layouts>
+        <layout>Application Question Layout</layout>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+        <sections>
+            <label><!-- Help Text --></label>
+            <section>Help Text</section>
+        </sections>
+        <sections>
+            <label><!-- Input Configuration --></label>
+            <section>Input Configuration</section>
+        </sections>
+        <sections>
+            <label><!-- Validation --></label>
+            <section>Validation</section>
+        </sections>
+    </layouts>
     <startsWith>Consonant</startsWith>
     <validationRules>
         <errorMessage><!-- Target Field is required for single-field input types (Text, Email, Phone, Number, Date, Dropdown, Checkbox, MultiCheckbox, TextArea). --></errorMessage>

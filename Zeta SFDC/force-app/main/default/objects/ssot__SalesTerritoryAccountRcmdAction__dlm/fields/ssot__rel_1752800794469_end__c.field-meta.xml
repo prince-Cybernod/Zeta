@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>ssot__rel_1752800794469_end__c</fullName>
+    <deleteConstraint>SetNull</deleteConstraint>
+    <deprecated>false</deprecated>
+    <label>SalesTerritoryAccountRcmdAction_Acti_rel</label>
+    <referenceTo>ssot__ManagedEvent__dlm</referenceTo>
+    <relationshipLabel>SalesTerritoryAccountRcmdAction_Acti_rel</relationshipLabel>
+    <relationshipName>rel_1752800794469_end</relationshipName>
+    <required>false</required>
+    <type>Lookup</type>
+</CustomField>

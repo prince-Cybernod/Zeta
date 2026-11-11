@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>ssot__rel_1720764837801_end__c</fullName>
+    <deleteConstraint>SetNull</deleteConstraint>
+    <deprecated>false</deprecated>
+    <label>AbnExperimentLog_Individualid_map_In_rel</label>
+    <referenceTo>ssot__Individual__dlm</referenceTo>
+    <relationshipLabel>AbnExperimentLog_Individualid_map_In_rel</relationshipLabel>
+    <relationshipName>rel_1720764837801_end</relationshipName>
+    <required>false</required>
+    <type>Lookup</type>
+</CustomField>

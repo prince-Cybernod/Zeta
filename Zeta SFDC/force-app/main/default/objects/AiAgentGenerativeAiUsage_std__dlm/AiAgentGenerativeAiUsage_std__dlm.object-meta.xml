@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <mktDataModelAttributes>
+        <creationType>Standard</creationType>
+        <dataModelTaxonomy>Salesforce_SFDCReferenceModel_0_93</dataModelTaxonomy>
+        <dataSpaceName>default</dataSpaceName>
+        <description>Captures granular AI usage analytics, including token consumption and LLM metadata for attributing consumption to specific agents and features.</description>
+        <isEnabled>true</isEnabled>
+        <isSegmentable>false</isSegmentable>
+        <isSqlDmo>false</isSqlDmo>
+        <isUsedForMetrics>false</isUsedForMetrics>
+        <labelOverride>AI Agent Generative AI Usage</labelOverride>
+        <masterLabel>AI Agent Generative AI Usage</masterLabel>
+        <objectCategory>Salesforce_SFDCReferenceModel_0_93.Engagement</objectCategory>
+        <referenceEntityName>AiAgentGenerativeAiUsage</referenceEntityName>
+    </mktDataModelAttributes>
+</CustomObject>

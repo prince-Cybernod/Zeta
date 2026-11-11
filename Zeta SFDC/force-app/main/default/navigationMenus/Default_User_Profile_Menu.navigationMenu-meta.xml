@@ -11,15 +11,8 @@
         <type>InternalLink</type>
     </navigationMenuItem>
     <navigationMenuItem>
-        <label>Settings</label>
-        <position>2</position>
-        <publiclyAvailable>false</publiclyAvailable>
-        <target>/settings/home</target>
-        <type>InternalLink</type>
-    </navigationMenuItem>
-    <navigationMenuItem>
         <label>Log Out</label>
-        <position>3</position>
+        <position>2</position>
         <publiclyAvailable>false</publiclyAvailable>
         <target>Logout</target>
         <type>Event</type>

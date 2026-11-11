@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>version__c</fullName>
+    <label>Data Graph Version</label>
+    <length>60</length>
+    <mktDataModelFieldAttributes>
+        <definitionCreationType>ADG</definitionCreationType>
+        <isDynamicLookup>false</isDynamicLookup>
+        <labelOverride>Data Graph Version</labelOverride>
+        <masterLabel>Data Graph Version</masterLabel>
+        <refAttrDeveloperName>version</refAttrDeveloperName>
+        <usageTag>None</usageTag>
+    </mktDataModelFieldAttributes>
+    <required>false</required>
+    <type>Text</type>
+</CustomField>

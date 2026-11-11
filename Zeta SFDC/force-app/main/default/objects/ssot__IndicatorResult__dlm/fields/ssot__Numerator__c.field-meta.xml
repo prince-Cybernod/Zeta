@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>ssot__Numerator__c</fullName>
+    <deprecated>false</deprecated>
+    <label>Numerator</label>
+    <mktDataModelFieldAttributes>
+        <definitionCreationType>Standard</definitionCreationType>
+        <isDynamicLookup>false</isDynamicLookup>
+        <masterLabel>Numerator</masterLabel>
+        <refAttrDeveloperName>Numerator</refAttrDeveloperName>
+        <usageTag>None</usageTag>
+    </mktDataModelFieldAttributes>
+    <precision>16</precision>
+    <required>false</required>
+    <scale>2</scale>
+    <type>Number</type>
+</CustomField>

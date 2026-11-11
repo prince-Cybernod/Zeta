@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomApplication xmlns="http://soap.sforce.com/2006/04/metadata">
+    <formFactors>Small</formFactors>
+    <formFactors>Large</formFactors>
+    <isNavAutoTempTabsDisabled>false</isNavAutoTempTabsDisabled>
+    <isNavPersonalizationDisabled>false</isNavPersonalizationDisabled>
+    <isNavTabPersistenceDisabled>false</isNavTabPersistenceDisabled>
+    <isOmniPinnedViewEnabled>false</isOmniPinnedViewEnabled>
+    <label>Engagement Templates</label>
+    <navType>Console</navType>
+    <tabs>standard-home</tabs>
+    <tabs>standard-OutboundEngagementTemplate</tabs>
+    <uiType>Lightning</uiType>
+    <utilityBar>OEConsole_UtilityBar</utilityBar>
+    <workspaceConfig>
+        <mappings>
+            <tab>standard-OutboundEngagementTemplate</tab>
+        </mappings>
+        <mappings>
+            <tab>standard-home</tab>
+        </mappings>
+    </workspaceConfig>
+</CustomApplication>

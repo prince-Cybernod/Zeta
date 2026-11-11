@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>OptOutProcessRequestDate__c</fullName>
+    <label>Opt Out Process Request Date</label>
+    <mktDataModelFieldAttributes>
+        <definitionCreationType>System</definitionCreationType>
+        <invalidMergeActionType>Drop</invalidMergeActionType>
+        <isDynamicLookup>false</isDynamicLookup>
+        <labelOverride>Opt Out Process Request Date</labelOverride>
+        <masterLabel>Opt Out Process Request Date</masterLabel>
+        <refAttrDeveloperName>OptOutProcessRequestDate</refAttrDeveloperName>
+        <usageTag>None</usageTag>
+    </mktDataModelFieldAttributes>
+    <required>false</required>
+    <type>DateTime</type>
+</CustomField>

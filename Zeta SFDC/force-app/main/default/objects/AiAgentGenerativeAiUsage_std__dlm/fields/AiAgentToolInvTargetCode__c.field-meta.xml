@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>AiAgentToolInvTargetCode__c</fullName>
+    <label>AI Agent Tool Invocation Target Code</label>
+    <length>60</length>
+    <mktDataModelFieldAttributes>
+        <definitionCreationType>Standard</definitionCreationType>
+        <isDynamicLookup>false</isDynamicLookup>
+        <labelOverride>AI Agent Tool Invocation Target Code</labelOverride>
+        <masterLabel>AI Agent Tool Invocation Target Code</masterLabel>
+        <refAttrDeveloperName>AiAgentToolInvTargetCode</refAttrDeveloperName>
+        <usageTag>None</usageTag>
+    </mktDataModelFieldAttributes>
+    <required>false</required>
+    <type>Text</type>
+</CustomField>

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>ssot__rel_1697761206357_end__c</fullName>
+    <deleteConstraint>SetNull</deleteConstraint>
+    <deprecated>false</deprecated>
+    <label>VoucherDefinition_Id_map_VoucherDefi_rel</label>
+    <referenceTo>ssot__VoucherDefinition__dlm</referenceTo>
+    <relationshipLabel>VoucherDefinition_Id_map_VoucherDefi_rel</relationshipLabel>
+    <relationshipName>rel_1697761206357_end</relationshipName>
+    <required>false</required>
+    <type>Lookup</type>
+</CustomField>

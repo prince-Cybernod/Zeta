@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>ssot__rel_1725593376762_end__c</fullName>
+    <deleteConstraint>SetNull</deleteConstraint>
+    <deprecated>false</deprecated>
+    <label>CaseMilestone_CaseMilestoneTypeId_ma_rel</label>
+    <referenceTo>ssot__CaseMilestoneType__dlm</referenceTo>
+    <relationshipLabel>CaseMilestone_CaseMilestoneTypeId_ma_rel</relationshipLabel>
+    <relationshipName>rel_1725593376762_end</relationshipName>
+    <required>false</required>
+    <type>Lookup</type>
+</CustomField>

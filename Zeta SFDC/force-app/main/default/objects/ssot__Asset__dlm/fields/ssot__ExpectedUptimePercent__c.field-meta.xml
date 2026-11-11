@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>ssot__ExpectedUptimePercent__c</fullName>
+    <deprecated>false</deprecated>
+    <label>Expected Uptime Percent</label>
+    <mktDataModelFieldAttributes>
+        <definitionCreationType>Standard</definitionCreationType>
+        <isDynamicLookup>false</isDynamicLookup>
+        <masterLabel>Expected Uptime Percent</masterLabel>
+        <refAttrDeveloperName>ExpectedUptimePercent</refAttrDeveloperName>
+        <usageTag>None</usageTag>
+    </mktDataModelFieldAttributes>
+    <precision>18</precision>
+    <required>false</required>
+    <scale>2</scale>
+    <type>Number</type>
+</CustomField>

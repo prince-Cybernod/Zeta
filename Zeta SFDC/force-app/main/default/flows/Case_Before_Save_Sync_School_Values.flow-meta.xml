@@ -12,6 +12,50 @@
             <assignToReference>$Record.School__c</assignToReference>
             <operator>Assign</operator>
         </assignmentItems>
+        <connector>
+            <targetReference>Is_New_Form_Assembly_Case_Without_Parent</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <description>Counts the active parent portal logins using the email on the case.</description>
+        <name>Count_Parent_Portal_Users</name>
+        <label>Count Parent Portal Users</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <assignmentItems>
+            <assignToReference>varParentUserCount</assignToReference>
+            <operator>AssignCount</operator>
+            <value>
+                <elementReference>Get_Parent_Portal_Users</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Exactly_One_Parent_Found</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <description>Links the case to the parent&apos;s contact and account.</description>
+        <name>Link_Case_to_Parent</name>
+        <label>Link Case to Parent</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <assignmentItems>
+            <assignToReference>$Record.ContactId</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>Loop_Parent_Portal_User.ContactId</elementReference>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>$Record.AccountId</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>Loop_Parent_Portal_User.AccountId</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Loop_Parent_Portal_User</targetReference>
+        </connector>
     </assignments>
     <assignments>
         <description>Sets the Case School lookup to the matched Account Id.</description>
@@ -26,13 +70,42 @@
                 <elementReference>Get_Account_by_Name_School_Inquiry.Id</elementReference>
             </value>
         </assignmentItems>
+        <connector>
+            <targetReference>Is_New_Form_Assembly_Case_Without_Parent</targetReference>
+        </connector>
     </assignments>
+    <decisions>
+        <description>Only links when the email matches exactly one parent portal login, so a shared email never links the wrong parent.</description>
+        <name>Exactly_One_Parent_Found</name>
+        <label>Exactly One Parent Found?</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <defaultConnectorLabel>No Single Match</defaultConnectorLabel>
+        <rules>
+            <name>Yes_One_Parent</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>varParentUserCount</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <numberValue>1.0</numberValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Loop_Parent_Portal_User</targetReference>
+            </connector>
+            <label>Yes, One Parent</label>
+        </rules>
+    </decisions>
     <decisions>
         <description>Checks whether an Account was found by name.</description>
         <name>Found_Matching_Account</name>
         <label>Found Matching Account?</label>
         <locationX>0</locationX>
         <locationY>0</locationY>
+        <defaultConnector>
+            <targetReference>Is_New_Form_Assembly_Case_Without_Parent</targetReference>
+        </defaultConnector>
         <defaultConnectorLabel>No Match</defaultConnectorLabel>
         <rules>
             <name>Yes_Match_Found</name>
@@ -48,6 +121,50 @@
                 <targetReference>Set_School_Lookup_Match_Found</targetReference>
             </connector>
             <label>Yes - Match Found</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <description>Contact Us cases created by FormAssembly from the parent portal arrive with only the parent&apos;s email. Continue only for a new Form Assembly case with an email and no contact.</description>
+        <name>Is_New_Form_Assembly_Case_Without_Parent</name>
+        <label>Is New Form Assembly Case Without Parent?</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <defaultConnectorLabel>No</defaultConnectorLabel>
+        <rules>
+            <name>Yes_Link_to_Parent</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record__Prior.Id</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Origin</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Form Assembly</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.ContactId</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.SuppliedEmail</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Get_Parent_Portal_Users</targetReference>
+            </connector>
+            <label>Yes, Link to Parent</label>
         </rules>
     </decisions>
     <decisions>
@@ -75,10 +192,24 @@
     </decisions>
     <description>On Case create/update, map school_inquiry__c (picklist) to School (lookup) by matching Account.Name to picklist text. Clears lookup if blank or no match.
 
+Oct 2026: also links new Contact Us cases from FormAssembly (Origin = Form Assembly) to the parent: matches the case email to exactly one active parent portal login and fills Contact and Account. Kept in this flow so Case has a single before-save flow.
+
 Flow Designer: Elevation Solutions</description>
     <environments>Default</environments>
     <interviewLabel>Case (Before Save) Sync School Values {!$Flow.CurrentDateTime}</interviewLabel>
     <label>Case (Before Save) Sync School Values</label>
+    <loops>
+        <description>Reads the single matching portal login (the decision guarantees exactly one).</description>
+        <name>Loop_Parent_Portal_User</name>
+        <label>Loop Parent Portal User</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <collectionReference>Get_Parent_Portal_Users</collectionReference>
+        <iterationOrder>Asc</iterationOrder>
+        <nextValueConnector>
+            <targetReference>Link_Case_to_Parent</targetReference>
+        </nextValueConnector>
+    </loops>
     <processMetadataValues>
         <name>BuilderType</name>
         <value>
@@ -120,6 +251,45 @@ Flow Designer: Elevation Solutions</description>
         <object>Account</object>
         <storeOutputAutomatically>true</storeOutputAutomatically>
     </recordLookups>
+    <recordLookups>
+        <description>Active portal logins (users with a contact) whose email matches the case email.</description>
+        <name>Get_Parent_Portal_Users</name>
+        <label>Get Parent Portal Users</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Count_Parent_Portal_Users</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Email</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>$Record.SuppliedEmail</elementReference>
+            </value>
+        </filters>
+        <filters>
+            <field>IsActive</field>
+            <operator>EqualTo</operator>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </filters>
+        <filters>
+            <field>ContactId</field>
+            <operator>IsNull</operator>
+            <value>
+                <booleanValue>false</booleanValue>
+            </value>
+        </filters>
+        <getFirstRecordOnly>false</getFirstRecordOnly>
+        <object>User</object>
+        <queriedFields>Id</queriedFields>
+        <queriedFields>ContactId</queriedFields>
+        <queriedFields>AccountId</queriedFields>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
     <start>
         <locationX>0</locationX>
         <locationY>0</locationY>
@@ -139,4 +309,12 @@ Flow Designer: Elevation Solutions</description>
         <triggerType>RecordBeforeSave</triggerType>
     </start>
     <status>Active</status>
+    <variables>
+        <name>varParentUserCount</name>
+        <dataType>Number</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+        <scale>0</scale>
+    </variables>
 </Flow>

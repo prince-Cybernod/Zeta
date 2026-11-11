@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Prompt xmlns="http://soap.sforce.com/2006/04/metadata">
+    <masterLabel>Question Response</masterLabel>
+    <promptVersions>
+        <body>Click View All in the Question Responses section to see how someone engaged with your automated conversation or survey.</body>
+        <customApplication>Mogli_SMS__Mogli_SMS_Lightning</customApplication>
+        <delayDays>1</delayDays>
+        <dismissButtonLabel>Got it.</dismissButtonLabel>
+        <displayPosition>BottomRight</displayPosition>
+        <displayType>FloatingPanel</displayType>
+        <endDate>2020-02-28</endDate>
+        <isPublished>true</isPublished>
+        <masterLabel>Question Response</masterLabel>
+        <publishedDate>2026-04-22</publishedDate>
+        <shouldDisplayActionButton>false</shouldDisplayActionButton>
+        <shouldIgnoreGlobalDelay>false</shouldIgnoreGlobalDelay>
+        <startDate>2020-02-07</startDate>
+        <targetPageKey1>Mogli_SMS__Form__c</targetPageKey1>
+        <targetPageKey2>view</targetPageKey2>
+        <targetPageType>standard__recordPage</targetPageType>
+        <timesToDisplay>1</timesToDisplay>
+        <title>View Question Responses</title>
+        <userAccess>Everyone</userAccess>
+        <userProfileAccess>Everyone</userProfileAccess>
+        <versionNumber>1</versionNumber>
+    </promptVersions>
+</Prompt>

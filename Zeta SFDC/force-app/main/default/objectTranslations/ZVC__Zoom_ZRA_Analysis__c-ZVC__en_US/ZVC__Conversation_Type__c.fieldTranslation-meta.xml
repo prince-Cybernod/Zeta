@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <label><!-- Conversation Type --></label>
+    <name>ZVC__Conversation_Type__c</name>
+    <picklistValues>
+        <masterLabel>Email</masterLabel>
+        <translation><!-- Email --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Meeting</masterLabel>
+        <translation><!-- Meeting --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Phone</masterLabel>
+        <translation><!-- Phone --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>SMS</masterLabel>
+        <translation><!-- SMS --></translation>
+    </picklistValues>
+</CustomFieldTranslation>

@@ -43,7 +43,7 @@ public class ParentLoginDiscoveryHandler_T {
     setHasVerifiedEmail();
 
     Test.startTest();
-    Auth.LoginDiscoveryException expected = getLoginException(identifier);
+    Auth.DiscoveryCustomErrorException expected = getLoginException(identifier);
     Test.stopTest();
 
     Assert.areNotEqual(null, expected, 'Should attempt passwordless login and throw exception in test context');
@@ -55,7 +55,7 @@ public class ParentLoginDiscoveryHandler_T {
     setHasVerifiedMobile();
 
     Test.startTest();
-    Auth.LoginDiscoveryException expected = getLoginException(identifier);
+    Auth.DiscoveryCustomErrorException expected = getLoginException(identifier);
     Test.stopTest();
 
     Assert.areNotEqual(null, expected, 'Should attempt passwordless login and throw exception in test context');
@@ -67,7 +67,7 @@ public class ParentLoginDiscoveryHandler_T {
     setHasVerifiedEmail();
 
     Test.startTest();
-    Auth.LoginDiscoveryException expected = getLoginException(identifier);
+    Auth.DiscoveryCustomErrorException expected = getLoginException(identifier);
     Test.stopTest();
 
     Assert.areNotEqual(null, expected, 'Should attempt passwordless login and throw exception in test context');
@@ -79,7 +79,7 @@ public class ParentLoginDiscoveryHandler_T {
     setHasVerifiedMobile();
 
     Test.startTest();
-    Auth.LoginDiscoveryException expected = getLoginException(identifier);
+    Auth.DiscoveryCustomErrorException expected = getLoginException(identifier);
     Test.stopTest();
 
     Assert.areNotEqual(null, expected, 'Should attempt passwordless login and throw exception in test context');
@@ -93,16 +93,16 @@ public class ParentLoginDiscoveryHandler_T {
     try {
       (new ParentLoginDiscoveryHandler()).login(identifier, '/s/', new Map<String, String>());
       Assert.fail('Should have thrown an exception');
-    } catch (Auth.LoginDiscoveryException e) {
-      Assert.areEqual('No verified 2FA method found for user.', e.getMessage());
+    } catch (Auth.DiscoveryCustomErrorException e) {
+      Assert.areEqual(Label.Parent_Login_No_Verified_2FA_Method, e.getMessage());
     }
     Test.stopTest();
   }
 
-  private static Auth.LoginDiscoveryException getLoginException(String identifier) {
+  private static Auth.DiscoveryCustomErrorException getLoginException(String identifier) {
     try {
       (new ParentLoginDiscoveryHandler()).login(identifier, '/s/', new Map<String, String>());
-    } catch (Auth.LoginDiscoveryException e) {
+    } catch (Auth.DiscoveryCustomErrorException e) {
       return e;
     }
     return null;

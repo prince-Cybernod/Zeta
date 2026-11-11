@@ -3,16 +3,16 @@
     <actions>
         <actionType>recordaction</actionType>
         <eventType>click</eventType>
-        <parameters>{&quot;field&quot;:{&quot;fieldKey&quot;:&quot;{\&quot;displayCategory\&quot;:\&quot;Discrete\&quot;,\&quot;fieldName\&quot;:\&quot;Name\&quot;,\&quot;objectName\&quot;:\&quot;Campaign\&quot;,\&quot;role\&quot;:\&quot;Dimension\&quot;,\&quot;type\&quot;:\&quot;Field\&quot;,\&quot;disambiguationIndex\&quot;:0}&quot;},&quot;recordId&quot;:{&quot;fieldKey&quot;:&quot;{\&quot;type\&quot;:\&quot;Field\&quot;,\&quot;displayCategory\&quot;:\&quot;Discrete\&quot;,\&quot;role\&quot;:\&quot;Dimension\&quot;,\&quot;objectName\&quot;:\&quot;Campaign\&quot;,\&quot;fieldName\&quot;:\&quot;Campaign_Id\&quot;,\&quot;disambiguationIndex\&quot;:0}&quot;},&quot;actions&quot;:[{&quot;apiName&quot;:&quot;openRecord&quot;}]}</parameters>
+        <parameters>{&quot;field&quot;:{&quot;fieldKey&quot;:&quot;{\&quot;displayCategory\&quot;:\&quot;Discrete\&quot;,\&quot;fieldName\&quot;:\&quot;Campaign_Name\&quot;,\&quot;objectName\&quot;:\&quot;Campaign\&quot;,\&quot;role\&quot;:\&quot;Dimension\&quot;,\&quot;type\&quot;:\&quot;Field\&quot;,\&quot;disambiguationIndex\&quot;:0}&quot;},&quot;recordId&quot;:{&quot;fieldKey&quot;:&quot;{\&quot;type\&quot;:\&quot;Field\&quot;,\&quot;displayCategory\&quot;:\&quot;Discrete\&quot;,\&quot;role\&quot;:\&quot;Dimension\&quot;,\&quot;objectName\&quot;:\&quot;Campaign\&quot;,\&quot;fieldName\&quot;:\&quot;Campaign_Id\&quot;,\&quot;disambiguationIndex\&quot;:0}&quot;},&quot;actions&quot;:[{&quot;apiName&quot;:&quot;openRecord&quot;}]}</parameters>
         <version>66.0</version>
     </actions>
-    <analyticsWorkspace>Marketing_Performance</analyticsWorkspace>
-    <dataSource>Marketing_Performance_Semantic_Mod_945</dataSource>
-    <description>Marketing Performance - SMS Aggregated Deliverability All Activity visualization</description>
+    <analyticsWorkspace>Marketing_Performance_Intelligence</analyticsWorkspace>
+    <dataSource>Marketing_Intelligence_Custom_Semantic_Model_00Da500001AA4BB</dataSource>
+    <description>Marketing Engagement Intelligence - SMS Aggregated Deliverability All Activity visualization</description>
     <fields>
         <displayCategory>Discrete</displayCategory>
         <fieldKey>F1</fieldKey>
-        <fieldName>Name</fieldName>
+        <fieldName>Campaign_Name</fieldName>
         <objectName>Campaign</objectName>
         <role>Dimension</role>
         <type>Field</type>
@@ -20,7 +20,7 @@
     <fields>
         <displayCategory>Discrete</displayCategory>
         <fieldKey>F2</fieldKey>
-        <fieldName>SMS_Sends</fieldName>
+        <fieldName>SMS_Sends_clc</fieldName>
         <function>Sum</function>
         <label>SMS Sends</label>
         <role>Measure</role>
@@ -29,7 +29,7 @@
     <fields>
         <displayCategory>Discrete</displayCategory>
         <fieldKey>F4</fieldKey>
-        <fieldName>SMS_Delivery_Rate</fieldName>
+        <fieldName>SMS_Delivery_Rate_clc</fieldName>
         <function>UserAgg</function>
         <role>Measure</role>
         <type>Field</type>
@@ -37,7 +37,7 @@
     <fields>
         <displayCategory>Discrete</displayCategory>
         <fieldKey>F5</fieldKey>
-        <fieldName>SMS_Failed_To_Sent</fieldName>
+        <fieldName>SMS_Not_Sent_clc</fieldName>
         <function>Sum</function>
         <label>SMS Not Sent</label>
         <role>Measure</role>
@@ -54,7 +54,7 @@
     <fields>
         <displayCategory>Discrete</displayCategory>
         <fieldKey>F12</fieldKey>
-        <fieldName>SMS_Deliveries</fieldName>
+        <fieldName>SMS_Deliveries_clc</fieldName>
         <function>Sum</function>
         <label>SMS Deliveries</label>
         <role>Measure</role>
@@ -63,7 +63,7 @@
     <fields>
         <displayCategory>Discrete</displayCategory>
         <fieldKey>F14</fieldKey>
-        <fieldName>Name</fieldName>
+        <fieldName>Campaign_Name</fieldName>
         <objectName>Campaign</objectName>
         <role>Dimension</role>
         <type>Field</type>
@@ -71,27 +71,27 @@
     <fields>
         <displayCategory>Discrete</displayCategory>
         <fieldKey>F15</fieldKey>
-        <fieldName>Engagement_Channel_Type</fieldName>
-        <objectName>Logical_View_Engagement_Union</objectName>
+        <fieldName>Message_Engagement_Channel_Type</fieldName>
+        <objectName>Message_Engagement</objectName>
         <role>Dimension</role>
         <type>Field</type>
     </fields>
     <masterLabel>SMS Aggregated Deliverability All Activity</masterLabel>
     <templateAssetSourceName>Viz_SMS_All_Activity_Aggregated_Deliverability</templateAssetSourceName>
-    <templateSource>sfdc_internal__uma</templateSource>
-    <version>66.0</version>
+    <templateSource>sfdc_internal__umi</templateSource>
+    <version>66.08</version>
     <views>
         <fullName>Viz_SMS_All_Activity_Aggregated_Deliverability_default</fullName>
         <isOriginal>true</isOriginal>
         <masterLabel>default</masterLabel>
-        <version>66.0</version>
-        <viewSpecification>{&quot;filters&quot;:[{&quot;fieldKey&quot;:&quot;F9&quot;,&quot;isContext&quot;:false,&quot;filterInfos&quot;:[{&quot;type&quot;:&quot;In&quot;,&quot;useAll&quot;:false,&quot;isCustom&quot;:false,&quot;values&quot;:[null,&quot;&quot;],&quot;isExcludes&quot;:true}]},{&quot;fieldKey&quot;:&quot;F1&quot;,&quot;isContext&quot;:false,&quot;filterInfos&quot;:[{&quot;type&quot;:&quot;In&quot;,&quot;useAll&quot;:false,&quot;isCustom&quot;:false,&quot;values&quot;:[null,&quot;&quot;],&quot;isExcludes&quot;:true}]},{&quot;fieldKey&quot;:&quot;F15&quot;,&quot;isContext&quot;:false,&quot;filterInfos&quot;:[{&quot;type&quot;:&quot;In&quot;,&quot;useAll&quot;:false,&quot;isCustom&quot;:false,&quot;values&quot;:[&quot;SMS&quot;],&quot;isExcludes&quot;:false},{&quot;type&quot;:&quot;WildCard&quot;,&quot;value&quot;:&quot;&quot;,&quot;operator&quot;:&quot;Contains&quot;,&quot;isExcludes&quot;:false,&quot;includeAllValuesWhenEmpty&quot;:true}]}],&quot;sortOrders&quot;:{&quot;fields&quot;:{},&quot;rows&quot;:[],&quot;columns&quot;:[]}}</viewSpecification>
+        <version>66.08</version>
+        <viewSpecification>{&quot;filters&quot;:[{&quot;isContext&quot;:false,&quot;fieldKeys&quot;:[&quot;F9&quot;],&quot;filter&quot;:{&quot;operator&quot;:&quot;NotIn&quot;,&quot;fields&quot;:[{&quot;model&quot;:&quot;Campaign.Campaign_Id&quot;}],&quot;values&quot;:[&quot;&quot;],&quot;includeNulls&quot;:false}},{&quot;isContext&quot;:false,&quot;fieldKeys&quot;:[&quot;F1&quot;],&quot;filter&quot;:{&quot;operator&quot;:&quot;NotIn&quot;,&quot;fields&quot;:[{&quot;model&quot;:&quot;Campaign.Campaign_Name&quot;}],&quot;values&quot;:[&quot;&quot;],&quot;includeNulls&quot;:false}},{&quot;isContext&quot;:false,&quot;fieldKeys&quot;:[&quot;F15&quot;],&quot;filter&quot;:{&quot;operator&quot;:&quot;In&quot;,&quot;fields&quot;:[{&quot;model&quot;:&quot;Message_Engagement.Message_Engagement_Channel_Type&quot;}],&quot;values&quot;:[&quot;SMS&quot;],&quot;includeNulls&quot;:false}},{&quot;isContext&quot;:false,&quot;fieldKeys&quot;:[&quot;F15&quot;],&quot;filter&quot;:{&quot;operator&quot;:&quot;ContainsIgnoreCase&quot;,&quot;fields&quot;:[{&quot;model&quot;:&quot;Message_Engagement.Message_Engagement_Channel_Type&quot;}],&quot;values&quot;:[&quot;&quot;]},&quot;includeAllValues&quot;:true}],&quot;sortOrders&quot;:{&quot;fields&quot;:{},&quot;rows&quot;:[],&quot;columns&quot;:[]}}</viewSpecification>
     </views>
-    <visualSpecification>eyJtb2RlIjoiVGFibGUiLCJyb3dzIjpbIkYxIiwiRjIiLCJGMTIiLCJGNCIsIkY1IiwiRjkiXSwiY29sdW1ucyI6W10sIm1hcmtzIjp7IkFMTCI6eyJ0eXBlIjoiVGV4dCIsImlzQXV0b21hdGljIjpmYWxzZSwic3RhY2siOnsiaXNBdXRvbWF0aWMiOnRydWUsImlzU3RhY2tlZCI6ZmFsc2V9LCJlbmNvZGluZ3MiOltdfX0sInN0eWxlIjp7ImZpdCI6IlJvd0hlYWRlcnNXaWR0aCIsInRpdGxlIjp7ImlzVmlzaWJsZSI6dHJ1ZX0sInNob3dEYXRhUGxhY2Vob2xkZXIiOmZhbHNlLCJheGlzIjp7fSwicGFuZXMiOnsiRjEyIjp7ImRlZmF1bHRzIjp7ImZvcm1hdCI6eyJudW1iZXJGb3JtYXRJbmZvIjp7InR5cGUiOiJOdW1iZXIiLCJkZWNpbWFsUGxhY2VzIjoyLCJuZWdhdGl2ZVZhbHVlc0Zvcm1hdCI6IkF1dG8iLCJkaXNwbGF5VW5pdHMiOiJBdXRvIiwicHJlZml4IjoiIiwic3VmZml4IjoiIiwiaW5jbHVkZVRob3VzYW5kU2VwYXJhdG9yIjp0cnVlfX19fSwiRjIiOnsiZGVmYXVsdHMiOnsiZm9ybWF0Ijp7Im51bWJlckZvcm1hdEluZm8iOnsidHlwZSI6Ik51bWJlciIsImRlY2ltYWxQbGFjZXMiOjIsIm5lZ2F0aXZlVmFsdWVzRm9ybWF0IjoiQXV0byIsImRpc3BsYXlVbml0cyI6IkF1dG8iLCJwcmVmaXgiOiIiLCJzdWZmaXgiOiIiLCJpbmNsdWRlVGhvdXNhbmRTZXBhcmF0b3IiOnRydWV9fX19LCJGNCI6eyJkZWZhdWx0cyI6eyJmb3JtYXQiOnsibnVtYmVyRm9ybWF0SW5mbyI6eyJ0eXBlIjoiUGVyY2VudGFnZSIsImRlY2ltYWxQbGFjZXMiOjIsIm5lZ2F0aXZlVmFsdWVzRm9ybWF0IjoiQXV0byIsImRpc3BsYXlVbml0cyI6IkF1dG8iLCJwcmVmaXgiOiIiLCJzdWZmaXgiOiIiLCJpbmNsdWRlVGhvdXNhbmRTZXBhcmF0b3IiOnRydWV9fX19LCJGNSI6eyJkZWZhdWx0cyI6eyJmb3JtYXQiOnsibnVtYmVyRm9ybWF0SW5mbyI6eyJ0eXBlIjoiTnVtYmVyIiwiZGVjaW1hbFBsYWNlcyI6MiwibmVnYXRpdmVWYWx1ZXNGb3JtYXQiOiJBdXRvIiwiZGlzcGxheVVuaXRzIjoiQXV0byIsInByZWZpeCI6IiIsInN1ZmZpeCI6IiIsImluY2x1ZGVUaG91c2FuZFNlcGFyYXRvciI6dHJ1ZX19fX19LCJtYXJrcyI6eyJBTEwiOnsibGFiZWwiOnsiY2FuT3ZlcmxhcExhYmVscyI6ZmFsc2UsInNob3dNYXJrTGFiZWxzIjpmYWxzZSwibWFya3NUb0xhYmVsIjp7InR5cGUiOiJBbGwifX0sImNvbG9yIjp7ImNvbG9yIjoiIn0sInJhbmdlIjp7InJldmVyc2UiOnRydWV9LCJzaXplIjp7InR5cGUiOiJQaXhlbCIsImlzQXV0b21hdGljIjp0cnVlLCJ2YWx1ZSI6MTN9LCJpc0F1dG9tYXRpY1NpemUiOnRydWV9fSwiZmllbGRMYWJlbHMiOnsicm93cyI6eyJzaG93TGFiZWxzIjp0cnVlLCJiYWNrZ3JvdW5kQ29sb3IiOiIjRTVFNUU1Iiwic2hvd0RpdmlkZXJMaW5lIjpmYWxzZX0sImNvbHVtbnMiOnsic2hvd0xhYmVscyI6dHJ1ZSwiYmFja2dyb3VuZENvbG9yIjoiI0U1RTVFNSIsInNob3dEaXZpZGVyTGluZSI6ZmFsc2V9fSwicmVmZXJlbmNlTGluZXMiOnt9LCJmb250cyI6eyJhY3Rpb25hYmxlSGVhZGVycyI6eyJzaXplIjoxMywiY29sb3IiOiIjMDI1MEQ5In0sImhlYWRlcnMiOnsic2l6ZSI6MTMsImNvbG9yIjoiIzJFMkUyRSJ9LCJmaWVsZExhYmVscyI6eyJzaXplIjoxMywiY29sb3IiOiIjMkUyRTJFIn0sIm1hcmtzIjp7InNpemUiOjEzLCJjb2xvciI6IiMyRTJFMkUifSwibWFya0xhYmVscyI6eyJzaXplIjoxMywiY29sb3IiOiIjMkUyRTJFIn0sImxlZ2VuZExhYmVscyI6eyJzaXplIjoxMywiY29sb3IiOiIjMkUyRTJFIn0sImF4aXNUaWNrTGFiZWxzIjp7InNpemUiOjEzLCJjb2xvciI6IiMyRTJFMkUifX0sInNoYWRpbmciOnsiYmFja2dyb3VuZENvbG9yIjoiI0ZGRkZGRiIsImJhbmRpbmciOnsicm93cyI6eyJjb2xvciI6IiNFNUU1RTUifX19LCJsaW5lcyI6eyJmaWVsZExhYmVsRGl2aWRlckxpbmUiOnsiY29sb3IiOiIjQzlDOUM5In0sInNlcGFyYXRvckxpbmUiOnsiY29sb3IiOiIjQzlDOUM5In0sImF4aXNMaW5lIjp7ImNvbG9yIjoiI0M5QzlDOSJ9LCJ6ZXJvTGluZSI6eyJjb2xvciI6IiNDOUM5QzkifX0sImFsbEhlYWRlcnMiOnsiZmllbGRzIjp7IkY5Ijp7ImlzVmlzaWJsZSI6ZmFsc2UsImhpZGRlblZhbHVlcyI6W10sInNob3dNaXNzaW5nVmFsdWVzIjpmYWxzZX0sIkYxMiI6eyJpc1Zpc2libGUiOnRydWUsImRlZmF1bHRzIjp7ImZvcm1hdCI6eyJudW1iZXJGb3JtYXRJbmZvIjp7InR5cGUiOiJOdW1iZXIiLCJkZWNpbWFsUGxhY2VzIjoyLCJuZWdhdGl2ZVZhbHVlc0Zvcm1hdCI6IkF1dG8iLCJkaXNwbGF5VW5pdHMiOiJBdXRvIiwicHJlZml4IjoiIiwic3VmZml4IjoiIiwiaW5jbHVkZVRob3VzYW5kU2VwYXJhdG9yIjp0cnVlfX19LCJoaWRkZW5WYWx1ZXMiOltdLCJzaG93TWlzc2luZ1ZhbHVlcyI6ZmFsc2V9LCJGMSI6eyJpc1Zpc2libGUiOnRydWUsImhpZGRlblZhbHVlcyI6W10sInNob3dNaXNzaW5nVmFsdWVzIjpmYWxzZX0sIkYyIjp7ImlzVmlzaWJsZSI6dHJ1ZSwiZGVmYXVsdHMiOnsiZm9ybWF0Ijp7Im51bWJlckZvcm1hdEluZm8iOnsidHlwZSI6Ik51bWJlciIsImRlY2ltYWxQbGFjZXMiOjIsIm5lZ2F0aXZlVmFsdWVzRm9ybWF0IjoiQXV0byIsImRpc3BsYXlVbml0cyI6IkF1dG8iLCJwcmVmaXgiOiIiLCJzdWZmaXgiOiIiLCJpbmNsdWRlVGhvdXNhbmRTZXBhcmF0b3IiOnRydWV9fX0sImhpZGRlblZhbHVlcyI6W10sInNob3dNaXNzaW5nVmFsdWVzIjpmYWxzZX0sIkY0Ijp7ImlzVmlzaWJsZSI6dHJ1ZSwiZGVmYXVsdHMiOnsiZm9ybWF0Ijp7Im51bWJlckZvcm1hdEluZm8iOnsidHlwZSI6IlBlcmNlbnRhZ2UiLCJkZWNpbWFsUGxhY2VzIjoyLCJuZWdhdGl2ZVZhbHVlc0Zvcm1hdCI6IkF1dG8iLCJkaXNwbGF5VW5pdHMiOiJBdXRvIiwicHJlZml4IjoiIiwic3VmZml4IjoiIiwiaW5jbHVkZVRob3VzYW5kU2VwYXJhdG9yIjp0cnVlfX19LCJoaWRkZW5WYWx1ZXMiOltdLCJzaG93TWlzc2luZ1ZhbHVlcyI6ZmFsc2V9LCJGNSI6eyJpc1Zpc2libGUiOnRydWUsImRlZmF1bHRzIjp7ImZvcm1hdCI6eyJudW1iZXJGb3JtYXRJbmZvIjp7InR5cGUiOiJOdW1iZXIiLCJkZWNpbWFsUGxhY2VzIjoyLCJuZWdhdGl2ZVZhbHVlc0Zvcm1hdCI6IkF1dG8iLCJkaXNwbGF5VW5pdHMiOiJBdXRvIiwicHJlZml4IjoiIiwic3VmZml4IjoiIiwiaW5jbHVkZVRob3VzYW5kU2VwYXJhdG9yIjp0cnVlfX19LCJoaWRkZW5WYWx1ZXMiOltdLCJzaG93TWlzc2luZ1ZhbHVlcyI6ZmFsc2V9fSwicm93cyI6eyJtZXJnZVJlcGVhdGVkQ2VsbHMiOmZhbHNlLCJzaG93SW5kZXgiOmZhbHNlfSwiY29sdW1ucyI6eyJtZXJnZVJlcGVhdGVkQ2VsbHMiOmZhbHNlLCJzaG93SW5kZXgiOmZhbHNlfX19LCJsZWdlbmRzIjp7fSwibWVhc3VyZVZhbHVlcyI6W10sInJlZmVyZW5jZUxpbmVzIjp7fSwiZm9yZWNhc3RzIjp7fX0=</visualSpecification>
+    <visualSpecification>eyJsYXlvdXQiOiJUYWJsZSIsImxlZ2VuZHMiOnt9LCJyb3dzIjpbIkYxIiwiRjIiLCJGMTIiLCJGNCIsIkY1IiwiRjkiXSwibWFya3MiOnsicGFuZXMiOnsidHlwZSI6IlRleHQiLCJpc0F1dG9tYXRpYyI6ZmFsc2UsInN0YWNrIjp7ImlzQXV0b21hdGljIjp0cnVlLCJpc1N0YWNrZWQiOmZhbHNlfSwiZW5jb2RpbmdzIjpbXX0sImZpZWxkcyI6e30sImhlYWRlcnMiOnsidHlwZSI6IlRleHQiLCJlbmNvZGluZ3MiOltdLCJpc0F1dG9tYXRpYyI6dHJ1ZX19LCJzdHlsZSI6eyJ0aXRsZSI6eyJpc1Zpc2libGUiOnRydWV9LCJmaWVsZExhYmVscyI6eyJyb3dzIjp7InNob3dMYWJlbHMiOnRydWUsImJhY2tncm91bmRDb2xvciI6IiNFNUU1RTUiLCJzaG93RGl2aWRlckxpbmUiOmZhbHNlfSwiY29sdW1ucyI6eyJzaG93TGFiZWxzIjp0cnVlLCJiYWNrZ3JvdW5kQ29sb3IiOiIjRTVFNUU1Iiwic2hvd0RpdmlkZXJMaW5lIjpmYWxzZX19LCJmb250cyI6eyJhY3Rpb25hYmxlSGVhZGVycyI6eyJzaXplIjoxMywiY29sb3IiOiIjMDI1MEQ5In0sImhlYWRlcnMiOnsic2l6ZSI6MTMsImNvbG9yIjoiIzJFMkUyRSJ9LCJmaWVsZExhYmVscyI6eyJzaXplIjoxMywiY29sb3IiOiIjMkUyRTJFIn0sIm1hcmtzIjp7InNpemUiOjEzLCJjb2xvciI6IiMyRTJFMkUifSwibWFya0xhYmVscyI6eyJzaXplIjoxMywiY29sb3IiOiIjMkUyRTJFIn0sImxlZ2VuZExhYmVscyI6eyJzaXplIjoxMywiY29sb3IiOiIjMkUyRTJFIn0sImF4aXNUaWNrTGFiZWxzIjp7InNpemUiOjEzLCJjb2xvciI6IiMyRTJFMkUifX0sInNoYWRpbmciOnsiYmFja2dyb3VuZENvbG9yIjoiI0ZGRkZGRiIsImJhbmRpbmciOnsicm93cyI6eyJjb2xvciI6IiNFNUU1RTUifX19LCJsaW5lcyI6eyJmaWVsZExhYmVsRGl2aWRlckxpbmUiOnsiY29sb3IiOiIjQzlDOUM5In0sInNlcGFyYXRvckxpbmUiOnsiY29sb3IiOiIjQzlDOUM5In0sImF4aXNMaW5lIjp7ImNvbG9yIjoiI0M5QzlDOSJ9LCJ6ZXJvTGluZSI6eyJjb2xvciI6IiNDOUM5QzkifX0sImVuY29kaW5ncyI6eyJmaWVsZHMiOnsiRjEyIjp7ImRlZmF1bHRzIjp7ImZvcm1hdCI6eyJudW1iZXJGb3JtYXRJbmZvIjp7InR5cGUiOiJOdW1iZXIiLCJkZWNpbWFsUGxhY2VzIjoyLCJuZWdhdGl2ZVZhbHVlc0Zvcm1hdCI6IkF1dG8iLCJkaXNwbGF5VW5pdHMiOiJBdXRvIiwicHJlZml4IjoiIiwic3VmZml4IjoiIiwiaW5jbHVkZVRob3VzYW5kU2VwYXJhdG9yIjp0cnVlfX19fSwiRjIiOnsiZGVmYXVsdHMiOnsiZm9ybWF0Ijp7Im51bWJlckZvcm1hdEluZm8iOnsidHlwZSI6Ik51bWJlciIsImRlY2ltYWxQbGFjZXMiOjIsIm5lZ2F0aXZlVmFsdWVzRm9ybWF0IjoiQXV0byIsImRpc3BsYXlVbml0cyI6IkF1dG8iLCJwcmVmaXgiOiIiLCJzdWZmaXgiOiIiLCJpbmNsdWRlVGhvdXNhbmRTZXBhcmF0b3IiOnRydWV9fX19LCJGNCI6eyJkZWZhdWx0cyI6eyJmb3JtYXQiOnsibnVtYmVyRm9ybWF0SW5mbyI6eyJ0eXBlIjoiUGVyY2VudGFnZSIsImRlY2ltYWxQbGFjZXMiOjIsIm5lZ2F0aXZlVmFsdWVzRm9ybWF0IjoiQXV0byIsImRpc3BsYXlVbml0cyI6IkF1dG8iLCJwcmVmaXgiOiIiLCJzdWZmaXgiOiIiLCJpbmNsdWRlVGhvdXNhbmRTZXBhcmF0b3IiOnRydWV9fX19LCJGNSI6eyJkZWZhdWx0cyI6eyJmb3JtYXQiOnsibnVtYmVyRm9ybWF0SW5mbyI6eyJ0eXBlIjoiTnVtYmVyIiwiZGVjaW1hbFBsYWNlcyI6MiwibmVnYXRpdmVWYWx1ZXNGb3JtYXQiOiJBdXRvIiwiZGlzcGxheVVuaXRzIjoiQXV0byIsInByZWZpeCI6IiIsInN1ZmZpeCI6IiIsImluY2x1ZGVUaG91c2FuZFNlcGFyYXRvciI6dHJ1ZX19fX19fSwiZml0IjoiUm93SGVhZGVyc1dpZHRoIiwibWFya3MiOnsicGFuZXMiOnsibGFiZWwiOnsiY2FuT3ZlcmxhcExhYmVscyI6ZmFsc2UsInNob3dNYXJrTGFiZWxzIjpmYWxzZSwibWFya3NUb0xhYmVsIjp7InR5cGUiOiJBbGwifX0sImNvbG9yIjp7ImNvbG9yIjoiIn0sInJhbmdlIjp7InJldmVyc2UiOnRydWV9LCJzaXplIjp7InR5cGUiOiJQaXhlbCIsImlzQXV0b21hdGljIjp0cnVlLCJ2YWx1ZSI6MTN9LCJpc0F1dG9tYXRpY1NpemUiOnRydWV9LCJoZWFkZXJzIjp7ImNvbG9yIjp7ImNvbG9yIjoiIn0sImxhYmVsIjp7ImNhbk92ZXJsYXBMYWJlbHMiOmZhbHNlLCJzaG93TWFya0xhYmVscyI6ZmFsc2UsIm1hcmtzVG9MYWJlbCI6eyJ0eXBlIjoiQWxsIn19LCJpc0F1dG9tYXRpY1NpemUiOnRydWV9LCJmaWVsZHMiOnt9fSwiaGVhZGVycyI6eyJmaWVsZHMiOnsiRjkiOnsiaXNWaXNpYmxlIjpmYWxzZSwiaGlkZGVuVmFsdWVzIjpbXSwic2hvd01pc3NpbmdWYWx1ZXMiOmZhbHNlfSwiRjEyIjp7ImlzVmlzaWJsZSI6dHJ1ZSwiZGVmYXVsdHMiOnsiZm9ybWF0Ijp7Im51bWJlckZvcm1hdEluZm8iOnsidHlwZSI6Ik51bWJlciIsImRlY2ltYWxQbGFjZXMiOjIsIm5lZ2F0aXZlVmFsdWVzRm9ybWF0IjoiQXV0byIsImRpc3BsYXlVbml0cyI6IkF1dG8iLCJwcmVmaXgiOiIiLCJzdWZmaXgiOiIiLCJpbmNsdWRlVGhvdXNhbmRTZXBhcmF0b3IiOnRydWV9fX0sImhpZGRlblZhbHVlcyI6W10sInNob3dNaXNzaW5nVmFsdWVzIjpmYWxzZX0sIkYxIjp7ImlzVmlzaWJsZSI6dHJ1ZSwiaGlkZGVuVmFsdWVzIjpbXSwic2hvd01pc3NpbmdWYWx1ZXMiOmZhbHNlfSwiRjIiOnsiaXNWaXNpYmxlIjp0cnVlLCJkZWZhdWx0cyI6eyJmb3JtYXQiOnsibnVtYmVyRm9ybWF0SW5mbyI6eyJ0eXBlIjoiTnVtYmVyIiwiZGVjaW1hbFBsYWNlcyI6MiwibmVnYXRpdmVWYWx1ZXNGb3JtYXQiOiJBdXRvIiwiZGlzcGxheVVuaXRzIjoiQXV0byIsInByZWZpeCI6IiIsInN1ZmZpeCI6IiIsImluY2x1ZGVUaG91c2FuZFNlcGFyYXRvciI6dHJ1ZX19fSwiaGlkZGVuVmFsdWVzIjpbXSwic2hvd01pc3NpbmdWYWx1ZXMiOmZhbHNlfSwiRjQiOnsiaXNWaXNpYmxlIjp0cnVlLCJkZWZhdWx0cyI6eyJmb3JtYXQiOnsibnVtYmVyRm9ybWF0SW5mbyI6eyJ0eXBlIjoiUGVyY2VudGFnZSIsImRlY2ltYWxQbGFjZXMiOjIsIm5lZ2F0aXZlVmFsdWVzRm9ybWF0IjoiQXV0byIsImRpc3BsYXlVbml0cyI6IkF1dG8iLCJwcmVmaXgiOiIiLCJzdWZmaXgiOiIiLCJpbmNsdWRlVGhvdXNhbmRTZXBhcmF0b3IiOnRydWV9fX0sImhpZGRlblZhbHVlcyI6W10sInNob3dNaXNzaW5nVmFsdWVzIjpmYWxzZX0sIkY1Ijp7ImlzVmlzaWJsZSI6dHJ1ZSwiZGVmYXVsdHMiOnsiZm9ybWF0Ijp7Im51bWJlckZvcm1hdEluZm8iOnsidHlwZSI6Ik51bWJlciIsImRlY2ltYWxQbGFjZXMiOjIsIm5lZ2F0aXZlVmFsdWVzRm9ybWF0IjoiQXV0byIsImRpc3BsYXlVbml0cyI6IkF1dG8iLCJwcmVmaXgiOiIiLCJzdWZmaXgiOiIiLCJpbmNsdWRlVGhvdXNhbmRTZXBhcmF0b3IiOnRydWV9fX0sImhpZGRlblZhbHVlcyI6W10sInNob3dNaXNzaW5nVmFsdWVzIjpmYWxzZX19LCJyb3dzIjp7Im1lcmdlUmVwZWF0ZWRDZWxscyI6ZmFsc2UsInNob3dJbmRleCI6ZmFsc2V9LCJjb2x1bW5zIjp7Im1lcmdlUmVwZWF0ZWRDZWxscyI6ZmFsc2UsInNob3dJbmRleCI6ZmFsc2V9fX19</visualSpecification>
     <workspaceAssetRelationships>
         <asset xsi:nil="true"/>
         <assetType>AnalyticsVisualization</assetType>
         <assetUsageType>Created</assetUsageType>
-        <workspace>Marketing_Performance</workspace>
+        <workspace>Marketing_Performance_Intelligence</workspace>
     </workspaceAssetRelationships>
 </AnalyticsVisualization>

@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <AnalyticsDashboard xmlns="http://soap.sforce.com/2006/04/metadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-    <analyticsWorkspace>Marketing_Performance</analyticsWorkspace>
+    <analyticsWorkspace>Marketing_Performance_Intelligence</analyticsWorkspace>
+    <customConfig>null</customConfig>
     <description>Campaign Insights Embedded dashboard</description>
     <layouts>
         <analyticsDashboard>Campaign_Insights_Embedded</analyticsDashboard>
@@ -8,207 +9,6 @@
         <layoutName>default</layoutName>
         <pages>
             <index>0</index>
-            <label>Email 2</label>
-            <pageName>ff363d18-1a66-42ce-9199-3f8987cc9d58</pageName>
-            <pageWidgets>
-                <analyticsDashboardWidget>filter_8</analyticsDashboardWidget>
-                <colspan>6</colspan>
-                <column>37</column>
-                <row>1</row>
-                <rowspan>1</rowspan>
-            </pageWidgets>
-            <pageWidgets>
-                <analyticsDashboardWidget>filter_9</analyticsDashboardWidget>
-                <colspan>6</colspan>
-                <column>43</column>
-                <row>4</row>
-                <rowspan>1</rowspan>
-            </pageWidgets>
-            <pageWidgets>
-                <analyticsDashboardWidget>filter_1</analyticsDashboardWidget>
-                <colspan>6</colspan>
-                <column>44</column>
-                <row>1</row>
-                <rowspan>1</rowspan>
-            </pageWidgets>
-            <pageWidgets>
-                <analyticsDashboardWidget>filter_4</analyticsDashboardWidget>
-                <colspan>6</colspan>
-                <column>30</column>
-                <row>1</row>
-                <rowspan>1</rowspan>
-            </pageWidgets>
-            <pageWidgets>
-                <analyticsDashboardWidget>button_24</analyticsDashboardWidget>
-                <colspan>7</colspan>
-                <column>19</column>
-                <row>16</row>
-                <rowspan>1</rowspan>
-            </pageWidgets>
-            <pageWidgets>
-                <analyticsDashboardWidget>button_25</analyticsDashboardWidget>
-                <colspan>7</colspan>
-                <column>26</column>
-                <row>16</row>
-                <rowspan>1</rowspan>
-            </pageWidgets>
-            <pageWidgets>
-                <analyticsDashboardWidget>visualization_7</analyticsDashboardWidget>
-                <colspan>15</colspan>
-                <column>2</column>
-                <row>19</row>
-                <rowspan>10</rowspan>
-            </pageWidgets>
-            <pageWidgets>
-                <analyticsDashboardWidget>text_7</analyticsDashboardWidget>
-                <colspan>12</colspan>
-                <column>2</column>
-                <row>18</row>
-                <rowspan>1</rowspan>
-            </pageWidgets>
-            <pageWidgets>
-                <analyticsDashboardWidget>filter_11</analyticsDashboardWidget>
-                <colspan>6</colspan>
-                <column>43</column>
-                <row>16</row>
-                <rowspan>1</rowspan>
-            </pageWidgets>
-            <pageWidgets>
-                <analyticsDashboardWidget>filter_5</analyticsDashboardWidget>
-                <colspan>6</colspan>
-                <column>37</column>
-                <row>16</row>
-                <rowspan>1</rowspan>
-            </pageWidgets>
-            <pageWidgets>
-                <analyticsDashboardWidget>filter_2</analyticsDashboardWidget>
-                <colspan>6</colspan>
-                <column>43</column>
-                <row>32</row>
-                <rowspan>1</rowspan>
-            </pageWidgets>
-            <pageWidgets>
-                <analyticsDashboardWidget>visualization_2</analyticsDashboardWidget>
-                <colspan>30</colspan>
-                <column>19</column>
-                <row>19</row>
-                <rowspan>10</rowspan>
-            </pageWidgets>
-            <pageWidgets>
-                <analyticsDashboardWidget>visualization_3</analyticsDashboardWidget>
-                <colspan>47</colspan>
-                <column>2</column>
-                <row>34</row>
-                <rowspan>13</rowspan>
-            </pageWidgets>
-            <pageWidgets>
-                <analyticsDashboardWidget>metric_15</analyticsDashboardWidget>
-                <colspan>11</colspan>
-                <column>2</column>
-                <row>6</row>
-                <rowspan>7</rowspan>
-            </pageWidgets>
-            <pageWidgets>
-                <analyticsDashboardWidget>metric_2</analyticsDashboardWidget>
-                <colspan>11</colspan>
-                <column>14</column>
-                <row>6</row>
-                <rowspan>3</rowspan>
-            </pageWidgets>
-            <pageWidgets>
-                <analyticsDashboardWidget>metric_5</analyticsDashboardWidget>
-                <colspan>11</colspan>
-                <column>38</column>
-                <row>6</row>
-                <rowspan>3</rowspan>
-            </pageWidgets>
-            <pageWidgets>
-                <analyticsDashboardWidget>metric_4</analyticsDashboardWidget>
-                <colspan>11</colspan>
-                <column>26</column>
-                <row>6</row>
-                <rowspan>3</rowspan>
-            </pageWidgets>
-            <pageWidgets>
-                <analyticsDashboardWidget>text_4</analyticsDashboardWidget>
-                <colspan>30</colspan>
-                <column>19</column>
-                <row>18</row>
-                <rowspan>1</rowspan>
-            </pageWidgets>
-            <pageWidgets>
-                <analyticsDashboardWidget>text_2</analyticsDashboardWidget>
-                <colspan>15</colspan>
-                <column>1</column>
-                <row>1</row>
-                <rowspan>2</rowspan>
-            </pageWidgets>
-            <pageWidgets>
-                <analyticsDashboardWidget>text_1</analyticsDashboardWidget>
-                <colspan>12</colspan>
-                <column>2</column>
-                <row>16</row>
-                <rowspan>2</rowspan>
-            </pageWidgets>
-            <pageWidgets>
-                <analyticsDashboardWidget>text_5</analyticsDashboardWidget>
-                <colspan>41</colspan>
-                <column>2</column>
-                <row>32</row>
-                <rowspan>1</rowspan>
-            </pageWidgets>
-            <pageWidgets>
-                <analyticsDashboardWidget>button_17</analyticsDashboardWidget>
-                <colspan>4</colspan>
-                <column>6</column>
-                <row>4</row>
-                <rowspan>1</rowspan>
-            </pageWidgets>
-            <pageWidgets>
-                <analyticsDashboardWidget>button_1</analyticsDashboardWidget>
-                <colspan>4</colspan>
-                <column>2</column>
-                <row>4</row>
-                <rowspan>1</rowspan>
-            </pageWidgets>
-            <pageWidgets>
-                <analyticsDashboardWidget>button_3</analyticsDashboardWidget>
-                <colspan>4</colspan>
-                <column>10</column>
-                <row>4</row>
-                <rowspan>1</rowspan>
-            </pageWidgets>
-            <pageWidgets>
-                <analyticsDashboardWidget>container_7</analyticsDashboardWidget>
-                <colspan>49</colspan>
-                <column>1</column>
-                <row>3</row>
-                <rowspan>11</rowspan>
-            </pageWidgets>
-            <pageWidgets>
-                <analyticsDashboardWidget>container_8</analyticsDashboardWidget>
-                <colspan>49</colspan>
-                <column>1</column>
-                <row>15</row>
-                <rowspan>15</rowspan>
-            </pageWidgets>
-            <pageWidgets>
-                <analyticsDashboardWidget>container_1</analyticsDashboardWidget>
-                <colspan>49</colspan>
-                <column>1</column>
-                <row>31</row>
-                <rowspan>17</rowspan>
-            </pageWidgets>
-            <pageWidgets>
-                <analyticsDashboardWidget>text_11</analyticsDashboardWidget>
-                <colspan>12</colspan>
-                <column>2</column>
-                <row>33</row>
-                <rowspan>1</rowspan>
-            </pageWidgets>
-        </pages>
-        <pages>
-            <index>1</index>
             <label>Email</label>
             <pageName>93868d38-522b-4a8a-8c0f-9043795cdda2</pageName>
             <pageWidgets>
@@ -237,6 +37,20 @@
                 <colspan>11</colspan>
                 <column>38</column>
                 <row>6</row>
+                <rowspan>3</rowspan>
+            </pageWidgets>
+            <pageWidgets>
+                <analyticsDashboardWidget>metric_Email_Unique_Opens</analyticsDashboardWidget>
+                <colspan>11</colspan>
+                <column>14</column>
+                <row>10</row>
+                <rowspan>3</rowspan>
+            </pageWidgets>
+            <pageWidgets>
+                <analyticsDashboardWidget>metric_Email_Unique_Clicks</analyticsDashboardWidget>
+                <colspan>11</colspan>
+                <column>26</column>
+                <row>10</row>
                 <rowspan>3</rowspan>
             </pageWidgets>
             <pageWidgets>
@@ -367,6 +181,221 @@
             </pageWidgets>
             <pageWidgets>
                 <analyticsDashboardWidget>button_6</analyticsDashboardWidget>
+                <colspan>4</colspan>
+                <column>10</column>
+                <row>4</row>
+                <rowspan>1</rowspan>
+            </pageWidgets>
+            <pageWidgets>
+                <analyticsDashboardWidget>container_7</analyticsDashboardWidget>
+                <colspan>49</colspan>
+                <column>1</column>
+                <row>3</row>
+                <rowspan>11</rowspan>
+            </pageWidgets>
+            <pageWidgets>
+                <analyticsDashboardWidget>container_8</analyticsDashboardWidget>
+                <colspan>49</colspan>
+                <column>1</column>
+                <row>15</row>
+                <rowspan>15</rowspan>
+            </pageWidgets>
+            <pageWidgets>
+                <analyticsDashboardWidget>container_1</analyticsDashboardWidget>
+                <colspan>49</colspan>
+                <column>1</column>
+                <row>31</row>
+                <rowspan>17</rowspan>
+            </pageWidgets>
+            <pageWidgets>
+                <analyticsDashboardWidget>text_11</analyticsDashboardWidget>
+                <colspan>12</colspan>
+                <column>2</column>
+                <row>33</row>
+                <rowspan>1</rowspan>
+            </pageWidgets>
+        </pages>
+        <pages>
+            <index>1</index>
+            <label>Email 2</label>
+            <pageName>ff363d18-1a66-42ce-9199-3f8987cc9d58</pageName>
+            <pageWidgets>
+                <analyticsDashboardWidget>filter_8</analyticsDashboardWidget>
+                <colspan>6</colspan>
+                <column>37</column>
+                <row>1</row>
+                <rowspan>1</rowspan>
+            </pageWidgets>
+            <pageWidgets>
+                <analyticsDashboardWidget>filter_9</analyticsDashboardWidget>
+                <colspan>6</colspan>
+                <column>43</column>
+                <row>4</row>
+                <rowspan>1</rowspan>
+            </pageWidgets>
+            <pageWidgets>
+                <analyticsDashboardWidget>filter_1</analyticsDashboardWidget>
+                <colspan>6</colspan>
+                <column>44</column>
+                <row>1</row>
+                <rowspan>1</rowspan>
+            </pageWidgets>
+            <pageWidgets>
+                <analyticsDashboardWidget>filter_4</analyticsDashboardWidget>
+                <colspan>6</colspan>
+                <column>30</column>
+                <row>1</row>
+                <rowspan>1</rowspan>
+            </pageWidgets>
+            <pageWidgets>
+                <analyticsDashboardWidget>button_24</analyticsDashboardWidget>
+                <colspan>7</colspan>
+                <column>19</column>
+                <row>16</row>
+                <rowspan>1</rowspan>
+            </pageWidgets>
+            <pageWidgets>
+                <analyticsDashboardWidget>button_25</analyticsDashboardWidget>
+                <colspan>7</colspan>
+                <column>26</column>
+                <row>16</row>
+                <rowspan>1</rowspan>
+            </pageWidgets>
+            <pageWidgets>
+                <analyticsDashboardWidget>visualization_7</analyticsDashboardWidget>
+                <colspan>15</colspan>
+                <column>2</column>
+                <row>19</row>
+                <rowspan>10</rowspan>
+            </pageWidgets>
+            <pageWidgets>
+                <analyticsDashboardWidget>text_7</analyticsDashboardWidget>
+                <colspan>12</colspan>
+                <column>2</column>
+                <row>18</row>
+                <rowspan>1</rowspan>
+            </pageWidgets>
+            <pageWidgets>
+                <analyticsDashboardWidget>filter_11</analyticsDashboardWidget>
+                <colspan>6</colspan>
+                <column>43</column>
+                <row>16</row>
+                <rowspan>1</rowspan>
+            </pageWidgets>
+            <pageWidgets>
+                <analyticsDashboardWidget>filter_5</analyticsDashboardWidget>
+                <colspan>6</colspan>
+                <column>37</column>
+                <row>16</row>
+                <rowspan>1</rowspan>
+            </pageWidgets>
+            <pageWidgets>
+                <analyticsDashboardWidget>filter_2</analyticsDashboardWidget>
+                <colspan>6</colspan>
+                <column>43</column>
+                <row>32</row>
+                <rowspan>1</rowspan>
+            </pageWidgets>
+            <pageWidgets>
+                <analyticsDashboardWidget>visualization_2</analyticsDashboardWidget>
+                <colspan>30</colspan>
+                <column>19</column>
+                <row>19</row>
+                <rowspan>10</rowspan>
+            </pageWidgets>
+            <pageWidgets>
+                <analyticsDashboardWidget>visualization_3</analyticsDashboardWidget>
+                <colspan>47</colspan>
+                <column>2</column>
+                <row>34</row>
+                <rowspan>13</rowspan>
+            </pageWidgets>
+            <pageWidgets>
+                <analyticsDashboardWidget>metric_15</analyticsDashboardWidget>
+                <colspan>11</colspan>
+                <column>2</column>
+                <row>6</row>
+                <rowspan>7</rowspan>
+            </pageWidgets>
+            <pageWidgets>
+                <analyticsDashboardWidget>metric_2</analyticsDashboardWidget>
+                <colspan>11</colspan>
+                <column>14</column>
+                <row>6</row>
+                <rowspan>3</rowspan>
+            </pageWidgets>
+            <pageWidgets>
+                <analyticsDashboardWidget>metric_5</analyticsDashboardWidget>
+                <colspan>11</colspan>
+                <column>38</column>
+                <row>6</row>
+                <rowspan>3</rowspan>
+            </pageWidgets>
+            <pageWidgets>
+                <analyticsDashboardWidget>metric_4</analyticsDashboardWidget>
+                <colspan>11</colspan>
+                <column>26</column>
+                <row>6</row>
+                <rowspan>3</rowspan>
+            </pageWidgets>
+            <pageWidgets>
+                <analyticsDashboardWidget>metric_Email_Unique_Opens</analyticsDashboardWidget>
+                <colspan>11</colspan>
+                <column>14</column>
+                <row>10</row>
+                <rowspan>3</rowspan>
+            </pageWidgets>
+            <pageWidgets>
+                <analyticsDashboardWidget>metric_Email_Unique_Clicks</analyticsDashboardWidget>
+                <colspan>11</colspan>
+                <column>26</column>
+                <row>10</row>
+                <rowspan>3</rowspan>
+            </pageWidgets>
+            <pageWidgets>
+                <analyticsDashboardWidget>text_4</analyticsDashboardWidget>
+                <colspan>30</colspan>
+                <column>19</column>
+                <row>18</row>
+                <rowspan>1</rowspan>
+            </pageWidgets>
+            <pageWidgets>
+                <analyticsDashboardWidget>text_2</analyticsDashboardWidget>
+                <colspan>15</colspan>
+                <column>1</column>
+                <row>1</row>
+                <rowspan>2</rowspan>
+            </pageWidgets>
+            <pageWidgets>
+                <analyticsDashboardWidget>text_1</analyticsDashboardWidget>
+                <colspan>12</colspan>
+                <column>2</column>
+                <row>16</row>
+                <rowspan>2</rowspan>
+            </pageWidgets>
+            <pageWidgets>
+                <analyticsDashboardWidget>text_5</analyticsDashboardWidget>
+                <colspan>41</colspan>
+                <column>2</column>
+                <row>32</row>
+                <rowspan>1</rowspan>
+            </pageWidgets>
+            <pageWidgets>
+                <analyticsDashboardWidget>button_17</analyticsDashboardWidget>
+                <colspan>4</colspan>
+                <column>6</column>
+                <row>4</row>
+                <rowspan>1</rowspan>
+            </pageWidgets>
+            <pageWidgets>
+                <analyticsDashboardWidget>button_1</analyticsDashboardWidget>
+                <colspan>4</colspan>
+                <column>2</column>
+                <row>4</row>
+                <rowspan>1</rowspan>
+            </pageWidgets>
+            <pageWidgets>
+                <analyticsDashboardWidget>button_3</analyticsDashboardWidget>
                 <colspan>4</colspan>
                 <column>10</column>
                 <row>4</row>
@@ -1177,13 +1206,283 @@
                 <rowspan>1</rowspan>
             </pageWidgets>
         </pages>
+        <rowHeight>45</rowHeight>
         <style>{&quot;backgroundColor&quot;:&quot;#F3F3F3&quot;,&quot;cellSpacingX&quot;:0,&quot;cellSpacingY&quot;:0}</style>
     </layouts>
     <masterLabel>Campaign Insights Embedded</masterLabel>
     <style>{&quot;widgetStyle&quot;:{&quot;backgroundColor&quot;:&quot;#ffffff&quot;,&quot;borderEdges&quot;:[],&quot;borderColor&quot;:&quot;#000000&quot;,&quot;borderWidth&quot;:1,&quot;borderRadius&quot;:0}}</style>
     <templateAssetSourceName>Campaign_Insights_Embedded</templateAssetSourceName>
-    <templateSource>sfdc_internal__uma</templateSource>
-    <version>66.0</version>
+    <templateSource>sfdc_internal__umi</templateSource>
+    <version>66.08</version>
+    <widgets>
+        <analyticsDashboard>Campaign_Insights_Embedded</analyticsDashboard>
+        <metricWidgetDefs>
+            <parameters>{&quot;metricOption&quot;:{&quot;layout&quot;:{&quot;componentVisibility&quot;:{&quot;comparison&quot;:true,&quot;insights&quot;:false,&quot;details&quot;:false,&quot;title&quot;:true,&quot;value&quot;:true,&quot;chart&quot;:false}},&quot;sdmApiName&quot;:&quot;Marketing_Intelligence_Custom_Semantic_Model_00Da500001AA4BB&quot;},&quot;receiveFilterSource&quot;:{&quot;filterMode&quot;:&quot;include&quot;,&quot;publishers&quot;:[],&quot;widgetIds&quot;:[&quot;filter_8&quot;,&quot;filter_1&quot;,&quot;filter_10&quot;,&quot;filter_3&quot;,&quot;filter_7&quot;,&quot;visualization_2&quot;,&quot;visualization_1&quot;,&quot;visualization_4&quot;,&quot;list_1&quot;,&quot;viz_Activity_Trends_Over_Time&quot;,&quot;viz_Activity_Trends_Over_Day&quot;,&quot;viz_Email_Details_Aggregated_Insights&quot;]},&quot;widgetStyle&quot;:{&quot;borderColor&quot;:&quot;#E5E5E5&quot;,&quot;borderEdges&quot;:[&quot;all&quot;],&quot;borderRadius&quot;:20}}</parameters>
+            <source>Email_Unique_Clicks_mtc</source>
+        </metricWidgetDefs>
+        <type>metric</type>
+        <widgetName>metric_Email_Unique_Clicks</widgetName>
+    </widgets>
+    <widgets>
+        <analyticsDashboard>Campaign_Insights_Embedded</analyticsDashboard>
+        <metricWidgetDefs>
+            <parameters>{&quot;metricOption&quot;:{&quot;layout&quot;:{&quot;componentVisibility&quot;:{&quot;comparison&quot;:true,&quot;insights&quot;:false,&quot;details&quot;:false,&quot;title&quot;:true,&quot;value&quot;:true,&quot;chart&quot;:false}},&quot;sdmApiName&quot;:&quot;Marketing_Intelligence_Custom_Semantic_Model_00Da500001AA4BB&quot;},&quot;receiveFilterSource&quot;:{&quot;filterMode&quot;:&quot;include&quot;,&quot;publishers&quot;:[],&quot;widgetIds&quot;:[&quot;filter_8&quot;,&quot;filter_3&quot;,&quot;filter_10&quot;,&quot;filter_1&quot;,&quot;filter_7&quot;,&quot;visualization_2&quot;,&quot;visualization_1&quot;,&quot;visualization_4&quot;,&quot;list_1&quot;,&quot;viz_Activity_Trends_Over_Time&quot;,&quot;viz_Activity_Trends_Over_Day&quot;,&quot;viz_Email_Details_Aggregated_Insights&quot;]},&quot;widgetStyle&quot;:{&quot;borderColor&quot;:&quot;#E5E5E5&quot;,&quot;borderEdges&quot;:[&quot;all&quot;],&quot;borderRadius&quot;:20}}</parameters>
+            <source>Email_Unique_Opens_mtc</source>
+        </metricWidgetDefs>
+        <type>metric</type>
+        <widgetName>metric_Email_Unique_Opens</widgetName>
+    </widgets>
+    <widgets>
+        <analyticsDashboard>Campaign_Insights_Embedded</analyticsDashboard>
+        <textWidgetDefs>
+            <parameters>{&quot;content&quot;:[{&quot;attributes&quot;:{&quot;color&quot;:&quot;#000000&quot;,&quot;size&quot;:&quot;24px&quot;},&quot;insert&quot;:&quot;In App Activity&quot;},{&quot;attributes&quot;:{&quot;align&quot;:&quot;center&quot;},&quot;insert&quot;:&quot;\n&quot;}],&quot;receiveFilterSource&quot;:{&quot;filterMode&quot;:&quot;all&quot;,&quot;widgetIds&quot;:[]}}</parameters>
+        </textWidgetDefs>
+        <type>text</type>
+        <widgetName>text_10</widgetName>
+    </widgets>
+    <widgets>
+        <analyticsDashboard>Campaign_Insights_Embedded</analyticsDashboard>
+        <textWidgetDefs>
+            <parameters>{&quot;content&quot;:[{&quot;attributes&quot;:{&quot;color&quot;:&quot;#000000&quot;,&quot;size&quot;:&quot;18px&quot;},&quot;insert&quot;:&quot;Content Types&quot;},{&quot;insert&quot;:&quot;\n&quot;}],&quot;receiveFilterSource&quot;:{&quot;filterMode&quot;:&quot;all&quot;,&quot;widgetIds&quot;:[]}}</parameters>
+        </textWidgetDefs>
+        <type>text</type>
+        <widgetName>text_3</widgetName>
+    </widgets>
+    <widgets>
+        <analyticsDashboard>Campaign_Insights_Embedded</analyticsDashboard>
+        <textWidgetDefs>
+            <parameters>{&quot;content&quot;:[{&quot;attributes&quot;:{&quot;color&quot;:&quot;#042339&quot;,&quot;size&quot;:&quot;32px&quot;},&quot;insert&quot;:&quot;Campaign Performance&quot;},{&quot;attributes&quot;:{&quot;align&quot;:&quot;left&quot;},&quot;insert&quot;:&quot;\n&quot;}],&quot;widgetStyle&quot;:{&quot;backgroundColor&quot;:&quot;#F3F3F3&quot;,&quot;borderEdges&quot;:[],&quot;borderColor&quot;:&quot;#F1F1F1&quot;,&quot;borderWidth&quot;:4},&quot;receiveFilterSource&quot;:{&quot;filterMode&quot;:&quot;all&quot;,&quot;widgetIds&quot;:[]}}</parameters>
+        </textWidgetDefs>
+        <type>text</type>
+        <widgetName>text_2</widgetName>
+    </widgets>
+    <widgets>
+        <analyticsDashboard>Campaign_Insights_Embedded</analyticsDashboard>
+        <textWidgetDefs>
+            <parameters>{&quot;content&quot;:[{&quot;attributes&quot;:{&quot;color&quot;:&quot;#03234D&quot;,&quot;size&quot;:&quot;20px&quot;},&quot;insert&quot;:&quot;All Activity&quot;},{&quot;attributes&quot;:{&quot;align&quot;:&quot;left&quot;},&quot;insert&quot;:&quot;\n&quot;}],&quot;receiveFilterSource&quot;:{&quot;filterMode&quot;:&quot;all&quot;,&quot;widgetIds&quot;:[]}}</parameters>
+        </textWidgetDefs>
+        <type>text</type>
+        <widgetName>text_5</widgetName>
+    </widgets>
+    <widgets>
+        <analyticsDashboard>Campaign_Insights_Embedded</analyticsDashboard>
+        <textWidgetDefs>
+            <parameters>{&quot;content&quot;:[{&quot;attributes&quot;:{&quot;color&quot;:&quot;#03234D&quot;,&quot;size&quot;:&quot;20px&quot;},&quot;insert&quot;:&quot;Activity over Time&quot;},{&quot;attributes&quot;:{&quot;align&quot;:&quot;left&quot;},&quot;insert&quot;:&quot;\n&quot;}],&quot;receiveFilterSource&quot;:{&quot;filterMode&quot;:&quot;all&quot;,&quot;widgetIds&quot;:[]}}</parameters>
+        </textWidgetDefs>
+        <type>text</type>
+        <widgetName>text_4</widgetName>
+    </widgets>
+    <widgets>
+        <analyticsDashboard>Campaign_Insights_Embedded</analyticsDashboard>
+        <textWidgetDefs>
+            <parameters>{&quot;content&quot;:[{&quot;attributes&quot;:{&quot;color&quot;:&quot;#03234D&quot;,&quot;size&quot;:&quot;20px&quot;},&quot;insert&quot;:&quot;Activity Types&quot;},{&quot;attributes&quot;:{&quot;align&quot;:&quot;left&quot;},&quot;insert&quot;:&quot;\n&quot;}],&quot;receiveFilterSource&quot;:{&quot;filterMode&quot;:&quot;all&quot;,&quot;widgetIds&quot;:[]}}</parameters>
+        </textWidgetDefs>
+        <type>text</type>
+        <widgetName>text_7</widgetName>
+    </widgets>
+    <widgets>
+        <analyticsDashboard>Campaign_Insights_Embedded</analyticsDashboard>
+        <textWidgetDefs>
+            <parameters>{&quot;content&quot;:[{&quot;attributes&quot;:{&quot;color&quot;:&quot;#000000&quot;,&quot;size&quot;:&quot;24px&quot;},&quot;insert&quot;:&quot;In App Content&quot;},{&quot;attributes&quot;:{&quot;align&quot;:&quot;center&quot;},&quot;insert&quot;:&quot;\n&quot;}],&quot;receiveFilterSource&quot;:{&quot;filterMode&quot;:&quot;all&quot;,&quot;widgetIds&quot;:[]}}</parameters>
+        </textWidgetDefs>
+        <type>text</type>
+        <widgetName>text_9</widgetName>
+    </widgets>
+    <widgets>
+        <analyticsDashboard>Campaign_Insights_Embedded</analyticsDashboard>
+        <buttonWidgetDefs>
+            <parameters>{&quot;text&quot;:&quot;By Content Type&quot;,&quot;alignmentX&quot;:&quot;center&quot;,&quot;alignmentY&quot;:&quot;center&quot;,&quot;fontSize&quot;:16,&quot;widgetStyle&quot;:{&quot;backgroundColor&quot;:&quot;#FFFFFF&quot;,&quot;borderEdges&quot;:[&quot;all&quot;],&quot;borderRadius&quot;:0,&quot;textStyle&quot;:[]}}</parameters>
+        </buttonWidgetDefs>
+        <type>button</type>
+        <widgetActions>
+            <actionType>navigate</actionType>
+            <eventType>click</eventType>
+            <parameters>{&quot;destination&quot;:{&quot;type&quot;:&quot;page&quot;,&quot;target&quot;:&quot;83ad163a-07d1-49af-ad18-a4d8cc4c8f76&quot;}}</parameters>
+            <version>66.0</version>
+        </widgetActions>
+        <widgetName>button_36</widgetName>
+    </widgets>
+    <widgets>
+        <analyticsDashboard>Campaign_Insights_Embedded</analyticsDashboard>
+        <textWidgetDefs>
+            <parameters>{&quot;content&quot;:[{&quot;attributes&quot;:{&quot;color&quot;:&quot;#03234D&quot;,&quot;size&quot;:&quot;20px&quot;},&quot;insert&quot;:&quot;Performance Overview&quot;},{&quot;attributes&quot;:{&quot;align&quot;:&quot;left&quot;},&quot;insert&quot;:&quot;\n&quot;}],&quot;receiveFilterSource&quot;:{&quot;filterMode&quot;:&quot;all&quot;,&quot;widgetIds&quot;:[]}}</parameters>
+        </textWidgetDefs>
+        <type>text</type>
+        <widgetName>text_1</widgetName>
+    </widgets>
+    <widgets>
+        <analyticsDashboard>Campaign_Insights_Embedded</analyticsDashboard>
+        <filterWidgetDefs>
+            <initialValues>null</initialValues>
+            <parameters>{&quot;viewType&quot;:&quot;list&quot;,&quot;receiveFilterSource&quot;:{&quot;filterMode&quot;:&quot;exclude&quot;,&quot;widgetIds&quot;:[&quot;filter_11&quot;,&quot;filter_5&quot;,&quot;filter_9&quot;,&quot;list_1&quot;,&quot;list_2&quot;]},&quot;filterOption&quot;:{&quot;fieldName&quot;:&quot;Activity_Type_clc&quot;,&quot;dataType&quot;:&quot;Text&quot;,&quot;selectionType&quot;:&quot;multiple&quot;},&quot;isLabelHidden&quot;:false}</parameters>
+            <source>Marketing_Intelligence_Custom_Semantic_Model_00Da500001AA4BB</source>
+        </filterWidgetDefs>
+        <label>Activity Type</label>
+        <type>filter</type>
+        <widgetName>filter_2</widgetName>
+    </widgets>
+    <widgets>
+        <analyticsDashboard>Campaign_Insights_Embedded</analyticsDashboard>
+        <filterWidgetDefs>
+            <initialValues>null</initialValues>
+            <parameters>{&quot;viewType&quot;:&quot;list&quot;,&quot;widgetStyle&quot;:{&quot;backgroundColor&quot;:&quot;#F3F3F3&quot;,&quot;borderEdges&quot;:[]},&quot;receiveFilterSource&quot;:{&quot;filterMode&quot;:&quot;all&quot;,&quot;widgetIds&quot;:[]},&quot;filterOption&quot;:{&quot;objectName&quot;:&quot;Market_Segment&quot;,&quot;fieldName&quot;:&quot;Market_Segment_Name&quot;,&quot;dataType&quot;:&quot;Text&quot;,&quot;selectionType&quot;:&quot;multiple&quot;},&quot;isLabelHidden&quot;:false}</parameters>
+            <source>Marketing_Intelligence_Custom_Semantic_Model_00Da500001AA4BB</source>
+        </filterWidgetDefs>
+        <label>Segments</label>
+        <type>filter</type>
+        <widgetName>filter_1</widgetName>
+    </widgets>
+    <widgets>
+        <analyticsDashboard>Campaign_Insights_Embedded</analyticsDashboard>
+        <filterWidgetDefs>
+            <initialValues>null</initialValues>
+            <parameters>{&quot;viewType&quot;:&quot;list&quot;,&quot;widgetStyle&quot;:{&quot;backgroundColor&quot;:&quot;#FFFFFF&quot;,&quot;borderEdges&quot;:[]},&quot;receiveFilterSource&quot;:{&quot;filterMode&quot;:&quot;exclude&quot;,&quot;widgetIds&quot;:[&quot;filter_9&quot;,&quot;filter_2&quot;,&quot;list_1&quot;,&quot;list_2&quot;]},&quot;filterOption&quot;:{&quot;fieldName&quot;:&quot;Content_Type_clc&quot;,&quot;dataType&quot;:&quot;Text&quot;,&quot;selectionType&quot;:&quot;multiple&quot;},&quot;isLabelHidden&quot;:false}</parameters>
+            <source>Marketing_Intelligence_Custom_Semantic_Model_00Da500001AA4BB</source>
+        </filterWidgetDefs>
+        <label>Content Type</label>
+        <type>filter</type>
+        <widgetName>filter_5</widgetName>
+    </widgets>
+    <widgets>
+        <analyticsDashboard>Campaign_Insights_Embedded</analyticsDashboard>
+        <filterWidgetDefs>
+            <initialValues>null</initialValues>
+            <parameters>{&quot;viewType&quot;:&quot;list&quot;,&quot;widgetStyle&quot;:{&quot;backgroundColor&quot;:&quot;#F3F3F3&quot;,&quot;borderEdges&quot;:[]},&quot;receiveFilterSource&quot;:{&quot;filterMode&quot;:&quot;all&quot;,&quot;widgetIds&quot;:[]},&quot;filterOption&quot;:{&quot;fieldName&quot;:&quot;Engagement_Date_Time_clc&quot;,&quot;dataType&quot;:&quot;DateTime&quot;,&quot;selectionType&quot;:&quot;multiple&quot;},&quot;isLabelHidden&quot;:false}</parameters>
+            <source>Marketing_Intelligence_Custom_Semantic_Model_00Da500001AA4BB</source>
+        </filterWidgetDefs>
+        <label>Date Range</label>
+        <type>filter</type>
+        <widgetName>filter_4</widgetName>
+    </widgets>
+    <widgets>
+        <analyticsDashboard>Campaign_Insights_Embedded</analyticsDashboard>
+        <filterWidgetDefs>
+            <initialValues>null</initialValues>
+            <parameters>{&quot;viewType&quot;:&quot;list&quot;,&quot;widgetStyle&quot;:{&quot;backgroundColor&quot;:&quot;#FFFFFF&quot;,&quot;borderEdges&quot;:[]},&quot;receiveFilterSource&quot;:{&quot;filterMode&quot;:&quot;exclude&quot;,&quot;widgetIds&quot;:[&quot;filter_9&quot;,&quot;filter_2&quot;,&quot;list_1&quot;,&quot;list_2&quot;]},&quot;filterOption&quot;:{&quot;fieldName&quot;:&quot;Activity_Type_clc&quot;,&quot;dataType&quot;:&quot;Text&quot;,&quot;selectionType&quot;:&quot;multiple&quot;},&quot;isLabelHidden&quot;:false}</parameters>
+            <source>Marketing_Intelligence_Custom_Semantic_Model_00Da500001AA4BB</source>
+        </filterWidgetDefs>
+        <label>Activity Type</label>
+        <type>filter</type>
+        <widgetName>filter_11</widgetName>
+    </widgets>
+    <widgets>
+        <analyticsDashboard>Campaign_Insights_Embedded</analyticsDashboard>
+        <filterWidgetDefs>
+            <initialValues>null</initialValues>
+            <parameters>{&quot;viewType&quot;:&quot;list&quot;,&quot;widgetStyle&quot;:{&quot;backgroundColor&quot;:&quot;#FFFFFF&quot;,&quot;borderEdges&quot;:[]},&quot;receiveFilterSource&quot;:{&quot;filterMode&quot;:&quot;exclude&quot;,&quot;widgetIds&quot;:[&quot;filter_2&quot;,&quot;filter_5&quot;,&quot;filter_11&quot;]},&quot;filterOption&quot;:{&quot;objectName&quot;:&quot;Digital_Content&quot;,&quot;fieldName&quot;:&quot;Digital_Content_Name&quot;,&quot;dataType&quot;:&quot;Text&quot;,&quot;selectionType&quot;:&quot;multiple&quot;},&quot;isLabelHidden&quot;:false}</parameters>
+            <source>Marketing_Intelligence_Custom_Semantic_Model_00Da500001AA4BB</source>
+        </filterWidgetDefs>
+        <label>Content</label>
+        <type>filter</type>
+        <widgetName>filter_9</widgetName>
+    </widgets>
+    <widgets>
+        <analyticsDashboard>Campaign_Insights_Embedded</analyticsDashboard>
+        <filterWidgetDefs>
+            <initialValues>null</initialValues>
+            <parameters>{&quot;viewType&quot;:&quot;list&quot;,&quot;widgetStyle&quot;:{&quot;backgroundColor&quot;:&quot;#F3F3F3&quot;,&quot;borderEdges&quot;:[]},&quot;receiveFilterSource&quot;:{&quot;filterMode&quot;:&quot;all&quot;,&quot;widgetIds&quot;:[]},&quot;filterOption&quot;:{&quot;objectName&quot;:&quot;Flow&quot;,&quot;fieldName&quot;:&quot;Flow_Name&quot;,&quot;dataType&quot;:&quot;Text&quot;,&quot;selectionType&quot;:&quot;multiple&quot;},&quot;isLabelHidden&quot;:false}</parameters>
+            <source>Marketing_Intelligence_Custom_Semantic_Model_00Da500001AA4BB</source>
+        </filterWidgetDefs>
+        <label>Flows</label>
+        <type>filter</type>
+        <widgetName>filter_8</widgetName>
+    </widgets>
+    <widgets>
+        <analyticsDashboard>Campaign_Insights_Embedded</analyticsDashboard>
+        <buttonWidgetDefs>
+            <parameters>{&quot;text&quot;:&quot;By Activity Type&quot;,&quot;alignmentX&quot;:&quot;center&quot;,&quot;alignmentY&quot;:&quot;center&quot;,&quot;fontSize&quot;:16,&quot;widgetStyle&quot;:{&quot;backgroundColor&quot;:&quot;#FFFFFF&quot;,&quot;borderEdges&quot;:[&quot;all&quot;],&quot;borderRadius&quot;:0,&quot;textStyle&quot;:[]}}</parameters>
+        </buttonWidgetDefs>
+        <type>button</type>
+        <widgetActions>
+            <actionType>navigate</actionType>
+            <eventType>click</eventType>
+            <parameters>{&quot;destination&quot;:{&quot;type&quot;:&quot;page&quot;,&quot;target&quot;:&quot;c6e994a4-d753-4423-9707-1b1eed1e528e&quot;}}</parameters>
+            <version>66.0</version>
+        </widgetActions>
+        <widgetName>button_31</widgetName>
+    </widgets>
+    <widgets>
+        <analyticsDashboard>Campaign_Insights_Embedded</analyticsDashboard>
+        <buttonWidgetDefs>
+            <parameters>{&quot;text&quot;:&quot;By Content Type&quot;,&quot;alignmentX&quot;:&quot;center&quot;,&quot;alignmentY&quot;:&quot;center&quot;,&quot;fontSize&quot;:16,&quot;widgetStyle&quot;:{&quot;backgroundColor&quot;:&quot;#FFFFFF&quot;,&quot;borderEdges&quot;:[&quot;all&quot;],&quot;borderRadius&quot;:0,&quot;textStyle&quot;:[]}}</parameters>
+        </buttonWidgetDefs>
+        <type>button</type>
+        <widgetActions>
+            <actionType>navigate</actionType>
+            <eventType>click</eventType>
+            <parameters>{&quot;destination&quot;:{&quot;type&quot;:&quot;page&quot;,&quot;target&quot;:&quot;e8fc90e7-50b5-4da5-b5ff-c0e7dff61d25&quot;}}</parameters>
+            <version>66.0</version>
+        </widgetActions>
+        <widgetName>button_32</widgetName>
+    </widgets>
+    <widgets>
+        <analyticsDashboard>Campaign_Insights_Embedded</analyticsDashboard>
+        <buttonWidgetDefs>
+            <parameters>{&quot;text&quot;:&quot;By Activity Type&quot;,&quot;alignmentX&quot;:&quot;center&quot;,&quot;alignmentY&quot;:&quot;center&quot;,&quot;fontSize&quot;:16,&quot;widgetStyle&quot;:{&quot;backgroundColor&quot;:&quot;#FFFFFF&quot;,&quot;borderEdges&quot;:[&quot;all&quot;],&quot;borderRadius&quot;:0,&quot;textStyle&quot;:[]}}</parameters>
+        </buttonWidgetDefs>
+        <type>button</type>
+        <widgetActions>
+            <actionType>navigate</actionType>
+            <eventType>click</eventType>
+            <parameters>{&quot;destination&quot;:{&quot;type&quot;:&quot;page&quot;,&quot;target&quot;:&quot;6fb4c639-d2a8-43c4-a8b4-28f6ab9ce953&quot;}}</parameters>
+            <version>66.0</version>
+        </widgetActions>
+        <widgetName>button_35</widgetName>
+    </widgets>
+    <widgets>
+        <analyticsDashboard>Campaign_Insights_Embedded</analyticsDashboard>
+        <metricWidgetDefs>
+            <parameters>{&quot;metricOption&quot;:{&quot;layout&quot;:{&quot;componentVisibility&quot;:{&quot;comparison&quot;:true,&quot;insights&quot;:false,&quot;details&quot;:false,&quot;title&quot;:true,&quot;value&quot;:true,&quot;chart&quot;:false}},&quot;sdmApiName&quot;:&quot;Marketing_Intelligence_Custom_Semantic_Model_00Da500001AA4BB&quot;},&quot;receiveFilterSource&quot;:{&quot;filterMode&quot;:&quot;include&quot;,&quot;publishers&quot;:[],&quot;widgetIds&quot;:[&quot;filter_1&quot;,&quot;filter_4&quot;,&quot;filter_9&quot;,&quot;filter_8&quot;]},&quot;widgetStyle&quot;:{&quot;borderColor&quot;:&quot;#E5E5E5&quot;,&quot;borderEdges&quot;:[&quot;all&quot;],&quot;borderRadius&quot;:20}}</parameters>
+            <source>SMS_Unique_Clicks_mtc</source>
+        </metricWidgetDefs>
+        <type>metric</type>
+        <widgetName>metric_9</widgetName>
+    </widgets>
+    <widgets>
+        <analyticsDashboard>Campaign_Insights_Embedded</analyticsDashboard>
+        <metricWidgetDefs>
+            <parameters>{&quot;metricOption&quot;:{&quot;layout&quot;:{&quot;componentVisibility&quot;:{&quot;comparison&quot;:true,&quot;insights&quot;:false,&quot;details&quot;:false,&quot;title&quot;:true,&quot;value&quot;:true,&quot;chart&quot;:false}},&quot;sdmApiName&quot;:&quot;Marketing_Intelligence_Custom_Semantic_Model_00Da500001AA4BB&quot;},&quot;receiveFilterSource&quot;:{&quot;filterMode&quot;:&quot;include&quot;,&quot;publishers&quot;:[],&quot;widgetIds&quot;:[&quot;filter_1&quot;,&quot;filter_4&quot;,&quot;filter_9&quot;,&quot;filter_8&quot;]},&quot;widgetStyle&quot;:{&quot;borderColor&quot;:&quot;#E5E5E5&quot;,&quot;borderEdges&quot;:[&quot;all&quot;],&quot;borderRadius&quot;:20}}</parameters>
+            <source>SMS_Sends_mtc</source>
+        </metricWidgetDefs>
+        <type>metric</type>
+        <widgetName>metric_8</widgetName>
+    </widgets>
+    <widgets>
+        <analyticsDashboard>Campaign_Insights_Embedded</analyticsDashboard>
+        <metricWidgetDefs>
+            <parameters>{&quot;metricOption&quot;:{&quot;layout&quot;:{&quot;componentVisibility&quot;:{&quot;comparison&quot;:true,&quot;insights&quot;:false,&quot;details&quot;:false,&quot;title&quot;:true,&quot;value&quot;:true,&quot;chart&quot;:false}},&quot;sdmApiName&quot;:&quot;Marketing_Intelligence_Custom_Semantic_Model_00Da500001AA4BB&quot;},&quot;receiveFilterSource&quot;:{&quot;filterMode&quot;:&quot;include&quot;,&quot;publishers&quot;:[],&quot;widgetIds&quot;:[&quot;filter_1&quot;,&quot;filter_4&quot;,&quot;filter_9&quot;,&quot;filter_8&quot;]},&quot;widgetStyle&quot;:{&quot;borderColor&quot;:&quot;#E5E5E5&quot;,&quot;borderEdges&quot;:[&quot;all&quot;],&quot;borderRadius&quot;:20}}</parameters>
+            <source>Email_Click_Rate_mtc</source>
+        </metricWidgetDefs>
+        <type>metric</type>
+        <widgetName>metric_5</widgetName>
+    </widgets>
+    <widgets>
+        <analyticsDashboard>Campaign_Insights_Embedded</analyticsDashboard>
+        <metricWidgetDefs>
+            <parameters>{&quot;metricOption&quot;:{&quot;layout&quot;:{&quot;componentVisibility&quot;:{&quot;comparison&quot;:true,&quot;insights&quot;:false,&quot;details&quot;:false,&quot;title&quot;:true,&quot;value&quot;:true,&quot;chart&quot;:false}},&quot;sdmApiName&quot;:&quot;Marketing_Intelligence_Custom_Semantic_Model_00Da500001AA4BB&quot;},&quot;receiveFilterSource&quot;:{&quot;filterMode&quot;:&quot;include&quot;,&quot;publishers&quot;:[],&quot;widgetIds&quot;:[&quot;filter_1&quot;,&quot;filter_4&quot;,&quot;filter_9&quot;,&quot;filter_8&quot;]},&quot;widgetStyle&quot;:{&quot;borderColor&quot;:&quot;#E5E5E5&quot;,&quot;borderEdges&quot;:[&quot;all&quot;],&quot;borderRadius&quot;:20}}</parameters>
+            <source>Email_Open_Rate_mtc</source>
+        </metricWidgetDefs>
+        <type>metric</type>
+        <widgetName>metric_4</widgetName>
+    </widgets>
+    <widgets>
+        <analyticsDashboard>Campaign_Insights_Embedded</analyticsDashboard>
+        <metricWidgetDefs>
+            <parameters>{&quot;metricOption&quot;:{&quot;layout&quot;:{&quot;componentVisibility&quot;:{&quot;comparison&quot;:true,&quot;insights&quot;:false,&quot;details&quot;:false,&quot;title&quot;:true,&quot;value&quot;:true,&quot;chart&quot;:false}},&quot;sdmApiName&quot;:&quot;Marketing_Intelligence_Custom_Semantic_Model_00Da500001AA4BB&quot;},&quot;receiveFilterSource&quot;:{&quot;filterMode&quot;:&quot;include&quot;,&quot;publishers&quot;:[],&quot;widgetIds&quot;:[&quot;filter_1&quot;,&quot;filter_4&quot;,&quot;filter_9&quot;,&quot;filter_8&quot;]},&quot;widgetStyle&quot;:{&quot;borderColor&quot;:&quot;#E5E5E5&quot;,&quot;borderEdges&quot;:[&quot;all&quot;],&quot;borderRadius&quot;:20}}</parameters>
+            <source>Email_Sends_mtc</source>
+        </metricWidgetDefs>
+        <type>metric</type>
+        <widgetName>metric_2</widgetName>
+    </widgets>
+    <widgets>
+        <analyticsDashboard>Campaign_Insights_Embedded</analyticsDashboard>
+        <metricWidgetDefs>
+            <parameters>{&quot;metricOption&quot;:{&quot;layout&quot;:{&quot;componentVisibility&quot;:{&quot;comparison&quot;:true,&quot;insights&quot;:false,&quot;details&quot;:false,&quot;title&quot;:true,&quot;value&quot;:true,&quot;chart&quot;:true}},&quot;sdmApiName&quot;:&quot;Marketing_Intelligence_Custom_Semantic_Model_00Da500001AA4BB&quot;},&quot;receiveFilterSource&quot;:{&quot;filterMode&quot;:&quot;include&quot;,&quot;publishers&quot;:[],&quot;widgetIds&quot;:[&quot;filter_1&quot;,&quot;filter_4&quot;,&quot;filter_9&quot;,&quot;filter_8&quot;]},&quot;widgetStyle&quot;:{&quot;borderColor&quot;:&quot;#E5E5E5&quot;,&quot;borderEdges&quot;:[&quot;all&quot;],&quot;borderRadius&quot;:20}}</parameters>
+            <source>SMS_Click_Rate_mtc</source>
+        </metricWidgetDefs>
+        <type>metric</type>
+        <widgetName>metric_1</widgetName>
+    </widgets>
     <widgets>
         <analyticsDashboard>Campaign_Insights_Embedded</analyticsDashboard>
         <type>visualization</type>
@@ -1216,7 +1515,7 @@
         <type>visualization</type>
         <vizWidgetDefs>
             <analyticsVisualization>Viz_CIDetail</analyticsVisualization>
-            <parameters>{&quot;receiveFilterSource&quot;:{&quot;filterMode&quot;:&quot;include&quot;,&quot;widgetIds&quot;:[&quot;filter_4&quot;,&quot;filter_8&quot;,&quot;filter_1&quot;,&quot;filter_2&quot;]}}</parameters>
+            <parameters>{&quot;legendPosition&quot;:&quot;Right&quot;,&quot;receiveFilterSource&quot;:{&quot;filterMode&quot;:&quot;include&quot;,&quot;widgetIds&quot;:[&quot;filter_4&quot;,&quot;filter_8&quot;,&quot;filter_1&quot;,&quot;filter_2&quot;]}}</parameters>
         </vizWidgetDefs>
         <widgetName>visualization_3</widgetName>
     </widgets>
@@ -1236,50 +1535,6 @@
         </buttonWidgetDefs>
         <type>button</type>
         <widgetName>button_1</widgetName>
-    </widgets>
-    <widgets>
-        <analyticsDashboard>Campaign_Insights_Embedded</analyticsDashboard>
-        <buttonWidgetDefs>
-            <parameters>{&quot;text&quot;:&quot;By Activity Type&quot;,&quot;alignmentX&quot;:&quot;center&quot;,&quot;alignmentY&quot;:&quot;center&quot;,&quot;fontSize&quot;:16,&quot;widgetStyle&quot;:{&quot;backgroundColor&quot;:&quot;#ffffff&quot;,&quot;borderEdges&quot;:[&quot;all&quot;],&quot;borderColor&quot;:&quot;#747474&quot;,&quot;borderWidth&quot;:1,&quot;borderRadius&quot;:0,&quot;fontColor&quot;:&quot;#0176D3&quot;,&quot;textStyle&quot;:[]}}</parameters>
-        </buttonWidgetDefs>
-        <type>button</type>
-        <widgetActions>
-            <actionType>navigate</actionType>
-            <eventType>click</eventType>
-            <parameters>{&quot;destination&quot;:{&quot;type&quot;:&quot;page&quot;,&quot;target&quot;:&quot;b14275e4-70db-4011-a80f-c639bd5e223c&quot;}}</parameters>
-            <version>66.0</version>
-        </widgetActions>
-        <widgetName>button_26</widgetName>
-    </widgets>
-    <widgets>
-        <analyticsDashboard>Campaign_Insights_Embedded</analyticsDashboard>
-        <buttonWidgetDefs>
-            <parameters>{&quot;text&quot;:&quot;By Content Type&quot;,&quot;alignmentX&quot;:&quot;center&quot;,&quot;alignmentY&quot;:&quot;center&quot;,&quot;fontSize&quot;:16,&quot;widgetStyle&quot;:{&quot;backgroundColor&quot;:&quot;#ffffff&quot;,&quot;borderEdges&quot;:[&quot;all&quot;],&quot;borderColor&quot;:&quot;#747474&quot;,&quot;borderWidth&quot;:1,&quot;borderRadius&quot;:0,&quot;fontColor&quot;:&quot;#0176D3&quot;,&quot;textStyle&quot;:[]}}</parameters>
-        </buttonWidgetDefs>
-        <type>button</type>
-        <widgetActions>
-            <actionType>navigate</actionType>
-            <eventType>click</eventType>
-            <parameters>{&quot;destination&quot;:{&quot;type&quot;:&quot;page&quot;,&quot;target&quot;:&quot;cb9b1c2c-5d81-4c51-8734-454b36811830&quot;}}</parameters>
-            <version>66.0</version>
-        </widgetActions>
-        <widgetName>button_29</widgetName>
-    </widgets>
-    <widgets>
-        <analyticsDashboard>Campaign_Insights_Embedded</analyticsDashboard>
-        <textWidgetDefs>
-            <parameters>{&quot;content&quot;:[{&quot;attributes&quot;:{&quot;color&quot;:&quot;#000000&quot;,&quot;size&quot;:&quot;24px&quot;},&quot;insert&quot;:&quot;In App Content&quot;},{&quot;attributes&quot;:{&quot;align&quot;:&quot;center&quot;},&quot;insert&quot;:&quot;\n&quot;}],&quot;receiveFilterSource&quot;:{&quot;filterMode&quot;:&quot;all&quot;,&quot;widgetIds&quot;:[]}}</parameters>
-        </textWidgetDefs>
-        <type>text</type>
-        <widgetName>text_9</widgetName>
-    </widgets>
-    <widgets>
-        <analyticsDashboard>Campaign_Insights_Embedded</analyticsDashboard>
-        <textWidgetDefs>
-            <parameters>{&quot;content&quot;:[{&quot;attributes&quot;:{&quot;color&quot;:&quot;#000000&quot;,&quot;size&quot;:&quot;24px&quot;},&quot;insert&quot;:&quot;In App Activity&quot;},{&quot;attributes&quot;:{&quot;align&quot;:&quot;center&quot;},&quot;insert&quot;:&quot;\n&quot;}],&quot;receiveFilterSource&quot;:{&quot;filterMode&quot;:&quot;all&quot;,&quot;widgetIds&quot;:[]}}</parameters>
-        </textWidgetDefs>
-        <type>text</type>
-        <widgetName>text_10</widgetName>
     </widgets>
     <widgets>
         <analyticsDashboard>Campaign_Insights_Embedded</analyticsDashboard>
@@ -1319,14 +1574,6 @@
     </widgets>
     <widgets>
         <analyticsDashboard>Campaign_Insights_Embedded</analyticsDashboard>
-        <textWidgetDefs>
-            <parameters>{&quot;content&quot;:[{&quot;attributes&quot;:{&quot;color&quot;:&quot;#000000&quot;,&quot;size&quot;:&quot;18px&quot;},&quot;insert&quot;:&quot;Content Types&quot;},{&quot;insert&quot;:&quot;\n&quot;}]}</parameters>
-        </textWidgetDefs>
-        <type>text</type>
-        <widgetName>text_3</widgetName>
-    </widgets>
-    <widgets>
-        <analyticsDashboard>Campaign_Insights_Embedded</analyticsDashboard>
         <containerWidgetDefs>
             <parameters>{&quot;widgetStyle&quot;:{&quot;borderEdges&quot;:[],&quot;borderRadius&quot;:20}}</parameters>
         </containerWidgetDefs>
@@ -1343,35 +1590,11 @@
     </widgets>
     <widgets>
         <analyticsDashboard>Campaign_Insights_Embedded</analyticsDashboard>
-        <textWidgetDefs>
-            <parameters>{&quot;content&quot;:[{&quot;attributes&quot;:{&quot;color&quot;:&quot;#042339&quot;,&quot;size&quot;:&quot;32px&quot;},&quot;insert&quot;:&quot;Campaign Performance&quot;},{&quot;attributes&quot;:{&quot;align&quot;:&quot;left&quot;},&quot;insert&quot;:&quot;\n&quot;}],&quot;widgetStyle&quot;:{&quot;backgroundColor&quot;:&quot;#F3F3F3&quot;,&quot;borderEdges&quot;:[],&quot;borderColor&quot;:&quot;#F1F1F1&quot;,&quot;borderWidth&quot;:4}}</parameters>
-        </textWidgetDefs>
-        <type>text</type>
-        <widgetName>text_2</widgetName>
-    </widgets>
-    <widgets>
-        <analyticsDashboard>Campaign_Insights_Embedded</analyticsDashboard>
         <containerWidgetDefs>
             <parameters>{&quot;widgetStyle&quot;:{&quot;borderEdges&quot;:[],&quot;borderRadius&quot;:20}}</parameters>
         </containerWidgetDefs>
         <type>container</type>
         <widgetName>container_8</widgetName>
-    </widgets>
-    <widgets>
-        <analyticsDashboard>Campaign_Insights_Embedded</analyticsDashboard>
-        <textWidgetDefs>
-            <parameters>{&quot;content&quot;:[{&quot;attributes&quot;:{&quot;color&quot;:&quot;#03234D&quot;,&quot;size&quot;:&quot;20px&quot;},&quot;insert&quot;:&quot;All Activity&quot;},{&quot;attributes&quot;:{&quot;align&quot;:&quot;left&quot;},&quot;insert&quot;:&quot;\n&quot;}]}</parameters>
-        </textWidgetDefs>
-        <type>text</type>
-        <widgetName>text_5</widgetName>
-    </widgets>
-    <widgets>
-        <analyticsDashboard>Campaign_Insights_Embedded</analyticsDashboard>
-        <textWidgetDefs>
-            <parameters>{&quot;content&quot;:[{&quot;attributes&quot;:{&quot;color&quot;:&quot;#03234D&quot;,&quot;size&quot;:&quot;20px&quot;},&quot;insert&quot;:&quot;Activity over Time&quot;},{&quot;attributes&quot;:{&quot;align&quot;:&quot;left&quot;},&quot;insert&quot;:&quot;\n&quot;}]}</parameters>
-        </textWidgetDefs>
-        <type>text</type>
-        <widgetName>text_4</widgetName>
     </widgets>
     <widgets>
         <analyticsDashboard>Campaign_Insights_Embedded</analyticsDashboard>
@@ -1386,14 +1609,6 @@
             <version>66.0</version>
         </widgetActions>
         <widgetName>button_6</widgetName>
-    </widgets>
-    <widgets>
-        <analyticsDashboard>Campaign_Insights_Embedded</analyticsDashboard>
-        <textWidgetDefs>
-            <parameters>{&quot;content&quot;:[{&quot;attributes&quot;:{&quot;color&quot;:&quot;#03234D&quot;,&quot;size&quot;:&quot;20px&quot;},&quot;insert&quot;:&quot;Activity Types&quot;},{&quot;attributes&quot;:{&quot;align&quot;:&quot;left&quot;},&quot;insert&quot;:&quot;\n&quot;}]}</parameters>
-        </textWidgetDefs>
-        <type>text</type>
-        <widgetName>text_7</widgetName>
     </widgets>
     <widgets>
         <analyticsDashboard>Campaign_Insights_Embedded</analyticsDashboard>
@@ -1433,124 +1648,25 @@
     </widgets>
     <widgets>
         <analyticsDashboard>Campaign_Insights_Embedded</analyticsDashboard>
-        <textWidgetDefs>
-            <parameters>{&quot;content&quot;:[{&quot;attributes&quot;:{&quot;color&quot;:&quot;#03234D&quot;,&quot;size&quot;:&quot;20px&quot;},&quot;insert&quot;:&quot;Performance Overview&quot;},{&quot;attributes&quot;:{&quot;align&quot;:&quot;left&quot;},&quot;insert&quot;:&quot;\n&quot;}]}</parameters>
-        </textWidgetDefs>
-        <type>text</type>
-        <widgetName>text_1</widgetName>
-    </widgets>
-    <widgets>
-        <analyticsDashboard>Campaign_Insights_Embedded</analyticsDashboard>
-        <filterWidgetDefs>
-            <initialValues>null</initialValues>
-            <parameters>{&quot;viewType&quot;:&quot;list&quot;,&quot;receiveFilterSource&quot;:{&quot;filterMode&quot;:&quot;exclude&quot;,&quot;widgetIds&quot;:[&quot;filter_11&quot;,&quot;filter_5&quot;,&quot;filter_9&quot;,&quot;list_1&quot;,&quot;list_2&quot;]},&quot;filterOption&quot;:{&quot;fieldName&quot;:&quot;Activity_Type&quot;,&quot;dataType&quot;:&quot;Text&quot;,&quot;selectionType&quot;:&quot;multiple&quot;},&quot;isLabelHidden&quot;:false}</parameters>
-            <source>Marketing_Performance_Semantic_Mod_945</source>
-        </filterWidgetDefs>
-        <label>Activity Type</label>
-        <type>filter</type>
-        <widgetName>filter_2</widgetName>
-    </widgets>
-    <widgets>
-        <analyticsDashboard>Campaign_Insights_Embedded</analyticsDashboard>
-        <filterWidgetDefs>
-            <initialValues>null</initialValues>
-            <parameters>{&quot;viewType&quot;:&quot;list&quot;,&quot;widgetStyle&quot;:{&quot;backgroundColor&quot;:&quot;#F3F3F3&quot;,&quot;borderEdges&quot;:[]},&quot;receiveFilterSource&quot;:{&quot;filterMode&quot;:&quot;all&quot;,&quot;widgetIds&quot;:[]},&quot;filterOption&quot;:{&quot;objectName&quot;:&quot;Market_Segment&quot;,&quot;fieldName&quot;:&quot;Name&quot;,&quot;dataType&quot;:&quot;Text&quot;,&quot;selectionType&quot;:&quot;multiple&quot;},&quot;isLabelHidden&quot;:false}</parameters>
-            <source>Marketing_Performance_Semantic_Mod_945</source>
-        </filterWidgetDefs>
-        <label>Segments</label>
-        <type>filter</type>
-        <widgetName>filter_1</widgetName>
-    </widgets>
-    <widgets>
-        <analyticsDashboard>Campaign_Insights_Embedded</analyticsDashboard>
-        <filterWidgetDefs>
-            <initialValues>null</initialValues>
-            <parameters>{&quot;viewType&quot;:&quot;list&quot;,&quot;widgetStyle&quot;:{&quot;backgroundColor&quot;:&quot;#FFFFFF&quot;,&quot;borderEdges&quot;:[]},&quot;receiveFilterSource&quot;:{&quot;filterMode&quot;:&quot;exclude&quot;,&quot;widgetIds&quot;:[&quot;filter_9&quot;,&quot;filter_2&quot;,&quot;list_1&quot;,&quot;list_2&quot;]},&quot;filterOption&quot;:{&quot;fieldName&quot;:&quot;Content_Type&quot;,&quot;dataType&quot;:&quot;Text&quot;,&quot;selectionType&quot;:&quot;multiple&quot;},&quot;isLabelHidden&quot;:false}</parameters>
-            <source>Marketing_Performance_Semantic_Mod_945</source>
-        </filterWidgetDefs>
-        <label>Content Type</label>
-        <type>filter</type>
-        <widgetName>filter_5</widgetName>
-    </widgets>
-    <widgets>
-        <analyticsDashboard>Campaign_Insights_Embedded</analyticsDashboard>
-        <filterWidgetDefs>
-            <initialValues>null</initialValues>
-            <parameters>{&quot;viewType&quot;:&quot;list&quot;,&quot;widgetStyle&quot;:{&quot;backgroundColor&quot;:&quot;#F3F3F3&quot;,&quot;borderEdges&quot;:[]},&quot;receiveFilterSource&quot;:{&quot;filterMode&quot;:&quot;all&quot;,&quot;widgetIds&quot;:[]},&quot;filterOption&quot;:{&quot;objectName&quot;:&quot;Logical_View_Engagement_Union&quot;,&quot;fieldName&quot;:&quot;Activity_Date&quot;,&quot;dataType&quot;:&quot;DateTime&quot;,&quot;selectionType&quot;:&quot;multiple&quot;},&quot;isLabelHidden&quot;:false}</parameters>
-            <source>Marketing_Performance_Semantic_Mod_945</source>
-        </filterWidgetDefs>
-        <label>Date Range</label>
-        <type>filter</type>
-        <widgetName>filter_4</widgetName>
-    </widgets>
-    <widgets>
-        <analyticsDashboard>Campaign_Insights_Embedded</analyticsDashboard>
-        <filterWidgetDefs>
-            <initialValues>null</initialValues>
-            <parameters>{&quot;viewType&quot;:&quot;list&quot;,&quot;widgetStyle&quot;:{&quot;backgroundColor&quot;:&quot;#FFFFFF&quot;,&quot;borderEdges&quot;:[]},&quot;receiveFilterSource&quot;:{&quot;filterMode&quot;:&quot;exclude&quot;,&quot;widgetIds&quot;:[&quot;filter_9&quot;,&quot;filter_2&quot;,&quot;list_1&quot;,&quot;list_2&quot;]},&quot;filterOption&quot;:{&quot;fieldName&quot;:&quot;Activity_Type&quot;,&quot;dataType&quot;:&quot;Text&quot;,&quot;selectionType&quot;:&quot;multiple&quot;},&quot;isLabelHidden&quot;:false}</parameters>
-            <source>Marketing_Performance_Semantic_Mod_945</source>
-        </filterWidgetDefs>
-        <label>Activity Type</label>
-        <type>filter</type>
-        <widgetName>filter_11</widgetName>
-    </widgets>
-    <widgets>
-        <analyticsDashboard>Campaign_Insights_Embedded</analyticsDashboard>
-        <filterWidgetDefs>
-            <initialValues>null</initialValues>
-            <parameters>{&quot;viewType&quot;:&quot;list&quot;,&quot;widgetStyle&quot;:{&quot;backgroundColor&quot;:&quot;#FFFFFF&quot;,&quot;borderEdges&quot;:[]},&quot;receiveFilterSource&quot;:{&quot;filterMode&quot;:&quot;exclude&quot;,&quot;widgetIds&quot;:[&quot;filter_2&quot;,&quot;filter_5&quot;,&quot;filter_11&quot;]},&quot;filterOption&quot;:{&quot;objectName&quot;:&quot;Digital_Content&quot;,&quot;fieldName&quot;:&quot;Name&quot;,&quot;dataType&quot;:&quot;Text&quot;,&quot;selectionType&quot;:&quot;multiple&quot;},&quot;isLabelHidden&quot;:false}</parameters>
-            <source>Marketing_Performance_Semantic_Mod_945</source>
-        </filterWidgetDefs>
-        <label>Content</label>
-        <type>filter</type>
-        <widgetName>filter_9</widgetName>
-    </widgets>
-    <widgets>
-        <analyticsDashboard>Campaign_Insights_Embedded</analyticsDashboard>
-        <filterWidgetDefs>
-            <initialValues>null</initialValues>
-            <parameters>{&quot;viewType&quot;:&quot;list&quot;,&quot;widgetStyle&quot;:{&quot;backgroundColor&quot;:&quot;#F3F3F3&quot;,&quot;borderEdges&quot;:[]},&quot;receiveFilterSource&quot;:{&quot;filterMode&quot;:&quot;all&quot;,&quot;widgetIds&quot;:[]},&quot;filterOption&quot;:{&quot;objectName&quot;:&quot;Flow&quot;,&quot;fieldName&quot;:&quot;Name&quot;,&quot;dataType&quot;:&quot;Text&quot;,&quot;selectionType&quot;:&quot;multiple&quot;},&quot;isLabelHidden&quot;:false}</parameters>
-            <source>Marketing_Performance_Semantic_Mod_945</source>
-        </filterWidgetDefs>
-        <label>Flows</label>
-        <type>filter</type>
-        <widgetName>filter_8</widgetName>
-    </widgets>
-    <widgets>
-        <analyticsDashboard>Campaign_Insights_Embedded</analyticsDashboard>
-        <buttonWidgetDefs>
-            <parameters>{&quot;text&quot;:&quot;By Activity Type&quot;,&quot;alignmentX&quot;:&quot;center&quot;,&quot;alignmentY&quot;:&quot;center&quot;,&quot;fontSize&quot;:16,&quot;widgetStyle&quot;:{&quot;backgroundColor&quot;:&quot;#FFFFFF&quot;,&quot;borderEdges&quot;:[&quot;all&quot;],&quot;borderRadius&quot;:0,&quot;textStyle&quot;:[]}}</parameters>
-        </buttonWidgetDefs>
-        <type>button</type>
-        <widgetActions>
-            <actionType>navigate</actionType>
-            <eventType>click</eventType>
-            <parameters>{&quot;destination&quot;:{&quot;type&quot;:&quot;page&quot;,&quot;target&quot;:&quot;c6e994a4-d753-4423-9707-1b1eed1e528e&quot;}}</parameters>
-            <version>66.0</version>
-        </widgetActions>
-        <widgetName>button_31</widgetName>
-    </widgets>
-    <widgets>
-        <analyticsDashboard>Campaign_Insights_Embedded</analyticsDashboard>
-        <buttonWidgetDefs>
-            <parameters>{&quot;text&quot;:&quot;By Content Type&quot;,&quot;alignmentX&quot;:&quot;center&quot;,&quot;alignmentY&quot;:&quot;center&quot;,&quot;fontSize&quot;:16,&quot;widgetStyle&quot;:{&quot;backgroundColor&quot;:&quot;#FFFFFF&quot;,&quot;borderEdges&quot;:[&quot;all&quot;],&quot;borderRadius&quot;:0,&quot;textStyle&quot;:[]}}</parameters>
-        </buttonWidgetDefs>
-        <type>button</type>
-        <widgetActions>
-            <actionType>navigate</actionType>
-            <eventType>click</eventType>
-            <parameters>{&quot;destination&quot;:{&quot;type&quot;:&quot;page&quot;,&quot;target&quot;:&quot;e8fc90e7-50b5-4da5-b5ff-c0e7dff61d25&quot;}}</parameters>
-            <version>66.0</version>
-        </widgetActions>
-        <widgetName>button_32</widgetName>
-    </widgets>
-    <widgets>
-        <analyticsDashboard>Campaign_Insights_Embedded</analyticsDashboard>
         <buttonWidgetDefs>
             <parameters>{&quot;text&quot;:&quot;By Activity Type&quot;,&quot;alignmentX&quot;:&quot;center&quot;,&quot;alignmentY&quot;:&quot;center&quot;,&quot;fontSize&quot;:16,&quot;widgetStyle&quot;:{&quot;backgroundColor&quot;:&quot;#0176D3&quot;,&quot;borderEdges&quot;:[&quot;all&quot;],&quot;borderColor&quot;:&quot;#0176D3&quot;,&quot;borderRadius&quot;:0,&quot;fontColor&quot;:&quot;#FFFFFF&quot;,&quot;textStyle&quot;:[]}}</parameters>
         </buttonWidgetDefs>
         <type>button</type>
         <widgetName>button_25</widgetName>
+    </widgets>
+    <widgets>
+        <analyticsDashboard>Campaign_Insights_Embedded</analyticsDashboard>
+        <buttonWidgetDefs>
+            <parameters>{&quot;text&quot;:&quot;By Activity Type&quot;,&quot;alignmentX&quot;:&quot;center&quot;,&quot;alignmentY&quot;:&quot;center&quot;,&quot;fontSize&quot;:16,&quot;widgetStyle&quot;:{&quot;backgroundColor&quot;:&quot;#ffffff&quot;,&quot;borderEdges&quot;:[&quot;all&quot;],&quot;borderColor&quot;:&quot;#747474&quot;,&quot;borderWidth&quot;:1,&quot;borderRadius&quot;:0,&quot;fontColor&quot;:&quot;#0176D3&quot;,&quot;textStyle&quot;:[]}}</parameters>
+        </buttonWidgetDefs>
+        <type>button</type>
+        <widgetActions>
+            <actionType>navigate</actionType>
+            <eventType>click</eventType>
+            <parameters>{&quot;destination&quot;:{&quot;type&quot;:&quot;page&quot;,&quot;target&quot;:&quot;b14275e4-70db-4011-a80f-c639bd5e223c&quot;}}</parameters>
+            <version>66.0</version>
+        </widgetActions>
+        <widgetName>button_26</widgetName>
     </widgets>
     <widgets>
         <analyticsDashboard>Campaign_Insights_Embedded</analyticsDashboard>
@@ -1582,9 +1698,23 @@
     </widgets>
     <widgets>
         <analyticsDashboard>Campaign_Insights_Embedded</analyticsDashboard>
+        <buttonWidgetDefs>
+            <parameters>{&quot;text&quot;:&quot;By Content Type&quot;,&quot;alignmentX&quot;:&quot;center&quot;,&quot;alignmentY&quot;:&quot;center&quot;,&quot;fontSize&quot;:16,&quot;widgetStyle&quot;:{&quot;backgroundColor&quot;:&quot;#ffffff&quot;,&quot;borderEdges&quot;:[&quot;all&quot;],&quot;borderColor&quot;:&quot;#747474&quot;,&quot;borderWidth&quot;:1,&quot;borderRadius&quot;:0,&quot;fontColor&quot;:&quot;#0176D3&quot;,&quot;textStyle&quot;:[]}}</parameters>
+        </buttonWidgetDefs>
+        <type>button</type>
+        <widgetActions>
+            <actionType>navigate</actionType>
+            <eventType>click</eventType>
+            <parameters>{&quot;destination&quot;:{&quot;type&quot;:&quot;page&quot;,&quot;target&quot;:&quot;cb9b1c2c-5d81-4c51-8734-454b36811830&quot;}}</parameters>
+            <version>66.0</version>
+        </widgetActions>
+        <widgetName>button_29</widgetName>
+    </widgets>
+    <widgets>
+        <analyticsDashboard>Campaign_Insights_Embedded</analyticsDashboard>
         <metricWidgetDefs>
-            <parameters>{&quot;metricOption&quot;:{&quot;layout&quot;:{&quot;componentVisibility&quot;:{&quot;details&quot;:false,&quot;title&quot;:true,&quot;value&quot;:true,&quot;comparison&quot;:true,&quot;chart&quot;:true,&quot;insights&quot;:false}},&quot;sdmApiName&quot;:&quot;Marketing_Performance_Semantic_Mod_945&quot;},&quot;receiveFilterSource&quot;:{&quot;filterMode&quot;:&quot;include&quot;,&quot;publishers&quot;:[],&quot;widgetIds&quot;:[&quot;filter_1&quot;,&quot;filter_4&quot;,&quot;filter_9&quot;,&quot;filter_8&quot;]},&quot;widgetStyle&quot;:{&quot;borderColor&quot;:&quot;#E5E5E5&quot;,&quot;borderEdges&quot;:[&quot;all&quot;],&quot;borderRadius&quot;:20}}</parameters>
-            <source>Email_Click_Through_Rate_md</source>
+            <parameters>{&quot;metricOption&quot;:{&quot;layout&quot;:{&quot;componentVisibility&quot;:{&quot;comparison&quot;:true,&quot;insights&quot;:false,&quot;details&quot;:false,&quot;title&quot;:true,&quot;value&quot;:true,&quot;chart&quot;:true}},&quot;sdmApiName&quot;:&quot;Marketing_Intelligence_Custom_Semantic_Model_00Da500001AA4BB&quot;},&quot;receiveFilterSource&quot;:{&quot;filterMode&quot;:&quot;include&quot;,&quot;publishers&quot;:[],&quot;widgetIds&quot;:[&quot;filter_1&quot;,&quot;filter_4&quot;,&quot;filter_9&quot;,&quot;filter_8&quot;]},&quot;widgetStyle&quot;:{&quot;borderColor&quot;:&quot;#E5E5E5&quot;,&quot;borderEdges&quot;:[&quot;all&quot;],&quot;borderRadius&quot;:20}}</parameters>
+            <source>Email_Click_Through_Rate_mtc</source>
         </metricWidgetDefs>
         <type>metric</type>
         <widgetName>metric_15</widgetName>
@@ -1605,20 +1735,20 @@
     </widgets>
     <widgets>
         <analyticsDashboard>Campaign_Insights_Embedded</analyticsDashboard>
+        <metricWidgetDefs>
+            <parameters>{&quot;metricOption&quot;:{&quot;layout&quot;:{&quot;componentVisibility&quot;:{&quot;comparison&quot;:true,&quot;insights&quot;:false,&quot;details&quot;:false,&quot;title&quot;:true,&quot;value&quot;:true,&quot;chart&quot;:false}},&quot;sdmApiName&quot;:&quot;Marketing_Intelligence_Custom_Semantic_Model_00Da500001AA4BB&quot;},&quot;receiveFilterSource&quot;:{&quot;filterMode&quot;:&quot;include&quot;,&quot;publishers&quot;:[],&quot;widgetIds&quot;:[&quot;filter_1&quot;,&quot;filter_4&quot;,&quot;filter_9&quot;,&quot;filter_8&quot;]},&quot;widgetStyle&quot;:{&quot;borderColor&quot;:&quot;#E5E5E5&quot;,&quot;borderEdges&quot;:[&quot;all&quot;],&quot;borderRadius&quot;:20}}</parameters>
+            <source>SMS_Conversation_Forwards_mtc</source>
+        </metricWidgetDefs>
+        <type>metric</type>
+        <widgetName>metric_19</widgetName>
+    </widgets>
+    <widgets>
+        <analyticsDashboard>Campaign_Insights_Embedded</analyticsDashboard>
         <buttonWidgetDefs>
             <parameters>{&quot;text&quot;:&quot;By Content Type&quot;,&quot;alignmentX&quot;:&quot;center&quot;,&quot;alignmentY&quot;:&quot;center&quot;,&quot;fontSize&quot;:16,&quot;widgetStyle&quot;:{&quot;backgroundColor&quot;:&quot;#0176D3&quot;,&quot;borderEdges&quot;:[&quot;all&quot;],&quot;borderColor&quot;:&quot;#0176D3&quot;,&quot;borderRadius&quot;:0,&quot;fontColor&quot;:&quot;#FFFFFF&quot;,&quot;textStyle&quot;:[]}}</parameters>
         </buttonWidgetDefs>
         <type>button</type>
         <widgetName>button_21</widgetName>
-    </widgets>
-    <widgets>
-        <analyticsDashboard>Campaign_Insights_Embedded</analyticsDashboard>
-        <metricWidgetDefs>
-            <parameters>{&quot;metricOption&quot;:{&quot;layout&quot;:{&quot;componentVisibility&quot;:{&quot;details&quot;:false,&quot;title&quot;:true,&quot;value&quot;:true,&quot;comparison&quot;:true,&quot;chart&quot;:false,&quot;insights&quot;:false}},&quot;sdmApiName&quot;:&quot;Marketing_Performance_Semantic_Mod_945&quot;},&quot;receiveFilterSource&quot;:{&quot;filterMode&quot;:&quot;include&quot;,&quot;publishers&quot;:[],&quot;widgetIds&quot;:[&quot;filter_1&quot;,&quot;filter_4&quot;,&quot;filter_9&quot;,&quot;filter_8&quot;]},&quot;widgetStyle&quot;:{&quot;borderColor&quot;:&quot;#E5E5E5&quot;,&quot;borderEdges&quot;:[&quot;all&quot;],&quot;borderRadius&quot;:20}}</parameters>
-            <source>SMS_Conversation_Forwards_md</source>
-        </metricWidgetDefs>
-        <type>metric</type>
-        <widgetName>metric_19</widgetName>
     </widgets>
     <widgets>
         <analyticsDashboard>Campaign_Insights_Embedded</analyticsDashboard>
@@ -1664,6 +1794,15 @@
     </widgets>
     <widgets>
         <analyticsDashboard>Campaign_Insights_Embedded</analyticsDashboard>
+        <metricWidgetDefs>
+            <parameters>{&quot;metricOption&quot;:{&quot;layout&quot;:{&quot;componentVisibility&quot;:{&quot;comparison&quot;:true,&quot;insights&quot;:false,&quot;details&quot;:false,&quot;title&quot;:true,&quot;value&quot;:true,&quot;chart&quot;:false}},&quot;sdmApiName&quot;:&quot;Marketing_Intelligence_Custom_Semantic_Model_00Da500001AA4BB&quot;},&quot;receiveFilterSource&quot;:{&quot;filterMode&quot;:&quot;include&quot;,&quot;publishers&quot;:[],&quot;widgetIds&quot;:[&quot;filter_4&quot;,&quot;filter_9&quot;]},&quot;widgetStyle&quot;:{&quot;borderColor&quot;:&quot;#E5E5E5&quot;,&quot;borderEdges&quot;:[&quot;all&quot;],&quot;borderRadius&quot;:20}}</parameters>
+            <source>Landing_Page_Click_Rate_mtc</source>
+        </metricWidgetDefs>
+        <type>metric</type>
+        <widgetName>metric_22</widgetName>
+    </widgets>
+    <widgets>
+        <analyticsDashboard>Campaign_Insights_Embedded</analyticsDashboard>
         <buttonWidgetDefs>
             <parameters>{&quot;text&quot;:&quot;By Activity Type&quot;,&quot;alignmentX&quot;:&quot;center&quot;,&quot;alignmentY&quot;:&quot;center&quot;,&quot;fontSize&quot;:16,&quot;widgetStyle&quot;:{&quot;backgroundColor&quot;:&quot;#ffffff&quot;,&quot;borderEdges&quot;:[&quot;all&quot;],&quot;borderColor&quot;:&quot;#747474&quot;,&quot;borderWidth&quot;:1,&quot;borderRadius&quot;:0,&quot;fontColor&quot;:&quot;#0176D3&quot;,&quot;textStyle&quot;:[]}}</parameters>
         </buttonWidgetDefs>
@@ -1679,17 +1818,8 @@
     <widgets>
         <analyticsDashboard>Campaign_Insights_Embedded</analyticsDashboard>
         <metricWidgetDefs>
-            <parameters>{&quot;metricOption&quot;:{&quot;layout&quot;:{&quot;componentVisibility&quot;:{&quot;details&quot;:false,&quot;title&quot;:true,&quot;value&quot;:true,&quot;comparison&quot;:true,&quot;chart&quot;:false,&quot;insights&quot;:false}},&quot;sdmApiName&quot;:&quot;Marketing_Performance_Semantic_Mod_945&quot;},&quot;receiveFilterSource&quot;:{&quot;filterMode&quot;:&quot;include&quot;,&quot;publishers&quot;:[],&quot;widgetIds&quot;:[&quot;filter_4&quot;,&quot;filter_9&quot;]},&quot;widgetStyle&quot;:{&quot;borderColor&quot;:&quot;#E5E5E5&quot;,&quot;borderEdges&quot;:[&quot;all&quot;],&quot;borderRadius&quot;:20}}</parameters>
-            <source>Landing_Page_Click_Rate_md</source>
-        </metricWidgetDefs>
-        <type>metric</type>
-        <widgetName>metric_22</widgetName>
-    </widgets>
-    <widgets>
-        <analyticsDashboard>Campaign_Insights_Embedded</analyticsDashboard>
-        <metricWidgetDefs>
-            <parameters>{&quot;metricOption&quot;:{&quot;layout&quot;:{&quot;componentVisibility&quot;:{&quot;details&quot;:false,&quot;title&quot;:true,&quot;value&quot;:true,&quot;comparison&quot;:true,&quot;chart&quot;:false,&quot;insights&quot;:false}},&quot;sdmApiName&quot;:&quot;Marketing_Performance_Semantic_Mod_945&quot;},&quot;receiveFilterSource&quot;:{&quot;filterMode&quot;:&quot;include&quot;,&quot;publishers&quot;:[],&quot;widgetIds&quot;:[&quot;filter_4&quot;,&quot;filter_9&quot;]},&quot;widgetStyle&quot;:{&quot;borderColor&quot;:&quot;#E5E5E5&quot;,&quot;borderEdges&quot;:[&quot;all&quot;],&quot;borderRadius&quot;:20}}</parameters>
-            <source>Form_Submissions_md</source>
+            <parameters>{&quot;metricOption&quot;:{&quot;layout&quot;:{&quot;componentVisibility&quot;:{&quot;comparison&quot;:true,&quot;insights&quot;:false,&quot;details&quot;:false,&quot;title&quot;:true,&quot;value&quot;:true,&quot;chart&quot;:false}},&quot;sdmApiName&quot;:&quot;Marketing_Intelligence_Custom_Semantic_Model_00Da500001AA4BB&quot;},&quot;receiveFilterSource&quot;:{&quot;filterMode&quot;:&quot;include&quot;,&quot;publishers&quot;:[],&quot;widgetIds&quot;:[&quot;filter_4&quot;,&quot;filter_9&quot;]},&quot;widgetStyle&quot;:{&quot;borderColor&quot;:&quot;#E5E5E5&quot;,&quot;borderEdges&quot;:[&quot;all&quot;],&quot;borderRadius&quot;:20}}</parameters>
+            <source>Form_Submissions_mtc</source>
         </metricWidgetDefs>
         <type>metric</type>
         <widgetName>metric_21</widgetName>
@@ -1697,8 +1827,8 @@
     <widgets>
         <analyticsDashboard>Campaign_Insights_Embedded</analyticsDashboard>
         <metricWidgetDefs>
-            <parameters>{&quot;metricOption&quot;:{&quot;layout&quot;:{&quot;componentVisibility&quot;:{&quot;details&quot;:false,&quot;title&quot;:true,&quot;value&quot;:true,&quot;comparison&quot;:true,&quot;chart&quot;:true,&quot;insights&quot;:false}},&quot;sdmApiName&quot;:&quot;Marketing_Performance_Semantic_Mod_945&quot;},&quot;receiveFilterSource&quot;:{&quot;filterMode&quot;:&quot;include&quot;,&quot;publishers&quot;:[],&quot;widgetIds&quot;:[&quot;filter_4&quot;,&quot;filter_9&quot;]},&quot;widgetStyle&quot;:{&quot;borderColor&quot;:&quot;#E5E5E5&quot;,&quot;borderEdges&quot;:[&quot;all&quot;],&quot;borderRadius&quot;:20}}</parameters>
-            <source>Form_Submission_Rate_md</source>
+            <parameters>{&quot;metricOption&quot;:{&quot;layout&quot;:{&quot;componentVisibility&quot;:{&quot;comparison&quot;:true,&quot;insights&quot;:false,&quot;details&quot;:false,&quot;title&quot;:true,&quot;value&quot;:true,&quot;chart&quot;:true}},&quot;sdmApiName&quot;:&quot;Marketing_Intelligence_Custom_Semantic_Model_00Da500001AA4BB&quot;},&quot;receiveFilterSource&quot;:{&quot;filterMode&quot;:&quot;include&quot;,&quot;publishers&quot;:[],&quot;widgetIds&quot;:[&quot;filter_4&quot;,&quot;filter_9&quot;]},&quot;widgetStyle&quot;:{&quot;borderColor&quot;:&quot;#E5E5E5&quot;,&quot;borderEdges&quot;:[&quot;all&quot;],&quot;borderRadius&quot;:20}}</parameters>
+            <source>Form_Submission_Rate_mtc</source>
         </metricWidgetDefs>
         <type>metric</type>
         <widgetName>metric_20</widgetName>
@@ -1706,35 +1836,8 @@
     <widgets>
         <analyticsDashboard>Campaign_Insights_Embedded</analyticsDashboard>
         <metricWidgetDefs>
-            <parameters>{&quot;metricOption&quot;:{&quot;layout&quot;:{&quot;componentVisibility&quot;:{&quot;details&quot;:false,&quot;title&quot;:true,&quot;value&quot;:true,&quot;comparison&quot;:true,&quot;chart&quot;:false,&quot;insights&quot;:false}},&quot;sdmApiName&quot;:&quot;Marketing_Performance_Semantic_Mod_945&quot;},&quot;receiveFilterSource&quot;:{&quot;filterMode&quot;:&quot;include&quot;,&quot;publishers&quot;:[],&quot;widgetIds&quot;:[&quot;filter_1&quot;,&quot;filter_4&quot;,&quot;filter_9&quot;,&quot;filter_8&quot;]},&quot;widgetStyle&quot;:{&quot;borderColor&quot;:&quot;#E5E5E5&quot;,&quot;borderEdges&quot;:[&quot;all&quot;],&quot;borderRadius&quot;:20}}</parameters>
-            <source>SMS_Delivery_Rate_md</source>
-        </metricWidgetDefs>
-        <type>metric</type>
-        <widgetName>metric_9</widgetName>
-    </widgets>
-    <widgets>
-        <analyticsDashboard>Campaign_Insights_Embedded</analyticsDashboard>
-        <metricWidgetDefs>
-            <parameters>{&quot;metricOption&quot;:{&quot;layout&quot;:{&quot;componentVisibility&quot;:{&quot;details&quot;:false,&quot;title&quot;:true,&quot;value&quot;:true,&quot;comparison&quot;:true,&quot;chart&quot;:false,&quot;insights&quot;:false}},&quot;sdmApiName&quot;:&quot;Marketing_Performance_Semantic_Mod_945&quot;},&quot;receiveFilterSource&quot;:{&quot;filterMode&quot;:&quot;include&quot;,&quot;publishers&quot;:[],&quot;widgetIds&quot;:[&quot;filter_1&quot;,&quot;filter_4&quot;,&quot;filter_9&quot;,&quot;filter_8&quot;]},&quot;widgetStyle&quot;:{&quot;borderColor&quot;:&quot;#E5E5E5&quot;,&quot;borderEdges&quot;:[&quot;all&quot;],&quot;borderRadius&quot;:20}}</parameters>
-            <source>SMS_Sends_md</source>
-        </metricWidgetDefs>
-        <type>metric</type>
-        <widgetName>metric_8</widgetName>
-    </widgets>
-    <widgets>
-        <analyticsDashboard>Campaign_Insights_Embedded</analyticsDashboard>
-        <metricWidgetDefs>
-            <parameters>{&quot;metricOption&quot;:{&quot;layout&quot;:{&quot;componentVisibility&quot;:{&quot;details&quot;:false,&quot;title&quot;:true,&quot;value&quot;:true,&quot;comparison&quot;:true,&quot;chart&quot;:false,&quot;insights&quot;:false}},&quot;sdmApiName&quot;:&quot;Marketing_Performance_Semantic_Mod_945&quot;},&quot;receiveFilterSource&quot;:{&quot;filterMode&quot;:&quot;include&quot;,&quot;publishers&quot;:[],&quot;widgetIds&quot;:[&quot;filter_1&quot;,&quot;filter_4&quot;,&quot;filter_9&quot;,&quot;filter_8&quot;]},&quot;widgetStyle&quot;:{&quot;borderColor&quot;:&quot;#E5E5E5&quot;,&quot;borderEdges&quot;:[&quot;all&quot;],&quot;borderRadius&quot;:20}}</parameters>
-            <source>Email_Click_Rate_md</source>
-        </metricWidgetDefs>
-        <type>metric</type>
-        <widgetName>metric_5</widgetName>
-    </widgets>
-    <widgets>
-        <analyticsDashboard>Campaign_Insights_Embedded</analyticsDashboard>
-        <metricWidgetDefs>
-            <parameters>{&quot;metricOption&quot;:{&quot;layout&quot;:{&quot;componentVisibility&quot;:{&quot;details&quot;:false,&quot;title&quot;:true,&quot;value&quot;:true,&quot;comparison&quot;:true,&quot;chart&quot;:false,&quot;insights&quot;:false}},&quot;sdmApiName&quot;:&quot;Marketing_Performance_Semantic_Mod_945&quot;},&quot;receiveFilterSource&quot;:{&quot;filterMode&quot;:&quot;include&quot;,&quot;publishers&quot;:[],&quot;widgetIds&quot;:[&quot;filter_4&quot;,&quot;filter_9&quot;]},&quot;widgetStyle&quot;:{&quot;borderColor&quot;:&quot;#E5E5E5&quot;,&quot;borderEdges&quot;:[&quot;all&quot;],&quot;borderRadius&quot;:20}}</parameters>
-            <source>Landing_Page_Clicks_md</source>
+            <parameters>{&quot;metricOption&quot;:{&quot;layout&quot;:{&quot;componentVisibility&quot;:{&quot;comparison&quot;:true,&quot;insights&quot;:false,&quot;details&quot;:false,&quot;title&quot;:true,&quot;value&quot;:true,&quot;chart&quot;:false}},&quot;sdmApiName&quot;:&quot;Marketing_Intelligence_Custom_Semantic_Model_00Da500001AA4BB&quot;},&quot;receiveFilterSource&quot;:{&quot;filterMode&quot;:&quot;include&quot;,&quot;publishers&quot;:[],&quot;widgetIds&quot;:[&quot;filter_4&quot;,&quot;filter_9&quot;]},&quot;widgetStyle&quot;:{&quot;borderColor&quot;:&quot;#E5E5E5&quot;,&quot;borderEdges&quot;:[&quot;all&quot;],&quot;borderRadius&quot;:20}}</parameters>
+            <source>Landing_Page_Clicks_mtc</source>
         </metricWidgetDefs>
         <type>metric</type>
         <widgetName>metric_25</widgetName>
@@ -1742,38 +1845,11 @@
     <widgets>
         <analyticsDashboard>Campaign_Insights_Embedded</analyticsDashboard>
         <metricWidgetDefs>
-            <parameters>{&quot;metricOption&quot;:{&quot;layout&quot;:{&quot;componentVisibility&quot;:{&quot;details&quot;:false,&quot;title&quot;:true,&quot;value&quot;:true,&quot;comparison&quot;:true,&quot;chart&quot;:false,&quot;insights&quot;:false}},&quot;sdmApiName&quot;:&quot;Marketing_Performance_Semantic_Mod_945&quot;},&quot;receiveFilterSource&quot;:{&quot;filterMode&quot;:&quot;include&quot;,&quot;publishers&quot;:[],&quot;widgetIds&quot;:[&quot;filter_1&quot;,&quot;filter_4&quot;,&quot;filter_9&quot;,&quot;filter_8&quot;]},&quot;widgetStyle&quot;:{&quot;borderColor&quot;:&quot;#E5E5E5&quot;,&quot;borderEdges&quot;:[&quot;all&quot;],&quot;borderRadius&quot;:20}}</parameters>
-            <source>Email_Open_Rate_md</source>
-        </metricWidgetDefs>
-        <type>metric</type>
-        <widgetName>metric_4</widgetName>
-    </widgets>
-    <widgets>
-        <analyticsDashboard>Campaign_Insights_Embedded</analyticsDashboard>
-        <metricWidgetDefs>
-            <parameters>{&quot;metricOption&quot;:{&quot;layout&quot;:{&quot;componentVisibility&quot;:{&quot;details&quot;:false,&quot;title&quot;:true,&quot;value&quot;:true,&quot;comparison&quot;:true,&quot;chart&quot;:false,&quot;insights&quot;:false}},&quot;sdmApiName&quot;:&quot;Marketing_Performance_Semantic_Mod_945&quot;},&quot;receiveFilterSource&quot;:{&quot;filterMode&quot;:&quot;include&quot;,&quot;publishers&quot;:[],&quot;widgetIds&quot;:[&quot;filter_4&quot;,&quot;filter_9&quot;]},&quot;widgetStyle&quot;:{&quot;borderColor&quot;:&quot;#E5E5E5&quot;,&quot;borderEdges&quot;:[&quot;all&quot;],&quot;borderRadius&quot;:20}}</parameters>
-            <source>Landing_Page_Views_md</source>
+            <parameters>{&quot;metricOption&quot;:{&quot;layout&quot;:{&quot;componentVisibility&quot;:{&quot;comparison&quot;:true,&quot;insights&quot;:false,&quot;details&quot;:false,&quot;title&quot;:true,&quot;value&quot;:true,&quot;chart&quot;:false}},&quot;sdmApiName&quot;:&quot;Marketing_Intelligence_Custom_Semantic_Model_00Da500001AA4BB&quot;},&quot;receiveFilterSource&quot;:{&quot;filterMode&quot;:&quot;include&quot;,&quot;publishers&quot;:[],&quot;widgetIds&quot;:[&quot;filter_4&quot;,&quot;filter_9&quot;]},&quot;widgetStyle&quot;:{&quot;borderColor&quot;:&quot;#E5E5E5&quot;,&quot;borderEdges&quot;:[&quot;all&quot;],&quot;borderRadius&quot;:20}}</parameters>
+            <source>Landing_Page_Views_mtc</source>
         </metricWidgetDefs>
         <type>metric</type>
         <widgetName>metric_23</widgetName>
-    </widgets>
-    <widgets>
-        <analyticsDashboard>Campaign_Insights_Embedded</analyticsDashboard>
-        <metricWidgetDefs>
-            <parameters>{&quot;metricOption&quot;:{&quot;layout&quot;:{&quot;componentVisibility&quot;:{&quot;details&quot;:false,&quot;title&quot;:true,&quot;value&quot;:true,&quot;comparison&quot;:true,&quot;chart&quot;:false,&quot;insights&quot;:false}},&quot;sdmApiName&quot;:&quot;Marketing_Performance_Semantic_Mod_945&quot;},&quot;receiveFilterSource&quot;:{&quot;filterMode&quot;:&quot;include&quot;,&quot;publishers&quot;:[],&quot;widgetIds&quot;:[&quot;filter_1&quot;,&quot;filter_4&quot;,&quot;filter_9&quot;,&quot;filter_8&quot;]},&quot;widgetStyle&quot;:{&quot;borderColor&quot;:&quot;#E5E5E5&quot;,&quot;borderEdges&quot;:[&quot;all&quot;],&quot;borderRadius&quot;:20}}</parameters>
-            <source>Email_Sends_md</source>
-        </metricWidgetDefs>
-        <type>metric</type>
-        <widgetName>metric_2</widgetName>
-    </widgets>
-    <widgets>
-        <analyticsDashboard>Campaign_Insights_Embedded</analyticsDashboard>
-        <metricWidgetDefs>
-            <parameters>{&quot;metricOption&quot;:{&quot;layout&quot;:{&quot;componentVisibility&quot;:{&quot;details&quot;:false,&quot;title&quot;:true,&quot;value&quot;:true,&quot;comparison&quot;:true,&quot;chart&quot;:true,&quot;insights&quot;:false}},&quot;sdmApiName&quot;:&quot;Marketing_Performance_Semantic_Mod_945&quot;},&quot;receiveFilterSource&quot;:{&quot;filterMode&quot;:&quot;include&quot;,&quot;publishers&quot;:[],&quot;widgetIds&quot;:[&quot;filter_1&quot;,&quot;filter_4&quot;,&quot;filter_9&quot;,&quot;filter_8&quot;]},&quot;widgetStyle&quot;:{&quot;borderColor&quot;:&quot;#E5E5E5&quot;,&quot;borderEdges&quot;:[&quot;all&quot;],&quot;borderRadius&quot;:20}}</parameters>
-            <source>SMS_Click_Rate_md</source>
-        </metricWidgetDefs>
-        <type>metric</type>
-        <widgetName>metric_1</widgetName>
     </widgets>
     <widgets>
         <analyticsDashboard>Campaign_Insights_Embedded</analyticsDashboard>
@@ -1787,6 +1863,6 @@
         <asset xsi:nil="true"/>
         <assetType>AnalyticsDashboard</assetType>
         <assetUsageType>Created</assetUsageType>
-        <workspace>Marketing_Performance</workspace>
+        <workspace>Marketing_Performance_Intelligence</workspace>
     </workspaceAssetRelationships>
 </AnalyticsDashboard>

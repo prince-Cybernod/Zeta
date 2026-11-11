@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>ssot__rel_1720283039406_end__c</fullName>
+    <deleteConstraint>SetNull</deleteConstraint>
+    <deprecated>false</deprecated>
+    <label>PatientImmunization_DoseUnitId_map_U_rel</label>
+    <referenceTo>ssot__UnitOfMeasure__dlm</referenceTo>
+    <relationshipLabel>PatientImmunization_DoseUnitId_map_U_rel</relationshipLabel>
+    <relationshipName>rel_1720283039406_end</relationshipName>
+    <required>false</required>
+    <type>Lookup</type>
+</CustomField>

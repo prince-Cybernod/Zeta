@@ -8,5 +8,16 @@
         <plural>true</plural>
         <value>Logger Tag Rules</value>
     </caseValues>
+    <layouts>
+        <layout>Logger Tag Rule Layout</layout>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+        <sections>
+            <label><!-- Tagging Rule --></label>
+            <section>Tagging Rule</section>
+        </sections>
+    </layouts>
     <startsWith>Consonant</startsWith>
 </CustomObjectTranslation>

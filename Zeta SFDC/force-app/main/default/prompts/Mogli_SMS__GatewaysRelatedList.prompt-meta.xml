@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Prompt xmlns="http://soap.sforce.com/2006/04/metadata">
+    <masterLabel>Gateways Related List</masterLabel>
+    <promptVersions>
+        <body>If you&apos;ve enabled assigned Gateways, you&apos;ll see which users are assigned to this Gateway by clicking the Related tab.</body>
+        <customApplication>Mogli_SMS__Mogli_SMS_Lightning</customApplication>
+        <delayDays>2</delayDays>
+        <description>Tells the user where to find the users who are assigned to this Gateway.</description>
+        <dismissButtonLabel>All clear.</dismissButtonLabel>
+        <displayPosition>TopRight</displayPosition>
+        <displayType>FloatingPanel</displayType>
+        <endDate>2020-12-31</endDate>
+        <isPublished>true</isPublished>
+        <masterLabel>Gateways Related List</masterLabel>
+        <publishedDate>2026-04-22</publishedDate>
+        <shouldDisplayActionButton>false</shouldDisplayActionButton>
+        <shouldIgnoreGlobalDelay>true</shouldIgnoreGlobalDelay>
+        <startDate>2020-02-11</startDate>
+        <targetPageKey1>Mogli_SMS__Gateway__c</targetPageKey1>
+        <targetPageKey2>view</targetPageKey2>
+        <targetPageType>standard__recordPage</targetPageType>
+        <timesToDisplay>2</timesToDisplay>
+        <title>Assigned Gateways</title>
+        <userAccess>Everyone</userAccess>
+        <userProfileAccess>Everyone</userProfileAccess>
+        <versionNumber>1</versionNumber>
+    </promptVersions>
+</Prompt>

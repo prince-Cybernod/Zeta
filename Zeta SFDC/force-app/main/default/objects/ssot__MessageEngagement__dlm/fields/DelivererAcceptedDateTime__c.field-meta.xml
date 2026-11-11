@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>DelivererAcceptedDateTime__c</fullName>
+    <label>Deliverer Accepted Date Time</label>
+    <mktDataModelFieldAttributes>
+        <definitionCreationType>Standard</definitionCreationType>
+        <isDynamicLookup>false</isDynamicLookup>
+        <labelOverride>Deliverer Accepted Date Time</labelOverride>
+        <masterLabel>Deliverer Accepted Date Time</masterLabel>
+        <refAttrDeveloperName>DelivererAcceptedDateTime</refAttrDeveloperName>
+        <usageTag>None</usageTag>
+    </mktDataModelFieldAttributes>
+    <required>false</required>
+    <type>DateTime</type>
+</CustomField>

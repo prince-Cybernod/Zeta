@@ -97,6 +97,74 @@ private class PriorityItemTriggerHandlerTest {
   }
 
   @IsTest
+  private static void onAfterUpdate_whenPriorityTypeChangesOnly_callsRollupService() {
+    SIBLING_SERVICE_MOCK.when(SIBLING_SERVICE_MOCK.method.recalculate()).thenReturnVoid();
+    PRIORITY_GROUP_SERVICE_MOCK.when(PRIORITY_GROUP_SERVICE_MOCK.method.recalculate())
+      .thenReturnVoid();
+    Id priorityItemId = SObjectIds.generateFakeId(Schema.Priority_Item__c.SObjectType);
+    Id appId = SObjectIds.generateFakeId(Schema.IndividualApplication.SObjectType);
+    List<SObject> newRecords = new List<SObject>{
+      new Priority_Item__c(
+        Id = priorityItemId,
+        Related_Application__c = appId,
+        Priority_Type__c = PriorityItemConstants.PRIORITY_TYPE_SIBLING_ATTENDING,
+        Review_Status__c = PriorityItemConstants.REVIEW_STATUS_APPROVED
+      )
+    };
+    Map<Id, SObject> oldMap = new Map<Id, SObject>{
+      priorityItemId => new Priority_Item__c(
+        Id = priorityItemId,
+        Related_Application__c = appId,
+        Priority_Type__c = PriorityItemConstants.PRIORITY_TYPE_SIBLING_APPLYING,
+        Review_Status__c = PriorityItemConstants.REVIEW_STATUS_APPROVED
+      )
+    };
+
+    HANDLER.onAfterUpdate(newRecords, oldMap);
+
+    SIBLING_SERVICE_MOCK.verify(SIBLING_SERVICE_MOCK.method.recalculate(), 1);
+    List<Map<String, Object>> calls = SIBLING_SERVICE_MOCK.getCalls(
+      SIBLING_SERVICE_MOCK.method.recalculate()
+    );
+    Set<Id> passedIds = (Set<Id>) calls[0].get('individualApplicationIds');
+    Assert.isTrue(passedIds.contains(appId), 'Should include the app ID');
+  }
+
+  @IsTest
+  private static void onAfterUpdate_whenPriorityTypeDowngradesOnly_callsRollupService() {
+    SIBLING_SERVICE_MOCK.when(SIBLING_SERVICE_MOCK.method.recalculate()).thenReturnVoid();
+    PRIORITY_GROUP_SERVICE_MOCK.when(PRIORITY_GROUP_SERVICE_MOCK.method.recalculate())
+      .thenReturnVoid();
+    Id priorityItemId = SObjectIds.generateFakeId(Schema.Priority_Item__c.SObjectType);
+    Id appId = SObjectIds.generateFakeId(Schema.IndividualApplication.SObjectType);
+    List<SObject> newRecords = new List<SObject>{
+      new Priority_Item__c(
+        Id = priorityItemId,
+        Related_Application__c = appId,
+        Priority_Type__c = PriorityItemConstants.PRIORITY_TYPE_SIBLING_APPLYING,
+        Review_Status__c = PriorityItemConstants.REVIEW_STATUS_APPROVED
+      )
+    };
+    Map<Id, SObject> oldMap = new Map<Id, SObject>{
+      priorityItemId => new Priority_Item__c(
+        Id = priorityItemId,
+        Related_Application__c = appId,
+        Priority_Type__c = PriorityItemConstants.PRIORITY_TYPE_SIBLING_ATTENDING,
+        Review_Status__c = PriorityItemConstants.REVIEW_STATUS_APPROVED
+      )
+    };
+
+    HANDLER.onAfterUpdate(newRecords, oldMap);
+
+    SIBLING_SERVICE_MOCK.verify(SIBLING_SERVICE_MOCK.method.recalculate(), 1);
+    List<Map<String, Object>> calls = SIBLING_SERVICE_MOCK.getCalls(
+      SIBLING_SERVICE_MOCK.method.recalculate()
+    );
+    Set<Id> passedIds = (Set<Id>) calls[0].get('individualApplicationIds');
+    Assert.isTrue(passedIds.contains(appId), 'Should include the app ID');
+  }
+
+  @IsTest
   private static void onAfterUpdate_whenRollupFieldsUnchanged_doesNotCallService() {
     SIBLING_SERVICE_MOCK.when(SIBLING_SERVICE_MOCK.method.recalculate()).thenReturnVoid();
     PRIORITY_GROUP_SERVICE_MOCK.when(PRIORITY_GROUP_SERVICE_MOCK.method.recalculate())

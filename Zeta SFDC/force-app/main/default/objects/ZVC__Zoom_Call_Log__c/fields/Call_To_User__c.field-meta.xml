@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Call_To_User__c</fullName>
+    <deleteConstraint>SetNull</deleteConstraint>
+    <description>Populates with the User who the Callee Phone # is related to per the Zoom_Phone_Number__c field on User object.</description>
+    <label>Call To User</label>
+    <referenceTo>User</referenceTo>
+    <relationshipName>Zoom_Call_Logs</relationshipName>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Lookup</type>
+</CustomField>

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>ssot__rel_1697761191649_end__c</fullName>
+    <deleteConstraint>SetNull</deleteConstraint>
+    <deprecated>false</deprecated>
+    <label>OrderDeliveryMethod_Id_map_Account_O_rel</label>
+    <referenceTo>ssot__OrderDeliveryMethod__dlm</referenceTo>
+    <relationshipLabel>OrderDeliveryMethod_Id_map_Account_O_rel</relationshipLabel>
+    <relationshipName>rel_1697761191649_end</relationshipName>
+    <required>false</required>
+    <type>Lookup</type>
+</CustomField>

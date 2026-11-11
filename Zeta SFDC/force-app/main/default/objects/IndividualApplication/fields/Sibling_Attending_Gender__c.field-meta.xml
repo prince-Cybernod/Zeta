@@ -9,14 +9,24 @@
         <valueSetDefinition>
             <sorted>false</sorted>
             <value>
-                <fullName>M</fullName>
+                <fullName>Male</fullName>
                 <default>false</default>
                 <label>Male</label>
             </value>
             <value>
-                <fullName>F</fullName>
+                <fullName>Female</fullName>
                 <default>false</default>
                 <label>Female</label>
+            </value>
+            <value>
+                <fullName>Nonbinary</fullName>
+                <default>false</default>
+                <label>Non-binary</label>
+            </value>
+            <value>
+                <fullName>Prefer not to answer</fullName>
+                <default>false</default>
+                <label>Prefer not to answer</label>
             </value>
         </valueSetDefinition>
     </valueSet>

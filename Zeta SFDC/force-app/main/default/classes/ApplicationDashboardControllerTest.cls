@@ -52,7 +52,8 @@ private class ApplicationDashboardControllerTest {
       .thenReturn(availableTimelines);
     DATABASE_REPO_MOCK.when(DATABASE_REPO_MOCK.method.queryWithBinds())
       .thenReturn(users)
-      .thenReturn(apps);
+      .thenReturn(apps)
+      .thenReturn(new List<AcademicInterest>());
 
     Map<String, Object> result = ApplicationDashboardController.getDashboardData();
 
@@ -122,7 +123,8 @@ private class ApplicationDashboardControllerTest {
       .thenReturn(availableTimelines);
     DATABASE_REPO_MOCK.when(DATABASE_REPO_MOCK.method.queryWithBinds())
       .thenReturn(users)
-      .thenReturn(apps);
+      .thenReturn(apps)
+      .thenReturn(new List<AcademicInterest>());
 
     Map<String, Object> result = ApplicationDashboardController.getDashboardData();
 
@@ -142,6 +144,274 @@ private class ApplicationDashboardControllerTest {
       Date.newInstance(2026, 1, 1),
       appList[0].get('timelineOpenDate'),
       'Should surface the timeline open date for group ordering'
+    );
+  }
+
+  // IndividualApplication.Status doesn't move when a school choice gets an
+  // offer, so the dashboard must read that off the AcademicInterest rows
+  // instead.
+  @IsTest
+  private static void getDashboardData_appliedWithSeatOffered_surfacesSchoolDecisionStatus() {
+    DATABASE_REPO_MOCK.reset();
+
+    Id timelineId = SObjectIds.generateFakeId(Schema.ApplicationTimeline.SObjectType);
+    Id contactId = SObjectIds.generateFakeId(Schema.Contact.SObjectType);
+    Id appId = SObjectIds.generateFakeId(Schema.IndividualApplication.SObjectType);
+
+    List<ApplicationTimeline> timelines = new List<ApplicationTimeline>{
+      new ApplicationTimeline(
+        Id = timelineId,
+        Name = 'SY 2026-27',
+        ApplicationOpenDate = Date.today().addDays(-5),
+        ApplicationCloseDate = Date.today().addDays(30)
+      )
+    };
+    List<User> users = new List<User>{ new User(Id = UserInfo.getUserId(), ContactId = contactId) };
+    List<IndividualApplication> apps = new List<IndividualApplication>{
+      new IndividualApplication(Id = appId, Status = 'Applied')
+    };
+    List<AcademicInterest> schoolRows = new List<AcademicInterest>{
+      new AcademicInterest(IndividualApplicationId = appId, Status = 'Seat Offered'),
+      new AcademicInterest(IndividualApplicationId = appId, Status = 'Withdrawn/Declined')
+    };
+    List<ApplicationTimeline> availableTimelines = new List<ApplicationTimeline>{ timelines[0] };
+
+    DATABASE_REPO_MOCK.when(DATABASE_REPO_MOCK.method.query())
+      .thenReturn(timelines)
+      .thenReturn(availableTimelines);
+    DATABASE_REPO_MOCK.when(DATABASE_REPO_MOCK.method.queryWithBinds())
+      .thenReturn(users)
+      .thenReturn(apps)
+      .thenReturn(schoolRows);
+
+    Map<String, Object> result = ApplicationDashboardController.getDashboardData();
+
+    List<Map<String, Object>> appList = (List<Map<String, Object>>) result.get('applications');
+    Assert.areEqual('Applied', appList[0].get('status'), 'The raw IA.Status is untouched');
+    Assert.areEqual(
+      'Seat Offered',
+      appList[0].get('schoolDecisionStatus'),
+      'A Seat Offered school row must surface even though IA.Status never moved'
+    );
+  }
+
+  // Offer Rescinded due to Seat Optimization is still actionable, so it
+  // behaves like a live offer at the card level, and the priority order
+  // picks Seat Accepted over a lower-priority Waitlisted row on the same
+  // application.
+  @IsTest
+  private static void getDashboardData_decisionPriority_offerRescindedAndAcceptedOutrankWaitlisted() {
+    DATABASE_REPO_MOCK.reset();
+
+    Id timelineId = SObjectIds.generateFakeId(Schema.ApplicationTimeline.SObjectType);
+    Id contactId = SObjectIds.generateFakeId(Schema.Contact.SObjectType);
+    Id appId1 = SObjectIds.generateFakeId(Schema.IndividualApplication.SObjectType);
+    Id appId2 = SObjectIds.generateFakeId(Schema.IndividualApplication.SObjectType);
+
+    List<ApplicationTimeline> timelines = new List<ApplicationTimeline>{
+      new ApplicationTimeline(
+        Id = timelineId,
+        Name = 'SY 2026-27',
+        ApplicationOpenDate = Date.today().addDays(-5),
+        ApplicationCloseDate = Date.today().addDays(30)
+      )
+    };
+    List<User> users = new List<User>{ new User(Id = UserInfo.getUserId(), ContactId = contactId) };
+    List<IndividualApplication> apps = new List<IndividualApplication>{
+      new IndividualApplication(Id = appId1, Status = 'Submitted'),
+      new IndividualApplication(Id = appId2, Status = 'Submitted')
+    };
+    List<AcademicInterest> schoolRows = new List<AcademicInterest>{
+      new AcademicInterest(
+        IndividualApplicationId = appId1,
+        Status = 'Offer Rescinded due to Seat Optimization'
+      ),
+      new AcademicInterest(IndividualApplicationId = appId2, Status = 'Seat Accepted'),
+      new AcademicInterest(IndividualApplicationId = appId2, Status = 'Waitlisted')
+    };
+    List<ApplicationTimeline> availableTimelines = new List<ApplicationTimeline>{ timelines[0] };
+
+    DATABASE_REPO_MOCK.when(DATABASE_REPO_MOCK.method.query())
+      .thenReturn(timelines)
+      .thenReturn(availableTimelines);
+    DATABASE_REPO_MOCK.when(DATABASE_REPO_MOCK.method.queryWithBinds())
+      .thenReturn(users)
+      .thenReturn(apps)
+      .thenReturn(schoolRows);
+
+    Map<String, Object> result = ApplicationDashboardController.getDashboardData();
+
+    Map<Id, Map<String, Object>> byId = new Map<Id, Map<String, Object>>();
+    for (Object o : (List<Object>) result.get('applications')) {
+      Map<String, Object> m = (Map<String, Object>) o;
+      byId.put((Id) m.get('id'), m);
+    }
+    Assert.areEqual(
+      'Seat Offered',
+      byId.get(appId1).get('schoolDecisionStatus'),
+      'Offer Rescinded due to Seat Optimization surfaces as an offer at the card level'
+    );
+    Assert.areEqual(
+      'Seat Accepted',
+      byId.get(appId2).get('schoolDecisionStatus'),
+      'Seat Accepted outranks Waitlisted on the same application'
+    );
+  }
+
+  // An application with both a current offer and an already-accepted seat
+  // must surface the accepted row's school name alongside schoolDecisionStatus,
+  // so the dashboard can render both pills.
+  @IsTest
+  private static void getDashboardData_acceptedAndOffered_surfacesHasAcceptedSeatAndSchoolName() {
+    DATABASE_REPO_MOCK.reset();
+
+    Id timelineId = SObjectIds.generateFakeId(Schema.ApplicationTimeline.SObjectType);
+    Id contactId = SObjectIds.generateFakeId(Schema.Contact.SObjectType);
+    Id appId = SObjectIds.generateFakeId(Schema.IndividualApplication.SObjectType);
+
+    List<ApplicationTimeline> timelines = new List<ApplicationTimeline>{
+      new ApplicationTimeline(
+        Id = timelineId,
+        Name = 'SY 2026-27',
+        ApplicationOpenDate = Date.today().addDays(-5),
+        ApplicationCloseDate = Date.today().addDays(30)
+      )
+    };
+    List<User> users = new List<User>{ new User(Id = UserInfo.getUserId(), ContactId = contactId) };
+    List<IndividualApplication> apps = new List<IndividualApplication>{
+      new IndividualApplication(Id = appId, Status = 'Applied')
+    };
+
+    // Parent (__r) fields can't be set via the SObject constructor; deserialize
+    // a JSON shape to populate LearningProgram.School__r (the module convention;
+    // see getDashboardData_appWithTimeline_surfacesTimelineIdAndOpenDate above).
+    AcademicInterest offeredRow = (AcademicInterest) JSON.deserialize(
+      '{"IndividualApplicationId":"' + appId + '","Status":"Seat Offered"}',
+      AcademicInterest.class
+    );
+    AcademicInterest acceptedRow = (AcademicInterest) JSON.deserialize(
+      '{' +
+        '"IndividualApplicationId":"' +
+        appId +
+        '",' +
+        '"Status":"Seat Accepted",' +
+        '"LearningProgram":{"School__r":{"Name":"South Bronx","Zeta_School_Name__c":"South Bronx MS"}}' +
+        '}',
+      AcademicInterest.class
+    );
+    List<AcademicInterest> schoolRows = new List<AcademicInterest>{ offeredRow, acceptedRow };
+    List<ApplicationTimeline> availableTimelines = new List<ApplicationTimeline>{ timelines[0] };
+
+    DATABASE_REPO_MOCK.when(DATABASE_REPO_MOCK.method.query())
+      .thenReturn(timelines)
+      .thenReturn(availableTimelines);
+    DATABASE_REPO_MOCK.when(DATABASE_REPO_MOCK.method.queryWithBinds())
+      .thenReturn(users)
+      .thenReturn(apps)
+      .thenReturn(schoolRows);
+
+    Map<String, Object> result = ApplicationDashboardController.getDashboardData();
+
+    List<Map<String, Object>> appList = (List<Map<String, Object>>) result.get('applications');
+    Assert.areEqual(
+      'Seat Offered',
+      appList[0].get('schoolDecisionStatus'),
+      'The current offer still outranks the accepted seat per DECISION_PRIORITY'
+    );
+    Assert.areEqual(
+      true,
+      appList[0].get('hasAcceptedSeat'),
+      'An accepted row must surface hasAcceptedSeat even though the offer wins the priority race'
+    );
+    Assert.areEqual(
+      'South Bronx MS',
+      appList[0].get('acceptedSchoolName'),
+      'Zeta_School_Name__c wins over the fallback Name'
+    );
+  }
+
+  // An accepted-only application (no competing offer) surfaces hasAcceptedSeat
+  // and the school name just the same, from a row that has no LearningProgram
+  // set at all — the null-safe read must not NPE (SchoolRankingController's
+  // own Zeta_School_Name__c-then-Name fallback pattern).
+  @IsTest
+  private static void getDashboardData_acceptedOnlyNoLearningProgram_surfacesHasAcceptedSeatWithNullName() {
+    DATABASE_REPO_MOCK.reset();
+
+    Id contactId = SObjectIds.generateFakeId(Schema.Contact.SObjectType);
+    Id appId = SObjectIds.generateFakeId(Schema.IndividualApplication.SObjectType);
+
+    List<User> users = new List<User>{ new User(Id = UserInfo.getUserId(), ContactId = contactId) };
+    List<IndividualApplication> apps = new List<IndividualApplication>{
+      new IndividualApplication(Id = appId, Status = 'Applied')
+    };
+    List<AcademicInterest> schoolRows = new List<AcademicInterest>{
+      new AcademicInterest(IndividualApplicationId = appId, Status = 'Seat Accepted')
+    };
+
+    DATABASE_REPO_MOCK.when(DATABASE_REPO_MOCK.method.query())
+      .thenReturn(new List<ApplicationTimeline>())
+      .thenReturn(new List<ApplicationTimeline>());
+    DATABASE_REPO_MOCK.when(DATABASE_REPO_MOCK.method.queryWithBinds())
+      .thenReturn(users)
+      .thenReturn(apps)
+      .thenReturn(schoolRows);
+
+    Map<String, Object> result = ApplicationDashboardController.getDashboardData();
+
+    List<Map<String, Object>> appList = (List<Map<String, Object>>) result.get('applications');
+    Assert.areEqual(
+      true,
+      appList[0].get('hasAcceptedSeat'),
+      'hasAcceptedSeat must be true even when the accepted row carries no LearningProgram'
+    );
+    Assert.isNull(
+      appList[0].get('acceptedSchoolName'),
+      'No LearningProgram means no school name, not an exception'
+    );
+  }
+
+  // Same accepted-only shape, but with LearningProgram.School__r populated —
+  // the name resolves instead of staying null.
+  @IsTest
+  private static void getDashboardData_acceptedOnlyWithSchool_surfacesAcceptedSchoolName() {
+    DATABASE_REPO_MOCK.reset();
+
+    Id contactId = SObjectIds.generateFakeId(Schema.Contact.SObjectType);
+    Id appId = SObjectIds.generateFakeId(Schema.IndividualApplication.SObjectType);
+
+    List<User> users = new List<User>{ new User(Id = UserInfo.getUserId(), ContactId = contactId) };
+    List<IndividualApplication> apps = new List<IndividualApplication>{
+      new IndividualApplication(Id = appId, Status = 'Applied')
+    };
+    AcademicInterest acceptedRow = (AcademicInterest) JSON.deserialize(
+      '{' +
+        '"IndividualApplicationId":"' +
+        appId +
+        '",' +
+        '"Status":"Seat Accepted",' +
+        '"LearningProgram":{"School__r":{"Name":"Queens Jamaica"}}' +
+        '}',
+      AcademicInterest.class
+    );
+    List<AcademicInterest> schoolRows = new List<AcademicInterest>{ acceptedRow };
+
+    DATABASE_REPO_MOCK.when(DATABASE_REPO_MOCK.method.query())
+      .thenReturn(new List<ApplicationTimeline>())
+      .thenReturn(new List<ApplicationTimeline>());
+    DATABASE_REPO_MOCK.when(DATABASE_REPO_MOCK.method.queryWithBinds())
+      .thenReturn(users)
+      .thenReturn(apps)
+      .thenReturn(schoolRows);
+
+    Map<String, Object> result = ApplicationDashboardController.getDashboardData();
+
+    List<Map<String, Object>> appList = (List<Map<String, Object>>) result.get('applications');
+    Assert.areEqual(true, appList[0].get('hasAcceptedSeat'), 'Should surface hasAcceptedSeat');
+    Assert.areEqual(
+      'Queens Jamaica',
+      appList[0].get('acceptedSchoolName'),
+      'Falls back to Name when Zeta_School_Name__c is blank'
     );
   }
 

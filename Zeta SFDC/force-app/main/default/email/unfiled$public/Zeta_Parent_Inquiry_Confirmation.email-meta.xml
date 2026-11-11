@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <description>Used for Parent Inquiry auto response.</description>
+    <encodingKey>UTF-8</encodingKey>
+    <letterhead>Zeta_Letterhead</letterhead>
+    <name>Zeta Parent Inquiry – Confirmation</name>
+    <style>freeForm</style>
+    <subject>We’ve received your inquiry - We&apos;ll respond soon | hemos recibido su consulta - Responderemos pronto</subject>
+    <textOnly>Hello,
+
+Thank you for contacting Zeta Charter Schools!
+
+We&apos;ve received your inquiry, &quot;{!Case.Subject}&quot;, and our dedicated Family Outreach &amp; Enrollment Team will personally review it to ensure it receives the attention it deserves. If needed, you can use ID {!Case.CaseNumber} when referencing this request.
+
+We are honored to support your family&apos;s journey. 
+
+Sincerely,</textOnly>
+    <type>html</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

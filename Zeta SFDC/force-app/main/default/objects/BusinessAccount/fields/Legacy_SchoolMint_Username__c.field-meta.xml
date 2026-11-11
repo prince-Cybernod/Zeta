@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Legacy_SchoolMint_Username__c</fullName>
+    <description>Legacy SchoolMint username for the primary guardian account, used for reference/matching during historical data review.</description>
+    <externalId>false</externalId>
+    <inlineHelpText>Legacy SchoolMint username for the primary guardian account, used for reference/matching during historical data review.</inlineHelpText>
+    <label>Legacy SchoolMint Username</label>
+    <length>255</length>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

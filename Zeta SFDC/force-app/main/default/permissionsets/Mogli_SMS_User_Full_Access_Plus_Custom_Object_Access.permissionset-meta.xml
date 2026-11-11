@@ -496,6 +496,11 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
+        <field>Mogli_SMS__Form__c.Case__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
         <field>Mogli_SMS__Form__c.Mogli_SMS__Campaign__c</field>
         <readable>true</readable>
     </fieldPermissions>
@@ -1057,6 +1062,11 @@
     <fieldPermissions>
         <editable>true</editable>
         <field>Mogli_SMS__SMS__c.Academic_Term_Enrollment__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>Mogli_SMS__SMS__c.Case__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>

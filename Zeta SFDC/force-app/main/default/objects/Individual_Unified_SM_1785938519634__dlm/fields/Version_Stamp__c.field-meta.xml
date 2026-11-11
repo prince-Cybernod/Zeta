@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Version_Stamp__c</fullName>
+    <label>Version Stamp</label>
+    <mktDataModelFieldAttributes>
+        <definitionCreationType>Segment_Membership</definitionCreationType>
+        <isDynamicLookup>false</isDynamicLookup>
+        <labelOverride>Version Stamp</labelOverride>
+        <masterLabel>Version Stamp</masterLabel>
+        <refAttrDeveloperName>Version_Stamp</refAttrDeveloperName>
+        <usageTag>None</usageTag>
+    </mktDataModelFieldAttributes>
+    <required>false</required>
+    <type>DateTime</type>
+</CustomField>

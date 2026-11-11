@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>ssot__rel_1733408299605_end__c</fullName>
+    <deleteConstraint>SetNull</deleteConstraint>
+    <deprecated>false</deprecated>
+    <label>Application_FinancialApplicationId_m_rel</label>
+    <referenceTo>ssot__FinancialApplication__dlm</referenceTo>
+    <relationshipLabel>Application_FinancialApplicationId_m_rel</relationshipLabel>
+    <relationshipName>rel_1733408299605_end</relationshipName>
+    <required>false</required>
+    <type>Lookup</type>
+</CustomField>

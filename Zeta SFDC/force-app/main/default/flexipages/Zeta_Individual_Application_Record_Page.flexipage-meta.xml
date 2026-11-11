@@ -3,6 +3,12 @@
     <flexiPageRegions>
         <itemInstances>
             <componentInstance>
+                <componentName>inactiveTimelineBanner</componentName>
+                <identifier>c_inactiveTimelineBanner</identifier>
+            </componentInstance>
+        </itemInstances>
+        <itemInstances>
+            <componentInstance>
                 <componentInstanceProperties>
                     <name>actionNames</name>
                     <valueList>
@@ -15,6 +21,9 @@
                                     <rightValue>Applied</rightValue>
                                 </criteria>
                             </visibilityRule>
+                        </valueListItems>
+                        <valueListItems>
+                            <value>Clone</value>
                         </valueListItems>
                     </valueList>
                 </componentInstanceProperties>
@@ -48,16 +57,8 @@
         </itemInstances>
         <itemInstances>
             <componentInstance>
-                <componentInstanceProperties>
-                    <name>hideUpdateButton</name>
-                    <value>false</value>
-                </componentInstanceProperties>
-                <componentInstanceProperties>
-                    <name>variant</name>
-                    <value>linear</value>
-                </componentInstanceProperties>
-                <componentName>runtime_sales_pathassistant:pathAssistant</componentName>
-                <identifier>runtime_sales_pathassistant_pathAssistant</identifier>
+                <componentName>applicationStatusPath</componentName>
+                <identifier>c_applicationStatusPath</identifier>
             </componentInstance>
         </itemInstances>
         <name>header</name>
@@ -152,6 +153,56 @@
             <fieldInstance>
                 <fieldItem>Record.Account.PersonMailingAddress</fieldItem>
                 <identifier>RecordAccountPersonMailingAddressField</identifier>
+            </fieldInstance>
+        </itemInstances>
+        <itemInstances>
+            <fieldInstance>
+                <fieldInstanceProperties>
+                    <name>uiBehavior</name>
+                    <value>none</value>
+                </fieldInstanceProperties>
+                <fieldItem>Record.Active_Academic_Term__c</fieldItem>
+                <identifier>RecordActive_Academic_Term__cField</identifier>
+            </fieldInstance>
+        </itemInstances>
+        <itemInstances>
+            <fieldInstance>
+                <fieldInstanceProperties>
+                    <name>uiBehavior</name>
+                    <value>none</value>
+                </fieldInstanceProperties>
+                <fieldItem>Record.Mogli_Number__c</fieldItem>
+                <identifier>RecordMogli_Number__cField</identifier>
+            </fieldInstance>
+        </itemInstances>
+        <itemInstances>
+            <fieldInstance>
+                <fieldInstanceProperties>
+                    <name>uiBehavior</name>
+                    <value>none</value>
+                </fieldInstanceProperties>
+                <fieldItem>Record.Mogli_Opt_Out__c</fieldItem>
+                <identifier>RecordMogli_Opt_Out__cField</identifier>
+            </fieldInstance>
+        </itemInstances>
+        <itemInstances>
+            <fieldInstance>
+                <fieldInstanceProperties>
+                    <name>uiBehavior</name>
+                    <value>none</value>
+                </fieldInstanceProperties>
+                <fieldItem>Record.Default_Gateway__c</fieldItem>
+                <identifier>RecordDefault_Gateway__cField</identifier>
+            </fieldInstance>
+        </itemInstances>
+        <itemInstances>
+            <fieldInstance>
+                <fieldInstanceProperties>
+                    <name>uiBehavior</name>
+                    <value>none</value>
+                </fieldInstanceProperties>
+                <fieldItem>Record.Date_Tour_Attended__c</fieldItem>
+                <identifier>RecordDate_Tour_Attended__cField</identifier>
             </fieldInstance>
         </itemInstances>
         <name>Facet-26cfc815-670e-48f4-b46c-bbb8c228e4fd</name>
@@ -1007,6 +1058,16 @@
                 <identifier>RecordCategoryField</identifier>
             </fieldInstance>
         </itemInstances>
+        <itemInstances>
+            <fieldInstance>
+                <fieldInstanceProperties>
+                    <name>uiBehavior</name>
+                    <value>none</value>
+                </fieldInstanceProperties>
+                <fieldItem>Record.Created_for_Testing__c</fieldItem>
+                <identifier>RecordCreated_for_Testing_cField</identifier>
+            </fieldInstance>
+        </itemInstances>
         <name>Facet-3bfa421a-8550-44ac-a69b-8be099d68781</name>
         <type>Facet</type>
     </flexiPageRegions>
@@ -1252,7 +1313,23 @@
                 <identifier>lst_dynamicRelatedList3</identifier>
             </componentInstance>
         </itemInstances>
+        <itemInstances>
+            <componentInstance>
+                <componentName>applicationSchoolsPanel</componentName>
+                <identifier>c_applicationSchoolsPanel</identifier>
+            </componentInstance>
+        </itemInstances>
         <name>Facet-7ec9f97d-a167-4456-b12c-39146d98ef1b</name>
+        <type>Facet</type>
+    </flexiPageRegions>
+    <flexiPageRegions>
+        <itemInstances>
+            <componentInstance>
+                <componentName>schoolChoicesDetail</componentName>
+                <identifier>c_schoolChoicesDetail</identifier>
+            </componentInstance>
+        </itemInstances>
+        <name>Facet-dc7c4499-ffd2-4d4c-8696-c5677c13e24c</name>
         <type>Facet</type>
     </flexiPageRegions>
     <flexiPageRegions>
@@ -1573,6 +1650,50 @@
         <itemInstances>
             <componentInstance>
                 <componentInstanceProperties>
+                    <name>pageDevName</name>
+                    <value>Application_Details</value>
+                </componentInstanceProperties>
+                <componentName>zetaApplication</componentName>
+                <identifier>c_zetaApplication</identifier>
+            </componentInstance>
+        </itemInstances>
+        <name>Facet-85b4ef85-a4f4-4557-b154-3a1d2731b120</name>
+        <type>Facet</type>
+    </flexiPageRegions>
+    <flexiPageRegions>
+        <itemInstances>
+            <componentInstance>
+                <componentInstanceProperties>
+                    <name>parentFieldApiName</name>
+                    <value>IndividualApplication.Id</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>relatedListApiName</name>
+                    <value>Histories</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>relatedListComponentOverride</name>
+                    <value>NONE</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>rowsToDisplay</name>
+                    <value>10</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>showActionBar</name>
+                    <value>false</value>
+                </componentInstanceProperties>
+                <componentName>force:relatedListSingleContainer</componentName>
+                <identifier>force_relatedListSingleContainer4</identifier>
+            </componentInstance>
+        </itemInstances>
+        <name>Facet-128af9d0-a16f-41c4-b4e6-2f51f0670c47</name>
+        <type>Facet</type>
+    </flexiPageRegions>
+    <flexiPageRegions>
+        <itemInstances>
+            <componentInstance>
+                <componentInstanceProperties>
                     <name>active</name>
                     <value>true</value>
                 </componentInstanceProperties>
@@ -1610,6 +1731,20 @@
             <componentInstance>
                 <componentInstanceProperties>
                     <name>body</name>
+                    <value>Facet-dc7c4499-ffd2-4d4c-8696-c5677c13e24c</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>title</name>
+                    <value>School Choices</value>
+                </componentInstanceProperties>
+                <componentName>flexipage:tab</componentName>
+                <identifier>flexipage_tab_schoolChoices</identifier>
+            </componentInstance>
+        </itemInstances>
+        <itemInstances>
+            <componentInstance>
+                <componentInstanceProperties>
+                    <name>body</name>
                     <value>Facet-da643db4-0bb7-408d-8237-614ff8c6d621</value>
                 </componentInstanceProperties>
                 <componentInstanceProperties>
@@ -1632,6 +1767,34 @@
                 </componentInstanceProperties>
                 <componentName>flexipage:tab</componentName>
                 <identifier>flexipage_tab5</identifier>
+            </componentInstance>
+        </itemInstances>
+        <itemInstances>
+            <componentInstance>
+                <componentInstanceProperties>
+                    <name>body</name>
+                    <value>Facet-85b4ef85-a4f4-4557-b154-3a1d2731b120</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>title</name>
+                    <value>Submit Application</value>
+                </componentInstanceProperties>
+                <componentName>flexipage:tab</componentName>
+                <identifier>flexipage_tab6</identifier>
+            </componentInstance>
+        </itemInstances>
+        <itemInstances>
+            <componentInstance>
+                <componentInstanceProperties>
+                    <name>body</name>
+                    <value>Facet-128af9d0-a16f-41c4-b4e6-2f51f0670c47</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>title</name>
+                    <value>History</value>
+                </componentInstanceProperties>
+                <componentName>flexipage:tab</componentName>
+                <identifier>flexipage_tab7</identifier>
             </componentInstance>
         </itemInstances>
         <name>Facet-ea2d1cbe-a322-4b6a-841f-d857dcab08df</name>
@@ -1695,6 +1858,30 @@
         <itemInstances>
             <componentInstance>
                 <componentInstanceProperties>
+                    <name>attachmentsDisabled</name>
+                    <value>false</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>canOverrideDefaults</name>
+                    <value>Enabled</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>customLimitUnit</name>
+                    <value>Segments</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>mcvConfigurationRecord</name>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>recordId</name>
+                </componentInstanceProperties>
+                <componentName>Mogli_SMS:TextMessageComponentEmpApi</componentName>
+                <identifier>Mogli_SMS_TextMessageComponentEmpApi</identifier>
+            </componentInstance>
+        </itemInstances>
+        <itemInstances>
+            <componentInstance>
+                <componentInstanceProperties>
                     <name>label</name>
                     <value>Tabs</value>
                 </componentInstanceProperties>
@@ -1704,6 +1891,26 @@
                 </componentInstanceProperties>
                 <componentName>flexipage:tabset</componentName>
                 <identifier>flexipage_tabset2</identifier>
+            </componentInstance>
+        </itemInstances>
+        <itemInstances>
+            <componentInstance>
+                <componentInstanceProperties>
+                    <name>decorate</name>
+                    <value>true</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>richTextValue</name>
+                    <value>&lt;p&gt;&lt;strong style=&quot;font-size: 14px;&quot;&gt;Notes&lt;/strong&gt;&lt;/p&gt;</value>
+                </componentInstanceProperties>
+                <componentName>flexipage:richText</componentName>
+                <identifier>flexipage_richText</identifier>
+            </componentInstance>
+        </itemInstances>
+        <itemInstances>
+            <componentInstance>
+                <componentName>forceChatter:recordFeedContainer</componentName>
+                <identifier>forceChatter_recordFeedContainer</identifier>
             </componentInstance>
         </itemInstances>
         <itemInstances>

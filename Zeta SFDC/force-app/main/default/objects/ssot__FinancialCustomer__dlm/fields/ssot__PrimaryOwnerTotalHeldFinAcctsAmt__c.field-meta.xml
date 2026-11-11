@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>ssot__PrimaryOwnerTotalHeldFinAcctsAmt__c</fullName>
+    <deprecated>false</deprecated>
+    <label>Primary Owner Total Held Fin Accts Amt</label>
+    <mktDataModelFieldAttributes>
+        <definitionCreationType>Standard</definitionCreationType>
+        <isDynamicLookup>false</isDynamicLookup>
+        <masterLabel>Primary Owner Total Held Fin Accts Amt</masterLabel>
+        <refAttrDeveloperName>PrimaryOwnerTotalHeldFinAcctsAmt</refAttrDeveloperName>
+        <usageTag>None</usageTag>
+    </mktDataModelFieldAttributes>
+    <precision>18</precision>
+    <required>false</required>
+    <scale>2</scale>
+    <type>Currency</type>
+</CustomField>

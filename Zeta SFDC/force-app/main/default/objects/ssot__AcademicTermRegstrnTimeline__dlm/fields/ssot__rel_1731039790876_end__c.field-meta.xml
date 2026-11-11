@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>ssot__rel_1731039790876_end__c</fullName>
+    <deleteConstraint>SetNull</deleteConstraint>
+    <deprecated>false</deprecated>
+    <label>AcademicTermRegstrnTimeline_Academic_rel</label>
+    <referenceTo>ssot__AcademicTerm__dlm</referenceTo>
+    <relationshipLabel>AcademicTermRegstrnTimeline_Academic_rel</relationshipLabel>
+    <relationshipName>rel_1731039790876_end</relationshipName>
+    <required>false</required>
+    <type>Lookup</type>
+</CustomField>

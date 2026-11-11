@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>ssot__rel_1716721979105_end__c</fullName>
+    <deleteConstraint>SetNull</deleteConstraint>
+    <deprecated>false</deprecated>
+    <label>PatientHealthReaction_ParentReferenc_rel</label>
+    <referenceTo>ssot__AllergyIntolerance__dlm</referenceTo>
+    <relationshipLabel>PatientHealthReaction_ParentReferenc_rel</relationshipLabel>
+    <relationshipName>rel_1716721979105_end</relationshipName>
+    <required>false</required>
+    <type>Lookup</type>
+</CustomField>

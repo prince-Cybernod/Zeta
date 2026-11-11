@@ -1,0 +1,355 @@
+{
+  "type" : "sfdc_cms__email",
+  "title" : "Email_20260922_151922",
+  "contentBody" : {
+    "backgroundColor" : "#f3f3f3",
+    "lightning:brandSource" : "MCXD6TZ6XKJRGNBB72AH4B5UPAKA",
+    "lightning:colorScheme" : "{!$brand.colorScheme}",
+    "lightning:dataProviders" : [ {
+      "attributes" : {
+        "dataGraphApiName" : "Unified_Individual_Full_Graph",
+        "dataspace" : "default"
+      },
+      "definition" : "sfdc_cms__dataGraphDataProvider",
+      "sfdcExpressionKey" : "$dataGraph"
+    } ],
+    "lightning:expressions" : [ {
+      "attributes" : {
+        "expressionGroups" : [ {
+          "name" : "group0",
+          "resource" : "{!$dataGraph.ssot__FirstName__c}"
+        } ]
+      },
+      "default" : "",
+      "definition" : "sfdc_cms__multiLevelExpression",
+      "label" : "First_Name",
+      "sfdcExpressionKey" : "First_Name"
+    }, {
+      "attributes" : {
+        "expressionGroups" : [ {
+          "name" : "group0",
+          "resource" : "{!$dataGraph.ssot__FirstName__c}"
+        } ]
+      },
+      "default" : "",
+      "definition" : "sfdc_cms__multiLevelExpression",
+      "label" : "First_Name_1",
+      "sfdcExpressionKey" : "First_Name_1"
+    } ],
+    "lightning:padding" : "{!$brand.spacing.none}",
+    "messagePurpose" : "promotional",
+    "sfdc_cms:block" : {
+      "definition" : "sfdc_cms/rootContentBlock",
+      "id" : "9dea214e-af65-440a-8895-1bed9f1b7c79",
+      "type" : "block",
+      "children" : [ {
+        "attributes" : {
+          "lightning:borderRadius" : "{!$brand.borderRadius.square}",
+          "lightning:borderWidth" : "{!$brand.borderWeight.none}",
+          "lightning:colorScheme" : "{!$brand.colorScheme}",
+          "lightning:margin" : "{!$brand.spacing.none}",
+          "lightning:padding" : "{!$brand.spacing.xSmall}",
+          "reverseOrderOnMobile" : false,
+          "stackOnMobile" : true,
+          "lightning:backgroundImage" : {
+            "repeat" : "no-repeat",
+            "position" : "center center",
+            "size" : "cover"
+          }
+        },
+        "definition" : "lightning/section",
+        "id" : "f7964f8d-e033-49ae-81e0-55b1480d095a",
+        "type" : "block",
+        "children" : [ {
+          "attributes" : {
+            "columnWidth" : 12.0,
+            "lightning:borderRadius" : "{!$brand.borderRadius.square}",
+            "lightning:borderWidth" : "{!$brand.borderWeight.none}",
+            "lightning:colorScheme" : "{!$brand.colorScheme}",
+            "lightning:margin" : "{!$brand.spacing.none}",
+            "lightning:padding" : "{!$brand.spacing.xSmall}",
+            "lightning:verticalAlignment" : "top",
+            "lightning:backgroundImage" : {
+              "repeat" : "no-repeat",
+              "position" : "center center",
+              "size" : "cover"
+            }
+          },
+          "definition" : "lightning/column",
+          "id" : "58d10319-de27-4d2a-acae-e02531e25561",
+          "type" : "block",
+          "children" : [ {
+            "attributes" : {
+              "imageFitConfig" : {
+                "width" : {
+                  "unit" : "%",
+                  "value" : 100.0
+                }
+              },
+              "imageInfo" : {
+                "altText" : "",
+                "overrideAltText" : false,
+                "source" : {
+                  "mimeType" : "image/jpeg",
+                  "ref" : "MCLOFCIC6ILJDFTOMSUK7LEIIUL4",
+                  "size" : 33445.0,
+                  "type" : "imageReference"
+                },
+                "url" : "/cms/media/MCLOFCIC6ILJDFTOMSUK7LEIIUL4?fileName=Zeta+Email+Header+-+ES+App+2.jpg&fileHash=5482d757e296cee0ca0cf2e7ab2985c1"
+              },
+              "lightning:borderRadius" : "{!$brand.borderRadius.square}",
+              "lightning:borderWidth" : "{!$brand.borderWeight.none}",
+              "lightning:colorGroup" : {
+                "backgroundColor" : "{!$brand.colorScheme.root}",
+                "borderColor" : "{!$brand.colorScheme.neutral}",
+                "linkColor" : "{!$brand.colorScheme.primaryAccent}",
+                "textColor" : "{!$brand.colorScheme.contrast}"
+              },
+              "lightning:horizontalAlignment" : "center",
+              "lightning:margin" : "{!$brand.spacing.none}",
+              "lightning:padding" : "{!$brand.spacing.none}",
+              "lightning:typography" : "{!$brand.typography.paragraph.paragraph1}"
+            },
+            "definition" : "lightning/image",
+            "id" : "17bbc208-6968-4a85-b909-bb2041a68a3f",
+            "type" : "block"
+          } ]
+        } ]
+      }, {
+        "attributes" : {
+          "lightning:borderRadius" : "{!$brand.borderRadius.square}",
+          "lightning:borderWidth" : "{!$brand.borderWeight.none}",
+          "lightning:colorScheme" : "{!$brand.colorScheme}",
+          "lightning:margin" : "{!$brand.spacing.none}",
+          "lightning:padding" : "{!$brand.spacing.xSmall}",
+          "stackOnMobile" : true,
+          "reverseOrderOnMobile" : false,
+          "lightning:backgroundImage" : {
+            "repeat" : "no-repeat",
+            "position" : "center center",
+            "size" : "cover"
+          }
+        },
+        "definition" : "lightning/section",
+        "id" : "908d471c-6227-4deb-955f-802ca928c63b",
+        "type" : "block",
+        "children" : [ {
+          "attributes" : {
+            "columnWidth" : 6.0,
+            "lightning:borderRadius" : "{!$brand.borderRadius.square}",
+            "lightning:borderWidth" : "{!$brand.borderWeight.none}",
+            "lightning:colorScheme" : "{!$brand.colorScheme}",
+            "lightning:margin" : "{!$brand.spacing.none}",
+            "lightning:padding" : "{!$brand.spacing.xSmall}",
+            "lightning:verticalAlignment" : "top",
+            "lightning:backgroundImage" : {
+              "repeat" : "no-repeat",
+              "position" : "center center",
+              "size" : "cover"
+            }
+          },
+          "definition" : "lightning/column",
+          "id" : "5bb37cee-5c6f-4459-942f-b362a6a6428e",
+          "type" : "block",
+          "children" : [ {
+            "attributes" : {
+              "align" : "left",
+              "lightning:borderRadius" : "{!$brand.borderRadius.square}",
+              "lightning:borderWidth" : "{!$brand.borderWeight.none}",
+              "lightning:colorGroup" : {
+                "backgroundColor" : "{!$brand.colorScheme.root}",
+                "borderColor" : "{!$brand.colorScheme.neutral}",
+                "linkColor" : "{!$brand.colorScheme.primaryAccent}",
+                "textColor" : "{!$brand.colorScheme.contrast}"
+              },
+              "lightning:margin" : "{!$brand.spacing.none}",
+              "lightning:padding" : "{!$brand.spacing.none}",
+              "lightning:typography" : "{!$brand.typography.paragraph.paragraph1}",
+              "text" : "{!$Expression.First_Name}<br /><br /><br />"
+            },
+            "definition" : "lightning/paragraph",
+            "id" : "a2413e51-5f3b-43a5-a2d4-1be4caf16a3d",
+            "type" : "block"
+          } ]
+        }, {
+          "attributes" : {
+            "columnWidth" : 6.0,
+            "lightning:borderRadius" : "{!$brand.borderRadius.square}",
+            "lightning:borderWidth" : "{!$brand.borderWeight.none}",
+            "lightning:colorScheme" : "{!$brand.colorScheme}",
+            "lightning:margin" : "{!$brand.spacing.none}",
+            "lightning:padding" : "{!$brand.spacing.xSmall}",
+            "lightning:verticalAlignment" : "top",
+            "lightning:backgroundImage" : {
+              "repeat" : "no-repeat",
+              "position" : "center center",
+              "size" : "cover"
+            }
+          },
+          "definition" : "lightning/column",
+          "id" : "cd954847-706f-49d6-a095-0fdae0685e96",
+          "type" : "block",
+          "children" : [ {
+            "attributes" : {
+              "align" : "left",
+              "lightning:borderRadius" : "{!$brand.borderRadius.square}",
+              "lightning:borderWidth" : "{!$brand.borderWeight.none}",
+              "lightning:colorGroup" : {
+                "backgroundColor" : "{!$brand.colorScheme.root}",
+                "borderColor" : "{!$brand.colorScheme.neutral}",
+                "linkColor" : "#4F497A",
+                "textColor" : "#4F497A"
+              },
+              "lightning:margin" : "{!$brand.spacing.none}",
+              "lightning:padding" : "{!$brand.spacing.none}",
+              "lightning:typography" : "{!$brand.typography.paragraph.paragraph1}",
+              "text" : "<strong>Sample test</strong>"
+            },
+            "definition" : "lightning/paragraph",
+            "id" : "17a75400-4e8a-49b8-82a1-939157a6d113",
+            "type" : "block"
+          } ]
+        } ]
+      }, {
+        "attributes" : {
+          "lightning:borderRadius" : "{!$brand.borderRadius.square}",
+          "lightning:borderWidth" : "{!$brand.borderWeight.none}",
+          "lightning:colorScheme" : "{!$brand.colorScheme}",
+          "lightning:margin" : {
+            "bottom" : {
+              "unit" : "px",
+              "value" : 0.0
+            },
+            "left" : {
+              "unit" : "px",
+              "value" : 0.0
+            },
+            "right" : {
+              "unit" : "px",
+              "value" : 0.0
+            },
+            "top" : {
+              "unit" : "px",
+              "value" : 0.0
+            }
+          },
+          "lightning:padding" : {
+            "bottom" : {
+              "unit" : "px",
+              "value" : 16.0
+            },
+            "left" : {
+              "unit" : "px",
+              "value" : 16.0
+            },
+            "right" : {
+              "unit" : "px",
+              "value" : 16.0
+            },
+            "top" : {
+              "unit" : "px",
+              "value" : 16.0
+            }
+          },
+          "reverseOrderOnMobile" : false,
+          "stackOnMobile" : true,
+          "lightning:backgroundImage" : {
+            "repeat" : "no-repeat",
+            "position" : "center center",
+            "size" : "cover"
+          }
+        },
+        "definition" : "lightning/section",
+        "id" : "601e2473-f13c-49a7-bd46-d92ae5bb952d",
+        "type" : "block",
+        "children" : [ {
+          "attributes" : {
+            "columnWidth" : 12.0,
+            "lightning:borderRadius" : "{!$brand.borderRadius.square}",
+            "lightning:borderWidth" : "{!$brand.borderWeight.none}",
+            "lightning:colorScheme" : "{!$brand.colorScheme}",
+            "lightning:margin" : "{!$brand.spacing.none}",
+            "lightning:padding" : "{!$brand.spacing.xSmall}",
+            "lightning:verticalAlignment" : "top",
+            "lightning:backgroundImage" : {
+              "repeat" : "no-repeat",
+              "position" : "center center",
+              "size" : "cover"
+            }
+          },
+          "definition" : "lightning/column",
+          "id" : "2578bbde-f60c-439a-bd82-06a8d14803c5",
+          "type" : "block",
+          "children" : [ {
+            "attributes" : {
+              "align" : "left",
+              "lightning:borderRadius" : "{!$brand.borderRadius.square}",
+              "lightning:borderWidth" : "{!$brand.borderWeight.none}",
+              "lightning:colorGroup" : {
+                "backgroundColor" : "{!$brand.colorScheme.root}",
+                "borderColor" : "{!$brand.colorScheme.neutral}",
+                "linkColor" : "#4F497A",
+                "textColor" : "#4F497A"
+              },
+              "lightning:margin" : "{!$brand.spacing.none}",
+              "lightning:padding" : "{!$brand.spacing.none}",
+              "lightning:typography" : "{!$brand.typography.paragraph.paragraph1}",
+              "text" : "<br /><ul style=\"display: block; padding-left: 2.5rem; margin: 0.5rem 0px; list-style-position: outside; list-style-type: disc;\"><li style=\"display: list-item; margin: 0.35rem 0px;\">List 1</li><li style=\"display: list-item; margin: 0.35rem 0px;\">List 2</li></ul>"
+            },
+            "definition" : "lightning/paragraph",
+            "id" : "f0318dbd-c92e-479e-841e-6d589cae5201",
+            "type" : "block"
+          } ]
+        } ]
+      }, {
+        "attributes" : {
+          "lightning:borderRadius" : "{!$brand.borderRadius.square}",
+          "lightning:borderWidth" : "{!$brand.borderWeight.none}",
+          "lightning:colorScheme" : "{!$brand.colorScheme}",
+          "lightning:margin" : "{!$brand.spacing.none}",
+          "lightning:padding" : "{!$brand.spacing.xSmall}",
+          "reverseOrderOnMobile" : false,
+          "stackOnMobile" : true,
+          "lightning:backgroundImage" : {
+            "repeat" : "no-repeat",
+            "position" : "center center",
+            "size" : "cover"
+          }
+        },
+        "definition" : "lightning/section",
+        "id" : "b5e8405d-ed45-4815-9128-4d17d20394d2",
+        "type" : "block",
+        "children" : [ {
+          "attributes" : {
+            "columnWidth" : 12.0,
+            "lightning:borderRadius" : "{!$brand.borderRadius.square}",
+            "lightning:borderWidth" : "{!$brand.borderWeight.none}",
+            "lightning:colorScheme" : "{!$brand.colorScheme}",
+            "lightning:margin" : "{!$brand.spacing.none}",
+            "lightning:padding" : "{!$brand.spacing.xSmall}",
+            "lightning:verticalAlignment" : "top",
+            "lightning:backgroundImage" : {
+              "repeat" : "no-repeat",
+              "position" : "center center",
+              "size" : "cover"
+            }
+          },
+          "definition" : "lightning/column",
+          "id" : "abffa915-5751-4dfe-99cf-fba6252d69c1",
+          "type" : "block",
+          "children" : [ ]
+        } ]
+      } ]
+    },
+    "sfdc_cms:title" : "Email_20260922_151922",
+    "subjectLine" : "Test for Training",
+    "lightning:backgroundImage" : {
+      "repeat" : "no-repeat",
+      "position" : "center center",
+      "size" : "cover"
+    },
+    "sfdc_cms:attachments" : [ ],
+    "sfdc_cms:variants" : [ ]
+  },
+  "urlName" : "email-20260922-151922"
+}

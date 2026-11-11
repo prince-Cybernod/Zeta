@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>IsSyntheticCcEnabled__c</fullName>
+    <defaultValue>false</defaultValue>
+    <label>Synthetic CC Enabled</label>
+    <mktDataModelFieldAttributes>
+        <definitionCreationType>Standard</definitionCreationType>
+        <isDynamicLookup>false</isDynamicLookup>
+        <labelOverride>Synthetic CC Enabled</labelOverride>
+        <masterLabel>Synthetic CC Enabled</masterLabel>
+        <refAttrDeveloperName>IsSyntheticCcEnabled</refAttrDeveloperName>
+        <usageTag>None</usageTag>
+    </mktDataModelFieldAttributes>
+    <type>Checkbox</type>
+</CustomField>

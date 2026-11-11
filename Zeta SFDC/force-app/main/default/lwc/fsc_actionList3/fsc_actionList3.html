@@ -1,0 +1,33 @@
+<!--
+  @description       : 
+  @author            : Josh Dayment
+  @group             : 
+  @last modified on  : 05-31-2023
+  @last modified by  : Josh Dayment
+-->
+<template>
+
+    <template if:true={displayMenu}>
+        <lightning-button-menu label={buttonLabel} alternative-text="Actions" menu-alignment="right"
+            tooltip="List of available actions for this specific record click on the name of the action to launch"
+            onselect={handleMenuClick}>
+
+            <template for:each={flowData} for:item="flow">
+                <lightning-menu-item id={flow.apiName} label={flow.label} value={flow.apiName} key={flow.label}>
+                </lightning-menu-item>
+            </template>
+
+        </lightning-button-menu>
+    </template>
+
+    <template if:true={displayList}>
+        <lightning-vertical-navigation onselect={handleListClick}>
+            <lightning-vertical-navigation-section label={buttonLabel}>
+                <template for:each={flowData} for:item="flow">
+                    <lightning-vertical-navigation-item id={flow.apiName} label={flow.label} name={flow.apiName}
+                        key={flow.label}></lightning-vertical-navigation-item>
+                </template>
+            </lightning-vertical-navigation-section>
+        </lightning-vertical-navigation>
+    </template>
+</template>

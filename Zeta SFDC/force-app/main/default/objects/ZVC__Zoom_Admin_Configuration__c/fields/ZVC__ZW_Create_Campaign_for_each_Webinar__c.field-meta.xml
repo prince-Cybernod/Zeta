@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>ZVC__ZW_Create_Campaign_for_each_Webinar__c</fullName>
+    <defaultValue>false</defaultValue>
+    <deprecated>false</deprecated>
+    <description>Automatically create a Salesforce Campaign for each new Webinar</description>
+    <inlineHelpText>Automatically create a Salesforce Campaign for each new Webinar</inlineHelpText>
+    <label>Create Campaign for each Webinar</label>
+    <trackTrending>false</trackTrending>
+    <type>Checkbox</type>
+</CustomField>

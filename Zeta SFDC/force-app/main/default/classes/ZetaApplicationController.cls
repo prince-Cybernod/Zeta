@@ -3,6 +3,8 @@ public without sharing class ZetaApplicationController {
   private static DatabaseRepo databaseRepo = new SystemModeDatabaseRepo();
   @TestVisible
   private static EventBusRepo eventBusRepo = new EventBusRepoImpl();
+  @TestVisible
+  private static String runningUserType = UserInfo.getUserType();
   @AuraEnabled(cacheable=true)
   public static Map<String, Object> getWizardState(Id applicationId) {
     Preconditions.checkNotNull(applicationId, 'Application Id is required');
@@ -109,8 +111,10 @@ public without sharing class ZetaApplicationController {
 
     String validationQuery =
       'SELECT Status, Signature_Name__c, AppliedDate,' +
+      ' AccountId, Application_Timeline__c,' +
       ' Employee_Priority__c, Employee_Priority_Guardian__c,' +
-      ' Primary_Guardian__c, Secondary_Guardian__c' +
+      ' Primary_Guardian__c, Secondary_Guardian__c,' +
+      ' Converting_Team_Member__c' +
       ' FROM IndividualApplication' +
       ' WHERE Id = :applicationId LIMIT 1';
     List<IndividualApplication> apps = (List<IndividualApplication>) databaseRepo.queryWithBinds(
@@ -122,20 +126,31 @@ public without sharing class ZetaApplicationController {
       apps[0].AppliedDate == null,
       'Application has already been submitted'
     );
+    // Only portal users must sign; staff may submit unsigned.
     Preconditions.checkArgument(
-      String.isNotBlank(apps[0].Signature_Name__c),
+      String.isNotBlank(apps[0].Signature_Name__c) || runningUserType == 'Standard',
       'Application must be signed before submission'
     );
     Preconditions.checkArgument(
       apps[0].Status == 'Draft',
       'Application must be in Draft status to submit'
     );
+    // Safe to run after the AppliedDate precondition above: this application is
+    // still unsubmitted, so it can never match the guard's own query.
+    if (hasSubmittedApplication(apps[0].AccountId, apps[0].Application_Timeline__c)) {
+      throw new AuraHandledException(Label.AppUI_DuplicateApplication);
+    }
 
     Map<String, Object> fields = new Map<String, Object>();
     fields.put('Id', applicationId);
     fields.put('Status', 'Applied');
     fields.put('AppliedDate', Datetime.now());
     fields.put('Last_Completed_Step__c', 5);
+    // Staff who submit get credit unless someone is already credited.
+    if (runningUserType == 'Standard' && apps[0].Converting_Team_Member__c == null) {
+      fields.put('Converting_Team_Member__c', UserInfo.getUserId());
+      fields.put('Conversion_Type__c', 'Team-Assisted Conversion');
+    }
 
     IndividualApplication app = (IndividualApplication) JSON.deserialize(
       JSON.serialize(fields),
@@ -165,18 +180,25 @@ public without sharing class ZetaApplicationController {
     }
 
     String aiQuery =
-      'SELECT Id FROM AcademicInterest' +
+      'SELECT Id, School_Rank__c FROM AcademicInterest' +
       ' WHERE IndividualApplicationId = :applicationId AND Status = :draftStatus';
     List<AcademicInterest> draftInterests = (List<AcademicInterest>) databaseRepo.queryWithBinds(
       aiQuery,
       new Map<String, Object>{ 'applicationId' => applicationId, 'draftStatus' => 'Draft' }
     );
     if (!draftInterests.isEmpty()) {
+      // A lone draft school can reach submission unranked; the ranking step owns two or more.
+      Boolean rankLoneSchool =
+        draftInterests.size() == 1 &&
+        draftInterests[0].School_Rank__c == null;
       List<AcademicInterest> toUpdate = new List<AcademicInterest>();
       for (AcademicInterest ai : draftInterests) {
         Map<String, Object> aiFields = new Map<String, Object>();
         aiFields.put('Id', ai.Id);
         aiFields.put('Status', 'Applied');
+        if (rankLoneSchool) {
+          aiFields.put('School_Rank__c', 1);
+        }
         toUpdate.add(
           (AcademicInterest) JSON.deserialize(JSON.serialize(aiFields), AcademicInterest.class)
         );
@@ -407,7 +429,8 @@ public without sharing class ZetaApplicationController {
     Id studentAccountId,
     String grade,
     String currentGrade,
-    Id timelineId
+    Id timelineId,
+    String utmSource
   ) {
     Preconditions.checkNotNull(studentAccountId, 'Student Account Id is required');
     // Grade is optional at creation: the draft is created as soon as a student
@@ -443,6 +466,7 @@ public without sharing class ZetaApplicationController {
       }
     );
     if (!existing.isEmpty()) {
+      stampUtmSource(new Set<Id>{ guardianAccountId, studentAccountId }, utmSource);
       return new Map<String, Object>{ 'applicationId' => existing[0].Id };
     }
 
@@ -469,7 +493,67 @@ public without sharing class ZetaApplicationController {
     );
     databaseRepo.insertSObjects(new List<IndividualApplication>{ app });
 
+    stampUtmSource(new Set<Id>{ guardianAccountId, studentAccountId }, utmSource);
     return new Map<String, Object>{ 'applicationId' => app.Id };
+  }
+
+  private static void stampUtmSource(Set<Id> personAccountIds, String utmSource) {
+    String trimmedUtmSource = utmSource == null ? null : utmSource.trim();
+    if (String.isBlank(trimmedUtmSource)) {
+      return;
+    }
+
+    Set<Id> accountIds = new Set<Id>();
+    for (Id accountId : personAccountIds) {
+      if (accountId != null) {
+        accountIds.add(accountId);
+      }
+    }
+    if (accountIds.isEmpty()) {
+      return;
+    }
+
+    String query = 'SELECT Id, IsPersonAccount, UTM_Source__pc FROM Account WHERE Id IN :accountIds';
+    List<Account> accounts = (List<Account>) databaseRepo.queryWithBinds(
+      query,
+      new Map<String, Object>{ 'accountIds' => accountIds }
+    );
+
+    List<Account> toUpdate = new List<Account>();
+    for (Account acc : accounts) {
+      if (acc.IsPersonAccount == true && String.isBlank(acc.UTM_Source__pc)) {
+        toUpdate.add(new Account(Id = acc.Id, UTM_Source__pc = trimmedUtmSource));
+      }
+    }
+    if (!toUpdate.isEmpty()) {
+      databaseRepo.updateSObjects(toUpdate);
+    }
+  }
+
+  private static Boolean hasSubmittedApplication(Id studentAccountId, Id timelineId) {
+    // A null bind on `Application_Timeline__c = :timelineId` matches every
+    // application with no timeline, so an application missing one is not a
+    // comparison we can make.
+    if (studentAccountId == null || timelineId == null) {
+      return false;
+    }
+    List<String> excludedStatuses = new List<String>{ 'Cancelled', 'Withdrawn/Declined' };
+    String query =
+      'SELECT Id FROM IndividualApplication' +
+      ' WHERE AccountId = :studentAccountId' +
+      ' AND Application_Timeline__c = :timelineId' +
+      ' AND Status NOT IN :excludedStatuses' +
+      ' AND AppliedDate != NULL' +
+      ' LIMIT 1';
+    List<IndividualApplication> submitted = (List<IndividualApplication>) databaseRepo.queryWithBinds(
+      query,
+      new Map<String, Object>{
+        'studentAccountId' => studentAccountId,
+        'timelineId' => timelineId,
+        'excludedStatuses' => excludedStatuses
+      }
+    );
+    return !submitted.isEmpty();
   }
 
   private static ApplicationTimeline findActiveTimeline() {
@@ -491,7 +575,7 @@ public without sharing class ZetaApplicationController {
     return timelines.isEmpty() ? null : timelines[0];
   }
 
-  private static Id findActiveTimelineId() {
+  public static Id findActiveTimelineId() {
     String query =
       'SELECT Id FROM ApplicationTimeline' +
       ' WHERE Active__c = true' +

@@ -72,13 +72,14 @@
       </template>
 
       <!-- Sections -->
-      <template for:each={sectionsBeforeSlot} for:item="section">
+      <template for:each={sectionsBeforeSlot} for:item="row">
         <c-application-section
-          key={section.developerName}
-          section={section}
+          key={row.key}
+          section={row.section}
           answers={answers}
           record-id={recordId}
-          read-only={readOnly}
+          read-only={row.readOnly}
+          lock-when-complete={row.lockWhenComplete}
           visibility-map={questionVisibilityMap}
           visibility-resolved={isVisibilityResolved}
         ></c-application-section>
@@ -86,13 +87,14 @@
       <template lwc:if={hasSlotContent}>
         <slot></slot>
       </template>
-      <template for:each={sectionsAfterSlot} for:item="section">
+      <template for:each={sectionsAfterSlot} for:item="row">
         <c-application-section
-          key={section.developerName}
-          section={section}
+          key={row.key}
+          section={row.section}
           answers={answers}
           record-id={recordId}
-          read-only={readOnly}
+          read-only={row.readOnly}
+          lock-when-complete={row.lockWhenComplete}
           visibility-map={questionVisibilityMap}
           visibility-resolved={isVisibilityResolved}
         ></c-application-section>

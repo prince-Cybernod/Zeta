@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>ssot__rel_1739512781836_end__c</fullName>
+    <deleteConstraint>SetNull</deleteConstraint>
+    <deprecated>false</deprecated>
+    <label>BusinessRegulatoryAuthType_Regulator_rel</label>
+    <referenceTo>ssot__RegulatoryAuthorizationType__dlm</referenceTo>
+    <relationshipLabel>BusinessRegulatoryAuthType_Regulator_rel</relationshipLabel>
+    <relationshipName>rel_1739512781836_end</relationshipName>
+    <required>false</required>
+    <type>Lookup</type>
+</CustomField>

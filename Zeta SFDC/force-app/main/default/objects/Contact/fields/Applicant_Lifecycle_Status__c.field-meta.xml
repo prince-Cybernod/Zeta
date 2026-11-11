@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Applicant_Lifecycle_Status__c</fullName>
+    <externalId>false</externalId>
+    <formula>IF(
+NOT(
+OR(
+Account.Record_Type_Name__c = &quot;Student&quot;,
+Account.Record_Type_Name__c = &quot;Guardian&quot;
+)
+),
+&quot;&quot;,
+
+IF(
+AND(
+NOT(ISBLANK(Account.Active_Enrollments__c)),
+Account.Active_Enrollments__c &gt; 0
+),
+&quot;Post-Application&quot;,
+
+IF(
+OR(
+ISBLANK(Account.Application_Count__c),
+Account.Application_Count__c = 0
+),
+&quot;Not Started&quot;,
+
+IF(
+AND(
+Account.Application_Count__c &gt; 0,
+OR(
+ISBLANK(Account.Post_Draft_Application_Count__c),
+Account.Post_Draft_Application_Count__c = 0
+)
+),
+&quot;In Progress&quot;,
+
+IF(
+AND(
+NOT(ISBLANK(Account.Post_Draft_Application_Count__c)),
+Account.Post_Draft_Application_Count__c &gt; 0
+),
+&quot;Applicant&quot;,
+&quot;Not Started&quot;
+)
+)
+)
+)
+)</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <inlineHelpText>Automatically identifies the applicant lifecycle stage for Student and Guardian accounts based on related applications and active enrollments: Not Started (no applications), In Progress (application started but still in draft), Applicant (application progressed beyond draft), or Post-Application (has an active enrollment)</inlineHelpText>
+    <label>Applicant Lifecycle Status</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

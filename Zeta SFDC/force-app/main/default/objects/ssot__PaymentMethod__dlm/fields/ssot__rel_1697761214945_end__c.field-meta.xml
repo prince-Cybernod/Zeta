@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>ssot__rel_1697761214945_end__c</fullName>
+    <deleteConstraint>SetNull</deleteConstraint>
+    <deprecated>false</deprecated>
+    <label>PaymentMethod_CreditTenderId_map_Cre_rel</label>
+    <referenceTo>ssot__CreditTender__dlm</referenceTo>
+    <relationshipLabel>PaymentMethod_CreditTenderId_map_Cre_rel</relationshipLabel>
+    <relationshipName>rel_1697761214945_end</relationshipName>
+    <required>false</required>
+    <type>Lookup</type>
+</CustomField>

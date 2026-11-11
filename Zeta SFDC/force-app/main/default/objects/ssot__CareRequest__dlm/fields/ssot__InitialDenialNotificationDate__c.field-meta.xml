@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>ssot__InitialDenialNotificationDate__c</fullName>
+    <deprecated>false</deprecated>
+    <label>Initial Denial Notification Date</label>
+    <mktDataModelFieldAttributes>
+        <definitionCreationType>Standard</definitionCreationType>
+        <isDynamicLookup>false</isDynamicLookup>
+        <masterLabel>Initial Denial Notification Date</masterLabel>
+        <refAttrDeveloperName>InitialDenialNotificationDate</refAttrDeveloperName>
+        <usageTag>None</usageTag>
+    </mktDataModelFieldAttributes>
+    <required>false</required>
+    <type>Date</type>
+</CustomField>

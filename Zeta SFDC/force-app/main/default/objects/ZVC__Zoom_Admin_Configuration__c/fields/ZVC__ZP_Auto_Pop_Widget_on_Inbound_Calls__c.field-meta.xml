@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>ZVC__ZP_Auto_Pop_Widget_on_Inbound_Calls__c</fullName>
+    <defaultValue>true</defaultValue>
+    <deprecated>false</deprecated>
+    <description>When enabled, the Zoom Phone widget will automatically pop up for inbound calls. When disabled, the widget remains minimized and only appears if the user manually expands it.</description>
+    <label>Auto-Pop ZP Widget on Inbound Calls</label>
+    <trackTrending>false</trackTrending>
+    <type>Checkbox</type>
+</CustomField>

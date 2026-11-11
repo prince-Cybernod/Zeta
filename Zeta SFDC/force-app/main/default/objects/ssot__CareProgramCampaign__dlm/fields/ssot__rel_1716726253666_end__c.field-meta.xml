@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>ssot__rel_1716726253666_end__c</fullName>
+    <deleteConstraint>SetNull</deleteConstraint>
+    <deprecated>false</deprecated>
+    <label>CareProgramCampaign_CampaignId_map_C_rel</label>
+    <referenceTo>ssot__Campaign__dlm</referenceTo>
+    <relationshipLabel>CareProgramCampaign_CampaignId_map_C_rel</relationshipLabel>
+    <relationshipName>rel_1716726253666_end</relationshipName>
+    <required>false</required>
+    <type>Lookup</type>
+</CustomField>

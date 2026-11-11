@@ -4,6 +4,10 @@
         <field>ToIds</field>
         <formula>Case.ContactId</formula>
     </fieldOverrides>
+    <fieldOverrides>
+        <field>ValidatedFromAddress</field>
+        <literalValue>enroll@connect.zetaschools.org</literalValue>
+    </fieldOverrides>
     <optionsCreateFeedItem>true</optionsCreateFeedItem>
     <quickActionLayout>
         <layoutSectionStyle>TwoColumnsLeftToRight</layoutSectionStyle>

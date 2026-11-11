@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Event_Check_In_QR_Code_Image_URL__c</fullName>
+    <externalId>false</externalId>
+    <formula>&quot;http://api.qrserver.com/v1/create-qr-code/?siz200x200&amp;data=&quot; + $CustomMetadata.Form_Assembly_Forms__mdt.Event_Check_In_Form_Event.Form_URL__c + CASESAFEID(Id)</formula>
+    <inlineHelpText>Only use for non-matched registration. Otherwise, use registration QR code related to individual Campaign Member records.</inlineHelpText>
+    <label>Event Check-In QR Code Image URL</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

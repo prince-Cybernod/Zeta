@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <AnalyticsDashboard xmlns="http://soap.sforce.com/2006/04/metadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-    <analyticsWorkspace>Marketing_Performance</analyticsWorkspace>
+    <analyticsWorkspace>Marketing_Performance_Intelligence</analyticsWorkspace>
+    <customConfig>null</customConfig>
     <description>Tracked Link Content Performance</description>
     <layouts>
         <analyticsDashboard>Tracked_Link_Content_Performance</analyticsDashboard>
@@ -73,8 +74,8 @@
     <masterLabel>Tracked Link Content Performance</masterLabel>
     <style>{&quot;widgetStyle&quot;:{&quot;backgroundColor&quot;:&quot;#ffffff&quot;,&quot;borderEdges&quot;:[],&quot;borderColor&quot;:&quot;#cccccc&quot;,&quot;borderWidth&quot;:1,&quot;borderRadius&quot;:0}}</style>
     <templateAssetSourceName>Tracked_Link_Content_Performance</templateAssetSourceName>
-    <templateSource>sfdc_internal__uma</templateSource>
-    <version>66.0</version>
+    <templateSource>sfdc_internal__umi</templateSource>
+    <version>66.08</version>
     <widgets>
         <analyticsDashboard>Tracked_Link_Content_Performance</analyticsDashboard>
         <type>visualization</type>
@@ -120,8 +121,8 @@
         <analyticsDashboard>Tracked_Link_Content_Performance</analyticsDashboard>
         <filterWidgetDefs>
             <initialValues>null</initialValues>
-            <parameters>{&quot;viewType&quot;:&quot;list&quot;,&quot;widgetStyle&quot;:{&quot;backgroundColor&quot;:&quot;#f3f3f3&quot;,&quot;borderEdges&quot;:[]},&quot;receiveFilterSource&quot;:{&quot;filterMode&quot;:&quot;all&quot;,&quot;widgetIds&quot;:[]},&quot;filterOption&quot;:{&quot;objectName&quot;:&quot;Logical_View_Engagement_Union&quot;,&quot;fieldName&quot;:&quot;Activity_Date&quot;,&quot;dataType&quot;:&quot;DateTime&quot;,&quot;selectionType&quot;:&quot;multiple&quot;},&quot;isLabelHidden&quot;:false}</parameters>
-            <source>Marketing_Performance_Semantic_Mod_945</source>
+            <parameters>{&quot;viewType&quot;:&quot;list&quot;,&quot;widgetStyle&quot;:{&quot;backgroundColor&quot;:&quot;#f3f3f3&quot;,&quot;borderEdges&quot;:[]},&quot;receiveFilterSource&quot;:{&quot;filterMode&quot;:&quot;all&quot;,&quot;widgetIds&quot;:[]},&quot;filterOption&quot;:{&quot;fieldName&quot;:&quot;Engagement_Date_Time_clc&quot;,&quot;dataType&quot;:&quot;DateTime&quot;,&quot;selectionType&quot;:&quot;multiple&quot;},&quot;isLabelHidden&quot;:false}</parameters>
+            <source>Marketing_Intelligence_Custom_Semantic_Model_00Da500001AA4BB</source>
         </filterWidgetDefs>
         <label>Date Range</label>
         <type>filter</type>
@@ -131,8 +132,8 @@
         <analyticsDashboard>Tracked_Link_Content_Performance</analyticsDashboard>
         <filterWidgetDefs>
             <initialValues>null</initialValues>
-            <parameters>{&quot;viewType&quot;:&quot;list&quot;,&quot;widgetStyle&quot;:{&quot;backgroundColor&quot;:&quot;#f3f3f3&quot;,&quot;borderEdges&quot;:[]},&quot;receiveFilterSource&quot;:{&quot;filterMode&quot;:&quot;all&quot;,&quot;widgetIds&quot;:[]},&quot;filterOption&quot;:{&quot;objectName&quot;:&quot;Campaign&quot;,&quot;fieldName&quot;:&quot;Name&quot;,&quot;dataType&quot;:&quot;Text&quot;,&quot;selectionType&quot;:&quot;multiple&quot;},&quot;isLabelHidden&quot;:false}</parameters>
-            <source>Marketing_Performance_Semantic_Mod_945</source>
+            <parameters>{&quot;viewType&quot;:&quot;list&quot;,&quot;widgetStyle&quot;:{&quot;backgroundColor&quot;:&quot;#f3f3f3&quot;,&quot;borderEdges&quot;:[]},&quot;receiveFilterSource&quot;:{&quot;filterMode&quot;:&quot;all&quot;,&quot;widgetIds&quot;:[]},&quot;filterOption&quot;:{&quot;objectName&quot;:&quot;Campaign&quot;,&quot;fieldName&quot;:&quot;Campaign_Name&quot;,&quot;dataType&quot;:&quot;Text&quot;,&quot;selectionType&quot;:&quot;multiple&quot;},&quot;isLabelHidden&quot;:false}</parameters>
+            <source>Marketing_Intelligence_Custom_Semantic_Model_00Da500001AA4BB</source>
         </filterWidgetDefs>
         <label>Campaign</label>
         <type>filter</type>
@@ -141,8 +142,8 @@
     <widgets>
         <analyticsDashboard>Tracked_Link_Content_Performance</analyticsDashboard>
         <metricWidgetDefs>
-            <parameters>{&quot;metricOption&quot;:{&quot;layout&quot;:{&quot;componentVisibility&quot;:{&quot;details&quot;:true,&quot;title&quot;:true,&quot;value&quot;:true,&quot;comparison&quot;:true,&quot;chart&quot;:true,&quot;insights&quot;:false}},&quot;sdmApiName&quot;:&quot;Marketing_Performance_Semantic_Mod_945&quot;},&quot;receiveFilterSource&quot;:{&quot;filterMode&quot;:&quot;all&quot;,&quot;publishers&quot;:[],&quot;widgetIds&quot;:[]},&quot;widgetStyle&quot;:{&quot;borderColor&quot;:&quot;#E5E5E5&quot;,&quot;borderEdges&quot;:[&quot;all&quot;],&quot;borderRadius&quot;:20}}</parameters>
-            <source>Website_Tracked_Link_Clicks_md</source>
+            <parameters>{&quot;metricOption&quot;:{&quot;layout&quot;:{&quot;componentVisibility&quot;:{&quot;details&quot;:true,&quot;title&quot;:true,&quot;value&quot;:true,&quot;comparison&quot;:true,&quot;chart&quot;:true,&quot;insights&quot;:false}},&quot;sdmApiName&quot;:&quot;Marketing_Intelligence_Custom_Semantic_Model_00Da500001AA4BB&quot;},&quot;receiveFilterSource&quot;:{&quot;filterMode&quot;:&quot;all&quot;,&quot;publishers&quot;:[],&quot;widgetIds&quot;:[]},&quot;widgetStyle&quot;:{&quot;borderColor&quot;:&quot;#E5E5E5&quot;,&quot;borderEdges&quot;:[&quot;all&quot;],&quot;borderRadius&quot;:20}}</parameters>
+            <source>Website_Tracked_Link_Clicks_mtc</source>
         </metricWidgetDefs>
         <type>metric</type>
         <widgetName>metric_2</widgetName>
@@ -151,6 +152,6 @@
         <asset xsi:nil="true"/>
         <assetType>AnalyticsDashboard</assetType>
         <assetUsageType>Created</assetUsageType>
-        <workspace>Marketing_Performance</workspace>
+        <workspace>Marketing_Performance_Intelligence</workspace>
     </workspaceAssetRelationships>
 </AnalyticsDashboard>

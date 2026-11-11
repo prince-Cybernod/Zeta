@@ -1489,9 +1489,11 @@ private class SiblingSectionControllerTest {
   private static void getHouseholdSiblingCandidates_noLoggedInContact_returnsEmpty() {
     DATABASE_REPO_MOCK.reset();
     Id appId = SObjectIds.generateFakeId(Schema.IndividualApplication.SObjectType);
-    // q1: getLoggedInContactId -> User query returns no rows -> contactId null -> empty.
+    // q1: User query returns no rows; q2: the application names no guardian either
+    // -> contactId null -> empty.
     DATABASE_REPO_MOCK.when(DATABASE_REPO_MOCK.method.queryWithBinds())
-      .thenReturn(new List<User>());
+      .thenReturn(new List<User>())
+      .thenReturn(new List<IndividualApplication>());
     Assert.isTrue(
       SiblingSectionController.getHouseholdSiblingCandidates(appId).isEmpty(),
       'No logged-in contact -> empty roster'
@@ -1818,5 +1820,139 @@ private class SiblingSectionControllerTest {
     List<Id> skipped = (List<Id>) result.get('skippedAccountIds');
     Assert.areEqual(1, skipped.size());
     Assert.areEqual(accX, skipped[0], 'The already-applying selection is reported skipped');
+  }
+
+  @IsTest
+  private static void getHouseholdSiblingCandidates_staffNoContact_usesAppGuardian() {
+    DATABASE_REPO_MOCK.reset();
+    Id appId = SObjectIds.generateFakeId(Schema.IndividualApplication.SObjectType);
+    Id guardianAccountId = SObjectIds.generateFakeId(Schema.Account.SObjectType);
+    Id guardianContactId = SObjectIds.generateFakeId(Schema.Contact.SObjectType);
+    Id timelineId = SObjectIds.generateFakeId(Schema.ApplicationTimeline.SObjectType);
+
+    // q1: staff User with no Contact; q2: the application's Primary Guardian;
+    // q3: that guardian's PersonContactId; q4: IA timeline; q5: ACR roster.
+    DATABASE_REPO_MOCK.when(DATABASE_REPO_MOCK.method.queryWithBinds())
+      .thenReturn(new List<User>{ new User(Id = UserInfo.getUserId(), ContactId = null) })
+      .thenReturn(
+        new List<IndividualApplication>{
+          new IndividualApplication(Id = appId, Primary_Guardian__c = guardianAccountId)
+        }
+      )
+      .thenReturn(
+        new List<Account>{
+          // PersonContactId is read-only, so set it via JSON deserialization.
+          (Account) JSON.deserialize(
+            '{"PersonContactId":"' + guardianContactId + '"}',
+            Account.class
+          )
+        }
+      )
+      .thenReturn(
+        new List<IndividualApplication>{
+          new IndividualApplication(Id = appId, Application_Timeline__c = timelineId)
+        }
+      )
+      .thenReturn(new List<AccountContactRelation>());
+
+    List<Map<String, Object>> roster = SiblingSectionController.getHouseholdSiblingCandidates(
+      appId
+    );
+
+    Assert.isTrue(roster.isEmpty(), 'No household students -> empty roster');
+    List<Map<String, Object>> queries = DATABASE_REPO_MOCK.getCalls(
+      DATABASE_REPO_MOCK.method.queryWithBinds()
+    );
+    Assert.areEqual(
+      5,
+      queries.size(),
+      'Staff resolution must reach the roster query: User, application, guardian Account, timeline, ACR'
+    );
+    Map<String, Object> acrBinds = (Map<String, Object>) queries[4].get('bindMap');
+    Assert.areEqual(
+      guardianContactId,
+      acrBinds.get('contactId'),
+      'The household roster must be read for the guardian the application names'
+    );
+  }
+
+  @IsTest
+  private static void createSiblingDraftApplication_staffNoContact_resolvesGuardianFromApp() {
+    DATABASE_REPO_MOCK.reset();
+    StudentSelectionController.databaseRepo = DATABASE_REPO_MOCK;
+
+    Id appId = SObjectIds.generateFakeId(Schema.IndividualApplication.SObjectType);
+    Id guardianAccountId = SObjectIds.generateFakeId(Schema.Account.SObjectType);
+    Id guardianContactId = SObjectIds.generateFakeId(Schema.Contact.SObjectType);
+    Id timelineId = SObjectIds.generateFakeId(Schema.ApplicationTimeline.SObjectType);
+    Id newStudentContactId = SObjectIds.generateFakeId(Schema.Contact.SObjectType);
+
+    // queryWithBinds sequence (call order across BOTH controllers):
+    //   1) createStudentForApplication -> staff User with no Contact
+    //   2) the application's Primary Guardian
+    //   3) that guardian's PersonContactId
+    //   4) createSiblingDraftApplication -> parent IndividualApplication
+    //   5) createSiblingDraftApplication -> new student's Account.PersonContactId
+    DATABASE_REPO_MOCK.when(DATABASE_REPO_MOCK.method.queryWithBinds())
+      .thenReturn(new List<User>{ new User(Id = UserInfo.getUserId(), ContactId = null) })
+      .thenReturn(
+        new List<IndividualApplication>{
+          new IndividualApplication(Id = appId, Primary_Guardian__c = guardianAccountId)
+        }
+      )
+      .thenReturn(
+        new List<Account>{
+          // PersonContactId is read-only, so set it via JSON deserialization.
+          (Account) JSON.deserialize(
+            '{"PersonContactId":"' + guardianContactId + '"}',
+            Account.class
+          )
+        }
+      )
+      .thenReturn(
+        new List<IndividualApplication>{
+          new IndividualApplication(
+            Id = appId,
+            Primary_Guardian__c = guardianAccountId,
+            Application_Timeline__c = timelineId
+          )
+        }
+      )
+      .thenReturn(
+        new List<Account>{
+          (Account) JSON.deserialize(
+            '{"PersonContactId":"' + newStudentContactId + '"}',
+            Account.class
+          )
+        }
+      );
+    DATABASE_REPO_MOCK.when(DATABASE_REPO_MOCK.method.insertSObjects())
+      .thenReturnVoid()
+      .thenReturnVoid()
+      .thenReturnVoid()
+      .thenReturnVoid();
+
+    String studentJson = JSON.serialize(
+      new Map<String, Object>{
+        'firstName' => 'Susy',
+        'lastName' => 'Simpson',
+        'birthdate' => '2018-05-15',
+        'gender' => 'Female',
+        'gradeApplyingTo' => '3'
+      }
+    );
+
+    SiblingSectionController.createSiblingDraftApplication(appId, studentJson);
+
+    List<Map<String, Object>> inserts = DATABASE_REPO_MOCK.getCalls(
+      DATABASE_REPO_MOCK.method.insertSObjects()
+    );
+    List<SObject> acrList = (List<SObject>) inserts[1].get('sobjects');
+    AccountContactRelation acr = (AccountContactRelation) acrList[0];
+    Assert.areEqual(
+      guardianContactId,
+      acr.ContactId,
+      'The new student must be related to the guardian the application names'
+    );
   }
 }

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>ssot__rel_1720291812682_end__c</fullName>
+    <deleteConstraint>SetNull</deleteConstraint>
+    <deprecated>false</deprecated>
+    <label>SuggestedAssessmentReason_PrimaryAsm_rel</label>
+    <referenceTo>ssot__AssessmentQuestionResponse__dlm</referenceTo>
+    <relationshipLabel>SuggestedAssessmentReason_PrimaryAsm_rel</relationshipLabel>
+    <relationshipName>rel_1720291812682_end</relationshipName>
+    <required>false</required>
+    <type>Lookup</type>
+</CustomField>

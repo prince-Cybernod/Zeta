@@ -1,0 +1,101 @@
+{
+  "type" : "sfdc_cms__emailFragment",
+  "title" : "Enrollment Team Contact Info",
+  "contentBody" : {
+    "backgroundColor" : "#f3f3f3",
+    "lightning:backgroundImage" : {
+      "position" : "center center",
+      "repeat" : "no-repeat",
+      "size" : "cover"
+    },
+    "lightning:brandSource" : {
+      "defaultBrandOption" : "sfdcBrand"
+    },
+    "lightning:colorScheme" : "{!$brand.colorScheme}",
+    "lightning:dataProviders" : [ {
+      "attributes" : {
+        "dataGraphApiName" : "Unified_Individual_Full_Graph",
+        "dataspace" : "default"
+      },
+      "definition" : "sfdc_cms__dataGraphDataProvider",
+      "sfdcExpressionKey" : "$dataGraph"
+    } ],
+    "lightning:expressions" : [ ],
+    "lightning:padding" : "{!$brand.spacing.none}",
+    "sfdc_cms:attachments" : [ ],
+    "sfdc_cms:block" : {
+      "definition" : "sfdc_cms/rootContentBlock",
+      "id" : "1f034ae2-9143-478f-91f5-e93edf71b2f9",
+      "type" : "block",
+      "children" : [ {
+        "attributes" : {
+          "lightning:backgroundImage" : {
+            "position" : "center center",
+            "repeat" : "no-repeat",
+            "size" : "cover"
+          },
+          "lightning:borderRadius" : "{!$brand.borderRadius.square}",
+          "lightning:borderWidth" : "{!$brand.borderWeight.none}",
+          "lightning:colorScheme" : "{!$brand.colorScheme}",
+          "lightning:margin" : "{!$brand.spacing.none}",
+          "lightning:padding" : "{!$brand.spacing.xSmall}",
+          "reverseOrderOnMobile" : false,
+          "stackOnMobile" : true
+        },
+        "definition" : "lightning/section",
+        "id" : "99e6f522-10ca-4afd-9330-34ba41bf6f59",
+        "type" : "block",
+        "children" : [ {
+          "attributes" : {
+            "columnWidth" : 12.0,
+            "lightning:backgroundImage" : {
+              "position" : "center center",
+              "repeat" : "no-repeat",
+              "size" : "cover"
+            },
+            "lightning:borderRadius" : "{!$brand.borderRadius.square}",
+            "lightning:borderWidth" : "{!$brand.borderWeight.none}",
+            "lightning:colorScheme" : "{!$brand.colorScheme}",
+            "lightning:margin" : "{!$brand.spacing.none}",
+            "lightning:padding" : "{!$brand.spacing.xSmall}",
+            "lightning:verticalAlignment" : "top"
+          },
+          "definition" : "lightning/column",
+          "id" : "07c9920c-567d-4b90-9392-901bbae55350",
+          "type" : "block",
+          "children" : [ {
+            "attributes" : {
+              "align" : "start",
+              "lightning:borderRadius" : "{!$brand.borderRadius.square}",
+              "lightning:borderWidth" : "{!$brand.borderWeight.none}",
+              "lightning:colorGroup" : {
+                "backgroundColor" : "{!$brand.colorScheme.root}",
+                "borderColor" : "{!$brand.colorScheme.neutral}",
+                "linkColor" : "#0054A6",
+                "textColor" : "{!$brand.colorScheme.contrast}"
+              },
+              "lightning:margin" : "{!$brand.spacing.none}",
+              "lightning:padding" : "{!$brand.spacing.none}",
+              "lightning:typography" : {
+                "fontFamily" : "{!$brand.fontFamily.tahoma}",
+                "fontSize" : "{!$brand.fontSize.medium}",
+                "fontWeight" : "{!$brand.fontWeight.normal}",
+                "letterSpacing" : "normal",
+                "lineHeight" : 1.5,
+                "textTransform" : "none"
+              },
+              "text" : "<em>Please reach out if you have any questions about Zeta. Our Enrollment Team is here for you every step of the way:</em><br />✉️ <a href=\"mailto:%20enroll&#64;zetaschools.org\" target=\"_blank\" part=\"link\" rel=\"noopener noreferrer noopener noreferrer noopener noreferrer\"><u>enroll&#64;zetaschools.org</u></a><br />&#x1f4de; <a href=\"tel:%20%28646%29%20480-1654\" target=\"_blank\" part=\"link\" rel=\"noopener noreferrer noopener noreferrer noopener noreferrer\"><u>(646) 480-1654</u></a>"
+            },
+            "definition" : "lightning/paragraph",
+            "id" : "8bf51674-456f-4978-96a4-9cef23c1816a",
+            "type" : "block"
+          } ]
+        } ]
+      } ]
+    },
+    "sfdc_cms:title" : "Enrollment Team Contact Info",
+    "sfdc_cms:urlName" : "enrollment-team-contact-info",
+    "sfdc_cms:variants" : [ ]
+  },
+  "urlName" : "enrollment-team-contact-info"
+}

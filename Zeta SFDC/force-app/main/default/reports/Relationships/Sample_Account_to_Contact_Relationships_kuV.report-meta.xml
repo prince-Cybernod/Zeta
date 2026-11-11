@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns>
+        <field>Account$Name</field>
+    </columns>
+    <columns>
+        <field>Account.AccountContactRelations$Name</field>
+    </columns>
+    <columns>
+        <field>Account.AccountContactRelations$Roles</field>
+    </columns>
+    <columns>
+        <field>Account.AccountContactRelations$StartDate</field>
+    </columns>
+    <columns>
+        <field>Account.AccountContactRelations$EndDate</field>
+    </columns>
+    <description>Use for Account to Contact relationships</description>
+    <format>Tabular</format>
+    <name>Sample: Account to Contact Relationships</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>Account_to_Contact_Relationships__c</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <showGrandTotal>true</showGrandTotal>
+    <showSubTotals>true</showSubTotals>
+    <timeFrameFilter>
+        <dateColumn>Account$CreatedDate</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
+    </timeFrameFilter>
+</Report>

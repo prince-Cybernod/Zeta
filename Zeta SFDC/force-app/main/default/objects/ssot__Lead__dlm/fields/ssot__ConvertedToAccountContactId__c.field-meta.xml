@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>ssot__ConvertedToAccountContactId__c</fullName>
+    <deprecated>false</deprecated>
+    <label>Converted To AccountContact</label>
+    <length>36</length>
+    <mktDataModelFieldAttributes>
+        <definitionCreationType>Standard</definitionCreationType>
+        <isDynamicLookup>false</isDynamicLookup>
+        <labelOverride>Converted To AccountContact</labelOverride>
+        <masterLabel>Converted To AccountContact</masterLabel>
+        <refAttrDeveloperName>ConvertedToAccountContactId</refAttrDeveloperName>
+        <usageTag>None</usageTag>
+    </mktDataModelFieldAttributes>
+    <required>false</required>
+    <type>Text</type>
+</CustomField>

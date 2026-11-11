@@ -73,12 +73,17 @@ public without sharing class ApplicationDashboardController {
       );
     }
 
+    DecisionInfo decisionInfo = decisionStatusByApplication(apps);
+
     List<Map<String, Object>> appList = new List<Map<String, Object>>();
     for (IndividualApplication app : apps) {
       Map<String, Object> appMap = new Map<String, Object>();
       appMap.put('id', app.Id);
       appMap.put('name', app.Name);
       appMap.put('status', app.Status);
+      appMap.put('schoolDecisionStatus', decisionInfo.statusByAppId.get(app.Id));
+      appMap.put('hasAcceptedSeat', decisionInfo.acceptedSchoolNameByAppId.containsKey(app.Id));
+      appMap.put('acceptedSchoolName', decisionInfo.acceptedSchoolNameByAppId.get(app.Id));
       appMap.put('grade', app.Grade_Applying_To__c);
       appMap.put('lastStep', app.Last_Completed_Step__c);
       appMap.put('studentName', app.Account?.Name);
@@ -98,6 +103,82 @@ public without sharing class ApplicationDashboardController {
       'familyName' => familyName,
       'timelines' => ZetaApplicationController.getAvailableTimelines()
     };
+  }
+
+  // The dashboard card's status is Draft/Applied/Eligible/Withdrawn from
+  // IndividualApplication.Status alone, UNLESS a school choice carries a
+  // decision in progress (an offer, an acceptance, a plain rescission, or a
+  // waitlist spot) — those don't write back to IndividualApplication.Status,
+  // so this scans each application's own AcademicInterest rows and returns
+  // the winning one by the wireframe's priority order (Offer > Accepted >
+  // Rescinded > Waitlisted), or null when none of that applies.
+  private static final List<String> DECISION_PRIORITY = new List<String>{
+    'Seat Offered',
+    'Seat Accepted',
+    'Rescinded',
+    'Waitlisted'
+  };
+
+  // statusByAppId: the winning schoolDecisionStatus by DECISION_PRIORITY.
+  // acceptedSchoolNameByAppId: present (possibly with a null value) for every
+  // application with a Seat Accepted row, carrying that row's school name.
+  private class DecisionInfo {
+    public Map<Id, String> statusByAppId = new Map<Id, String>();
+    public Map<Id, String> acceptedSchoolNameByAppId = new Map<Id, String>();
+  }
+
+  private static DecisionInfo decisionStatusByApplication(List<IndividualApplication> apps) {
+    DecisionInfo info = new DecisionInfo();
+    Set<Id> appIds = new Set<Id>();
+    for (IndividualApplication app : apps) {
+      appIds.add(app.Id);
+    }
+    if (appIds.isEmpty()) {
+      return info;
+    }
+
+    List<AcademicInterest> schoolRows = (List<AcademicInterest>) databaseRepo.queryWithBinds(
+      'SELECT IndividualApplicationId, Status,' +
+        ' LearningProgram.School__r.Zeta_School_Name__c, LearningProgram.School__r.Name' +
+        ' FROM AcademicInterest' +
+        ' WHERE IndividualApplicationId IN :appIds',
+      new Map<String, Object>{ 'appIds' => appIds }
+    );
+
+    Map<Id, Set<String>> statusesByAppId = new Map<Id, Set<String>>();
+    for (AcademicInterest row : schoolRows) {
+      // Offer Rescinded due to Seat Optimization is still actionable (a
+      // family can accept it), so it behaves like a live offer at the card
+      // level; the detail screen's own per-row buckets stay unaffected.
+      String bucket = row.Status == 'Offer Rescinded due to Seat Optimization'
+        ? 'Seat Offered'
+        : row.Status;
+      Set<String> statuses = statusesByAppId.get(row.IndividualApplicationId);
+      if (statuses == null) {
+        statuses = new Set<String>();
+        statusesByAppId.put(row.IndividualApplicationId, statuses);
+      }
+      statuses.add(bucket);
+
+      if (row.Status == 'Seat Accepted') {
+        Account school = row.LearningProgram?.School__r;
+        String name = school?.Zeta_School_Name__c != null
+          ? school.Zeta_School_Name__c
+          : school?.Name;
+        info.acceptedSchoolNameByAppId.put(row.IndividualApplicationId, name);
+      }
+    }
+
+    for (Id appId : statusesByAppId.keySet()) {
+      Set<String> statuses = statusesByAppId.get(appId);
+      for (String candidate : DECISION_PRIORITY) {
+        if (statuses.contains(candidate)) {
+          info.statusByAppId.put(appId, candidate);
+          break;
+        }
+      }
+    }
+    return info;
   }
 
   private static String selectLandingContent(String enContent, String esContent) {

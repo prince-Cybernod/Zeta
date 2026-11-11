@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Prompt xmlns="http://soap.sforce.com/2006/04/metadata">
+    <masterLabel>Setup Mogli SMS</masterLabel>
+    <promptVersions>
+        <body>We&apos;ve already configured the batch to run at 5-minute intervals.  No need to take any action here for now.</body>
+        <customApplication>Mogli_SMS__Mogli_SMS_Lightning</customApplication>
+        <delayDays>5</delayDays>
+        <description>We already set up the batch, how to modify.</description>
+        <dismissButtonLabel>Roger that.</dismissButtonLabel>
+        <displayPosition>TopRight</displayPosition>
+        <displayType>FloatingPanel</displayType>
+        <endDate>2020-12-31</endDate>
+        <isPublished>true</isPublished>
+        <masterLabel>Setup Mogli SMS</masterLabel>
+        <publishedDate>2026-04-22</publishedDate>
+        <shouldDisplayActionButton>false</shouldDisplayActionButton>
+        <shouldIgnoreGlobalDelay>true</shouldIgnoreGlobalDelay>
+        <startDate>2020-02-11</startDate>
+        <targetPageKey1>Mogli_SMS__Setup_MogliSMS</targetPageKey1>
+        <targetPageType>standard__navItemPage</targetPageType>
+        <timesToDisplay>2</timesToDisplay>
+        <title>Modify your Batch Process Here</title>
+        <uiFormulaRule>
+            <criteria>
+                <leftValue>{!$Permission.StandardPermission.ViewAllData}</leftValue>
+                <operator>EQUAL</operator>
+                <rightValue>TRUE</rightValue>
+            </criteria>
+        </uiFormulaRule>
+        <userAccess>SpecificPermissions</userAccess>
+        <userProfileAccess>Everyone</userProfileAccess>
+        <versionNumber>1</versionNumber>
+    </promptVersions>
+</Prompt>

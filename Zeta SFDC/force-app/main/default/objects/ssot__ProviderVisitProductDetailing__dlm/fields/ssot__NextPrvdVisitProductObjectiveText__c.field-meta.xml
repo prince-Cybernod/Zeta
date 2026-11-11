@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>ssot__NextPrvdVisitProductObjectiveText__c</fullName>
+    <deprecated>false</deprecated>
+    <label>Next Provider Visit Product Objective</label>
+    <length>255</length>
+    <mktDataModelFieldAttributes>
+        <definitionCreationType>Standard</definitionCreationType>
+        <isDynamicLookup>false</isDynamicLookup>
+        <masterLabel>Next Provider Visit Product Objective</masterLabel>
+        <refAttrDeveloperName>NextPrvdVisitProductObjectiveText</refAttrDeveloperName>
+        <usageTag>None</usageTag>
+    </mktDataModelFieldAttributes>
+    <required>false</required>
+    <type>Text</type>
+</CustomField>

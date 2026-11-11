@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>ZVC__ZW_Create_new_Lead__c</fullName>
+    <defaultValue>false</defaultValue>
+    <deprecated>false</deprecated>
+    <description>Automatically create new Leads for Non-Salesforce registrants(Can&apos;t match with any Contact/Lead by Email).</description>
+    <inlineHelpText>Automatically create new Leads for Non-Salesforce registrants(Can&apos;t match with any Contact/Lead by Email).</inlineHelpText>
+    <label>Create new Lead</label>
+    <trackTrending>false</trackTrending>
+    <type>Checkbox</type>
+</CustomField>

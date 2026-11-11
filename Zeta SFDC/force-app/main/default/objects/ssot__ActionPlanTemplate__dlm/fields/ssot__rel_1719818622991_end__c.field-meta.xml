@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>ssot__rel_1719818622991_end__c</fullName>
+    <deleteConstraint>SetNull</deleteConstraint>
+    <deprecated>false</deprecated>
+    <label>ActionPlanTemplate_TargetEntityTypeI_rel</label>
+    <referenceTo>ssot__ApplicationDecision__dlm</referenceTo>
+    <relationshipLabel>ActionPlanTemplate_TargetEntityTypeI_rel</relationshipLabel>
+    <relationshipName>rel_1719818622991_end</relationshipName>
+    <required>false</required>
+    <type>Lookup</type>
+</CustomField>

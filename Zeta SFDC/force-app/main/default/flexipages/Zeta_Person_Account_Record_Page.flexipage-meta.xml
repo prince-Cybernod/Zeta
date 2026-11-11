@@ -21,6 +21,9 @@
                         <valueListItems>
                             <value>ChangeRecordType</value>
                         </valueListItems>
+                        <valueListItems>
+                            <value>Share</value>
+                        </valueListItems>
                     </valueList>
                 </componentInstanceProperties>
                 <componentInstanceProperties>
@@ -129,6 +132,26 @@
                 <identifier>RecordPersonHasOptedOutOfEmailField</identifier>
             </fieldInstance>
         </itemInstances>
+        <itemInstances>
+            <fieldInstance>
+                <fieldInstanceProperties>
+                    <name>uiBehavior</name>
+                    <value>none</value>
+                </fieldInstanceProperties>
+                <fieldItem>Record.Mogli_SMS__Mogli_Number__pc</fieldItem>
+                <identifier>RecordMogli_SMS_Mogli_Number_pcField</identifier>
+            </fieldInstance>
+        </itemInstances>
+        <itemInstances>
+            <fieldInstance>
+                <fieldInstanceProperties>
+                    <name>uiBehavior</name>
+                    <value>none</value>
+                </fieldInstanceProperties>
+                <fieldItem>Record.Mogli_SMS__Mogli_Opt_Out__pc</fieldItem>
+                <identifier>RecordMogli_SMS_Mogli_Opt_Out_pcField</identifier>
+            </fieldInstance>
+        </itemInstances>
         <name>Facet-2e1b3e3c-4d3a-470d-92d0-68179cce6e91</name>
         <type>Facet</type>
     </flexiPageRegions>
@@ -209,16 +232,6 @@
                 </fieldInstanceProperties>
                 <fieldItem>Record.PersonGenderIdentity</fieldItem>
                 <identifier>RecordPersonGenderIdentityField</identifier>
-            </fieldInstance>
-        </itemInstances>
-        <itemInstances>
-            <fieldInstance>
-                <fieldInstanceProperties>
-                    <name>uiBehavior</name>
-                    <value>none</value>
-                </fieldInstanceProperties>
-                <fieldItem>Record.Legacy_SchoolMint_Status__c</fieldItem>
-                <identifier>RecordLegacy_SchoolMint_Status__cField</identifier>
             </fieldInstance>
         </itemInstances>
         <name>Facet-ab4dbab1-32e8-4eeb-aa1c-10d6949d604c</name>
@@ -553,6 +566,16 @@
                 <identifier>RecordSIS_ID__cField</identifier>
             </fieldInstance>
         </itemInstances>
+        <itemInstances>
+            <fieldInstance>
+                <fieldInstanceProperties>
+                    <name>uiBehavior</name>
+                    <value>none</value>
+                </fieldInstanceProperties>
+                <fieldItem>Record.Created_for_Testing__c</fieldItem>
+                <identifier>RecordCreated_for_Testing_cField</identifier>
+            </fieldInstance>
+        </itemInstances>
         <name>Facet-153d2567-86b3-4bb2-abc4-cd351d344f3c</name>
         <type>Facet</type>
     </flexiPageRegions>
@@ -757,6 +780,32 @@
         <itemInstances>
             <componentInstance>
                 <componentInstanceProperties>
+                    <name>parentFieldApiName</name>
+                    <value>Account.Id</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>relatedListApiName</name>
+                    <value>Cases</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>relatedListComponentOverride</name>
+                    <value>NONE</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>rowsToDisplay</name>
+                    <value>10</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>showActionBar</name>
+                    <value>true</value>
+                </componentInstanceProperties>
+                <componentName>force:relatedListSingleContainer</componentName>
+                <identifier>force_relatedListSingleContainer5</identifier>
+            </componentInstance>
+        </itemInstances>
+        <itemInstances>
+            <componentInstance>
+                <componentInstanceProperties>
                     <name>actionNames</name>
                     <valueList>
                         <valueListItems>
@@ -810,11 +859,11 @@
                 </componentInstanceProperties>
                 <componentInstanceProperties>
                     <name>sortFieldAlias</name>
-                    <value>__DEFAULT__</value>
+                    <value>AppliedDate</value>
                 </componentInstanceProperties>
                 <componentInstanceProperties>
                     <name>sortFieldOrder</name>
-                    <value>Default</value>
+                    <value>Ascending</value>
                 </componentInstanceProperties>
                 <componentName>lst:dynamicRelatedList</componentName>
                 <identifier>lst_dynamicRelatedList</identifier>
@@ -944,6 +993,9 @@
                         <valueListItems>
                             <value>PartyRoleRelation</value>
                         </valueListItems>
+                        <valueListItems>
+                            <value>Related_Contact_Enrollment_Status__c</value>
+                        </valueListItems>
                     </valueList>
                 </componentInstanceProperties>
                 <componentInstanceProperties>
@@ -964,6 +1016,153 @@
                 </componentInstanceProperties>
                 <componentName>lst:dynamicRelatedList</componentName>
                 <identifier>lst_dynamicRelatedList3</identifier>
+            </componentInstance>
+        </itemInstances>
+        <itemInstances>
+            <componentInstance>
+                <componentInstanceProperties>
+                    <name>actionNames</name>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>adminFilters</name>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>maxRecordsToDisplay</name>
+                    <value>10</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>parentFieldApiName</name>
+                    <value>Account.Id</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>relatedListApiName</name>
+                    <value>Individual_Applications_Guardian__r</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>relatedListDisplayType</name>
+                    <value>ADVGRID</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>relatedListFieldAliases</name>
+                    <valueList>
+                        <valueListItems>
+                            <value>Name</value>
+                        </valueListItems>
+                        <valueListItems>
+                            <value>Account</value>
+                        </valueListItems>
+                        <valueListItems>
+                            <value>AppliedDate</value>
+                        </valueListItems>
+                        <valueListItems>
+                            <value>Status</value>
+                        </valueListItems>
+                        <valueListItems>
+                            <value>Application_Timeline__c</value>
+                        </valueListItems>
+                    </valueList>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>relatedListLabel</name>
+                    <value>Student Applications</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>showActionBar</name>
+                    <value>true</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>sortFieldAlias</name>
+                    <value>AppliedDate</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>sortFieldOrder</name>
+                    <value>Ascending</value>
+                </componentInstanceProperties>
+                <componentName>lst:dynamicRelatedList</componentName>
+                <identifier>lst_dynamicRelatedList2</identifier>
+                <visibilityRule>
+                    <criteria>
+                        <leftValue>{!Record.Record_Type_Name__c}</leftValue>
+                        <operator>CONTAINS</operator>
+                        <rightValue>Guardian</rightValue>
+                    </criteria>
+                </visibilityRule>
+            </componentInstance>
+        </itemInstances>
+        <itemInstances>
+            <componentInstance>
+                <componentInstanceProperties>
+                    <name>actionNames</name>
+                    <valueList>
+                        <valueListItems>
+                            <value>New</value>
+                        </valueListItems>
+                    </valueList>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>adminFilters</name>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>maxRecordsToDisplay</name>
+                    <value>10</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>parentFieldApiName</name>
+                    <value>Account.Id</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>relatedListApiName</name>
+                    <value>Academic_Term_Enrollments__r</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>relatedListDisplayType</name>
+                    <value>ADVGRID</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>relatedListFieldAliases</name>
+                    <valueList>
+                        <valueListItems>
+                            <value>Name</value>
+                        </valueListItems>
+                        <valueListItems>
+                            <value>LearnerContact</value>
+                        </valueListItems>
+                        <valueListItems>
+                            <value>Learning_Program__c</value>
+                        </valueListItems>
+                        <valueListItems>
+                            <value>EnrollmentStatus</value>
+                        </valueListItems>
+                        <valueListItems>
+                            <value>AcademicTerm</value>
+                        </valueListItems>
+                    </valueList>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>relatedListLabel</name>
+                    <value>Student Enrollments</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>showActionBar</name>
+                    <value>true</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>sortFieldAlias</name>
+                    <value>__DEFAULT__</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>sortFieldOrder</name>
+                    <value>Default</value>
+                </componentInstanceProperties>
+                <componentName>lst:dynamicRelatedList</componentName>
+                <identifier>lst_dynamicRelatedList5</identifier>
+                <visibilityRule>
+                    <criteria>
+                        <leftValue>{!Record.Record_Type_Name__c}</leftValue>
+                        <operator>CONTAINS</operator>
+                        <rightValue>Guardian</rightValue>
+                    </criteria>
+                </visibilityRule>
             </componentInstance>
         </itemInstances>
         <itemInstances>
@@ -1016,6 +1215,12 @@
                 </componentInstanceProperties>
                 <componentName>force:relatedListSingleContainer</componentName>
                 <identifier>force_relatedListSingleContainer4</identifier>
+            </componentInstance>
+        </itemInstances>
+        <itemInstances>
+            <componentInstance>
+                <componentName>runtime_platform_prefcenter:relatedConsentManagerContainer</componentName>
+                <identifier>runtime_platform_prefcenter_relatedConsentManagerContainer</identifier>
             </componentInstance>
         </itemInstances>
         <name>Facet-71ff4342-d32f-40a1-9439-30434924db71</name>
@@ -1074,7 +1279,84 @@
                 <identifier>force_relatedListSingleContainer2</identifier>
             </componentInstance>
         </itemInstances>
+        <itemInstances>
+            <componentInstance>
+                <componentInstanceProperties>
+                    <name>parentFieldApiName</name>
+                    <value>Account.Id</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>relatedListApiName</name>
+                    <value>Histories</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>relatedListComponentOverride</name>
+                    <value>NONE</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>rowsToDisplay</name>
+                    <value>10</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>showActionBar</name>
+                    <value>true</value>
+                </componentInstanceProperties>
+                <componentName>force:relatedListSingleContainer</componentName>
+                <identifier>force_relatedListSingleContainer6</identifier>
+            </componentInstance>
+        </itemInstances>
         <name>Facet-472a3a91-8196-4e70-bae9-01cd855b659b</name>
+        <type>Facet</type>
+    </flexiPageRegions>
+    <flexiPageRegions>
+        <itemInstances>
+            <componentInstance>
+                <componentName>runtime_platform_prefcenter:relatedConsentManagerContainer</componentName>
+                <identifier>runtime_platform_prefcenter_relatedConsentManagerContainer2</identifier>
+            </componentInstance>
+        </itemInstances>
+        <itemInstances>
+            <componentInstance>
+                <componentInstanceProperties>
+                    <name>timelineConfigurations</name>
+                    <valueList>
+                        <valueListItems>
+                            <value>{&quot;type&quot;:&quot;LogicalIrRelationship&quot;,&quot;version&quot;:0,&quot;parent&quot;:&quot;Account&quot;,&quot;name&quot;:&quot;Marketing Insights&quot;,&quot;dataSpace&quot;:&quot;default&quot;,&quot;unifiedObject&quot;:&quot;UnifiedIndividual__dlm&quot;,&quot;matchOnField&quot;:&quot;PersonContactId&quot;,&quot;engagements&quot;:[{&quot;name&quot;:&quot;ssot__WebsiteEngagement__dlm&quot;,&quot;relationship&quot;:&quot;Individual_Id_map_WebsiteEngagement_IndividualId_N_1_1645552384434&quot;,&quot;icon&quot;:&quot;standard:news&quot;,&quot;title&quot;:&quot;ssot__EngagementChannelActionId__c&quot;,&quot;subtitle&quot;:&quot;ssot__WebpageType__c&quot;,&quot;timestamp&quot;:&quot;ssot__EngagementDateTm__c&quot;,&quot;fields&quot;:[&quot;ssot__PageURL__c&quot;,&quot;ssot__ReferrerURL__c&quot;,&quot;ssot__EngagementTypeId__c&quot;,&quot;ssot__SessionId__c&quot;],&quot;filters&quot;:[],&quot;label&quot;:&quot;Website Engagement&quot;},{&quot;name&quot;:&quot;ssot__EmailEngagement__dlm&quot;,&quot;relationship&quot;:&quot;EmailEngagement_IndividualId_map_Individual_Id_N_1&quot;,&quot;icon&quot;:&quot;standard:email&quot;,&quot;title&quot;:&quot;ssot__EngagementChannelActionId__c&quot;,&quot;subtitle&quot;:&quot;ssot__SubjectLineTxt__c&quot;,&quot;timestamp&quot;:&quot;ssot__EngagementDateTm__c&quot;,&quot;fields&quot;:[&quot;ssot__EmailRecipientSendStatus__c&quot;,&quot;ssot__LinkURL__c&quot;,&quot;ssot__EmailBounceType__c&quot;,&quot;ssot__BounceReasonText__c&quot;,&quot;ssot__UnsubscribeSourceText__c&quot;],&quot;filters&quot;:[],&quot;label&quot;:&quot;Email Engagement&quot;}]}</value>
+                            <visibilityRule>
+                                <booleanFilter>1 OR 2</booleanFilter>
+                                <criteria>
+                                    <leftValue>{!$Client.formFactor}</leftValue>
+                                    <operator>EQUAL</operator>
+                                    <rightValue>Large</rightValue>
+                                </criteria>
+                                <criteria>
+                                    <leftValue>{!$Client.formFactor}</leftValue>
+                                    <operator>NE</operator>
+                                    <rightValue>Large</rightValue>
+                                </criteria>
+                            </visibilityRule>
+                        </valueListItems>
+                    </valueList>
+                </componentInstanceProperties>
+                <componentName>platform_engagement_timeline:timeline</componentName>
+                <identifier>platform_engagement_timeline_timeline</identifier>
+            </componentInstance>
+        </itemInstances>
+        <itemInstances>
+            <componentInstance>
+                <componentInstanceProperties>
+                    <name>height</name>
+                    <value>880</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>showTitle</name>
+                    <value>true</value>
+                </componentInstanceProperties>
+                <componentName>runtime_marketing_unifiedmarketing:unifiedEngagementHistoryDashboard</componentName>
+                <identifier>runtime_marketing_unifiedmarketing_unifiedEngagementHistoryDashboard</identifier>
+            </componentInstance>
+        </itemInstances>
+        <name>Facet-80696d04-2b45-4b1e-b203-468e35625720</name>
         <type>Facet</type>
     </flexiPageRegions>
     <flexiPageRegions>
@@ -1128,6 +1410,20 @@
                 <identifier>flexipage_tab3</identifier>
             </componentInstance>
         </itemInstances>
+        <itemInstances>
+            <componentInstance>
+                <componentInstanceProperties>
+                    <name>body</name>
+                    <value>Facet-80696d04-2b45-4b1e-b203-468e35625720</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>title</name>
+                    <value>Marketing Activity</value>
+                </componentInstanceProperties>
+                <componentName>flexipage:tab</componentName>
+                <identifier>flexipage_tab5</identifier>
+            </componentInstance>
+        </itemInstances>
         <name>Facet-34726921-28df-4dd5-826b-bca23b4472e3</name>
         <type>Facet</type>
     </flexiPageRegions>
@@ -1166,16 +1462,6 @@
     <flexiPageRegions>
         <itemInstances>
             <componentInstance>
-                <componentName>forceChatter:recordFeedContainer</componentName>
-                <identifier>forceChatter_recordFeedContainer</identifier>
-            </componentInstance>
-        </itemInstances>
-        <name>Facet-8169988f-db37-47f2-bec4-a8d2d7c948f0</name>
-        <type>Facet</type>
-    </flexiPageRegions>
-    <flexiPageRegions>
-        <itemInstances>
-            <componentInstance>
                 <componentInstanceProperties>
                     <name>active</name>
                     <value>true</value>
@@ -1192,20 +1478,6 @@
                 <identifier>flexipage_tab4</identifier>
             </componentInstance>
         </itemInstances>
-        <itemInstances>
-            <componentInstance>
-                <componentInstanceProperties>
-                    <name>body</name>
-                    <value>Facet-8169988f-db37-47f2-bec4-a8d2d7c948f0</value>
-                </componentInstanceProperties>
-                <componentInstanceProperties>
-                    <name>title</name>
-                    <value>Standard.Tab.collaborate</value>
-                </componentInstanceProperties>
-                <componentName>flexipage:tab</componentName>
-                <identifier>flexipage_tab5</identifier>
-            </componentInstance>
-        </itemInstances>
         <name>Facet-2403c644-1909-48e0-83a1-841174231ca1</name>
         <type>Facet</type>
     </flexiPageRegions>
@@ -1218,6 +1490,37 @@
                 </componentInstanceProperties>
                 <componentName>runtime_sales_merge:mergeCandidatesPreviewCard</componentName>
                 <identifier>runtime_sales_merge_mergeCandidatesPreviewCard</identifier>
+            </componentInstance>
+        </itemInstances>
+        <itemInstances>
+            <componentInstance>
+                <componentInstanceProperties>
+                    <name>attachmentsDisabled</name>
+                    <value>false</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>canOverrideDefaults</name>
+                    <value>Enabled</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>customLimitUnit</name>
+                    <value>Segments</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>mcvConfigurationRecord</name>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>recordId</name>
+                </componentInstanceProperties>
+                <componentName>Mogli_SMS:TextMessageComponentEmpApi</componentName>
+                <identifier>Mogli_SMS_TextMessageComponentEmpApi</identifier>
+                <visibilityRule>
+                    <criteria>
+                        <leftValue>{!$Permission.CustomPermission.Mogli_SMS__Mogli_Conversation_View_Access}</leftValue>
+                        <operator>EQUAL</operator>
+                        <rightValue>true</rightValue>
+                    </criteria>
+                </visibilityRule>
             </componentInstance>
         </itemInstances>
         <itemInstances>
