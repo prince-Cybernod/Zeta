@@ -5,6 +5,10 @@
 private class LeadTriggerHandlerTest {
   private static final LeadTriggerHandler HANDLER;
   private static final LeadOwnerEventServiceMock SERVICE_MOCK;
+  private static final Datetime ATTEMPT_1 = Datetime.newInstanceGmt(2027, 7, 14, 15, 0, 0);
+  private static final Datetime ATTEMPT_2 = Datetime.newInstanceGmt(2027, 7, 16, 15, 0, 0);
+  private static final Datetime OLD_DUE = Datetime.newInstanceGmt(2027, 7, 1, 15, 0, 0);
+  private static final Datetime SATURDAY = Datetime.newInstanceGmt(2027, 7, 17, 14, 0, 0);
 
   static {
     SERVICE_MOCK = new LeadOwnerEventServiceMock();
@@ -253,5 +257,121 @@ private class LeadTriggerHandlerTest {
       newlyAssignedOwnerIds.isEmpty(),
       'An undelete should never mark a new assignment'
     );
+  }
+
+  @IsTest
+  private static void onBeforeInsert_setsNextFollowUpDueInBusinessDays() {
+    Lead newLead = new Lead();
+    Lead importedLead = new Lead(
+      Outreach_Attempt_1__c = ATTEMPT_1,
+      Outreach_Attempt_2__c = ATTEMPT_2
+    );
+    Lead saturdayAttempt1 = new Lead(Outreach_Attempt_1__c = SATURDAY);
+
+    Lead keptCreatedDate = (Lead) JSON.deserialize(
+      '{"CreatedDate":"2027-07-17T00:00:00.000+0000"}',
+      Lead.class
+    );
+
+    HANDLER.onBeforeInsert(
+      new List<SObject>{ newLead, importedLead, saturdayAttempt1, keptCreatedDate }
+    );
+
+    Assert.isTrue(
+      newLead.Next_Follow_Up_Due__c > System.now(),
+      'A new Lead should be due after now'
+    );
+    Assert.areEqual(
+      '17:00',
+      newLead.Next_Follow_Up_Due__c.format('HH:mm', 'America/New_York'),
+      'Every due date should be at 5 pm'
+    );
+    Assert.areEqual(
+      Datetime.newInstanceGmt(2027, 7, 19, 21, 0, 0),
+      keptCreatedDate.Next_Follow_Up_Due__c,
+      'Created Friday 8 pm should be due the next working day at 5 pm, Monday 5 pm'
+    );
+    Assert.areEqual(
+      Datetime.newInstanceGmt(2027, 7, 23, 21, 0, 0),
+      importedLead.Next_Follow_Up_Due__c,
+      'Attempt 2 on Friday 11 am + 7 calendar days should be due the next Friday at 5 pm'
+    );
+    Assert.areEqual(
+      Datetime.newInstanceGmt(2027, 7, 19, 21, 0, 0),
+      saturdayAttempt1.Next_Follow_Up_Due__c,
+      'Attempt 1 on Saturday lands on Monday, so it should be due Monday at 5 pm, a full working day'
+    );
+  }
+
+  @IsTest
+  private static void onBeforeUpdate_setsNextFollowUpDueOnlyWhenAnAttemptChanges() {
+    Id addedAttempt1Id = SObjectIds.generateFakeId(Schema.Lead.SObjectType);
+    Id addedAttempt3Id = SObjectIds.generateFakeId(Schema.Lead.SObjectType);
+    Id unchangedId = SObjectIds.generateFakeId(Schema.Lead.SObjectType);
+    Id closedId = SObjectIds.generateFakeId(Schema.Lead.SObjectType);
+    Id saturdayAttempt2Id = SObjectIds.generateFakeId(Schema.Lead.SObjectType);
+    Lead addedAttempt1 = new Lead(
+      Id = addedAttempt1Id,
+      Next_Follow_Up_Due__c = OLD_DUE,
+      Outreach_Attempt_1__c = ATTEMPT_2
+    );
+    Lead saturdayAttempt2 = new Lead(
+      Id = saturdayAttempt2Id,
+      Next_Follow_Up_Due__c = OLD_DUE,
+      Outreach_Attempt_1__c = ATTEMPT_1,
+      Outreach_Attempt_2__c = SATURDAY
+    );
+    Lead addedAttempt3 = new Lead(
+      Id = addedAttempt3Id,
+      Next_Follow_Up_Due__c = OLD_DUE,
+      Outreach_Attempt_3__c = ATTEMPT_2
+    );
+    Lead unchanged = new Lead(
+      Id = unchangedId,
+      Next_Follow_Up_Due__c = OLD_DUE,
+      Outreach_Attempt_1__c = ATTEMPT_1
+    );
+    Lead closed = new Lead(
+      Id = closedId,
+      Next_Follow_Up_Due__c = OLD_DUE,
+      Status = 'Closed - Not Converted'
+    );
+    Map<Id, SObject> oldSObjectsByIds = new Map<Id, SObject>{
+      closedId => new Lead(Id = closedId, Next_Follow_Up_Due__c = OLD_DUE, Status = 'Open - Working'),
+      addedAttempt1Id => new Lead(Id = addedAttempt1Id, Next_Follow_Up_Due__c = OLD_DUE),
+      saturdayAttempt2Id => new Lead(
+        Id = saturdayAttempt2Id,
+        Next_Follow_Up_Due__c = OLD_DUE,
+        Outreach_Attempt_1__c = ATTEMPT_1
+      ),
+      addedAttempt3Id => new Lead(Id = addedAttempt3Id, Next_Follow_Up_Due__c = OLD_DUE),
+      unchangedId => unchanged.clone(true)
+    };
+
+    HANDLER.onBeforeUpdate(
+      new List<SObject>{ addedAttempt1, saturdayAttempt2, addedAttempt3, unchanged, closed },
+      oldSObjectsByIds
+    );
+
+    Assert.areEqual(
+      Datetime.newInstanceGmt(2027, 7, 19, 21, 0, 0),
+      addedAttempt1.Next_Follow_Up_Due__c,
+      'Attempt 1 on Friday 11 am lands on Sunday, so it should move to Monday at 5 pm'
+    );
+    Assert.areEqual(
+      Datetime.newInstanceGmt(2027, 7, 26, 21, 0, 0),
+      saturdayAttempt2.Next_Follow_Up_Due__c,
+      'Attempt 2 on Saturday lands on a Saturday, so it should move to Monday at 5 pm'
+    );
+    Assert.isNull(
+      addedAttempt3.Next_Follow_Up_Due__c,
+      'Should be blank once Outreach Attempt 3 is done'
+    );
+    Assert.areEqual(
+      OLD_DUE,
+      unchanged.Next_Follow_Up_Due__c,
+      'Should keep the due date when no attempt changed'
+    );
+    Assert.isNull(closed.Next_Follow_Up_Due__c, 'Should be blank once the Lead is closed');
   }
 }
