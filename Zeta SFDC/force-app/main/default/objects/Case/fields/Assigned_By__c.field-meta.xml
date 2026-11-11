@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Assigned_By__c</fullName>
+    <description>How the case owner was chosen when the case came in, set by flow Case Round Robin Outreach Enrollment (SFR-179). Round robin only counts cases marked Round Robin when picking the next person.</description>
+    <inlineHelpText>Why this case came to its owner: the family&apos;s converting team member, the lead&apos;s owner, or round robin.</inlineHelpText>
+    <label>Assigned By</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Round Robin</fullName>
+                <default>false</default>
+                <label>Round Robin</label>
+            </value>
+            <value>
+                <fullName>Lead Owner</fullName>
+                <default>false</default>
+                <label>Lead Owner</label>
+            </value>
+            <value>
+                <fullName>Converting Team Member</fullName>
+                <default>false</default>
+                <label>Converting Team Member</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>
