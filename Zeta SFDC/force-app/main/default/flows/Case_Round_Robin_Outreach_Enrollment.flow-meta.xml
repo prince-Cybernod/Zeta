@@ -436,7 +436,8 @@
             <label>Yes</label>
         </rules>
     </decisions>
-    <description>Round robin for every new case (email, voicemail, web, manual) created owned by the Outreach and Enrollment Queue. Before the round robin (SFR-179): the case goes to the active staff user credited as Converting Team Member on the family&apos;s most recent application (matched on the case&apos;s parent or student); otherwise to the owner of the case&apos;s lead (linked on the case, or same email; an open lead first, else the newest closed one) when that owner is an active staff user rather than a queue; otherwise round robin as below. Each path records how it chose the owner in Assigned By (Converting Team Member, Lead Owner or Round Robin), and the turn below only counts cases marked Round Robin, so direct assignments don&apos;t move it. The team is the queue&apos;s active user members (kept in sync by the Zeta - Outreach &amp; Enrollment user access policy). Strict turns: the new case goes to the member after the owner of the latest case owned by a team member (members sorted by Id, wrapping round; the first member if there is no such case). Manual reassignment of the latest case moves the turn; cases saved in the same instant go to the same person. Cases whose sender is enroll@zetaschools.org (Zoho Desk auto-acknowledgements) and cases that are already closed (junk emails closed by Case | Before Save | Auto-Close Matching Emails) are left in the queue. Only OwnerId is written; on any error the case stays in the queue. The new owner then gets a &quot;Case Assigned&quot; in-app/mobile notification; a notification failure is ignored so the assignment stands.</description>
+    <description>SFR-179
+Gives the case to the family's team member or lead owner before round robin.</description>
     <environments>Default</environments>
     <formulas>
         <name>fmLeadOwnerId</name>
