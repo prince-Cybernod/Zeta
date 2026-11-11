@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Body_Contains__c</fullName>
+    <description>Optional. If filled, the case is closed only when the email body (the case Description) also contains this text. Upper or lower case doesn&apos;t matter.</description>
+    <externalId>false</externalId>
+    <fieldManageability>DeveloperControlled</fieldManageability>
+    <inlineHelpText>Optional. If filled, the case is closed only when the email body also contains this text, for example &quot;Invitation from Google Calendar&quot;.</inlineHelpText>
+    <label>Only If Body Contains</label>
+    <length>255</length>
+    <required>false</required>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Match__c</fullName>
+    <description>Whether the email subject must start or end with the Phrase. Blank works like Starts with.</description>
+    <externalId>false</externalId>
+    <fieldManageability>DeveloperControlled</fieldManageability>
+    <inlineHelpText>Starts with: the subject must begin with the Phrase. Ends with: the subject must end with it.</inlineHelpText>
+    <label>Match</label>
+    <required>false</required>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Starts with</fullName>
+                <default>true</default>
+                <label>Starts with</label>
+            </value>
+            <value>
+                <fullName>Ends with</fullName>
+                <default>false</default>
+                <label>Ends with</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>
