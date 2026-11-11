@@ -1,11 +1,11 @@
 import { LightningElement, api, wire } from 'lwc';
 import { getFieldValue, getRecord } from 'lightning/uiRecordApi';
-import APPLICATION_TIMELINE_ACTIVE_FIELD from '@salesforce/schema/IndividualApplication.Application_Timeline__r.Active__c';
+import APPLICATION_TIMELINE_ACTIVE_FIELD from '@salesforce/schema/IndividualApplication.Timeline_is_Active__c';
 import APPLICATION_TIMELINE_NAME_FIELD from '@salesforce/schema/IndividualApplication.Application_Timeline__r.Name';
-import SCHOOL_APPLICATION_TIMELINE_ACTIVE_FIELD from '@salesforce/schema/AcademicInterest.IndividualApplication.Application_Timeline__r.Active__c';
+import SCHOOL_APPLICATION_TIMELINE_ACTIVE_FIELD from '@salesforce/schema/AcademicInterest.IndividualApplication.Timeline_is_Active__c';
 import SCHOOL_APPLICATION_TIMELINE_NAME_FIELD from '@salesforce/schema/AcademicInterest.IndividualApplication.Application_Timeline__r.Name';
 
-// The timeline each page reads: its own, or its application's for a School Application.
+// Each page reads its application's Timeline is Active flag and timeline name (a School Application uses its application's).
 const TIMELINE_FIELDS = {
   IndividualApplication: {
     name: APPLICATION_TIMELINE_NAME_FIELD,
@@ -31,7 +31,7 @@ export default class InactiveTimelineBanner extends LightningElement {
     return TIMELINE_FIELDS[this.objectApiName];
   }
 
-  // optionalFields, so someone who can't see the timeline gets no banner instead of an error.
+  // optionalFields: anyone who can open the application gets the banner; only people who can see the timeline get its name.
   get fields() {
     const timeline = this.timelineFields;
     return timeline ? [timeline.name, timeline.active] : undefined;
@@ -48,7 +48,7 @@ export default class InactiveTimelineBanner extends LightningElement {
 
   get isInactive() {
     return (
-      Boolean(this.record && this.timelineName) &&
+      Boolean(this.record) &&
       getFieldValue(this.record, this.timelineFields.active) === false
     );
   }
