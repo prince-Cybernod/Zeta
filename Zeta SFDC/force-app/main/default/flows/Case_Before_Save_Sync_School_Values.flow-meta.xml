@@ -3,6 +3,44 @@
     <apiVersion>65.0</apiVersion>
     <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
     <assignments>
+        <description>Remembers each matching parent; with only one, varEmailParentId and varEmailParentContactId hold that parent.</description>
+        <name>Add_Parent_With_Email</name>
+        <label>Add Parent With Email</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <assignmentItems>
+            <assignToReference>colEmailParentIds</assignToReference>
+            <operator>Add</operator>
+            <value>
+                <elementReference>Loop_Parents_With_Email.Id</elementReference>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>varEmailParentCount</assignToReference>
+            <operator>Add</operator>
+            <value>
+                <numberValue>1.0</numberValue>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>varEmailParentId</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>Loop_Parents_With_Email.Id</elementReference>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>varEmailParentContactId</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>Loop_Parents_With_Email.PersonContactId</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Loop_Parents_With_Email</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
         <description>Clears School lookup when School Inquiry is blank.</description>
         <name>Clear_School_Lookup_Blank_Picklist</name>
         <label>Clear School Lookup (Blank Picklist)</label>
@@ -34,6 +72,27 @@
         </connector>
     </assignments>
     <assignments>
+        <description>Links the case to the only parent with this email.</description>
+        <name>Link_Case_to_Only_Parent</name>
+        <label>Link Case to Only Parent</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <assignmentItems>
+            <assignToReference>$Record.ContactId</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>varEmailParentContactId</elementReference>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>$Record.AccountId</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>varEmailParentId</elementReference>
+            </value>
+        </assignmentItems>
+    </assignments>
+    <assignments>
         <description>Links the case to the parent&apos;s contact and account.</description>
         <name>Link_Case_to_Parent</name>
         <label>Link Case to Parent</label>
@@ -56,6 +115,27 @@
         <connector>
             <targetReference>Loop_Parent_Portal_User</targetReference>
         </connector>
+    </assignments>
+    <assignments>
+        <description>Links the case to the parent on the newest application, so Case Round Robin Outreach Enrollment finds its converting team member.</description>
+        <name>Link_Case_to_Parent_On_Application</name>
+        <label>Link Case to Parent On Application</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <assignmentItems>
+            <assignToReference>$Record.ContactId</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>Get_Parent_On_Application.PersonContactId</elementReference>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>$Record.AccountId</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>Get_Parent_On_Application.Id</elementReference>
+            </value>
+        </assignmentItems>
     </assignments>
     <assignments>
         <description>FormAssembly creates the case as its integration user, so without this it stays with that user and round robin never sees it.</description>
@@ -141,6 +221,111 @@
         </rules>
     </decisions>
     <decisions>
+        <description>Continue only when one of the matching parents is on an application.</description>
+        <name>Has_Family_Application</name>
+        <label>Has Family Application?</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <defaultConnectorLabel>No</defaultConnectorLabel>
+        <rules>
+            <name>Yes_Family_Application</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Get_Newest_Family_Application</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Get_Parent_On_Application</targetReference>
+            </connector>
+            <label>Yes, Family Application</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <description>One parent has the email: link the case to that parent. Several parents (shared family email or a duplicate parent): use the parent on the newest application.</description>
+        <name>How_Many_Parents_With_Email</name>
+        <label>How Many Parents With Email?</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <defaultConnectorLabel>None</defaultConnectorLabel>
+        <rules>
+            <name>One_Parent</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>varEmailParentCount</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <numberValue>1.0</numberValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Link_Case_to_Only_Parent</targetReference>
+            </connector>
+            <label>One Parent</label>
+        </rules>
+        <rules>
+            <name>Several_Parents</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>varEmailParentCount</leftValueReference>
+                <operator>GreaterThan</operator>
+                <rightValue>
+                    <numberValue>1.0</numberValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Get_Newest_Family_Application</targetReference>
+            </connector>
+            <label>Several Parents</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <description>Email-to-Case only links a case when exactly one contact has the sender&apos;s email. When the email is shared (two parents, a duplicate parent record, or a parent and a student), the case arrives with no contact. Continue only for a new Email case with an email and no contact (SFR-179).</description>
+        <name>Is_New_Email_Case_Without_Parent</name>
+        <label>Is New Email Case Without Parent?</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <defaultConnectorLabel>No</defaultConnectorLabel>
+        <rules>
+            <name>Yes_Find_Parent_by_Email</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record__Prior.Id</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Origin</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Email</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.ContactId</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.SuppliedEmail</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Get_Guardian_Record_Type</targetReference>
+            </connector>
+            <label>Yes, Find Parent by Email</label>
+        </rules>
+    </decisions>
+    <decisions>
         <description>New Contact Us cases from FormAssembly go to the Outreach and Enrollment queue so round robin assigns them.</description>
         <name>Is_New_Form_Assembly_Case</name>
         <label>Is New Form Assembly Case?</label>
@@ -179,6 +364,9 @@
         <label>Is New Form Assembly Case Without Parent?</label>
         <locationX>0</locationX>
         <locationY>0</locationY>
+        <defaultConnector>
+            <targetReference>Is_New_Email_Case_Without_Parent</targetReference>
+        </defaultConnector>
         <defaultConnectorLabel>No</defaultConnectorLabel>
         <rules>
             <name>Yes_Link_to_Parent</name>
@@ -265,13 +453,8 @@
             <label>Yes</label>
         </rules>
     </decisions>
-    <description>On Case create/update, map school_inquiry__c (picklist) to School (lookup) by matching Account.Name to picklist text. Clears lookup if blank or no match.
-
-Oct 2026: also links new Contact Us cases from FormAssembly (Origin = Form Assembly) to the parent: matches the case email to exactly one active parent portal login and fills Contact and Account. Kept in this flow so Case has a single before-save flow.
-
-Nov 2026 (SFR-179): new Form Assembly cases are put in the Outreach and Enrollment queue, so Case Round Robin Outreach Enrollment assigns them.
-
-Flow Designer: Elevation Solutions</description>
+    <description>SFR-245
+Links a new email case to the parent with that email.</description>
     <environments>Default</environments>
     <interviewLabel>Case (Before Save) Sync School Values {!$Flow.CurrentDateTime}</interviewLabel>
     <label>Case (Before Save) Sync School Values</label>
@@ -286,6 +469,21 @@ Flow Designer: Elevation Solutions</description>
         <nextValueConnector>
             <targetReference>Link_Case_to_Parent</targetReference>
         </nextValueConnector>
+    </loops>
+    <loops>
+        <description>Collects the matching parents&apos; ids and counts them.</description>
+        <name>Loop_Parents_With_Email</name>
+        <label>Loop Parents With Email</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <collectionReference>Get_Parents_With_Email</collectionReference>
+        <iterationOrder>Asc</iterationOrder>
+        <nextValueConnector>
+            <targetReference>Add_Parent_With_Email</targetReference>
+        </nextValueConnector>
+        <noMoreValuesConnector>
+            <targetReference>How_Many_Parents_With_Email</targetReference>
+        </noMoreValuesConnector>
     </loops>
     <processMetadataValues>
         <name>BuilderType</name>
@@ -329,6 +527,70 @@ Flow Designer: Elevation Solutions</description>
         <storeOutputAutomatically>true</storeOutputAutomatically>
     </recordLookups>
     <recordLookups>
+        <description>The Guardian person account record type, so only parent records are matched.</description>
+        <name>Get_Guardian_Record_Type</name>
+        <label>Get Guardian Record Type</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Get_Parents_With_Email</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>SobjectType</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Account</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>DeveloperName</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Guardian</stringValue>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>RecordType</object>
+        <queriedFields>Id</queriedFields>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordLookups>
+        <description>The newest application that lists any of the matching parents as primary or secondary guardian.</description>
+        <name>Get_Newest_Family_Application</name>
+        <label>Get Newest Family Application</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Has_Family_Application</targetReference>
+        </connector>
+        <filterLogic>or</filterLogic>
+        <filters>
+            <field>Primary_Guardian__c</field>
+            <operator>In</operator>
+            <value>
+                <elementReference>colEmailParentIds</elementReference>
+            </value>
+        </filters>
+        <filters>
+            <field>Secondary_Guardian__c</field>
+            <operator>In</operator>
+            <value>
+                <elementReference>colEmailParentIds</elementReference>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>IndividualApplication</object>
+        <queriedFields>Id</queriedFields>
+        <queriedFields>Primary_Guardian__c</queriedFields>
+        <queriedFields>Secondary_Guardian__c</queriedFields>
+        <sortField>CreatedDate</sortField>
+        <sortOrder>Desc</sortOrder>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordLookups>
         <name>Get_Outreach_Queue</name>
         <label>Get Outreach Queue</label>
         <locationX>0</locationX>
@@ -354,6 +616,44 @@ Flow Designer: Elevation Solutions</description>
         </filters>
         <getFirstRecordOnly>true</getFirstRecordOnly>
         <object>Group</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordLookups>
+        <description>The matching parent who is on that application (either one, if both parents share the email).</description>
+        <name>Get_Parent_On_Application</name>
+        <label>Get Parent On Application</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Link_Case_to_Parent_On_Application</targetReference>
+        </connector>
+        <filterLogic>1 AND (2 OR 3)</filterLogic>
+        <filters>
+            <field>Id</field>
+            <operator>In</operator>
+            <value>
+                <elementReference>colEmailParentIds</elementReference>
+            </value>
+        </filters>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>Get_Newest_Family_Application.Primary_Guardian__c</elementReference>
+            </value>
+        </filters>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>Get_Newest_Family_Application.Secondary_Guardian__c</elementReference>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>Account</object>
+        <queriedFields>Id</queriedFields>
+        <queriedFields>PersonContactId</queriedFields>
         <storeOutputAutomatically>true</storeOutputAutomatically>
     </recordLookups>
     <recordLookups>
@@ -395,6 +695,37 @@ Flow Designer: Elevation Solutions</description>
         <queriedFields>AccountId</queriedFields>
         <storeOutputAutomatically>true</storeOutputAutomatically>
     </recordLookups>
+    <recordLookups>
+        <description>Parent records (Guardian person accounts) whose email is the case email.</description>
+        <name>Get_Parents_With_Email</name>
+        <label>Get Parents With Email</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Loop_Parents_With_Email</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>PersonEmail</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>$Record.SuppliedEmail</elementReference>
+            </value>
+        </filters>
+        <filters>
+            <field>RecordTypeId</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>Get_Guardian_Record_Type.Id</elementReference>
+            </value>
+        </filters>
+        <getFirstRecordOnly>false</getFirstRecordOnly>
+        <object>Account</object>
+        <queriedFields>Id</queriedFields>
+        <queriedFields>PersonContactId</queriedFields>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
     <start>
         <locationX>0</locationX>
         <locationY>0</locationY>
@@ -414,6 +745,38 @@ Flow Designer: Elevation Solutions</description>
         <triggerType>RecordBeforeSave</triggerType>
     </start>
     <status>Active</status>
+    <variables>
+        <name>colEmailParentIds</name>
+        <dataType>String</dataType>
+        <isCollection>true</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+    </variables>
+    <variables>
+        <name>varEmailParentContactId</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+    </variables>
+    <variables>
+        <name>varEmailParentCount</name>
+        <dataType>Number</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+        <scale>0</scale>
+        <value>
+            <numberValue>0.0</numberValue>
+        </value>
+    </variables>
+    <variables>
+        <name>varEmailParentId</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+    </variables>
     <variables>
         <name>varParentUserCount</name>
         <dataType>Number</dataType>
