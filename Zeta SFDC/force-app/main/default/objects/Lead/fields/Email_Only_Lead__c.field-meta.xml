@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Email_Only_Lead__c</fullName>
+    <defaultValue>false</defaultValue>
+    <description>Checked when no further calls are needed at this time, but lead remains open to receive marketing emails. For conversion metrics, lead is considered closed.</description>
+    <inlineHelpText>Leads should be marked &quot;Email Only&quot; if they have been contacted 3 times and have not applied but have a valid email and can still receive marketing emails.</inlineHelpText>
+    <label>Email Only Lead</label>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>Checkbox</type>
+</CustomField>
