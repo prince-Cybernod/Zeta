@@ -147,6 +147,13 @@
                 <elementReference>Loop_Users.Id</elementReference>
             </value>
         </assignmentItems>
+        <assignmentItems>
+            <assignToReference>varAssignedBy</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <stringValue>Round Robin</stringValue>
+            </value>
+        </assignmentItems>
         <connector>
             <targetReference>Increment_Index</targetReference>
         </connector>
@@ -183,6 +190,52 @@
             <targetReference>Has_Users</targetReference>
         </connector>
     </assignments>
+    <assignments>
+        <name>Use_Converting_Team_Member</name>
+        <label>Use Converting Team Member</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <assignmentItems>
+            <assignToReference>varChosenUserId</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>Get_Converting_Team_Member.Id</elementReference>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>varAssignedBy</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <stringValue>Converting Team Member</stringValue>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Update_Case_Owner</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <name>Use_Lead_Owner</name>
+        <label>Use Lead Owner</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <assignmentItems>
+            <assignToReference>varChosenUserId</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>Get_Lead_Owner.Id</elementReference>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>varAssignedBy</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <stringValue>Lead Owner</stringValue>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Update_Case_Owner</targetReference>
+        </connector>
+    </assignments>
     <decisions>
         <name>Has_Chosen_User</name>
         <label>Has Chosen User?</label>
@@ -201,6 +254,32 @@
             </conditions>
             <connector>
                 <targetReference>Update_Case_Owner</targetReference>
+            </connector>
+            <label>Yes</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <description>An active staff user credited as Converting Team Member on the family&apos;s most recent application gets the case first.</description>
+        <name>Has_Converting_Team_Member</name>
+        <label>Has Converting Team Member?</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <defaultConnector>
+            <targetReference>Get_Open_Lead</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>No</defaultConnectorLabel>
+        <rules>
+            <name>Yes_Converting_Team_Member</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Get_Converting_Team_Member</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Use_Converting_Team_Member</targetReference>
             </connector>
             <label>Yes</label>
         </rules>
@@ -226,6 +305,32 @@
             </conditions>
             <connector>
                 <targetReference>Loop_Find_Last_Owner</targetReference>
+            </connector>
+            <label>Yes</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <description>An open lead owned by an active staff user (not a queue) gets the case to that user; leads sitting in a queue fall through to round robin.</description>
+        <name>Has_Lead_Owner</name>
+        <label>Has Lead Owner?</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <defaultConnector>
+            <targetReference>Get_Queue_Members</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>No</defaultConnectorLabel>
+        <rules>
+            <name>Yes_Lead_Owner</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Get_Lead_Owner</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Use_Lead_Owner</targetReference>
             </connector>
             <label>Yes</label>
         </rules>
@@ -301,7 +406,7 @@
                 </rightValue>
             </conditions>
             <connector>
-                <targetReference>Get_Queue_Members</targetReference>
+                <targetReference>Get_Family_Application</targetReference>
             </connector>
             <label>Owned By Queue</label>
         </rules>
@@ -331,8 +436,14 @@
             <label>Yes</label>
         </rules>
     </decisions>
-    <description>Round robin for every new case (email, voicemail, web, manual) created owned by the Outreach and Enrollment Queue. The team is the queue&apos;s active user members (kept in sync by the Zeta - Outreach &amp; Enrollment user access policy). Strict turns: the new case goes to the member after the owner of the latest case owned by a team member (members sorted by Id, wrapping round; the first member if there is no such case). Manual reassignment of the latest case moves the turn; cases saved in the same instant go to the same person. Cases whose sender is enroll@zetaschools.org (Zoho Desk auto-acknowledgements) are left in the queue. Only OwnerId is written; on any error the case stays in the queue. The new owner then gets a &quot;Case Assigned&quot; in-app/mobile notification; a notification failure is ignored so the assignment stands.</description>
+    <description>SFR-179
+Gives the case to the family's team member or lead owner before round robin.</description>
     <environments>Default</environments>
+    <formulas>
+        <name>fmLeadOwnerId</name>
+        <dataType>String</dataType>
+        <expression>BLANKVALUE({!Get_Open_Lead.OwnerId}, {!Get_Closed_Lead.OwnerId})</expression>
+    </formulas>
     <formulas>
         <name>fmNotificationBody</name>
         <dataType>String</dataType>
@@ -408,6 +519,152 @@
     </processMetadataValues>
     <processType>AutoLaunchedFlow</processType>
     <recordLookups>
+        <description>Same match as Get Open Lead but for closed leads (SFR-179); only used when there is no open lead.</description>
+        <name>Get_Closed_Lead</name>
+        <label>Get Closed Lead</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Get_Lead_Owner</targetReference>
+        </connector>
+        <filterLogic>(1 OR (2 AND 3)) AND 4</filterLogic>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>$Record.Related_Lead__c</elementReference>
+            </value>
+        </filters>
+        <filters>
+            <field>Email</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>$Record.SuppliedEmail</elementReference>
+            </value>
+        </filters>
+        <filters>
+            <field>Email</field>
+            <operator>IsNull</operator>
+            <value>
+                <booleanValue>false</booleanValue>
+            </value>
+        </filters>
+        <filters>
+            <field>Is_Open_Status__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <booleanValue>false</booleanValue>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>Lead</object>
+        <sortField>CreatedDate</sortField>
+        <sortOrder>Desc</sortOrder>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordLookups>
+        <name>Get_Converting_Team_Member</name>
+        <label>Get Converting Team Member</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Has_Converting_Team_Member</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>Get_Family_Application.Converting_Team_Member__c</elementReference>
+            </value>
+        </filters>
+        <filters>
+            <field>IsActive</field>
+            <operator>EqualTo</operator>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </filters>
+        <filters>
+            <field>UserType</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Standard</stringValue>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>User</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordLookups>
+        <description>The family&apos;s most recent application with a Converting Team Member, matched on the case&apos;s parent (primary or secondary guardian) or student. The IsNull checks stop a blank case value from matching unrelated applications.</description>
+        <name>Get_Family_Application</name>
+        <label>Get Family Application</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Get_Converting_Team_Member</targetReference>
+        </connector>
+        <filterLogic>1 AND ((2 AND 3) OR (4 AND 5) OR (6 AND 7))</filterLogic>
+        <filters>
+            <field>Converting_Team_Member__c</field>
+            <operator>IsNull</operator>
+            <value>
+                <booleanValue>false</booleanValue>
+            </value>
+        </filters>
+        <filters>
+            <field>Primary_Guardian__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>$Record.AccountId</elementReference>
+            </value>
+        </filters>
+        <filters>
+            <field>Primary_Guardian__c</field>
+            <operator>IsNull</operator>
+            <value>
+                <booleanValue>false</booleanValue>
+            </value>
+        </filters>
+        <filters>
+            <field>Secondary_Guardian__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>$Record.AccountId</elementReference>
+            </value>
+        </filters>
+        <filters>
+            <field>Secondary_Guardian__c</field>
+            <operator>IsNull</operator>
+            <value>
+                <booleanValue>false</booleanValue>
+            </value>
+        </filters>
+        <filters>
+            <field>AccountId</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>$Record.Student__c</elementReference>
+            </value>
+        </filters>
+        <filters>
+            <field>AccountId</field>
+            <operator>IsNull</operator>
+            <value>
+                <booleanValue>false</booleanValue>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>IndividualApplication</object>
+        <sortField>CreatedDate</sortField>
+        <sortOrder>Desc</sortOrder>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordLookups>
         <name>Get_Last_Assigned_Case</name>
         <label>Get Last Assigned Case</label>
         <locationX>0</locationX>
@@ -431,10 +688,52 @@
                 <elementReference>$Record.Id</elementReference>
             </value>
         </filters>
+        <filters>
+            <field>Assigned_By__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Round Robin</stringValue>
+            </value>
+        </filters>
         <getFirstRecordOnly>true</getFirstRecordOnly>
         <object>Case</object>
         <sortField>CaseNumber</sortField>
         <sortOrder>Desc</sortOrder>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordLookups>
+        <name>Get_Lead_Owner</name>
+        <label>Get Lead Owner</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Has_Lead_Owner</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>fmLeadOwnerId</elementReference>
+            </value>
+        </filters>
+        <filters>
+            <field>IsActive</field>
+            <operator>EqualTo</operator>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </filters>
+        <filters>
+            <field>UserType</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Standard</stringValue>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>User</object>
         <storeOutputAutomatically>true</storeOutputAutomatically>
     </recordLookups>
     <recordLookups>
@@ -456,6 +755,51 @@
         </filters>
         <getFirstRecordOnly>true</getFirstRecordOnly>
         <object>CustomNotificationType</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordLookups>
+        <description>The case&apos;s open lead: the lead already linked on the case, or an open lead with the same email (same email rule as Case_Create_Lead_for_Unmatched_Email_to_Case, which links email cases a minute after this flow runs). The IsNull check stops a blank case email from matching leads without an email.</description>
+        <name>Get_Open_Lead</name>
+        <label>Get Open Lead</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Get_Closed_Lead</targetReference>
+        </connector>
+        <filterLogic>(1 OR (2 AND 3)) AND 4</filterLogic>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>$Record.Related_Lead__c</elementReference>
+            </value>
+        </filters>
+        <filters>
+            <field>Email</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>$Record.SuppliedEmail</elementReference>
+            </value>
+        </filters>
+        <filters>
+            <field>Email</field>
+            <operator>IsNull</operator>
+            <value>
+                <booleanValue>false</booleanValue>
+            </value>
+        </filters>
+        <filters>
+            <field>Is_Open_Status__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>Lead</object>
+        <sortField>CreatedDate</sortField>
+        <sortOrder>Desc</sortOrder>
         <storeOutputAutomatically>true</storeOutputAutomatically>
     </recordLookups>
     <recordLookups>
@@ -549,6 +893,12 @@
             <targetReference>Leave_In_Queue</targetReference>
         </faultConnector>
         <inputAssignments>
+            <field>Assigned_By__c</field>
+            <value>
+                <elementReference>varAssignedBy</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
             <field>OwnerId</field>
             <value>
                 <elementReference>varChosenUserId</elementReference>
@@ -583,6 +933,13 @@
         <name>colRecipientIds</name>
         <dataType>String</dataType>
         <isCollection>true</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+    </variables>
+    <variables>
+        <name>varAssignedBy</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
         <isInput>false</isInput>
         <isOutput>false</isOutput>
     </variables>

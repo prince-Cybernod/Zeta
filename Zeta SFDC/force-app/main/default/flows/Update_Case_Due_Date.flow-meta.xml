@@ -2,7 +2,8 @@
 <Flow xmlns="http://soap.sforce.com/2006/04/metadata">
     <apiVersion>67.0</apiVersion>
     <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
-    <description>Update the case due date to 48 hrs + the date/time of the most recent message. Skips the email that comes in with a case created already closed (Closed When Created), so junk emails closed by Case | Before Save | Auto-Close Matching Emails stay closed; an email that arrives later still reopens them.</description>
+    <description>SFR-175
+Doesn&apos;t reopen a case that was closed when it was created.</description>
     <environments>Default</environments>
     <formulas>
         <description>48 hrs since last external email entered the system</description>
