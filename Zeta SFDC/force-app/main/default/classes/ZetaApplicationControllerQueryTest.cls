@@ -132,6 +132,36 @@ private class ZetaApplicationControllerQueryTest {
     Assert.isFalse((Boolean) result.get('isDuplicate'));
   }
 
+  // SFR-216: a Withdrawn/Declined or Cancelled application doesn't block a new one.
+  @IsTest
+  static void checkDuplicateApplication_ignoresClosedApplicationsAndItself() {
+    DATABASE_REPO_MOCK.reset();
+    Id appId = SObjectIds.generateFakeId(Schema.IndividualApplication.SObjectType);
+    DATABASE_REPO_MOCK.when(DATABASE_REPO_MOCK.method.queryWithBinds())
+      .thenReturn(
+        new List<IndividualApplication>{
+          new IndividualApplication(
+            Id = appId,
+            AccountId = SObjectIds.generateFakeId(Schema.Account.SObjectType),
+            Application_Timeline__c = SObjectIds.generateFakeId(
+              Schema.ApplicationTimeline.SObjectType
+            )
+          )
+        }
+      )
+      .thenReturn(new List<IndividualApplication>());
+
+    ZetaApplicationController.checkDuplicateApplication(appId);
+
+    Map<String, Object> binds = (Map<String, Object>) DATABASE_REPO_MOCK.getCalls(
+        DATABASE_REPO_MOCK.method.queryWithBinds()
+      )[1]
+      .get('bindMap');
+    List<String> excluded = (List<String>) binds.get('excludedStatuses');
+    Assert.isTrue(excluded.contains('Withdrawn/Declined') && excluded.contains('Cancelled'));
+    Assert.areEqual(appId, binds.get('ignoredApplicationId'));
+  }
+
   @IsTest
   static void checkDuplicateApplication_notFound_returnsFalse() {
     DATABASE_REPO_MOCK.reset();

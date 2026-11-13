@@ -665,6 +665,22 @@
         <value>Add a sibling attending a Zeta school not listed</value>
     </labels>
     <labels>
+        <fullName>AppUI_AddSchools</fullName>
+        <categories>Application</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Add Schools button on a submitted application (SFR-216)</shortDescription>
+        <value>Add Schools</value>
+    </labels>
+    <labels>
+        <fullName>AppUI_AddSchoolsNone</fullName>
+        <categories>Application</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Shown when every school for the grade is already on the application (SFR-216)</shortDescription>
+        <value>There are no other schools to add for this grade.</value>
+    </labels>
+    <labels>
         <fullName>AppUI_AddSibling</fullName>
         <categories>Application</categories>
         <language>en_US</language>
@@ -1880,7 +1896,7 @@ Zeta reserves the right to adjust grade placements based on post-admission asses
         <language>en_US</language>
         <protected>false</protected>
         <shortDescription>Note replacing the selection card once an application has been submitted</shortDescription>
-        <value>School selections are locked after submission.</value>
+        <value>School choices can&apos;t be removed after submission, but you can add schools.</value>
     </labels>
     <labels>
         <fullName>AppUI_ShowingSchoolsForGrade</fullName>

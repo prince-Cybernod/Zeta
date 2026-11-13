@@ -50,6 +50,21 @@
       <div class="locked-note">
         <p>{labels.selectionsLocked}</p>
       </div>
+      <template lwc:if={showAddSchools}>
+        <c-add-school-picker
+          application-id={recordId}
+          onschoolsadded={handleSchoolsAdded}
+          oncancel={handleToggleAddSchools}
+        ></c-add-school-picker>
+      </template>
+      <template lwc:else>
+        <div class="panel-actions">
+          <lightning-button
+            label={labels.addSchools}
+            onclick={handleToggleAddSchools}
+          ></lightning-button>
+        </div>
+      </template>
     </template>
 
     <div class="panel-section">

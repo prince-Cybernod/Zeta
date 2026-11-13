@@ -1,6 +1,8 @@
 public without sharing class SchoolSelectionController {
   @TestVisible
   private static DatabaseRepo databaseRepo = new SystemModeDatabaseRepo();
+  @TestVisible
+  private static EventBusRepo eventBusRepo = new EventBusRepoImpl();
 
   @AuraEnabled
   public static Map<String, Object> getEligibleSchools(Id applicationId) {
@@ -217,19 +219,7 @@ public without sharing class SchoolSelectionController {
     List<AcademicInterest> toInsert = new List<AcademicInterest>();
 
     for (Object sel : selections) {
-      Map<String, Object> s = (Map<String, Object>) sel;
-
-      Map<String, Object> fields = new Map<String, Object>();
-      fields.put('IndividualApplicationId', applicationId);
-      fields.put('AccountId', s.get('schoolAccountId'));
-      fields.put('LearningProgramId', s.get('learningProgramId'));
-      fields.put('Lottery_Capacity__c', s.get('lotteryCapacityId'));
-      fields.put('AcademicTermId', s.get('academicTermId'));
-      fields.put('Status', 'Draft');
-
-      toInsert.add(
-        (AcademicInterest) JSON.deserialize(JSON.serialize(fields), AcademicInterest.class)
-      );
+      toInsert.add(newSchoolChoice(applicationId, (Map<String, Object>) sel, 'Draft'));
     }
 
     if (!toInsert.isEmpty()) {
@@ -240,6 +230,86 @@ public without sharing class SchoolSelectionController {
       }
       databaseRepo.insertSObjects(toInsert);
     }
+  }
+
+  /**
+   * SFR-216: adds schools offered by getEligibleSchools to a submitted application, after its
+   * existing choices, while the application window is open. A parent can only add to their own.
+   */
+  @AuraEnabled
+  public static void addSchools(Id applicationId, List<Id> lotteryCapacityIds) {
+    IndividualApplication app = (IndividualApplication) databaseRepo.queryWithBinds(
+      'SELECT Status, AppliedDate, SubmittedByContactId,' +
+        ' Application_Timeline__r.ApplicationCloseDate' +
+        ' FROM IndividualApplication WHERE Id = :applicationId LIMIT 1',
+      new Map<String, Object>{ 'applicationId' => applicationId }
+    )[0];
+    Date closeDate = app.Application_Timeline__r?.ApplicationCloseDate;
+    Preconditions.checkArgument(
+      app.AppliedDate != null &&
+        app.Status != 'Withdrawn/Declined' &&
+        (closeDate == null || closeDate >= Date.today()),
+      'Schools can only be added to a submitted application while the application window is open.'
+    );
+    Preconditions.checkArgument(
+      UserInfo.getUserType() == 'Standard' ||
+        app.SubmittedByContactId == ApplicationContext.resolveGuardianContactId(databaseRepo, null),
+      'You can only add schools to your own application.'
+    );
+
+    Map<Id, Map<String, Object>> offeredByCapacity = new Map<Id, Map<String, Object>>();
+    for (
+      Map<String, Object> school : (List<Map<String, Object>>) getEligibleSchools(applicationId)
+        .get('schools')
+    ) {
+      offeredByCapacity.put((Id) school.get('lotteryCapacityId'), school);
+    }
+    // Ranks are unique across every choice on the application, withdrawn ones included.
+    Set<Id> schoolsOnApplication = new Set<Id>();
+    Decimal rank = 0;
+    for (
+      AcademicInterest choice : (List<AcademicInterest>) databaseRepo.queryWithBinds(
+        'SELECT LearningProgram.School__c, School_Rank__c FROM AcademicInterest' +
+          ' WHERE IndividualApplicationId = :applicationId',
+        new Map<String, Object>{ 'applicationId' => applicationId }
+      )
+    ) {
+      schoolsOnApplication.add(choice.LearningProgram?.School__c);
+      rank = Math.max(rank, choice.School_Rank__c == null ? 0 : choice.School_Rank__c);
+    }
+
+    List<AcademicInterest> toInsert = new List<AcademicInterest>();
+    for (Id capacityId : lotteryCapacityIds) {
+      Map<String, Object> school = offeredByCapacity.get(capacityId);
+      Preconditions.checkArgument(
+        school != null && schoolsOnApplication.add((Id) school.get('schoolAccountId')),
+        'A selected school can\'t be added to this application.'
+      );
+      AcademicInterest choice = newSchoolChoice(applicationId, school, 'Applied');
+      rank += 1;
+      choice.School_Rank__c = rank;
+      toInsert.add(choice);
+    }
+    databaseRepo.insertSObjects(toInsert);
+    // Keep the File PDF current, like SchoolRankingController.saveRankings.
+    eventBusRepo.publish(new Application_Submitted_Event__e(Application_Id__c = applicationId));
+  }
+
+  // A school choice from a getEligibleSchools / schoolSelection entry.
+  private static AcademicInterest newSchoolChoice(
+    Id applicationId,
+    Map<String, Object> school,
+    String status
+  ) {
+    Map<String, Object> fields = new Map<String, Object>{
+      'IndividualApplicationId' => applicationId,
+      'AccountId' => school.get('schoolAccountId'),
+      'LearningProgramId' => school.get('learningProgramId'),
+      'Lottery_Capacity__c' => school.get('lotteryCapacityId'),
+      'AcademicTermId' => school.get('academicTermId'),
+      'Status' => status
+    };
+    return (AcademicInterest) JSON.deserialize(JSON.serialize(fields), AcademicInterest.class);
   }
 
   @AuraEnabled(cacheable=true)

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Package xmlns="http://soap.sforce.com/2006/04/metadata">
+  <types>
+    <members>IndividualApplicationTriggerHandler</members>
+    <members>IndividualApplicationTriggerHandlerTest</members>
+    <members>SchoolSelectionController</members>
+    <members>SchoolSelectionControllerTest</members>
+    <members>ZetaApplicationController</members>
+    <members>ZetaApplicationControllerQueryTest</members>
+    <name>ApexClass</name>
+  </types>
+  <types>
+    <members>AppUI_AddSchools</members>
+    <members>AppUI_AddSchoolsNone</members>
+    <members>AppUI_SelectionsLockedAfterSubmission</members>
+    <name>CustomLabel</name>
+  </types>
+  <types>
+    <members>addSchoolPicker</members>
+    <members>applicationSchoolsPanel</members>
+    <members>confirmationReview</members>
+    <name>LightningComponentBundle</name>
+  </types>
+  <version>67.0</version>
+</Package>

@@ -137,7 +137,7 @@ public without sharing class ZetaApplicationController {
     );
     // Safe to run after the AppliedDate precondition above: this application is
     // still unsubmitted, so it can never match the guard's own query.
-    if (hasSubmittedApplication(apps[0].AccountId, apps[0].Application_Timeline__c)) {
+    if (hasSubmittedApplication(apps[0].AccountId, apps[0].Application_Timeline__c, null)) {
       throw new AuraHandledException(Label.AppUI_DuplicateApplication);
     }
 
@@ -245,22 +245,9 @@ public without sharing class ZetaApplicationController {
     if (timelineId == null) {
       timelineId = findActiveTimelineId();
     }
-    if (timelineId == null) {
-      return new Map<String, Object>{ 'isDuplicate' => false };
-    }
-
-    String dupQuery =
-      'SELECT Id FROM IndividualApplication' +
-      ' WHERE AccountId = :studentAccountId' +
-      ' AND Application_Timeline__c = :timelineId' +
-      ' AND AppliedDate != NULL' +
-      ' LIMIT 1';
-    List<IndividualApplication> dups = (List<IndividualApplication>) databaseRepo.queryWithBinds(
-      dupQuery,
-      new Map<String, Object>{ 'studentAccountId' => studentAccountId, 'timelineId' => timelineId }
-    );
-
-    return new Map<String, Object>{ 'isDuplicate' => !dups.isEmpty() };
+    return new Map<String, Object>{
+      'isDuplicate' => hasSubmittedApplication(studentAccountId, timelineId, null)
+    };
   }
 
   @AuraEnabled
@@ -280,26 +267,13 @@ public without sharing class ZetaApplicationController {
     }
 
     IndividualApplication current = apps[0];
-    Id accountId = current.AccountId;
-    Id timelineId = current.Application_Timeline__c;
-
-    String dupQuery =
-      'SELECT Id FROM IndividualApplication' +
-      ' WHERE AccountId = :accountId' +
-      ' AND Application_Timeline__c = :timelineId' +
-      ' AND AppliedDate != NULL' +
-      ' AND Id != :applicationId' +
-      ' LIMIT 1';
-    List<IndividualApplication> dups = (List<IndividualApplication>) databaseRepo.queryWithBinds(
-      dupQuery,
-      new Map<String, Object>{
-        'accountId' => accountId,
-        'timelineId' => timelineId,
-        'applicationId' => applicationId
-      }
-    );
-
-    return new Map<String, Object>{ 'isDuplicate' => !dups.isEmpty() };
+    return new Map<String, Object>{
+      'isDuplicate' => hasSubmittedApplication(
+        current.AccountId,
+        current.Application_Timeline__c,
+        applicationId
+      )
+    };
   }
 
   @AuraEnabled
@@ -530,7 +504,13 @@ public without sharing class ZetaApplicationController {
     }
   }
 
-  private static Boolean hasSubmittedApplication(Id studentAccountId, Id timelineId) {
+  // Every "already applied" check uses this (SFR-216): a Cancelled or Withdrawn/Declined
+  // application doesn't count, so a family can withdraw and apply again.
+  private static Boolean hasSubmittedApplication(
+    Id studentAccountId,
+    Id timelineId,
+    Id ignoredApplicationId
+  ) {
     // A null bind on `Application_Timeline__c = :timelineId` matches every
     // application with no timeline, so an application missing one is not a
     // comparison we can make.
@@ -544,13 +524,15 @@ public without sharing class ZetaApplicationController {
       ' AND Application_Timeline__c = :timelineId' +
       ' AND Status NOT IN :excludedStatuses' +
       ' AND AppliedDate != NULL' +
+      ' AND Id != :ignoredApplicationId' +
       ' LIMIT 1';
     List<IndividualApplication> submitted = (List<IndividualApplication>) databaseRepo.queryWithBinds(
       query,
       new Map<String, Object>{
         'studentAccountId' => studentAccountId,
         'timelineId' => timelineId,
-        'excludedStatuses' => excludedStatuses
+        'excludedStatuses' => excludedStatuses,
+        'ignoredApplicationId' => ignoredApplicationId
       }
     );
     return !submitted.isEmpty();
