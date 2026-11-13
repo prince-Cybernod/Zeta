@@ -14,6 +14,13 @@
                 <stringValue>Closed</stringValue>
             </value>
         </assignmentItems>
+        <assignmentItems>
+            <assignToReference>$Record.OwnerId</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>AutoCloseOwnerId</elementReference>
+            </value>
+        </assignmentItems>
         <connector>
             <targetReference>Check_Each_Phrase</targetReference>
         </connector>
@@ -43,8 +50,15 @@
             <label>Yes</label>
         </rules>
     </decisions>
-    <description>Closes a new email case right away when its subject starts or ends with a Phrase from the Auto Close Phrases list (Setup &gt; Custom Metadata Types), as the row&apos;s Match says, and the body also contains the row&apos;s Only If Body Contains text when it has one; upper/lower case doesn&apos;t matter. Salesforce marks these cases Closed When Created. Round robin skips closed cases, and Update Case Due Date doesn&apos;t reopen the case when its own email is attached. To add or remove a rule, edit the rows; this flow doesn&apos;t need to change. (SFR-175)</description>
+    <description>SFR-175
+Closes new email cases that match the Auto Close Phrases list and puts them in the Auto Close queue.</description>
     <environments>Default</environments>
+    <formulas>
+        <description>The Auto Close queue, or the current owner if that queue is missing, so a case never ends up without an owner.</description>
+        <name>AutoCloseOwnerId</name>
+        <dataType>String</dataType>
+        <expression>BLANKVALUE({!Get_Auto_Close_Queue.Id}, {!$Record.OwnerId})</expression>
+    </formulas>
     <formulas>
         <name>RowMatches</name>
         <dataType>Boolean</dataType>
@@ -100,7 +114,7 @@
         <locationY>0</locationY>
         <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
         <connector>
-            <targetReference>Check_Each_Phrase</targetReference>
+            <targetReference>Get_Auto_Close_Queue</targetReference>
         </connector>
         <getFirstRecordOnly>false</getFirstRecordOnly>
         <object>Auto_Close_Phrase__mdt</object>
@@ -108,6 +122,35 @@
         <queriedFields>Phrase__c</queriedFields>
         <queriedFields>Match__c</queriedFields>
         <queriedFields>Body_Contains__c</queriedFields>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordLookups>
+        <name>Get_Auto_Close_Queue</name>
+        <label>Get Auto Close Queue</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Check_Each_Phrase</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>DeveloperName</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Auto_Close</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>Type</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Queue</stringValue>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>Group</object>
+        <queriedFields>Id</queriedFields>
         <storeOutputAutomatically>true</storeOutputAutomatically>
     </recordLookups>
     <start>
