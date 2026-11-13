@@ -307,6 +307,11 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
+        <field>Lead.Email_Only_Lead__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
         <field>Lead.Fax</field>
         <readable>true</readable>
     </fieldPermissions>
@@ -528,6 +533,11 @@
     <fieldPermissions>
         <editable>false</editable>
         <field>Lead.Sibling_in_System_Flag__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Lead.Status_is_Converted__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
