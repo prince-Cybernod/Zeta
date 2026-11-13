@@ -2,13 +2,20 @@
 <Flow xmlns="http://soap.sforce.com/2006/04/metadata">
     <apiVersion>67.0</apiVersion>
     <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
-    <description>Update the case due date to 48 hrs + the date/time of the most recent message.</description>
+    <description>SFR-175
+Doesn&apos;t reopen a case that was closed when it was created.</description>
     <environments>Default</environments>
     <formulas>
         <description>48 hrs since last external email entered the system</description>
         <name>case_reply_due_date</name>
         <dataType>DateTime</dataType>
         <expression>{!$Record.MessageDate} + 2</expression>
+    </formulas>
+    <formulas>
+        <description>One minute before this email arrived. A case created closed after this moment came in with this email (Email-to-Case creates both together), so this email doesn&apos;t reopen it.</description>
+        <name>OneMinuteBeforeThisEmail</name>
+        <dataType>DateTime</dataType>
+        <expression>{!$Record.CreatedDate} - (1/1440)</expression>
     </formulas>
     <interviewLabel>Update Case Due Date {!$Flow.CurrentDateTime}</interviewLabel>
     <label>Update Case Due Date</label>
@@ -36,7 +43,7 @@
         <label>Update Case Due Date</label>
         <locationX>0</locationX>
         <locationY>0</locationY>
-        <filterLogic>1 AND (2 OR 3)</filterLogic>
+        <filterLogic>1 AND (2 OR 3) AND (4 OR 5)</filterLogic>
         <filters>
             <field>Id</field>
             <operator>EqualTo</operator>
@@ -56,6 +63,20 @@
             <operator>IsNull</operator>
             <value>
                 <booleanValue>true</booleanValue>
+            </value>
+        </filters>
+        <filters>
+            <field>IsClosedOnCreate</field>
+            <operator>EqualTo</operator>
+            <value>
+                <booleanValue>false</booleanValue>
+            </value>
+        </filters>
+        <filters>
+            <field>CreatedDate</field>
+            <operator>LessThan</operator>
+            <value>
+                <elementReference>OneMinuteBeforeThisEmail</elementReference>
             </value>
         </filters>
         <inputAssignments>

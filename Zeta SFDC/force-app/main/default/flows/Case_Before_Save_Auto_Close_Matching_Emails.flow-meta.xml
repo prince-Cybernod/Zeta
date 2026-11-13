@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>67.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <assignments>
+        <name>Close_Case</name>
+        <label>Close Case</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <assignmentItems>
+            <assignToReference>$Record.Status</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <stringValue>Closed</stringValue>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>$Record.OwnerId</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>AutoCloseOwnerId</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Check_Each_Phrase</targetReference>
+        </connector>
+    </assignments>
+    <decisions>
+        <name>Row_Matches</name>
+        <label>Row Matches?</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <defaultConnector>
+            <targetReference>Check_Each_Phrase</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>No</defaultConnectorLabel>
+        <rules>
+            <name>Yes</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>RowMatches</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Close_Case</targetReference>
+            </connector>
+            <label>Yes</label>
+        </rules>
+    </decisions>
+    <description>SFR-175
+Closes new email cases that match the Auto Close Phrases list and puts them in the Auto Close queue.</description>
+    <environments>Default</environments>
+    <formulas>
+        <description>The Auto Close queue, or the current owner if that queue is missing, so a case never ends up without an owner.</description>
+        <name>AutoCloseOwnerId</name>
+        <dataType>String</dataType>
+        <expression>BLANKVALUE({!Get_Auto_Close_Queue.Id}, {!$Record.OwnerId})</expression>
+    </formulas>
+    <formulas>
+        <name>RowMatches</name>
+        <dataType>Boolean</dataType>
+        <expression>AND(
+    NOT(ISBLANK(TRIM({!Check_Each_Phrase.Phrase__c}))),
+    IF(
+        TEXT({!Check_Each_Phrase.Match__c}) = &quot;Ends with&quot;,
+        RIGHT(LOWER(TRIM({!$Record.Subject})), LEN(TRIM({!Check_Each_Phrase.Phrase__c}))) = LOWER(TRIM({!Check_Each_Phrase.Phrase__c})),
+        BEGINS(LOWER(TRIM({!$Record.Subject})), LOWER(TRIM({!Check_Each_Phrase.Phrase__c})))
+    ),
+    OR(
+        ISBLANK({!Check_Each_Phrase.Body_Contains__c}),
+        CONTAINS(LOWER({!$Record.Description}), LOWER(TRIM({!Check_Each_Phrase.Body_Contains__c})))
+    )
+)</expression>
+    </formulas>
+    <interviewLabel>Case | Before Save | Auto-Close Matching Emails {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Case | Before Save | Auto-Close Matching Emails</label>
+    <loops>
+        <name>Check_Each_Phrase</name>
+        <label>Check Each Phrase</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <collectionReference>Get_Auto_Close_Phrases</collectionReference>
+        <iterationOrder>Asc</iterationOrder>
+        <nextValueConnector>
+            <targetReference>Row_Matches</targetReference>
+        </nextValueConnector>
+    </loops>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordLookups>
+        <name>Get_Auto_Close_Phrases</name>
+        <label>Get Auto Close Phrases</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Get_Auto_Close_Queue</targetReference>
+        </connector>
+        <getFirstRecordOnly>false</getFirstRecordOnly>
+        <object>Auto_Close_Phrase__mdt</object>
+        <queriedFields>Id</queriedFields>
+        <queriedFields>Phrase__c</queriedFields>
+        <queriedFields>Match__c</queriedFields>
+        <queriedFields>Body_Contains__c</queriedFields>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordLookups>
+        <name>Get_Auto_Close_Queue</name>
+        <label>Get Auto Close Queue</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Check_Each_Phrase</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>DeveloperName</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Auto_Close</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>Type</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Queue</stringValue>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>Group</object>
+        <queriedFields>Id</queriedFields>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <start>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>Get_Auto_Close_Phrases</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Origin</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Email</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>Subject</field>
+            <operator>IsNull</operator>
+            <value>
+                <booleanValue>false</booleanValue>
+            </value>
+        </filters>
+        <object>Case</object>
+        <recordTriggerType>Create</recordTriggerType>
+        <triggerType>RecordBeforeSave</triggerType>
+    </start>
+    <status>Active</status>
+</Flow>

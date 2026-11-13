@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <description>Rules that close a new email case automatically. A row matches when the subject starts or ends with its Phrase (see Match) and, if filled, the body contains Only If Body Contains. Upper or lower case doesn&apos;t matter. Read by the flow Case | Before Save | Auto-Close Matching Emails. To add a rule, add a row; to stop one, delete its row.</description>
+    <label>Auto Close Phrase</label>
+    <pluralLabel>Auto Close Phrases</pluralLabel>
+    <visibility>Public</visibility>
+</CustomObject>

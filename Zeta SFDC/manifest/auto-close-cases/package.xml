@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Package xmlns="http://soap.sforce.com/2006/04/metadata">
+    <types>
+        <members>Auto_Close_Phrase__mdt.Body_Contains__c</members>
+        <members>Auto_Close_Phrase__mdt.Match__c</members>
+        <members>Auto_Close_Phrase__mdt.Phrase__c</members>
+        <name>CustomField</name>
+    </types>
+    <types>
+        <members>Auto_Close_Phrase.CheddarUp_Refund_Confirmation</members>
+        <members>Auto_Close_Phrase.CheddarUp_Report_Export_Failed</members>
+        <members>Auto_Close_Phrase.CheddarUp_Report_Ready</members>
+        <members>Auto_Close_Phrase.Google_Calendar_Accepted</members>
+        <members>Auto_Close_Phrase.Google_Calendar_Declined</members>
+        <members>Auto_Close_Phrase.Google_Calendar_Invitation</members>
+        <members>Auto_Close_Phrase.Google_Calendar_Updated_Invitation</members>
+        <members>Auto_Close_Phrase.SchoolMint_Offer_Accepted</members>
+        <members>Auto_Close_Phrase.SchoolMint_Offer_Accepted_Spanish</members>
+        <members>Auto_Close_Phrase.SchoolMint_Offer_Declined</members>
+        <name>CustomMetadata</name>
+    </types>
+    <types>
+        <members>Auto_Close_Phrase__mdt</members>
+        <name>CustomObject</name>
+    </types>
+    <types>
+        <members>Case_Before_Save_Auto_Close_Matching_Emails</members>
+        <members>Update_Case_Due_Date</members>
+        <name>Flow</name>
+    </types>
+    <types>
+        <members>Auto_Close</members>
+        <name>Queue</name>
+    </types>
+    <version>67.0</version>
+</Package>
