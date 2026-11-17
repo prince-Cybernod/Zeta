@@ -6,6 +6,19 @@
     <dataSourceObject>PersonalizationDecision_Home</dataSourceObject>
     <masterLabel>PersonalizationDecision_Home</masterLabel>
     <mktDataTranFields>
+        <fullName>ActiveAbnExperimentId</fullName>
+        <creationType>Custom</creationType>
+        <datatype>S</datatype>
+        <externalName>ActiveAbnExperimentId</externalName>
+        <isDataRequired>false</isDataRequired>
+        <length>0</length>
+        <masterLabel>ActiveAbnExperiment</masterLabel>
+        <precision>0</precision>
+        <primaryIndexOrder>0</primaryIndexOrder>
+        <scale>0</scale>
+        <sequence>16</sequence>
+    </mktDataTranFields>
+    <mktDataTranFields>
         <fullName>CreatedById</fullName>
         <creationType>Custom</creationType>
         <datatype>S</datatype>

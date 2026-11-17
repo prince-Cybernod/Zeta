@@ -291,6 +291,24 @@ public with sharing class LotteryAuditLogServiceImpl implements LotteryAuditLogS
       result.runResultsDeleted = runResults.size();
     }
 
+    // Clear the staff priority flag, run and order before the run log is deleted.
+    // A SetNull on delete (Staff_Priority_Removed_Run__c) fires no trigger, so the
+    // clear has to be explicit here.
+    String staffPriorityQuery = 'SELECT Id FROM AcademicInterest WHERE Staff_Priority_Removed_Run__c = :runLogId';
+    List<AcademicInterest> staffPriorityRemovals = (List<AcademicInterest>) databaseRepo.queryWithBinds(
+      staffPriorityQuery,
+      new Map<String, Object>{ 'runLogId' => runLogId }
+    );
+    if (!staffPriorityRemovals.isEmpty()) {
+      for (AcademicInterest academicInterest : staffPriorityRemovals) {
+        academicInterest.Staff_Priority_Removed__c = false;
+        academicInterest.Staff_Priority_Removed_Run__c = null;
+        academicInterest.Staff_Priority_Removal_Order__c = null;
+      }
+      databaseRepo.updateSObjects(staffPriorityRemovals);
+      result.staffPriorityRestored = staffPriorityRemovals.size();
+    }
+
     // Delete run log
     databaseRepo.deleteSObjects(runLogs);
 

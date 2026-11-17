@@ -31,6 +31,9 @@
         <aggregateTypes>Sum</aggregateTypes>
         <field>Lead.Mogli_SMS__Mogli_Opt_Out__c</field>
     </columns>
+    <columns>
+        <field>Lead.Interested_School_s__c</field>
+    </columns>
     <description>Template report to be used for bulk texting leads with Mogli. Make a copy of this report (Edit &gt; Save As) and add fields and filters to refine.</description>
     <filter>
         <criteriaItems>
@@ -47,10 +50,17 @@
             <operator>equals</operator>
             <value>zh_CN</value>
         </criteriaItems>
+        <criteriaItems>
+            <column>Lead.Interested_School_s__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>includes</operator>
+            <value>Zeta Queens Flushing Elementary School</value>
+        </criteriaItems>
         <language>en_US</language>
     </filter>
     <format>Tabular</format>
-    <name>Leads-Mandarin</name>
+    <name>[Mogli] Flushing | All Leads-Mandarin</name>
     <params>
         <name>co</name>
         <value>1</value>

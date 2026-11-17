@@ -92,16 +92,6 @@
                     <name>uiBehavior</name>
                     <value>none</value>
                 </fieldInstanceProperties>
-                <fieldItem>Record.fxStudent_Type__c</fieldItem>
-                <identifier>RecordfxStudent_Type__cField</identifier>
-            </fieldInstance>
-        </itemInstances>
-        <itemInstances>
-            <fieldInstance>
-                <fieldInstanceProperties>
-                    <name>uiBehavior</name>
-                    <value>none</value>
-                </fieldInstanceProperties>
                 <fieldItem>Record.Active__c</fieldItem>
                 <identifier>RecordActive__cField</identifier>
             </fieldInstance>
@@ -1634,16 +1624,6 @@
                     <name>uiBehavior</name>
                     <value>none</value>
                 </fieldInstanceProperties>
-                <fieldItem>Record.Registration_Phase_Finished__c</fieldItem>
-                <identifier>RecordRegistration_Phase_Finished__cField</identifier>
-            </fieldInstance>
-        </itemInstances>
-        <itemInstances>
-            <fieldInstance>
-                <fieldInstanceProperties>
-                    <name>uiBehavior</name>
-                    <value>none</value>
-                </fieldInstanceProperties>
                 <fieldItem>Record.Date_of_Completed_Registration_Packet__c</fieldItem>
                 <identifier>RecordDate_of_Completed_Registration_Packet__cField</identifier>
             </fieldInstance>
@@ -1956,8 +1936,8 @@
                     <name>uiBehavior</name>
                     <value>none</value>
                 </fieldInstanceProperties>
-                <fieldItem>Record.DEPRECATED_Race_Answers__c</fieldItem>
-                <identifier>RecordRace_Answers__cField</identifier>
+                <fieldItem>Record.Race_Answers__c</fieldItem>
+                <identifier>RecordRace_Answers_cField</identifier>
             </fieldInstance>
         </itemInstances>
         <name>Facet-266dfa72-8aa9-44fb-a48a-7ccfa44ae4da</name>
@@ -2178,6 +2158,16 @@
                 </fieldInstanceProperties>
                 <fieldItem>Record.PreK_Flu_Shot_Verification__c</fieldItem>
                 <identifier>RecordPreKFluShotVerification_cField</identifier>
+            </fieldInstance>
+        </itemInstances>
+        <itemInstances>
+            <fieldInstance>
+                <fieldInstanceProperties>
+                    <name>uiBehavior</name>
+                    <value>none</value>
+                </fieldInstanceProperties>
+                <fieldItem>Record.Registration_Phase_Finished__c</fieldItem>
+                <identifier>RecordRegistration_Phase_Finished__cField</identifier>
             </fieldInstance>
         </itemInstances>
         <name>Facet-5a7158e2-f0b7-4364-a2a0-cb11e29c22b0</name>
@@ -2423,8 +2413,8 @@
                     <name>uiBehavior</name>
                     <value>none</value>
                 </fieldInstanceProperties>
-                <fieldItem>Record.fxStudent_Type__c</fieldItem>
-                <identifier>RecordfxStudent_Type_cField</identifier>
+                <fieldItem>Record.Student_Type__c</fieldItem>
+                <identifier>RecordStudent_Type_cField</identifier>
             </fieldInstance>
         </itemInstances>
         <itemInstances>

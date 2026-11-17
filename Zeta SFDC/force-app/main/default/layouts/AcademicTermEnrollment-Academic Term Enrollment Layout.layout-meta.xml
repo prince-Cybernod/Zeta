@@ -99,10 +99,6 @@
             </layoutItems>
             <layoutItems>
                 <behavior>Edit</behavior>
-                <field>DEPRECATED_Race_Answers__c</field>
-            </layoutItems>
-            <layoutItems>
-                <behavior>Edit</behavior>
                 <field>FERPA_Directory_Info_Notice__c</field>
             </layoutItems>
             <layoutItems>
@@ -193,10 +189,6 @@
             <layoutItems>
                 <behavior>Readonly</behavior>
                 <field>Student_Name__c</field>
-            </layoutItems>
-            <layoutItems>
-                <behavior>Readonly</behavior>
-                <field>fxStudent_Type__c</field>
             </layoutItems>
         </layoutColumns>
         <layoutColumns>

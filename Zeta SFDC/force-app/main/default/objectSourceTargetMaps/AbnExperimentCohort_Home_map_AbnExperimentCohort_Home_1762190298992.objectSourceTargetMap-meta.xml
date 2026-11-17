@@ -145,6 +145,22 @@
         <sourceFormula>Id</sourceFormula>
         <targetField>AbnExperimentCohort_Home__dll.Id__c</targetField>
     </fieldSourceTargetMaps>
+    <fieldSourceTargetMaps>
+        <creationType>Custom</creationType>
+        <filterApplied>false</filterApplied>
+        <isSourceFormula>false</isSourceFormula>
+        <sourceField>AbnExperimentCohort_Home.IsLeadingCohort__c</sourceField>
+        <sourceFormula>IsLeadingCohort</sourceFormula>
+        <targetField>AbnExperimentCohort_Home__dll.IsLeadingCohort__c</targetField>
+    </fieldSourceTargetMaps>
+    <fieldSourceTargetMaps>
+        <creationType>Custom</creationType>
+        <filterApplied>false</filterApplied>
+        <isSourceFormula>false</isSourceFormula>
+        <sourceField>AbnExperimentCohort_Home.IsFallThrough__c</sourceField>
+        <sourceFormula>IsFallThrough</sourceFormula>
+        <targetField>AbnExperimentCohort_Home__dll.IsFallThrough__c</targetField>
+    </fieldSourceTargetMaps>
     <masterLabel>AbnExperimentCohort_Home_map_AbnExperimentCohort_Home_1762190298992</masterLabel>
     <sourceObjectName>AbnExperimentCohort_Home</sourceObjectName>
     <targetObjectName>AbnExperimentCohort_Home__dll</targetObjectName>

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Staff_Priority_Removed__c</fullName>
+    <defaultValue>false</defaultValue>
+    <description>True when this school application&apos;s Zeta-staff priority was randomly removed to bring its Charter back under the staff priority cap. The &quot;Parent is Zeta Staff&quot; Priority_Item__c stays Approved; only this Charter&apos;s priority reading changes.</description>
+    <inlineHelpText>Staff priority removed to enforce the Charter&apos;s staff priority cap.</inlineHelpText>
+    <label>Staff Priority Removed</label>
+    <trackHistory>false</trackHistory>
+    <type>Checkbox</type>
+</CustomField>

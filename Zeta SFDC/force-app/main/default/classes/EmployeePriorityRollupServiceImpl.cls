@@ -57,7 +57,7 @@ public without sharing class EmployeePriorityRollupServiceImpl implements Employ
     // Re-query ALL applications for affected programs, not just the triggering ones
     String allAppsQuery =
       'SELECT Lottery_Capacity__r.Program_Term_Application_Timeline__r.LearningProgramId, ' +
-      'IndividualApplicationId ' +
+      'IndividualApplicationId, Staff_Priority_Removed__c ' +
       'FROM AcademicInterest ' +
       'WHERE Lottery_Capacity__r.Program_Term_Application_Timeline__r.LearningProgramId IN :learningProgramIds';
 
@@ -73,6 +73,9 @@ public without sharing class EmployeePriorityRollupServiceImpl implements Employ
     }
 
     for (AcademicInterest ai : allAcademicInterests) {
+      if (ai.Staff_Priority_Removed__c == true) {
+        continue;
+      }
       Id programId = (Id) ai.getSObject('Lottery_Capacity__r')
         ?.getSObject('Program_Term_Application_Timeline__r')
         ?.get('LearningProgramId');

@@ -27,7 +27,7 @@
             <label>Contact</label>
         </rules>
     </decisions>
-    <description>When someone on a School Tours campaign is marked "Attended, RSVPed" or "Attended, no RSVP", saves the campaign Event Date as Last Tour Attended on their account, or on the lead if they are still a lead, unless a later tour is already saved. Lead field mapping carries the lead date to the student on conversion. Individual Application "Date Attended Tour" shows it.</description>
+    <description>When someone on a School Tours campaign is marked &quot;Attended, RSVPed&quot; or &quot;Attended, no RSVP&quot;, saves the campaign Event Date as Last Tour Attended on their account, or on the lead if they are still a lead, unless a later tour is already saved. Lead field mapping carries the lead date to the student on conversion. Individual Application &quot;Date Attended Tour&quot; shows it.</description>
     <environments>Default</environments>
     <interviewLabel>Campaign Member | Set Last Tour Attended {!$Flow.CurrentDateTime}</interviewLabel>
     <label>Campaign Member | Set Last Tour Attended</label>

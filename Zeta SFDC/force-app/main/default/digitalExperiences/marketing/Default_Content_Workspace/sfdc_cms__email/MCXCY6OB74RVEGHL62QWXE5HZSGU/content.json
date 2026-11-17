@@ -143,7 +143,7 @@
               "lightning:margin" : "{!$brand.spacing.none}",
               "lightning:padding" : "{!$brand.spacing.none}",
               "lightning:typography" : "{!$brand.typography.paragraph.paragraph1}",
-              "text" : "<font face=\"Tahoma\">Dear {!$Expression.First_Name_2} {!$Expression.Last_Name_1},<br /><br />Congratulations on applying to Zeta Middle School!</font>"
+              "text" : "<font face=\"Tahoma\">Dear {!$Expression.First_Name_2}'s Family,<br /><br />Congratulations on applying to Zeta Middle School! Choosing a middle school is a big step for the whole family, and I am excited you are considering Zeta.</font>"
             },
             "definition" : "lightning/paragraph",
             "id" : "618d12ac-1220-42a4-9ed6-83e330b709d4",
@@ -217,7 +217,7 @@
               "lightning:margin" : "{!$brand.spacing.none}",
               "lightning:padding" : "{!$brand.spacing.none}",
               "lightning:typography" : "{!$brand.typography.paragraph.paragraph1}",
-              "text" : "<font face=\"Tahoma\">At Zeta, love is the foundation of an extraordinary education. For eight years, our top-performing, tuition-free public charter schools have served New York City families through rigorous academics and meaningful opportunities that nurture the whole child.<br /></font>"
+              "text" : "<font face=\"Tahoma\">As a parent, I know how much that decision matters. My vision for Zeta grew out of the school my husband and I wanted for our three sons: one where students receive an excellent education and develop a lifelong love of learning.<br /></font>"
             },
             "definition" : "lightning/paragraph",
             "id" : "c3f5a7dd-c435-4c43-aa0a-f86c20875a65",
@@ -287,12 +287,12 @@
                 "altText" : "",
                 "overrideAltText" : false,
                 "source" : {
-                  "mimeType" : "image/png",
-                  "ref" : "MCXNH4MVT6Y5B5XK5CJHPKOCYBCI",
-                  "size" : 153889.0,
+                  "mimeType" : "image/jpeg",
+                  "ref" : "MCNU6WQFOAFRAIPN5AANN6GM7DT4",
+                  "size" : 41727.0,
                   "type" : "imageReference"
                 },
-                "url" : "/cms/media/MCXNH4MVT6Y5B5XK5CJHPKOCYBCI?fileName=Zeta+Emily+Kim.png&fileHash=1e83a7b8891ae1f321dbb356f017033c"
+                "url" : "/cms/media/MCNU6WQFOAFRAIPN5AANN6GM7DT4?fileName=unnamed.jpg&fileHash=1f8b2b785d250df5fd328e9ed74de4ac"
               },
               "lightning:borderRadius" : "{!$brand.borderRadius.square}",
               "lightning:borderWidth" : "{!$brand.borderWeight.none}",
@@ -332,7 +332,7 @@
         "type" : "block",
         "children" : [ {
           "attributes" : {
-            "columnWidth" : 12.0,
+            "columnWidth" : 6.0,
             "lightning:backgroundImage" : {
               "position" : "center center",
               "repeat" : "no-repeat",
@@ -362,10 +362,99 @@
               "lightning:margin" : "{!$brand.spacing.none}",
               "lightning:padding" : "{!$brand.spacing.none}",
               "lightning:typography" : "{!$brand.typography.paragraph.paragraph1}",
-              "text" : "<font face=\"Tahoma\">As the founder, my vision for Zeta grew out of the kind of school my husband and I wanted for our three sons: a school where students receive an excellent education, develop a lifelong love of learning, and grow in confidence, curiosity, and character. My nine-year-old son attends Zeta, so I experience our schools every day as both a Zeta leader and a proud Zeta parent.</font>"
+              "text" : "Zeta middle schools open up new possibilities. Students discover interests, become more independent, and find their voices. Learning takes many forms at Zeta. In expert-led Specialties, students can learn an instrument, develop a chess strategy, or master Taekwondo. In Z Lab, they build robots, write code, and bring their ideas to life. Caring teachers help students navigate these challenges with love and high expectations. Daily Advisory and weekly Circles give students time to reflect, build friendships, and set goals with adults who know them well.<br />"
             },
             "definition" : "lightning/paragraph",
             "id" : "1ae16195-5277-46f2-a10b-528d7f8af766",
+            "type" : "block"
+          } ]
+        }, {
+          "attributes" : {
+            "columnWidth" : 6.0,
+            "lightning:borderRadius" : "{!$brand.borderRadius.square}",
+            "lightning:borderWidth" : "{!$brand.borderWeight.none}",
+            "lightning:colorScheme" : "{!$brand.colorScheme}",
+            "lightning:margin" : "{!$brand.spacing.none}",
+            "lightning:padding" : "{!$brand.spacing.xSmall}",
+            "lightning:verticalAlignment" : "top",
+            "lightning:backgroundImage" : {
+              "repeat" : "no-repeat",
+              "position" : "center center",
+              "size" : "cover"
+            }
+          },
+          "definition" : "lightning/column",
+          "id" : "b704bd5d-e4e9-41f6-ae55-c834014561eb",
+          "type" : "block",
+          "children" : [ {
+            "attributes" : {
+              "imageFitConfig" : {
+                "width" : {
+                  "unit" : "%",
+                  "value" : 100.0
+                }
+              },
+              "imageInfo" : {
+                "altText" : "",
+                "overrideAltText" : false,
+                "source" : {
+                  "mimeType" : "image/jpeg",
+                  "ref" : "MCWY3KHSBNTBAYDN5ZROD7W2AUWM",
+                  "size" : 63586.0,
+                  "type" : "imageReference"
+                },
+                "url" : "/cms/media/MCWY3KHSBNTBAYDN5ZROD7W2AUWM?fileName=unnamed+%281%29.jpg&fileHash=b5d7bd15a33e000aed7a2611b6c185b7"
+              },
+              "lightning:borderRadius" : "{!$brand.borderRadius.square}",
+              "lightning:borderWidth" : "{!$brand.borderWeight.none}",
+              "lightning:colorGroup" : {
+                "backgroundColor" : "{!$brand.colorScheme.root}",
+                "borderColor" : "{!$brand.colorScheme.neutral}",
+                "linkColor" : "{!$brand.colorScheme.primaryAccent}",
+                "textColor" : "{!$brand.colorScheme.contrast}"
+              },
+              "lightning:horizontalAlignment" : "center",
+              "lightning:margin" : "{!$brand.spacing.none}",
+              "lightning:padding" : "{!$brand.spacing.none}",
+              "lightning:typography" : "{!$brand.typography.paragraph.paragraph1}"
+            },
+            "definition" : "lightning/image",
+            "id" : "06a7f5d3-eae0-4426-8eb1-77997c9cae2e",
+            "type" : "block"
+          }, {
+            "attributes" : {
+              "imageFitConfig" : {
+                "width" : {
+                  "unit" : "%",
+                  "value" : 100.0
+                }
+              },
+              "imageInfo" : {
+                "altText" : "",
+                "overrideAltText" : false,
+                "source" : {
+                  "mimeType" : "image/jpeg",
+                  "ref" : "MC3MD76XW7R5C3PCCI3QIQN6TG2U",
+                  "size" : 68601.0,
+                  "type" : "imageReference"
+                },
+                "url" : "/cms/media/MC3MD76XW7R5C3PCCI3QIQN6TG2U?fileName=unnamed+%282%29.jpg&fileHash=1427e6b1ec6087baf00c2a9c20722f66"
+              },
+              "lightning:borderRadius" : "{!$brand.borderRadius.square}",
+              "lightning:borderWidth" : "{!$brand.borderWeight.none}",
+              "lightning:colorGroup" : {
+                "backgroundColor" : "{!$brand.colorScheme.root}",
+                "borderColor" : "{!$brand.colorScheme.neutral}",
+                "linkColor" : "{!$brand.colorScheme.primaryAccent}",
+                "textColor" : "{!$brand.colorScheme.contrast}"
+              },
+              "lightning:horizontalAlignment" : "center",
+              "lightning:margin" : "{!$brand.spacing.none}",
+              "lightning:padding" : "{!$brand.spacing.none}",
+              "lightning:typography" : "{!$brand.typography.paragraph.paragraph1}"
+            },
+            "definition" : "lightning/image",
+            "id" : "611e147a-f232-44a5-a2c9-737b39a202c0",
             "type" : "block"
           } ]
         } ]
@@ -419,7 +508,7 @@
               "lightning:margin" : "{!$brand.spacing.none}",
               "lightning:padding" : "{!$brand.spacing.none}",
               "lightning:typography" : "{!$brand.typography.paragraph.paragraph1}",
-              "text" : "<font face=\"Tahoma\">Our commitment is to provide your child with a world-class educational experience grounded in love, from pre-kindergarten through twelfth grade. That commitment shows up in the results: across Zeta's testing schools last year, 92% of students passed the New York State Math exams, with nearly half earning the highest score of 4. In English Language Arts, 86% passed—50 percentage points above local district averages and 36 percentage points above New York City's average. In Science, 92% passed, Zeta's strongest result since the state introduced its more rigorous next generation assessment. <br /><br />At Zeta Middle School, students prepare for high school by taking on advanced academics, discovering their interests, and taking greater ownership of their learning. They receive personalized support through daily advisory sessions, participate in programs including Taekwondo, soccer, music, and chess, and design, build, and experiment in Z Lab.<br /><br />Zeta eighth graders achieved a 97.5% pass rate on the Algebra I Regents and a 98.3% pass rate on the Biology Regents—exams New York students typically do not take until high school!<br /><br />These results are testament to what an education driven by love can achieve.<br /><br />In the months ahead, you will discover the many possibilities for your child at Zeta. <br /><br />To learn more, <a href=\"https://zetaschools.org/events-for-prospective-families/\" target=\"_blank\" part=\"link\" rel=\"noopener noreferrer noopener noreferrer noopener noreferrer\"><u>come visit us at Zeta</u></a>.<br /><br />I am thrilled to welcome you and your student into the Zeta community!<br /><br /><strong>With warmth &amp; gratitude,<br /><br />Emily Kim<br />Founder, CEO &amp; Zeta Mom<br />Zeta Charter Schools</strong><strong><br /></strong><br /><em></em><em>Please reach out if you have any questions about Zeta. Our Enrollment Team is here for you every step of the way:<br /></em>✉︎ <a href=\"mailto:enroll&#64;zetaschools.org\" target=\"_blank\" part=\"link\" rel=\"noopener noreferrer noopener noreferrer noopener noreferrer noopener noreferrer noopener noreferrer noopener noreferrer\"><u>enroll&#64;zetaschools.org</u></a><br />&#x1f4de;<a href=\"tel:16464801654\" target=\"_blank\" part=\"link\" rel=\"noopener noreferrer noopener noreferrer noopener noreferrer noopener noreferrer noopener noreferrer noopener noreferrer\">(646) 480-1654</a></font><a href=\"tel:16464801654\" target=\"_blank\" part=\"link\" rel=\"noopener noreferrer noopener noreferrer noopener noreferrer noopener noreferrer noopener noreferrer noopener noreferrer\"></a><br />"
+              "text" : "<font face=\"Tahoma\">In 2025–26, our eighth graders earned 98% pass rates on both the Algebra I and Biology Regents exams, typically taken in high school. Their achievements reflect what students can accomplish with rigorous coursework and caring teachers by their side.<br /><br />To learn more about what middle school could look like, come visit us! Meet our students and teachers, explore our classrooms, and see the possibilities for your student’s next chapter.<br /><br /><strong>With love,</strong><strong><br /><br />Emily Kim<br />Founder &amp; CEO<br />Zeta Charter Schools</strong><strong><br /></strong><br /><em></em><em>Please reach out if you have any questions about Zeta. Our Enrollment Team is here for you every step of the way:<br /></em>✉︎ <a href=\"mailto:enroll&#64;zetaschools.org\" target=\"_blank\" part=\"link\" rel=\"noopener noreferrer\"><u>enroll&#64;zetaschools.org</u></a><br />&#x1f4de;<a href=\"tel:16464801654\" target=\"_blank\" part=\"link\" rel=\"noopener noreferrer\">(646) 480-1654</a></font><a href=\"tel:16464801654\" target=\"_blank\" part=\"link\" rel=\"noopener noreferrer\"></a><br />"
             },
             "definition" : "lightning/paragraph",
             "id" : "bbf0ea99-526d-48e3-960b-d6dbbefe7dd2",
@@ -441,7 +530,7 @@
     },
     "sfdc_cms:title" : "MC | Applicant | MS Email 2",
     "sfdc_cms:urlName" : "mc-applicant-es-email-1",
-    "subjectLine" : "Hello from Zeta founder and a proud Zeta parent",
+    "subjectLine" : "Hello and congratulations on applying to Zeta Middle School!",
     "sfdc_cms:variants" : [ ]
   },
   "urlName" : "mc-applicant-es-email-1"

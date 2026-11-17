@@ -15,10 +15,9 @@
         BLANKVALUE(Account.Last_Tour_Attended__c, DATE(1900, 1, 1)) - DATE(1900, 1, 1)
     )
 )</formula>
-    <formulaTreatBlanksAs>BlankAsBlank</formulaTreatBlanksAs>
     <inlineHelpText>Date of the latest school tour this family attended. Filled in automatically when attendance is marked on a School Tours campaign.</inlineHelpText>
     <label>Date Attended Tour</label>
-    <trackFeedHistory>false</trackFeedHistory>
+    <required>false</required>
     <trackHistory>false</trackHistory>
     <type>Date</type>
 </CustomField>

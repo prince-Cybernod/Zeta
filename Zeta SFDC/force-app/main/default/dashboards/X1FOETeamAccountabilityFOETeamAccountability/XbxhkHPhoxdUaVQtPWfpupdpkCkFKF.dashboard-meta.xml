@@ -13,6 +13,11 @@
             <values>10/1/2026 12:00 AM</values>
             <values>10/31/2026 12:00 AM</values>
         </dashboardFilterOptions>
+        <dashboardFilterOptions>
+            <operator>between</operator>
+            <values>11/1/2026 12:00 AM</values>
+            <values>11/30/2026 12:00 AM</values>
+        </dashboardFilterOptions>
         <name>Individual Application: Applied Date</name>
     </dashboardFilters>
     <dashboardFilters>
@@ -83,7 +88,7 @@
                 <autoselectColumnsFromReport>true</autoselectColumnsFromReport>
                 <componentType>RichText</componentType>
                 <dashboardComponentContents>
-                    <richTextContent>[{\&amp;quot;attributes\&amp;quot;:{\&amp;quot;size\&amp;quot;:\&amp;quot;18px\&amp;quot;},\&amp;quot;insert\&amp;quot;:\&amp;quot;Goal\&amp;quot;},{\&amp;quot;attributes\&amp;quot;:{\&amp;quot;align\&amp;quot;:\&amp;quot;left\&amp;quot;},\&amp;quot;insert\&amp;quot;:\&amp;quot;\\n\&amp;quot;},{\&amp;quot;attributes\&amp;quot;:{\&amp;quot;size\&amp;quot;:\&amp;quot;64px\&amp;quot;,\&amp;quot;color\&amp;quot;:\&amp;quot;#4f497a\&amp;quot;,\&amp;quot;bold\&amp;quot;:true},\&amp;quot;insert\&amp;quot;:\&amp;quot;2,761\&amp;quot;},{\&amp;quot;attributes\&amp;quot;:{\&amp;quot;align\&amp;quot;:\&amp;quot;left\&amp;quot;},\&amp;quot;insert\&amp;quot;:\&amp;quot;\\n\&amp;quot;}]</richTextContent>
+                    <richTextContent>[{\&amp;quot;attributes\&amp;quot;:{\&amp;quot;size\&amp;quot;:\&amp;quot;18px\&amp;quot;},\&amp;quot;insert\&amp;quot;:\&amp;quot;Goal\&amp;quot;},{\&amp;quot;attributes\&amp;quot;:{\&amp;quot;align\&amp;quot;:\&amp;quot;left\&amp;quot;},\&amp;quot;insert\&amp;quot;:\&amp;quot;\\n\&amp;quot;},{\&amp;quot;attributes\&amp;quot;:{\&amp;quot;size\&amp;quot;:\&amp;quot;64px\&amp;quot;,\&amp;quot;color\&amp;quot;:\&amp;quot;#4f497a\&amp;quot;,\&amp;quot;bold\&amp;quot;:true},\&amp;quot;insert\&amp;quot;:\&amp;quot;5,406\&amp;quot;},{\&amp;quot;attributes\&amp;quot;:{\&amp;quot;align\&amp;quot;:\&amp;quot;left\&amp;quot;},\&amp;quot;insert\&amp;quot;:\&amp;quot;\\n\&amp;quot;}]</richTextContent>
                 </dashboardComponentContents>
                 <groupingSortProperties/>
             </dashboardComponent>
@@ -91,7 +96,7 @@
             <rowSpan>4</rowSpan>
         </dashboardGridComponents>
         <dashboardGridComponents>
-            <colSpan>1</colSpan>
+            <colSpan>2</colSpan>
             <columnIndex>2</columnIndex>
             <dashboardComponent>
                 <autoselectColumnsFromReport>false</autoselectColumnsFromReport>
@@ -125,46 +130,13 @@
             <rowSpan>4</rowSpan>
         </dashboardGridComponents>
         <dashboardGridComponents>
-            <colSpan>1</colSpan>
-            <columnIndex>3</columnIndex>
-            <dashboardComponent>
-                <autoselectColumnsFromReport>false</autoselectColumnsFromReport>
-                <chartSummary>
-                    <column>FORMULA1</column>
-                </chartSummary>
-                <componentType>Metric</componentType>
-                <dashboardFilterColumns>
-                    <column>AcademicInterest$IndividualApplication.AppliedDate</column>
-                </dashboardFilterColumns>
-                <dashboardFilterColumns>
-                    <column>AcademicInterest$LearningProgram</column>
-                </dashboardFilterColumns>
-                <dashboardFilterColumns>
-                    <column>AcademicInterest$IndividualApplication.Grade_Applying_To__c</column>
-                </dashboardFilterColumns>
-                <decimalPrecision>-1</decimalPrecision>
-                <displayUnits>Auto</displayUnits>
-                <groupingSortProperties/>
-                <header>% to Goal</header>
-                <indicatorBreakpoint1>1.0</indicatorBreakpoint1>
-                <indicatorBreakpoint2>100.0</indicatorBreakpoint2>
-                <indicatorHighColor>#00716B</indicatorHighColor>
-                <indicatorLowColor>#4F497A</indicatorLowColor>
-                <indicatorMiddleColor>#4F497A</indicatorMiddleColor>
-                <report>FamilyOutreachEnrollment/FOEMonthlyDashboard/Monthly_App_Dash_Total_Apps_DBO</report>
-                <showRange>false</showRange>
-            </dashboardComponent>
-            <rowIndex>2</rowIndex>
-            <rowSpan>4</rowSpan>
-        </dashboardGridComponents>
-        <dashboardGridComponents>
             <colSpan>2</colSpan>
             <columnIndex>4</columnIndex>
             <dashboardComponent>
                 <autoselectColumnsFromReport>true</autoselectColumnsFromReport>
                 <componentType>RichText</componentType>
                 <dashboardComponentContents>
-                    <richTextContent>[{\&amp;quot;attributes\&amp;quot;:{\&amp;quot;size\&amp;quot;:\&amp;quot;18px\&amp;quot;},\&amp;quot;insert\&amp;quot;:\&amp;quot;Goal\&amp;quot;},{\&amp;quot;attributes\&amp;quot;:{\&amp;quot;align\&amp;quot;:\&amp;quot;left\&amp;quot;},\&amp;quot;insert\&amp;quot;:\&amp;quot;\\n\&amp;quot;},{\&amp;quot;attributes\&amp;quot;:{\&amp;quot;size\&amp;quot;:\&amp;quot;64px\&amp;quot;,\&amp;quot;color\&amp;quot;:\&amp;quot;#9361a8\&amp;quot;,\&amp;quot;bold\&amp;quot;:true},\&amp;quot;insert\&amp;quot;:\&amp;quot;1,381\&amp;quot;},{\&amp;quot;attributes\&amp;quot;:{\&amp;quot;align\&amp;quot;:\&amp;quot;left\&amp;quot;},\&amp;quot;insert\&amp;quot;:\&amp;quot;\\n\&amp;quot;}]</richTextContent>
+                    <richTextContent>[{\&amp;quot;attributes\&amp;quot;:{\&amp;quot;size\&amp;quot;:\&amp;quot;18px\&amp;quot;},\&amp;quot;insert\&amp;quot;:\&amp;quot;Goal\&amp;quot;},{\&amp;quot;attributes\&amp;quot;:{\&amp;quot;align\&amp;quot;:\&amp;quot;left\&amp;quot;},\&amp;quot;insert\&amp;quot;:\&amp;quot;\\n\&amp;quot;},{\&amp;quot;attributes\&amp;quot;:{\&amp;quot;size\&amp;quot;:\&amp;quot;64px\&amp;quot;,\&amp;quot;color\&amp;quot;:\&amp;quot;#9361a8\&amp;quot;,\&amp;quot;bold\&amp;quot;:true},\&amp;quot;insert\&amp;quot;:\&amp;quot;2,703\&amp;quot;},{\&amp;quot;attributes\&amp;quot;:{\&amp;quot;align\&amp;quot;:\&amp;quot;left\&amp;quot;},\&amp;quot;insert\&amp;quot;:\&amp;quot;\\n\&amp;quot;}]</richTextContent>
                 </dashboardComponentContents>
                 <groupingSortProperties/>
             </dashboardComponent>
@@ -172,7 +144,7 @@
             <rowSpan>4</rowSpan>
         </dashboardGridComponents>
         <dashboardGridComponents>
-            <colSpan>1</colSpan>
+            <colSpan>2</colSpan>
             <columnIndex>6</columnIndex>
             <dashboardComponent>
                 <autoselectColumnsFromReport>false</autoselectColumnsFromReport>
@@ -206,46 +178,13 @@
             <rowSpan>4</rowSpan>
         </dashboardGridComponents>
         <dashboardGridComponents>
-            <colSpan>1</colSpan>
-            <columnIndex>7</columnIndex>
-            <dashboardComponent>
-                <autoselectColumnsFromReport>false</autoselectColumnsFromReport>
-                <chartSummary>
-                    <column>FORMULA2</column>
-                </chartSummary>
-                <componentType>Metric</componentType>
-                <dashboardFilterColumns>
-                    <column>AcademicInterest$IndividualApplication.AppliedDate</column>
-                </dashboardFilterColumns>
-                <dashboardFilterColumns>
-                    <column>AcademicInterest$LearningProgram</column>
-                </dashboardFilterColumns>
-                <dashboardFilterColumns>
-                    <column>AcademicInterest$IndividualApplication.Grade_Applying_To__c</column>
-                </dashboardFilterColumns>
-                <decimalPrecision>-1</decimalPrecision>
-                <displayUnits>Auto</displayUnits>
-                <groupingSortProperties/>
-                <header>Monthly App Dash | Inorganic Apps</header>
-                <indicatorBreakpoint1>1.0</indicatorBreakpoint1>
-                <indicatorBreakpoint2>100.0</indicatorBreakpoint2>
-                <indicatorHighColor>#00716B</indicatorHighColor>
-                <indicatorLowColor>#9361A8</indicatorLowColor>
-                <indicatorMiddleColor>#9361A8</indicatorMiddleColor>
-                <report>FamilyOutreachEnrollment/FOEMonthlyDashboard/Monthly_App_Dash_Inorganic_Apps_DUt</report>
-                <showRange>false</showRange>
-            </dashboardComponent>
-            <rowIndex>2</rowIndex>
-            <rowSpan>4</rowSpan>
-        </dashboardGridComponents>
-        <dashboardGridComponents>
             <colSpan>2</colSpan>
             <columnIndex>8</columnIndex>
             <dashboardComponent>
                 <autoselectColumnsFromReport>true</autoselectColumnsFromReport>
                 <componentType>RichText</componentType>
                 <dashboardComponentContents>
-                    <richTextContent>[{\&amp;quot;attributes\&amp;quot;:{\&amp;quot;size\&amp;quot;:\&amp;quot;18px\&amp;quot;},\&amp;quot;insert\&amp;quot;:\&amp;quot;Goal\&amp;quot;},{\&amp;quot;attributes\&amp;quot;:{\&amp;quot;align\&amp;quot;:\&amp;quot;left\&amp;quot;},\&amp;quot;insert\&amp;quot;:\&amp;quot;\\n\&amp;quot;},{\&amp;quot;attributes\&amp;quot;:{\&amp;quot;size\&amp;quot;:\&amp;quot;64px\&amp;quot;,\&amp;quot;color\&amp;quot;:\&amp;quot;#00a4c7\&amp;quot;,\&amp;quot;bold\&amp;quot;:true},\&amp;quot;insert\&amp;quot;:\&amp;quot;1,381\&amp;quot;},{\&amp;quot;attributes\&amp;quot;:{\&amp;quot;align\&amp;quot;:\&amp;quot;left\&amp;quot;},\&amp;quot;insert\&amp;quot;:\&amp;quot;\\n\&amp;quot;}]</richTextContent>
+                    <richTextContent>[{\&amp;quot;attributes\&amp;quot;:{\&amp;quot;size\&amp;quot;:\&amp;quot;18px\&amp;quot;},\&amp;quot;insert\&amp;quot;:\&amp;quot;Goal\&amp;quot;},{\&amp;quot;attributes\&amp;quot;:{\&amp;quot;align\&amp;quot;:\&amp;quot;left\&amp;quot;},\&amp;quot;insert\&amp;quot;:\&amp;quot;\\n\&amp;quot;},{\&amp;quot;attributes\&amp;quot;:{\&amp;quot;size\&amp;quot;:\&amp;quot;64px\&amp;quot;,\&amp;quot;color\&amp;quot;:\&amp;quot;#00a4c7\&amp;quot;,\&amp;quot;bold\&amp;quot;:true},\&amp;quot;insert\&amp;quot;:\&amp;quot;2,703\&amp;quot;},{\&amp;quot;attributes\&amp;quot;:{\&amp;quot;align\&amp;quot;:\&amp;quot;left\&amp;quot;},\&amp;quot;insert\&amp;quot;:\&amp;quot;\\n\&amp;quot;}]</richTextContent>
                 </dashboardComponentContents>
                 <groupingSortProperties/>
             </dashboardComponent>
@@ -253,7 +192,7 @@
             <rowSpan>4</rowSpan>
         </dashboardGridComponents>
         <dashboardGridComponents>
-            <colSpan>1</colSpan>
+            <colSpan>2</colSpan>
             <columnIndex>10</columnIndex>
             <dashboardComponent>
                 <autoselectColumnsFromReport>false</autoselectColumnsFromReport>
@@ -279,39 +218,6 @@
                 <indicatorHighColor>#00716B</indicatorHighColor>
                 <indicatorLowColor>#00A4C7</indicatorLowColor>
                 <indicatorMiddleColor>#CA8501</indicatorMiddleColor>
-                <report>FamilyOutreachEnrollment/FOEMonthlyDashboard/Monthly_App_Dash_Organic_App_Oe3</report>
-                <showRange>false</showRange>
-            </dashboardComponent>
-            <rowIndex>2</rowIndex>
-            <rowSpan>4</rowSpan>
-        </dashboardGridComponents>
-        <dashboardGridComponents>
-            <colSpan>1</colSpan>
-            <columnIndex>11</columnIndex>
-            <dashboardComponent>
-                <autoselectColumnsFromReport>false</autoselectColumnsFromReport>
-                <chartSummary>
-                    <column>FORMULA2</column>
-                </chartSummary>
-                <componentType>Metric</componentType>
-                <dashboardFilterColumns>
-                    <column>AcademicInterest$IndividualApplication.AppliedDate</column>
-                </dashboardFilterColumns>
-                <dashboardFilterColumns>
-                    <column>AcademicInterest$LearningProgram</column>
-                </dashboardFilterColumns>
-                <dashboardFilterColumns>
-                    <column>AcademicInterest$IndividualApplication.Grade_Applying_To__c</column>
-                </dashboardFilterColumns>
-                <decimalPrecision>-1</decimalPrecision>
-                <displayUnits>Auto</displayUnits>
-                <groupingSortProperties/>
-                <header>% to Goal</header>
-                <indicatorBreakpoint1>1.0</indicatorBreakpoint1>
-                <indicatorBreakpoint2>100.0</indicatorBreakpoint2>
-                <indicatorHighColor>#00716B</indicatorHighColor>
-                <indicatorLowColor>#00A4C7</indicatorLowColor>
-                <indicatorMiddleColor>#00A4C7</indicatorMiddleColor>
                 <report>FamilyOutreachEnrollment/FOEMonthlyDashboard/Monthly_App_Dash_Organic_App_Oe3</report>
                 <showRange>false</showRange>
             </dashboardComponent>

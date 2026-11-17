@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Marcias_Open_Leads</fullName>
+    <booleanFilter>1 AND NOT(2 AND 3 AND 4 AND 5) AND 6 AND 7</booleanFilter>
+    <columns>Lead_Source__c</columns>
+    <columns>FULL_NAME</columns>
+    <columns>Guardian_First_Name__c</columns>
+    <columns>Guardian_Last_Name__c</columns>
+    <columns>Preferred_Contact_Language__c</columns>
+    <columns>LEAD.PHONE</columns>
+    <columns>LEAD.EMAIL</columns>
+    <columns>LEAD.STATUS</columns>
+    <columns>LEAD.CREATED_DATE</columns>
+    <columns>Next_Follow_Up_Due__c</columns>
+    <columns>Outreach_Attempt_Count__c</columns>
+    <columns>Outreach_1_Outcome__c</columns>
+    <columns>Outreach_2_Outcome__c</columns>
+    <columns>Outreach_3_Outcome__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>Is_Open_Status__c</field>
+        <operation>equals</operation>
+        <value>1</value>
+    </filters>
+    <filters>
+        <field>Outreach_1_Outcome__c</field>
+        <operation>equals</operation>
+        <value>Unreachable – No answer</value>
+    </filters>
+    <filters>
+        <field>Outreach_2_Outcome__c</field>
+        <operation>equals</operation>
+        <value>Unreachable – No answer</value>
+    </filters>
+    <filters>
+        <field>Outreach_3_Outcome__c</field>
+        <operation>equals</operation>
+        <value>Unreachable – No answer</value>
+    </filters>
+    <filters>
+        <field>LEAD.EMAIL</field>
+        <operation>notEqual</operation>
+    </filters>
+    <filters>
+        <field>CORE.USERS.FIRST_NAME</field>
+        <operation>equals</operation>
+        <value>Marcia</value>
+    </filters>
+    <filters>
+        <field>Email_Only_Lead__c</field>
+        <operation>equals</operation>
+        <value>0</value>
+    </filters>
+    <label>Marcia&apos;s Open Leads</label>
+</ListView>

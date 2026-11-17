@@ -99,6 +99,21 @@
             <sequence>0</sequence>
         </externalDataTranFields>
         <externalDataTranFields>
+            <fullName>BounceSubCategory</fullName>
+            <creationType>Custom</creationType>
+            <datatype>S</datatype>
+            <externalName>BounceSubCategory</externalName>
+            <isCurrencyIsoCode>false</isCurrencyIsoCode>
+            <isDataRequired>false</isDataRequired>
+            <length>0</length>
+            <masterLabel>BounceSubCategory</masterLabel>
+            <mktDataTranField>MessagingEventsEmailV2_00Da5000_4A6331F0.BounceSubCategory__c</mktDataTranField>
+            <precision>0</precision>
+            <primaryIndexOrder>0</primaryIndexOrder>
+            <scale>0</scale>
+            <sequence>0</sequence>
+        </externalDataTranFields>
+        <externalDataTranFields>
             <fullName>BounceType</fullName>
             <creationType>Custom</creationType>
             <datatype>S</datatype>
@@ -993,6 +1008,21 @@
             <length>0</length>
             <masterLabel>SendTimeAttributes</masterLabel>
             <mktDataTranField>MessagingEventsEmailV2_00Da5000_4A6331F0.SendTimeAttributes__c</mktDataTranField>
+            <precision>0</precision>
+            <primaryIndexOrder>0</primaryIndexOrder>
+            <scale>0</scale>
+            <sequence>0</sequence>
+        </externalDataTranFields>
+        <externalDataTranFields>
+            <fullName>SmtpEnhancedCode</fullName>
+            <creationType>Custom</creationType>
+            <datatype>S</datatype>
+            <externalName>SmtpEnhancedCode</externalName>
+            <isCurrencyIsoCode>false</isCurrencyIsoCode>
+            <isDataRequired>false</isDataRequired>
+            <length>0</length>
+            <masterLabel>SmtpEnhancedCode</masterLabel>
+            <mktDataTranField>MessagingEventsEmailV2_00Da5000_4A6331F0.SmtpEnhancedCode__c</mktDataTranField>
             <precision>0</precision>
             <primaryIndexOrder>0</primaryIndexOrder>
             <scale>0</scale>

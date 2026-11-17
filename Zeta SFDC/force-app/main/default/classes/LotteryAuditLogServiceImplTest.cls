@@ -997,7 +997,8 @@ private class LotteryAuditLogServiceImplTest {
       .thenReturn(new List<ApplicationTimeline>{ timeline })
       .thenReturn(new List<Lottery_Capacity__c>{ capacity })
       .thenReturn(new List<Waitlist_Movement_History__c>{ history })
-      .thenReturn(new List<Lottery_Run_Result__c>{ runResult });
+      .thenReturn(new List<Lottery_Run_Result__c>{ runResult })
+      .thenReturn(new List<AcademicInterest>());
     DATABASE_REPO_MOCK.when(DATABASE_REPO_MOCK.method.updateSObjects()).thenReturnVoid();
     DATABASE_REPO_MOCK.when(DATABASE_REPO_MOCK.method.deleteSObjects())
       .thenReturnVoid() // delete histories
@@ -1036,7 +1037,8 @@ private class LotteryAuditLogServiceImplTest {
       .thenReturn(new List<ApplicationTimeline>{ timeline })
       .thenReturn(new List<Lottery_Capacity__c>())
       .thenReturn(new List<Waitlist_Movement_History__c>())
-      .thenReturn(new List<Lottery_Run_Result__c>());
+      .thenReturn(new List<Lottery_Run_Result__c>())
+      .thenReturn(new List<AcademicInterest>());
     DATABASE_REPO_MOCK.when(DATABASE_REPO_MOCK.method.deleteSObjects()).thenReturnVoid();
 
     RollbackPrepareResult result = SERVICE.prepareRollback(runLogId);
@@ -1046,7 +1048,46 @@ private class LotteryAuditLogServiceImplTest {
     Assert.areEqual(0, result.waitlistHistoryDeleted, 'Should delete 0 histories');
     Assert.areEqual(0, result.runResultsDeleted, 'Should delete 0 results');
     Assert.areEqual(0, result.totalRecordsToReset, 'Should have 0 records to reset');
+    Assert.areEqual(0, result.staffPriorityRestored, 'Should restore 0 staff priority flags');
     Assert.isTrue(result.capacityIds.isEmpty(), 'Should have no capacity IDs');
+  }
+
+  @IsTest
+  private static void prepareRollback_restoresStaffPriorityFlagsBeforeDeletingRunLog() {
+    Id runLogId = SObjectIds.generateFakeId(Schema.Lottery_Run_Log__c.SObjectType);
+    Id timelineId = SObjectIds.generateFakeId(Schema.ApplicationTimeline.SObjectType);
+    Id interestId = SObjectIds.generateFakeId(Schema.AcademicInterest.SObjectType);
+
+    Lottery_Run_Log__c runLog = new Lottery_Run_Log__c(
+      Id = runLogId,
+      Status__c = LotteryConstants.LOTTERY_RUN_STATUS_DRAFT,
+      Application_Timeline__c = timelineId
+    );
+    ApplicationTimeline timeline = new ApplicationTimeline(Id = timelineId, Test__c = true);
+    AcademicInterest flaggedInterest = new AcademicInterest(
+      Id = interestId,
+      Staff_Priority_Removed__c = true,
+      Staff_Priority_Removed_Run__c = runLogId,
+      Staff_Priority_Removal_Order__c = 1
+    );
+
+    DATABASE_REPO_MOCK.when(DATABASE_REPO_MOCK.method.queryWithBinds())
+      .thenReturn(new List<Lottery_Run_Log__c>{ runLog })
+      .thenReturn(new List<ApplicationTimeline>{ timeline })
+      .thenReturn(new List<Lottery_Capacity__c>())
+      .thenReturn(new List<Waitlist_Movement_History__c>())
+      .thenReturn(new List<Lottery_Run_Result__c>())
+      .thenReturn(new List<AcademicInterest>{ flaggedInterest });
+    DATABASE_REPO_MOCK.when(DATABASE_REPO_MOCK.method.updateSObjects()).thenReturnVoid();
+    DATABASE_REPO_MOCK.when(DATABASE_REPO_MOCK.method.deleteSObjects()).thenReturnVoid();
+
+    RollbackPrepareResult result = SERVICE.prepareRollback(runLogId);
+
+    Assert.isTrue(result.isSuccess, 'Should be successful');
+    Assert.areEqual(1, result.staffPriorityRestored, 'Should restore 1 flagged AcademicInterest');
+    Assert.isFalse(flaggedInterest.Staff_Priority_Removed__c, 'Flag should be cleared');
+    Assert.isNull(flaggedInterest.Staff_Priority_Removed_Run__c, 'Run lookup should be cleared');
+    Assert.isNull(flaggedInterest.Staff_Priority_Removal_Order__c, 'Order should be cleared');
   }
 
   @IsTest
@@ -1219,11 +1260,7 @@ private class LotteryAuditLogServiceImplTest {
 
   @IsTest
   private static void rollbackAcademicInterestsBatch_withEmptyCapacityIds_returnsEmpty() {
-    RollbackBatchResult result = SERVICE.rollbackAcademicInterestsBatch(
-      new Set<Id>(),
-      null,
-      100
-    );
+    RollbackBatchResult result = SERVICE.rollbackAcademicInterestsBatch(new Set<Id>(), null, 100);
 
     Assert.isTrue(result.isSuccess, 'Should be successful');
     Assert.areEqual(0, result.resetCount, 'Should reset 0 records');

@@ -10,6 +10,12 @@
     <columns>Converting_Team_Member__c</columns>
     <columns>Application_Timeline__c</columns>
     <columns>CreatedDate</columns>
+    <columns>Lead_Source__c</columns>
     <filterScope>Everything</filterScope>
+    <filters>
+        <field>Application_Timeline__c</field>
+        <operation>equals</operation>
+        <value>2026 - 2027</value>
+    </filters>
     <label>All Individual Applications</label>
 </ListView>

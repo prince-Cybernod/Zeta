@@ -192,11 +192,6 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
-        <field>AcademicTermEnrollment.DEPRECATED_Race_Answers__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
         <field>AcademicTermEnrollment.Date_moved_to_ATS_Phase__c</field>
         <readable>true</readable>
     </fieldPermissions>
@@ -556,6 +551,11 @@
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
+        <editable>true</editable>
+        <field>AcademicTermEnrollment.Race_Answers__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
         <editable>false</editable>
         <field>AcademicTermEnrollment.Registration_Deadline__c</field>
         <readable>true</readable>
@@ -583,6 +583,11 @@
     <fieldPermissions>
         <editable>true</editable>
         <field>AcademicTermEnrollment.Student_Info_Contact_Form__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>AcademicTermEnrollment.Student_Type__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>

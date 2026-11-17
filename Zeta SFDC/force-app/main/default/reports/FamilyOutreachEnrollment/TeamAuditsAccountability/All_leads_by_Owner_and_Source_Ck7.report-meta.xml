@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Report xmlns="http://soap.sforce.com/2006/04/metadata">
     <aggregates>
-        <calculatedFormula>CONVERTED:SUM / RowCount</calculatedFormula>
+        <calculatedFormula>Lead.Status_is_Converted__c:SUM / RowCount</calculatedFormula>
         <datatype>percent</datatype>
         <description>Converted Leads / All Non-Disqualified Leads</description>
         <developerName>FORMULA1</developerName>
@@ -11,25 +11,52 @@
         <scale>0</scale>
     </aggregates>
     <columns>
+        <field>LEAD_ID</field>
+    </columns>
+    <columns>
         <field>FIRST_NAME</field>
     </columns>
     <columns>
         <field>LAST_NAME</field>
     </columns>
     <columns>
-        <field>TITLE</field>
+        <field>STATUS</field>
     </columns>
     <columns>
-        <field>LEAD_SOURCE</field>
+        <field>Lead.Outreach_1_Outcome__c</field>
+    </columns>
+    <columns>
+        <field>Lead.Outreach_2_Outcome__c</field>
+    </columns>
+    <columns>
+        <field>Lead.Outreach_3_Outcome__c</field>
+    </columns>
+    <columns>
+        <field>Lead.Next_Follow_Up_Due__c</field>
     </columns>
     <description>All leads (open and closed) by owner and source</description>
     <filter>
+        <booleanFilter>2 AND (1 OR 3)</booleanFilter>
         <criteriaItems>
             <column>STATUS</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
             <value>,Closed – Converted,&quot;Closed – Not Converted, Next Year&quot;,&quot;Closed – Not Converted, Archived&quot;,&quot;Closed – Duplicate, Archived&quot;</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Lead.Lead_Source__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>notEqual</operator>
+            <value>Outreach – Community Event (We Host),Outreach – Community Event (We Attend),Outreach – Pizza Party,Outreach – CBO Tabling,Outreach – School/ After-School Dismissal,Outreach – Hotspot,Outreach – Sign Up Sheet,Account Created – No Application,Call Campaign – Former Waitlisted,Call Campaign – Former Rescinded,Call Campaign – Former Withdrawn/Declined</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Lead.Email_Only_Lead__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>1</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>
@@ -44,7 +71,7 @@
         <field>Lead.Lead_Source__c</field>
         <sortOrder>Asc</sortOrder>
     </groupingsDown>
-    <name>Closed Leads by Owner and Source</name>
+    <name>Closed Marketing Leads by Owner &amp; Source</name>
     <params>
         <name>co</name>
         <value>1</value>

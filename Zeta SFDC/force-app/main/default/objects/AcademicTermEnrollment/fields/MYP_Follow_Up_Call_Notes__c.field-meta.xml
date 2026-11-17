@@ -4,7 +4,8 @@
     <description>Notes from follow-up calls related to MYP participation.</description>
     <inlineHelpText>Notes from follow-up calls related to MYP participation.</inlineHelpText>
     <label>MYP Follow-Up Call Notes</label>
-    <required>false</required>
+    <length>10000</length>
     <trackHistory>false</trackHistory>
-    <type>TextArea</type>
+    <type>LongTextArea</type>
+    <visibleLines>5</visibleLines>
 </CustomField>

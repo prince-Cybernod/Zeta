@@ -12,6 +12,8 @@
  * - Publish lottery results
  */
 public with sharing class RunLotteryController {
+  private static final String CHARTER_RECORD_TYPE_DEVELOPER_NAME = 'Charter';
+
   @TestVisible
   private static LotteryOrchestrationService orchestrationService = new LotteryOrchestrationServiceImpl();
   @TestVisible
@@ -20,6 +22,10 @@ public with sharing class RunLotteryController {
   private static DatabaseRepo databaseRepo = new SystemModeDatabaseRepo();
   @TestVisible
   private static LotteryLockService lockService = new LotteryLockServiceImpl();
+  @TestVisible
+  private static CharterRollupService charterRollupService = new CharterRollupServiceImpl();
+  @TestVisible
+  private static StaffPriorityCapService staffPriorityCapService = new StaffPriorityCapServiceImpl();
 
   /**
    * Gets pre-run statistics for selected capacities, including application counts.
@@ -359,8 +365,124 @@ public with sharing class RunLotteryController {
   }
 
   /**
+   * Gets pre-run staff priority cap stats, including which Charters are over the cap
+   * and which are Blocked. Used alongside getCapacityStats in the confirmation modal.
+   *
+   * @param capacityIds List of Lottery_Capacity__c IDs to get stats for
+   * @param startDate Optional start date filter for Application_Submitted_Date__c
+   * @param endDate Optional end date filter for Application_Submitted_Date__c
+   */
+  @AuraEnabled
+  public static List<StaffPriorityCapCharterStats> getStaffPriorityStats(
+    List<Id> capacityIds,
+    Date startDate,
+    Date endDate
+  ) {
+    return staffPriorityCapService.getCharterStats(capacityIds, startDate, endDate);
+  }
+
+  /**
+   * Randomly removes staff priority from one over-cap Charter's pool applicants and
+   * records the outcome on the run log's Staff_Priority_Summary__c.
+   *
+   * @param charterId The Charter (Account) to remove staff priority for
+   * @param capacityIds List of Lottery_Capacity__c IDs selected for the run
+   * @param runLogId The Lottery_Run_Log__c ID for this run
+   * @param jobId The job ID that holds the lock
+   * @param startDate Optional start date filter for Application_Submitted_Date__c
+   * @param endDate Optional end date filter for Application_Submitted_Date__c
+   */
+  @AuraEnabled
+  public static StaffPriorityCapRemovalResult removeStaffPriority(
+    Id charterId,
+    List<Id> capacityIds,
+    Id runLogId,
+    String jobId,
+    Date startDate,
+    Date endDate
+  ) {
+    Preconditions.checkNotNull(jobId, 'Job ID is required');
+    Set<Id> capacityIdSet = new Set<Id>(capacityIds);
+
+    lockService.verifyLock(capacityIdSet, jobId);
+
+    StaffPriorityCapCharterStats preRemovalStats = findCharterStats(
+      staffPriorityCapService.getCharterStats(capacityIds, startDate, endDate),
+      charterId
+    );
+
+    StaffPriorityCapRemovalResult result = staffPriorityCapService.removeForCharter(
+      charterId,
+      capacityIds,
+      runLogId,
+      startDate,
+      endDate
+    );
+    appendStaffPrioritySummary(runLogId, preRemovalStats, result);
+    return result;
+  }
+
+  private static String findStaffPriorityBlockedMessage(
+    List<StaffPriorityCapCharterStats> staffPriorityStats
+  ) {
+    for (StaffPriorityCapCharterStats stats : staffPriorityStats) {
+      if (stats.status == StaffPriorityCapCharterStats.STATUS_BLOCKED) {
+        return stats.message;
+      }
+    }
+    return null;
+  }
+
+  private static StaffPriorityCapCharterStats findCharterStats(
+    List<StaffPriorityCapCharterStats> staffPriorityStats,
+    Id charterId
+  ) {
+    for (StaffPriorityCapCharterStats stats : staffPriorityStats) {
+      if (stats.charterId == charterId) {
+        return stats;
+      }
+    }
+    return null;
+  }
+
+  private static void appendStaffPrioritySummary(
+    Id runLogId,
+    StaffPriorityCapCharterStats preRemovalStats,
+    StaffPriorityCapRemovalResult result
+  ) {
+    List<Lottery_Run_Log__c> runLogs = (List<Lottery_Run_Log__c>) databaseRepo.queryWithBinds(
+      'SELECT Id, Staff_Priority_Summary__c FROM Lottery_Run_Log__c WHERE Id = :runLogId LIMIT 1',
+      new Map<String, Object>{ 'runLogId' => runLogId }
+    );
+    if (runLogs.isEmpty()) {
+      return;
+    }
+
+    Lottery_Run_Log__c runLog = runLogs[0];
+    String existingSummary = String.isBlank(runLog.Staff_Priority_Summary__c)
+      ? ''
+      : runLog.Staff_Priority_Summary__c + '\n';
+    String charterName = preRemovalStats != null ? preRemovalStats.charterName : 'Unknown Charter';
+    String line =
+      charterName +
+      ': staff ' +
+      (preRemovalStats != null ? String.valueOf(preRemovalStats.staffApplicantCount) : '?') +
+      ', seats ' +
+      (preRemovalStats != null ? String.valueOf(preRemovalStats.seats) : '?') +
+      ', max allowed ' +
+      (preRemovalStats != null ? String.valueOf(preRemovalStats.maxAllowed) : '?') +
+      ', removed ' +
+      result.removedCount +
+      ', residual ' +
+      result.residual;
+    runLog.Staff_Priority_Summary__c = existingSummary + line;
+    databaseRepo.updateSObjects(new List<Lottery_Run_Log__c>{ runLog });
+  }
+
+  /**
    * Step 1 of sequential lottery execution.
    * Acquires lock on capacities and creates the run log.
+   * Also recalculates the Charter rollup before the lock is taken.
    *
    * @param capacityIds List of Lottery_Capacity__c IDs to process
    * @param applicationTimelineId The ApplicationTimeline context
@@ -379,6 +501,17 @@ public with sharing class RunLotteryController {
 
     InitializeLotteryResult result = new InitializeLotteryResult();
     try {
+      recalculateCharterRollup();
+
+      String staffPriorityBlockedMessage = findStaffPriorityBlockedMessage(
+        staffPriorityCapService.getCharterStats(capacityIds, null, null)
+      );
+      if (staffPriorityBlockedMessage != null) {
+        result.isSuccess = false;
+        result.errorMessage = staffPriorityBlockedMessage;
+        return result;
+      }
+
       Set<Id> capacityIdSet = new Set<Id>(capacityIds);
       result.jobId = lockService.acquireLock(capacityIdSet);
       result.runLogId = auditLogService.createLotteryRunLog(applicationTimelineId);
@@ -401,6 +534,16 @@ public with sharing class RunLotteryController {
       result.isSuccess = false;
       result.errorMessage = 'Initialization failed: ' + e.getMessage();
       return result;
+    }
+  }
+
+  private static void recalculateCharterRollup() {
+    List<SObject> charters = databaseRepo.queryWithBinds(
+      'SELECT Id FROM Account WHERE RecordType.DeveloperName = :charterRecordType',
+      new Map<String, Object>{ 'charterRecordType' => CHARTER_RECORD_TYPE_DEVELOPER_NAME }
+    );
+    if (!charters.isEmpty()) {
+      charterRollupService.recalculate(new Map<Id, SObject>(charters).keySet());
     }
   }
 

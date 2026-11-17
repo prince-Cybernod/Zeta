@@ -17,6 +17,8 @@ public class RollbackPrepareResult {
   public String errorMessage { get; set; }
   @AuraEnabled
   public Integer totalRecordsToReset { get; set; }
+  @AuraEnabled
+  public Integer staffPriorityRestored { get; set; }
 
   public RollbackPrepareResult() {
     this.capacityIds = new List<Id>();
@@ -26,5 +28,6 @@ public class RollbackPrepareResult {
     this.isSuccess = true;
     this.errorMessage = null;
     this.totalRecordsToReset = 0;
+    this.staffPriorityRestored = 0;
   }
 }

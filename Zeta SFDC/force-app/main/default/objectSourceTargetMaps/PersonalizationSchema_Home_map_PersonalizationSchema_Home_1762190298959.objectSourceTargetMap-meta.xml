@@ -129,6 +129,22 @@
         <sourceFormula>SystemModstamp</sourceFormula>
         <targetField>PersonalizationSchema_Home__dll.SystemModstamp__c</targetField>
     </fieldSourceTargetMaps>
+    <fieldSourceTargetMaps>
+        <creationType>Custom</creationType>
+        <filterApplied>false</filterApplied>
+        <isSourceFormula>false</isSourceFormula>
+        <sourceField>PersonalizationSchema_Home.LastViewedDate__c</sourceField>
+        <sourceFormula>LastViewedDate</sourceFormula>
+        <targetField>PersonalizationSchema_Home__dll.LastViewedDate__c</targetField>
+    </fieldSourceTargetMaps>
+    <fieldSourceTargetMaps>
+        <creationType>Custom</creationType>
+        <filterApplied>false</filterApplied>
+        <isSourceFormula>false</isSourceFormula>
+        <sourceField>PersonalizationSchema_Home.LastReferencedDate__c</sourceField>
+        <sourceFormula>LastReferencedDate</sourceFormula>
+        <targetField>PersonalizationSchema_Home__dll.LastReferencedDate__c</targetField>
+    </fieldSourceTargetMaps>
     <masterLabel>PersonalizationSchema_Home_map_PersonalizationSchema_Home_1762190298959</masterLabel>
     <sourceObjectName>PersonalizationSchema_Home</sourceObjectName>
     <targetObjectName>PersonalizationSchema_Home__dll</targetObjectName>

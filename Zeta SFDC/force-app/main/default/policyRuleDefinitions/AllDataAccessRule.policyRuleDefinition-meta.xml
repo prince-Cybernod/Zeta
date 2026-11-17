@@ -5,6 +5,7 @@
     <effect>Permit</effect>
     <label>All Data Access Rule</label>
     <policyRuleDefinitionSetName>AllDataAccessRuleset</policyRuleDefinitionSetName>
+    <principalAuthenticationLevel>INTERNAL</principalAuthenticationLevel>
     <principalScopeType>ANY</principalScopeType>
     <resourceScopeType>ANY</resourceScopeType>
     <ruleConsumer>DATACLOUD</ruleConsumer>

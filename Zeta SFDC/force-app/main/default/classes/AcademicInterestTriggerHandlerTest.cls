@@ -10,6 +10,7 @@ private class AcademicInterestTriggerHandlerTest {
   private static final SchoolRankValidationServiceMock RANK_VALIDATION_SERVICE_MOCK;
   private static final WaitlistHistoryServiceMock WAITLIST_HISTORY_SERVICE_MOCK;
   private static final EventBusRepoMock EVENT_BUS_REPO_MOCK;
+  private static final EmployeePriorityRollupServiceMock EMPLOYEE_PRIORITY_ROLLUP_SERVICE_MOCK;
   private static final AcademicInterestTriggerHandler HANDLER;
 
   static {
@@ -20,6 +21,7 @@ private class AcademicInterestTriggerHandlerTest {
     RANK_VALIDATION_SERVICE_MOCK = new SchoolRankValidationServiceMock();
     WAITLIST_HISTORY_SERVICE_MOCK = new WaitlistHistoryServiceMock();
     EVENT_BUS_REPO_MOCK = new EventBusRepoMock();
+    EMPLOYEE_PRIORITY_ROLLUP_SERVICE_MOCK = new EmployeePriorityRollupServiceMock();
     HANDLER = new AcademicInterestTriggerHandler(
       ROLLUP_SERVICE_MOCK,
       PRIORITY_SERVICE_MOCK,
@@ -27,7 +29,8 @@ private class AcademicInterestTriggerHandlerTest {
       PRE_OFFER_COUNT_SERVICE_MOCK,
       RANK_VALIDATION_SERVICE_MOCK,
       WAITLIST_HISTORY_SERVICE_MOCK,
-      EVENT_BUS_REPO_MOCK
+      EVENT_BUS_REPO_MOCK,
+      EMPLOYEE_PRIORITY_ROLLUP_SERVICE_MOCK
     );
   }
 
@@ -281,6 +284,31 @@ private class AcademicInterestTriggerHandlerTest {
         Id = academicInterestId,
         IndividualApplicationId = oldApplicationId,
         In_District_Priority__c = false
+      )
+    };
+
+    HANDLER.onBeforeUpdate(newRecords, oldMap);
+
+    PRIORITY_SERVICE_MOCK.verify(PRIORITY_SERVICE_MOCK.method.calculateForRecords(), 1);
+  }
+
+  @IsTest
+  private static void onBeforeUpdate_callsServiceWhenStaffPriorityRemovedChanges() {
+    PRIORITY_SERVICE_MOCK.when(PRIORITY_SERVICE_MOCK.method.calculateForRecords()).thenReturnVoid();
+    Id academicInterestId = SObjectIds.generateFakeId(Schema.AcademicInterest.SObjectType);
+    Id applicationId = SObjectIds.generateFakeId(Schema.IndividualApplication.SObjectType);
+    List<SObject> newRecords = new List<SObject>{
+      new AcademicInterest(
+        Id = academicInterestId,
+        IndividualApplicationId = applicationId,
+        Staff_Priority_Removed__c = true
+      )
+    };
+    Map<Id, SObject> oldMap = new Map<Id, SObject>{
+      academicInterestId => new AcademicInterest(
+        Id = academicInterestId,
+        IndividualApplicationId = applicationId,
+        Staff_Priority_Removed__c = false
       )
     };
 
@@ -1450,5 +1478,67 @@ private class AcademicInterestTriggerHandlerTest {
     );
     Set<Id> capturedIds = (Set<Id>) calls[0].get('lotteryCapacityIds');
     Assert.isTrue(capturedIds.contains(capacityId), 'Should include the capacity ID');
+  }
+
+  @IsTest
+  private static void onAfterUpdate_callsEmployeePriorityRollupServiceWhenStaffPriorityRemovedChanges() {
+    EMPLOYEE_PRIORITY_ROLLUP_SERVICE_MOCK.when(
+        EMPLOYEE_PRIORITY_ROLLUP_SERVICE_MOCK.method.recalculate()
+      )
+      .thenReturnVoid();
+    Id academicInterestId = SObjectIds.generateFakeId(Schema.AcademicInterest.SObjectType);
+    Id applicationId = SObjectIds.generateFakeId(Schema.IndividualApplication.SObjectType);
+    List<SObject> newRecords = new List<SObject>{
+      new AcademicInterest(
+        Id = academicInterestId,
+        IndividualApplicationId = applicationId,
+        Staff_Priority_Removed__c = true
+      )
+    };
+    Map<Id, SObject> oldMap = new Map<Id, SObject>{
+      academicInterestId => new AcademicInterest(
+        Id = academicInterestId,
+        IndividualApplicationId = applicationId,
+        Staff_Priority_Removed__c = false
+      )
+    };
+
+    HANDLER.onAfterUpdate(newRecords, oldMap);
+
+    EMPLOYEE_PRIORITY_ROLLUP_SERVICE_MOCK.verify(
+      EMPLOYEE_PRIORITY_ROLLUP_SERVICE_MOCK.method.recalculate(),
+      1
+    );
+    List<Map<String, Object>> calls = EMPLOYEE_PRIORITY_ROLLUP_SERVICE_MOCK.getCalls(
+      EMPLOYEE_PRIORITY_ROLLUP_SERVICE_MOCK.method.recalculate()
+    );
+    Set<Id> capturedAppIds = (Set<Id>) calls[0].get('individualApplicationIds');
+    Assert.isTrue(capturedAppIds.contains(applicationId), 'Should include the application ID');
+  }
+
+  @IsTest
+  private static void onAfterUpdate_doesNotCallEmployeePriorityRollupServiceWhenUnchanged() {
+    Id academicInterestId = SObjectIds.generateFakeId(Schema.AcademicInterest.SObjectType);
+    Id applicationId = SObjectIds.generateFakeId(Schema.IndividualApplication.SObjectType);
+    List<SObject> newRecords = new List<SObject>{
+      new AcademicInterest(
+        Id = academicInterestId,
+        IndividualApplicationId = applicationId,
+        Staff_Priority_Removed__c = false
+      )
+    };
+    Map<Id, SObject> oldMap = new Map<Id, SObject>{
+      academicInterestId => new AcademicInterest(
+        Id = academicInterestId,
+        IndividualApplicationId = applicationId,
+        Staff_Priority_Removed__c = false
+      )
+    };
+
+    HANDLER.onAfterUpdate(newRecords, oldMap);
+
+    EMPLOYEE_PRIORITY_ROLLUP_SERVICE_MOCK.never(
+      EMPLOYEE_PRIORITY_ROLLUP_SERVICE_MOCK.method.recalculate()
+    );
   }
 }

@@ -228,16 +228,69 @@ private class EmployeePriorityRollupServiceImplTest {
   }
 
   @IsTest
+  private static void recalculate_excludesFlaggedAcademicInterestFromProgramSet() {
+    Id programId = SObjectIds.generateFakeId(Schema.LearningProgram.SObjectType);
+    Id appId1 = SObjectIds.generateFakeId(Schema.IndividualApplication.SObjectType);
+    Id appId2 = SObjectIds.generateFakeId(Schema.IndividualApplication.SObjectType);
+
+    List<AcademicInterest> firstQueryResult = new List<AcademicInterest>{
+      buildAcademicInterest(programId, appId1, false)
+    };
+
+    // appId2's AcademicInterest has had its staff priority removed and must be excluded
+    List<AcademicInterest> secondQueryResult = new List<AcademicInterest>{
+      buildAcademicInterest(programId, appId1, false),
+      buildAcademicInterest(programId, appId2, true)
+    };
+
+    EmployeePriorityAggregateResult.isReturningFakeData = true;
+    Map<String, Object> aggMap = new Map<String, Object>{
+      'attributes' => new Map<String, Object>{ 'type' => 'AggregateResult' }
+    };
+    AggregateResult fakeAgg = (AggregateResult) JSON.deserialize(
+      JSON.serialize(aggMap),
+      AggregateResult.class
+    );
+    List<AggregateResult> thirdQueryResult = new List<AggregateResult>{ fakeAgg };
+
+    MOCK_REPO.when(MOCK_REPO.method.queryWithBinds())
+      .thenReturn(firstQueryResult)
+      .thenReturn(secondQueryResult)
+      .thenReturn(thirdQueryResult);
+    MOCK_REPO.when(MOCK_REPO.method.updateSObjects()).thenReturnVoid();
+
+    SERVICE.recalculate(new Set<Id>{ appId1 });
+
+    List<Map<String, Object>> queryCalls = MOCK_REPO.getCalls(MOCK_REPO.method.queryWithBinds());
+    Map<String, Object> thirdQueryBinds = (Map<String, Object>) queryCalls[2].get('bindMap');
+    Set<Id> queriedAppIds = (Set<Id>) thirdQueryBinds.get('applicationIds');
+    Assert.isTrue(queriedAppIds.contains(appId1), 'Should query priority items for appId1');
+    Assert.isFalse(
+      queriedAppIds.contains(appId2),
+      'Should exclude appId2 because its AcademicInterest is flagged removed'
+    );
+  }
+
+  @IsTest
   private static void defaultConstructor_createsInstance() {
     EmployeePriorityRollupServiceImpl service = new EmployeePriorityRollupServiceImpl();
     Assert.isNotNull(service, 'Should create instance with default constructor');
   }
 
   private static AcademicInterest buildAcademicInterest(Id programId, Id applicationId) {
+    return buildAcademicInterest(programId, applicationId, false);
+  }
+
+  private static AcademicInterest buildAcademicInterest(
+    Id programId,
+    Id applicationId,
+    Boolean staffPriorityRemoved
+  ) {
     String jsonStr = JSON.serialize(
       new Map<String, Object>{
         'attributes' => new Map<String, Object>{ 'type' => 'AcademicInterest' },
         'IndividualApplicationId' => applicationId,
+        'Staff_Priority_Removed__c' => staffPriorityRemoved,
         'Lottery_Capacity__r' => new Map<String, Object>{
           'attributes' => new Map<String, Object>{ 'type' => 'Lottery_Capacity__c' },
           'Program_Term_Application_Timeline__r' => new Map<String, Object>{

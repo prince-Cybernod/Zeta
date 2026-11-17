@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
-    <help><!-- Displays the date and time the next outreach attempt is due. The follow-up schedule is 24 hours after record creation, 48 hours after the first outreach attempt, and 7 days after the second outreach attempt. The field is blank when the record is closed or all outreach attempts are complete. --></help>
+    <help><!-- Displays when the next outreach attempt is due, always at 5 PM on a working day: the next working day after the lead is created, 2 days after the first outreach attempt, and 7 days after the second. A due date that falls on a weekend or holiday moves to the next working day. The field is blank when the record is closed or all outreach attempts are complete. --></help>
     <label><!-- Next Follow-Up Due --></label>
     <name>Next_Follow_Up_Due__c</name>
 </CustomFieldTranslation>

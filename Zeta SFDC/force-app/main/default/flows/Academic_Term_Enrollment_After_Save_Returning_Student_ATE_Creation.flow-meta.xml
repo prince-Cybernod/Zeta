@@ -94,8 +94,8 @@ Created by: Elevation Solutions</description>
     </processMetadataValues>
     <processType>AutoLaunchedFlow</processType>
     <recordCreates>
-        <name>Create_ATE_for_Next_Year</name>
-        <label>Create ATE for Next Year</label>
+        <name>Create_Academic_Term_Enrollment</name>
+        <label>Create Academic Term Enrollment</label>
         <locationX>0</locationX>
         <locationY>0</locationY>
         <inputAssignments>
@@ -112,12 +112,6 @@ Created by: Elevation Solutions</description>
         </inputAssignments>
         <inputAssignments>
             <field>Computer_Tablet_Use_Consent_Form__c</field>
-            <value>
-                <stringValue>N/A, returning student</stringValue>
-            </value>
-        </inputAssignments>
-        <inputAssignments>
-            <field>DEPRECATED_Race_Answers__c</field>
             <value>
                 <stringValue>N/A, returning student</stringValue>
             </value>
@@ -261,6 +255,12 @@ Created by: Elevation Solutions</description>
             </value>
         </inputAssignments>
         <inputAssignments>
+            <field>Race_Answers__c</field>
+            <value>
+                <stringValue>N/A, returning student</stringValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
             <field>Race_Codes_On_ATS__c</field>
             <value>
                 <elementReference>$Record.Race_Codes_On_ATS__c</elementReference>
@@ -336,7 +336,7 @@ Created by: Elevation Solutions</description>
         <locationX>0</locationX>
         <locationY>0</locationY>
         <connector>
-            <targetReference>Create_ATE_for_Next_Year</targetReference>
+            <targetReference>Create_Academic_Term_Enrollment</targetReference>
         </connector>
         <filterLogic>1</filterLogic>
         <filters>

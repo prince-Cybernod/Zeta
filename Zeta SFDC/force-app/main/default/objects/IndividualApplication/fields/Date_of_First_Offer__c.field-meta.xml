@@ -6,6 +6,7 @@ Populated automatically by automation when an offer is generated.</description>
     <inlineHelpText>Records the exact date and time the applicant received their first offer during the lottery process.</inlineHelpText>
     <label>Date of First Offer</label>
     <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
     <trackHistory>false</trackHistory>
     <type>DateTime</type>
 </CustomField>

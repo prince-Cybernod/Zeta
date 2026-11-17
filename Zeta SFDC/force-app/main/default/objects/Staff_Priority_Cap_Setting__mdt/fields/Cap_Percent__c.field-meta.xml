@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Cap_Percent__c</fullName>
+    <description>Maximum share of a Charter&apos;s Total Available Seats for School Year that staff-priority applicants may hold (NY Ed Law §2854(2)(a)). Editable without code under Setup › Custom Metadata Types.</description>
+    <fieldManageability>DeveloperControlled</fieldManageability>
+    <inlineHelpText>Staff priority cap as a percent of the Charter&apos;s total available seats.</inlineHelpText>
+    <label>Cap Percent</label>
+    <precision>5</precision>
+    <required>true</required>
+    <scale>2</scale>
+    <type>Percent</type>
+</CustomField>

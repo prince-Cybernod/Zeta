@@ -6,6 +6,21 @@
     <description>Used for the Parent Inquiries</description>
     <label>Parent Inquiry</label>
     <picklistValues>
+        <picklist>Assigned_By__c</picklist>
+        <values>
+            <fullName>Converting Team Member</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Lead Owner</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Round Robin</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
         <picklist>Category__c</picklist>
         <values>
             <fullName>After-School</fullName>

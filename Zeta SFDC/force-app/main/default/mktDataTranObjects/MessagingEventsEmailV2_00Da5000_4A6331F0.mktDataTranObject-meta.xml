@@ -84,6 +84,19 @@
         <sequence>0</sequence>
     </mktDataTranFields>
     <mktDataTranFields>
+        <fullName>BounceSubCategory</fullName>
+        <creationType>Custom</creationType>
+        <datatype>S</datatype>
+        <externalName>BounceSubCategory</externalName>
+        <isDataRequired>false</isDataRequired>
+        <length>0</length>
+        <masterLabel>BounceSubCategory</masterLabel>
+        <precision>0</precision>
+        <primaryIndexOrder>0</primaryIndexOrder>
+        <scale>0</scale>
+        <sequence>0</sequence>
+    </mktDataTranFields>
+    <mktDataTranFields>
         <fullName>BounceType</fullName>
         <creationType>Custom</creationType>
         <datatype>S</datatype>
@@ -858,6 +871,19 @@
         <isDataRequired>false</isDataRequired>
         <length>0</length>
         <masterLabel>SendTimeAttributes</masterLabel>
+        <precision>0</precision>
+        <primaryIndexOrder>0</primaryIndexOrder>
+        <scale>0</scale>
+        <sequence>0</sequence>
+    </mktDataTranFields>
+    <mktDataTranFields>
+        <fullName>SmtpEnhancedCode</fullName>
+        <creationType>Custom</creationType>
+        <datatype>S</datatype>
+        <externalName>SmtpEnhancedCode</externalName>
+        <isDataRequired>false</isDataRequired>
+        <length>0</length>
+        <masterLabel>SmtpEnhancedCode</masterLabel>
         <precision>0</precision>
         <primaryIndexOrder>0</primaryIndexOrder>
         <scale>0</scale>

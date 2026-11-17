@@ -5,6 +5,21 @@
     <businessProcess>Parent Inquiry</businessProcess>
     <label>Academic</label>
     <picklistValues>
+        <picklist>Assigned_By__c</picklist>
+        <values>
+            <fullName>Converting Team Member</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Lead Owner</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Round Robin</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
         <picklist>Category__c</picklist>
         <values>
             <fullName>Enrollment</fullName>

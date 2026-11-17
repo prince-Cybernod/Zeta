@@ -201,6 +201,14 @@
         <sourceFormula>MaxItemsCount</sourceFormula>
         <targetField>PersonalizationPoint_Home__dll.MaxItemsCount__c</targetField>
     </fieldSourceTargetMaps>
+    <fieldSourceTargetMaps>
+        <creationType>Custom</creationType>
+        <filterApplied>false</filterApplied>
+        <isSourceFormula>false</isSourceFormula>
+        <sourceField>PersonalizationPoint_Home.SourceRecordId__c</sourceField>
+        <sourceFormula>SourceRecordId</sourceFormula>
+        <targetField>PersonalizationPoint_Home__dll.SourceRecordId__c</targetField>
+    </fieldSourceTargetMaps>
     <masterLabel>PersonalizationPoint_Home_map_PersonalizationPoint_Home_1762190298970</masterLabel>
     <sourceObjectName>PersonalizationPoint_Home</sourceObjectName>
     <targetObjectName>PersonalizationPoint_Home__dll</targetObjectName>

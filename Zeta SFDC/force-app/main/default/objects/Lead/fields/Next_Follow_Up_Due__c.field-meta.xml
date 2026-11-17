@@ -5,6 +5,7 @@
     <inlineHelpText>Displays when the next outreach attempt is due, always at 5 PM on a working day: the next working day after the lead is created, 2 days after the first outreach attempt, and 7 days after the second. A due date that falls on a weekend or holiday moves to the next working day. The field is blank when the record is closed or all outreach attempts are complete.</inlineHelpText>
     <label>Next Follow-Up Due</label>
     <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
     <trackHistory>false</trackHistory>
     <type>DateTime</type>
 </CustomField>

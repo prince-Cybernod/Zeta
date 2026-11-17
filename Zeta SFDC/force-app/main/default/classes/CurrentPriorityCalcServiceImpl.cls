@@ -48,7 +48,8 @@ public with sharing class CurrentPriorityCalcServiceImpl implements CurrentPrior
       );
       Integer priorityGroup = calculatePriorityGroup(
         individualApplication,
-        academicInterest.In_District_Priority__c
+        academicInterest.In_District_Priority__c,
+        academicInterest.Staff_Priority_Removed__c
       );
 
       academicInterest.Current_Priority_Group__c = priorityGroup;
@@ -73,7 +74,8 @@ public with sharing class CurrentPriorityCalcServiceImpl implements CurrentPrior
       );
       Integer newPriorityGroup = calculatePriorityGroup(
         individualApplication,
-        academicInterest.In_District_Priority__c
+        academicInterest.In_District_Priority__c,
+        academicInterest.Staff_Priority_Removed__c
       );
 
       if (academicInterest.Current_Priority_Group__c != newPriorityGroup) {
@@ -97,7 +99,8 @@ public with sharing class CurrentPriorityCalcServiceImpl implements CurrentPrior
 
   private static Integer calculatePriorityGroup(
     IndividualApplication individualApplication,
-    Boolean inDistrictPriority
+    Boolean inDistrictPriority,
+    Boolean staffPriorityRemoved
   ) {
     if (individualApplication == null) {
       return PRIORITY_GROUP_GENERAL;
@@ -108,7 +111,7 @@ public with sharing class CurrentPriorityCalcServiceImpl implements CurrentPrior
     if (relationshipPriority == PRIORITY_GROUP_SIBLING) {
       return PRIORITY_GROUP_SIBLING;
     }
-    if (relationshipPriority == PRIORITY_GROUP_STAFF) {
+    if (relationshipPriority == PRIORITY_GROUP_STAFF && staffPriorityRemoved != true) {
       return PRIORITY_GROUP_STAFF;
     }
     if (inDistrictPriority == true) {
@@ -140,7 +143,7 @@ public with sharing class CurrentPriorityCalcServiceImpl implements CurrentPrior
   private List<AcademicInterest> queryChildAcademicInterests(Set<Id> applicationIds) {
     String query =
       'SELECT Id, IndividualApplicationId, In_District_Priority__c, Current_Priority_Group__c, ' +
-      'Original_Priority_Group__c ' +
+      'Original_Priority_Group__c, Staff_Priority_Removed__c ' +
       'FROM AcademicInterest ' +
       'WHERE IndividualApplicationId IN :applicationIds';
 

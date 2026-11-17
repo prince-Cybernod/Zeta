@@ -45,6 +45,42 @@
     <columns>
         <field>LEAD_ID</field>
     </columns>
+    <columns>
+        <field>STATUS</field>
+    </columns>
+    <columns>
+        <field>CDF1</field>
+    </columns>
+    <columns>
+        <field>Lead.Outreach_1_Outcome__c</field>
+    </columns>
+    <columns>
+        <field>Lead.Outreach_2_Outcome__c</field>
+    </columns>
+    <columns>
+        <field>Lead.Outreach_3_Outcome__c</field>
+    </columns>
+    <columns>
+        <field>LEAD_SOURCE</field>
+    </columns>
+    <customDetailFormulas>
+        <calculatedFormula>IF(
+    AND(
+        ISPICKVAL(Lead.Outreach_1_Outcome__c, &quot;Unreachable – No answer&quot;),
+        ISPICKVAL(Lead.Outreach_2_Outcome__c, &quot;Unreachable – No answer&quot;),
+        ISPICKVAL(Lead.Outreach_3_Outcome__c, &quot;Unreachable – No answer&quot;),
+        NOT(ISPICKVAL(Lead.Email_Bounce_Status__c, &quot;Bounced&quot;)),
+        ISPICKVAL(STATUS, &quot;Open – Working&quot;)
+    ),
+    &quot;True&quot;,
+    &quot;False&quot;
+)</calculatedFormula>
+        <dataType>Text</dataType>
+        <description>Displays true if lead is open but email only.</description>
+        <developerName>CDF1</developerName>
+        <label>Email Only</label>
+        <scale>2</scale>
+    </customDetailFormulas>
     <filter>
         <criteriaItems>
             <column>LAST_NAME</column>
@@ -73,6 +109,8 @@
     <showDetails>true</showDetails>
     <showGrandTotal>true</showGrandTotal>
     <showSubTotals>true</showSubTotals>
+    <sortColumn>CDF1</sortColumn>
+    <sortOrder>Desc</sortOrder>
     <timeFrameFilter>
         <dateColumn>CREATED_DATE</dateColumn>
         <endDate>2031-10-01</endDate>

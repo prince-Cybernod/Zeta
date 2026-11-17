@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ListView xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Copy_of_All_Open_Leads</fullName>
+    <booleanFilter>1 AND NOT(2 AND 3 AND 4 AND 5) AND 6</booleanFilter>
     <columns>Lead_Source__c</columns>
     <columns>FULL_NAME</columns>
     <columns>Guardian_First_Name__c</columns>
@@ -20,6 +21,30 @@
         <field>Is_Open_Status__c</field>
         <operation>equals</operation>
         <value>1</value>
+    </filters>
+    <filters>
+        <field>Outreach_1_Outcome__c</field>
+        <operation>equals</operation>
+        <value>Unreachable – No answer</value>
+    </filters>
+    <filters>
+        <field>Outreach_2_Outcome__c</field>
+        <operation>equals</operation>
+        <value>Unreachable – No answer</value>
+    </filters>
+    <filters>
+        <field>Outreach_3_Outcome__c</field>
+        <operation>equals</operation>
+        <value>Unreachable – No answer</value>
+    </filters>
+    <filters>
+        <field>LEAD.EMAIL</field>
+        <operation>notEqual</operation>
+    </filters>
+    <filters>
+        <field>Email_Only_Lead__c</field>
+        <operation>equals</operation>
+        <value>0</value>
     </filters>
     <label>My Open Leads</label>
 </ListView>

@@ -137,6 +137,32 @@
         <sequence>0</sequence>
     </mktDataTranFields>
     <mktDataTranFields>
+        <fullName>IsFallThrough</fullName>
+        <creationType>Custom</creationType>
+        <datatype>S</datatype>
+        <externalName>IsFallThrough</externalName>
+        <isDataRequired>false</isDataRequired>
+        <length>0</length>
+        <masterLabel>IsFallThrough</masterLabel>
+        <precision>0</precision>
+        <primaryIndexOrder>0</primaryIndexOrder>
+        <scale>0</scale>
+        <sequence>16</sequence>
+    </mktDataTranFields>
+    <mktDataTranFields>
+        <fullName>IsLeadingCohort</fullName>
+        <creationType>Custom</creationType>
+        <datatype>S</datatype>
+        <externalName>IsLeadingCohort</externalName>
+        <isDataRequired>false</isDataRequired>
+        <length>0</length>
+        <masterLabel>IsLeadingCohort</masterLabel>
+        <precision>0</precision>
+        <primaryIndexOrder>0</primaryIndexOrder>
+        <scale>0</scale>
+        <sequence>17</sequence>
+    </mktDataTranFields>
+    <mktDataTranFields>
         <fullName>LastModifiedById</fullName>
         <creationType>Custom</creationType>
         <datatype>S</datatype>

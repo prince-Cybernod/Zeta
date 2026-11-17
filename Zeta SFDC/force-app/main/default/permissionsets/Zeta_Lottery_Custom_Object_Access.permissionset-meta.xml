@@ -38,6 +38,21 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
+        <field>AcademicInterest.Staff_Priority_Removal_Order__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>AcademicInterest.Staff_Priority_Removed_Run__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>AcademicInterest.Staff_Priority_Removed__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
         <field>AcademicInterest.fxSchoolApplicationID18__c</field>
         <readable>true</readable>
     </fieldPermissions>
@@ -214,6 +229,11 @@
     <fieldPermissions>
         <editable>false</editable>
         <field>Lottery_Capacity__c.fxLotteryCapacityID18__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Lottery_Run_Log__c.Staff_Priority_Summary__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>

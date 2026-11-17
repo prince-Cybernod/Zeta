@@ -5,6 +5,15 @@
     <description>If a Zoom Caller leaves a voicemail, create a Case for them. Triggered for Call Result = &apos;no_answer&apos; and &apos;rejected&apos;</description>
     <environments>Default</environments>
     <formulas>
+        <name>call_to_case_subject</name>
+        <dataType>String</dataType>
+        <expression>IF(
+  NOT(ISBLANK({!$Record.ZVC__Voice_Mail__c})),
+  &quot;Missed voicemail from &quot;,
+  &quot;Missed call from &quot;
+) &amp; {!$Record.ZVC__Caller_Phone_Number__c}</expression>
+    </formulas>
+    <formulas>
         <name>fx_CalleeUser</name>
         <dataType>String</dataType>
         <expression>IF(NOT(ISNULL({!Get_Callee_User.Id})), {!Get_Callee_User.Id}, &apos;&apos;)</expression>
@@ -66,6 +75,12 @@
             <field>Origin</field>
             <value>
                 <stringValue>Zoom Voicemail</stringValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Subject</field>
+            <value>
+                <elementReference>call_to_case_subject</elementReference>
             </value>
         </inputAssignments>
         <inputAssignments>

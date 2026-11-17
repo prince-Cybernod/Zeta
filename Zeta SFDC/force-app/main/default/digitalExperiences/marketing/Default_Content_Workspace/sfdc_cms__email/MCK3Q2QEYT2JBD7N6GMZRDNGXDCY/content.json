@@ -1,0 +1,416 @@
+{
+  "type" : "sfdc_cms__email",
+  "title" : "Test Repeatable Section - Lottery",
+  "contentBody" : {
+    "backgroundColor" : "#f3f3f3",
+    "lightning:backgroundImage" : {
+      "position" : "center center",
+      "repeat" : "no-repeat",
+      "size" : "cover"
+    },
+    "lightning:brandSource" : "MCXD6TZ6XKJRGNBB72AH4B5UPAKA",
+    "lightning:colorScheme" : "{!$brand.colorScheme}",
+    "lightning:dataProviders" : [ {
+      "attributes" : {
+        "dataGraphApiName" : "Unified_Individual_Full_Graph",
+        "dataspace" : "default"
+      },
+      "definition" : "sfdc_cms__dataGraphDataProvider",
+      "sfdcExpressionKey" : "$dataGraph"
+    } ],
+    "lightning:expressions" : [ {
+      "attributes" : {
+        "value" : "{{fallback (get (map (sort (flatten (map (flatten (map (flatten (map (get (get @root \"$dataGraph\") \"IndividualIdentityLink__dlm\") \"ssot__Individual__dlm\")) \"ssot__AccountContact__dlm\")) \"School_Application__dlm\")) \"School_Application_Id__c\" \"desc\" \"string\") \"School__c\") 0) \"\"}}"
+      },
+      "default" : "",
+      "definition" : "sfdc_cms__handlebarExpression",
+      "label" : "School",
+      "sfdcExpressionKey" : "School"
+    }, {
+      "attributes" : {
+        "value" : "{{fallback (get (map (sort (flatten (map (flatten (map (flatten (map (get (get @root \"$dataGraph\") \"IndividualIdentityLink__dlm\") \"ssot__Individual__dlm\")) \"ssot__AccountContact__dlm\")) \"School_Application__dlm\")) \"School_Application_Id__c\" \"desc\" \"string\") \"Status__c\") 0) \"\"}}"
+      },
+      "default" : "",
+      "definition" : "sfdc_cms__handlebarExpression",
+      "label" : "Status",
+      "sfdcExpressionKey" : "Status"
+    }, {
+      "attributes" : {
+        "value" : "{{fallback (get (map (sort (flatten (map (flatten (map (flatten (map (get (get @root \"$dataGraph\") \"IndividualIdentityLink__dlm\") \"ssot__Individual__dlm\")) \"ssot__AccountContact__dlm\")) \"School_Application__dlm\")) \"School_Application_Id__c\" \"desc\" \"string\") \"School_Name__c\") 0) \"\"}}"
+      },
+      "default" : "",
+      "definition" : "sfdc_cms__handlebarExpression",
+      "label" : "School_Name",
+      "sfdcExpressionKey" : "School_Name"
+    } ],
+    "lightning:padding" : "{!$brand.spacing.none}",
+    "messagePurpose" : "promotional",
+    "preheader" : "Lottery Repeater",
+    "sfdc_cms:attachments" : [ ],
+    "sfdc_cms:block" : {
+      "definition" : "sfdc_cms/rootContentBlock",
+      "id" : "c165e002-a3ed-410c-b82b-1bd448fd4e8c",
+      "type" : "block",
+      "children" : [ {
+        "attributes" : {
+          "content" : {
+            "attributes" : { },
+            "definition" : "@cms/MCW5DRML3LYFEFFCWKA5PPAOWK2A",
+            "type" : "block"
+          }
+        },
+        "definition" : "sfdc_cms/reusableContentBlock",
+        "id" : "8207928c-94b7-4185-a961-274f982828b1",
+        "type" : "block"
+      }, {
+        "attributes" : {
+          "lightning:backgroundImage" : {
+            "position" : "center center",
+            "repeat" : "no-repeat",
+            "size" : "cover"
+          },
+          "lightning:borderRadius" : "{!$brand.borderRadius.square}",
+          "lightning:borderWidth" : "{!$brand.borderWeight.none}",
+          "lightning:colorScheme" : "{!$brand.colorScheme}",
+          "lightning:margin" : "{!$brand.spacing.none}",
+          "lightning:padding" : "{!$brand.spacing.xSmall}",
+          "reverseOrderOnMobile" : false,
+          "stackOnMobile" : true
+        },
+        "definition" : "lightning/section",
+        "id" : "faa10f34-d0f0-4a2f-be73-2688eb54324d",
+        "type" : "block",
+        "children" : [ {
+          "attributes" : {
+            "columnWidth" : 12.0,
+            "lightning:backgroundImage" : {
+              "position" : "center center",
+              "repeat" : "no-repeat",
+              "size" : "cover"
+            },
+            "lightning:borderRadius" : "{!$brand.borderRadius.square}",
+            "lightning:borderWidth" : "{!$brand.borderWeight.none}",
+            "lightning:colorScheme" : "{!$brand.colorScheme}",
+            "lightning:margin" : "{!$brand.spacing.none}",
+            "lightning:padding" : "{!$brand.spacing.xSmall}",
+            "lightning:verticalAlignment" : "top"
+          },
+          "definition" : "lightning/column",
+          "id" : "9b9be90e-f1ef-4180-8b33-120639533ccb",
+          "type" : "block",
+          "children" : [ {
+            "attributes" : {
+              "itemsPerRow" : 2.0,
+              "itemsToDisplay" : 2.0,
+              "layoutStyle" : "card",
+              "lightning:borderRadius" : "{!$brand.borderRadius.square}",
+              "lightning:borderWidth" : "{!$brand.borderWeight.none}",
+              "lightning:colorScheme" : "{!$brand.colorScheme}",
+              "lightning:expression" : {
+                "attributes" : {
+                  "expressionGroups" : [ {
+                    "expressionSort" : {
+                      "orderBy" : "SourceRecordId__c",
+                      "sortOrder" : "DESC"
+                    },
+                    "name" : "group0",
+                    "resource" : "{!$dataGraph.IndividualIdentityLink__dlm}"
+                  }, {
+                    "name" : "group1",
+                    "resource" : "{!group0.ssot__Individual__dlm}"
+                  }, {
+                    "expressionSort" : {
+                      "orderBy" : "ssot__Id__c",
+                      "sortOrder" : "DESC"
+                    },
+                    "name" : "group2",
+                    "resource" : "{!group1.ssot__AccountContact__dlm}"
+                  }, {
+                    "expressionRule" : {
+                      "criteriaType" : "AnyCriterionMatches",
+                      "description" : "",
+                      "expressionCriteria" : [ ],
+                      "name" : "group3_rule"
+                    },
+                    "expressionSort" : {
+                      "orderBy" : "School_Name__c",
+                      "sortOrder" : "DESC"
+                    },
+                    "name" : "group3",
+                    "resource" : "{!group2.School_Application__dlm}"
+                  } ]
+                },
+                "definition" : "sfdc_cms__multiLevelExpression",
+                "label" : "School_Application",
+                "sfdcExpressionKey" : "School_Application"
+              },
+              "lightning:expressions" : [ {
+                "attributes" : {
+                  "value" : "{{fallback (get (get School_Application @index) \"School_Name__c\") \"\"}}"
+                },
+                "default" : "",
+                "definition" : "sfdc_cms__handlebarExpression",
+                "label" : "School_Name_1",
+                "sfdcExpressionKey" : "School_Name_1"
+              }, {
+                "attributes" : {
+                  "value" : "{{fallback (get (get School_Application @index) \"Status__c\") \"\"}}"
+                },
+                "default" : "",
+                "definition" : "sfdc_cms__handlebarExpression",
+                "label" : "Status_1_repeater",
+                "sfdcExpressionKey" : "Status_1_repeater"
+              } ],
+              "lightning:margin" : "{!$brand.spacing.none}",
+              "lightning:padding" : "{!$brand.spacing.none}",
+              "stackOnMobile" : true
+            },
+            "definition" : "lightning/repeater",
+            "id" : "1a2f46c8-7769-4e37-ade7-dad31be6bb33",
+            "type" : "block",
+            "children" : [ {
+              "attributes" : {
+                "lightning:borderRadius" : "{!$brand.borderRadius.square}",
+                "lightning:borderWidth" : "{!$brand.borderWeight.none}",
+                "lightning:colorScheme" : "{!$brand.colorScheme}",
+                "lightning:margin" : "{!$brand.spacing.none}",
+                "lightning:padding" : "{!$brand.spacing.none}"
+              },
+              "definition" : "lightning/cardLayout",
+              "id" : "73e4b2cd-d229-4451-b833-e60456c71fba",
+              "type" : "block",
+              "children" : [ {
+                "attributes" : {
+                  "columnWidth" : 12.0,
+                  "lightning:backgroundImage" : {
+                    "position" : "center center",
+                    "repeat" : "no-repeat",
+                    "size" : "cover"
+                  },
+                  "lightning:borderRadius" : "{!$brand.borderRadius.square}",
+                  "lightning:borderWidth" : "{!$brand.borderWeight.none}",
+                  "lightning:colorScheme" : "{!$brand.colorScheme}",
+                  "lightning:margin" : "{!$brand.spacing.none}",
+                  "lightning:padding" : "{!$brand.spacing.xSmall}",
+                  "lightning:verticalAlignment" : "top"
+                },
+                "definition" : "lightning/column",
+                "id" : "ac8944ea-5cc1-4129-bd8e-601bfdd318b8",
+                "type" : "block",
+                "children" : [ {
+                  "attributes" : {
+                    "align" : "start",
+                    "level" : 3.0,
+                    "lightning:borderRadius" : "{!$brand.borderRadius.square}",
+                    "lightning:borderWidth" : "{!$brand.borderWeight.none}",
+                    "lightning:colorGroup" : {
+                      "backgroundColor" : "{!$brand.colorScheme.root}",
+                      "borderColor" : "{!$brand.colorScheme.neutral}",
+                      "linkColor" : "{!$brand.colorScheme.primaryAccent}",
+                      "textColor" : "{!$brand.colorScheme.contrast}"
+                    },
+                    "lightning:margin" : "{!$brand.spacing.none}",
+                    "lightning:padding" : "{!$brand.spacing.none}",
+                    "lightning:typography" : "{!$brand.typography.heading.heading3}",
+                    "text" : " Your Schools and Status Test 1"
+                  },
+                  "definition" : "lightning/heading",
+                  "id" : "cd47648d-fd15-4767-87a6-2a90751ee0c3",
+                  "type" : "block"
+                }, {
+                  "attributes" : {
+                    "align" : "start",
+                    "lightning:borderRadius" : "{!$brand.borderRadius.square}",
+                    "lightning:borderWidth" : "{!$brand.borderWeight.none}",
+                    "lightning:colorGroup" : {
+                      "backgroundColor" : "{!$brand.colorScheme.root}",
+                      "borderColor" : "{!$brand.colorScheme.neutral}",
+                      "linkColor" : "{!$brand.colorScheme.primaryAccent}",
+                      "textColor" : "{!$brand.colorScheme.contrast}"
+                    },
+                    "lightning:margin" : "{!$brand.spacing.none}",
+                    "lightning:padding" : "{!$brand.spacing.none}",
+                    "lightning:typography" : "{!$brand.typography.paragraph.paragraph1}",
+                    "text" : "<br /><br /><br />{!$Expression.School_Name_1} {!$Expression.Status_1_repeater}<br /><br />"
+                  },
+                  "definition" : "lightning/paragraph",
+                  "id" : "bfabdfc4-45bb-4cf1-b769-707ed5a48544",
+                  "type" : "block"
+                } ]
+              } ]
+            } ]
+          }, {
+            "attributes" : {
+              "itemsPerRow" : 2.0,
+              "itemsToDisplay" : 2.0,
+              "layoutStyle" : "card",
+              "lightning:borderRadius" : "{!$brand.borderRadius.square}",
+              "lightning:borderWidth" : "{!$brand.borderWeight.none}",
+              "lightning:colorScheme" : "{!$brand.colorScheme}",
+              "lightning:expression" : {
+                "attributes" : {
+                  "expressionGroups" : [ {
+                    "expressionSort" : {
+                      "orderBy" : "SourceRecordId__c",
+                      "sortOrder" : "DESC"
+                    },
+                    "name" : "group0",
+                    "resource" : "{!$dataGraph.IndividualIdentityLink__dlm}"
+                  }, {
+                    "name" : "group1",
+                    "resource" : "{!group0.ssot__Individual__dlm}"
+                  }, {
+                    "expressionSort" : {
+                      "orderBy" : "ssot__Id__c",
+                      "sortOrder" : "DESC"
+                    },
+                    "name" : "group2",
+                    "resource" : "{!group1.ssot__AccountContact__dlm}"
+                  }, {
+                    "expressionSort" : {
+                      "orderBy" : "ssot__Id__c",
+                      "sortOrder" : "DESC"
+                    },
+                    "name" : "group3",
+                    "resource" : "{!group2.ssot__Application__dlm}"
+                  }, {
+                    "expressionRule" : {
+                      "criteriaType" : "AnyCriterionMatches",
+                      "description" : "",
+                      "expressionCriteria" : [ ],
+                      "name" : "group4_rule"
+                    },
+                    "expressionSort" : {
+                      "orderBy" : "School_Name__c",
+                      "sortOrder" : "DESC"
+                    },
+                    "name" : "group4",
+                    "resource" : "{!group3.School_Application__dlm_3KNvRaNt}"
+                  } ]
+                },
+                "definition" : "sfdc_cms__multiLevelExpression",
+                "label" : "School_Application_1",
+                "sfdcExpressionKey" : "School_Application_1"
+              },
+              "lightning:expressions" : [ {
+                "attributes" : {
+                  "value" : "{{fallback (get (get School_Application_1 @index) \"School_Name__c\") \"\"}}"
+                },
+                "default" : "",
+                "definition" : "sfdc_cms__handlebarExpression",
+                "label" : "School_Name_2",
+                "sfdcExpressionKey" : "School_Name_2"
+              }, {
+                "attributes" : {
+                  "value" : "{{fallback (get (get School_Application_1 @index) \"Status__c\") \"\"}}"
+                },
+                "default" : "",
+                "definition" : "sfdc_cms__handlebarExpression",
+                "label" : "Status_1",
+                "sfdcExpressionKey" : "Status_1"
+              } ],
+              "lightning:margin" : "{!$brand.spacing.none}",
+              "lightning:padding" : "{!$brand.spacing.none}",
+              "stackOnMobile" : true
+            },
+            "definition" : "lightning/repeater",
+            "id" : "68de809c-b175-47e3-82f6-36048e8a9303",
+            "type" : "block",
+            "children" : [ {
+              "attributes" : {
+                "lightning:borderRadius" : "{!$brand.borderRadius.square}",
+                "lightning:borderWidth" : "{!$brand.borderWeight.none}",
+                "lightning:colorScheme" : "{!$brand.colorScheme}",
+                "lightning:margin" : "{!$brand.spacing.none}",
+                "lightning:padding" : "{!$brand.spacing.none}"
+              },
+              "definition" : "lightning/cardLayout",
+              "id" : "a96f0e25-f85f-4367-adb0-83194175adad",
+              "type" : "block",
+              "children" : [ {
+                "attributes" : {
+                  "columnWidth" : 12.0,
+                  "lightning:borderRadius" : "{!$brand.borderRadius.square}",
+                  "lightning:borderWidth" : "{!$brand.borderWeight.none}",
+                  "lightning:colorScheme" : "{!$brand.colorScheme}",
+                  "lightning:margin" : "{!$brand.spacing.none}",
+                  "lightning:padding" : "{!$brand.spacing.xSmall}",
+                  "lightning:verticalAlignment" : "top",
+                  "lightning:backgroundImage" : {
+                    "repeat" : "no-repeat",
+                    "position" : "center center",
+                    "size" : "cover"
+                  }
+                },
+                "definition" : "lightning/column",
+                "id" : "4c8676a4-72a7-43ec-bfba-14ab869344ac",
+                "type" : "block",
+                "children" : [ {
+                  "attributes" : {
+                    "align" : "start",
+                    "level" : 3.0,
+                    "lightning:borderRadius" : "{!$brand.borderRadius.square}",
+                    "lightning:borderWidth" : "{!$brand.borderWeight.none}",
+                    "lightning:colorGroup" : {
+                      "backgroundColor" : "{!$brand.colorScheme.root}",
+                      "borderColor" : "{!$brand.colorScheme.neutral}",
+                      "linkColor" : "{!$brand.colorScheme.primaryAccent}",
+                      "textColor" : "{!$brand.colorScheme.contrast}"
+                    },
+                    "lightning:margin" : "{!$brand.spacing.none}",
+                    "lightning:padding" : "{!$brand.spacing.none}",
+                    "lightning:typography" : "{!$brand.typography.heading.heading3}",
+                    "text" : "Your School and Status Test 2"
+                  },
+                  "definition" : "lightning/heading",
+                  "id" : "8f5f2053-e69b-43e5-ad5f-b9802aeff966",
+                  "type" : "block"
+                }, {
+                  "attributes" : {
+                    "align" : "start",
+                    "lightning:borderRadius" : "{!$brand.borderRadius.square}",
+                    "lightning:borderWidth" : "{!$brand.borderWeight.none}",
+                    "lightning:colorGroup" : {
+                      "backgroundColor" : "{!$brand.colorScheme.root}",
+                      "borderColor" : "{!$brand.colorScheme.neutral}",
+                      "linkColor" : "{!$brand.colorScheme.primaryAccent}",
+                      "textColor" : "{!$brand.colorScheme.contrast}"
+                    },
+                    "lightning:margin" : "{!$brand.spacing.none}",
+                    "lightning:padding" : "{!$brand.spacing.none}",
+                    "lightning:typography" : "{!$brand.typography.paragraph.paragraph1}",
+                    "text" : "<br /><br />{!$Expression.School_Name_2}<br />{!$Expression.Status_1}"
+                  },
+                  "definition" : "lightning/paragraph",
+                  "id" : "20991046-c972-48a7-a6dd-7b131e63a235",
+                  "type" : "block"
+                } ]
+              } ]
+            } ]
+          } ]
+        } ]
+      }, {
+        "attributes" : {
+          "content" : {
+            "attributes" : { },
+            "definition" : "@cms/MCPIKVRK7PBBGXBPNPUOYZAFQI2U",
+            "type" : "block"
+          }
+        },
+        "definition" : "sfdc_cms/reusableContentBlock",
+        "id" : "e8efffb5-08cb-4ef9-afe5-da667940c1da",
+        "type" : "block"
+      } ]
+    },
+    "sfdc_cms:schema" : {
+      "$schema" : "sfdc://metaschema/sfdc_cms__propertyType",
+      "properties" : { },
+      "type" : "object"
+    },
+    "sfdc_cms:title" : "Test Repeatable Section - Lottery",
+    "sfdc_cms:urlName" : "test-repeatable-section---lottery",
+    "subjectLine" : "Lottery Repeater",
+    "sfdc_cms:variants" : [ ]
+  },
+  "urlName" : "test-repeatable-section---lottery"
+}

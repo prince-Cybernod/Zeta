@@ -7,6 +7,7 @@
 Field only used when Age Inconsistency Flag = TRUE.</description>
     <label>Age Inconsistency Review Status</label>
     <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
     <trackHistory>false</trackHistory>
     <type>Picklist</type>
     <valueSet>

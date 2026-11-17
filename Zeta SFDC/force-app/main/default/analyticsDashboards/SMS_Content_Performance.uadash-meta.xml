@@ -158,7 +158,7 @@
     <widgets>
         <analyticsDashboard>SMS_Content_Performance</analyticsDashboard>
         <metricWidgetDefs>
-            <parameters>{&quot;metricOption&quot;:{&quot;layout&quot;:{&quot;componentVisibility&quot;:{&quot;details&quot;:false,&quot;title&quot;:true,&quot;value&quot;:true,&quot;comparison&quot;:true,&quot;chart&quot;:false,&quot;insights&quot;:false}},&quot;sdmApiName&quot;:&quot;Marketing_Intelligence_Custom_Semantic_Model_00Da500001AA4BB&quot;},&quot;receiveFilterSource&quot;:{&quot;filterMode&quot;:&quot;include&quot;,&quot;publishers&quot;:[],&quot;widgetIds&quot;:[&quot;filter_8&quot;,&quot;filter_2&quot;,&quot;filter_4&quot;]},&quot;widgetStyle&quot;:{&quot;borderColor&quot;:&quot;#E5E5E5&quot;,&quot;borderEdges&quot;:[&quot;all&quot;],&quot;borderRadius&quot;:20}}</parameters>
+            <parameters>{&quot;metricOption&quot;:{&quot;layout&quot;:{&quot;componentVisibility&quot;:{&quot;details&quot;:false,&quot;title&quot;:true,&quot;value&quot;:true,&quot;comparison&quot;:true,&quot;chart&quot;:false,&quot;insights&quot;:false}},&quot;sdmApiName&quot;:&quot;Marketing_Intelligence_Custom_Semantic_Model_00Da500001AA4BB&quot;},&quot;receiveFilterSource&quot;:{&quot;contextFields&quot;:[],&quot;filterMode&quot;:&quot;include&quot;,&quot;publishers&quot;:[],&quot;widgetIds&quot;:[&quot;filter_8&quot;,&quot;filter_2&quot;,&quot;filter_4&quot;]},&quot;widgetStyle&quot;:{&quot;borderColor&quot;:&quot;#E5E5E5&quot;,&quot;borderEdges&quot;:[&quot;all&quot;],&quot;borderRadius&quot;:20}}</parameters>
             <source>SMS_Deliveries_mtc</source>
         </metricWidgetDefs>
         <type>metric</type>
@@ -167,7 +167,7 @@
     <widgets>
         <analyticsDashboard>SMS_Content_Performance</analyticsDashboard>
         <metricWidgetDefs>
-            <parameters>{&quot;metricOption&quot;:{&quot;layout&quot;:{&quot;componentVisibility&quot;:{&quot;details&quot;:false,&quot;title&quot;:true,&quot;value&quot;:true,&quot;comparison&quot;:true,&quot;chart&quot;:false,&quot;insights&quot;:false}},&quot;sdmApiName&quot;:&quot;Marketing_Intelligence_Custom_Semantic_Model_00Da500001AA4BB&quot;},&quot;receiveFilterSource&quot;:{&quot;filterMode&quot;:&quot;include&quot;,&quot;publishers&quot;:[],&quot;widgetIds&quot;:[&quot;filter_2&quot;,&quot;filter_8&quot;,&quot;filter_4&quot;]},&quot;widgetStyle&quot;:{&quot;borderColor&quot;:&quot;#E5E5E5&quot;,&quot;borderEdges&quot;:[&quot;all&quot;],&quot;borderRadius&quot;:20}}</parameters>
+            <parameters>{&quot;metricOption&quot;:{&quot;layout&quot;:{&quot;componentVisibility&quot;:{&quot;details&quot;:false,&quot;title&quot;:true,&quot;value&quot;:true,&quot;comparison&quot;:true,&quot;chart&quot;:false,&quot;insights&quot;:false}},&quot;sdmApiName&quot;:&quot;Marketing_Intelligence_Custom_Semantic_Model_00Da500001AA4BB&quot;},&quot;receiveFilterSource&quot;:{&quot;contextFields&quot;:[],&quot;filterMode&quot;:&quot;include&quot;,&quot;publishers&quot;:[],&quot;widgetIds&quot;:[&quot;filter_2&quot;,&quot;filter_8&quot;,&quot;filter_4&quot;]},&quot;widgetStyle&quot;:{&quot;borderColor&quot;:&quot;#E5E5E5&quot;,&quot;borderEdges&quot;:[&quot;all&quot;],&quot;borderRadius&quot;:20}}</parameters>
             <source>SMS_Sends_mtc</source>
         </metricWidgetDefs>
         <type>metric</type>
@@ -176,7 +176,7 @@
     <widgets>
         <analyticsDashboard>SMS_Content_Performance</analyticsDashboard>
         <metricWidgetDefs>
-            <parameters>{&quot;metricOption&quot;:{&quot;layout&quot;:{&quot;componentVisibility&quot;:{&quot;details&quot;:false,&quot;title&quot;:true,&quot;value&quot;:true,&quot;comparison&quot;:true,&quot;chart&quot;:true,&quot;insights&quot;:false}},&quot;sdmApiName&quot;:&quot;Marketing_Intelligence_Custom_Semantic_Model_00Da500001AA4BB&quot;},&quot;receiveFilterSource&quot;:{&quot;filterMode&quot;:&quot;include&quot;,&quot;publishers&quot;:[],&quot;widgetIds&quot;:[&quot;filter_8&quot;,&quot;filter_2&quot;,&quot;filter_4&quot;]},&quot;widgetStyle&quot;:{&quot;borderColor&quot;:&quot;#E5E5E5&quot;,&quot;borderEdges&quot;:[&quot;all&quot;],&quot;borderRadius&quot;:20}}</parameters>
+            <parameters>{&quot;metricOption&quot;:{&quot;layout&quot;:{&quot;componentVisibility&quot;:{&quot;details&quot;:false,&quot;title&quot;:true,&quot;value&quot;:true,&quot;comparison&quot;:true,&quot;chart&quot;:true,&quot;insights&quot;:false}},&quot;sdmApiName&quot;:&quot;Marketing_Intelligence_Custom_Semantic_Model_00Da500001AA4BB&quot;},&quot;receiveFilterSource&quot;:{&quot;contextFields&quot;:[],&quot;filterMode&quot;:&quot;include&quot;,&quot;publishers&quot;:[],&quot;widgetIds&quot;:[&quot;filter_8&quot;,&quot;filter_2&quot;,&quot;filter_4&quot;]},&quot;widgetStyle&quot;:{&quot;borderColor&quot;:&quot;#E5E5E5&quot;,&quot;borderEdges&quot;:[&quot;all&quot;],&quot;borderRadius&quot;:20}}</parameters>
             <source>SMS_Click_Rate_mtc</source>
         </metricWidgetDefs>
         <type>metric</type>

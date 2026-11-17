@@ -4,6 +4,7 @@
     <defaultValue>false</defaultValue>
     <description>Toggle to indicate whether the applicant has a second parent/guardian. Controls visibility of the Guardian 2 Information section on the application form.</description>
     <label>Has Second Guardian</label>
+    <trackFeedHistory>false</trackFeedHistory>
     <trackHistory>false</trackHistory>
     <type>Checkbox</type>
 </CustomField>

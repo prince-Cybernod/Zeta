@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Main_Point_of_Contact__c</fullName>
+    <deleteConstraint>SetNull</deleteConstraint>
+    <description>The main POC for a given CBO. Links to a person account with the person&apos;s name and contact information.</description>
+    <label>Main Point of Contact</label>
+    <referenceTo>Account</referenceTo>
+    <relationshipLabel>Accounts (Main Point of Contact)</relationshipLabel>
+    <relationshipName>Accounts1</relationshipName>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>Lookup</type>
+</CustomField>

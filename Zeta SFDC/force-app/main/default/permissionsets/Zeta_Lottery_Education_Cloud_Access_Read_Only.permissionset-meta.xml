@@ -593,11 +593,6 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
-        <field>AcademicTermEnrollment.DEPRECATED_Race_Answers__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
         <field>AcademicTermEnrollment.Date_moved_to_ATS_Phase__c</field>
         <readable>true</readable>
     </fieldPermissions>
@@ -1133,6 +1128,11 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
+        <field>AcademicTermEnrollment.Race_Answers__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
         <field>AcademicTermEnrollment.Race_Codes_On_ATS__c</field>
         <readable>true</readable>
     </fieldPermissions>
@@ -1209,6 +1209,11 @@
     <fieldPermissions>
         <editable>false</editable>
         <field>AcademicTermEnrollment.Student_Name__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>AcademicTermEnrollment.Student_Type__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -1324,11 +1329,6 @@
     <fieldPermissions>
         <editable>false</editable>
         <field>AcademicTermEnrollment.Zeta_Decision__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>false</editable>
-        <field>AcademicTermEnrollment.fxStudent_Type__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>

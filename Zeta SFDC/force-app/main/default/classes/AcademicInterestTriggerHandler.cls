@@ -48,6 +48,7 @@ public with sharing class AcademicInterestTriggerHandler extends NoOpTriggerHand
   private final SchoolRankValidationService rankValidationService;
   private final WaitlistHistoryService waitlistHistoryService;
   private final EventBusRepo eventBusRepo;
+  private final EmployeePriorityRollupService employeePriorityRollupService;
 
   public AcademicInterestTriggerHandler() {
     this(
@@ -57,7 +58,8 @@ public with sharing class AcademicInterestTriggerHandler extends NoOpTriggerHand
       new PreOfferCountRollupServiceImpl(),
       new SchoolRankValidationServiceImpl(),
       new WaitlistHistoryServiceImpl(),
-      new EventBusRepoImpl()
+      new EventBusRepoImpl(),
+      new EmployeePriorityRollupServiceImpl()
     );
   }
 
@@ -69,7 +71,8 @@ public with sharing class AcademicInterestTriggerHandler extends NoOpTriggerHand
     PreOfferCountRollupService preOfferCountRollupService,
     SchoolRankValidationService rankValidationService,
     WaitlistHistoryService waitlistHistoryService,
-    EventBusRepo eventBusRepo
+    EventBusRepo eventBusRepo,
+    EmployeePriorityRollupService employeePriorityRollupService
   ) {
     this.rollupService = rollupService;
     this.priorityGroupService = priorityGroupService;
@@ -78,6 +81,7 @@ public with sharing class AcademicInterestTriggerHandler extends NoOpTriggerHand
     this.rankValidationService = rankValidationService;
     this.waitlistHistoryService = waitlistHistoryService;
     this.eventBusRepo = eventBusRepo;
+    this.employeePriorityRollupService = employeePriorityRollupService;
   }
 
   public override SObjectType getSObjectType() {
@@ -97,7 +101,8 @@ public with sharing class AcademicInterestTriggerHandler extends NoOpTriggerHand
         oldSObjectsByIds.get(academicInterest.Id),
         new List<SObjectField>{
           Schema.AcademicInterest.In_District_Priority__c,
-          Schema.AcademicInterest.IndividualApplicationId
+          Schema.AcademicInterest.IndividualApplicationId,
+          Schema.AcademicInterest.Staff_Priority_Removed__c
         }
       );
       if (priorityDiff.isDifferent()) {
@@ -185,6 +190,14 @@ public with sharing class AcademicInterestTriggerHandler extends NoOpTriggerHand
     );
     if (!capacityIdsNeedingRecalc.isEmpty()) {
       publishWaitlistRecalcEvents(capacityIdsNeedingRecalc);
+    }
+
+    Set<Id> applicationIdsNeedingEmployeeRollup = collectApplicationIdsForStaffPriorityRemoval(
+      newRecords,
+      oldSObjectsByIds
+    );
+    if (!applicationIdsNeedingEmployeeRollup.isEmpty()) {
+      employeePriorityRollupService.recalculate(applicationIdsNeedingEmployeeRollup);
     }
   }
 
@@ -405,6 +418,27 @@ public with sharing class AcademicInterestTriggerHandler extends NoOpTriggerHand
       }
     }
     return capacityIds;
+  }
+
+  private static Set<Id> collectApplicationIdsForStaffPriorityRemoval(
+    List<AcademicInterest> newRecords,
+    Map<Id, SObject> oldSObjectsByIds
+  ) {
+    Set<Id> applicationIds = new Set<Id>();
+    for (AcademicInterest academicInterest : newRecords) {
+      SObjectFieldDiffResponse staffPriorityDiff = SObjectFieldDiffer.getFieldDiff(
+        academicInterest,
+        oldSObjectsByIds.get(academicInterest.Id),
+        new List<SObjectField>{ Schema.AcademicInterest.Staff_Priority_Removed__c }
+      );
+      if (
+        staffPriorityDiff.isDifferent() &&
+        String.isNotBlank(academicInterest.IndividualApplicationId)
+      ) {
+        applicationIds.add(academicInterest.IndividualApplicationId);
+      }
+    }
+    return applicationIds;
   }
 
   private void publishWaitlistRecalcEvents(Set<Id> capacityIds) {

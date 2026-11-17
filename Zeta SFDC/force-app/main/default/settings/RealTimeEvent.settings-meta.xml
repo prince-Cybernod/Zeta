@@ -8,4 +8,8 @@
         <entityName>LogoutEventStream</entityName>
         <isEnabled>false</isEnabled>
     </realTimeEvents>
+    <realTimeEvents>
+        <entityName>SecurityDefenseActionEventStore</entityName>
+        <isEnabled>true</isEnabled>
+    </realTimeEvents>
 </RealTimeEventSettings>

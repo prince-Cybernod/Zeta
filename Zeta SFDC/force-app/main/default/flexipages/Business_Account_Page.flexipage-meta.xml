@@ -83,16 +83,6 @@
             <fieldInstance>
                 <fieldInstanceProperties>
                     <name>uiBehavior</name>
-                    <value>none</value>
-                </fieldInstanceProperties>
-                <fieldItem>Record.Number_of_Students_Served__c</fieldItem>
-                <identifier>RecordNumber_of_Students_Served_cField</identifier>
-            </fieldInstance>
-        </itemInstances>
-        <itemInstances>
-            <fieldInstance>
-                <fieldInstanceProperties>
-                    <name>uiBehavior</name>
                     <value>required</value>
                 </fieldInstanceProperties>
                 <fieldItem>Record.Phone</fieldItem>
@@ -117,10 +107,10 @@
             <fieldInstance>
                 <fieldInstanceProperties>
                     <name>uiBehavior</name>
-                    <value>readonly</value>
+                    <value>none</value>
                 </fieldInstanceProperties>
-                <fieldItem>Record.OwnerId</fieldItem>
-                <identifier>RecordOwnerIdField</identifier>
+                <fieldItem>Record.Main_Point_of_Contact__c</fieldItem>
+                <identifier>RecordMain_Point_of_Contact_cField</identifier>
             </fieldInstance>
         </itemInstances>
         <itemInstances>
@@ -129,28 +119,8 @@
                     <name>uiBehavior</name>
                     <value>none</value>
                 </fieldInstanceProperties>
-                <fieldItem>Record.Main_Point_of_Contact_Full_Name__c</fieldItem>
-                <identifier>RecordMain_Point_of_Contact_Full_Name__cField</identifier>
-            </fieldInstance>
-        </itemInstances>
-        <itemInstances>
-            <fieldInstance>
-                <fieldInstanceProperties>
-                    <name>uiBehavior</name>
-                    <value>none</value>
-                </fieldInstanceProperties>
-                <fieldItem>Record.Main_Point_of_Contact_Phone__c</fieldItem>
-                <identifier>RecordMain_Point_of_Contact_Phone__cField</identifier>
-            </fieldInstance>
-        </itemInstances>
-        <itemInstances>
-            <fieldInstance>
-                <fieldInstanceProperties>
-                    <name>uiBehavior</name>
-                    <value>none</value>
-                </fieldInstanceProperties>
-                <fieldItem>Record.Main_Point_of_Contact_Email__c</fieldItem>
-                <identifier>RecordMain_Point_of_Contact_Email__cField</identifier>
+                <fieldItem>Record.Number_of_Students_Served__c</fieldItem>
+                <identifier>RecordNumber_of_Students_Served_cField</identifier>
             </fieldInstance>
         </itemInstances>
         <itemInstances>
@@ -161,6 +131,16 @@
                 </fieldInstanceProperties>
                 <fieldItem>Record.Next_Initiative_Date__c</fieldItem>
                 <identifier>RecordNext_Initiative_Date__cField</identifier>
+            </fieldInstance>
+        </itemInstances>
+        <itemInstances>
+            <fieldInstance>
+                <fieldInstanceProperties>
+                    <name>uiBehavior</name>
+                    <value>readonly</value>
+                </fieldInstanceProperties>
+                <fieldItem>Record.OwnerId</fieldItem>
+                <identifier>RecordOwnerIdField</identifier>
             </fieldInstance>
         </itemInstances>
         <name>Facet-80c43d76-7750-4fc3-9015-823d90833d59</name>
@@ -263,16 +243,6 @@
                 <identifier>RecordPartnership_Types_in_Past_cField</identifier>
             </fieldInstance>
         </itemInstances>
-        <itemInstances>
-            <fieldInstance>
-                <fieldInstanceProperties>
-                    <name>uiBehavior</name>
-                    <value>none</value>
-                </fieldInstanceProperties>
-                <fieldItem>Record.Priority__c</fieldItem>
-                <identifier>RecordPriority_cField</identifier>
-            </fieldInstance>
-        </itemInstances>
         <name>Facet-dbec24a6-4319-448e-90b0-c7757f9b4265</name>
         <type>Facet</type>
     </flexiPageRegions>
@@ -341,8 +311,8 @@
                     <name>uiBehavior</name>
                     <value>none</value>
                 </fieldInstanceProperties>
-                <fieldItem>Record.CBO_Goal_Applications__c</fieldItem>
-                <identifier>RecordCBO_Goal_Applications_cField</identifier>
+                <fieldItem>Record.Priority__c</fieldItem>
+                <identifier>RecordPriority_cField</identifier>
             </fieldInstance>
         </itemInstances>
         <itemInstances>
@@ -359,6 +329,16 @@
         <type>Facet</type>
     </flexiPageRegions>
     <flexiPageRegions>
+        <itemInstances>
+            <fieldInstance>
+                <fieldInstanceProperties>
+                    <name>uiBehavior</name>
+                    <value>none</value>
+                </fieldInstanceProperties>
+                <fieldItem>Record.CBO_Goal_Applications__c</fieldItem>
+                <identifier>RecordCBO_Goal_Applications_cField</identifier>
+            </fieldInstance>
+        </itemInstances>
         <itemInstances>
             <fieldInstance>
                 <fieldInstanceProperties>
@@ -461,7 +441,7 @@
                 </componentInstanceProperties>
                 <componentInstanceProperties>
                     <name>label</name>
-                    <value>@@@SFDCAccount_InformationSFDC@@@</value>
+                    <value>CBO Details</value>
                 </componentInstanceProperties>
                 <componentName>flexipage:fieldSection</componentName>
                 <identifier>flexipage_fieldSection</identifier>
@@ -479,7 +459,7 @@
                 </componentInstanceProperties>
                 <componentInstanceProperties>
                     <name>label</name>
-                    <value>@@@SFDCAddress_InformationSFDC@@@</value>
+                    <value>Location &amp; Market</value>
                 </componentInstanceProperties>
                 <componentName>flexipage:fieldSection</componentName>
                 <identifier>flexipage_fieldSection4</identifier>
@@ -497,7 +477,7 @@
                 </componentInstanceProperties>
                 <componentInstanceProperties>
                     <name>label</name>
-                    <value>Partnership</value>
+                    <value>Partnership Status</value>
                 </componentInstanceProperties>
                 <componentName>flexipage:fieldSection</componentName>
                 <identifier>flexipage_fieldSection2</identifier>
@@ -515,6 +495,7 @@
                 </componentInstanceProperties>
                 <componentInstanceProperties>
                     <name>label</name>
+                    <value>Partnership Goals</value>
                 </componentInstanceProperties>
                 <componentName>flexipage:fieldSection</componentName>
                 <identifier>flexipage_fieldSection3</identifier>

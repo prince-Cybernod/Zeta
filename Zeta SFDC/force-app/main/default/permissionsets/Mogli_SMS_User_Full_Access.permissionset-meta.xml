@@ -159,6 +159,16 @@
     <description>Mogli SMS Full Access Users (Access to form templates, SMS templates, send/receive)</description>
     <fieldPermissions>
         <editable>true</editable>
+        <field>AcademicTermEnrollment.Race_Answers__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>AcademicTermEnrollment.Student_Type__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
         <field>Case.AccountId</field>
         <readable>true</readable>
     </fieldPermissions>

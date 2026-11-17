@@ -39,12 +39,12 @@
     /* Ethnicity and Race */
     OR(CONTAINS(TEXT(Ethnicity_Answer__c), &quot;Hispanic&quot;), CONTAINS(TEXT(Ethnicity_Answer__c), &quot;N/A&quot;)),
     OR(
-      CONTAINS(TEXT(DEPRECATED_Race_Answers__c), &quot;B&quot;),
-      CONTAINS(TEXT(DEPRECATED_Race_Answers__c), &quot;C&quot;),
-      CONTAINS(TEXT(DEPRECATED_Race_Answers__c), &quot;D&quot;),
-      CONTAINS(TEXT(DEPRECATED_Race_Answers__c), &quot;E&quot;),
-      CONTAINS(TEXT(DEPRECATED_Race_Answers__c), &quot;F&quot;),
-      CONTAINS(TEXT(DEPRECATED_Race_Answers__c), &quot;N/A&quot;)
+      INCLUDES(Race_Answers__c, &quot;B&quot;),
+      INCLUDES(Race_Answers__c, &quot;C&quot;),
+      INCLUDES(Race_Answers__c, &quot;D&quot;),
+      INCLUDES(Race_Answers__c, &quot;E&quot;),
+      INCLUDES(Race_Answers__c, &quot;F&quot;),
+      INCLUDES(Race_Answers__c, &quot;N/A, returning student&quot;)
     ),
 
     /* Family Decision logic */

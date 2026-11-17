@@ -6,6 +6,7 @@ Used to track when eligibility checks were completed during the lottery or enrol
     <inlineHelpText>Records the date and time when the student’s application eligibility was reviewed.</inlineHelpText>
     <label>Eligibility Review Date</label>
     <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
     <trackHistory>false</trackHistory>
     <type>DateTime</type>
 </CustomField>

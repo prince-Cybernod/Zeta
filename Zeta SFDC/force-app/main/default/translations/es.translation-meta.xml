@@ -1,14 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Translations xmlns="http://soap.sforce.com/2006/04/metadata">
     <customApplications>
-        <label><!-- Action Plans --></label>
-        <name>Action_Plans</name>
-    </customApplications>
-    <customApplications>
-        <label><!-- Action Plans --></label>
-        <name>Action_Plans_Lightning</name>
-    </customApplications>
-    <customApplications>
         <label><!-- Application Submission --></label>
         <name>Application_Submission</name>
     </customApplications>
@@ -21,44 +13,12 @@
         <name>Learning_Home</name>
     </customApplications>
     <customApplications>
-        <label><!-- Nebula Logger --></label>
-        <name>LoggerConsole</name>
-    </customApplications>
-    <customApplications>
-        <label><!-- MogliSMS --></label>
-        <name>Mogli_SMS__MogliSMS</name>
-    </customApplications>
-    <customApplications>
-        <label><!-- MogliSMS Lightning --></label>
-        <name>Mogli_SMS__Mogli_SMS_Lightning</name>
-    </customApplications>
-    <customApplications>
-        <label><!-- Lightning --></label>
-        <name>Mogli_SMS__Sales</name>
-    </customApplications>
-    <customApplications>
         <label><!-- Outreach &amp; Enrollment --></label>
         <name>Outreach_Enrollment</name>
     </customApplications>
     <customApplications>
         <label><!-- ReEnrollment --></label>
         <name>ReEnrollment</name>
-    </customApplications>
-    <customApplications>
-        <label><!-- Zoom Admin for Lightning --></label>
-        <name>ZVC__Zoom_Admin_for_Lightning</name>
-    </customApplications>
-    <customApplications>
-        <label><!-- OmniStudio --></label>
-        <name>omnistudio__Vlocity_Digital_Studio</name>
-    </customApplications>
-    <customApplications>
-        <label><!-- FormAssembly Classic --></label>
-        <name>tfa__FormAssembly</name>
-    </customApplications>
-    <customApplications>
-        <label><!-- FormAssembly Lightning --></label>
-        <name>tfa__FormAssembly_Lightning</name>
     </customApplications>
     <customLabels>
         <label><!-- Button Complete Form --></label>
@@ -18492,21 +18452,13 @@
         <label><!-- wizItemLabelMissingError --></label>
         <name>omnistudio__wizItemLabelMissingError</name>
     </customLabels>
-    <customPageWebLinks>
-        <label><!-- FormAssembly Configuration --></label>
-        <name>tfa__FormAssembly_Configuration</name>
-    </customPageWebLinks>
-    <customTabs>
-        <label><!-- Action Plans Home --></label>
-        <name>Action_Plans_Home</name>
-    </customTabs>
-    <customTabs>
-        <label><!-- Import Action Plan Template --></label>
-        <name>Action_Plans_Template_Import</name>
-    </customTabs>
     <customTabs>
         <label><!-- Application Question Prototype --></label>
         <name>Application_Question_Prototype</name>
+    </customTabs>
+    <customTabs>
+        <label><!-- CBOs --></label>
+        <name>CBOs</name>
     </customTabs>
     <customTabs>
         <label><!-- Submit Application --></label>
@@ -18515,58 +18467,6 @@
     <customTabs>
         <label><!-- Learning Application Details Page --></label>
         <name>Learning_Application_Details_Page</name>
-    </customTabs>
-    <customTabs>
-        <label><!-- Log Batch Purge --></label>
-        <name>LogBatchPurge</name>
-    </customTabs>
-    <customTabs>
-        <label><!-- Log Entry Event Stream --></label>
-        <name>LogEntryEventStream</name>
-    </customTabs>
-    <customTabs>
-        <label><!-- Logger Settings --></label>
-        <name>LoggerSettings</name>
-    </customTabs>
-    <customTabs>
-        <label><!-- Bulk SMS Lightning --></label>
-        <name>Mogli_SMS__Bulk_SMS_Lightning</name>
-    </customTabs>
-    <customTabs>
-        <label><!-- In Person Form --></label>
-        <name>Mogli_SMS__In_Person_Form</name>
-    </customTabs>
-    <customTabs>
-        <label><!-- MogliSMS Notification Settings --></label>
-        <name>Mogli_SMS__MogliSMS_Notification_Settings</name>
-    </customTabs>
-    <customTabs>
-        <label><!-- Mogli Hub --></label>
-        <name>Mogli_SMS__Mogli_Hub</name>
-    </customTabs>
-    <customTabs>
-        <label><!-- Mogli Inbox --></label>
-        <name>Mogli_SMS__Mogli_Inbox</name>
-    </customTabs>
-    <customTabs>
-        <label><!-- Mogli Settings --></label>
-        <name>Mogli_SMS__Mogli_Settings</name>
-    </customTabs>
-    <customTabs>
-        <label><!-- Notification Settings --></label>
-        <name>Mogli_SMS__Notification_Settings</name>
-    </customTabs>
-    <customTabs>
-        <label><!-- Notification Settings Page --></label>
-        <name>Mogli_SMS__Notification_Settings_Page</name>
-    </customTabs>
-    <customTabs>
-        <label><!-- Bulk SMS --></label>
-        <name>Mogli_SMS__SendSMS</name>
-    </customTabs>
-    <customTabs>
-        <label><!-- Setup MogliSMS --></label>
-        <name>Mogli_SMS__Setup_MogliSMS</name>
     </customTabs>
     <customTabs>
         <label><!-- Run Lottery --></label>
@@ -18579,102 +18479,6 @@
     <customTabs>
         <label><!-- Vlocity Flex Card Home --></label>
         <name>Vlocity_Flex_Card_Home</name>
-    </customTabs>
-    <customTabs>
-        <label><!-- External Zoom Meeting --></label>
-        <name>ZVC__External_Zoom_Meeting</name>
-    </customTabs>
-    <customTabs>
-        <label><!-- Unlinked Zoom Call Logs --></label>
-        <name>ZVC__Unlinked_Zoom_Call_Logs</name>
-    </customTabs>
-    <customTabs>
-        <label><!-- Zoom Settings --></label>
-        <name>ZVC__Zoom_Settings</name>
-    </customTabs>
-    <customTabs>
-        <label><!-- Zoom User Config --></label>
-        <name>ZVC__Zoom_User_Config</name>
-    </customTabs>
-    <customTabs>
-        <label><!-- Zoom for Lightning --></label>
-        <name>ZVC__Zoom_for_Lightning</name>
-    </customTabs>
-    <customTabs>
-        <label><!-- OmniStudio DataPacks --></label>
-        <name>omnistudio__DataPacks</name>
-    </customTabs>
-    <customTabs>
-        <label><!-- Omnistudio Data Mappers --></label>
-        <name>omnistudio__DataRaptor</name>
-    </customTabs>
-    <customTabs>
-        <label><!-- Document Template Designer --></label>
-        <name>omnistudio__DocumentTemplate</name>
-    </customTabs>
-    <customTabs>
-        <label><!-- OmniStudio FlexCards --></label>
-        <name>omnistudio__FlexCards</name>
-    </customTabs>
-    <customTabs>
-        <label><!-- OmniStudio Integration Procedures --></label>
-        <name>omnistudio__IntegrationProcedureHome</name>
-    </customTabs>
-    <customTabs>
-        <label><!-- Document Generation 2.0 Notification --></label>
-        <name>omnistudio__LegalBannerSetup</name>
-    </customTabs>
-    <customTabs>
-        <label><!-- Omnistudio OmniScripts --></label>
-        <name>omnistudio__OmniScriptHome</name>
-    </customTabs>
-    <customTabs>
-        <label><!-- OmniScript Workbench --></label>
-        <name>omnistudio__OmniScriptWorkbench</name>
-    </customTabs>
-    <customTabs>
-        <label><!-- OmniStudio DocuSign Setup --></label>
-        <name>omnistudio__VlocityDocuSignSetup</name>
-    </customTabs>
-    <customTabs>
-        <label><!-- About FormAssembly.com --></label>
-        <name>tfa__AboutFormAssemblycom</name>
-    </customTabs>
-    <customTabs>
-        <label><!-- About --></label>
-        <name>tfa__About_FormAssembly</name>
-    </customTabs>
-    <customTabs>
-        <label><!-- Web Forms --></label>
-        <name>tfa__FormAssembly</name>
-    </customTabs>
-    <customTabs>
-        <label><!-- FormAssembly Home --></label>
-        <name>tfa__FormAssembly_Home</name>
-    </customTabs>
-    <customTabs>
-        <label><!-- Getting Started --></label>
-        <name>tfa__Getting_Started</name>
-    </customTabs>
-    <customTabs>
-        <label><!-- Manage Web Forms --></label>
-        <name>tfa__ManageWebForms</name>
-    </customTabs>
-    <customTabs>
-        <label><!-- Setup --></label>
-        <name>tfa__Setup</name>
-    </customTabs>
-    <customTabs>
-        <label><!-- Support --></label>
-        <name>tfa__Support</name>
-    </customTabs>
-    <customTabs>
-        <label><!-- View Responses --></label>
-        <name>tfa__ViewResponses</name>
-    </customTabs>
-    <customTabs>
-        <label><!-- Your Account --></label>
-        <name>tfa__YourAccount</name>
     </customTabs>
     <flowDefinitions>
         <flows/>
@@ -19094,11 +18898,19 @@
     </flowDefinitions>
     <flowDefinitions>
         <flows/>
+        <fullName>Campaign_Member_Set_Last_Tour_Attended</fullName>
+    </flowDefinitions>
+    <flowDefinitions>
+        <flows/>
         <fullName>Campaign_Record_Triggered_Set_Campaign_Name</fullName>
     </flowDefinitions>
     <flowDefinitions>
         <flows/>
         <fullName>Case_After_Save_Update_Case_Owner_to_Lead_Owner</fullName>
+    </flowDefinitions>
+    <flowDefinitions>
+        <flows/>
+        <fullName>Case_Before_Save_Auto_Close_Matching_Emails</fullName>
     </flowDefinitions>
     <flowDefinitions>
         <flows/>
@@ -21339,6 +21151,42 @@
             </screens>
             <screens>
                 <fields>
+                    <name>Date_of_Birth</name>
+                    <validationRule/>
+                </fields>
+                <fields>
+                    <name>Display_Text</name>
+                </fields>
+                <fields>
+                    <name>First_Name</name>
+                </fields>
+                <fields>
+                    <name>Guardian_First_Name</name>
+                    <validationRule/>
+                </fields>
+                <fields>
+                    <name>Guardian_Last_Name</name>
+                    <validationRule/>
+                </fields>
+                <fields>
+                    <name>Last_Name</name>
+                </fields>
+                <name>Confirm_Name_and_DOB</name>
+            </screens>
+            <screens>
+                <fields>
+                    <name>Error_Message</name>
+                </fields>
+                <name>Error_Screen</name>
+            </screens>
+            <screens>
+                <fields>
+                    <name>Display_Text_Ready_to_Convert</name>
+                </fields>
+                <name>Ready_to_Convert</name>
+            </screens>
+            <screens>
+                <fields>
                     <name>Success</name>
                 </fields>
                 <name>Success_Screen</name>
@@ -21686,154 +21534,6 @@
     <flowDefinitions>
         <flows/>
         <fullName>Mogli_SMS_After_Save_Create_Case_from_Enrollment_Text</fullName>
-    </flowDefinitions>
-    <flowDefinitions>
-        <flows/>
-        <fullName>Mogli_SMS__Execute_GenAI_action_for_SMS_Collection</fullName>
-    </flowDefinitions>
-    <flowDefinitions>
-        <flows>
-            <screens>
-                <fields>
-                    <name>ErrorMessage</name>
-                </fields>
-                <fields>
-                    <name>SuccessMessage</name>
-                </fields>
-                <name>Result_Screen</name>
-            </screens>
-        </flows>
-        <fullName>Mogli_SMS__Mogli_API_Authorization</fullName>
-    </flowDefinitions>
-    <flowDefinitions>
-        <flows/>
-        <fullName>Mogli_SMS__Mogli_Contact_Populate_Mogli_Number</fullName>
-    </flowDefinitions>
-    <flowDefinitions>
-        <flows/>
-        <fullName>Mogli_SMS__Mogli_Lead_Populate_Mogli_Number</fullName>
-    </flowDefinitions>
-    <flowDefinitions>
-        <flows/>
-        <fullName>Mogli_SMS__SMS_Processor</fullName>
-    </flowDefinitions>
-    <flowDefinitions>
-        <flows/>
-        <fullName>Mogli_SMS__SMS_Retriever_and_Processor_Wrapper</fullName>
-    </flowDefinitions>
-    <flowDefinitions>
-        <flows>
-            <screens>
-                <fields>
-                    <name>Complete_Text</name>
-                </fields>
-                <fields>
-                    <name>Final_step_prompt_0</name>
-                </fields>
-                <name>End_Flow</name>
-            </screens>
-            <screens>
-                <fields>
-                    <name>Complete_Text_0</name>
-                </fields>
-                <fields>
-                    <name>Final_step_prompt_0_0</name>
-                </fields>
-                <name>End_Flow_Failure</name>
-            </screens>
-            <screens>
-                <fields>
-                    <name>Complete_Text_0_0</name>
-                </fields>
-                <fields>
-                    <name>Final_step_prompt_nosave</name>
-                </fields>
-                <name>End_Flow_No_save</name>
-            </screens>
-            <screens>
-                <fields>
-                    <name>Instructions</name>
-                </fields>
-                <fields>
-                    <name>Key_Outputs</name>
-                </fields>
-                <fields>
-                    <inputParameters>
-                        <name>width</name>
-                        <value/>
-                    </inputParameters>
-                    <name>Key_Outputs_Column1</name>
-                </fields>
-                <fields>
-                    <inputParameters>
-                        <name>width</name>
-                        <value/>
-                    </inputParameters>
-                    <name>Key_Outputs_Column2</name>
-                </fields>
-                <fields>
-                    <name>Log_Summary_in_new_record</name>
-                </fields>
-                <fields>
-                    <name>Max_of_last_Messages</name>
-                    <validationRule/>
-                </fields>
-                <fields>
-                    <name>Prompt_to_Use</name>
-                </fields>
-                <fields>
-                    <name>Prompt_to_click_next</name>
-                </fields>
-                <fields>
-                    <name>Set_Summary_Window_Section1</name>
-                </fields>
-                <fields>
-                    <inputParameters>
-                        <name>width</name>
-                        <value/>
-                    </inputParameters>
-                    <name>Set_Summary_Window_Section1_Column1</name>
-                </fields>
-                <fields>
-                    <inputParameters>
-                        <name>width</name>
-                        <value/>
-                    </inputParameters>
-                    <name>Set_Summary_Window_Section1_Column2</name>
-                </fields>
-                <fields>
-                    <name>Summary_Window_End</name>
-                </fields>
-                <fields>
-                    <name>Summary_Window_Start</name>
-                </fields>
-                <fields>
-                    <name>Update_current_record_fields</name>
-                </fields>
-                <name>Set_Summary_Window</name>
-            </screens>
-            <screens>
-                <fields>
-                    <name>Final_step_prompt</name>
-                </fields>
-                <fields>
-                    <name>ManualEdit</name>
-                </fields>
-                <fields>
-                    <name>SummaryReadout</name>
-                </fields>
-                <name>Show_Summary</name>
-            </screens>
-        </flows>
-        <fullName>Mogli_SMS__Screen_GenAI_Convo_Summarization</fullName>
-    </flowDefinitions>
-    <flowDefinitions>
-        <flows/>
-        <fullName>Mogli_SMS__Update_Webhook</fullName>
-    </flowDefinitions>
-    <flowDefinitions>
-        <flows/>
-        <fullName>Mogli_SMS__helper_Send_SMS_for_Record</fullName>
     </flowDefinitions>
     <flowDefinitions>
         <flows/>
@@ -23570,20 +23270,6 @@
     </flowDefinitions>
     <flowDefinitions>
         <flows>
-            <screens>
-                <fields>
-                    <name>header1</name>
-                </fields>
-                <fields>
-                    <name>memberList1</name>
-                </fields>
-                <name>Campaign_Member_List</name>
-            </screens>
-        </flows>
-        <fullName>cmm__Campaign_Member_Management_Quick_Entry</fullName>
-    </flowDefinitions>
-    <flowDefinitions>
-        <flows>
             <choices>
                 <name>S_4cece88f_16d2_4ed0_877a_36a1547ac47b</name>
             </choices>
@@ -23656,10 +23342,6 @@
             </textTemplates>
         </flows>
         <fullName>net_promoter_score</fullName>
-    </flowDefinitions>
-    <flowDefinitions>
-        <flows/>
-        <fullName>tfa__Send_Notification</fullName>
     </flowDefinitions>
     <quickActions>
         <label><!-- Guest Community Case --></label>
@@ -24585,6 +24267,61 @@
         </sections>
     </reportTypes>
     <reportTypes>
+        <description><!-- Accounts without Individual Applications --></description>
+        <label><!-- Accounts without Individual Applications --></label>
+        <name>Accounts_without_Individual_Applications</name>
+        <sections>
+            <label><!-- Accounts --></label>
+            <name>Accounts</name>
+        </sections>
+        <sections>
+            <label><!-- Individual Applications --></label>
+            <name>Individual Applications</name>
+        </sections>
+    </reportTypes>
+    <reportTypes>
+        <description><!-- CBOs --></description>
+        <label><!-- CBOs --></label>
+        <name>CBOs</name>
+        <sections>
+            <label><!-- Accounts --></label>
+            <name>Accounts</name>
+        </sections>
+    </reportTypes>
+    <reportTypes>
+        <description><!-- C - School Applications with Individual Applications and Accounts --></description>
+        <label><!-- C - School Applications with Individual Applications and Accounts --></label>
+        <name>C_School_Applications_with_Individual_Applications_and_Accounts</name>
+        <sections>
+            <columns>
+                <label><!-- Birthdate --></label>
+                <name>Birthdate</name>
+            </columns>
+            <columns>
+                <label><!-- Gender Identity --></label>
+                <name>Gender Identity</name>
+            </columns>
+            <label><!-- Accounts --></label>
+            <name>Accounts</name>
+        </sections>
+        <sections>
+            <columns>
+                <label><!-- Individual Application --></label>
+                <name>Individual Application</name>
+            </columns>
+            <label><!-- Individual Applications --></label>
+            <name>Individual Applications</name>
+        </sections>
+        <sections>
+            <columns>
+                <label><!-- School Application --></label>
+                <name>School Application</name>
+            </columns>
+            <label><!-- School Applications --></label>
+            <name>School Applications</name>
+        </sections>
+    </reportTypes>
+    <reportTypes>
         <description><!-- Contact to Account Relationships --></description>
         <label><!-- Contact to Account Relationships --></label>
         <name>Contact_to_Account_Relationships</name>
@@ -24678,52 +24415,6 @@
             <label><!-- Partner Fund Requests --></label>
             <name>Partner Fund Requests</name>
         </sections>
-    </reportTypes>
-    <reportTypes>
-        <description><!-- Forms &amp; Question Responses --></description>
-        <label><!-- Forms &amp; Question Responses --></label>
-        <name>Mogli_SMS__Forms_Responses</name>
-    </reportTypes>
-    <reportTypes>
-        <description><!-- Gateways with SMS --></description>
-        <label><!-- Gateways with SMS --></label>
-        <name>Mogli_SMS__Gateways_with_SMS</name>
-    </reportTypes>
-    <reportTypes>
-        <description><!-- Mogli AI Evals --></description>
-        <label><!-- Mogli AI Evals --></label>
-        <name>Mogli_SMS__Mogli_AI_Evals</name>
-        <sections>
-            <columns>
-                <label><!-- Mogli AI Parameter Set --></label>
-                <name>Mogli AI Parameter Set</name>
-            </columns>
-            <name>GenAI Evals</name>
-        </sections>
-        <sections>
-            <columns>
-                <label><!-- Created By : Time Zone --></label>
-                <name>Created By : Time Zone</name>
-            </columns>
-            <columns>
-                <label><!-- Created By : Title --></label>
-                <name>Created By : Title</name>
-            </columns>
-            <columns>
-                <label><!-- Created By : Username --></label>
-                <name>Created By : Username</name>
-            </columns>
-            <columns>
-                <label><!-- Created By: Profile --></label>
-                <name>Created By: Profile</name>
-            </columns>
-            <name>User (Created By)</name>
-        </sections>
-    </reportTypes>
-    <reportTypes>
-        <description><!-- Mogli URLs with Engagement Info --></description>
-        <label><!-- Mogli URLs with Engagement Info --></label>
-        <name>Mogli_SMS__Mogli_URLs_with_Engagement_Info</name>
     </reportTypes>
     <reportTypes>
         <description><!-- Opportunities with Historical Trending --></description>
@@ -24948,4 +24639,34 @@
             <name>Flow Interview Logs</name>
         </sections>
     </reportTypes>
+    <timelineObjectDefinitions>
+        <name>Benefit_Disbursements_Timeline</name>
+    </timelineObjectDefinitions>
+    <timelineObjectDefinitions>
+        <name>Enrollment_History</name>
+    </timelineObjectDefinitions>
+    <timelineObjectDefinitions>
+        <name>Student_Activities</name>
+    </timelineObjectDefinitions>
+    <timelineObjectDefinitions>
+        <name>Case_Enrollment_History</name>
+    </timelineObjectDefinitions>
+    <timelineObjectDefinitions>
+        <name>Case_Student_Activities</name>
+    </timelineObjectDefinitions>
+    <timelineObjectDefinitions>
+        <name>Alumni_Activities</name>
+    </timelineObjectDefinitions>
+    <timelineObjectDefinitions>
+        <name>Mentoring_Activities</name>
+    </timelineObjectDefinitions>
+    <timelineObjectDefinitions>
+        <name>HighTouchGivingAppTimeline</name>
+    </timelineObjectDefinitions>
+    <timelineObjectDefinitions>
+        <name>GiftCommitmentTimeline</name>
+    </timelineObjectDefinitions>
+    <timelineObjectDefinitions>
+        <name>Prospect_Activities</name>
+    </timelineObjectDefinitions>
 </Translations>

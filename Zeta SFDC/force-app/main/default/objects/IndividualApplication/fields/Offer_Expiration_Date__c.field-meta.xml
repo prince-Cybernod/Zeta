@@ -4,6 +4,7 @@
     <description>The date on which the current school offer expires or becomes invalid.</description>
     <label>Offer Expiration Date</label>
     <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
     <trackHistory>false</trackHistory>
     <type>Date</type>
 </CustomField>

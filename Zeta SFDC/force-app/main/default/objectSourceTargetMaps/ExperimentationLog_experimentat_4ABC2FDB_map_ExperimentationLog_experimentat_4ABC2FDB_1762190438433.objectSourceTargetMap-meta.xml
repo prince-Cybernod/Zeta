@@ -129,6 +129,14 @@
         <sourceFormula>PersonalizationDecisionId</sourceFormula>
         <targetField>ExperimentationLog_experimentat_4ABC2FDB__dll.PersonalizationDecisionId__c</targetField>
     </fieldSourceTargetMaps>
+    <fieldSourceTargetMaps>
+        <creationType>Custom</creationType>
+        <filterApplied>false</filterApplied>
+        <isSourceFormula>false</isSourceFormula>
+        <sourceField>ExperimentationLog_experimentat_4ABC2FDB.DataSpace__c</sourceField>
+        <sourceFormula>DataSpace</sourceFormula>
+        <targetField>ExperimentationLog_experimentat_4ABC2FDB__dll.DataSpace__c</targetField>
+    </fieldSourceTargetMaps>
     <masterLabel>ExperimentationLog_experimentat_4ABC2FDB_map_ExperimentationLog_experimentat_4ABC2FDB_1762190438433</masterLabel>
     <sourceObjectName>ExperimentationLog_experimentat_4ABC2FDB</sourceObjectName>
     <targetObjectName>ExperimentationLog_experimentat_4ABC2FDB__dll</targetObjectName>

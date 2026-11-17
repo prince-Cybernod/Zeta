@@ -198,6 +198,11 @@
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
+        <editable>true</editable>
+        <field>AcademicTermEnrollment.Race_Answers__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
         <editable>false</editable>
         <field>AcademicTermEnrollment.School_Name__c</field>
         <readable>true</readable>
@@ -205,6 +210,11 @@
     <fieldPermissions>
         <editable>true</editable>
         <field>AcademicTermEnrollment.StudentAcademicLevel</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>AcademicTermEnrollment.Student_Type__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>

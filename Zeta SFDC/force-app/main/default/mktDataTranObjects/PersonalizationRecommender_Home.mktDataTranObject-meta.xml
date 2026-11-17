@@ -6,6 +6,32 @@
     <dataSourceObject>PersonalizationRecommender_Home</dataSourceObject>
     <masterLabel>PersonalizationRecommender_Home</masterLabel>
     <mktDataTranFields>
+        <fullName>ChanceToLoseThreshold</fullName>
+        <creationType>Custom</creationType>
+        <datatype>N</datatype>
+        <externalName>ChanceToLoseThreshold</externalName>
+        <isDataRequired>false</isDataRequired>
+        <length>0</length>
+        <masterLabel>ChanceToLoseThreshold</masterLabel>
+        <precision>0</precision>
+        <primaryIndexOrder>0</primaryIndexOrder>
+        <scale>0</scale>
+        <sequence>27</sequence>
+    </mktDataTranFields>
+    <mktDataTranFields>
+        <fullName>ChanceToWinThreshold</fullName>
+        <creationType>Custom</creationType>
+        <datatype>N</datatype>
+        <externalName>ChanceToWinThreshold</externalName>
+        <isDataRequired>false</isDataRequired>
+        <length>0</length>
+        <masterLabel>ChanceToWinThreshold</masterLabel>
+        <precision>0</precision>
+        <primaryIndexOrder>0</primaryIndexOrder>
+        <scale>0</scale>
+        <sequence>26</sequence>
+    </mktDataTranFields>
+    <mktDataTranFields>
         <fullName>ContentObjectId</fullName>
         <creationType>Custom</creationType>
         <datatype>S</datatype>
@@ -111,6 +137,19 @@
         <sequence>0</sequence>
     </mktDataTranFields>
     <mktDataTranFields>
+        <fullName>IsRemote</fullName>
+        <creationType>Custom</creationType>
+        <datatype>S</datatype>
+        <externalName>IsRemote</externalName>
+        <isDataRequired>false</isDataRequired>
+        <length>0</length>
+        <masterLabel>IsRemote</masterLabel>
+        <precision>0</precision>
+        <primaryIndexOrder>0</primaryIndexOrder>
+        <scale>0</scale>
+        <sequence>22</sequence>
+    </mktDataTranFields>
+    <mktDataTranFields>
         <fullName>ItemDataGraphId</fullName>
         <creationType>Custom</creationType>
         <datatype>S</datatype>
@@ -179,6 +218,19 @@
         <sequence>0</sequence>
     </mktDataTranFields>
     <mktDataTranFields>
+        <fullName>LastRefreshForCbAnlyt</fullName>
+        <creationType>Custom</creationType>
+        <datatype>F</datatype>
+        <externalName>LastRefreshForCbAnlyt</externalName>
+        <isDataRequired>false</isDataRequired>
+        <length>0</length>
+        <masterLabel>LastRefreshForCbAnlyt</masterLabel>
+        <precision>0</precision>
+        <primaryIndexOrder>0</primaryIndexOrder>
+        <scale>0</scale>
+        <sequence>33</sequence>
+    </mktDataTranFields>
+    <mktDataTranFields>
         <fullName>LastSuccessfulRefresh</fullName>
         <creationType>Custom</creationType>
         <datatype>F</datatype>
@@ -191,6 +243,19 @@
         <primaryIndexOrder>0</primaryIndexOrder>
         <scale>0</scale>
         <sequence>0</sequence>
+    </mktDataTranFields>
+    <mktDataTranFields>
+        <fullName>LastSuccRefreshForCbAnlyt</fullName>
+        <creationType>Custom</creationType>
+        <datatype>F</datatype>
+        <externalName>LastSuccRefreshForCbAnlyt</externalName>
+        <isDataRequired>false</isDataRequired>
+        <length>0</length>
+        <masterLabel>LastSuccRefreshForCbAnlyt</masterLabel>
+        <precision>0</precision>
+        <primaryIndexOrder>0</primaryIndexOrder>
+        <scale>0</scale>
+        <sequence>32</sequence>
     </mktDataTranFields>
     <mktDataTranFields>
         <fullName>LastViewedDate</fullName>
@@ -220,6 +285,32 @@
         <sequence>0</sequence>
     </mktDataTranFields>
     <mktDataTranFields>
+        <fullName>LatRfrshStatusForCbAnlyt</fullName>
+        <creationType>Custom</creationType>
+        <datatype>S</datatype>
+        <externalName>LatRfrshStatusForCbAnlyt</externalName>
+        <isDataRequired>false</isDataRequired>
+        <length>0</length>
+        <masterLabel>LatRfrshStatusForCbAnlyt</masterLabel>
+        <precision>0</precision>
+        <primaryIndexOrder>0</primaryIndexOrder>
+        <scale>0</scale>
+        <sequence>31</sequence>
+    </mktDataTranFields>
+    <mktDataTranFields>
+        <fullName>MinimumRequiredParticipants</fullName>
+        <creationType>Custom</creationType>
+        <datatype>N</datatype>
+        <externalName>MinimumRequiredParticipants</externalName>
+        <isDataRequired>false</isDataRequired>
+        <length>0</length>
+        <masterLabel>MinimumRequiredParticipants</masterLabel>
+        <precision>0</precision>
+        <primaryIndexOrder>0</primaryIndexOrder>
+        <scale>0</scale>
+        <sequence>28</sequence>
+    </mktDataTranFields>
+    <mktDataTranFields>
         <fullName>Name</fullName>
         <creationType>Custom</creationType>
         <datatype>S</datatype>
@@ -231,6 +322,45 @@
         <primaryIndexOrder>0</primaryIndexOrder>
         <scale>0</scale>
         <sequence>0</sequence>
+    </mktDataTranFields>
+    <mktDataTranFields>
+        <fullName>ObjectiveId</fullName>
+        <creationType>Custom</creationType>
+        <datatype>S</datatype>
+        <externalName>ObjectiveId</externalName>
+        <isDataRequired>false</isDataRequired>
+        <length>0</length>
+        <masterLabel>Objective</masterLabel>
+        <precision>0</precision>
+        <primaryIndexOrder>0</primaryIndexOrder>
+        <scale>0</scale>
+        <sequence>21</sequence>
+    </mktDataTranFields>
+    <mktDataTranFields>
+        <fullName>PersonalizationSchemaEnum</fullName>
+        <creationType>Custom</creationType>
+        <datatype>S</datatype>
+        <externalName>PersonalizationSchemaEnum</externalName>
+        <isDataRequired>false</isDataRequired>
+        <length>0</length>
+        <masterLabel>PersonalizationSchemaEnum</masterLabel>
+        <precision>0</precision>
+        <primaryIndexOrder>0</primaryIndexOrder>
+        <scale>0</scale>
+        <sequence>30</sequence>
+    </mktDataTranFields>
+    <mktDataTranFields>
+        <fullName>PersonalizationSchemaId</fullName>
+        <creationType>Custom</creationType>
+        <datatype>S</datatype>
+        <externalName>PersonalizationSchemaId</externalName>
+        <isDataRequired>false</isDataRequired>
+        <length>0</length>
+        <masterLabel>PersonalizationSchema</masterLabel>
+        <precision>0</precision>
+        <primaryIndexOrder>0</primaryIndexOrder>
+        <scale>0</scale>
+        <sequence>29</sequence>
     </mktDataTranFields>
     <mktDataTranFields>
         <fullName>ProfileDataGraphId</fullName>
@@ -246,6 +376,19 @@
         <sequence>0</sequence>
     </mktDataTranFields>
     <mktDataTranFields>
+        <fullName>ScheduleFrequencyInMinutes</fullName>
+        <creationType>Custom</creationType>
+        <datatype>N</datatype>
+        <externalName>ScheduleFrequencyInMinutes</externalName>
+        <isDataRequired>false</isDataRequired>
+        <length>0</length>
+        <masterLabel>ScheduleFrequencyInMinutes</masterLabel>
+        <precision>0</precision>
+        <primaryIndexOrder>0</primaryIndexOrder>
+        <scale>0</scale>
+        <sequence>25</sequence>
+    </mktDataTranFields>
+    <mktDataTranFields>
         <fullName>SfdcOrganizationId</fullName>
         <creationType>Custom</creationType>
         <datatype>S</datatype>
@@ -257,6 +400,32 @@
         <primaryIndexOrder>0</primaryIndexOrder>
         <scale>0</scale>
         <sequence>20</sequence>
+    </mktDataTranFields>
+    <mktDataTranFields>
+        <fullName>SourceRecordId</fullName>
+        <creationType>Custom</creationType>
+        <datatype>S</datatype>
+        <externalName>SourceRecordId</externalName>
+        <isDataRequired>false</isDataRequired>
+        <length>0</length>
+        <masterLabel>SourceRecord</masterLabel>
+        <precision>0</precision>
+        <primaryIndexOrder>0</primaryIndexOrder>
+        <scale>0</scale>
+        <sequence>24</sequence>
+    </mktDataTranFields>
+    <mktDataTranFields>
+        <fullName>State</fullName>
+        <creationType>Custom</creationType>
+        <datatype>S</datatype>
+        <externalName>State</externalName>
+        <isDataRequired>false</isDataRequired>
+        <length>0</length>
+        <masterLabel>State</masterLabel>
+        <precision>0</precision>
+        <primaryIndexOrder>0</primaryIndexOrder>
+        <scale>0</scale>
+        <sequence>23</sequence>
     </mktDataTranFields>
     <mktDataTranFields>
         <fullName>Status</fullName>

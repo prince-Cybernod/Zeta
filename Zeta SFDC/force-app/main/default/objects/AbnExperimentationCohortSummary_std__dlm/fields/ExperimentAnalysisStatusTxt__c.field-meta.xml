@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>ExperimentAnalysisStatusTxt__c</fullName>
+    <label>Experiment Analysis Status</label>
+    <length>60</length>
+    <mktDataModelFieldAttributes>
+        <definitionCreationType>Standard</definitionCreationType>
+        <isDynamicLookup>false</isDynamicLookup>
+        <labelOverride>Experiment Analysis Status</labelOverride>
+        <masterLabel>Experiment Analysis Status</masterLabel>
+        <refAttrDeveloperName>ExperimentAnalysisStatusTxt</refAttrDeveloperName>
+        <usageTag>None</usageTag>
+    </mktDataModelFieldAttributes>
+    <required>false</required>
+    <type>Text</type>
+</CustomField>

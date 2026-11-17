@@ -138,6 +138,32 @@
         <sequence>0</sequence>
     </mktDataTranFields>
     <mktDataTranFields>
+        <fullName>LastReferencedDate</fullName>
+        <creationType>Custom</creationType>
+        <datatype>F</datatype>
+        <externalName>LastReferencedDate</externalName>
+        <isDataRequired>false</isDataRequired>
+        <length>0</length>
+        <masterLabel>LastReferencedDate</masterLabel>
+        <precision>0</precision>
+        <primaryIndexOrder>0</primaryIndexOrder>
+        <scale>0</scale>
+        <sequence>15</sequence>
+    </mktDataTranFields>
+    <mktDataTranFields>
+        <fullName>LastViewedDate</fullName>
+        <creationType>Custom</creationType>
+        <datatype>F</datatype>
+        <externalName>LastViewedDate</externalName>
+        <isDataRequired>false</isDataRequired>
+        <length>0</length>
+        <masterLabel>LastViewedDate</masterLabel>
+        <precision>0</precision>
+        <primaryIndexOrder>0</primaryIndexOrder>
+        <scale>0</scale>
+        <sequence>14</sequence>
+    </mktDataTranFields>
+    <mktDataTranFields>
         <fullName>Name</fullName>
         <creationType>Custom</creationType>
         <datatype>S</datatype>

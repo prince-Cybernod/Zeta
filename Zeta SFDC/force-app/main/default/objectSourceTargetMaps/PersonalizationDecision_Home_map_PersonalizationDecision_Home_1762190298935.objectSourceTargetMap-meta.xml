@@ -145,6 +145,14 @@
         <sourceFormula>State</sourceFormula>
         <targetField>PersonalizationDecision_Home__dll.State__c</targetField>
     </fieldSourceTargetMaps>
+    <fieldSourceTargetMaps>
+        <creationType>Custom</creationType>
+        <filterApplied>false</filterApplied>
+        <isSourceFormula>false</isSourceFormula>
+        <sourceField>PersonalizationDecision_Home.ActiveAbnExperimentId__c</sourceField>
+        <sourceFormula>ActiveAbnExperimentId</sourceFormula>
+        <targetField>PersonalizationDecision_Home__dll.ActiveAbnExperimentId__c</targetField>
+    </fieldSourceTargetMaps>
     <masterLabel>PersonalizationDecision_Home_map_PersonalizationDecision_Home_1762190298935</masterLabel>
     <sourceObjectName>PersonalizationDecision_Home</sourceObjectName>
     <targetObjectName>PersonalizationDecision_Home__dll</targetObjectName>

@@ -10,6 +10,7 @@ import finalizeLottery from '@salesforce/apex/RunLotteryController.finalizeLotte
 import finalizeLotteryBatch from '@salesforce/apex/RunLotteryController.finalizeLotteryBatch';
 import getCapacityStats from '@salesforce/apex/RunLotteryController.getCapacityStats';
 import getResults from '@salesforce/apex/RunLotteryController.getResults';
+import getStaffPriorityStats from '@salesforce/apex/RunLotteryController.getStaffPriorityStats';
 import getUnrunCapacities from '@salesforce/apex/RunLotteryController.getUnrunCapacities';
 import initializeLottery from '@salesforce/apex/RunLotteryController.initializeLottery';
 import optimizeOffers from '@salesforce/apex/RunLotteryController.optimizeOffers';
@@ -18,6 +19,7 @@ import publishLotteryRun from '@salesforce/apex/RunLotteryController.publishLott
 import randomizeApplications from '@salesforce/apex/RunLotteryController.randomizeApplications';
 import randomizeApplicationsBatch from '@salesforce/apex/RunLotteryController.randomizeApplicationsBatch';
 import releaseLotteryLock from '@salesforce/apex/RunLotteryController.releaseLotteryLock';
+import removeStaffPriority from '@salesforce/apex/RunLotteryController.removeStaffPriority';
 import runLottery from '@salesforce/apex/RunLotteryController.runLottery';
 import APPLICATION_CLOSE_DATE from '@salesforce/schema/ApplicationTimeline.ApplicationCloseDate';
 import APPLICATION_OPEN_DATE from '@salesforce/schema/ApplicationTimeline.ApplicationOpenDate';
@@ -38,6 +40,16 @@ const PRE_RUN_STATS_COLUMNS = [
   { label: 'Applications', fieldName: 'applicationCount', type: 'number' }
 ];
 
+const STAFF_PRIORITY_COLUMNS = [
+  { label: 'Charter', fieldName: 'charterName', type: 'text' },
+  { label: 'Staff Students', fieldName: 'staffApplicantCount', type: 'number' },
+  { label: 'Seats', fieldName: 'seats', type: 'number' },
+  { label: '%', fieldName: 'currentPercentDisplay', type: 'text' },
+  { label: 'Cap', fieldName: 'capDisplay', type: 'text' },
+  { label: 'Over/Under', fieldName: 'status', type: 'text' },
+  { label: 'Will Remove', fieldName: 'toRemove', type: 'number' }
+];
+
 const STEPS = {
   CONFIGURE: 'configure',
   EXECUTE: 'execute',
@@ -50,6 +62,12 @@ const EXECUTION_STEPS = {
     label: 'Initializing',
     icon: 'utility:setup',
     message: 'Acquiring lock and creating run log...'
+  },
+  STAFF_PRIORITY: {
+    id: 'staff_priority',
+    label: 'Staff Priority Cap',
+    icon: 'utility:priority',
+    message: 'Removing staff priority for over-cap Charters...'
   },
   RANDOMIZE: {
     id: 'randomize',
@@ -251,6 +269,7 @@ export default class RunLottery extends NavigationMixin(LightningElement) {
   runLogUrl;
   wiredCapacitiesResult;
   preRunStats = [];
+  staffPriorityStats = [];
   isLoadingStats = false;
 
   executionStep = null;
@@ -838,6 +857,30 @@ export default class RunLottery extends NavigationMixin(LightningElement) {
     return this.preRunStats.length > 0;
   }
 
+  get staffPriorityColumns() {
+    return STAFF_PRIORITY_COLUMNS;
+  }
+
+  get hasStaffPriorityStats() {
+    return this.staffPriorityStats.length > 0;
+  }
+
+  get blockedStaffPriorityCharters() {
+    return this.staffPriorityStats.filter((stat) => stat.status === 'Blocked');
+  }
+
+  get hasBlockedStaffPriorityCharter() {
+    return this.blockedStaffPriorityCharters.length > 0;
+  }
+
+  get overCapStaffPriorityCharters() {
+    return this.staffPriorityStats.filter((stat) => stat.status === 'Over');
+  }
+
+  get confirmLotteryDisabled() {
+    return this.hasBlockedStaffPriorityCharter;
+  }
+
   get hasZeroOffers() {
     return this.runResponse && this.runResponse.preOffersAssigned === 0;
   }
@@ -995,17 +1038,37 @@ export default class RunLottery extends NavigationMixin(LightningElement) {
 
     this.isLoadingStats = true;
     this.preRunStats = [];
+    this.staffPriorityStats = [];
     this.showConfirmationModal = true;
 
     try {
-      const stats = await getCapacityStats({
-        capacityIds: this.selectedCapacityIds,
-        startDate: this.startDate || null,
-        endDate: this.endDate || null
-      });
+      const [stats, staffPriorityStats] = await Promise.all([
+        getCapacityStats({
+          capacityIds: this.selectedCapacityIds,
+          startDate: this.startDate || null,
+          endDate: this.endDate || null
+        }),
+        getStaffPriorityStats({
+          capacityIds: this.selectedCapacityIds,
+          startDate: this.startDate || null,
+          endDate: this.endDate || null
+        })
+      ]);
       this.preRunStats = stats.map((stat) => ({
         ...stat,
         id: stat.capacityId
+      }));
+      this.staffPriorityStats = staffPriorityStats.map((stat) => ({
+        ...stat,
+        id: stat.charterId,
+        currentPercentDisplay:
+          stat.currentPercent != null
+            ? `${stat.currentPercent.toFixed(1)}%`
+            : '',
+        capDisplay:
+          stat.capPercent != null
+            ? `${stat.capPercent}% = ${stat.maxAllowed}`
+            : ''
       }));
     } catch (error) {
       const parsed = ErrorHandler.parse(error);
@@ -1339,9 +1402,35 @@ export default class RunLottery extends NavigationMixin(LightningElement) {
           applicationTimelineId: this.recordId
         })
       );
+      if (initResult.isSuccess === false) {
+        throw new Error(initResult.errorMessage || 'Initialization failed');
+      }
       this.jobId = initResult.jobId;
       runLogId = initResult.runLogId;
       runLogName = initResult.runLogName;
+
+      // ========================================
+      // Staff Priority Cap: remove staff priority for over-cap Charters
+      // (after Initialize, before any grade is randomized)
+      // ========================================
+      if (this.overCapStaffPriorityCharters.length > 0) {
+        await this.executeStepWithMinDisplay(
+          'STAFF_PRIORITY',
+          (async () => {
+            for (const charterStat of this.overCapStaffPriorityCharters) {
+              // eslint-disable-next-line no-await-in-loop -- Sequential per-Charter removal
+              await removeStaffPriority({
+                charterId: charterStat.charterId,
+                capacityIds: this.selectedCapacityIds,
+                runLogId: runLogId,
+                jobId: this.jobId,
+                startDate: this.startDate || null,
+                endDate: this.endDate || null
+              });
+            }
+          })()
+        );
+      }
 
       // ========================================
       // Phase A: Randomize + Assign per grade

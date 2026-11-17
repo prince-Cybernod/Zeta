@@ -105,6 +105,62 @@ private class CurrentPriorityCalcServiceImplTest {
   }
 
   @IsTest
+  private static void calculateForRecords_staffRemovedWithNoSibling_dropsToInDistrict() {
+    Id appId = SObjectIds.generateFakeId(Schema.IndividualApplication.SObjectType);
+    List<AcademicInterest> academicInterests = new List<AcademicInterest>{
+      new AcademicInterest(
+        IndividualApplicationId = appId,
+        In_District_Priority__c = true,
+        Staff_Priority_Removed__c = true
+      )
+    };
+
+    IndividualApplication parentApp = new IndividualApplication(
+      Id = appId,
+      Relationship_Priority_Group__c = 2.0
+    );
+
+    MOCK_REPO.when(MOCK_REPO.method.queryWithBinds())
+      .thenReturn(new List<IndividualApplication>{ parentApp });
+
+    SERVICE.calculateForRecords(academicInterests);
+
+    Assert.areEqual(
+      3,
+      academicInterests[0].Current_Priority_Group__c,
+      'Staff priority removed with no sibling priority should drop to in-district'
+    );
+  }
+
+  @IsTest
+  private static void calculateForRecords_staffRemovedWithSibling_staysSibling() {
+    Id appId = SObjectIds.generateFakeId(Schema.IndividualApplication.SObjectType);
+    List<AcademicInterest> academicInterests = new List<AcademicInterest>{
+      new AcademicInterest(
+        IndividualApplicationId = appId,
+        In_District_Priority__c = false,
+        Staff_Priority_Removed__c = true
+      )
+    };
+
+    IndividualApplication parentApp = new IndividualApplication(
+      Id = appId,
+      Relationship_Priority_Group__c = 1.0
+    );
+
+    MOCK_REPO.when(MOCK_REPO.method.queryWithBinds())
+      .thenReturn(new List<IndividualApplication>{ parentApp });
+
+    SERVICE.calculateForRecords(academicInterests);
+
+    Assert.areEqual(
+      1,
+      academicInterests[0].Current_Priority_Group__c,
+      'Sibling priority wins regardless of staff priority removal'
+    );
+  }
+
+  @IsTest
   private static void recalculateForApplications_nullSet_handlesGracefully() {
     SERVICE.recalculateForApplications(null);
 

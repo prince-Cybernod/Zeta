@@ -4,6 +4,7 @@
     <description>Identifies which guardian on the application is a Zeta employee. Renders only when Employee_Priority__c is checked.</description>
     <label>Zeta Employee Guardian</label>
     <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
     <trackHistory>false</trackHistory>
     <type>Picklist</type>
     <valueSet>

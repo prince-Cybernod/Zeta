@@ -7,17 +7,23 @@ private class RunLotteryControllerTest {
   private static final LotteryAuditLogServiceMock AUDIT_LOG_MOCK;
   private static final DatabaseRepoMock DB_MOCK;
   private static final LotteryLockServiceMock LOCK_MOCK;
+  private static final CharterRollupServiceMock CHARTER_ROLLUP_MOCK;
+  private static final StaffPriorityCapServiceMock STAFF_PRIORITY_CAP_MOCK;
 
   static {
     ORCHESTRATION_MOCK = new LotteryOrchestrationServiceMock();
     AUDIT_LOG_MOCK = new LotteryAuditLogServiceMock();
     DB_MOCK = new DatabaseRepoMock();
     LOCK_MOCK = new LotteryLockServiceMock();
+    CHARTER_ROLLUP_MOCK = new CharterRollupServiceMock();
+    STAFF_PRIORITY_CAP_MOCK = new StaffPriorityCapServiceMock();
 
     RunLotteryController.orchestrationService = ORCHESTRATION_MOCK;
     RunLotteryController.auditLogService = AUDIT_LOG_MOCK;
     RunLotteryController.databaseRepo = DB_MOCK;
     RunLotteryController.lockService = LOCK_MOCK;
+    RunLotteryController.charterRollupService = CHARTER_ROLLUP_MOCK;
+    RunLotteryController.staffPriorityCapService = STAFF_PRIORITY_CAP_MOCK;
   }
 
   @IsTest
@@ -431,10 +437,16 @@ private class RunLotteryControllerTest {
       new Map<String, Object>{ 'Name' => 'LR-001' }
     );
 
+    CHARTER_ROLLUP_MOCK.when(CHARTER_ROLLUP_MOCK.method.recalculate()).thenReturnVoid();
+    STAFF_PRIORITY_CAP_MOCK.when(STAFF_PRIORITY_CAP_MOCK.method.getCharterStats())
+      .thenReturn(new List<StaffPriorityCapCharterStats>());
     LOCK_MOCK.when(LOCK_MOCK.method.acquireLock()).thenReturn(testJobId);
     AUDIT_LOG_MOCK.when(AUDIT_LOG_MOCK.method.createLotteryRunLog()).thenReturn(runLogId);
     AUDIT_LOG_MOCK.when(AUDIT_LOG_MOCK.method.linkCapacitiesToRun()).thenReturnVoid();
     DB_MOCK.when(DB_MOCK.method.queryWithBinds())
+      .thenReturn(
+        new List<Account>{ new Account(Id = SObjectIds.generateFakeId(Schema.Account.SObjectType)) }
+      )
       .thenReturn(new List<Lottery_Run_Log__c>{ runLog });
 
     InitializeLotteryResult result = RunLotteryController.initializeLottery(
@@ -508,6 +520,9 @@ private class RunLotteryControllerTest {
     Id capacityId = SObjectIds.generateFakeId(Schema.Lottery_Capacity__c.SObjectType);
     Id timelineId = SObjectIds.generateFakeId(Schema.ApplicationTimeline.SObjectType);
 
+    DB_MOCK.when(DB_MOCK.method.queryWithBinds()).thenReturn(new List<Account>());
+    STAFF_PRIORITY_CAP_MOCK.when(STAFF_PRIORITY_CAP_MOCK.method.getCharterStats())
+      .thenReturn(new List<StaffPriorityCapCharterStats>());
     LOCK_MOCK.when(LOCK_MOCK.method.acquireLock())
       .thenThrow(new LotteryLockException('Capacity already locked by another job'));
 
@@ -530,6 +545,9 @@ private class RunLotteryControllerTest {
     Id capacityId = SObjectIds.generateFakeId(Schema.Lottery_Capacity__c.SObjectType);
     Id timelineId = SObjectIds.generateFakeId(Schema.ApplicationTimeline.SObjectType);
 
+    DB_MOCK.when(DB_MOCK.method.queryWithBinds()).thenReturn(new List<Account>());
+    STAFF_PRIORITY_CAP_MOCK.when(STAFF_PRIORITY_CAP_MOCK.method.getCharterStats())
+      .thenReturn(new List<StaffPriorityCapCharterStats>());
     LOCK_MOCK.when(LOCK_MOCK.method.acquireLock()).thenReturn('test-job-123');
     AUDIT_LOG_MOCK.when(AUDIT_LOG_MOCK.method.createLotteryRunLog())
       .thenThrow(new DmlException('Database error'));
@@ -544,6 +562,243 @@ private class RunLotteryControllerTest {
       result.errorMessage.contains('Initialization failed'),
       'Error should mention initialization failure: ' + result.errorMessage
     );
+  }
+
+  @IsTest
+  private static void initializeLottery_recalculatesCharterRollup() {
+    Id capacityId = SObjectIds.generateFakeId(Schema.Lottery_Capacity__c.SObjectType);
+    Id timelineId = SObjectIds.generateFakeId(Schema.ApplicationTimeline.SObjectType);
+    Id runLogId = SObjectIds.generateFakeId(Schema.Lottery_Run_Log__c.SObjectType);
+    Id charterId1 = SObjectIds.generateFakeId(Schema.Account.SObjectType);
+    Id charterId2 = SObjectIds.generateFakeId(Schema.Account.SObjectType);
+
+    Lottery_Run_Log__c runLog = (Lottery_Run_Log__c) ReadOnlySObject.create(
+      new Lottery_Run_Log__c(Id = runLogId),
+      new Map<String, Object>{ 'Name' => 'LR-001' }
+    );
+
+    CHARTER_ROLLUP_MOCK.when(CHARTER_ROLLUP_MOCK.method.recalculate()).thenReturnVoid();
+    STAFF_PRIORITY_CAP_MOCK.when(STAFF_PRIORITY_CAP_MOCK.method.getCharterStats())
+      .thenReturn(new List<StaffPriorityCapCharterStats>());
+    LOCK_MOCK.when(LOCK_MOCK.method.acquireLock()).thenReturn('test-job-123');
+    AUDIT_LOG_MOCK.when(AUDIT_LOG_MOCK.method.createLotteryRunLog()).thenReturn(runLogId);
+    AUDIT_LOG_MOCK.when(AUDIT_LOG_MOCK.method.linkCapacitiesToRun()).thenReturnVoid();
+    DB_MOCK.when(DB_MOCK.method.queryWithBinds())
+      .thenReturn(new List<Account>{ new Account(Id = charterId1), new Account(Id = charterId2) })
+      .thenReturn(new List<Lottery_Run_Log__c>{ runLog });
+
+    InitializeLotteryResult result = RunLotteryController.initializeLottery(
+      new List<Id>{ capacityId },
+      timelineId
+    );
+
+    Assert.isTrue(result.isSuccess, 'Result should be successful');
+    CHARTER_ROLLUP_MOCK.verify(CHARTER_ROLLUP_MOCK.method.recalculate(), 1);
+    Set<Id> capturedIds = (Set<Id>) CHARTER_ROLLUP_MOCK.getCalls(
+        CHARTER_ROLLUP_MOCK.method.recalculate()
+      )[0]
+      .get('charterAccountIds');
+    Assert.areEqual(2, capturedIds.size(), 'Should pass both Charter IDs');
+    Assert.isTrue(capturedIds.contains(charterId1), 'Should include the first Charter');
+    Assert.isTrue(capturedIds.contains(charterId2), 'Should include the second Charter');
+    LOCK_MOCK.verify(LOCK_MOCK.method.acquireLock());
+  }
+
+  @IsTest
+  private static void initializeLottery_withCharterRollupFailure_returnsErrorWithoutLock() {
+    Id capacityId = SObjectIds.generateFakeId(Schema.Lottery_Capacity__c.SObjectType);
+    Id timelineId = SObjectIds.generateFakeId(Schema.ApplicationTimeline.SObjectType);
+
+    DB_MOCK.when(DB_MOCK.method.queryWithBinds())
+      .thenReturn(
+        new List<Account>{ new Account(Id = SObjectIds.generateFakeId(Schema.Account.SObjectType)) }
+      );
+    CHARTER_ROLLUP_MOCK.when(CHARTER_ROLLUP_MOCK.method.recalculate())
+      .thenThrow(new DmlException('Rollup failed'));
+    LOCK_MOCK.when(LOCK_MOCK.method.acquireLock()).thenReturn('test-job-123');
+    AUDIT_LOG_MOCK.when(AUDIT_LOG_MOCK.method.createLotteryRunLog())
+      .thenReturn(SObjectIds.generateFakeId(Schema.Lottery_Run_Log__c.SObjectType));
+
+    InitializeLotteryResult result = RunLotteryController.initializeLottery(
+      new List<Id>{ capacityId },
+      timelineId
+    );
+
+    Assert.isFalse(result.isSuccess, 'Result should not be successful');
+    Assert.isTrue(
+      result.errorMessage.startsWith('Initialization failed: '),
+      'Error should mention initialization failure: ' + result.errorMessage
+    );
+    Assert.isTrue(
+      result.errorMessage.contains('Rollup failed'),
+      'Error should carry the rollup failure: ' + result.errorMessage
+    );
+    CHARTER_ROLLUP_MOCK.verify(CHARTER_ROLLUP_MOCK.method.recalculate(), 1);
+    LOCK_MOCK.never(LOCK_MOCK.method.acquireLock());
+    AUDIT_LOG_MOCK.never(AUDIT_LOG_MOCK.method.createLotteryRunLog());
+  }
+
+  @IsTest
+  private static void initializeLottery_withNoCharters_skipsRecalculate() {
+    Id capacityId = SObjectIds.generateFakeId(Schema.Lottery_Capacity__c.SObjectType);
+    Id timelineId = SObjectIds.generateFakeId(Schema.ApplicationTimeline.SObjectType);
+    Id runLogId = SObjectIds.generateFakeId(Schema.Lottery_Run_Log__c.SObjectType);
+
+    Lottery_Run_Log__c runLog = (Lottery_Run_Log__c) ReadOnlySObject.create(
+      new Lottery_Run_Log__c(Id = runLogId),
+      new Map<String, Object>{ 'Name' => 'LR-001' }
+    );
+
+    STAFF_PRIORITY_CAP_MOCK.when(STAFF_PRIORITY_CAP_MOCK.method.getCharterStats())
+      .thenReturn(new List<StaffPriorityCapCharterStats>());
+    LOCK_MOCK.when(LOCK_MOCK.method.acquireLock()).thenReturn('test-job-123');
+    AUDIT_LOG_MOCK.when(AUDIT_LOG_MOCK.method.createLotteryRunLog()).thenReturn(runLogId);
+    AUDIT_LOG_MOCK.when(AUDIT_LOG_MOCK.method.linkCapacitiesToRun()).thenReturnVoid();
+    DB_MOCK.when(DB_MOCK.method.queryWithBinds())
+      .thenReturn(new List<Account>())
+      .thenReturn(new List<Lottery_Run_Log__c>{ runLog });
+
+    InitializeLotteryResult result = RunLotteryController.initializeLottery(
+      new List<Id>{ capacityId },
+      timelineId
+    );
+
+    Assert.isTrue(result.isSuccess, 'Result should be successful');
+    CHARTER_ROLLUP_MOCK.never(CHARTER_ROLLUP_MOCK.method.recalculate());
+  }
+
+  @IsTest
+  private static void initializeLottery_withBlockedCharter_returnsFailureWithoutLocking() {
+    Id capacityId = SObjectIds.generateFakeId(Schema.Lottery_Capacity__c.SObjectType);
+    Id timelineId = SObjectIds.generateFakeId(Schema.ApplicationTimeline.SObjectType);
+
+    StaffPriorityCapCharterStats blockedStats = new StaffPriorityCapCharterStats();
+    blockedStats.status = StaffPriorityCapCharterStats.STATUS_BLOCKED;
+    blockedStats.message = 'Inwood 1 Kindergarten: Total Available Seats for School Year is blank or zero.';
+
+    DB_MOCK.when(DB_MOCK.method.queryWithBinds()).thenReturn(new List<Account>());
+    STAFF_PRIORITY_CAP_MOCK.when(STAFF_PRIORITY_CAP_MOCK.method.getCharterStats())
+      .thenReturn(new List<StaffPriorityCapCharterStats>{ blockedStats });
+
+    InitializeLotteryResult result = RunLotteryController.initializeLottery(
+      new List<Id>{ capacityId },
+      timelineId
+    );
+
+    Assert.isFalse(result.isSuccess, 'Should fail when a Charter is Blocked');
+    Assert.areEqual(
+      blockedStats.message,
+      result.errorMessage,
+      'Error message should be the Blocked Charter message'
+    );
+    LOCK_MOCK.never(LOCK_MOCK.method.acquireLock());
+    AUDIT_LOG_MOCK.never(AUDIT_LOG_MOCK.method.createLotteryRunLog());
+  }
+
+  @IsTest
+  private static void getStaffPriorityStats_delegatesToService() {
+    Id capacityId = SObjectIds.generateFakeId(Schema.Lottery_Capacity__c.SObjectType);
+    StaffPriorityCapCharterStats stats = new StaffPriorityCapCharterStats();
+    stats.status = StaffPriorityCapCharterStats.STATUS_OVER;
+
+    STAFF_PRIORITY_CAP_MOCK.when(STAFF_PRIORITY_CAP_MOCK.method.getCharterStats())
+      .thenReturn(new List<StaffPriorityCapCharterStats>{ stats });
+
+    List<StaffPriorityCapCharterStats> result = RunLotteryController.getStaffPriorityStats(
+      new List<Id>{ capacityId },
+      null,
+      null
+    );
+
+    Assert.areEqual(1, result.size(), 'Should return the service result');
+    STAFF_PRIORITY_CAP_MOCK.verify(STAFF_PRIORITY_CAP_MOCK.method.getCharterStats(), 1);
+  }
+
+  @IsTest
+  private static void removeStaffPriority_verifiesLockAndAppendsSummary() {
+    Id capacityId = SObjectIds.generateFakeId(Schema.Lottery_Capacity__c.SObjectType);
+    Id charterId = SObjectIds.generateFakeId(Schema.Account.SObjectType);
+    Id runLogId = SObjectIds.generateFakeId(Schema.Lottery_Run_Log__c.SObjectType);
+    String testJobId = 'test-job-123';
+
+    StaffPriorityCapCharterStats preRemovalStats = new StaffPriorityCapCharterStats();
+    preRemovalStats.charterId = charterId;
+    preRemovalStats.charterName = 'Charter A';
+    preRemovalStats.staffApplicantCount = 20;
+    preRemovalStats.seats = 100;
+    preRemovalStats.maxAllowed = 15;
+    preRemovalStats.status = StaffPriorityCapCharterStats.STATUS_OVER;
+
+    StaffPriorityCapRemovalResult removalResult = new StaffPriorityCapRemovalResult();
+    removalResult.removedCount = 3;
+    removalResult.residual = 2;
+
+    Lottery_Run_Log__c runLog = new Lottery_Run_Log__c(
+      Id = runLogId,
+      Staff_Priority_Summary__c = null
+    );
+
+    LOCK_MOCK.when(LOCK_MOCK.method.verifyLock()).thenReturnVoid();
+    STAFF_PRIORITY_CAP_MOCK.when(STAFF_PRIORITY_CAP_MOCK.method.getCharterStats())
+      .thenReturn(new List<StaffPriorityCapCharterStats>{ preRemovalStats });
+    STAFF_PRIORITY_CAP_MOCK.when(STAFF_PRIORITY_CAP_MOCK.method.removeForCharter())
+      .thenReturn(removalResult);
+    DB_MOCK.when(DB_MOCK.method.queryWithBinds())
+      .thenReturn(new List<Lottery_Run_Log__c>{ runLog });
+    DB_MOCK.when(DB_MOCK.method.updateSObjects()).thenReturnVoid();
+
+    StaffPriorityCapRemovalResult result = RunLotteryController.removeStaffPriority(
+      charterId,
+      new List<Id>{ capacityId },
+      runLogId,
+      testJobId,
+      null,
+      null
+    );
+
+    Assert.areEqual(3, result.removedCount, 'Should return the service result');
+    LOCK_MOCK.verify(LOCK_MOCK.method.verifyLock(), 1);
+    List<Map<String, Object>> updateCalls = DB_MOCK.getCalls(DB_MOCK.method.updateSObjects());
+    Assert.areEqual(1, updateCalls.size(), 'Should write the run log summary once');
+    List<SObject> updatedRecords = (List<SObject>) updateCalls[0].get('sobjects');
+    Lottery_Run_Log__c updatedRunLog = (Lottery_Run_Log__c) updatedRecords[0];
+    String summary = updatedRunLog.Staff_Priority_Summary__c;
+    Assert.isTrue(summary.contains('Charter A'), 'Summary should record the Charter name');
+    Assert.isTrue(
+      summary.contains('staff 20'),
+      'Summary should record the pre-removal staff count'
+    );
+    Assert.isTrue(summary.contains('seats 100'), 'Summary should record the seats');
+    Assert.isTrue(summary.contains('max allowed 15'), 'Summary should record max allowed');
+    Assert.isTrue(summary.contains('removed 3'), 'Summary should record the removed count');
+    Assert.isTrue(summary.contains('residual 2'), 'Summary should record the residual');
+  }
+
+  @IsTest
+  private static void removeStaffPriority_withFailingLock_doesNotCallService() {
+    Id capacityId = SObjectIds.generateFakeId(Schema.Lottery_Capacity__c.SObjectType);
+    Id charterId = SObjectIds.generateFakeId(Schema.Account.SObjectType);
+    Id runLogId = SObjectIds.generateFakeId(Schema.Lottery_Run_Log__c.SObjectType);
+
+    LOCK_MOCK.when(LOCK_MOCK.method.verifyLock())
+      .thenThrow(new LotteryLockException('Lock expired'));
+
+    AssertThrows.Throwing throwing = AssertThrows.with(LotteryLockException.class, 'Lock expired');
+    try {
+      RunLotteryController.removeStaffPriority(
+        charterId,
+        new List<Id>{ capacityId },
+        runLogId,
+        'test-job-123',
+        null,
+        null
+      );
+    } catch (Exception e) {
+      throwing.threw(e);
+    }
+    throwing.assertHasThrown();
+
+    STAFF_PRIORITY_CAP_MOCK.never(STAFF_PRIORITY_CAP_MOCK.method.removeForCharter());
   }
 
   @IsTest
@@ -1259,10 +1514,7 @@ private class RunLotteryControllerTest {
 
     AUDIT_LOG_MOCK.when(AUDIT_LOG_MOCK.method.createAuditRecords()).thenReturn(5);
 
-    Integer count = RunLotteryController.createAuditRecords(
-      runLogId,
-      new List<Id>{ capacityId }
-    );
+    Integer count = RunLotteryController.createAuditRecords(runLogId, new List<Id>{ capacityId });
 
     Assert.areEqual(5, count, 'Should return count from audit service');
     AUDIT_LOG_MOCK.verify(AUDIT_LOG_MOCK.method.createAuditRecords());
@@ -1295,8 +1547,7 @@ private class RunLotteryControllerTest {
     expectedResult.hasMore = true;
     expectedResult.nextLotteryNumber = 11;
 
-    AUDIT_LOG_MOCK.when(AUDIT_LOG_MOCK.method.createAuditRecordsBatch())
-      .thenReturn(expectedResult);
+    AUDIT_LOG_MOCK.when(AUDIT_LOG_MOCK.method.createAuditRecordsBatch()).thenReturn(expectedResult);
 
     CreateAuditBatchResult result = RunLotteryController.createAuditRecordsBatch(
       runLogId,
@@ -1432,11 +1683,7 @@ private class RunLotteryControllerTest {
     );
 
     try {
-      RunLotteryController.rollbackAcademicInterestsBatch(
-        new List<Id>{ capacityId },
-        null,
-        null
-      );
+      RunLotteryController.rollbackAcademicInterestsBatch(new List<Id>{ capacityId }, null, null);
     } catch (Exception e) {
       throwing.threw(e);
     }

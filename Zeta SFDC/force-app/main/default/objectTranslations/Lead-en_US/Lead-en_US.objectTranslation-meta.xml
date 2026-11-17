@@ -23,14 +23,6 @@
         <label><!-- Convert Lead --></label>
         <name>Convert_Lead</name>
     </quickActions>
-    <quickActions>
-        <label><!-- Send SMS --></label>
-        <name>Mogli_SMS__Send_SMS_Action</name>
-    </quickActions>
-    <quickActions>
-        <label><!-- Add To Webinar --></label>
-        <name>ZVC__Add_To_Webinar</name>
-    </quickActions>
     <validationRules>
         <errorMessage><!-- You must populate the Child First Name field in order to save this record. --></errorMessage>
         <name>Child_First_Name_required</name>

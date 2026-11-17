@@ -55,8 +55,8 @@
             <p
               class="slds-text-body_small slds-text-color_weak slds-m-bottom_small"
             >
-              Filter lottery entries by applied date. Leave blank
-              to include all eligible applications.
+              Filter lottery entries by applied date. Leave blank to include all
+              eligible applications.
             </p>
             <div class="slds-grid slds-gutters slds-wrap">
               <div class="slds-col slds-size_1-of-2 slds-medium-size_1-of-4">
@@ -536,6 +536,43 @@
             </template>
           </div>
 
+          <!-- Staff Priority Cap Table -->
+          <template lwc:if={hasStaffPriorityStats}>
+            <div class="slds-m-bottom_medium">
+              <h3 class="slds-text-heading_small slds-m-bottom_x-small">
+                Staff Priority Cap
+              </h3>
+              <lightning-datatable
+                key-field="id"
+                data={staffPriorityStats}
+                columns={staffPriorityColumns}
+                hide-checkbox-column
+              ></lightning-datatable>
+            </div>
+          </template>
+
+          <!-- Blocked Charter Messages -->
+          <template lwc:if={hasBlockedStaffPriorityCharter}>
+            <template
+              for:each={blockedStaffPriorityCharters}
+              for:item="blocked"
+            >
+              <div
+                key={blocked.id}
+                class="slds-notify slds-notify_alert slds-alert_error slds-m-bottom_small"
+                role="alert"
+              >
+                <span class="slds-assistive-text">Error</span>
+                <lightning-icon
+                  icon-name="utility:error"
+                  size="x-small"
+                  class="slds-m-right_x-small"
+                ></lightning-icon>
+                <h2>{blocked.message}</h2>
+              </div>
+            </template>
+          </template>
+
           <!-- Warning Message -->
           <div
             class="slds-notify slds-notify_alert slds-alert_warning slds-m-top_medium"
@@ -563,6 +600,7 @@
             variant="brand"
             label="Run Lottery"
             onclick={handleConfirmLottery}
+            disabled={confirmLotteryDisabled}
             class="slds-m-left_x-small"
           ></lightning-button>
         </footer>

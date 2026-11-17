@@ -283,6 +283,19 @@
         <sequence>0</sequence>
     </mktDataTranFields>
     <mktDataTranFields>
+        <fullName>SourceRecordId</fullName>
+        <creationType>Custom</creationType>
+        <datatype>S</datatype>
+        <externalName>SourceRecordId</externalName>
+        <isDataRequired>false</isDataRequired>
+        <length>0</length>
+        <masterLabel>SourceRecord</masterLabel>
+        <precision>0</precision>
+        <primaryIndexOrder>0</primaryIndexOrder>
+        <scale>0</scale>
+        <sequence>23</sequence>
+    </mktDataTranFields>
+    <mktDataTranFields>
         <fullName>Status</fullName>
         <creationType>Custom</creationType>
         <datatype>S</datatype>
