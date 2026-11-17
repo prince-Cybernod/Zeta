@@ -67,11 +67,23 @@
             </button>
           </template>
           <template lwc:if={showUpdateRankingsButton}>
-            <button class="edit-link" onclick={handleEditSchools}>
-              {labels.updateRankings}
-            </button>
+            <span class="header-actions">
+              <button class="edit-link" onclick={handleEditSchools}>
+                {labels.updateRankings}
+              </button>
+              <button class="edit-link" onclick={handleToggleAddSchools}>
+                {labels.addSchools}
+              </button>
+            </span>
           </template>
         </div>
+        <template lwc:if={showAddSchools}>
+          <c-add-school-picker
+            application-id={recordId}
+            onschoolsadded={handleSchoolsAdded}
+            oncancel={handleToggleAddSchools}
+          ></c-add-school-picker>
+        </template>
         <div
           class="ranking-list"
           role="list"

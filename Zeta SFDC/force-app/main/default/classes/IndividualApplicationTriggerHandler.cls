@@ -10,6 +10,12 @@
  */
 public with sharing class IndividualApplicationTriggerHandler extends NoOpTriggerHandler {
   private static final String STATUS_DRAFT = 'Draft';
+  private static final List<String> CLOSED_STATUSES = new List<String>{
+    'Cancelled',
+    'Withdrawn/Declined'
+  };
+  @TestVisible
+  private static final String REOPEN_BLOCKED_MESSAGE = 'This student already has an active application on this timeline, so this one can\'t be reopened.';
 
   /**
    * The lookups that tie an application to an Account: the student and both
@@ -41,6 +47,12 @@ public with sharing class IndividualApplicationTriggerHandler extends NoOpTrigge
   private final CurrentPriorityCalcService priorityGroupService;
   private final ApplicationCountRollupService applicationCountRollupService;
   private final ContactApplicationRollupService contactApplicationRollupService;
+  private DatabaseRepo databaseRepo = new SystemModeDatabaseRepo();
+
+  @TestVisible
+  private void setDatabaseRepo(DatabaseRepo databaseRepo) {
+    this.databaseRepo = databaseRepo;
+  }
 
   public IndividualApplicationTriggerHandler() {
     this(
@@ -63,6 +75,35 @@ public with sharing class IndividualApplicationTriggerHandler extends NoOpTrigge
 
   public override SObjectType getSObjectType() {
     return Schema.IndividualApplication.SObjectType;
+  }
+
+  // SFR-216: a closed application can only be reopened when the student has no other active
+  // submitted application on that timeline (including one reopened in this same save).
+  public override void onBeforeUpdate(List<SObject> sobjects, Map<Id, SObject> oldSObjectsByIds) {
+    List<IndividualApplication> reopened = reopenedApplications(sobjects, oldSObjectsByIds);
+    if (reopened.isEmpty()) {
+      return;
+    }
+    Set<Id> studentIds = new Set<Id>();
+    for (IndividualApplication app : reopened) {
+      studentIds.add(app.AccountId);
+    }
+    Set<String> activeStudentTimelines = new Set<String>();
+    for (
+      IndividualApplication active : (List<IndividualApplication>) databaseRepo.queryWithBinds(
+        'SELECT AccountId, Application_Timeline__c FROM IndividualApplication' +
+          ' WHERE AccountId IN :studentIds' +
+          ' AND Status NOT IN :closedStatuses AND AppliedDate != NULL',
+        new Map<String, Object>{ 'studentIds' => studentIds, 'closedStatuses' => CLOSED_STATUSES }
+      )
+    ) {
+      activeStudentTimelines.add('' + active.AccountId + active.Application_Timeline__c);
+    }
+    for (IndividualApplication app : reopened) {
+      if (!activeStudentTimelines.add('' + app.AccountId + app.Application_Timeline__c)) {
+        app.addError(Schema.IndividualApplication.Status, REOPEN_BLOCKED_MESSAGE);
+      }
+    }
   }
 
   public override void onAfterInsert(List<SObject> sobjects) {
@@ -98,6 +139,7 @@ public with sharing class IndividualApplicationTriggerHandler extends NoOpTrigge
     recalculateContactApplicationRollups(
       collectPersonIdsForContactRollup((List<IndividualApplication>) sobjects, oldSObjectsByIds)
     );
+    restoreSchoolChoices(reopenedApplications(sobjects, oldSObjectsByIds));
   }
 
   public override void onAfterDelete(List<SObject> oldSObjects) {
@@ -108,6 +150,39 @@ public with sharing class IndividualApplicationTriggerHandler extends NoOpTrigge
   public override void onAfterUndelete(List<SObject> sobjects) {
     recalculateApplicationCounts(collectAccountIds(sobjects));
     recalculateContactApplicationRollups(collectPersonIds(sobjects));
+  }
+
+  // SFR-216: withdrawing an application withdraws its school choices, so reopening brings them
+  // back as Applied (the Eligible sync flow then takes over if the application is Eligible).
+  private void restoreSchoolChoices(List<IndividualApplication> reopened) {
+    if (reopened.isEmpty()) {
+      return;
+    }
+    List<AcademicInterest> choices = (List<AcademicInterest>) databaseRepo.queryWithBinds(
+      'SELECT Id FROM AcademicInterest' +
+        ' WHERE IndividualApplicationId IN :applicationIds AND Status = \'Withdrawn/Declined\'',
+      new Map<String, Object>{
+        'applicationIds' => new Map<Id, IndividualApplication>(reopened).keySet()
+      }
+    );
+    for (AcademicInterest choice : choices) {
+      choice.Status = 'Applied';
+    }
+    databaseRepo.updateSObjects(choices);
+  }
+
+  private static List<IndividualApplication> reopenedApplications(
+    List<SObject> sobjects,
+    Map<Id, SObject> oldSObjectsByIds
+  ) {
+    List<IndividualApplication> reopened = new List<IndividualApplication>();
+    for (IndividualApplication app : (List<IndividualApplication>) sobjects) {
+      String oldStatus = ((IndividualApplication) oldSObjectsByIds.get(app.Id)).Status;
+      if (CLOSED_STATUSES.contains(oldStatus) && !CLOSED_STATUSES.contains(app.Status)) {
+        reopened.add(app);
+      }
+    }
+    return reopened;
   }
 
   private void recalculateApplicationCounts(Set<Id> accountIds) {

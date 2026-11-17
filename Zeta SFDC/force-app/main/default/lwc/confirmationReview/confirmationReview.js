@@ -27,6 +27,7 @@ import labelSiblingsApplying from '@salesforce/label/c.AppUI_SiblingsApplying';
 import labelSiblingsAttending from '@salesforce/label/c.AppUI_SiblingsAttending';
 import labelStudentInfo from '@salesforce/label/c.AppUI_StudentInfo';
 import labelUpdateRankings from '@salesforce/label/c.AppUI_UpdateRankings';
+import labelAddSchools from '@salesforce/label/c.AppUI_AddSchools';
 
 export default class ConfirmationReview extends LightningElement {
   @api recordId;
@@ -103,6 +104,18 @@ export default class ConfirmationReview extends LightningElement {
     );
   }
 
+  // SFR-216: schools can be added whenever rankings can be updated.
+  showAddSchools = false;
+
+  handleToggleAddSchools() {
+    this.showAddSchools = !this.showAddSchools;
+  }
+
+  handleSchoolsAdded() {
+    this.showAddSchools = false;
+    this.refresh();
+  }
+
   schools = [];
   attendingSiblings = [];
   applyingSiblings = [];
@@ -127,6 +140,7 @@ export default class ConfirmationReview extends LightningElement {
     siblingsApplying: labelSiblingsApplying,
     edit: labelEdit,
     updateRankings: labelUpdateRankings,
+    addSchools: labelAddSchools,
     name: labelName,
     dateOfBirth: labelDateOfBirth,
     gender: labelGender,

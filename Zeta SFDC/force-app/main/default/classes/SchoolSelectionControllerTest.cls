@@ -1,10 +1,13 @@
 @IsTest(IsParallel=true)
 private class SchoolSelectionControllerTest {
   private static final DatabaseRepoMock DATABASE_REPO_MOCK;
+  private static final EventBusRepoMock EVENT_BUS_REPO_MOCK;
 
   static {
     DATABASE_REPO_MOCK = new DatabaseRepoMock();
+    EVENT_BUS_REPO_MOCK = new EventBusRepoMock();
     SchoolSelectionController.databaseRepo = DATABASE_REPO_MOCK;
+    SchoolSelectionController.eventBusRepo = EVENT_BUS_REPO_MOCK;
   }
 
   @IsTest
@@ -508,6 +511,128 @@ private class SchoolSelectionControllerTest {
       Assert.fail('Should throw for null applicationId');
     } catch (IllegalArgumentException e) {
       Assert.isTrue(e.getMessage().contains('Application Id is required'));
+    }
+  }
+
+  // ---- SFR-216: addSchools ----
+
+  // Queues addSchools' application, getEligibleSchools' application + offered capacity, and the
+  // school choices already on the application.
+  private static void queueAddSchools(Id appId, Id capacityId, Id schoolId, AcademicInterest onApp) {
+    DATABASE_REPO_MOCK.when(DATABASE_REPO_MOCK.method.queryWithBinds())
+      .thenReturn(
+        new List<IndividualApplication>{
+          new IndividualApplication(Id = appId, Status = 'Applied', AppliedDate = Datetime.now())
+        }
+      )
+      .thenReturn(
+        new List<IndividualApplication>{
+          new IndividualApplication(
+            Grade_Applying_To__c = 'K',
+            Application_Timeline__c = SObjectIds.generateFakeId(
+              Schema.ApplicationTimeline.SObjectType
+            )
+          )
+        }
+      )
+      .thenReturn(
+        new List<Lottery_Capacity__c>{
+          (Lottery_Capacity__c) JSON.deserialize(
+            JSON.serialize(
+              new Map<String, Object>{
+                'attributes' => new Map<String, String>{ 'type' => 'Lottery_Capacity__c' },
+                'Id' => capacityId,
+                'Program_Term_Application_Timeline__r' => new Map<String, Object>{
+                  'attributes' => new Map<String, String>{
+                    'type' => 'ProgramTermApplicationTimeline'
+                  },
+                  'LearningProgram' => new Map<String, Object>{
+                    'attributes' => new Map<String, String>{ 'type' => 'LearningProgram' },
+                    'School__c' => schoolId,
+                    'School__r' => new Map<String, Object>{
+                      'attributes' => new Map<String, String>{ 'type' => 'Account' },
+                      'Name' => 'Zeta Bronx'
+                    }
+                  }
+                }
+              }
+            ),
+            Lottery_Capacity__c.class
+          )
+        }
+      )
+      .thenReturn(new List<AcademicInterest>{ onApp });
+  }
+
+  @IsTest
+  private static void addSchools_addsAsAppliedAfterTheLastRank() {
+    DATABASE_REPO_MOCK.reset();
+    EVENT_BUS_REPO_MOCK.reset();
+    Id appId = SObjectIds.generateFakeId(Schema.IndividualApplication.SObjectType);
+    Id capacityId = SObjectIds.generateFakeId(Schema.Lottery_Capacity__c.SObjectType);
+    Id schoolId = SObjectIds.generateFakeId(Schema.Account.SObjectType);
+    queueAddSchools(appId, capacityId, schoolId, new AcademicInterest(School_Rank__c = 2));
+    DATABASE_REPO_MOCK.when(DATABASE_REPO_MOCK.method.insertSObjects()).thenReturnVoid();
+    EVENT_BUS_REPO_MOCK.when(EVENT_BUS_REPO_MOCK.method.publishSingle()).thenReturn(null);
+
+    SchoolSelectionController.addSchools(appId, new List<Id>{ capacityId });
+
+    AcademicInterest added = (AcademicInterest) ((List<SObject>) DATABASE_REPO_MOCK.getCalls(
+        DATABASE_REPO_MOCK.method.insertSObjects()
+      )[0]
+      .get('sobjects'))[0];
+    Assert.areEqual(schoolId, added.AccountId);
+    Assert.areEqual('Applied', added.Status);
+    Assert.areEqual(3, added.School_Rank__c.intValue(), 'Added after the existing choices');
+    EVENT_BUS_REPO_MOCK.verify(EVENT_BUS_REPO_MOCK.method.publishSingle());
+  }
+
+  @IsTest
+  private static void addSchools_windowClosed_throws() {
+    DATABASE_REPO_MOCK.reset();
+    DATABASE_REPO_MOCK.when(DATABASE_REPO_MOCK.method.queryWithBinds())
+      .thenReturn(
+        new List<IndividualApplication>{
+          new IndividualApplication(
+            AppliedDate = Datetime.now(),
+            Application_Timeline__r = new ApplicationTimeline(ApplicationCloseDate = Date.today() - 1)
+          )
+        }
+      );
+
+    try {
+      SchoolSelectionController.addSchools(
+        SObjectIds.generateFakeId(Schema.IndividualApplication.SObjectType),
+        new List<Id>()
+      );
+      Assert.fail('Schools must not be added after the application window closes');
+    } catch (IllegalArgumentException e) {
+      Assert.isTrue(e.getMessage().contains('window is open'), e.getMessage());
+    }
+  }
+
+  @IsTest
+  private static void addSchools_schoolAlreadyOnApplication_throws() {
+    DATABASE_REPO_MOCK.reset();
+    Id appId = SObjectIds.generateFakeId(Schema.IndividualApplication.SObjectType);
+    Id capacityId = SObjectIds.generateFakeId(Schema.Lottery_Capacity__c.SObjectType);
+    Id schoolId = SObjectIds.generateFakeId(Schema.Account.SObjectType);
+    // A choice's AccountId holds the student; the school is on its learning program.
+    queueAddSchools(
+      appId,
+      capacityId,
+      schoolId,
+      new AcademicInterest(
+        AccountId = SObjectIds.generateFakeId(Schema.Account.SObjectType),
+        LearningProgram = new LearningProgram(School__c = schoolId)
+      )
+    );
+
+    try {
+      SchoolSelectionController.addSchools(appId, new List<Id>{ capacityId });
+      Assert.fail('A school already on the application must not be added again');
+    } catch (IllegalArgumentException e) {
+      Assert.isTrue(e.getMessage().contains('can\'t be added'), e.getMessage());
     }
   }
 }

@@ -1,6 +1,7 @@
 import { LightningElement, wire, api } from 'lwc';
 import { ShowToastEvent } from 'lightning/platformShowToastEvent';
 import { getFieldValue, getRecord } from 'lightning/uiRecordApi';
+import labelAddSchools from '@salesforce/label/c.AppUI_AddSchools';
 import labelSave from '@salesforce/label/c.AppUI_Save';
 import labelSaving from '@salesforce/label/c.AppUI_Saving';
 import labelSchoolRankingsSaved from '@salesforce/label/c.AppUI_SchoolRankingsSaved';
@@ -40,8 +41,12 @@ export default class ApplicationSchoolsPanel extends LightningElement {
 
   labels = {
     emptyState: labelSchoolsRankingEmptyState,
-    selectionsLocked: labelSelectionsLockedAfterSubmission
+    selectionsLocked: labelSelectionsLockedAfterSubmission,
+    addSchools: labelAddSchools
   };
+
+  // SFR-216: after submission staff can add schools.
+  showAddSchools = false;
 
   @wire(getRecord, { recordId: '$recordId', fields: FIELDS })
   wiredApplication({ data, error }) {
@@ -147,5 +152,14 @@ export default class ApplicationSchoolsPanel extends LightningElement {
     } finally {
       this.isRankingSaving = false;
     }
+  }
+
+  handleToggleAddSchools() {
+    this.showAddSchools = !this.showAddSchools;
+  }
+
+  handleSchoolsAdded() {
+    this.showAddSchools = false;
+    this._rankingRefreshNonce += 1;
   }
 }

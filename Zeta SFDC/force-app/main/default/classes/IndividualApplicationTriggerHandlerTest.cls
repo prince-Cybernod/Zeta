@@ -530,4 +530,65 @@ private class IndividualApplicationTriggerHandlerTest {
 
     CONTACT_ROLLUP_MOCK.verify(CONTACT_ROLLUP_MOCK.method.recalculate(), 0);
   }
+
+  // ---- SFR-216: reopening a Withdrawn/Declined application ----
+
+  private static IndividualApplication reopen(Map<Id, SObject> oldById, Id studentId, Id timelineId) {
+    IndividualApplication app = new IndividualApplication(
+      Id = SObjectIds.generateFakeId(Schema.IndividualApplication.SObjectType),
+      AccountId = studentId,
+      Application_Timeline__c = timelineId,
+      Status = 'Applied'
+    );
+    IndividualApplication oldApp = app.clone(true);
+    oldApp.Status = 'Withdrawn/Declined';
+    oldById.put(app.Id, oldApp);
+    return app;
+  }
+
+  @IsTest
+  private static void onBeforeUpdate_reopen_blockedOnlyWhenAnotherApplicationIsActive() {
+    DatabaseRepoMock repo = new DatabaseRepoMock();
+    HANDLER.setDatabaseRepo(repo);
+    Id studentId = fakeAccountId();
+    Id timelineId = SObjectIds.generateFakeId(Schema.ApplicationTimeline.SObjectType);
+    Map<Id, SObject> oldById = new Map<Id, SObject>();
+    IndividualApplication blocked = reopen(oldById, studentId, timelineId);
+    IndividualApplication allowed = reopen(oldById, fakeAccountId(), timelineId);
+    repo.when(repo.method.queryWithBinds())
+      .thenReturn(
+        new List<IndividualApplication>{
+          new IndividualApplication(AccountId = studentId, Application_Timeline__c = timelineId)
+        }
+      );
+
+    HANDLER.onBeforeUpdate(new List<SObject>{ blocked, allowed }, oldById);
+
+    Assert.areEqual(
+      IndividualApplicationTriggerHandler.REOPEN_BLOCKED_MESSAGE,
+      blocked.getErrors()[0].getMessage()
+    );
+    Assert.isFalse(allowed.hasErrors(), 'A student with no other active application can reopen');
+  }
+
+  @IsTest
+  private static void onAfterUpdate_reopen_bringsBackWithdrawnSchoolChoices() {
+    DatabaseRepoMock repo = new DatabaseRepoMock();
+    HANDLER.setDatabaseRepo(repo);
+    Map<Id, SObject> oldById = new Map<Id, SObject>();
+    IndividualApplication reopened = reopen(oldById, fakeAccountId(), null);
+    Id choiceId = SObjectIds.generateFakeId(Schema.AcademicInterest.SObjectType);
+    repo.when(repo.method.queryWithBinds())
+      .thenReturn(new List<AcademicInterest>{ new AcademicInterest(Id = choiceId) });
+    repo.when(repo.method.updateSObjects()).thenReturnVoid();
+
+    HANDLER.onAfterUpdate(new List<SObject>{ reopened }, oldById);
+
+    AcademicInterest restored = (AcademicInterest) ((List<SObject>) repo.getCalls(
+        repo.method.updateSObjects()
+      )[0]
+      .get('sobjects'))[0];
+    Assert.areEqual(choiceId, restored.Id);
+    Assert.areEqual('Applied', restored.Status);
+  }
 }

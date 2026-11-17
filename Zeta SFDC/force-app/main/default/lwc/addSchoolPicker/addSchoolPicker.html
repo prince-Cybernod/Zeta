@@ -1,0 +1,36 @@
+<template>
+  <!-- Error -->
+  <template lwc:if={error}>
+    <p class="slds-text-color_error" role="alert">{error}</p>
+  </template>
+
+  <!-- Schools that can be added -->
+  <template lwc:if={hasSchools}>
+    <template for:each={schools} for:item="school">
+      <lightning-input
+        key={school.lotteryCapacityId}
+        type="checkbox"
+        label={school.name}
+        data-id={school.lotteryCapacityId}
+        onchange={handleToggle}
+      ></lightning-input>
+    </template>
+  </template>
+  <template lwc:elseif={schools}>
+    <p>{labels.none}</p>
+  </template>
+
+  <!-- Actions -->
+  <div class="actions">
+    <lightning-button
+      label={labels.cancel}
+      onclick={handleCancel}
+    ></lightning-button>
+    <lightning-button
+      variant="brand"
+      label={labels.save}
+      disabled={isSaveDisabled}
+      onclick={handleSave}
+    ></lightning-button>
+  </div>
+</template>
