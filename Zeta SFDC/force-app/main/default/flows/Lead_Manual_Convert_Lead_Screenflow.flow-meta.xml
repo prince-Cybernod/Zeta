@@ -108,7 +108,7 @@
         </rules>
     </decisions>
     <description>SFR-248
-Confirms the child&apos;s name and birth date before converting.</description>
+Confirms the child&apos;s name, birth date and guardian&apos;s name before converting.</description>
     <environments>Default</environments>
     <interviewLabel>Lead | Manual Convert Lead (Screenflow) {!$Flow.CurrentDateTime}</interviewLabel>
     <label>Lead | Manual Convert Lead (Screenflow)</label>
@@ -188,6 +188,18 @@ Confirms the child&apos;s name and birth date before converting.</description>
             </value>
         </inputAssignments>
         <inputAssignments>
+            <field>Guardian_First_Name__c</field>
+            <value>
+                <elementReference>Guardian_First_Name</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Guardian_Last_Name__c</field>
+            <value>
+                <elementReference>Guardian_Last_Name</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
             <field>LastName</field>
             <value>
                 <elementReference>Last_Name</elementReference>
@@ -258,7 +270,7 @@ Confirms the child&apos;s name and birth date before converting.</description>
         </connector>
         <fields>
             <name>Display_Text</name>
-            <fieldText>&lt;p&gt;Please confirm that the following student information is correct. Update and add any missing fields before converting lead.&lt;/p&gt;</fieldText>
+            <fieldText>&lt;p&gt;Please confirm that the following student and guardian information is correct. Update and add any missing fields before converting lead.&lt;/p&gt;</fieldText>
             <fieldType>DisplayText</fieldType>
             <styleProperties>
                 <verticalAlignment>
@@ -330,6 +342,52 @@ Confirms the child&apos;s name and birth date before converting.</description>
                 <formulaExpression>{!Date_of_Birth} &lt; TODAY()</formulaExpression>
             </validationRule>
         </fields>
+        <fields>
+            <name>Guardian_First_Name</name>
+            <dataType>String</dataType>
+            <defaultValue>
+                <elementReference>Get_Triggering_Lead.Guardian_First_Name__c</elementReference>
+            </defaultValue>
+            <fieldText>Guardian First Name</fieldText>
+            <fieldType>InputField</fieldType>
+            <inputsOnNextNavToAssocScrn>UseStoredValues</inputsOnNextNavToAssocScrn>
+            <isRequired>true</isRequired>
+            <styleProperties>
+                <verticalAlignment>
+                    <stringValue>top</stringValue>
+                </verticalAlignment>
+                <width>
+                    <stringValue>12</stringValue>
+                </width>
+            </styleProperties>
+            <validationRule>
+                <errorMessage>&lt;p&gt;Please use 30 characters or fewer.&lt;/p&gt;</errorMessage>
+                <formulaExpression>LEN({!Guardian_First_Name}) &lt;= 30</formulaExpression>
+            </validationRule>
+        </fields>
+        <fields>
+            <name>Guardian_Last_Name</name>
+            <dataType>String</dataType>
+            <defaultValue>
+                <elementReference>Get_Triggering_Lead.Guardian_Last_Name__c</elementReference>
+            </defaultValue>
+            <fieldText>Guardian Last Name</fieldText>
+            <fieldType>InputField</fieldType>
+            <inputsOnNextNavToAssocScrn>UseStoredValues</inputsOnNextNavToAssocScrn>
+            <isRequired>true</isRequired>
+            <styleProperties>
+                <verticalAlignment>
+                    <stringValue>top</stringValue>
+                </verticalAlignment>
+                <width>
+                    <stringValue>12</stringValue>
+                </width>
+            </styleProperties>
+            <validationRule>
+                <errorMessage>&lt;p&gt;Please use 30 characters or fewer.&lt;/p&gt;</errorMessage>
+                <formulaExpression>LEN({!Guardian_Last_Name}) &lt;= 30</formulaExpression>
+            </validationRule>
+        </fields>
         <nextOrFinishButtonLabel>Next</nextOrFinishButtonLabel>
         <showFooter>true</showFooter>
         <showHeader>false</showHeader>
@@ -344,7 +402,7 @@ Confirms the child&apos;s name and birth date before converting.</description>
         <allowPause>false</allowPause>
         <fields>
             <name>Error_Message</name>
-            <fieldText>&lt;p&gt;&lt;strong&gt;Something went wrong, so this lead was not converted.&lt;/strong&gt;&lt;/p&gt;&lt;p&gt;Please check the lead&apos;s name and birth date, then try again. If it happens again, take a screenshot of this message and send it to your Salesforce admin.&lt;/p&gt;&lt;p&gt;Error details: {!$Flow.FaultMessage}&lt;/p&gt;</fieldText>
+            <fieldText>&lt;p&gt;&lt;strong&gt;Something went wrong, so this lead was not converted.&lt;/strong&gt;&lt;/p&gt;&lt;p&gt;Please check the lead&apos;s name, birth date and guardian name, then try again. If it happens again, take a screenshot of this message and send it to your Salesforce admin.&lt;/p&gt;&lt;p&gt;Error details: {!$Flow.FaultMessage}&lt;/p&gt;</fieldText>
             <fieldType>DisplayText</fieldType>
             <styleProperties>
                 <verticalAlignment>
