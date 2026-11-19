@@ -1,6 +1,36 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Flow xmlns="http://soap.sforce.com/2006/04/metadata">
     <actionCalls>
+        <name>Pick_Queens_Lead_Owner</name>
+        <label>Pick Queens Lead Owner</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <actionName>LeadMarketRoundRobin</actionName>
+        <actionType>apex</actionType>
+        <connector>
+            <targetReference>Queens_Owner_Found</targetReference>
+        </connector>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
+        <inputParameters>
+            <name>leadCap</name>
+            <value>
+                <elementReference>var_num_LeadCap</elementReference>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>market</name>
+            <value>
+                <stringValue>Queens</stringValue>
+            </value>
+        </inputParameters>
+        <nameSegment>LeadMarketRoundRobin</nameSegment>
+        <offset>0</offset>
+        <outputParameters>
+            <assignToReference>var_UserID</assignToReference>
+            <name>ownerId</name>
+        </outputParameters>
+    </actionCalls>
+    <actionCalls>
         <name>Convert_Interested_Schools_picklist_to_text_collection_for_looping</name>
         <label>Convert &apos;Interested Schools&apos; picklist to text collection for looping</label>
         <locationX>0</locationX>
@@ -120,6 +150,22 @@
         </connector>
     </assignments>
     <assignments>
+        <name>Add_to_collection0</name>
+        <label>Add to collection</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <assignmentItems>
+            <assignToReference>var_col_ALL_LanguageSpecific</assignToReference>
+            <operator>Add</operator>
+            <value>
+                <elementReference>Loop_to_find_Language_specific_Users_without_Interested_School_consideration</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Count_var_col_ALL_LanguageSpecific</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
         <name>Add_to_Language_specific_record_collection</name>
         <label>Add to Language-specific record collection</label>
         <locationX>0</locationX>
@@ -197,24 +243,6 @@
         </assignmentItems>
         <connector>
             <targetReference>Loop_to_get_single_User_ID</targetReference>
-        </connector>
-    </assignments>
-    <assignments>
-        <description>Populate this to TRUE in order to route the flow down the Default Outcome for Does_Lead_prefer_a_non_English_language. This ensures that even if there are not language speakers at their interested school, we review Users at the specific interested school(s) as part of assignment.</description>
-        <name>Assign_var_bool_LanguageReviewed_as_TRUE</name>
-        <label>Assign &apos;var_bool_LanguageReviewed&apos; as TRUE</label>
-        <locationX>0</locationX>
-        <locationY>0</locationY>
-        <assignmentItems>
-            <assignToReference>var_bool_LanguageReviewed</assignToReference>
-            <operator>Assign</operator>
-            <value>
-                <booleanValue>true</booleanValue>
-            </value>
-        </assignmentItems>
-        <connector>
-            <isGoTo>true</isGoTo>
-            <targetReference>Does_Lead_prefer_a_non_English_language</targetReference>
         </connector>
     </assignments>
     <assignments>
@@ -366,6 +394,22 @@
         </connector>
     </assignments>
     <assignments>
+        <name>Copy_2_of_Assign_User_ID</name>
+        <label>Assign User ID</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <assignmentItems>
+            <assignToReference>var_UserID</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>Copy_2_of_Loop_to_get_single_User_ID.Id</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Copy_2_of_Loop_to_get_single_User_ID</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
         <name>Count_applicable_Users</name>
         <label>Count applicable Users</label>
         <locationX>0</locationX>
@@ -395,6 +439,22 @@
         </assignmentItems>
         <connector>
             <targetReference>Under_Cap_Candidates</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <name>Count_var_col_ALL_LanguageSpecific</name>
+        <label>Count var_col_ALL_LanguageSpecific</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <assignmentItems>
+            <assignToReference>var_cnt_Users</assignToReference>
+            <operator>AssignCount</operator>
+            <value>
+                <elementReference>var_col_ALL_LanguageSpecific</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Loop_to_find_Language_specific_Users_without_Interested_School_consideration</targetReference>
         </connector>
     </assignments>
     <assignments>
@@ -534,12 +594,12 @@
         <label>Filter to Users who Support this School</label>
         <locationX>0</locationX>
         <locationY>0</locationY>
-        <assignNextValueToReference>currentItem_Filter_to_Users_who_Support_this_School</assignNextValueToReference>
+        <assignNextValueToReference>currentItem_Copy_1_of_Filter_to_Users_who_Support_this_School</assignNextValueToReference>
         <collectionProcessorType>FilterCollectionProcessor</collectionProcessorType>
         <collectionReference>Get_Broad_User_list</collectionReference>
         <conditionLogic>and</conditionLogic>
         <conditions>
-            <leftValueReference>currentItem_Filter_to_Users_who_Support_this_School.Schools_Supported__c</leftValueReference>
+            <leftValueReference>currentItem_Copy_1_of_Filter_to_Users_who_Support_this_School.Schools_Supported__c</leftValueReference>
             <operator>Contains</operator>
             <rightValue>
                 <elementReference>Loop</elementReference>
@@ -617,6 +677,80 @@
             <sortOrder>Asc</sortOrder>
         </sortOptions>
     </collectionProcessors>
+    <collectionProcessors>
+        <name>Identify_User_with_longest_ago_Lead_Assignment_Date0</name>
+        <elementSubtype>SortCollectionProcessor</elementSubtype>
+        <label>Identify User with longest-ago Lead Assignment Date</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <collectionProcessorType>SortCollectionProcessor</collectionProcessorType>
+        <collectionReference>var_col_ALL_LanguageSpecific</collectionReference>
+        <connector>
+            <targetReference>Copy_2_of_Loop_to_get_single_User_ID</targetReference>
+        </connector>
+        <limit>1</limit>
+        <sortOptions>
+            <doesPutEmptyStringAndNullFirst>true</doesPutEmptyStringAndNullFirst>
+            <sortField>Last_Lead_Assigned__c</sortField>
+            <sortOrder>Asc</sortOrder>
+        </sortOptions>
+        <sortOptions>
+            <doesPutEmptyStringAndNullFirst>true</doesPutEmptyStringAndNullFirst>
+            <sortField>Open_Lead_Count__c</sortField>
+            <sortOrder>Asc</sortOrder>
+        </sortOptions>
+    </collectionProcessors>
+    <decisions>
+        <name>Is_Text_Me_Link_Lead</name>
+        <label>Text Me the Application Link Lead?</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <defaultConnector>
+            <targetReference>Get_Broad_User_list</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Other Lead Sources</defaultConnectorLabel>
+        <rules>
+            <name>Text_Me_Link</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>input_Lead_rec.Lead_Source__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Website – Text Me the Application Link Form</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Pick_Queens_Lead_Owner</targetReference>
+            </connector>
+            <label>Text Me Link</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>Queens_Owner_Found</name>
+        <label>Queens Owner Found?</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <defaultConnector>
+            <targetReference>Get_Broad_User_list</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Nobody Within the Limit</defaultConnectorLabel>
+        <rules>
+            <name>Owner_Found</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>var_UserID</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <isGoTo>true</isGoTo>
+                <targetReference>Update_the_Owner_on_the_Input_Lead</targetReference>
+            </connector>
+            <label>Owner Found</label>
+        </rules>
+    </decisions>
     <decisions>
         <description>If there are no Users who speak this language, assign to default Queue.</description>
         <name>Are_there_Users_who_speak_this_language</name>
@@ -624,7 +758,8 @@
         <locationX>0</locationX>
         <locationY>0</locationY>
         <defaultConnector>
-            <targetReference>Assign_var_bool_LanguageReviewed_as_TRUE</targetReference>
+            <isGoTo>true</isGoTo>
+            <targetReference>Loop_to_find_Language_specific_Users_without_Interested_School_consideration</targetReference>
         </defaultConnector>
         <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
         <rules>
@@ -699,6 +834,31 @@
         </rules>
     </decisions>
     <decisions>
+        <name>Copy_1_of_Looping_User_speaks_Lead_s_Preferred_Language</name>
+        <label>Looping User speaks Lead&apos;s Preferred Language?</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <defaultConnector>
+            <targetReference>Count_var_col_ALL_LanguageSpecific</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Copy_1_of_Yes</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Loop_to_find_Language_specific_Users_without_Interested_School_consideration.Language_Support__c</leftValueReference>
+                <operator>Contains</operator>
+                <rightValue>
+                    <elementReference>fx_LeadPreferredLanguage</elementReference>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Add_to_collection0</targetReference>
+            </connector>
+            <label>Yes</label>
+        </rules>
+    </decisions>
+    <decisions>
         <name>Copy_1_of_Users_found</name>
         <label>Users found?</label>
         <locationX>0</locationX>
@@ -770,13 +930,6 @@
                     <booleanValue>false</booleanValue>
                 </rightValue>
             </conditions>
-            <conditions>
-                <leftValueReference>var_bool_LanguageReviewed</leftValueReference>
-                <operator>EqualTo</operator>
-                <rightValue>
-                    <booleanValue>false</booleanValue>
-                </rightValue>
-            </conditions>
             <connector>
                 <targetReference>Loop_to_find_Language_specific_Users</targetReference>
             </connector>
@@ -835,6 +988,31 @@
         </rules>
     </decisions>
     <decisions>
+        <name>Language_Specific_Users_Found</name>
+        <label>Language-Specific Users Found?</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <defaultConnector>
+            <targetReference>Update_the_Owner_on_the_Input_Lead</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Yes_found</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>var_cnt_Users</leftValueReference>
+                <operator>GreaterThan</operator>
+                <rightValue>
+                    <numberValue>0.0</numberValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Identify_User_with_longest_ago_Lead_Assignment_Date0</targetReference>
+            </connector>
+            <label>Yes, found</label>
+        </rules>
+    </decisions>
+    <decisions>
         <name>Looping_User_speaks_Lead_s_Preferred_Language</name>
         <label>Looping User speaks Lead&apos;s Preferred Language?</label>
         <locationX>0</locationX>
@@ -850,7 +1028,7 @@
                 <leftValueReference>Loop_to_find_Language_specific_Users.Language_Support__c</leftValueReference>
                 <operator>Contains</operator>
                 <rightValue>
-                    <elementReference>input_Lead_rec.Preferred_Contact_Language__c</elementReference>
+                    <elementReference>fx_LeadPreferredLanguage</elementReference>
                 </rightValue>
             </conditions>
             <connector>
@@ -866,7 +1044,7 @@
         <locationX>0</locationX>
         <locationY>0</locationY>
         <defaultConnector>
-            <targetReference>Get_Broad_User_list</targetReference>
+            <targetReference>Is_Text_Me_Link_Lead</targetReference>
         </defaultConnector>
         <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
         <rules>
@@ -998,6 +1176,28 @@
             </connector>
             <label>Yes</label>
         </rules>
+        <rules>
+            <name>None_under_cap_AND_Language_Preference</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Yes_userslanguage</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>cnt_UsersFound</leftValueReference>
+                <operator>LessThanOrEqualTo</operator>
+                <rightValue>
+                    <numberValue>0.0</numberValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Loop_to_find_Language_specific_Users_without_Interested_School_consideration</targetReference>
+            </connector>
+            <label>None under cap AND Language Preference</label>
+        </rules>
     </decisions>
     <decisions>
         <name>Users_found0</name>
@@ -1075,7 +1275,8 @@
             <label>Yes, not null</label>
         </rules>
     </decisions>
-    <description>Assigns ownership on every new Lead. Checks first whether Salesforce flagged the Lead as a duplicate of an existing Lead and, if so, gives it to that Lead&apos;s owner. Otherwise, builds a pool of eligible teammates based on the schools the family is interested in (or, if none were selected, the district their zip code falls in, with a borough-level fallback), narrows that pool to language-matching teammates when the family&apos;s preferred language isn&apos;t English and at least one teammate speaks it, and assigns the Lead to the teammate in that pool who has gone longest without a new Lead — while keeping every teammate&apos;s open caseload within a reasonable range of the rest of the team. If no eligible teammate can be found, the Lead goes to the Outreach &amp; Enrollment queue and a task is created flagging it for manual assignment. Email_Only queue</description>
+    <description>SFR-314
+Text Me the Application Link Form leads take turns among the Queens team.</description>
     <environments>Default</environments>
     <formulas>
         <description>Returns TRUE if Eng preferred. There was an issue reading values directly in Decision element</description>
@@ -1101,6 +1302,19 @@
         <dataType>String</dataType>
         <expression>LEFT({!Loop_Dupe_Items.RecordId}, 3)</expression>
     </formulas>
+    <formulas>
+        <description>returns the field label instead of the picklist API name. This enables us to match the values against User Supported Languages</description>
+        <name>fx_LeadPreferredLanguage</name>
+        <dataType>String</dataType>
+        <expression>IF(
+  OR(
+    TEXT({!input_Lead_rec.Preferred_Contact_Language__c}) = null,
+    TEXT({!input_Lead_rec.Preferred_Contact_Language__c}) = &apos;en_US&apos;
+  ),
+  &apos;English&apos;,
+  IF(TEXT({!input_Lead_rec.Preferred_Contact_Language__c}) = &apos;es&apos;, &apos;Spanish&apos;, IF(TEXT({!input_Lead_rec.Preferred_Contact_Language__c}) = &apos;zh_CN&apos;, &apos;Mandarin&apos;, &apos;&apos;))
+)</expression>
+    </formulas>
     <interviewLabel>Lead (Autolaunched) Evaluate Lead Owner Assignment {!$Flow.CurrentDateTime}</interviewLabel>
     <label>Lead (Autolaunched) Evaluate Lead Owner Assignment</label>
     <loops>
@@ -1113,6 +1327,21 @@
         <iterationOrder>Asc</iterationOrder>
         <nextValueConnector>
             <targetReference>Copy_1_of_Assign_User_ID</targetReference>
+        </nextValueConnector>
+        <noMoreValuesConnector>
+            <targetReference>Update_the_Owner_on_the_Input_Lead</targetReference>
+        </noMoreValuesConnector>
+    </loops>
+    <loops>
+        <description>This will always be a loop of 1</description>
+        <name>Copy_2_of_Loop_to_get_single_User_ID</name>
+        <label>Loop to get single User ID</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <collectionReference>var_col_ALL_LanguageSpecific</collectionReference>
+        <iterationOrder>Asc</iterationOrder>
+        <nextValueConnector>
+            <targetReference>Copy_2_of_Assign_User_ID</targetReference>
         </nextValueConnector>
         <noMoreValuesConnector>
             <targetReference>Update_the_Owner_on_the_Input_Lead</targetReference>
@@ -1144,7 +1373,7 @@
             <targetReference>Is_this_is_Lead</targetReference>
         </nextValueConnector>
         <noMoreValuesConnector>
-            <targetReference>Get_Broad_User_list</targetReference>
+            <targetReference>Is_Text_Me_Link_Lead</targetReference>
         </noMoreValuesConnector>
     </loops>
     <loops>
@@ -1173,6 +1402,20 @@
         </nextValueConnector>
         <noMoreValuesConnector>
             <targetReference>Count_applicable_Users</targetReference>
+        </noMoreValuesConnector>
+    </loops>
+    <loops>
+        <name>Loop_to_find_Language_specific_Users_without_Interested_School_consideration</name>
+        <label>Loop to find Language-specific Users without Interested School consideration</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <collectionReference>Get_Broad_User_list</collectionReference>
+        <iterationOrder>Asc</iterationOrder>
+        <nextValueConnector>
+            <targetReference>Copy_1_of_Looping_User_speaks_Lead_s_Preferred_Language</targetReference>
+        </nextValueConnector>
+        <noMoreValuesConnector>
+            <targetReference>Language_Specific_Users_Found</targetReference>
         </noMoreValuesConnector>
     </loops>
     <loops>
@@ -1522,6 +1765,14 @@
         </value>
     </variables>
     <variables>
+        <name>currentItem_Copy_1_of_Filter_to_Users_who_Support_this_School</name>
+        <dataType>SObject</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+        <objectType>User</objectType>
+    </variables>
+    <variables>
         <name>currentItem_Filter_to_Accounts_for_this_Target_Market</name>
         <dataType>SObject</dataType>
         <isCollection>false</isCollection>
@@ -1546,7 +1797,7 @@
         <objectType>User</objectType>
     </variables>
     <variables>
-        <name>currentItem_Filter_to_Users_who_Support_this_School</name>
+        <name>currentItem_Filter_to_Users_who_Support_this_School0</name>
         <dataType>SObject</dataType>
         <isCollection>false</isCollection>
         <isInput>false</isInput>
@@ -1554,7 +1805,7 @@
         <objectType>User</objectType>
     </variables>
     <variables>
-        <name>currentItem_Filter_to_Users_who_Support_this_School0</name>
+        <name>currentItem_Only_Preferred_Language_Speakers</name>
         <dataType>SObject</dataType>
         <isCollection>false</isCollection>
         <isInput>false</isInput>
@@ -1585,16 +1836,6 @@
         <isOutput>false</isOutput>
     </variables>
     <variables>
-        <name>var_bool_LanguageReviewed</name>
-        <dataType>Boolean</dataType>
-        <isCollection>false</isCollection>
-        <isInput>false</isInput>
-        <isOutput>false</isOutput>
-        <value>
-            <booleanValue>false</booleanValue>
-        </value>
-    </variables>
-    <variables>
         <name>var_cnt_Users</name>
         <dataType>Number</dataType>
         <isCollection>false</isCollection>
@@ -1604,6 +1845,14 @@
         <value>
             <numberValue>0.0</numberValue>
         </value>
+    </variables>
+    <variables>
+        <name>var_col_ALL_LanguageSpecific</name>
+        <dataType>SObject</dataType>
+        <isCollection>true</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+        <objectType>User</objectType>
     </variables>
     <variables>
         <name>var_col_LanguageUsers</name>
@@ -1655,7 +1904,7 @@
         <isOutput>false</isOutput>
         <scale>0</scale>
         <value>
-            <numberValue>30.0</numberValue>
+            <numberValue>10.0</numberValue>
         </value>
     </variables>
     <variables>
