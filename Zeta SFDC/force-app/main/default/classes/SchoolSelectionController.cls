@@ -248,6 +248,7 @@ public without sharing class SchoolSelectionController {
     Preconditions.checkArgument(
       app.AppliedDate != null &&
         app.Status != 'Withdrawn/Declined' &&
+        app.Status != 'Cancelled' &&
         (closeDate == null || closeDate >= Date.today()),
       'Schools can only be added to a submitted application while the application window is open.'
     );

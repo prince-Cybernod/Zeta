@@ -254,3 +254,16 @@
     white-space: normal;
   }
 }
+
+/* SFR-216: schools already on a submitted application */
+.school-row--locked {
+  cursor: default;
+  opacity: 0.6;
+}
+
+.add-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.5rem;
+  margin-top: 1rem;
+}

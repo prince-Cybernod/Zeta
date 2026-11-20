@@ -2,8 +2,12 @@ import { LightningElement, api } from 'lwc';
 import getEligibleSchools from '@salesforce/apex/SchoolSelectionController.getEligibleSchools';
 import getSelectedSchools from '@salesforce/apex/SchoolSelectionController.getSelectedSchools';
 import saveSchoolSelections from '@salesforce/apex/SchoolSelectionController.saveSchoolSelections';
+import addSchools from '@salesforce/apex/SchoolSelectionController.addSchools';
+import getRankedSchools from '@salesforce/apex/SchoolRankingController.getRankedSchools';
+import labelAddSchoolsNone from '@salesforce/label/c.AppUI_AddSchoolsNone';
 import labelAriaLoadingSchools from '@salesforce/label/c.AppUI_AriaLoadingSchools';
 import labelAriaSchoolSelections from '@salesforce/label/c.AppUI_AriaSchoolSelections';
+import labelCancel from '@salesforce/label/c.AppUI_Cancel';
 import labelChooseSchools from '@salesforce/label/c.AppUI_ChooseSchools';
 import labelChooseSchoolsDesc from '@salesforce/label/c.AppUI_ChooseSchoolsDesc';
 import labelDistanceLessThan from '@salesforce/label/c.AppUI_DistanceLessThanPoint1';
@@ -12,6 +16,7 @@ import labelFilterBySchool from '@salesforce/label/c.AppUI_FilterBySchool';
 import labelHome from '@salesforce/label/c.AppUI_Home';
 import labelNoSchoolsSelected from '@salesforce/label/c.AppUI_NoSchoolsSelected';
 import labelOneSchoolSelected from '@salesforce/label/c.AppUI_OneSchoolSelected';
+import labelSave from '@salesforce/label/c.AppUI_Save';
 import labelSaveSchoolsFailed from '@salesforce/label/c.AppUI_SaveSchoolsFailed';
 import labelSchoolsSelectedPlural from '@salesforce/label/c.AppUI_SchoolsSelectedPlural';
 import labelSearchSchools from '@salesforce/label/c.AppUI_SearchSchools';
@@ -38,6 +43,8 @@ function buildSchoolPinUrl(fillColor) {
 
 export default class SchoolSelection extends LightningElement {
   @api recordId;
+  // SFR-216: 'add' adds schools to a submitted application; the schools it already has stay ticked.
+  @api mode;
 
   schools = [];
   selectedSchoolIds = new Set();
@@ -49,6 +56,7 @@ export default class SchoolSelection extends LightningElement {
   _grade = '';
   _schoolDataMap = new Map();
   _cachedMapMarkers = [];
+  _lockedIds = new Set();
 
   labels = {
     chooseSchools: labelChooseSchools,
@@ -57,11 +65,30 @@ export default class SchoolSelection extends LightningElement {
     searchSchools: labelSearchSchools,
     filterBySchool: labelFilterBySchool,
     ariaLoadingSchools: labelAriaLoadingSchools,
-    ariaSchoolSelections: labelAriaSchoolSelections
+    ariaSchoolSelections: labelAriaSchoolSelections,
+    addSchoolsNone: labelAddSchoolsNone,
+    cancel: labelCancel,
+    save: labelSave
   };
 
   get showContent() {
     return !this.isLoading;
+  }
+
+  get isAddMode() {
+    return this.mode === 'add';
+  }
+
+  get newSchoolIds() {
+    return [...this.selectedSchoolIds].filter((id) => !this._lockedIds.has(id));
+  }
+
+  get isAddDisabled() {
+    return this.isSaving || this.newSchoolIds.length === 0;
+  }
+
+  get nothingToAdd() {
+    return this.isAddMode && this.schools.every((s) => this._lockedIds.has(s.schoolAccountId));
   }
 
   get gradeSubtitle() {
@@ -134,6 +161,7 @@ export default class SchoolSelection extends LightningElement {
       .map((s) => ({
         ...s,
         isSelected: this.selectedSchoolIds.has(s.schoolAccountId),
+        isLocked: this._lockedIds.has(s.schoolAccountId),
         hasDistance: s.distance != null,
         distanceLabel:
           s.distance != null
@@ -142,7 +170,7 @@ export default class SchoolSelection extends LightningElement {
               : labelDistanceMiles.replace('{0}', s.distance)
             : '',
         checkboxClass: `school-checkbox${this.selectedSchoolIds.has(s.schoolAccountId) ? ' school-checkbox--checked' : ''}`,
-        rowClass: `school-row${this.selectedSchoolIds.has(s.schoolAccountId) ? ' school-row--selected' : ''}`
+        rowClass: `school-row${this.selectedSchoolIds.has(s.schoolAccountId) ? ' school-row--selected' : ''}${this._lockedIds.has(s.schoolAccountId) ? ' school-row--locked' : ''}`
       }));
   }
 
@@ -169,7 +197,10 @@ export default class SchoolSelection extends LightningElement {
     try {
       const [eligibleResult, existingSelections] = await Promise.all([
         getEligibleSchools({ applicationId: this.recordId }),
-        getSelectedSchools({ applicationId: this.recordId })
+        // After submitting, the choices aren't drafts, so read every school on the application.
+        this.isAddMode
+          ? getRankedSchools({ applicationId: this.recordId })
+          : getSelectedSchools({ applicationId: this.recordId })
       ]);
 
       this.schools = eligibleResult.schools || [];
@@ -206,6 +237,9 @@ export default class SchoolSelection extends LightningElement {
       this.selectedSchoolIds = new Set(
         existingSelections.map((s) => s.schoolAccountId)
       );
+      if (this.isAddMode) {
+        this._lockedIds = new Set(this.selectedSchoolIds);
+      }
     } catch (err) {
       console.error('Failed to load school data:', err);
     } finally {
@@ -238,6 +272,7 @@ export default class SchoolSelection extends LightningElement {
   }
 
   _toggleSchool(schoolId) {
+    if (this._lockedIds.has(schoolId)) return;
     const newSet = new Set(this.selectedSchoolIds);
     if (newSet.has(schoolId)) {
       newSet.delete(schoolId);
@@ -303,6 +338,29 @@ export default class SchoolSelection extends LightningElement {
     } finally {
       this.isSaving = false;
     }
+  }
+
+  async handleAddSave() {
+    this.isSaving = true;
+    this.saveError = '';
+    try {
+      await addSchools({
+        applicationId: this.recordId,
+        lotteryCapacityIds: this.newSchoolIds.map(
+          (id) => this._schoolDataMap.get(id).lotteryCapacityId
+        )
+      });
+      this.dispatchEvent(new CustomEvent('schoolsadded'));
+    } catch (err) {
+      this.saveError =
+        err.body?.message || err.message || labelSaveSchoolsFailed;
+    } finally {
+      this.isSaving = false;
+    }
+  }
+
+  handleCancel() {
+    this.dispatchEvent(new CustomEvent('cancel'));
   }
 
   _calculateDistance(lat1, lon1, lat2, lon2) {
