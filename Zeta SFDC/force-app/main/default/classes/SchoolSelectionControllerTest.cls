@@ -612,6 +612,31 @@ private class SchoolSelectionControllerTest {
   }
 
   @IsTest
+  private static void addSchools_cancelledApplication_throws() {
+    DATABASE_REPO_MOCK.reset();
+    DATABASE_REPO_MOCK.when(DATABASE_REPO_MOCK.method.queryWithBinds())
+      .thenReturn(
+        new List<IndividualApplication>{
+          new IndividualApplication(
+            AppliedDate = Datetime.now(),
+            Status = 'Cancelled',
+            Application_Timeline__r = new ApplicationTimeline(ApplicationCloseDate = Date.today() + 30)
+          )
+        }
+      );
+
+    try {
+      SchoolSelectionController.addSchools(
+        SObjectIds.generateFakeId(Schema.IndividualApplication.SObjectType),
+        new List<Id>()
+      );
+      Assert.fail('Schools must not be added to a cancelled application');
+    } catch (IllegalArgumentException e) {
+      Assert.isTrue(e.getMessage().contains('submitted application'), e.getMessage());
+    }
+  }
+
+  @IsTest
   private static void addSchools_schoolAlreadyOnApplication_throws() {
     DATABASE_REPO_MOCK.reset();
     Id appId = SObjectIds.generateFakeId(Schema.IndividualApplication.SObjectType);

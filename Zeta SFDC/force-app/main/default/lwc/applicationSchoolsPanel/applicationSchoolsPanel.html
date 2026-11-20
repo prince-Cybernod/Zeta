@@ -51,11 +51,12 @@
         <p>{labels.selectionsLocked}</p>
       </div>
       <template lwc:if={showAddSchools}>
-        <c-add-school-picker
-          application-id={recordId}
+        <c-school-selection
+          record-id={recordId}
+          mode="add"
           onschoolsadded={handleSchoolsAdded}
           oncancel={handleToggleAddSchools}
-        ></c-add-school-picker>
+        ></c-school-selection>
       </template>
       <template lwc:else>
         <div class="panel-actions">

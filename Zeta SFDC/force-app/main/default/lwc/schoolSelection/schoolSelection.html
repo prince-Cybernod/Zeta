@@ -61,6 +61,7 @@
               onkeydown={handleRowKeydown}
               role="checkbox"
               aria-checked={school.isSelected}
+              aria-disabled={school.isLocked}
               tabindex="0"
             >
               <div class={school.checkboxClass} aria-hidden="true">
@@ -89,6 +90,25 @@
 
         <template lwc:if={saveError}>
           <div class="form-error" role="alert">{saveError}</div>
+        </template>
+
+        <template lwc:if={nothingToAdd}>
+          <p>{labels.addSchoolsNone}</p>
+        </template>
+
+        <template lwc:if={isAddMode}>
+          <div class="add-actions">
+            <lightning-button
+              label={labels.cancel}
+              onclick={handleCancel}
+            ></lightning-button>
+            <lightning-button
+              variant="brand"
+              label={labels.save}
+              disabled={isAddDisabled}
+              onclick={handleAddSave}
+            ></lightning-button>
+          </div>
         </template>
       </div>
     </div>

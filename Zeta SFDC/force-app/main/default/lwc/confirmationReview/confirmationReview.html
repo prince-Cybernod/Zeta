@@ -78,11 +78,12 @@
           </template>
         </div>
         <template lwc:if={showAddSchools}>
-          <c-add-school-picker
-            application-id={recordId}
+          <c-school-selection
+            record-id={recordId}
+            mode="add"
             onschoolsadded={handleSchoolsAdded}
             oncancel={handleToggleAddSchools}
-          ></c-add-school-picker>
+          ></c-school-selection>
         </template>
         <div
           class="ranking-list"
