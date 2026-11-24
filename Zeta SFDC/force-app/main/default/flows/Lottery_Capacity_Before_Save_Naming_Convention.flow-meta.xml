@@ -15,14 +15,18 @@
             </value>
         </assignmentItems>
     </assignments>
-    <description>removed schoolmint naming convention for testing (MAINTAIN PRIOR VERSION)
-
-Flow Designer: Elevation Solutions</description>
+    <description>SFR-220
+Adds the timeline to the name</description>
     <environments>Default</environments>
+    <formulas>
+        <name>fxNameSuffix</name>
+        <dataType>String</dataType>
+        <expression>&quot; | &quot;&amp;TEXT({!$Record.Grade__c})&amp;&quot; | &quot;&amp;{!$Record.Program_Term_Application_Timeline__r.ApplicationTimeline.Name}</expression>
+    </formulas>
     <formulas>
         <name>fxRecordName</name>
         <dataType>String</dataType>
-        <expression>LEFT({!$Record.Program_Term_Application_Timeline__r.LearningProgram.School__r.Zeta_School_Name__c},75)&amp;&quot; | &quot;&amp;TEXT({!$Record.Grade__c})</expression>
+        <expression>LEFT({!$Record.Program_Term_Application_Timeline__r.LearningProgram.School__r.Zeta_School_Name__c},80-LEN({!fxNameSuffix}))&amp;{!fxNameSuffix}</expression>
     </formulas>
     <formulas>
         <name>fxSchoolMintId</name>
