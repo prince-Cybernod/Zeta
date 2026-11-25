@@ -176,7 +176,7 @@ export default class ZetaApplication extends LightningElement {
   @wire(CurrentPageReference)
   handlePageRef(pageRef) {
     this._pageRefType = pageRef?.type;
-    if (pageRef?.state?.applicationId && !this.recordId) {
+    if (pageRef?.state?.applicationId && !this.recordId && !this.forceNew) {
       this._resolvedRecordId = pageRef.state.applicationId;
       this._loadWizardState();
     }
